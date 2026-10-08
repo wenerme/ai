@@ -1213,6 +1213,18 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The IDs of vaults made available to the session.
 
+      - `spend_control: optional object { consumed, limit }`
+
+        Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+        - `consumed: number or null`
+
+          Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+        - `limit: number`
+
+          The configured positive limit in USD cents.
+
     - `type: "agent.session.created"`
 
       The type of the object. Always `agent.session.created`.

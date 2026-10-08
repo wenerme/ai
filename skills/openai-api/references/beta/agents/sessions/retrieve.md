@@ -10,7 +10,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -790,6 +790,18 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     The IDs of vaults made available to the session.
 
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
+
 ### Example
 
 ```http
@@ -888,6 +900,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  }
 }
 ```

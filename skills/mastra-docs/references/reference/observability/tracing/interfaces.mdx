@@ -16,7 +16,7 @@ Primary interface for observability.
 ```typescript
 interface ObservabilityInstance {
   /** Get current configuration */
-  getConfig(): Readonly<Required<ObservabilityInstanceConfig>>
+  getConfig(): Readonly<ObservabilityInstanceConfig>
 
   /** Get all exporters */
   getExporters(): readonly ObservabilityExporter[]

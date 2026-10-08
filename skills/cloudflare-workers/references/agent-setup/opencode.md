@@ -69,7 +69,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -168,23 +168,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Tips

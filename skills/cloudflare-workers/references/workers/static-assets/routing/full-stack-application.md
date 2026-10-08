@@ -25,6 +25,7 @@ The following full-stack frameworks are natively supported by Workers:
 - [RedwoodSDK](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
 - [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
 - [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+- [fate](https://developers.cloudflare.com/workers/framework-guides/web-apps/fate/)
 
 - [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
 - [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)

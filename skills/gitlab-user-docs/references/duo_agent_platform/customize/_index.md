@@ -12,6 +12,7 @@ You can customize the Agent Platform to match your workflow, coding standards, o
 | [Create an AGENTS.md file](agents_md.md) to provide instructions. | - GitLab Duo Chat- Flows, excluding Code Review Flow | - Account for project-specific context.- Organize a monorepo.- Enforce directory-specific conventions. | - GitLab UI- Editor extensions- GitLab Duo CLI- Non-GitLab AI coding tools |
 | [Create MR review instructions](review_instructions.md) to ensure consistent and specific code review standards in your project. | - Code Review Flow | Apply:- Language-specific review rules.- Security standards.- Code quality requirements.- File-specific guidelines. | - GitLab UI |
 | [Create Agent Skills](agent_skills.md) to provide skills. | - GitLab Duo Chat- Flows, excluding Code Review Flow | - Provide shareable skills- Add custom slash commands | - GitLab UI- Editor extensions- GitLab Duo CLI- Non-GitLab AI coding tools |
+| [Create workspace subagents](workspace_subagents.md) to define specialized agents. | - Developer Flow | - Delegate focused tasks, like reviews or research, to specialized agents. | - GitLab UI- GitLab Duo CLI |
 
 [^support-varies-where]: Support varies by where you use these features.
     For more information, see the documentation for each customization method.
@@ -33,6 +34,8 @@ When you customize the Agent Platform, apply the following best practices:
   |─ AGENTS.md                         # Applies to multiple Duo features
   |- skills/<skill-name>/
      |─ SKILL.md                       # Applies to multiple Duo features
+  |─ .agents/agents/
+     |─ <subagent-name>.md             # Workspace subagents for the Developer Flow
   |─ .gitlab/duo/
      |─ chat-rules.md                  # Custom Chat-specific rules
      |─ mr-review-instructions.yaml    # Custom code review standards

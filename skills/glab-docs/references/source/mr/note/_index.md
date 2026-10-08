@@ -33,8 +33,8 @@ comment
 
 - [`create`](create.md)
 - [`delete`](delete.md)
+- [`draft`](draft/_index.md)
 - [`list`](list.md)
-- [`publish`](publish.md)
 - [`reopen`](reopen.md)
 - [`resolve`](resolve.md)
 - [`update`](update.md)

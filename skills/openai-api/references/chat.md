@@ -670,8 +670,7 @@ chunk objects if the request is streamed.
     `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
     `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
     custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
-    Custom voices must be created from audio samples. Voices created from text
-    prompts are supported only in Live.
+    Custom voices must be created from audio samples.
 
     - `string`
 
@@ -5670,8 +5669,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
     `sage`, `shimmer`, `marin`, and `cedar`. You may also provide a
     custom voice object with an `id`, for example `{ "id": "voice_1234" }`.
-    Custom voices must be created from audio samples. Voices created from text
-    prompts are supported only in Live.
+    Custom voices must be created from audio samples.
 
     - `string`
 

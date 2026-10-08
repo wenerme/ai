@@ -261,7 +261,7 @@ secret.
 > when replacing certificates, all workloads must be restarted to pick up
 > the certificate and work properly.
 
-To configure TLS version for the bundled Dex server, update the `argocd-cm` ConfigMap:
+To configure the TLS version, cipher suites, and curve preferences for the bundled Dex server, update the argocd-cm ConfigMap:
 
 ```yaml
   apiVersion: v1
@@ -272,6 +272,12 @@ To configure TLS version for the bundled Dex server, update the `argocd-cm` Conf
     dex.config: |
       web:
         tlsMinVersion: "1.2"
+        tlsCiphers: 
+        - "TLS_AES_128_GCM_SHA256" 
+        - "TLS_AES_256_GCM_SHA384" 
+        tlsCurvePreferences: 
+        - "X25519MLKEM768" 
+        - "X25519"
 ```
 
 ### Disabling TLS to argocd-repo-server

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -45,7 +45,7 @@ The following diagram shows how requests flow through an MCP server portal.
 4. When the user calls a tool, the portal identifies the target server from the [tool namespace](#tool-namespacing), attaches the appropriate credentials, and proxies the request. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the request passes through Cloudflare Gateway for HTTP logging and DLP inspection.
 5. The upstream server processes the request and returns a response through the same path.
 
-For servers that use Dynamic Client Registration (DCR), background synchronization of tools and prompts runs approximately every two hours using admin credentials. This sync connects directly to upstream servers and does not route through Gateway.
+For servers that use Dynamic Client Registration (DCR), background synchronization of tools and prompts runs approximately every two hours using admin credentials. When server-level Gateway routing is turned on, DCR and background synchronization route through Gateway.
 
 ### Transport
 
@@ -138,7 +138,7 @@ Cloudflare Access will validate the server connection and retrieve a list of pro
 
 ### Connect a private MCP server
 
-MCP server portals can connect to an MCP server available only on your private network. The MCP server URL and its [OAuth protected resource metadata ↗︎](https://www.rfc-editor.org/rfc/rfc9728.html) can use a private hostname. OAuth authorization server endpoints, such as the authorization and token endpoints, must be accessible on the public Internet. If Cloudflare automatically registers the OAuth client through DCR, the registration endpoint must also be accessible on the public Internet.
+MCP server portals can connect to an MCP server available only on your private network. The MCP server URL, [OAuth protected resource metadata ↗︎](https://www.rfc-editor.org/rfc/rfc9728.html), and DCR endpoint can use a private hostname when server-level Gateway routing is turned on. OAuth authorization and token endpoints must be accessible on the public Internet.
 
 Before you add the server, connect its network to Cloudflare. Use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or another [Cloudflare One connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/). Configure a [private hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/) for the server.
 
@@ -826,7 +826,7 @@ Because portal traffic routes through Gateway, it also respects [Gateway egress 
 
 Note
 
-Gateway routing only applies to real-time tool calls made by users through the portal. Background operations such as [admin credential synchronization](#synchronize-the-mcp-server) do not route through Gateway and will not use your egress policy IPs.
+Server-level Gateway routing also applies to DCR and [admin credential synchronization](#synchronize-the-mcp-server). Portal-level Gateway routing applies only to real-time requests through that portal.
 
 ### TLS decryption
 
@@ -895,7 +895,7 @@ The agent can retry the request, but it will continue to be blocked until the co
 
 - DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#ai-prompt) do not apply to MCP server portal traffic. AI prompt profiles are designed for specific web client API paths and do not match the MCP protocol format. Use standard DLP profiles instead.
 - SSE transport is not supported through Gateway. If your upstream MCP server only supports SSE, Gateway routing will not work for that server.
-- Background synchronization of tools and prompts does not route through Gateway. Only real-time user requests are inspected.
+- Portal-level Gateway routing does not apply to DCR or background synchronization. To route these operations through Gateway, turn on Gateway routing for the individual server.
 
 ## Connect to a portal
 
@@ -1277,5 +1277,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

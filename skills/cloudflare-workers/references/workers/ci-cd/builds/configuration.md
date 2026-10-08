@@ -122,6 +122,7 @@ It is recommended to consistently use the same API token across all uploads and 
   - [Microfrontends](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
   - [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
   - [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+  - [fate](https://developers.cloudflare.com/workers/framework-guides/web-apps/fate/)
   - [More guides...](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
     - [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
     - [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)

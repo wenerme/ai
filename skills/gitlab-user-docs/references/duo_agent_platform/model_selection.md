@@ -19,17 +19,20 @@ For some features, you can select a different model, which persists until you ch
 - Default LLM for Business Logic Security Scan [set](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7077) to Claude Sonnet 5 Gemini Enterprise Agent Platform on October 2, 2026.
 - Default LLM for Code Review Flow [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) to Claude Sonnet 5.5 Gemini Enterprise Agent Platform on October 5, 2026.
 - [Separate model setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258913) for Recommend Reviewers Flow introduced in GitLab 19.5.
+- Default LLM for GitLab Duo Agentic Chat, GitLab Duo Developer, and all other agents [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7346) to Claude Sonnet 5.5 Gemini Enterprise Agent Platform on October 7, 2026.
+- Default LLM for Recommend Reviewers Flow [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) to Claude Haiku 5.5 Gemini Enterprise Agent Platform on October 8, 2026.
 
 This table lists the default model for each feature in the Agent Platform.
 
 | Feature | Model |
 |-------|--------------|
-| GitLab Duo Agentic Chat | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| GitLab Duo Agentic Chat | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Code Review Flow[^earlier-code-review] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Business Logic Security Scan[^bl-security-experiment] | Claude Sonnet 5 Gemini Enterprise Agent Platform |
-| Recommend Reviewers Flow | Claude Haiku 4.5 Gemini Enterprise Agent Platform |
-| All other agents | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Recommend Reviewers Flow | Claude Haiku 5.5 Gemini Enterprise Agent Platform |
+| GitLab Duo Developer | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
+| All other agents | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 
 [^earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
     set for GitLab Duo Code Review, the non-agentic version.
@@ -47,6 +50,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Sonnet 4.6 and Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7077) as supported models for Business Logic Security Scan on October 2, 2026.
 - Claude Sonnet 5.5 and Claude Sonnet 5.5 Gemini Enterprise Agent Platform [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7238) as supported models for Code Review Flow on October 5, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model for GitLab Duo Agentic Chat and all other agents on October 7, 2026.
+- Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) as a supported model for Recommend Reviewers Flow on October 8, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -64,7 +68,7 @@ For information about model availability during trials, see
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes                  | Yes              | Yes      |
 | Claude Sonnet 5.5           | Yes             | Yes       | No           | No                   | Yes              | Yes      |
 | Claude Haiku 4.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
-| Claude Haiku 5.5            | Yes             | No       | No           | No                   | No               | Yes      |
+| Claude Haiku 5.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
 | Claude Opus 4.5             | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Opus 4.6             | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Opus 4.7             | Yes             | No       | No           | No                   | No               | Yes      |
@@ -133,6 +137,7 @@ Prerequisites:
 
 - Restricting Agentic Chat to specific models [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22028) in GitLab 19.1 [with a feature flag](../../administration/feature_flags/_index.md) named `model_selection_allowlist`. Enabled by default.
 - Restricting Agentic Chat to specific models [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/600369) in GitLab 19.2. Feature flag `model_selection_allowlist` removed.
+- Restricting Agentic Chat to specific models [extended](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259163) to external agents and third-party tools in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `third_party_agent_token_model_allowlist`. Disabled by default.
 
 To select a model for Agentic Chat:
 
@@ -162,6 +167,22 @@ To select a model for Agentic Chat:
    > [!note]
    > To restrict Agentic Chat to specific models, you must select a GitLab-managed
    > model as the default model.
+
+> [!flag]
+> The availability of this restriction for external agents and third-party tools is controlled by a feature flag.
+> For more information, see the history.
+
+The restriction also applies to [external agents](agents/external.md)
+that use GitLab-managed credentials.
+It also applies to third-party tools, such as OpenCode, that use a GitLab AI Gateway token.
+If one of these agents or tools requests a model that is not in the list, the request fails with an HTTP 403 error.
+Add the models that these agents use to the list.
+Some agents use more than one model.
+For example, Claude Code also uses a smaller model for background tasks.
+
+> [!note]
+> A change to the list applies to new tokens.
+> Existing tokens can stay valid for up to one hour.
 
 ### Select a model for other agentic features
 

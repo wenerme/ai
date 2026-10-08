@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a081
 
 # Instant Logs
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/instant-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/instant-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instant Logs allows Cloudflare customers to access a live stream of the traffic for their domain from the Cloudflare dashboard or from a command-line interface (CLI). Seeing data in real time allows you to investigate an attack, troubleshoot, debug or test out changes made to your network. Instant Logs is lightweight, simple to use and does not require any additional setup.
 
@@ -24,13 +24,18 @@ Instant Logs allows Cloudflare customers to access a live stream of the traffic 
 
 ## Instant Logs via Cloudflare Dashboard
 
-1. In the Cloudflare dashboard, go to the **Instant Logs** page. [Go to **Instant Logs** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/instant-logs)
-2. Select **Start streaming**.
-3. (optional) Select **Add filter** to narrow down the events to be shown.
+Dashboard navigation updated
 
-Fields supported in our [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) can be used when you add filters. Some fields with additional subscriptions required are not supported in the dashboard, you will need to use CLI instead.
+The **Analytics > Instant Logs** menu entry has moved. Instant Logs is now integrated into **Observability > Logs** as a live streaming mode. The standalone Instant Logs page remains accessible via direct link (refer to [Instant Logs page (legacy)](#instant-logs-page-legacy)), but the Analytics navigation entry no longer appears in the dashboard.
 
-Once a filter is selected and the stream has started, only log lines that match the filter criteria will appear. Filters are not applied retroactively to logs already showing in the dashboard.
+### Observability Logs
+
+1. In the Cloudflare dashboard, go to **Observability** > **Logs** for your zone.
+2. Select the **three dot (...)** (actions) menu at the top of the logs table.
+3. Select **Stream live logs**.
+4. (optional) Select **Add filter** to narrow down the events shown.
+
+Filters and columns from the Logs view carry over into the live stream. Filters that cannot be streamed display a message instead of being silently dropped.
 
 ## Instant Logs via CLI
 
@@ -178,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a0815cdd","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/instant-logs/#page","headline":"Instant Logs","description":"Stream live traffic logs from the dashboard or CLI.","url":"https://developers.cloudflare.com/logs/instant-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/instant-logs/og.png?v=991df745a0815cdd","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

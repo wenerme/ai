@@ -19,9 +19,9 @@ View tutorials to help you get started with D1.
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 7 months ago | Intermediate |
-| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | 11 months ago | Beginner |
+| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | 12 months ago | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
-| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/) | last year | Beginner |
+| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/) | 2 years ago | Beginner |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 2 years ago | Beginner |
 | [Bulk import to D1 using REST API](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/) | 2 years ago | Beginner |
 | [Build an API to access D1 using a proxy Worker](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/) | 2 years ago | Intermediate |

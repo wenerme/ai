@@ -180,7 +180,13 @@ In this example, if the job name is `test` and the SHA checksum is `abc123`, the
 
 #### Cache limitations
 
-- You can specify up to two files for cache key generation. If more files are specified, only the first two are used.
+- File limit for cache key generation [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631954) to 10 in GitLab 19.5 [with a feature flag](../../../../administration/feature_flags/_index.md) named `increase_ci_cache_key_files_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+- You can specify up to 10 files for cache key generation. If more files are specified, only the first 10 are used.
 - The cache `paths` field is required. A cache configuration without paths has no effect.
 - Cache keys support CI/CD variables in the `prefix` field.
 

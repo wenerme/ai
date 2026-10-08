@@ -14,13 +14,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
   Only return sessions whose root agent has this ID. Omit to return sessions for all agents.
 
-- `limit: optional number or null`
+- `limit: optional number`
 
-  The maximum number of resources to return.
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
 - `order: optional "asc" or "desc"`
 
-  Sort order by the `created_at` timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `desc`.
+  The order in which resources are returned. Defaults to `desc`.
 
   - `"asc"`
 
@@ -812,6 +812,18 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     The IDs of vaults made available to the session.
 
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -930,7 +942,11 @@ curl https://api.openai.com/v1/agents/sessions \
       },
       "vault_ids": [
         "string"
-      ]
+      ],
+      "spend_control": {
+        "consumed": 0,
+        "limit": 1
+      }
     }
   ],
   "first_id": "first_id",
