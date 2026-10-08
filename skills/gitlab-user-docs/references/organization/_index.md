@@ -112,11 +112,15 @@ The following table lists the actions available to each user type:
 | Leave the organization | Yes | Yes |
 | Purchase organization-scoped products | Yes | No |
 | Assign organization product roles | Yes | No |
+| Manage all groups and projects[^owner-role] | Yes | No |
+
+[^owner-role]: Organization administrators implicitly have the Owner role in all groups and projects
+    in the organization. They don't appear in the group or project members list.
 
 ### Group and project roles
 
-Inside an organization, [default roles](../permissions.md#default-roles) still control access
-to groups and projects.
+Inside an organization, [default roles and permissions](../permissions.md#default-roles)
+still control access to groups and projects.
 
 When a top-level group transfers into an organization, its group and project members
 become organization users.

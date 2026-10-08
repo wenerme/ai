@@ -11,6 +11,7 @@ interactively using the [GraphiQL explorer](../../getting_started.md#graphiql).
 ## Reference
 
 - [Queries](queries.md)
+- [Mutations](mutations.md)
 - [Objects](objects.md)
 - [Enums](enums.md)
 - [Scalars](scalars.md)

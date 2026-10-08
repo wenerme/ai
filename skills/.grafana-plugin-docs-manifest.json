@@ -466,8 +466,8 @@
   },
   "grafana-clickhouse-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest.md",
-    "size": 5026,
-    "updatedAt": "2026-10-01T05:41:07.193Z"
+    "size": 6343,
+    "updatedAt": "2026-10-08T05:55:23.700Z"
   },
   "grafana-clickhouse-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor.md",

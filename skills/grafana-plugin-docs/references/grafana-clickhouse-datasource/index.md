@@ -84,6 +84,29 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 >
 > Plugins are automatically updated in Grafana Cloud.
 
+## Query with the Grafana CLI
+
+You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
+
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+
+For example, to query your ClickHouse data source, use `gcx datasources clickhouse`:
+
+sh [Copy code to clipboard] Copy
+
+```sh
+# Run a SQL query
+gcx datasources clickhouse query -d <DATASOURCE_UID> 'SELECT count() FROM otel_logs'
+
+# List tables in a database
+gcx datasources clickhouse list-tables -d <DATASOURCE_UID> --database otel
+
+# Show a table's column schema
+gcx datasources clickhouse describe-table otel_logs -d <DATASOURCE_UID> --database otel
+```
+
+Replace *`<DATASOURCE_UID>`* with the UID of your ClickHouse data source. The `query` command accepts SQL with server-side macros such as `$__timeFilter`; `list-tables` and `describe-table` let you explore schema, and `--database` targets a specific database.
+
 ## Related resources
 
 - [ClickHouse documentation](https://clickhouse.com/docs)

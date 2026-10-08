@@ -56,7 +56,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 
@@ -155,23 +155,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

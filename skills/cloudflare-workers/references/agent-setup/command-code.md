@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build a serverless AI inference endpoint on Workers AI with streaming responses.
+   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
    ```
 
 
@@ -172,19 +172,19 @@ Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
 Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

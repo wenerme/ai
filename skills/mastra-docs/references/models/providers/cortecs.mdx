@@ -5,7 +5,7 @@ description: "Browse Cortecs model IDs, capabilities, context windows, and prici
 
 # [Cortecs logo]Cortecs
 
-Access 103 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 105 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -182,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2.2,
     "outputCost": 11
+  },
+  {
+    "model": "cortecs/claude-sonnet-5.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2.25,
+    "outputCost": 11.249
   },
   {
     "model": "cortecs/codestral-2508",
@@ -902,6 +914,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.613,
     "outputCost": 1.838
+  },
+  {
+    "model": "cortecs/mistral-large-4-0",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 262144,
+    "inputCost": 0.765,
+    "outputCost": 2.351
   },
   {
     "model": "cortecs/mistral-medium-3.5",

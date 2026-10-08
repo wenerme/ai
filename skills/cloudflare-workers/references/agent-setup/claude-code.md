@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
    ```
 
 
@@ -158,7 +158,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
@@ -166,15 +166,15 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Tips

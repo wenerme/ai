@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/usage/rest-api/og.png?v=e050
 
 # REST API
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
@@ -258,7 +258,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
   --header "Content-Type: application/json" \
   --data '{
-    "model": "anthropic/claude-sonnet-4-5",
+    "model": "anthropic/claude-sonnet-5",
     "max_tokens": 512,
     "messages": [
       {
@@ -280,7 +280,7 @@ const anthropic = new Anthropic({
 });
 
 const message = await anthropic.messages.create({
-	model: "anthropic/claude-sonnet-4-5",
+	model: "anthropic/claude-sonnet-5",
 	max_tokens: 512,
 	messages: [{ role: "user", content: "What is Cloudflare?" }],
 });
@@ -359,5 +359,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/og.png?v=e050eec91759e20e","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/og.png?v=e050eec91759e20e","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -33863,6 +33863,18 @@ Fields:
 | <a id="aigovernancetoolcall-count"></a>`count` | [`Int!`](#int) | Number of tool invocations in the selected timeframe. |
 | <a id="aigovernancetoolcall-toolname"></a>`toolName` | [`String!`](#string) | Name of the tool. |
 
+### `AiGovernanceToolCallsByRisk`
+
+AI agent tool calls grouped by risk level.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancetoolcallsbyrisk-approximate"></a>`approximate` | [`Boolean!`](#boolean) | Whether the counts leave out some tools because the namespace used more distinct tools than are read. |
+| <a id="aigovernancetoolcallsbyrisk-slices"></a>`slices` | [`[AiGovernanceToolCallsRiskSlice!]!`](#aigovernancetoolcallsriskslice) | Tool calls per risk level, in the order READ, WRITE, DESTROY, UNCLASSIFIED. Risk levels with no calls have a count of zero. |
+| <a id="aigovernancetoolcallsbyrisk-total"></a>`total` | [`Int!`](#int) | Total number of tool invocations in the selected timeframe. |
+
 ### `AiGovernanceToolCallsReport`
 
 Top tools invoked by AI agents, with a flag marking approximate counts.
@@ -33872,7 +33884,19 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aigovernancetoolcallsreport-approximate"></a>`approximate` | [`Boolean!`](#boolean) | Indicates whether counts were capped and are approximate. |
+| <a id="aigovernancetoolcallsreport-byrisk"></a>`byRisk`  | [`AiGovernanceToolCallsByRisk`](#aigovernancetoolcallsbyrisk) | Introduced in GitLab 19.5. Status: Experiment. Tool calls grouped by risk level. Computed only when selected. |
 | <a id="aigovernancetoolcallsreport-nodes"></a>`nodes` | [`[AiGovernanceToolCall!]!`](#aigovernancetoolcall) | Tools invoked in the selected timeframe, ordered by invocation count. |
+
+### `AiGovernanceToolCallsRiskSlice`
+
+Number of AI agent tool calls at one risk level.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancetoolcallsriskslice-count"></a>`count` | [`Int!`](#int) | Number of tool invocations at the risk level in the selected timeframe. |
+| <a id="aigovernancetoolcallsriskslice-risk"></a>`risk` | [`AiGovernanceToolRisk!`](#aigovernancetoolrisk) | Risk level of the tools. |
 
 ### `AiGovernanceUserActivity`
 
@@ -43523,6 +43547,7 @@ Fields:
 | <a id="epicissue-relativeposition"></a>`relativePosition` | [`Int`](#int) | Relative position of the issue (used for positioning in epic tree and issue boards). |
 | <a id="epicissue-severity"></a>`severity` | [`IssuableSeverity`](#issuableseverity) | Severity level of the incident. |
 | <a id="epicissue-sladueat"></a>`slaDueAt` | [`Time`](#time) | Timestamp of when the issue SLA expires. |
+| <a id="epicissue-startdate"></a>`startDate` | [`Time`](#time) | Start date of the issue. |
 | <a id="epicissue-state"></a>`state` | [`IssueState!`](#issuestate) | State of the issue. |
 | <a id="epicissue-status"></a>`status`  | [`WorkItemStatus`](#workitemstatus) | Introduced in GitLab 18.0. Status: Experiment. Status of the issue. |
 | <a id="epicissue-statuspagepublishedincident"></a>`statusPagePublishedIncident` | [`Boolean`](#boolean) | Indicates whether an issue is published to the status page. |
@@ -48885,6 +48910,7 @@ Fields:
 | <a id="issue-relativeposition"></a>`relativePosition` | [`Int`](#int) | Relative position of the issue (used for positioning in epic tree and issue boards). |
 | <a id="issue-severity"></a>`severity` | [`IssuableSeverity`](#issuableseverity) | Severity level of the incident. |
 | <a id="issue-sladueat"></a>`slaDueAt` | [`Time`](#time) | Timestamp of when the issue SLA expires. |
+| <a id="issue-startdate"></a>`startDate` | [`Time`](#time) | Start date of the issue. |
 | <a id="issue-state"></a>`state` | [`IssueState!`](#issuestate) | State of the issue. |
 | <a id="issue-status"></a>`status`  | [`WorkItemStatus`](#workitemstatus) | Introduced in GitLab 18.0. Status: Experiment. Status of the issue. |
 | <a id="issue-statuspagepublishedincident"></a>`statusPagePublishedIncident` | [`Boolean`](#boolean) | Indicates whether an issue is published to the status page. |
@@ -64665,6 +64691,7 @@ Fields:
 | <a id="workitemfeatures-development"></a>`development` | [`WorkItemWidgetDevelopment`](#workitemwidgetdevelopment) | Development widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-emailparticipants"></a>`emailParticipants` | [`WorkItemWidgetEmailParticipants`](#workitemwidgetemailparticipants) | Email participants widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-errortracking"></a>`errorTracking` | [`WorkItemWidgetErrorTracking`](#workitemwidgeterrortracking) | Error tracking widget of the work item. Returns `null` if the widget is not available for the work item. |
+| <a id="workitemfeatures-escalationpolicy"></a>`escalationPolicy` | [`WorkItemWidgetEscalationPolicy`](#workitemwidgetescalationpolicy) | Escalation policy widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-escalationstatus"></a>`escalationStatus` | [`WorkItemWidgetEscalationStatus`](#workitemwidgetescalationstatus) | Escalation status widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-healthstatus"></a>`healthStatus` | [`WorkItemWidgetHealthStatus`](#workitemwidgethealthstatus) | Health status widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-hierarchy"></a>`hierarchy` | [`WorkItemWidgetHierarchy`](#workitemwidgethierarchy) | Hierarchy widget of the work item. Returns `null` if the widget is not available for the work item. |
@@ -65316,6 +65343,17 @@ Fields:
 | <a id="workitemwidgeterrortrackingstacktracecontext-line"></a>`line` | [`String`](#string) | Line of code. |
 | <a id="workitemwidgeterrortrackingstacktracecontext-linenumber"></a>`lineNumber` | [`Int`](#int) | Line number of code. |
 
+### `WorkItemWidgetEscalationPolicy`
+
+Represents the escalation policy widget.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemwidgetescalationpolicy-escalationpolicy"></a>`escalationPolicy` | [`EscalationPolicyType`](#escalationpolicytype) | Escalation policy of the work item. |
+| <a id="workitemwidgetescalationpolicy-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
+
 ### `WorkItemWidgetEscalationStatus`
 
 Represents the escalation status widget.
@@ -65879,7 +65917,9 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="chatusermetrics-completeduochatresponseeventcount"></a>`completeDuoChatResponseEventCount` | [`Int`](#int) | Total count of `complete_duo_chat_response` event. |
 | <a id="chatusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Chat activity for the user. |
+| <a id="chatusermetrics-reportduochattokenusageeventcount"></a>`reportDuoChatTokenUsageEventCount` | [`Int`](#int) | Total count of `report_duo_chat_token_usage` event. |
 | <a id="chatusermetrics-requestduochatresponseeventcount"></a>`requestDuoChatResponseEventCount` | [`Int`](#int) | Total count of `request_duo_chat_response` event. |
 | <a id="chatusermetrics-toolfailedduochateventcount"></a>`toolFailedDuoChatEventCount` | [`Int`](#int) | Total count of `tool_failed_duo_chat` event. |
 | <a id="chatusermetrics-toolsucceededduochateventcount"></a>`toolSucceededDuoChatEventCount` | [`Int`](#int) | Total count of `tool_succeeded_duo_chat` event. |
@@ -65965,6 +66005,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duochatmetrics-completeduochatresponseeventcount"></a>`completeDuoChatResponseEventCount` | [`Int`](#int) | Total count of `complete_duo_chat_response` event. |
+| <a id="duochatmetrics-reportduochattokenusageeventcount"></a>`reportDuoChatTokenUsageEventCount` | [`Int`](#int) | Total count of `report_duo_chat_token_usage` event. |
 | <a id="duochatmetrics-requestduochatresponseeventcount"></a>`requestDuoChatResponseEventCount` | [`Int`](#int) | Total count of `request_duo_chat_response` event. |
 | <a id="duochatmetrics-toolfailedduochateventcount"></a>`toolFailedDuoChatEventCount` | [`Int`](#int) | Total count of `tool_failed_duo_chat` event. |
 | <a id="duochatmetrics-toolsucceededduochateventcount"></a>`toolSucceededDuoChatEventCount` | [`Int`](#int) | Total count of `tool_succeeded_duo_chat` event. |
@@ -66586,6 +66628,17 @@ Source that recorded an AI governance session.
 | <a id="aigovernancesessionsource-gitlab_duo"></a>`GITLAB_DUO` | Session run on the GitLab Duo Agent Platform. |
 | <a id="aigovernancesessionsource-mcp"></a>`MCP` | Session inferred from tool calls made through the GitLab MCP server. |
 
+### `AiGovernanceToolRisk`
+
+Risk level of a tool, taken from its action type in the tool registry.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aigovernancetoolrisk-destroy"></a>`DESTROY` | Tools that can make destructive changes, such as running commands or Git. |
+| <a id="aigovernancetoolrisk-read"></a>`READ` | Tools that only read data. |
+| <a id="aigovernancetoolrisk-unclassified"></a>`UNCLASSIFIED` | Tools not found in the tool registry. |
+| <a id="aigovernancetoolrisk-write"></a>`WRITE` | Tools that create or change data. |
+
 ### `AiMessageRole`
 
 Possible message roles for AI features.
@@ -66717,6 +66770,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-code_suggestion_direct_access_token_refresh"></a>`CODE_SUGGESTION_DIRECT_ACCESS_TOKEN_REFRESH` | Code Suggestion token was refreshed. Old data only. |
 | <a id="aiusageeventtype-code_suggestion_rejected_in_ide"></a>`CODE_SUGGESTION_REJECTED_IN_IDE` | Code Suggestion was rejected in IDE. |
 | <a id="aiusageeventtype-code_suggestion_shown_in_ide"></a>`CODE_SUGGESTION_SHOWN_IN_IDE` | Code Suggestion was shown in IDE. |
+| <a id="aiusageeventtype-complete_duo_chat_response"></a>`COMPLETE_DUO_CHAT_RESPONSE` | Duo Chat response was completed, with an answer or an error. |
 | <a id="aiusageeventtype-duo_workflow_workload_completed"></a>`DUO_WORKFLOW_WORKLOAD_COMPLETED` | Duo Workflow workload was completed. |
 | <a id="aiusageeventtype-encounter_duo_code_review_error_during_review"></a>`ENCOUNTER_DUO_CODE_REVIEW_ERROR_DURING_REVIEW` | Duo Code Review encountered an error. |
 | <a id="aiusageeventtype-excluded_files_from_duo_code_review"></a>`EXCLUDED_FILES_FROM_DUO_CODE_REVIEW` | Files were excluded from Duo Code Review. |
@@ -66734,6 +66788,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-react_thumbs_down_on_duo_code_review_comment"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-down reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-react_thumbs_up_on_duo_code_review_comment"></a>`REACT_THUMBS_UP_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-up reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-refactor_code"></a>`REFACTOR_CODE` | Code refactor was requested with the GitLab Duo Chat /refactor command. |
+| <a id="aiusageeventtype-report_duo_chat_token_usage"></a>`REPORT_DUO_CHAT_TOKEN_USAGE` | Duo Chat agent turn reported its token usage per model. |
 | <a id="aiusageeventtype-request_duo_chat_response"></a>`REQUEST_DUO_CHAT_RESPONSE` | Duo Chat response was requested. |
 | <a id="aiusageeventtype-request_duo_vulnerability_resolution"></a>`REQUEST_DUO_VULNERABILITY_RESOLUTION` | An AI vulnerability resolution was requested with GitLab Duo. |
 | <a id="aiusageeventtype-request_review_duo_code_review_on_mr_by_author"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_AUTHOR` | MR author requested Duo Code Review. |
@@ -66794,6 +66849,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-code_suggestion_rejected_in_ide_desc"></a>`CODE_SUGGESTION_REJECTED_IN_IDE_DESC` | Code Suggestion Rejected In Ide event count in descending order. |
 | <a id="aiusermetricssort-code_suggestion_shown_in_ide_asc"></a>`CODE_SUGGESTION_SHOWN_IN_IDE_ASC` | Code Suggestion Shown In Ide event count in ascending order. |
 | <a id="aiusermetricssort-code_suggestion_shown_in_ide_desc"></a>`CODE_SUGGESTION_SHOWN_IN_IDE_DESC` | Code Suggestion Shown In Ide event count in descending order. |
+| <a id="aiusermetricssort-complete_duo_chat_response_asc"></a>`COMPLETE_DUO_CHAT_RESPONSE_ASC` | Complete Duo Chat Response event count in ascending order. |
+| <a id="aiusermetricssort-complete_duo_chat_response_desc"></a>`COMPLETE_DUO_CHAT_RESPONSE_DESC` | Complete Duo Chat Response event count in descending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_asc"></a>`DUO_MESSAGING_TOTAL_COUNT_ASC` | Duo Messaging total event count in ascending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_desc"></a>`DUO_MESSAGING_TOTAL_COUNT_DESC` | Duo Messaging total event count in descending order. |
 | <a id="aiusermetricssort-duo_workflow_total_count_asc"></a>`DUO_WORKFLOW_TOTAL_COUNT_ASC` | Duo Workflow total event count in ascending order. |
@@ -66848,6 +66905,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-refactor_code_desc"></a>`REFACTOR_CODE_DESC` | Refactor Code event count in descending order. |
 | <a id="aiusermetricssort-refactor_code_total_count_asc"></a>`REFACTOR_CODE_TOTAL_COUNT_ASC` | Refactor Code total event count in ascending order. |
 | <a id="aiusermetricssort-refactor_code_total_count_desc"></a>`REFACTOR_CODE_TOTAL_COUNT_DESC` | Refactor Code total event count in descending order. |
+| <a id="aiusermetricssort-report_duo_chat_token_usage_asc"></a>`REPORT_DUO_CHAT_TOKEN_USAGE_ASC` | Report Duo Chat Token Usage event count in ascending order. |
+| <a id="aiusermetricssort-report_duo_chat_token_usage_desc"></a>`REPORT_DUO_CHAT_TOKEN_USAGE_DESC` | Report Duo Chat Token Usage event count in descending order. |
 | <a id="aiusermetricssort-request_duo_chat_response_asc"></a>`REQUEST_DUO_CHAT_RESPONSE_ASC` | Request Duo Chat Response event count in ascending order. |
 | <a id="aiusermetricssort-request_duo_chat_response_desc"></a>`REQUEST_DUO_CHAT_RESPONSE_DESC` | Request Duo Chat Response event count in descending order. |
 | <a id="aiusermetricssort-request_duo_vulnerability_resolution_asc"></a>`REQUEST_DUO_VULNERABILITY_RESOLUTION_ASC` | Request Duo Vulnerability Resolution event count in ascending order. |
@@ -72696,6 +72755,7 @@ Type of a work item widget.
 | <a id="workitemwidgettype-development"></a>`DEVELOPMENT` | Development widget. |
 | <a id="workitemwidgettype-email_participants"></a>`EMAIL_PARTICIPANTS` | Email Participants widget. |
 | <a id="workitemwidgettype-error_tracking"></a>`ERROR_TRACKING` | Error Tracking widget. |
+| <a id="workitemwidgettype-escalation_policy"></a>`ESCALATION_POLICY` | Escalation Policy widget. |
 | <a id="workitemwidgettype-escalation_status"></a>`ESCALATION_STATUS` | Escalation Status widget. |
 | <a id="workitemwidgettype-health_status"></a>`HEALTH_STATUS` | Health Status widget. |
 | <a id="workitemwidgettype-hierarchy"></a>`HIERARCHY` | Hierarchy widget. |
@@ -76534,6 +76594,7 @@ Implementations:
 - [`WorkItemWidgetDevelopment`](#workitemwidgetdevelopment)
 - [`WorkItemWidgetEmailParticipants`](#workitemwidgetemailparticipants)
 - [`WorkItemWidgetErrorTracking`](#workitemwidgeterrortracking)
+- [`WorkItemWidgetEscalationPolicy`](#workitemwidgetescalationpolicy)
 - [`WorkItemWidgetEscalationStatus`](#workitemwidgetescalationstatus)
 - [`WorkItemWidgetHealthStatus`](#workitemwidgethealthstatus)
 - [`WorkItemWidgetHierarchy`](#workitemwidgethierarchy)

@@ -97,7 +97,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 
@@ -196,23 +196,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips
