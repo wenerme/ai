@@ -8,7 +8,7 @@ Creates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
+- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The event types that trigger deliveries to this endpoint.
 
@@ -45,6 +45,14 @@ Creates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.environment.ready"`
+
+  - `"agent.environment.failed"`
+
+  - `"agent.environment.suspended"`
+
+  - `"agent.environment.expired"`
 
   - `"agent.session.created"`
 
@@ -463,7 +471,7 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
+- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The event type to send as a sample delivery.
 
@@ -500,6 +508,14 @@ Sends a sample event to a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.environment.ready"`
+
+  - `"agent.environment.failed"`
+
+  - `"agent.environment.suspended"`
+
+  - `"agent.environment.expired"`
 
   - `"agent.session.created"`
 
@@ -582,7 +598,7 @@ Updates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
+- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The complete set of event types that should trigger deliveries.
 
@@ -619,6 +635,14 @@ Updates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.environment.ready"`
+
+  - `"agent.environment.failed"`
+
+  - `"agent.environment.suspended"`
+
+  - `"agent.environment.expired"`
 
   - `"agent.session.created"`
 
@@ -704,6 +728,142 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 ```
 
 ## Domain Types
+
+### Agent Environment Expired Webhook Event
+
+- `AgentEnvironmentExpiredWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent environment expires and can no longer resume from a snapshot.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id }`
+
+    Identifies the environment whose lifecycle changed.
+
+    - `id: string`
+
+      The ID of the environment.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.environment.expired"`
+
+    The event type. Always `agent.environment.expired`.
+
+    - `"agent.environment.expired"`
+
+### Agent Environment Failed Webhook Event
+
+- `AgentEnvironmentFailedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when setup fails for a prewarmed OpenAI-hosted environment before it is attached to a session.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id }`
+
+    Identifies the environment whose lifecycle changed.
+
+    - `id: string`
+
+      The ID of the environment.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.environment.failed"`
+
+    The event type. Always `agent.environment.failed`.
+
+    - `"agent.environment.failed"`
+
+### Agent Environment Ready Webhook Event
+
+- `AgentEnvironmentReadyWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when a prewarmed OpenAI-hosted environment finishes setup before being attached to a session.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id }`
+
+    Identifies the environment whose lifecycle changed.
+
+    - `id: string`
+
+      The ID of the environment.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.environment.ready"`
+
+    The event type. Always `agent.environment.ready`.
+
+    - `"agent.environment.ready"`
+
+### Agent Environment Suspended Webhook Event
+
+- `AgentEnvironmentSuspendedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent environment is suspended and can resume from a snapshot.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id }`
+
+    Identifies the environment whose lifecycle changed.
+
+    - `id: string`
+
+      The ID of the environment.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.environment.suspended"`
+
+    The event type. Always `agent.environment.suspended`.
+
+    - `"agent.environment.suspended"`
 
 ### Agent Session Action Required Webhook Event
 
@@ -1762,9 +1922,137 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = AgentSessionActionRequiredWebhookEvent or AgentSessionCreatedWebhookEvent or AgentSessionFailedWebhookEvent or 23 more`
+- `UnwrapWebhookEvent = AgentEnvironmentExpiredWebhookEvent or AgentEnvironmentFailedWebhookEvent or AgentEnvironmentReadyWebhookEvent or 27 more`
 
-  Sent when an agent session requires an action. Retrieve the session for action details.
+  Sent when an agent environment expires and can no longer resume from a snapshot.
+
+  - `AgentEnvironmentExpiredWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent environment expires and can no longer resume from a snapshot.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id }`
+
+      Identifies the environment whose lifecycle changed.
+
+      - `id: string`
+
+        The ID of the environment.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.environment.expired"`
+
+      The event type. Always `agent.environment.expired`.
+
+      - `"agent.environment.expired"`
+
+  - `AgentEnvironmentFailedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when setup fails for a prewarmed OpenAI-hosted environment before it is attached to a session.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id }`
+
+      Identifies the environment whose lifecycle changed.
+
+      - `id: string`
+
+        The ID of the environment.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.environment.failed"`
+
+      The event type. Always `agent.environment.failed`.
+
+      - `"agent.environment.failed"`
+
+  - `AgentEnvironmentReadyWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when a prewarmed OpenAI-hosted environment finishes setup before being attached to a session.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id }`
+
+      Identifies the environment whose lifecycle changed.
+
+      - `id: string`
+
+        The ID of the environment.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.environment.ready"`
+
+      The event type. Always `agent.environment.ready`.
+
+      - `"agent.environment.ready"`
+
+  - `AgentEnvironmentSuspendedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent environment is suspended and can resume from a snapshot.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id }`
+
+      Identifies the environment whose lifecycle changed.
+
+      - `id: string`
+
+        The ID of the environment.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.environment.suspended"`
+
+      The event type. Always `agent.environment.suspended`.
+
+      - `"agent.environment.suspended"`
 
   - `AgentSessionActionRequiredWebhookEvent object { id, created_at, data, 2 more }`
 

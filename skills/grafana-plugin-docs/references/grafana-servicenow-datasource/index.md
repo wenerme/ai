@@ -67,7 +67,7 @@ Expand table
 
 | Dependency | Requirement                       |
 |------------|-----------------------------------|
-| Grafana    | 11.6.7 or later                   |
+| Grafana    | 11.6.11 or later                  |
 | ServiceNow | Washington DC and Xanadu (tested) |
 
 The current version of the plugin has been tested against the [Washington DC](https://docs.servicenow.com/bundle/washingtondc-release-notes/page/release-notes/family-release-notes.html) and [Xanadu](https://docs.servicenow.com/bundle/xanadu-release-notes/page/release-notes/family-release-notes.html) releases of ServiceNow. Older ServiceNow releases may work but aren’t validated.
@@ -79,6 +79,8 @@ The following limitations apply to the ServiceNow data source:
 - Filters in the query editor don’t support fields of reference type. You can still query reference fields in the **Show Fields** selector and use dot notation to access sub-fields, but you can’t filter on them directly.
 - Field references expand to one level deep only. Nested references beyond the first level can’t be expanded in the field selector.
 - When the **Use Sys Tables?** option is enabled and the ServiceNow user has access to a large number of tables, you may experience slower load times in the query editor. Grant the user access only to the tables it needs.
+- The query editor supports Table and Stats query types only. Querying ServiceNow MetricBase time-series metrics isn’t supported.
+- The data source doesn’t provide TLS options such as a custom certificate authority or an option to skip certificate verification. ServiceNow instances that use a self-signed or privately signed certificate that Grafana doesn’t trust aren’t supported. On Grafana Cloud, there’s no workaround.
 
 ## Plugin updates
 

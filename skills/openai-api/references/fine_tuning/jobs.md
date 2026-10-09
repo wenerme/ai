@@ -376,7 +376,7 @@ Immediately cancel a fine-tune job.
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -465,7 +465,7 @@ Immediately cancel a fine-tune job.
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -628,7 +628,7 @@ Immediately cancel a fine-tune job.
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -676,7 +676,7 @@ Immediately cancel a fine-tune job.
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -1277,7 +1277,7 @@ Response includes details of the enqueued job including job status and the name 
 
           The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-          - `content: string or ResponseInputText or object { text, type }  or 3 more`
+          - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
             Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -1366,7 +1366,7 @@ Response includes details of the enqueued job including job status and the name 
 
                 - `"input_audio"`
 
-            - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+            - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
               A list of inputs, each of which may be either an input text, output text, input
               image, or input audio object.
@@ -1529,7 +1529,7 @@ Response includes details of the enqueued job including job status and the name 
 
             - `input: array of object { content, role, type }`
 
-              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+              - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                 Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -1577,7 +1577,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   An audio input to the model.
 
-                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                   A list of inputs, each of which may be either an input text, output text, input
                   image, or input audio object.
@@ -2137,7 +2137,7 @@ Response includes details of the enqueued job including job status and the name 
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -2226,7 +2226,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -2389,7 +2389,7 @@ Response includes details of the enqueued job including job status and the name 
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -2437,7 +2437,7 @@ Response includes details of the enqueued job including job status and the name 
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -3461,7 +3461,7 @@ List your organization's fine-tuning jobs
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -3550,7 +3550,7 @@ List your organization's fine-tuning jobs
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -3713,7 +3713,7 @@ List your organization's fine-tuning jobs
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -3761,7 +3761,7 @@ List your organization's fine-tuning jobs
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -4596,7 +4596,7 @@ Pause a fine-tune job.
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -4685,7 +4685,7 @@ Pause a fine-tune job.
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -4848,7 +4848,7 @@ Pause a fine-tune job.
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -4896,7 +4896,7 @@ Pause a fine-tune job.
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -5578,7 +5578,7 @@ Resume a fine-tune job.
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -5667,7 +5667,7 @@ Resume a fine-tune job.
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -5830,7 +5830,7 @@ Resume a fine-tune job.
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -5878,7 +5878,7 @@ Resume a fine-tune job.
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -6562,7 +6562,7 @@ Get info about a fine-tuning job.
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -6651,7 +6651,7 @@ Get info about a fine-tuning job.
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -6814,7 +6814,7 @@ Get info about a fine-tuning job.
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -6862,7 +6862,7 @@ Get info about a fine-tuning job.
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.
@@ -7539,7 +7539,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
             The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+            - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
               Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -7628,7 +7628,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
                   - `"input_audio"`
 
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+              - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
@@ -7791,7 +7791,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
               - `input: array of object { content, role, type }`
 
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+                - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
                   Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -7839,7 +7839,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
                     An audio input to the model.
 
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+                  - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
                     A list of inputs, each of which may be either an input text, output text, input
                     image, or input audio object.

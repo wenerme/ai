@@ -28,7 +28,7 @@ To create an alert rule based on a Splunk query:
    ```spl
    index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as cpu_usage
    ```
-5. Define the alert condition (for example, “when cpu\_usage is above 90”).
+5. Define the alert condition (for example, “when `cpu_usage` is above 90”).
 6. Set the evaluation interval and pending period.
 7. Configure a contact point and notification policy.
 8. Click **Save rule and exit**.
@@ -125,7 +125,7 @@ Expand table
 
 Keep the following in mind when using Grafana Alerting with the Splunk data source.
 
-### Async queries and preview mode
+### Asynchronous queries and preview mode
 
 If **Async queries** or **Preview mode** is enabled on the data source, these settings are applied during alert evaluation. However, alert evaluation makes a single backend call per evaluation interval. If the Splunk search job doesn’t complete within that call, the backend returns an incomplete result and the alert may evaluate as **no data**.
 
@@ -133,7 +133,7 @@ For data sources used primarily for alerting, consider disabling **Async queries
 
 ### Timeouts
 
-The default plugin timeout is 30 seconds. Complex SPL queries on large indexes may exceed this during alert evaluation. Additionally, Splunk’s `auto_cancel` setting (also 30 seconds by default) can cancel idle search jobs.
+The default plugin timeout is 30 seconds. Complex SPL queries on large indexes may exceed this during alert evaluation. Additionally, the Splunk `auto_cancel` setting (also 30 seconds by default) can cancel idle search jobs.
 
 If alert queries are timing out, increase the **Timeout** value in the data source configuration and verify your Splunk instance’s `auto_cancel` setting.
 

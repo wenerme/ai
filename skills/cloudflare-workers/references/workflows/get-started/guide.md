@@ -76,6 +76,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    - For *Which template would you like to use?*, choose `Worker only`.
    - For *Which language do you want to use?*, choose `TypeScript`.
    - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
    - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Move into your new project directory:
 
@@ -159,7 +160,7 @@ In your project directory, C3 will have generated the following:
    	"name": "my-workflow",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-28",
+   	"compatibility_date": "2026-10-09",
    	"observability": {
    		"enabled": true
    	},
@@ -178,7 +179,7 @@ In your project directory, C3 will have generated the following:
    name = "my-workflow"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
 
    [observability]
    enabled = true
@@ -199,7 +200,7 @@ In your project directory, C3 will have generated the following:
      "name": "my-workflow",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "workflows": [
        {
          "name": "my-workflow",
@@ -216,7 +217,7 @@ In your project directory, C3 will have generated the following:
    name = "my-workflow"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
 
    [[workflows]]
    name = "my-workflow"

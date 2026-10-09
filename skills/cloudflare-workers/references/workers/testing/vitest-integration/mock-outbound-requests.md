@@ -12,30 +12,30 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/mock
 
 # Mock outbound requests
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [`@msw/cloudflare` ↗︎](https://github.com/mswjs/cloudflare) to mock outbound HTTP and WebSocket requests with `@cloudflare/vitest-plugin`. The integration supports unit tests that call your Worker's exported handler and integration tests that call `exports.default.fetch()`.
 
 ## Install dependencies
 
-Install Mock Service Worker (MSW) version 2.14 or later and the Cloudflare integration:
+Install Mock Service Worker (MSW) version 3 or later and the Cloudflare integration:
 
 npmyarnpnpmbun
 
 ```
-npm i -D msw@^2.14.0 @msw/cloudflare
+npm i -D msw@^3.0.0 @msw/cloudflare
 ```
 
 ```
-yarn add -D msw@^2.14.0 @msw/cloudflare
+yarn add -D msw@^3.0.0 @msw/cloudflare
 ```
 
 ```
-pnpm add -D msw@^2.14.0 @msw/cloudflare
+pnpm add -D msw@^3.0.0 @msw/cloudflare
 ```
 
 ```
-bun add -d msw@^2.14.0 @msw/cloudflare
+bun add -d msw@^3.0.0 @msw/cloudflare
 ```
 
 ## Create a network mock
@@ -142,7 +142,10 @@ it("mocks an outbound request", async () => {
 *test/worker.test.tsts*
 
 ```ts
-import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
+import {
+	createExecutionContext,
+	waitOnExecutionContext,
+} from "cloudflare:test";
 import { env } from "cloudflare:workers";
 import { http, HttpResponse } from "msw";
 import { expect, it } from "vitest";
@@ -180,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/#page","headline":"Mock outbound requests","description":"Mock outbound HTTP and WebSocket requests when testing Workers with the Vitest plugin.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/og.png?v=953487ab876c21e0","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/#page","headline":"Mock outbound requests","description":"Mock outbound HTTP and WebSocket requests when testing Workers with the Vitest plugin.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/og.png?v=953487ab876c21e0","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

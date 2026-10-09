@@ -22,6 +22,7 @@ Expand table
 | Metrics     | Yes       |
 | Logs        | Yes       |
 | Traces      | No        |
+| Streaming   | Yes       |
 | Alerting    | Yes       |
 | Annotations | Yes       |
 
@@ -45,7 +46,7 @@ The following documents help you set up and use the Splunk data source:
 - [Splunk template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/)
 - [Annotations](/docs/plugins/grafana-splunk-datasource/latest/annotations/)
 - [Alerting](/docs/plugins/grafana-splunk-datasource/latest/alerting/)
-- [Troubleshoot the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/)
+- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/)
 
 ## Additional features
 
@@ -73,11 +74,16 @@ To import a dashboard, navigate to **Connections** &gt; **Data sources** &gt; **
 
 ## Plugin updates
 
-Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
+Always ensure that your plugin version is up-to-date so you have access to all current features, bug fixes, and security patches. Running outdated versions can cause query failures or compatibility issues with newer Grafana releases.
+
+- **Grafana Cloud:** Plugins are automatically updated. No action required.
+- **Self-managed:** Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins** to check for updates, or run `grafana cli plugins update grafana-splunk-datasource`. Self-managed instances do not receive automatic updates.
+
+For detailed upgrade instructions, `plugin_admin_enabled` requirements, and version management, refer to [Install and upgrade the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/install/#upgrade-the-plugin).
 
 > Note
 >
-> Plugins are automatically updated in Grafana Cloud.
+> The Splunk plugin requires an active Grafana Enterprise license or a Grafana Cloud Pro or Advanced plan. If your license expires, the plugin stops functioning even if it remains installed.
 
 ## Related resources
 

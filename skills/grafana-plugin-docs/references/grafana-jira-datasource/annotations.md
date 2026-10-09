@@ -25,6 +25,7 @@ To create annotations from Jira data:
    - Select a date field as the time field (for example, **Created**, **Updated**, or **Resolution Date**)
    - Select a text field for the annotation label (for example, **Summary** or **Key**)
    - Add a JQL filter to limit which issues appear as annotations
+   - Set **Limit** high enough to include every matching issue. The default is `50`. If Limit is lower than the matching count, later issues never appear as markers.
 7. Click **Apply**.
 
 ## Common annotation use cases
@@ -72,6 +73,8 @@ When configuring Jira annotations, the following options are available:
 - **Enabled** - Toggle to show or hide annotations on the dashboard.
 - **Color** - Choose the annotation marker color.
 - **Show in** - Select which panels display the annotations.
+
+The annotation uses the same query editor as panels, including **Limit** (default `50`). Raise Limit if the dashboard time range covers more issues than that.
 
 ## Filter annotations by time range
 

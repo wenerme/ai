@@ -35,6 +35,9 @@ glab auth status --hostname gitlab.example.com
 # Display the authentication token alongside the status
 glab auth status --show-token
 
+# Print the authentication status of all configured instances as JSON
+glab auth status --all --output json
+
 ```
 
 ## Options
@@ -42,6 +45,8 @@ glab auth status --show-token
 ```plaintext
   -a, --all               Check the authentication status of all configured instances.
       --hostname string   Check the authentication status of a specific instance.
+      --jq string         Filter JSON output with a jq expression.
+  -F, --output string     Format output as: text, json. (default "text")
   -t, --show-token        Display the authentication token.
 ```
 

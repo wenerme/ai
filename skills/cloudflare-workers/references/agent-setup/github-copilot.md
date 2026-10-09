@@ -56,7 +56,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up a KV namespace for edge-cached session storage in my Worker.
+   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
    ```
 
 
@@ -155,23 +155,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
 Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

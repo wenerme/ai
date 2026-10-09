@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/bots/additional-configurations/managed-
 
 # robots.txt setting
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI companies use crawlers to collect website content for training language models, generating search answers, and other purposes. A `robots.txt` file at the root of your domain tells these crawlers which content they should or should not access. When you turn on the managed `robots.txt` setting, Cloudflare generates and maintains a `robots.txt` file that instructs known AI crawlers to stay away from your content.
+AI companies use crawlers to collect website content for training language models, generating search answers, and other purposes. A `robots.txt` file at the root of your domain tells these crawlers which content they should or should not access. Bot Preference Sync generates managed `robots.txt` directives from your Search, Agent, and Training policies when at least one policy is set to **Block**, **Block on pages with ads**, or, for Training, **Disallow**.
 
 `robots.txt` compliance is voluntary. The file expresses your preferences, but it does not prevent crawlers from accessing your content at a technical level. Some crawler operators may disregard your `robots.txt` directives (instructions like `Disallow: /`) and crawl your content regardless.
 
 Note
 
-If you want to enforce crawl blocking rather than request it, use [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/). You can also use both features together — `robots.txt` to express your preferences and AI Crawl Control to enforce them.
+To enforce access restrictions, use [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/) to block selected AI crawlers. You can use `robots.txt` to express your preferences and AI Crawl Control to enforce crawler-specific blocks.
 
 ## Compatibility with existing `robots.txt` files
 
@@ -118,12 +118,18 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 ## Implementation
 
-To implement a `robots.txt` file on your domain:
+To add managed directives for AI training crawlers:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
-3. Go to **Set your preference to block training in robots.txt**.
-4. Turn on **Set your preference to block training in robots.txt**.
+3. Select **Configure AI bot policies**.
+4. For **Training**, select *Disallow*.
+5. Turn on **Enable Bot Preference Sync**.
+6. Select **Save**.
+
+With Bot Preference Sync enabled, setting **Training** to *Disallow* adds managed directives and enables edge blocking for AI training crawlers. Mixed-use crawlers are excluded from this edge block.
+
+The **Search** and **Agent** policies also add their respective managed directives when set to *Block* or *Block on pages with ads*.
 
 ## Content Signals Policy
 
@@ -131,7 +137,7 @@ Content Signals are a set of machine-readable directives in a `robots.txt` file 
 
 Domains on the Free plan that do not have their own `robots.txt` file and do not use the managed `robots.txt` feature will display the Content Signals Policy when a crawler requests the `robots.txt` file for your domain.
 
-The Content Signals Policy defines these categories but does not express any specific preferences about your content. To set preferences (for example, `ai-train=no`), turn on the managed `robots.txt` feature.
+The Content Signals Policy defines these categories but does not express any specific preferences about your content. To set preferences (for example, `ai-train=no`), configure your AI bot policies and enable Bot Preference Sync.
 
 *Content Signals Policytxt*
 
@@ -162,13 +168,7 @@ The Content Signals Policy defines these categories but does not express any spe
 # AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
 ```
 
-Cloudflare's Content Signals Policy is included by default in the `robots.txt` file when you turn on **robots.txt setting**.
-
-If you would like to opt out of displaying the policy in your `robots.txt` file, you can uncheck **Display Content Signals Policy** under **Control AI Crawlers** in your zone's overview.
-
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
-
-Alternatively, you can use [Security Settings](#implementation).
+Cloudflare includes the Content Signals Policy whenever Bot Preference Sync adds managed directives to your `robots.txt` file.
 
 Caution
 
@@ -207,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/og.png?v=4d922f618f245c06","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/#page","headline":"robots.txt setting","description":"Manage a robots.txt file to direct AI bot operators on content scraping permissions.","url":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/og.png?v=4d922f618f245c06","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -69,7 +69,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -168,15 +168,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
@@ -185,6 +177,14 @@ Optimize my Worker to serve WebP images with responsive resizing using Cloudflar
 
 ```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

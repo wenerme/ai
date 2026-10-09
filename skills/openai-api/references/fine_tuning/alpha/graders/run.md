@@ -124,7 +124,7 @@ Run a grader.
 
       The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
 
-      - `content: string or ResponseInputText or object { text, type }  or 3 more`
+      - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
         Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -213,7 +213,7 @@ Run a grader.
 
             - `"input_audio"`
 
-        - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+        - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
           A list of inputs, each of which may be either an input text, output text, input
           image, or input audio object.
@@ -376,7 +376,7 @@ Run a grader.
 
         - `input: array of object { content, role, type }`
 
-          - `content: string or ResponseInputText or object { text, type }  or 3 more`
+          - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
             Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -424,7 +424,7 @@ Run a grader.
 
               An audio input to the model.
 
-            - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+            - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
               A list of inputs, each of which may be either an input text, output text, input
               image, or input audio object.

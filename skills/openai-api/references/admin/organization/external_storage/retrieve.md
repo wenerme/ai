@@ -24,7 +24,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 

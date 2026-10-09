@@ -55,6 +55,7 @@ Each security scanner shows one of the following coverage statuses for every pro
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/552224) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_inventory_filtering`. Enabled by default.
 - Feature flag `security_inventory_filtering` removed in GitLab 19.4.
+- Filter persistence in the URL [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/580024) in GitLab 19.5.
 
 You can filter projects in the security inventory to focus on specific areas of interest.
 The following filters are available:
@@ -64,6 +65,9 @@ The following filters are available:
 - **Project name**: Search for specific projects by name.
 
 These filters help you narrow down results in large inventories and make it easier to identify projects that require immediate attention.
+
+The URL keeps the filters you apply.
+You can share or bookmark a filtered view by copying the URL from your browser.
 
 ## Related topics
 

@@ -6,7 +6,7 @@ Creates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
+- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The event types that trigger deliveries to this endpoint.
 
@@ -43,6 +43,14 @@ Creates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.environment.ready"`
+
+  - `"agent.environment.failed"`
+
+  - `"agent.environment.suspended"`
+
+  - `"agent.environment.expired"`
 
   - `"agent.session.created"`
 

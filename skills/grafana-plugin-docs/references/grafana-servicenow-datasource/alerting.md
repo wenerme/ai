@@ -7,7 +7,7 @@ description: "Set up Grafana alert rules using ServiceNow data source queries."
 
 # ServiceNow alerting
 
-The ServiceNow data source supports Grafana’s unified alerting system. You can create alert rules that evaluate ServiceNow Stats queries and trigger notifications when conditions are met, such as a spike in high-priority incidents or a backlog of unresolved changes.
+The ServiceNow data source supports the Grafana unified alerting system. You can create alert rules that evaluate ServiceNow Stats queries and trigger notifications when conditions are met, such as a spike in high-priority incidents or a backlog of unresolved changes.
 
 ## Before you begin
 
@@ -37,6 +37,12 @@ To create an alert rule using the ServiceNow data source:
 > Note
 >
 > Use Stats queries for alert rules. Stats queries return numeric aggregations that work with threshold conditions. Table queries return individual records and aren’t suited for alert rule evaluation.
+
+> Caution
+>
+> An alert query must return a single numeric value. Use a Stats query with one field and one aggregation, such as **count**, so the threshold condition has a numeric value to evaluate. A query that returns non-numeric data causes the alert rule to error.
+>
+> Grouped Stats queries that use **Group By** aren’t reliable in alert rules. To alert per category, create a separate alert rule for each value using a filter instead of **Group By**. Refer to [Alert on unresolved incidents in a category](#alert-on-unresolved-incidents-in-a-category).
 
 ## Understand time field behavior
 
@@ -77,9 +83,9 @@ This example creates an alert that fires when the total number of open critical 
 
 This alert monitors the total count of open critical incidents and fires when more than five are active at the same time.
 
-### Alert on unresolved incident volume by category
+### Alert on unresolved incidents in a category
 
-This example creates an alert that fires when unresolved incidents in any category exceed a threshold, using **Group By** to monitor each category independently.
+This example creates an alert that fires when unresolved incidents in a specific category exceed a threshold. Because grouped Stats queries aren’t reliable in alert rules, use a filter to scope the rule to one category, then create a separate rule for each category you want to monitor.
 
 1. Create a new alert rule and select the **ServiceNow** data source.
 2. Configure the query:
@@ -91,7 +97,7 @@ This example creates an alert that fires when unresolved incidents in any catego
    - Leave the **Time Field** toggle disabled.
    - Add a filter: **State** **Not Equals** `6` (Resolved).
    - Add a filter: **State** **Not Equals** `7` (Closed).
-   - Set **Group By** to `category`.
+   - Add a filter: **Category** **Equals** the category you want to monitor, for example `network`.
 3. Configure the condition:
 
    - In the **Expressions** section, use a **Threshold** expression.
@@ -100,8 +106,9 @@ This example creates an alert that fires when unresolved incidents in any catego
 
    - Set **Evaluate every** to `10m`.
    - Set **for** to `5m` to avoid alerting on brief spikes.
+5. Duplicate the rule for each additional category, changing only the **Category** filter value.
 
-This alert evaluates unresolved incident counts per category and fires separately for any category that exceeds the threshold.
+This approach produces one clear numeric value per rule and avoids the grouped-query limitation.
 
 ### Alert on new incident creation rate
 
@@ -130,6 +137,12 @@ This alert counts incidents created within each 10-minute evaluation window. If 
 > Note
 >
 > The state and priority integer values used in the examples (for example, State `6` for Resolved, `7` for Closed, Priority `1` for Critical) are defaults for the standard ServiceNow incident table. If your ServiceNow instance uses customized state or priority values, adjust the filter values to match your configuration.
+
+## Send Grafana alerts to ServiceNow
+
+This page covers using ServiceNow as a data source for alert rules. Sending Grafana alert notifications to ServiceNow, such as creating incidents, is a separate feature that you configure through a Grafana contact point, not through the data source.
+
+If ServiceNow rejects a notification because mandatory fields are missing, customize the notification payload in the contact point so the required ServiceNow fields are populated. For more information, refer to [Configure contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/).
 
 ## Considerations
 

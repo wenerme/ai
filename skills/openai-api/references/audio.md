@@ -68,7 +68,7 @@ Returns the audio file content, or a stream of audio events.
 
     - `"gpt-4o-mini-tts-2025-12-15"`
 
-- `voice: string or "alloy" or "ash" or "ballad" or 10 more or object { id }`
+- `voice: string or "alloy" or "ash" or "ballad" or 10 more or ID { id }`
 
   The voice to use when generating the audio. Supported built-in voices are `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `onyx`, `nova`, `sage`, `shimmer`, `verse`, `marin`, and `cedar`. You may also provide a custom voice object with an `id`, for example `{ "id": "voice_1234" }`. Previews of the voices are available in the [Text to speech guide](/api/docs/guides/text-to-speech#voice-options). Custom voices must be created from audio samples.
 
@@ -245,7 +245,7 @@ transcript events. Supported formats depend on the model.
 
       The log probability of the token.
 
-  - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+  - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
     Token usage statistics for the request.
 
@@ -345,7 +345,7 @@ transcript events. Supported formats depend on the model.
 
     The concatenated transcript text for the entire audio input.
 
-  - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+  - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
     Token or duration usage statistics for the request.
 
@@ -875,7 +875,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       The log probability of the token.
 
-  - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+  - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
     Token usage statistics for the request.
 
@@ -965,7 +965,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         The log probability of the token.
 
-    - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+    - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
       Token usage statistics for the request.
 
@@ -1065,7 +1065,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       The concatenated transcript text for the entire audio input.
 
-    - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+    - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
       Token or duration usage statistics for the request.
 
@@ -1257,7 +1257,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     The concatenated transcript text for the entire audio input.
 
-  - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+  - `usage: optional Tokens { input_tokens, output_tokens, total_tokens, 2 more }  or Duration { seconds, type }`
 
     Token or duration usage statistics for the request.
 
@@ -2534,17 +2534,11 @@ Returns the saved voice's metadata. See the [custom voices guide](/api/docs/guid
 
     - `"audio.voice"`
 
-  - `type: string or "audio_sample"`
+  - `type: "audio_sample"`
 
     How the voice was created.
 
-    - `string`
-
     - `"audio_sample"`
-
-      How the voice was created.
-
-      - `"audio_sample"`
 
 ### Example
 
@@ -2606,14 +2600,8 @@ curl https://api.openai.com/v1/audio/voices \
 
     - `"audio.voice"`
 
-  - `type: string or "audio_sample"`
+  - `type: "audio_sample"`
 
     How the voice was created.
 
-    - `string`
-
     - `"audio_sample"`
-
-      How the voice was created.
-
-      - `"audio_sample"`

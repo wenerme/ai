@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/google-tag-gateway/og.png?v=6b1b19e3e16
 
 # Google tag gateway for advertisers
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/google-tag-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/google-tag-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Google tag gateway for advertisers allows website owners using Cloudflare as a CDN to get the most out of ad measurement tools with just a few clicks. It allows you to deploy Google scripts using your own domain, enhancing data privacy and improving signal measurement recovery. Unlike standard setups where tags are requested from a Google domain, Google tag gateway for advertisers loads the tag from your domain and sends measurement events to your domain, where they are forwarded to Google.
 
@@ -50,6 +50,17 @@ Your Cloudflare dashboard user must have one of the following [Account Roles](ht
 
 Now that you have authenticated into your Cloudflare account and configured GTM in first-party mode, your Google Tags will be loaded using `https://your-domain/measurement-path/...`and subsequent measurement requests will be served by Cloudflare.
 
+## Verify your setup
+
+To confirm that Google tag gateway for advertisers is working:
+
+1. Make sure your Google Tag Manager container has at least one tag that fires.
+2. Open [Tag Assistant ↗︎](https://tagassistant.google.com/) and enter your website URL to connect to it.
+3. Navigate through your website to trigger tags.
+4. In **Summary** > **Output** > **Hits Sent**, verify that hits are sent to your measurement path ( `https://your-domain/measurement-path/...`).
+
+After a successful setup, the **Google tag gateway** screen in your Google tag settings shows an **Active** status.
+
 ## Zone-level configuration
 
 Google tag gateway for advertisers is configured at the zone level. When you enable it for a zone (for example, `example.com`), it applies to all hostnames and subdomains within that zone, including custom hostnames. Currently, it is not possible to enable or disable the feature for individual subdomains independently. [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) cannot be used to control or disable the tag injection on specific subdomains.
@@ -75,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/google-tag-gateway/#page","headline":"Google tag gateway for advertisers","description":"Deploy Google measurement tags from your domain for improved ad signal recovery.","url":"https://developers.cloudflare.com/google-tag-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/google-tag-gateway/og.png?v=6b1b19e3e16bc73c","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/google-tag-gateway/#page","headline":"Google tag gateway for advertisers","description":"Deploy Google measurement tags from your domain for improved ad signal recovery.","url":"https://developers.cloudflare.com/google-tag-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/google-tag-gateway/og.png?v=6b1b19e3e16bc73c","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 ```

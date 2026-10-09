@@ -1,10 +1,10 @@
 # Custom Git clients in the Code dropdown list
 
 - Tier: Free, Premium, Ultimate
-- Offering: GitLab Self-Managed
+- Offering: GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/604390) in GitLab 19.5 [with a flag](../feature_flags/_index.md) named `custom_code_dropdown_clients`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/604390) in GitLab 19.5 [with a flag](../feature_flags/_index.md) named `custom_code_dropdown_clients`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history.

@@ -51,7 +51,7 @@ Expand table
 | **Search**       | Enter an SPL query using the raw SPL editor.                 |
 | **Namespace**    | Select the Splunk app context for the query.                 |
 | **Sample Ratio** | Set a sampling ratio to reduce the volume of data processed. |
-| **Limit**        | Adds `limit=value` to timechart parameters.                  |
+| **Limit**        | Adds `limit=value` to `timechart` parameters.                |
 
 ### Events mode fields
 
@@ -138,7 +138,7 @@ Fired alert annotations display the Splunk saved search name as the annotation t
 
 > Note
 >
-> Retrieving fired alerts requires the Splunk user to have the appropriate permissions. If you receive a “requires license feature” error, verify your Splunk license supports the fired alerts API. Refer to Splunk’s [Fired alerts](https://docs.splunk.com/Documentation/Splunk/latest/Alert/Viewtriggeredalerts) documentation for more information.
+> Retrieving fired alerts requires the Splunk user to have the appropriate permissions. If you receive a “requires license feature” error, verify your Splunk license supports the fired alerts API. Refer to the Splunk [Fired alerts](https://docs.splunk.com/Documentation/Splunk/latest/Alert/Viewtriggeredalerts) documentation for more information.
 
 ## Display options
 

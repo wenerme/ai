@@ -1,7 +1,11 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/media-resolution).
-
-The `media_resolution` parameter controls how the Gemini API processes media inputs like images, videos, and PDF documents by determining the **maximum number of tokens** allocated for media inputs, allowing you to balance response quality against latency and cost. For different settings, default values and how they correspond to tokens, see the [Token counts](https://ai.google.dev/gemini-api/docs/media-resolution#token-counts) section.
+The `media_resolution` parameter controls how the Gemini API processes media
+inputs like images, videos, audio, and PDF documents by determining the
+**maximum number of tokens** allocated for media inputs, allowing you to
+balance response quality against latency and cost. While visual and document
+inputs scale token allocation based on the resolution setting, audio inputs
+are tokenized at a fixed rate per second across all resolution levels. For
+different settings, default values and how they correspond to tokens, see the
+[Token counts](https://ai.google.dev/gemini-api/docs/media-resolution#token-counts) section.
 
 You can configure media resolution for individual media objects (content items) within your request (Gemini 3 only).
 
@@ -18,7 +22,7 @@ Gemini 3 allows you to set media resolution for individual media objects within 
     myfile = client.files.upload(file="path/to/image.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Describe this image:"},
             {
@@ -44,7 +48,7 @@ Gemini 3 allows you to set media resolution for individual media objects within 
       });
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.8-flash",
         input: [
           { type: "text", text: "Describe this image:" },
           {
@@ -60,6 +64,92 @@ Gemini 3 allows you to set media resolution for individual media objects within 
 
     await main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe the details in this high-resolution image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/image.jpg", nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Describe the details in this high-resolution image.",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:        genai.Ptr(uploadedFile.URI),
+                        MimeType:   interactions.ImageContentMimeType(uploadedFile.MIMEType).ToPointer(),
+                        Resolution: interactions.MediaResolutionHigh.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # First upload the file using the Files API, then use the URI:
@@ -67,7 +157,7 @@ Gemini 3 allows you to set media resolution for individual media objects within 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {"type": "text", "text": "Describe this image:"},
           {
@@ -91,7 +181,8 @@ The Gemini API defines the following levels for media resolution:
 
 Note that `high` provides the optimal performance for most use cases.
 
-The exact number of tokens generated for each of these levels depends on both the **media type** (Image, Video, PDF) and the **model version**.
+The exact number of tokens generated for each of these levels depends on both
+the **media type** (Image, Video, Audio, PDF) and the **model version**.
 
 ## Token counts
 
@@ -99,13 +190,13 @@ The tables below summarize the approximate token counts for each `media_resoluti
 
 **Gemini 3 models**
 
-| MediaResolution | Image | Video | PDF |
-|---|---|---|---|
-| `unspecified` (Default) | 1120 | 70 | 560 |
-| `low` | 280 | 70 | 280 + Native Text |
-| `medium` | 560 | 70 | 560 + Native Text |
-| `high` | 1120 | 280 | 1120 + Native Text |
-| `ultra_high` | 2240 | N/A | N/A |
+| MediaResolution | Image | Video | Audio | PDF |
+|---|---|---|---|---|
+| `unspecified` (Default) | 1120 | 70 | 25 (per second) | 560 |
+| `low` | 280 | 70 | 25 (per second) | 280 + Native Text |
+| `medium` | 560 | 70 | 25 (per second) | 560 + Native Text |
+| `high` | 1120 | 280 | 25 (per second) | 1120 + Native Text |
+| `ultra_high` | 2240 | N/A | N/A | N/A |
 
 ## Choosing the right resolution
 
@@ -125,8 +216,20 @@ The following lists the recommended media resolution settings for each supported
 | **PDFs** | `medium` | 560 | Optimal for document understanding; quality typically saturates at `medium`. Increasing to `high` rarely improves OCR results for standard documents. |
 | **Video** (General) | `low` (or `medium`) | 70 (per frame) | **Note:** For video, `low` and `medium` settings are treated identically (70 tokens) to optimize context usage. This is sufficient for most action recognition and description tasks. |
 | **Video** (Text-heavy) | `high` | 280 (per frame) | Required only when the use case involves reading dense text (OCR) or small details within video frames. |
+| **Audio** | `unspecified` (Default) | 25 (per second) | Audio is tokenized at a fixed rate of 25 tokens per second across all supported resolution settings (`unspecified`, `low`, `medium`, and `high`). |
 
 Always test and evaluate the impact of different resolution settings on your application to find the best trade-off between quality, latency, and cost.
+
+## Relationship with video processing modes
+
+The `media_resolution` and processing parameters control different aspects of video input:
+
+- `media_resolution` controls the **resolution** of each frame (number of tokens per frame).
+- `processing` / `media_processing` controls **which content from the video** is loaded into context.
+
+You can set both on the same video input. For example, you might use agentic processing with low media resolution to minimize total token usage for a long video.
+
+For details on video processing modes, see the [Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding) guide.
 
 ## Version compatibility summary
 
@@ -134,4 +237,4 @@ Always test and evaluate the impact of different resolution settings on your app
 
 ## Next steps
 
-- Learn more about the multimodal capabilities of Gemini API in the [image understanding](https://ai.google.dev/gemini-api/docs/image-understanding), [video understanding](https://ai.google.dev/gemini-api/docs/video-understanding) and [document understanding](https://ai.google.dev/gemini-api/docs/document-processing) guides.
+- Learn more about the multimodal capabilities of Gemini API in the [image understanding](https://ai.google.dev/gemini-api/docs/image-understanding), [video understanding](https://ai.google.dev/gemini-api/docs/video-understanding), [audio understanding](https://ai.google.dev/gemini-api/docs/audio), and [document understanding](https://ai.google.dev/gemini-api/docs/document-processing) guides.

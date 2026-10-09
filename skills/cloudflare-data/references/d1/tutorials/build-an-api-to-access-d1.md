@@ -67,6 +67,7 @@ Create a new Worker to create and deploy your API.
    - For *Which template would you like to use?*, choose `Worker only`.
    - For *Which language do you want to use?*, choose `TypeScript`.
    - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
    - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Change into your new project directory to start developing:
 

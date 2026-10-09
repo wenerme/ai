@@ -9,16 +9,84 @@ description: "Troubleshoot common issues with the AppDynamics data source in Gra
 
 This document provides guidance for troubleshooting common issues when configuring and using the AppDynamics data source in Grafana.
 
-## Before you begin
+## License and installation
 
-Before investigating specific errors, verify that the data source health check passes:
+The AppDynamics data source is an Enterprise plugin. It requires a [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/). A missing or invalid Grafana license prevents the plugin from starting. That is a Grafana licensing or catalog problem, not an AppDynamics credential problem.
+
+These errors appear before Grafana sends any request to AppDynamics.
+
+### No Install or Enable button
+
+When the plugin isn’t entitled for your Grafana Cloud stack or Grafana Enterprise license, the catalog can hide **Install** and **Enable**. A user without the `Organization Administrator` role also can’t install the plugin.
+
+**Symptoms:**
+
+- The AppDynamics plugin page in the catalog shows no **Install** or **Enable** button.
+- Installation appears to do nothing.
+
+**Solutions:**
+
+1. Confirm that you have the `Organization Administrator` role. Ask an administrator to install the plugin if you don’t. Refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+2. On self-managed Grafana, verify the Enterprise license is valid and includes Enterprise plugins. Refer to [Stats and license](/docs/grafana/latest/administration/stats-and-license/).
+3. On Grafana Cloud, confirm that your plan is Pro or Advanced and that Enterprise plugins are enabled for your stack. If the button is still missing, contact [Grafana Support](/contact/).
+
+### “Plugin health check failed”
+
+This Grafana error means the plugin backend didn’t start. For an Enterprise plugin, the most common cause is a missing or invalid license rather than a problem with your AppDynamics URL or credentials.
+
+Don’t confuse this message with AppDynamics **Save &amp; test** results such as **Data source is working, found N apps.** or `The configuration setup is incomplete.` Those messages appear only after the plugin backend is running.
+
+**Symptoms:**
+
+- **Save &amp; test**, or the plugin catalog, reports `Plugin health check failed` with no further detail.
+- The data source fails immediately, before Grafana sends any request to AppDynamics.
+
+**Solutions:**
+
+1. Confirm that your Grafana Cloud plan is Pro or Advanced, or that self-managed Grafana has a valid Enterprise license.
+2. Review the Grafana server logs for a license error. Refer to [“Invalid license for the enterprise plugin”](#invalid-license-for-the-enterprise-plugin).
+3. If the license is valid, continue with [Configuration errors](#configuration-errors) and [Authentication errors](#authentication-errors).
+
+### “Invalid license for the enterprise plugin”
+
+This error indicates a Grafana licensing problem, not an AppDynamics credential problem. The Enterprise license token is missing, malformed, or truncated, so the plugin can’t validate its entitlement.
+
+**Symptoms:**
+
+- The Grafana server log contains an error similar to `invalid license for the enterprise plugin`.
+- The plugin fails to start, and **Save &amp; test** returns `Plugin health check failed`.
+
+**Solutions:**
+
+1. On self-managed Grafana, confirm that you installed a valid Grafana Enterprise license. The token is a JSON Web Token (JWT) with three parts separated by periods. If you provide the license through the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file, copy the full token with no truncation or extra whitespace.
+2. After you update the license, restart Grafana and try again.
+3. On Grafana Cloud, contact [Grafana Support](/contact/) to confirm that your Pro or Advanced plan includes the AppDynamics plugin. Don’t apply a license JWT to Grafana Cloud yourself.
+
+## Plugin version
+
+Confirm you’re on a recent plugin version before investigating AppDynamics credentials or query syntax. Many query-editor and template-variable issues are already fixed in current 3.12.x releases. This data source requires Grafana 11.6.7 or later.
+
+1. Click **Administration** &gt; **Plugins and data** &gt; **Plugins** in the left-side menu.
+2. Search for `AppDynamics` and open the plugin page.
+3. Compare the installed version with the latest available version.
+4. On self-managed Grafana, click **Update** if a newer version is available. Refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/).
+
+> Note
+>
+> On Grafana Cloud, plugins update automatically. In other managed environments, the platform provider may lag behind the latest release, so confirm which version you’re running.
+
+If template variables don’t interpolate or a drop-down shows `$undefined` after you update, refer to [Template variable errors](#template-variable-errors).
+
+## Verify the connection
+
+After the plugin is installed, licensed, and up to date, verify that the AppDynamics connection health check passes:
 
 1. Click **Connections** in the left-side menu.
 2. Click **Data sources** and select your AppDynamics data source.
 3. Click **Save &amp; test**.
 4. Confirm you see the success message: **Data source is working, found N apps.**
 
-If the health check fails, start with the [Configuration errors](#configuration-errors) or [Authentication errors](#authentication-errors) sections.
+If **Save &amp; test** returns `Plugin health check failed`, start with [License and installation](#license-and-installation). For AppDynamics-specific messages, start with [Configuration errors](#configuration-errors), [Authentication errors](#authentication-errors), or [Connection errors](#connection-errors).
 
 ## Configuration errors
 
@@ -241,7 +309,25 @@ Your query executes without error but returns no results.
 
 ## Template variable errors
 
-These errors occur when using template variables with the data source.
+These errors occur when using template variables with the data source. On plugin versions earlier than 3.11.17, update to 3.12 or later before you change variable queries. Refer to [Plugin version](#plugin-version).
+
+### Variables don’t interpolate or the application list is empty
+
+On plugin versions earlier than 3.11.17, template variables in the Metrics **Application** field and in Health, Events, Tiers, and Metric Names inputs might not interpolate. The application drop-down for those query types can also appear empty.
+
+**Solutions:**
+
+1. Update the plugin to 3.12 or later. Version 3.11.11 fixed query-editor interpolation. Version 3.11.17 fixed template variables in the Metrics **Application** field. Refer to [Plugin version](#plugin-version).
+2. If the application list is still empty after you update, click **Save &amp; test** on the data source. Then continue with [Authentication errors](#authentication-errors).
+
+### `$undefined` in a drop-down
+
+The Health, Events, Tiers, and Metric Names **application\_id** fields list AppDynamics applications (name and ID). They don’t list dashboard variables. If the field shows `$undefined`, or your variable isn’t in the list, Grafana didn’t store the variable name.
+
+**Solutions:**
+
+1. Type `${variableName}` as a custom value. For example, type `${application}` rather than selecting a numeric application ID.
+2. Refer to [AppDynamics template variables](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for supported patterns.
 
 ### Variables return no values
 
@@ -274,6 +360,21 @@ The variable query uses an unsupported pattern.
 2. For application-specific queries, ensure the application name or variable precedes the `.` (for example, `MyApp.Tiers`, not just `Tiers`).
 3. Refer to the [template variables documentation](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns and examples.
 
+### “The value after ‘.’ must be BusinessTransactions, Tiers or Nodes”
+
+The part of the variable query after the application name isn’t a supported type.
+
+**Possible causes:**
+
+- The keyword after the first `.` isn’t `BusinessTransactions`, `Tiers`, `Nodes`, or `Path`
+- Extra or missing segments in the query
+
+**Solutions:**
+
+1. Use one of `AppName.BusinessTransactions`, `AppName.Tiers`, `AppName.Nodes`, or `AppName.Path...`.
+2. To scope business transactions or nodes to a tier, use `AppName.TierName.BusinessTransactions` or `AppName.TierName.Nodes`.
+3. Refer to the [template variables documentation](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns.
+
 ### Multi-value variables replace values with `*` in Metrics
 
 This is expected behavior. Multi-value variables aren’t supported in Metrics queries. If multi-value variables are found in a metric path, they’re replaced with `*`, which matches all values.
@@ -286,7 +387,7 @@ SQL [Copy code to clipboard] Copy
 SELECT distinct(transactionName), count(*) FROM transactions WHERE transactionName IN (${transactionName:doublequote})
 ```
 
-## Debug tips
+## Enable debug logging
 
 Use these techniques to gather more information when diagnosing issues.
 

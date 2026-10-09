@@ -12,7 +12,7 @@ Get a safety alert belonging to the authenticated API project.
 
 ### Returns
 
-- `SafetyAlert object { id, created_at, error_type, 6 more }`
+- `SafetyAlert object { id, created_at, error_type, 7 more }`
 
   - `id: string`
 
@@ -46,6 +46,10 @@ Get a safety alert belonging to the authenticated API project.
 
   - `response_id: string`
 
+  - `detailed_explanation: optional string or null`
+
+    A generated explanation, temporarily available for eligible zero data retention alerts. Omitted when unavailable.
+
 ### Example
 
 ```http
@@ -65,7 +69,8 @@ curl https://api.openai.com/v1/safety/alerts/$ID \
   "reason": "reason",
   "request_id": "request_id",
   "request_paused": true,
-  "response_id": "response_id"
+  "response_id": "response_id",
+  "detailed_explanation": "detailed_explanation"
 }
 ```
 

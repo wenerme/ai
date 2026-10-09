@@ -7,7 +7,9 @@ description: "Use AppDynamics events as annotations in Grafana."
 
 # AppDynamics annotations
 
-Annotations allow you to overlay event data on your time-series visualizations. You can use the AppDynamics **Events** query type to display application events such as deployments, policy violations, errors, and health rule violations directly on your graphs.
+Use the AppDynamics **Events** query type to overlay Controller events on time-series panels. Typical markers include deployments, errors, slow transactions, and policy activity.
+
+To mark health-rule policy activity, use Events with `POLICY_*` values in **event-types**. The **Health** query type returns a table of health rule violations. It isn’t an annotation query.
 
 For an overview of annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
@@ -24,35 +26,37 @@ To create an annotation using AppDynamics event data:
    - **Data source**: Select your AppDynamics data source.
    - **Enabled**: Toggle on to display the annotation.
    - **Color**: Choose a color for the annotation markers.
-5. Select **Events** from the query type selector.
+5. Select **Events** from the query type radio buttons.
 6. Configure the Events query fields described in the following section.
 7. Click **Save dashboard**.
 
 ## Events query fields
 
-The Events query type retrieves events from the AppDynamics Controller REST API. Configure the following fields to control which events are returned:
+The Events query type retrieves events from the AppDynamics Controller REST API. **eventtype** and **event-types** are different fields. Use **event-types** to choose which events AppDynamics returns. Leave **eventtype** at the editor default unless you have a reason to change it.
+
+The editor marks **summary** and **comment** required. Fill them to satisfy the form. They don’t replace **event-types**.
 
 Expand table
 
-| Field                | Description                                                                                                                                                                                                              | Required |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| **application\_id**  | The application name or ID to query events for. Select from the drop-down.                                                                                                                                               | Yes      |
-| **summary**          | The summary text to filter events.                                                                                                                                                                                       | Yes      |
-| **comment**          | The comment text to filter events.                                                                                                                                                                                       | Yes      |
-| **eventtype**        | The type of event. Default: `APPLICATION_DEVELOPMENT`.                                                                                                                                                                   | Yes      |
-| **time-range-type**  | Controls the time range for the query. Select from the drop-down: `BETWEEN_TIMES` (default), `BEFORE_NOW`, `BEFORE_TIME`, or `AFTER_TIME`. When set to `BETWEEN_TIMES`, the dashboard time picker is used automatically. | Yes      |
-| **duration-in-mins** | Duration in minutes. Used with `BEFORE_NOW`, `BEFORE_TIME`, or `AFTER_TIME` range types.                                                                                                                                 | No       |
-| **start-time**       | Start time in milliseconds. Hidden when the **Use dashboard’s time picker** toggle is on.                                                                                                                                | No       |
-| **end-time**         | End time in milliseconds. Hidden when the **Use dashboard’s time picker** toggle is on.                                                                                                                                  | No       |
-| **event-types**      | Comma-separated list of event types to filter. Select from the drop-down or enter values manually.                                                                                                                       | No       |
-| **severities**       | The severity levels to include. Select from the drop-down: `INFO`, `WARN`, or `ERROR`.                                                                                                                                   | Yes      |
-| **tier**             | Filter events to a specific tier within the application.                                                                                                                                                                 | No       |
+| Field                | Description                                                                                                                                                                                  | Required |
+|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| **application\_id**  | Application name or ID. Select from the drop-down, or type a template variable such as `${application}` as a custom value.                                                                   | Yes      |
+| **summary**          | Summary text. Required by the editor.                                                                                                                                                        | Yes      |
+| **comment**          | Comment text. Required by the editor.                                                                                                                                                        | Yes      |
+| **eventtype**        | Separate from **event-types**. The editor default is `APPLICATION_DEVELOPMENT`.                                                                                                              | Yes      |
+| **time-range-type**  | How the time window is calculated: `BETWEEN_TIMES` (default), `BEFORE_NOW`, `BEFORE_TIME`, or `AFTER_TIME`.                                                                                  | Yes      |
+| **duration-in-mins** | Duration in minutes. Used with `BEFORE_NOW`, `BEFORE_TIME`, or `AFTER_TIME`.                                                                                                                 | No       |
+| **start-time**       | Start time in milliseconds. Hidden when **Use dashboard’s time picker** is on.                                                                                                               | No       |
+| **end-time**         | End time in milliseconds. Hidden when **Use dashboard’s time picker** is on.                                                                                                                 | No       |
+| **event-types**      | Event types to retrieve. Pick one value, or type a comma-separated list as a custom value. AppDynamics retrieve requests require this field even though the editor doesn’t mark it required. | No       |
+| **severities**       | `INFO`, `WARN`, or `ERROR`. Pick one value, or type a comma-separated list such as `WARN,ERROR`.                                                                                             | Yes      |
+| **tier**             | Limit events to a tier.                                                                                                                                                                      | No       |
 
-The Events query type supports a **Use dashboard’s time picker** toggle. When enabled (default), the query automatically uses the dashboard’s time range and the **start-time** and **end-time** fields are hidden. When disabled, you can specify a fixed time range using the **time-range-type**, **start-time**, and **end-time** fields.
+The Events query type includes a **Use dashboard’s time picker** toggle. When enabled (the default for new queries), the query uses the dashboard time range and hides **start-time** and **end-time**. When disabled, set a fixed range with **time-range-type**, **start-time**, **end-time**, and **duration-in-mins** as needed.
 
 ## Common event types
 
-AppDynamics provides a wide range of event types. The following are commonly used for annotations:
+Use these values in **event-types**. They aren’t interchangeable with the **eventtype** default.
 
 Expand table
 
@@ -71,52 +75,61 @@ Expand table
 | `STALL`                     | Stalled transaction events         |
 | `DEADLOCK`                  | Deadlock events                    |
 
-For the complete list of supported event types, refer to the [AppDynamics Events and Action Suppression API](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/alert-and-respond-api/events-and-action-suppression-api).
+For the complete list of supported event types, refer to the [AppDynamics Events API](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/alert-and-respond-api/events-api).
 
 ## Example: Deployment annotations
 
-Overlay application deployment events on your dashboards to correlate deployments with performance changes:
+Overlay application deployment events to correlate deployments with performance changes:
 
 1. Create a new annotation query.
-2. Select **Events** from the query type selector.
-3. Select your application from the **application\_id** drop-down.
-4. Select `APPLICATION_DEPLOYMENT` from the **event-types** drop-down.
-5. Select `INFO` from the **severities** drop-down.
-6. Leave the **Use dashboard’s time picker** toggle enabled.
+2. Select **Events** from the query type radio buttons.
+3. Select your application from **application\_id**, or type `${application}`.
+4. Fill **summary** and **comment**.
+5. Leave **eventtype** at the default.
+6. Select `APPLICATION_DEPLOYMENT` from **event-types**.
+7. Select `INFO` from **severities**.
+8. Leave **Use dashboard’s time picker** enabled.
 
 ## Example: Policy violation annotations
 
-Display health rule violations to identify when alerting policies triggered:
+Overlay policy open and close events. This uses the Events query with `POLICY_*` types, not the Health query type.
 
 1. Create a new annotation query.
-2. Select **Events** from the query type selector.
-3. Select your application from the **application\_id** drop-down.
-4. Select `POLICY_OPEN_CRITICAL`, `POLICY_OPEN_WARNING`, `POLICY_CLOSE_CRITICAL`, and `POLICY_CLOSE_WARNING` from the **event-types** drop-down.
-5. Select `WARN` and `ERROR` from the **severities** drop-down.
+2. Select **Events** from the query type radio buttons.
+3. Select your application from **application\_id**, or type `${application}`.
+4. Fill **summary** and **comment**.
+5. Leave **eventtype** at the default.
+6. In **event-types**, type `POLICY_OPEN_CRITICAL,POLICY_OPEN_WARNING,POLICY_CLOSE_CRITICAL,POLICY_CLOSE_WARNING`.
+7. In **severities**, type `WARN,ERROR`.
+8. Leave **Use dashboard’s time picker** enabled.
 
 ## Example: Error and slow transaction annotations
 
-Mark error and slow transaction events on your response time graphs:
+Mark error and slow transaction events on response time graphs:
 
 1. Create a new annotation query.
-2. Select **Events** from the query type selector.
-3. Select your application from the **application\_id** drop-down.
-4. Select `APPLICATION_ERROR`, `SLOW`, `VERY_SLOW`, and `STALL` from the **event-types** drop-down.
-5. Select `WARN` and `ERROR` from the **severities** drop-down.
+2. Select **Events** from the query type radio buttons.
+3. Select your application from **application\_id**, or type `${application}`.
+4. Fill **summary** and **comment**.
+5. Leave **eventtype** at the default.
+6. In **event-types**, type `APPLICATION_ERROR,SLOW,VERY_SLOW,STALL`.
+7. In **severities**, type `WARN,ERROR`.
+8. Leave **Use dashboard’s time picker** enabled.
 
 ## Use template variables in annotations
 
-You can use [template variables](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) in annotation queries. For example, if you have a variable named `application`, use `${application}` in the **application\_id** field to dynamically filter events based on the selected application.
+You can use [template variables](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) in annotation queries. The **application\_id** drop-down lists applications, not dashboard variables. Type `${application}` as a custom value rather than selecting a numeric application ID.
 
 ## Annotation display options
 
-When configuring annotations, you can customize how they appear:
+Grafana annotation queries also include display settings:
 
-- **Color**: Choose distinct colors for different annotation types to easily differentiate them.
-- **Show in**: Select which panels display the annotation (all panels or specific panels).
-- **Hide**: Temporarily hide annotations without deleting them.
+- **Color**: Choose a color for the markers.
+- **Show in**: Choose all panels or specific panels.
+- **Hide**: Hide the annotation without deleting it.
 
 ## Additional resources
 
 - [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- [AppDynamics Events and Action Suppression API](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/alert-and-respond-api/events-and-action-suppression-api)
+- [AppDynamics Events API](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/alert-and-respond-api/events-api)
+- [AppDynamics query editor](/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)

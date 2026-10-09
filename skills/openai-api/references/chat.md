@@ -664,7 +664,7 @@ chunk objects if the request is streamed.
 
     - `"pcm16"`
 
-  - `voice: string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+  - `voice: string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
     The voice the model uses to respond. Supported built-in voices are
     `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
@@ -1282,7 +1282,7 @@ chunk objects if the request is streamed.
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { grammar, type }`
+      - `format: optional Text { type }  or Grammar { grammar, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -1674,7 +1674,7 @@ chunk objects if the request is streamed.
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -1744,7 +1744,7 @@ chunk objects if the request is streamed.
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -2922,7 +2922,7 @@ with the `store` parameter set to `true` will be returned.
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -2992,7 +2992,7 @@ with the `store` parameter set to `true` will be returned.
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -3685,7 +3685,7 @@ with the `store` parameter set to `true` will be returned.
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -3755,7 +3755,7 @@ with the `store` parameter set to `true` will be returned.
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -4426,7 +4426,7 @@ the only supported modification is to update the `metadata` field.
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -4496,7 +4496,7 @@ the only supported modification is to update the `metadata` field.
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -5187,7 +5187,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -5257,7 +5257,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -5663,7 +5663,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     - `"pcm16"`
 
-  - `voice: string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+  - `voice: string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
     The voice the model uses to respond. Supported built-in voices are
     `alloy`, `ash`, `ballad`, `coral`, `echo`, `fable`, `nova`, `onyx`,
@@ -5904,7 +5904,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     Moderation results for the request input and generated output. Present
     on the moderation chunk when moderated completions are requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -5974,7 +5974,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
@@ -6157,7 +6157,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
 ### Chat Completion Content Part
 
-- `ChatCompletionContentPart = ChatCompletionContentPartText or ChatCompletionContentPartImage or ChatCompletionContentPartInputAudio or object { file, type, prompt_cache_breakpoint }`
+- `ChatCompletionContentPart = ChatCompletionContentPartText or ChatCompletionContentPartImage or ChatCompletionContentPartInputAudio or FileContentPart { file, type, prompt_cache_breakpoint }`
 
   Learn about [text inputs](/api/docs/guides/text).
 
@@ -6427,7 +6427,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Optional description of the custom tool, used to provide more context.
 
-    - `format: optional object { type }  or object { grammar, type }`
+    - `format: optional Text { type }  or Grammar { grammar, type }`
 
       The input format for the custom tool. Default is unconstrained text.
 
@@ -7610,7 +7610,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { grammar, type }`
+      - `format: optional Text { type }  or Grammar { grammar, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 

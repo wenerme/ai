@@ -616,6 +616,8 @@ For AWS, validation also checks the role's `sts:ExternalId` restriction. After s
 - `incorrect_hostname`: Use the hostname that matches your fixed-residency project's configuration.
 - `503 external_storage_validation_unavailable`: Retry later. Contact support if the failure persists.
 
+If you're using AWS's project-based **[Sign up for AWS (new)](https://docs.aws.amazon.com/accounts/latest/reference/sign-up-for-aws.html)** experience, its default resource control policy (RCP) blocks OpenAI's cross-account role assumption. To use that account, upgrade to a paid plan if needed, [activate advanced features](https://docs.aws.amazon.com/accounts/latest/reference/activate-advanced-features.html), and update the RCP to permit OpenAI's `sts:AssumeRole` access.
+
 #### 2. Validate again
 
 After fixing the configuration, open **Connect storage** for the project and run the validation command with an organization Admin API key. Retrieve the registration or select **Refresh** to confirm **Validated**. Refresh alone doesn't run validation.

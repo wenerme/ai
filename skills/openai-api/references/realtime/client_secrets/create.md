@@ -288,7 +288,7 @@ Returns the created client secret and the effective session object. The client s
           This parameter is a post-processing adjustment to the audio after it is generated, it's
           also possible to prompt the model to speak faster or slower.
 
-        - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+        - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
           The voice the model uses to respond. Supported built-in voices are
           `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
@@ -673,7 +673,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -747,7 +747,7 @@ Returns the created client secret and the effective session object. The client s
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -1152,7 +1152,7 @@ Returns the created client secret and the effective session object. The client s
 
             The prompt configured for input audio transcription, when present.
 
-        - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
+        - `turn_detection: optional ServerVad { type, create_response, idle_timeout_ms, 4 more }  or SemanticVad { type, create_response, eagerness, interrupt_response }  or null`
 
           Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -1593,7 +1593,7 @@ Returns the created client secret and the effective session object. The client s
 
           The name of the tool to call on the server.
 
-    - `tools: optional array of RealtimeFunctionTool or object { server_label, type, allowed_callers, 9 more }`
+    - `tools: optional array of RealtimeFunctionTool or McpTool { server_label, type, allowed_callers, 9 more }`
 
       Tools available to the model.
 
@@ -1642,7 +1642,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -1716,7 +1716,7 @@ Returns the created client secret and the effective session object. The client s
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -1778,7 +1778,7 @@ Returns the created client secret and the effective session object. The client s
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-    - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
+    - `tracing: optional "auto" or TracingConfiguration { group_id, metadata, workflow_name }  or null`
 
       Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
       tracing is enabled for a session, the configuration cannot be modified.

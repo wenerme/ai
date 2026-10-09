@@ -7,132 +7,95 @@ description: "Learn how to create alerts based on Jira issue data"
 
 # Set up alerting for Jira data
 
-The Jira data source supports Grafana Alerting, allowing you to create alerts based on Jira issue metrics. Use alerts to get notified when issue counts exceed thresholds, SLA targets are at risk, or sprint velocity changes significantly.
-
-For general information about Grafana Alerting, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+The Jira data source supports [Grafana Alerting](/docs/grafana/latest/alerting/). Alert evaluation runs on the backend. Use alerts to get notified when issue counts exceed a threshold, work is overdue, or an SLA has breached.
 
 ## Before you begin
 
-Before you create alerts based on Jira data:
+- [Configure the Jira data source](/docs/plugins/grafana-jira-datasource/latest/configure/) and confirm **Save &amp; test** returns **Plugin health check successful**.
+- Understand [Grafana Alerting](/docs/grafana/latest/alerting/).
+- Ensure you have permission to create Grafana-managed alert rules.
 
-- Ensure your Jira data source is configured and working.
-- Verify your query returns numeric data (alerts require numeric values to evaluate conditions).
-- Plan your alert thresholds based on your team’s workflow.
+## Query requirements
+
+Jira queries return a **table**: one row per issue, not a Prometheus-style time series. Grafana Alerting’s default **Reduce** and **Threshold** expressions expect a wide time-series frame and fail on that table with an error such as `input data must be a wide series`.
+
+To evaluate Jira results:
+
+1. Select at least one field in **Select Fields**. For counts, **Key** is enough. For sums, select a numeric field such as **Story point estimate**.
+2. Filter with JQL. Don’t use dashboard template variables such as `$project`. Alert rules evaluate outside the dashboard, so those variables are empty or wrong. Hard-code project keys, or use `$__timeFrom` and `$__timeTo` (they follow the **alert rule** time range).
+3. Set **Limit** higher than the number of issues you expect. The default is `50`. If Limit is lower than the matching issue count, the alert under-counts.
+4. Add a **Classic condition** on query A (for example, `WHEN count() OF A IS ABOVE 50`). Use `count()` for issue counts and `sum()` for numeric fields.
+
+Queries that return only text, such as **Summary** with no aggregation condition, can’t be evaluated as a threshold.
 
 ## Create an alert rule
 
 To create an alert rule based on Jira data:
 
-1. Open a dashboard panel that uses the Jira data source.
-2. Click the panel title and select **Edit**.
-3. Click the **Alert** tab.
-4. Click **Create alert rule from this panel**.
-5. Configure the alert rule:
+1. Go to **Alerts &amp; IRM** &gt; **Alert rules**.
+2. Click **New alert rule**.
+3. Enter a name for the rule.
+4. In **Define query and alert condition**:
 
-   - **Rule name**: Enter a descriptive name for the alert.
-   - **Evaluate every**: Set how often the alert condition is evaluated.
-   - **For**: Set how long the condition must be true before alerting.
-6. Define the alert condition based on your query results.
-7. Configure notifications and labels.
-8. Click **Save rule**.
+   - Select your Jira data source.
+   - Select fields and enter JQL. Refer to [Jira query editor](/docs/plugins/grafana-jira-datasource/latest/query-editor/).
+   - Add a **Classic condition** that uses `count()` or `sum()` on query A, then set the threshold.
+5. In **Add folder and labels**, choose a folder, and add labels and annotations so notifications include the project and a link to a dashboard.
+6. In **Set evaluation behavior**, choose an evaluation group, set the evaluation interval, and set the pending period (how long the condition must be true before the alert fires).
+7. Select a contact point, or configure [contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) later.
+8. Click **Preview** to confirm the query runs, then click **Save rule**.
 
-For detailed instructions, refer to [Create Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+You can also open a dashboard panel, click **Edit**, open the **Alert** tab, and click **Create alert rule from this panel**. Copy the JQL into the rule and add a Classic condition. Panel transformations aren’t a substitute for that condition.
 
-## Common alerting use cases
+For detailed Grafana UI steps, refer to [Create Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
-The following examples demonstrate common alerting scenarios with Jira data.
+## Examples
 
-### Alert on high issue count
+The following examples assume a Classic condition on query A. Replace `'Your Project'` with your project key and raise **Limit** so every matching issue is included.
 
-Get notified when the number of open issues exceeds a threshold:
+### Alert when too many issues are open
 
-1. Create a query:
-
-   - Select Fields: **Key**
-   - Add JQL Filter: `project = 'Your Project' AND status != done`
-2. Add the **Count** transformation or use the **Reduce** transformation with Count.
-3. Set the alert condition: `WHEN last() OF query IS ABOVE 50`
+1. Select Fields: **Key**
+2. Filter (JQL): `project = 'Your Project' AND status != done`
+3. Classic condition: `WHEN count() OF A IS ABOVE 50`
+4. Evaluation interval: `10m`. Pending period: `10m`.
 
 ### Alert on overdue issues
 
-Get notified when issues are past their due date:
+1. Select Fields: **Key**, **Due Date**
+2. Filter (JQL): `project = 'Your Project' AND due < now() AND status != done`
+3. Classic condition: `WHEN count() OF A IS ABOVE 0`
 
-1. Create a query:
+### Alert on remaining story points in the current sprint
 
-   - Select Fields: **Key**, **Due Date**
-   - Add JQL Filter: `project = 'Your Project' AND due < now() AND status != done`
-2. Add the **Count** transformation.
-3. Set the alert condition: `WHEN last() OF query IS ABOVE 0`
+1. Select Fields: **Story point estimate**
+2. Filter (JQL): `project = 'Your Project' AND sprint in openSprints() AND type != epic AND status != done`
+3. Classic condition: `WHEN sum() OF A IS ABOVE 20` (use your team’s threshold)
 
-### Alert on sprint burndown
+### Alert on new critical issues
 
-Get notified when remaining story points exceed expected values:
+1. Select Fields: **Key**
+2. Filter (JQL): `project = 'Your Project' AND priority IN ('Critical', 'Blocker') AND created >= -1h`
+3. Classic condition: `WHEN count() OF A IS ABOVE 0`
+4. Evaluation interval: `5m`. Pending period: `0s` (or a short pending period if you want to avoid single-evaluation noise).
 
-1. Create a query:
+### Alert on a breached SLA
 
-   - Select Fields: **Story point estimate**
-   - Add JQL Filter: `project = 'Your Project' AND sprint in openSprints() AND status != done`
-2. Add the **Reduce** transformation with **Total** calculation.
-3. Set the alert condition based on your expected burndown rate.
+Jira Query Language can filter SLA fields directly. You don’t need to parse the SLA JSON for this alert.
 
-### Alert on critical issues
+1. Select Fields: **Key**
+2. Filter (JQL): `project = 'Your Project' AND "Time to resolution" = breached() AND status != done`
+3. Classic condition: `WHEN count() OF A IS ABOVE 0`
 
-Get notified immediately when critical or blocker issues are created:
-
-1. Create a query:
-
-   - Select Fields: **Key**
-   - Add JQL Filter: `project = 'Your Project' AND priority IN ('Critical', 'Blocker') AND created >= -1h`
-2. Add the **Count** transformation.
-3. Set the alert condition: `WHEN last() OF query IS ABOVE 0`
-4. Set **Evaluate every** to `5m` for quick notification.
-
-## Transform data for alerting
-
-Alerts require numeric data. Use transformations to convert Jira issue data into alertable metrics:
-
-### Count issues
-
-Use the **Reduce** transformation to count issues:
-
-1. Add the **Reduce** transformation.
-2. Set Mode: **Series to rows**.
-3. Set Calculations: **Count**.
-
-### Sum numeric fields
-
-Use the **Reduce** transformation to sum story points or other numeric fields:
-
-1. Add the **Reduce** transformation.
-2. Set Mode: **Series to rows**.
-3. Set Calculations: **Total**.
-
-### Group and aggregate
-
-Use the **Group By** transformation to create metrics by category:
-
-1. Add the **Group By** transformation.
-2. Group by a field (for example, **Status** or **Priority**).
-3. Aggregate another field with **Count** or **Total**.
-
-## Alert notification channels
-
-Configure where alert notifications are sent:
-
-- Email
-- Slack
-- PagerDuty
-- Microsoft Teams
-- Webhooks
-- And more
-
-For instructions on setting up notification channels, refer to [Configure contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/).
+The SLA field name is instance-specific. Check **Select Fields** or Jira’s advanced search for the exact name (for example, **Time to first response**).
 
 ## Best practices
 
-Consider the following best practices when setting up Jira alerts:
+- **Evaluation interval:** Jira issue data usually changes slowly. Evaluate every 5 to 15 minutes unless you need faster detection for critical issues.
+- **Pending period:** Require the condition to stay true for one or more intervals so a single slow query doesn’t flap the alert.
+- **Limit:** Set Limit high enough that the count or sum includes every matching issue.
+- **JQL in the rule:** Hard-code project keys and statuses. Don’t rely on dashboard variables.
+- **Preview:** Use **Preview** on the rule before you enable notifications.
+- **Contact points:** Configure [contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) (email, Slack, PagerDuty, and others) rather than legacy notification channels.
 
-- **Set appropriate evaluation intervals**: Jira data doesn’t change as frequently as metrics data. Evaluating every 5-15 minutes is usually sufficient.
-- **Use the “For” duration**: Prevent alert flapping by requiring the condition to be true for a period (for example, 5 minutes) before alerting.
-- **Include context in notifications**: Add labels and annotations to include project name, issue count, and links to relevant dashboards.
-- **Test your alerts**: Use the **Test rule** feature to verify your alert conditions work as expected.
+If **Preview** fails with `input data must be a wide series`, the rule is still using Reduce and Threshold on a Jira table. Switch the condition to a **Classic condition** with `count()` or `sum()`.

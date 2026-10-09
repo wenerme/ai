@@ -20,7 +20,7 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
     - `"content_provenance_check"`
 
-  - `results: array of object { generated_at, issuer, model, 3 more }  or object { generated_at, model, outcome, type }`
+  - `results: array of C2PA { generated_at, issuer, model, 3 more }  or SynthID { generated_at, model, outcome, type }`
 
     The provenance results that apply to the uploaded file. Image results include C2PA and SynthID; audio results include SynthID.
 

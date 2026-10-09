@@ -697,7 +697,7 @@ List ChatKit threads with optional pagination and user filters.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -915,7 +915,7 @@ List items that belong to a ChatKit thread.
 
           - `"file"`
 
-      - `content: array of object { text, type }  or object { text, type }`
+      - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
         Ordered content elements supplied by the user.
 
@@ -993,7 +993,7 @@ List items that belong to a ChatKit thread.
 
         Ordered assistant response segments.
 
-        - `annotations: array of object { source, type }  or object { source, type }`
+        - `annotations: array of File { source, type }  or URL { source, type }`
 
           Ordered list of annotations attached to the response text.
 
@@ -1398,7 +1398,7 @@ Retrieve a ChatKit thread by its identifier.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -1856,7 +1856,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
   Assistant response text accompanied by optional annotations.
 
-  - `annotations: array of object { source, type }  or object { source, type }`
+  - `annotations: array of File { source, type }  or URL { source, type }`
 
     Ordered list of annotations attached to the response text.
 
@@ -1938,7 +1938,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -2002,7 +2002,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     Ordered assistant response segments.
 
-    - `annotations: array of object { source, type }  or object { source, type }`
+    - `annotations: array of File { source, type }  or URL { source, type }`
 
       Ordered list of annotations attached to the response text.
 
@@ -2130,7 +2130,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
           - `"file"`
 
-      - `content: array of object { text, type }  or object { text, type }`
+      - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
         Ordered content elements supplied by the user.
 
@@ -2208,7 +2208,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
         Ordered assistant response segments.
 
-        - `annotations: array of object { source, type }  or object { source, type }`
+        - `annotations: array of File { source, type }  or URL { source, type }`
 
           Ordered list of annotations attached to the response text.
 
@@ -2522,7 +2522,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
       - `"file"`
 
-  - `content: array of object { text, type }  or object { text, type }`
+  - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
     Ordered content elements supplied by the user.
 

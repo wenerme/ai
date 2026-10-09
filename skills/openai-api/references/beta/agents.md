@@ -3038,7 +3038,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Content
 
-- `AgentContent = OutputText or object { encrypted_content, type }`
+- `AgentContent = OutputText or EncryptedContent { encrypted_content, type }`
 
   A plaintext or encrypted content part exchanged between agents.
 
@@ -5018,7 +5018,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -5026,7 +5026,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -5888,7 +5888,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -5896,7 +5896,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -6150,7 +6150,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6169,6 +6169,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6226,7 +6234,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6245,6 +6253,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6271,6 +6287,90 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.session.environment.disconnected`.
 
     - `"agent.session.environment.disconnected"`
+
+### Agent Session Environment Expired Event
+
+- `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+  Emitted after a suspended hosted session environment and its checkpoint expire.
+
+  - `environment: AgentSessionEnvironmentState`
+
+    The current environment state.
+
+    - `id: string`
+
+      The public ID of the environment.
+
+    - `error: object { code, message, type }  or null`
+
+      The error reported while preparing the environment, if any.
+
+      - `code: string`
+
+        A machine-readable error code.
+
+      - `message: string`
+
+        A human-readable error message.
+
+      - `type: string`
+
+        The error type.
+
+    - `status: "pending" or "ready" or "connected" or 4 more`
+
+      The environment's connection status.
+
+      - `"pending"`
+
+        The environment is being prepared.
+
+      - `"ready"`
+
+        The environment is ready to connect.
+
+      - `"connected"`
+
+        The environment is connected.
+
+      - `"disconnected"`
+
+        The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
+
+      - `"failed"`
+
+        The environment failed to connect.
+
+    - `type: string`
+
+      The environment type.
+
+  - `event_id: string`
+
+    The unique ID of the event.
+
+  - `session_id: string`
+
+    The ID of the session associated with the event.
+
+  - `turn_id: string or null`
+
+    The ID of the turn associated with the event, when applicable.
+
+  - `type: "agent.session.environment.expired"`
+
+    The type of the object. Always `agent.session.environment.expired`.
+
+    - `"agent.session.environment.expired"`
 
 ### Agent Session Environment Failed Event
 
@@ -6302,7 +6402,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6321,6 +6421,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6378,7 +6486,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6397,6 +6505,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6454,7 +6570,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6473,6 +6589,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6558,7 +6682,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The error type.
 
-  - `status: "pending" or "ready" or "connected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The environment's connection status.
 
@@ -6578,6 +6702,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The environment is disconnected.
 
+    - `"suspended"`
+
+      The environment is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+      The environment and its private checkpoint have expired.
+
     - `"failed"`
 
       The environment failed to connect.
@@ -6585,6 +6717,90 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
   - `type: string`
 
     The environment type.
+
+### Agent Session Environment Suspended Event
+
+- `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+  Emitted after an idle hosted session environment is checkpointed and stopped.
+
+  - `environment: AgentSessionEnvironmentState`
+
+    The current environment state.
+
+    - `id: string`
+
+      The public ID of the environment.
+
+    - `error: object { code, message, type }  or null`
+
+      The error reported while preparing the environment, if any.
+
+      - `code: string`
+
+        A machine-readable error code.
+
+      - `message: string`
+
+        A human-readable error message.
+
+      - `type: string`
+
+        The error type.
+
+    - `status: "pending" or "ready" or "connected" or 4 more`
+
+      The environment's connection status.
+
+      - `"pending"`
+
+        The environment is being prepared.
+
+      - `"ready"`
+
+        The environment is ready to connect.
+
+      - `"connected"`
+
+        The environment is connected.
+
+      - `"disconnected"`
+
+        The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
+
+      - `"failed"`
+
+        The environment failed to connect.
+
+    - `type: string`
+
+      The environment type.
+
+  - `event_id: string`
+
+    The unique ID of the event.
+
+  - `session_id: string`
+
+    The ID of the session associated with the event.
+
+  - `turn_id: string or null`
+
+    The ID of the turn associated with the event, when applicable.
+
+  - `type: "agent.session.environment.suspended"`
+
+    The type of the object. Always `agent.session.environment.suspended`.
+
+    - `"agent.session.environment.suspended"`
 
 ### Agent Session Error Event
 
@@ -6628,7 +6844,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Event
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
@@ -6698,7 +6914,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           The error type.
 
-      - `status: "pending" or "ready" or "connected" or 2 more`
+      - `status: "pending" or "ready" or "connected" or 4 more`
 
         The environment's connection status.
 
@@ -6717,6 +6933,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"disconnected"`
 
           The environment is disconnected.
+
+        - `"suspended"`
+
+          The environment is stopped and can be resumed from its private checkpoint.
+
+        - `"expired"`
+
+          The environment and its private checkpoint have expired.
 
         - `"failed"`
 
@@ -6743,6 +6967,58 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after an idle hosted session environment is checkpointed and stopped.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.suspended"`
+
+      The type of the object. Always `agent.session.environment.suspended`.
+
+      - `"agent.session.environment.suspended"`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after a suspended hosted session environment and its checkpoint expire.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.expired"`
+
+      The type of the object. Always `agent.session.environment.expired`.
+
+      - `"agent.session.environment.expired"`
 
   - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
@@ -7402,7 +7678,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `"agent.session"`
 
-      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
 
@@ -7410,7 +7686,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           Respond to a computer-use request.
 
-          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+          - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
             The information needed to render the request.
 
@@ -8414,7 +8690,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           The registered request answered by this item.
 
-        - `response: object { action, selected_option, type }  or object { action, type }`
+        - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
           The admitted response, without submitted credential values.
 
@@ -10252,7 +10528,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -10260,7 +10536,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -11060,7 +11336,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -11068,7 +11344,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -11868,7 +12144,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -11876,7 +12152,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -12132,7 +12408,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Input Param
 
-- `AgentSessionInputParam = object { request_id, response, type }  or object { input, type }  or object { type }  or object { call_id, success, turn_id, 3 more }`
+- `AgentSessionInputParam = AgentSessionInputComputerUseApprovalRequestResult { request_id, response, type }  or AgentSessionInputMessage { input, type }  or AgentSessionInputCancel { type }  or AgentSessionInputToolResult { call_id, success, turn_id, 3 more }`
 
   Input submitted to an existing session.
 
@@ -12804,7 +13080,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -13292,7 +13568,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Message Content
 
-- `AgentSessionMessageContent = object { text, type }  or object { image_url, type }  or object { text, type }`
+- `AgentSessionMessageContent = InputText { text, type }  or InputImage { image_url, type }  or OutputText { text, type }`
 
   A content part in a session message.
 
@@ -13934,7 +14210,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -13942,7 +14218,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -16160,7 +16436,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The registered request answered by this item.
 
-      - `response: object { action, selected_option, type }  or object { action, type }`
+      - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
         The admitted response, without submitted credential values.
 
@@ -17628,7 +17904,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool
 
-- `AgentTool = object { defer_loading, description, name, 2 more }  or object { enabled, type }  or object { allowed_tools, connection_origin, credential_id, 5 more }  or 2 more`
+- `AgentTool = Function { defer_loading, description, name, 2 more }  or ProgrammaticToolCalling { enabled, type }  or Mcp { allowed_tools, connection_origin, credential_id, 5 more }  or 2 more`
 
   A tool available to the agent.
 
@@ -17824,7 +18100,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool Param
 
-- `AgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
+- `AgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 3 more`
 
   A tool available to the agent.
 
@@ -18202,7 +18478,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Environment
 
-- `Environment = object { type }  or object { id, capability_directories, desktop, 7 more }  or object { id, capability_directories, remote_url, 2 more }`
+- `Environment = None { type }  or OpenAIHosted { id, capability_directories, desktop, 7 more }  or SelfHosted { id, capability_directories, remote_url, 2 more }`
 
   The execution environment for a session.
 
@@ -18438,7 +18714,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Environment Param
 
-- `EnvironmentParam = object { type }  or object { type, capability_directories, container_size, 9 more }  or object { type, workspace_directory, capability_directories }`
+- `EnvironmentParam = None { type }  or OpenAIHosted { type, capability_directories, container_size, 10 more }  or SelfHosted { type, workspace_directory, capability_directories }`
 
   The execution environment and optional reusable template for a session.
 
@@ -18452,7 +18728,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -18487,6 +18763,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -18692,7 +18972,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Environment File
 
-- `HostedEnvironmentFile = HostedEnvironmentFileID or object { id, path, size_bytes, type }`
+- `HostedEnvironmentFile = HostedEnvironmentFileID or Inline { id, path, size_bytes, type }`
 
   Metadata for a file materialized in an OpenAI-hosted execution environment.
 
@@ -18774,7 +19054,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Environment File Param
 
-- `HostedEnvironmentFileParam = object { file_id, path, type }  or object { data, path, type }`
+- `HostedEnvironmentFileParam = FileID { file_id, path, type }  or Inline { data, path, type }`
 
   A file materialized in an OpenAI-hosted execution environment.
 
@@ -18878,7 +19158,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Skill
 
-- `HostedSkill = HostedSkillReference or object { description, name, type }`
+- `HostedSkill = HostedSkillReference or Inline { description, name, type }`
 
   A skill installed in an OpenAI-hosted environment.
 
@@ -18928,7 +19208,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Skill Param
 
-- `HostedSkillParam = object { skill_id, type, version }  or object { description, name, source, type }`
+- `HostedSkillParam = SkillReference { skill_id, type, version }  or Inline { description, name, source, type }`
 
   A skill installed in an OpenAI-hosted environment.
 
@@ -19044,7 +19324,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Input Content
 
-- `InputContent = object { text, type }  or object { image_url, type }`
+- `InputContent = InputText { text, type }  or InputImage { image_url, type }`
 
   User-provided content recorded in a session item.
 
@@ -19078,7 +19358,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Input Content Param
 
-- `InputContentParam = object { text, type }  or object { image_url, type }`
+- `InputContentParam = InputText { text, type }  or InputImage { image_url, type }`
 
   Content included in an input message.
 
@@ -19112,7 +19392,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Mcp Transport
 
-- `McpTransport = object { server_url, type }  or object { args, command, cwd, 2 more }`
+- `McpTransport = HTTP { server_url, type }  or Stdio { args, command, cwd, 2 more }`
 
   The transport used to connect to an MCP server.
 
@@ -19158,7 +19438,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Mcp Transport Param
 
-- `McpTransportParam = object { server_url, type, authorization, headers }  or object { command, cwd, type, 3 more }`
+- `McpTransportParam = HTTP { server_url, type, authorization, headers }  or Stdio { command, cwd, type, 3 more }`
 
   The transport used to connect to an MCP server.
 
@@ -19260,7 +19540,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool
 
-- `PersistedAgentTool = object { defer_loading, description, name, 2 more }  or object { type }  or object { enabled, type }  or 3 more`
+- `PersistedAgentTool = Function { defer_loading, description, name, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { enabled, type }  or 3 more`
 
   A credential-free tool available to a reusable agent.
 
@@ -19470,7 +19750,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool Param
 
-- `PersistedAgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
+- `PersistedAgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 3 more`
 
   A tool that can be stored on a reusable agent without session credentials.
 
@@ -19690,7 +19970,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Mcp Transport
 
-- `PersistedMcpTransport = object { headers, server_url, type }  or object { args, command, cwd, 2 more }`
+- `PersistedMcpTransport = HTTP { headers, server_url, type }  or Stdio { args, command, cwd, 2 more }`
 
   A credential-free transport used to connect to an MCP server.
 
@@ -19740,7 +20020,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Mcp Transport Param
 
-- `PersistedMcpTransportParam = object { server_url, type, headers }  or object { command, cwd, type, 2 more }`
+- `PersistedMcpTransportParam = HTTP { server_url, type, headers }  or Stdio { command, cwd, type, 2 more }`
 
   A credential-free transport used to connect to an MCP server.
 
@@ -20028,7 +20308,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Text Format
 
-- `TextFormat = object { type }  or object { schema, type }`
+- `TextFormat = Text { type }  or JSONSchema { schema, type }`
 
   The effective output format for generated text.
 
@@ -20058,7 +20338,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Text Format Param
 
-- `TextFormatParam = object { type }  or object { schema, type }`
+- `TextFormatParam = Text { type }  or JSONSchema { schema, type }`
 
   The output format for generated text.
 
@@ -20122,7 +20402,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Web Search Action
 
-- `WebSearchAction = object { queries, query, type }  or object { type, url }  or object { pattern, type, url }  or object { type }`
+- `WebSearchAction = Search { queries, query, type }  or OpenPage { type, url }  or FindInPage { pattern, type, url }  or Other { type }`
 
   An action performed by the web search tool.
 
@@ -20187,6 +20467,714 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"other"`
 
 # Environments
+
+## Create an agent environment
+
+**post** `/agents/environments`
+
+Creates an OpenAI-hosted environment before creating a session. Requires access to the prewarming beta.
+
+### Header Parameters
+
+- `"Idempotency-Key": optional string`
+
+### Body Parameters
+
+- `environment: object { type, capability_directories, desktop, 8 more }`
+
+  The required hosting type and its configuration.
+
+  - `type: "openai_hosted"`
+
+    The type of the object. Always `openai_hosted`.
+
+    - `"openai_hosted"`
+
+  - `capability_directories: optional array of string or null`
+
+    Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+  - `desktop: optional object { enabled }  or null`
+
+    Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+    - `enabled: boolean`
+
+      Whether to provision the desktop and its browser proxy.
+
+  - `env: optional map[string] or null`
+
+    Environment variables made available to the agent.
+
+  - `environment_template_id: optional string`
+
+    A reusable hosted template applied before inline configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
+
+  - `files: optional array of HostedEnvironmentFileParam or null`
+
+    Files available before the agent starts. Defaults to an empty list.
+
+    - `FileID object { file_id, path, type }`
+
+      A file previously uploaded through the OpenAI Files API.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The absolute destination path inside `/workspace`.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { data, path, type }`
+
+      A file supplied directly as standard-base64 data.
+
+      - `data: string`
+
+        The standard-base64-encoded file contents.
+
+      - `path: string`
+
+        The absolute destination path inside `/workspace`.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `network: optional object { access, allowed_domains, blocked_domains }  or null`
+
+    Network access policy for the environment. If omitted, the API version determines whether network access is enabled or disabled.
+
+    - `access: "enabled" or "disabled" or "restricted"`
+
+      The environment's network access mode.
+
+      - `"enabled"`
+
+        Allows unrestricted network access.
+
+      - `"disabled"`
+
+        Disables network access.
+
+      - `"restricted"`
+
+        Applies the configured domain restrictions.
+
+    - `allowed_domains: optional array of string or null`
+
+      Domains the environment may access when network access is restricted.
+
+    - `blocked_domains: optional array of string or null`
+
+      Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+  - `packages: optional object { npm, python, system }  or null`
+
+    Packages to install in the environment. Defaults to empty package lists.
+
+    - `npm: optional array of string or null`
+
+      npm packages to install globally. Defaults to an empty list.
+
+    - `python: optional array of string or null`
+
+      Python packages to install. Defaults to an empty list.
+
+    - `system: optional array of string or null`
+
+      System packages to install. Defaults to an empty list.
+
+  - `plugins: optional array of HostedPluginParam or null`
+
+    Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+    - `description: string`
+
+      The plugin description declared in `.codex-plugin/plugin.json`.
+
+    - `name: string`
+
+      The plugin name declared in `.codex-plugin/plugin.json`.
+
+    - `source: InlineCapabilitySourceParam`
+
+      Provides ZIP bytes encoded with standard base64.
+
+      - `data: string`
+
+        Standard-base64 encoded ZIP archive bytes.
+
+      - `media_type: "application/zip"`
+
+        The archive media type, always `application/zip`.
+
+        - `"application/zip"`
+
+          A ZIP archive.
+
+      - `type: "base64"`
+
+        The type of the object. Always `base64`.
+
+        - `"base64"`
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `setup_commands: optional array of SetupCommandParam or null`
+
+    Ordered, confidential setup commands. Command bodies are never returned.
+
+    - `command: string`
+
+      The shell command to execute.
+
+    - `cwd: optional string or null`
+
+      The absolute working directory. Defaults to `/workspace`.
+
+  - `skills: optional array of HostedSkillParam or null`
+
+    Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+    - `SkillReference object { skill_id, type, version }`
+
+      References a skill uploaded through the Skills API.
+
+      - `skill_id: string`
+
+        The ID of the skill created through `/v1/skills`.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: optional string or null`
+
+        The skill version, a positive integer or `latest`; omission selects the default.
+
+    - `Inline object { description, name, source, type }`
+
+      Supplies a skill ZIP directly in the session request.
+
+      - `description: string`
+
+        The skill description declared in `SKILL.md`.
+
+      - `name: string`
+
+        The skill name declared in `SKILL.md`.
+
+      - `source: InlineCapabilitySourceParam`
+
+        Provides ZIP bytes encoded with standard base64.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+- `vault_ids: optional array of string or null`
+
+  The IDs of up to 10 vaults made available to an OpenAI-hosted environment.
+
+### Returns
+
+- `EnvironmentInfo object { id, files, object, 4 more }`
+
+  Safe metadata for a first-class execution environment.
+
+  - `id: string`
+
+    The ID of the environment.
+
+  - `files: array of HostedEnvironmentFile`
+
+    Files installed in the environment, without their contents.
+
+    - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
+
+      A file copied from the OpenAI Files API.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { id, path, size_bytes, type }`
+
+      A file supplied inline when the session was created.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `object: "agent.environment"`
+
+    The object type. Always `agent.environment`.
+
+    - `"agent.environment"`
+
+  - `plugins: array of HostedPlugin`
+
+    Plugins installed in the environment, without their archive contents.
+
+    - `description: string`
+
+      The installed plugin description.
+
+    - `name: string`
+
+      The installed plugin name.
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `skills: array of HostedSkill`
+
+    Skills installed in the environment, without their archive contents.
+
+    - `HostedSkillReference object { description, name, skill_id, 2 more }`
+
+      A skill installed from the Skills API.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `skill_id: string`
+
+        The referenced skill ID.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: string`
+
+        The concrete skill version installed for this session.
+
+    - `Inline object { description, name, type }`
+
+      A skill installed from an inline ZIP archive.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `status: "pending" or "ready" or "connected" or 4 more`
+
+    The current environment connection status.
+
+    - `"pending"`
+
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
+    - `"connected"`
+
+    - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+    - `"failed"`
+
+  - `type: "openai_hosted" or "self_hosted"`
+
+    Whether the environment is hosted by OpenAI or by the application.
+
+    - `"openai_hosted"`
+
+    - `"self_hosted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/agents/environments \
+    -H 'Content-Type: application/json' \
+    -H 'OpenAI-Beta: agents=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "environment": {
+            "type": "openai_hosted"
+          }
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "files": [
+    {
+      "id": "id",
+      "file_id": "file_id",
+      "path": "path",
+      "size_bytes": 0,
+      "type": "file_id"
+    }
+  ],
+  "object": "agent.environment",
+  "plugins": [
+    {
+      "description": "description",
+      "name": "name",
+      "type": "inline"
+    }
+  ],
+  "skills": [
+    {
+      "description": "description",
+      "name": "name",
+      "skill_id": "skill_id",
+      "type": "skill_reference",
+      "version": "version"
+    }
+  ],
+  "status": "pending",
+  "type": "openai_hosted"
+}
+```
+
+## List agent environments
+
+**get** `/agents/environments`
+
+Lists OpenAI-hosted environments owned by the authenticated principal. Requires access to the prewarming beta.
+
+### Query Parameters
+
+- `after: optional string`
+
+  Return resources after this resource ID in the selected order.
+
+- `limit: optional number`
+
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  The order in which resources are returned. Defaults to `desc`.
+
+  - `"asc"`
+
+    Returns resources in ascending order.
+
+  - `"desc"`
+
+    Returns resources in descending order.
+
+- `type: optional "openai_hosted"`
+
+  The hosting type to list. Defaults to `openai_hosted`.
+
+  - `"openai_hosted"`
+
+### Returns
+
+- `data: array of EnvironmentInfo`
+
+  The resources returned in this page, in the requested sort order.
+
+  - `id: string`
+
+    The ID of the environment.
+
+  - `files: array of HostedEnvironmentFile`
+
+    Files installed in the environment, without their contents.
+
+    - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
+
+      A file copied from the OpenAI Files API.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { id, path, size_bytes, type }`
+
+      A file supplied inline when the session was created.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `object: "agent.environment"`
+
+    The object type. Always `agent.environment`.
+
+    - `"agent.environment"`
+
+  - `plugins: array of HostedPlugin`
+
+    Plugins installed in the environment, without their archive contents.
+
+    - `description: string`
+
+      The installed plugin description.
+
+    - `name: string`
+
+      The installed plugin name.
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `skills: array of HostedSkill`
+
+    Skills installed in the environment, without their archive contents.
+
+    - `HostedSkillReference object { description, name, skill_id, 2 more }`
+
+      A skill installed from the Skills API.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `skill_id: string`
+
+        The referenced skill ID.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: string`
+
+        The concrete skill version installed for this session.
+
+    - `Inline object { description, name, type }`
+
+      A skill installed from an inline ZIP archive.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `status: "pending" or "ready" or "connected" or 4 more`
+
+    The current environment connection status.
+
+    - `"pending"`
+
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
+    - `"connected"`
+
+    - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+    - `"failed"`
+
+  - `type: "openai_hosted" or "self_hosted"`
+
+    Whether the environment is hosted by OpenAI or by the application.
+
+    - `"openai_hosted"`
+
+    - `"self_hosted"`
+
+- `first_id: string or null`
+
+  The ID of the first resource in `data`, or `null` if the page is empty.
+
+- `has_more: boolean`
+
+  Whether there are more resources to retrieve after this page.
+
+- `last_id: string or null`
+
+  The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+- `object: "list"`
+
+  The object type, which is always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/agents/environments \
+    -H 'OpenAI-Beta: agents=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "files": [
+        {
+          "id": "id",
+          "file_id": "file_id",
+          "path": "path",
+          "size_bytes": 0,
+          "type": "file_id"
+        }
+      ],
+      "object": "agent.environment",
+      "plugins": [
+        {
+          "description": "description",
+          "name": "name",
+          "type": "inline"
+        }
+      ],
+      "skills": [
+        {
+          "description": "description",
+          "name": "name",
+          "skill_id": "skill_id",
+          "type": "skill_reference",
+          "version": "version"
+        }
+      ],
+      "status": "pending",
+      "type": "openai_hosted"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
 
 ## Retrieve an agent environment
 
@@ -20332,15 +21320,23 @@ Retrieves an execution environment's connection status and safe installed metada
 
         - `"inline"`
 
-  - `status: "pending" or "connected" or "disconnected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The current environment connection status.
 
     - `"pending"`
 
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
     - `"connected"`
 
     - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
 
     - `"expired"`
 
@@ -20534,15 +21530,23 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID \
 
         - `"inline"`
 
-  - `status: "pending" or "connected" or "disconnected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The current environment connection status.
 
     - `"pending"`
 
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
     - `"connected"`
 
     - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
 
     - `"expired"`
 
@@ -21016,7 +22020,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21124,7 +22128,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -21336,7 +22340,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21444,7 +22448,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -21614,7 +22618,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21722,7 +22726,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22068,7 +23072,7 @@ Updates reusable environment configuration without returning confidential values
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -22176,7 +23180,7 @@ Updates reusable environment configuration without returning confidential values
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22313,7 +23317,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -22421,7 +23425,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22509,7 +23513,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -22544,6 +23548,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -23771,7 +24779,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -23779,7 +24787,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -24758,7 +25766,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -24766,7 +25774,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -25694,7 +26702,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -25702,7 +26710,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -26672,7 +27680,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -26680,7 +27688,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -27567,7 +28575,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
@@ -27637,7 +28645,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The error type.
 
-      - `status: "pending" or "ready" or "connected" or 2 more`
+      - `status: "pending" or "ready" or "connected" or 4 more`
 
         The environment's connection status.
 
@@ -27656,6 +28664,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `"disconnected"`
 
           The environment is disconnected.
+
+        - `"suspended"`
+
+          The environment is stopped and can be resumed from its private checkpoint.
+
+        - `"expired"`
+
+          The environment and its private checkpoint have expired.
 
         - `"failed"`
 
@@ -27682,6 +28698,58 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after an idle hosted session environment is checkpointed and stopped.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.suspended"`
+
+      The type of the object. Always `agent.session.environment.suspended`.
+
+      - `"agent.session.environment.suspended"`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after a suspended hosted session environment and its checkpoint expire.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.expired"`
+
+      The type of the object. Always `agent.session.environment.expired`.
+
+      - `"agent.session.environment.expired"`
 
   - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
@@ -28341,7 +29409,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `"agent.session"`
 
-      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
 
@@ -28349,7 +29417,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           Respond to a computer-use request.
 
-          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+          - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
             The information needed to render the request.
 
@@ -29353,7 +30421,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The registered request answered by this item.
 
-        - `response: object { action, selected_option, type }  or object { action, type }`
+        - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
           The admitted response, without submitted credential values.
 
@@ -31119,7 +32187,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -32364,7 +33432,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -33883,7 +34951,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -35740,7 +36808,7 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -38073,7 +39141,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth
 
-- `CredentialAuth = object { expires_at, mcp_server_url, refresh, type }  or object { mcp_server_url, type }  or object { networking, secret_name, type }`
+- `CredentialAuth = McpOauth { expires_at, mcp_server_url, refresh, type }  or StaticBearer { mcp_server_url, type }  or EnvironmentVariable { networking, secret_name, type }`
 
   The authentication configuration of a vault credential, excluding secrets.
 
@@ -38207,7 +39275,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth Create Param
 
-- `CredentialAuthCreateParam = object { access_token, mcp_server_url, type, 2 more }  or object { token, mcp_server_url, type }  or object { networking, secret_name, secret_value, type }`
+- `CredentialAuthCreateParam = McpOauth { access_token, mcp_server_url, type, 2 more }  or StaticBearer { token, mcp_server_url, type }  or EnvironmentVariable { networking, secret_name, secret_value, type }`
 
   Authentication credentials for an MCP server or an OpenAI-hosted environment.
 
@@ -38365,7 +39433,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth Rotate Param
 
-- `CredentialAuthRotateParam = object { type, access_token, expires_at, refresh }  or object { token, type }  or object { secret_value, type }`
+- `CredentialAuthRotateParam = McpOauth { type, access_token, expires_at, refresh }  or StaticBearer { token, type }  or EnvironmentVariable { secret_value, type }`
 
   Updates to a vault credential without changing its authentication method or destination configuration.
 
@@ -38481,7 +39549,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Networking
 
-- `CredentialNetworking = object { type }  or object { allowed_hosts, type }`
+- `CredentialNetworking = Unrestricted { type }  or Limited { allowed_hosts, type }`
 
   Destination permissions for an environment-variable credential. These do not grant network access to the environment.
 
@@ -38511,7 +39579,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Networking Param
 
-- `CredentialNetworkingParam = object { type }  or object { allowed_hosts, type }`
+- `CredentialNetworkingParam = Unrestricted { type }  or Limited { allowed_hosts, type }`
 
   Destination permissions for an environment-variable credential. These do not grant network access to the environment.
 
@@ -38541,7 +39609,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth
 
-- `McpOauthTokenEndpointAuth = object { type }  or object { type }  or object { type }`
+- `McpOauthTokenEndpointAuth = None { type }  or ClientSecretBasic { type }  or ClientSecretPost { type }`
 
   The client authentication method used for OAuth token refresh.
 
@@ -38577,7 +39645,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth Create Param
 
-- `McpOauthTokenEndpointAuthCreateParam = object { type }  or object { client_secret, type }  or object { client_secret, type }`
+- `McpOauthTokenEndpointAuthCreateParam = None { type }  or ClientSecretBasic { client_secret, type }  or ClientSecretPost { client_secret, type }`
 
   Client authentication credentials for OAuth token refresh.
 
@@ -38621,7 +39689,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth Rotate Param
 
-- `McpOauthTokenEndpointAuthRotateParam = object { type, client_secret }  or object { type, client_secret }`
+- `McpOauthTokenEndpointAuthRotateParam = ClientSecretBasic { type, client_secret }  or ClientSecretPost { type, client_secret }`
 
   Client-secret updates that preserve the credential's OAuth authentication method.
 

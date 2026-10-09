@@ -7,7 +7,7 @@ description: "Use the Splunk query editor to create and run SPL queries in Grafa
 
 # Splunk query editor
 
-The Splunk query editor lets you create and run queries using Splunk’s Search Processing Language (SPL) in two modes: **Search** mode and **Events** mode. If you’re getting started with SPL, refer to Splunk’s [Search reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/WhatsInThisManual) for guidance.
+The Splunk query editor lets you create and run queries using the Splunk Search Processing Language (SPL) in two modes: **Search** mode and **Events** mode. If you’re getting started with SPL, refer to the Splunk [Search reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/WhatsInThisManual) for guidance.
 
 ## Before you begin
 
@@ -20,14 +20,14 @@ If you’re new to Splunk, these terms are used throughout the query editor:
 
 Expand table
 
-| Term           | Description                                                                                             |
-|----------------|---------------------------------------------------------------------------------------------------------|
-| **SPL**        | Search Processing Language, the query language used by Splunk.                                          |
-| **Index**      | A repository for Splunk data, similar to a database table.                                              |
-| **Sourcetype** | A classification for data that determines how it is formatted and parsed.                               |
-| **Timechart**  | An SPL command that generates a statistical aggregation over time, used for time-series visualizations. |
-| **mstats**     | An SPL command for querying Splunk metrics data, introduced in Splunk 7.x.                              |
-| **Namespace**  | A Splunk app context that determines which knowledge objects are available to a query.                  |
+| Term            | Description                                                                                             |
+|-----------------|---------------------------------------------------------------------------------------------------------|
+| **SPL**         | Search Processing Language, the query language used by Splunk.                                          |
+| **Index**       | A repository for Splunk data, similar to a database table.                                              |
+| **Source type** | A classification for data that determines how it is formatted and parsed.                               |
+| **`timechart`** | An SPL command that generates a statistical aggregation over time, used for time-series visualizations. |
+| **`mstats`**    | An SPL command for querying Splunk metrics data, introduced in Splunk 7.x.                              |
+| **Namespace**   | A Splunk app context that determines which knowledge objects are available to a query.                  |
 
 ## Query modes
 
@@ -51,9 +51,9 @@ Expand table
 | **Search**       | Enter the Splunk search query using SPL.                                                                                                                                                          |
 | **Namespace**    | Select the Splunk app context for the query. Refer to the [Splunk REST API User Manual](https://docs.splunk.com/Documentation/Splunk/latest/RESTUM/RESTusing) for more information on namespaces. |
 | **Sample ratio** | Set a sampling ratio to reduce the volume of data processed. Options: `1:10`, `1:100`, `1:1,000`, `1:10,000`, `1:100,000`.                                                                        |
-| **Limit**        | Adds `limit=value` to timechart parameters.                                                                                                                                                       |
+| **Limit**        | Adds `limit=value` to `timechart` parameters.                                                                                                                                                     |
 
-The SPL editor includes autocomplete that provides suggestions from Splunk’s typeahead API, Grafana template variables, and built-in SPL commands.
+The SPL editor includes autocomplete that provides suggestions from the Splunk type-ahead API, Grafana template variables, and built-in SPL commands.
 
 Search query example:
 
@@ -73,21 +73,21 @@ The visual query builder provides the following options:
 
 Expand table
 
-| Field           | Description                                                                                                                                                                        |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Index**       | Select an index from the drop-down list.                                                                                                                                           |
-| **Source Type** | Select a sourcetype from the drop-down list.                                                                                                                                       |
-| **Namespace**   | Select the Splunk app context.                                                                                                                                                     |
-| **Metric**      | Add one or more metric aggregations. Select a function and field, and optionally set an alias. The default function is `avg`.                                                      |
-| **Split by**    | Select one or more fields to split results by. Supports template variables.                                                                                                        |
-| **Where**       | Add a where clause to filter results (available when using one split-by field and one metric aggregation).                                                                         |
-| **Span**        | Set the time span for the query. Options: `auto`, `10s`, `1m`, `10m`, `1h`, `12h`, `1d`, `7d`, `1mon`. Default: `auto`.                                                            |
-| **Limit**       | Adds `limit=value` to timechart parameters. Accepts positive or negative integers.                                                                                                 |
-| **Useother**    | Add a series for data not included in graphs because it doesn’t meet the `where` clause criteria. Default: on.                                                                     |
-| **Usenull**     | Toggle on to create a series for events that don’t contain the split-by field. Default: off.                                                                                       |
-| **Continuous**  | Fill time gaps in the chart. Default: on.                                                                                                                                          |
-| **Partial**     | Retain partial time bins (first and last bins only). Default: on.                                                                                                                  |
-| **Bins**        | Set the number of histogram bins. Default: `100`. Refer to [Splunk’s bin reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Bin) for more information. |
+| Field           | Description                                                                                                                                                                          |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Index**       | Select an index from the drop-down list.                                                                                                                                             |
+| **Source Type** | Select a source type from the drop-down list.                                                                                                                                        |
+| **Namespace**   | Select the Splunk app context.                                                                                                                                                       |
+| **Metric**      | Add one or more metric aggregations. Select a function and field, and optionally set an alias. The default function is `avg`.                                                        |
+| **Split by**    | Select one or more fields to split results by. Supports template variables.                                                                                                          |
+| **Where**       | Add a where clause to filter results (available when using one split-by field and one metric aggregation).                                                                           |
+| **Span**        | Set the time span for the query. Options: `auto`, `10s`, `1m`, `10m`, `1h`, `12h`, `1d`, `7d`, `1mon`. Default: `auto`.                                                              |
+| **Limit**       | Adds `limit=value` to `timechart` parameters. Accepts positive or negative integers.                                                                                                 |
+| **`useother`**  | Add a series for data not included in graphs because it doesn’t meet the `where` clause criteria. Default: on.                                                                       |
+| **`usenull`**   | Toggle on to create a series for events that don’t contain the split-by field. Default: off.                                                                                         |
+| **Continuous**  | Fill time gaps in the chart. Default: on.                                                                                                                                            |
+| **Partial**     | Retain partial time bins (first and last bins only). Default: on.                                                                                                                    |
+| **Bins**        | Set the number of histogram bins. Default: `100`. Refer to the Splunk [bin reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Bin) for more information. |
 
 #### Aggregation functions
 
@@ -167,9 +167,9 @@ Click **Query inspector** to view detailed statistics about your query, includin
 
 The following sections describe additional commands and options for working with Splunk data in the query editor.
 
-### Timechart
+### `timechart`
 
-Use the `timechart` command to generate a statistical aggregation table from time-series data. Refer to the [timechart command overview](https://docs.splunk.com/Documentation/SCS/current/SearchReference/timechartcommandoverview#How_the_timechart_command_works) and [timechart reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/timechart) in Splunk’s documentation.
+Use the `timechart` command to generate a statistical aggregation table from time-series data. Refer to the [timechart command overview](https://docs.splunk.com/Documentation/SCS/current/SearchReference/timechartcommandoverview#How_the_timechart_command_works) and [timechart reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/timechart) in the Splunk documentation.
 
 Example:
 
@@ -196,7 +196,7 @@ Deprecated syntax:
 | timechart avg(_value) span=1m by metric_name
 ```
 
-For more information about the `mstats` command, refer to Splunk’s [mstats](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Mstats) documentation.
+For more information about the `mstats` command, refer to the Splunk [mstats](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Mstats) documentation.
 
 ### Result format
 
@@ -222,7 +222,7 @@ spl [Copy code to clipboard] Copy
 index="_internal" sourcetype="splunkd_access" | stats avg(bytes) as bytes, avg(file) as file by status
 ```
 
-Refer to the [stats command reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in Splunk’s documentation for more information.
+Refer to the [stats command reference](https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Stats) in the Splunk documentation for more information.
 
 ### Common query examples
 
@@ -244,7 +244,7 @@ spl [Copy code to clipboard] Copy
 index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system, avg(pctUser) as user
 ```
 
-**View top sourcetypes by event volume:**
+**View top source types by event volume:**
 
 spl [Copy code to clipboard] Copy
 
@@ -281,4 +281,4 @@ The Splunk query editor can import queries from Prometheus and Loki data sources
 - [Template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
 - [Annotations](/docs/plugins/grafana-splunk-datasource/latest/annotations/): Overlay Splunk events and alerts on graphs.
 - [Alerting](/docs/plugins/grafana-splunk-datasource/latest/alerting/): Set up alert rules based on Splunk queries.
-- [Troubleshooting](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common query issues.
+- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common query issues.

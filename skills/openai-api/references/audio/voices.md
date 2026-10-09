@@ -34,17 +34,11 @@ Returns the saved voice's metadata. See the [custom voices guide](/api/docs/guid
 
     - `"audio.voice"`
 
-  - `type: string or "audio_sample"`
+  - `type: "audio_sample"`
 
     How the voice was created.
 
-    - `string`
-
     - `"audio_sample"`
-
-      How the voice was created.
-
-      - `"audio_sample"`
 
 ### Example
 
@@ -106,14 +100,8 @@ curl https://api.openai.com/v1/audio/voices \
 
     - `"audio.voice"`
 
-  - `type: string or "audio_sample"`
+  - `type: "audio_sample"`
 
     How the voice was created.
 
-    - `string`
-
     - `"audio_sample"`
-
-      How the voice was created.
-
-      - `"audio_sample"`

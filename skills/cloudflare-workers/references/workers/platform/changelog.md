@@ -20,6 +20,14 @@ This is *different* from [compatibility dates](https://developers.cloudflare.com
 
 [Subscribe to RSS](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-09-28
+
+- Updated v8 to version 15.5.
+
+## 2026-09-14
+
+- Updated v8 to version 15.4.
+
 ## 2026-08-28
 
 - Updated v8 to version 15.3.

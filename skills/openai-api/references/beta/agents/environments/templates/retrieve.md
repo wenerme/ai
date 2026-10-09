@@ -34,7 +34,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -142,7 +142,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 

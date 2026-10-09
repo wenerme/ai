@@ -282,7 +282,7 @@ the only supported modification is to update the `metadata` field.
     Moderation results for the request input and generated output, if moderated
     completions were requested.
 
-    - `input: object { model, results, type }  or object { code, message, type }`
+    - `input: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the request input.
 
@@ -352,7 +352,7 @@ the only supported modification is to update the `metadata` field.
 
           - `"error"`
 
-    - `output: object { model, results, type }  or object { code, message, type }`
+    - `output: ModerationResults { model, results, type }  or Error { code, message, type }`
 
       Moderation for the generated output.
 
