@@ -90,7 +90,6 @@ the cf CLI unless the project has a Wrangler configuration file."
    ]
    ```
 
-
 2. Inspect the API request of the chosen command:
 
    ```sh
@@ -105,8 +104,6 @@ the cf CLI unless the project has a Wrangler configuration file."
    ```sh
    cf d1 create --name my-database --dry-run
    ```
-
-
 
 Root and group `--help` output starts with a reminder for agents to use `cf cli search` first. A command's own `--help` shows its usage as plain text. If an agent types a command that does not exist, `cf` lists the closest matches.
 
@@ -144,13 +141,11 @@ To migrate a project with an agent, ask it to:
    cf migrate --dry-run
    ```
 
-
 2. Run the migration:
 
    ```sh
    cf migrate
    ```
-
 
 3. Resolve the `TODO(@cloudflare)` comments in the generated `cloudflare.config.ts`, and ask you about any choice it cannot make on its own. The build fails until every required item is resolved.
 

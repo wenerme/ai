@@ -54,6 +54,7 @@ Create a target for each Windows machine that requires RDP access. To create a n
    - Contain no more than 253 characters
    - Contain only alphanumeric characters, <code>-</code>, or <code>.</code> (no spaces allowed)
    - Start and end with an alphanumeric character</details>
+
 4. In **IP addresses**, enter the IPv4 and/or IPv6 address of the target resource. The dropdown menu will not populate until you type in the full IP address.
 
 Note
@@ -110,8 +111,6 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    		}
    }
    ```
-
-
 
 Next, create an Access application to secure the target.
 

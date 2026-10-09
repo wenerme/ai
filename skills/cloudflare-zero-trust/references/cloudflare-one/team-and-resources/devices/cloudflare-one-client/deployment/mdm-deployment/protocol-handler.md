@@ -169,7 +169,6 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
    </plist>
    ```
 
-
 4. Upload the `.plist` or `.mobileconfig` file to your preferred MDM.
 5. Deploy the configuration profile to your devices.
 

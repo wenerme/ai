@@ -40,7 +40,6 @@ You need an existing Workers project and a configured TanStack AI model adapter.
    bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
    ```
 
-
 2. Add a Worker Loader binding to your Wrangler configuration:
 
    ```jsonc
@@ -49,7 +48,7 @@ You need an existing Workers project and a configured TanStack AI model adapter.
      "name": "tanstack-codemode",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -65,13 +64,12 @@ You need an existing Workers project and a configured TanStack AI model adapter.
    name = "tanstack-codemode"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
    binding = "LOADER"
    ```
-
 
 3. Define TanStack AI server tools, group them into namespaces, and pass the Code Mode tool to `chat()`:
 
@@ -226,8 +224,6 @@ You need an existing Workers project and a configured TanStack AI model adapter.
    	},
    } satisfies ExportedHandler<Env>;
    ```
-
-
 
 `createCodeTool()` returns a TanStack AI `ServerTool` named `codemode_execute`. Its description contains the generated types for both namespaces. The model can write code similar to this:
 

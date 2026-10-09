@@ -47,7 +47,7 @@ Default = asgi.entrypoint(app)
 	"name": "my-fastapi-app",
 	"main": "src/main.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"compatibility_flags": ["python_workers"],
 }
 ```
@@ -57,7 +57,7 @@ Default = asgi.entrypoint(app)
 name = "my-fastapi-app"
 main = "src/main.py"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 compatibility_flags = [ "python_workers" ]
 ```
 
@@ -97,8 +97,6 @@ uv run pywrangler dev
    {"Hello": "World"}
    ```
 
-
-
 ## Serve a frontend
 
 You can serve any static frontend alongside your FastAPI backend by using [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
@@ -114,7 +112,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 	"name": "my-fastapi-app",
 	"main": "src/worker.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"compatibility_flags": ["python_workers"],
 	"assets": {
 		"directory": "./public/",
@@ -128,7 +126,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 name = "my-fastapi-app"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

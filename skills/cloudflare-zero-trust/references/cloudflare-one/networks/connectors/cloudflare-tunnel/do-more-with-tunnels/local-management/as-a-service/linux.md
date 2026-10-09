@@ -45,21 +45,17 @@ By default, Cloudflare Tunnel expects all of the configuration to exist in the `
    sudo cloudflared --config /home/<USER>/.cloudflared/config.yml service install
    ```
 
-
 2. Start the service.
 
    ```sh
    systemctl start cloudflared
    ```
 
-
 3. (Optional) View the status of the service.
 
    ```sh
    systemctl status cloudflared
    ```
-
-
 
 ## Next steps
 

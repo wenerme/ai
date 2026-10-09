@@ -704,8 +704,6 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
   }
   ```
 
-
-
 Was this helpful?
 
 YesNo

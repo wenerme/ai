@@ -64,7 +64,6 @@ To set up `TXT` validation:
    }
    ```
 
-
 2. Have your customer add a `TXT` record with that `name` and `value` at their authoritative DNS provider.
 3. After a few minutes, you will see the hostname status become **Active** in the UI.
 4. Once you activate the custom hostname, your customer can remove the `TXT` record.
@@ -102,7 +101,6 @@ To get and use the `ownership_verification` record:
      ]
    }
    ```
-
 
 3. Have your customer place the `http_url` and `http_body` on their origin web server.
 

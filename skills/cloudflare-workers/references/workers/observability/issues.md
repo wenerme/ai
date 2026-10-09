@@ -50,7 +50,6 @@ Requires Wrangler 4.134.0 or later.
    enabled = true
    ```
 
-
 2. Deploy your Worker.npmyarnpnpm
 
    ```
@@ -64,8 +63,6 @@ Requires Wrangler 4.134.0 or later.
    ```
    pnpm wrangler deploy
    ```
-
-
 
 1. Go to the **Issues** page. [Go to **Issues** ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/issues?status=active)
 2. Select **Enable issues**.
@@ -98,14 +95,11 @@ If you deploy with Wrangler, also set `observability.issues.enabled` to `true` i
    });
    ```
 
-
 2. Deploy your Worker.
 
    ```sh
    cf deploy
    ```
-
-
 
 Issues processes new traffic after you enable it. It does not process historical failures. Send production traffic to the Worker, then open a detected issue in the Issues dashboard.
 

@@ -34,13 +34,11 @@ Linux
    cp example.com.key temp.key
    ```
 
-
 4. Run the following command (if using an ECDSA certificate, replace <code>rsa</code> with <code>ec</code>).
 
    ```sh
    openssl rsa -in temp.key -out example.com.key
    ```
-
 
 5. When prompted in the console window, enter the original key password.
 6. <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate">Upload the file contents</a> to Cloudflare.
@@ -63,7 +61,6 @@ Windows
    ```sh
    rsa -in C:\Path\To\example.com.key -out key.pem
    ```
-
 
 5. Enter the original key password when prompted by the **openssl.exe** command window.
 6. <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate">Upload</a> the contents of the <code>key.pem</code> file to Cloudflare.

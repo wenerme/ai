@@ -63,7 +63,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -73,7 +73,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [assets]
 directory = "./dist/client/"
@@ -95,7 +95,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -106,7 +106,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [assets]
 directory = "./dist/client/"
@@ -119,7 +119,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -130,7 +130,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [assets]
 directory = "./dist/client/"
@@ -171,7 +171,7 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
 	"assets": {
 		"directory": "./dist/client/"
@@ -182,7 +182,7 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./dist/client/_worker.js"
 
 [assets]
@@ -215,7 +215,7 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/"
@@ -226,7 +226,7 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -243,7 +243,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/",
@@ -255,7 +255,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -295,7 +295,7 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/"
@@ -306,7 +306,7 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./worker/index.ts"
 
 [assets]
@@ -321,7 +321,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/",
@@ -333,7 +333,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./worker/index.ts"
 
 [assets]
@@ -349,7 +349,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
 	"placement": {
@@ -365,7 +365,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
 
@@ -409,7 +409,7 @@ To get a similar experience in Workers:
    {
        "name": "my-worker",
        // Set this to today's date
-       "compatibility_date": "2026-09-28",
+       "compatibility_date": "2026-10-09",
        "main": "./worker/index.ts",
        "assets": {
            "directory": "./dist/client/"
@@ -422,7 +422,7 @@ To get a similar experience in Workers:
    ```toml
    name = "my-worker"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    main = "./worker/index.ts"
    preview_urls = true
    previews = { }
@@ -430,7 +430,6 @@ To get a similar experience in Workers:
    [assets]
    directory = "./dist/client/"
    ```
-
 
 2. [Enable preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) in Workers Builds.
 3. If an existing Workers Builds project still uses the previous preview model, complete the [one-time switch to Worker Previews](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#existing-workers-connected-to-builds).
@@ -455,7 +454,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"main": "./worker/index.ts",
 	"workers_dev": true
 }
@@ -464,7 +463,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "./worker/index.ts"
 workers_dev = true
 ```

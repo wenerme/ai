@@ -4,7 +4,7 @@ The `azure` extension is a loadable extension that adds a filesystem abstraction
 
 ## Installing and Loading
 
-The `azure` extension will be transparently [autoloaded](https://duckdb.org/docs/current/core_extensions/overview.html#autoloading-extensions) on first use from the official extension repository.
+The `azure` extension will be transparently [autoloaded](https://duckdb.org/docs/current/extensions/overview.html#autoloading-extensions) on first use from the official extension repository.
 If you would like to install and load it manually, run:
 
 ```sql

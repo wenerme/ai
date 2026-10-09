@@ -88,8 +88,6 @@ A project can also add `cf` as a development dependency. Inside that project, th
    cf auth whoami
    ```
 
-
-
 On a remote machine, over SSH, or in a container, add `--no-browser`. `cf` prints the link without opening it, and you can approve the request from a browser on another device. To sign in again, add `--force`.
 
 `cf` keeps its own credentials and does not reuse a Wrangler login. Sign in once, even if you already use Wrangler.

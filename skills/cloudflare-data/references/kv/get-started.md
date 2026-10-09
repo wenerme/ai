@@ -157,8 +157,6 @@ To create a KV namespace via Wrangler:
    }
    ```
 
-
-
 1. In the Cloudflare dashboard, go to the **Workers KV** page. [Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Select **Create instance**.
 3. Enter a name for your namespace. For this tutorial, use `kv_tutorial_namespace`.
@@ -291,8 +289,6 @@ To write a value to your empty KV namespace using Wrangler:
    Writing the value "enabled" to key "user_1" on namespace <BINDING_ID>.
    ```
 
-
-
 Using \`--namespace-id\`
 
 Instead of using `--binding`, you can also use `--namespace-id` to specify which KV namespace should receive the operation:
@@ -373,21 +369,17 @@ Also refer to [KV binding docs](https://developers.cloudflare.com/kv/concepts/kv
    }
    ```
 
-
 2. Use the `put()` method on `USERS_NOTIFICATION_CONFIG` to create a new key-value pair. You will add a new key `user_2` with value `disabled` to your KV namespace.
 
    ```ts
    let value = await env.USERS_NOTIFICATION_CONFIG.put("user_2", "disabled");
    ```
 
-
 3. Use the KV `get()` method to fetch the data you stored in your KV namespace. You will fetch the value of the key `user_2` from your KV namespace.
 
    ```ts
    let value = await env.USERS_NOTIFICATION_CONFIG.get("user_2");
    ```
-
-
 
 Your Worker code should look like this:
 
@@ -529,7 +521,6 @@ Deploy your Worker to Cloudflare's global network.
    ```sh
    npm run deploy
    ```
-
 
 2. Visit the URL for your newly created Workers KV application.
 

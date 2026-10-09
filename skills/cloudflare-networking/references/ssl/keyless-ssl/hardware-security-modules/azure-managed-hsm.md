@@ -70,7 +70,6 @@ brew install azure-cli
    az keyvault key import --hsm-name "KeylessHSM" --name "hsm-pub-keyless" --pem-file server.key
    ```
 
-
 4. If the key server is running in an Azure VM in the same account, use **Managed services** for authorization:
    1. Enable managed services on the VM in the UI.
    2. Give your service user (associated with your VM) HSM sign permissions
@@ -78,7 +77,6 @@ brew install azure-cli
       ```plaintext
       az keyvault role assignment create  --hsm-name KeylessHSM --assignee $(az vm identity show --name "hsmtestvm" --resource-group "HSMgroup" --query principalId -o tsv) --scope / --role "Managed HSM Crypto User"
       ```
-
 
 5. In the `gokeyless` YAML file, add the URI from **Step 2** under `private_key_stores`. See our [README ↗︎](https://github.com/cloudflare/gokeyless/blob/master/README.md) for an example.
 

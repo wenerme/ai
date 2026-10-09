@@ -110,7 +110,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
   "name": "brand-kit",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-09",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -130,7 +130,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
 name = "brand-kit"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 compatibility_flags = ["nodejs_compat"]
 
 # Browser Run binding — driven by Puppeteer.
@@ -667,7 +667,6 @@ The Worker checks KV first. On a cache miss, it launches a browser, loads the pa
    pnpm wrangler dev --remote
    ```
 
-
 2. In another terminal, request a brand kit:
 
    ```bash
@@ -692,14 +691,11 @@ The Worker checks KV first. On a cache miss, it launches a browser, loads the pa
    pnpm wrangler deploy
    ```
 
-
 2. After deployment, request a brand kit from your Worker URL:
 
    ```bash
    curl "https://<YOUR_WORKER_HOSTNAME>/?url=https://www.cloudflare.com/"
    ```
-
-
 
 ## Extend the extractor
 

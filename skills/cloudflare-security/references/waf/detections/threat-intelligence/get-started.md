@@ -57,7 +57,6 @@ If you prefer to write expressions directly, you can create a rule from the dash
    any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
    ```
 
-
 6. Set the action to *Log* to validate matches before enforcing.
 7. Select **Deploy**.
 

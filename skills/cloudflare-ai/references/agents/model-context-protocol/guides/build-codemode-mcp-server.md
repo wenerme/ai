@@ -48,7 +48,6 @@ You need a Cloudflare Workers project and an existing `McpServer`.
    bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
    ```
 
-
 2. Add a Worker Loader binding and the `nodejs_compat` compatibility flag:
 
    ```jsonc
@@ -57,7 +56,7 @@ You need a Cloudflare Workers project and an existing `McpServer`.
      "name": "codemode-mcp-server",
      "main": "src/server.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -73,13 +72,12 @@ You need a Cloudflare Workers project and an existing `McpServer`.
    name = "codemode-mcp-server"
    main = "src/server.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
    binding = "LOADER"
    ```
-
 
 3. Create the upstream server and pass it to `codeMcpServer()`:
 
@@ -199,7 +197,6 @@ You need a Cloudflare Workers project and an existing `McpServer`.
    } satisfies ExportedHandler<Env>;
    ```
 
-
 4. Deploy the Worker:npmyarnpnpm
 
    ```
@@ -213,7 +210,6 @@ You need a Cloudflare Workers project and an existing `McpServer`.
    ```
    pnpm wrangler deploy
    ```
-
 
 5. In an MCP client, connect to `https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/mcp`. Verify that the server exposes one tool named `code`.
 

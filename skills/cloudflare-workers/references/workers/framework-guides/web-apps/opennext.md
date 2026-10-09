@@ -68,7 +68,6 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    bun add @opennextjs/cloudflare@latest
    ```
 
-
 2. **Install Wrangler.**npmyarnpnpmbun
 
    ```
@@ -87,7 +86,6 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    bun add -d wrangler@latest
    ```
 
-
 3. **Add a Wrangler configuration file.**
 
    In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:
@@ -98,7 +96,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
      "name": "my-app",
      "main": ".open-next/worker.js",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -116,7 +114,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    name = "my-app"
    main = ".open-next/worker.js"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [assets]
@@ -179,7 +177,6 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    pnpm run dev
    ```
 
-
 7. **Preview with OpenNext.**
 
    Preview your application in the Workers runtime.npmyarnpnpm
@@ -196,7 +193,6 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    pnpm run preview
    ```
 
-
 8. **Deploy your project.**
 
    Deploy your project to Cloudflare Workers.npmyarnpnpm
@@ -212,8 +208,6 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    ```
    pnpm run deploy
    ```
-
-
 
 Workers Builds
 

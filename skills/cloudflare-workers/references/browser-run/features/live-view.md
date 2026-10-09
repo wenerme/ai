@@ -106,7 +106,6 @@ If you have a running session and want to connect to it:
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Using the session ID, list the targets in that session:
 
    ```bash
@@ -128,7 +127,6 @@ If you have a running session and want to connect to it:
    	}
    ]
    ```
-
 
 3. Copy the `devtoolsFrontendUrl` and open it in your browser.
 

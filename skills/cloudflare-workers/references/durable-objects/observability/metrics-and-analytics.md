@@ -77,7 +77,6 @@ To start using Durable Object logging:
    enabled = true
    ```
 
-
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page. [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 4. Select an existing Durable Object namespace.

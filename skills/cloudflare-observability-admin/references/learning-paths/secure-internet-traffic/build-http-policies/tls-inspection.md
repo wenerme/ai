@@ -59,8 +59,6 @@ To turn on TLS inspection for your Zero Trust organization:
    }
    ```
 
-
-
 #### Inspect on all ports Beta
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
@@ -122,7 +120,6 @@ For example, if users are issued a corporate-managed iPhone with limited permiss
    		"type": "SERIAL"
    	}'
    ```
-
 
 2. Create a Do Not Inspect policy that checks the device against the list of serial numbers.
 

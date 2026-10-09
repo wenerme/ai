@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api
 
 # Run Codex with the OpenAI Agents API in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [OpenAI Agents API ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview) runs the Codex agent loop at OpenAI. With a self-hosted environment, Codex runs commands and edits files in your Cloudflare account instead. The Cloudflare template runs the Codex executor of each session in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
 ![Architecture showing an application creating an OpenAI task, webhooks starting a Cloudflare container, and the application fetching the result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=4160,height=4000,format=webp/_astro/openai-agents-api-arch.CCqSDnZe.jpg)
 
-The [template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api) contains the Worker and the container image that this guide deploys.
+The [template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/templates/openai-agents-api) contains the Worker and the container image that this guide deploys.
 
 ## How it works
 
@@ -70,7 +70,7 @@ export OPENAI_AGENT_ID="agent_..."
 
    Select **Deploy to Cloudflare**:
 
-   [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
+   [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/templates/openai-agents-api)
 
    Enter these values when prompted:
 
@@ -98,7 +98,7 @@ export OPENAI_AGENT_ID="agent_..."
    - `agent.session.idle`
    - `agent.session.failed`
 
-   Copy the signing secret that OpenAI returns. In **Settings** > **Variables and Secrets** for the Worker, replace `OPENAI_WEBHOOK_SECRET` with it, then select **Deploy**. If you deployed manually, run this command in the `openai/agents-api` directory instead:
+   Copy the signing secret that OpenAI returns. In **Settings** > **Variables and Secrets** for the Worker, replace `OPENAI_WEBHOOK_SECRET` with it, then select **Deploy**. If you deployed manually, run this command in the `templates/openai-agents-api` directory instead:
 
    ```bash
    npx wrangler secret put OPENAI_WEBHOOK_SECRET
@@ -186,18 +186,16 @@ To deploy from your terminal instead of with the button in step 2:
 
    ```bash
    git clone https://github.com/cloudflare/sandbox-sdk.git
-   cd sandbox-sdk/openai/agents-api
+   cd sandbox-sdk/templates/openai-agents-api
    npm install
    npx wrangler login
    ```
-
 
 2. Generate a shared secret for the container cleanup endpoint, and save it:
 
    ```bash
    openssl rand -hex 32
    ```
-
 
 3. Store the Worker secrets. Enter your OpenAI API key, the executor key, the agent ID, and the shared secret when prompted:
 
@@ -208,14 +206,11 @@ To deploy from your terminal instead of with the button in step 2:
    npx wrangler secret put EXECUTOR_CLIENT_SECRET
    ```
 
-
 4. Deploy the Worker and its container:
 
    ```bash
    npm run deploy
    ```
-
-
 
 To change the keep-alive, prewarm, and snapshot settings, edit <code>EXECUTOR_KEEP_ALIVE_SECONDS</code>, <code>EXECUTOR_PREWARM_ENABLED</code>, and <code>EXECUTOR_SNAPSHOTS_ENABLED</code> in <code>wrangler.jsonc</code>, then run <code>npm run deploy</code> again.
 
@@ -262,7 +257,7 @@ curl "https://api.openai.com/v1/agents/sessions/$SESSION_ID/events" \
 
 ## Build an application on the Agents API
 
-The [basic example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api/basic) in the template is a TypeScript application that uses the OpenAI Agents API TypeScript SDK. It creates self-hosted sessions that run on the executor Worker. Its HTTP endpoints send the first input, send follow-up input, and clean up. The `POST /demo` endpoint runs the whole workflow: it creates a session, writes and reads a file in the container, sends a follow-up message, and then deletes the OpenAI session and its executor.
+The [basic example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/templates/openai-agents-api/basic) in the template is a TypeScript application that uses the OpenAI Agents API TypeScript SDK. It creates self-hosted sessions that run on the executor Worker. Its HTTP endpoints send the first input, send follow-up input, and clean up. The `POST /demo` endpoint runs the whole workflow: it creates a session, writes and reads a file in the container, sends a follow-up message, and then deletes the OpenAI session and its executor.
 
 ## Clean up
 
@@ -315,7 +310,7 @@ With `EXECUTOR_SNAPSHOTS_ENABLED` set to `false`, each new executor starts with 
 
 ## Add tools to the container
 
-The `openai/agents-api/Dockerfile` file in the template defines the executor image. Add Debian packages to its `apt-get install` command. For example, to add `jq` and Python:
+The `templates/openai-agents-api/Dockerfile` file in the template defines the executor image. Add Debian packages to its `apt-get install` command. For example, to add `jq` and Python:
 
 ```dockerfile
 RUN apt-get update \
@@ -331,7 +326,7 @@ RUN apt-get update \
 
 You can also install language tools in the image, such as global npm packages. Do not put API keys or other secrets in the Dockerfile. Pass them at runtime through Worker secrets and container environment variables.
 
-To build and deploy the new image, run `npm run deploy` in the `openai/agents-api` directory. New containers start from it. A session that starts from a snapshot keeps the filesystem of its old image, so it does not get the new packages.
+To build and deploy the new image, run `npm run deploy` in the `templates/openai-agents-api` directory. New containers start from it. A session that starts from a snapshot keeps the filesystem of its old image, so it does not get the new packages.
 
 ## Security considerations
 
@@ -345,7 +340,7 @@ For more information about what a sandbox exposes to the code inside it, refer t
 
 ## Related resources
 
-- [OpenAI Agents API template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
+- [OpenAI Agents API template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/templates/openai-agents-api)
 - [OpenAI Agents API documentation ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview)
 - [OpenAI Python Cloudflare webhook example ↗︎](https://github.com/OpenAI/agents-api-python-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
 - [OpenAI TypeScript Cloudflare webhook example ↗︎](https://github.com/OpenAI/agents-api-typescript-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
@@ -360,5 +355,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/#page","headline":"Run Codex with the OpenAI Agents API in a sandbox","description":"Deploy a self-hosted OpenAI Agents API environment that runs each Codex session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/og.png?v=ade466bed145a5e4","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/#page","headline":"Run Codex with the OpenAI Agents API in a sandbox","description":"Deploy a self-hosted OpenAI Agents API environment that runs each Codex session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/og.png?v=ade466bed145a5e4","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

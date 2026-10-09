@@ -70,7 +70,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Import the zone file into your new primary DNS provider.
 3. At your new authoritative DNS provider, create or update records so that you have CNAME records pointing to `{your-hostname}.cdn.cloudflare.net` for every hostname you wish to proxy through Cloudflare.<details><summary>
 

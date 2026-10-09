@@ -170,8 +170,6 @@ sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos c
    sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
    ```
 
-
-
 The new replica will be in standby mode until the active replica disconnects.
 
 ## View replicas

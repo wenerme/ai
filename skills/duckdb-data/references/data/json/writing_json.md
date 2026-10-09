@@ -16,4 +16,4 @@ This will result in `cities.json` with the following content:
 {"name":"London","id":2}
 ```
 
-See the [`COPY` statement](https://duckdb.org/docs/current/sql/statements/copy.html#copy-to) for more information.
+See the [`COPY` statement](https://duckdb.org/docs/current/sql/statements/copy.html#copy--to) for more information.

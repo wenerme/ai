@@ -29,6 +29,7 @@ The `warp_devices` array at the account level is a list of WARP devices through 
   ```sh
   warp-cli registration show
   ```
+
 - A name.
 - A `router_ip` that belongs to one of your configured router IP addresses.
 

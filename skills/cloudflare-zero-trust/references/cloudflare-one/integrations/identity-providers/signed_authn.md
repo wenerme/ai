@@ -52,8 +52,6 @@ To set up Signed AuthN requests:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/public-cert
    ```
 
-
-
 Was this helpful?
 
 YesNo

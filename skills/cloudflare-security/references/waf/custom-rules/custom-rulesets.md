@@ -158,7 +158,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset you created in Step 1 (replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID).
    Since the expression is `true`, the custom ruleset will run for all incoming requests. By default, the rule will be added at the end of the list of rules already in the ruleset.<details><summary>
 
@@ -218,7 +217,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests in the zone. Replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID.<details><summary>
 
    Required API token permissions</summary>
@@ -251,8 +249,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		]
    	}'
    ```
-
-
 
 ## Next steps
 

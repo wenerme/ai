@@ -80,7 +80,6 @@ Serve each sandbox preview from its own hostname, such as `ada.example-previews.
    pnpm wrangler types
    ```
 
-
 4. In the `fetch()` handler of your Worker, send each preview hostname to the Durable Object with the same name:
 
    *src/index.jsjs*
@@ -162,7 +161,6 @@ Serve each sandbox preview from its own hostname, such as `ada.example-previews.
    pnpm wrangler deploy
    ```
 
-
 6. Open the preview named `ada` in your browser, and store a value in its browser console. Replace `example-previews.com` with your preview domain:
 
    ```txt
@@ -172,7 +170,6 @@ Serve each sandbox preview from its own hostname, such as `ada.example-previews.
    ```js
    localStorage.setItem("name", "ada");
    ```
-
 
 7. Open the preview named `grace`, and read the value in its browser console:
 

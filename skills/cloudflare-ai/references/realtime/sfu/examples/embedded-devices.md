@@ -115,7 +115,6 @@ The example targets the ESP32-S3-DevKitC-1 N32R16V, with 32 MiB flash, 16 MiB PS
    cp .credential.env.example .credential.env
    ```
 
-
 2. **Configure and deploy the backend.** [Create an SFU app](https://developers.cloudflare.com/realtime/sfu/get-started/#create-your-first-app). Follow the example's [setup procedure ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#set-up) to provision credentials, configure your hostname and account, and deploy the Worker. Keep `.credential.env` private.
 3. **Prepare the device.** Follow [Back up and flash ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#back-up-and-flash). Use audio you have permission to distribute. Back up the board before replacing its software. Flashing resets the device.
 4. **Listen and control.** Open the Worker URL, sign in with the configured viewer password, and select **Start listening**. Open another listener tab. Both tabs should receive audio, spectrum, and telemetry.

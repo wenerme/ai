@@ -56,7 +56,6 @@ Device posture checks are not supported in device enrollment policies. The Cloud
    }
    ```
 
-
 3. Use the [`cloudflare_zero_trust_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_application) resource to create an application with type `warp`.
 
    ```tf
@@ -75,8 +74,6 @@ Device posture checks are not supported in device enrollment policies. The Cloud
    	]
    }
    ```
-
-
 
 ## Only allow corporate devices
 
@@ -136,7 +133,6 @@ To check for an mTLS certificate:
    -----END CERTIFICATE-----
    ```
 
-
 5. In **Associated hostnames**, enter your Zero Trust team domain: `<team-name>.cloudflareaccess.com`
 6. In your [device enrollment permissions](#set-device-enrollment-permissions), add a *Common Name* or *Valid Certificate* rule. For example, the following policy requires a client certificate with a specific common name:
 
@@ -163,7 +159,6 @@ To check for an mTLS certificate:
    	associated_hostnames = ["your-team-name.cloudflareaccess.com"]
    }
    ```
-
 
 3. Create the following Access policy:
 
@@ -194,7 +189,6 @@ To check for an mTLS certificate:
    	]
    }
    ```
-
 
 4. Add the policy to your [`cloudflared_zero_trust_access_application` for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
 5. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).

@@ -138,35 +138,35 @@ The `element` argument, used only in element handlers, is a representation of a 
 
 #### Methods
 
-- ``getAttribute(name `string`)`` : `string | null`
+- `getAttribute(name string)` : `string | null`
   - Returns the value for a given attribute name on the element, or `null` if it is not found.
-- ``hasAttribute(name `string`)`` : `boolean`
+- `hasAttribute(name string)` : `boolean`
   - Returns a boolean indicating whether an attribute exists on the element.
-- ``setAttribute(name `string`, value `string`)`` : `Element`
+- `setAttribute(name string, value string)` : `Element`
   - Sets an attribute to a provided value, creating the attribute if it does not exist.
-- ``removeAttribute(name `string`)`` : `Element`
+- `removeAttribute(name string)` : `Element`
   - Removes the attribute.
-- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `before(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content before the element.
 
   Content and ContentOptions
 
   Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `after(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content right after the element.
-- ``prepend(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `prepend(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content right after the start tag of the element.
-- ``append(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `append(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content right before the end tag of the element.
-- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `replace(content Content, contentOptions ContentOptions optional)` : `Element`
   - Removes the element and inserts content in place of it.
-- ``setInnerContent(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `setInnerContent(content Content, contentOptions ContentOptions optional)` : `Element`
   - Replaces content of the element.
 - `remove()` : `Element`
   - Removes the element with all its content.
 - `removeAndKeepContent()` : `Element`
   - Removes the start tag and end tag of the element but keeps its inner content intact.
-- ``onEndTag(handler `Function<void>`)`` : `void`
+- `onEndTag(handler Function<void>)` : `void`
   - Registers a handler that is invoked when the end tag of the element is reached.
 
 ### EndTag
@@ -180,9 +180,9 @@ The `endTag` argument, used only in handlers registered with `element.onEndTag`,
 
 #### Methods
 
-- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `EndTag`
+- `before(content Content, contentOptions ContentOptions optional)` : `EndTag`
   - Inserts content right before the end tag.
-- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `EndTag`
+- `after(content Content, contentOptions ContentOptions optional)` : `EndTag`
   - Inserts content right after the end tag.
 
   Content and ContentOptions
@@ -208,15 +208,15 @@ Consider the following markup: `<div>Hey. How are you?</div>`. It is possible th
 
 #### Methods
 
-- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `before(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content before the element.
 
   Content and ContentOptions
 
   Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `after(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content right after the element.
-- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `replace(content Content, contentOptions ContentOptions optional)` : `Element`
   - Removes the element and inserts content in place of it.
 - `remove()` : `Element`
   - Removes the element with all its content.
@@ -242,15 +242,15 @@ class ElementHandler {
 
 #### Methods
 
-- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `before(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content before the element.
 
   Content and ContentOptions
 
   Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `after(content Content, contentOptions ContentOptions optional)` : `Element`
   - Inserts content right after the element.
-- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+- `replace(content Content, contentOptions ContentOptions optional)` : `Element`
   - Removes the element and inserts content in place of it.
 - `remove()` : `Element`
   - Removes the element with all its content.
@@ -291,7 +291,7 @@ class DocumentHandler {
 
 #### Methods
 
-- ``append(content `Content`, contentOptions `ContentOptions` optional)`` : `DocumentEnd`
+- `append(content Content, contentOptions ContentOptions optional)` : `DocumentEnd`
   - Inserts content after the end of the document.
 
   Content and ContentOptions

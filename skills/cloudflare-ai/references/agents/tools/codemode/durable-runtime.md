@@ -44,14 +44,13 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
    bun add @cloudflare/codemode
    ```
 
-
 2. Add a Worker Loader binding. `DynamicWorkerExecutor` uses this binding to run model-generated code in isolated Workers:
 
    ```jsonc
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -65,13 +64,12 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
 
    ```toml
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
    binding = "LOADER"
    ```
-
 
 3. Add the Agents and Code Mode plugins to `vite.config.ts`:
 
@@ -110,7 +108,6 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
    ```ts
    export { CodemodeRuntime } from "@cloudflare/codemode";
    ```
-
 
 4. Create a connector. Connectors are plain classes — they need no special file name or import syntax. This example stores notes in the Agent's Durable Object storage:
 

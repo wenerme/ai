@@ -37,7 +37,6 @@ To configure GitHub access in both GitHub and Cloudflare One:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-
 7. Select **Register application**.
 8. Make note of the **Client ID**.
 9. Select **Generate a new client secret** and copy the client secret to a safe place.

@@ -54,7 +54,6 @@ To create a rule:
    https://example.com/images/*
    ```
 
-
 4. Under **Then rewrite the path and/or query** > **Path**, enter the following values (using your account hash):
    - **Target path**: \[`/`] `images/*`
    - **Rewrite to**: \[`/`] `cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}`

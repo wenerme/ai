@@ -48,6 +48,7 @@ To upgrade a compute account:
    ```bash
    terraform init --upgrade
    ```
+
 7. Apply the upgraded Terraform configuration to your compute account:
 
    ```bash

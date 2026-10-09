@@ -159,7 +159,6 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
    }
    ```
 
-
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`). By default, the rule will be added at the end of the list of rules already in the ruleset.
 
    *Create a zone ruleset rulebash*
@@ -214,7 +213,6 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
    }
    ```
 
-
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Managed Ruleset (with ID `efb7b8c949ac4650a09736fc376e9aee`) for all incoming requests in the zone.
 
    *Create a zone rulesetbash*
@@ -242,8 +240,6 @@ The following example deploys the [Cloudflare Managed Ruleset](https://developer
    		]
    	}'
    ```
-
-
 
 ### Next steps
 

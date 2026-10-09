@@ -154,7 +154,6 @@ To create an authorization endpoint:
    	}'
    ```
 
-
 2. The response returns output similar to the following:
 
    *Example outputjson*
@@ -440,7 +439,6 @@ To get the domain of a proxy endpoint:
    }
    ```
 
-
 2. Find the proxy endpoint you want to use.
 3. Copy the value of the `subdomain` key.
 
@@ -458,7 +456,6 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    162.159.36.20
    ```
 
-
 3. Run `dig` on your proxy endpoint's AAAA records to get its IPv6 addresses. For example:
 
    ```bash
@@ -469,8 +466,6 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    2606:4700:54::a29f:2407
    2606:4700:5c::a29f:2e07
    ```
-
-
 
 1. Open a PowerShell terminal.
 2. Run `Resolve-DnsName` on your proxy endpoint's A records. Your proxy endpoint's IPv4 addresses will appear under `IPAddress`. For example:
@@ -486,7 +481,6 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    example.cloudflare-gateway.com                 A      300   Answer     162.159.36.20
    ```
 
-
 3. Run `Resolve-DnsName` on your proxy endpoint's AAAA records. Your proxy endpoint's IPv6 addresses will appear under `IPAddress`. For example:
 
    ```powershell
@@ -499,8 +493,6 @@ Using your proxy endpoint's domain, you can get the IP addresses assigned to the
    example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:5c::a29f:2e07
    example.cloudflare-gateway.com                 AAAA   300   Answer     2606:4700:54::a29f:2407
    ```
-
-
 
 To ensure responses are allowed through your firewall, add an inbound rule to allow the static IPv4 address for Cloudflare proxy endpoints, `162.159.193.21`.
 

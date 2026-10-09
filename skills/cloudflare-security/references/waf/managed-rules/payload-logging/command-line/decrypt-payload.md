@@ -24,7 +24,6 @@ Use the `matched-data-cli` tool to decrypt a payload in the command line.
    cd matched-data-cli
    ```
 
-
 4. Create two files: one with your private key and another one with the encrypted payload:
 
    ```sh
@@ -41,8 +40,6 @@ Use the `matched-data-cli` tool to decrypt a payload in the command line.
    ```sh
    decrypt -k private_key.txt encrypted_payload.txt
    ```
-
-
 
 Note
 

@@ -92,13 +92,11 @@ Use Workers to process emails with custom logic before forwarding or responding.
    cd email-processor
    ```
 
-
 2. Install the required package for creating email replies:
 
    ```sh
    npm install mimetext
    ```
-
 
 3. Add the `nodejs_compat` compatibility flag to your Wrangler configuration file. This is required for the `mimetext` package:
 
@@ -111,7 +109,6 @@ Use Workers to process emails with custom logic before forwarding or responding.
    ```toml
    compatibility_flags = [ "nodejs_compat" ]
    ```
-
 
 4. Create your email handler in `src/index.ts`:
 
@@ -191,8 +188,6 @@ Use Workers to process emails with custom logic before forwarding or responding.
    ```sh
    npm run deploy
    ```
-
-
 
 ### Configure routing to Worker
 

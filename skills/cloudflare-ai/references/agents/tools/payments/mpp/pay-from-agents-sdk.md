@@ -40,7 +40,6 @@ Create a [Cloudflare Agents project](https://developers.cloudflare.com/agents/ge
    bun add agents mppx viem
    ```
 
-
 2. Store the payment private key as a [Worker secret](https://developers.cloudflare.com/workers/configuration/secrets/):npmyarnpnpm
 
    ```
@@ -54,7 +53,6 @@ Create a [Cloudflare Agents project](https://developers.cloudflare.com/agents/ge
    ```
    pnpm wrangler secret put MPP_PRIVATE_KEY
    ```
-
 
 3. Create the payment method once:
 
@@ -87,8 +85,6 @@ Create a [Cloudflare Agents project](https://developers.cloudflare.com/agents/ge
      return [tempo.charge({ account })] as const;
    }
    ```
-
-
 
 Note
 

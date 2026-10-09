@@ -33,7 +33,6 @@ To configure 1.1.1.1 for your Google Cloud VPC network:
    1.0.0.1
    ```
 
-
 6. Select **Create**.
 
 DNS requests within the configured VPC networks will now use 1.1.1.1.

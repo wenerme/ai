@@ -122,7 +122,6 @@ The runtime does not wake a Durable Object when its container stops. Your Durabl
    }
    ```
 
-
 4. Replace `exec()`. It checks for a missed stop, watches a container it starts, schedules the next check, and records activity when the command finishes:
 
    *src/index.tsts*
@@ -259,7 +258,6 @@ The runtime does not wake a Durable Object when its container stops. Your Durabl
    ```
    pnpm wrangler deploy
    ```
-
 
 8. Run a command, stop the sandbox, and read the record, on the `workers.dev` URL that Wrangler prints:
 

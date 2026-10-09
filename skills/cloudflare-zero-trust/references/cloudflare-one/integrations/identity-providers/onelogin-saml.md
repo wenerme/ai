@@ -65,7 +65,6 @@ To add a metadata file to your OneLogin SAML configuration:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
    ```
 
-
 2. Save the file as an XML document.
 3. Upload the XML document to **OneLogin**.
 

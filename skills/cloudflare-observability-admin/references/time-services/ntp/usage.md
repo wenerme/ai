@@ -70,14 +70,11 @@ Exact configuration will vary by Linux distribution, but below are some example 
    server time.cloudflare.com iburst
    ```
 
-
 2. Restart the chronyd service.
 
    ```plaintext
    systemctl restart chronyd
    ```
-
-
 
 ### [systemd-timesyncd ↗︎](https://man7.org/linux/man-pages/man5/timesyncd.conf.5.html)
 
@@ -88,14 +85,11 @@ Exact configuration will vary by Linux distribution, but below are some example 
    NTP=time.cloudflare.com
    ```
 
-
 2. Restart the systemd-timesyncd service.
 
    ```plaintext
    systemctl restart systemd-timesyncd
    ```
-
-
 
 ### [ntpd ↗︎](https://linux.die.net/man/5/ntp.conf)
 
@@ -105,14 +99,11 @@ Exact configuration will vary by Linux distribution, but below are some example 
    server time.cloudflare.com iburst
    ```
 
-
 2. Restart the ntpd service.
 
    ```plaintext
    systemctl restart ntpd
    ```
-
-
 
 Was this helpful?
 

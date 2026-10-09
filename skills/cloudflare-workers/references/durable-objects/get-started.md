@@ -116,7 +116,6 @@ To add a Durable Object to an existing Worker, you need to:
   } satisfies ExportedHandler<Env>;
   ```
 
-
 - Update the Wrangler configuration file of your existing Worker to bind the Durable Object to the Worker.
 
 ## 2. Write a Durable Object class using SQL API

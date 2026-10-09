@@ -72,8 +72,6 @@ To create a new Kubernetes cluster in Google Cloud:
    service/kubernetes   ClusterIP   34.118.224.1   <none>        443/TCP   15m
    ```
 
-
-
 ## 2. Create pods for the web app
 
 A pod represents an instance of a running process in the cluster. In this example, we will deploy the [httpbin ↗︎](https://httpbin.org/) application with two pods and make the pods accessible inside the cluster at `httpbin-service:80`.
@@ -84,13 +82,11 @@ A pod represents an instance of a running process in the cluster. In this exampl
    mkdir tunnel-example
    ```
 
-
 2. Change into the directory:
 
    ```sh
    cd tunnel-example
    ```
-
 
 3. In the `tunnel-example` directory, create a new file called `httpbin.yaml`. This file defines the Kubernetes deployment for the httpbin app.
 
@@ -122,7 +118,6 @@ A pod represents an instance of a running process in the cluster. In this exampl
                - containerPort: 80
    ```
 
-
 4. Create a new `httpbinsvc.yaml` file. This file defines a Kubernetes service that allows other apps in the cluster (such as `cloudflared`) to access the set of httpbin pods.
 
    *httpbinsvc.yamlyaml*
@@ -144,13 +139,11 @@ A pod represents an instance of a running process in the cluster. In this exampl
          targetPort: 80
    ```
 
-
 5. Use the following command to run the application inside the cluster:
 
    ```sh
    kubectl create -f httpbin.yaml -f httpbinsvc.yaml
    ```
-
 
 6. Check the status of your deployment:
 
@@ -173,8 +166,6 @@ A pod represents an instance of a running process in the cluster. In this exampl
    NAME                                           DESIRED   CURRENT   READY   AGE
    replicaset.apps/httpbin-deployment-bc6689c5d   2         2         2       79s
    ```
-
-
 
 ## 3. Create a tunnel
 
@@ -210,13 +201,11 @@ Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes de
      token: <YOUR_TUNNEL_TOKEN>
    ```
 
-
 2. Create the secret:
 
    ```sh
    kubectl create -f tunnel-token.yaml
    ```
-
 
 3. Check the newly created secret:
 
@@ -228,8 +217,6 @@ Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes de
    NAME        TYPE     DATA   AGE
    tunnel-token   Opaque   1      100s
    ```
-
-
 
 ## 5. Create pods for cloudflared
 
@@ -295,7 +282,6 @@ To run the Cloudflare Tunnel in Kubernetes:
                periodSeconds: 10
    ```
 
-
 2. Deploy `cloudflared` to the cluster:
 
    ```sh
@@ -332,8 +318,6 @@ To run the Cloudflare Tunnel in Kubernetes:
    replicaset.apps/cloudflared-deployment-6d5f9f9666   2         2         2       22s
    replicaset.apps/httpbin-deployment-bc6689c5d        2         2         2       3m37s
    ```
-
-
 
 You should see two `cloudflared` pods and two `httpbin` pods with a `Running` status. If your `cloudflared` pods keep restarting, check the `command` syntax in `tunnel.yaml` and make sure that the [tunnel run parameters](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/) are in the correct order.
 

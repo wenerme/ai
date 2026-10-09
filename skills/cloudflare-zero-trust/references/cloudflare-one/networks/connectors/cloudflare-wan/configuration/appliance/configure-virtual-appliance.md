@@ -237,7 +237,6 @@ To create a profile:
 4. You need to decide if you want to turn on high availability for the Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 5. Select **Create and continue**.
 6. Select **Add Appliance**. This will display a list of devices associated with your account. For a Virtual Appliance to show up you need to:
-
    - **VMware:** Have already obtained your OVA package and license keys if you are installing on VMware.
    - **Proxmox:** Have already obtained your Virtual Appliance Script and license keys if you are installing on Proxmox. For more information, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
 7. If you have more than one Virtual Appliance, choose the one that corresponds to the on-ramp you are creating. Virtual Appliance devices are identified by a serial number, also known as a service tag. Use this information to choose the right Virtual Appliance.

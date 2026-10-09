@@ -76,7 +76,6 @@ Here are steps to set up environment variables for local development using eithe
    SECRET_TOKEN="my-local-secret-token"
    ```
 
-
 3. Run your `dev` command
 
    **Wrangler**npmyarnpnpm
@@ -107,8 +106,6 @@ Here are steps to set up environment variables for local development using eithe
    pnpm vite dev
    ```
 
-
-
 ## Multiple local environments
 
 To simulate different local environments, you can provide environment-specific files. For example, you might have a `staging` environment that requires different settings than your development environment.
@@ -125,7 +122,6 @@ To simulate different local environments, you can provide environment-specific f
    DEBUG="false"
    SECRET_TOKEN="staging-token"
    ```
-
 
 3. Specify the environment when running the `dev` command:
 
@@ -156,7 +152,6 @@ To simulate different local environments, you can provide environment-specific f
    ```
    CLOUDFLARE_ENV=staging pnpm vite dev
    ```
-
 
    - If using `.dev.vars.staging`, only the values from that file will be applied instead of `.dev.vars`.
    - If using `.env.staging`, the values will be merged with `.env` files, with the most specific file taking precedence.

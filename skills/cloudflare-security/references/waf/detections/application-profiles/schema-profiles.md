@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/application-profiles/sch
 
 # Schema Profiles
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Schema Profile models expected request fields and their constraints. You can learn one from traffic or supply an uploaded schema.
 
@@ -34,7 +34,7 @@ The field-learning threshold requires 1,000 qualifying requests. The boundary-le
 
 The field-learning threshold allows Cloudflare to learn request fields. The boundary-learning threshold allows Cloudflare to learn constraints such as numeric ranges and string lengths.
 
-The first profile appears after the next weekly learning run. This can take up to seven days after meeting the relevant threshold.
+With scheduled learning, the first profile appears after the next weekly run. This can take up to seven days after meeting the relevant threshold. You can also [request an ad-hoc schema learning run](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#run-schema-learning-manually) for the entire zone.
 
 ### Review learned content
 
@@ -52,7 +52,7 @@ Profiles can validate integers, strings, universally unique identifiers (UUIDs),
 
 Successful traffic can include bots, scanners, or malicious requests. Review the learned profile before enforcing its detection.
 
-Each weekly run can update a profile as qualifying traffic changes. For a fixed schema, [export the learned schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema) as OpenAPI and [upload it for validation](https://developers.cloudflare.com/api-shield/security/schema-validation/#upload-a-schema).
+Weekly and manual runs can update a profile as qualifying traffic changes. For a fixed schema, [export the learned schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema) as OpenAPI and [upload it for validation](https://developers.cloudflare.com/api-shield/security/schema-validation/#upload-a-schema).
 
 ### Consider limitations
 
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/#page","headline":"Schema Profiles","description":"Understand learned and uploaded Schema Profile sources.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/og.png?v=ec32dc38f2ec8e1e","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/#page","headline":"Schema Profiles","description":"Understand learned and uploaded Schema Profile sources.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/og.png?v=ec32dc38f2ec8e1e","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

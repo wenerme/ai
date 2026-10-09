@@ -32,7 +32,6 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    npx wrangler r2 bucket create my-backup-bucket
    ```
 
-
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL settings to your Wrangler configuration:
 
    ```jsonc
@@ -40,7 +39,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    	"name": "my-sandbox-worker",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-30",
+   	"compatibility_date": "2026-10-09",
    	"compatibility_flags": ["nodejs_compat"],
    	"containers": [
    		{
@@ -79,7 +78,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    name = "my-sandbox-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-30"
+   compatibility_date = "2026-10-09"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[containers]]

@@ -2,7 +2,6 @@
 
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
-- Status: Beta
 
 For recovery key tasks and root token generation, see [recovery key management](recovery_key.md).
 For Geo failover, see
@@ -197,8 +196,9 @@ Sidekiq logs.
 
 ## Secrets Manager is stuck in provisioning
 
-When you enable the Secrets Manager, the toggle can stay in a loading state with the status at
-`provisioning`. The Secrets Manager has no `failed` state, so any step that fails before activation
+When the GitLab Secrets Manager is provisioned for a project or group after someone selects **New secret**,
+the **Secrets manager** page can stay in the enabling state with the status at `provisioning`.
+The Secrets Manager has no `failed` state, so any step that fails before activation
 leaves the record stuck. The usual cause is that Sidekiq cannot reach OpenBao.
 
 To diagnose:
@@ -224,8 +224,9 @@ After the third retry, the `ProjectSecretsManagerReapOrphanTasksCronWorker` and
 The removal needs a working connection to OpenBao and can take up to 45 minutes after the third
 retry.
 
-After you fix the connectivity and the stuck secrets manager is removed, turn on the Secrets Manager
-again. If you get `Secrets manager deprovision is in progress`, wait and try again.
+After you fix the connectivity and the stuck secrets manager is removed, select **New secret** again
+to provision the secrets manager.
+If you get `Secrets manager deprovision is in progress`, wait and try again.
 
 ### Authentication mount missing after self-initialization
 

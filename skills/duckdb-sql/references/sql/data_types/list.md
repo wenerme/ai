@@ -10,7 +10,7 @@ See the [data types overview](https://duckdb.org/docs/current/sql/data_types/ove
 
 ## Creating Lists
 
-Lists can be created using the [`list_value(expr, ...)`](https://duckdb.org/docs/current/sql/functions/list.html#list_valueany-) function or the equivalent bracket notation `[expr, ...]`. The expressions can be constants or arbitrary expressions. To create a list from a table column, use the [`list`](https://duckdb.org/docs/current/sql/functions/aggregates.html#general-aggregate-functions) aggregate function.
+Lists can be created using the [`list_value(expr, ...)`](https://duckdb.org/docs/current/sql/functions/list.html#list_valuearg-) function or the equivalent bracket notation `[expr, ...]`. The expressions can be constants or arbitrary expressions. To create a list from a table column, use the [`list`](https://duckdb.org/docs/current/sql/functions/aggregates.html#general-aggregate-functions) aggregate function.
 
 List of integers:
 

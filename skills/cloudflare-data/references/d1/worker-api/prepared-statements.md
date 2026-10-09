@@ -88,8 +88,6 @@ stmt = self.env.DB.prepare(
   stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ?2 AND CustomerId = ?1").bind(1, "Alfreds Futterkiste")
   ```
 
-
-
 #### Static statements
 
 D1 API supports static statements. Static statements are SQL statements where the variables have been hard coded. When writing a static statement, you manually type the variable within the statement string.

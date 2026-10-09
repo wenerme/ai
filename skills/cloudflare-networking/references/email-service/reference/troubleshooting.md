@@ -218,7 +218,6 @@ To investigate a suppressed recipient:
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Use the `reason`, `expires_at`, and `read_only` fields to choose an action. For the complete decision table, refer to [Suppression rules](https://developers.cloudflare.com/email-service/concepts/suppressions/#suppression-rules).
 3. If `result` is empty, confirm that you queried the correct account. Then check the sending logs.
 4. If the logs still report a suppression, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).

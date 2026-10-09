@@ -34,21 +34,17 @@ Before you start, you need:
    export GOOGLE_GEMINI_BASE_URL="https://ai.example.com/google-ai-studio"
    ```
 
-
 2. Authenticate to Access and store the resulting token in `GEMINI_API_KEY`.
 
    ```bash
    export GEMINI_API_KEY="$(cloudflared access login -app https://ai.example.com)"
    ```
 
-
 3. Start Gemini CLI and send a prompt. Requests now route through AI Gateway.
 
    ```bash
    gemini
    ```
-
-
 
 Run the authentication command again when the Access token expires. You can also add these commands to a bootstrap script that starts Gemini CLI.
 

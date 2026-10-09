@@ -270,8 +270,6 @@ Now, you'll need a place to call your Workflow.
    } satisfies ExportedHandler<Env>;
    ```
 
-
-
 ## 5. Develop locally
 
 1. Start a local development server:
@@ -279,7 +277,6 @@ Now, you'll need a place to call your Workflow.
    ```sh
    npx wrangler dev
    ```
-
 
 2. To start a Workflow instance, open a new terminal window and run:
 
@@ -292,7 +289,6 @@ Now, you'll need a place to call your Workflow.
    ```json
    { "instanceId": "abc-123-def" }
    ```
-
 
 3. Check the status using the returned `instanceId`:
 

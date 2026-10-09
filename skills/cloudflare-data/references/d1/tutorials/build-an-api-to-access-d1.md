@@ -75,8 +75,6 @@ Create a new Worker to create and deploy your API.
    cd d1-http
    ```
 
-
-
 ## 2. Install Hono
 
 In this tutorial, you will use [Hono ↗︎](https://github.com/honojs/hono), an Express.js-style framework, to build the API.
@@ -99,8 +97,6 @@ In this tutorial, you will use [Hono ↗︎](https://github.com/honojs/hono), an
    bun add hono
    ```
 
-
-
 ## 3. Add an API\_KEY
 
 You need an API key to make authenticated calls to the API. To ensure that the API key is secure, add it as a [secret](https://developers.cloudflare.com/workers/configuration/secrets).
@@ -121,8 +117,6 @@ You need an API key to make authenticated calls to the API. To ensure that the A
    ```sh
    openssl rand -base64 32
    ```
-
-
 
 Note
 
@@ -159,8 +153,6 @@ To initialize the application, you need to import the required packages, initial
    	return auth(c, next);
    });
    ```
-
-
 
 ## 5. Add API endpoints
 
@@ -206,7 +198,6 @@ To initialize the application, you need to import the required packages, initial
    pnpm run dev
    ```
 
-
 3. To test the API locally, open a second terminal.
 4. In the second terminal, execute the below cURL command. Replace `YOUR_API_KEY` with the value you set in the `.dev.vars` file.
 
@@ -219,7 +210,6 @@ To initialize the application, you need to import the required packages, initial
    ```txt
    /api/all endpoint
    ```
-
 
 5. Stop the local server from running by pressing `x` in the first terminal.
 
@@ -247,8 +237,6 @@ If you do not have a D1 database already, you can create a new database with `wr
    database_id = "1234567890"
    ```
 
-
-
 Make a note of the displayed `database_name` and `database_id`. You will use this to reference the database by creating a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
 
 ## 7. Add a binding
@@ -275,7 +263,6 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
    database_id = "1234567890"
    ```
 
-
 3. In your `src/index.ts` file, update the `Bindings` type by adding `DB: D1Database`.
 
    ```ts
@@ -284,8 +271,6 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
    	API_KEY: string;
    };
    ```
-
-
 
 You can now access the database in the Hono application.
 
@@ -318,8 +303,6 @@ To create a table in your newly created database:
    ```sh
    npx wrangler d1 execute d1-http-example --file=./schemas/schema.sql
    ```
-
-
 
 Upon successful execution, a new table will be added to your database.
 
@@ -404,8 +387,6 @@ Your application can now access the D1 database. In this step, you will update t
    ...
    ```
 
-
-
 In the above code, the endpoints are updated to receive `query` and `params`. These queries and parameters are passed to the respective functions to interact with the database.
 
 - If the query is successful, you receive the result from the database.
@@ -428,7 +409,6 @@ Now that the API can query the database, you can test it locally.
    ```
    pnpm run dev
    ```
-
 
 2. In a new terminal window, execute the following cURL commands. Make sure to replace `YOUR_API_KEY` with the correct value.
 
@@ -455,8 +435,6 @@ Now that the API can query the database, you can test it locally.
    ```sh
    curl -H "Authorization: Bearer YOUR_API_KEY" "localhost:8787/api/exec" --data '{"query": "INSERT INTO posts (author, title, body, post_slug) VALUES ('\''Harshil'\'', '\''D1 HTTP API'\'', '\''Learn to create an API to query your D1 database.'\'','\''d1-http-api'\'')" }'
    ```
-
-
 
 If everything is implemented correctly, the above commands should result successful outputs.
 
@@ -502,7 +480,6 @@ Now that everything is working as expected, the last step is to deploy it to the
    [YOUR_API_KEY]
    ```
 
-
 4. Execute the `wrangler secret put` command to add an API to the deployed project.
 
    ```sh
@@ -525,7 +502,6 @@ Now that everything is working as expected, the last step is to deploy it to the
    ✨ Success! Uploaded secret API_KEY
    ```
 
-
 6. To test it, run the following cURL command with the correct `YOUR_API_KEY` and `DEPLOYED_APP_LINK`.
    - Use the `YOUR_API_KEY` you have generated as the secret API key.
    - You can also find your `DEPLOYED_APP_LINK` from the Cloudflare dashboard > **Workers & Pages** > **`d1-http`** > **Settings** > **Domains & Routes**.
@@ -533,8 +509,6 @@ Now that everything is working as expected, the last step is to deploy it to the
    ```sh
    curl -H "Authorization: Bearer YOUR_API_KEY" "https://DEPLOYED_APP_LINK/api/exec" --data '{"query": "SELECT 1"}'
    ```
-
-
 
 ## Summary
 

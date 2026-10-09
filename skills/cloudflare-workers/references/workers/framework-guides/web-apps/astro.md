@@ -82,7 +82,6 @@ When you run this command, C3 creates a new project directory, initiates <a href
    pnpm run dev
    ```
 
-
 3. **Deploy your project.**
 
    You can deploy your project to a [`*.workers.dev` subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.npmyarnpnpm
@@ -98,8 +97,6 @@ When you run this command, C3 creates a new project directory, initiates <a href
    ```
    pnpm run deploy
    ```
-
-
 
 ## Deploy an existing Astro project on Workers
 
@@ -221,8 +218,6 @@ The key part of this config is the <code>assets</code> field, which tells Wrangl
    pnpx wrangler@latest deploy
    ```
 
-
-
 ### If your site uses on demand rendering
 
 If your Astro project uses [on demand rendering (also known as SSR) ↗︎](https://docs.astro.build/en/guides/on-demand-rendering/), follow these steps:
@@ -257,7 +252,6 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
    _worker.js
    _routes.json
    ```
-
 
 3. **Add a Wrangler configuration file**
 
@@ -335,8 +329,6 @@ The key parts of this config are:
    ```
    pnpx wrangler@latest deploy
    ```
-
-
 
 ## Bindings
 

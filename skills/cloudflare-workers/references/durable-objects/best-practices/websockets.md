@@ -347,7 +347,7 @@ The following methods are available on the Hibernation WebSocket API. Use them t
 
 #### `WebSocket.serializeAttachment`
 
-- ``serializeAttachment(value `any`)`` : `void`
+- `serializeAttachment(value any)` : `void`
 
 Keeps a copy of `value` associated with the WebSocket connection.
 

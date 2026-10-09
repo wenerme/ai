@@ -40,7 +40,6 @@ Local Explorer works with both [Wrangler](https://developers.cloudflare.com/work
    pnpm wrangler dev
    ```
 
-
 2. Open Local Explorer in your browser:
    - **Wrangler**: press `e` in your terminal.
    - **Vite plugin**: navigate directly to `/cdn-cgi/local/explorer` on your dev server's route and port.

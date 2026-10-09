@@ -39,7 +39,6 @@ const euId = euSubnamespace.newUniqueId();
   console.assert(!euId1.equal(euId2), "This should always be true");
   ```
 
-
 - You will run into an error if the jurisdiction on your [`DurableObjectNamespace`](https://developers.cloudflare.com/durable-objects/api/namespace/) and the jurisdiction on [`DurableObjectId`](https://developers.cloudflare.com/durable-objects/api/id) are different.
 - You will not run into an error if the [`DurableObjectNamespace`](https://developers.cloudflare.com/durable-objects/api/namespace/) is not associated with a jurisdiction.
 - All [Durable Object ID methods](https://developers.cloudflare.com/durable-objects/api/id/) are valid on IDs within a namespace restricted to a jurisdiction.
@@ -49,8 +48,6 @@ const euId = euSubnamespace.newUniqueId();
   const euId = euSubnamespace.idFromName(name);
   const stub = env.MY_DURABLE_OBJECT.get(euId);
   ```
-
-
 
 Use \`DurableObjectNamespace.jurisdiction\`
 

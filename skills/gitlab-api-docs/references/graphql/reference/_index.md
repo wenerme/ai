@@ -2694,7 +2694,7 @@ Arguments:
 | <a id="query-vulnerabilities-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Returns only the vulnerabilities which have been resolved on default branch. |
 | <a id="query-vulnerabilities-identifiername"></a>`identifierName` | [`String`](#string) | Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="query-vulnerabilities-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="query-vulnerabilities-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="query-vulnerabilities-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="query-vulnerabilities-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="query-vulnerabilities-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="query-vulnerabilities-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -39884,7 +39884,7 @@ Fields:
 | <a id="countablevulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. On large projects, the field can time out and return null. Clients should check the top-level errors array for timeout errors, even when the HTTP response status is 200. |
 | <a id="countablevulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="countablevulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
-| <a id="countablevulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
+| <a id="countablevulnerability-malware"></a>`malware` | [`Boolean`](#boolean) | Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | <a id="countablevulnerability-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request that fixes the vulnerability. |
 | <a id="countablevulnerability-mergerequests"></a>`mergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests that are linked to fix the vulnerability. (see [Connections](#connections)) |
 | <a id="countablevulnerability-name"></a>`name` | [`String`](#string) | Name or title of the object. |
@@ -42806,6 +42806,7 @@ Fields:
 | <a id="duoworkflowagentpresence-sessionid"></a>`sessionId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Global ID of the session that created the object. |
 | <a id="duoworkflowagentpresence-sourcelink"></a>`sourceLink` | [`String`](#string) | URL or deep link to the location where the session was triggered from. Null unless the current user can read the session. |
 | <a id="duoworkflowagentpresence-sourcetype"></a>`sourceType` | [`DuoWorkflowSourceType`](#duoworkflowsourcetype) | Type of source that initiated the session. |
+| <a id="duoworkflowagentpresence-triggersource"></a>`triggerSource` | [`DuoWorkflowTriggerSource`](#duoworkflowtriggersource) | Kind of initiator that started the session. |
 | <a id="duoworkflowagentpresence-user"></a>`user` | [`UserCore`](#usercore) | User the session ran as. For triggered sessions, the account the trigger runs with. |
 | <a id="duoworkflowagentpresence-userpermissions"></a>`userPermissions` | [`DuoWorkflowAgentPresencePermissions!`](#duoworkflowagentpresencepermissions) | Permissions for the current user on the session. |
 
@@ -45773,7 +45774,7 @@ Fields:
 | <a id="group-requiretwofactorauthentication"></a>`requireTwoFactorAuthentication` | [`Boolean`](#boolean) | Indicates if all users in the group are required to set up two-factor authentication. |
 | <a id="group-rootnamespace"></a>`rootNamespace` | [`Namespace!`](#namespace) | Top-level namespace of the namespace. |
 | <a id="group-rootstoragestatistics"></a>`rootStorageStatistics` | [`RootStorageStatistics`](#rootstoragestatistics) | Aggregated storage statistics of the namespace. Only available for root namespaces. |
-| <a id="group-secretsmanagerentitlement"></a>`secretsManagerEntitlement`  | [`SecretsManagerEntitlement`](#secretsmanagerentitlement) | Introduced in GitLab 19.2. Status: Experiment. Secrets Manager entitlement for the top-level group. Returns null for non-root groups, when the `secrets_manager_paid_experience` feature flag is disabled, INELIGIBLE when unresolvable. |
+| <a id="group-secretsmanagerentitlement"></a>`secretsManagerEntitlement`  | [`SecretsManagerEntitlement`](#secretsmanagerentitlement) | Introduced in GitLab 19.2. Status: Experiment. Secrets Manager entitlement for the top-level group. Returns null for non-root groups, INELIGIBLE when unresolvable. |
 | <a id="group-securitycategories"></a>`securityCategories` | [`[SecurityCategory!]`](#securitycategory) | Security categories for the group. |
 | <a id="group-securitypolicyproject"></a>`securityPolicyProject` | [`Project`](#project) | Security policy project assigned to the namespace. |
 | <a id="group-securityposturecounters"></a>`securityPostureCounters`  | [`SecurityPostureCounters`](#securityposturecounters) | Introduced in GitLab 19.0. Status: Experiment. Security posture counters for the group. |
@@ -47614,7 +47615,7 @@ Arguments:
 | <a id="group-vulnerabilities-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Returns only the vulnerabilities which have been resolved on default branch. |
 | <a id="group-vulnerabilities-identifiername"></a>`identifierName` | [`String`](#string) | Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="group-vulnerabilities-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="group-vulnerabilities-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-vulnerabilities-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-vulnerabilities-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="group-vulnerabilities-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="group-vulnerabilities-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -47717,7 +47718,7 @@ Arguments:
 | <a id="group-vulnerabilityseveritiescount-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Filter vulnerabilities that do or do not have a resolution. |
 | <a id="group-vulnerabilityseveritiescount-identifiername"></a>`identifierName`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="group-vulnerabilityseveritiescount-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="group-vulnerabilityseveritiescount-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-vulnerabilityseveritiescount-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-vulnerabilityseveritiescount-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="group-vulnerabilityseveritiescount-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="group-vulnerabilityseveritiescount-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -48371,7 +48372,7 @@ Fields:
 | <a id="groupsecretsmanager-readonly"></a>`readOnly`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Whether the instance is in strict read-only mode (Geo secondary or maintenance mode). No secrets or permissions can be created, updated, or deleted while it is true. |
 | <a id="groupsecretsmanager-status"></a>`status` | [`GroupSecretsManagerStatus`](#groupsecretsmanagerstatus) | Status of the group secrets manager. |
 | <a id="groupsecretsmanager-userpermissions"></a>`userPermissions` | [`GroupSecretsManagerPermissions!`](#groupsecretsmanagerpermissions) | Permissions for the current user on the resource. |
-| <a id="groupsecretsmanager-writedenialreason"></a>`writeDenialReason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the Secrets Manager entitlement does not allow secrets or their permissions to be created or updated. Null when it allows them, or when the `secrets_manager_paid_experience` feature flag is disabled. |
+| <a id="groupsecretsmanager-writedenialreason"></a>`writeDenialReason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the Secrets Manager entitlement does not allow secrets or their permissions to be created or updated. Null when it allows them. |
 
 ### `GroupSecretsManagerPermissions`
 
@@ -48956,7 +48957,7 @@ Arguments:
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Filter vulnerabilities that do or do not have a resolution. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-identifiername"></a>`identifierName`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="instancesecuritydashboard-vulnerabilityseveritiescount-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="instancesecuritydashboard-vulnerabilityseveritiescount-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="instancesecuritydashboard-vulnerabilityseveritiescount-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -58601,7 +58602,7 @@ Arguments:
 | <a id="project-vulnerabilities-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Returns only the vulnerabilities which have been resolved on default branch. |
 | <a id="project-vulnerabilities-identifiername"></a>`identifierName` | [`String`](#string) | Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="project-vulnerabilities-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="project-vulnerabilities-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="project-vulnerabilities-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="project-vulnerabilities-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="project-vulnerabilities-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="project-vulnerabilities-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -58691,7 +58692,7 @@ Arguments:
 | <a id="project-vulnerabilityseveritiescount-hasresolution"></a>`hasResolution` | [`Boolean`](#boolean) | Filter vulnerabilities that do or do not have a resolution. |
 | <a id="project-vulnerabilityseveritiescount-identifiername"></a>`identifierName`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Filter vulnerabilities by identifier name. Ignored when applied on instance security dashboard queries. |
 | <a id="project-vulnerabilityseveritiescount-image"></a>`image` | [`[String!]`](#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |
-| <a id="project-vulnerabilityseveritiescount-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="project-vulnerabilityseveritiescount-malware"></a>`malware` | [`Boolean`](#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="project-vulnerabilityseveritiescount-owasptopten"></a>`owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |
 | <a id="project-vulnerabilityseveritiescount-owasptopten2021"></a>`owaspTopTen2021`  | [`[VulnerabilityOwasp2021Top10!]`](#vulnerabilityowasp2021top10) | Introduced in GitLab 18.1. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
 | <a id="project-vulnerabilityseveritiescount-owasptopten2025"></a>`owaspTopTen2025`  | [`[VulnerabilityOwasp2025Top10!]`](#vulnerabilityowasp2025top10) | Introduced in GitLab 19.0. Status: Experiment. Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |
@@ -59380,7 +59381,7 @@ Fields:
 | <a id="projectsecretsmanager-readonly"></a>`readOnly`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Whether the instance is in strict read-only mode (Geo secondary or maintenance mode). No secrets or permissions can be created, updated, or deleted while it is true. |
 | <a id="projectsecretsmanager-status"></a>`status` | [`ProjectSecretsManagerStatus`](#projectsecretsmanagerstatus) | Status of the project secrets manager. |
 | <a id="projectsecretsmanager-userpermissions"></a>`userPermissions` | [`ProjectSecretsManagerPermissions!`](#projectsecretsmanagerpermissions) | Permissions for the current user on the resource. |
-| <a id="projectsecretsmanager-writedenialreason"></a>`writeDenialReason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the Secrets Manager entitlement does not allow secrets or their permissions to be created or updated. Null when it allows them, or when the `secrets_manager_paid_experience` feature flag is disabled. |
+| <a id="projectsecretsmanager-writedenialreason"></a>`writeDenialReason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the Secrets Manager entitlement does not allow secrets or their permissions to be created or updated. Null when it allows them. |
 
 ### `ProjectSecretsManagerPermissions`
 
@@ -63560,7 +63561,7 @@ Fields:
 | <a id="vulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. On large projects, the field can time out and return null. Clients should check the top-level errors array for timeout errors, even when the HTTP response status is 200. |
 | <a id="vulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="vulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
-| <a id="vulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
+| <a id="vulnerability-malware"></a>`malware` | [`Boolean`](#boolean) | Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | <a id="vulnerability-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request that fixes the vulnerability. |
 | <a id="vulnerability-mergerequests"></a>`mergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests that are linked to fix the vulnerability. (see [Connections](#connections)) |
 | <a id="vulnerability-name"></a>`name` | [`String`](#string) | Name or title of the object. |
@@ -66171,6 +66172,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="codereviewmetrics-assignduosuggestedreviewereventcount"></a>`assignDuoSuggestedReviewerEventCount` | [`Int`](#int) | Total count of `assign_duo_suggested_reviewer` event. |
+| <a id="codereviewmetrics-createduosuggestedreviewerseventcount"></a>`createDuoSuggestedReviewersEventCount` | [`Int`](#int) | Total count of `create_duo_suggested_reviewers` event. |
 | <a id="codereviewmetrics-encounterduocodereviewerrorduringrevieweventcount"></a>`encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
 | <a id="codereviewmetrics-excludedfilesfromduocoderevieweventcount"></a>`excludedFilesFromDuoCodeReviewEventCount` | [`Int`](#int) | Total count of `excluded_files_from_duo_code_review` event. |
 | <a id="codereviewmetrics-findnoissuesduocodereviewafterrevieweventcount"></a>`findNoIssuesDuoCodeReviewAfterReviewEventCount` | [`Int`](#int) | Total count of `find_no_issues_duo_code_review_after_review` event. |
@@ -66190,6 +66193,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="codereviewusermetrics-assignduosuggestedreviewereventcount"></a>`assignDuoSuggestedReviewerEventCount` | [`Int`](#int) | Total count of `assign_duo_suggested_reviewer` event. |
+| <a id="codereviewusermetrics-createduosuggestedreviewerseventcount"></a>`createDuoSuggestedReviewersEventCount` | [`Int`](#int) | Total count of `create_duo_suggested_reviewers` event. |
 | <a id="codereviewusermetrics-encounterduocodereviewerrorduringrevieweventcount"></a>`encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
 | <a id="codereviewusermetrics-excludedfilesfromduocoderevieweventcount"></a>`excludedFilesFromDuoCodeReviewEventCount` | [`Int`](#int) | Total count of `excluded_files_from_duo_code_review` event. |
 | <a id="codereviewusermetrics-findnoissuesduocodereviewafterrevieweventcount"></a>`findNoIssuesDuoCodeReviewAfterReviewEventCount` | [`Int`](#int) | Total count of `find_no_issues_duo_code_review_after_review` event. |
@@ -66803,6 +66808,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | <a id="aifeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aifeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aifeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
+| <a id="aifeatures-risk_classification"></a>`RISK_CLASSIFICATION` | Risk classification feature setting. |
 | <a id="aifeatures-sast_vulnerability_fp_detection"></a>`SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | <a id="aifeatures-sast_vulnerability_resolution"></a>`SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
 | <a id="aifeatures-secret_vulnerability_fp_detection"></a>`SECRET_VULNERABILITY_FP_DETECTION` | Secret vulnerability fp detection feature setting. |
@@ -66923,6 +66929,7 @@ AI features that can be configured through the Model Selection feature settings.
 | <a id="aimodelselectionfeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
+| <a id="aimodelselectionfeatures-risk_classification"></a>`RISK_CLASSIFICATION` | Risk classification feature setting. |
 | <a id="aimodelselectionfeatures-sast_vulnerability_fp_detection"></a>`SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | <a id="aimodelselectionfeatures-sast_vulnerability_resolution"></a>`SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
 | <a id="aimodelselectionfeatures-secret_vulnerability_fp_detection"></a>`SECRET_VULNERABILITY_FP_DETECTION` | Secret vulnerability fp detection feature setting. |
@@ -67002,6 +67009,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-agent_platform_session_started"></a>`AGENT_PLATFORM_SESSION_STARTED` | Agent platform session was started. |
 | <a id="aiusageeventtype-agent_platform_session_stopped"></a>`AGENT_PLATFORM_SESSION_STOPPED` | Agent platform session was stopped. |
 | <a id="aiusageeventtype-ai_duo_messaging_feedback_submitted"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED` | Feedback was submitted on a Duo agent response in a messaging surface. |
+| <a id="aiusageeventtype-assign_duo_suggested_reviewer"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER` | Duo suggested reviewers were added as reviewers to a merge request. |
 | <a id="aiusageeventtype-click_duo_agentic_subscription_expired_learn_more"></a>`CLICK_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_LEARN_MORE` | User clicked learn more on Duo Agent Platform subscription expired state. |
 | <a id="aiusageeventtype-click_duo_agentic_subscription_expired_upgrade"></a>`CLICK_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_UPGRADE` | User clicked upgrade on Duo Agent Platform subscription expired state. |
 | <a id="aiusageeventtype-code_suggestions_requested"></a>`CODE_SUGGESTIONS_REQUESTED` | Code Suggestion was requested. Old data only. |
@@ -67010,6 +67018,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-code_suggestion_rejected_in_ide"></a>`CODE_SUGGESTION_REJECTED_IN_IDE` | Code Suggestion was rejected in IDE. |
 | <a id="aiusageeventtype-code_suggestion_shown_in_ide"></a>`CODE_SUGGESTION_SHOWN_IN_IDE` | Code Suggestion was shown in IDE. |
 | <a id="aiusageeventtype-complete_duo_chat_response"></a>`COMPLETE_DUO_CHAT_RESPONSE` | Duo Chat response was completed, with an answer or an error. |
+| <a id="aiusageeventtype-create_duo_suggested_reviewers"></a>`CREATE_DUO_SUGGESTED_REVIEWERS` | Duo suggested reviewers for a merge request. |
 | <a id="aiusageeventtype-duo_workflow_workload_completed"></a>`DUO_WORKFLOW_WORKLOAD_COMPLETED` | Duo Workflow workload was completed. |
 | <a id="aiusageeventtype-encounter_duo_code_review_error_during_review"></a>`ENCOUNTER_DUO_CODE_REVIEW_ERROR_DURING_REVIEW` | Duo Code Review encountered an error. |
 | <a id="aiusageeventtype-excluded_files_from_duo_code_review"></a>`EXCLUDED_FILES_FROM_DUO_CODE_REVIEW` | Files were excluded from Duo Code Review. |
@@ -67068,6 +67077,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-ai_catalog_total_count_desc"></a>`AI_CATALOG_TOTAL_COUNT_DESC` | Ai Catalog total event count in descending order. |
 | <a id="aiusermetricssort-ai_duo_messaging_feedback_submitted_asc"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED_ASC` | Ai Duo Messaging Feedback Submitted event count in ascending order. |
 | <a id="aiusermetricssort-ai_duo_messaging_feedback_submitted_desc"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED_DESC` | Ai Duo Messaging Feedback Submitted event count in descending order. |
+| <a id="aiusermetricssort-assign_duo_suggested_reviewer_asc"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER_ASC` | Assign Duo Suggested Reviewer event count in ascending order. |
+| <a id="aiusermetricssort-assign_duo_suggested_reviewer_desc"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER_DESC` | Assign Duo Suggested Reviewer event count in descending order. |
 | <a id="aiusermetricssort-chat_total_count_asc"></a>`CHAT_TOTAL_COUNT_ASC` | Chat total event count in ascending order. |
 | <a id="aiusermetricssort-chat_total_count_desc"></a>`CHAT_TOTAL_COUNT_DESC` | Chat total event count in descending order. |
 | <a id="aiusermetricssort-click_duo_agentic_subscription_expired_learn_more_asc"></a>`CLICK_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_LEARN_MORE_ASC` | Click Duo Agentic Subscription Expired Learn More event count in ascending order. |
@@ -67090,6 +67101,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-code_suggestion_shown_in_ide_desc"></a>`CODE_SUGGESTION_SHOWN_IN_IDE_DESC` | Code Suggestion Shown In Ide event count in descending order. |
 | <a id="aiusermetricssort-complete_duo_chat_response_asc"></a>`COMPLETE_DUO_CHAT_RESPONSE_ASC` | Complete Duo Chat Response event count in ascending order. |
 | <a id="aiusermetricssort-complete_duo_chat_response_desc"></a>`COMPLETE_DUO_CHAT_RESPONSE_DESC` | Complete Duo Chat Response event count in descending order. |
+| <a id="aiusermetricssort-create_duo_suggested_reviewers_asc"></a>`CREATE_DUO_SUGGESTED_REVIEWERS_ASC` | Create Duo Suggested Reviewers event count in ascending order. |
+| <a id="aiusermetricssort-create_duo_suggested_reviewers_desc"></a>`CREATE_DUO_SUGGESTED_REVIEWERS_DESC` | Create Duo Suggested Reviewers event count in descending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_asc"></a>`DUO_MESSAGING_TOTAL_COUNT_ASC` | Duo Messaging total event count in ascending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_desc"></a>`DUO_MESSAGING_TOTAL_COUNT_DESC` | Duo Messaging total event count in descending order. |
 | <a id="aiusermetricssort-duo_workflow_total_count_asc"></a>`DUO_WORKFLOW_TOTAL_COUNT_ASC` | Duo Workflow total event count in ascending order. |
@@ -69094,6 +69107,18 @@ Source of a Duo Workflow tool call approval decision, as reported by the client.
 | <a id="duoworkflowtoolcallapprovalsource-preapproved_config"></a>`PREAPPROVED_CONFIG`  | Introduced in GitLab 19.3. Status: Experiment. Approval granted through a pre-approved tool or pattern configuration. |
 | <a id="duoworkflowtoolcallapprovalsource-pretooluse_hook"></a>`PRETOOLUSE_HOOK`  | Introduced in GitLab 19.3. Status: Experiment. Approval granted automatically by a PreToolUse hook. |
 | <a id="duoworkflowtoolcallapprovalsource-user_explicit"></a>`USER_EXPLICIT`  | Introduced in GitLab 19.3. Status: Experiment. Explicit approval by a user action. |
+
+### `DuoWorkflowTriggerSource`
+
+Kind of initiator that started a Duo Workflow session.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowtriggersource-flow"></a>`FLOW` | Session started by another session. |
+| <a id="duoworkflowtriggersource-human"></a>`HUMAN` | Session started by a user action. |
+| <a id="duoworkflowtriggersource-scheduled"></a>`SCHEDULED` | Session started by a flow schedule. |
+| <a id="duoworkflowtriggersource-system"></a>`SYSTEM` | Session started by the system without a user. |
+| <a id="duoworkflowtriggersource-verification"></a>`VERIFICATION` | Session started by a functional verification check. |
 
 ### `DuoWorkflowWorkItemLinkType`
 
@@ -71249,6 +71274,7 @@ Compliance status of the project control.
 | Value | Description |
 | ----- | ----------- |
 | <a id="projectcompliancecontrolstatus-fail"></a>`FAIL` | Fail. |
+| <a id="projectcompliancecontrolstatus-not_applicable"></a>`NOT_APPLICABLE` | Not applicable. |
 | <a id="projectcompliancecontrolstatus-pass"></a>`PASS` | Pass. |
 | <a id="projectcompliancecontrolstatus-pending"></a>`PENDING` | Pending. |
 

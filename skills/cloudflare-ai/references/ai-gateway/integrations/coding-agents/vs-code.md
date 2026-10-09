@@ -42,7 +42,6 @@ Service token requests do not include `cf.user_id` because they do not represent
    {"cf-access-client-id":"<CLIENT_ID>","cf-access-client-secret":"<CLIENT_SECRET>"}
    ```
 
-
 5. Select **Chat Completions** as the API type.
 6. In the `chatLanguageModels.json` file that opens, configure your models. Replace `ai.example.com` with your AI Gateway custom domain. Replace the model IDs and token limits with values supported by your models.
 

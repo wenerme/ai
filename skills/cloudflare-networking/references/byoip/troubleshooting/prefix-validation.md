@@ -63,7 +63,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
      }
    ```
 
-
 2. Consider the states returned in the API response (for example, `missing`, `invalid`, `mismatch_asn`) and review your IRR record, ROA, and ownership validation method accordingly.
    - Information in the IRR and ROA records should meet the [onboarding prerequisites](https://developers.cloudflare.com/byoip/get-started/#before-you-begin).
    - [Ownership validation](https://developers.cloudflare.com/byoip/get-started/#validate-prefix-ownership) requires a matching ROA and the correct validation token found in all DNS TXT records or in the IRR record.
@@ -84,8 +83,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--request POST \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
-
-
 
 Was this helpful?
 

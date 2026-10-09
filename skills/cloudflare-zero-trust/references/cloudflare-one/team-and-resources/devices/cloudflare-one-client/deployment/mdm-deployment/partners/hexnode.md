@@ -42,7 +42,6 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
    }
    ```
 
-
 2. Push the script file to the devices using Hexnode.
 3. On your Hexnode console, go to **Manage** > **Devices**.
 4. Select your device name. This will take you to the **Device Summary**.
@@ -80,7 +79,6 @@ After deploying the Cloudflare One Client, you can check its connection progress
    </plist>
    ```
 
-
 7. On your Hexnode console, go to **Policies**.
 8. Create a new policy and provide a policy name.
 9. Go to **macOS** > **App Management** > **Mandatory Apps** and start setting up the policy.
@@ -114,7 +112,6 @@ After deploying the Cloudflare One Client, you can check its connection progress
    <string>https://support.example.com</string>
    </dict>
    ```
-
 
 5. Upload the app configurations in Hexnode:
    1. On your Hexnode console, go to the **Apps** tab.

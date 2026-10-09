@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/http-headers/og.
 
 # Cloudflare HTTP headers
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Request headers
 
@@ -40,7 +40,9 @@ In same-zone Worker subrequests, the value of `CF-Connecting-IP` reflects the va
 
 In cross-zone subrequests from one Cloudflare zone to another Cloudflare zone, the `CF-Connecting-IP` value will be set to the Worker client IP address `'2a06:98c0:3600::103'` for security reasons.
 
-For Worker subrequests destined for a non-Cloudflare customer zone, the `CF-Connecting-IP` and `x-real-ip` headers will both reflect the client's IP address, with only the `x-real-ip` header able to be altered.
+For Worker subrequests destined for a non-Cloudflare customer zone, the Worker script controls the client IP headers: both `CF-Connecting-IP` and `x-real-ip` can be altered by the Worker. If the subrequest forwards the original request's headers unchanged, both headers reflect the client's IP address.
+
+To authenticate that traffic originates from your own zone, use zone-level or per-hostname [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) with your own certificate, or [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
 When no Worker subrequest is triggered, `cf-connecting-ip` reflects the client's IP address and the `x-real-ip` header is stripped.
 
@@ -203,5 +205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/http-headers/og.png?v=a04ff165f044fa3a","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/http-headers/#page","headline":"Cloudflare HTTP headers","description":"Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.","url":"https://developers.cloudflare.com/fundamentals/reference/http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/http-headers/og.png?v=a04ff165f044fa3a","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

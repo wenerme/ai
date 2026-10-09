@@ -169,8 +169,6 @@ This project uses React Router in combination with the <a href="https://develope
    pnpm run deploy
    ```
 
-
-
 ## Use bindings with React Router
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.

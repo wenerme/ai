@@ -239,7 +239,6 @@ In this project, `cf dev` does not accept options such as `--port`. To change th
    cf auth login
    ```
 
-
 2. Deploy the Worker:
 
    ```sh

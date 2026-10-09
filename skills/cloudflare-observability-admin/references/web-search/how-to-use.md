@@ -62,7 +62,7 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
      "name": "web-search-worker",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-10-02",
+     "compatibility_date": "2026-10-09",
      "ai": {
        "binding": "AI"
      }
@@ -73,12 +73,11 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
    name = "web-search-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-02"
+   compatibility_date = "2026-10-09"
 
    [ai]
    binding = "AI"
    ```
-
 
 2. Call `env.AI.websearch()` with your gateway ID and query:
 
@@ -102,8 +101,6 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
    	},
    } satisfies ExportedHandler<Env>;
    ```
-
-
 
 `websearch()` returns a standard `Response` object. Call `response.json()` to read the results.
 

@@ -195,8 +195,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
-
 Custom applications defined with **Source subnets** can also be marked as prioritized this way. Refer to [Breakout by source](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source) for the full set of source-based match criteria.
 
 ### Delete an application from Cloudflare One Appliance
@@ -271,8 +269,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		"messages": []
    }
    ```
-
-
 
 Was this helpful?
 

@@ -67,7 +67,6 @@ Stream notifications are entirely customizable by the customer. Action will depe
 12. When you are done, select **Create**.
 
 
-
 *Example webhook payloadjson*
 
 ```json

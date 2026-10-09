@@ -24,6 +24,7 @@ The Non-realtime WebSockets API allows you to establish persistent connections f
    ```plaintext
    wss://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}
    ```
+
 3. Open a WebSocket connection authenticated with a Cloudflare token with the AI Gateway Run permission.
 
 Note

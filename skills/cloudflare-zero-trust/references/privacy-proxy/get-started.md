@@ -55,14 +55,11 @@ curl -v \
      --proxy https://your-proxy.example.com:443
    ```
 
-
 2. Configure your browser to use the local SOCKS5 proxy:
 
    ```sh
    google-chrome --proxy-server="socks5://127.0.0.1:1987"
    ```
-
-
 
 ---
 

@@ -88,7 +88,6 @@ To get captive portal logs:
    warp-diag captive-portal
    ```
 
-
 3. When prompted with `You're currently connected via interface '<INTERFACE>' (<SSID>). Is this interface connected to the network causing issues?`, select **Yes** to confirm.
 
 1. Open the Cloudflare One Client.

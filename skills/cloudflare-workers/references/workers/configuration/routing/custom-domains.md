@@ -234,7 +234,6 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
    custom_domain = true
    ```
 
-
 4. Run `npx wrangler deploy` to create the Custom Domain your Worker will run on.
 
 Was this helpful?

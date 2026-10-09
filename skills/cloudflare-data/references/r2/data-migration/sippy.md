@@ -162,6 +162,7 @@ To create credentials with the correct permissions:
    	]
    }
    ```
+
 3. Create a new user and attach the created policy to that user.
 
 You can now use both the Access Key ID and Secret Access Key when enabling Sippy.

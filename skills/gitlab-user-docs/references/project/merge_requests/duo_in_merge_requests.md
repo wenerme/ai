@@ -58,6 +58,7 @@ based on your add-on. Users with the Owner role for the group can configure whic
 | Required add-on     | None. Uses GitLab Credits.                                                           | GitLab Duo Enterprise                                     |
 | Context awareness   | Enhanced understanding of repository structure and cross-file dependencies           | Focused on the merge request and the file diffs within it |
 | Analysis            | Multi-step agentic reasoning                                                         | Single-pass                                               |
+| Follow-up reviews   | Uses earlier GitLab Duo threads and replies to evaluate new changes                  | No                                                |
 | Session creation    | Yes                                                                          | No                                                |
 | Automatic reviews   | Yes                                                                          | Yes                                               |
 | Custom instructions | Yes                                                                          | Yes                                               |
@@ -72,6 +73,7 @@ By default, the code review feature that GitLab runs depends on the user that in
 | Review requested manually               | The user who requests the review.    |
 | Merge request created (not a draft)     | The merge request author.            |
 | Draft merge request marked as ready     | The merge request author.            |
+| New commits pushed to the source branch, with [**Start a new review on push**](../../duo_agent_platform/flows/foundational_flows/code_review/_index.md#start-a-new-review-on-push) turned on. Code Review Flow only. | The merge request author. |
 
 If the initiating user has a GitLab Duo Enterprise seat, GitLab Duo Code Review runs. If not, Code Review Flow
 runs. Both features can run in the same project.
@@ -168,10 +170,7 @@ Adding this functionality is proposed in [issue 560116](https://gitlab.com/gitla
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600990) as a [beta](../../../policy/development_stages_support.md) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `resolve_discussion_with_duo`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/603482) in GitLab 19.3.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `resolve_discussion_with_duo` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260810) in GitLab 19.5.
 
 Use GitLab Duo to resolve review discussions on merge requests.
 

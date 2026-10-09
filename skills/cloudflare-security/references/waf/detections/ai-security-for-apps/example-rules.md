@@ -34,8 +34,6 @@ A customer support chatbot should not engage with prompts about violence or hate
   { "error": "content_policy", "message": "Your message could not be processed because it touches on a topic outside this assistant's scope. Please rephrase your question." }
   ```
 
-
-
 Your application can check for a non-200 response and display the `message` field to the user, keeping the experience conversational instead of showing a raw block page.
 
 ## Block prompt injection attempts from automated sources outside your country
@@ -73,8 +71,6 @@ A financial services application legitimately handles credit card and bank accou
   ```txt
   { "error": "pii_blocked", "message": "Financial account information cannot be submitted from external networks. If you are an internal agent, connect to the corporate network and try again." }
   ```
-
-
 
 Internal agents on your corporate network (identified by ASN) can submit financial PII to the AI assistant as part of their workflow, while external users are blocked. You could further refine this by combining with [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) service tokens or [mTLS](https://developers.cloudflare.com/ssl/client-certificates/) for stronger identity verification.
 

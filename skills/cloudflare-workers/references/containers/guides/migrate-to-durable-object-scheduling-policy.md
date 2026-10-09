@@ -165,7 +165,6 @@ Custom instance objects use camel case at runtime. Rename `memory_mib` to `memor
    storage = "sqlite"
    ```
 
-
 2. **Move startup configuration into the replacement class.**
 
    Select the image and instance size when the replacement Durable Object starts its Container:

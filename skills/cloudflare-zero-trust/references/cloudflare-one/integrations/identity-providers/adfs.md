@@ -151,7 +151,6 @@ To enable Cloudflare One to accept the claims and assertions sent from AD FS, fo
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-
 7. Under **Signing certificate**, paste the exported certificate.
 
    There can be no spaces or return characters in the text field.

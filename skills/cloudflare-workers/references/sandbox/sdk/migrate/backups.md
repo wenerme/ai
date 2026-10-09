@@ -44,7 +44,6 @@ This page replaces `createBackup()`, `restoreBackup()`, their options, and the b
    bun add @cloudflare/sandbox
    ```
 
-
 2. Copy the helper binary into your image, if the `Dockerfile` does not copy it yet:
 
    *Dockerfiledockerfile*
@@ -105,7 +104,6 @@ This page replaces `createBackup()`, `restoreBackup()`, their options, and the b
    // Like 0.12, refuse a backup that expires within a minute.
    const EXPIRY_MARGIN_MS = 60 * 1000;
    ```
-
 
 5. Add a `DirectoryBackup` field to `MySandbox`:
 
@@ -264,7 +262,6 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
    RUN apt-get update && apt-get install -y --no-install-recommends squashfs-tools && rm -rf /var/lib/apt/lists/*
    ```
 
-
 2. Add a method to `MySandbox` that converts a 0.12 backup object:
 
    *src/index.tsts*
@@ -332,8 +329,6 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
    	`backups/${old.id}/meta.json`,
    ]);
    ```
-
-
 
 A converted directory keeps its files, empty directories, symbolic links, hard links, and permissions. Modification times keep whole seconds only, because SquashFS does not store fractions of a second. If `unsquashfs` fails, the directory is incomplete, and calling `convert()` again replaces it.
 

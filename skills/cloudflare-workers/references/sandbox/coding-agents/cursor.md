@@ -52,13 +52,11 @@ The template deploys a Worker, a Durable Object namespace, a container applicati
    npm install
    ```
 
-
 2. Log in to your Cloudflare account:
 
    ```sh
    npx wrangler login
    ```
-
 
 3. Create the R2 bucket for optional repository snapshots:
 
@@ -91,7 +89,6 @@ The template deploys a Worker, a Durable Object namespace, a container applicati
      }
    }
    ```
-
 
 7. Set `containers[].max_instances` to the maximum number of concurrent sessions that the deployment must support.
 8. Deploy the Worker and container:
@@ -141,7 +138,6 @@ Repository snapshots are an optional cache for repository-bound agents. A snapsh
    npx wrangler secret put SNAPSHOT_AUTH_TOKEN
    ```
 
-
 2. In `wrangler.jsonc`, set `vars.WORKER_PUBLIC_URL` to the deployed Worker URL:
 
    ```jsonc
@@ -153,14 +149,11 @@ Repository snapshots are an optional cache for repository-bound agents. A snapsh
    }
    ```
 
-
 3. Deploy the updated configuration:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 A cache miss performs a normal Git clone. It does not prevent the agent from starting.
 

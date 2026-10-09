@@ -38,7 +38,6 @@ By following these steps, you can effectively manage both URI paths and `Host` h
    raw.http.request.uri.path matches "^/uploads/.*"
    ```
 
-
 5. Under **Set Rewrite parameters**, select **Path** > **Rewrite to**, and select *Dynamic*.
 6. Define the action for your rewrite URL rule:
 
@@ -67,7 +66,6 @@ If you are routing traffic to an object storage bucket, use [Cloud Connector](ht
    ```txt
    raw.http.request.uri.path matches "^/uploads/.*"
    ```
-
 
 5. Under **Set origin parameters**, select **Host Header** > **Rewrite to**.
 6. Configure the rule to modify the `Host` header to desired hostname:

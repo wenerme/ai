@@ -5,7 +5,7 @@ description: "Browse Neuralwatt model IDs, capabilities, context windows, and pr
 
 # [Neuralwatt logo]Neuralwatt
 
-Access 29 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
+Access 31 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
 
 Learn more in the [Neuralwatt documentation](https://portal.neuralwatt.com/docs).
 
@@ -230,6 +230,30 @@ for await (const chunk of stream) {
     "maxOutput": 1048560,
     "inputCost": 1.95,
     "outputCost": 9.75
+  },
+  {
+    "model": "neuralwatt/mimo-v2.6-pro",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048560,
+    "maxOutput": 393216,
+    "inputCost": 0.87,
+    "outputCost": 1.74
+  },
+  {
+    "model": "neuralwatt/mimo-v2.6-pro-flex",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048560,
+    "maxOutput": 393216,
+    "inputCost": 0.5655,
+    "outputCost": 1.131
   },
   {
     "model": "neuralwatt/qwen-3.8-27b",

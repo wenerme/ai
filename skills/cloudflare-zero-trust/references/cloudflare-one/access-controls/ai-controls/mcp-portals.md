@@ -654,7 +654,6 @@ The `auth_credentials` field accepts two forms:
   }
   ```
 
-
 - **A JSON-encoded object of custom headers** — for upstream MCP servers that require multiple headers or a non-standard header name:
 
   ```json
@@ -774,7 +773,6 @@ MCP portals do not support upstream MCP servers that have their own Code Mode tu
    	--request GET \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
-
 
 2. Add `code_mode` to the response body. Set the value to `off`, `opt_in`, `default_on`, or `enforced`.
 3. Send the complete body in a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/ai_controls/subresources/mcp/subresources/portals/methods/update/) endpoint. Including the complete body prevents other portal settings from being overwritten.

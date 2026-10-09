@@ -104,8 +104,6 @@ You can monitor Browser Run usage in two ways:
   );
   ```
 
-
-
 You can then use the tables above to estimate your costs based on your usage.
 
 ### Do failed API calls, such as those that time out, add to billable browser hours?

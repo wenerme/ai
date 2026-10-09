@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/devin/og.png?v=cb
 
 # Run Devin in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/devin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/devin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Devin ↗︎](https://docs.devin.ai/cloud/outposts/overview) runs its agent loop in its own service. Each session works on a machine where Devin runs commands, edits files, and opens a browser. A Devin Outpost moves that machine to infrastructure that you choose. The Devin Outpost template runs each session in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
@@ -32,7 +32,6 @@ You need:
    https://my-org.devinenterprise.com/org/my-org/settings/enterprise-environment?tab=outposts
    ```
 
-
 2. Create or select an outpost, and copy its outpost ID for `DEVIN_OUTPOST_ID`.
 3. For `DEVIN_API_TOKEN`, use a Devin service-user token with the **Run outpost workers** permission.
 
@@ -42,7 +41,7 @@ For more information about outposts, refer to the [Devin Outposts overview ↗�
 
 The **Deploy to Cloudflare** button creates the Worker, the cron trigger, the Durable Object namespace, and the container application.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/devin)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/templates/devin)
 
 Enter these values when the deployment flow prompts for them:
 
@@ -60,17 +59,16 @@ Deploy manually when you need to add dependencies, tools, or environment variabl
 1. Create a project from the Devin Outpost template:npmyarnpnpm
 
    ```
-   npm create cloudflare@latest -- cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/devin
+   npm create cloudflare@latest -- cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/templates/devin
    ```
 
    ```
-   yarn create cloudflare cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/devin
+   yarn create cloudflare cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/templates/devin
    ```
 
    ```
-   pnpm create cloudflare@latest cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/devin
+   pnpm create cloudflare@latest cloudflare-devin-outpost --template=cloudflare/sandbox-sdk/templates/devin
    ```
-
 
 2. Go to the project directory and log in to your Cloudflare account:
 
@@ -78,7 +76,6 @@ Deploy manually when you need to add dependencies, tools, or environment variabl
    cd cloudflare-devin-outpost
    npx wrangler login
    ```
-
 
 3. In `wrangler.jsonc`, replace the empty `DEVIN_OUTPOST_ID` value with your outpost ID.
 
@@ -111,8 +108,6 @@ Deploy manually when you need to add dependencies, tools, or environment variabl
    	"status": "ok"
    }
    ```
-
-
 
 ## Run a Devin session
 
@@ -165,7 +160,7 @@ For more information, refer to [Sandbox security](https://developers.cloudflare.
 ## Related resources
 
 - [Devin Outposts overview ↗︎](https://docs.devin.ai/cloud/outposts/overview)
-- [Devin Outpost template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/devin)
+- [Devin Outpost template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/templates/devin)
 - [Containers](https://developers.cloudflare.com/containers/)
 - [Save and restore a sandbox with snapshots](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/)
 
@@ -178,5 +173,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/devin/#page","headline":"Run Devin in a sandbox","description":"Deploy a Devin Outpost that runs each Devin session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/devin/og.png?v=cb54f4efb94168a8","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/devin/#page","headline":"Run Devin in a sandbox","description":"Deploy a Devin Outpost that runs each Devin session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/devin/og.png?v=cb54f4efb94168a8","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

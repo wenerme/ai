@@ -55,7 +55,6 @@ The following commands will return the disk encryption status on various operati
         Mount Point: /System/Volumes/Data
    ```
 
-
 3. Run the `diskutil info` command for a specific **Mount Point** and look for the value returned for **FileVault**. It must show **Yes** for the disk to be considered encrypted.
 
    ```sh
@@ -65,8 +64,6 @@ The following commands will return the disk encryption status on various operati
    ```sh
     FileVault:                 Yes
    ```
-
-
 
 ### Windows
 

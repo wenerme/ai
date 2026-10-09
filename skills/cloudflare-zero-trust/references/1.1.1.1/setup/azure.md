@@ -26,7 +26,6 @@ These steps configure 1.1.1.1 as the DNS resolver for an Azure Virtual Network (
    1.0.0.1
    ```
 
-
 5. Select **Save**.
 
 Was this helpful?

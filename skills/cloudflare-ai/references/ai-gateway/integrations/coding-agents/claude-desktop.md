@@ -41,7 +41,6 @@ For the simplest setup, set Claude Desktop's gateway API key to your Cloudflare 
    <CF_AIG_TOKEN>
    ```
 
-
 6. Set **Gateway auth scheme** to *Bearer*.
 7. Set the gateway base URL to your gateway's Anthropic endpoint.
 
@@ -50,7 +49,6 @@ For the simplest setup, set Claude Desktop's gateway API key to your Cloudflare 
    ```txt
    https://gateway.ai.cloudflare.com/v1/<ACCOUNT_ID>/<GATEWAY_ID>/anthropic
    ```
-
 
 8. In **Models**, add the Claude model you want to use.
 

@@ -140,7 +140,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset. By default, the rule will be added at the end of the list of rules already in the ruleset.
 
    The following request creates a rule that executes the custom ruleset with ID `<CUSTOM_RULESET_ID>` for all Enterprise zones in the account:<details><summary>
@@ -205,8 +204,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		"phase": "http_request_firewall_custom"
    	}'
    ```
-
-
 
 ## Next steps
 

@@ -56,7 +56,7 @@ class MyDurableObject(DurableObject):
 
 ### `fetch`
 
-- ``fetch(request `Request`)`` : `Response` | `Promise<Response>`- Takes an HTTP [Request ↗︎](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP [Response ↗︎](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.
+- `fetch(request Request)` : `Response` | `Promise<Response>`- Takes an HTTP [Request ↗︎](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP [Response ↗︎](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.
   - Durable Objects support [RPC calls](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) as of compatibility date [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc). RPC methods are preferred over `fetch()` when your application does not follow HTTP request/response flow.
 
 #### Parameters
@@ -107,7 +107,7 @@ class MyDurableObject(DurableObject):
 
 ### `alarm`
 
-- ``alarm(alarmInfo? `AlarmInvocationInfo`)`` : `void` | `Promise<void>`
+- `alarm(alarmInfo? AlarmInvocationInfo)` : `void` | `Promise<void>`
   - Called by the system when a scheduled alarm time is reached.
   - The `alarm()` handler has guaranteed at-least-once execution and will be retried upon failure using exponential backoff, starting at two second delays for up to six retries. Retries will be performed if the method fails with an uncaught exception.
   - This method can be `async`.
@@ -159,7 +159,7 @@ class MyDurableObject(DurableObject):
 
 ### `webSocketMessage`
 
-- ``webSocketMessage(ws `WebSocket`, message `string | ArrayBuffer`)`` : `void` | `Promise<void>`- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗︎](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) automatically without interrupting hibernation.
+- `webSocketMessage(ws WebSocket, message string | ArrayBuffer)` : `void` | `Promise<void>`- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗︎](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) automatically without interrupting hibernation.
   - This method can be `async`.
 
 #### Parameters
@@ -210,7 +210,7 @@ class MyDurableObject(DurableObject):
 
 ### `webSocketClose`
 
-- ``webSocketClose(ws `WebSocket`, code `number`, reason `string`, wasClean `boolean`)`` : `void` | `Promise<void>`- Called by the system when a WebSocket connection is closed.
+- `webSocketClose(ws WebSocket, code number, reason string, wasClean boolean)` : `void` | `Promise<void>`- Called by the system when a WebSocket connection is closed.
   - With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before this handler is called. You do not need to call `ws.close()` — but doing so is safe (the call is silently ignored).
   - On older compatibility dates (before `2026-04-07`), you **must** call `ws.close(code, reason)` inside this handler to complete the WebSocket close handshake. Failing to reciprocate the close will result in `1006` errors on the client, representing an abnormal closure per the WebSocket specification.
   - This method can be `async`.
@@ -263,7 +263,7 @@ class MyDurableObject(DurableObject):
 
 ### `webSocketError`
 
-- ``webSocketError(ws `WebSocket`, error `unknown`)`` : `void` | `Promise<void>`- Called by the system when a non-disconnection error occurs on a WebSocket connection. - This method can be `async`.
+- `webSocketError(ws WebSocket, error unknown)` : `void` | `Promise<void>`- Called by the system when a non-disconnection error occurs on a WebSocket connection. - This method can be `async`.
 
 #### Parameters
 

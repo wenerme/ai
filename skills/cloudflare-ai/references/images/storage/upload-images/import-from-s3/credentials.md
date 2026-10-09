@@ -39,7 +39,6 @@ To create the required permissions:
    }
    ```
 
-
 3. Next, create a new user and attach the created policy to that user.
 
 You can now use both the Access Key ID and Secret Access Key to create a new source. Refer to [Import images from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/enable/) for setup instructions.

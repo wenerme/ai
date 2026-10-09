@@ -432,7 +432,6 @@ The context available depends on how the method was invoked:
    }
    ```
 
-
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.
 
    ```js
@@ -444,8 +443,6 @@ The context available depends on how the method was invoked:
    const { agent } = getCurrentAgent<MyAgent>();
    // agent is typed as MyAgent | undefined
    ```
-
-
 
 ## Next steps
 

@@ -47,8 +47,6 @@ These instructions apply to remotely-managed and locally-managed tunnels running
    cloudflared tunnel diag --metrics 127.0.0.1:20241
    ```
 
-
-
 This command will output the status of each diagnostic task and place a `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip` file in your working directory.
 
 ### Docker
@@ -61,7 +59,6 @@ This command will output the status of each diagnostic task and place a `cloudfl
    ```sh
    docker run -d -p 20241:<metrics_port> docker.io/cloudflare/cloudflared tunnel ...
    ```
-
 
 3. Verify that you can reach the metrics server address from the Docker host environment:
 
@@ -84,7 +81,6 @@ This command will output the status of each diagnostic task and place a `cloudfl
      "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]
    }
    ```
-
 
 4. Run the diagnostic using the Docker container ID:
 
@@ -113,7 +109,6 @@ The diagnostic feature will request data from the [tunnel metrics server](https:
    kubectl port-forward <pod> <diagnostic_port>:<metrics_port>
    ```
 
-
    - `<pod>`: Name of the pod where the tunnel is running
    - `<diagnostic_port>` is any local port in the range `20241` to `20245`.
    - `<metrics_port>` is the Kubernetes pod port for the `cloudflared` instance you want to diagnose (obtained in Step 1).
@@ -136,8 +131,6 @@ The diagnostic feature will request data from the [tunnel metrics server](https:
    ```sh
    cloudflared tunnel diag --diag-pod-id=<podID> --diag-container-id=<containerName>
    ```
-
-
 
 This command will output the status of each diagnostic task and place a `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip` file in your working directory.
 

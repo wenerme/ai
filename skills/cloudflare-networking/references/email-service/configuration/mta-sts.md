@@ -57,7 +57,9 @@ To do this you need to deploy a Worker that allows email clients to pull Cloudfl
    mode: enforce
    mx: *.mx.cloudflare.net
    max_age: 86400
-   ``` This says that you domain `example.com` enforces MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered. Test before enforcing
+   ```
+
+   This says that you domain `example.com` enforces MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered. Test before enforcing
 
    A misconfigured policy in `enforce` mode causes legitimate inbound mail to be rejected. When rolling out MTA-STS on an existing domain, start with `mode: testing` and monitor [TLS-RPT ↗︎](https://datatracker.ietf.org/doc/html/rfc8460) reports for a few weeks before switching to `enforce`.
 

@@ -158,7 +158,6 @@ Container snapshots are in public beta. Features and behavior may change.
    }
    ```
 
-
 5. Add routes to your Worker that run a command in a named sandbox and return its state:
 
    *src/index.tsts*
@@ -200,13 +199,11 @@ Container snapshots are in public beta. Features and behavior may change.
    pnpm wrangler deploy
    ```
 
-
 7. Write a file in the sandbox named `ada`. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
    curl https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/sandboxes/ada --json '{"argv":["sh","-c","mkdir -p /workspace && echo hello > /workspace/notes.txt"]}'
    ```
-
 
 8. Send no requests to `ada` for 11 minutes, then read its state:
 
@@ -233,8 +230,6 @@ Container snapshots are in public beta. Features and behavior may change.
    	"exitCode": 0
    }
    ```
-
-
 
 ## Related resources
 

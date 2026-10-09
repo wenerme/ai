@@ -54,7 +54,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    pnpm wrangler login
    ```
 
-
 2. Create an R2 bucket:npmyarnpnpm
 
    ```
@@ -68,7 +67,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    ```
    pnpm wrangler r2 bucket create r2-data-catalog-tutorial
    ```
-
 
 3. Enable the catalog on your bucket:npmyarnpnpm
 
@@ -118,13 +116,11 @@ We will use [marimo ↗︎](https://github.com/marimo-team/marimo) as a Python n
    mkdir r2-data-catalog-notebook
    ```
 
-
 2. Change into our new directory:
 
    ```bash
    cd r2-data-catalog-notebook
    ```
-
 
 3. Initialize a new uv project (this creates a `.venv` and a `pyproject.toml`):
 
@@ -132,14 +128,11 @@ We will use [marimo ↗︎](https://github.com/marimo-team/marimo) as a Python n
    uv init
    ```
 
-
 4. Add marimo and required dependencies:
 
    ```py
    uv add marimo pyiceberg pyarrow pandas
    ```
-
-
 
 ## 5. Create a Python notebook to interact with the data warehouse
 
@@ -253,7 +246,6 @@ We will use [marimo ↗︎](https://github.com/marimo-team/marimo) as a Python n
    if __name__ == "__main__":
    		app.run()
    ```
-
 
 3. Replace the `CATALOG_URI`, `WAREHOUSE`, and `TOKEN` variables with your values from sections **1** and **2** respectively.
 4. Launch the notebook editor in your browser:

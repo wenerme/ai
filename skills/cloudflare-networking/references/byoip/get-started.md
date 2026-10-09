@@ -81,7 +81,6 @@ The process described on this page only supports using Cloudflare's ASN (AS13335
    }
    ```
 
-
 2. Save the prefix `id` and `ownership_validation_token` from the response. You will use them in later steps.
 
 Letter of Agency
@@ -122,7 +121,6 @@ Use the following formula to determine the number of zones at the next delegatio
    cf-validation.<REVERSE_ZONE> IN TXT "<OWNERSHIP_VALIDATION_TOKEN>"
    ```
 
-
 4. At your RIR, delegate the reverse zones to the authoritative nameservers that host them.
 
 After publishing the validation token, use the [Validate Prefix endpoint](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/validate/) to trigger the prefix validation checks:
@@ -162,8 +160,6 @@ Each prefix requires a default service binding that covers the entire prefix. Cl
    ```bash
    curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" --request POST --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" --json '{"cidr":"203.0.113.0/24","service_id":"<DEFAULT_SERVICE_ID>"}'
    ```
-
-
 
 BGP prefix provisioning
 
@@ -236,8 +232,6 @@ After the default binding and any more-specific bindings are active, advertise t
    ```bash
    curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" --request PATCH --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" --json '{"on_demand":{"advertised":true}}'
    ```
-
-
 
 Confirm that the prefix is advertised before proceeding. Route propagation across the global Internet can take several minutes.
 

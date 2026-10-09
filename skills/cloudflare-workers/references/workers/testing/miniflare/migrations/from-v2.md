@@ -49,7 +49,6 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
     }
     ```
 
-
 - `cfFetch`
   - Renamed to `cf`. Either accepts a `boolean`, `string` (as before), or an object to use a the `cf` object for incoming requests.
 
@@ -134,7 +133,6 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
     console.log(await res.text()); // "The count is 3"
     await mf.dispose();
     ```
-
 
 - `metaProvider`
   - The `cf` object and `X-Forwarded-Proto`/ `X-Real-IP` headers can be specified when calling `dispatchFetch()` instead. A default `cf` object can be specified using the new `cf` option too.

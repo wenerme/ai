@@ -83,14 +83,11 @@ node {file name}
    openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:4096
    ```
 
-
 2. Generate public key: After generating the private key, you can extract the corresponding public key using:
 
    ```bash
    openssl rsa -pubout -in private_key.pem -out public_key.pem
    ```
-
-
 
 ## 2. Upload public key to gateway settings
 

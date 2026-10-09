@@ -40,7 +40,6 @@ Now that you have Zaraz working in preview mode, you can open your website and t
    zaraz.preview("<YOUR_DEBUG_KEY>");
    ```
 
-
 5. Your website will reload along with Zaraz debugger, and Zaraz will use the most recent changes in preview mode.
 6. If you are satisfied with your changes, go back to the dashboard and select **Publish** to apply them to all users. If not, use the dashboard to continue adjusting your configuration.
 

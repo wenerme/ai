@@ -207,6 +207,7 @@ pnpm wrangler basin pipelines setup --name ecommerce
      	]
      }
      ```
+
    - Select **Next**
 10. **Define Sink**:
     - Select your R2 bucket: `pipelines-tutorial`
@@ -225,6 +226,7 @@ pnpm wrangler basin pipelines setup --name ecommerce
       ```sql
       INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream;
       ```
+
     - Select **Create Pipeline**
 13. After pipeline creation, note the **Stream ID** for the next step.
 

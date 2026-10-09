@@ -288,7 +288,6 @@ Start with an established connection and no unfinished offer/answer exchange.
    }
    ```
 
-
 3. **Apply the answer.** Check request-level and per-track errors. In the browser, await `pc.setRemoteDescription(response.sessionDescription)` with the returned answer, even if individual tracks failed. Other tracks may have closed.
 4. **Handle unfinished work.** Complete this exchange before another mutation. Retain failed closures for retry. If no usable answer arrives, follow [recovery guidance](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#retry-and-reconnect).
 

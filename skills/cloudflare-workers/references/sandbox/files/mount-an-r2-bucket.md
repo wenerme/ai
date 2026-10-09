@@ -45,7 +45,6 @@ You can check that Docker is running properly by running the `docker info` comma
    bun add @cloudflare/sandbox
    ```
 
-
 2. Create a `Dockerfile` in your project root with FUSE, `s3fs`, and the `sandbox-shim` binary that `S3Mount` uses:
 
    *Dockerfiledockerfile*
@@ -151,7 +150,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler secret put S3_SECRET_ACCESS_KEY
    ```
-
 
 5. Import `S3Mount`, and export `S3Gateway` from the main module of your Worker:
 
@@ -384,7 +382,6 @@ You can check that Docker is running properly by running the `docker info` comma
     pnpm wrangler deploy
     ```
 
-
 11. Upload an input file for the job named `ada`, run the job, and read the result from R2. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
     ```sh
@@ -400,14 +397,11 @@ You can check that Docker is running properly by running the `docker info` comma
     <SHA256_DIGEST>  input.txt
     ```
 
-
 12. Unmount the prefix and stop the sandbox:
 
     ```sh
     curl https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/jobs/ada --request DELETE
     ```
-
-
 
 ## Develop locally
 
@@ -420,7 +414,6 @@ Under `wrangler dev`, the container runs in Docker on your machine, and `S3Gatew
    docker exec minio sh -c "mc alias set local http://localhost:9000 minioadmin minioadmin && mc mb local/sandbox-artifacts"
    ```
 
-
 2. Create a `.dev.vars` file in your project root. Its values override the variables and secrets under `wrangler dev`:
 
    *.dev.varstxt*
@@ -432,7 +425,6 @@ Under `wrangler dev`, the container runs in Docker on your machine, and `S3Gatew
    S3_ACCESS_KEY_ID=minioadmin
    S3_SECRET_ACCESS_KEY=minioadmin
    ```
-
 
 3. Start the development server:npmyarnpnpm
 
@@ -448,7 +440,6 @@ Under `wrangler dev`, the container runs in Docker on your machine, and `S3Gatew
    pnpm wrangler dev
    ```
 
-
 4. Upload an input file, run the job, and read the result from MinIO:
 
    ```sh
@@ -456,8 +447,6 @@ Under `wrangler dev`, the container runs in Docker on your machine, and `S3Gatew
    curl http://localhost:8787/jobs/ada/digest --request POST
    docker exec minio mc cat local/sandbox-artifacts/jobs/ada/input.sha256
    ```
-
-
 
 ## Related resources
 

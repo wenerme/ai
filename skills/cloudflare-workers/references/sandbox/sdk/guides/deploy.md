@@ -63,7 +63,6 @@ When you bump the npm package:
    pnpm wrangler deploy
    ```
 
-
 3. Confirm the Worker URL responds, then exercise a sandbox route.
 
 The first deploy can take several minutes while the image provisions.

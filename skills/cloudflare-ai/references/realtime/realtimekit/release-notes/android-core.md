@@ -63,6 +63,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
     ),
   )
   ```
+
 - Several internal properties have been removed from `RtkPlugin`: `baseURL`, `config`, `description`, `isPrivate`, and `staggered`. Use the new `icon` and `permissions` properties instead.
 - The two-argument `subscribe(key, (key, value) → Unit)` and `unsubscribe(key, (key, value) → Unit)` overloads on `RtkStore` have been removed. Use the single-argument callback variants introduced in 2.1.0.
 

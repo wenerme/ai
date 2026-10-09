@@ -777,8 +777,6 @@ The bindings supported by `getPlatformProxy` are:
     pnpm wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
     ```
 
-
-
 Was this helpful?
 
 YesNo

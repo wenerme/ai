@@ -77,6 +77,7 @@ Targets are protocol-agnostic, meaning that you do not need to define a new targ
    - Contain no more than 253 characters
    - Contain only alphanumeric characters, <code>-</code>, or <code>.</code> (no spaces allowed)
    - Start and end with an alphanumeric character</details>
+
 4. In **IP addresses**, enter the IPv4 and/or IPv6 address of the target resource. The dropdown menu will not populate until you type in the full IP address.
 
 Note
@@ -305,8 +306,6 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-
-
 The targets in this application are now secured by your infrastructure policies.
 
 ## 6. (Recommended) Configure network policies
@@ -416,13 +415,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_c
    cd /etc/ssh
    ```
 
-
 2. Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
 
    ```sh
    vim ca.pub
    ```
-
 
 3. In the `ca.pub` file, paste the public key without any modifications.
 
@@ -442,8 +439,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/gateway_c
    :q!
    ```
 
-
-
 ### Modify your `sshd_config` file
 
 Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_config` file on the remote target machine.
@@ -453,7 +448,6 @@ Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_c
    ```sh
     sudo vim /etc/ssh/sshd_config
    ```
-
 
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:
 
@@ -912,13 +906,11 @@ These troubleshooting steps could result in you being locked out of your SSH ser
    mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
    ```
 
-
 2. Create a new `sshd_config` file.
 
    ```sh
    vi /etc/ssh/sshd_config
    ```
-
 
 3. Enter insert mode by pressing the `i` key on your keyboard.
 4. Paste in the [example file](#review-your-sshd_config-file-for-misconfigurations).
@@ -943,8 +935,6 @@ These troubleshooting steps could result in you being locked out of your SSH ser
    ```sh
    sudo systemctl reload sshd
    ```
-
-
 
 After completing these troubleshooting steps, retry the connection. If issues persist, [recheck `sshd` logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd-logs). The example [`sshd_config` shared above](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd_config-file-for-misconfigurations) enables debug logging and may expose more specific issues.
 

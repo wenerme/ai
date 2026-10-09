@@ -90,7 +90,6 @@ Use [vike.dev/new ↗︎](https://vike.dev/new) to scaffold a new Vike app that 
    bun add wrangler vike-photon @photonjs/cloudflare
    ```
 
-
 2. *pages/+config.tsdiff*
 
 
@@ -103,7 +102,6 @@ Use [vike.dev/new ↗︎](https://vike.dev/new) to scaffold a new Vike app that 
    +   extends: [vikePhoton]
      } satisfies Config
    ```
-
 
 3. *package.jsondiff*
 
@@ -134,7 +132,6 @@ Use [vike.dev/new ↗︎](https://vike.dev/new) to scaffold a new Vike app that 
    + }
    ```
 
-
 4. *.gitignorediff*
 
 
@@ -142,7 +139,6 @@ Use [vike.dev/new ↗︎](https://vike.dev/new) to scaffold a new Vike app that 
    ```diff
    + .wrangler/
    ```
-
 
 5. **(Optional)** By default, Photon uses a built-in server that supports basic features like SSR. If you need additional server functionalities (e.g. [file uploads ↗︎](https://hono.dev/examples/file-upload) or [API routes ↗︎](https://vike.dev/api-routes)), then [create your own server ↗︎](https://vike.dev/vike-photon#server).
 

@@ -38,7 +38,6 @@ Google must confirm you control your domain before activating Google Workspace s
    google-site-verification=abc123XYZ
    ```
 
-
 2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select your account and domain, then go to **DNS** > **Records**.
 3. Select **Add record** and enter:
    - **Type**: `TXT`

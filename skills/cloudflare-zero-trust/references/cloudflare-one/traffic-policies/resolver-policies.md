@@ -149,8 +149,6 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
    }
    ```
 
-
-
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:
 
 1. Public resolvers

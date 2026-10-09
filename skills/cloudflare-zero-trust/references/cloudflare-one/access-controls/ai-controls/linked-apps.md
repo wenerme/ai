@@ -89,7 +89,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
 
    Required API token permissions</summary>
@@ -204,7 +203,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	...
    }
    ```
-
 
 2. Create an Access policy on the downstream application, replacing the `app_uid` value with the `uid` of the MCP server application:<details><summary>
 

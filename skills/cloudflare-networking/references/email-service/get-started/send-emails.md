@@ -81,7 +81,6 @@ If you are building on Cloudflare Workers, you can use the Workers binding for n
    remote = true
    ```
 
-
 3. Create your Worker code in `src/index.ts`:
 
    ```ts
@@ -105,7 +104,6 @@ If you are building on Cloudflare Workers, you can use the Workers binding for n
    } satisfies ExportedHandler<Env>;
    ```
 
-
 4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)).
 
    ```sh
@@ -115,14 +113,11 @@ If you are building on Cloudflare Workers, you can use the Workers binding for n
    # [wrangler:info] Ready on http://localhost:8787
    ```
 
-
 5. Deploy your Worker:
 
    ```sh
    npm run deploy
    ```
-
-
 
 After deploying, test that your Worker can send emails:
 

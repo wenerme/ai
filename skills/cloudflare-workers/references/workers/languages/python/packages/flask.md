@@ -43,7 +43,6 @@ Use this quick start to run a minimal Flask application.
    Default = wsgi.entrypoint(app)
    ```
 
-
 2. In the project root, create `wrangler.jsonc`:
 
    ```jsonc
@@ -52,7 +51,7 @@ Use this quick start to run a minimal Flask application.
      "name": "my-flask-worker",
      "main": "src/worker.py",
      // Set this to today's date
-     "compatibility_date": "2026-10-01",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": ["python_workers"]
    }
    ```
@@ -62,10 +61,9 @@ Use this quick start to run a minimal Flask application.
    name = "my-flask-worker"
    main = "src/worker.py"
    # Set this to today's date
-   compatibility_date = "2026-10-01"
+   compatibility_date = "2026-10-09"
    compatibility_flags = [ "python_workers" ]
    ```
-
 
 3. Create a `pyproject.toml` to declare dependencies:
 
@@ -89,13 +87,11 @@ Use this quick start to run a minimal Flask application.
    ]
    ```
 
-
 4. Start the local development server:
 
    ```sh
    uv run pywrangler dev
    ```
-
 
 5. In another terminal, send a request to the Worker:
 
@@ -109,8 +105,6 @@ Use this quick start to run a minimal Flask application.
    {"message":"Hello from Flask"}
    ```
 
-
-
 ## Serve a frontend
 
 You can serve any static frontend alongside your flask backend by using [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/). Using Static Assets means your frontend files are not bundled inside the Worker itself, keeping the bundle small.
@@ -123,7 +117,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-10-01",
+  "compatibility_date": "2026-10-09",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -138,7 +132,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-10-01"
+compatibility_date = "2026-10-09"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

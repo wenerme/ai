@@ -91,8 +91,6 @@ The following example adds a rule that skips all remaining rules in the entry po
    	}'
    ```
 
-
-
 For more information on skipping all remaining rules via API, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#skip-all-remaining-rules) in the Ruleset Engine documentation.
 
 ### Skip the Cloudflare Managed Ruleset
@@ -179,8 +177,6 @@ The following example adds a rule that skips the [Cloudflare Managed Ruleset](ht
    		}
    	}'
    ```
-
-
 
 For more information on skipping one or more managed rulesets via API, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#skip-one-or-more-managed-rulesets) in the Ruleset Engine documentation.
 
@@ -324,8 +320,6 @@ The following example adds a rule that skips a particular rule of the [Cloudflar
    		}
    	}'
    ```
-
-
 
 The `action_parameters` > `rules` object contains the ID of the Cloudflare Managed Ruleset with an associated list of rule IDs to skip (in this case, only one rule). The [`position` object](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/#define-the-rule-position-in-the-ruleset) defines the exact rule placement in the entry point ruleset (before rule `1bdb49371c1f46958fc8b985efcb79e7`).
 

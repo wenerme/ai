@@ -112,7 +112,6 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    bun add -d @cloudflare/vite-plugin wrangler
    ```
 
-
 2. Add the Cloudflare plugin to your Vite configuration:
 
    If your Vite configuration includes another deployment adapter, such as `nitro()`, remove the adapter and its import before adding the Cloudflare Vite plugin.
@@ -155,7 +154,6 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    });
    ```
 
-
 3. Add a `wrangler.jsonc` configuration file:
 
    ```jsonc
@@ -184,7 +182,6 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    enabled = true
    ```
 
-
 4. Update the `scripts` section in `package.json`:
 
    *package.jsonjson*
@@ -202,8 +199,6 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    	}
    }
    ```
-
-
 
 ## Deploy
 
@@ -321,7 +316,6 @@ pnpm run cf-typegen
    } satisfies ExportedHandler<Env>;
    ```
 
-
 2. Update your Wrangler configuration to point to your custom entrypoint:
 
    ```jsonc
@@ -333,8 +327,6 @@ pnpm run cf-typegen
    ```toml
    main = "src/server.ts"
    ```
-
-
 
 ### Test scheduled handlers locally
 

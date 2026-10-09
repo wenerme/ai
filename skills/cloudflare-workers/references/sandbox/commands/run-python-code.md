@@ -39,7 +39,6 @@ You can check that Docker is running properly by running the `docker info` comma
    print(sales.groupby("city")["units"].sum())
    ```
 
-
 2. Create a `Dockerfile` in your project root with Python and the packages the code can import:
 
    *Dockerfiledockerfile*
@@ -97,7 +96,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler types
    ```
-
 
 4. Add an inactivity timeout to your Durable Object. The constructor sets the timeout again when a restarted Durable Object finds the container running:
 
@@ -239,7 +237,6 @@ You can check that Docker is running properly by running the `docker info` comma
    pnpm wrangler deploy
    ```
 
-
 7. Run `sales.py` in a sandbox named `ada`. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -253,8 +250,6 @@ You can check that Docker is running properly by running the `docker info` comma
    	"exitCode": 0
    }
    ```
-
-
 
 ## Return a chart
 
@@ -287,7 +282,6 @@ To return an image, such as a `matplotlib` chart, have the code save it in `/wor
    }
    ```
 
-
 2. In the `fetch()` handler of your Worker, after the line that parses `url`, add a route that returns the chart:
 
    *src/index.tsts*
@@ -304,7 +298,6 @@ To return an image, such as a `matplotlib` chart, have the code save it in `/wor
    		: new Response("Not found", { status: 404 });
    }
    ```
-
 
 3. Run code that saves a chart, then open `/sandboxes/ada/chart.png` in your browser:
 

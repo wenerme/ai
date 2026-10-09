@@ -40,7 +40,6 @@ Before creating your VM instance you will need to create an SSH key pair.
    ssh-keygen -t rsa -f ~/.ssh/gcp_ssh -C <username in GCP>
    ```
 
-
 2. Enter your passphrase when prompted. It will need to be entered twice.
 
    Two files will be generated: `gcp_ssh` which contains the private key, and `gcp_ssh.pub` which contains the public key.
@@ -49,7 +48,6 @@ Before creating your VM instance you will need to create an SSH key pair.
    ```sh
    cat ~/.ssh/gcp_ssh.pub
    ```
-
 
 4. Copy the output. This will be used when creating the VM instance in GCP.
 
@@ -264,8 +262,6 @@ By default, all devices enrolled in your organization can SSH to the server unle
    	gateway_udp_proxy_enabled = true
    }
    ```
-
-
 
 Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
 

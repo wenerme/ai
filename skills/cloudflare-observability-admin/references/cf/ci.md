@@ -80,8 +80,6 @@ This workflow builds the project once for every pull request and every push to `
              CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
    ```
 
-
-
 The workflow assumes a project created with `cf init`, with `package-lock.json` committed. Only the final deploy step receives secrets, so the pull request steps also work for pull requests from forks. If you pass another `--mode` to `cf build`, use the same mode in both deploy steps. The following sections explain each part.
 
 ## Provide credentials

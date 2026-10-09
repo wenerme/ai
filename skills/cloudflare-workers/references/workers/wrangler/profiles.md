@@ -84,13 +84,11 @@ This example sets up one profile per client for agency work.
    wrangler auth create client-a
    ```
 
-
 2. Bind the profile to the client's project directory.
 
    ```sh
    wrangler auth activate client-a ~/clients/client-a
    ```
-
 
 3. Repeat for the second client.
 
@@ -98,8 +96,6 @@ This example sets up one profile per client for agency work.
    wrangler auth create client-b
    wrangler auth activate client-b ~/clients/client-b
    ```
-
-
 
 Commands run in `~/clients/client-a` now use the `client-a` profile, and commands in `~/clients/client-b` use the `client-b` profile. You do not need to log in again to switch between them.
 
@@ -117,7 +113,6 @@ When staging and production live in different accounts, bind a profile to each e
    wrangler auth activate production ~/projects/production
    ```
 
-
 2. Set the matching `account_id` in each project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
    ```jsonc
@@ -132,8 +127,6 @@ When staging and production live in different accounts, bind a profile to each e
    name = "my-worker"
    account_id = "<PRODUCTION_ACCOUNT_ID>"
    ```
-
-
 
 ## Switch profiles for a single command
 

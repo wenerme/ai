@@ -53,7 +53,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -75,8 +74,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 To test, open an RFC 8707-compliant OAuth client and make a request to your application. The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
 
@@ -110,7 +107,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -132,8 +128,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 To test, open an MCP client and connect to the protected MCP server. The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
 
@@ -165,7 +159,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Make a `PUT` request and set `oauth_configuration.enabled` to `true`. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -187,8 +180,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 To test, open an MCP client and [connect to the MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#connect-to-a-portal). The client should open a browser window prompting you to log in to Access. Refer to the [Authorization flow](#authorization-flow) section for more details.
 
@@ -240,7 +231,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Make a `PUT` request with your Managed OAuth settings. To avoid overwriting your existing configuration, the request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -274,8 +264,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 ## Authorization flow
 

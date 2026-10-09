@@ -266,7 +266,6 @@ To add a new microfrontend to your application after initial setup:
    service = "my-new-microfrontend"
    ```
 
-
 3. **Update the `ROUTES` environment variable**
 
    Add your new route to the `ROUTES` configuration:
@@ -282,14 +281,11 @@ To add a new microfrontend to your application after initial setup:
    }
    ```
 
-
 4. **Redeploy the router worker**
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 Your new microfrontend is now accessible at the configured path (for example, `/app-c`).
 

@@ -76,8 +76,6 @@ Once you have run the above command, you will need to edit the output SQL file t
    ) WITHOUT ROWID;
    ```
 
-
-
 ## 5. Create a new D1 database
 
 All new D1 databases use the updated architecture by default.

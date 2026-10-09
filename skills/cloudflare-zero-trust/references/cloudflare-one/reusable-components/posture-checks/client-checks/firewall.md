@@ -59,7 +59,6 @@ macOS has two firewalls: an application-based firewall and a port-based firewall
    sudo /sbin/pfctl -s info
    ```
 
-
 2. Verify that **Status** is `Enabled`.
 
 ### On Windows
@@ -69,7 +68,6 @@ macOS has two firewalls: an application-based firewall and a port-based firewall
    ```powershell
    Get-NetFirewallProfile -PolicyStore ActiveStore -Name Public
    ```
-
 
 2. Verify that **Enabled** is `True`.
 

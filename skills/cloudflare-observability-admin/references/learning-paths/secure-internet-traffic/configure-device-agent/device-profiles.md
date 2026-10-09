@@ -103,7 +103,6 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \
    }
    ```
 
-
 3. Configure [global settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#global-settings) using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
 
    ```tf
@@ -114,8 +113,6 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings \
    	use_zt_virtual_ip     = false
    }
    ```
-
-
 
 ## (Optional) Create an office profile
 

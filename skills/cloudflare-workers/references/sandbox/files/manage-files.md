@@ -46,7 +46,6 @@ You can check that Docker is running properly by running the `docker info` comma
    bun add @cloudflare/sandbox
    ```
 
-
 2. To give `Files` its helper binary, create a `Dockerfile` in the project root. If you already have one, add the `COPY` line to it:
 
    *Dockerfiledockerfile*
@@ -286,7 +285,6 @@ You can check that Docker is running properly by running the `docker info` comma
    pnpm wrangler deploy
    ```
 
-
 8. To test the Worker, upload a file to the sandbox named `ada` and save the response. Replace the hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -296,7 +294,6 @@ You can check that Docker is running properly by running the `docker info` comma
      --fail-with-body \
      --output names.txt.gz
    ```
-
 
 9. Decompress the response:
 
@@ -308,8 +305,6 @@ You can check that Docker is running properly by running the `docker info` comma
    Ada Lovelace
    Grace Hopper
    ```
-
-
 
 ## List, rename, and remove files
 

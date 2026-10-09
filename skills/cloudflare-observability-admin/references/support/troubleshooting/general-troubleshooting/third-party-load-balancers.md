@@ -42,14 +42,11 @@ F5 session cookies can have arbitrary names but typically follow a specific form
   BIGipCookie=16908480.16415.0000;path=/; Httponly; Secure
   ```
 
-
 - With encryption:
 
   ```txt
   BIGipCookie=TS019a202c=01625f1893a7d6e4b2c1a0f98e7d6c5b4a3f2e1d; path=/; Httponly; Secure
   ```
-
-
 
 #### 2. Test for the issue
 

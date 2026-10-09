@@ -41,7 +41,6 @@ This is a **take-home** flow: the repository is short-lived and lives in Cloudfl
    git clone https://<credential>@<host>/<repository>.git <project-name>
    ```
 
-
 5. Change into the new directory, point the repository at your own Git host, and push it there to keep it:
 
    ```sh
@@ -49,8 +48,6 @@ This is a **take-home** flow: the repository is short-lived and lives in Cloudfl
    git remote set-url origin https://your-git-host.example/you/your-repo.git
    git push -u origin main
    ```
-
-
 
 ## Security and privacy
 

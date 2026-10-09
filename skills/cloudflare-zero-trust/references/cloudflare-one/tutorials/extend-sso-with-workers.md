@@ -71,7 +71,6 @@ This approach allows you to:
    $ cd device-posture-worker
    ```
 
-
 3. Copy-paste the following code into `src/index.js`. Be sure to replace `<your-team-name>` with your Zero Trust team name.
 
    *index.jsjs*
@@ -124,8 +123,6 @@ This approach allows you to:
    	},
    };
    ```
-
-
 
 ## 2. View the user's identity
 

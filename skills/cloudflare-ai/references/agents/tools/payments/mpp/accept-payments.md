@@ -48,7 +48,6 @@ Add `mppx` middleware when you control the Worker application:
    bun add hono mppx
    ```
 
-
 2. Store the MPP signing key as a [Worker secret](https://developers.cloudflare.com/workers/configuration/secrets/):npmyarnpnpm
 
    ```
@@ -62,7 +61,6 @@ Add `mppx` middleware when you control the Worker application:
    ```
    pnpm wrangler secret put MPP_SECRET_KEY
    ```
-
 
 3. Add the payment middleware before the paid route handler:
 
@@ -126,7 +124,6 @@ Add `mppx` middleware when you control the Worker application:
    export default app;
    ```
 
-
 4. Deploy the Worker:npmyarnpnpm
 
    ```
@@ -140,7 +137,6 @@ Add `mppx` middleware when you control the Worker application:
    ```
    pnpm wrangler deploy
    ```
-
 
 5. Request the paid route without a payment:
 
@@ -172,7 +168,6 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    bun add agents mppx @modelcontextprotocol/sdk zod
    ```
 
-
 2. Bind the `McpAgent` Durable Object in the Wrangler configuration:
 
    ```jsonc
@@ -181,7 +176,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
      "name": "mpp-server",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -208,7 +203,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    name = "mpp-server"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[durable_objects.bindings]]
@@ -219,7 +214,6 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    tag = "v1"
    new_sqlite_classes = ["PaidMCP"]
    ```
-
 
 3. Store `MPP_SECRET_KEY` as a Worker secret:npmyarnpnpm
 
@@ -234,7 +228,6 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    ```
    pnpm wrangler secret put MPP_SECRET_KEY
    ```
-
 
 4. Check payment before returning the tool result:
 
@@ -329,7 +322,6 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
 
    export default PaidMCP.serve("/mcp");
    ```
-
 
 5. Deploy the Worker:npmyarnpnpm
 

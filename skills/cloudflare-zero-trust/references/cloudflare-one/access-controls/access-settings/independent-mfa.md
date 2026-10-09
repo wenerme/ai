@@ -60,7 +60,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Send a `PUT` request to update your organization's MFA settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -215,7 +214,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Send a `PUT` request to assign the list. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request. Set `mfa_config.required_aaguids` to the ID of your AAGUID list.<details><summary>
 
    Required API token permissions</summary>
@@ -297,7 +295,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Send a `PUT` request to update your organization's AMR matching settings. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -328,8 +325,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 ### When AMR matching is skipped
 
@@ -378,7 +373,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Send a `PUT` request with an empty `allowed_authenticators` array. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -402,8 +396,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		}
    	}'
    ```
-
-
 
 ## Enroll authenticators
 
@@ -565,13 +557,11 @@ After enrollment, configure your SSH client to use the PIV key. The following ex
    brew services start yubikey-agent
    ```
 
-
 2. Extract the SSH public key from your leaf certificate:
 
    ```bash
    openssl x509 -in leaf.pem -pubkey -noout | ssh-keygen -i -m PKCS8 -f /dev/stdin > ~/.ssh/id_yubikey.pub
    ```
-
 
 3. Add the following to your `~/.ssh/config`:
 
@@ -582,7 +572,6 @@ After enrollment, configure your SSH client to use the PIV key. The following ex
      AddKeysToAgent yes
      IdentityFile ~/.ssh/id_yubikey.pub
    ```
-
 
 4. Verify that the key is loaded:
 

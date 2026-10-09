@@ -62,7 +62,6 @@ Record requests to a Cloudflare Worker with Basin Pipelines, store them as an Ap
    pnpm wrangler login
    ```
 
-
 2. Create a stream, sink, and pipeline with the interactive setup:npmyarnpnpm
 
    ```
@@ -97,7 +96,6 @@ Record requests to a Cloudflare Worker with Basin Pipelines, store them as an Ap
    ```
    pnpm wrangler basin pipelines streams list
    ```
-
 
 3. Add a `pipelines` property inside the root object of `wrangler.jsonc`. Replace `<STREAM_ID>` with the stream ID from setup, and keep the other generated properties:
 

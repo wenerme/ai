@@ -26,7 +26,6 @@ To serve static assets from an Azure Blob Storage container:
 5. (Optional) Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to adjust the caching behavior for objects returned from the bucket. For example, you can [create a cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/) that caches every returned object matching the `/static-assets` URI path for seven days (defined through the **Edge TTL** setting).
 6. Click **Next** and enter a descriptive name like `Serve static assets from Azure` in **Cloud Connector name**.
 7. Under **If**, select **Custom filter expression** and enter the following expression: `http.request.full_uri wildcard "http*://<YOUR_HOSTNAME>/static-assets/*"`
-
 8. Select **Deploy** to activate the rule.
 
 This setup ensures that all traffic matching `http*://<YOUR_HOSTNAME>/static-assets/*` (HTTPS and HTTP requests) is served from your Azure Blob Storage container. Make sure to replace `<YOUR_HOSTNAME>` with your actual hostname and adjust the example paths according to your setup.

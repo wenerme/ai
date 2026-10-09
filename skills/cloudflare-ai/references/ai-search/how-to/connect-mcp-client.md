@@ -71,8 +71,6 @@ Your instance's public endpoint serves the MCP endpoint.
    https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/mcp
    ```
 
-
-
 ## 3. Describe your search tool
 
 An MCP client reads a tool's description to decide when to call it. Under **Settings** > **Public Endpoint**, set the **Tool Description** to explain what your content covers and the questions it answers. For example:

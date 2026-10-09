@@ -34,14 +34,11 @@ Terraform functions through a working directory that contains configuration file
    mkdir cloudflare-tf
    ```
 
-
 2. Change into the directory:
 
    ```sh
    cd cloudflare-tf
    ```
-
-
 
 ## 2. Declare providers and variables
 
@@ -178,21 +175,17 @@ To deploy the configuration files:
    terraform init
    ```
 
-
 2. Preview everything that will be created:
 
    ```sh
    terraform plan
    ```
 
-
 3. Apply the configuration:
 
    ```sh
    terraform apply
    ```
-
-
 
 Users can now access the private application by going to the public URL and authenticating with Cloudflare Access.
 

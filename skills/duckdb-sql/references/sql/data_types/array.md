@@ -10,7 +10,7 @@ To store variable-length lists, use the [`LIST` type](https://duckdb.org/docs/cu
 
 ## Creating Arrays
 
-Arrays can be created using the [`array_value(expr, ...)` function](https://duckdb.org/docs/current/sql/functions/array.html#array_valueindex).
+Arrays can be created using the [`array_value(expr, ...)` function](https://duckdb.org/docs/current/sql/functions/array.html#array_valuearg-).
 
 Construct with the `array_value` function:
 

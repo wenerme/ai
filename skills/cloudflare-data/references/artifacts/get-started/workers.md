@@ -82,8 +82,6 @@ You also need:
    cd artifacts-worker
    ```
 
-
-
 ## 2. Add the Artifacts binding
 
 Open your Wrangler config file and add the Artifacts binding:

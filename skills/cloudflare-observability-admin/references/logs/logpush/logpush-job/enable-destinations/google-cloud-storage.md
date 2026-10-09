@@ -74,8 +74,6 @@ To download log files in their original compressed format, use one of the follow
   gsutil -h "Accept-Encoding: gzip" cp gs://your-bucket/path/file.log.gz .
   ```
 
-
-
 Was this helpful?
 
 YesNo

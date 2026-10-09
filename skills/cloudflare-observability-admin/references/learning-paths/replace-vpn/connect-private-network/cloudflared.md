@@ -42,7 +42,6 @@ To connect your private network:
    }
    ```
 
-
 3. Route the CIDR of your private network through the tunnel using the [`cloudflare_zero_trust_tunnel_cloudflared_route` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) resource:
 
    ```tf
@@ -53,7 +52,6 @@ To connect your private network:
    	comment            = "Example tunnel route"
    }
    ```
-
 
 4. Get the [token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/) used to run the tunnel:
 
@@ -76,11 +74,13 @@ To connect your private network:
       	sensitive   = true
       }
       ```
+
    2. Apply the configuration:
 
       ```sh
       terraform apply
       ```
+
    3. Read the tunnel token:
 
       ```sh
@@ -89,7 +89,9 @@ To connect your private network:
 
       ```sh
       eyJhIj...
-      ```</details>
+      ```
+
+      </details>
 
 Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_token.token` directly into your host's Terraform configuration or store the token in your secret management tool.<details><summary>
 
@@ -115,7 +117,6 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-
    1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
    2. Open Command Prompt as administrator.
    3. Run the following command:
@@ -124,7 +125,6 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
       cloudflared.exe service install <TUNNEL_TOKEN>
       ```
 
-
    1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
    2. Open a terminal window and run the following command:
 
@@ -132,15 +132,12 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-
    1. Open a terminal window.
    2. Run the following command:
 
       ```sh
       docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
       ```
-
-
 
 All internal applications and services in this IP range are now connected to Cloudflare.
 

@@ -354,7 +354,6 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    } satisfies ExportedHandler<Env>;
    ```
 
-
 4. Deploy your Worker:npmyarnpnpm
 
    ```
@@ -369,7 +368,6 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    pnpm wrangler deploy
    ```
 
-
 5. Send a request to the server. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -381,7 +379,6 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    ```txt
    hello from the server
    ```
-
 
 6. Stop the server, then send another request:
 

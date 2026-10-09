@@ -509,15 +509,12 @@ Most `kv` commands require you to specify a namespace. A namespace can be specif
    wrangler kv:key get --binding=MY_KV "my key"
    ```
 
-
    - This can be combined with `--preview` flag to interact with a preview namespace instead of a production namespace.
 2. With a `--namespace-id`:
 
    ```sh
    wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
    ```
-
-
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish Workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your Wrangler file:
 

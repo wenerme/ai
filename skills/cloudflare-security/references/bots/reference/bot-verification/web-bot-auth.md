@@ -34,13 +34,11 @@ You need to generate a signing key which will be used to authenticate your bot's
    openssl genpkey -algorithm ed25519 -out private-key.pem
    ```
 
-
 2. Extract your public key.
 
    ```sh
    openssl pkey -in private-key.pem -pubout -out public-key.pem
    ```
-
 
 3. Convert the public key to JSON Web Key (JWK) using a tool of your choice. This example uses [`jwker` ↗︎](https://github.com/jphastings/jwker) command line application.
 
@@ -48,8 +46,6 @@ You need to generate a signing key which will be used to authenticate your bot's
    go install github.com/jphastings/jwker/cmd/jwker@latest
    jwker public-key.pem public-key.jwk
    ```
-
-
 
 By following these steps, you have generated a private key and a public key, then converted the public key to a JWK.
 
@@ -99,8 +95,6 @@ You need to host a key directory which creates a way for your bot to authenticat
      }]
    }
    ```
-
-
 
 Note
 

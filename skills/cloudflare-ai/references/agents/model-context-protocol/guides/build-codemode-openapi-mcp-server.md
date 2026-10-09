@@ -51,7 +51,6 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
    bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
    ```
 
-
 2. Add a Worker Loader binding and the `nodejs_compat` compatibility flag:
 
    ```jsonc
@@ -60,7 +59,7 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
      "name": "openapi-codemode-mcp",
      "main": "src/server.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -76,13 +75,12 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
    name = "openapi-codemode-mcp"
    main = "src/server.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
    binding = "LOADER"
    ```
-
 
 3. Load the OpenAPI document on the host. Create the MCP server with an authenticated `request` function:
 
@@ -260,7 +258,6 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
    } satisfies ExportedHandler<Env>;
    ```
 
-
 4. Deploy the Worker:npmyarnpnpm
 
    ```
@@ -274,7 +271,6 @@ You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side 
    ```
    pnpm wrangler deploy
    ```
-
 
 5. In an MCP client, connect to `https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/mcp`. Include the bearer token required by your Worker.
 6. List the MCP tools. Verify that the server exposes `search` and `execute`.

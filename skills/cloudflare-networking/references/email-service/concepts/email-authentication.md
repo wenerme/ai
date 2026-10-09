@@ -30,14 +30,11 @@ Email Service configures separate SPF records for sending and routing:
   TXT cf-bounce.yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
   ```
 
-
 - **Email Routing** SPF record on the root domain:
 
   ```txt
   TXT yourdomain.com "v=spf1 include:_spf.mx.cloudflare.net ~all"
   ```
-
-
 
 SPF works by:
 

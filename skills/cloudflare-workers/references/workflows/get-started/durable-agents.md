@@ -92,14 +92,11 @@ You will also need an [Anthropic API key ↗︎](https://platform.claude.com/set
    cd durable-ai-agent
    ```
 
-
 3. Install dependencies:
 
    ```sh
    npm install agents @anthropic-ai/sdk
    ```
-
-
 
 ## 2. Define your tools
 
@@ -218,8 +215,6 @@ Tools are functions the LLM can call to interact with external systems. You defi
 
    export const tools = [searchReposTool, getRepoTool];
    ```
-
-
 
 These tools complement each other: `search_repos` finds repositories, and `get_repo` fetches details about specific ones.
 
@@ -499,7 +494,6 @@ export class ResearchAgent extends Agent<Env, State> {
    new_sqlite_classes = [ "ResearchAgent" ]
    ```
 
-
 2. Generate types for your bindings:
 
    ```sh
@@ -582,13 +576,11 @@ export default {
    ANTHROPIC_API_KEY=your-api-key-here
    ```
 
-
 2. Start the dev server:
 
    ```sh
    npx wrangler dev
    ```
-
 
 3. Start a research task:
 
@@ -602,14 +594,11 @@ export default {
    { "instanceId": "abc-123-def" }
    ```
 
-
 4. Check progress (may take a few seconds to complete):
 
    ```sh
    curl "http://localhost:8787/status?instanceId=abc-123-def"
    ```
-
-
 
 The agent will search for repositories, fetch details, and return a comparison. Progress updates are broadcast to any connected WebSocket clients.
 
@@ -621,13 +610,11 @@ The agent will search for repositories, fetch details, and return a comparison. 
    npx wrangler deploy
    ```
 
-
 2. Add your API key as a secret:
 
    ```sh
    npx wrangler secret put ANTHROPIC_API_KEY
    ```
-
 
 3. Start a research task on your deployed Worker:
 
@@ -636,7 +623,6 @@ The agent will search for repositories, fetch details, and return a comparison. 
      -H "Content-Type: application/json" \
      -d '{"task": "Compare open-source LLM projects"}'
    ```
-
 
 4. Inspect workflow runs with the CLI:
 

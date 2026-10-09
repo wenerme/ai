@@ -48,7 +48,6 @@ Refer to the [blog post ↗︎](https://blog.cloudflare.com/turnstile-ephemeral-
      }'
    ```
 
-
 3. Confirm Ephemeral IDs are active by checking your widget configuration.
 
    *cURL commandbash*
@@ -59,8 +58,6 @@ Refer to the [blog post ↗︎](https://blog.cloudflare.com/turnstile-ephemeral-
    curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
      -H "Authorization: Bearer $API_TOKEN"
    ```
-
-
 
 ### Access Ephemeral IDs
 

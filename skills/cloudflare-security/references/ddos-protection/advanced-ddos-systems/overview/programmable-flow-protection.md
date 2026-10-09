@@ -60,7 +60,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
    #define CF_EBPF_HELPER_V0
    ```
 
-
 2. Include the Cloudflare eBPF header files.
 
    These files have [helper functions](#helper-functions) to parse the input packet data to the BPF program.
@@ -69,7 +68,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
    #include <cf_ebpf_defs.h>
    #include <cf_ebpf_helper.h>
    ```
-
 
 3. Define the entry function for packet processing.
 
@@ -80,7 +78,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
    ```c
    uint64_t cf_ebpf_main(void *state)
    ```
-
 
 4. Cast the input argument into usable structs.
 
@@ -93,7 +90,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
    struct cf_ebpf_parsed_headers headers;
    struct cf_ebpf_packet_data *p;
    ```
-
 
 5. Fill variables by calling the helper function.
 
@@ -185,7 +181,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
     }
    ```
 
-
 7. Pass any packets that did not get dropped by program logic by returning `CF_EBPF_PASS`.
 
    The currently supported return values are:
@@ -197,8 +192,6 @@ The steps below write a sample program that drops all User Datagram Protocol (UD
    ```c
    return CF_EBPF_PASS;
    ```
-
-
 
 For reference, the example below is the basic program in its entirety:
 
@@ -282,7 +275,6 @@ Packets from verified source IPs are passed through without further checks.
    #include <cf_ebpf_helper.h>
    ```
 
-
 2. Define constants for the challenge-response protocol.
 
    The challenge response is computed by XORing the nonce with a secret value. The expiry time determines how long a challenged or verified status remains valid.
@@ -292,7 +284,6 @@ Packets from verified source IPs are passed through without further checks.
    #define CHALLENGE_EXPIRY_SECS 60
    #define VERIFIED_EXPIRY_SECS 3600
    ```
-
 
 3. Define a structure for challenge packets.
 
@@ -304,7 +295,6 @@ Packets from verified source IPs are passed through without further checks.
        uint64_t response;     // Expected: nonce XOR CHALLENGE_SECRET
    };
    ```
-
 
 4. Define the entry function and parse the packet.
 
@@ -321,7 +311,6 @@ Packets from verified source IPs are passed through without further checks.
 
        struct udphdr *udp_hdr = headers.udp;
    ```
-
 
 5. Check the source IP status using `get_src_ip_status`.
 
@@ -340,7 +329,6 @@ Packets from verified source IPs are passed through without further checks.
        }
    ```
 
-
 6. Handle verified source IPs.
 
    The Programmable Flow Protection platform will drop packets from blocklisted IPs before the program is invoked. There is no need to explicitly handle the blocklisted case.
@@ -352,7 +340,6 @@ Packets from verified source IPs are passed through without further checks.
            return CF_EBPF_PASS;
        }
    ```
-
 
 7. Check if this is a challenge response from a challenged source IP.
 
@@ -387,7 +374,6 @@ Packets from verified source IPs are passed through without further checks.
        }
    ```
 
-
 8. Issue a new challenge for new source IPs.
 
    Generate a random nonce, store it in the state table, create a challenge packet, and send it using `set_challenge`.
@@ -412,8 +398,6 @@ Packets from verified source IPs are passed through without further checks.
        return CF_EBPF_DROP;
    }
    ```
-
-
 
 For reference, the example below is the complex program in its entirety:
 
@@ -526,7 +510,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
    #include <cf_ebpf_helper.h>
    ```
 
-
 2. Define constants for the rate limit configuration.
 
    `RATE_LIMIT` sets the maximum number of packets allowed per window. `WINDOW_SECONDS` defines the duration of each time window in seconds.
@@ -535,7 +518,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
    #define RATE_LIMIT 100         // Maximum packets allowed per window
    #define WINDOW_SECONDS 60      // Time window in seconds
    ```
-
 
 3. Define macros to pack and unpack state data.
 
@@ -546,7 +528,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
    #define UNPACK_TIMESTAMP(data) ((uint32_t)((data) >> 32))
    #define UNPACK_COUNTER(data) ((uint32_t)((data) & 0xFFFFFFFF))
    ```
-
 
 4. Define the entry function and get the current timestamp.
 
@@ -563,7 +544,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
        uint32_t now_secs = (uint32_t)now;
    ```
 
-
 5. Retrieve the existing state for this source IP.
 
    Use `get_src_ip_data` to look up whether this source IP has been seen before.
@@ -575,7 +555,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
        uint32_t window_start;
        uint32_t counter;
    ```
-
 
 6. Handle the case where this is a new source IP.
 
@@ -589,7 +568,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
            counter = 1;
        }
    ```
-
 
 7. Handle existing source IPs and check the time window.
 
@@ -620,7 +598,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
        }
    ```
 
-
 8. Store the updated state and allow the packet.
 
    Pack the window start timestamp and counter back into a single value and store it in the source IP state table.
@@ -632,8 +609,6 @@ When a packet arrives, the program retrieves the stored state for that source IP
        return CF_EBPF_PASS;
    }
    ```
-
-
 
 For reference, the example below is the rate limiting program in its entirety:
 

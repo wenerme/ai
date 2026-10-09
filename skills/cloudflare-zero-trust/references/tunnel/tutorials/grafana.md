@@ -60,7 +60,6 @@ On the Prometheus and Grafana server (`192.168.1.2`):
    cd prometheus-*
    ```
 
-
 3. Open `prometheus.yml` in a text editor and add the `cloudflared` job to the end of the file:
 
    ```yml
@@ -99,7 +98,6 @@ On the Prometheus and Grafana server (`192.168.1.2`):
          - targets: ["198.168.1.1:60123"] ## cloudflared server IP and the --metrics port configured for the tunnel
    ```
 
-
 4. Start Prometheus:
 
    ```sh
@@ -122,13 +120,11 @@ Refer to [Available metrics](https://developers.cloudflare.com/tunnel/observabil
    sudo systemctl start grafana-server
    ```
 
-
 3. Verify that Grafana is running:
 
    ```sh
    sudo systemctl status grafana-server
    ```
-
 
 4. Open a browser and go to `http://localhost:3000/`. The default HTTP port that Grafana listens to is `3000` unless you have configured a different port.
 5. On the sign-in page, enter your Grafana credentials.

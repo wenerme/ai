@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-10-06",
+	"compatibility_date": "2026-10-09",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-10-06"
+compatibility_date = "2026-10-09"
 workers_dev = false
 
 [route]
@@ -2299,7 +2299,6 @@ A common example of using a redirected configuration is where a custom build too
   ```bash
   > my-tool build --env=staging
   ```
-
 
 - `my-tool` generates a `dist` directory that contains both compiled code and a new generated deployment configuration file, containing only the settings for the given environment. It also creates a `.wrangler/deploy/config.json` file that redirects Wrangler to the new, generated deployment configuration file:
   - dist/

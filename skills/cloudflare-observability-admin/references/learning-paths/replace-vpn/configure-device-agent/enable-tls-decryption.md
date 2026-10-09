@@ -48,8 +48,6 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
    }
    ```
 
-
-
 Next, choose a [user-side certificate](#configure-user-side-certificates) to use for inspection.
 
 ## Configure user-side certificates

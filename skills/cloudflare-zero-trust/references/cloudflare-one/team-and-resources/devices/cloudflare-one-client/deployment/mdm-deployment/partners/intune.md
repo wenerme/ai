@@ -114,7 +114,6 @@ To push a new `mdm.xml` file using Intune:
    }
    ```
 
-
 7. In **Assignments**, select the Windows devices that should receive the new `mdm.xml` file.
 8. To deploy the script, select **Add**.
 
@@ -223,7 +222,6 @@ Sharing this certificate with Intune automates the installation of this certific
    		</dict>
    </plist>
    ```
-
 
 2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value ( `YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
 3. Update your organization's string ( `YOUR_TEAM_NAME_HERE`) with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).

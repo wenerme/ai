@@ -4,7 +4,7 @@ Describes Model Context Protocol and how to use it
 
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
+- Status: Generally available
 
 The Model Context Protocol (MCP) is an open standard that connects AI assistants to existing tools and data sources.
 MCP works as a universal adapter. Instead of creating separate custom connections for each software platform,

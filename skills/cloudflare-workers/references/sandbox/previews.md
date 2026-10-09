@@ -144,7 +144,6 @@ Use a browser to open a web server that runs in a sandbox. The server has no pub
    }
    ```
 
-
 3. Forward requests from the `fetch()` handler of your Durable Object:
 
    *src/index.tsts*
@@ -173,7 +172,6 @@ Use a browser to open a web server that runs in a sandbox. The server has no pub
    	}
    }
    ```
-
 
 4. Route preview paths from your Worker to your Durable Object:
 
@@ -269,7 +267,6 @@ Use a browser to open a web server that runs in a sandbox. The server has no pub
    pnpm wrangler deploy
    ```
 
-
 6. Request a page from the preview named `ada`. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -285,8 +282,6 @@ Use a browser to open a web server that runs in a sandbox. The server has no pub
    ```json
    { "path": "/hello", "uptime": 5 }
    ```
-
-
 
 ## Keep WebSocket connections open
 
@@ -376,7 +371,6 @@ To keep the sandbox running while a page has a connection open, accept both ends
    }
    ```
 
-
 2. In the `fetch()` handler of your Durable Object, bridge responses that open a WebSocket:
 
    *src/index.tsts*
@@ -389,8 +383,6 @@ To keep the sandbox running while a page has a connection open, accept both ends
    	return response.webSocket ? bridge(response.webSocket) : response;
    } catch {
    ```
-
-
 
 With the bridge, the sandbox keeps running while any page has a connection open, even when no messages arrive. After the last connection closes, the inactivity timeout applies again.
 
@@ -450,7 +442,6 @@ Give someone access to one preview for a limited time. In this example, the Dura
    	}
    }
    ```
-
 
 2. In the `fetch()` handler of your Worker, add routes that create a link and serve shared previews, before the `404` response:
 
@@ -523,7 +514,6 @@ Stop the server when the preview is no longer needed, instead of waiting for the
    }
    ```
 
-
 2. In your Worker, call it for `DELETE /previews/<NAME>`, before forwarding:
 
    *src/index.tsts*
@@ -536,7 +526,6 @@ Stop the server when the preview is no longer needed, instead of waiting for the
    	return new Response(null, { status: 204 });
    }
    ```
-
 
 3. Deploy your Worker, and stop the preview named `ada`:
 

@@ -184,7 +184,6 @@ If your logpush destination hostname is proxied through Cloudflare, and you have
    (http.request.method eq "POST" and http.host eq "splunk.cf-analytics.com" and http.request.uri.path eq "/services/collector/raw" and http.request.uri.query contains "channel" and ip.geoip.asnum in {13335 132892 202623} and http.user_agent eq "Go-http-client/2.0")
    ```
 
-
 6. Under the **Then** > **Choose an action** dropdown, select *Skip*.
 7. Under **WAF components to skip**, select *All managed rules*.
 8. Select **Deploy**.

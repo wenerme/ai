@@ -316,7 +316,6 @@ A project with Durable Objects always has required items: one for each Durable O
    },
    ```
 
-
 2. Review each generated binding. In `bindings.durableObject({ worker, exportName })`, `worker` is the name of the Worker that defines the class and `exportName` is the class name.
 3. Delete the TODO comments for these items.
 
@@ -538,7 +537,6 @@ To upload secrets with a new version, pass `--secrets-file <PATH>` to `cf deploy
    	"include": ["src", "cloudflare.config.ts", ".cloudflare/types"]
    }
    ```
-
 
 5. (Optional) Replace the string `entrypoint` with an import that uses the `cf-worker` attribute:
 

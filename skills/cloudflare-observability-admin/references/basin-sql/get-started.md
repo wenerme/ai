@@ -55,7 +55,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    pnpm wrangler login
    ```
 
-
 2. Create an R2 bucket:npmyarnpnpm
 
    ```
@@ -69,8 +68,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    ```
    pnpm wrangler r2 bucket create pipelines-tutorial
    ```
-
-
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
@@ -191,8 +188,6 @@ Follow the prompts:
    INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream
    ```
 
-
-
 After setup completes, note the HTTP endpoint URL displayed in the final output.
 
 1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Pipelines**. [Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
@@ -232,6 +227,7 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
      	]
      }
      ```
+
    - Select **Next**
 5. **Define Sink**:
    - Select your R2 bucket: `pipelines-tutorial`
@@ -250,6 +246,7 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
      ```sql
      INSERT INTO ecommerce_sink SELECT * FROM ecommerce_stream;
      ```
+
    - Select **Create Pipeline**
 8. After pipeline creation, note the **Stream ID** for the next step.
 

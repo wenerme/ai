@@ -41,7 +41,6 @@ This page replaces `terminal()`, `session.terminal()`, `proxyTerminal()`, and `S
    	> /etc/tmux.conf
    ```
 
-
 2. Add the `fetch()` handler from [Open a terminal in the browser](https://developers.cloudflare.com/sandbox/commands/open-a-terminal-in-the-browser/#open-a-terminal) to your class. Replace its `container` constant, `start()` call, and `setInactivityTimeout()` call with `ensureRunning()`, and start the shell with the directory and variables that 0.12 used:
 
    *src/index.tsts*
@@ -142,8 +141,6 @@ This page replaces `terminal()`, `session.terminal()`, `proxyTerminal()`, and `S
    	}
    }
    ```
-
-
 
 ## Forward the WebSocket
 

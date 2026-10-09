@@ -398,15 +398,12 @@ Example script to filter registrations by IP
    				print(f"Script Error: {e}")
    ```
 
-
 2. In the script configuration section, input your Cloudflare API credentials and your IP subnet range.
 3. Open a terminal and navigate to the script directory. To run the script, type:
 
    ```sh
    python3 filter-device-ips.py
    ```
-
-
 
 </details>
 

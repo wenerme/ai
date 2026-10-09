@@ -64,8 +64,6 @@ Rotate tokens regularly to reduce the risk of compromise. For tunnels with multi
    sudo cloudflared service install <NEW_TOKEN>
    ```
 
-
-
 <details>
 
 <summary>

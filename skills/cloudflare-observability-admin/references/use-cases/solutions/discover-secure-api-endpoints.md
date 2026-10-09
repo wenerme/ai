@@ -113,7 +113,6 @@ The following custom security rule blocks requests to `/api/` paths that are mis
    (starts_with(http.request.uri.path, "/api/") and not len(http.request.headers["content-type"][0]) > 0)
    ```
 
-
 5. For **Choose action**, select **Block**.
 6. Select **Deploy**.
 

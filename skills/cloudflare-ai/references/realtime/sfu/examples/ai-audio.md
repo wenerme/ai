@@ -109,7 +109,6 @@ Deploy the Worker for end-to-end audio. The SFU needs a publicly reachable WebSo
    bun install
    ```
 
-
 2. **Configure the application.** In the checked-in Wrangler configuration, set `CF_ACCOUNT` and `REALTIME_SFU_APP_ID` to your account and SFU app identifiers. Follow the [configuration guide ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#configuration) for the model and audio-processing configuration.
 
    Add the backend secrets through Wrangler's interactive prompts:npmyarnpnpm
@@ -140,7 +139,6 @@ Deploy the Worker for end-to-end audio. The SFU needs a publicly reachable WebSo
    pnpm wrangler secret put REALTIME_SFU_BEARER_TOKEN
    ```
 
-
 3. **Build and deploy.** Build the browser assets, then deploy the Worker:npmyarnpnpm
 
    ```
@@ -168,7 +166,6 @@ Deploy the Worker for end-to-end audio. The SFU needs a publicly reachable WebSo
    ```
    pnpm wrangler deploy
    ```
-
 
 4. **Connect a publisher and listener.** Choose an application session name, such as `audio-demo`. This is a name you choose, separate from an SFU-generated session ID.
 

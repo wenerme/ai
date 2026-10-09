@@ -65,7 +65,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. Copy the `client_id` and `client_secret` values returned in the response.
 
    *Responsejson*
@@ -106,7 +105,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 3. Get the Client ID and Client Secret of the service token:<details><summary>
 
    Example: Output to CLI</summary>
@@ -123,11 +121,13 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       	sensitive = true
       }
       ```
+
    2. Apply the configuration:
 
       ```sh
       terraform apply
       ```
+
    3. Read the Client ID and Client Secret:
 
       ```sh
@@ -136,7 +136,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
       ```sh
       terraform output -raw example_service_token_client_secret
-      ```</details>
+      ```
+
+      </details>
 
 <details><summary>
 
@@ -187,7 +189,6 @@ You can use a shell script to automate WARP installation and registration. The f
    vim install_warp.sh
    ```
 
-
 2. Press `i` to enter insert mode and add the following lines:
 
    ```bash
@@ -229,7 +230,6 @@ You can use a shell script to automate WARP installation and registration. The f
    sudo systemctl restart warp-svc
    ```
 
-
 3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗︎](https://pkg.cloudflareclient.com/) for your OS.
 4. Modify the values in the `mdm()` function:
    1. For `auth_client_id` and `auth_client_secret`, replace the string values with the Client ID and Client Secret of your [service token](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#1-create-a-service-token).
@@ -247,21 +247,17 @@ To install the Cloudflare One Client using the example script:
    chmod 700 install_warp.sh
    ```
 
-
 2. Run the script:
 
    ```sh
    sudo ./install_warp.sh
    ```
 
-
 3. Delete the script because it contains the service token secret:
 
    ```sh
    rm install_warp.sh
    ```
-
-
 
 The Cloudflare One Client is now deployed with the configuration parameters stored in the root-only `/var/lib/cloudflare-warp/mdm.xml`. Assuming [`auto_connect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto_connect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization.
 

@@ -35,13 +35,11 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
    2.0.8
    ```
 
-
 3. Set up the configuration file using the [official instructions ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:
 
    ```toml
    server_names = ['cloudflare', 'cloudflare-ipv6']
    ```
-
 
 4. Make sure that nothing else is running on `localhost:53` (port `53` is the standard DNS port on your local machine), and check that everything works as expected:
 
@@ -58,7 +56,6 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
    TXT records:    -
    Resolver IP:    172.68.140.217
    ```
-
 
 5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation).
 

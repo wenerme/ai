@@ -21,6 +21,7 @@ The following common use cases illustrate how to secure web traffic to your site
 - [Allow traffic from specific countries only](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-specific-countries/)
 - [Block Microsoft Exchange Autodiscover requests](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-ms-exchange-autodiscover/)
 - [Block requests by attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-attack-score/)
+- [Block Tor traffic](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-tor-traffic/)
 - [Block traffic by geographical location](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/)
 - [Block traffic from specific countries](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-traffic-from-specific-countries/)
 - [Block Worker subrequests from other zones](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-worker-subrequests/)

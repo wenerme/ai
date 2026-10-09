@@ -44,7 +44,6 @@ The steps keep your class name, which moves every sandbox in place. To move sand
    bun add @cloudflare/sandbox
    ```
 
-
 2. Replace the `FROM docker.io/cloudflare/sandbox` line in your `Dockerfile` with a base image that has the tools your commands use, and copy the `sandbox-shim` helper into it:
 
    *Dockerfiledockerfile*
@@ -119,7 +118,6 @@ The steps keep your class name, which moves every sandbox in place. To move sand
    ```
    pnpm wrangler types
    ```
-
 
 6. Write the class. In this example, the 0.12 subclass sets a lifetime and environment variables, and overrides `onStart()`:
 

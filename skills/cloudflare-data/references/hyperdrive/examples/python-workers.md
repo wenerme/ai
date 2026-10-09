@@ -47,7 +47,7 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
      "name": "python-hyperdrive",
      "main": "src/main.py",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "python_workers"
      ],
@@ -64,14 +64,13 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
    name = "python-hyperdrive"
    main = "src/main.py"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["python_workers"]
 
    [[hyperdrive]]
    binding = "HYPERDRIVE"
    id = "<HYPERDRIVE_CONFIG_ID>"
    ```
-
 
 2. Install your driver and replace `src/main.py` with the corresponding example.
 
@@ -143,14 +142,11 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
                connection.close()
    ```
 
-
 3. Deploy your Worker:
 
    ```bash
    uv run pywrangler deploy
    ```
-
-
 
 ## Limitations and compatibility
 

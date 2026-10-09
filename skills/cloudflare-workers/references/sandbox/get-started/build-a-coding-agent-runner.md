@@ -80,13 +80,11 @@ You also need:
    pnpm create cloudflare@latest sandbox-coding-agent --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
    ```
 
-
 2. Change into the project directory:
 
    ```sh
    cd sandbox-coding-agent
    ```
-
 
 3. Install the [`@cloudflare/sandbox`](https://developers.cloudflare.com/sandbox/reference/) package and [Zod ↗︎](https://zod.dev/):npmyarnpnpmbun
 
@@ -105,7 +103,6 @@ You also need:
    ```
    bun add @cloudflare/sandbox zod
    ```
-
 
 4. Create a `Dockerfile` in your project root:
 
@@ -141,7 +138,7 @@ You also need:
    	"name": "sandbox-coding-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-30",
+   	"compatibility_date": "2026-10-09",
    	"compatibility_flags": ["nodejs_compat"],
    	"observability": {
    		"enabled": true,
@@ -188,7 +185,7 @@ You also need:
    name = "sandbox-coding-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-30"
+   compatibility_date = "2026-10-09"
    compatibility_flags = [ "nodejs_compat" ]
    upload_source_maps = true
 
@@ -233,8 +230,6 @@ You also need:
    ```
    pnpm wrangler types
    ```
-
-
 
 In the next three sections, you create `src/outbound.ts` and `src/sandbox.ts` and replace `src/index.ts`. The tutorial adds or replaces these files:
 
@@ -1350,7 +1345,6 @@ The Worker does not authenticate requests. Anyone with the URL can run Claude Co
    { "AI_GATEWAY_TOKEN": "<AI_GATEWAY_TOKEN>" }
    ```
 
-
 2. Deploy your Worker with the secret:npmyarnpnpm
 
    ```
@@ -1372,14 +1366,11 @@ The Worker does not authenticate requests. Anyone with the URL can run Claude Co
    rm .secrets.json
    ```
 
-
 4. Save the `workers.dev` URL that Wrangler prints in a shell variable:
 
    ```sh
    WORKER_URL=https://sandbox-coding-agent.<YOUR_SUBDOMAIN>.workers.dev
    ```
-
-
 
 ## 6. Run a task
 
@@ -1400,7 +1391,6 @@ The Worker does not authenticate requests. Anyone with the URL can run Claude Co
    }
    ```
 
-
 2. Start a task:
 
    ```sh
@@ -1413,7 +1403,6 @@ The Worker does not authenticate requests. Anyone with the URL can run Claude Co
    ```json
    { "state": "running" }
    ```
-
 
 3. Check the task until its state is `succeeded` or `failed`:
 
@@ -1448,8 +1437,6 @@ The Worker does not authenticate requests. Anyone with the URL can run Claude Co
    @@ -0,0 +1 @@
    +This repository is a minimal test/example repo containing only a "Hello World!" README file.
    ```
-
-
 
 If the model request fails, the task state is `failed` and `error` contains the message from AI Gateway:
 

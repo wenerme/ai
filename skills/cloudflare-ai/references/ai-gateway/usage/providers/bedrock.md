@@ -74,7 +74,6 @@ The recommended approach is to store your AWS credentials using AI Gateway's [Br
    }
    ```
 
-
 4. Select **Save**.
 
 If you are using temporary credentials from AWS STS (for example, from assuming an IAM role), include the `sessionToken` field:

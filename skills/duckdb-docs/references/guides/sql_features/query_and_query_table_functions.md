@@ -1,7 +1,7 @@
 # query and query_table Functions
 
 The [`query_table`](https://duckdb.org/docs/current/sql/functions/utility.html#query_tabletbl_name)
-and [`query`](https://duckdb.org/docs/current/sql/functions/utility.html#queryquery_string_literal)
+and [`query`](https://duckdb.org/docs/current/sql/functions/utility.html#queryquery_string)
 functions enable powerful and more dynamic SQL.
 
 The `query_table` function returns the table whose name is specified by its string argument; the `query` function returns the table obtained by executing the query specified by its string argument.

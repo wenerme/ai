@@ -81,7 +81,6 @@ To enable [WARP+ Unlimited](https://developers.cloudflare.com/warp-client/warp-m
    warp-cli registration license <KEY>
    ```
 
-
 4. Verify the new registration:
 
    ```sh
@@ -92,8 +91,6 @@ To enable [WARP+ Unlimited](https://developers.cloudflare.com/warp-client/warp-m
    Account type: Unlimited
    ...
    ```
-
-
 
 Your WARP+ Unlimited subscription is now active on this device.
 

@@ -38,7 +38,6 @@ To set up Keycloak (SAML) as your identity provider:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-
 8. In **Master SAML Processing URL**, enter the SAML endpoint for your Keycloak realm:
 
    ```txt

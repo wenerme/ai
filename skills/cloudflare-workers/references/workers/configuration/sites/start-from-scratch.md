@@ -29,7 +29,6 @@ This guide shows how to quickly start a new Workers Sites project from scratch.
    git clone --depth=1 --branch=wrangler2 https://github.com/cloudflare/worker-sites-template my-site
    ```
 
-
 3. Run `npm install` to install all dependencies.
 4. You can preview your site by running the [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command:
 
@@ -37,14 +36,11 @@ This guide shows how to quickly start a new Workers Sites project from scratch.
    wrangler dev
    ```
 
-
 5. Deploy your site to Cloudflare:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 ## Project layout
 
@@ -71,7 +67,6 @@ The template project contains the following files and directories:
   name = "my-site"
   ```
 
-
 - Consider updating `compatibility_date` to today's date to get access to the most recent Workers features:
 
   ```jsonc
@@ -83,7 +78,6 @@ The template project contains the following files and directories:
   ```toml
   compatibility_date = "yyyy-mm-dd"
   ```
-
 
 - Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:
 

@@ -63,6 +63,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
     ]
   )
   ```
+
 - Several internal properties have been removed from `RtkPlugin`: `baseURL`, `config`, `description`, `isPrivate`, and `staggered`. Use the new `icon` and `permissions` properties instead.
 - `baseUrl` in `RtkMeetingInfo` now has a default value and no longer needs to be passed explicitly.
 - The two-argument `subscribe(key:listener:)` and `unsubscribe(key:listener:)` overloads on `RtkStore` that passed both the key and value to the callback have been removed. Use the single-argument callback variants introduced in 2.1.0.

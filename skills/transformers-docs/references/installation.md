@@ -2,7 +2,7 @@
 
 # Installation
 
-Transformers works with [PyTorch](https://pytorch.org/get-started/locally/). It has been tested on Python 3.10+ and PyTorch 2.5+.
+Transformers works with [PyTorch](https://pytorch.org/get-started/locally/). It has been tested on Python 3.10+ and PyTorch 2.6+.
 
 ## Virtual environment
 

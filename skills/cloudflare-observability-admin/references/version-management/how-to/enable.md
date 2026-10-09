@@ -72,7 +72,6 @@ To disable Zone Versioning:
    --header "X-Auth-Key: <API_KEY>"
    ```
 
-
 4. Then, send a `GET` request to find all HTTP applications (or versions of your zone).
 
    ```bash
@@ -90,8 +89,6 @@ To disable Zone Versioning:
    --header "X-Auth-Email: <EMAIL>" \
    --header "X-Auth-Key: <API_KEY>"
    ```
-
-
 
 Once all these steps are completed, Zone Versioning will go back to its original landing page.
 

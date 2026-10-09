@@ -426,7 +426,7 @@ for (i = 0; i < n; i++) {
 ```
 
 It is difficult to express this in standard SQL because
-relational tables are not ordered, but imported tables such as [data frames](https://duckdb.org/docs/current/clients/python/data_ingestion.html#pandas-dataframes-–-object-columns)
+relational tables are not ordered, but imported tables such as [data frames](https://duckdb.org/docs/current/clients/python/data_ingestion.html#pandas-dataframes--object-columns)
 or disk files (like [CSVs](https://duckdb.org/docs/current/data/csv/overview.html) or [Parquet files](https://duckdb.org/docs/current/data/parquet/overview.html)) do have a natural ordering.
 
 Connecting them using this ordering is called a _positional join:_

@@ -42,7 +42,6 @@ Cloudflare Support can guide you through these checks but cannot access or modif
    https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id=4f05ce56-95b6-4612-9d98-a45c8cc33f9f
    ```
 
-
 4. Complete the consent flow, including any MFA challenge.
 
 **Verify:** Refresh the Cloudflare connector configuration page in Microsoft Sentinel. The **Service Principal ID** field should populate automatically, and the **Grant tenant-wide admin consent** button should no longer be displayed. Retry the connector deployment.
@@ -70,7 +69,6 @@ A less common variant of this error occurs when the `Microsoft.EventGrid` resour
    az provider register --namespace Microsoft.SecurityInsights
    az provider register --namespace Microsoft.EventGrid
    ```
-
 
 3. After deployment, confirm that the Microsoft-managed service principal holds these role assignments on the Storage account:
    - `Storage Blob Data Reader`
@@ -101,7 +99,6 @@ different types.
    az account get-access-token --resource https://management.azure.com/
    ```
 
-
 3. Apply the updated table schema, replacing the placeholders with your values:
 
    ```sh
@@ -110,8 +107,6 @@ different types.
      --headers "Authorization=Bearer <access-token>" "Content-Type=application/json" \
      --body @CloudflareV2_CL.json
    ```
-
-
 
 **Verify:** The command returns the updated table definition as JSON. Redeploy the Cloudflare CCF connector — the deployment should complete without a schema validation error.
 

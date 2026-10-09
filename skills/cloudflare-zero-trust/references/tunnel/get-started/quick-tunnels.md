@@ -33,7 +33,6 @@ Quick Tunnels are for testing and development. For production, [create a Cloudfl
    cloudflared tunnel --url http://localhost:8080
    ```
 
-
 2. Open the `trycloudflare.com` URL printed by `cloudflared`.
 
 Anyone with the URL can access your local service. The URL stops working when you stop the `cloudflared` process.
@@ -47,7 +46,6 @@ Use `--allowed-mail` to require email authentication. Visitors receive a one-tim
    ```sh
    cloudflared tunnel --url http://localhost:8080 --allowed-mail alice@example.com
    ```
-
 
 2. Share the generated URL with the allowed visitor.
 3. The visitor opens the URL and enters their email address.

@@ -235,8 +235,6 @@ Routes are specified in the [Wrangler configuration file](https://developers.clo
   + import SomeDependency from "./some-dependency.js";
   ```
 
-
-
 ### Wrangler v1 and v2 comparison tables
 
 #### Commands

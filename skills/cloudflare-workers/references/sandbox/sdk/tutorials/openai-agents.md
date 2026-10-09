@@ -60,13 +60,11 @@ If you prefer to deploy step by step:
    cd sandbox-bridge
    ```
 
-
 3. Authenticate with Cloudflare:
 
    ```sh
    npx wrangler login
    ```
-
 
 4. Set the API key secret:
 
@@ -80,7 +78,6 @@ If you prefer to deploy step by step:
    ```sh
    npx wrangler deploy
    ```
-
 
 6. Verify the deployment:
 

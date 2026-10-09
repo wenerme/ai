@@ -176,7 +176,7 @@ Refer to the [source code ↗︎](https://github.com/cloudflare/workerd/blob/4c4
 
 ### `exec`
 
-``exec(query: `string`, ...bindings: `any[]`)``: `SqlStorageCursor`
+`exec(query: string, ...bindings: any[])`: `SqlStorageCursor`
 
 #### Parameters
 
@@ -408,13 +408,13 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 ### `getBookmarkForTime`
 
-``ctx.storage.getBookmarkForTime(timestamp: `number | Date`)``: `Promise<string>`
+`ctx.storage.getBookmarkForTime(timestamp: number | Date)`: `Promise<string>`
 
 - Returns a bookmark representing approximately the given point in time, which must be within the last 30 days. If the timestamp is represented as a number, it is converted to a date as if using `new Date(timestamp)`.
 
 ### `onNextSessionRestoreBookmark`
 
-``ctx.storage.onNextSessionRestoreBookmark(bookmark: `string`)``: `Promise<string>`
+`ctx.storage.onNextSessionRestoreBookmark(bookmark: string)`: `Promise<string>`
 
 - Configures the Durable Object so that the next time it restarts, it should restore its storage to exactly match what the storage contained at the given bookmark. After calling this, the application should typically invoke `ctx.abort()` to restart the Durable Object, thus completing the point-in-time recovery.
 
@@ -440,24 +440,24 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### `get`
 
-- ``ctx.storage.kv.get(key `string`)``: `Any, undefined`
+- `ctx.storage.kv.get(key string)`: `Any, undefined`
   - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
 
 ### `put`
 
-- ``ctx.storage.kv.put(key `string`, value `any`)``: `void`
+- `ctx.storage.kv.put(key string, value any)`: `void`
   - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
     For the size of keys and values refer to [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
 
 ### `delete`
 
-- ``ctx.storage.kv.delete(key `string`)``: `boolean`
+- `ctx.storage.kv.delete(key string)`: `boolean`
   - Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
 
 ### `list`
 
-- ``ctx.storage.kv.list(options `Object` optional)``: `Iterable<string, any>`
+- `ctx.storage.kv.list(options Object optional)`: `Iterable<string, any>`
   - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   - The type of each returned value in the [`Iterable` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) will be whatever was previously written for the corresponding key.
   - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -482,9 +482,9 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### get
 
-- ``ctx.storage.get(key `string`, options `Object` optional)``: `Promise<any>`
+- `ctx.storage.get(key string, options Object optional)`: `Promise<any>`
   - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
-- ``ctx.storage.get(keys `Array<string>`, options `Object` optional)``: `Promise<Map<string, any>>`
+- `ctx.storage.get(keys Array<string>, options Object optional)`: `Promise<Map<string, any>>`
   - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
 #### Supported options
@@ -496,7 +496,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### put
 
-- ``put(key `string`, value `any`, options `Object` optional)``: `Promise`
+- `put(key string, value any, options Object optional)`: `Promise`
   - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
     The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
@@ -505,8 +505,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
     On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
 
-
-- ``put(entries `Object`, options `Object` optional)``: `Promise`
+- `put(entries Object, options Object optional)`: `Promise`
   - Takes an Object and stores each of its keys and values to storage.
   - Each value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
   - Supports up to 128 key-value pairs at a time. The size of keys and values have different limits depending on the flavor of Durable Object you are using. Refer to either:
@@ -515,9 +514,9 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### delete
 
-- ``delete(key `string`, options `Object` optional)``: `Promise<boolean>`
+- `delete(key string, options Object optional)`: `Promise<boolean>`
   - Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
-- ``delete(keys `Array<string>`, options `Object` optional)``: `Promise<number>`
+- `delete(keys Array<string>, options Object optional)`: `Promise<number>`
   - Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
 
 #### Supported options
@@ -543,7 +542,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### list
 
-- ``list(options `Object` optional)``: `Promise<Map<string, any>>`
+- `list(options Object optional)`: `Promise<Map<string, any>>`
   - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   - The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
   - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -572,7 +571,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `getAlarm`
 
-- ``getAlarm(options `Object` optional)``: `Promise<Number | null>`
+- `getAlarm(options Object optional)`: `Promise<Number | null>`
   - Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
 
 #### Supported options
@@ -581,14 +580,14 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `setAlarm`
 
-- ``setAlarm(scheduledTime `Date | number`, options `Object` optional)``: `Promise`
+- `setAlarm(scheduledTime Date | number, options Object optional)`: `Promise`
   - Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
 
   If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
 
 ### `deleteAlarm`
 
-- ``deleteAlarm(options `Object` optional)``: `Promise`
+- `deleteAlarm(options Object optional)`: `Promise`
   - Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
 
 #### Supported options
@@ -599,7 +598,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `deleteAll`
 
-- ``deleteAll(options `Object` optional)``: `Promise`
+- `deleteAll(options Object optional)`: `Promise`
   - Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
   - For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
   - For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [`deleteAlarm()`](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).

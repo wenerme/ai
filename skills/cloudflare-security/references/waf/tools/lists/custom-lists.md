@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6
 
 # Custom lists
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/custom-lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/custom-lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A custom list contains one or more items of the same type (for example, IP addresses, hostnames, or ASNs) that you can reference collectively, by name, in rule expressions.
 
@@ -67,7 +67,7 @@ List items in custom lists with IP addresses must be in one of the following for
 
 The same list can contain both individual addresses and CIDR ranges.
 
-You can use uppercase or lowercase characters for IPv6 addresses in lists. However, when you save the list, uppercase characters are converted to lowercase.
+Cloudflare normalizes IPv6 addresses in lists. When you save a list, Cloudflare converts uppercase characters to lowercase and removes leading zeros from each segment. For example, `2400:d400:0011:19::2` is stored as `2400:d400:11:19::2`. When searching list items, use the normalized form displayed in the list.
 
 <details>
 
@@ -167,5 +167,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/#page","headline":"Custom lists","description":"Create custom lists of IPs, hostnames, or ASNs for use in rules.","url":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6e42a08edcac4fbb","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/#page","headline":"Custom lists","description":"Create custom lists of IPs, hostnames, or ASNs for use in rules.","url":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/tools/lists/custom-lists/og.png?v=6e42a08edcac4fbb","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

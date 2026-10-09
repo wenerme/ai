@@ -64,7 +64,6 @@ Run [Claude Code ↗︎](https://code.claude.com/docs/en/overview) in a Linux sa
    MODEL = "claude-sonnet-5"
    ```
 
-
 3. In `src/outbound.ts`, make sure the `Outbound` entrypoint removes the `x-api-key` header before it adds the gateway token:
 
    *src/outbound.tsts*
@@ -92,7 +91,6 @@ Run [Claude Code ↗︎](https://code.claude.com/docs/en/overview) in a Linux sa
    	result: z.string().optional(),
    });
    ```
-
 
 5. Replace the `agentCommand()` and `agentEnv()` methods:
 
@@ -126,7 +124,6 @@ Run [Claude Code ↗︎](https://code.claude.com/docs/en/overview) in a Linux sa
    		};
    	}
    ```
-
 
    - `--print` runs Claude Code without an interactive terminal.
    - `--output-format stream-json --verbose` writes one JSON event per line, including a final `result` event.
@@ -201,14 +198,12 @@ Run [Claude Code ↗︎](https://code.claude.com/docs/en/overview) in a Linux sa
    	--json '{"url": "https://github.com/octocat/Hello-World"}'
    ```
 
-
 2. Start a task:
 
    ```sh
    curl "$WORKER_URL/sandboxes/claude-1/task" \
    	--data "Add a file NOTES.md with a one-sentence summary of this repository. Do not commit."
    ```
-
 
 3. Check the task until its state is `succeeded` or `failed`:
 

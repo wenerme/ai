@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Cloudflare One Client lifecycle and support policy
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details the technical support policies for the Cloudflare One Client (formerly WARP), which operating systems and their versions are supported and for how long, and the process by which Cloudflare One Client features will be deprecated.
 
@@ -135,13 +135,18 @@ This section will be updated as we add RHEL support to match Red Hat's support l
 
 The Cloudflare One Client supports the current major version of iOS and iPadOS as well as the two previous major versions. Devices must have the latest available update installed (for example, `17.7.2`) to receive support. This policy aligns with Apple's standard security update cycle, as well as the comparatively rapid release of new iOS and iPadOS versions compared to other mobile operating systems.
 
-As of December 2025, the following versions of iOS and iPadOS are supported:
+Note
+
+Starting with iOS and iPadOS 27, Apple introduced [Connectivity Assist ↗︎](https://support.apple.com/127686) on by default, which falls back to cellular network connectivity when Wi-Fi connectivity is failing. This means unless Connectivity Assist is actively turned off, then protections provided by Cloudflare One Client (and any other Zero Trust networking or VPN app) may be unintentionally bypassed when Wi-Fi connectivity exists but is slow. This is because Wi-Fi remains the active network connection, whereas turning Wi-Fi off entirely and using cellular network connectivity would result in expected functionality. To avoid this edge case, turn off Connectivity Assist.
+
+As of October 2026, the following versions of iOS and iPadOS are supported:
 
 | iOS or iPadOS version | Supported until |
 | --- | --- |
+| iOS and iPadOS 27 | Release of 2029 major version |
 | iOS and iPadOS 26 | Release of 2028 major version |
 | iOS and iPadOS 18 | Release of 2027 major version |
-| iOS and iPadOS 17 | Release of 2026 major version |
+| iOS and iPadOS 17 | November 2026 |
 
 ### Android
 
@@ -176,5 +181,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/og.png?v=b0f7728dfa5a203a","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/og.png?v=b0f7728dfa5a203a","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

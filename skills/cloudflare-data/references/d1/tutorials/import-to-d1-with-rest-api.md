@@ -86,8 +86,6 @@ To create the table, follow these steps:
    npx wrangler d1 execute d1-import-tutorial --command="DROP TABLE IF EXISTS TargetD1Table; CREATE TABLE IF NOT EXISTS TargetD1Table (id INTEGER PRIMARY KEY, text TEXT, date_added TEXT);" --remote
    ```
 
-
-
 ## 3. Create an `index.js` file
 
 1. Create a new directory and initialize a new Node.js project.
@@ -97,7 +95,6 @@ To create the table, follow these steps:
    cd d1-import-tutorial
    npm init -y
    ```
-
 
 2. In this repository, create a new file called `index.js`. This file will contain the code which uses REST API to import your data to your D1 database.
 3. In your `index.js` file, define the following variables:
@@ -128,8 +125,6 @@ To create the table, follow these steps:
    };
    ```
 
-
-
 ## 4. Generate example data (optional)
 
 In practice, you may already have the data you wish to import to a D1 database.
@@ -154,7 +149,6 @@ This tutorial generates example data to demonstrate the import process.
    bun add @faker-js/faker
    ```
 
-
 2. Add the following code at the beginning of the `index.js` file. This code creates an array called `data` with 2500 ( `uploadSize`) array elements, where each array element contains an object with `id`, `text`, and `date_added`. Each array element corresponds to a table row.
 
    *index.jsjs*
@@ -172,8 +166,6 @@ This tutorial generates example data to demonstrate the import process.
    	date_added: new Date().toISOString().slice(0, 19).replace("T", " "),
    }));
    ```
-
-
 
 ## 5. Generate the SQL command
 
@@ -206,8 +198,6 @@ This tutorial generates example data to demonstrate the import process.
    	return `INSERT INTO ${tableName} (${columns}) VALUES ${values};`;
    }
    ```
-
-
 
 ## 6. Import the data to D1
 
@@ -342,8 +332,6 @@ The import process consists of four steps:
 
    runImport();
    ```
-
-
 
 ## 7. Write the final code
 
@@ -491,8 +479,6 @@ In the previous steps, you have created functions to execute various processes i
    runImport();
    ```
 
-
-
 ## 8. Run the code
 
 1. Run your code.
@@ -500,8 +486,6 @@ In the previous steps, you have created functions to execute various processes i
    ```sh
    node index.js
    ```
-
-
 
 You will now see your target D1 table populated with the example data.
 

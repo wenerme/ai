@@ -45,7 +45,6 @@ You need:
    bun add @cloudflare/codemode
    ```
 
-
 2. **Create an MCP connector**
 
    Create the connector in its own file. It is a plain class with no special file name or import syntax.

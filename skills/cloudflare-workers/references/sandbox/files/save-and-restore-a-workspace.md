@@ -130,7 +130,6 @@ Container snapshots are in public beta. Features and behavior may change.
    }
    ```
 
-
 4. Add routes to your Worker that write a note, save the sandbox, and read the notes:
 
    *src/index.jsjs*
@@ -221,7 +220,6 @@ Container snapshots are in public beta. Features and behavior may change.
    pnpm wrangler deploy
    ```
 
-
 6. Write a note in the sandbox named `ada`, save the sandbox, then read the notes. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -235,8 +233,6 @@ Container snapshots are in public beta. Features and behavior may change.
    ```txt
    Continue from this checkpoint.
    ```
-
-
 
 ## Copy a sandbox
 
@@ -267,7 +263,6 @@ A snapshot ID restores in any Durable Object of the same class. To copy the file
    	}
    }
    ```
-
 
 2. Add a route to your Worker that copies one sandbox to another:
 

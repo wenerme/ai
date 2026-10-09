@@ -112,7 +112,6 @@ To mute a specific participant's audio:
    }
    ```
 
-
 2. Call `disableAudio()` on the target participant.
 
    If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.
@@ -128,7 +127,6 @@ To mute a specific participant's audio:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -156,8 +154,6 @@ To mute a specific participant's audio:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -169,7 +165,6 @@ To mute a specific participant's audio:
    }
    ```
 
-
 2. Call `disableAudio()` on the target participant.
 
    If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.
@@ -185,7 +180,6 @@ To mute a specific participant's audio:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -213,8 +207,6 @@ To mute a specific participant's audio:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -226,7 +218,6 @@ To mute a specific participant's audio:
    }
    ```
 
-
 2. Call `disableAudio()` on the target participant.
 
    If the local participant does not have the required permission, `disableAudio()` throws a `ClientError` with code `1201`.
@@ -242,7 +233,6 @@ To mute a specific participant's audio:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -270,8 +260,6 @@ To mute a specific participant's audio:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -376,7 +364,6 @@ This affects all participants, including the local participant. To mute audio fo
    }
    ```
 
-
 2. Call `disableAllAudio()`.
 
    If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.
@@ -392,7 +379,6 @@ This affects all participants, including the local participant. To mute audio fo
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -418,8 +404,6 @@ This affects all participants, including the local participant. To mute audio fo
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -431,7 +415,6 @@ This affects all participants, including the local participant. To mute audio fo
    }
    ```
 
-
 2. Call `disableAllAudio()`.
 
    If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.
@@ -447,7 +430,6 @@ This affects all participants, including the local participant. To mute audio fo
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -473,8 +455,6 @@ This affects all participants, including the local participant. To mute audio fo
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -486,7 +466,6 @@ This affects all participants, including the local participant. To mute audio fo
    }
    ```
 
-
 2. Call `disableAllAudio()`.
 
    If the local participant does not have the required permission, `disableAllAudio()` throws a `ClientError` with code `1201`.
@@ -502,7 +481,6 @@ This affects all participants, including the local participant. To mute audio fo
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -528,8 +506,6 @@ This affects all participants, including the local participant. To mute audio fo
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -638,7 +614,6 @@ To disable a specific participant's video:
    }
    ```
 
-
 2. Call `disableVideo()` on the target participant.
 
    If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.
@@ -654,7 +629,6 @@ To disable a specific participant's video:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -680,8 +654,6 @@ To disable a specific participant's video:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -693,7 +665,6 @@ To disable a specific participant's video:
    }
    ```
 
-
 2. Call `disableVideo()` on the target participant.
 
    If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.
@@ -709,7 +680,6 @@ To disable a specific participant's video:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -735,8 +705,6 @@ To disable a specific participant's video:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -748,7 +716,6 @@ To disable a specific participant's video:
    }
    ```
 
-
 2. Call `disableVideo()` on the target participant.
 
    If the local participant does not have the required permission, `disableVideo()` throws a `ClientError` with code `1201`.
@@ -764,7 +731,6 @@ To disable a specific participant's video:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -790,8 +756,6 @@ To disable a specific participant's video:
    	},
    );
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -896,7 +860,6 @@ This affects all participants, including the local participant. To disable video
    }
    ```
 
-
 2. Call `disableAllVideo()`.
 
    If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.
@@ -912,7 +875,6 @@ This affects all participants, including the local participant. To disable video
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -938,8 +900,6 @@ This affects all participants, including the local participant. To disable video
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -951,7 +911,6 @@ This affects all participants, including the local participant. To disable video
    }
    ```
 
-
 2. Call `disableAllVideo()`.
 
    If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.
@@ -967,7 +926,6 @@ This affects all participants, including the local participant. To disable video
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -993,8 +951,6 @@ This affects all participants, including the local participant. To disable video
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -1006,7 +962,6 @@ This affects all participants, including the local participant. To disable video
    }
    ```
 
-
 2. Call `disableAllVideo()`.
 
    If the local participant does not have the required permission, `disableAllVideo()` throws a `ClientError` with code `1201`.
@@ -1022,7 +977,6 @@ This affects all participants, including the local participant. To disable video
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1048,8 +1002,6 @@ This affects all participants, including the local participant. To disable video
    	// Update UI for the local participant
    });
    ```
-
-
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -1161,7 +1113,6 @@ To pin a participant in a session:
    }
    ```
 
-
 2. Call `pin()` on the target participant.
 
    If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.
@@ -1177,7 +1128,6 @@ To pin a participant in a session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1212,8 +1162,6 @@ To pin a participant in a session:
    	// Update the local UI to indicate the participant is pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to pin participants.
 
@@ -1224,7 +1172,6 @@ To pin a participant in a session:
    }
    ```
 
-
 2. Call `pin()` on the target participant.
 
    If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.
@@ -1240,7 +1187,6 @@ To pin a participant in a session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1275,8 +1221,6 @@ To pin a participant in a session:
    	// Update the local UI to indicate the participant is pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to pin participants.
 
@@ -1287,7 +1231,6 @@ To pin a participant in a session:
    }
    ```
 
-
 2. Call `pin()` on the target participant.
 
    If the local participant does not have the required permission, `pin()` throws a `ClientError` with code `1201`.
@@ -1303,7 +1246,6 @@ To pin a participant in a session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1338,8 +1280,6 @@ To pin a participant in a session:
    	// Update the local UI to indicate the participant is pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to pin participants.
 
@@ -1438,7 +1378,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    }
    ```
 
-
 2. Call `unpin()` on the target participant.
 
    If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.
@@ -1454,7 +1393,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1481,7 +1419,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:
 
    ```ts
@@ -1489,8 +1426,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	// Update the local UI to indicate the participant is no longer pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to unpin participants.
 
@@ -1501,7 +1436,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    }
    ```
 
-
 2. Call `unpin()` on the target participant.
 
    If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.
@@ -1517,7 +1451,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1544,7 +1477,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:
 
    ```ts
@@ -1552,8 +1484,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	// Update the local UI to indicate the participant is no longer pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to unpin participants.
 
@@ -1564,7 +1494,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    }
    ```
 
-
 2. Call `unpin()` on the target participant.
 
    If the local participant does not have the required permission, `unpin()` throws a `ClientError` with code `1201`.
@@ -1580,7 +1509,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1607,7 +1535,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    });
    ```
 
-
 4. On the target unpinned participant's side, `meeting.self.isPinned` becomes `false` and `meeting.self` emits `unpinned`:
 
    ```ts
@@ -1615,8 +1542,6 @@ Unpin a participant when you need to undo the highlight and return the session t
    	// Update the local UI to indicate the participant is no longer pinned.
    });
    ```
-
-
 
 1. Check that the local participant has permission to unpin participants.
 
@@ -1719,7 +1644,6 @@ To remove a specific participant from the session:
    }
    ```
 
-
 2. Call `kick()` on the target participant.
 
    If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.
@@ -1735,7 +1659,6 @@ To remove a specific participant from the session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1760,8 +1683,6 @@ To remove a specific participant from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 
@@ -1772,7 +1693,6 @@ To remove a specific participant from the session:
    }
    ```
 
-
 2. Call `kick()` on the target participant.
 
    If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.
@@ -1788,7 +1708,6 @@ To remove a specific participant from the session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1813,8 +1732,6 @@ To remove a specific participant from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 
@@ -1825,7 +1742,6 @@ To remove a specific participant from the session:
    }
    ```
 
-
 2. Call `kick()` on the target participant.
 
    If the local participant does not have the required permission, `kick()` throws a `ClientError` with code `1201`.
@@ -1841,7 +1757,6 @@ To remove a specific participant from the session:
    	throw err;
    }
    ```
-
 
 3. Handle the result by listening for updates.
 
@@ -1866,8 +1781,6 @@ To remove a specific participant from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 
@@ -1972,7 +1885,6 @@ To remove all participants from the session:
    }
    ```
 
-
 2. Call `kickAll()`.
 
    If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.
@@ -1989,7 +1901,6 @@ To remove all participants from the session:
    }
    ```
 
-
 3. Handle the result by listening for updates.
 
    After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.
@@ -2001,8 +1912,6 @@ To remove all participants from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 
@@ -2013,7 +1922,6 @@ To remove all participants from the session:
    }
    ```
 
-
 2. Call `kickAll()`.
 
    If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.
@@ -2030,7 +1938,6 @@ To remove all participants from the session:
    }
    ```
 
-
 3. Handle the result by listening for updates.
 
    After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.
@@ -2042,8 +1949,6 @@ To remove all participants from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 
@@ -2054,7 +1959,6 @@ To remove all participants from the session:
    }
    ```
 
-
 2. Call `kickAll()`.
 
    If the local participant does not have the required permission, `kickAll()` throws a `ClientError` with code `1201`.
@@ -2071,7 +1975,6 @@ To remove all participants from the session:
    }
    ```
 
-
 3. Handle the result by listening for updates.
 
    After the call succeeds, all participants exit the session. On each client, `meeting.self` emits `roomLeft` with state set to `ended`.
@@ -2083,8 +1986,6 @@ To remove all participants from the session:
    	}
    });
    ```
-
-
 
 1. Check that the local participant has permission to remove participants.
 

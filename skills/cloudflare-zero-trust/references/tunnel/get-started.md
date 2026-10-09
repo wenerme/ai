@@ -69,7 +69,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 3. Copy the `id` and `token` values from the response. You will need them to configure and run the tunnel.
 
 ## Publish an application
@@ -150,7 +149,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/#create-a-tunnel):
    1. [Download and install ↗︎](https://pkg.cloudflare.com/index.html) `cloudflared`.
    2. Run the following command:
@@ -158,7 +156,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       ```sh
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
-
 
    1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
    2. Open Command Prompt as administrator.
@@ -168,7 +165,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       cloudflared.exe service install <TUNNEL_TOKEN>
       ```
 
-
    1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
    2. Open a terminal window and run the following command:
 
@@ -176,15 +172,12 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       sudo cloudflared service install <TUNNEL_TOKEN>
       ```
 
-
    1. Open a terminal window.
    2. Run the following command:
 
       ```sh
       docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
       ```
-
-
 
 Your application is now live at the hostname you configured. Cloudflare automatically proxies traffic through its network, applying CDN caching, WAF, and DDoS protection.
 

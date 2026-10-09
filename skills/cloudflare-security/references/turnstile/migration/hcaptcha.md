@@ -30,7 +30,6 @@ To complete the migration, you must obtain the [sitekey and secret key](https://
    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
    ```
 
-
 2. Locate the `hcaptcha.render()` calls and replace the sitekey with your Turnstile sitekey and the API.
 
    *Renderjs*
@@ -47,8 +46,6 @@ To complete the migration, you must obtain the [sitekey and secret key](https://
          sitekey: "1x00000000000000000000AA"
      })
    ```
-
-
 
 Note
 
@@ -67,14 +64,11 @@ Turnstile supports:
    https://challenges.cloudflare.com/turnstile/v0/siteverify
    ```
 
-
 2. Replace the `h-captcha-response` input name with the following:
 
    ```txt
    cf-turnstile-response
    ```
-
-
 
 Was this helpful?
 

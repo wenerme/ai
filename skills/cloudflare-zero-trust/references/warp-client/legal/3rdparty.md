@@ -936,7 +936,6 @@ All license text:
   limitations under the License.
   ```
 
-
 - ### Apache License 2.0 #### Used by:
   - [crc32fast ↗︎](https://github.com/srijs/rust-crc32fast)
   - [derive\_builder ↗︎](https://github.com/colin-kiegel/rust-derive-builder)
@@ -2819,7 +2818,6 @@ All license text:
   limitations under the License.
   ```
 
-
 - ### Apache License 2.0 #### Used by:
   - [ryu ↗︎](https://github.com/dtolnay/ryu)
 
@@ -4497,7 +4495,6 @@ All license text:
   ```plaintext
    This Source Code Form is "Incompatible With Secondary Licenses", as defined by the Mozilla Public License, v. 2.0.
   ```
-
 
 - ### OpenSSL License #### Used by:
   - [ring ↗︎](https://github.com/briansmith/ring)

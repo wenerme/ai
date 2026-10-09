@@ -94,7 +94,6 @@ Prerequisites
    cd mcp-server-cf-access
    ```
 
-
 3. Create a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) to store the key. The binding name should be `OAUTH_KV` if you want to run the example as written.
 
    ```sh
@@ -114,7 +113,6 @@ Prerequisites
    }
    ```
 
-
 4. Open `wrangler.jsonc` in an editor and insert your `OAUTH_KV` namespace ID:
 
    ```jsonc
@@ -126,14 +124,11 @@ Prerequisites
    ],
    ```
 
-
 5. You can now deploy the Worker to Cloudflare's global network:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev`.
 
@@ -198,7 +193,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. Copy the `client_id` and `client_secret` returned in the response.
 3. Build the OAuth endpoint URLs using your team name and the `client_id` returned in the response:
 
@@ -248,7 +242,6 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
    npx wrangler secret put ACCESS_JWKS_URL
    ```
 
-
 2. When prompted to enter a secret value, paste the corresponding values obtained from the [Access for SaaS app](#2-create-an-access-for-saas-app).
 
    | Workers secret | SaaS app field |
@@ -273,8 +266,6 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
    ```sh
    npx wrangler secret put COOKIE_ENCRYPTION_KEY
    ```
-
-
 
 ### 4. Test the connection
 
