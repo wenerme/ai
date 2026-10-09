@@ -55,7 +55,6 @@ When you put your Google Workspace behind Access, users will not be able to log 
    -----END CERTIFICATE-----
    ```
 
-
 3. Set the file extension as `.crt` and save.
 
 ## 3. Create an SSO provider in Google Workspace

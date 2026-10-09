@@ -86,11 +86,13 @@ Example: Output to CLI
    	sensitive   = true
    }
    ```
+
 2. Apply the configuration:
 
    ```sh
    terraform apply
    ```
+
 3. Read the tunnel token:
 
    ```sh
@@ -146,7 +148,6 @@ To rotate a tunnel token:
       AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=
       ```
 
-
    2. Make a `PATCH` request to the [Cloudflare Tunnel](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/methods/edit/) endpoint:<details><summary>
 
       Required API token permissions</summary>
@@ -193,7 +194,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       }
       ```
 
-
    3. Copy the `token` value shown in the output.
 
    After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
@@ -203,7 +203,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
      sudo cloudflared service uninstall
    sudo cloudflared service install <NEW_TOKEN>
    ```
-
 
 3. Confirm that the service started correctly:
 
@@ -249,14 +248,11 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    sudo cloudflared service install <NEW_TOKEN>
    ```
 
-
 4. Confirm that the service started correctly:
 
    ```sh
    sudo systemctl status cloudflared
    ```
-
-
 
 The tunnel token is now fully rotated. The old token is no longer in use.
 

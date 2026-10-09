@@ -321,7 +321,6 @@ The following methods are deprecated due to scalability limitations (limited to 
   InvalidAccessError: Failed to execute 'setRemoteDescription' on 'RTCPeerConnection': Failed to set remote answer sdp: Failed to set remote audio description send parameters for m-section with mid='<N>'
   ```
 
-
 - Fixed an issue where awaiting `RealtimeKitClient.initMedia` did not return media tracks
 
   Example usage:
@@ -334,7 +333,6 @@ The following methods are deprecated due to scalability limitations (limited to 
 
   const { videoTrack, audioTrack } = media;
   ```
-
 
 - Fixed an issue where an undefined variable caused `TypeError: Cannot read properties of undefined (reading 'getValue')` in media retrieval due to a race condition.
 
@@ -379,8 +377,6 @@ The following methods are deprecated due to scalability limitations (limited to 
     },
   });
   ```
-
-
 
 **Fixes**
 
@@ -464,8 +460,6 @@ The following methods are deprecated due to scalability limitations (limited to 
     meetingIds: ["<connected_meeting_id>"],
   });
   ```
-
-
 
 **Enhancements**
 

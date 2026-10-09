@@ -109,8 +109,6 @@ To configure how Cloudflare responds to preflight requests:
    cf-ray: 7109408e6b84efe4-EWR
    ```
 
-
-
 ## Send authentication token with Cloudflare Worker
 
 If you have two sites protected by Cloudflare Access, `example.com` and `api.mysite.com`, requests made between the two will be subject to CORS checks. Users who log in to `example.com` will be issued a cookie for `example.com`. When the user's browser requests `api.mysite.com`, Cloudflare Access looks for a cookie specific to `api.mysite.com`. The request will fail if the user has not already logged in to `api.mysite.com`.

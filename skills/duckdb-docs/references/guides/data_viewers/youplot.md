@@ -18,7 +18,7 @@ Run `uplot --help` to ensure you've installed it successfully!
 
 ## Piping DuckDB Queries to stdout
 
-By combining the [`COPY...TO`](https://duckdb.org/docs/current/sql/statements/copy.html#copy-to) function with a CSV output file, you can read data from any format DuckDB supports and pipe it to YouPlot. Follow these three steps:
+By combining the [`COPY...TO`](https://duckdb.org/docs/current/sql/statements/copy.html#copy--to) function with a CSV output file, you can read data from any format DuckDB supports and pipe it to YouPlot. Follow these three steps:
 
 1. First, read all data from `input.json`:
 

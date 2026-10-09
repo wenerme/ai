@@ -31,7 +31,6 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
    pnpm wrangler deploy
    ```
 
-
 3. Wait for the command to finish.
 
 `wrangler deploy` uploads and activates your Worker before it processes the container configuration. For a Dockerfile image, Wrangler then builds and pushes the image when needed. For a registry image, it uses the configured image reference. These steps are not transactional: an image build, image push, or [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/) error can happen after the new Worker is already live.

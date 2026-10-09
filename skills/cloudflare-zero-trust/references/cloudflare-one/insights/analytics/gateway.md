@@ -143,8 +143,6 @@ To explore the schema, you can use a GraphQL client such as [GraphiQL ↗︎](ht
    }
    ```
 
-
-
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 
 Was this helpful?

@@ -61,8 +61,6 @@ To create a new network policy:
    	}'
    ```
 
-
-
 ```sh
 {
 	 "success": true,

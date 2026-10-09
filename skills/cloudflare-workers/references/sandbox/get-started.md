@@ -49,13 +49,11 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    pnpm create cloudflare@latest sandbox-linux --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
    ```
 
-
 2. Change into the project directory:
 
    ```sh
    cd sandbox-linux
    ```
-
 
 3. Replace `wrangler.jsonc` so a Durable Object can start a container:
 
@@ -65,7 +63,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    	"name": "sandbox-linux",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-30",
+   	"compatibility_date": "2026-10-09",
    	"observability": {
    		"enabled": true,
    	},
@@ -98,7 +96,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    name = "sandbox-linux"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-30"
+   compatibility_date = "2026-10-09"
    upload_source_maps = true
 
    [observability]
@@ -116,7 +114,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    type = "durable-object"
    storage = "sqlite"
    ```
-
 
 4. Replace `src/index.ts`. The Worker reads `argv` from the JSON body and runs it in Linux:
 
@@ -206,7 +203,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    };
    ```
 
-
 5. Generate types for the binding. Wrangler reads the `MyContainer` class from `src/index.ts` to type `env.MY_CONTAINER`:npmyarnpnpm
 
    ```
@@ -220,7 +216,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    ```
    pnpm wrangler types
    ```
-
 
 6. Run `wrangler dev`:npmyarnpnpm
 
@@ -242,8 +237,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    ```sh
    curl http://localhost:8787 --request POST --json '{"argv":["uname","-a"]}'
    ```
-
-
 
 The JSON body includes `"exitCode":0`. `stdout` contains `Linux`. The Worker started a Linux VM and ran the command you sent.
 

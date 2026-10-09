@@ -147,7 +147,6 @@ To resolve, use one of the following approaches:
         originServerName: app.example.com
   ```
 
-
 - Provide the CA certificate using [`caPool`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#capool):
 
   ```yml
@@ -158,7 +157,6 @@ To resolve, use one of the following approaches:
         caPool: /path/to/ca-cert.pem
   ```
 
-
 - As a temporary last resort, disable TLS verification with [`noTLSVerify`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#notlsverify). Turn it off after resolving the certificate issue.
 
   ```yml
@@ -168,8 +166,6 @@ To resolve, use one of the following approaches:
       originRequest:
         noTLSVerify: true
   ```
-
-
 
 ## A published application returns `ERR_TOO_MANY_REDIRECTS`.
 
@@ -210,13 +206,11 @@ To set the maximum receive buffer size on Linux:
    sudo vi 98-core-rmem-max.conf
    ```
 
-
 2. In the file, define the desired buffer size:
 
    ```txt
    net.core.rmem_max=2500000
    ```
-
 
 3. Reboot the host machine running `cloudflared`.
 4. To validate that these changes have taken effect, use the `grep` command:
@@ -228,8 +222,6 @@ To set the maximum receive buffer size on Linux:
    ```sh
    net.core.rmem_max = 2500000
    ```
-
-
 
 ## Cloudflare Tunnel is buffering my streaming response instead of streaming it live.
 

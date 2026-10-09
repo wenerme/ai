@@ -48,13 +48,11 @@ As you can see, the banned hostnames are preceded by a `.`. To use this output f
    curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=banned" -H "Authorization: Token <API token>" > mcas.txt
    ```
 
-
 2. Remove the leading `.`, for example by running `sed` from the CLI:
 
    ```sh
    sed -i 's/^.//' mcas.txt
    ```
-
 
 3. This will give you the list of hostnames without leading `.`.
 4. Replace the file's `.txt` extension with `.csv`. The file can now be imported into Cloudflare Zero Trust as a Hostname list.

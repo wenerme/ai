@@ -81,8 +81,6 @@ For example, if you created a policy to block `example.com`, you can do the foll
    ;; MSG SIZE  rcvd: 83
    ```
 
-
-
 ### Test a security or content category
 
 If you are blocking a [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#security-categories) or a [content category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#content-categories), you can test that the policy is working by using the [test domain](#common-test-domains) associated with each category.
@@ -96,7 +94,6 @@ Once you have configured your Gateway policy to block the category, the test dom
   ```txt
   <NAME_OF_CATEGORY>.testcategory.com
   ```
-
 
 - **Multi-word category** — For categories with multiple words in the name (for example, *Parked & For Sale Domains*), the test domain uses the following format:
   - Remove any spaces between the words
@@ -167,7 +164,6 @@ EDNS client subnet (ECS) is a DNS extension that sends a portion of the user's I
    	"TC": false
    }
    ```
-
 
 3. To verify your EDNS client subnet, obtain your source IP address:
 

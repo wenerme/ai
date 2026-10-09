@@ -56,7 +56,6 @@ You can use the following commands to validate if the posture check is working a
    PSComputerName           : ENDPOINT-01
    ```
 
-
 3. Microsoft does not support decoding the `productState` from the `SecurityCenter2` namespace. To verify that an antivirus product is active, open the [Windows Security app ↗︎](https://support.microsoft.com/en-us/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963). The **Virus & threat protection** panel should say `No action needed` with a green checkmark.
 
    To determine which antivirus product is running, select **Virus & threat protection** > **Manage providers**. You will see the name of the antivirus product (for example, `Windows Defender Antivirus`) and its current state.

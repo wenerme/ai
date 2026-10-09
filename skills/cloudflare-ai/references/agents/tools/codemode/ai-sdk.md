@@ -45,14 +45,13 @@ Choose between two integration patterns:
    bun add @cloudflare/codemode agents ai zod
    ```
 
-
 2. Add a Worker Loader binding for `DynamicWorkerExecutor`:
 
    ```jsonc
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -66,13 +65,12 @@ Choose between two integration patterns:
 
    ```toml
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
    binding = "LOADER"
    ```
-
 
 3. Define executable AI SDK tools. Code Mode uses their schemas to generate types and validate arguments before calling `execute`.
 
@@ -186,8 +184,6 @@ Choose between two integration patterns:
     	},
    } satisfies ExportedHandler<Env>;
    ```
-
-
 
 The example uses `generateText()` for a completed response. You can pass the same `codemode` tool to `streamText()` for streaming. The generated tool description includes TypeScript definitions for `getWeather`. The model still writes JavaScript, such as:
 

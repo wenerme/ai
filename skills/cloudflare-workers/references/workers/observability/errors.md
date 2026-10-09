@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/errors/og.png?v=d
 
 # Errors and exceptions
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review Workers errors and exceptions.
 
@@ -208,6 +208,7 @@ These errors occur when a Worker is uploaded or modified.
 | `10054` | A environment variable or secret exceeds the [size limit](https://developers.cloudflare.com/workers/platform/limits/#environment-variables). |
 | `10055` | The number of environment variables or secrets exceeds the [limit/Worker](https://developers.cloudflare.com/workers/platform/limits/#environment-variables). |
 | `10056` | [Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) not found. |
+| `10057` | An [`inherit` binding](https://developers.cloudflare.com/workers/observability/errors/#inherit-binding-errors-10057) could not be resolved. |
 | `10068` | The uploaded Worker has no registered [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/). |
 | `10069` | The uploaded Worker contains [event handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/) unsupported by the Workers runtime. |
 
@@ -224,6 +225,24 @@ This means that you are doing work in the top-level scope of your Worker that ta
 #### Script startup exceeded memory limit
 
 This means that you are doing work in the top-level scope of your Worker that allocates more than the [memory limit (128 MB)](https://developers.cloudflare.com/workers/platform/limits/#memory) of memory.
+
+### Inherit binding errors (10057)
+
+An `inherit` binding copies a binding from an earlier version of your Worker. You can use it to keep secrets and other bindings without sending their values again. If an `inherit` binding cannot be resolved, the upload fails with error 10057. The API returns one error for each binding that fails.
+
+The script upload endpoints, such as [Upload Worker Module](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/) and [Upload Version](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/versions/methods/create/), inherit from the most recently uploaded version of your Worker. That version is not always the deployed version. These endpoints return error 10057 when:
+
+- `version_id` is set to anything other than `"latest"`.
+- No earlier version exists, and the request sets `bindings_inherit=strict`.
+- The earlier version has no binding with the inherited name, and the request sets `bindings_inherit=strict`.
+
+Without `bindings_inherit=strict`, these endpoints drop an `inherit` binding that cannot be resolved.
+
+To inherit a binding from a specific version, use the [Versions](https://developers.cloudflare.com/api/resources/workers/subresources/beta/subresources/workers/subresources/versions/) endpoints of the beta Workers API. These endpoints accept a version ID in `version_id`. They return error 10057 when:
+
+- `version_id` is not a version ID, a version ID prefix of at least eight characters, or `"latest"`.
+- The version does not exist.
+- The version has no binding with the inherited name.
 
 ## Runtime errors
 
@@ -381,5 +400,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/errors/og.png?v=d4d7666e14bbf04d","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/errors/#page","headline":"Errors and exceptions","description":"Review Workers errors and exceptions.","url":"https://developers.cloudflare.com/workers/observability/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/errors/og.png?v=d4d7666e14bbf04d","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

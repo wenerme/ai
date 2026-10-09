@@ -268,8 +268,6 @@ The upgrade process can take up to an hour. During this period you may observe s
    }
    ```
 
-
-
 The returned configuration in the example above, which would match the existing configuration for the previous WAF version, contains:
 
 - A rule that executes the Cloudflare Managed Ruleset (ruleset ID efb7b8c949ac4650a09736fc376e9aee).
@@ -342,8 +340,6 @@ The returned configuration in the example above, which would match the existing 
      ]
    }'
    ```
-
-
 
 Once the provided configuration is saved and the new WAF Managed Rules are enabled, the previous version of the WAF managed rules will be automatically disabled, due to the presence of the `waf_migration=pending&phase_two=1` parameters. This will make sure that your zone stays protected by one of the WAF versions during the update process.
 
@@ -443,7 +439,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
    [...]
    ```
 
-
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are looking for the WAF Managed Rules configuration, keep only the Terraform resource for the `http_request_firewall_managed` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:
 
@@ -463,7 +458,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
     your Terraform state and will henceforth be managed by Terraform.
    ```
 
-
 4. Run `terraform plan` to validate that Terraform now checks the state of the new `cloudflare_ruleset` resource, in addition to other existing resources already managed by Terraform. For example:
 
    ```sh
@@ -477,7 +471,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
    cloudflare_waf_group.my_group: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf]
    [...]
    ```
-
 
 5. Remove any state related to the previous version of WAF managed rules from your Terraform state:
 
@@ -495,7 +488,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
       cloudflare_waf_group.my_group
       ```
 
-
    2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:
 
       ```sh
@@ -506,7 +498,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
       Would remove cloudflare_waf_package.my_package
       Would remove cloudflare_waf_group.my_group
       ```
-
 
    3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:
 
@@ -519,7 +510,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
       Removed cloudflare_waf_group.my_group
       Successfully removed 2 resource instance(s).
       ```
-
 
 6. After removing WAF package, group, and rule resources from Terraform state, delete `cloudflare_waf_package`, `cloudflare_waf_group`, and `cloudflare_waf_rule` resources from `.tf` configuration files.
 7. Run `terraform plan` to verify that the resources you deleted from configuration files no longer appear. You should not have any pending changes.
@@ -536,8 +526,6 @@ The recommended steps for replacing your old WAF managed rules configuration in 
 
    Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
    ```
-
-
 
 For details on importing Cloudflare resources to Terraform and using the `cf-terraforming` tool, refer to the following resources:
 

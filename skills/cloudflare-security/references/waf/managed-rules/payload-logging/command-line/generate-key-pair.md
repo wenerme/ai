@@ -26,7 +26,6 @@ Do the following:
    cd matched-data-cli
    ```
 
-
 4. Run the following command:
 
    ```sh
@@ -39,8 +38,6 @@ Do the following:
    	"public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
    }
    ```
-
-
 
 After generating the key pair, copy the public key value and enter it in the payload logging configuration.
 

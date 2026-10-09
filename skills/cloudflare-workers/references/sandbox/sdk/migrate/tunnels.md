@@ -227,7 +227,6 @@ This page replaces `tunnels.get()`, `tunnels.list()`, and `tunnels.destroy()`. R
    }
    ```
 
-
 3. Add methods that run and delete a named tunnel to your Durable Object class:
 
    *src/index.tsts*

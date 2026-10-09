@@ -144,8 +144,6 @@ The following example requires Cloudflare provider version `4.40.0` or greater.
    }
    ```
 
-
-
 #### UPN and email
 
 If your organization's UPNs do not match users' email addresses, you must add a custom claim for email. For example, if your organization's email format is `user@domain.com` but the UPN is `u908080@domain.com`, you must create an email claim if you are configuring email-based policies.
@@ -301,7 +299,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. [Update the Entra ID identity provider](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/update/) using a `PUT` request. In the request body, include all existing configurations and set the `prompt` parameter to either `login` or `select_account`. For example:<details><summary>
 
    Required API token permissions</summary>
@@ -342,8 +339,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		"scim_base_url": "https://<TEAM_NAME>.cloudflareaccess.com/populations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/scim/v2"
    	}'
    ```
-
-
 
 Was this helpful?
 

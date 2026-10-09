@@ -44,7 +44,6 @@ To use this method, you also need an [authenticated gateway](https://developers.
    $env:CF_AIG_TOKEN = "<CF_AIG_TOKEN>"
    ```
 
-
 2. In your project root, create an `opencode.json` file. Replace `<ACCOUNT_ID>` and `<GATEWAY_ID>` with your account ID and gateway slug:
 
    *opencode.jsonjson*
@@ -109,8 +108,6 @@ To use this method, you also need an [authenticated gateway](https://developers.
    opencode
    ```
 
-
-
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 ## Use with Cloudflare Access
@@ -146,7 +143,6 @@ The following example uses `ai.example.com` for the AI Gateway domain and `confi
      "X-Requested-With": "XMLHttpRequest"
    }
    ```
-
 
 2. Upload `opencode.json` to your public HTTPS host. Confirm that its URL returns the expected JSON without authentication.
 
@@ -198,8 +194,6 @@ The following example uses `ai.example.com` for the AI Gateway domain and `confi
    ```sh
    opencode
    ```
-
-
 
 Was this helpful?
 

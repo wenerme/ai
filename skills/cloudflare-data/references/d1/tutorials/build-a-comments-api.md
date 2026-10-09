@@ -62,8 +62,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    cd d1-comments-api
    ```
 
-
-
 ## 2. Install Hono
 
 Install [Hono ↗︎](https://hono.dev/), a lightweight web framework for building APIs on Workers:
@@ -93,7 +91,6 @@ bun add hono
    ```sh
    npx wrangler@latest d1 create d1-comments-api
    ```
-
 
 2. When prompted `Would you like Wrangler to add it on your behalf?`, select `Yes`. This automatically adds the `DB` binding to your Wrangler configuration file.
 
@@ -150,13 +147,11 @@ bun add hono
    -- INSERT INTO comments (author, body, post_slug) VALUES ('Kristian', 'Great post!', 'hello-world');
    ```
 
-
 2. Run the schema against your local database first:
 
    ```sh
    npx wrangler d1 execute d1-comments-api --local --file schemas/schema.sql
    ```
-
 
 3. Verify the table was created locally:
 
@@ -172,14 +167,11 @@ bun add hono
    └──────────┘
    ```
 
-
 4. Once you are satisfied with the schema, apply it to your remote (production) database:
 
    ```sh
    npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
    ```
-
-
 
 ## 5. Initialize the Hono application
 
@@ -351,7 +343,6 @@ When you make requests to `/api/*`, Hono will automatically generate and add COR
    npx wrangler deploy
    ```
 
-
 3. Test the API by inserting and then retrieving a comment:
 
    ```sh
@@ -379,8 +370,6 @@ When you make requests to `/api/*`, Hono will automatically generate and add COR
      }
    ]
    ```
-
-
 
 ## Full example
 

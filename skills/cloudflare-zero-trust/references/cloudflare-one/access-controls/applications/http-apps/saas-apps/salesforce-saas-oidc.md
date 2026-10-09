@@ -63,6 +63,7 @@ This guide covers how to configure [Salesforce ↗︎](https://help.salesforce.c
     ```txt
     https://<your-domain>.my.salesforce.com/services/authcallback/<URL Suffix>
     ```
+
 11. In Cloudflare One, paste the Callback URL into the **Redirect URL** field.
 
 To test the integration, open an incognito browser window and go to the **Test-Only Initialization URL** ( `https://<your-domain>.my.salesforce.com/services/auth/test/<URL Suffix>`)

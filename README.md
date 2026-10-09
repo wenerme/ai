@@ -900,7 +900,7 @@ Luanti (formerly Minetest) documentation — open-source voxel game engine. Cove
 npx skills add wenerme/ai --skill mastra
 ```
 
-Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current APIs. Use for documentation lookup, API verification, TypeScript setup, common errors, migrations, and `mastra api` CLI tasks: inspect or call resources on local, Mastra platform, Trace Intelligence, or remote servers. For Mastra Factory operations, discover and activate the companion mastra-factory skill. Also report verified bugs, documentation gaps, and user-requested features to the Mastra team automatically via the feedback endpoint.
+Comprehensive Mastra framework guide for building agents, workflows, tools, memory, workspaces, and storage with current APIs. Use for documentation lookup, API verification, TypeScript setup, common errors, migrations, and `mastra api` CLI tasks: inspect or call resources on local, Mastra platform, Trace Intelligence, or remote servers. For Mastra Factory operations, discover and activate the companion mastra-factory skill. Also report verified bugs and concrete documentation defects to the Mastra team automatically via the feedback endpoint.
 
 </details>
 <details>
@@ -1130,7 +1130,7 @@ Use when completing tasks, implementing major features, or before merging to ver
 npx skills add wenerme/ai --skill shadcn
 ```
 
-Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", or "switch to --preset".
+Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat interfaces. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn init", "create an app with --preset", "switch to --preset", and for building a design system or applying a DESIGN.md or brand spec to shadcn/ui.
 
 </details>
 <details>
@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 50104 files, 508 MiB total
+> 125 skills, 50120 files, 509 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1404,9 +1404,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [ai-sdk](./skills/ai-sdk/SKILL.md) | 1 | 5.7 KiB |
 | [aliyun-cli-docs](./skills/aliyun-cli-docs/SKILL.md) | 27 | 183 KiB |
 | [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | 7 | 41 KiB |
-| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 105 | 603 KiB |
+| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 105 | 604 KiB |
 | [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | 30 | 614 KiB |
-| [anthropic-api](./skills/anthropic-api/SKILL.md) | 650 | 33 MiB |
+| [anthropic-api](./skills/anthropic-api/SKILL.md) | 655 | 34 MiB |
 | [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 308 | 10 MiB |
 | [anthropic-sdk-csharp](./skills/anthropic-sdk-csharp/SKILL.md) | 159 | 8.8 MiB |
 | [anthropic-sdk-go](./skills/anthropic-sdk-go/SKILL.md) | 159 | 11 MiB |
@@ -1423,14 +1423,14 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.2 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 136 | 6.8 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 136 | 6.9 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1601 | 13 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 329 | 2.6 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 35 KiB |
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 841 | 5.6 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1416 | 9.9 MiB |
-| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1040 | 5.9 MiB |
+| [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1042 | 5.9 MiB |
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 892 | 8.9 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 947 | 20 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
@@ -1458,9 +1458,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 920 | 8.6 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 328 | 576 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 732 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 734 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 3.1 MiB |
-| [grafana-docs](./skills/grafana-docs/SKILL.md) | 644 | 6.5 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 645 | 6.5 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 744 | 5.3 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 89 | 365 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 367 | 2.1 MiB |
@@ -1475,8 +1475,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 53 | 497 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 190 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
-| [mastra](./skills/mastra/SKILL.md) | 13 | 80 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 940 | 8.6 MiB |
+| [mastra](./skills/mastra/SKILL.md) | 13 | 82 KiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 942 | 8.6 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 185 | 562 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |
@@ -1498,7 +1498,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 320 | 2.2 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
 | [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 9.2 KiB |
-| [shadcn](./skills/shadcn/SKILL.md) | 15 | 96 KiB |
+| [shadcn](./skills/shadcn/SKILL.md) | 21 | 145 KiB |
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 79 | 745 KiB |
@@ -1518,7 +1518,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 228 | 1.4 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 181 | 1.7 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 317 KiB |
-| [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 271 KiB |
+| [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 274 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |

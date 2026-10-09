@@ -144,8 +144,6 @@ Bindings are located on the `env` object, which can be accessed in several ways:
   };
   ```
 
-
-
 - It is a class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
 
   ```js
@@ -164,7 +162,6 @@ Bindings are located on the `env` object, which can be accessed in several ways:
   		return Response(f"Hi {self.env.NAME}")
   ```
 
-
 - It can be imported from `cloudflare:workers`:
 
   ```js
@@ -176,8 +173,6 @@ Bindings are located on the `env` object, which can be accessed in several ways:
   from workers import env
   print(f"Hi, {env.NAME}")
   ```
-
-
 
 ### Importing `env` as a global
 

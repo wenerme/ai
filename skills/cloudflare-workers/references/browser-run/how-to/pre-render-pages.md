@@ -45,7 +45,7 @@ Add a Browser Run binding to your Wrangler configuration:
   "name": "my-prerender-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-09",
   "browser": {
     "binding": "BROWSER"
   }
@@ -56,7 +56,7 @@ Add a Browser Run binding to your Wrangler configuration:
 name = "my-prerender-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [browser]
 binding = "BROWSER"
@@ -278,14 +278,11 @@ The `waitUntil: "networkidle2"` option waits until the page has no more than two
    pnpm wrangler deploy
    ```
 
-
 2. After deployment, request a rendered page from your Worker URL:
 
    ```bash
    curl "https://<YOUR_WORKER_HOSTNAME>/?url=https://example.com/"
    ```
-
-
 
 ## Production considerations
 

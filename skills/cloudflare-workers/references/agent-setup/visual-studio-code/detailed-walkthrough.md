@@ -89,6 +89,7 @@ For the condensed version, refer to the [Visual Studio Code quick start](https:/
     - Zones returned: 1
     - Zone: cloudflaredemo.net — id: <ZONE_ID> — status: active
     ```
+
 12. **Create a DNS record**
 
     Ask the agent to create a DNS AAAA record and turn on the Cloudflare proxy. This example points `test.cloudflaredemo.net` at `100::`, a reserved placeholder address from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗︎](https://www.rfc-editor.org/rfc/rfc6666)). Because the record is proxied, Cloudflare intercepts requests before they reach this address. Approve the tool call (**Always Allow**), and the agent reports the record created.![Copilot Chat creating a proxied AAAA DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1479,height=1054,format=webp/_astro/cloudflare-mcp-create-aaaa-record.9y7YCmFb.png)
@@ -105,7 +106,9 @@ For the condensed version, refer to the [Visual Studio Code quick start](https:/
     - Value: 100::
     - Proxied: true
     - Record ID: <RECORD_ID>
-    ``` Do not rely on the agent's report alone. Open the dashboard and check the zone. ![Cloudflare dashboard DNS records page confirming the new AAAA record exists](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1807,height=1314,format=webp/_astro/cloudflare-dash-verify-dns-record.fsKq8sUx.png)
+    ```
+
+    Do not rely on the agent's report alone. Open the dashboard and check the zone. ![Cloudflare dashboard DNS records page confirming the new AAAA record exists](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1807,height=1314,format=webp/_astro/cloudflare-dash-verify-dns-record.fsKq8sUx.png)
 13. **Verify DNS propagation**
 
     Ask the Cloudflare MCP server to verify that the record propagated.![Copilot Chat verifying DNS propagation across public resolvers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1478,height=1054,format=webp/_astro/cloudflare-mcp-verify-dns-propagation.Bj4T6fcx.png)

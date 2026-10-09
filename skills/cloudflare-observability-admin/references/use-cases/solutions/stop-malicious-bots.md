@@ -339,7 +339,6 @@ Bot activity appears in Security Events that your current rules do not catch. Bo
    (http.request.uri.path eq "/login" and http.request.method eq "POST" and not cf.client.bot)
    ```
 
-
 5. Under **Then take action**, select *Managed Challenge*.
 6. Select **Deploy**.
 7. Review the results in Security Events. If the rule matches only bot traffic, change the action to *Block*.

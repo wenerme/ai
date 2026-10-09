@@ -93,8 +93,6 @@ It is important to register your web app first to connect it with Turnstile late
    });
    ```
 
-
-
 ### 3d. Verify the App Check token in your web application
 
 To verify the App Check token in your web application, refer to Firebase's [Token Verification guide ↗︎](https://firebase.google.com/docs/app-check/custom-resource-backend?hl=en#verification).

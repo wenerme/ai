@@ -63,7 +63,6 @@ When setting up new device posture checks, we recommend first testing them witho
    ~/Desktop $ cd tmp
    ```
 
-
 2. Run the following command to extract certificates for the Cloudflare One Client application:
 
    ```sh
@@ -71,15 +70,12 @@ When setting up new device posture checks, we recommend first testing them witho
    Executable=/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP
    ```
 
-
 3. Next, run the following command to extract the SHA1 thumbprint:
 
    ```sh
    ~/Desktop/tmp $ openssl x509 -inform DER -in codesign0 -fingerprint -sha1 -noout | tr -d :
    SHA1 Fingerprint=FE2C359D79D4CEAE6BDF7EFB507326C6B4E2436E
    ```
-
-
 
 ### Windows
 
@@ -89,8 +85,6 @@ When setting up new device posture checks, we recommend first testing them witho
    ```powershell
    Get-AuthenticodeSignature -FilePath c:\myfile.exe
    ```
-
-
 
 ## Determine the SHA-256 value
 
@@ -105,8 +99,6 @@ The SHA-256 value almost always changes between versions of a file/application.
    shasum -a 256 myfile
    ```
 
-
-
 ### Windows
 
 1. Open a PowerShell window.
@@ -115,8 +107,6 @@ The SHA-256 value almost always changes between versions of a file/application.
    ```powershell
    get-filehash -path "C:\myfile.exe" -Algorithm SHA256 | format-list
    ```
-
-
 
 ## How WARP checks for an application
 

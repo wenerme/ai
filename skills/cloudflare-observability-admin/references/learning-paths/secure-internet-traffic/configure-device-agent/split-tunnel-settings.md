@@ -175,7 +175,6 @@ All clients with this device profile will now switch to the new mode and its def
    }
    ```
 
-
 4. In the device profile, exclude or include routes based on either their IP address or domain:
 
    *device-profiles.tftf*

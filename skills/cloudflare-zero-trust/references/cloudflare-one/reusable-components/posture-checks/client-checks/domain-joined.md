@@ -45,8 +45,6 @@ To check the domain value on your Windows device:
    (Get-WmiObject Win32_ComputerSystem).Domain
    ```
 
-
-
 The command will return the Active Directory domain to which your device belongs.
 
 Was this helpful?

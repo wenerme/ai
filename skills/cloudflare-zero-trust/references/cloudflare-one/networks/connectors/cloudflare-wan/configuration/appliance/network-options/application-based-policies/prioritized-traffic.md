@@ -163,8 +163,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
-
 ### Delete an application from Cloudflare One Appliance
 
 1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
@@ -234,8 +232,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    		"messages": []
    }
    ```
-
-
 
 Was this helpful?
 

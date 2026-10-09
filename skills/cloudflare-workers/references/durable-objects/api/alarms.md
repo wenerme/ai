@@ -89,7 +89,7 @@ export class AgentServer extends DurableObject {
 
 ### `setAlarm`
 
-- ``setAlarm(scheduledTimeMs `number`)`` : `void`
+- `setAlarm(scheduledTimeMs number)` : `void`
   - Set the time for the alarm to run. Specify the time as the number of milliseconds elapsed since the UNIX epoch.
   - If you call `setAlarm` when there is already one scheduled, it will override the existing alarm.
 
@@ -109,7 +109,7 @@ This is due to the fact that, if the Durable Object wakes up after being inactiv
 
 ### `alarm`
 
-- ``alarm(alarmInfo `Object`)``: `void`
+- `alarm(alarmInfo Object)`: `void`
   - Called by the system when a scheduled alarm time is reached.
   - The optional parameter `alarmInfo` object has two properties:
     - `retryCount` `number`: The number of times this alarm event has been retried.

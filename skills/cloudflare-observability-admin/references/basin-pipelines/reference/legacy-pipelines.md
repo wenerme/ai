@@ -46,7 +46,6 @@ Legacy pipelines continue to work, but new features and improvements are only av
    pnpm wrangler basin pipelines setup
    ```
 
-
 2. Configure your new pipeline with the desired streams, SQL transformations, and sinks.
 3. Update your applications to send data to the new stream endpoints.
 4. Once verified, delete your legacy pipeline.

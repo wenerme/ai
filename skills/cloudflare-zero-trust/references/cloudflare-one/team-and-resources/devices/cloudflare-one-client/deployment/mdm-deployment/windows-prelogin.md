@@ -77,7 +77,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. Copy the `client_id` and `client_secret` values returned in the response.
 
    *Responsejson*
@@ -118,7 +117,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 3. Get the Client ID and Client Secret of the service token:<details><summary>
 
    Example: Output to CLI</summary>
@@ -135,11 +133,13 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       	sensitive = true
       }
       ```
+
    2. Apply the configuration:
 
       ```sh
       terraform apply
       ```
+
    3. Read the Client ID and Client Secret:
 
       ```sh
@@ -148,7 +148,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
       ```sh
       terraform output -raw example_service_token_client_secret
-      ```</details>
+      ```
+
+      </details>
 
 <details><summary>
 

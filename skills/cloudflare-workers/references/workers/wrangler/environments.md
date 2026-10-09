@@ -43,7 +43,6 @@ Review the following environments flow:
    "<ENV_NAME>" = { }
    ```
 
-
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:
 
    ```jsonc
@@ -67,7 +66,6 @@ Review the following environments flow:
    [env.dev]
    route = "dev.example.com"
    ```
-
 
 4. Environments are used with the `--env` or `-e` flag on Wrangler commands. For example, you can develop the Worker in the `dev` environment by running `npx wrangler dev -e=dev`, and deploy it with `npx wrangler deploy -e=dev`.
 

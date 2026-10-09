@@ -32,7 +32,6 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    npx wrangler login
    ```
 
-
 2. Create a bucket named `my-bucket`:
 
    ```sh
@@ -45,8 +44,6 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    ```sh
    npx wrangler r2 bucket list
    ```
-
-
 
 1. In the Cloudflare Dashboard, go to **R2 object storage**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
@@ -87,14 +84,11 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
    bun add -d wrangler
    ```
 
-
 2. Log in to your Cloudflare account:
 
    ```sh
    wrangler login
    ```
-
-
 
 [rclone](https://developers.cloudflare.com/r2/examples/rclone/) is ideal for bulk uploads, migrations, and syncing directories.
 
@@ -104,7 +98,6 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
    ```sh
    rclone config
    ```
-
 
 3. Create new remote by selecting `n`.
 4. Name your remote `r2`
@@ -123,7 +116,6 @@ The [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) works 
    ```sh
    aws configure
    ```
-
 
 3. When prompted, enter:
    - **AWS Access Key ID**: Your R2 Access Key ID

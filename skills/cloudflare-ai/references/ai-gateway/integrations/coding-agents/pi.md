@@ -57,8 +57,6 @@ The token you give Pi is your gateway token, not a model provider key. To pay fo
    pi --provider cloudflare-ai-gateway --model "claude-sonnet-4-6"
    ```
 
-
-
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 Was this helpful?

@@ -40,7 +40,6 @@ To start a local development session:
    ⛅️ wrangler 3.0.0
    ```
 
-
 2. Start a local development session
 
    ```sh
@@ -59,8 +58,6 @@ To start a local development session:
    [mf:inf] Ready on http://127.0.0.1:8787/
    [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit
    ```
-
-
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 

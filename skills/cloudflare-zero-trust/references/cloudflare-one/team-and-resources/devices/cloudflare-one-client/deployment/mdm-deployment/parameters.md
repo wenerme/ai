@@ -446,6 +446,7 @@ Allows you to choose the operational mode of the client.
   <key>proxy_port</key>
   <integer>44444</integer>
   ```
+
 - `postureonly` — [Posture only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode).
 - `tunnelonly` - [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode).
 

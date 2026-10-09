@@ -29,7 +29,6 @@ To find the `cf` command for a task, use any of the following:
   cf schema d1 create
   ```
 
-
 - **Help**: add `--help` to a command group, such as `cf d1 --help`, to list its commands and options.
 - **Coding agent**: ask your agent for the `cf` equivalent of a Wrangler command. To set up your agent, refer to [Use cf with coding agents](https://developers.cloudflare.com/cf/agents/).
 
@@ -44,7 +43,6 @@ Resource commands in `cf` take the identifiers that the Cloudflare API expects, 
   ```sh
   npx wrangler tail <WORKER_NAME>
   ```
-
 
 - **`wrangler secret put`**: `cf` cannot set a single secret yet. Run `npx wrangler secret put <SECRET_NAME> --name <WORKER_NAME>`, or upload secrets with a new Worker version by passing `--secrets-file <PATH>` to `cf deploy` or `cf workers versions create`.
 

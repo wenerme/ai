@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/rules/transform/request-header-modifica
 
 # Available fields and functions
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The available fields when setting an HTTP request header value using an expression are the following:
 
@@ -101,6 +101,7 @@ The available fields when setting an HTTP request header value using an expressi
 - `cf.waf.credential_check.*`
 - `cf.waf.score`
 - `cf.waf.score.*`
+- `cf.appsec.request.failed_detections`
 
 Refer to [Fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for reference information on these fields.
 
@@ -120,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

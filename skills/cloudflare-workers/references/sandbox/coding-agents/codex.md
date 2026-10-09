@@ -83,7 +83,6 @@ Run the [Codex CLI ↗︎](https://developers.openai.com/codex/cli) in a Linux s
    ]);
    ```
 
-
 4. Replace the `agentCommand()` and `agentEnv()` methods:
 
    *src/sandbox.tsts*
@@ -212,14 +211,12 @@ Run the [Codex CLI ↗︎](https://developers.openai.com/codex/cli) in a Linux s
    	--json '{"url": "https://github.com/octocat/Hello-World"}'
    ```
 
-
 2. Start a task:
 
    ```sh
    curl "$WORKER_URL/sandboxes/codex-1/task" \
    	--data "Add a file NOTES.md with a one-sentence summary of this repository. Do not commit."
    ```
-
 
 3. Check the task until its state is `succeeded` or `failed`:
 

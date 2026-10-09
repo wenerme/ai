@@ -114,7 +114,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
    # (...)
    ```
 
-
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are updating your rate limiting rules configuration, keep only the Terraform resource for the `http_ratelimit` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:
 
@@ -134,7 +133,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
    your Terraform state and will henceforth be managed by Terraform.
    ```
 
-
 4. Run `terraform plan` to validate that Terraform now checks the state of the new `cloudflare_ruleset` resource, in addition to other existing resources already managed by Terraform. For example:
 
    ```sh
@@ -147,7 +145,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
    cloudflare_rate_limit.my_rate_limiting_rules: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf]
    [...]
    ```
-
 
 5. Remove any state related to rate limiting rules configured through the old `cloudflare_rate_limit` resource from your Terraform state:
 
@@ -164,7 +161,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
       cloudflare_rate_limit.my_rate_limiting_rules
       ```
 
-
    2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:
 
       ```sh
@@ -174,7 +170,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
       ```txt
       Would remove cloudflare_rate_limit.my_rate_limiting_rules
       ```
-
 
    3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:
 
@@ -186,7 +181,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
       Removed cloudflare_rate_limit.my_rate_limiting_rules
       Successfully removed 1 resource instance(s).
       ```
-
 
 6. After removing `cloudflare_rate_limit` resources from Terraform state, delete all these resources from `.tf` configuration files.
 7. Run `terraform plan` to verify that the resources you deleted from configuration files no longer appear. You should not have any pending changes.
@@ -203,8 +197,6 @@ The recommended steps for replacing your old rate limiting configuration in Terr
 
    Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
    ```
-
-
 
 For details on importing Cloudflare resources to Terraform and using the `cf-terraforming` tool, refer to the following resources:
 

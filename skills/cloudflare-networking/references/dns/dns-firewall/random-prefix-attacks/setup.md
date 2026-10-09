@@ -46,8 +46,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
-
 Once you turn on attack mitigation, Cloudflare returns a `REFUSED` response to queries that are part of a random prefix attack.
 
 Note

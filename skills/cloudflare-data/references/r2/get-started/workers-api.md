@@ -26,7 +26,6 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    npx wrangler login
    ```
 
-
 2. Create a bucket named `my-bucket`:
 
    ```sh
@@ -39,8 +38,6 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    ```sh
    npx wrangler r2 bucket list
    ```
-
-
 
 1. In the Cloudflare Dashboard, go to **R2 object storage**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
@@ -71,7 +68,6 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    cd r2-worker
    ```
 
-
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:
 
    ```jsonc
@@ -91,14 +87,11 @@ A bucket stores your objects in R2. To create a new R2 bucket:
    bucket_name = "my-bucket"
    ```
 
-
 4. (Optional) If you are using TypeScript, regenerate types:
 
    ```sh
    npx wrangler types
    ```
-
-
 
 ## 3. Read and write objects
 
@@ -179,13 +172,11 @@ export default {
    curl http://localhost:8787/my-file.txt
    ```
 
-
 3. Deploy to production:
 
    ```sh
    npx wrangler deploy
    ```
-
 
 4. After deploying, Wrangler outputs your Worker's URL (for example, `https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev`). Test storing and retrieving objects:
 
@@ -196,8 +187,6 @@ export default {
    # Retrieve the object
    curl https://r2-worker.<YOUR_SUBDOMAIN>.workers.dev/my-file.txt
    ```
-
-
 
 Refer to the [Workers R2 API documentation](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/) for the complete API reference.
 

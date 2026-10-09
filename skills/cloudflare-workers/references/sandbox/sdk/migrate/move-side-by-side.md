@@ -178,7 +178,6 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
    storage = "sqlite"
    ```
 
-
 5. Add methods to the 1.0 class that move one sandbox. The copy runs once for each name, and stores `moved` so that later requests skip it:
 
    *src/index.tsts*
@@ -346,7 +345,6 @@ Send a request for a sandbox whose 0.12 container runs and has files in `/worksp
    storage = "sqlite"
    ```
 
-
 4. Remove the alias, generate types, and deploy:npmyarnpnpmbun
 
    ```
@@ -393,7 +391,6 @@ Send a request for a sandbox whose 0.12 container runs and has files in `/worksp
    pnpm wrangler deploy
    ```
 
-
 5. Deleting the class does not delete its container application. Wrangler named that application from your Worker and class names, such as `my-worker-sandbox`. List the applications to find it:npmyarnpnpm
 
    ```
@@ -407,7 +404,6 @@ Send a request for a sandbox whose 0.12 container runs and has files in `/worksp
    ```
    pnpm wrangler containers list
    ```
-
 
 6. Delete the old application. Replace `<OLD_APPLICATION_ID>` with its ID from the list:npmyarnpnpm
 

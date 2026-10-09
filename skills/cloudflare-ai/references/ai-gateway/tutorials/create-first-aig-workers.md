@@ -68,8 +68,6 @@ To set up an AI Gateway using the API:
      }'
    ```
 
-
-
 The expected output would be similar to :
 
 ```bash

@@ -29,8 +29,6 @@ In this example, all website visitors from the United Kingdom will be redirected
    ip.src.country == "GB" and http.request.full_uri in $uk_redirect_list
    ```
 
-
-
 This configuration will perform the following redirects for UK visitors:
 
 | Request URL | URL after redirect |

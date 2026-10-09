@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/markdown-for-age
 
 # Markdown for Agents
 
-Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What is Markdown for Agents
 
@@ -44,8 +44,6 @@ const r = await fetch(
 		},
 	},
 );
-const tokenCount = r.headers.get("x-markdown-tokens");
-const originalTokenCount = r.headers.get("x-original-tokens");
 const markdown = await r.text();
 ```
 
@@ -58,8 +56,6 @@ const r = await fetch(
 		},
 	},
 );
-const tokenCount = r.headers.get("x-markdown-tokens");
-const originalTokenCount = r.headers.get("x-original-tokens");
 const markdown = await r.text();
 ```
 
@@ -69,12 +65,9 @@ The response to this request is now formatting in markdown:
 HTTP/2 200
 date: Wed, 11 Feb 2026 11:44:48 GMT
 content-type: text/markdown; charset=utf-8
-content-length: 2899
 vary: accept
 cache-control: public, max-age=3600
 strict-transport-security: max-age=63072000; includeSubDomains
-x-markdown-tokens: 725
-x-original-tokens: 12345
 content-signal: ai-train=yes, search=yes, ai-input=yes
 
 ---
@@ -97,14 +90,8 @@ Because the body is replaced with converted Markdown, the following changes are 
 
 - `Content-Type` is set to `text/markdown; charset=utf-8`.
 - `Vary` includes `Accept` (any `Vary` dimensions your origin already declared are preserved) so that caches store separate variants for Markdown and HTML.
-- `Content-Length` is recalculated to match the size of the Markdown response.
+- `Content-Length` is removed because the Markdown response is streamed.
 - Headers that describe the original body are removed, because they no longer match the converted response: `Content-Encoding`, `Content-Range`, `Transfer-Encoding`, `ETag`, and `Last-Modified`. `ETag` and `Last-Modified` are dropped because conditional requests ( `If-None-Match`, `If-Modified-Since`) cannot be honored for converted responses.
-
-Markdown for Agents also adds the token count headers described below.
-
-### Token count headers
-
-Note that we include token count headers with the converted response. `x-markdown-tokens` indicates the estimated number of tokens in the Markdown document, and `x-original-tokens` indicates the estimated number of tokens in the original HTML document before conversion. You can use these values in your flow, for example to calculate the size of a context window, estimate the token savings from Markdown conversion, or decide on your chunking strategy.
 
 ### Content Signals Policy
 
@@ -302,7 +289,7 @@ curl https://blog.cloudflare.com/markdown-for-agents/ \
 ## Limitations
 
 - We only convert from HTML, other types of documents may be included in the future.
-- The origin response cannot exceed 2 MB (2,097,152 bytes).
+- Conversion is limited to 6 MiB (6,291,456 bytes) of decompressed HTML. The limit applies after decompression, not to the compressed response size.
 
 ## Other Markdown conversion APIs
 
@@ -320,5 +307,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/og.png?v=338bcd55a33b0004","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/#page","headline":"Markdown for Agents","description":"Cloudflare's Markdown for Agents converts HTML to Markdown at the edge, allowing AI systems to request content in text/markdown format.","url":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/og.png?v=338bcd55a33b0004","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

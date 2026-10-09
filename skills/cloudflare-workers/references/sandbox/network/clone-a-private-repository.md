@@ -43,7 +43,6 @@ You can check that Docker is running properly by running the `docker info` comma
    CMD ["sleep", "infinity"]
    ```
 
-
 2. In `wrangler.jsonc`, name the repository, declare the token as a secret, and build the `Dockerfile` as a named image. Replace `<OWNER>/<REPOSITORY>` with your repository:
 
    ```jsonc
@@ -97,7 +96,6 @@ You can check that Docker is running properly by running the `docker info` comma
    pnpm wrangler types
    ```
 
-
 3. Store the token when Wrangler prompts for it:npmyarnpnpm
 
    ```
@@ -111,7 +109,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler secret put GITHUB_TOKEN
    ```
-
 
 4. Add an entrypoint to your Worker that accepts only the requests that fetch the repository, and adds the token:
 
@@ -235,7 +232,6 @@ You can check that Docker is running properly by running the `docker info` comma
    }
    ```
 
-
 6. Add a route to your Worker that clones the repository:
 
    *src/index.tsts*
@@ -266,7 +262,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler deploy
    ```
-
 
 8. Send a `POST` request to `/clone` on the `workers.dev` URL that Wrangler prints:
 

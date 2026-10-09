@@ -83,8 +83,6 @@ To request a categorization change via the API:
    }'
    ```
 
-
-
 Was this helpful?
 
 YesNo

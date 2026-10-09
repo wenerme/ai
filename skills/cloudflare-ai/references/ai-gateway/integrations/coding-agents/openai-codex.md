@@ -69,14 +69,11 @@ Before you start, you need:
    $env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"
    ```
 
-
 3. Start Codex with the profile and send a prompt. Requests now route through AI Gateway. The `cloudflare-aig` profile name matches the `cloudflare-aig.config.toml` file you created.
 
    ```bash
    codex --profile cloudflare-aig
    ```
-
-
 
 ## Use with Cloudflare Access
 

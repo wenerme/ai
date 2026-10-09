@@ -45,14 +45,11 @@ Before you start, you need:
    $env:COPILOT_MODEL = "openai/gpt-4.1"
    ```
 
-
 2. Start GitHub Copilot CLI and send a prompt. Requests now route through AI Gateway.
 
    ```bash
    copilot
    ```
-
-
 
 Note
 

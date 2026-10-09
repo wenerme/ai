@@ -86,8 +86,6 @@ Depending on your settings, Gateway will display a block page in your users' bro
    }
    ```
 
-
-
 ### Customize the block page
 
 You can customize the Cloudflare-hosted block page by making global changes that Gateway will display every time a user reaches your block page. Customizations will apply regardless of the type of policy (DNS or HTTP) that blocks the traffic.
@@ -128,8 +126,6 @@ To customize your block page:
    	}
    }
    ```
-
-
 
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
 

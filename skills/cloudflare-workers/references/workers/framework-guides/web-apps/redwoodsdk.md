@@ -36,13 +36,11 @@ RedwoodSDK is a framework for building server-side web applications on Cloudflar
    pnpx create-rwsdk my-project-name
    ```
 
-
 2. **Change the directory.**
 
    ```sh
    cd my-project-name
    ```
-
 
 3. **Install dependencies.**npmyarnpnpmbun
 
@@ -61,7 +59,6 @@ RedwoodSDK is a framework for building server-side web applications on Cloudflar
    ```
    bun install
    ```
-
 
 4. **Develop locally.**
 

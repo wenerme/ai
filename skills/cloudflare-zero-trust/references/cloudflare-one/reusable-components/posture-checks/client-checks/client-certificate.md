@@ -99,7 +99,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Client certificate**.

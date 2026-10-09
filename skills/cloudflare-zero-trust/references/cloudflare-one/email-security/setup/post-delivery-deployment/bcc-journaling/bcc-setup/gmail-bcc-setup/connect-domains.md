@@ -45,6 +45,7 @@ To add additional domains:
    ```txt
    <account tag>@CF-emailsecurity.com
    ```
+
 7. Select **Save**.
 
 ## Verify successful deployment

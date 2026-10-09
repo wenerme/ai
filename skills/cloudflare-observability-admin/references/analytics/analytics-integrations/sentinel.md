@@ -124,7 +124,6 @@ Select **Connect** to start the deployment. When the deployment completes, the A
    | take 10
    ```
 
-
 4. Confirm that Cloudflare log records are returned.
 
 Note

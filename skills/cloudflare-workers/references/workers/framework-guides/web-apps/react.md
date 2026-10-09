@@ -119,8 +119,6 @@ This project uses Vite for local development and build, and thus comes with all 
    pnpm run deploy
    ```
 
-
-
 If you already have a React + Vite application, you can adapt it to deploy to Cloudflare Workers using the Cloudflare Vite plugin. This approach preserves your existing code while adding the ability to deploy to Cloudflare's edge network with static assets and an optional API Worker.
 
 1. **Navigate to your project directory**
@@ -184,7 +182,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "assets": {
        "not_found_handling": "single-page-application"
      }
@@ -194,7 +192,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
 
    [assets]
    not_found_handling = "single-page-application"
@@ -219,7 +217,6 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    .wrangler
    .dev.vars*
    ```
-
 
 5. **Develop locally**### Run the development server Run your framework's development command to start the Vite development server and verify that your application is working as expected.npmyarnpnpm
 
@@ -336,7 +333,6 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    }
    ```
 
-
 2. **Add the Worker entrypoint to your configuration**### Add the Worker entrypoint to your configuration Update your Wrangler configuration file to add a `main` field that points to your Worker entrypoint:
 
    ```jsonc
@@ -344,7 +340,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "main": "./worker/index.ts",
      "assets": {
        "not_found_handling": "single-page-application"
@@ -355,7 +351,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    main = "./worker/index.ts"
 
    [assets]
@@ -398,7 +394,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "cloudflare-vite-tutorial",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "main": "./worker/index.ts",
      "assets": {
        "not_found_handling": "single-page-application",
@@ -412,14 +408,13 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "cloudflare-vite-tutorial"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    main = "./worker/index.ts"
 
    [assets]
    not_found_handling = "single-page-application"
    run_worker_first = ["/api/*"]
    ```
-
 
 4. **Call the API from the client**
 
@@ -452,8 +447,6 @@ If you want to add an API Worker to your existing React + Vite project, follow t
 
    export default App;
    ```
-
-
 
 ---
 

@@ -44,7 +44,6 @@ You can check that Docker is running properly by running the `docker info` comma
    bun add @cloudflare/sandbox
    ```
 
-
 2. Copy the helper binary into your image. If your project has no `Dockerfile`, create one in your project root:
 
    *Dockerfiledockerfile*
@@ -129,7 +128,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler types
    ```
-
 
 5. In `src/index.ts`, export `DirectoryBackupGateway`, and update the `MyContainer` class so that its methods start the `workspace` image and create `DirectoryBackup`:
 
@@ -265,7 +263,6 @@ You can check that Docker is running properly by running the `docker info` comma
    	}
    }
    ```
-
 
 7. Add a method to `MyContainer` that backs up the project and stores the backup record:
 
@@ -414,7 +411,6 @@ You can check that Docker is running properly by running the `docker info` comma
     pnpm wrangler deploy
     ```
 
-
 11. In the sandbox named `ada`, write a note and back up the project. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
     ```sh
@@ -436,8 +432,6 @@ You can check that Docker is running properly by running the `docker info` comma
     ```txt
     Keep this line.
     ```
-
-
 
 ## Leave out files
 

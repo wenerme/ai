@@ -122,14 +122,11 @@ To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `clo
    echo "net.ipv4.ping_group_range = 0 10001" | sudo tee -a /etc/sysctl.d/99-cloudflared.conf
    ```
 
-
 2. If you are running multiple network interfaces (for example, `eth0` and `eth1`), configure `cloudflared` to use the external Internet-facing interface:
 
    ```sh
    cloudflared tunnel run --icmpv4-src <IP of primary interface>
    ```
-
-
 
 In your environment, modify the `ping_group_range` parameter to include the Group ID (GID) of the user running `cloudflared`.
 

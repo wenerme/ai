@@ -240,7 +240,6 @@ When a request enters Cloudflare, your Worker's [`fetch` handler](https://develo
   }
   ```
 
-
 - Making requests to `/lb` will load balance requests across several containers. This uses a simple `getRandom` helper method, which picks an ID at random from a set number (in this case 3), then routes to that Container instance. You can replace this with any routing or load balancing logic you choose to implement:
 
   ```js
@@ -249,8 +248,6 @@ When a request enters Cloudflare, your Worker's [`fetch` handler](https://develo
   	return await container.fetch(request);
   }
   ```
-
-
 
 This allows for multiple ways of using Containers:
 

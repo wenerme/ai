@@ -120,6 +120,7 @@ In the proxy zone, go to **Security** > **WAF** > **Custom rules** and create a 
   ```txt
   (http.host eq "logpush.yourdestinationendpoint.com" and all(http.request.headers["x-logpush-secret"][*] ne "YOUR_RANDOM_SECRET_TOKEN"))
   ```
+
 - **Action:** Block
 
 ### Add ASN-based filtering
@@ -131,6 +132,7 @@ For defense in depth, add a rule to only allow traffic from Cloudflare's ASNs. L
   ```txt
   (http.host eq "logpush.yourdestinationendpoint.com" and not ip.geoip.asnum in {13335 132892 202623})
   ```
+
 - **Action:** Block
 
 Note

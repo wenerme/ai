@@ -54,7 +54,6 @@ Access to the *User and Password Leaked* (`cf.waf.credential_check.username_and_
   (cf.waf.credential_check.username_and_password_leaked)
   ```
 
-
 - **Action**: *Managed Challenge*
 
 ---

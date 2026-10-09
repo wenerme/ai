@@ -118,14 +118,12 @@ The following example rule will only allow visitors connecting from a company’
   Block all traffic to staging and wiki unless it comes from HQ or branch offices
   ```
 
-
 - URLs:
 
   ```txt
   staging.example.com/*
   example.com/wiki/*
   ```
-
 
 - IP Range:
 
@@ -134,8 +132,6 @@ The following example rule will only allow visitors connecting from a company’
   2001:DB8::/64
   203.0.133.1
   ```
-
-
 
 This example would not protect an internal wiki located on a different directory path such as `example.com/internal/wiki`.
 

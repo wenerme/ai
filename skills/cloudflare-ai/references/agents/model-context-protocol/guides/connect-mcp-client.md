@@ -44,7 +44,6 @@ An MCP server to connect to (or use the public example in this tutorial).
    pnpm create cloudflare@latest my-mcp-client --template=cloudflare/ai/demos/hello-world
    ```
 
-
 2. Move into the project directory:
 
    ```sh
@@ -98,8 +97,6 @@ An MCP server to connect to (or use the public example in this tutorial).
    	},
    } satisfies ExportedHandler<Env>;
    ```
-
-
 
 ## 2. Add MCP connection endpoint
 
@@ -171,8 +168,6 @@ An MCP server to connect to (or use the public example in this tutorial).
    }
    ```
 
-
-
 The `addMcpServer()` method connects to an MCP server. If the server requires OAuth authentication, it returns an `authUrl` that users must visit to complete authorization.
 
 ## 3. Test the connection
@@ -182,7 +177,6 @@ The `addMcpServer()` method connects to an MCP server. If the server requires OA
    ```sh
    npm start
    ```
-
 
 2. In a new terminal, connect to an MCP server (using a public example):
 
@@ -203,8 +197,6 @@ The `addMcpServer()` method connects to an MCP server. If the server requires OA
    	"status": "connected"
    }
    ```
-
-
 
 ## 4. List available tools
 
@@ -252,7 +244,6 @@ The `addMcpServer()` method connects to an MCP server. If the server requires OA
    }
    ```
 
-
 2. Test it:
 
    ```sh
@@ -281,8 +272,6 @@ The `addMcpServer()` method connects to an MCP server. If the server requires OA
    	]
    }
    ```
-
-
 
 ## Summary
 

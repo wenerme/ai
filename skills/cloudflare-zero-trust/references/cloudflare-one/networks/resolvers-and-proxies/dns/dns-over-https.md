@@ -135,13 +135,11 @@ Windows 11
    nslookup -type=A <your-subdomain>.cloudflare-gateway.com
    ```
 
-
    2. Obtain your <code>AAAA</code> record values.
 
    ```powershell
    nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
    ```
-
 
    3. Copy the resulting IP addresses.
 2. Add the addresses to your list of known DoH servers.
@@ -151,13 +149,11 @@ Windows 11
    Add-DnsClientDohServerAddress -ServerAddress <IP-address> -DohTemplate https://<your-subdomain>.cloudflare-gateway.com/dns-query -AllowFallbackToUdp $False -AutoUpgrade $False
    ```
 
-
    2. Confirm the addresses were added.
 
    ```powershell
    Get-DnsClientDohServerAddress
    ```
-
 
 3. In Windows, go to **Settings** &gt; **Network &amp; internet** &gt; your active Internet connection. This option may be either **Ethernet** or **Wi-Fi**.
 4. Under **DNS server assignment**, select **Edit**.

@@ -70,7 +70,6 @@ You can check that Docker is running properly by running the `docker info` comma
    dockerfile = "./Dockerfile"
    ```
 
-
 3. Add a method to your Durable Object that clones a repository, installs its dependencies, and runs its tests:
 
    *src/index.tsts*
@@ -219,7 +218,6 @@ You can check that Docker is running properly by running the `docker info` comma
    ```
    pnpm wrangler deploy
    ```
-
 
 6. Send a `POST` request to the `workers.dev` URL that Wrangler prints:
 

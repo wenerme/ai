@@ -187,3 +187,6 @@ Already-shutdown models are indicated with gray backgrounds.
 | Preview agents ||||
 | `antigravity-preview-09-2026` | September 17, 2026 | No shutdown date announced |   |
 | `antigravity-preview-05-2026` | May 19, 2026 | October 5, 2026 | `antigravity-preview-09-2026` |
+| `deep-research-preview-04-2026` | April 21, 2026 | No shutdown date announced |   |
+| `deep-research-max-preview-04-2026` | April 21, 2026 | No shutdown date announced |   |
+| `deep-research-pro-preview-12-2025` | December 11, 2025 | October 23, 2026 | `deep-research-preview-04-2026` |

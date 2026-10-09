@@ -31,13 +31,11 @@ This tutorial explains how to use Cloudflare Tunnels with Kubernetes client-go c
    cloudflared tunnel login
    ```
 
-
 2. Create a new tunnel:
 
    ```sh
    cloudflared tunnel create k8s-tunnel
    ```
-
 
 3. Configure your tunnel by creating a configuration file named `config.yml`:
 
@@ -56,8 +54,6 @@ This tutorial explains how to use Cloudflare Tunnels with Kubernetes client-go c
    ```sh
    cloudflared tunnel run k8s-tunnel
    ```
-
-
 
 ## 2. Configure the Kubernetes API server
 
@@ -85,7 +81,6 @@ Ensure your Kubernetes API server is configured to accept authentication from Cl
    chmod +x cloudflare-k8s-auth.sh
    ```
 
-
 2. Update your `~/.kube/config` file to use the credential plugin:
 
    ```yaml
@@ -109,8 +104,6 @@ Ensure your Kubernetes API server is configured to accept authentication from Cl
        name: cloudflare-k8s-context
    current-context: cloudflare-k8s-context
    ```
-
-
 
 ## 4. Use kubectl with Cloudflare Tunnel
 

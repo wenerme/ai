@@ -1000,7 +1000,7 @@ container, err := client.Containers.New(context.Background(), openai.ContainerNe
 		{
 			OfInline: &responses.InlineSkillParam{
 				Name:        "csv-insights",
-				Description: "Summarize CSV files and produce a markdown report.",
+				Description: "Summarize CSV files.",
 				Source: responses.InlineSkillSourceParam{
 					Data: inlineZip,
 				},

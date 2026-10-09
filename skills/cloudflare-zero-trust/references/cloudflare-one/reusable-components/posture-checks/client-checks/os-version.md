@@ -55,8 +55,6 @@ Operating systems display version numbers in different ways. This section covers
    defaults read loginwindow SystemVersionStampAsString
    ```
 
-
-
 ### Windows
 
 Windows version numbers consist of four parts: `Major.Minor.Build.UBR`. For example, `10.0.19045.3803` where:
@@ -97,7 +95,6 @@ The Linux OS version check reads the system kernel version.
    5.14.0-25.el9.x86_64
    ```
 
-
 3. **Version** is the first three numbers of the output in SemVer format ( `5.14.0`).
 4. **Patch Version** is the first number after the SemVer ( `25`).
 
@@ -113,7 +110,6 @@ To determine the Linux distro version on your device:
    ```sh
    cat /etc/os-release | grep "ID"
    ```
-
 
 3. If the output of the above command contained `ID=ubuntu` and `VERSION_ID=22.04`, **Distro name** would be `ubuntu` and **Distro revision** would be `22.04`. The Cloudflare One Client will check these strings for an exact match.
 

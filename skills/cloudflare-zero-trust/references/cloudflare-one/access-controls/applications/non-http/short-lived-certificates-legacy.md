@@ -134,13 +134,11 @@ Since this will put the security of your server entirely dependent on your Acces
    cd /etc/ssh
    ```
 
-
 2. Once there, you can use the following command to both generate the file and open a text editor to input/paste the public key.
 
    ```sh
    vim ca.pub
    ```
-
 
 3. In the `ca.pub` file, paste the public key without any modifications.
 
@@ -160,8 +158,6 @@ Since this will put the security of your server entirely dependent on your Acces
    :q!
    ```
 
-
-
 ## 5. Modify your `sshd_config` file
 
 Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_config` file on the remote target machine.
@@ -171,7 +167,6 @@ Configure your SSH server to trust the Cloudflare SSH CA by updating the `sshd_c
    ```sh
     sudo vim /etc/ssh/sshd_config
    ```
-
 
 2. Press `i` to enter insert mode, then add the following lines at the top of the file, above all other directives:
 

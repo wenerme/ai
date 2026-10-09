@@ -106,7 +106,6 @@ If you wanted to opt out multiple zones:
    --header 'Content-Type: application/json'
    ```
 
-
 3. Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as `zones.txt`.
 4. Create a bash script for `opt-out-multiple-zones.sh` and add the following. Add `zones.txt` to the same directory or update the path accordingly.
 
@@ -128,14 +127,11 @@ If you wanted to opt out multiple zones:
    done
    ```
 
-
 5. Open your command line and run:
 
    ```bash
    bash opt-out-multiple-zones.sh
    ```
-
-
 
 ### Custom SSL/TLS
 

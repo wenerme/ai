@@ -50,7 +50,6 @@ Wrangler 4.102.0 or later prints guidance to rerun unauthenticated deployments w
    Make a very simple Hello World Cloudflare Worker in TypeScript and deploy it using the Wrangler CLI. Do not ask me questions.
    ```
 
-
 3. Let the agent run `wrangler deploy`.
 
    In an unauthenticated, non-interactive session, Wrangler prints output similar to the following:
@@ -89,7 +88,6 @@ Wrangler 4.102.0 or later prints guidance to rerun unauthenticated deployments w
    Deployed example-worker triggers
      https://example-worker.example-name.workers.dev
    ```
-
 
 5. (Optional) Redeploy changes before claiming the account.
 

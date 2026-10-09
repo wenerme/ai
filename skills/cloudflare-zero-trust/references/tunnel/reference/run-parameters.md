@@ -28,7 +28,6 @@ On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl
    sudo systemctl edit --full cloudflared.service
    ```
 
-
 2. Modify the `cloudflared tunnel run` command with the desired configuration flag. For example,
 
    ```txt
@@ -47,13 +46,11 @@ On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl
    WantedBy=multi-user.target
    ```
 
-
 3. Restart `cloudflared.service`:
 
    ```sh
    sudo systemctl restart cloudflared
    ```
-
 
 4. To verify the new configuration, check the service status:
 
@@ -73,8 +70,6 @@ On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl
              └─2157 /usr/bin/cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token eyJhIjoi...
    ```
 
-
-
 On macOS, Cloudflare Tunnel installs itself as a launch agent using `launchctl`. By default, the agent will be called `com.cloudflare.cloudflared`. To configure your tunnel on macOS:
 
 1. Stop the `cloudflared` service.
@@ -83,13 +78,11 @@ On macOS, Cloudflare Tunnel installs itself as a launch agent using `launchctl`.
    sudo launchctl stop com.cloudflare.cloudflared
    ```
 
-
 2. Unload the configuration file.
 
    ```sh
    sudo launchctl unload /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
    ```
-
 
 3. Open `/Library/LaunchDaemons/com.cloudflare.cloudflared.plist` in a text editor.
 4. Modify the `ProgramArguments` key with the desired configuration flag. For example,
@@ -113,21 +106,17 @@ On macOS, Cloudflare Tunnel installs itself as a launch agent using `launchctl`.
            </array>
    ```
 
-
 5. Load the updated configuration file.
 
    ```sh
    sudo launchctl load /Library/LaunchDaemons/com.cloudflare.cloudflared.plist
    ```
 
-
 6. Start the `cloudflared` service.
 
    ```sh
    sudo launchctl start com.cloudflare.cloudflared
    ```
-
-
 
 On Windows, Cloudflare Tunnel installs itself as a system service using the Registry Editor. By default, the service will be named `cloudflared`. To configure your tunnel on Windows:
 
@@ -139,8 +128,6 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
    ```txt
    C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
    ```
-
-
 
 ![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1180,height=1050,format=webp/_astro/remote-management-windows.BFUIIr2f.png)
 

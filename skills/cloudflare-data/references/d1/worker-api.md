@@ -187,6 +187,7 @@ export default {
    	https://jun-d1-rr.d1-sandbox.workers.dev
    Current Version ID: VERSION_ID
    ```
+
 3. Open a browser at the specified address.
 
 ### 4. Test the APIs

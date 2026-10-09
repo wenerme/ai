@@ -72,13 +72,11 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    npm create cloudflare@latest risky-users -- --template https://github.com/cloudflare/msft-risky-user-ad-sync
    ```
 
-
 2. Go to the project directory.
 
    ```sh
    cd risky-users
    ```
-
 
 3. Modify the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include the following values:
    - `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
@@ -90,7 +88,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    	"$schema": "./node_modules/wrangler/config-schema.json",
    	"name": "risky-users",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-28",
+   	"compatibility_date": "2026-10-09",
    	"main": "src/index.js",
    	"workers_dev": false,
    	"account_id": "<ACCOUNT-ID>",
@@ -108,7 +106,7 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    "$schema" = "./node_modules/wrangler/config-schema.json"
    name = "risky-users"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    main = "src/index.js"
    workers_dev = false
    account_id = "<ACCOUNT-ID>"
@@ -121,8 +119,6 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    crons = [ "* * * * *" ]
    ```
 
-
-
 Note
 
 The [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) in this example schedules the script to run every minute. Learn more about [supported cron expressions](https://developers.cloudflare.com/workers/configuration/cron-triggers/#supported-cron-expressions).
@@ -132,7 +128,6 @@ The [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-
    ```sh
    npx wrangler deploy
    ```
-
 
 5. Create a secret variable named `AZURE_AD_CLIENT_SECRET`.
 

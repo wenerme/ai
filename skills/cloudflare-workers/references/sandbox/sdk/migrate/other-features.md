@@ -217,8 +217,6 @@ In 0.12, an `outboundByHost` handler answered requests to a hostname such as `my
    200 hello from KV
    ```
 
-
-
 ## Start an OpenCode server
 
 In 0.12, `createOpencode()` started `opencode serve` in the sandbox, and returned an OpenCode SDK client that reached it through the sandbox. In 1.0, your Durable Object starts the server and creates the client, with a `fetch` function that connects to the server port.
@@ -252,7 +250,6 @@ In 0.12, `createOpencode()` started `opencode serve` in the sandbox, and returne
    ```
    bun add @opencode-ai/sdk@1.18.32
    ```
-
 
 3. Replace `createOpencode()` with a method that starts the server once for each container. It uses the scripts and functions from step 1 of [Run a server in the background](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#run-a-server):
 
@@ -659,7 +656,6 @@ Start each sandbox when a request needs it, and remove `WarmPool`. The pool kept
    type = "durable-object"
    state = "deleted"
    ```
-
 
 3. Remove the `WARM_POOL_TARGET`, `WARM_POOL_REFRESH_INTERVAL`, `WARM_POOL_MAX_INSTANCES`, and `WARM_POOL_SCALE_BATCH_SIZE` variables. `bridge()` filled the pool from its `scheduled()` handler, so remove the cron trigger too if nothing else uses it.
 

@@ -75,7 +75,6 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
    }
    ```
 
-
 3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator_feeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [`.stix2` ↗︎](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.
 
    *Update indicator feed databash*
@@ -137,7 +136,6 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
    }
    ```
 
-
 5. Grant access to subscribers with the [Grant permission to indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator_feeds/subresources/permissions/methods/create/). You can add subscribers to the feed's allowed subscribers list using their [account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/). For example:
 
    *Update indicator feed databash*
@@ -155,8 +153,6 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
    	"feed_id": 10
    }'
    ```
-
-
 
 ### Use a feed in Gateway
 

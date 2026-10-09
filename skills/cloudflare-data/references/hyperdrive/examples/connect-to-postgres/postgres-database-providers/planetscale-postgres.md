@@ -82,7 +82,6 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
    ```
 
-
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
    ```jsonc
@@ -91,7 +90,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-28",
+   	"compatibility_date": "2026-10-09",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -110,15 +109,13 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
    binding = "HYPERDRIVE"
    id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
    ```
-
-
 
 Note
 
@@ -179,7 +176,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -192,7 +189,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

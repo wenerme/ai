@@ -37,8 +37,6 @@ Before you start, make sure you:
    PS C:\Users\Administrator\Downloads\cloudflared-stable-windows-amd64> .\cloudflared.exe --version
    ```
 
-
-
 To download and install `cloudflared`:
 
 ```sh
@@ -80,14 +78,11 @@ Use the rpm package manager to install `cloudflared` on compatible machines.
    curl -fsSl https://pkg.cloudflare.com/cloudflared.repo | sudo tee /etc/yum.repos.d/cloudflared.repo
    ```
 
-
 2. Update repositories and install cloudflared:
 
    ```sh
    sudo yum update && sudo yum install cloudflared
    ```
-
-
 
 **Arch Linux**
 
@@ -169,14 +164,11 @@ cloudflared tunnel list
      enabled: true
    ```
 
-
 3. Confirm that the configuration file has been successfully created by running:
 
    ```sh
    cat config.yml
    ```
-
-
 
 ## 5. Start routing traffic
 

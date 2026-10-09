@@ -75,8 +75,6 @@ Service tokens are static credential pairs that authenticate requests without a 
         https://example.com/api/endpoint
    ```
 
-
-
 For more information, refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
 
 ## Configure your agent

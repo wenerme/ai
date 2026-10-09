@@ -253,7 +253,6 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    	`${SERVERS}/kernel-${context.port}`;
    ```
 
-
 4. Add methods to your class that start a kernel and interrupt it:
 
    *src/index.tsts*
@@ -482,8 +481,6 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    }
    ```
 
-
-
 Variables that 0.12 contexts held stay in the 0.12 container. After the switch, run your setup code again, and create your contexts again, because 0.12 context IDs are not in the storage of your Durable Object.
 
 ## Run JavaScript in a Dynamic Worker
@@ -520,7 +517,6 @@ Run JavaScript in a [Dynamic Worker](https://developers.cloudflare.com/dynamic-w
    ```
    pnpm wrangler types
    ```
-
 
 2. Create `src/sandbox.ts` with the `runJavaScript()` function from [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/#2-run-code-in-a-sandbox).
 3. Replace each `runCode()` call for JavaScript:

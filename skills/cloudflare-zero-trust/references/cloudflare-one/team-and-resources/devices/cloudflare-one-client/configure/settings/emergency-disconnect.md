@@ -155,7 +155,6 @@ The following example demonstrates how to deploy an external disconnect endpoint
    docker compose up -d
    ```
 
-
 3. To test that the HTTPS endpoint is working, run a curl command from the end user's device. You need to pass the `--insecure` option because we are using a self-signed certificate.
 
    ```sh
@@ -165,8 +164,6 @@ The following example demonstrates how to deploy an external disconnect endpoint
    ```sh
    {"emergency_disconnect": false}
    ```
-
-
 
 ### 2. Extract the SHA-256 fingerprint
 
@@ -265,14 +262,11 @@ The Cloudflare One Client will automatically exclude the external endpoint IP ad
    { "emergency_disconnect": true }
    ```
 
-
 4. You may need to reload the server to apply changes. To reload the [example `nginx` server](#1-create-an-external-disconnect-endpoint):
 
    ```sh
    docker exec <container-name-or-id> nginx -s reload
    ```
-
-
 
 The Cloudflare One Client will automatically disconnect within the configured polling interval, and the Cloudflare One Client GUI will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect). To reconnect all devices, change `emergency_disconnect` back to `false`.
 

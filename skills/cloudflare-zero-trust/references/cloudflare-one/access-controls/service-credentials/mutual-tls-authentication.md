@@ -121,8 +121,6 @@ To test the application protected by an mTLS policy:
    curl -sv https://auth.example.com --cert example.pem --key key.pem
    ```
 
-
-
 When the authentication process completes successfully, a `CF_Authorization Set-Cookie` header returns in the response.
 
 Caution
@@ -204,8 +202,6 @@ This section covers how to use [OpenSSL ↗︎](https://www.openssl.org/) to gen
     openssl x509 -req -in intermediate.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out intermediate.pem -days 1825 -sha256 -extfile v3_intermediate_ca.ext
    ```
 
-
-
 #### Create a CA chain file
 
 1. Combine the intermediate and root certificates into a single file:
@@ -225,7 +221,6 @@ This section covers how to use [OpenSSL ↗︎](https://www.openssl.org/) to gen
     openssl genrsa -out client.key 2048
    ```
 
-
 2. Create a CSR for the client certificate:
 
    ```sh
@@ -239,7 +234,6 @@ This section covers how to use [OpenSSL ↗︎](https://www.openssl.org/) to gen
     openssl x509 -req -in client.csr -CA intermediate.pem -CAkey intermediate.key -CAcreateserial -out client.pem -days 365 -sha256
    ```
 
-
 4. Validate the client certificate against the certificate chain:
 
    ```sh
@@ -249,8 +243,6 @@ This section covers how to use [OpenSSL ↗︎](https://www.openssl.org/) to gen
    ```sh
    client.pem: OK
    ```
-
-
 
 You can now use the client certificate (`client.pem`) and its key (`client.key`) to [test mTLS](#test-mtls).
 
@@ -292,7 +284,6 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗︎
      }
      ```
 
-
    - **config**. Create a file named `ca-config.json` and add the following JSON blob, then save the file.
 
      ```json
@@ -315,13 +306,11 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗︎
      }
      ```
 
-
 3. Now, run the following command to generate the root CA with those files.
 
    ```sh
    cfssl gencert -initca ca-csr.json | cfssljson -bare ca
    ```
-
 
 4. The command will output a root certificate ( `ca.pem`) and its key ( `ca-key.pem`).
 
@@ -332,7 +321,6 @@ You can install these packages from the [Cloudflare SSL GitHub repository ↗︎
    ```sh
    ca-config.json ca-csr.json ca-key.pem ca.csr  ca.pem
    ```
-
 
 5. Upload the contents of `ca.pem` to Cloudflare Access. For instructions, refer to [Add mTLS to your Access application](#add-mtls-to-your-access-application).
 
@@ -362,14 +350,11 @@ To generate a client certificate that will authenticate against the uploaded roo
    }
    ```
 
-
 2. Now, use the following command to generate a client certificate with the Cloudflare PKI toolkit:
 
    ```sh
    cfssl gencert -ca=ca.pem -ca-key=ca-key.pem  -config=ca-config.json -profile=client client-csr.json | cfssljson -bare client
    ```
-
-
 
 The command will output a client certificate file (`client.pem`) and its key (`client-key.pem`). You can now use these files to [test mTLS](#test-mtls).
 
@@ -383,8 +368,6 @@ You can use the Cloudflare PKI toolkit to generate a certificate revocation list
    ```sh
    cfssl gencrl serials.txt ../mtls-test/ca.pem ../mtls-test/ca-key.pem | base64 -D > ca.crl
    ```
-
-
 
 You will need to add the CRL to your server or enforce the revocation in a Cloudflare Worker. An example Worker Script can be found on the [Cloudflare GitHub repository ↗︎](https://github.com/cloudflare/access-crl-worker-template).
 

@@ -38,7 +38,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-09",
   "main": "src/index.ts",
   "migrations": [
     {
@@ -58,7 +58,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "src/index.ts"
 
 [[migrations]]
@@ -236,7 +236,7 @@ The `this.ctx.facets` object is available inside any Durable Object class. It pr
 
 ### `get`
 
-`` this.ctx.facets.get(name `string`, callback `() => FacetStartupOptions`) `Fetcher` ``
+`this.ctx.facets.get(name string, callback () => FacetStartupOptions) Fetcher`
 
 Creates or resumes a facet with the given name and returns a stub you can use to send it requests.
 
@@ -246,7 +246,7 @@ The returned stub behaves like a [Durable Object stub](https://developers.cloudf
 
 ### `abort`
 
-`` this.ctx.facets.abort(name `string`, reason `any`) `void` ``
+`this.ctx.facets.abort(name string, reason any) void`
 
 Shuts down a running facet and invalidates all existing stubs. Any subsequent call on an invalidated stub throws `reason`. The facet's storage is preserved.
 
@@ -254,7 +254,7 @@ After aborting, you can call `get()` again to restart the facet — including wi
 
 ### `delete`
 
-`` this.ctx.facets.delete(name `string`) `void` ``
+`this.ctx.facets.delete(name string) void`
 
 Aborts the facet (if running) and permanently deletes its SQLite database. If you call `get()` with the same name afterward, the facet starts with an empty database.
 
@@ -264,11 +264,11 @@ Use `delete()` to clean up storage for facets that are no longer needed.
 
 The object returned by the `getStartupOptions` callback.
 
-#### `` class `DurableObjectClass` ``
+#### `class DurableObjectClass`
 
 The Durable Object class to instantiate for the facet. Obtain this by calling `worker.getDurableObjectClass("ClassName")` on a Dynamic Worker stub.
 
-#### ``id `DurableObjectId | string` Optional``
+#### `id DurableObjectId | string Optional`
 
 The ID the facet sees as its own `ctx.id`. If omitted, the facet inherits the parent Durable Object's ID.
 

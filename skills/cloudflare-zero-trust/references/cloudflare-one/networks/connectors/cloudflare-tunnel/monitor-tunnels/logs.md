@@ -74,7 +74,6 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
    cloudflared tunnel login
    ```
 
-
 2. Run `cloudflared tail` for a specific tunnel:
 
    ```sh
@@ -86,8 +85,6 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
    ```sh
    cloudflared tail --output=json <UUID> | jq .
    ```
-
-
 
 #### Filter logs
 
@@ -114,8 +111,6 @@ If you are running multiple `cloudflared` instances for the same tunnel (also kn
    ```sh
    cloudflared tail --connector-id <CONNECTOR ID> <UUID>
    ```
-
-
 
 ### Performance considerations
 

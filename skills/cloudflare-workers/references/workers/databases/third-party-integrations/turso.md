@@ -36,7 +36,6 @@ To set up an integration with Turso:
    turso --version
    ```
 
-
 2. Before you create your first Turso database, you have to authenticate with your GitHub account by running:
 
    ```sh
@@ -68,7 +67,6 @@ To set up an integration with Turso:
    turso db shell my-db
    ```
 
-
 3. Copy the following SQL query into the shell you just opened:
 
    ```sql
@@ -91,7 +89,6 @@ To set up an integration with Turso:
      (9, 'Fluorine', 9, 'F'),
      (10, 'Neon', 10, 'Ne');
    ```
-
 
 4. Configure the Turso database credentials in your Worker:
 
@@ -117,7 +114,6 @@ To set up an integration with Turso:
    # When prompted, paste your authentication token
    ```
 
-
 5. In your Worker, install the Turso client library:npmyarnpnpmbun
 
    ```
@@ -135,7 +131,6 @@ To set up an integration with Turso:
    ```
    bun add @libsql/client
    ```
-
 
 6. The following example shows how to make a query to your Turso database in a Worker. The credentials needed to connect to Turso have been added as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) to your Worker.
 
@@ -183,7 +178,6 @@ To set up an integration with Turso:
    	return createClient({ url, authToken });
    }
    ```
-
 
    - The libSQL client library import `@libsql/client/web` must be imported exactly as shown when working with Cloudflare Workers. The non-web import will not work in the Workers environment.
    - The `Env` interface contains the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) and [secret](https://developers.cloudflare.com/workers/configuration/secrets/) defined when you added the Turso integration in step 4.

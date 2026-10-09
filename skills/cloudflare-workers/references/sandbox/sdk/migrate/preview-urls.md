@@ -57,7 +57,6 @@ This page does not cover the server that a preview reaches. To start it, refer t
    }
    ```
 
-
 2. Add a method that reads the tokens, and `exposePort()`, to your Durable Object class:
 
    *src/index.tsts*
@@ -121,7 +120,6 @@ This page does not cover the server that a preview reaches. To start it, refer t
    	hostname: "example.com",
    });
    ```
-
 
 3. Add the other port methods to the class:
 

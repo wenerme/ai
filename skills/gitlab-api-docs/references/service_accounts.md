@@ -89,6 +89,7 @@ Example response:
 ### Create an instance service account
 
 - `email` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/178689) in GitLab 17.9.
+- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.4.
 
 Creates an instance service account.
 
@@ -99,11 +100,12 @@ POST /service_accounts?email=custom_email@gitlab.example.com
 
 Supported attributes:
 
-| Attribute  | Type   | Required | Description |
-| ---------- | ------ | -------- | ----------- |
-| `name`     | string | no       | Name of the user. If not set, uses `Service account user`. |
-| `username` | string | no       | Username of the user account. If undefined, generates a name prepended with `service_account_`. |
-| `email`    | string | no       | Email of the user account. If not specified, generates an email prepended with `service_account_`. Custom email addresses require confirmation, unless the email confirmation settings are [turned off](../administration/settings/sign_up_restrictions.md#confirm-user-email). |
+| Attribute  | Type    | Required | Description |
+| ---------- | ------- | -------- | ----------- |
+| `name`     | string  | no       | Name of the user. If not set, uses `Service account user`. |
+| `username` | string  | no       | Username of the user account. If undefined, generates a name prepended with `service_account_`. |
+| `email`    | string  | no       | Email of the user account. If not specified, generates an email prepended with `service_account_`. Custom email addresses require confirmation, unless the email confirmation settings are [turned off](../administration/settings/sign_up_restrictions.md#confirm-user-email). |
+| `external` | boolean | no       | Whether the user is external. Defaults to `true`. |
 
 Example request:
 
@@ -121,7 +123,8 @@ Example response:
   "username": "service_account_6018816a18e515214e0c34c2b33523fc",
   "public_email": "",
   "name": "Service account user",
-  "email": "service_account_6018816a18e515214e0c34c2b33523fc@noreply.gitlab.example.com"
+  "email": "service_account_6018816a18e515214e0c34c2b33523fc@noreply.gitlab.example.com",
+  "external": true
 }
 ```
 
@@ -131,6 +134,7 @@ returns a `400 Bad request` error.
 ### Update an instance service account
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196309/) in GitLab 18.2.
+- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.4.
 
 Updates a specified instance service account.
 
@@ -146,6 +150,7 @@ Parameters:
 | `name`     | string         | no       | Name of the user.  |
 | `username` | string         | no       | Username of the user account. |
 | `email`    | string         | no       | Email of the user account. Custom email addresses require confirmation, unless the email confirmation settings are [turned off](../administration/settings/sign_up_restrictions.md#confirm-user-email). |
+| `external` | boolean        | no       | Whether the user is external. |
 
 Example request:
 
@@ -165,6 +170,7 @@ Example response:
   "public_email": "",
   "name": "Updated Service Account",
   "email": "service_account_<random_hash>@noreply.gitlab.example.com",
+  "external": true,
   "unconfirmed_email": "custom_email@example.com"
 }
 ```
@@ -549,6 +555,7 @@ Other possible responses:
 ### Rotate a personal access token for a group service account
 
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/632896) in GitLab 19.5.
 
 Rotates a specified personal access token for an existing service account in a specified group. This revokes the existing token and creates a new token with the same name, description, and scopes.
 
@@ -590,6 +597,11 @@ Example response:
   "token":"<token_value>"
 }
 ```
+
+> [!note]
+> Rotating a token with granular scopes returns those scopes in a `granular_scopes` attribute
+> on the new token. For more information, see
+> [List all personal access tokens](personal_access_tokens.md#list-all-personal-access-tokens).
 
 ## Project service accounts
 
@@ -951,6 +963,7 @@ Other possible responses:
 ### Rotate a personal access token for a project service account
 
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/632896) in GitLab 19.5.
 
 Rotates a personal access token for an existing service account in a specified project. This creates a new token valid for one week and revokes any existing tokens.
 
@@ -992,3 +1005,8 @@ Example response:
   "token":"<token_value>"
 }
 ```
+
+> [!note]
+> Rotating a token with granular scopes returns those scopes in a `granular_scopes` attribute
+> on the new token. For more information, see
+> [List all personal access tokens](personal_access_tokens.md#list-all-personal-access-tokens).

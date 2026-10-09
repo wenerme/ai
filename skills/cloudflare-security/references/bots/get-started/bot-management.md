@@ -85,21 +85,17 @@ These templates use wirefilter expression syntax. In these expressions, `eq` mea
   (cf.bot_management.score eq 1 and not cf.bot_management.verified_bot and not cf.bot_management.static_resource)
   ```
 
-
 - [Likely Bots template ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules/custom-rules/create?template=Likely%20Bots): Targets traffic likely to be malicious bots while ignoring verified bots and routes with static content. It may contain a small amount of non-bot traffic.
 
   ```txt
   (cf.bot_management.score ge 2 and cf.bot_management.score le 29 and not cf.bot_management.verified_bot and not cf.bot_management.static_resource)
   ```
 
-
 - (Optional) [JavaScript detections template ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules/custom-rules/create?template=JavaScript%20Verified%20URLs): You must first enable JavaScript Detections from Security Settings, then set up a [managed challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge). Make sure to add a method and URI path. JavaScript detections improves security for URLs that should only expect JavaScript-enabled clients.
 
   ```txt
   (not cf.bot_management.js_detection.passed and http.request.method eq "" and http.request.uri.path in {""})
   ```
-
-
 
 Was this helpful?
 

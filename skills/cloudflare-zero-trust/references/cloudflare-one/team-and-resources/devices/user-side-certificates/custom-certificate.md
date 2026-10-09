@@ -110,8 +110,6 @@ If your system runs OpenSSL versions older than 1.1.1, the <code>-addext</code> 
    openssl x509 -in <CUSTOM-ROOT-CERT>.pem -text
    ```
 
-
-
 When preparing your certificate and private key for upload, be sure to remove any unwanted characters, such as mismatching subdomains in the certificate's common name.
 
 ## Deploy a custom root certificate
@@ -202,7 +200,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 3. Use the [Get Zero Trust certificate details endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/certificates/methods/get/) to verify the certificate's binding status is set to `available`.
 
    *Get Zero Trust certificate detailsbash*
@@ -236,7 +233,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}
    }
    ```
-
 
 4. (Optional) Verify the certificate is installed on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 5. Use the [Patch Zero Trust account configuration endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/configurations/methods/edit/) to turn on the certificate for use in inspection. For example:

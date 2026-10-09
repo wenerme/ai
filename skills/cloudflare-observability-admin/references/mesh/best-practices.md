@@ -26,14 +26,11 @@ Updating a Mesh node means updating the `cloudflare-warp` package on the Linux h
    warp-cli --version
    ```
 
-
 2. Update the package:
 
    ```sh
    sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp
    ```
-
-
 
 1. Check the current version:
 
@@ -41,14 +38,11 @@ Updating a Mesh node means updating the `cloudflare-warp` package on the Linux h
    warp-cli --version
    ```
 
-
 2. Update the package:
 
    ```sh
    sudo yum update cloudflare-warp
    ```
-
-
 
 3. Verify the node has reconnected:
 

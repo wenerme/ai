@@ -72,14 +72,12 @@ iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
      trinodb/trino:latest
    ```
 
-
 2. Connect to Trino and query your Basin Catalog:
 
    ```bash
    # Connect to the Trino CLI
    docker exec -it trino-r2 trino
    ```
-
 
 3. In the Trino CLI, run the following commands:
 
@@ -108,8 +106,6 @@ iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
    -- Query your Iceberg table
    SELECT * FROM r2.example_schema.yearly_clicks;
    ```
-
-
 
 Was this helpful?
 

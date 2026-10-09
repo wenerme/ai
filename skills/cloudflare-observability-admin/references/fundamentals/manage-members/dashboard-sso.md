@@ -241,7 +241,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. [Get](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/list/) the `id` of the `dash_sso` Access application. You can use [`jq` ↗︎](https://jqlang.github.io/jq/download/) to quickly find the correct application:
 
    *cURL commandbash*
@@ -253,8 +252,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
      --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
      | jq '.result[] | select(.type == "dash_sso")'
    ```
-
-
 
 ```txt
    {
@@ -290,8 +287,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
-
 Users will now have the option to log in using a one-time PIN.
 
 ### Option 2: Disable dashboard SSO
@@ -321,8 +316,6 @@ The following API calls will disable SSO enforcement for an account. This action
      --request GET \
      --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
-
-
 
 ```txt
    {
@@ -354,8 +347,6 @@ The following API calls will disable SSO enforcement for an account. This action
        "enabled": false
      }'
    ```
-
-
 
 ```txt
    {
@@ -399,7 +390,6 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
      --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Disable any active SSO connectors using the `id` of each connector from the previous step.
 
    *cURL commandbash*
@@ -415,7 +405,6 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
      }'
    ```
 
-
 3. Delete all SSO connectors using the `id` of each connector from the previous step.
 
    *cURL commandbash*
@@ -427,8 +416,6 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
      --request DELETE \
      --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
-
-
 
 4. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
 5. Under **Team domain**, select **Edit** to enter the new team name. Select **Save**.

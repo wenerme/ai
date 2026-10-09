@@ -69,13 +69,11 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    pnpm create cloudflare@latest sandbox-code-interpreter --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
    ```
 
-
 2. Change into the project directory:
 
    ```sh
    cd sandbox-code-interpreter
    ```
-
 
 3. Install the [AI SDK ↗︎](https://ai-sdk.dev/), the [Workers AI provider](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/), and [Zod ↗︎](https://zod.dev/):npmyarnpnpmbun
 
@@ -95,7 +93,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    bun add ai workers-ai-provider zod
    ```
 
-
 4. Replace `wrangler.jsonc` to add a Workers AI binding and a Worker Loader binding:
 
    ```jsonc
@@ -104,7 +101,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    	"name": "sandbox-code-interpreter",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-30",
+   	"compatibility_date": "2026-10-09",
    	"observability": {
    		"enabled": true,
    	},
@@ -125,7 +122,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    name = "sandbox-code-interpreter"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-30"
+   compatibility_date = "2026-10-09"
    upload_source_maps = true
 
    [observability]
@@ -153,8 +150,6 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    pnpm wrangler types
    ```
 
-
-
 ## 2. Run code in a sandbox
 
 Create `src/sandbox.ts`. The `runJavaScript()` function loads the code into a new Dynamic Worker and returns its result and logs. It throws if the code does not finish within five seconds:
@@ -166,7 +161,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env, code) {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-09-30",
+		compatibilityDate: "2026-10-09",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -227,7 +222,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env: Env, code: string): Promise<Output> {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-09-30",
+		compatibilityDate: "2026-10-09",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -518,7 +513,6 @@ The Worker does not authenticate requests. Anyone with the URL can send question
    ```
    pnpm wrangler deploy
    ```
-
 
 2. POST a question to the `workers.dev` URL Wrangler prints:
 

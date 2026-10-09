@@ -213,7 +213,6 @@ To verify an invalidation, use a cacheable test URL whose origin returns an `ETa
      "https://www.example.com/images/product.jpg"
    ```
 
-
 4. In your origin logs, confirm that Cloudflare sent a conditional request and that your origin returned `304`.
 
 For cached content, expect the following results:

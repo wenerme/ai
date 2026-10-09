@@ -1490,10 +1490,10 @@
   "openai-docs/guides/tools-shell.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-shell.md",
     "skill": "openai-docs",
-    "etag": "W/\"65bc9595162f8b183086f3038b7f7605\"",
-    "lastModified": "Tue, 06 Oct 2026 05:27:51 GMT",
-    "size": 58834,
-    "updatedAt": "2026-10-06T06:12:40.600Z"
+    "etag": "W/\"cad10eeb356fa3a9aaa95182a855031f\"",
+    "lastModified": "Fri, 09 Oct 2026 16:44:47 GMT",
+    "size": 58804,
+    "updatedAt": "2026-10-09T17:05:27.804Z"
   },
   "openai-docs/guides/tools-skills.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-skills.md",

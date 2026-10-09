@@ -18,7 +18,7 @@ This page describes the Worker Loader binding API, assuming you have [configured
 
 ### `load`
 
-`` env.LOADER.load(code `WorkerCode`) `WorkerStub` ``
+`env.LOADER.load(code WorkerCode) WorkerStub`
 
 Loads a Worker from the provided `WorkerCode` and returns a `WorkerStub` which may be used to invoke the Worker.
 
@@ -28,7 +28,7 @@ Use `load()` when the code is always new, such as for one-off AI-generated tool 
 
 ### `get`
 
-`` env.LOADER.get(id `string`, getCodeCallback `() => Promise<WorkerCode>`): `WorkerStub` ``
+`env.LOADER.get(id string, getCodeCallback () => Promise<WorkerCode>): WorkerStub`
 
 Loads a Worker with the given ID, returning a `WorkerStub` which may be used to invoke the Worker.
 
@@ -48,23 +48,23 @@ It is never guaranteed that two requests will go to the same isolate. Even if yo
 
 This is the structure returned by `getCodeCallback` to represent a worker.
 
-#### `` compatibilityDate `string` ``
+#### `compatibilityDate string`
 
 The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) for the Worker. This has the same meaning as the `compatibility_date` setting in a Wrangler config file.
 
-#### ``compatibilityFlags `string[]` Optional``
+#### `compatibilityFlags string[] Optional`
 
 An optional list of [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags) augmenting the compatibility date. This has the same meaning as the `compatibility_flags` setting in a Wrangler config file.
 
-#### ``allowExperimental `boolean` Optional``
+#### `allowExperimental boolean Optional`
 
 If true, then experimental compatibility flags will be permitted in `compatibilityFlags`. In order to set this, the worker calling the loader must itself have the compatibility flag `"experimental"` set. Experimental flags cannot be enabled in production.
 
-#### `` mainModule `string` ``
+#### `mainModule string`
 
 The name of the Worker's main module. This must be one of the modules listed in `modules`.
 
-#### `` modules `Record<string, string | Module>` ``
+#### `modules Record<string, string | Module>`
 
 A dictionary object mapping module names to their string contents. If the module content is a plain string, then the module name must have a file extension indicating its type: either `.js` or `.py`.
 
@@ -82,7 +82,7 @@ Warning
 
 While Dynamic Workers support Python, Python Workers are currently much slower to start than JavaScript Workers. For one-off AI-generated code, we strongly recommend using JavaScript. AI can write either language equally well.
 
-#### ``globalOutbound `ServiceStub | null` Optional``
+#### `globalOutbound ServiceStub | null Optional`
 
 Controls whether the dynamic Worker has access to the network. The global `fetch()` and `connect()` functions (for making HTTP requests and TCP connections, respectively) can be blocked or redirected to isolate the Worker.
 
@@ -123,7 +123,7 @@ export default {
 };
 ```
 
-#### `` env `object` ``
+#### `env object`
 
 The environment object to provide to the dynamic Worker.
 
@@ -167,7 +167,7 @@ export default {
 };
 ```
 
-#### ``tails `ServiceStub[]` Optional``
+#### `tails ServiceStub[] Optional`
 
 You may specify one or more [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) which will observe console logs, errors, and other details about the dynamically-loaded worker's execution. A tail event will be delivered to the Tail Worker upon completion of a request to the dynamically-loaded Worker. As always, you can implement the Tail Worker as an alternative entrypoint in your parent Worker, referring to it using `ctx.exports`:
 

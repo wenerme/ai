@@ -75,7 +75,6 @@ After completing the setup, a new directory called `llama-vision-tutorial` will 
    cd llama-vision-tutorial
    ```
 
-
 3. Project structure Your `llama-vision-tutorial` directory will include:
    - A "Hello World" Worker at `src/index.ts`.
    - A `wrangler.json` configuration file for managing deployment settings.

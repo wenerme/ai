@@ -20,6 +20,7 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 
 - `env`: import("cloudflare:workers").ProvidedEnv
   - Exposes the [`env` object](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for use as the second argument passed to ES modules format exported handlers. This provides access to [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) that you have defined in your [Vitest configuration file](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/).
+
     ```js
     import { env } from "cloudflare:workers";
 
@@ -41,9 +42,9 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     }
     ```
 
-
 - `exports`: object
   - Provides access to the exports of the `main` Worker. Use `exports.default.fetch()` to write integration tests against your Worker's default export handler. The `main` Worker runs in the same isolate/context as tests so any global mocks will apply to it too. Unlike the previous `SELF` binding, `exports` does not expose Assets. To test assets, use [`startDevWorker()`](https://developers.cloudflare.com/workers/testing/unstable_startworker/).
+
     ```js
     import { exports } from "cloudflare:workers";
 
@@ -53,8 +54,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
-
 ## `cloudflare:test` exports
 
 ### Events
@@ -63,6 +62,7 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
   - Creates an instance of the [`context` object](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/#parameters) for use as the third argument to ES modules format exported handlers.
 - `waitOnExecutionContext(ctx:ExecutionContext)`: Promise\<void>
   - Use this to wait for all Promises passed to `ctx.waitUntil()` to settle, before running test assertions on any side effects. Only accepts instances of `ExecutionContext` returned by `createExecutionContext()`.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
@@ -78,9 +78,9 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `createScheduledController(options?:FetcherScheduledOptions)`: ScheduledController
   - Creates an instance of `ScheduledController` for use as the first argument to modules-format [`scheduled()`](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) exported handlers.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { createScheduledController, createExecutionContext, waitOnExecutionContext } from "cloudflare:test";
@@ -98,11 +98,11 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `createMessageBatch(queueName:string, messages:ServiceBindingQueueMessage[])`: MessageBatch
   - Creates an instance of `MessageBatch` for use as the first argument to modules-format [`queue()`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) exported handlers.
 - `getQueueResult(batch:MessageBatch, ctx:ExecutionContext)`: Promise\<FetcherQueueResult>
   - Gets the acknowledged/retry state of messages in the `MessageBatch`, and waits for all `ExecutionContext#waitUntil()`ed `Promise`s to settle. Only accepts instances of `MessageBatch` returned by `createMessageBatch()`, and instances of `ExecutionContext` returned by `createExecutionContext()`.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { createMessageBatch, createExecutionContext, getQueueResult } from "cloudflare:test";
@@ -127,13 +127,13 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
-
 ### Durable Objects
 
 - `runInDurableObject<O extends DurableObject, R>(stub:DurableObjectStub, callback:(instance: O, state: DurableObjectState) => R | Promise<R>)`: Promise\<R>
   - Runs the provided `callback` inside the Durable Object that corresponds to the provided `stub`.
+
     This temporarily replaces your Durable Object's `fetch()` handler with `callback`, then sends a request to it, returning the result. This can be used to call/spy-on Durable Object methods or seed/get persisted data. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
+
     ```ts
     export class Counter {
       constructor(readonly state: DurableObjectState) {}
@@ -169,13 +169,15 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `runDurableObjectAlarm(stub:DurableObjectStub)`: Promise\<boolean>
   - Immediately runs and removes the Durable Object pointed to by `stub`'s alarm if one is scheduled. Returns `true` if an alarm ran, and `false` otherwise. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 - `evictDurableObject(stub:DurableObjectStub, options?:DurableObjectEvictionOptions)`: Promise\<void>
   - Evicts the currently-running Durable Object pointed to by `stub`, tearing down its instance to reset in-memory state. By default, hibernatable WebSockets are hibernated rather than closed, and eviction waits up to 30 seconds for in-flight requests to drain.
+
     Useful for testing how a Durable Object behaves across evictions, such as recovering state from storage or resuming hibernated WebSockets.
+
     Rejects if `stub` is not a Durable Object stub, if the target Durable Object is not currently running, or if its namespace has eviction prevented. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { evictDurableObject } from "cloudflare:test";
@@ -198,7 +200,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
   - The `DurableObjectEvictionOptions` interface controls eviction behavior:
 
     | Property | Type | Default | Description |
@@ -206,6 +207,7 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     | `webSockets` | `"close" \| "hibernate"` | `"hibernate"` | Controls what happens to hibernatable WebSockets when evicting a Durable Object. With `"hibernate"`, WebSockets are hibernated and can resume after eviction. With `"close"`, WebSockets are closed. |
 - `listDurableObjectIds(namespace:DurableObjectNamespace)`: Promise\<DurableObjectId\[]>
   - Gets the IDs of all objects that have been created in the `namespace`. Respects per-file storage isolation, meaning objects created in a different test file will not be returned.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { listDurableObjectIds } from "cloudflare:test";
@@ -223,9 +225,9 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `reset()`: Promise\<void>
   - Deletes all data from all attached bindings. This is useful for resetting state between test blocks.
+
     ```ts
     import { reset } from "cloudflare:test";
     import { afterEach } from "vitest";
@@ -235,9 +237,9 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `abortAllDurableObjects()`: Promise\<void>
   - Resets all Durable Object instances. Unlike `reset()`, this does not delete persisted data. This forcibly tears down all running Durable Object instances, discarding in-memory state without waiting for in-flight requests to drain.
+
     ```ts
     import { abortAllDurableObjects } from "cloudflare:test";
     import { afterEach } from "vitest";
@@ -247,10 +249,11 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
     });
     ```
 
-
 - `evictAllDurableObjects(options?:DurableObjectEvictionOptions)`: Promise\<void>
   - Evicts all currently-running Durable Objects in evictable namespaces. Unlike `abortAllDurableObjects()`, eviction is graceful: hibernatable WebSockets are hibernated rather than closed by default, and eviction waits up to 30 seconds for in-flight requests to drain. In-memory state is reset by tearing down each instance.
+
     Non-running or idle Durable Objects are skipped, and namespaces with eviction prevented are respected. Accepts the same [`DurableObjectEvictionOptions`](#durable-objects) as `evictDurableObject()`.
+
     ```ts
     import { evictAllDurableObjects } from "cloudflare:test";
     import { afterEach } from "vitest";
@@ -259,8 +262,6 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
       await evictAllDurableObjects();
     });
     ```
-
-
 
 ### D1
 
@@ -282,6 +283,7 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
 
 - `introspectWorkflowInstance(workflow: Workflow, instanceId: string)`: Promise\<WorkflowInstanceIntrospector>
   - Creates an **introspector** for a specific Workflow instance, used to **modify** its behavior, **await** outcomes, and **clear** its state during tests. This is the primary entry point for testing individual Workflow instances with a known ID.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { introspectWorkflowInstance } from "cloudflare:test";
@@ -309,7 +311,6 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
     });
     ```
 
-
   - The returned `WorkflowInstanceIntrospector` object has the following methods:
     - `modify(fn: (m: WorkflowInstanceModifier) => Promise<void>): Promise<void>`: Applies modifications to the Workflow instance's behavior.
     - `waitForStepResult(step: { name: string; index?: number }): Promise<unknown>`: Waits for a specific step to complete and returns a result. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to target a specific occurrence.
@@ -320,6 +321,7 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
     - `[Symbol.asyncDispose](): Promise<void>`: Provides automatic dispose. It's invoked by the `await using` statement, which calls `dispose()`.
 - `introspectWorkflow(workflow: Workflow)`: Promise\<WorkflowIntrospector>
   - Creates an **introspector** for a Workflow where instance IDs are unknown beforehand. This allows for defining modifications that will apply to **all subsequently created instances**.
+
     ```ts
     import { env, exports } from "cloudflare:workers";
     import { introspectWorkflow } from "cloudflare:test";
@@ -357,7 +359,6 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
     await exports.default.fetch("https://example.com/trigger-workflows");
     ```
 
-
   - The returned `WorkflowIntrospector` object has the following methods:
     - `modifyAll(fn: (m: WorkflowInstanceModifier) => Promise<void>): Promise<void>`: Applies modifications to all Workflow instances created after calling `introspectWorkflow`.
     - `get(): Promise<WorkflowInstanceIntrospector[]>`: Returns all `WorkflowInstanceIntrospector` objects from instances created after `introspectWorkflow` was called.
@@ -372,6 +373,7 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
     - `forceStepTimeout(step: { name: string; index?: number }, times?: number)`: Forces a `step.do()` to fail by timing out immediately. `times` is an optional number that sets how many times the step should timeout. If `times` is omitted, the step will timeout on every attempt, making the Workflow instance fail.
     - `mockEvent(event: { type: string; payload: unknown })`: Sends a mock event to the Workflow instance, causing a `step.waitForEvent()` to resolve with the provided payload. `type` must match the `waitForEvent` type.
     - `forceEventTimeout(step: { name: string; index?: number })`: Forces a `step.waitForEvent()` to time out instantly, causing the step to fail.
+
     ```ts
     import { env } from "cloudflare:workers";
     import { introspectWorkflowInstance } from "cloudflare:test";

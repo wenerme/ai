@@ -124,7 +124,6 @@ You need a project with the [durable Code Mode runtime](https://developers.cloud
    } as const;
    ```
 
-
 2. Create the connector. Implement `spec()` to return the document and `request()` to make authenticated host-side requests:
 
    *src/orders-connector.jsjs*
@@ -322,7 +321,6 @@ You need a project with the [durable Code Mode runtime](https://developers.cloud
    }
    ```
 
-
 4. Let the model discover the operations and call the generated connector methods:
 
    ```js
@@ -334,8 +332,6 @@ You need a project with the [durable Code Mode runtime](https://developers.cloud
    	return { docs, order };
    };
    ```
-
-
 
 ## Derived method behavior
 

@@ -44,7 +44,6 @@ Service tokens bypass user authentication, so ensure your Access policies are co
    CF-Access-Client-Secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
-
 2. [Create a policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) with the following configuration:
    - Add an **Include** rule with **Selector** set to **Service token**.
    - In **Value**, select the Service Token you created in step 1.

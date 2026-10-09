@@ -37,7 +37,6 @@ Client-side `cloudflared` can be used in conjunction with [the Cloudflare One Cl
    vim ~/.ssh/config
    ```
 
-
 3. Input the following values; replacing `ssh.example.com` with the hostname you created.
 
    ```txt

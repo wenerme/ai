@@ -4,7 +4,7 @@ Use these tools to interact with GitLab through the GitLab MCP server.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
+- Status: Generally available
 
 > [!warning]
 > To provide feedback on this feature, leave a comment on [issue 630189](https://gitlab.com/gitlab-org/gitlab/-/issues/630189).
@@ -15,6 +15,7 @@ You can use these tools to interact directly with GitLab and perform common GitL
 ## `get_mcp_server_version`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200105) in GitLab 18.3.
+- Changed from [beta](../../policy/development_stages_support.md#beta) to [generally available](../../policy/development_stages_support.md#generally-available) in GitLab 19.5.
 
 Returns the current version of the GitLab MCP server.
 
@@ -245,12 +246,17 @@ available instead of guessing a flow name. Which agents and flows a project offe
 configured per project, and their IDs differ between projects.
 
 Each entry includes `can_start_session`, which is `true` for a flow you have permission to run,
-and for a foundational chat agent the instance has a flow configuration for when you can run
-sessions in CI in the project. GitLab Duo itself, other agents, and external agents are listed for
-discovery and are never startable, and a flow you cannot execute, or whose version is unreleased or
-still a draft, is listed as not startable too. Only startable flows carry the
-`ai_catalog_item_consumer_id` that `start_duo_session` takes; a foundational chat agent is started
-by passing its `workflow_definition` as `agent`. Descriptions might be truncated.
+and for a foundational chat agent when you can run sessions in CI in the project. The default
+GitLab Duo agent, other agents, and external agents are listed for discovery only, and
+`can_start_session` is always `false` for them. It is also `false` for a flow you cannot execute,
+or whose version is unreleased or still a draft.
+
+If you do not have a GitLab Ultimate subscription, a foundational chat agent that requires it is
+either not listed or listed with `can_start_session` set to `false`.
+
+Only flows with `can_start_session` set to `true` include the `ai_catalog_item_consumer_id` that
+`start_duo_session` takes. To start a foundational chat agent, pass its `workflow_definition` as
+`agent`. Descriptions might be truncated.
 
 The list covers the agents, flows and external agents configured in the project, plus the
 foundational chat agents. The chat agents are a fixed list rather than part of the paginated
@@ -306,12 +312,11 @@ Provide exactly one of `url` or `project_id`. Provide at most one of `flow`, `fl
 | `flow`                        | string  | No       | Foundational flow reference (for example, `developer/v1`, `fix_pipeline/v1`). Defaults to `developer/v1` when no flow or agent is supplied. Do not use with `flow_item_id`, `ai_catalog_item_consumer_id`, or `agent`. |
 | `flow_item_id`                | integer | No       | AI Catalog item ID of a custom flow enabled in the project. The latest released version is run. Do not use with `flow`, `ai_catalog_item_consumer_id`, or `agent`. |
 | `ai_catalog_item_consumer_id` | integer | No       | ID of the AI Catalog item consumer that configures which flow to run. Use `list_duo_agents_and_flows` to find it. Do not use with `flow`, `flow_item_id`, or `agent`. |
-| `agent`                       | string  | No       | Reference of a foundational agent to run (for example, `analytics_agent/v1`). GitLab Duo itself cannot be started. Do not use with `flow`, `flow_item_id`, or `ai_catalog_item_consumer_id`. |
+| `agent`                       | string  | No       | Reference of a foundational agent to run (for example, `analytics_agent/v1`). The default GitLab Duo agent cannot be started. Do not use with `flow`, `flow_item_id`, or `ai_catalog_item_consumer_id`. |
 
 The flow must be enabled for the project, or for an ancestor group of the project. If the flow is
 not enabled, the tool returns an error.
 
-A flow in beta runs only when beta and experimental features are turned on. For more information, see [turn on beta and experimental features](../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features).
 A flow behind a feature flag runs only when that flag is enabled. If a flow doesn't meet these
 conditions, the tool returns an error.
 
@@ -331,9 +336,6 @@ To start a foundational flow, use `flow`. If you pass a foundational flow's AI C
 `flow_item_id`, the tool returns an error that names the `flow` value to use instead.
 If you pass a foundational agent's reference to `flow`, the tool returns an error that names the
 `agent` value to use instead.
-
-A foundational agent runs only when the instance publishes a flow configuration for it. When it
-does not, the session starts and then fails in CI with `Failed to load flow`.
 
 The response includes `poll_after_seconds` as a hint for how long to wait before calling `get_duo_session`.
 

@@ -48,8 +48,6 @@ To turn on TLS decryption:
    }
    ```
 
-
-
 ## Inspection limitations
 
 Gateway does not support TLS decryption for applications which use:
@@ -140,8 +138,6 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3. However, some e
    	}
    }
    ```
-
-
 
 3. Select **Enable only cipher suites and TLS versions compliant with FIPS 140-3**.
 

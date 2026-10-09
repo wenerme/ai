@@ -889,11 +889,14 @@ Claude Code saves a reply you typed with the refused attempt, except one prefixe
 
 ### Opening a session says it has no saved transcript
 
-A stopped session that was [backgrounded from another conversation](#from-inside-a-session) and stopped before its first response finished has nothing to resume: until that first response finishes, the conversation still lives only in the session it was backgrounded from. `claude attach` refuses to open it with `This session has no saved transcript`.
+When you open a session that you [backgrounded from another conversation](#from-inside-a-session) and that stopped before it ran a turn of its own, Claude Code resumes that conversation. If Claude Code can't find the conversation, it refuses to open the session:
 
-In agent view, opening that row shows `Press enter again to restart this session fresh` below the list. Press `Enter` on the same row again to restart the session with an empty conversation, or run `claude respawn <id>` from the shell.
+* `claude attach` prints `This session has no saved transcript`.
+* Agent view shows `Press enter again to restart this session fresh` below the list.
 
-The original conversation is intact; resume it with `claude --resume` or keep working in it. See the [error reference](/docs/en/errors#this-session-has-no-saved-transcript) for details.
+Press `Enter` on the same row again to restart the session with an empty conversation, or run `claude respawn <id>` from the shell.
+
+See the [error reference](/docs/en/errors#this-session-has-no-saved-transcript) for details.
 
 ### The terminal host died or the session stopped responding
 

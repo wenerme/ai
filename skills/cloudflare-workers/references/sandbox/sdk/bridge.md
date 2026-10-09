@@ -61,13 +61,11 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
    cd sandbox-bridge
    ```
 
-
 2. Authenticate with Cloudflare:
 
    ```sh
    npx wrangler login
    ```
-
 
 3. Set the API key secret. Choose any strong token value — clients must send this as a Bearer token:
 
@@ -81,7 +79,6 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
    ```sh
    npx wrangler deploy
    ```
-
 
 5. Verify the deployment:
 
@@ -276,14 +273,11 @@ The bulk of the bridge logic is in the `@cloudflare/sandbox` package. To pull in
    npm update @cloudflare/sandbox
    ```
 
-
 2. Redeploy:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 Check the [sandbox-sdk releases ↗︎](https://github.com/cloudflare/sandbox-sdk/releases) for changes to the `Dockerfile` or bridge configuration that may require manual updates.
 

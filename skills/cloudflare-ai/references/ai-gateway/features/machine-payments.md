@@ -49,6 +49,7 @@ An x402-compatible client handles the challenge and retry automatically.
    HTTP/1.1 402 Payment Required
    PAYMENT-REQUIRED: <base64-encoded payment requirements>
    ```
+
 3. The x402 client decodes the payment requirements. The wallet signs an authorization for up to the maximum amount.
 4. The client retries the same inference request with the signed authorization in the standard `PAYMENT-SIGNATURE` request header.
 5. Cloudflare verifies the authorization and runs the inference request. Cloudflare settles the actual request cost, which cannot exceed the authorized maximum.

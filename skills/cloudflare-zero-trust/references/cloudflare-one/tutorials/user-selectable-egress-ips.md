@@ -128,7 +128,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 3. Repeat Steps 1-2 for each private network tunnel route.
 
 Each tunnel connected to your private network should have each of your virtual networks assigned to it. For example, if you have tunnels routing `10.0.0.0/8` and `192.168.88.0/24`, both tunnels should have the `vnet-AMER` and `vnet-EMEA` virtual networks assigned.

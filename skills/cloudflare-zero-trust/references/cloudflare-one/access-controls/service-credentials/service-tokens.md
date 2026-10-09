@@ -52,7 +52,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. Copy the `client_id` and `client_secret` values returned in the response.
 
    *Responsejson*
@@ -93,7 +92,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    }
    ```
 
-
 3. Get the Client ID and Client Secret of the service token:<details><summary>
 
    Example: Output to CLI</summary>
@@ -110,11 +108,13 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
       	sensitive = true
       }
       ```
+
    2. Apply the configuration:
 
       ```sh
       terraform apply
       ```
+
    3. Read the Client ID and Client Secret:
 
       ```sh
@@ -123,7 +123,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
       ```sh
       terraform output -raw example_service_token_client_secret
-      ```</details>
+      ```
+
+      </details>
 
 <details><summary>
 
@@ -190,7 +192,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 2. Make a `PUT` request with the name of the header you want to use for service token authentication. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.<details><summary>
 
    Required API token permissions</summary>
@@ -213,14 +214,11 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 3. Add the header to any HTTP request. For example,
 
    ```sh
    curl -H "Authorization: {\"cf-access-client-id\": \"<CLIENT_ID>\", \"cf-access-client-secret\": \"<CLIENT_SECRET>\"}" https://app.example.com
    ```
-
-
 
 ## Strict service token authentication
 

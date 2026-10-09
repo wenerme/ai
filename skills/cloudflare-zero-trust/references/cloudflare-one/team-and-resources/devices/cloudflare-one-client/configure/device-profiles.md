@@ -109,8 +109,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" 
    }
    ```
 
-
-
 ## Edit profile settings
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.

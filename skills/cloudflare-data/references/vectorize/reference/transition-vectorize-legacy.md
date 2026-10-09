@@ -70,7 +70,6 @@ Watch this space for the upcoming capability to migrate legacy (V1) indexes to t
    }
    ```
 
-
 4. With the new Vectorize (V2) version, the `returnMetadata` option for the [query operation](https://developers.cloudflare.com/vectorize/reference/client-api/#query-vectors) now expects either `all`, `indexed` or `none` string values. For legacy Vectorize (V1), the `returnMetadata` option was a boolean field.
 5. With the new Vectorize (V2) indexes, all index and vector mutations are asynchronous and return a `mutationId` in the response as a unique identifier for that mutation operation.
 

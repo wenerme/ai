@@ -4,7 +4,7 @@ The `quack` extension adds support for the [Quack remote protocol](https://duckd
 
 ## Usage
 
-Quack is currently in a beta state. Quack will be transparently autoinstalled and [autoloaded](https://duckdb.org/docs/current/extensions/overview.html#autoloading-extension) on first use.
+Quack is currently in a beta state. Quack will be transparently autoinstalled and [autoloaded](https://duckdb.org/docs/current/extensions/overview.html#autoloading-extensions) on first use.
 
 If you would like to install Quack explicitly, run:
 

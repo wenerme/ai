@@ -58,7 +58,6 @@ The example is experimental. Local development uses an identity mechanism restri
    bun install
    ```
 
-
 3. **Configure the backend.** Create the ignored local secrets file:
 
    ```sh

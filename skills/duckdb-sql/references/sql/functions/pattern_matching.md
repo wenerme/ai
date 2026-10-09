@@ -190,7 +190,7 @@ DuckDB supports some PostgreSQL-style operators for regular expression matching:
 
 | PostgreSQL-style | Equivalent expression                                                                                    |
 | :--------------- | :------------------------------------------------------------------------------------------------------- |
-| `~`              | [`regexp_full_match`](https://duckdb.org/docs/current/sql/functions/text.html#regexp_full_matchstring-regex)       |
-| `!~`             | `NOT` [`regexp_full_match`](https://duckdb.org/docs/current/sql/functions/text.html#regexp_full_matchstring-regex) |
+| `~`              | [`regexp_full_match`](https://duckdb.org/docs/current/sql/functions/text.html#regexp_full_matchstring-regex-col2)       |
+| `!~`             | `NOT` [`regexp_full_match`](https://duckdb.org/docs/current/sql/functions/text.html#regexp_full_matchstring-regex-col2) |
 | `~*`             | (not supported)                                                                                          |
 | `!~*`            | (not supported)                                                                                          |

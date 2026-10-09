@@ -37,7 +37,6 @@ This page replaces `mountBucket()`, `unmountBucket()`, their options, and their 
    	&& rm -rf /var/lib/apt/lists/*
    ```
 
-
 2. Export `S3Gateway` from the main module of your Worker:
 
    *src/index.tsts*

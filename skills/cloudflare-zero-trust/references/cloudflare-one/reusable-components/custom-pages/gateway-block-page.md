@@ -131,8 +131,6 @@ To customize your block page:
    }
    ```
 
-
-
 Gateway will now display a custom Gateway block page when your users visit a blocked website.
 
 #### Add a logo image

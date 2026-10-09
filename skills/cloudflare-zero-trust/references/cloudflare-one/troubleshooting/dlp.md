@@ -40,8 +40,6 @@ To turn on TLS decryption:
    }
    ```
 
-
-
 Once you turn on TLS decryption, you can create a DLP policy to inspect the content of HTTPS requests. For example:
 
 | Selector | Operator | Value | Logic | Action |

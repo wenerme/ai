@@ -113,7 +113,6 @@ You can combine the previous expression with other <a href="https://developers.c
   (cf.waf.content_scan.has_malicious_obj and http.request.uri.path contains "upload.php")
   ```
 
-
 - The following expression will match requests from bots uploading content objects:
 
   | Field | Operator | Value | Logic |
@@ -126,8 +125,6 @@ You can combine the previous expression with other <a href="https://developers.c
   ```txt
   (cf.waf.content_scan.has_obj and cf.bot_management.score lt 10)
   ```
-
-
 
 </details>
 
@@ -146,7 +143,6 @@ To check uploaded content in a way that is not covered by the default configurat
    ```txt
    lookup_json_string(http.request.body.raw, "file")
    ```
-
 
 6. Select **Save**.
 

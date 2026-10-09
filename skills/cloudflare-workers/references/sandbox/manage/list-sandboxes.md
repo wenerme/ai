@@ -83,7 +83,6 @@ Each user gets a registry, a Durable Object that records the sandboxes of that u
    pnpm wrangler types
    ```
 
-
 2. Add the registry class to your Worker. Each user gets one `SandboxDirectory`, which stores the user's sandbox sessions in SQLite:
 
    *src/index.tsts*
@@ -120,7 +119,6 @@ Each user gets a registry, a Durable Object that records the sandboxes of that u
    	}
    }
    ```
-
 
 3. In `MyContainer`, set an inactivity timeout, and add methods that report and stop the container. Define the timeout at the top of the file, and add a constructor that sets it when a restarted Durable Object finds the container running:
 
@@ -246,14 +244,12 @@ Each user gets a registry, a Durable Object that records the sandboxes of that u
    pnpm wrangler deploy
    ```
 
-
 6. Start two sandboxes for the user `ada`, on the `workers.dev` URL that Wrangler prints:
 
    ```sh
    curl https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/users/ada/sandboxes/notes --request POST --json '{"argv":["uname","-s"]}'
    curl https://<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/users/ada/sandboxes/tests --request POST --json '{"argv":["uname","-s"]}'
    ```
-
 
 7. List them:
 
@@ -268,7 +264,6 @@ Each user gets a registry, a Durable Object that records the sandboxes of that u
    ]
    ```
 
-
 8. Stop one of them, and list again:
 
    ```sh
@@ -279,8 +274,6 @@ Each user gets a registry, a Durable Object that records the sandboxes of that u
    ```json
    [{ "session": "notes", "running": true }]
    ```
-
-
 
 ## List sandboxes across the account
 

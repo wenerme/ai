@@ -25,8 +25,6 @@ Zaraz offers a debug mode to troubleshoot the events and triggers systems. To ac
    zaraz.debug("YOUR_DEBUG_KEY")
    ```
 
-
-
 Zaraz’s debug mode is now enabled. A pop-up window will show up with the debugger information. To exit debug mode, remove the cookie by typing `zaraz.debug()` in the console pane of the browser.
 
 Was this helpful?

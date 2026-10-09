@@ -2,10 +2,10 @@
 
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
-- Status: Beta
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16319) in GitLab 18.8 as an experiment, made available to some initial testers in a closed [beta](../../policy/development_stages_support.md#beta) in GitLab 18.8.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/21731) from closed beta to public beta in GitLab 19.0.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/17903) in GitLab 19.5.
 
 The [GitLab Secrets Manager](../../ci/secrets/secrets_manager/_index.md) uses [OpenBao](https://openbao.org/),
 an open-source secrets management solution. OpenBao provides secure storage, access control, and lifecycle management
@@ -180,20 +180,9 @@ Allocating 5 to 10 GB of database storage provides ample headroom.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235502) in GitLab 19.0
 
-When Secrets Manager is enabled for the instance,
-you can then enable it for specific [groups and projects](../../ci/secrets/secrets_manager/_index.md#enable-gitlab-secrets-manager).
+After you install OpenBao, an administrator can enable GitLab Secrets Manager for the instance.
 
-Prerequisites:
-
-- Administrator access.
-- OpenBao must be installed and configured.
-
-To enable the Secret Manager for the instance:
-
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **GitLab Secrets Manager**.
-1. Turn on the **Secrets Manager** toggle.
+For more information, see [enable GitLab Secrets Manager](../../ci/secrets/secrets_manager/_index.md#for-gitlab-self-managed).
 
 ## Monitor your OpenBao deployment
 

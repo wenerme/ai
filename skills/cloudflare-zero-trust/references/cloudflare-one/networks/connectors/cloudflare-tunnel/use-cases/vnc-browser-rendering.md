@@ -47,7 +47,6 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       vncserver
       ```
 
-
    2. You will be prompted to set a password. This password will be used to connect to your VNC server. It is limited to 8 characters.
 
       TightVNC will now create configuration files and start a VNC session on display `:1` (which uses port `5901`).
@@ -58,7 +57,6 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       vncserver -kill :1
       ```
 
-
 4. Configure VNC to launch the XFCE desktop:
    1. Create a VNC configuration directory if it is missing:
 
@@ -66,13 +64,11 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
    mkdir -p ~/.vnc
    ```
 
-
    2. Open the `xstartup` file using a text editor. For example,
 
    ```sh
    vim ~/.vnc/xstartup
    ```
-
 
    3. Update the file to the following configuration:
 
@@ -83,13 +79,11 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
    startxfce4
    ```
 
-
    4. Make the file executable:
 
    ```sh
    chmod +x ~/.vnc/xstartup
    ```
-
 
 5. Start the VNC server again:
 
@@ -106,7 +100,6 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       gcloud compute ssh [YOUR_VM_NAME] --zone=[YOUR_ZONE] -- -L 5901:localhost:5901
       ```
 
-
    3. Open your preferred VNC viewer application.
    4. In the VNC viewer, connect to the address `localhost:5901` and enter your VNC server password.
 
@@ -122,13 +115,11 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       /usr/bin/vncserver
       ```
 
-
    2. Create a new service configuration file:
 
    ```sh
    sudo vim /etc/systemd/system/vncserver@.service
    ```
-
 
    3. Copy and paste the following content. Replace `[YOUR_USERNAME]` with the VNC server user. If needed, update `/usr/bin/vncserver` to your `vncserver` path.
 
@@ -152,13 +143,11 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       WantedBy=multi-user.target
       ```
 
-
       4. Reload `systemd` to read in the new service file:
 
       ```sh
       sudo systemctl daemon-reload
       ```
-
 
       5. Enable the service to start at boot:
 
@@ -173,13 +162,11 @@ For demonstration purposes, we will create a TightVNC server on an Ubuntu virtua
       sudo loginctl enable-linger [YOUR_USERNAME]
       ```
 
-
       7. Start the service:
 
       ```sh
       sudo systemctl start vncserver@1.service
       ```
-
 
       8. Check its status:
 

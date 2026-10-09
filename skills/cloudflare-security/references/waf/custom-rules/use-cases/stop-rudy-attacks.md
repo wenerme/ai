@@ -24,21 +24,17 @@ This example combines three expressions to target HTTP `POST` requests that do n
   http.request.uri.path matches "(comment|conversation|event|poll)/create"
   ```
 
-
 - The second uses a regular expression to match the format of a legitimate `auth_session` cookie. The `not` operator targets requests where that cookie is not formatted correctly:
 
   ```txt
   not http.cookie matches "auth_session=[0-9a-zA-Z]{32}-[0-9]{10}-[0-9a-z]{6}"
   ```
 
-
 - The third expression targets HTTP `POST` requests:
 
   ```txt
   http.request.method eq "POST"
   ```
-
-
 
 To generate the final [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) expression for this example, the three expressions are combined into a compound expression using the `and` operator. When an HTTP `POST` request to any of the specified URIs does not contain a properly formatted `auth_session` cookie, Cloudflare blocks the request:
 

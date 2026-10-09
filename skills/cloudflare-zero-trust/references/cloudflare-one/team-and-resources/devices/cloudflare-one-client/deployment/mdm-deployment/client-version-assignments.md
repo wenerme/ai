@@ -124,8 +124,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployme
    }
    ```
 
-
-
 ## When a device evaluates an assignment
 
 After you create, update, or delete a deployment group, the API notifies affected devices of the change. Delivery can take up to 15 minutes. Once a device receives the notification, it evaluates the assignment shortly after and installs the target version if it differs from the running version.

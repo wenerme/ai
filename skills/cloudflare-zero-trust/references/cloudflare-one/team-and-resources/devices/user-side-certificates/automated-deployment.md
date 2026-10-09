@@ -108,13 +108,11 @@ On Debian-based Linux distributions, the certificate is stored in `/usr/local/sh
    sudo update-ca-certificates
    ```
 
-
 2. Go to the system certificate store.
 
    ```sh
    cd /usr/local/share/ca-certificates
    ```
-
 
 3. Verify your system has both the `managed-warp.pem` file and the `managed-warp.crt` symbolic link. For example:
 
@@ -126,8 +124,6 @@ On Debian-based Linux distributions, the certificate is stored in `/usr/local/sh
    lrwxrwxrwx 1 root root   49 Jan  3 21:46 managed-warp.crt -> /usr/local/share/ca-certificates/managed-warp.pem
    -rw-r--r-- 1 root root 1139 Jan  3 21:46 managed-warp.pem
    ```
-
-
 
 The Cloudflare One Client will also place the certificate in `/var/lib/cloudflare-warp/installed_cert.pem` for reference by scripts or tools.
 

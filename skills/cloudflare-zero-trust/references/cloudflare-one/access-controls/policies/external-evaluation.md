@@ -40,13 +40,11 @@ You can set up External Evaluation rules using any API service, but to get start
    npm create cloudflare@latest my-worker -- --template https://github.com/cloudflare/workers-access-external-auth-example
    ```
 
-
 2. Go to the project directory.
 
    ```sh
    cd my-worker
    ```
-
 
 3. Create a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) to store the key. The binding name should be `KV` if you want to run the example as written.
 
@@ -62,7 +60,6 @@ You can set up External Evaluation rules using any API service, but to get start
       id = "YOUR_KV_NAMESPACE_ID"
    ```
 
-
 4. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and insert the following:
    - `[[kv_namespaces]]`: Add the output generated in the previous step.
    - `<TEAM_NAME>`: your Cloudflare One team name.
@@ -73,7 +70,7 @@ You can set up External Evaluation rules using any API service, but to get start
   "name": "my-worker",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-09",
   "main": "index.js",
   "kv_namespaces": [
     {
@@ -93,7 +90,7 @@ You can set up External Evaluation rules using any API service, but to get start
 name = "my-worker"
 workers_dev = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 main = "index.js"
 
 [[kv_namespaces]]
@@ -119,8 +116,6 @@ Note
    ```sh
    npx wrangler deploy
    ```
-
-
 
 The Worker will be deployed to your `*.workers.dev` subdomain at `my-worker.<YOUR_SUBDOMAIN>.workers.dev`.
 
@@ -162,7 +157,6 @@ To debug your External Evaluation rule:
    cd my-worker
    ```
 
-
 2. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) in an editor and set the `debug` variable to `TRUE`.
 3. Deploy your changes.
 
@@ -170,13 +164,11 @@ To debug your External Evaluation rule:
    npx wrangler deploy
    ```
 
-
 4. Next, start a session to output realtime logs from your Worker.
 
    ```sh
    wrangler tail -f pretty
    ```
-
 
 5. Log in to your Access application.
 

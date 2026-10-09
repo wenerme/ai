@@ -40,7 +40,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-01",
+	"compatibility_date": "2026-10-09",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-01"
+compatibility_date = "2026-10-09"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -85,8 +85,6 @@ With Drizzle ORM, we define the schema in TypeScript rather than writing raw SQL
    	createdAt: timestamp("created_at").defaultNow(),
    });
    ```
-
-
 
 ### 2.2. Connect Drizzle ORM to the database with Hyperdrive
 
@@ -157,7 +155,6 @@ You can generate and run SQL migrations on your database based on your schema us
    DATABASE_URL='postgres://user:password@db-host.cloud/database-name'
    ```
 
-
 2. Create a `drizzle.config.ts` file in the root folder of your project to configure Drizzle Kit and add the following content:
 
    *drizzle.config.tsts*
@@ -177,7 +174,6 @@ You can generate and run SQL migrations on your database based on your schema us
    	},
    });
    ```
-
 
 3. Generate the migration file for your database according to your schema files and apply the migrations to your database.
 
@@ -205,8 +201,6 @@ You can generate and run SQL migrations on your database based on your schema us
    Reading config file 'drizzle.config.ts'
    Using 'postgres' driver for database querying
    ```
-
-
 
 ## 3. Deploy your Worker
 

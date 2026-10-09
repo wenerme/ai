@@ -188,7 +188,6 @@ Show the output of a command in a browser while the command runs. The Durable Ob
    pnpm wrangler deploy
    ```
 
-
 4. Stream the command in the sandbox named `ada`. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -213,8 +212,6 @@ Show the output of a command in a browser while the command runs. The Durable Ob
    event: exit
    data: {"exitCode":3}
    ```
-
-
 
 ## Read the stream in a browser
 

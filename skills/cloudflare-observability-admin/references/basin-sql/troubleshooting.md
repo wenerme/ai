@@ -239,7 +239,6 @@ If your queries are running slowly:
    LIMIT 100
    ```
 
-
 2. **Use selective filtering**: Include specific conditions to reduce result sets.
 
    ```sql
@@ -248,7 +247,6 @@ If your queries are running slowly:
    WHERE status = 200 AND region = 'US' AND timestamp > '2024-01-01'
    LIMIT 100
    ```
-
 
 3. **Select specific columns**: Avoid `SELECT *` when you only need a few fields.
 
@@ -260,7 +258,6 @@ If your queries are running slowly:
    LIMIT 100
    ```
 
-
 4. **Use EXPLAIN to inspect the execution plan**: Verify that predicate pushdown and file pruning are working.
 
    ```sql
@@ -268,7 +265,6 @@ If your queries are running slowly:
    FROM my_namespace.events
    WHERE timestamp > '2024-01-01' AND status = 200
    ```
-
 
 5. **Enable compaction**: Enable compaction in Basin Catalog to reduce the number of small files scanned per query.
 

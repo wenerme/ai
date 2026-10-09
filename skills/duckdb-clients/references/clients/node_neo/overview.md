@@ -26,7 +26,7 @@ for the most up-to-date roadmap.
 
 ## Platforms
 
-The Node.js (Neo) client supports the following [platforms](https://duckdb.org/docs/current/dev/building/overview.html#supported-platforms):
+The Node.js (Neo) client supports the following [platforms](https://duckdb.org/docs/current/dev/building/overview.html#platforms):
 
 * `linux_amd64`
 * `linux_amd64_musl`

@@ -66,8 +66,6 @@ To configure a session timeout for a Gateway policy:
    }
    ```
 
-
-
 Session checks are now enabled for the application protected by this policy. Users can continue to reach applications outside of the policy definition.
 
 ## Global timeouts

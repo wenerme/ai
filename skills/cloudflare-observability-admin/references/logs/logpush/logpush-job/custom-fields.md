@@ -222,8 +222,6 @@ Perform the following steps to create the rule:
    }
    ```
 
-
-
 #### Record duplicate response header values
 
 Some headers sent from the origin — such as `set-cookie` — may have multiple values that you want to capture. You can use the Rulesets API to specify which headers should have all their values logged.

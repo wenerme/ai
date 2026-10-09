@@ -154,13 +154,11 @@ Alternatively, you may use operating system (OS)-level firewall rules to block a
    sudo iptables -L
    ```
 
-
 2. Allow `localhost` to communicate with itself.
 
    ```sh
    sudo iptables -A INPUT -i lo -j ACCEPT
    ```
-
 
 3. Allow already established connection and related traffic.
 
@@ -168,13 +166,11 @@ Alternatively, you may use operating system (OS)-level firewall rules to block a
    sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
    ```
 
-
 4. Allow new SSH connections.
 
    ```sh
    sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
    ```
-
 
 5. Drop all other ingress traffic.
 
@@ -186,13 +182,11 @@ Alternatively, you may use operating system (OS)-level firewall rules to block a
    sudo iptables -A INPUT -j DROP
    ```
 
-
 6. After setting the firewall rules, use this command to check the current `iptables` settings:
 
    ```sh
    sudo iptables -L
    ```
-
 
 7. Run your tunnel and check that all configured services are still accessible to the outside world via the tunnel, but not via the external IP address of the server.
 8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [`iptables-persistent` ↗︎](https://packages.debian.org/sid/iptables-persistent) package:
@@ -201,8 +195,6 @@ Alternatively, you may use operating system (OS)-level firewall rules to block a
    sudo apt install iptables-persistent
    sudo netfilter-persistent save
    ```
-
-
 
 ## Test connectivity
 

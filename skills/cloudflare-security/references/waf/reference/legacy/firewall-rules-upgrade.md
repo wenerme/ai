@@ -177,7 +177,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
    [...]
    ```
 
-
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are migrating firewall rules to custom rules, keep only the Terraform resource for the `http_request_firewall_custom` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:
 
@@ -197,7 +196,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
    your Terraform state and will henceforth be managed by Terraform.
    ```
 
-
 4. Run `terraform plan` to validate that Terraform now checks the state of the new `cloudflare_ruleset` resource, in addition to other existing resources already managed by Terraform. For example:
 
    ```sh
@@ -211,7 +209,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
    cloudflare_firewall_rule.my_firewall_rule: Refreshing state... [id=0580eb5d92e344ddb2374979f74c3ddf]
    [...]
    ```
-
 
 5. Remove any state related to firewall rules and filters from your Terraform state:
 
@@ -229,7 +226,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
       cloudflare_firewall_rule.my_firewall_rule
       ```
 
-
    2. Run the `terraform state rm ...` command in dry-run mode to understand the impact of removing those resources without performing any changes:
 
       ```sh
@@ -240,7 +236,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
       Would remove cloudflare_filter.my_filter
       Would remove cloudflare_firewall_rule.my_firewall_rule
       ```
-
 
    3. If the impact looks correct, run the same command without the `-dry-run` parameter to actually remove the resources from Terraform state:
 
@@ -253,7 +248,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
       Removed cloudflare_firewall_rule.my_firewall_rule
       Successfully removed 2 resource instance(s).
       ```
-
 
 6. After removing firewall rules and filters resources from Terraform state, delete `cloudflare_filter` and `cloudflare_firewall_rule` resources from `.tf` configuration files.
 7. Run `terraform plan` to verify that the resources you deleted from configuration files no longer appear. You should not have any pending changes.
@@ -270,8 +264,6 @@ The recommended steps for replacing your firewall rules (and filters) configurat
 
    Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
    ```
-
-
 
 For details on importing Cloudflare resources to Terraform and using the `cf-terraforming` tool, refer to the following resources:
 

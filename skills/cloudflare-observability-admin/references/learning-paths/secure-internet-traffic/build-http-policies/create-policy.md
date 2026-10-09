@@ -105,8 +105,6 @@ To create a new HTTP policy:
    	}'
    ```
 
-
-
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 
 ## Order your policies

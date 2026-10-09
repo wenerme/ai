@@ -106,7 +106,6 @@ Creating new namespaces with the [key-value storage backend](https://developers.
    }
    ```
 
-
 2. Add a binding for the class (if your Worker needs to access it through `env`) and declare the class in `exports`:
 
    ```jsonc
@@ -138,14 +137,11 @@ Creating new namespaces with the [key-value storage backend](https://developers.
    storage = "sqlite"
    ```
 
-
 3. Deploy the Worker:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 Cloudflare provisions a namespace for the class the first time you deploy. On subsequent deploys with the same entry, no namespace changes are made — the entry simply confirms that the class is still live.
 
@@ -178,14 +174,11 @@ Replace the live entry with a `deleted` tombstone to retire a Durable Object cla
    state = "deleted"
    ```
 
-
 4. Deploy the Worker:
 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 Deleting a class destroys its data
 
@@ -332,7 +325,6 @@ The recommended sequence is four deploys:
    storage = "sqlite"
    ```
 
-
 2. **Target Worker — receive the transfer.** The target adds `MyDO` to its code and declares an `expecting-transfer` entry naming the source Worker. Do **not** add a `durable_objects.bindings` entry for `MyDO` on the target yet — Cloudflare does not route self-referencing bindings through the source's namespace during this phase.
 
    ```jsonc
@@ -431,8 +423,6 @@ The recommended sequence is four deploys:
    type = "durable-object"
    storage = "sqlite"
    ```
-
-
 
 After the handoff has rolled out everywhere, you can remove `MyDO` from the source Worker's code and delete the `transferred` tombstone from the source's `exports` map. While other Workers in the account still bind to `MyDO` on the source, the reconciliation output lists them in `referencing_scripts`; redeploy each of them with bindings re-pointed at the target before removing the source tombstone.
 

@@ -183,8 +183,6 @@ curl https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs -s | jq 
    };
    ```
 
-
-
 Was this helpful?
 
 YesNo

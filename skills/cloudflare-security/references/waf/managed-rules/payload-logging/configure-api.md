@@ -94,7 +94,6 @@ This example configures payload logging for the [Cloudflare Managed Ruleset](htt
    }
    ```
 
-
 2. Save the following IDs for the next step:
    - The ID of the entry point ruleset: `060013b1eeb14c93b0dcd896537e0d2c`
    - The ID of the `execute` rule deploying the Cloudflare Managed Ruleset: `1bdb49371c1f46958fc8b985efcb79e7`

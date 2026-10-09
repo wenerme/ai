@@ -119,8 +119,6 @@ docker run --pull always cloudflare/cloudflared:latest tunnel --no-autoupdate ru
    docker run --pull always -v <PATH-TO-YOUR-LOCAL-CLOUDFLARED>:/home/nonroot/.cloudflared cloudflare/cloudflared:latest tunnel --no-autoupdate run <TUNNEL-ID>
    ```
 
-
-
 If you installed `cloudflared` from GitHub-provided binaries or from source, run the following command:
 
 ```sh

@@ -88,7 +88,6 @@ With BYOK enabled, your workflow changes from:
      -d '{"model": "gpt-4", "messages": [...]}'
    ```
 
-
 2. **BYOK approach**: Configure key once in dashboard, make requests without exposing keys
 
    ```bash
@@ -97,8 +96,6 @@ With BYOK enabled, your workflow changes from:
      -H "Content-Type: application/json" \
      -d '{"model": "gpt-4", "messages": [...]}'
    ```
-
-
 
 ## Managing API keys
 

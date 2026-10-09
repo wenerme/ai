@@ -67,7 +67,6 @@ To deploy a pre-existing static site project, start with a pre-generated site. W
    npm i -D @cloudflare/kv-asset-handler
    ```
 
-
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
 ```js
@@ -130,7 +129,6 @@ async function handleEvent(event) {
    ```sh
    npx wrangler deploy
    ```
-
 
 6. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.
 

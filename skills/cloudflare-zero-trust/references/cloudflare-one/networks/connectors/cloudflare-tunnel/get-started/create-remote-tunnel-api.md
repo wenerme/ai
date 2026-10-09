@@ -213,8 +213,6 @@ Install `cloudflared` on your server and run the tunnel using the `token` value 
    sudo cloudflared service install <TUNNEL_TOKEN>
    ```
 
-
-
 1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#windows) `cloudflared`.
 2. Open Command Prompt as administrator.
 3. Run the following command:
@@ -223,8 +221,6 @@ Install `cloudflared` on your server and run the tunnel using the `token` value 
    cloudflared.exe service install <TUNNEL_TOKEN>
    ```
 
-
-
 1. [Download and install](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/#macos) `cloudflared`.
 2. Open a terminal window and run the following command:
 
@@ -232,16 +228,12 @@ Install `cloudflared` on your server and run the tunnel using the `token` value 
    sudo cloudflared service install <TUNNEL_TOKEN>
    ```
 
-
-
 1. Open a terminal window.
 2. Run the following command:
 
    ```sh
    docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token <TUNNEL_TOKEN>
    ```
-
-
 
 ## 5. Verify tunnel status
 

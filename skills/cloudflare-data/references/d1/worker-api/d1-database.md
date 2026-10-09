@@ -74,7 +74,6 @@ You can use the `bind` method to dynamically bind a value into the query stateme
   stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")
   ```
 
-
 - Example of an ordered statement using `bind`:
 
   ```js
@@ -86,8 +85,6 @@ You can use the `bind` method to dynamically bind a value into the query stateme
   ```py
   stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = ? AND CustomerId = ?").bind("Alfreds Futterkiste", 1)
   ```
-
-
 
 Refer to the [`bind` method documentation](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#bind) for more information.
 
@@ -257,8 +254,6 @@ print(stmt[1].results.to_py())
   ])
   return Response.json(batch_result)
   ```
-
-
 
 ### `exec()`
 

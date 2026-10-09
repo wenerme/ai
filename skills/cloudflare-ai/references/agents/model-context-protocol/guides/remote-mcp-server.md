@@ -77,7 +77,6 @@ You can use the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangle
    cd remote-mcp-server-authless
    ```
 
-
 3. In the directory of your new project, run the following command to start the development server:
 
    ```sh
@@ -144,7 +143,6 @@ For example, to connect from Claude Desktop:
    	}
    }
    ```
-
 
 2. Restart Claude Desktop to load the MCP Server. Once this is done, Claude will be able to make calls to your remote MCP server.
 3. To test, ask Claude to use one of your tools. For example:
@@ -233,7 +231,6 @@ You'll need to create two [GitHub OAuth Apps ↗︎](https://docs.github.com/en/
    cat .env
    ```
 
-
 3. Run the following command to start the development server:
 
    ```sh
@@ -247,13 +244,11 @@ You'll need to create two [GitHub OAuth Apps ↗︎](https://docs.github.com/en/
    npx @modelcontextprotocol/inspector@latest
    ```
 
-
 5. Open the MCP inspector in your web browser:
 
    ```sh
    open http://localhost:5173
    ```
-
 
 6. In the inspector, enter the URL of your MCP server, `http://localhost:8788/mcp`
 7. In the main panel on the right, click the **OAuth Settings** button and then click **Quick OAuth Flow**.
@@ -312,13 +307,11 @@ When you create the first secret, Wrangler will ask if you want to create a new 
    }
    ```
 
-
 4. Deploy the MCP server to your Cloudflare `workers.dev` domain:
 
    ```bash
    npm run deploy
    ```
-
 
 5. Connect to your server running at `worker-name.account-name.workers.dev/mcp` using the [AI Playground ↗︎](https://playground.ai.cloudflare.com/), MCP Inspector, or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/), and authenticate with GitHub.
 

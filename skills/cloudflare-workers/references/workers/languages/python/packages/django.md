@@ -33,14 +33,11 @@ To get started with Django in Python Workers, follow these steps:
    cd django-worker
    ```
 
-
 2. Run your worker locally:
 
    ```bash
    uv run pywrangler dev
    ```
-
-
 
 ## Choose between ASGI and WSGI
 

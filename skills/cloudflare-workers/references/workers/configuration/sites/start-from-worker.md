@@ -40,13 +40,11 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
    bucket = "./public"
    ```
 
-
 3. Install the `@cloudflare/kv-asset-handler` package in your project:
 
    ```sh
    npm i -D @cloudflare/kv-asset-handler
    ```
-
 
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
@@ -108,8 +106,6 @@ For more information on the configurable options of `getAssetFromKV()` refer to 
    ```sh
    npx wrangler deploy
    ```
-
-
 
 Was this helpful?
 

@@ -121,8 +121,6 @@ This project uses Vite for local development and build, and thus comes with all 
    pnpm run deploy
    ```
 
-
-
 ---
 
 ## Bindings

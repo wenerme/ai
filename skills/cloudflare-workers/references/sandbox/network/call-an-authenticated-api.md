@@ -52,7 +52,6 @@ Let code in a sandbox call an API that needs a token, while the token stays in y
    pnpm wrangler types
    ```
 
-
 2. Store the token when Wrangler prompts for it:npmyarnpnpm
 
    ```
@@ -66,8 +65,6 @@ Let code in a sandbox call an API that needs a token, while the token stays in y
    ```
    pnpm wrangler secret put GITHUB_TOKEN
    ```
-
-
 
 ## Call the API from a Container
 
@@ -199,7 +196,6 @@ The container sends its request to `api.github.com` as usual. The Durable Object
    }
    ```
 
-
 3. Add a route to your Worker that returns the username:
 
    *src/index.tsts*
@@ -212,7 +208,6 @@ The container sends its request to `api.github.com` as usual. The Durable Object
    	return Response.json({ username: await sandbox.getUsername() });
    }
    ```
-
 
 4. Deploy your Worker, then send a request to `/username` on the `workers.dev` URL that Wrangler prints:npmyarnpnpm
 
@@ -235,8 +230,6 @@ The container sends its request to `api.github.com` as usual. The Durable Object
    ```json
    { "username": "octocat" }
    ```
-
-
 
 ## Call the API from a Dynamic Worker
 
@@ -300,7 +293,6 @@ A Dynamic Worker gets a method that calls one fixed GitHub endpoint, instead of 
    }
    ```
 
-
 2. In the `fetch()` handler of your Worker, pass the entrypoint to the Dynamic Worker as a binding. The handler needs its `ctx` argument for `ctx.exports`:
 
    *src/index.tsts*
@@ -358,8 +350,6 @@ A Dynamic Worker gets a method that calls one fixed GitHub endpoint, instead of 
    ```json
    { "username": "octocat" }
    ```
-
-
 
 Authenticate callers to your Worker first, so other people cannot use the quota of your token. For more information, refer to [Sandbox security](https://developers.cloudflare.com/sandbox/concepts/security/#every-opening-is-also-a-way-out).
 

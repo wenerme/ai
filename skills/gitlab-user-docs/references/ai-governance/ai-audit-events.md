@@ -68,6 +68,11 @@ To inspect the events within a session:
 1. Select an individual event to view its full details, including entity
    and target information.
 
+Some flows, such as
+[business logic scanning](../application_security/business_logic_scanning/_index.md),
+keep only metadata about their sessions. For these flows, audit events record metadata
+like status, timing, model, and tool names, but no prompts, responses, or tool content.
+
 ## Enable AI audit event storage
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/603892) in GitLab 19.2.

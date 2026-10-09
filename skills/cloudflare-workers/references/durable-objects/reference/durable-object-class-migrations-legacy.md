@@ -483,6 +483,7 @@ tag = "v4"
       },
     }
     ```
+
   - If a migration is only specified at the top-level, but not at the environment-level, the environment will inherit the top-level migration.
   - Migrations at the environment-level override migrations at the top level.
 - All migrations are applied at deployment. Each migration can only be applied once per [environment](https://developers.cloudflare.com/durable-objects/reference/environments/).

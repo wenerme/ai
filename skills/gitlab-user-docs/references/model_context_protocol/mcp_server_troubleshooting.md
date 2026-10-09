@@ -4,7 +4,7 @@ Troubleshoot common issues with the GitLab MCP server.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
+- Status: Generally available
 
 When working with the GitLab MCP server, you might encounter the following issues.
 

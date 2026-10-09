@@ -715,7 +715,6 @@ When your agent sends emails and expects replies, use secure reply routing to pr
    pnpm wrangler secret put EMAIL_SECRET
    ```
 
-
 2. Use the combined resolver pattern:
 
    ```js
@@ -756,7 +755,6 @@ When your agent sends emails and expects replies, use secure reply routing to pr
    } satisfies ExportedHandler<Env>;
    ```
 
-
 3. Sign outbound emails:
 
    ```js
@@ -782,8 +780,6 @@ When your agent sends emails and expects replies, use secure reply routing to pr
     }
    }
    ```
-
-
 
 ### Enforcement behavior
 

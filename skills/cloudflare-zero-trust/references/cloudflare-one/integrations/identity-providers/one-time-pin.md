@@ -72,8 +72,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
    }
    ```
 
-
-
 To grant a user access to an application, simply add their email address to an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy).
 
 ## Allow OTP emails through your email gateway

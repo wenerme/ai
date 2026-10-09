@@ -49,7 +49,6 @@ Clipped videos will not inherit the `scheduledDeletion` date. To set the deletio
 - **`endTimeSeconds`**: The timestamp from the existing video that indicates when the new video ends.
 
 
-
 *Example: Clip a videobash*
 
 ```bash

@@ -167,7 +167,7 @@ ORDER BY _hybrid_score DESC;
 
 ## Limitations
 
-The `lance` extension is currently available for the following [platforms](https://duckdb.org/docs/current/dev/building/overview.html#supported-platforms):
+The `lance` extension is currently available for the following [platforms](https://duckdb.org/docs/current/dev/building/overview.html#platforms):
 
 - `linux_amd64`
 - `linux_arm64`

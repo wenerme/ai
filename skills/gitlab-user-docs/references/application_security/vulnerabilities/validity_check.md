@@ -86,6 +86,7 @@ Validity checks support the following secret types:
 
 - Adafruit IO keys
 - Anthropic API keys
+- Asana personal access tokens
 - AWS IAM long-term access key IDs (beginning with `AKIA`)
 - Datadog API keys
 - EasyPost API tokens
@@ -140,6 +141,7 @@ The supported URLs are:
 - `https://api.openai.com/v1/organization/admin_api_keys`
 - `https://api.sendgrid.com/v3/scopes`
 - `https://api.stripe.com/v1/balance`
+- `https://app.asana.com/api/1.0/users/me`
 - `https://app.terraform.io/api/v2/account/details`
 - `https://io.adafruit.com/api/v2/user`
 - `https://registry.npmjs.org/-/whoami`

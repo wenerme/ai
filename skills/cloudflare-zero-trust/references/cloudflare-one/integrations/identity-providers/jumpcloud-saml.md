@@ -43,7 +43,6 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
       https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
       ```
 
-
    3. (Optional) Configure SAML attributes that you want to send to Cloudflare Access.
    4. Scroll up to **JumpCloud Metadata** and select **Export Metadata**. Save this XML file for use in a [later step](#2-add-jumpcloud-to-zero-trust).
 9. In the **User Groups** tab, [assign user groups ↗︎](https://jumpcloud.com/support/get-started-applications-saml-sso#managing-employee-access-to-applications) to this application.

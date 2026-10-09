@@ -47,14 +47,11 @@ The `cf-aig-authorization` header is what authenticates your request to AI Gatew
    $env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
    ```
 
-
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway.
 
    ```bash
    claude
    ```
-
-
 
 ## Use Amazon Bedrock
 
@@ -76,14 +73,11 @@ To run Claude models through [Amazon Bedrock](https://developers.cloudflare.com/
    $env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
    ```
 
-
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway to Amazon Bedrock.
 
    ```bash
    claude
    ```
-
-
 
 ## Use Google Vertex AI
 
@@ -109,14 +103,11 @@ To run Claude models through [Google Vertex AI](https://developers.cloudflare.co
    $env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
    ```
 
-
 2. Start Claude Code and send a prompt. Requests now route through AI Gateway to Google Vertex AI.
 
    ```bash
    claude
    ```
-
-
 
 ## Use with Cloudflare Access
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/lim
 
 # Limitations
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Universal SSL certificates present some limitations.
 
@@ -42,6 +42,17 @@ For Universal SSL certificates, Cloudflare chooses the certificate authority (CA
 Cloudflare can change the [certificate authority](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) without prior notification, and will not send any notification as the change happens.
 
 If you want to choose the issuing certificate authority, [order an advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
+
+## Certificate type
+
+The type of certificate included in a Universal SSL certificate pack depends on your zone plan:
+
+- **Free**: An ECDSA certificate only.
+- **Pro, Business, and Enterprise**: Both an RSA and an ECDSA certificate.
+
+When you upgrade your zone from the Free plan to a paid plan, Cloudflare does not automatically re-issue your Universal SSL certificate. Your existing ECDSA-only certificate continues to serve until the certificate pack next renews. At renewal, Cloudflare issues both an RSA and an ECDSA certificate for your zone.
+
+If you need an RSA certificate before the next renewal, [order an advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) (requires the Advanced Certificate Manager add-on).
 
 ## Validity period
 
@@ -91,5 +102,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/#page","headline":"Limitations","description":"Review the limitations of Universal certificates, such as hostname coverage, certificate authority  choice, and compatibility with other products.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/og.png?v=0e573c1fef41f364","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/#page","headline":"Limitations","description":"Review the limitations of Universal certificates, such as hostname coverage, certificate authority  choice, and compatibility with other products.","url":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/limitations/og.png?v=0e573c1fef41f364","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

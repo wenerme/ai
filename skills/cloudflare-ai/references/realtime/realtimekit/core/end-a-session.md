@@ -84,7 +84,6 @@ ReactWeb ComponentsAngular
    }
    ```
 
-
 2. End the session by removing all participants.
 
    If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
@@ -183,7 +182,6 @@ ReactWeb ComponentsAngular
    }
    ```
 
-
 3. Listen for the session end event.
 
    When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
@@ -248,8 +246,6 @@ ReactWeb ComponentsAngular
    	}
    });
    ```
-
-
 
 You can also end a session from your backend by removing all participants using the [Kick all participants](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_all_participants/) API.
 

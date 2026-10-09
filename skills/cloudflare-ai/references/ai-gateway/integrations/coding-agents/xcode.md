@@ -55,7 +55,6 @@ Service token requests do not include `cf.user_id` because they do not represent
    {"cf-access-client-id":"<CLIENT_ID>","cf-access-client-secret":"<CLIENT_SECRET>"}
    ```
 
-
 6. Set **API Key Header** to `Authorization`.
 7. Select **Add**.
 8. Enable a model, then select it in the coding assistant and send a prompt. Requests now route through AI Gateway.

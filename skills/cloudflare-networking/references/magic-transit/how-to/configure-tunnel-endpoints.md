@@ -351,8 +351,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
-
 ```json
 {
   "result": {

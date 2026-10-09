@@ -47,8 +47,6 @@ Refer to the [Terraform installation guide ↗︎](https://developer.hashicorp.c
    gcloud auth application-default login
    ```
 
-
-
 ## 3. Create a Cloudflare API token
 
 [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) so that Terraform can interact with your Cloudflare account. At minimum, your token should include the following permissions:
@@ -69,14 +67,11 @@ Terraform functions through a working directory that contains configuration file
    mkdir cloudflare-tf
    ```
 
-
 2. Change into the directory:
 
    ```sh
    cd cloudflare-tf
    ```
-
-
 
 ## 5. Create Terraform configuration files
 
@@ -89,7 +84,6 @@ The following variables will be passed into your GCP and Cloudflare configuratio
    ```sh
    touch variables.tf
    ```
-
 
 2. Open the file in a text editor and copy and paste the following:
 
@@ -140,8 +134,6 @@ The following variables will be passed into your GCP and Cloudflare configuratio
    }
    ```
 
-
-
 ### Assign values to the variables
 
 1. In your configuration directory, create a `.tfvars` file:
@@ -164,8 +156,6 @@ The following variables will be passed into your GCP and Cloudflare configuratio
    machine_type              = "e2-medium"
    ```
 
-
-
 Caution
 
 To prevent accidentally exposing sensitive credentials, do not save `terraform.tfvars` in your version control system. For example, if your version control is git, add `terraform.tfvars` to your `.gitignore` file.
@@ -179,7 +169,6 @@ You will need to declare the [providers ↗︎](https://registry.terraform.io/br
    ```sh
    touch providers.tf
    ```
-
 
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.
 
@@ -236,8 +225,6 @@ You will need to declare the [providers ↗︎](https://registry.terraform.io/br
    }
    ```
 
-
-
 ### Configure Cloudflare resources
 
 The following configuration will modify settings in your Cloudflare account.
@@ -247,7 +234,6 @@ The following configuration will modify settings in your Cloudflare account.
    ```sh
    touch Cloudflare-config.tf
    ```
-
 
 2. Add the following resources to `Cloudflare-config.tf`:
 
@@ -399,8 +385,6 @@ The following configuration will modify settings in your Cloudflare account.
    }
    ```
 
-
-
 To learn more about these resources, refer to the [Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ### Configure GCP resources
@@ -412,7 +396,6 @@ The following configuration defines the specifications for the GCP virtual machi
    ```sh
    touch GCP-config.tf
    ```
-
 
 2. Add the following content to `GCP-config.tf`:
 
@@ -494,8 +477,6 @@ The following configuration defines the specifications for the GCP virtual machi
    }
    ```
 
-
-
 ### Create a startup script
 
 The following script will install `cloudflared` and run the tunnel as a service. This example also installs a lightweight HTTP application that you can use to test connectivity.
@@ -505,7 +486,6 @@ The following script will install `cloudflared` and run the tunnel as a service.
    ```sh
    touch install-tunnel.tftpl
    ```
-
 
 2. Open the file in a text editor and copy and paste the following bash script:
 
@@ -542,8 +522,6 @@ The following script will install `cloudflared` and run the tunnel as a service.
    sudo docker-compose up -d
    ```
 
-
-
 ## 6. Deploy Terraform
 
 To deploy the configuration files:
@@ -554,21 +532,17 @@ To deploy the configuration files:
    terraform init
    ```
 
-
 2. Preview everything that will be created:
 
    ```sh
    terraform plan
    ```
 
-
 3. Apply the configuration:
 
    ```sh
    terraform apply
    ```
-
-
 
 It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Networking** > **Tunnels**, and your Access application and policy under **Zero Trust** > **Access controls** > **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 

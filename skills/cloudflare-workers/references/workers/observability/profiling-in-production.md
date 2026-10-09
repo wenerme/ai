@@ -88,8 +88,6 @@ The command writes raw binary pprof data to standard output.
      --profile-type cpu > worker-cpu.pprof
    ```
 
-
-
 #### Profile a Durable Object
 
 1. Set `$WORKER_ID` to the ID or name of the Worker that owns your Durable Object namespace, not a Worker that only calls it through a binding.
@@ -106,8 +104,6 @@ The command writes raw binary pprof data to standard output.
      --namespace-id "$NAMESPACE_ID" \
      --actor-id "$DURABLE_OBJECT_ID" > durable-object-heap.pprof
    ```
-
-
 
 ### Use API
 
@@ -143,8 +139,6 @@ Use these fields in the request body:
      --output worker-cpu.pprof.gz
    ```
 
-
-
 #### Profile a Durable Object
 
 1. Set `$WORKER_ID` to the ID or name of the Worker that owns your Durable Object namespace, not a Worker that only calls it through a binding.
@@ -168,8 +162,6 @@ Use these fields in the request body:
      }" \
      --output durable-object-heap.pprof.gz
    ```
-
-
 
 ## Inspect the results
 

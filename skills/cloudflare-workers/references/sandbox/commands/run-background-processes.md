@@ -190,7 +190,6 @@ For a process that runs until the container stops, such as a development server 
    }
    ```
 
-
 3. Add a method that reports the state of a process:
 
    *src/index.tsts*
@@ -537,7 +536,6 @@ For a process that runs until the container stops, such as a development server 
    pnpm wrangler deploy
    ```
 
-
 9. Start a process named `ticker`, then check it. Replace the example hostname with the `workers.dev` URL that Wrangler prints:
 
    ```sh
@@ -550,7 +548,6 @@ For a process that runs until the container stops, such as a development server 
    ```json
    { "state": "running", "pid": 354 }
    ```
-
 
 10. Read the output so far, then follow it:
 
@@ -592,8 +589,6 @@ For a process that runs until the container stops, such as a development server 
     ```json
     { "state": "exited", "exitCode": 143 }
     ```
-
-
 
 ## Wait for a log line
 

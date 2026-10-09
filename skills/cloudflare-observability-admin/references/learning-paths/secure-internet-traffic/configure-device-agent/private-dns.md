@@ -97,7 +97,6 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
    }
    ```
 
-
 3. To configure Local Domain Fallback for the default device profile, use the [`cloudflare_zero_trust_device_default_profile_local_domain_fallback` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile_local_domain_fallback) resource. To configure Local Domain Fallback for a custom device profile, use [`cloudflare_zero_trust_device_custom_profile_local_domain_fallback` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile_local_domain_fallback). For example:
 
    *device-profiles.tftf*
@@ -123,8 +122,6 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
    	)
    }
    ```
-
-
 
 For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
 
@@ -207,8 +204,6 @@ Custom resolvers are saved to your account for future use. You can add up to 10 
    	}
    }
    ```
-
-
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:
 

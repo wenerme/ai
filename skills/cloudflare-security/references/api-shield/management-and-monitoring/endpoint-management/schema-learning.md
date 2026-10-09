@@ -1,7 +1,7 @@
 ---
 description: Learn Schema Profiles from qualifying operation traffic.
-title: Schema learning
-image: https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/og.png?v=3854a63bcbabd9ba
+title: Learn request schemas
+image: https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/og.png?v=d7101eeb6d9bbce0
 ---
 
 [Skip to content](#main-content)
@@ -10,22 +10,22 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Schema learning
+# Learn request schemas
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 Schema Learning is the learned source for a Schema Profile. For the shared detection and mitigation model, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
 
-Schema Learning observes qualifying traffic for selected operations. It learns expected request fields and constraints for a Schema Profile.
+Learn expected request fields and constraints from qualifying operation traffic.
 
 ## Start profile learning
 
 1. In the Cloudflare dashboard, go to **Web Assets** > **Operations**. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Open the operation overflow menu and select **Learn profile**.
 3. After the profile becomes available, select **View details**.
-4. Review the learned schema under **Security overview**.
+4. Follow the [steps to review learning results](#review-learning-results).
 
 Cloudflare runs an **always-on detection** after the learned profile becomes available. The detection does not mitigate requests by itself.
 
@@ -37,9 +37,45 @@ Learning runs weekly using qualifying traffic from the previous seven days. Only
 
 The field-learning threshold requires 1,000 qualifying requests. The boundary-learning threshold requires 10,000 qualifying requests.
 
-The first profile appears after the next weekly learning run. This can take up to seven days after meeting the relevant threshold.
+With scheduled learning, the first profile appears after the next weekly run. This can take up to seven days after meeting the relevant threshold. You can also [request a learning run manually](#run-schema-learning-manually).
 
 For supported request components, constraints, and limitations, refer to [Schema Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/).
+
+## Run schema learning manually
+
+Request an ad-hoc learning run without waiting for the weekly schedule. For example, request a run after sending representative traffic during testing.
+
+The run covers the entire zone, rather than one operation. It uses observed traffic and does not generate requests. Operations must be selected for profile learning and meet the [learning requirements](#meet-learning-requirements).
+
+1. In the Cloudflare dashboard, go to **Web Assets** > **Operations**. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Open the **More options** menu for the operations table.
+3. Select **Ad-hoc learn schema** to open the **Schema learning** dialog.
+4. Select **Run learning** to request a zone-wide run.
+
+The dialog shows the learning status and **Last completed run** for the zone. **Running** includes time waiting for processing. **Idle** means no run is active. **Waiting to retry** means Cloudflare is waiting to retry an existing run.
+
+The run button is unavailable while a run is active or waiting to retry. If the button shows **Retry in**, wait before requesting another run. The countdown limits manual requests and does not predict when learning finishes.
+
+If you have read-only access, the menu shows **Schema learning**. You can view the status but cannot request a run.
+
+### Review learning results
+
+Completion time depends on traffic volume. Individual operations can finish before the entire zone-wide run completes.
+
+1. From the overflow menu for an operation, select **View details**.
+2. In **Security overview** > **Schema validation**, select **View**.
+3. Select **Learned schema**.
+4. Review **Schema learning result** and **Last learning run** to check whether that operation has been processed.
+
+The result shows one of these outcomes:
+
+| Outcome | Meaning |
+| --- | --- |
+| **Schema learned** | Cloudflare learned a schema for the operation. |
+| **No usable traffic** | The run found no usable traffic for the operation. |
+| **Learning failed** | The learning attempt for the operation failed. |
+
+**No learning result recorded** means no result is available yet. Review the learned schema before enforcing its detection.
 
 ## Export a schema
 
@@ -78,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Schema learning","description":"Learn Schema Profiles from qualifying operation traffic.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/og.png?v=3854a63bcbabd9ba","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Learn request schemas","description":"Learn Schema Profiles from qualifying operation traffic.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/og.png?v=d7101eeb6d9bbce0","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

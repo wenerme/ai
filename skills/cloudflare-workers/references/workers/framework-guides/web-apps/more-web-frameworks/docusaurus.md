@@ -78,7 +78,6 @@ When you run this command, C3 creates a new project directory, initiates <a href
    pnpm run dev
    ```
 
-
 3. **Deploy your project.**
 
    Your project can be deployed to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), from your local machine or any CI/CD system, (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds/)).
@@ -96,8 +95,6 @@ When you run this command, C3 creates a new project directory, initiates <a href
    ```
    pnpm run deploy
    ```
-
-
 
 ## Deploy an existing Docusaurus project on Workers
 
@@ -167,8 +164,6 @@ The key part of this config is the <code>assets</code> field, which tells Wrangl
    ```
    pnpx wrangler@latest deploy
    ```
-
-
 
 ## Use bindings with Docusaurus
 

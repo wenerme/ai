@@ -118,8 +118,6 @@ The switch happens when the deploy that moves your class to `scheduling_policy: 
    pnpm wrangler versions deploy <VERSION_ID>@100% -y
    ```
 
-
-
 ## Check the move
 
 Send requests from your application to a sandbox, such as a command and a file read. Each Durable Object starts a 1.0 container on its first request. List the container applications in your account:

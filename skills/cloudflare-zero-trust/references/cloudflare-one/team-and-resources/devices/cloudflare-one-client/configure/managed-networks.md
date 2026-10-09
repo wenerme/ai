@@ -131,7 +131,6 @@ If you do not already have a TLS endpoint on your network, you can set one up as
    docker compose up -d
    ```
 
-
 3. To test that the TLS server is working, run a curl command from the end user's device:
 
    ```sh
@@ -164,7 +163,6 @@ To create a TLS endpoint using Windows Internet Information Services (IIS) Manag
    ----------                                -------
    0660C4FCD15F69C49BD080FEEA4136B3D302B41B  CN=office-name.example.internal
    ```
-
 
 3. Extract the certificate's SHA-256 fingerprint:
 
@@ -258,8 +256,6 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
    	}
    }
    ```
-
-
 
 The Cloudflare One Client will automatically exclude the TLS endpoint from all device profiles if it is specified as a private IP address. This exclusion prevents remote users from accessing the endpoint through the WARP tunnel on any port. If the TLS endpoint is specified as a hostname instead of a private IP, the Cloudflare One Client will not automatically exclude it.
 

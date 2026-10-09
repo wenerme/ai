@@ -71,7 +71,6 @@ To get your Cloudflare metadata file:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata
    ```
 
-
 2. Save the file in XML format.
 3. Upload the XML document to your **Centrify** account.
 

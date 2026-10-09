@@ -46,8 +46,6 @@ You can use the following commands to check the serial number of your device. Th
    system_profiler SPHardwareDataType | grep 'Serial Number'
    ```
 
-
-
 ### Windows
 
 1. Open a PowerShell window.
@@ -57,8 +55,6 @@ You can use the following commands to check the serial number of your device. Th
    Get-CimInstance Win32_BIOS
    ```
 
-
-
 ### Linux
 
 1. Open a Terminal Window
@@ -67,8 +63,6 @@ You can use the following commands to check the serial number of your device. Th
    ```sh
    sudo dmidecode -s system-serial-number
    ```
-
-
 
 ### iOS, Android and ChromeOS
 

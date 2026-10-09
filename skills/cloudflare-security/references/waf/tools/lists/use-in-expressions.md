@@ -39,21 +39,17 @@ Examples:
   ip.src in $office_network
   ```
 
-
 - Expression matching requests with a source IP address different from IP addresses in the `office_network` IP list:
 
   ```txt
   not ip.src in $office_network
   ```
 
-
 - Expression matching requests from IP addresses in the Cloudflare Open Proxies [Managed IP List](https://developers.cloudflare.com/waf/tools/lists/managed-lists/#managed-ip-lists):
 
   ```txt
   ip.src in $cf.open_proxies
   ```
-
-
 
 Was this helpful?
 

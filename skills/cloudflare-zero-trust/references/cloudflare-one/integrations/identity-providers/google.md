@@ -45,7 +45,6 @@ You do not need to be a Google Cloud Platform user to integrate Google as an ide
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-
 9. After creating the OAuth client, select the OAuth client that you just created. Google will present the **OAuth Client ID** value and **Client secret** value. The client secret field functions like a password and should not be shared. Copy both the **OAuth Client ID** value and **Client secret** value.
 10. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 11. Under **Your identity providers**, select **Add new identity provider**. Choose **Google** on the next page.

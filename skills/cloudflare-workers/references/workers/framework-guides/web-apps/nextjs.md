@@ -95,7 +95,6 @@ Use the vinext Agent Skill when you want a coding agent to inspect your Next.js 
    pnpx skills add cloudflare/vinext
    ```
 
-
 3. **Prompt your agent.**
 
    In your coding agent, run the following prompt:
@@ -121,7 +120,6 @@ Use the vinext Agent Skill when you want a coding agent to inspect your Next.js 
    pnpm run dev:vinext
    ```
 
-
 5. **Build with vinext.**
 
    Build the production output with vinext.npmyarnpnpm
@@ -138,7 +136,6 @@ Use the vinext Agent Skill when you want a coding agent to inspect your Next.js 
    pnpm run build:vinext
    ```
 
-
 6. **Deploy to Workers.**
 
    Deploy with the vinext Cloudflare deploy command.npmyarnpnpm
@@ -154,8 +151,6 @@ Use the vinext Agent Skill when you want a coding agent to inspect your Next.js 
    ```
    pnpx @vinext/cloudflare deploy
    ```
-
-
 
 ## Add vinext with the CLI
 
@@ -214,7 +209,6 @@ Use `vinext init` when you want a direct command-line setup. The migration is no
    pnpm run dev:vinext
    ```
 
-
 5. **Build with vinext.**
 
    Build the production output with vinext.npmyarnpnpm
@@ -231,7 +225,6 @@ Use `vinext init` when you want a direct command-line setup. The migration is no
    pnpm run build:vinext
    ```
 
-
 6. **Deploy to Workers.**
 
    Deploy with the vinext Cloudflare deploy command.npmyarnpnpm
@@ -247,8 +240,6 @@ Use `vinext init` when you want a direct command-line setup. The migration is no
    ```
    pnpx @vinext/cloudflare deploy
    ```
-
-
 
 ## Create a Cloudflare-ready project
 
@@ -290,7 +281,6 @@ C3 creates a new Next.js project, configures vinext for Cloudflare Workers, inst
    pnpm run dev
    ```
 
-
 3. **Build your application.**
 
    Run the generated build script before deploying or testing a production build.npmyarnpnpm
@@ -307,7 +297,6 @@ C3 creates a new Next.js project, configures vinext for Cloudflare Workers, inst
    pnpm run build
    ```
 
-
 4. **Deploy your project.**
 
    Deploy your project to a [`*.workers.dev` subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).npmyarnpnpm
@@ -323,8 +312,6 @@ C3 creates a new Next.js project, configures vinext for Cloudflare Workers, inst
    ```
    pnpm run deploy
    ```
-
-
 
 ## Access Cloudflare bindings
 

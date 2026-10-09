@@ -68,7 +68,6 @@ You need a Claude Pro account (or higher subscription) to configure an MCP serve
    }
    ```
 
-
 7. Fully close Claude by using the task manager to stop any background processes related to Claude.
 8. Open Claude, and your DEX MCP server configuration should appear on the **Local MCP servers** page.
 9. Authenticate your Cloudflare account and allow the DEX MCP server.
@@ -99,7 +98,6 @@ You will need to use a CLI of your choice and npm or homebrew to install and acc
    	}
    }
    ```
-
 
 4. Run Gemini in your CLI of choice.
 5. If everything is working as expected, the Gemini CLI will show the following message:

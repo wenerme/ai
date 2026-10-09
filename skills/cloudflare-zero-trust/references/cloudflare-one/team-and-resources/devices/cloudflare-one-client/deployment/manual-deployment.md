@@ -75,7 +75,6 @@ To enroll your device using the terminal:
    warp-cli registration new <your-team-name>
    ```
 
-
 5. In the browser window that opens, complete the authentication steps required by your organization.
 
    Once authenticated, you will see a success page and a dialog prompting you to open a link.
@@ -109,7 +108,6 @@ The <code>warp-cli registration new</code> success message does not prove that o
    ```sh
    warp-cli connect
    ```
-
 
 9. If the device profile routes `www.cloudflare.com` through WARP, verify the data path:
 
@@ -175,7 +173,6 @@ To generate a URL for device enrollment:
    ```txt
    cf1app://oneapp.cloudflare.com/team?name=<your-team-name>
    ```
-
 
 2. (Optional) Use any QR code generator to embed the link in a QR code.
 3. Distribute the link or QR code to users.

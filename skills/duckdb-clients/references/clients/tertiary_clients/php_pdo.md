@@ -2,7 +2,7 @@
 
 > The PHP DuckDB PDO extension is a tertiary client and is maintained by a third-party.
 >
-> To use `pdo_duckdb`, follow the [instructions below](#installation).
+> To use `pdo_duckdb`, follow the [instructions below](#installation-and-setup).
 >
 > The latest version of `pdo_duckdb` supports DuckDB current release.
 

@@ -38,7 +38,6 @@ You need Node.js 24+ and [Vite+ ↗︎](https://viteplus.dev/guide/).
    vp run dev:setup
    ```
 
-
 3. **Start the app.**
 
    ```sh

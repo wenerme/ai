@@ -120,7 +120,6 @@ To create your first D1 database:
    cd d1-tutorial
    ```
 
-
 2. Run the following `wrangler@latest d1` command and give your database a name. In this tutorial, the database is named `prod-d1-tutorial`:
 
    Note
@@ -147,7 +146,6 @@ To create your first D1 database:
    	]
    }
    ```
-
 
 3. When prompted: `Would you like Wrangler to add it on your behalf?`, select `Yes`. This will automatically add the binding to your Wrangler configuration file.
 
@@ -234,7 +232,6 @@ After correctly preparing your [Wrangler configuration file](https://developers.
    INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'), (4, 'Around the Horn', 'Thomas Hardy'), (11, 'Bs Beverages', 'Victoria Ashworth'), (13, 'Bs Beverages', 'Random Name');
    ```
 
-
 2. Initialize your database to run and test locally first. Bootstrap your new D1 database by running:
 
    ```sh
@@ -276,8 +273,6 @@ After correctly preparing your [Wrangler configuration file](https://developers.
     └────────────┴─────────────────────┴───────────────────┘
    ```
 
-
-
 Use the Dashboard to create a table and populate it with data.
 
 1. In the Cloudflare dashboard, go to the **D1 SQL database** page. [Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
@@ -290,7 +285,6 @@ Use the Dashboard to create a table and populate it with data.
    CREATE TABLE IF NOT EXISTS Customers (CustomerId INTEGER PRIMARY KEY, CompanyName TEXT, ContactName TEXT);
    INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'), (4, 'Around the Horn', 'Thomas Hardy'), (11, 'Bs Beverages', 'Victoria Ashworth'), (13, 'Bs Beverages', 'Random Name');
    ```
-
 
 5. Select **Execute**. This creates a table called `Customers` in your `prod-d1-tutorial` database.
 6. Select **Tables**, then select the `Customers` table to view the contents of the table.
@@ -425,7 +419,6 @@ You can query your D1 database using your Worker.
    };
    ```
 
-
 5. Select **Save**.
 
 ## 5. Deploy your application
@@ -458,7 +451,6 @@ To deploy your Worker to production using Wrangler, you must first repeat the [d
    └────────────────────────┴───────────┴──────────────┴────────────────────┘
    ```
 
-
 2. Validate the data is in production by running:
 
    ```sh
@@ -483,7 +475,6 @@ To deploy your Worker to production using Wrangler, you must first repeat the [d
    │ 13         │ Bs Beverages        │ Random Name       │
    └────────────┴─────────────────────┴───────────────────┘
    ```
-
 
 3. Deploy your Worker to make your project accessible on the Internet. Run:
 

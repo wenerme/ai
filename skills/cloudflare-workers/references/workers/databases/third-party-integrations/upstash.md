@@ -49,7 +49,6 @@ To set up an integration with Upstash:
    OK
    ```
 
-
 3. Configure the Upstash Redis credentials in your Worker:
 
    You need to add your Upstash Redis database URL and token as secrets to your Worker. Get these from your [Upstash Console ↗︎](https://console.upstash.com) under your database details, then add them as secrets using Wrangler:
@@ -63,7 +62,6 @@ To set up an integration with Upstash:
    npx wrangler secret put UPSTASH_REDIS_REST_TOKEN
    # When prompted, paste your Upstash Redis REST token
    ```
-
 
 4. In your Worker, install the `@upstash/redis`, a HTTP client to connect to your database and start manipulating data:npmyarnpnpmbun
 
@@ -82,7 +80,6 @@ To set up an integration with Upstash:
    ```
    bun add @upstash/redis
    ```
-
 
 5. The following example shows how to make a query to your Upstash database in a Worker. The credentials needed to connect to Upstash have been added as secrets to your Worker.
 
@@ -129,7 +126,6 @@ To set up an integration with Upstash QStash:
    # When prompted, paste your QStash token
    ```
 
-
 3. In your Worker, install the `@upstash/qstash`, a HTTP client to connect to your database QStash endpoint:npmyarnpnpmbun
 
    ```
@@ -147,7 +143,6 @@ To set up an integration with Upstash QStash:
    ```
    bun add @upstash/qstash
    ```
-
 
 4. Refer to the [Upstash documentation on how to receive webhooks from QStash in your Cloudflare Worker ↗︎](https://docs.upstash.com/qstash/quickstarts/cloudflare-workers#3-use-qstash-in-your-handler).
 

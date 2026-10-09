@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/managed-rules/troubleshooting/og.pn
 
 # Troubleshoot managed rules
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:
 
@@ -42,6 +42,9 @@ If you contact Cloudflare Support to verify whether a WAF managed rule triggers 
 
   `http.host eq "example.com" and starts_with(http.request.uri.path, "/admin")`
 - WAF managed rulesets are designed to inspect standard HTTP request content. Requests that upload binary content (for example, file uploads) can resemble attack payloads and cause false positives. To scan file uploads for malicious content, use [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) instead of relying on managed rules for that traffic.
+- If you use [Zaraz](https://developers.cloudflare.com/zaraz/), the Cloudflare OWASP Core Ruleset can flag requests to the Zaraz endpoint ( `/cdn-cgi/zaraz/`) as false positives. Add an [exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) skipping the Cloudflare OWASP Core Ruleset for Zaraz requests. You can use an expression similar to the following:
+
+  `starts_with(http.request.uri.path, "/cdn-cgi/zaraz/")`
 
 ## Troubleshoot false negatives
 
@@ -84,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/#page","headline":"Troubleshoot managed rules","description":"Troubleshoot WAF managed rules false positives and configuration issues.","url":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/og.png?v=0a7f8299561a3f3c","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/#page","headline":"Troubleshoot managed rules","description":"Troubleshoot WAF managed rules false positives and configuration issues.","url":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/og.png?v=0a7f8299561a3f3c","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

@@ -104,7 +104,6 @@ To route overlapping IPs over virtual networks:
    }
    ```
 
-
 3. Create a Cloudflare Tunnel for each private network with overlapping IPs (one tunnel per isolated environment, for example staging and production):
 
    ```tf
@@ -120,7 +119,6 @@ To route overlapping IPs over virtual networks:
    	config_src = "cloudflare"
    }
    ```
-
 
 4. Route `10.128.0.1/32` through `Staging tunnel` and assign it to `staging-vnet`. Route `10.128.0.1/32` through `Production tunnel` and assign it to `production-vnet`.
 
@@ -142,7 +140,6 @@ To route overlapping IPs over virtual networks:
    }
    ```
 
-
 5. [Get the token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/#get-the-tunnel-token) for each tunnel.
 6. Using the tunnel tokens, run `Staging tunnel` in your staging environment and run `Production tunnel` in your production environment. Refer to [Install and run the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel-api/#4-install-and-run-the-tunnel).
 
@@ -155,13 +152,11 @@ To route overlapping IPs over virtual networks for [locally-managed tunnels](htt
       cloudflared login
       ```
 
-
    2. Create a tunnel to connect your staging network to Cloudflare.
 
       ```sh
       cloudflared tunnel create staging-tunnel
       ```
-
 
    3. Within your production environment, authenticate `cloudflared`:
 
@@ -169,14 +164,11 @@ To route overlapping IPs over virtual networks for [locally-managed tunnels](htt
       cloudflared login
       ```
 
-
    4. Create a tunnel to connect your production network to Cloudflare.
 
       ```sh
       cloudflared tunnel create production-tunnel
       ```
-
-
 
 The following steps may be executed from any `cloudflared` instance.
 
@@ -187,14 +179,11 @@ The following steps may be executed from any `cloudflared` instance.
    cloudflared tunnel vnet add production-vnet
    ```
 
-
 3. Before moving on, run the following command to verify that your newly created virtual networks are listed correctly:
 
    ```sh
    cloudflared tunnel vnet list
    ```
-
-
 
 Default virtual network
 
@@ -206,7 +195,6 @@ All accounts come pre-configured with a virtual network named `default`. You can
    cloudflared tunnel route ip add --vnet staging-vnet 10.128.0.3/32 staging-tunnel
    cloudflared tunnel route ip add --vnet production-vnet 10.128.0.3/32 production-tunnel
    ```
-
 
 5. Verify that the IP routes are listed correctly:
 
@@ -224,13 +212,11 @@ All accounts come pre-configured with a virtual network named `default`. You can
          enabled: true
       ```
 
-
    7. Run your tunnel.
 
       ```sh
       cloudflared tunnel run staging-tunnel
       ```
-
 
    8. Within your production environment, repeat Steps 6 and 7 for `production-tunnel`.
 
@@ -255,21 +241,17 @@ To delete a virtual network for [locally-managed tunnels](https://developers.clo
    cloudflared tunnel route ip delete --vnet staging-vnet 10.128.0.3/32
    ```
 
-
 2. (Optional) Delete the tunnel associated with the virtual network.
 
    ```sh
    cloudflared tunnel delete staging-tunnel
    ```
 
-
 3. Delete the virtual network.
 
    ```sh
    cloudflared tunnel vnet delete staging-vnet
    ```
-
-
 
 You can verify that the virtual network was successfully deleted by typing `cloudflared tunnel vnet list`.
 

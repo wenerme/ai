@@ -215,7 +215,6 @@ To ensure complete cleanup, delete these resources before deleting the account b
    --header "X-Auth-Key: <API_KEY>"
    ```
 
-
 2. Delete Access organization:
 
    ```bash
@@ -224,7 +223,6 @@ To ensure complete cleanup, delete these resources before deleting the account b
    --header "X-Auth-Email: <EMAIL>" \
    --header "X-Auth-Key: <API_KEY>"
    ```
-
 
 3. Then delete the account (see below).
 

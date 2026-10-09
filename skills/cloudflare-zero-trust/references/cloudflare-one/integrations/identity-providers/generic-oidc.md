@@ -115,8 +115,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
    }
    ```
 
-
-
 ## 3. Test the connection
 
 To test that your connection is working, go to **Authentication** > **Login methods** and select **Test** next to the login method you want to test. On success, a confirmation screen displays.
@@ -193,8 +191,6 @@ To add a custom OIDC claim to an IdP integration:
    		"oid": "54eb1ed2-7150-44e6-bbe4-ead24c132fd4"
    	},
    ```
-
-
 
 You can now build an Access policy for the custom claim using the **OIDC Claim** or **IdP OIDC Claim** selector. You can also use custom OIDC claims as [identity-based selectors in Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#oidc-claims). The custom claim will be passed to origins behind Access in a [JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#custom-saml-attributes-and-oidc-claims).
 

@@ -146,7 +146,9 @@ Run these checks from the public Internet and from the same host as `cloudflared
    dig CNAME app.example.com +short
    dig A app.example.com +short
    dig AAAA app.example.com +short
-   ``` A proxied record may return Cloudflare addresses instead of the `CNAME` target. Use the dashboard to verify the target in that case. Cloudflare does not silently fall back from a Tunnel to an `A` or `AAAA` record. If the tunnel stops, the DNS record remains and visitors receive a [`1016` error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/). Refer to [Tunnel DNS records](https://developers.cloudflare.com/tunnel/concepts/routing/#dns-records) for more information. If traffic appears to go directly to the origin, check whether the exact hostname has an `A` or `AAAA` record instead of the expected CNAME, or whether an explicit load balancer or another route serves it.
+   ```
+
+   A proxied record may return Cloudflare addresses instead of the `CNAME` target. Use the dashboard to verify the target in that case. Cloudflare does not silently fall back from a Tunnel to an `A` or `AAAA` record. If the tunnel stops, the DNS record remains and visitors receive a [`1016` error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/). Refer to [Tunnel DNS records](https://developers.cloudflare.com/tunnel/concepts/routing/#dns-records) for more information. If traffic appears to go directly to the origin, check whether the exact hostname has an `A` or `AAAA` record instead of the expected CNAME, or whether an explicit load balancer or another route serves it.
 2. **Inspect redirect headers and statuses.** From a client, request the public hostname and follow a limited number of redirects:
 
    ```sh

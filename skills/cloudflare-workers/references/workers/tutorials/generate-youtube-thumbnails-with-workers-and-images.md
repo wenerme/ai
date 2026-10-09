@@ -101,8 +101,6 @@ You will need the following before you begin:
   cargo install cargo-generate
   ```
 
-
-
 Create a new Worker project using the `worker-rust` template:
 
 ```sh

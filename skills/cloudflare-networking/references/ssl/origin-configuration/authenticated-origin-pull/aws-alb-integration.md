@@ -186,7 +186,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	}'
    ```
 
-
 2. (Optional) Use a [`GET` request](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.<details><summary>
 
    Required API token permissions</summary>
@@ -205,7 +204,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
 
-
 3. Use the [Delete hostname client certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/delete/) endpoint to remove the certificate you had uploaded.<details><summary>
 
    Required API token permissions</summary>
@@ -222,8 +220,6 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    	--request DELETE \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
-
-
 
 Was this helpful?
 

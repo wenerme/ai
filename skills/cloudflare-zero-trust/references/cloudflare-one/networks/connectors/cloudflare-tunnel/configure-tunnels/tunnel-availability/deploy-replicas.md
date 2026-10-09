@@ -55,8 +55,6 @@ The new replica will appear on the tunnel overview page. All replicas serve the 
    cloudflared tunnel info <NAME>
    ```
 
-
-
 This will output your tunnel UUID as well as two Connector IDs, one for each `cloudflared` process running your tunnel. With this command, you can also see that your tunnel is now being served by eight connections.
 
 Was this helpful?

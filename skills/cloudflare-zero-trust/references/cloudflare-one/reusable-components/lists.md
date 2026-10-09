@@ -72,7 +72,6 @@ To upload the list to the Cloudflare dashboard:
    }
    ```
 
-
 3. Create a list using the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
 
    ```tf
@@ -84,8 +83,6 @@ To upload the list to the Cloudflare dashboard:
    	items 			= local.ip_list
    }
    ```
-
-
 
 You can now use this list in the policy builder by choosing the *in list* operator.
 
@@ -159,8 +156,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
    		}]
    }
    ```
-
-
 
 You can now use this list in the policy builder by choosing the *in list* operator.
 

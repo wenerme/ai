@@ -97,14 +97,11 @@ Set up a token as an environment variable as follows:
    export TOKEN=$(cloudflared access token -app=http://example.com)
    ```
 
-
 2. Confirm the token was saved with the following:
 
    ```sh
    echo $TOKEN
    ```
-
-
 
 Once you have exported the token to your environment, use the variable with the Cloudflare Access request header in the script to access a protected endpoint, as in the following example:
 
