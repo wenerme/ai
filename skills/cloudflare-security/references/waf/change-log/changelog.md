@@ -1,5 +1,5 @@
 ---
-description: This release introduces a new detection to mitigate a heap-based buffer overflow vulnerability in F5 BIG-IP, and enhances existing command injection protections by incorporating tested beta logic into the baseline rule.
+description: AI Security for Apps now supports an updated set of categories for detecting unsafe topics in incoming prompts.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,17 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-07
+
+
+**Updated unsafe topic detection for AI Security for Apps**
+
+AI Security for Apps now supports an updated set of categories for detecting unsafe topics in incoming prompts.
+
+The values available in [`cf.llm.prompt.unsafe_topic_categories`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe_topic_categories/) have changed. Existing WAF custom rules remain valid, but rules that reference a removed or renamed category will no longer match that category. Review any rules that use this field and update their expressions to use the currently supported values.
+
+For category descriptions and configuration guidance, refer to [Unsafe topics](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/).
 
 ## 2026-10-06
 
@@ -179,6 +190,17 @@ In **Security Analytics** > **Attack Analysis**, you can review matching signatu
 Attack Signature Detection uses the same signature definitions as [Cloudflare Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), but it does not inherit your Managed Rules actions, overrides, or deployment configuration. Managed Rules remain the recommended baseline protection during Early Access.
 
 Contact your Cloudflare account team to request access. For more information, refer to [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/).
+
+## 2026-09-01
+
+
+**Updated PII detection for AI Security for Apps**
+
+AI Security for Apps now supports an updated set of categories for detecting personally identifiable information (PII) in incoming prompts.
+
+The values available in [`cf.llm.prompt.pii_categories`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/) have changed. Existing WAF custom rules remain valid, but rules that reference a removed or renamed category will no longer match that category. Review any rules that use this field and update their expressions to use the currently supported values.
+
+For the complete category list and configuration guidance, refer to [PII detection](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/).
 
 ## 2026-09-01
 
@@ -469,48 +491,8 @@ This release adds targeted coverage for a path traversal flaw in Fortinet FortiS
 | Cloudflare Managed Ruleset | ...d84c92c9 | N/A | Fortinet FortiSandbox - Path Traversal - CVE:CVE-2026-39813 | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...c12cf9c8 | N/A | Anomaly:Header:User-Agent - Fake Bing or MSN Bot | Enabled | Disabled | We are changing the action for this rule from BLOCK to Disabled |
 
-## 2026-06-23
-
-
-**WAF Release - 2026-06-23**
-
-This week's release introduces new managed protection to address a critical pre-authentication OS command injection vulnerability in Ivanti Sentry (CVE-2026-10520).
-
-**Key Findings**
-
-- CVE-2026-10520: An OS command injection vulnerability in Ivanti Sentry allows remote, unauthenticated attackers to execute arbitrary system commands with root privileges. The flaw stems from improper sanitization of input strings parsed during internal configuration handling.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...242fdf83 | N/A | Ivanti Sentry - Command Injection - CVE:CVE-2026-10520 | Log | Block | This is a new detection. |
-
-## 2026-06-15
-
-
-**Use Cloudforce One threat intelligence in WAF rules**
-
-You can now match incoming requests against Cloudforce One threat intelligence in your WAF rules. A new detection looks up the client IP address of each request against the threat intelligence database. If the IP was involved in threat activity in the past seven days, Cloudflare populates `cf.intel.ip.*` fields that you can use in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
-
-The detection populates the following fields. Use the [`any()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#any) function with the `[*]` wildcard to match array values:
-
-- `cf.intel.ip.datasets` — the dataset that flagged the IP address ( `ddos` or `waf`).
-- `cf.intel.ip.target_industries` — industries the IP address has targeted.
-- `cf.intel.ip.attacker_names` — known threat actors associated with the IP address.
-- `cf.intel.ip.attacker_countries` — source countries of the threat activity.
-- `cf.intel.ip.target_countries` — countries the IP address has targeted.
-
-For example, the following custom rule expression blocks requests from IP addresses associated with DDoS activity that have targeted France:
-
-```txt
-any(cf.intel.ip.target_countries[*] == "FR") and any(cf.intel.ip.datasets[*] == "ddos")
-```
-
-These fields work with the Cloudflare API and Terraform. Matches are logged in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
-
-The threat intelligence detection is available to customers with an active [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) subscription. For more information, refer to [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/).
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces a new detection to mitigate a heap-based buffer overflow vulnerability in F5 BIG-IP, and enhances existing command injection protections by incorporating tested beta logic into the baseline rule.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"AI Security for Apps now supports an updated set of categories for detecting unsafe topics in incoming prompts.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

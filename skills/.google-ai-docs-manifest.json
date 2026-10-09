@@ -104,8 +104,8 @@
   "google-ai-docs/document-processing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/document-processing",
     "skill": "google-ai-docs",
-    "size": 46847,
-    "updatedAt": "2026-09-24T04:35:06.358Z"
+    "size": 46834,
+    "updatedAt": "2026-10-09T05:59:41.249Z"
   },
   "google-ai-docs/structured-output.md": {
     "url": "https://ai.google.dev/gemini-api/docs/structured-output",
@@ -425,11 +425,11 @@
     "size": 91239,
     "updatedAt": "2026-09-18T04:36:43.991Z"
   },
-  "google-ai-docs/interactions/media-resolution.md": {
-    "url": "https://ai.google.dev/gemini-api/docs/interactions/media-resolution",
+  "google-ai-docs/media-resolution.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/media-resolution",
     "skill": "google-ai-docs",
-    "size": 6886,
-    "updatedAt": "2026-07-08T04:03:55.146Z"
+    "size": 10848,
+    "updatedAt": "2026-10-09T06:00:15.132Z"
   },
   "google-ai-docs/thought-signatures.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",

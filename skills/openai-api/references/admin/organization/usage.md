@@ -76,7 +76,7 @@ Get audio speeches usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -702,7 +702,7 @@ Get audio transcriptions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -1310,7 +1310,7 @@ Get code interpreter sessions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -1942,7 +1942,7 @@ Get completions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -2574,7 +2574,7 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -3203,7 +3203,7 @@ Get embeddings usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -3829,7 +3829,7 @@ Get file search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -4482,7 +4482,7 @@ Get images usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -5110,7 +5110,7 @@ Get moderations usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -5718,7 +5718,7 @@ Get vector stores usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -6354,7 +6354,7 @@ Get web search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -6947,7 +6947,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -7421,7 +7421,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -7895,7 +7895,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -8369,7 +8369,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -8843,7 +8843,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -9317,7 +9317,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -9791,7 +9791,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -10265,7 +10265,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -10739,7 +10739,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -11213,7 +11213,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
@@ -11687,7 +11687,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
       - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 

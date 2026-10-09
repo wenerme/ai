@@ -9,6 +9,27 @@ description: "Troubleshoot common issues with the ServiceNow data source plugin 
 
 This document provides solutions to common issues you may encounter when configuring or using the ServiceNow data source. For configuration instructions, refer to [Configure the ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/configure/).
 
+## Licensing errors
+
+The ServiceNow data source is an Enterprise plugin and requires a valid license or Grafana Cloud plan that includes ServiceNow. Licensing problems appear as a failed health check when you click **Save &amp; test**, and can also affect a data source that previously worked.
+
+### “Plugin health check failed” or a license error
+
+**Symptoms:**
+
+- **Save &amp; test** fails with a license or health check error.
+- A previously working data source stops returning data.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                                                           | Solution                                                                                                                                                 |
+|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The Grafana Enterprise license or Grafana Cloud plan doesn’t include ServiceNow | Verify your license or plan includes the ServiceNow Enterprise plugin. Contact your Grafana account team to add it or to extend a trial.                 |
+| The license expired                                                             | Renew or extend the license. For Grafana Enterprise, refer to [Grafana Enterprise licensing](/docs/grafana/latest/administration/enterprise-licensing/). |
+| The plugin is installed but not licensed                                        | Confirm the plugin shows as licensed in **Administration** &gt; **Plugins**.                                                                             |
+
 ## Authentication errors
 
 These errors occur when credentials are missing, invalid, or incorrectly configured. They appear during **Save &amp; test** before any API calls are made.
@@ -42,7 +63,7 @@ These errors occur when credentials are missing, invalid, or incorrectly configu
 >
 > When using custom HTTP headers for authentication, the username and password fields aren’t required. If you see this error with custom headers configured, verify the **Authentication Type** is set correctly.
 
-### “invalid oauth configuration: client ID can’t be blank”
+### “invalid `oauth` configuration: client ID can’t be blank”
 
 **Symptoms:**
 
@@ -134,31 +155,60 @@ These errors occur when Grafana can’t reach the ServiceNow instance.
 3. If using an HTTP proxy, verify the `HTTP_PROXY` or `HTTPS_PROXY` environment variable is set correctly.
 4. For Grafana Cloud users, configure [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your ServiceNow instance isn’t publicly accessible. PDC is a Grafana Cloud feature that enables secure connectivity to private networks.
 
+### Self-signed or private certificate errors
+
+**Symptoms:**
+
+- **Save &amp; test** fails with a TLS or certificate error, such as a message about a certificate signed by an unknown authority or a self-signed certificate.
+
+**Cause:**
+
+The ServiceNow instance presents a certificate that Grafana doesn’t trust, such as a self-signed or privately signed certificate. The data source doesn’t provide TLS options to add a custom certificate authority or to skip certificate verification.
+
+**Solutions:**
+
+1. Use a certificate issued by a publicly trusted certificate authority on your ServiceNow instance.
+2. On self-managed Grafana, add the signing certificate authority to the trust store of the operating system that runs the Grafana server so that Grafana trusts the connection.
+3. On Grafana Cloud, this configuration isn’t available, so a publicly trusted certificate is required.
+
+### Data source is inaccessible or errors after an upgrade
+
+**Symptoms:**
+
+- The data source is inaccessible or returns unexpected errors after a Grafana upgrade.
+- Queries fail with errors that are resolved in a newer plugin release.
+
+**Solutions:**
+
+1. Update the ServiceNow plugin to the latest version from **Administration** &gt; **Plugins**. In Grafana Cloud, plugins update automatically, but allow time for the update to propagate.
+2. Verify your Grafana version meets the minimum requirement of 11.6.11 or later.
+3. Reload the data source configuration page after the plugin updates.
+
 ## Health check errors
 
 When you click **Save &amp; test**, the plugin runs a series of health checks to verify that the configured user can access the required APIs and tables. The checks performed depend on the **Use Sys Tables?** setting.
 
-### Health checks with Use Sys Tables enabled
+### Health checks with **Use Sys Tables** enabled
 
 When **Use Sys Tables?** is enabled, the health check validates access to the following system tables and APIs in order:
 
-1. `sys_db_object` — table metadata (table listing)
-2. `sys_dictionary` — field metadata (field types and definitions)
-3. `sys_choice` — choice field values
-4. `sys_glide_object` — type metadata
-5. `incident` — Table API access (verifies the user can query a standard table)
-6. Aggregate API — Stats API access (verifies aggregation queries work)
+1. `sys_db_object`: table metadata (table listing)
+2. `sys_dictionary`: field metadata (field types and definitions)
+3. `sys_choice`: choice field values
+4. `sys_glide_object`: type metadata
+5. `incident`: Table API access (verifies the user can query a standard table)
+6. Aggregate API: Stats API access (verifies aggregation queries work)
 
 If multiple checks fail, the errors are combined into a single message separated by `|`.
 
-#### “no data returned for sys\_db\_object table”
+#### “no data returned for `sys_db_object` table”
 
 **Solutions:**
 
 1. Verify the user has read access to the `sys_db_object` table.
 2. Create a table-level read ACL for `sys_db_object` with the user’s role. Refer to [Set up a ServiceNow user with ACL rules](/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules).
 
-#### “unable to retrieve name field in sys\_db\_object table” or “unable to retrieve label field” or “unable to retrieve super class field”
+#### “unable to retrieve name field in `sys_db_object` table” or “unable to retrieve label field” or “unable to retrieve super class field”
 
 **Solutions:**
 
@@ -169,7 +219,7 @@ If multiple checks fail, the errors are combined into a single message separated
    - `sys_db_object.super_class` (Extends Table)
 2. Refer to [Set up a ServiceNow user with ACL rules](/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules) for detailed steps.
 
-#### “no data returned for sys\_dictionary table” or “unable to retrieve type field in sys\_dictionary table”
+#### “no data returned for `sys_dictionary` table” or “unable to retrieve type field in `sys_dictionary` table”
 
 **Solutions:**
 
@@ -177,14 +227,14 @@ If multiple checks fail, the errors are combined into a single message separated
 2. Create a table-level read ACL for `sys_dictionary` with the user’s role.
 3. For the type field error, create a field-level read ACL for `sys_dictionary.internal_type`.
 
-#### “no data returned for sys\_choice table” or “unable to retrieve value/label field in sys\_choice table”
+#### “no data returned for `sys_choice` table” or “unable to retrieve value/label field in `sys_choice` table”
 
 **Solutions:**
 
 1. Verify the user has read access to the `sys_choice` table and its fields.
 2. Create a table-level read ACL for `sys_choice` with the user’s role.
 
-#### “no data returned for sys\_glide\_object table”
+#### “no data returned for `sys_glide_object` table”
 
 **Solutions:**
 
@@ -216,12 +266,12 @@ If multiple checks fail, the errors are combined into a single message separated
 1. Install and activate the **Aggregate API** plugin on your ServiceNow instance if it isn’t already enabled.
 2. Verify the user has access to both the `incident` table and the Stats API.
 
-### Health checks with Use Sys Tables disabled
+### Health checks with **Use Sys Tables** disabled
 
 When **Use Sys Tables?** is disabled, the health check uses the ServiceNow schema and meta APIs instead:
 
-1. Schema API (`/api/now/doc/table/schema`) — validates table listing
-2. Meta API (`/api/now/ui/meta`) — validates field metadata
+1. Schema API (`/api/now/doc/table/schema`): validates table listing
+2. Meta API (`/api/now/ui/meta`): validates field metadata
 
 #### “unable to fetch schema”
 
@@ -287,7 +337,7 @@ These errors occur when executing queries against the data source.
 
 1. Verify the selected fields exist on the table you’re querying.
 2. Check that the user has read access to the specified fields.
-3. If the table schema has changed, refresh the query editor by reselecting the table.
+3. If the table schema has changed, refresh the query editor by selecting the table again.
 
 ### “warning: Filter N missing conjunction”
 
@@ -316,6 +366,77 @@ These errors occur when executing queries against the data source.
 3. A `404` status indicates the table or API endpoint wasn’t found. Verify the table name and that the required ServiceNow API plugins are active.
 4. A `500` status indicates a server-side error on the ServiceNow instance. Check ServiceNow system logs.
 5. Check the Grafana server logs for additional context.
+
+### “URL too large” or request URI too long
+
+**Symptoms:**
+
+- Queries with many filter values fail with an error about the URL or request URI being too large.
+- The error is most likely with the **Is one of** or **Is not one of** operator when a filter contains many values.
+
+**Cause:**
+
+The data source sends queries as ServiceNow REST API GET requests, which encode filters in the request URL. A filter with many values produces a long URL that ServiceNow or an intermediate proxy can reject.
+
+**Solutions:**
+
+1. Reduce the number of values in **Is one of** and **Is not one of** filters.
+2. Split a large set of values into smaller, categorized groups using separate filters or query groups joined with the **NQ** conjunction.
+3. Use a template variable with a curated set of values instead of selecting many values at once.
+
+## Query performance
+
+Large ServiceNow tables and inefficient filters can cause slow queries or timeouts.
+
+### Queries are slow or time out on large tables
+
+Refer to [timeout exceeded when querying ServiceNow](#timeout-exceeded-when-querying-servicenow) for the default timeout and how to increase it. In addition to increasing the timeout, reduce the amount of data each query scans:
+
+1. Add filters to narrow the result set.
+2. Reduce the **Limit** value on Table queries.
+3. Select only the fields you need in **Show Fields**.
+
+### Slow “Like” filters on large tables
+
+**Symptoms:**
+
+- Queries that use the **Like** or **Not Like** operator are slow or time out on large tables.
+
+**Cause:**
+
+The **Like** operator performs a partial-text match that ServiceNow can’t resolve with an index, so it scans the table. On large tables, this is expensive.
+
+**Solutions:**
+
+1. Replace **Like** with a more selective operator such as **Starts With** or **Equals** when possible.
+2. Add other filters to reduce the number of rows the **Like** filter evaluates.
+3. Return a broader result set without the **Like** filter, then apply a Grafana [transformation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to filter the results client-side.
+
+### Excessive API calls to ServiceNow
+
+**Symptoms:**
+
+- ServiceNow reports a high volume of API calls from Grafana.
+- The ServiceNow instance is rate-limited or slow.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                               | Solution                                                                                                                                                                                          |
+|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Recorded queries poll on a schedule | Grafana Enterprise and Grafana Cloud [recorded queries](/docs/grafana/latest/administration/recorded-queries/) run on an interval. Remove unused recorded queries that reference the data source. |
+| Frequent dashboard refresh          | Increase the dashboard refresh interval, or avoid a short automatic refresh on dashboards that query large tables.                                                                                |
+| Many or frequent alert rules        | Increase alert evaluation intervals and enable query caching in Grafana Enterprise or Grafana Cloud.                                                                                              |
+
+## Known ServiceNow-side issues
+
+Some date and timestamp behaviors originate in the ServiceNow platform rather than in the data source. If query results don’t match what you see in the ServiceNow UI, verify the behavior directly in ServiceNow.
+
+- **Date and timestamp filters return unexpected results.** On some ServiceNow instances, date filtering and timestamp parsing behave inconsistently depending on the instance’s database backend and timestamp format, including ISO 8601 handling. Reproduce the query in ServiceNow, and if the results differ, open a case with ServiceNow support.
+- **Localized field values.** If filter values don’t match because of a non-English language configuration, review the language and localization settings in ServiceNow. This behavior is controlled by ServiceNow, not the data source.
+
+For any Grafana-side query-formatting fixes, keep the plugin updated to the latest version.
 
 ## Enable debug logging
 

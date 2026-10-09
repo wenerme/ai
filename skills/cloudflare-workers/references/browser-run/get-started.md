@@ -84,6 +84,7 @@ For setup, select the following options:
 - For *Which template would you like to use?*, choose `Worker only`.
 - For *Which language do you want to use?*, choose `TypeScript`.
 - For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
 - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 #### 2. Configure the browser binding
@@ -96,7 +97,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "name": "browser-quick-action",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-09",
   "browser": {
     "binding": "BROWSER"
   }
@@ -107,7 +108,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-quick-action"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [browser]
 binding = "BROWSER"
@@ -216,6 +217,7 @@ For setup, select the following options:
 - For *Which template would you like to use?*, choose `Worker only`.
 - For *Which language do you want to use?*, choose `JavaScript / TypeScript`.
 - For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
 - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 #### 2. Install Puppeteer
@@ -267,7 +269,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"name": "browser-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -287,7 +289,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 name = "browser-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

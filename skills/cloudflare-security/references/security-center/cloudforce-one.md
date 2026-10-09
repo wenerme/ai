@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/security-center/cloudforce-one/og.png?v
 
 # Cloudforce One
 
-Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/cloudforce-one/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/cloudforce-one/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -78,7 +78,7 @@ Search across global datasets for specific indicators, including:
 
 ### Create WAF Rules and receive notifications
 
-- **Saved views** — Save custom filters for recurring threat event investigations.
+- **Saved views** — Save custom filters for recurring threat event investigations. Saving a view does not notify you. To receive notifications, open **Manage Saved Views** and select **Add Alert** next to the view.
 - **Automated rules** — Generate security rules from threat data and push them to your Cloudflare [WAF](https://developers.cloudflare.com/waf/) or firewall.
 - **[STIX2 ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) exports** — Export threat intelligence in STIX2 format for integration with third-party [SIEM ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-siem/) (Security Information and Event Management) or SOAR (Security Orchestration, Automation, and Response) platforms.
 
@@ -182,5 +182,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/cloudforce-one/#page","headline":"Cloudforce One","description":"Access Cloudflare threat intelligence, reports, and automated security rules.","url":"https://developers.cloudflare.com/security-center/cloudforce-one/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/cloudforce-one/og.png?v=f0004e26b23929c8","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/security-center/cloudforce-one/#page","headline":"Cloudforce One","description":"Access Cloudflare threat intelligence, reports, and automated security rules.","url":"https://developers.cloudflare.com/security-center/cloudforce-one/","inLanguage":"en","image":"https://developers.cloudflare.com/security-center/cloudforce-one/og.png?v=f0004e26b23929c8","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","AI Agents"]}
 ```

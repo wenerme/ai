@@ -45,7 +45,7 @@ List evaluations for a project.
 
     The Unix timestamp (in seconds) for when the eval was created.
 
-  - `data_source_config: EvalCustomDataSourceConfig or object { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
+  - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
 
@@ -149,7 +149,7 @@ List evaluations for a project.
 
       - `input: array of object { content, role, type }`
 
-        - `content: string or ResponseInputText or object { text, type }  or 3 more`
+        - `content: string or ResponseInputText or OutputText { text, type }  or 3 more`
 
           Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
 
@@ -238,7 +238,7 @@ List evaluations for a project.
 
               - `"input_audio"`
 
-          - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+          - `GraderInputs = array of string or ResponseInputText or OutputText { text, type }  or 2 more`
 
             A list of inputs, each of which may be either an input text, output text, input
             image, or input audio object.

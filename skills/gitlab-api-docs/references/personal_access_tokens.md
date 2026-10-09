@@ -211,6 +211,8 @@ Other possible responses:
 
 ### Self-rotate
 
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/632314) in GitLab 19.6.
+
 Instead of rotating a specific personal access token, you can also rotate the same personal access
 token you used to authenticate the request. To self-rotate a personal access token, you must:
 

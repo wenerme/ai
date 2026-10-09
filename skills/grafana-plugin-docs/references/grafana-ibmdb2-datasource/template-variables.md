@@ -30,6 +30,10 @@ FROM EMPLOYEE
 WHERE WORKDEPT = '$department'
 ```
 
+> Note
+>
+> The data source substitutes a single-value variable as its raw value without quotes, so wrap it in single quotes for string comparisons, as in `WHERE WORKDEPT = '$department'`. Multi-value variables are quoted automatically, so don’t add quotes around them. Refer to the Multi-value variables section. Template variables are the only form of dynamic substitution the data source supports. It doesn’t support SQL macros such as `$__timeFilter`.
+
 ## Multi-value variables
 
 For variables that allow multiple selections, use the `IN` operator:
@@ -50,6 +54,10 @@ SQL [Copy code to clipboard] Copy
 WHERE WORKDEPT IN ('A00','B01','C01')
 ```
 
+> Note
+>
+> An empty multi-value selection is formatted as `IN ('')`, which matches no rows. Include a default value or an “All” option so the variable always resolves to a valid value.
+
 ## Create a query variable
 
 You can populate variable options dynamically using a SQL query against your IBM Db2 database.
@@ -68,10 +76,10 @@ The query result determines how variable options are populated:
 
 Expand table
 
-| Query Returns       | Behavior                                                              |
-|---------------------|-----------------------------------------------------------------------|
-| One column          | The column values are used as both the display text and the value.    |
-| Two or more columns | The first column is the value, the second column is the display text. |
+| Query returns       | Behavior                                                                                              |
+|---------------------|-------------------------------------------------------------------------------------------------------|
+| One column          | The column values are used as both the display text and the value.                                    |
+| Two or more columns | The first column is the value, the second column is the display text. Additional columns are ignored. |
 
 ### Example: Department variable
 

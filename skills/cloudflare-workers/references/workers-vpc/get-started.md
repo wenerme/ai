@@ -71,6 +71,7 @@ For setup, select the following options:
 - For *Which template would you like to use?*, choose `Worker only`.
 - For *Which language do you want to use?*, choose `TypeScript`.
 - For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
 - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Navigate to your project directory:
@@ -166,7 +167,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 	"name": "workers-vpc-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-09",
 	"vpc_services": [
 		{
 			"binding": "VPC_SERVICE",
@@ -181,7 +182,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 name = "workers-vpc-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 
 [[vpc_services]]
 binding = "VPC_SERVICE"

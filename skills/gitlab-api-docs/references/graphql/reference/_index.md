@@ -1161,6 +1161,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="query-duoworkflowworkflows-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, for example, IDE or web. |
+| <a id="query-duoworkflowworkflows-excludesourcetypes"></a>`excludeSourceTypes`  | [`[DuoWorkflowSourceType!]`](#duoworkflowsourcetype) | Introduced in GitLab 19.5. Status: Experiment. Source types to exclude. Sessions with no recorded source type are never excluded. |
 | <a id="query-duoworkflowworkflows-excludetypes"></a>`excludeTypes` | [`[String!]`](#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |
 | <a id="query-duoworkflowworkflows-ids"></a>`ids` | [`[AiDuoWorkflowsWorkflowID!]`](#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |
 | <a id="query-duoworkflowworkflows-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project that contains the flows. |
@@ -4590,7 +4591,7 @@ Fields:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Grants Artifact Registry roles to users on resources in a single all-or-nothing operation.
+Grants Artifact Registry roles to users on resources in a single all-or-nothing operation. Replaces any role a user already holds on that resource.
 
 Input type: `ArtifactRegistryRoleBulkGrantInput`
 
@@ -4614,7 +4615,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Revokes Artifact Registry roles from users on resources in a single all-or-nothing operation.
+Revokes Artifact Registry roles from users on resources in a single all-or-nothing operation. Users can revoke their own role.
 
 Input type: `ArtifactRegistryRoleBulkRevokeInput`
 
@@ -4638,7 +4639,7 @@ Fields:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Grants an Artifact Registry role to a user on a resource.
+Grants an Artifact Registry role to a user on a resource. Replaces any role the user already holds on that resource.
 
 Input type: `ArtifactRegistryRoleGrantInput`
 
@@ -4663,7 +4664,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Revokes a user's Artifact Registry role on a resource. Names no role: a user holds one role per resource, and revoking removes it.
+Revokes a user's Artifact Registry role on a resource. Names no role: a user holds one role per resource, and revoking removes it. Users can revoke their own role.
 
 Input type: `ArtifactRegistryRoleRevokeInput`
 
@@ -10643,6 +10644,28 @@ Fields:
 | <a id="mutation-importsourceuserretryfailedreassignment-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-importsourceuserretryfailedreassignment-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-importsourceuserretryfailedreassignment-importsourceuser"></a>`importSourceUser` | [`ImportSourceUser`](#importsourceuser) | Mapping of a user on source instance to a user on destination instance after mutation. |
+
+### `Mutation.importSourceUserRevoke`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Input type: `ImportSourceUserRevokeInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-importsourceuserrevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-importsourceuserrevoke-id"></a>`id` | [`ImportSourceUserID!`](#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-importsourceuserrevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-importsourceuserrevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-importsourceuserrevoke-importsourceuser"></a>`importSourceUser` | [`ImportSourceUser`](#importsourceuser) | Mapping of a user on source instance to a user on destination instance after mutation. |
 
 ### `Mutation.importSourceUserUndoKeepAsPlaceholder`
 
@@ -41118,7 +41141,7 @@ Fields:
 | <a id="dependency-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependency-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependency-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependency-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
+| <a id="dependency-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | <a id="dependency-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependency-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
 | <a id="dependency-reachability"></a>`reachability` | [`ReachabilityType`](#reachabilitytype) | Information about reachability of a dependency. |
@@ -41158,7 +41181,7 @@ Fields:
 | <a id="dependencyaggregation-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependencyaggregation-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependencyaggregation-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependencyaggregation-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
+| <a id="dependencyaggregation-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | <a id="dependencyaggregation-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependencyaggregation-occurrencecount"></a>`occurrenceCount` | [`Int!`](#int) | Number of occurrences of the dependency across projects. |
 | <a id="dependencyaggregation-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
@@ -53516,6 +53539,7 @@ Fields:
 | <a id="namespacepermissions-adminproject"></a>`adminProject` | [`Boolean!`](#boolean) | If `true`, the user can perform `admin_project` on this resource. |
 | <a id="namespacepermissions-bulkadminepic"></a>`bulkAdminEpic` | [`Boolean!`](#boolean) | If `true`, the user can perform `bulk_admin_epic` on this resource. |
 | <a id="namespacepermissions-createepic"></a>`createEpic` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_epic` on this resource. |
+| <a id="namespacepermissions-createlabel"></a>`createLabel` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_label` on this resource. |
 | <a id="namespacepermissions-createprojects"></a>`createProjects` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_projects` on this resource. |
 | <a id="namespacepermissions-createsavedview"></a>`createSavedView` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_saved_view` on this resource. |
 | <a id="namespacepermissions-createworkitem"></a>`createWorkItem` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_work_item` on this resource. |
@@ -53880,7 +53904,6 @@ Fields:
 | <a id="organization-descriptionhtml"></a>`descriptionHtml`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. GitLab Flavored Markdown rendering of `description`. |
 | <a id="organization-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 16.4. Status: Experiment. ID of the organization. |
 | <a id="organization-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 16.4. Status: Experiment. Name of the organization. |
-| <a id="organization-organizationusers"></a>`organizationUsers`  | [`OrganizationUserConnection!`](#organizationuserconnection) | Introduced in GitLab 16.4. Status: Experiment. Users with access to the organization. |
 | <a id="organization-path"></a>`path`  | [`String!`](#string) | Introduced in GitLab 16.4. Status: Experiment. Path of the organization. |
 | <a id="organization-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the organization. |
 | <a id="organization-rootpath"></a>`rootPath`  | [`String!`](#string) | Introduced in GitLab 18.5. Status: Experiment. Root path in the context of the organization. |
@@ -54080,6 +54103,25 @@ Arguments:
 | <a id="organization-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
 | <a id="organization-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 | <a id="organization-groups-withknowledgegraphenabled"></a>`withKnowledgeGraphEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Return only groups with Knowledge Graph enabled. |
+
+##### `Organization.organizationUsers`
+
+- Introduced in GitLab 16.4.
+- Status: Experiment.
+
+Users with access to the organization.
+
+Returns [`OrganizationUserConnection!`](#organizationuserconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="organization-organizationusers-search"></a>`search` | [`String`](#string) | Search query for the name, username, or public email of the user. Partial matches require at least 3 characters. |
 
 ##### `Organization.projects`
 
@@ -55820,7 +55862,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Policies stored in the policy store for the organization or group. Only `first` and `after` are supported; page with `pageInfo.endCursor`. Cursor offsets are capped at 100000, so policies past that window cannot be paged. The `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container.
+Policies stored in the policy store for the organization or group. For a group, organization-wide, ancestor, and descendant groups' policies are included. Only `first` and `after` are supported; page with `pageInfo.endCursor`. Cursor offsets are capped at 100000, so policies past that window cannot be paged. The `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container.
 
 Returns [`GovernPolicyConnection`](#governpolicyconnection).
 
@@ -57059,6 +57101,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="project-duoworkflowworkflows-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, for example, IDE or web. |
+| <a id="project-duoworkflowworkflows-excludesourcetypes"></a>`excludeSourceTypes`  | [`[DuoWorkflowSourceType!]`](#duoworkflowsourcetype) | Introduced in GitLab 19.5. Status: Experiment. Source types to exclude. Sessions with no recorded source type are never excluded. |
 | <a id="project-duoworkflowworkflows-excludetypes"></a>`excludeTypes` | [`[String!]`](#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |
 | <a id="project-duoworkflowworkflows-ids"></a>`ids` | [`[AiDuoWorkflowsWorkflowID!]`](#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |
 | <a id="project-duoworkflowworkflows-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project that contains the flows. |
@@ -67929,6 +67972,7 @@ Values for sorting CI/CD job analytics.
 | <a id="cijobfailurereason-no_updates_canceling"></a>`NO_UPDATES_CANCELING` | A job that failed due to no updates canceling. |
 | <a id="cijobfailurereason-no_updates_running"></a>`NO_UPDATES_RUNNING` | A job that failed due to no updates running. |
 | <a id="cijobfailurereason-pipeline_loop_detected"></a>`PIPELINE_LOOP_DETECTED` | A job that failed due to pipeline loop detected. |
+| <a id="cijobfailurereason-pipeline_variables_file_missing"></a>`PIPELINE_VARIABLES_FILE_MISSING` | A job that failed due to pipeline variables file missing. |
 | <a id="cijobfailurereason-project_deleted"></a>`PROJECT_DELETED` | A job that failed due to project deleted. |
 | <a id="cijobfailurereason-protected_environment_failure"></a>`PROTECTED_ENVIRONMENT_FAILURE` | A job that failed due to protected environment failure. |
 | <a id="cijobfailurereason-reached_downstream_pipeline_trigger_rate_limit"></a>`REACHED_DOWNSTREAM_PIPELINE_TRIGGER_RATE_LIMIT` | A job that failed due to reached downstream pipeline trigger rate limit. |
@@ -75591,7 +75635,7 @@ Fields:
 | <a id="dependencyinterface-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependencyinterface-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependencyinterface-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependencyinterface-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
+| <a id="dependencyinterface-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | <a id="dependencyinterface-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependencyinterface-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
 | <a id="dependencyinterface-reachability"></a>`reachability` | [`ReachabilityType`](#reachabilitytype) | Information about reachability of a dependency. |

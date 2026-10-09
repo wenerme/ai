@@ -7269,7 +7269,7 @@ A software dependency used by a project.
 | `id` | [`GlobalID!`](scalars.md#globalid) | ID of the dependency. |
 | `licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | `location` | [`Location`](#location) | Information about where the dependency is located. |
-| `malware` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.1.Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
+| `malware` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.1.Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | `name` | [`String!`](scalars.md#string) | Name of the dependency. |
 | `packager` | [`PackageManager`](enums.md#packagemanager) | Description of the tool used to manage the dependency. |
 | `reachability` | [`ReachabilityType`](enums.md#reachabilitytype) | Information about reachability of a dependency. |
@@ -7293,7 +7293,7 @@ A software dependency aggregation used by a group.
 | `id` | [`GlobalID!`](scalars.md#globalid) | ID of the dependency. |
 | `licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | `location` | [`Location`](#location) | Information about where the dependency is located. |
-| `malware` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.1.Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
+| `malware` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.1.Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. |
 | `name` | [`String!`](scalars.md#string) | Name of the dependency. |
 | `occurrenceCount` | [`Int!`](scalars.md#int) | Number of occurrences of the dependency across projects. |
 | `packager` | [`PackageManager`](enums.md#packagemanager) | Description of the tool used to manage the dependency. |
@@ -9308,6 +9308,7 @@ Relationship between an epic and an issue.
 | `relativePosition` | [`Int`](scalars.md#int) | Relative position of the issue (used for positioning in epic tree and issue boards). |
 | `severity` | [`IssuableSeverity`](enums.md#issuableseverity) | Severity level of the incident. |
 | `slaDueAt` | [`Time`](scalars.md#time) | Timestamp of when the issue SLA expires. |
+| `startDate` | [`Time`](scalars.md#time) | Start date of the issue. |
 | `state` | [`IssueState!`](enums.md#issuestate) | State of the issue. |
 | `status` | [`WorkItemStatus`](#workitemstatus) | Status: Experiment. Introduced in GitLab 18.0.Status of the issue. |
 | `statusPagePublishedIncident` | [`Boolean`](scalars.md#boolean) | Indicates whether an issue is published to the status page. |
@@ -11430,6 +11431,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 | `relativePosition` | [`Int`](scalars.md#int) | Relative position of the issue (used for positioning in epic tree and issue boards). |
 | `severity` | [`IssuableSeverity`](enums.md#issuableseverity) | Severity level of the incident. |
 | `slaDueAt` | [`Time`](scalars.md#time) | Timestamp of when the issue SLA expires. |
+| `startDate` | [`Time`](scalars.md#time) | Start date of the issue. |
 | `state` | [`IssueState!`](enums.md#issuestate) | State of the issue. |
 | `status` | [`WorkItemStatus`](#workitemstatus) | Status: Experiment. Introduced in GitLab 18.0.Status of the issue. |
 | `statusPagePublishedIncident` | [`Boolean`](scalars.md#boolean) | Indicates whether an issue is published to the status page. |
@@ -21666,6 +21668,7 @@ Paginated collection of [`WorkItemDescriptionTemplate`](#workitemdescriptiontemp
 | `development` | [`WorkItemWidgetDevelopment`](#workitemwidgetdevelopment) | Development widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `emailParticipants` | [`WorkItemWidgetEmailParticipants`](#workitemwidgetemailparticipants) | Email participants widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `errorTracking` | [`WorkItemWidgetErrorTracking`](#workitemwidgeterrortracking) | Error tracking widget of the work item. Returns `null` if the widget is not available for the work item. |
+| `escalationPolicy` | [`WorkItemWidgetEscalationPolicy`](#workitemwidgetescalationpolicy) | Escalation policy widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `escalationStatus` | [`WorkItemWidgetEscalationStatus`](#workitemwidgetescalationstatus) | Escalation status widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `healthStatus` | [`WorkItemWidgetHealthStatus`](#workitemwidgethealthstatus) | Health status widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `hierarchy` | [`WorkItemWidgetHierarchy`](#workitemwidgethierarchy) | Hierarchy widget of the work item. Returns `null` if the widget is not available for the work item. |
@@ -22339,6 +22342,19 @@ Represents details about a line of code of the stack trace.
 | ---- | ---- | ----------- |
 | `line` | [`String`](scalars.md#string) | Line of code. |
 | `lineNumber` | [`Int`](scalars.md#int) | Line number of code. |
+
+## `WorkItemWidgetEscalationPolicy`
+
+Represents the escalation policy widget.
+
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
+
+### Fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `escalationPolicy` | [`EscalationPolicyType`](#escalationpolicytype) | Escalation policy of the work item. |
+| `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetEscalationStatus`
 

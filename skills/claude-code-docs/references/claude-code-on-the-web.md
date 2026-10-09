@@ -10,7 +10,7 @@
   Cloud sessions are available on Pro, Max, and Team plans, and for Enterprise users with premium seats or Chat + Claude Code seats.
 </Note>
 
-A cloud session is a Claude Code session that runs on cloud infrastructure instead of on your machine. By default it runs on infrastructure Anthropic manages, or on your organization's [self-hosted environment](/docs/en/self-hosted-environments) when routed there. The session keeps running after you close your laptop, and you can check on it or steer it from any device.
+A cloud session is a Claude Code session that runs on cloud infrastructure instead of on your machine. By default it runs on infrastructure Anthropic manages, or on your organization's [self-hosted environment](/docs/en/self-hosted-environments) when routed there. The session keeps running after you close your laptop, and you can check on it or steer it from any device. It counts toward your plan's usage limits alongside the rest of your Claude and Claude Code usage, and there's no separate charge for the cloud VM.
 
 To let cloud sessions clone your code from GitHub and push branches, connect GitHub with one of the [GitHub connection methods](#github-authentication-options). If your repository is on GitLab, Bitbucket, or another host, see [Platform restrictions](#limitations) for what works.
 
@@ -366,7 +366,7 @@ Each cloud session is separated from your machine and from other sessions throug
 * **Isolated virtual machines**: each session runs in an isolated, Anthropic-managed VM. Sessions your organization routes to a [self-hosted environment](/docs/en/self-hosted-environments) run on your own infrastructure instead, where isolation is your deployment's responsibility
 * <span id="default-allowed-domains" />**Network access controls**: in Anthropic-hosted environments, network access is limited by default and can be disabled. See [Network access](/docs/en/cloud-environments#network-access) for the access levels, the [default allowed domains](/docs/en/cloud-environments#default-allowed-domains), and the traffic that doesn't go through the allowlist. In a self-hosted environment, you restrict session egress at your own network boundary. When running with network access disabled, Claude Code can still communicate with the Anthropic API, which may allow data to exit the VM.
 * **Credential protection**: in Anthropic-hosted environments, git credentials and signing keys stay outside the sandbox, and a proxy authenticates on the session's behalf with scoped credentials. In a self-hosted environment, your deployment supplies git credentials; see [Configure git](/docs/en/self-hosted-environments-deploy#configure-git)
-* **API credentials**: in Anthropic-hosted environments on Pro and Max plans, keys you [add to a cloud environment](/docs/en/cloud-environments#add-api-credentials) stay outside the sandbox the same way, attached to matching requests after they leave the session. A self-hosted environment doesn't have API credentials, and Team and Enterprise plans don't have them yet
+* **Network secrets**: in Anthropic-hosted environments on Pro and Max plans, keys you [add to a cloud environment](/docs/en/cloud-environments#add-network-secrets) stay outside the sandbox the same way, attached to matching requests after they leave the session. A self-hosted environment doesn't have network secrets, and Team and Enterprise plans don't have them yet
 * **Secure analysis**: code is analyzed and modified within the session's isolated environment before creating PRs
 
 ## Troubleshooting
@@ -427,7 +427,7 @@ Reopen the session from [claude.ai/code](https://claude.ai/code) to provision a 
 
 Before relying on cloud sessions for a workflow, account for these constraints:
 
-* **Rate limits**: cloud sessions share rate limits with all other Claude and Claude Code usage within your account. Running multiple tasks in parallel consumes more rate limits proportionately. There is no separate compute charge for the cloud VM.
+* **Rate limits**: cloud sessions share rate limits with all other Claude and Claude Code usage within your account. Running multiple tasks in parallel consumes more rate limits proportionately.
 * **Time limits**: commands Claude runs and SessionStart hooks have default timeouts you can change, and a setup script is cached only when it finishes in roughly five minutes. See [Time limits](/docs/en/cloud-environments#time-limits)
 * **Repository authentication**: you can only pull a cloud session into your terminal when you are authenticated to the same account
 * **Platform restrictions**: repository cloning and pull request creation require GitHub. Self-hosted [GitHub Enterprise Server](/docs/en/github-enterprise-server) instances are supported for Team and Enterprise plans. You can send a GitLab, Bitbucket, or other non-GitHub repository to a cloud session as a [local bundle](#send-local-repositories-without-github) by setting `CCR_FORCE_BUNDLE=1`, but the session can't push results back to that remote

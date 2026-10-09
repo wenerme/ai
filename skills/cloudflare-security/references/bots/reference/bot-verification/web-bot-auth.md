@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/bots/reference/bot-verification/web-bot
 
 # Web Bot Auth
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
@@ -122,6 +122,8 @@ You need to register your bot and its key directory to add your bot to the list 
 6. Select **Submit**.
 
 Cloudflare accepts all valid Ed25519 keys found in your key directory. In the event a key already exists in Cloudflare's registered database, Cloudflare will work with you to supply a new key, or rotate your existing key.
+
+You can track the status of your registration in the Cloudflare dashboard under [BotBase > Submission history ↗︎](https://dash.cloudflare.com/?to=/:account/application-security/botbase/history).
 
 After successful verification, you will be able to send verified requests.
 
@@ -293,5 +295,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/og.png?v=df63f6df1ad987bc","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/og.png?v=df63f6df1ad987bc","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 ```

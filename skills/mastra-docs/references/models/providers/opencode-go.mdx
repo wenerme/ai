@@ -5,7 +5,7 @@ description: "Browse OpenCode Go model IDs, capabilities, context windows, and p
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 35 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 36 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/docs/go).
 
@@ -398,6 +398,18 @@ for await (const chunk of stream) {
     "maxOutput": 524288,
     "inputCost": 0.15,
     "outputCost": 0.6
+  },
+  {
+    "model": "opencode-go/step-5-preview-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -432,7 +444,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "opencode-go/space-bunny-free"
+      ? "opencode-go/step-5-preview-free"
       : "opencode-go/claude-haiku-5-5";
   }
 });

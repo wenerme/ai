@@ -63,6 +63,7 @@ For setup, select the following options:
 - For *Which template would you like to use?*, choose `Worker only`.
 - For *Which language do you want to use?*, choose `TypeScript`.
 - For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
 - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 This will create a new `whisper-tutorial` directory. Your new `whisper-tutorial` directory will include:
@@ -107,14 +108,14 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28"
+	"compatibility_date": "2026-10-09"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-09"
 ```
 
 ## 4. Handle large audio files with chunking

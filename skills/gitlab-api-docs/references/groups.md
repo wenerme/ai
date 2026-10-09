@@ -2340,6 +2340,7 @@ Other possible responses:
 ### Rotate a personal access token for an enterprise user
 
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/632314) in GitLab 19.6.
 
 Rotates a specified personal access token for an enterprise user associated with the top-level group. This revokes the previous token and creates a new token
 that expires after one week.
@@ -2377,6 +2378,11 @@ Example response:
     "token": "s3cr3t"
 }
 ```
+
+> [!note]
+> Rotating a token with granular scopes returns those scopes in a `granular_scopes` attribute
+> on the new token. For more information, see
+> [List all personal access tokens](personal_access_tokens.md#list-all-personal-access-tokens).
 
 If successful, returns `200: OK`.
 

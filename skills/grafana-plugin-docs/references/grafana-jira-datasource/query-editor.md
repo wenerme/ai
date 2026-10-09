@@ -9,24 +9,42 @@ description: "Learn how to use the Jira query editor to build queries and visual
 
 The Jira query editor allows you to build queries to retrieve and visualize issue data from your Jira instance. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
+You must select at least one field before the query can run. In dashboards and panel edit, click **Run query**. In Explore, Grafana runs the query for you. In either place, press **Cmd/Ctrl + Enter** to run the query.
+
 ## Query editor options
 
 The following section describes the Jira-specific query editor options.
 
-- **Select Fields** - Select one or more Jira issue fields to display, such as `Epic Name`, `Summary`, `Sprint Name`, and `Story point estimate`. Click the drop-down or anywhere in the field for a list of available options.
-- **Limit** - Limits the number of issues returned by the query. The default is `50`. If this value exceeds the limit configured in your Jira instance, the Jira limit takes precedence.
+- **Select Fields** - Select one or more Jira issue fields to display, such as `Summary`, `Sprint Name`, and `Story point estimate`. Click the drop-down or anywhere in the field for a list of available options. Field names come from your Jira instance and can differ from the names in these docs.
+- **Limit** - The maximum number of issues the plugin returns. The default is `50`. The plugin paginates through Jira results until it reaches this count, the last page, or an empty page.
 - **Filter (JQL)** - Enter a valid JQL query to filter issues. Press **Cmd/Ctrl + Enter** to run the query.
+
+To filter by the dashboard time range, use the `$__timeFrom` and `$__timeTo` macros in JQL. For syntax and more examples, refer to [Time range macros](/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
+
+> Note
+>
+> Grafana [SQL Expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/) aren’t supported for Jira queries. Use JQL and the transformations in this document instead of SQL Expressions.
+
+## Grafana results vs Jira search
+
+The same JQL can return a different row count or shape in Grafana than in Jira issue search:
+
+- **Limit** defaults to `50`. Raise it if you expect more issues. The plugin paginates until it reaches this count or the last page.
+- Grafana returns only the fields you select. Jira issue search shows a default column set.
+- **Sprint** isn’t a single column. The plugin lists **Sprint Name**, **Sprint Start Date**, **Sprint End Date**, and **Sprint Complete Date** (plugin 2.5.4 or later).
+- Multi-value array fields expand one issue into multiple rows. Refer to [Multi-value fields and extra rows](#multi-value-fields-and-extra-rows).
+- Time range macros insert a quoted `yyyy-MM-dd HH:mm` timestamp. Don’t add extra quotes around `$__timeFrom` or `$__timeTo`.
 
 ## Filter and sort issues with JQL
 
-The Jira data source uses Jira Query Language (JQL) to filter and sort issues. JQL is a powerful query language that allows you to search for issues based on any field, such as `Project Name`, `Issue Type`, `Assignee Name`, or `Sprint Name`.
+The Jira data source uses Jira Query Language (JQL) to filter and sort issues. JQL uses field identifiers such as `project`, `issuetype`, `assignee`, `status`, and `sprint`. Those identifiers aren’t the same as the labels in **Select Fields**, which are display names from your Jira instance (for example, **Sprint Name** or **Story point estimate**).
 
 The following example query finds all of Joe Smith’s issues in the TEST project:
 
 jql [Copy code to clipboard] Copy
 
 ```jql
-project = 'TEST' AND assignee = 'Joe Smith'
+project = TEST AND assignee = 'Joe Smith'
 ```
 
 You can also sort results using the `ORDER BY` clause:
@@ -34,7 +52,7 @@ You can also sort results using the `ORDER BY` clause:
 jql [Copy code to clipboard] Copy
 
 ```jql
-project = 'TEST' AND status = 'In Progress' ORDER BY created DESC
+project = TEST AND status = 'In Progress' ORDER BY created DESC
 ```
 
 For more information on JQL syntax, refer to:
@@ -42,17 +60,61 @@ For more information on JQL syntax, refer to:
 - [Use advanced search with Jira Query Language (JQL)](https://support.atlassian.com/jira-software-cloud/docs/use-advanced-search-with-jira-query-language-jql/)
 - [Search Jira like a boss with JQL](https://confluence.atlassian.com/jirasoftware/blog/2015/06/search-jira-like-a-boss-with-jql)
 
-## Use ad-hoc filters
+## Multi-value fields and extra rows
 
-The Jira data source supports ad-hoc filters, which allow you to add dynamic filters to your dashboard without modifying individual queries. Ad-hoc filters are automatically appended to all Jira queries on the dashboard using `AND` conditions.
+When you select an array field, the plugin creates one row per value. An issue with three owners, three components, or three labels appears three times if you include that field. That changes counts and joins.
 
-To use ad-hoc filters:
+To keep one row per issue:
+
+1. Leave multi-value fields out of **Select Fields** when you only need a count or a unique issue list.
+2. Or keep the field and add a **Group by** transformation on **Key** (or another unique field) after the query.
+
+## Use Ad hoc filters
+
+The Jira data source supports **Ad hoc filters** dashboard variables, which let you add filters to a dashboard without editing each query. Grafana appends the selected filters to Jira queries on the dashboard using `AND` conditions.
+
+To use Ad hoc filters:
 
 1. Add an **Ad hoc filters** variable to your dashboard. For more information, refer to [Add ad hoc filters](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters).
 2. Select the Jira data source for the variable.
 3. Use the filter controls to select a field, operator, and value.
 
-The selected filters are automatically applied to all Jira queries on the dashboard.
+## Jira Service Management fields
+
+The plugin supports Jira Service Management (JSM) fields, including SLA metrics, approvals, and customer feedback. Field names vary by Jira instance. Check the **Select Fields** drop-down for the names in your environment.
+
+### SLA metrics
+
+SLA fields (for example, **Time to Resolution**) are returned as JSON formatted as a string. Typical keys include `ongoingCycle.breached`, `ongoingCycle.remainingTime.friendly`, and `completedCycles`. Use the **Extract fields** transformation to parse the values you need. Refer to [Extract fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
+
+To show remaining SLA time for open requests:
+
+1. Select Fields: **Key**, **Time to Resolution** (or the SLA field name in your instance)
+2. Add JQL Filter: `project = 'SERVICE' AND status != done`
+3. Add the **Extract fields** transformation:
+
+   - Source: Time to Resolution
+   - Format: JSON
+   - Path: `ongoingCycle.remainingTime.friendly`
+   - Alias: Remaining SLA
+4. Select the **Table** visualization
+
+### Approvals
+
+Approvals expand into the following sub-fields. Each appears in **Select Fields** as the approval field name plus the sub-field name:
+
+- **Name**
+- **Final Decision**
+- **Created Date**
+- **Approvers**
+
+### Customer feedback
+
+Customer feedback fields expose a numeric **rating**. Feedback date fields are date and time values you can use in time series visualizations.
+
+### Organizations and request participants
+
+Organization fields return a comma-separated list of organization names. Request participant fields return a comma-separated list of display names.
 
 ## Create time series visualizations
 
@@ -65,6 +127,7 @@ Common date fields include:
 - `Resolution Date` - When the issue was resolved
 - `Sprint Start Date` - When the sprint started
 - `Sprint End Date` - When the sprint ended
+- `Sprint Complete Date` - When the sprint was completed
 
 Common numeric fields include:
 
@@ -90,15 +153,15 @@ The following transformations are particularly useful when working with Jira dat
 
 ### Add field from calculation
 
-Similar to SQL expressions, this transformation allows you to add new fields based on calculations from other fields. You can chain calculations together and perform calculations from calculated fields. Refer to [Add field from calculation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) for more information.
+Use this transformation to add calculated columns from other fields. You can chain calculations and use calculated fields as inputs. Refer to [Add field from calculation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) for more information.
 
 ### Extract fields
 
-Some Jira fields are returned as “stringified JSON” (JSON formatted as a string). Use this transformation to parse JSON fields and extract specific values using JSON path notation. Refer to [Extract fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
+Some Jira fields are returned as JSON formatted as a string. Use this transformation to parse JSON fields and extract specific values using JSON path notation. Refer to [Extract fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
 
 > Note
 >
-> Stringified JSON fields are available in Grafana 9.4 and later. You can find examples in the **Jira JSON fields demo** dashboard, which you can import from the data source page. Refer to [Import a dashboard](/docs/plugins/grafana-jira-datasource/latest/#import-a-dashboard).
+> You can find examples in the **Jira JSON fields demo** dashboard, which you can import from the data source page. Refer to [Import a dashboard](/docs/plugins/grafana-jira-datasource/latest/#import-a-dashboard).
 
 ### Group by
 
@@ -106,7 +169,7 @@ This transformation provides grouping capabilities not available in JQL. Use it 
 
 ### Outer join
 
-Similar to SQL joins, this transformation combines two or more queries by common fields. Use it to correlate data across multiple queries. Refer to [Outer join](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#outer-join) for more information.
+This transformation combines two or more queries on a shared field. Use it to correlate data across queries. Refer to [Outer join](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#outer-join) for more information.
 
 ## Work with linked issues
 
@@ -160,7 +223,27 @@ The following examples demonstrate common use cases for the Jira data source.
 
 > Note
 >
-> In all examples, ensure the **Limit** value is high enough to include all relevant issues. If the limit is lower than the actual number of issues, the results will be incomplete.
+> In all examples, ensure the **Limit** value is high enough to include all relevant issues. If the limit is lower than the actual number of issues, the results are incomplete.
+
+### List issues in a table
+
+1. Select Fields: **Key**, **Summary**, **Status**, **Assignee**
+2. Add JQL Filter: `project = 'Your Project' AND status != done ORDER BY priority DESC`
+3. Select the **Table** visualization
+
+### Filter issues by the dashboard time range
+
+1. Select Fields: **Key**, **Summary**, **Created**
+2. Add JQL Filter: `project = 'Your Project' AND created >= $__timeFrom AND created <= $__timeTo`
+3. Select the **Table** visualization
+
+The plugin replaces `$__timeFrom` and `$__timeTo` with the dashboard time range. For more macro examples, refer to [Time range macros](/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
+
+### Show issues in the current sprint
+
+1. Select Fields: **Key**, **Summary**, **Status**, **Sprint Name**
+2. Add JQL Filter: `project = 'Your Project' AND sprint in openSprints() AND type != epic`
+3. Select the **Table** visualization
 
 ### Show velocity per sprint
 

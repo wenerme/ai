@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/observability/metrics-a
 
 # Metrics and analytics
 
-Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
 
@@ -54,6 +54,8 @@ Memory usage is powered by the [`durableObjectsPeriodicGroups`](#query-via-the-g
 
 If you see memory usage trending upward over time, this may indicate a memory leak. Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to take heap snapshots and identify specific objects causing high memory consumption.
 
+To identify allocating code in a deployed Durable Object, [capture a Heap profile in production](https://developers.cloudflare.com/workers/observability/profiling-in-production/#profile-a-durable-object-dashboard).
+
 ## View logs
 
 You can view Durable Object logs from the Cloudflare dashboard. Logs are aggregated by the script name and the Durable Object class name.
@@ -79,7 +81,7 @@ To start using Durable Object logging:
 2. Deploy the latest version of the Worker with the updated binding.
 3. Go to the **Durable Objects** page. [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 4. Select an existing Durable Object namespace.
-5. Select the **Logs** tab.
+5. Select the **Observability** tab.
 
 Note
 
@@ -157,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#page","headline":"Metrics and analytics","description":"View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.","url":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/og.png?v=d0cf2831fc727c37","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/#page","headline":"Metrics and analytics","description":"View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.","url":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/og.png?v=d0cf2831fc727c37","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

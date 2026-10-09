@@ -3040,7 +3040,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Content
 
-- `AgentContent = OutputText or object { encrypted_content, type }`
+- `AgentContent = OutputText or EncryptedContent { encrypted_content, type }`
 
   A plaintext or encrypted content part exchanged between agents.
 
@@ -5020,7 +5020,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -5028,7 +5028,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -5890,7 +5890,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -5898,7 +5898,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -6152,7 +6152,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6171,6 +6171,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6228,7 +6236,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6247,6 +6255,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6273,6 +6289,90 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.session.environment.disconnected`.
 
     - `"agent.session.environment.disconnected"`
+
+### Agent Session Environment Expired Event
+
+- `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+  Emitted after a suspended hosted session environment and its checkpoint expire.
+
+  - `environment: AgentSessionEnvironmentState`
+
+    The current environment state.
+
+    - `id: string`
+
+      The public ID of the environment.
+
+    - `error: object { code, message, type }  or null`
+
+      The error reported while preparing the environment, if any.
+
+      - `code: string`
+
+        A machine-readable error code.
+
+      - `message: string`
+
+        A human-readable error message.
+
+      - `type: string`
+
+        The error type.
+
+    - `status: "pending" or "ready" or "connected" or 4 more`
+
+      The environment's connection status.
+
+      - `"pending"`
+
+        The environment is being prepared.
+
+      - `"ready"`
+
+        The environment is ready to connect.
+
+      - `"connected"`
+
+        The environment is connected.
+
+      - `"disconnected"`
+
+        The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
+
+      - `"failed"`
+
+        The environment failed to connect.
+
+    - `type: string`
+
+      The environment type.
+
+  - `event_id: string`
+
+    The unique ID of the event.
+
+  - `session_id: string`
+
+    The ID of the session associated with the event.
+
+  - `turn_id: string or null`
+
+    The ID of the turn associated with the event, when applicable.
+
+  - `type: "agent.session.environment.expired"`
+
+    The type of the object. Always `agent.session.environment.expired`.
+
+    - `"agent.session.environment.expired"`
 
 ### Agent Session Environment Failed Event
 
@@ -6304,7 +6404,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6323,6 +6423,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6380,7 +6488,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6399,6 +6507,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6456,7 +6572,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The error type.
 
-    - `status: "pending" or "ready" or "connected" or 2 more`
+    - `status: "pending" or "ready" or "connected" or 4 more`
 
       The environment's connection status.
 
@@ -6475,6 +6591,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"disconnected"`
 
         The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
 
       - `"failed"`
 
@@ -6560,7 +6684,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The error type.
 
-  - `status: "pending" or "ready" or "connected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The environment's connection status.
 
@@ -6580,6 +6704,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The environment is disconnected.
 
+    - `"suspended"`
+
+      The environment is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+      The environment and its private checkpoint have expired.
+
     - `"failed"`
 
       The environment failed to connect.
@@ -6587,6 +6719,90 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
   - `type: string`
 
     The environment type.
+
+### Agent Session Environment Suspended Event
+
+- `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+  Emitted after an idle hosted session environment is checkpointed and stopped.
+
+  - `environment: AgentSessionEnvironmentState`
+
+    The current environment state.
+
+    - `id: string`
+
+      The public ID of the environment.
+
+    - `error: object { code, message, type }  or null`
+
+      The error reported while preparing the environment, if any.
+
+      - `code: string`
+
+        A machine-readable error code.
+
+      - `message: string`
+
+        A human-readable error message.
+
+      - `type: string`
+
+        The error type.
+
+    - `status: "pending" or "ready" or "connected" or 4 more`
+
+      The environment's connection status.
+
+      - `"pending"`
+
+        The environment is being prepared.
+
+      - `"ready"`
+
+        The environment is ready to connect.
+
+      - `"connected"`
+
+        The environment is connected.
+
+      - `"disconnected"`
+
+        The environment is disconnected.
+
+      - `"suspended"`
+
+        The environment is stopped and can be resumed from its private checkpoint.
+
+      - `"expired"`
+
+        The environment and its private checkpoint have expired.
+
+      - `"failed"`
+
+        The environment failed to connect.
+
+    - `type: string`
+
+      The environment type.
+
+  - `event_id: string`
+
+    The unique ID of the event.
+
+  - `session_id: string`
+
+    The ID of the session associated with the event.
+
+  - `turn_id: string or null`
+
+    The ID of the turn associated with the event, when applicable.
+
+  - `type: "agent.session.environment.suspended"`
+
+    The type of the object. Always `agent.session.environment.suspended`.
+
+    - `"agent.session.environment.suspended"`
 
 ### Agent Session Error Event
 
@@ -6630,7 +6846,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Event
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
@@ -6700,7 +6916,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           The error type.
 
-      - `status: "pending" or "ready" or "connected" or 2 more`
+      - `status: "pending" or "ready" or "connected" or 4 more`
 
         The environment's connection status.
 
@@ -6719,6 +6935,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"disconnected"`
 
           The environment is disconnected.
+
+        - `"suspended"`
+
+          The environment is stopped and can be resumed from its private checkpoint.
+
+        - `"expired"`
+
+          The environment and its private checkpoint have expired.
 
         - `"failed"`
 
@@ -6745,6 +6969,58 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after an idle hosted session environment is checkpointed and stopped.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.suspended"`
+
+      The type of the object. Always `agent.session.environment.suspended`.
+
+      - `"agent.session.environment.suspended"`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after a suspended hosted session environment and its checkpoint expire.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.expired"`
+
+      The type of the object. Always `agent.session.environment.expired`.
+
+      - `"agent.session.environment.expired"`
 
   - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
@@ -7404,7 +7680,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         - `"agent.session"`
 
-      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
 
@@ -7412,7 +7688,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           Respond to a computer-use request.
 
-          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+          - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
             The information needed to render the request.
 
@@ -8416,7 +8692,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           The registered request answered by this item.
 
-        - `response: object { action, selected_option, type }  or object { action, type }`
+        - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
           The admitted response, without submitted credential values.
 
@@ -10254,7 +10530,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -10262,7 +10538,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -11062,7 +11338,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -11070,7 +11346,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -11870,7 +12146,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -11878,7 +12154,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -12134,7 +12410,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Input Param
 
-- `AgentSessionInputParam = object { request_id, response, type }  or object { input, type }  or object { type }  or object { call_id, success, turn_id, 3 more }`
+- `AgentSessionInputParam = AgentSessionInputComputerUseApprovalRequestResult { request_id, response, type }  or AgentSessionInputMessage { input, type }  or AgentSessionInputCancel { type }  or AgentSessionInputToolResult { call_id, success, turn_id, 3 more }`
 
   Input submitted to an existing session.
 
@@ -12806,7 +13082,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -13294,7 +13570,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Message Content
 
-- `AgentSessionMessageContent = object { text, type }  or object { image_url, type }  or object { text, type }`
+- `AgentSessionMessageContent = InputText { text, type }  or InputImage { image_url, type }  or OutputText { text, type }`
 
   A content part in a session message.
 
@@ -13936,7 +14212,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
       Actions that must be completed before the session can continue.
 
@@ -13944,7 +14220,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         Respond to a computer-use request.
 
-        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+        - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
           The information needed to render the request.
 
@@ -16162,7 +16438,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         The registered request answered by this item.
 
-      - `response: object { action, selected_option, type }  or object { action, type }`
+      - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
         The admitted response, without submitted credential values.
 
@@ -17630,7 +17906,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool
 
-- `AgentTool = object { defer_loading, description, name, 2 more }  or object { enabled, type }  or object { allowed_tools, connection_origin, credential_id, 5 more }  or 2 more`
+- `AgentTool = Function { defer_loading, description, name, 2 more }  or ProgrammaticToolCalling { enabled, type }  or Mcp { allowed_tools, connection_origin, credential_id, 5 more }  or 2 more`
 
   A tool available to the agent.
 
@@ -17826,7 +18102,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool Param
 
-- `AgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
+- `AgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 3 more`
 
   A tool available to the agent.
 
@@ -18204,7 +18480,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Environment
 
-- `Environment = object { type }  or object { id, capability_directories, desktop, 7 more }  or object { id, capability_directories, remote_url, 2 more }`
+- `Environment = None { type }  or OpenAIHosted { id, capability_directories, desktop, 7 more }  or SelfHosted { id, capability_directories, remote_url, 2 more }`
 
   The execution environment for a session.
 
@@ -18440,7 +18716,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Environment Param
 
-- `EnvironmentParam = object { type }  or object { type, capability_directories, container_size, 9 more }  or object { type, workspace_directory, capability_directories }`
+- `EnvironmentParam = None { type }  or OpenAIHosted { type, capability_directories, container_size, 10 more }  or SelfHosted { type, workspace_directory, capability_directories }`
 
   The execution environment and optional reusable template for a session.
 
@@ -18454,7 +18730,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -18489,6 +18765,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -18694,7 +18974,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Environment File
 
-- `HostedEnvironmentFile = HostedEnvironmentFileID or object { id, path, size_bytes, type }`
+- `HostedEnvironmentFile = HostedEnvironmentFileID or Inline { id, path, size_bytes, type }`
 
   Metadata for a file materialized in an OpenAI-hosted execution environment.
 
@@ -18776,7 +19056,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Environment File Param
 
-- `HostedEnvironmentFileParam = object { file_id, path, type }  or object { data, path, type }`
+- `HostedEnvironmentFileParam = FileID { file_id, path, type }  or Inline { data, path, type }`
 
   A file materialized in an OpenAI-hosted execution environment.
 
@@ -18880,7 +19160,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Skill
 
-- `HostedSkill = HostedSkillReference or object { description, name, type }`
+- `HostedSkill = HostedSkillReference or Inline { description, name, type }`
 
   A skill installed in an OpenAI-hosted environment.
 
@@ -18930,7 +19210,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Hosted Skill Param
 
-- `HostedSkillParam = object { skill_id, type, version }  or object { description, name, source, type }`
+- `HostedSkillParam = SkillReference { skill_id, type, version }  or Inline { description, name, source, type }`
 
   A skill installed in an OpenAI-hosted environment.
 
@@ -19046,7 +19326,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Input Content
 
-- `InputContent = object { text, type }  or object { image_url, type }`
+- `InputContent = InputText { text, type }  or InputImage { image_url, type }`
 
   User-provided content recorded in a session item.
 
@@ -19080,7 +19360,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Input Content Param
 
-- `InputContentParam = object { text, type }  or object { image_url, type }`
+- `InputContentParam = InputText { text, type }  or InputImage { image_url, type }`
 
   Content included in an input message.
 
@@ -19114,7 +19394,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Mcp Transport
 
-- `McpTransport = object { server_url, type }  or object { args, command, cwd, 2 more }`
+- `McpTransport = HTTP { server_url, type }  or Stdio { args, command, cwd, 2 more }`
 
   The transport used to connect to an MCP server.
 
@@ -19160,7 +19440,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Mcp Transport Param
 
-- `McpTransportParam = object { server_url, type, authorization, headers }  or object { command, cwd, type, 3 more }`
+- `McpTransportParam = HTTP { server_url, type, authorization, headers }  or Stdio { command, cwd, type, 3 more }`
 
   The transport used to connect to an MCP server.
 
@@ -19262,7 +19542,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool
 
-- `PersistedAgentTool = object { defer_loading, description, name, 2 more }  or object { type }  or object { enabled, type }  or 3 more`
+- `PersistedAgentTool = Function { defer_loading, description, name, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { enabled, type }  or 3 more`
 
   A credential-free tool available to a reusable agent.
 
@@ -19472,7 +19752,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool Param
 
-- `PersistedAgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
+- `PersistedAgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 3 more`
 
   A tool that can be stored on a reusable agent without session credentials.
 
@@ -19692,7 +19972,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Mcp Transport
 
-- `PersistedMcpTransport = object { headers, server_url, type }  or object { args, command, cwd, 2 more }`
+- `PersistedMcpTransport = HTTP { headers, server_url, type }  or Stdio { args, command, cwd, 2 more }`
 
   A credential-free transport used to connect to an MCP server.
 
@@ -19742,7 +20022,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Mcp Transport Param
 
-- `PersistedMcpTransportParam = object { server_url, type, headers }  or object { command, cwd, type, 2 more }`
+- `PersistedMcpTransportParam = HTTP { server_url, type, headers }  or Stdio { command, cwd, type, 2 more }`
 
   A credential-free transport used to connect to an MCP server.
 
@@ -20030,7 +20310,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Text Format
 
-- `TextFormat = object { type }  or object { schema, type }`
+- `TextFormat = Text { type }  or JSONSchema { schema, type }`
 
   The effective output format for generated text.
 
@@ -20060,7 +20340,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Text Format Param
 
-- `TextFormatParam = object { type }  or object { schema, type }`
+- `TextFormatParam = Text { type }  or JSONSchema { schema, type }`
 
   The output format for generated text.
 
@@ -20124,7 +20404,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Web Search Action
 
-- `WebSearchAction = object { queries, query, type }  or object { type, url }  or object { pattern, type, url }  or object { type }`
+- `WebSearchAction = Search { queries, query, type }  or OpenPage { type, url }  or FindInPage { pattern, type, url }  or Other { type }`
 
   An action performed by the web search tool.
 
@@ -20189,6 +20469,714 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `"other"`
 
 # Environments
+
+## Create an agent environment
+
+**post** `/agents/environments`
+
+Creates an OpenAI-hosted environment before creating a session. Requires access to the prewarming beta.
+
+### Header Parameters
+
+- `"Idempotency-Key": optional string`
+
+### Body Parameters
+
+- `environment: object { type, capability_directories, desktop, 8 more }`
+
+  The required hosting type and its configuration.
+
+  - `type: "openai_hosted"`
+
+    The type of the object. Always `openai_hosted`.
+
+    - `"openai_hosted"`
+
+  - `capability_directories: optional array of string or null`
+
+    Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+  - `desktop: optional object { enabled }  or null`
+
+    Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+    - `enabled: boolean`
+
+      Whether to provision the desktop and its browser proxy.
+
+  - `env: optional map[string] or null`
+
+    Environment variables made available to the agent.
+
+  - `environment_template_id: optional string`
+
+    A reusable hosted template applied before inline configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
+
+  - `files: optional array of HostedEnvironmentFileParam or null`
+
+    Files available before the agent starts. Defaults to an empty list.
+
+    - `FileID object { file_id, path, type }`
+
+      A file previously uploaded through the OpenAI Files API.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The absolute destination path inside `/workspace`.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { data, path, type }`
+
+      A file supplied directly as standard-base64 data.
+
+      - `data: string`
+
+        The standard-base64-encoded file contents.
+
+      - `path: string`
+
+        The absolute destination path inside `/workspace`.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `network: optional object { access, allowed_domains, blocked_domains }  or null`
+
+    Network access policy for the environment. If omitted, the API version determines whether network access is enabled or disabled.
+
+    - `access: "enabled" or "disabled" or "restricted"`
+
+      The environment's network access mode.
+
+      - `"enabled"`
+
+        Allows unrestricted network access.
+
+      - `"disabled"`
+
+        Disables network access.
+
+      - `"restricted"`
+
+        Applies the configured domain restrictions.
+
+    - `allowed_domains: optional array of string or null`
+
+      Domains the environment may access when network access is restricted.
+
+    - `blocked_domains: optional array of string or null`
+
+      Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+  - `packages: optional object { npm, python, system }  or null`
+
+    Packages to install in the environment. Defaults to empty package lists.
+
+    - `npm: optional array of string or null`
+
+      npm packages to install globally. Defaults to an empty list.
+
+    - `python: optional array of string or null`
+
+      Python packages to install. Defaults to an empty list.
+
+    - `system: optional array of string or null`
+
+      System packages to install. Defaults to an empty list.
+
+  - `plugins: optional array of HostedPluginParam or null`
+
+    Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+    - `description: string`
+
+      The plugin description declared in `.codex-plugin/plugin.json`.
+
+    - `name: string`
+
+      The plugin name declared in `.codex-plugin/plugin.json`.
+
+    - `source: InlineCapabilitySourceParam`
+
+      Provides ZIP bytes encoded with standard base64.
+
+      - `data: string`
+
+        Standard-base64 encoded ZIP archive bytes.
+
+      - `media_type: "application/zip"`
+
+        The archive media type, always `application/zip`.
+
+        - `"application/zip"`
+
+          A ZIP archive.
+
+      - `type: "base64"`
+
+        The type of the object. Always `base64`.
+
+        - `"base64"`
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `setup_commands: optional array of SetupCommandParam or null`
+
+    Ordered, confidential setup commands. Command bodies are never returned.
+
+    - `command: string`
+
+      The shell command to execute.
+
+    - `cwd: optional string or null`
+
+      The absolute working directory. Defaults to `/workspace`.
+
+  - `skills: optional array of HostedSkillParam or null`
+
+    Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+    - `SkillReference object { skill_id, type, version }`
+
+      References a skill uploaded through the Skills API.
+
+      - `skill_id: string`
+
+        The ID of the skill created through `/v1/skills`.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: optional string or null`
+
+        The skill version, a positive integer or `latest`; omission selects the default.
+
+    - `Inline object { description, name, source, type }`
+
+      Supplies a skill ZIP directly in the session request.
+
+      - `description: string`
+
+        The skill description declared in `SKILL.md`.
+
+      - `name: string`
+
+        The skill name declared in `SKILL.md`.
+
+      - `source: InlineCapabilitySourceParam`
+
+        Provides ZIP bytes encoded with standard base64.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+- `vault_ids: optional array of string or null`
+
+  The IDs of up to 10 vaults made available to an OpenAI-hosted environment.
+
+### Returns
+
+- `EnvironmentInfo object { id, files, object, 4 more }`
+
+  Safe metadata for a first-class execution environment.
+
+  - `id: string`
+
+    The ID of the environment.
+
+  - `files: array of HostedEnvironmentFile`
+
+    Files installed in the environment, without their contents.
+
+    - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
+
+      A file copied from the OpenAI Files API.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { id, path, size_bytes, type }`
+
+      A file supplied inline when the session was created.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `object: "agent.environment"`
+
+    The object type. Always `agent.environment`.
+
+    - `"agent.environment"`
+
+  - `plugins: array of HostedPlugin`
+
+    Plugins installed in the environment, without their archive contents.
+
+    - `description: string`
+
+      The installed plugin description.
+
+    - `name: string`
+
+      The installed plugin name.
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `skills: array of HostedSkill`
+
+    Skills installed in the environment, without their archive contents.
+
+    - `HostedSkillReference object { description, name, skill_id, 2 more }`
+
+      A skill installed from the Skills API.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `skill_id: string`
+
+        The referenced skill ID.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: string`
+
+        The concrete skill version installed for this session.
+
+    - `Inline object { description, name, type }`
+
+      A skill installed from an inline ZIP archive.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `status: "pending" or "ready" or "connected" or 4 more`
+
+    The current environment connection status.
+
+    - `"pending"`
+
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
+    - `"connected"`
+
+    - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+    - `"failed"`
+
+  - `type: "openai_hosted" or "self_hosted"`
+
+    Whether the environment is hosted by OpenAI or by the application.
+
+    - `"openai_hosted"`
+
+    - `"self_hosted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/agents/environments \
+    -H 'Content-Type: application/json' \
+    -H 'OpenAI-Beta: agents=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "environment": {
+            "type": "openai_hosted"
+          }
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "files": [
+    {
+      "id": "id",
+      "file_id": "file_id",
+      "path": "path",
+      "size_bytes": 0,
+      "type": "file_id"
+    }
+  ],
+  "object": "agent.environment",
+  "plugins": [
+    {
+      "description": "description",
+      "name": "name",
+      "type": "inline"
+    }
+  ],
+  "skills": [
+    {
+      "description": "description",
+      "name": "name",
+      "skill_id": "skill_id",
+      "type": "skill_reference",
+      "version": "version"
+    }
+  ],
+  "status": "pending",
+  "type": "openai_hosted"
+}
+```
+
+## List agent environments
+
+**get** `/agents/environments`
+
+Lists OpenAI-hosted environments owned by the authenticated principal. Requires access to the prewarming beta.
+
+### Query Parameters
+
+- `after: optional string`
+
+  Return resources after this resource ID in the selected order.
+
+- `limit: optional number`
+
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  The order in which resources are returned. Defaults to `desc`.
+
+  - `"asc"`
+
+    Returns resources in ascending order.
+
+  - `"desc"`
+
+    Returns resources in descending order.
+
+- `type: optional "openai_hosted"`
+
+  The hosting type to list. Defaults to `openai_hosted`.
+
+  - `"openai_hosted"`
+
+### Returns
+
+- `data: array of EnvironmentInfo`
+
+  The resources returned in this page, in the requested sort order.
+
+  - `id: string`
+
+    The ID of the environment.
+
+  - `files: array of HostedEnvironmentFile`
+
+    Files installed in the environment, without their contents.
+
+    - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
+
+      A file copied from the OpenAI Files API.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `file_id: string`
+
+        The ID of the uploaded file.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "file_id"`
+
+        The type of the object. Always `file_id`.
+
+        - `"file_id"`
+
+    - `Inline object { id, path, size_bytes, type }`
+
+      A file supplied inline when the session was created.
+
+      - `id: string`
+
+        The session-scoped ID of the file in the execution environment.
+
+      - `path: string`
+
+        The file's absolute path inside the environment.
+
+      - `size_bytes: number`
+
+        The decoded file size in bytes.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `object: "agent.environment"`
+
+    The object type. Always `agent.environment`.
+
+    - `"agent.environment"`
+
+  - `plugins: array of HostedPlugin`
+
+    Plugins installed in the environment, without their archive contents.
+
+    - `description: string`
+
+      The installed plugin description.
+
+    - `name: string`
+
+      The installed plugin name.
+
+    - `type: "inline"`
+
+      The type of the object. Always `inline`.
+
+      - `"inline"`
+
+  - `skills: array of HostedSkill`
+
+    Skills installed in the environment, without their archive contents.
+
+    - `HostedSkillReference object { description, name, skill_id, 2 more }`
+
+      A skill installed from the Skills API.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `skill_id: string`
+
+        The referenced skill ID.
+
+      - `type: "skill_reference"`
+
+        The type of the object. Always `skill_reference`.
+
+        - `"skill_reference"`
+
+      - `version: string`
+
+        The concrete skill version installed for this session.
+
+    - `Inline object { description, name, type }`
+
+      A skill installed from an inline ZIP archive.
+
+      - `description: string`
+
+        The installed skill description.
+
+      - `name: string`
+
+        The installed skill name.
+
+      - `type: "inline"`
+
+        The type of the object. Always `inline`.
+
+        - `"inline"`
+
+  - `status: "pending" or "ready" or "connected" or 4 more`
+
+    The current environment connection status.
+
+    - `"pending"`
+
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
+    - `"connected"`
+
+    - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
+
+    - `"expired"`
+
+    - `"failed"`
+
+  - `type: "openai_hosted" or "self_hosted"`
+
+    Whether the environment is hosted by OpenAI or by the application.
+
+    - `"openai_hosted"`
+
+    - `"self_hosted"`
+
+- `first_id: string or null`
+
+  The ID of the first resource in `data`, or `null` if the page is empty.
+
+- `has_more: boolean`
+
+  Whether there are more resources to retrieve after this page.
+
+- `last_id: string or null`
+
+  The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+- `object: "list"`
+
+  The object type, which is always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/agents/environments \
+    -H 'OpenAI-Beta: agents=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "files": [
+        {
+          "id": "id",
+          "file_id": "file_id",
+          "path": "path",
+          "size_bytes": 0,
+          "type": "file_id"
+        }
+      ],
+      "object": "agent.environment",
+      "plugins": [
+        {
+          "description": "description",
+          "name": "name",
+          "type": "inline"
+        }
+      ],
+      "skills": [
+        {
+          "description": "description",
+          "name": "name",
+          "skill_id": "skill_id",
+          "type": "skill_reference",
+          "version": "version"
+        }
+      ],
+      "status": "pending",
+      "type": "openai_hosted"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
 
 ## Retrieve an agent environment
 
@@ -20334,15 +21322,23 @@ Retrieves an execution environment's connection status and safe installed metada
 
         - `"inline"`
 
-  - `status: "pending" or "connected" or "disconnected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The current environment connection status.
 
     - `"pending"`
 
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
     - `"connected"`
 
     - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
 
     - `"expired"`
 
@@ -20536,15 +21532,23 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID \
 
         - `"inline"`
 
-  - `status: "pending" or "connected" or "disconnected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The current environment connection status.
 
     - `"pending"`
 
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
     - `"connected"`
 
     - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
 
     - `"expired"`
 
@@ -21018,7 +22022,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21126,7 +22130,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -21338,7 +22342,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21446,7 +22450,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -21616,7 +22620,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -21724,7 +22728,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22070,7 +23074,7 @@ Updates reusable environment configuration without returning confidential values
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -22178,7 +23182,7 @@ Updates reusable environment configuration without returning confidential values
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22315,7 +23319,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -22423,7 +23427,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -22511,7 +23515,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -22546,6 +23550,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -23773,7 +24781,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -23781,7 +24789,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -24760,7 +25768,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -24768,7 +25776,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -25696,7 +26704,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -25704,7 +26712,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -26674,7 +27682,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -26682,7 +27690,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -27569,7 +28577,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
@@ -27639,7 +28647,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The error type.
 
-      - `status: "pending" or "ready" or "connected" or 2 more`
+      - `status: "pending" or "ready" or "connected" or 4 more`
 
         The environment's connection status.
 
@@ -27658,6 +28666,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `"disconnected"`
 
           The environment is disconnected.
+
+        - `"suspended"`
+
+          The environment is stopped and can be resumed from its private checkpoint.
+
+        - `"expired"`
+
+          The environment and its private checkpoint have expired.
 
         - `"failed"`
 
@@ -27684,6 +28700,58 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after an idle hosted session environment is checkpointed and stopped.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.suspended"`
+
+      The type of the object. Always `agent.session.environment.suspended`.
+
+      - `"agent.session.environment.suspended"`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after a suspended hosted session environment and its checkpoint expire.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.expired"`
+
+      The type of the object. Always `agent.session.environment.expired`.
+
+      - `"agent.session.environment.expired"`
 
   - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
@@ -28343,7 +29411,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `"agent.session"`
 
-      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
 
@@ -28351,7 +29419,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           Respond to a computer-use request.
 
-          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+          - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
             The information needed to render the request.
 
@@ -29355,7 +30423,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The registered request answered by this item.
 
-        - `response: object { action, selected_option, type }  or object { action, type }`
+        - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
           The admitted response, without submitted credential values.
 
@@ -31121,7 +32189,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -32366,7 +33434,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -33885,7 +34953,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -35742,7 +36810,7 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -38075,7 +39143,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth
 
-- `CredentialAuth = object { expires_at, mcp_server_url, refresh, type }  or object { mcp_server_url, type }  or object { networking, secret_name, type }`
+- `CredentialAuth = McpOauth { expires_at, mcp_server_url, refresh, type }  or StaticBearer { mcp_server_url, type }  or EnvironmentVariable { networking, secret_name, type }`
 
   The authentication configuration of a vault credential, excluding secrets.
 
@@ -38209,7 +39277,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth Create Param
 
-- `CredentialAuthCreateParam = object { access_token, mcp_server_url, type, 2 more }  or object { token, mcp_server_url, type }  or object { networking, secret_name, secret_value, type }`
+- `CredentialAuthCreateParam = McpOauth { access_token, mcp_server_url, type, 2 more }  or StaticBearer { token, mcp_server_url, type }  or EnvironmentVariable { networking, secret_name, secret_value, type }`
 
   Authentication credentials for an MCP server or an OpenAI-hosted environment.
 
@@ -38367,7 +39435,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Auth Rotate Param
 
-- `CredentialAuthRotateParam = object { type, access_token, expires_at, refresh }  or object { token, type }  or object { secret_value, type }`
+- `CredentialAuthRotateParam = McpOauth { type, access_token, expires_at, refresh }  or StaticBearer { token, type }  or EnvironmentVariable { secret_value, type }`
 
   Updates to a vault credential without changing its authentication method or destination configuration.
 
@@ -38483,7 +39551,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Networking
 
-- `CredentialNetworking = object { type }  or object { allowed_hosts, type }`
+- `CredentialNetworking = Unrestricted { type }  or Limited { allowed_hosts, type }`
 
   Destination permissions for an environment-variable credential. These do not grant network access to the environment.
 
@@ -38513,7 +39581,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential Networking Param
 
-- `CredentialNetworkingParam = object { type }  or object { allowed_hosts, type }`
+- `CredentialNetworkingParam = Unrestricted { type }  or Limited { allowed_hosts, type }`
 
   Destination permissions for an environment-variable credential. These do not grant network access to the environment.
 
@@ -38543,7 +39611,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth
 
-- `McpOauthTokenEndpointAuth = object { type }  or object { type }  or object { type }`
+- `McpOauthTokenEndpointAuth = None { type }  or ClientSecretBasic { type }  or ClientSecretPost { type }`
 
   The client authentication method used for OAuth token refresh.
 
@@ -38579,7 +39647,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth Create Param
 
-- `McpOauthTokenEndpointAuthCreateParam = object { type }  or object { client_secret, type }  or object { client_secret, type }`
+- `McpOauthTokenEndpointAuthCreateParam = None { type }  or ClientSecretBasic { client_secret, type }  or ClientSecretPost { client_secret, type }`
 
   Client authentication credentials for OAuth token refresh.
 
@@ -38623,7 +39691,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Mcp OAuth Token Endpoint Auth Rotate Param
 
-- `McpOauthTokenEndpointAuthRotateParam = object { type, client_secret }  or object { type, client_secret }`
+- `McpOauthTokenEndpointAuthRotateParam = ClientSecretBasic { type, client_secret }  or ClientSecretPost { type, client_secret }`
 
   Client-secret updates that preserve the credential's OAuth authentication method.
 
@@ -38905,7 +39973,7 @@ Create an assistant with a model and instructions.
 
       A helper to create a [vector store](/api/reference/resources/vector_stores) with file_ids and attach it to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
-      - `chunking_strategy: optional object { type }  or object { static, type }`
+      - `chunking_strategy: optional Auto { type }  or Static { static, type }`
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
@@ -41026,7 +42094,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 ### Assistant Stream Event
 
-- `AssistantStreamEvent = object { data, event, enabled }  or object { data, event }  or object { data, event }  or 22 more`
+- `AssistantStreamEvent = ThreadCreated { data, event, enabled }  or ThreadRunCreated { data, event }  or ThreadRunQueued { data, event }  or 22 more`
 
   Represents an event emitted when streaming a Run.
 
@@ -41746,7 +42814,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   The input to the Code Interpreter tool call.
 
-                - `outputs: array of object { logs, type }  or object { image, type }`
+                - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
                   The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -42174,7 +43242,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           The ID of the file to attach to the message.
 
-        - `tools: optional array of CodeInterpreterTool or object { type }`
+        - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
           The tools to add this file to.
 
@@ -42775,7 +43843,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 ### Message Stream Event
 
-- `MessageStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 2 more`
+- `MessageStreamEvent = ThreadMessageCreated { data, event }  or ThreadMessageInProgress { data, event }  or ThreadMessageDelta { data, event }  or 2 more`
 
   Occurs when a [message](/api/docs/assistants/migration) is created.
 
@@ -42803,7 +43871,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
           The ID of the file to attach to the message.
 
-        - `tools: optional array of CodeInterpreterTool or object { type }`
+        - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
           The tools to add this file to.
 
@@ -43266,7 +44334,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 ### Run Step Stream Event
 
-- `RunStepStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 4 more`
+- `RunStepStreamEvent = ThreadRunStepCreated { data, event }  or ThreadRunStepInProgress { data, event }  or ThreadRunStepDelta { data, event }  or 4 more`
 
   Occurs when a [run step](/api/docs/assistants/migration) is created.
 
@@ -43399,7 +44467,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
                   The input to the Code Interpreter tool call.
 
-                - `outputs: array of object { logs, type }  or object { image, type }`
+                - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
                   The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -43805,7 +44873,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
 
 ### Run Stream Event
 
-- `RunStreamEvent = object { data, event }  or object { data, event }  or object { data, event }  or 7 more`
+- `RunStreamEvent = ThreadRunCreated { data, event }  or ThreadRunQueued { data, event }  or ThreadRunInProgress { data, event }  or 7 more`
 
   Occurs when a new [run](/api/docs/assistants/migration) is created.
 
@@ -45079,7 +46147,7 @@ List ChatKit threads with optional pagination and user filters.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -45297,7 +46365,7 @@ List items that belong to a ChatKit thread.
 
           - `"file"`
 
-      - `content: array of object { text, type }  or object { text, type }`
+      - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
         Ordered content elements supplied by the user.
 
@@ -45375,7 +46443,7 @@ List items that belong to a ChatKit thread.
 
         Ordered assistant response segments.
 
-        - `annotations: array of object { source, type }  or object { source, type }`
+        - `annotations: array of File { source, type }  or URL { source, type }`
 
           Ordered list of annotations attached to the response text.
 
@@ -45780,7 +46848,7 @@ Retrieve a ChatKit thread by its identifier.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -46238,7 +47306,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
   Assistant response text accompanied by optional annotations.
 
-  - `annotations: array of object { source, type }  or object { source, type }`
+  - `annotations: array of File { source, type }  or URL { source, type }`
 
     Ordered list of annotations attached to the response text.
 
@@ -46320,7 +47388,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
@@ -46384,7 +47452,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     Ordered assistant response segments.
 
-    - `annotations: array of object { source, type }  or object { source, type }`
+    - `annotations: array of File { source, type }  or URL { source, type }`
 
       Ordered list of annotations attached to the response text.
 
@@ -46512,7 +47580,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
           - `"file"`
 
-      - `content: array of object { text, type }  or object { text, type }`
+      - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
         Ordered content elements supplied by the user.
 
@@ -46590,7 +47658,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
         Ordered assistant response segments.
 
-        - `annotations: array of object { source, type }  or object { source, type }`
+        - `annotations: array of File { source, type }  or URL { source, type }`
 
           Ordered list of annotations attached to the response text.
 
@@ -46904,7 +47972,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
       - `"file"`
 
-  - `content: array of object { text, type }  or object { text, type }`
+  - `content: array of InputText { text, type }  or QuotedText { text, type }`
 
     Ordered content elements supplied by the user.
 
@@ -47177,7 +48245,7 @@ the `background` parameter set to `true` can be cancelled.
 
       - `"steered"`
 
-  - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+  - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
     A system (or developer) message inserted into the model's context.
 
@@ -47190,7 +48258,7 @@ the `background` parameter set to `true` can be cancelled.
       A text input to the model, equivalent to a text input with the
       `developer` role.
 
-    - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       A list of one or many input items to the model, containing
       different content types.
@@ -47418,7 +48486,7 @@ the `background` parameter set to `true` can be cancelled.
 
             A text output from the model.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -48065,7 +49133,7 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -48181,7 +49249,7 @@ the `background` parameter set to `true` can be cancelled.
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -48356,7 +49424,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -48406,7 +49474,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -48534,7 +49602,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -48676,7 +49744,7 @@ the `background` parameter set to `true` can be cancelled.
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -48738,7 +49806,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -48962,7 +50030,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -49036,7 +50104,7 @@ the `background` parameter set to `true` can be cancelled.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -49102,7 +50170,7 @@ the `background` parameter set to `true` can be cancelled.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -49547,7 +50615,7 @@ the `background` parameter set to `true` can be cancelled.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -49595,7 +50663,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
 
@@ -49671,7 +50739,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -49859,7 +50927,7 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -49921,7 +50989,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -50145,7 +51213,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -50219,7 +51287,7 @@ the `background` parameter set to `true` can be cancelled.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -50285,7 +51353,7 @@ the `background` parameter set to `true` can be cancelled.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -50580,7 +51648,7 @@ the `background` parameter set to `true` can be cancelled.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -50628,7 +51696,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -50702,7 +51770,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -51129,7 +52197,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -51334,7 +52402,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -51388,7 +52456,7 @@ the `background` parameter set to `true` can be cancelled.
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -51442,7 +52510,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -51488,7 +52556,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -51568,7 +52636,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -51626,7 +52694,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -51912,7 +52980,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -51974,7 +53042,7 @@ the `background` parameter set to `true` can be cancelled.
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -52489,7 +53557,7 @@ the `background` parameter set to `true` can be cancelled.
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -52584,7 +53652,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -52630,7 +53698,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -52830,7 +53898,7 @@ the `background` parameter set to `true` can be cancelled.
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -52887,7 +53955,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -53311,7 +54379,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -53373,7 +54441,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -53597,7 +54665,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -53671,7 +54739,7 @@ the `background` parameter set to `true` can be cancelled.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -53737,7 +54805,7 @@ the `background` parameter set to `true` can be cancelled.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -54032,7 +55100,7 @@ the `background` parameter set to `true` can be cancelled.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -54080,7 +55148,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -54154,7 +55222,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -54338,7 +55406,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -54400,7 +55468,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -54624,7 +55692,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -54698,7 +55766,7 @@ the `background` parameter set to `true` can be cancelled.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -54764,7 +55832,7 @@ the `background` parameter set to `true` can be cancelled.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -55059,7 +56127,7 @@ the `background` parameter set to `true` can be cancelled.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -55107,7 +56175,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -55181,7 +56249,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -55485,7 +56553,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -55724,7 +56792,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -55768,7 +56836,7 @@ the `background` parameter set to `true` can be cancelled.
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -55832,7 +56900,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -55868,7 +56936,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -55944,7 +57012,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -56002,7 +57070,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -56247,7 +57315,7 @@ the `background` parameter set to `true` can be cancelled.
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -56331,7 +57399,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -56538,7 +57606,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"shell"`
 
-  - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+  - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
     An array of tools the model may call while generating a response. You
     can specify which tool to use by setting the `tool_choice` parameter.
@@ -56616,7 +57684,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The IDs of the vector stores to search.
 
-      - `filters: optional object { key, type, value }  or unknown or null`
+      - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
         A filter to apply.
 
@@ -56840,7 +57908,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+      - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -56914,7 +57982,7 @@ the `background` parameter set to `true` can be cancelled.
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never" or null`
+      - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -56980,7 +58048,7 @@ the `background` parameter set to `true` can be cancelled.
 
       A tool that runs Python code to help generate a response to a prompt.
 
-      - `container: string or object { type, file_ids, memory_limit, network_policy }`
+      - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
         The code interpreter container. Can be a container ID or an object that
         specifies uploaded file IDs to make available to your code, along with an
@@ -57275,7 +58343,7 @@ the `background` parameter set to `true` can be cancelled.
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { definition, syntax, type }`
+      - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -57323,7 +58391,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The namespace name used in tool calls (for example, `crm`).
 
-      - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+      - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
         The function/custom tools available inside this namespace.
 
@@ -57397,7 +58465,7 @@ the `background` parameter set to `true` can be cancelled.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -57576,7 +58644,7 @@ the `background` parameter set to `true` can be cancelled.
 
     Moderation results for the response input and output, if moderated completions were requested.
 
-    - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response input.
 
@@ -57632,7 +58700,7 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"error"`
 
-    - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response output.
 
@@ -57733,7 +58801,7 @@ the `background` parameter set to `true` can be cancelled.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+  - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
     Prompt cache diagnostics requested for this response.
 
@@ -58566,7 +59634,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
   - `string`
 
-- `input: optional string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+- `input: optional string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
   Text, image, or file inputs to the model, used to generate a response
 
@@ -58574,7 +59642,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+  - `array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -58801,7 +59869,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -59448,7 +60516,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -59564,7 +60632,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -59739,7 +60807,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -59789,7 +60857,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
         Plaintext, image, or encrypted content sent between agents.
 
@@ -59917,7 +60985,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
@@ -60059,7 +61127,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
@@ -60121,7 +61189,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -60345,7 +61413,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -60419,7 +61487,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -60485,7 +61553,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -60930,7 +61998,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -60978,7 +62046,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools loaded inside this namespace.
 
@@ -61054,7 +62122,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -61242,7 +62310,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
@@ -61304,7 +62372,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -61528,7 +62596,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -61602,7 +62670,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -61668,7 +62736,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -61963,7 +63031,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -62011,7 +63079,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -62085,7 +63153,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -62512,7 +63580,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -62717,7 +63785,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -62771,7 +63839,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           The exit or timeout outcome associated with this shell call.
 
@@ -62825,7 +63893,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -62871,7 +63939,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -62951,7 +64019,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -63009,7 +64077,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -63295,7 +64363,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -63357,7 +64425,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -63565,7 +64633,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     - `"response.compaction"`
 
-  - `output: array of object { id, content, role, 4 more }  or object { id, call_id, code, 3 more }  or object { id, call_id, result, 3 more }  or 28 more`
+  - `output: array of Message { id, content, role, 4 more }  or Program { id, call_id, code, 3 more }  or ProgramOutput { id, call_id, result, 3 more }  or 28 more`
 
     The compacted list of output items.
 
@@ -63577,7 +64645,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the message.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         The content of the message
 
@@ -63609,7 +64677,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -64078,7 +65146,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -64187,7 +65255,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -64293,7 +65361,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -64355,7 +65423,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -64579,7 +65647,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -64653,7 +65721,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -64719,7 +65787,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -65164,7 +66232,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -65212,7 +66280,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -65286,7 +66354,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -65470,7 +66538,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -65532,7 +66600,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -65756,7 +66824,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -65830,7 +66898,7 @@ Learn when and how to compact long-running conversations in the [conversation st
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -65896,7 +66964,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -66191,7 +67259,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -66239,7 +67307,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -66313,7 +67381,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -66477,7 +67545,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -66655,7 +67723,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -66803,7 +67871,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -67473,7 +68541,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -67712,7 +68780,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -67756,7 +68824,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -67820,7 +68888,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -67856,7 +68924,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -67932,7 +69000,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -67990,7 +69058,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -68263,7 +69331,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -68338,7 +69406,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -68632,7 +69700,7 @@ as input for the model's response.
 
   - `"message.output_text.logprobs"`
 
-- `input: optional string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+- `input: optional string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
   Text, image, or file inputs to the model, used to generate a response.
 
@@ -68649,7 +69717,7 @@ as input for the model's response.
     A text input to the model, equivalent to a text input with the
     `user` role.
 
-  - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+  - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
     A list of one or many input items to the model, containing
     different content types.
@@ -68877,7 +69945,7 @@ as input for the model's response.
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -69524,7 +70592,7 @@ as input for the model's response.
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -69640,7 +70708,7 @@ as input for the model's response.
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -69815,7 +70883,7 @@ as input for the model's response.
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -69865,7 +70933,7 @@ as input for the model's response.
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
         Plaintext, image, or encrypted content sent between agents.
 
@@ -69993,7 +71061,7 @@ as input for the model's response.
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
@@ -70135,7 +71203,7 @@ as input for the model's response.
 
     - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
@@ -70197,7 +71265,7 @@ as input for the model's response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -70421,7 +71489,7 @@ as input for the model's response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -70495,7 +71563,7 @@ as input for the model's response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -70561,7 +71629,7 @@ as input for the model's response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -71006,7 +72074,7 @@ as input for the model's response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -71054,7 +72122,7 @@ as input for the model's response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools loaded inside this namespace.
 
@@ -71130,7 +72198,7 @@ as input for the model's response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -71318,7 +72386,7 @@ as input for the model's response.
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
@@ -71380,7 +72448,7 @@ as input for the model's response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -71604,7 +72672,7 @@ as input for the model's response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -71678,7 +72746,7 @@ as input for the model's response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -71744,7 +72812,7 @@ as input for the model's response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -72039,7 +73107,7 @@ as input for the model's response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -72087,7 +73155,7 @@ as input for the model's response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -72161,7 +73229,7 @@ as input for the model's response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -72588,7 +73656,7 @@ as input for the model's response.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -72793,7 +73861,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -72847,7 +73915,7 @@ as input for the model's response.
 
         Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           The exit or timeout outcome associated with this shell call.
 
@@ -72901,7 +73969,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -72947,7 +74015,7 @@ as input for the model's response.
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -73027,7 +74095,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -73085,7 +74153,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -73371,7 +74439,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -73433,7 +74501,7 @@ as input for the model's response.
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -74385,7 +75453,7 @@ as input for the model's response.
 
       - `"shell"`
 
-- `tools: optional array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+- `tools: optional array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
   An array of tools the model may call while generating a response. You
   can specify which tool to use by setting the `tool_choice` parameter.
@@ -74463,7 +75531,7 @@ as input for the model's response.
 
       The IDs of the vector stores to search.
 
-    - `filters: optional object { key, type, value }  or unknown or null`
+    - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
       A filter to apply.
 
@@ -74687,7 +75755,7 @@ as input for the model's response.
 
       - `"programmatic"`
 
-    - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+    - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
       List of allowed tool names or a filter object.
 
@@ -74761,7 +75829,7 @@ as input for the model's response.
       Optional HTTP headers to send to the MCP server. Use for authentication
       or other purposes.
 
-    - `require_approval: optional object { always, never }  or "always" or "never" or null`
+    - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
       Specify which of the MCP server's tools require approval.
 
@@ -74827,7 +75895,7 @@ as input for the model's response.
 
     A tool that runs Python code to help generate a response to a prompt.
 
-    - `container: string or object { type, file_ids, memory_limit, network_policy }`
+    - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
       The code interpreter container. Can be a container ID or an object that
       specifies uploaded file IDs to make available to your code, along with an
@@ -75122,7 +76190,7 @@ as input for the model's response.
 
       Optional description of the custom tool, used to provide more context.
 
-    - `format: optional object { type }  or object { definition, syntax, type }`
+    - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
       The input format for the custom tool. Default is unconstrained text.
 
@@ -75170,7 +76238,7 @@ as input for the model's response.
 
       The namespace name used in tool calls (for example, `crm`).
 
-    - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+    - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
       The function/custom tools available inside this namespace.
 
@@ -75244,7 +76312,7 @@ as input for the model's response.
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -75553,7 +76621,7 @@ as input for the model's response.
 
       - `"steered"`
 
-  - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+  - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
     A system (or developer) message inserted into the model's context.
 
@@ -75566,7 +76634,7 @@ as input for the model's response.
       A text input to the model, equivalent to a text input with the
       `developer` role.
 
-    - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       A list of one or many input items to the model, containing
       different content types.
@@ -75794,7 +76862,7 @@ as input for the model's response.
 
             A text output from the model.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -76441,7 +77509,7 @@ as input for the model's response.
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -76557,7 +77625,7 @@ as input for the model's response.
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -76732,7 +77800,7 @@ as input for the model's response.
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -76782,7 +77850,7 @@ as input for the model's response.
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -76910,7 +77978,7 @@ as input for the model's response.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -77052,7 +78120,7 @@ as input for the model's response.
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -77114,7 +78182,7 @@ as input for the model's response.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -77338,7 +78406,7 @@ as input for the model's response.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -77412,7 +78480,7 @@ as input for the model's response.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -77478,7 +78546,7 @@ as input for the model's response.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -77923,7 +78991,7 @@ as input for the model's response.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -77971,7 +79039,7 @@ as input for the model's response.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
 
@@ -78047,7 +79115,7 @@ as input for the model's response.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -78235,7 +79303,7 @@ as input for the model's response.
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -78297,7 +79365,7 @@ as input for the model's response.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -78521,7 +79589,7 @@ as input for the model's response.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -78595,7 +79663,7 @@ as input for the model's response.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -78661,7 +79729,7 @@ as input for the model's response.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -78956,7 +80024,7 @@ as input for the model's response.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -79004,7 +80072,7 @@ as input for the model's response.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -79078,7 +80146,7 @@ as input for the model's response.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -79505,7 +80573,7 @@ as input for the model's response.
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -79710,7 +80778,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -79764,7 +80832,7 @@ as input for the model's response.
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -79818,7 +80886,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -79864,7 +80932,7 @@ as input for the model's response.
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -79944,7 +81012,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -80002,7 +81070,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -80288,7 +81356,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -80350,7 +81418,7 @@ as input for the model's response.
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -80865,7 +81933,7 @@ as input for the model's response.
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -80960,7 +82028,7 @@ as input for the model's response.
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -81006,7 +82074,7 @@ as input for the model's response.
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -81206,7 +82274,7 @@ as input for the model's response.
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -81263,7 +82331,7 @@ as input for the model's response.
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -81687,7 +82755,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -81749,7 +82817,7 @@ as input for the model's response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -81973,7 +83041,7 @@ as input for the model's response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -82047,7 +83115,7 @@ as input for the model's response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -82113,7 +83181,7 @@ as input for the model's response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -82408,7 +83476,7 @@ as input for the model's response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -82456,7 +83524,7 @@ as input for the model's response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -82530,7 +83598,7 @@ as input for the model's response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -82714,7 +83782,7 @@ as input for the model's response.
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -82776,7 +83844,7 @@ as input for the model's response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -83000,7 +84068,7 @@ as input for the model's response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -83074,7 +84142,7 @@ as input for the model's response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -83140,7 +84208,7 @@ as input for the model's response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -83435,7 +84503,7 @@ as input for the model's response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -83483,7 +84551,7 @@ as input for the model's response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -83557,7 +84625,7 @@ as input for the model's response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -83861,7 +84929,7 @@ as input for the model's response.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -84100,7 +85168,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84144,7 +85212,7 @@ as input for the model's response.
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -84208,7 +85276,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84244,7 +85312,7 @@ as input for the model's response.
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -84320,7 +85388,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84378,7 +85446,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84623,7 +85691,7 @@ as input for the model's response.
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84707,7 +85775,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -84914,7 +85982,7 @@ as input for the model's response.
 
         - `"shell"`
 
-  - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+  - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
     An array of tools the model may call while generating a response. You
     can specify which tool to use by setting the `tool_choice` parameter.
@@ -84992,7 +86060,7 @@ as input for the model's response.
 
         The IDs of the vector stores to search.
 
-      - `filters: optional object { key, type, value }  or unknown or null`
+      - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
         A filter to apply.
 
@@ -85216,7 +86284,7 @@ as input for the model's response.
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+      - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -85290,7 +86358,7 @@ as input for the model's response.
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never" or null`
+      - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -85356,7 +86424,7 @@ as input for the model's response.
 
       A tool that runs Python code to help generate a response to a prompt.
 
-      - `container: string or object { type, file_ids, memory_limit, network_policy }`
+      - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
         The code interpreter container. Can be a container ID or an object that
         specifies uploaded file IDs to make available to your code, along with an
@@ -85651,7 +86719,7 @@ as input for the model's response.
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { definition, syntax, type }`
+      - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -85699,7 +86767,7 @@ as input for the model's response.
 
         The namespace name used in tool calls (for example, `crm`).
 
-      - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+      - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
         The function/custom tools available inside this namespace.
 
@@ -85773,7 +86841,7 @@ as input for the model's response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -85952,7 +87020,7 @@ as input for the model's response.
 
     Moderation results for the response input and output, if moderated completions were requested.
 
-    - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response input.
 
@@ -86008,7 +87076,7 @@ as input for the model's response.
 
           - `"error"`
 
-    - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response output.
 
@@ -86109,7 +87177,7 @@ as input for the model's response.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+  - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
     Prompt cache diagnostics requested for this response.
 
@@ -87670,7 +88738,7 @@ Retrieves a model response with the given ID.
 
       - `"steered"`
 
-  - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+  - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
     A system (or developer) message inserted into the model's context.
 
@@ -87683,7 +88751,7 @@ Retrieves a model response with the given ID.
       A text input to the model, equivalent to a text input with the
       `developer` role.
 
-    - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       A list of one or many input items to the model, containing
       different content types.
@@ -87911,7 +88979,7 @@ Retrieves a model response with the given ID.
 
             A text output from the model.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -88558,7 +89626,7 @@ Retrieves a model response with the given ID.
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -88674,7 +89742,7 @@ Retrieves a model response with the given ID.
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -88849,7 +89917,7 @@ Retrieves a model response with the given ID.
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -88899,7 +89967,7 @@ Retrieves a model response with the given ID.
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -89027,7 +90095,7 @@ Retrieves a model response with the given ID.
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -89169,7 +90237,7 @@ Retrieves a model response with the given ID.
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -89231,7 +90299,7 @@ Retrieves a model response with the given ID.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -89455,7 +90523,7 @@ Retrieves a model response with the given ID.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -89529,7 +90597,7 @@ Retrieves a model response with the given ID.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -89595,7 +90663,7 @@ Retrieves a model response with the given ID.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -90040,7 +91108,7 @@ Retrieves a model response with the given ID.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -90088,7 +91156,7 @@ Retrieves a model response with the given ID.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
 
@@ -90164,7 +91232,7 @@ Retrieves a model response with the given ID.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -90352,7 +91420,7 @@ Retrieves a model response with the given ID.
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -90414,7 +91482,7 @@ Retrieves a model response with the given ID.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -90638,7 +91706,7 @@ Retrieves a model response with the given ID.
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -90712,7 +91780,7 @@ Retrieves a model response with the given ID.
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -90778,7 +91846,7 @@ Retrieves a model response with the given ID.
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -91073,7 +92141,7 @@ Retrieves a model response with the given ID.
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -91121,7 +92189,7 @@ Retrieves a model response with the given ID.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -91195,7 +92263,7 @@ Retrieves a model response with the given ID.
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -91622,7 +92690,7 @@ Retrieves a model response with the given ID.
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -91827,7 +92895,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -91881,7 +92949,7 @@ Retrieves a model response with the given ID.
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -91935,7 +93003,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -91981,7 +93049,7 @@ Retrieves a model response with the given ID.
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -92061,7 +93129,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -92119,7 +93187,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -92405,7 +93473,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -92467,7 +93535,7 @@ Retrieves a model response with the given ID.
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -92982,7 +94050,7 @@ Retrieves a model response with the given ID.
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -93077,7 +94145,7 @@ Retrieves a model response with the given ID.
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -93123,7 +94191,7 @@ Retrieves a model response with the given ID.
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -93323,7 +94391,7 @@ Retrieves a model response with the given ID.
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -93380,7 +94448,7 @@ Retrieves a model response with the given ID.
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -93804,7 +94872,7 @@ Retrieves a model response with the given ID.
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -93866,7 +94934,7 @@ Retrieves a model response with the given ID.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -94090,7 +95158,7 @@ Retrieves a model response with the given ID.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -94164,7 +95232,7 @@ Retrieves a model response with the given ID.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -94230,7 +95298,7 @@ Retrieves a model response with the given ID.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -94525,7 +95593,7 @@ Retrieves a model response with the given ID.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -94573,7 +95641,7 @@ Retrieves a model response with the given ID.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -94647,7 +95715,7 @@ Retrieves a model response with the given ID.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -94831,7 +95899,7 @@ Retrieves a model response with the given ID.
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -94893,7 +95961,7 @@ Retrieves a model response with the given ID.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -95117,7 +96185,7 @@ Retrieves a model response with the given ID.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -95191,7 +96259,7 @@ Retrieves a model response with the given ID.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -95257,7 +96325,7 @@ Retrieves a model response with the given ID.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -95552,7 +96620,7 @@ Retrieves a model response with the given ID.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -95600,7 +96668,7 @@ Retrieves a model response with the given ID.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -95674,7 +96742,7 @@ Retrieves a model response with the given ID.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -95978,7 +97046,7 @@ Retrieves a model response with the given ID.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -96217,7 +97285,7 @@ Retrieves a model response with the given ID.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -96261,7 +97329,7 @@ Retrieves a model response with the given ID.
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -96325,7 +97393,7 @@ Retrieves a model response with the given ID.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -96361,7 +97429,7 @@ Retrieves a model response with the given ID.
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -96437,7 +97505,7 @@ Retrieves a model response with the given ID.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -96495,7 +97563,7 @@ Retrieves a model response with the given ID.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -96740,7 +97808,7 @@ Retrieves a model response with the given ID.
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -96824,7 +97892,7 @@ Retrieves a model response with the given ID.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -97031,7 +98099,7 @@ Retrieves a model response with the given ID.
 
         - `"shell"`
 
-  - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+  - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
     An array of tools the model may call while generating a response. You
     can specify which tool to use by setting the `tool_choice` parameter.
@@ -97109,7 +98177,7 @@ Retrieves a model response with the given ID.
 
         The IDs of the vector stores to search.
 
-      - `filters: optional object { key, type, value }  or unknown or null`
+      - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
         A filter to apply.
 
@@ -97333,7 +98401,7 @@ Retrieves a model response with the given ID.
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+      - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -97407,7 +98475,7 @@ Retrieves a model response with the given ID.
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never" or null`
+      - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -97473,7 +98541,7 @@ Retrieves a model response with the given ID.
 
       A tool that runs Python code to help generate a response to a prompt.
 
-      - `container: string or object { type, file_ids, memory_limit, network_policy }`
+      - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
         The code interpreter container. Can be a container ID or an object that
         specifies uploaded file IDs to make available to your code, along with an
@@ -97768,7 +98836,7 @@ Retrieves a model response with the given ID.
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { definition, syntax, type }`
+      - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -97816,7 +98884,7 @@ Retrieves a model response with the given ID.
 
         The namespace name used in tool calls (for example, `crm`).
 
-      - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+      - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
         The function/custom tools available inside this namespace.
 
@@ -97890,7 +98958,7 @@ Retrieves a model response with the given ID.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -98069,7 +99137,7 @@ Retrieves a model response with the given ID.
 
     Moderation results for the response input and output, if moderated completions were requested.
 
-    - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response input.
 
@@ -98125,7 +99193,7 @@ Retrieves a model response with the given ID.
 
           - `"error"`
 
-    - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response output.
 
@@ -98226,7 +99294,7 @@ Retrieves a model response with the given ID.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+  - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
     Prompt cache diagnostics requested for this response.
 
@@ -98844,7 +99912,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `"response.compaction"`
 
-  - `output: array of object { id, content, role, 4 more }  or object { id, call_id, code, 3 more }  or object { id, call_id, result, 3 more }  or 28 more`
+  - `output: array of Message { id, content, role, 4 more }  or Program { id, call_id, code, 3 more }  or ProgramOutput { id, call_id, result, 3 more }  or 28 more`
 
     The compacted list of output items.
 
@@ -98856,7 +99924,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the message.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         The content of the message
 
@@ -98888,7 +99956,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -99357,7 +100425,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -99466,7 +100534,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -99572,7 +100640,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -99634,7 +100702,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -99858,7 +100926,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -99932,7 +101000,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -99998,7 +101066,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -100443,7 +101511,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -100491,7 +101559,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -100565,7 +101633,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -100749,7 +101817,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -100811,7 +101879,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -101035,7 +102103,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -101109,7 +102177,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -101175,7 +102243,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -101470,7 +102538,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -101518,7 +102586,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -101592,7 +102660,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -101756,7 +102824,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -101934,7 +103002,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -102082,7 +103150,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -102752,7 +103820,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -102991,7 +104059,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103035,7 +104103,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -103099,7 +104167,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103135,7 +104203,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -103211,7 +104279,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103269,7 +104337,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103542,7 +104610,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103617,7 +104685,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -103680,7 +104748,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Computer Action
 
-- `BetaComputerAction = object { button, type, x, 2 more }  or object { keys, type, x, y }  or object { path, type, keys }  or 6 more`
+- `BetaComputerAction = Click { button, type, x, 2 more }  or DoubleClick { keys, type, x, y }  or Drag { path, type, keys }  or 6 more`
 
   A click action.
 
@@ -104544,7 +105612,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Mcp Tool Call Error
 
-- `BetaMcpToolCallError = object { code, message, type }  or object { content, type }  or object { code, message, type }`
+- `BetaMcpToolCallError = McpProtocolError { code, message, type }  or McpToolExecutionError { content, type }  or HTTPError { code, message, type }`
 
   - `McpProtocolError object { code, message, type }`
 
@@ -104707,7 +105775,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"steered"`
 
-  - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+  - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
     A system (or developer) message inserted into the model's context.
 
@@ -104720,7 +105788,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A text input to the model, equivalent to a text input with the
       `developer` role.
 
-    - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       A list of one or many input items to the model, containing
       different content types.
@@ -104948,7 +106016,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A text output from the model.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -105595,7 +106663,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -105711,7 +106779,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -105886,7 +106954,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -105936,7 +107004,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -106064,7 +107132,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -106206,7 +107274,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -106268,7 +107336,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -106492,7 +107560,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -106566,7 +107634,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -106632,7 +107700,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -107077,7 +108145,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -107125,7 +108193,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
 
@@ -107201,7 +108269,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -107389,7 +108457,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -107451,7 +108519,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -107675,7 +108743,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -107749,7 +108817,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -107815,7 +108883,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -108110,7 +109178,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -108158,7 +109226,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -108232,7 +109300,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -108659,7 +109727,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -108864,7 +109932,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -108918,7 +109986,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -108972,7 +110040,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -109018,7 +110086,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -109098,7 +110166,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -109156,7 +110224,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -109442,7 +110510,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -109504,7 +110572,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -110019,7 +111087,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -110114,7 +111182,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -110160,7 +111228,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -110360,7 +111428,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -110417,7 +111485,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -110841,7 +111909,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -110903,7 +111971,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -111127,7 +112195,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -111201,7 +112269,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -111267,7 +112335,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -111562,7 +112630,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -111610,7 +112678,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -111684,7 +112752,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -111868,7 +112936,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -111930,7 +112998,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -112154,7 +113222,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -112228,7 +113296,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -112294,7 +113362,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -112589,7 +113657,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -112637,7 +113705,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -112711,7 +113779,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -113015,7 +114083,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -113254,7 +114322,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -113298,7 +114366,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -113362,7 +114430,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -113398,7 +114466,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -113474,7 +114542,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -113532,7 +114600,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -113777,7 +114845,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -113861,7 +114929,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -114068,7 +115136,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"shell"`
 
-  - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+  - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
     An array of tools the model may call while generating a response. You
     can specify which tool to use by setting the `tool_choice` parameter.
@@ -114146,7 +115214,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The IDs of the vector stores to search.
 
-      - `filters: optional object { key, type, value }  or unknown or null`
+      - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
         A filter to apply.
 
@@ -114370,7 +115438,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+      - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -114444,7 +115512,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never" or null`
+      - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -114510,7 +115578,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A tool that runs Python code to help generate a response to a prompt.
 
-      - `container: string or object { type, file_ids, memory_limit, network_policy }`
+      - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
         The code interpreter container. Can be a container ID or an object that
         specifies uploaded file IDs to make available to your code, along with an
@@ -114805,7 +115873,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { definition, syntax, type }`
+      - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -114853,7 +115921,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace name used in tool calls (for example, `crm`).
 
-      - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+      - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
         The function/custom tools available inside this namespace.
 
@@ -114927,7 +115995,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -115106,7 +116174,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     Moderation results for the response input and output, if moderated completions were requested.
 
-    - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response input.
 
@@ -115162,7 +116230,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"error"`
 
-    - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+    - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
       Moderation for the response output.
 
@@ -115263,7 +116331,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Optional version of the prompt template.
 
-  - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+  - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
     Prompt cache diagnostics requested for this response.
 
@@ -116108,7 +117176,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -116121,7 +117189,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -116349,7 +117417,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -116996,7 +118064,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -117112,7 +118180,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -117287,7 +118355,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -117337,7 +118405,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -117465,7 +118533,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -117607,7 +118675,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -117669,7 +118737,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -117893,7 +118961,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -117967,7 +119035,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -118033,7 +119101,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -118478,7 +119546,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -118526,7 +119594,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -118602,7 +119670,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -118790,7 +119858,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -118852,7 +119920,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -119076,7 +120144,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -119150,7 +120218,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -119216,7 +120284,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -119511,7 +120579,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -119559,7 +120627,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -119633,7 +120701,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -120060,7 +121128,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -120265,7 +121333,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -120319,7 +121387,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -120373,7 +121441,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -120419,7 +121487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -120499,7 +121567,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -120557,7 +121625,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -120843,7 +121911,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -120905,7 +121973,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -121420,7 +122488,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -121515,7 +122583,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -121561,7 +122629,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -121761,7 +122829,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -121818,7 +122886,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -122242,7 +123310,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -122304,7 +123372,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -122528,7 +123596,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -122602,7 +123670,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -122668,7 +123736,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -122963,7 +124031,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -123011,7 +124079,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -123085,7 +124153,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -123269,7 +124337,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -123331,7 +124399,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -123555,7 +124623,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -123629,7 +124697,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -123695,7 +124763,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -123990,7 +125058,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -124038,7 +125106,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -124112,7 +125180,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -124416,7 +125484,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -124655,7 +125723,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -124699,7 +125767,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -124763,7 +125831,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -124799,7 +125867,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -124875,7 +125943,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -124933,7 +126001,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -125178,7 +126246,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -125262,7 +126330,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -125469,7 +126537,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -125547,7 +126615,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -125771,7 +126839,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -125845,7 +126913,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -125911,7 +126979,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -126206,7 +127274,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -126254,7 +127322,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -126328,7 +127396,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -126507,7 +127575,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -126563,7 +127631,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -126664,7 +127732,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -127239,7 +128307,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     A text output from the model.
 
-    - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+    - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
       The annotations of the text output.
 
@@ -127411,7 +128479,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     The index of the output item that the content part was added to.
 
-  - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
+  - `part: BetaResponseOutputText or BetaResponseOutputRefusal or ReasoningText { text, type }`
 
     The content part that was added.
 
@@ -127419,7 +128487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A text output from the model.
 
-      - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+      - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
         The annotations of the text output.
 
@@ -127609,7 +128677,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     The index of the output item that the content part was added to.
 
-  - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
+  - `part: BetaResponseOutputText or BetaResponseOutputRefusal or ReasoningText { text, type }`
 
     The content part that is done.
 
@@ -127617,7 +128685,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A text output from the model.
 
-      - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+      - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
         The annotations of the text output.
 
@@ -127938,7 +129006,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -127951,7 +129019,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -128179,7 +129247,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -128826,7 +129894,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -128942,7 +130010,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -129117,7 +130185,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -129167,7 +130235,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -129295,7 +130363,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -129437,7 +130505,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -129499,7 +130567,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -129723,7 +130791,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -129797,7 +130865,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -129863,7 +130931,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -130308,7 +131376,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -130356,7 +131424,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -130432,7 +131500,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -130620,7 +131688,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -130682,7 +131750,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -130906,7 +131974,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -130980,7 +132048,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -131046,7 +132114,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -131341,7 +132409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -131389,7 +132457,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -131463,7 +132531,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -131890,7 +132958,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -132095,7 +133163,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -132149,7 +133217,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -132203,7 +133271,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -132249,7 +133317,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -132329,7 +133397,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -132387,7 +133455,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -132673,7 +133741,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -132735,7 +133803,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -133250,7 +134318,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -133345,7 +134413,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -133391,7 +134459,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -133591,7 +134659,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -133648,7 +134716,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -134072,7 +135140,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -134134,7 +135202,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -134358,7 +135426,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -134432,7 +135500,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -134498,7 +135566,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -134793,7 +135861,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -134841,7 +135909,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -134915,7 +135983,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -135099,7 +136167,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -135161,7 +136229,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -135385,7 +136453,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -135459,7 +136527,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -135525,7 +136593,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -135820,7 +136888,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -135868,7 +136936,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -135942,7 +137010,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -136246,7 +137314,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -136485,7 +137553,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -136529,7 +137597,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -136593,7 +137661,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -136629,7 +137697,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -136705,7 +137773,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -136763,7 +137831,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -137008,7 +138076,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -137092,7 +138160,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -137299,7 +138367,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -137377,7 +138445,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -137601,7 +138669,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -137675,7 +138743,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -137741,7 +138809,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -138036,7 +139104,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -138084,7 +139152,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -138158,7 +139226,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -138337,7 +139405,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -138393,7 +139461,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -138494,7 +139562,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -139265,7 +140333,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -139278,7 +140346,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -139506,7 +140574,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -140153,7 +141221,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -140269,7 +141337,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -140444,7 +141512,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -140494,7 +141562,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -140622,7 +141690,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -140764,7 +141832,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -140826,7 +141894,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -141050,7 +142118,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -141124,7 +142192,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -141190,7 +142258,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -141635,7 +142703,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -141683,7 +142751,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -141759,7 +142827,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -141947,7 +143015,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -142009,7 +143077,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -142233,7 +143301,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -142307,7 +143375,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -142373,7 +143441,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -142668,7 +143736,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -142716,7 +143784,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -142790,7 +143858,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -143217,7 +144285,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -143422,7 +144490,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -143476,7 +144544,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -143530,7 +144598,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -143576,7 +144644,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -143656,7 +144724,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -143714,7 +144782,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -144000,7 +145068,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -144062,7 +145130,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -144577,7 +145645,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -144672,7 +145740,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -144718,7 +145786,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -144918,7 +145986,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -144975,7 +146043,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -145399,7 +146467,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -145461,7 +146529,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -145685,7 +146753,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -145759,7 +146827,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -145825,7 +146893,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -146120,7 +147188,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -146168,7 +147236,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -146242,7 +147310,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -146426,7 +147494,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -146488,7 +147556,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -146712,7 +147780,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -146786,7 +147854,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -146852,7 +147920,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -147147,7 +148215,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -147195,7 +148263,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -147269,7 +148337,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -147573,7 +148641,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -147812,7 +148880,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -147856,7 +148924,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -147920,7 +148988,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -147956,7 +149024,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -148032,7 +149100,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -148090,7 +149158,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -148335,7 +149403,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -148419,7 +149487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -148626,7 +149694,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -148704,7 +149772,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -148928,7 +149996,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -149002,7 +150070,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -149068,7 +150136,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -149363,7 +150431,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -149411,7 +150479,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -149485,7 +150553,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -149664,7 +150732,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -149720,7 +150788,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -149821,7 +150889,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -150339,7 +151407,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Format Text Config
 
-- `BetaResponseFormatTextConfig = object { type }  or BetaResponseFormatTextJSONSchemaConfig or object { type }`
+- `BetaResponseFormatTextConfig = Text { type }  or BetaResponseFormatTextJSONSchemaConfig or JSONObject { type }`
 
   An object specifying the format that the model must output.
 
@@ -150524,7 +151592,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   Captured stdout and stderr for a portion of a shell tool call output.
 
-  - `outcome: object { type }  or object { exit_code, type }`
+  - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
     The exit or timeout outcome associated with this shell call.
 
@@ -150851,7 +151919,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -150864,7 +151932,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -151092,7 +152160,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -151739,7 +152807,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -151855,7 +152923,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -152030,7 +153098,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -152080,7 +153148,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -152208,7 +153276,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -152350,7 +153418,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -152412,7 +153480,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -152636,7 +153704,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -152710,7 +153778,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -152776,7 +153844,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -153221,7 +154289,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -153269,7 +154337,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -153345,7 +154413,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -153533,7 +154601,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -153595,7 +154663,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -153819,7 +154887,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -153893,7 +154961,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -153959,7 +155027,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -154254,7 +155322,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -154302,7 +155370,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -154376,7 +155444,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -154803,7 +155871,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -155008,7 +156076,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -155062,7 +156130,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -155116,7 +156184,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -155162,7 +156230,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -155242,7 +156310,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -155300,7 +156368,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -155586,7 +156654,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -155648,7 +156716,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -156163,7 +157231,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -156258,7 +157326,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -156304,7 +157372,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -156504,7 +157572,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -156561,7 +157629,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -156985,7 +158053,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -157047,7 +158115,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -157271,7 +158339,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -157345,7 +158413,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -157411,7 +158479,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -157706,7 +158774,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -157754,7 +158822,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -157828,7 +158896,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -158012,7 +159080,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -158074,7 +159142,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -158298,7 +159366,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -158372,7 +159440,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -158438,7 +159506,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -158733,7 +159801,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -158781,7 +159849,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -158855,7 +159923,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -159159,7 +160227,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -159398,7 +160466,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -159442,7 +160510,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -159506,7 +160574,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -159542,7 +160610,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -159618,7 +160686,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -159676,7 +160744,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -159921,7 +160989,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -160005,7 +161073,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -160212,7 +161280,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -160290,7 +161358,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -160514,7 +161582,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -160588,7 +161656,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -160654,7 +161722,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -160949,7 +162017,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -160997,7 +162065,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -161071,7 +162139,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -161250,7 +162318,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -161306,7 +162374,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -161407,7 +162475,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -162001,7 +163069,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -162014,7 +163082,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -162242,7 +163310,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -162889,7 +163957,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -163005,7 +164073,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -163180,7 +164248,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -163230,7 +164298,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -163358,7 +164426,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -163500,7 +164568,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -163562,7 +164630,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -163786,7 +164854,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -163860,7 +164928,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -163926,7 +164994,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -164371,7 +165439,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -164419,7 +165487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -164495,7 +165563,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -164683,7 +165751,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -164745,7 +165813,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -164969,7 +166037,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -165043,7 +166111,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -165109,7 +166177,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -165404,7 +166472,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -165452,7 +166520,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -165526,7 +166594,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -165953,7 +167021,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -166158,7 +167226,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -166212,7 +167280,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -166266,7 +167334,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -166312,7 +167380,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -166392,7 +167460,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -166450,7 +167518,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -166736,7 +167804,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -166798,7 +167866,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -167313,7 +168381,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -167408,7 +168476,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -167454,7 +168522,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -167654,7 +168722,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -167711,7 +168779,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -168135,7 +169203,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -168197,7 +169265,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -168421,7 +169489,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -168495,7 +169563,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -168561,7 +169629,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -168856,7 +169924,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -168904,7 +169972,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -168978,7 +170046,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -169162,7 +170230,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -169224,7 +170292,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -169448,7 +170516,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -169522,7 +170590,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -169588,7 +170656,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -169883,7 +170951,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -169931,7 +170999,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -170005,7 +171073,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -170309,7 +171377,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -170548,7 +171616,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -170592,7 +171660,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -170656,7 +171724,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -170692,7 +171760,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -170768,7 +171836,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -170826,7 +171894,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -171071,7 +172139,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -171155,7 +172223,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -171362,7 +172430,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -171440,7 +172508,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -171664,7 +172732,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -171738,7 +172806,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -171804,7 +172872,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -172099,7 +173167,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -172147,7 +173215,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -172221,7 +173289,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -172400,7 +173468,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -172456,7 +173524,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -172557,7 +173625,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -173011,7 +174079,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
   The items are validated and committed atomically. Currently, the server
   accepts client-owned tool outputs that resume a waiting agent.
 
-  - `input: array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+  - `input: array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
     Input items to inject into the active response.
 
@@ -173238,7 +174306,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -173885,7 +174953,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -174001,7 +175069,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -174176,7 +175244,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -174226,7 +175294,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
         Plaintext, image, or encrypted content sent between agents.
 
@@ -174354,7 +175422,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
@@ -174496,7 +175564,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
@@ -174558,7 +175626,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -174782,7 +175850,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -174856,7 +175924,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -174922,7 +175990,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -175367,7 +176435,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -175415,7 +176483,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools loaded inside this namespace.
 
@@ -175491,7 +176559,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -175679,7 +176747,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
@@ -175741,7 +176809,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -175965,7 +177033,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -176039,7 +177107,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -176105,7 +177173,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -176400,7 +177468,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -176448,7 +177516,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -176522,7 +177590,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -176949,7 +178017,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -177154,7 +178222,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177208,7 +178276,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           The exit or timeout outcome associated with this shell call.
 
@@ -177262,7 +178330,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177308,7 +178376,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -177388,7 +178456,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177446,7 +178514,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177732,7 +178800,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177794,7 +178862,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -177964,7 +179032,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A human-readable description of the error.
 
-  - `input: array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+  - `input: array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
     The raw input items that were not committed.
 
@@ -178191,7 +179259,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -178838,7 +179906,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -178954,7 +180022,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -179129,7 +180197,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -179179,7 +180247,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
         Plaintext, image, or encrypted content sent between agents.
 
@@ -179307,7 +180375,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
@@ -179449,7 +180517,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
@@ -179511,7 +180579,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -179735,7 +180803,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -179809,7 +180877,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -179875,7 +180943,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -180320,7 +181388,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -180368,7 +181436,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools loaded inside this namespace.
 
@@ -180444,7 +181512,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -180632,7 +181700,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
@@ -180694,7 +181762,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -180918,7 +181986,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -180992,7 +182060,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -181058,7 +182126,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -181353,7 +182421,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -181401,7 +182469,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -181475,7 +182543,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -181902,7 +182970,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -182107,7 +183175,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -182161,7 +183229,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           The exit or timeout outcome associated with this shell call.
 
@@ -182215,7 +183283,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -182261,7 +183329,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -182341,7 +183409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -182399,7 +183467,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -182685,7 +183753,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -182747,7 +183815,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -183850,7 +184918,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Output Item
 
-- `BetaResponseOutputItem = BetaResponseOutputMessage or object { id, queries, status, 3 more }  or object { arguments, call_id, name, 7 more }  or 28 more`
+- `BetaResponseOutputItem = BetaResponseOutputMessage or FileSearchCall { id, queries, status, 3 more }  or FunctionCall { arguments, call_id, name, 7 more }  or 28 more`
 
   An output message from the model.
 
@@ -183870,7 +184938,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A text output from the model.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -184166,7 +185234,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Whether the function tool call runs asynchronously.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -184359,7 +185427,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The unique ID of the function tool call generated by the model.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -184405,7 +185473,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The sending agent identity.
 
-    - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+    - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
       Encrypted content sent between agents.
 
@@ -184605,7 +185673,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Text output returned by the multi-agent action.
 
-      - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+      - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
         The annotations of the text output.
 
@@ -184662,7 +185730,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"web_search_call"`
 
-    - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+    - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
@@ -185328,7 +186396,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"incomplete"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       The loaded tool definitions returned by tool search.
 
@@ -185390,7 +186458,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -185614,7 +186682,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -185688,7 +186756,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -185754,7 +186822,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -186199,7 +187267,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -186247,7 +187315,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -186321,7 +187389,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -186505,7 +187573,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"tool"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       The additional tool definitions made available at this item.
 
@@ -186567,7 +187635,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -186791,7 +187859,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -186865,7 +187933,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -186931,7 +187999,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -187226,7 +188294,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -187274,7 +188342,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -187348,7 +188416,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -187652,7 +188720,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The ID of the container used to run the code.
 
-    - `outputs: array of object { logs, type }  or object { type, url }  or null`
+    - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
       The outputs generated by the code interpreter, such as logs or images.
       Can be null if no outputs are available.
@@ -187891,7 +188959,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -187935,7 +189003,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       An array of shell call output contents
 
-      - `outcome: object { type }  or object { exit_code, type }`
+      - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
         Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -187999,7 +189067,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -188035,7 +189103,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The unique ID of the apply patch tool call generated by the model.
 
-    - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+    - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
       One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -188111,7 +189179,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -188169,7 +189237,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -188442,7 +189510,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Whether the custom tool call runs asynchronously.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -188526,7 +189594,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-    - `caller: optional object { type }  or object { caller_id, type }  or null`
+    - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
       The execution context that produced this tool call.
 
@@ -188583,7 +189651,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -188879,7 +189947,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -189072,7 +190140,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -189118,7 +190186,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -189318,7 +190386,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -189375,7 +190443,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -190041,7 +191109,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -190103,7 +191171,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -190327,7 +191395,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -190401,7 +191469,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -190467,7 +191535,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -190912,7 +191980,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -190960,7 +192028,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -191034,7 +192102,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -191218,7 +192286,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -191280,7 +192348,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -191504,7 +192572,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -191578,7 +192646,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -191644,7 +192712,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -191939,7 +193007,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -191987,7 +193055,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -192061,7 +193129,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -192365,7 +193433,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -192604,7 +193672,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -192648,7 +193716,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -192712,7 +193780,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -192748,7 +193816,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -192824,7 +193892,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -192882,7 +193950,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -193155,7 +194223,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -193239,7 +194307,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -193315,7 +194383,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -193611,7 +194679,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -193804,7 +194872,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -193850,7 +194918,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -194050,7 +195118,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -194107,7 +195175,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -194773,7 +195841,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -194835,7 +195903,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -195059,7 +196127,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -195133,7 +196201,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -195199,7 +196267,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -195644,7 +196712,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -195692,7 +196760,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -195766,7 +196834,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -195950,7 +197018,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -196012,7 +197080,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -196236,7 +197304,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -196310,7 +197378,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -196376,7 +197444,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -196671,7 +197739,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -196719,7 +197787,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -196793,7 +197861,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -197097,7 +198165,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -197336,7 +198404,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -197380,7 +198448,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -197444,7 +198512,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -197480,7 +198548,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -197556,7 +198624,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -197614,7 +198682,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -197887,7 +198955,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -197971,7 +199039,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -198039,7 +199107,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A text output from the model.
 
-      - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+      - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
         The annotations of the text output.
 
@@ -198242,7 +199310,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   A text output from the model.
 
-  - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+  - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
     The annotations of the text output.
 
@@ -198374,7 +199442,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   Emitted when an annotation is added to output text content.
 
-  - `annotation: object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }  or null`
+  - `annotation: FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }  or null`
 
     The annotation object being added. (See annotation schema for details.)
 
@@ -198780,7 +199848,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"steered"`
 
-    - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+    - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
       A system (or developer) message inserted into the model's context.
 
@@ -198793,7 +199861,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `developer` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -199021,7 +200089,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -199668,7 +200736,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -199784,7 +200852,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -199959,7 +201027,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -200009,7 +201077,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -200137,7 +201205,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -200279,7 +201347,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -200341,7 +201409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -200565,7 +201633,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -200639,7 +201707,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -200705,7 +201773,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -201150,7 +202218,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -201198,7 +202266,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -201274,7 +202342,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -201462,7 +202530,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -201524,7 +202592,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -201748,7 +202816,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -201822,7 +202890,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -201888,7 +202956,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -202183,7 +203251,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -202231,7 +203299,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -202305,7 +203373,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -202732,7 +203800,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -202937,7 +204005,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -202991,7 +204059,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -203045,7 +204113,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -203091,7 +204159,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -203171,7 +204239,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -203229,7 +204297,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -203515,7 +204583,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -203577,7 +204645,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -204092,7 +205160,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -204187,7 +205255,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -204233,7 +205301,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+        - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
           Encrypted content sent between agents.
 
@@ -204433,7 +205501,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Text output returned by the multi-agent action.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -204490,7 +205558,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -204914,7 +205982,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by tool search.
 
@@ -204976,7 +206044,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -205200,7 +206268,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -205274,7 +206342,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -205340,7 +206408,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -205635,7 +206703,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -205683,7 +206751,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -205757,7 +206825,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -205941,7 +207009,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"tool"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The additional tool definitions made available at this item.
 
@@ -206003,7 +207071,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -206227,7 +207295,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -206301,7 +207369,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -206367,7 +207435,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -206662,7 +207730,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -206710,7 +207778,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -206784,7 +207852,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -207088,7 +208156,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -207327,7 +208395,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -207371,7 +208439,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An array of shell call output contents
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -207435,7 +208503,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -207471,7 +208539,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -207547,7 +208615,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -207605,7 +208673,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -207850,7 +208918,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -207934,7 +209002,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -208141,7 +209209,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -208219,7 +209287,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -208443,7 +209511,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -208517,7 +209585,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -208583,7 +209651,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -208878,7 +209946,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -208926,7 +209994,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -209000,7 +210068,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -209179,7 +210247,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Moderation results for the response input and output, if moderated completions were requested.
 
-      - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response input.
 
@@ -209235,7 +210303,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"error"`
 
-      - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+      - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
         Moderation for the response output.
 
@@ -209336,7 +210404,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional version of the prompt template.
 
-    - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+    - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
       Prompt cache diagnostics requested for this response.
 
@@ -210281,7 +211349,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     The output contents emitted for the shell command.
 
-    - `outcome: object { type }  or object { exit_code, type }`
+    - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
       Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -210497,7 +211565,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       A text input, equivalent to a message with the `user` role.
 
-    - `ResponseSteerInputItemList = array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+    - `ResponseSteerInputItemList = array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
       A non-empty list of message inputs to queue for the response.
 
@@ -210701,7 +211769,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -210846,7 +211914,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A text input, equivalent to a message with the `user` role.
 
-      - `ResponseSteerInputItemList = array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+      - `ResponseSteerInputItemList = array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
         A non-empty list of message inputs to queue for the response.
 
@@ -211050,7 +212118,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -211113,7 +212181,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Steer Input
 
-- `BetaResponseSteerInput = string or array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+- `BetaResponseSteerInput = string or array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
   Input to queue for a continuation of the response. Uses the same string or
   input-item shape as `response.create.input`, with a non-empty array when
@@ -211129,7 +212197,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     A text input, equivalent to a message with the `user` role.
 
-  - `ResponseSteerInputItemList = array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+  - `ResponseSteerInputItemList = array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
     A non-empty list of message inputs to queue for the response.
 
@@ -211333,7 +212401,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -211556,7 +212624,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Steer Required Input
 
-- `BetaResponseSteerRequiredInput = object { call_id, name, type }  or object { call_id, type }  or object { call_id, type }  or 4 more`
+- `BetaResponseSteerRequiredInput = FunctionCallOutput { call_id, name, type }  or CustomToolCallOutput { call_id, type }  or ComputerCallOutput { call_id, type }  or 4 more`
 
   An input stub identifying an outstanding client-owned tool result or
   approval decision. Copy the stub and fill the result fields using the
@@ -212074,7 +213142,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"steered"`
 
-      - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+      - `instructions: string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
         A system (or developer) message inserted into the model's context.
 
@@ -212087,7 +213155,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           A text input to the model, equivalent to a text input with the
           `developer` role.
 
-        - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+        - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
           A list of one or many input items to the model, containing
           different content types.
@@ -212315,7 +213383,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 A text output from the model.
 
-                - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+                - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                   The annotations of the text output.
 
@@ -212962,7 +214030,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"web_search_call"`
 
-            - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+            - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
               An object describing the specific action taken in this web search call.
               Includes details on how the model used the web (search, open_page, find_in_page).
@@ -213078,7 +214146,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Whether the function tool call runs asynchronously.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -213253,7 +214321,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The unique ID of the function tool call generated by the model.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -213303,7 +214371,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The sending agent identity.
 
-            - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+            - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
               Plaintext, image, or encrypted content sent between agents.
 
@@ -213431,7 +214499,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"output_text"`
 
-              - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+              - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
                 Citations associated with the text content.
 
@@ -213573,7 +214641,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-            - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+            - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
               The loaded tool definitions returned by the tool search output.
 
@@ -213635,7 +214703,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   The IDs of the vector stores to search.
 
-                - `filters: optional object { key, type, value }  or unknown or null`
+                - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                   A filter to apply.
 
@@ -213859,7 +214927,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"programmatic"`
 
-                - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+                - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                   List of allowed tool names or a filter object.
 
@@ -213933,7 +215001,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   Optional HTTP headers to send to the MCP server. Use for authentication
                   or other purposes.
 
-                - `require_approval: optional object { always, never }  or "always" or "never" or null`
+                - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                   Specify which of the MCP server's tools require approval.
 
@@ -213999,7 +215067,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 A tool that runs Python code to help generate a response to a prompt.
 
-                - `container: string or object { type, file_ids, memory_limit, network_policy }`
+                - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                   The code interpreter container. Can be a container ID or an object that
                   specifies uploaded file IDs to make available to your code, along with an
@@ -214444,7 +215512,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -214492,7 +215560,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   The namespace name used in tool calls (for example, `crm`).
 
-                - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+                - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                   The function/custom tools loaded inside this namespace.
 
@@ -214568,7 +215636,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                       Optional description of the custom tool, used to provide more context.
 
-                    - `format: optional object { type }  or object { definition, syntax, type }`
+                    - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                       The input format for the custom tool. Default is unconstrained text.
 
@@ -214756,7 +215824,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"developer"`
 
-            - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+            - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
               A list of additional tools made available at this item.
 
@@ -214818,7 +215886,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   The IDs of the vector stores to search.
 
-                - `filters: optional object { key, type, value }  or unknown or null`
+                - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                   A filter to apply.
 
@@ -215042,7 +216110,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"programmatic"`
 
-                - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+                - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                   List of allowed tool names or a filter object.
 
@@ -215116,7 +216184,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   Optional HTTP headers to send to the MCP server. Use for authentication
                   or other purposes.
 
-                - `require_approval: optional object { always, never }  or "always" or "never" or null`
+                - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                   Specify which of the MCP server's tools require approval.
 
@@ -215182,7 +216250,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 A tool that runs Python code to help generate a response to a prompt.
 
-                - `container: string or object { type, file_ids, memory_limit, network_policy }`
+                - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                   The code interpreter container. Can be a container ID or an object that
                   specifies uploaded file IDs to make available to your code, along with an
@@ -215477,7 +216545,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -215525,7 +216593,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   The namespace name used in tool calls (for example, `crm`).
 
-                - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+                - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                   The function/custom tools available inside this namespace.
 
@@ -215599,7 +216667,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                       Optional description of the custom tool, used to provide more context.
 
-                    - `format: optional object { type }  or object { definition, syntax, type }`
+                    - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                       The input format for the custom tool. Default is unconstrained text.
 
@@ -216026,7 +217094,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The ID of the container used to run the code.
 
-            - `outputs: array of object { logs, type }  or object { type, url }  or null`
+            - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
               The outputs generated by the code interpreter, such as logs or images.
               Can be null if no outputs are available.
@@ -216231,7 +217299,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -216285,7 +217353,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-              - `outcome: object { type }  or object { exit_code, type }`
+              - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
                 The exit or timeout outcome associated with this shell call.
 
@@ -216339,7 +217407,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -216385,7 +217453,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The unique ID of the apply patch tool call generated by the model.
 
-            - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+            - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
               The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -216465,7 +217533,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -216523,7 +217591,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -216809,7 +217877,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -216871,7 +217939,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Whether the custom tool call runs asynchronously.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -217386,7 +218454,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -217481,7 +218549,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -217527,7 +218595,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+          - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
             Encrypted content sent between agents.
 
@@ -217727,7 +218795,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Text output returned by the multi-agent action.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -217784,7 +218852,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -218208,7 +219276,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by tool search.
 
@@ -218270,7 +219338,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -218494,7 +219562,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -218568,7 +219636,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -218634,7 +219702,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -218929,7 +219997,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -218977,7 +220045,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -219051,7 +220119,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -219235,7 +220303,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"tool"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The additional tool definitions made available at this item.
 
@@ -219297,7 +220365,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -219521,7 +220589,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -219595,7 +220663,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -219661,7 +220729,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -219956,7 +221024,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -220004,7 +221072,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -220078,7 +221146,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -220382,7 +221450,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -220621,7 +221689,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -220665,7 +221733,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             An array of shell call output contents
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -220729,7 +221797,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -220765,7 +221833,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -220841,7 +221909,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -220899,7 +221967,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -221144,7 +222212,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -221228,7 +222296,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -221435,7 +222503,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"shell"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         An array of tools the model may call while generating a response. You
         can specify which tool to use by setting the `tool_choice` parameter.
@@ -221513,7 +222581,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -221737,7 +222805,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -221811,7 +222879,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -221877,7 +222945,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -222172,7 +223240,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -222220,7 +223288,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -222294,7 +223362,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -222473,7 +223541,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Moderation results for the response input and output, if moderated completions were requested.
 
-        - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+        - `input: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
           Moderation for the response input.
 
@@ -222529,7 +223597,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"error"`
 
-        - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
+        - `output: ModerationResult { categories, category_applied_input_types, category_scores, 3 more }  or Error { code, message, type }`
 
           Moderation for the response output.
 
@@ -222630,7 +223698,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional version of the prompt template.
 
-      - `prompt_cache_diagnostics: optional object { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or object { type }  or object { type }  or object { type }`
+      - `prompt_cache_diagnostics: optional CacheMiss { cache_missed_tokens, reason, type, comparison_reusable_tokens }  or CacheHit { type }  or ComparisonResponseNotFound { type }  or Unavailable { type }`
 
         Prompt cache diagnostics requested for this response.
 
@@ -223066,7 +224134,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The index of the output item that the content part was added to.
 
-    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
+    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or ReasoningText { text, type }`
 
       The content part that was added.
 
@@ -223126,7 +224194,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The index of the output item that the content part was added to.
 
-    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
+    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or ReasoningText { text, type }`
 
       The content part that is done.
 
@@ -223554,7 +224622,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The output contents emitted for the shell command.
 
-      - `outcome: object { type }  or object { exit_code, type }`
+      - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
         Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -224811,7 +225879,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     Emitted when an annotation is added to output text content.
 
-    - `annotation: object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }  or null`
+    - `annotation: FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }  or null`
 
       The annotation object being added. (See annotation schema for details.)
 
@@ -225401,7 +226469,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Responses Client Event
 
-- `BetaResponsesClientEvent = object { type, access_programs, background, 32 more }  or BetaResponseSteerEvent or BetaResponseInjectEvent`
+- `BetaResponsesClientEvent = ResponseCreate { type, access_programs, background, 32 more }  or BetaResponseSteerEvent or BetaResponseInjectEvent`
 
   Client events accepted by the Responses WebSocket server.
 
@@ -225499,7 +226567,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"message.output_text.logprobs"`
 
-    - `input: optional string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `input: optional string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       Text, image, or file inputs to the model, used to generate a response.
 
@@ -225516,7 +226584,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A text input to the model, equivalent to a text input with the
         `user` role.
 
-      - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+      - `InputItemList = array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
         A list of one or many input items to the model, containing
         different content types.
@@ -225744,7 +226812,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text output from the model.
 
-              - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+              - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
                 The annotations of the text output.
 
@@ -226391,7 +227459,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"web_search_call"`
 
-          - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+          - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
             An object describing the specific action taken in this web search call.
             Includes details on how the model used the web (search, open_page, find_in_page).
@@ -226507,7 +227575,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the function tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -226682,7 +227750,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -226732,7 +227800,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The sending agent identity.
 
-          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+          - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
             Plaintext, image, or encrypted content sent between agents.
 
@@ -226860,7 +227928,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"output_text"`
 
-            - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+            - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
               Citations associated with the text content.
 
@@ -227002,7 +228070,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             The loaded tool definitions returned by the tool search output.
 
@@ -227064,7 +228132,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -227288,7 +228356,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -227362,7 +228430,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -227428,7 +228496,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -227873,7 +228941,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -227921,7 +228989,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools loaded inside this namespace.
 
@@ -227997,7 +229065,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -228185,7 +229253,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"developer"`
 
-          - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+          - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
             A list of additional tools made available at this item.
 
@@ -228247,7 +229315,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The IDs of the vector stores to search.
 
-              - `filters: optional object { key, type, value }  or unknown or null`
+              - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
                 A filter to apply.
 
@@ -228471,7 +229539,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic"`
 
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+              - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
                 List of allowed tool names or a filter object.
 
@@ -228545,7 +229613,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 Optional HTTP headers to send to the MCP server. Use for authentication
                 or other purposes.
 
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
+              - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
                 Specify which of the MCP server's tools require approval.
 
@@ -228611,7 +229679,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A tool that runs Python code to help generate a response to a prompt.
 
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
+              - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
                 The code interpreter container. Can be a container ID or an object that
                 specifies uploaded file IDs to make available to your code, along with an
@@ -228906,7 +229974,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -228954,7 +230022,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The namespace name used in tool calls (for example, `crm`).
 
-              - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+              - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
                 The function/custom tools available inside this namespace.
 
@@ -229028,7 +230096,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Optional description of the custom tool, used to provide more context.
 
-                  - `format: optional object { type }  or object { definition, syntax, type }`
+                  - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                     The input format for the custom tool. Default is unconstrained text.
 
@@ -229455,7 +230523,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The ID of the container used to run the code.
 
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
+          - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
             The outputs generated by the code interpreter, such as logs or images.
             Can be null if no outputs are available.
@@ -229660,7 +230728,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -229714,7 +230782,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-            - `outcome: object { type }  or object { exit_code, type }`
+            - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
               The exit or timeout outcome associated with this shell call.
 
@@ -229768,7 +230836,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -229814,7 +230882,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the apply patch tool call generated by the model.
 
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+          - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
             The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -229894,7 +230962,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -229952,7 +231020,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -230238,7 +231306,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -230300,7 +231368,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Whether the custom tool call runs asynchronously.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -231262,7 +232330,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"shell"`
 
-    - `tools: optional array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+    - `tools: optional array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
       An array of tools the model may call while generating a response. You
       can specify which tool to use by setting the `tool_choice` parameter.
@@ -231340,7 +232408,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The IDs of the vector stores to search.
 
-        - `filters: optional object { key, type, value }  or unknown or null`
+        - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
           A filter to apply.
 
@@ -231564,7 +232632,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+        - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -231638,7 +232706,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never" or null`
+        - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -231704,7 +232772,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A tool that runs Python code to help generate a response to a prompt.
 
-        - `container: string or object { type, file_ids, memory_limit, network_policy }`
+        - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
           The code interpreter container. Can be a container ID or an object that
           specifies uploaded file IDs to make available to your code, along with an
@@ -231999,7 +233067,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -232047,7 +233115,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace name used in tool calls (for example, `crm`).
 
-        - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+        - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
           The function/custom tools available inside this namespace.
 
@@ -232121,7 +233189,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -232344,7 +233412,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A text input, equivalent to a message with the `user` role.
 
-      - `ResponseSteerInputItemList = array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+      - `ResponseSteerInputItemList = array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
         A non-empty list of message inputs to queue for the response.
 
@@ -232450,7 +233518,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The unique ID of the function tool call generated by the model.
 
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
+          - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
             The execution context that produced this tool call.
 
@@ -232508,7 +233576,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     The items are validated and committed atomically. Currently, the server
     accepts client-owned tool outputs that resume a waiting agent.
 
-    - `input: array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `input: array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       Input items to inject into the active response.
 
@@ -232794,7 +233862,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -232910,7 +233978,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -232995,7 +234063,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -233045,7 +234113,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -233173,7 +234241,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -233315,7 +234383,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -233377,7 +234445,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -233601,7 +234669,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -233675,7 +234743,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -233741,7 +234809,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -234036,7 +235104,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -234222,7 +235290,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -234284,7 +235352,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -234508,7 +235576,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -234582,7 +235650,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -234648,7 +235716,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -234943,7 +236011,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -234991,7 +236059,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -235065,7 +236133,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -235492,7 +236560,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -235697,7 +236765,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -235751,7 +236819,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -235781,7 +236849,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -235827,7 +236895,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -235907,7 +236975,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -235965,7 +237033,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -236223,7 +237291,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -236285,7 +237353,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -237398,7 +238466,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A text input, equivalent to a message with the `user` role.
 
-        - `ResponseSteerInputItemList = array of object { content, role, type, 3 more }  or object { output, type, id, 6 more }`
+        - `ResponseSteerInputItemList = array of Message { content, role, type, 3 more }  or FunctionCallOutput { output, type, id, 6 more }`
 
           A non-empty list of message inputs to queue for the response.
 
@@ -237602,7 +238670,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The unique ID of the function tool call generated by the model.
 
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
+            - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
               The execution context that produced this tool call.
 
@@ -237709,7 +238777,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A human-readable description of the error.
 
-    - `input: array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+    - `input: array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
       The raw input items that were not committed.
 
@@ -237928,7 +238996,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A text output from the model.
 
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+            - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
               The annotations of the text output.
 
@@ -238575,7 +239643,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"web_search_call"`
 
-        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -238691,7 +239759,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the function tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -238776,7 +239844,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the function tool call generated by the model.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -238826,7 +239894,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The sending agent identity.
 
-        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+        - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
           Plaintext, image, or encrypted content sent between agents.
 
@@ -238954,7 +240022,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"output_text"`
 
-          - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+          - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
             Citations associated with the text content.
 
@@ -239096,7 +240164,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           The loaded tool definitions returned by the tool search output.
 
@@ -239158,7 +240226,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -239382,7 +240450,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -239456,7 +240524,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -239522,7 +240590,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -239967,7 +241035,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -240015,7 +241083,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
 
@@ -240091,7 +241159,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -240279,7 +241347,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"developer"`
 
-        - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
           A list of additional tools made available at this item.
 
@@ -240341,7 +241409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or unknown or null`
+            - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -240565,7 +241633,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+            - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -240639,7 +241707,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -240705,7 +241773,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A tool that runs Python code to help generate a response to a prompt.
 
-            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+            - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
               The code interpreter container. Can be a container ID or an object that
               specifies uploaded file IDs to make available to your code, along with an
@@ -241000,7 +242068,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Optional description of the custom tool, used to provide more context.
 
-            - `format: optional object { type }  or object { definition, syntax, type }`
+            - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
               The input format for the custom tool. Default is unconstrained text.
 
@@ -241048,7 +242116,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+            - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
@@ -241122,7 +242190,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Optional description of the custom tool, used to provide more context.
 
-                - `format: optional object { type }  or object { definition, syntax, type }`
+                - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                   The input format for the custom tool. Default is unconstrained text.
 
@@ -241549,7 +242617,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The ID of the container used to run the code.
 
-        - `outputs: array of object { logs, type }  or object { type, url }  or null`
+        - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
@@ -241754,7 +242822,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -241808,7 +242876,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-          - `outcome: object { type }  or object { exit_code, type }`
+          - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
 
@@ -241862,7 +242930,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -241908,7 +242976,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the apply patch tool call generated by the model.
 
-        - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+        - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -241988,7 +243056,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -242046,7 +243114,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -242332,7 +243400,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -242394,7 +243462,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Whether the custom tool call runs asynchronously.
 
-        - `caller: optional object { type }  or object { caller_id, type }  or null`
+        - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
 
@@ -242782,7 +243850,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     The namespace name used in tool calls (for example, `crm`).
 
-  - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+  - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
     The function/custom tools loaded inside this namespace.
 
@@ -242858,7 +243926,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Optional description of the custom tool, used to provide more context.
 
-      - `format: optional object { type }  or object { definition, syntax, type }`
+      - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
         The input format for the custom tool. Default is unconstrained text.
 
@@ -242967,7 +244035,7 @@ Returns a list of input items for a given response.
 
   A list of Response items.
 
-  - `data: array of BetaResponseInputMessageItem or BetaResponseOutputMessage or object { id, queries, status, 3 more }  or 30 more`
+  - `data: array of BetaResponseInputMessageItem or BetaResponseOutputMessage or FileSearchCall { id, queries, status, 3 more }  or 30 more`
 
     A list of items used to generate this response.
 
@@ -243143,7 +244211,7 @@ Returns a list of input items for a given response.
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -243796,7 +244864,7 @@ Returns a list of input items for a given response.
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -243920,7 +244988,7 @@ Returns a list of input items for a given response.
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -244008,7 +245076,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -244054,7 +245122,7 @@ Returns a list of input items for a given response.
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -244254,7 +245322,7 @@ Returns a list of input items for a given response.
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -244360,7 +245428,7 @@ Returns a list of input items for a given response.
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -244422,7 +245490,7 @@ Returns a list of input items for a given response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -244646,7 +245714,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -244720,7 +245788,7 @@ Returns a list of input items for a given response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -244786,7 +245854,7 @@ Returns a list of input items for a given response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -245231,7 +246299,7 @@ Returns a list of input items for a given response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -245279,7 +246347,7 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -245353,7 +246421,7 @@ Returns a list of input items for a given response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -245537,7 +246605,7 @@ Returns a list of input items for a given response.
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -245599,7 +246667,7 @@ Returns a list of input items for a given response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -245823,7 +246891,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -245897,7 +246965,7 @@ Returns a list of input items for a given response.
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -245963,7 +247031,7 @@ Returns a list of input items for a given response.
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -246258,7 +247326,7 @@ Returns a list of input items for a given response.
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -246306,7 +247374,7 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -246380,7 +247448,7 @@ Returns a list of input items for a given response.
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -246874,7 +247942,7 @@ Returns a list of input items for a given response.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -247113,7 +248181,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247157,7 +248225,7 @@ Returns a list of input items for a given response.
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -247221,7 +248289,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247257,7 +248325,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -247333,7 +248401,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247391,7 +248459,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247673,7 +248741,7 @@ Returns a list of input items for a given response.
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247761,7 +248829,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -247885,7 +248953,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
   A list of Response items.
 
-  - `data: array of BetaResponseInputMessageItem or BetaResponseOutputMessage or object { id, queries, status, 3 more }  or 30 more`
+  - `data: array of BetaResponseInputMessageItem or BetaResponseOutputMessage or FileSearchCall { id, queries, status, 3 more }  or 30 more`
 
     A list of items used to generate this response.
 
@@ -248061,7 +249129,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -248714,7 +249782,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -248838,7 +249906,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -248926,7 +249994,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -248972,7 +250040,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
+      - `content: array of BetaResponseInputText or BetaResponseOutputText or Text { text, type }  or 7 more`
 
         Encrypted content sent between agents.
 
@@ -249172,7 +250240,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         Text output returned by the multi-agent action.
 
-        - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+        - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
           The annotations of the text output.
 
@@ -249278,7 +250346,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"incomplete"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by tool search.
 
@@ -249340,7 +250408,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -249564,7 +250632,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -249638,7 +250706,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -249704,7 +250772,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -250149,7 +251217,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -250197,7 +251265,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -250271,7 +251339,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -250455,7 +251523,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"tool"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The additional tool definitions made available at this item.
 
@@ -250517,7 +251585,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -250741,7 +251809,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -250815,7 +251883,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -250881,7 +251949,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -251176,7 +252244,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -251224,7 +252292,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -251298,7 +252366,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -251792,7 +252860,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -252031,7 +253099,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252075,7 +253143,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         An array of shell call output contents
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
@@ -252139,7 +253207,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252175,7 +253243,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
@@ -252251,7 +253319,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252309,7 +253377,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252591,7 +253659,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252679,7 +253747,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -252760,7 +253828,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The unique ID of the conversation.
 
-- `input: optional string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
+- `input: optional string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
   Text, image, or file inputs to the model, used to generate a response
 
@@ -252768,7 +253836,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
+  - `array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -252995,7 +254063,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           A text output from the model.
 
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+          - `annotations: array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }  or FilePath { file_id, index, type }`
 
             The annotations of the text output.
 
@@ -253642,7 +254710,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"web_search_call"`
 
-      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `action: optional Search { type, queries, query, sources }  or OpenPage { type, url }  or FindInPage { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -253758,7 +254826,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Whether the function tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -253933,7 +255001,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the function tool call generated by the model.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -253983,7 +255051,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The sending agent identity.
 
-      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
+      - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or EncryptedContent { encrypted_content, type }`
 
         Plaintext, image, or encrypted content sent between agents.
 
@@ -254111,7 +255179,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `"output_text"`
 
-        - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
+        - `annotations: optional array of FileCitation { file_id, filename, index, type }  or URLCitation { end_index, start_index, title, 2 more }  or ContainerFileCitation { container_id, end_index, file_id, 3 more }`
 
           Citations associated with the text content.
 
@@ -254253,7 +255321,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `ToolSearchOutput object { tools, type, id, 4 more }`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
@@ -254315,7 +255383,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -254539,7 +255607,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -254613,7 +255681,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -254679,7 +255747,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -255124,7 +256192,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -255172,7 +256240,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools loaded inside this namespace.
 
@@ -255248,7 +256316,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -255436,7 +256504,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
@@ -255498,7 +256566,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or unknown or null`
+          - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -255722,7 +256790,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+          - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -255796,7 +256864,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -255862,7 +256930,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           A tool that runs Python code to help generate a response to a prompt.
 
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
+          - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
             The code interpreter container. Can be a container ID or an object that
             specifies uploaded file IDs to make available to your code, along with an
@@ -256157,7 +257225,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Optional description of the custom tool, used to provide more context.
 
-          - `format: optional object { type }  or object { definition, syntax, type }`
+          - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
             The input format for the custom tool. Default is unconstrained text.
 
@@ -256205,7 +257273,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+          - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
@@ -256279,7 +257347,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 Optional description of the custom tool, used to provide more context.
 
-              - `format: optional object { type }  or object { definition, syntax, type }`
+              - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
                 The input format for the custom tool. Default is unconstrained text.
 
@@ -256706,7 +257774,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }  or null`
+      - `outputs: array of Logs { logs, type }  or Image { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -256911,7 +257979,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -256965,7 +258033,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Captured chunks of stdout and stderr output, along with their associated outcomes.
 
-        - `outcome: object { type }  or object { exit_code, type }`
+        - `outcome: Timeout { type }  or Exit { exit_code, type }`
 
           The exit or timeout outcome associated with this shell call.
 
@@ -257019,7 +258087,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -257065,7 +258133,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The unique ID of the apply patch tool call generated by the model.
 
-      - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
+      - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
@@ -257145,7 +258213,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -257203,7 +258271,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -257489,7 +258557,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -257551,7 +258619,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Whether the custom tool call runs asynchronously.
 
-      - `caller: optional object { type }  or object { caller_id, type }  or null`
+      - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -258070,7 +259138,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"shell"`
 
-- `tools: optional array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more or null`
+- `tools: optional array of Function { name, parameters, strict, 6 more }  or FileSearch { type, vector_store_ids, filters, 2 more }  or Computer { type }  or 13 more or null`
 
   An array of tools the model may call while generating a response. You can specify which tool to use by setting the `tool_choice` parameter.
 
@@ -258132,7 +259200,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The IDs of the vector stores to search.
 
-    - `filters: optional object { key, type, value }  or unknown or null`
+    - `filters: optional ComparisonFilter { key, type, value }  or unknown or null`
 
       A filter to apply.
 
@@ -258356,7 +259424,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"programmatic"`
 
-    - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
+    - `allowed_tools: optional array of string or McpToolFilter { read_only, tool_names }  or null`
 
       List of allowed tool names or a filter object.
 
@@ -258430,7 +259498,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       Optional HTTP headers to send to the MCP server. Use for authentication
       or other purposes.
 
-    - `require_approval: optional object { always, never }  or "always" or "never" or null`
+    - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
 
       Specify which of the MCP server's tools require approval.
 
@@ -258496,7 +259564,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A tool that runs Python code to help generate a response to a prompt.
 
-    - `container: string or object { type, file_ids, memory_limit, network_policy }`
+    - `container: string or CodeInterpreterToolAuto { type, file_ids, memory_limit, network_policy }`
 
       The code interpreter container. Can be a container ID or an object that
       specifies uploaded file IDs to make available to your code, along with an
@@ -258791,7 +259859,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       Optional description of the custom tool, used to provide more context.
 
-    - `format: optional object { type }  or object { definition, syntax, type }`
+    - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
       The input format for the custom tool. Default is unconstrained text.
 
@@ -258839,7 +259907,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The namespace name used in tool calls (for example, `crm`).
 
-    - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+    - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
       The function/custom tools available inside this namespace.
 
@@ -258913,7 +259981,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           Optional description of the custom tool, used to provide more context.
 
-        - `format: optional object { type }  or object { definition, syntax, type }`
+        - `format: optional Text { type }  or Grammar { definition, syntax, type }`
 
           The input format for the custom tool. Default is unconstrained text.
 
@@ -259230,7 +260298,7 @@ Create a thread.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -259288,7 +260356,7 @@ Create a thread.
 
       A helper to create a [vector store](/api/reference/resources/vector_stores) with file_ids and attach it to this thread. There can be a maximum of 1 vector store attached to the thread.
 
-      - `chunking_strategy: optional object { type }  or object { static, type }`
+      - `chunking_strategy: optional Auto { type }  or Static { static, type }`
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
@@ -259780,7 +260848,7 @@ Create a thread and run it in one request.
 
         The ID of the file to attach to the message.
 
-      - `tools: optional array of CodeInterpreterTool or object { type }`
+      - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
         The tools to add this file to.
 
@@ -259838,7 +260906,7 @@ Create a thread and run it in one request.
 
         A helper to create a [vector store](/api/reference/resources/vector_stores) with file_ids and attach it to this thread. There can be a maximum of 1 vector store attached to the thread.
 
-        - `chunking_strategy: optional object { type }  or object { static, type }`
+        - `chunking_strategy: optional Auto { type }  or Static { static, type }`
 
           The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
@@ -261364,7 +262432,7 @@ Create a message.
 
     The ID of the file to attach to the message.
 
-  - `tools: optional array of CodeInterpreterTool or object { type }`
+  - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
     The tools to add this file to.
 
@@ -261415,7 +262483,7 @@ Create a message.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -261855,7 +262923,7 @@ Returns a list of messages for a given thread.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -262250,7 +263318,7 @@ Retrieve a message.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -262608,7 +263676,7 @@ Modifies a message.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -263264,7 +264332,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -264869,7 +265937,7 @@ Create a run.
 
       The ID of the file to attach to the message.
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    - `tools: optional array of CodeInterpreterTool or FileSearchTool { type }`
 
       The tools to add this file to.
 
@@ -268935,7 +270003,7 @@ Returns a list of run steps belonging to a run.
 
               The input to the Code Interpreter tool call.
 
-            - `outputs: array of object { logs, type }  or object { image, type }`
+            - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -269358,7 +270426,7 @@ Retrieves a run step.
 
               The input to the Code Interpreter tool call.
 
-            - `outputs: array of object { logs, type }  or object { image, type }`
+            - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -269666,7 +270734,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       The input to the Code Interpreter tool call.
 
-    - `outputs: array of object { logs, type }  or object { image, type }`
+    - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
       The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -270067,7 +271135,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               The input to the Code Interpreter tool call.
 
-            - `outputs: array of object { logs, type }  or object { image, type }`
+            - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
@@ -270585,7 +271653,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           The input to the Code Interpreter tool call.
 
-        - `outputs: array of object { logs, type }  or object { image, type }`
+        - `outputs: array of CodeInterpreterLogOutput { logs, type }  or CodeInterpreterImageOutput { image, type }`
 
           The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 

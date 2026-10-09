@@ -1,11 +1,11 @@
 ---
-title: "Troubleshoot the Splunk data source | Grafana Enterprise Plugins documentation"
+title: "Troubleshoot Splunk data source issues | Grafana Enterprise Plugins documentation"
 description: "Troubleshoot common issues with the Splunk data source in Grafana."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Troubleshoot the Splunk data source
+# Troubleshoot Splunk data source issues
 
 This document provides solutions to common issues you may encounter when configuring or using the Splunk data source. For configuration instructions, refer to [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/).
 
@@ -53,7 +53,7 @@ Expand table
 **Solution:**
 
 1. Update your firewall rules to allow the current Grafana Cloud outbound IP addresses. Refer to [Grafana Cloud outbound IP addresses](/docs/grafana-cloud/account-management/allow-list/) for the full list.
-2. If your organization’s security policy doesn’t permit allowlisting dynamic IPs, set up [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to create a stable, secure tunnel between Grafana Cloud and your private network.
+2. If your organization’s security policy doesn’t permit allowlisting dynamic IP addresses, set up [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to create a stable, secure tunnel between Grafana Cloud and your private network.
 
 ### Connection timeouts
 
@@ -85,7 +85,7 @@ Expand table
 **Solution:**
 
 1. Verify the URL includes the correct protocol (`http://` or `https://`).
-2. Ensure the port number is correct. Splunk’s management port is typically `8089`.
+2. Ensure the port number is correct. The Splunk management port is typically `8089`.
 3. Remove any trailing slashes or extra path segments.
 4. Example of a valid URL: `https://splunk.example.com:8089`.
 
@@ -162,7 +162,7 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 **Solution:**
 
-1. Generate a new authentication token in Splunk. Refer to Splunk’s [Create authentication tokens](https://docs.splunk.com/Documentation/Splunk/latest/Security/CreateAuthTokens) documentation.
+1. Generate a new authentication token in Splunk. Refer to the Splunk [Create authentication tokens](https://docs.splunk.com/Documentation/Splunk/latest/Security/CreateAuthTokens) documentation.
 2. Ensure the token has the necessary capabilities for the operations you want to perform.
 3. Check that the token hasn’t expired.
 4. In the data source configuration, enter the token in the **Authentication token** field under **Alternative authentication**.
@@ -207,7 +207,7 @@ These errors occur when running queries against Splunk.
 2. Optimize your SPL query to return results faster:
 
    - Add time range constraints.
-   - Use more specific index and sourcetype filters.
+   - Use more specific index and `sourcetype` filters.
    - Reduce the amount of data being processed.
 3. Consider enabling **Preview mode** to get results as they become available.
 4. If running complex queries, increase the **Auto cancel timeout** value.
@@ -218,7 +218,7 @@ These errors occur when running queries against Splunk.
 
 - You navigate away from the dashboard or close the panel before the query completes.
 - The query exceeds a network-level timeout (load balancer, proxy, or cloud gateway).
-- Grafana’s internal request context expires before Splunk finishes processing.
+- The Grafana internal request context expires before Splunk finishes processing.
 
 This error is especially common on **larger time ranges** (3+ hours) where the same query works fine on short windows (5–15 minutes). Larger time ranges require Splunk to scan more data, increasing the chance of hitting a timeout boundary.
 
@@ -253,7 +253,7 @@ This error is especially common on **larger time ranges** (3+ hours) where the s
    - The maximum search time window (`srchTimeWin`).
    - The maximum number of concurrent searches (`srchJobsQuota`).
 2. Ask your Splunk administrator to verify the service account’s role doesn’t limit the searchable time range.
-3. Check the **Results limit** setting in the data source configuration. If set too low, results may be truncated. Set to `0` for no limit.
+3. Check the **Results limit** setting in the data source configuration. If set too low, results may be truncated. `0` applies the backend safety cap of `10000`.
 4. Test the same query directly in the Splunk web UI using the same credentials to confirm whether the data restriction is Splunk-side.
 
 ### “This instance is currently in Detention mode and does not allow running new search jobs”
@@ -355,7 +355,7 @@ Expand table
 
 1. Set variable refresh to **On dashboard load** instead of **On time range change** to reduce the number of queries.
 2. Use the `| head` command to limit the number of results returned by the variable query.
-3. Ensure the variable query targets a specific index and sourcetype.
+3. Ensure the variable query targets a specific index and `sourcetype`.
 4. Check that the **Default earliest time** setting in the data source configuration isn’t set to an excessively large time window (default is `-1hr`).
 
 ## Performance issues
@@ -392,7 +392,7 @@ Expand table
 
 | Technique                                 | Example                                                     |
 |-------------------------------------------|-------------------------------------------------------------|
-| Target specific indexes and sourcetypes   | `index=web sourcetype=access_combined` instead of `index=*` |
+| Target specific indexes and source types  | `index=web sourcetype=access_combined` instead of `index=*` |
 | Use `fields` to limit returned data       | `| fields _time, status, bytes`                             |
 | Match `timechart span` to the time range  | Use `span=1h` for multi-day ranges, not `span=1m`           |
 | Aggregate instead of returning raw events | Use `stats` or `timechart` instead of browsing raw logs     |
@@ -407,7 +407,7 @@ Expand table
 |-------------------------|-------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Timeout**             | Additional settings &gt; Advanced options | Maximum time for a single Splunk HTTP request (default: 30s). Increase for complex queries.                                                    |
 | **Auto cancel timeout** | Additional settings &gt; Advanced options | Splunk cancels idle search jobs after this period (default: 30s). Increase if queries are being canceled.                                      |
-| **Results limit**       | Additional settings &gt; Advanced options | Caps the number of rows returned. Set to `0` for no limit.                                                                                     |
+| **Results limit**       | Additional settings &gt; Advanced options | Caps the number of rows returned. `0` applies the backend safety cap of `10000`.                                                               |
 | **Async queries**       | Additional settings &gt; Advanced options | Runs queries asynchronously with polling. Useful for long-running searches but can cause streaming behavior on panels.                         |
 | **Preview mode**        | Additional settings &gt; Advanced options | Returns partial results while the search job is running. Provides faster initial feedback but may show incomplete data until the job finishes. |
 | **Sample ratio**        | Query editor                              | Reduces the volume of data Splunk processes by sampling. Useful for exploratory queries on large datasets.                                     |
@@ -433,7 +433,7 @@ These issues occur when multiple users or dashboards send a high volume of queri
 **Cause:** When a dashboard has many panels querying Splunk, all queries run concurrently. This can exceed connection limits at any layer between Grafana and Splunk, including:
 
 - Reverse proxy or load balancer connection limits.
-- Splunk’s per-user concurrent search quota (`srchJobsQuota`).
+- The Splunk per-user concurrent search quota (`srchJobsQuota`).
 - Splunk instance-wide search concurrency limits.
 
 **Solution:**
@@ -448,7 +448,7 @@ These issues occur when multiple users or dashboards send a high volume of queri
 
 Grafana does **not** deduplicate identical Splunk queries across users or browser sessions. Each panel load, page refresh, and user session sends an independent query to Splunk. On dashboards viewed by many users simultaneously, this multiplies the query load.
 
-**Mitigations:**
+**Solutions:**
 
 1. **Enable query caching (Grafana Enterprise and Cloud Pro/Advanced).** Query caching stores results for a configurable duration so that identical queries from different users are served from cache instead of hitting Splunk again. Refer to [Query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) for setup instructions.
 2. **Design dashboards for efficiency.** Reduce the total number of distinct queries:
@@ -457,6 +457,47 @@ Grafana does **not** deduplicate identical Splunk queries across users or browse
    - Use template variables to filter data within a shared query rather than duplicating queries with different filters.
    - Set dashboard auto-refresh intervals to the longest acceptable period.
 3. **Set appropriate Splunk concurrency limits.** Work with your Splunk administrator to size `srchJobsQuota` for the Grafana service account based on expected concurrent users and panels.
+
+## Known issues
+
+The following are known issues in the current version of the Splunk plugin. Workarounds are provided where available.
+
+### Duplicate events from internal metadata fields
+
+**Status:** Bug confirmed. Fix in progress.
+
+**Symptoms:** Queries return duplicate rows that don’t appear in the Splunk web UI. Unlike the general bucket-deduplication issue (where `dedup` resolves duplicates), these duplicates are caused by the plugin incorrectly processing an internal Splunk metadata field, resulting in extra rows in the response.
+
+**Workaround:**
+
+Add `| dedup _raw _time` to your SPL query to remove duplicate events:
+
+spl [Copy code to clipboard] Copy
+
+```spl
+index=main sourcetype=access_combined | dedup _raw _time | stats count by status
+```
+
+If you continue to see unexpected duplicates after applying `dedup`, contact [Grafana Support](/support/) and reference this known issue.
+
+### Row and result limits
+
+Several limits can cap how many rows a Splunk query returns. When more than one positive limit is set, the lowest value is used. If results appear truncated, check each layer:
+
+Expand table
+
+| Layer                                        | Default         | How to change                                                                                                                                                                                                                  |
+|----------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Per-query limit** (query editor)           | Not set         | Set in the query editor **Limit** field. The plugin uses this value only when it is lower than the resolved data source limit and lower than `10000`.                                                                          |
+| **Data source results limit**                | `0`             | Set in **Additional settings** &gt; **Results limit**. A positive value is used as the limit. `0` applies the backend safety cap of `10000`.                                                                                   |
+| **Environment variable** (self-managed only) | Not set         | Set `GF_PLUGIN_GRAFANA_SPLUNK_DATASOURCE_MAX_RESULT_LIMIT`. When this variable and **Results limit** are both positive, the lower value is used. When **Results limit** is `0`, this variable replaces the `10000` safety cap. |
+| **Panel display**                            | Varies by panel | **Panel options** can truncate what a visualization displays after the plugin returns data.                                                                                                                                    |
+
+The backend safety cap is `10000` rows. That cap applies when **Results limit** is `0` or unset and the environment variable is not set. A positive **Results limit**, or the environment variable when **Results limit** is `0`, can be higher or lower than `10000`.
+
+> Note
+>
+> Setting very high row limits can cause browser performance issues and increased memory usage on both Grafana and Splunk. Use `timechart`, `stats`, or `| head` to aggregate or limit results at the query level when possible.
 
 ## Enable debug logging
 

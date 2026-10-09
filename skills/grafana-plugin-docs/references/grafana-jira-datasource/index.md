@@ -11,7 +11,19 @@ Jira is an issue tracking, project management, and workflow automation tool. Get
 
 > Note
 >
-> The Jira data source plugin is an Enterprise plugin that requires either a Grafana Cloud account or an activated Grafana Enterprise license.
+> The Jira data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. Some Pro plans need the Enterprise Plugins add-on. Contracted Cloud customers should refer to their agreement.
+
+## Supported features
+
+Expand table
+
+| Feature     | Supported |
+|-------------|-----------|
+| Metrics     | Yes       |
+| Logs        | No        |
+| Traces      | No        |
+| Alerting    | Yes       |
+| Annotations | Yes       |
 
 ## Supported Jira environments
 
@@ -21,33 +33,35 @@ You can use the Jira data source plugin to connect to the following Jira environ
 - Jira Data Center
 - Jira Server
 
-The plugin also supports Jira Service Management fields, including SLA metrics, approvals, and customer feedback.
+The plugin also supports Jira Service Management fields, including SLA metrics, approvals, and customer feedback. For how to query these fields, refer to [Jira Service Management fields](/docs/plugins/grafana-jira-datasource/latest/query-editor/#jira-service-management-fields).
 
 ## Requirements
 
 Before you configure the Jira data source, you need the following:
 
-- Grafana version 11.0 or later.
+- Grafana version 11.6.7 or later.
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Free and Starter plans don’t include Enterprise plugins. Some Pro plans need the Enterprise Plugins add-on. Contracted Cloud customers should refer to their agreement.
 - An Atlassian account with access to a Jira project.
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
-- A Jira API token for authentication. To create a token, refer to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
-- For Jira Cloud, Data source can be configured with API Token with Scopes using Cloud Id. To use Jira API token with scopes refer to [Get the cloudid for your site](https://developer.atlassian.com/cloud/confluence/oauth-2-3lo-apps/#3-1-get-the-cloudid-for-your-site)
-- Port 8080 enabled
+- Authentication: a Jira API token for **Basic Auth**, or **OAuth 2.0 (service account)** for Jira Cloud (plugin 2.6.0 or later). To create a token, refer to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/). For OAuth setup, refer to [Configure the Jira data source](/docs/plugins/grafana-jira-datasource/latest/configure/#authentication).
+- For Jira Cloud, you can authenticate with a scoped API token. Enable **Scoped Token** and enter the **Jira App Cloud Id**. To find your Cloud ID, refer to [Retrieve an Atlassian site Cloud ID](https://support.atlassian.com/jira/kb/retrieve-my-atlassian-sites-cloud-id/).
 
 ## Known limitations
 
-Custom field types from Jira add-ons may not be supported.
+- Custom field types from Jira add-ons may not be supported.
+- Grafana [SQL Expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/) aren’t compatible with this data source. Calculate and reshape results with JQL and [transformations](/docs/plugins/grafana-jira-datasource/latest/query-editor/#work-with-transformations) instead.
+- Selecting a multi-value array field (for example **Components**, **Labels**, **Sprint Name**, or a custom Owners field) expands each issue into one row per value. Omit those fields when you need one row per issue.
+- Queries return at most the **Limit** value (default `50`). Jira issue search in the browser isn’t capped the same way.
 
 ## Import a dashboard
 
 The Jira data source plugin includes the following pre-built dashboards:
 
 - **Jira Demo** - A demonstration dashboard showcasing velocity charts, sprint burndown, issue counts, and time-to-resolution metrics.
-- **Jira JSON Fields demo** - Examples demonstrating how to work with complex Jira fields that return JSON data.
+- **Jira JSON fields demo** - Examples demonstrating how to work with complex Jira fields that return JSON data.
 
 > Note
 >
-> These dashboards are starting points that demonstrate the data source’s capabilities. You’ll need to customize the JQL queries, project keys, and field names to match your Jira instance before the dashboards display your data.
+> These dashboards are starting points that demonstrate the data source’s capabilities. Customize the JQL queries, project keys, and field names to match your Jira instance before the dashboards display your data.
 
 To import a dashboard:
 
@@ -61,11 +75,13 @@ For more information about importing dashboards, refer to [Import a dashboard](/
 
 ## Get started
 
-The following documents will help you get started with the Jira data source:
+The following documents help you get started with the Jira data source:
 
 - [Configure the Jira data source](/docs/plugins/grafana-jira-datasource/latest/configure/)
 - [Jira query editor](/docs/plugins/grafana-jira-datasource/latest/query-editor/)
 - [Template variables](/docs/plugins/grafana-jira-datasource/latest/template-variables/)
+- [Annotations](/docs/plugins/grafana-jira-datasource/latest/annotations/)
+- [Alerting](/docs/plugins/grafana-jira-datasource/latest/alerting/)
 - [Troubleshooting](/docs/plugins/grafana-jira-datasource/latest/troubleshooting/)
 
 ## Grafana Assistant
@@ -82,9 +98,8 @@ For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assis
 
 ## Additional features
 
-Once you have configured the data source, you can:
+After you have configured the data source, you can:
 
-- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Jira data with natural language.
 - Add [Annotations](/docs/plugins/grafana-jira-datasource/latest/annotations/) to overlay Jira events on your graphs.
 - Configure and use [Template variables](/docs/plugins/grafana-jira-datasource/latest/template-variables/) for dynamic dashboards.
 - Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).

@@ -154,13 +154,11 @@ Fork a stored Live session onto a new WebRTC connection.
 
           - `"high"`
 
-      - `tool_choice: optional "auto" or "none" or "required" or map[unknown]`
+      - `tool_choice: optional "auto" or "none" or "required" or Function { name, type }  or Mcp { server_label, type, name }  or 11 more`
 
         Controls which tool the Responses backend uses when handling a task delegated by the Live model.
 
         - `LiveToolChoiceEnum = "auto" or "none" or "required"`
-
-          Controls which tool the Responses backend uses when handling a task delegated by the Live model.
 
           - `"auto"`
 
@@ -168,9 +166,261 @@ Fork a stored Live session onto a new WebRTC connection.
 
           - `"required"`
 
-        - `map[unknown]`
+        - `Function object { name, type }`
 
-      - `tools: optional array of FunctionTool or object { type }  or object { type }  or 10 more`
+          - `name: string`
+
+            The name of the function tool to call.
+
+          - `type: "function"`
+
+            The tool to call. Always `function`.
+
+            - `"function"`
+
+        - `Mcp object { server_label, type, name }`
+
+          - `server_label: string`
+
+            The label of the MCP server to call.
+
+          - `type: "mcp"`
+
+            The tool to call. Always `mcp`.
+
+            - `"mcp"`
+
+          - `name: optional string or null`
+
+            The name of the MCP tool to call. If omitted, the server may choose a default.
+
+        - `FileSearch object { type }`
+
+          - `type: "file_search"`
+
+            The tool to call. Always `file_search`.
+
+            - `"file_search"`
+
+        - `WebSearch object { type }`
+
+          - `type: "web_search"`
+
+            The tool to call. Always `web_search`.
+
+            - `"web_search"`
+
+        - `WebSearchPreview object { type }`
+
+          - `type: "web_search_preview"`
+
+            The tool to call. Always `web_search_preview`.
+
+            - `"web_search_preview"`
+
+        - `ImageGeneration object { type }`
+
+          - `type: "image_generation"`
+
+            The tool to call. Always `image_generation`.
+
+            - `"image_generation"`
+
+        - `Computer object { type }`
+
+          - `type: "computer"`
+
+            The tool to call. Always `computer`.
+
+            - `"computer"`
+
+        - `CodeInterpreter object { type }`
+
+          - `type: "code_interpreter"`
+
+            The tool to call. Always `code_interpreter`.
+
+            - `"code_interpreter"`
+
+        - `ProgrammaticToolCalling object { type }`
+
+          - `type: "programmatic_tool_calling"`
+
+            The tool to call. Always `programmatic_tool_calling`.
+
+            - `"programmatic_tool_calling"`
+
+        - `Shell object { type }`
+
+          Forces the model to call the shell tool when a tool call is required.
+
+          - `type: "shell"`
+
+            The tool to call. Always `shell`.
+
+            - `"shell"`
+
+        - `Custom object { name, type }`
+
+          - `name: string`
+
+            The name of the custom tool to call.
+
+          - `type: "custom"`
+
+            The tool to call. Always `custom`.
+
+            - `"custom"`
+
+        - `ApplyPatch object { type }`
+
+          Forces the model to call the apply_patch tool when executing a tool call.
+
+          - `type: "apply_patch"`
+
+            The tool to call. Always `apply_patch`.
+
+            - `"apply_patch"`
+
+        - `LiveAllowedToolsChoiceParam object { tools, type, mode }`
+
+          - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
+
+            The tools that the delegated Responses model may call.
+
+            - `Function object { name, type }`
+
+              - `name: string`
+
+                The name of the function tool to call.
+
+              - `type: "function"`
+
+                The tool to call. Always `function`.
+
+                - `"function"`
+
+            - `Mcp object { server_label, type, name }`
+
+              - `server_label: string`
+
+                The label of the MCP server to call.
+
+              - `type: "mcp"`
+
+                The tool to call. Always `mcp`.
+
+                - `"mcp"`
+
+              - `name: optional string or null`
+
+                The name of the MCP tool to call. If omitted, the server may choose a default.
+
+            - `FileSearch object { type }`
+
+              - `type: "file_search"`
+
+                The tool to call. Always `file_search`.
+
+                - `"file_search"`
+
+            - `WebSearch object { type }`
+
+              - `type: "web_search"`
+
+                The tool to call. Always `web_search`.
+
+                - `"web_search"`
+
+            - `WebSearchPreview object { type }`
+
+              - `type: "web_search_preview"`
+
+                The tool to call. Always `web_search_preview`.
+
+                - `"web_search_preview"`
+
+            - `ImageGeneration object { type }`
+
+              - `type: "image_generation"`
+
+                The tool to call. Always `image_generation`.
+
+                - `"image_generation"`
+
+            - `Computer object { type }`
+
+              - `type: "computer"`
+
+                The tool to call. Always `computer`.
+
+                - `"computer"`
+
+            - `CodeInterpreter object { type }`
+
+              - `type: "code_interpreter"`
+
+                The tool to call. Always `code_interpreter`.
+
+                - `"code_interpreter"`
+
+            - `ProgrammaticToolCalling object { type }`
+
+              - `type: "programmatic_tool_calling"`
+
+                The tool to call. Always `programmatic_tool_calling`.
+
+                - `"programmatic_tool_calling"`
+
+            - `Shell object { type }`
+
+              Forces the model to call the shell tool when a tool call is required.
+
+              - `type: "shell"`
+
+                The tool to call. Always `shell`.
+
+                - `"shell"`
+
+            - `Custom object { name, type }`
+
+              - `name: string`
+
+                The name of the custom tool to call.
+
+              - `type: "custom"`
+
+                The tool to call. Always `custom`.
+
+                - `"custom"`
+
+            - `ApplyPatch object { type }`
+
+              Forces the model to call the apply_patch tool when executing a tool call.
+
+              - `type: "apply_patch"`
+
+                The tool to call. Always `apply_patch`.
+
+                - `"apply_patch"`
+
+          - `type: "allowed_tools"`
+
+            The tool choice type. Always `allowed_tools`.
+
+            - `"allowed_tools"`
+
+          - `mode: optional "none" or "auto" or "required" or null`
+
+            How to select a tool from the allowed set.
+
+            - `"none"`
+
+            - `"auto"`
+
+            - `"required"`
+
+      - `tools: optional array of FunctionTool or WebSearch { type }  or FileSearch { type }  or 10 more`
 
         Tools available to the Responses backend while it handles tasks delegated by the Live model.
 
@@ -230,7 +480,7 @@ Fork a stored Live session onto a new WebRTC connection.
 
             - `"shell"`
 
-          - `environment: optional object { type, file_ids, memory_limit, 2 more }  or object { container_id, type }  or object { type, skills }  or null`
+          - `environment: optional ContainerAuto { type, file_ids, memory_limit, 2 more }  or ContainerReference { container_id, type }  or Local { type, skills }  or null`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
@@ -256,7 +506,7 @@ Fork a stored Live session onto a new WebRTC connection.
 
                 - `"64g"`
 
-              - `network_policy: optional object { type }  or object { allowed_domains, type }  or null`
+              - `network_policy: optional Disabled { type }  or Allowlist { allowed_domains, type }  or null`
 
                 Network access policy for the container.
 
@@ -280,7 +530,7 @@ Fork a stored Live session onto a new WebRTC connection.
 
                     - `"allowlist"`
 
-              - `skills: optional array of object { skill_id, type, version }  or object { description, name, source, type }  or null`
+              - `skills: optional array of SkillReference { skill_id, type, version }  or Inline { description, name, source, type }  or null`
 
                 An optional list of skills referenced by id or inline data.
 

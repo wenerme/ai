@@ -13,19 +13,20 @@ This document explains configuration options for the AppDynamics data source in 
 
 Before you can configure the AppDynamics data source, ensure you have the following:
 
+- Grafana 11.6.7 or later.
 - The `Organization Administrator` role in Grafana to add data sources.
 - The AppDynamics data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 - An [AppDynamics](https://www.appdynamics.com/) account.
 - A user or API client with `view` access to **Account**, **Applications**, **Databases**, and **Analytics** in AppDynamics.
 - To use Analytics queries, an [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security) with both the **Manage Schema** and **Query Custom Events** permissions under **Custom Analytics Events**. The **Query Custom Events** permission is required to run Analytics queries. The **Manage Schema** permission is required because Grafana calls the `/events/schema` endpoint during the connection test and query editor autocomplete, so without it the connection test fails.
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### Security considerations
 
 Keep the following security best practices in mind when configuring the AppDynamics data source:
 
 - **Least privilege:** Create a dedicated read-only role in AppDynamics (for example, `grafana_readonly`) with only `view` permissions. Don’t reuse administrator accounts or roles that grant write access.
-- **Credential storage:** Grafana encrypts sensitive values such as passwords, client secrets, and API keys using `secureJsonData`. Don’t store credentials in plaintext configuration files or version control.
+- **Credential storage:** Grafana encrypts sensitive values such as passwords, client secrets, and API keys using `secureJsonData`. Don’t store credentials in plain text configuration files or version control.
 - **API client authentication:** When possible, use API client authentication instead of basic authentication. API client secrets can be rotated independently without changing user passwords.
 - **Analytics API keys:** The Analytics API key is stored and transmitted separately from your Metrics credentials. Generate a dedicated key with the minimum required [Analytics permissions](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security).
 - **TLS verification:** Keep **Skip TLS Verify** disabled in production environments to ensure encrypted and authenticated connections to your AppDynamics controller.
@@ -39,19 +40,19 @@ For general information on installing and managing plugins and data sources in G
 - [Plugin management](/docs/grafana/latest/administration/plugin-management/)
 - [Data source management](/docs/grafana/latest/administration/data-source-management/#data-source-management)
 
-To install the AppDynamics data source plugin, refer to Grafana’s [AppDynamics installation page](/grafana/plugins/dlopes7-appdynamics-datasource/?tab=installation).
+To install the AppDynamics data source plugin, refer to the [AppDynamics installation page](/grafana/plugins/dlopes7-appdynamics-datasource/?tab=installation).
 
 > Note
 >
 > You must install the AppDynamics data source plugin prior to adding and configuring the AppDynamics data source. The plugin connects you to the data source.
 
-Once you have installed the AppDynamics plugin, complete the following steps to add the AppDynamics data source:
+After you have installed the AppDynamics plugin, complete the following steps to add the AppDynamics data source:
 
 1. Click **Connections** in the left-side menu.
 2. Enter `AppDynamics` in the search bar.
 3. Select the **AppDynamics data source** tile.
 4. Click **Add new data source** in the upper right.
-5. You are taken to the **Settings** tab where you will set up your AppDynamics configuration.
+5. You are taken to the **Settings** tab where you set up your AppDynamics configuration.
 
 ## AppDynamics configuration options
 
@@ -67,7 +68,7 @@ Expand table
 
 ### Connection settings
 
-Grafana supports two authentication methods with the AppDynamics data source: **Basic authentication** or **API client authentication**. If you configure both, API client authentication takes precedence.
+The **Metrics** section of the configuration page connects Grafana to the AppDynamics Controller REST API. Grafana supports two authentication methods: **Basic authentication** (the **Basic auth** toggle) or **API client authentication** (the **Client Name**, **Client Domain**, and **Client Secret** fields). If you set a client secret, API client authentication takes precedence and Grafana doesn’t use the basic authentication username and password.
 
 #### Basic authentication
 
@@ -109,26 +110,22 @@ In the Grafana data source configuration, enter the following:
 
 #### Analytics authentication
 
-The Analytics Events API uses a separate endpoint and authentication from the Metrics API. You must configure analytics authentication separately to use Analytics queries.
+Analytics configuration is optional. Configure it only if you run Analytics (ADQL) queries. The Analytics Events API uses a separate endpoint and API key from the Metrics (Controller) connection.
 
-- **Analytics API URL** - The SaaS or on-premises endpoint for the [Analytics Event Service](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/analytics-events-api). Select from the drop-down or enter a custom URL. Available preset options include:
+- **Analytics API URL** - The SaaS or on-premises endpoint for the [Analytics Event Service](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/analytics-events-api). Select from the drop-down or enter a custom URL. The drop-down includes these presets:
 
-  - `https://analytics.api.appdynamics.com` (default)
+  - `https://analytics.api.appdynamics.com`
   - `https://fra-ana-api.saas.appdynamics.com` (Frankfurt region)
   - `https://syd-ana-api.saas.appdynamics.com` (Sydney region)
-  - For on-premises controllers, an endpoint based on your controller host is auto-detected.
+  - If the Controller **URL** includes a port (typical for on-premises controllers), the editor also adds `https://<hostname>:9080/` as a selectable option.
 - **Global Account Name** - The global account name, as shown on the **License** page in the AppDynamics Controller UI under **Settings** &gt; **License** &gt; **Account**.
-- **Analytics API Key** - An [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security). Under **Custom Analytics Events**, the key must have both the **Manage Schema** permission, which is required for the connection test and query editor autocomplete (both call the `/events/schema` endpoint), and the **Query Custom Events** permission, which is required to run Analytics queries. You can’t change an API key’s permissions after you create it.
+- **Analytics API Key** - An [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security). Under **Custom Analytics Events**, the key must have both the **Manage Schema** permission, which is required for the connection test and query editor autocomplete (both call the `/events/schema` endpoint), and the **Query Custom Events** permission, which is required to run Analytics queries. You can’t change an API key’s permissions after you create it. You must set all three Analytics fields to validate the Analytics connection when you click **Save &amp; test**.
 
 ### Optional settings
 
-The following optional settings are available for advanced authentication and network scenarios.
+The HTTP settings section includes the standard Grafana TLS options. The AppDynamics plugin applies the following to outgoing requests:
 
-- **TLS Client Auth** - Enable to authenticate using Transport Layer Security client certificates.
-- **Skip TLS Verify** - Enable to skip TLS certificate verification.
-- **With Credentials** - Enable to send credentials such as cookies or auth headers with cross-site requests.
-- **With CA Cert** - Enable to verify self-signed TLS certificates.
-- **Forward OAuth Identity** - Forward the OAuth identity of the user signed in to Grafana, for cases where the same OAuth provider is used for both Grafana and AppDynamics.
+- **Skip TLS Verify** - Enable to skip TLS certificate verification. Keep this disabled in production environments.
 
 ### Secure Socks Proxy
 
@@ -138,11 +135,11 @@ The following optional settings are available for advanced authentication and ne
 
 - **Enabled** - Enable to proxy the data source connection through the secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
-Once you have added your connection settings, click **Save &amp; test** to test the data source connection. The health check validates the Metrics API connection and, if all three Analytics fields are configured (Analytics API URL, Global Account Name, and Analytics API Key), also validates the Analytics API connection. A successful connection displays the message: **Data source is working, found N apps.**
+After you have added your connection settings, click **Save &amp; test** to test the data source connection. The health check validates the Metrics API connection and, if all three Analytics fields are configured (Analytics API URL, Global Account Name, and Analytics API Key), also validates the Analytics API connection. A successful connection displays the message: **Data source is working, found N apps.**
 
 ## Configure the data source with provisioning
 
-Configure the AppDynamics data source using Grafana’s provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
+Configure the AppDynamics data source using the Grafana provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
 
 ### Basic authentication example
 
@@ -164,7 +161,7 @@ datasources:
 
 > Note
 >
-> If you configure both an API key and basic authentication, the API key takes precedence.
+> If you set `clientSecret`, API client authentication takes precedence over basic authentication for the Controller (Metrics) connection. Analytics uses `analyticsAPIKey` separately and doesn’t replace Controller credentials.
 
 YAML [Copy code to clipboard] Copy
 
@@ -184,6 +181,8 @@ datasources:
 ```
 
 Replace the `<PLACEHOLDER>` values with your actual credentials and configuration.
+
+To proxy the connection through the secure socks proxy, add `enableSecureSocksProxy: true` to `jsonData`. To skip TLS verification, add `tlsSkipVerify: true` to `jsonData`. Both fields are optional.
 
 ## Configure the data source with Terraform
 

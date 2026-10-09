@@ -27,9 +27,9 @@ Expand table
 |--------------------------|--------------------------------------------------------------------------------------------------|
 | **SPL**                  | Search Processing Language, the query language used by Splunk to search and analyze data.        |
 | **Index**                | A repository for Splunk data, similar to a database table.                                       |
-| **Sourcetype**           | A classification for data ingested into Splunk that determines how data is formatted and parsed. |
+| **Source type**          | A classification for data ingested into Splunk that determines how data is formatted and parsed. |
 | **Namespace**            | A Splunk app context that determines which knowledge objects are available to a query.           |
-| **Authentication token** | A token-based alternative to username and password for authenticating to Splunk’s REST API.      |
+| **Authentication token** | A token-based alternative to username and password for authenticating to the Splunk REST API.    |
 
 ## Add the data source
 
@@ -92,7 +92,7 @@ Use an authentication token generated in Splunk instead of a username and passwo
 
 To configure token authentication:
 
-1. Generate a token in Splunk. Refer to Splunk’s [Create authentication tokens](https://docs.splunk.com/Documentation/Splunk/latest/Security/CreateAuthTokens) documentation.
+1. Generate a token in Splunk. Refer to the Splunk [Create authentication tokens](https://docs.splunk.com/Documentation/Splunk/latest/Security/CreateAuthTokens) documentation.
 2. In the data source configuration, enter the token in the **Authentication token** field under **Alternative authentication**.
 
 ### Forward OAuth Identity
@@ -148,8 +148,8 @@ Expand table
 | **Results limit**          | Maximum number of results returned from each data request.                                                                                                                                                                                                           | No limit (backend safety cap: `10000`) |
 | **Preview mode**           | Toggle on to get search results as they become available. Enables polling of the [`jobs/{search_id}/results_preview`](https://docs.splunk.com/Documentation/Splunk/latest/RESTREF/RESTsearch#search.2Fjobs.2F.7Bsearch_id.7D.2Fresults_preview) Splunk API endpoint. | Off                                    |
 | **Async queries**          | Toggle on to periodically check for query results instead of waiting for the full result set.                                                                                                                                                                        | Off                                    |
-| **Min poll interval**      | Minimum polling interval in milliseconds when preview mode or async queries are enabled.                                                                                                                                                                             | `500`                                  |
-| **Max poll interval**      | Maximum polling interval in milliseconds when preview mode or async queries are enabled.                                                                                                                                                                             | `3000`                                 |
+| **Min poll interval**      | Minimum polling interval in milliseconds when preview mode or asynchronous queries are enabled.                                                                                                                                                                      | `500`                                  |
+| **Max poll interval**      | Maximum polling interval in milliseconds when preview mode or asynchronous queries are enabled.                                                                                                                                                                      | `3000`                                 |
 | **Auto cancel timeout**    | Number of seconds a job can be inactive before Splunk automatically cancels it. Set to `0` to disable.                                                                                                                                                               | `30`                                   |
 | **Timeout in seconds**     | Plugin-level query timeout in seconds. Controls how long a query can run before it is cancelled. Minimum value is `1`.                                                                                                                                               | `30`                                   |
 | **Maximum status buckets** | Maximum number of timeline status buckets generated per query. Set to `0` to disable timelines.                                                                                                                                                                      | `300`                                  |
@@ -177,6 +177,47 @@ There are two search mode settings:
 
 Toggle on to route data source traffic through a secure SOCKS proxy.
 
+## Search Head Cluster configuration
+
+If your Splunk deployment uses a Search Head Cluster (SHC) behind a load balancer, additional configuration is required to ensure the data source works reliably.
+
+The Splunk plugin creates a search job and then issues follow-up requests to poll its status and retrieve results. All requests for a given search job must reach the same search head, because search job IDs (`sid`) are local to the search head that created them.
+
+### Requirements
+
+1. **Use token authentication or basic authentication.** Authentication tokens replicate across Search Head Cluster members, so any search head can validate a token. Basic authentication also works across members: Grafana sends the username and password on every HTTP request, rather than relying on a Splunk session cookie. Either method still requires sticky sessions, because search job IDs (`sid`) are local to the search head that created the job.
+2. **Configure load balancer sticky sessions.** Set up session affinity (source IP or cookie-based) on the load balancer in front of your SHC. This ensures all requests from a single Grafana instance are routed to the same search head for the duration of a search job. Sticky sessions are especially important when **Async queries** or **Preview mode** is enabled, because these modes issue multiple polling requests per query.
+3. **Point the data source URL at the load balancer.** Enter the load balancer address (for example, `https://splunk-lb.example.com:8089`) in the **URL** field, not the address of an individual search head.
+
+### Provisioning example
+
+YAML [Copy code to clipboard] Copy
+
+```yaml
+apiVersion: 1
+datasources:
+  - name: Splunk (SHC)
+    type: grafana-splunk-datasource
+    access: proxy
+    editable: true
+    enabled: true
+    jsonData:
+      authType: custom-splunk
+      fieldSearchType: quick
+      variableSearchLevel: fast
+    secureJsonData:
+      authToken: <SPLUNK_AUTH_TOKEN>
+    url: https://splunk-lb.example.com:8089
+```
+
+### Grafana high availability
+
+If you run multiple Grafana instances (for example, in a Kubernetes deployment), each instance maintains its own connection to Splunk. Ensure the load balancer sticky session configuration accounts for traffic from multiple source IP addresses, one per Grafana replica.
+
+> Note
+>
+> During a rolling restart of the Search Head Cluster, some search heads enter Detention mode and reject new search jobs. This is expected and temporary. If you encounter “Detention mode” errors, refer to [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#this-instance-is-currently-in-detention-mode-and-does-not-allow-running-new-search-jobs).
+
 ## Data links
 
 Data links allow you to associate data with other Grafana data sources or external URLs. They are commonly used in Explore mode.
@@ -201,11 +242,11 @@ Click **Save &amp; test** to verify the connection. On success, you see a messag
 
 **Connected to Splunk version: “9.1.3” build: “d95b3bc7f6d0”**
 
-If the connection fails, refer to [Troubleshoot the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/).
+If the connection fails, refer to [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define and configure the Splunk data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the Splunk data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
 
 **Basic authentication example:**
 
@@ -259,13 +300,11 @@ datasources:
 
 ## Set query results limit
 
-To improve performance, you can limit the number of returned results at multiple levels. The hierarchy from highest to lowest precedence is:
+To improve performance, you can limit the number of returned results. When more than one positive limit is set, the lowest value is used.
 
-1. The `GF_PLUGIN_GRAFANA_SPLUNK_DATASOURCE_MAX_RESULT_LIMIT` environment variable (self-managed only).
-2. The **Results limit** value in data source configuration.
-3. The per-query limit set in the query editor.
-
-The default safety cap is `10000` results.
+1. The **Results limit** value in the data source configuration. A positive value is used as the limit. `0` applies the backend safety cap of `10000`.
+2. The `GF_PLUGIN_GRAFANA_SPLUNK_DATASOURCE_MAX_RESULT_LIMIT` environment variable (self-managed only). When this variable and **Results limit** are both positive, the lower value is used. When **Results limit** is `0`, this variable replaces the `10000` safety cap.
+3. The per-query **Limit** in the query editor. The plugin uses this value only when it is lower than the resolved data source limit and lower than `10000`.
 
 > Note
 >

@@ -1348,7 +1348,7 @@ documents has been updated:
    - In the `usage_metadata` section of the API response, tokens generated from processing PDF pages (as images) are now counted under the `IMAGE` modality, not a separate `DOCUMENT` modality as in some earlier versions.
 
 For more details about the media resolution parameter, see the
-[Media resolution](https://ai.google.dev/gemini-api/docs/interactions/media-resolution) guide.
+[Media resolution](https://ai.google.dev/gemini-api/docs/media-resolution) guide.
 
 ### Document types
 

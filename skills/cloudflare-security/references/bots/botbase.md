@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/bots/botbase/og.png?v=a3c1836d0eea31ce
 
 # BotBase
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/botbase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/botbase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 BotBase is Cloudflare's directory of all known bots, including [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/). It provides a comprehensive, searchable view of the entire bot directory directly in the Cloudflare dashboard, where you can see how Cloudflare classifies each bot and target individual bots in your security configuration.
 
@@ -32,6 +32,7 @@ To view BotBase, go to **Security Analytics** > **Bot analysis** > **BotBase**. 
 - Search and filter the directory to find a specific bot or group of bots.
 - Filter your own traffic to a specific bot to investigate its activity on your zone.
 - Copy a bot's detection ID to target it in [Security rules](https://developers.cloudflare.com/security/rules/).
+- If you operate a bot, submit it for verification from the **Submission form** tab and track its review status from the **Submission history** tab. For more information, refer to [Becoming a Verified bot](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/#becoming-a-verified-bot).
 
 ## Requests
 
@@ -63,5 +64,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/botbase/#page","headline":"BotBase","description":"Browse Cloudflare's directory of all known bots and agents, with behavior-based classification, directly in the dashboard.","url":"https://developers.cloudflare.com/bots/botbase/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/botbase/og.png?v=a3c1836d0eea31ce","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/botbase/#page","headline":"BotBase","description":"Browse Cloudflare's directory of all known bots and agents, with behavior-based classification, directly in the dashboard.","url":"https://developers.cloudflare.com/bots/botbase/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/botbase/og.png?v=a3c1836d0eea31ce","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Bots"]}
 ```

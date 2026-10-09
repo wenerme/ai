@@ -248,7 +248,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"function"`
 
-- `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+- `tracing: optional "auto" or TracingConfiguration { group_id, metadata, workflow_name }`
 
   Configuration options for tracing. Set to null to disable tracing. Once
   tracing is enabled for a session, the configuration cannot be modified.
@@ -348,7 +348,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     Type of turn detection, only `server_vad` is currently supported.
 
-- `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or object { id }`
+- `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
   The voice the model uses to respond. Supported built-in voices are
   `alloy`, `ash`, `ballad`, `coral`, `echo`, `sage`, `shimmer`, `verse`,
@@ -629,7 +629,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"function"`
 
-- `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+- `tracing: optional "auto" or TracingConfiguration { group_id, metadata, workflow_name }`
 
   Configuration options for tracing. Set to null to disable tracing. Once
   tracing is enabled for a session, the configuration cannot be modified.
@@ -1059,7 +1059,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
       - `"function"`
 
-  - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+  - `tracing: optional "auto" or TracingConfiguration { group_id, metadata, workflow_name }`
 
     Configuration options for tracing. Set to null to disable tracing. Once
     tracing is enabled for a session, the configuration cannot be modified.

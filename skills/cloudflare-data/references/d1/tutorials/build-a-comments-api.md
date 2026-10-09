@@ -54,6 +54,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
    - For *Which template would you like to use?*, choose `Worker only`.
    - For *Which language do you want to use?*, choose `TypeScript`.
    - For *Do you want to use git for version control?*, choose `Yes`.
+   - For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
    - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 2. Move into the project directory:
 
@@ -104,7 +105,7 @@ bun add hono
      "name": "d1-comments-api",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-09",
      "d1_databases": [
        {
          "binding": "DB",
@@ -119,7 +120,7 @@ bun add hono
    name = "d1-comments-api"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
 
    [[d1_databases]]
    binding = "DB" # available in your Worker on env.DB

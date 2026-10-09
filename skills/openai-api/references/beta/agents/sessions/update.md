@@ -664,7 +664,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -672,7 +672,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 

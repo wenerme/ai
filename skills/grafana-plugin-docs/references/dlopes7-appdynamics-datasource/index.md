@@ -11,7 +11,7 @@ The AppDynamics data source allows you to query and visualize AppDynamics metric
 
 > Note
 >
-> The AppDynamics data source is an Enterprise plugin. It is available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The AppDynamics data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -27,7 +27,7 @@ Expand table
 
 ## Get started
 
-The following documents will help you get started with the AppDynamics data source:
+The following documents help you get started with the AppDynamics data source:
 
 - [Configure the AppDynamics data source](/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/)
 - [AppDynamics query editor](/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)
@@ -38,7 +38,7 @@ The following documents will help you get started with the AppDynamics data sour
 
 ## Additional features
 
-Once you have configured the data source, you can:
+After you have configured the data source, you can:
 
 - Set up [Alerting](/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting/) to monitor your AppDynamics metrics.
 - Add [Annotations](/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations/) to overlay AppDynamics events on your visualizations.
@@ -49,7 +49,7 @@ Once you have configured the data source, you can:
 
 The AppDynamics plugin includes the following pre-built dashboard:
 
-- **AppDynamics Overview** - Provides an at-a-glance view of application health with panels for App Response Time, Calls Per Minute, Num Slow Calls, Slow Calls, and Stall Count.
+- **AppDynamics Overview** - Provides an at-a-glance view of application health with panels for App Response Time, Calls Per Minute, `Num Slow Calls`, Slow Calls, and Stall Count.
 
 To import the dashboard:
 
@@ -62,7 +62,7 @@ For more information about importing dashboards, refer to [Import a dashboard](/
 
 ## Known limitations
 
-- A metric path name can’t contain the delimiter that you select. For more information, refer to [AppDynamics query editor](/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
+- A metric path can’t contain the delimiter that you select. For more information, refer to [AppDynamics query editor](/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
 - Multi-value variables aren’t supported in Metrics queries. If multi-value variables are found in a metric path, they’re replaced with `*`.
 
 ## Plugin updates

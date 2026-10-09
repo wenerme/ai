@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/workers/examples/signing-requests/og.pn
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/signing-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/signing-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -254,7 +254,7 @@ interface Env {
 	SECRET_DATA: string;
 }
 
-const app = new Hono();
+const app = new Hono<{ Bindings: Env }>();
 
 // Handle URL generation requests
 app.get("/generate/*", async (c) => {
@@ -275,12 +275,13 @@ app.get("/generate/*", async (c) => {
 	);
 
 	// Replace "/generate/" prefix with "/"
-	let pathname = c.req.path.replace("/generate/", "/");
+	const url = new URL(c.req.url);
+	url.pathname = url.pathname.replace("/generate/", "/");
 
 	const timestamp = Math.floor(Date.now() / 1000);
 
 	// Data to authenticate: pathname + timestamp
-	const dataToAuthenticate = `${pathname}${timestamp}`;
+	const dataToAuthenticate = `${url.pathname}${timestamp}`;
 
 	// Sign the data
 	const mac = await crypto.subtle.sign(
@@ -295,7 +296,7 @@ app.get("/generate/*", async (c) => {
 	// Add verification parameter to URL
 	url.searchParams.set("verify", `${timestamp}-${base64Mac}`);
 
-	return c.text(`${pathname}${url.search}`);
+	return c.text(url.toString());
 });
 
 // Handle verification for all other requests
@@ -354,7 +355,7 @@ app.all("*", async (c) => {
 	}
 
 	// If verification passes, proxy the request to example.com
-	return proxy(`https://example.com/${c.req.path}`, ...c.req);
+	return proxy(`https://example.com${c.req.path}`, { ...c.req });
 });
 
 export default app;
@@ -458,5 +459,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/signing-requests/#page","headline":"Sign requests","description":"Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.","url":"https://developers.cloudflare.com/workers/examples/signing-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/signing-requests/og.png?v=0d3ca3dbd068b10b","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","WebCrypto","JavaScript","TypeScript","Python"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/signing-requests/#page","headline":"Sign requests","description":"Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.","url":"https://developers.cloudflare.com/workers/examples/signing-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/signing-requests/og.png?v=0d3ca3dbd068b10b","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Security","WebCrypto","JavaScript","TypeScript","Python"]}
 ```

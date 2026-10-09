@@ -36,6 +36,10 @@ The query editor supports two result formats:
 
 Select the format using the **Format as** drop-down below the query editor.
 
+> Note
+>
+> If you don’t set **Format as** before you run a query, the editor picks a format the first time you save or run it. If the query text contains `as time`, the editor selects **Time series**. Otherwise, it selects **Table**. After the format is set, either manually or automatically, the editor keeps your selection.
+
 ## Table format
 
 Use the Table format to display query results as rows and columns. This is the default format.
@@ -78,6 +82,8 @@ ORDER BY 1
 
 ### Example: List all tables
 
+The `SYSCAT.TABLES` catalog view exposes the `TABSCHEMA` and `TABNAME` columns:
+
 SQL [Copy code to clipboard] Copy
 
 ```sql
@@ -85,19 +91,54 @@ SELECT
   TABSCHEMA AS SCHEMA,
   TABNAME AS TABLE_NAME,
   TYPE AS OBJECT_TYPE
-FROM SYSIBM.SYSTABLES
+FROM SYSCAT.TABLES
 WHERE TYPE = 'T'
 ORDER BY TABSCHEMA, TABNAME
 ```
 
 ## Time series format
 
-Use the Time series format to visualize data over time in graphs. Your query must return:
+Use the Time series format to visualize data over time in graphs. When **Format as** is set to **Time series**, your query must return:
 
-- A column named `time` (or aliased as `time`) containing timestamp values
-- One or more numeric columns for the values to plot
+- A `TIMESTAMP` column aliased as `time`
+- One or more numeric columns for the values to plot. Each numeric column becomes a separate series.
+
+Order the results by the time column so points render in chronological order. The plugin runs your SQL as written and returns the raw result set. It doesn’t validate column names or types, so a query that doesn’t meet these requirements still runs but fails to render in the panel. For information about data type conversions, refer to [Troubleshoot IBM Db2 data source issues](/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/).
+
+### Example: Time series from a table
+
+Plot a numeric column over time from your own table. The following examples use placeholder table names. Replace them with your own schema:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  reading_time AS time,
+  temperature AS value
+FROM sensor_readings
+WHERE reading_time >= CURRENT_TIMESTAMP - 6 HOURS
+ORDER BY reading_time
+```
+
+### Example: Aggregate into time buckets
+
+Group rows into hourly buckets and count them. `DATE_TRUNC` requires IBM Db2 11.1 or later:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  DATE_TRUNC('HOUR', event_time) AS time,
+  COUNT(*) AS value
+FROM events
+WHERE event_time >= CURRENT_TIMESTAMP - 24 HOURS
+GROUP BY DATE_TRUNC('HOUR', event_time)
+ORDER BY time
+```
 
 ### Example: Time series with generated data
+
+Use this query to test time series rendering without a table. It generates three points from `SYSIBM.SYSDUMMY1`:
 
 SQL [Copy code to clipboard] Copy
 
@@ -122,45 +163,14 @@ SELECT time, value FROM time_series
 ORDER BY time
 ```
 
+## SQL macros
+
+The IBM Db2 data source doesn’t support Grafana SQL macros such as `$__timeFilter` or `$__timeGroup`. Write time filters and grouping with standard Db2 SQL. To make queries dynamic, use [template variables](/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/).
+
 ## Annotations
 
-You can use IBM Db2 queries to create annotations on your dashboards. Annotations mark points in time with events or notes.
-
-To create an annotation query:
-
-1. Open your dashboard and click **Dashboard settings** (gear icon).
-2. Click **Annotations** in the left menu.
-3. Click **Add annotation query**.
-4. Select your IBM Db2 data source.
-5. Enter a SQL query that returns the required columns.
-
-### Annotation query requirements
-
-Your query should return the following columns:
-
-Expand table
-
-| Column | Required | Description                         |
-|--------|----------|-------------------------------------|
-| `time` | Yes      | Timestamp for the annotation.       |
-| `text` | No       | Text to display in the annotation.  |
-| `tags` | No       | Comma-separated tags for filtering. |
-
-### Example: Annotation query
-
-SQL [Copy code to clipboard] Copy
-
-```sql
-SELECT
-  event_time AS time,
-  event_description AS text,
-  event_category AS tags
-FROM events
-ORDER BY event_time
-```
+You can use IBM Db2 queries to create annotations on your dashboards. For more information, refer to [Annotations](/docs/plugins/grafana-ibmdb2-datasource/latest/annotations/).
 
 ## Alerting
 
-The IBM Db2 data source supports Grafana Alerting. You can create alert rules based on your Db2 queries.
-
-For more information, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+The IBM Db2 data source supports Grafana Alerting. For more information, refer to [Alerting](/docs/plugins/grafana-ibmdb2-datasource/latest/alerting/).

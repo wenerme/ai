@@ -142,15 +142,23 @@ Retrieves an execution environment's connection status and safe installed metada
 
         - `"inline"`
 
-  - `status: "pending" or "connected" or "disconnected" or 2 more`
+  - `status: "pending" or "ready" or "connected" or 4 more`
 
     The current environment connection status.
 
     - `"pending"`
 
+    - `"ready"`
+
+      Provisioning succeeded and the environment is available for attachment or use.
+
     - `"connected"`
 
     - `"disconnected"`
+
+    - `"suspended"`
+
+      The sandbox is stopped and can be resumed from its private checkpoint.
 
     - `"expired"`
 

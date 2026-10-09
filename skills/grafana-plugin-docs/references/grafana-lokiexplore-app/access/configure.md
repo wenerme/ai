@@ -64,8 +64,6 @@ After configuring a setting, click **Save settings** to apply the changes.
 
 The **Default fields** tab lets administrators configure which fields appear by default in log visualizations instead of, or alongside, the full log line.
 
-Default fields requires Grafana 12.4 or later. If this version requirement is not met, the **Default fields** tab displays an unsupported message.
-
 ### How Default fields work
 
 Default field rules are scoped to a specific data source and one or more label and value pairs. When a user views logs for a service that matches all configured labels in a rule, the specified fields are displayed by default in the logs table view. The configured fields can replace the full log line or be displayed next to it.
@@ -85,6 +83,46 @@ To configure Default fields:
 7. Click **Create default columns** to save a new configuration, or **Update default columns** to save changes to an existing one.
 
 You can add multiple records to configure different columns for different label and value combinations. Each data source can have its own set of rules.
+
+## Landing Page default labels (Beta)
+
+> Note
+>
+> Landing Page default labels is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+>
+> To use this feature, enable the kubernetesLogsDrilldown feature toggle in your Grafana configuration file or contact Support.
+
+The **Landing Page** tab lets administrators configure which labels and label values appear by default on the Logs Drilldown landing page.
+
+### How Landing Page default labels work
+
+By default, Logs Drilldown organizes the landing page by `service_name`. If your environment uses a different label to identify services, such as `app`, `namespace`, `cluster`, or a custom label, you can configure the landing page to show those labels instead. This ensures users see a meaningful service list immediately, without having to add labels manually.
+
+Landing page label configuration is per data source. Each Loki data source can have independent default label settings.
+
+When default labels are configured:
+
+- The configured labels appear as pinned tabs on the landing page. End users cannot remove these tabs.
+- The first label in the list becomes the default active tab when users open Logs Drilldown.
+- When specific values are pinned for a label, only those values appear on the landing page.
+- When no values are pinned for a label, all values from the volume API are displayed.
+- Default label values are excluded from the favorites toggle.
+- When no labels are configured, Logs Drilldown falls back to `service_name`.
+
+### Configure Landing Page default labels
+
+To configure Landing Page default labels:
+
+01. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins** &gt; **Grafana Logs Drilldown**.
+02. Select the **Landing Page** tab.
+03. Select a Loki data source from the data source picker. Each data source has independent configuration.
+04. In the **Select label name** field, choose a label from the suggestions or type a custom label name.
+05. (Optional) After selecting a label, a **Select values (optional)** multi-select field appears. Choose specific values to pin, or leave it empty to show all values for that label on the landing page.
+06. Click **Add label** (or **Add label and values** if values were selected).
+07. Repeat steps 4-6 to add more labels.
+08. Drag and drop labels using the grip handle to reorder them. The first label in the list becomes the default active tab on the landing page.
+09. To remove a label, click the trash icon next to it. To remove an individual pinned value, expand the label and click the trash icon next to the value.
+10. Click **Save changes** to persist your configuration. Click **Reset** to discard unsaved changes (a confirmation prompt appears before resetting).
 
 ## Related pages
 

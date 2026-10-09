@@ -78,6 +78,7 @@ For setup, select the following options:
 - For *Which template would you like to use?*, choose `Worker only`.
 - For *Which language do you want to use?*, choose `TypeScript`.
 - For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to add an AGENTS.md file to help AI coding tools understand Cloudflare APIs?*, choose `Yes`.
 - For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tutorial` directory will include:

@@ -14,7 +14,7 @@ This document explains how to configure the ServiceNow data source in Grafana, s
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
-- **Grafana version:** 11.6.7 or later.
+- **Grafana version:** 11.6.11 or later.
 - **ServiceNow account:** A user account with access to the tables you want to query. Grafana recommends creating a dedicated user or using a service account.
 - **Grafana license:** Grafana Cloud Pro, Advanced, or a Pro trial, or Grafana Enterprise with an [activated license](/docs/grafana/latest/administration/enterprise-licensing/).
 
@@ -84,6 +84,10 @@ When routing Grafana traffic through an HTTP proxy, set one of the following env
 - `HTTP_PROXY` (or `http_proxy`): `http://<HOST>:<PORT>`
 - `HTTPS_PROXY` (or `https_proxy`): `https://<HOST>:<PORT>`
 
+### TLS and certificates
+
+The data source doesn’t provide TLS options such as a custom certificate authority or an option to skip certificate verification. Your ServiceNow instance must present a certificate that Grafana trusts. If your instance uses a self-signed or privately signed certificate, refer to [Self-signed or private certificate errors](/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#self-signed-or-private-certificate-errors).
+
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. A successful connection displays **Plugin health check successful**.
@@ -96,13 +100,14 @@ To use the **Use Sys Tables?** option, the ServiceNow user needs read access to 
 
 Expand table
 
-| Table              | Reason                                                                           |
-|--------------------|----------------------------------------------------------------------------------|
-| `sys_db_object`    | Retrieves a list of available tables to query.                                   |
-| `sys_dictionary`   | Retrieves the list of fields when querying a table.                              |
-| `sys_choice`       | Retrieves the list of choices when filtering table results using a choice field. |
-| `sys_glide_object` | Collects information about data types including names, base types, and so on.    |
-| `incident`         | Validates the Table API and the Aggregate API during health checks.              |
+| Table              | Reason                                                                                                                                                                                                                       |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `sys_db_object`    | Retrieves a list of available tables to query.                                                                                                                                                                               |
+| `sys_dictionary`   | Retrieves the list of fields when querying a table.                                                                                                                                                                          |
+| `sys_choice`       | Retrieves the list of choices when filtering table results using a choice field.                                                                                                                                             |
+| `sys_glide_object` | Collects information about data types including names, base types, and so on.                                                                                                                                                |
+| `sys_db_view`      | Optional. Lists ServiceNow database views alongside tables in the query editor **Table** drop-down. If the user lacks access, the plugin logs the failure and continues without view listings, so this table isn’t required. |
+| `incident`         | Validates the Table API and the Aggregate API during health checks.                                                                                                                                                          |
 
 > Note
 >
@@ -160,7 +165,7 @@ To create a ServiceNow developer instance for testing, go to the [ServiceNow Dev
 
 ## Provision the data source
 
-You can define the data source using YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source using YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Basic authentication example
 
@@ -251,7 +256,7 @@ Expand table
 |--------------------------|---------|----------------------------------------------------------|
 | `authMethod`             | string  | Authentication method: `basicAuth` or `serviceNowOAuth`. |
 | `oauthClientID`          | string  | OAuth Client ID (required when using `serviceNowOAuth`). |
-| `useSysTables`           | boolean | Enable sys table queries for schema and metadata.        |
+| `useSysTables`           | boolean | Enable system table queries for schema and metadata.     |
 | `queryTimeoutSeconds`    | integer | Query timeout in seconds. Default: `30`.                 |
 | `enableSecureSocksProxy` | boolean | Route connections through the secure socks proxy.        |
 
@@ -263,6 +268,17 @@ Expand table
 |---------------------|--------|----------------------|
 | `basicAuthPassword` | string | ServiceNow password. |
 | `oauthClientSecret` | string | OAuth Client Secret. |
+
+To provision the custom HTTP headers described in the [Custom headers](#custom-headers) section, use the standard Grafana header keys. Set each header name as `httpHeaderName<N>` in `jsonData` and its value as `httpHeaderValue<N>` in `secureJsonData`, where `<N>` is a 1-based index:
+
+YAML [Copy code to clipboard] Copy
+
+```yaml
+jsonData:
+  httpHeaderName1: X-Custom-Header
+secureJsonData:
+  httpHeaderValue1: <HEADER_VALUE>
+```
 
 > Note
 >

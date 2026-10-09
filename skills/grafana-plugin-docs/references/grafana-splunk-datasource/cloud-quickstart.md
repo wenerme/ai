@@ -65,7 +65,7 @@ If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins
 
 1. Navigate to **Explore** in the left-side menu.
 2. Select your new Splunk data source from the data source picker.
-3. The query editor opens in raw SPL mode by default. Paste the following query to verify connectivity and see event volume by sourcetype:
+3. The query editor opens in raw SPL mode by default. Paste the following query to verify connectivity and see event volume by source type:
 
    spl [Copy code to clipboard] Copy
 
@@ -102,7 +102,7 @@ Expand table
 |------------------------|----------------------------------------------------------------------------------------------|
 | Event volume over time | `index=_internal | timechart count by sourcetype`                                            |
 | Error rate             | `index=_internal log_level=ERROR | timechart count`                                          |
-| Top sourcetypes        | `index=* | stats count by sourcetype | sort -count | head 10`                                |
+| Top source types       | `index=* | stats count by sourcetype | sort -count | head 10`                                |
 | System CPU usage       | `index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system, avg(pctUser) as user` |
 
 ## Next steps
@@ -110,4 +110,4 @@ Expand table
 - [Splunk query editor](/docs/plugins/grafana-splunk-datasource/latest/query-editor/): Query modes, visual builder, and advanced options.
 - [Template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
 - [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/): Advanced settings, authentication options, and provisioning.
-- [Troubleshooting](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common issues.
+- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common issues.

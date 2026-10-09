@@ -7,7 +7,7 @@ description: "Use template variables with the Splunk data source to create dynam
 
 # Splunk template variables
 
-Template variables let you create dynamic, reusable dashboards by replacing hardcoded values with user-selectable options. Use them with the Splunk data source to parameterize indexes, sourcetypes, hostnames, and other query values.
+Template variables let you create dynamic, reusable dashboards by replacing hard-coded values with user-selectable options. Use them with the Splunk data source to parameterize indexes, source types, hostnames, and other query values.
 
 ## Before you begin
 
@@ -83,7 +83,7 @@ spl [Copy code to clipboard] Copy
 | eventcount summarize=false index=* | dedup index | fields index
 ```
 
-**List all sourcetypes in an index:**
+**List all source types in an index:**
 
 spl [Copy code to clipboard] Copy
 
@@ -107,7 +107,7 @@ spl [Copy code to clipboard] Copy
 index=em_metrics | stats count by namespace | fields namespace
 ```
 
-**Create a cascading variable (sourcetypes filtered by a selected index):**
+**Create a cascading variable (source types filtered by a selected index):**
 
 spl [Copy code to clipboard] Copy
 
@@ -152,6 +152,10 @@ source=docker_stats container_name IN (foo, bar)
 > Note
 >
 > Multi-value interpolation for the `IN` operator requires uppercase `IN` with a space before the opening parenthesis. The lowercase `in()` function used in `where` clauses doesn’t support multi-value expansion.
+
+> Note
+>
+> Field names and values containing special characters (for example, periods, hyphens, or brackets) are properly escaped during multi-value variable expansion. If you previously experienced malformed SPL with special-character fields, upgrade to plugin version 5.8.26 or later.
 
 ## Multi-value variables and quotes
 

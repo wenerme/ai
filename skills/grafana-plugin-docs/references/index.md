@@ -56,7 +56,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Grafana SLO](/docs/plugins/grafana-slo-app/latest/ "Grafana SLO")
 - [Hello World datasource for Grafana](/docs/plugins/grafana-helloworld-datasource/latest/ "Hello World datasource for Grafana")
 - [Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/ "Honeycomb data source")
-- [IBM Db2 data source plugin](/docs/plugins/grafana-ibmdb2-datasource/latest/ "IBM Db2 data source plugin")
+- [IBM Db2 data source](/docs/plugins/grafana-ibmdb2-datasource/latest/ "IBM Db2 data source")
 - [Infinity data source plugin for Grafana](/docs/plugins/yesoreyeram-infinity-datasource/latest/ "Infinity data source plugin for Grafana")
 - [Install and upgrade the Azure Data Explorer data source plugin](/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/ "Install and upgrade the Azure Data Explorer data source plugin")
 - [Interactive learning](/docs/plugins/grafana-pathfinder-app/latest/ "Interactive learning")

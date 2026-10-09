@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -142,23 +142,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
 Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

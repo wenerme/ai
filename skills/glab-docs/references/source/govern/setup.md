@@ -13,10 +13,17 @@ Configure the current machine for AI agent governance session capture.
 
 Installs the following:
 
-- Stop hook in `~/.claude/settings.json`
-- SessionEnd hook in `~/.claude/settings.json`
+- Stop hook in `~/.claude/settings.json`, which syncs the session after every agent turn.
+- SessionEnd hook in `~/.claude/settings.json`, which syncs the session and marks it completed.
+- Fallback periodic sync: a launchd agent (`~/Library/LaunchAgents/com.gitlab.glab-govern-audit-sync.plist`) on macOS, or a systemd user timer (`~/.config/systemd/user/glab-govern-audit-sync.timer`) on Linux.
 
-The Stop and SessionEnd hooks are the sync mechanism. Safe to run multiple times — existing hooks are not duplicated. Run `glab govern doctor` afterwards to verify the setup.
+The fallback periodic sync runs `glab govern audit sync --all` every 30 minutes, and on Linux also 5 minutes after boot, until you remove it. It uploads anything the hooks missed for sessions they have already recorded (see `glab govern audit sync --help` for what is uploaded), using your stored glab credentials and the glab configuration directory in use when you run setup. Each session goes to the project and host of the Git repository the agent ran in. It also marks sessions completed once they have been idle for 24 hours. It pauses Claude Code sessions while the hooks are not installed. Pass `--no-fallback-sync` to install only the hooks. The fallback periodic sync is not available on Windows.
+
+Pass `--agents codex,cursor` to also sync Codex and Cursor sessions. glab installs no hooks for those agents: the fallback periodic sync finds their sessions by scanning their transcripts in `~/.codex/sessions` and `~/.cursor/projects`, including sessions from before you enabled them, and uploads those from repositories on GitLab hosts you are logged in to with glab. Their sessions are marked completed once they have been idle for 24 hours. Run setup again with a different `--agents` list to change which agents are synced, or with `--agents ""` to stop. Every setup prompt names the agents that are synced, and `--uninstall` also stops syncing them.
+
+Safe to run multiple times: existing hooks are not duplicated, and an existing fallback periodic sync job is replaced. Run `glab govern doctor` afterwards to verify the setup.
+
+Run `glab govern setup --uninstall` to remove the fallback periodic sync job. To remove the hooks, delete the `glab govern audit sync` entries from `~/.claude/settings.json`.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -30,15 +37,27 @@ glab govern setup [flags]
 ## Examples
 
 ```console
-# Configure hooks for AI agent governance
+# Configure hooks and the fallback periodic sync
 $ glab govern setup
+
+# Configure only the hooks
+$ glab govern setup --no-fallback-sync
+
+# Also sync Codex and Cursor sessions through the fallback periodic sync
+$ glab govern setup --agents codex,cursor
+
+# Remove the fallback periodic sync
+$ glab govern setup --uninstall
 
 ```
 
 ## Options
 
 ```plaintext
-  -y, --yes   Skip confirmation prompt.
+      --agents strings     Also sync sessions from these agents, found by the fallback periodic sync without hooks: codex, cursor. Replaces the agents enabled by an earlier run. Multiple agents can be comma-separated or specified by repeating the flag.
+      --no-fallback-sync   Install only the hooks, without the fallback periodic sync job.
+      --uninstall          Remove the fallback periodic sync job and stop syncing Codex and Cursor sessions. The hooks are left in place.
+  -y, --yes                Skip confirmation prompt.
 ```
 
 ## Options inherited from parent commands

@@ -22,7 +22,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -57,6 +57,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -1284,7 +1288,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -1292,7 +1296,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -2271,7 +2275,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -2279,7 +2283,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -3207,7 +3211,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -3215,7 +3219,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -4185,7 +4189,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -4193,7 +4197,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
@@ -5080,7 +5084,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
@@ -5150,7 +5154,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The error type.
 
-      - `status: "pending" or "ready" or "connected" or 2 more`
+      - `status: "pending" or "ready" or "connected" or 4 more`
 
         The environment's connection status.
 
@@ -5169,6 +5173,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `"disconnected"`
 
           The environment is disconnected.
+
+        - `"suspended"`
+
+          The environment is stopped and can be resumed from its private checkpoint.
+
+        - `"expired"`
+
+          The environment and its private checkpoint have expired.
 
         - `"failed"`
 
@@ -5195,6 +5207,58 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.environment.ready`.
 
       - `"agent.session.environment.ready"`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after an idle hosted session environment is checkpointed and stopped.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.suspended"`
+
+      The type of the object. Always `agent.session.environment.suspended`.
+
+      - `"agent.session.environment.suspended"`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+
+    Emitted after a suspended hosted session environment and its checkpoint expire.
+
+    - `environment: AgentSessionEnvironmentState`
+
+      The current environment state.
+
+    - `event_id: string`
+
+      The unique ID of the event.
+
+    - `session_id: string`
+
+      The ID of the session associated with the event.
+
+    - `turn_id: string or null`
+
+      The ID of the turn associated with the event, when applicable.
+
+    - `type: "agent.session.environment.expired"`
+
+      The type of the object. Always `agent.session.environment.expired`.
+
+      - `"agent.session.environment.expired"`
 
   - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
@@ -5854,7 +5918,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `"agent.session"`
 
-      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
 
@@ -5862,7 +5926,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           Respond to a computer-use request.
 
-          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+          - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
             The information needed to render the request.
 
@@ -6866,7 +6930,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The registered request answered by this item.
 
-        - `response: object { action, selected_option, type }  or object { action, type }`
+        - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
           The admitted response, without submitted credential values.
 
@@ -8632,7 +8696,7 @@ Lists items produced by the session's root agent, including its interactions wit
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -9877,7 +9941,7 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -11396,7 +11460,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -13253,7 +13317,7 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 

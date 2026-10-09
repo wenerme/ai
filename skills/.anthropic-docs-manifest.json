@@ -776,8 +776,8 @@
   "anthropic-docs/manage-claude/workspaces.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/workspaces",
     "skill": "anthropic-docs",
-    "size": 44428,
-    "updatedAt": "2026-10-08T17:24:45.897Z"
+    "size": 45069,
+    "updatedAt": "2026-10-09T05:52:06.319Z"
   },
   "anthropic-docs/manage-claude/admin-api-keys.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/admin-api-keys",
@@ -890,8 +890,8 @@
   "anthropic-docs/manage-claude/api-and-data-retention.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
     "skill": "anthropic-docs",
-    "size": 58265,
-    "updatedAt": "2026-10-01T17:02:58.851Z"
+    "size": 58374,
+    "updatedAt": "2026-10-09T05:52:14.364Z"
   },
   "anthropic-docs/manage-claude/access-transparency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/access-transparency",
@@ -1334,8 +1334,8 @@
   "anthropic-docs/about-claude/pricing.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/pricing",
     "skill": "anthropic-docs",
-    "size": 49220,
-    "updatedAt": "2026-10-08T17:25:19.805Z"
+    "size": 49522,
+    "updatedAt": "2026-10-09T05:52:43.383Z"
   },
   "anthropic-docs/release-notes/system-prompts/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/system-prompts/overview",

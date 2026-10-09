@@ -84,9 +84,12 @@ Validity checks support the following secret types:
 
 **External service tokens:**
 
+- Adafruit IO keys
 - Anthropic API keys
 - AWS IAM long-term access key IDs (beginning with `AKIA`)
 - Datadog API keys
+- EasyPost API tokens
+- EasyPost test API tokens
 - GitHub App installation tokens
 - GitHub fine-grained personal access tokens
 - GitHub OAuth access tokens
@@ -128,6 +131,7 @@ The supported URLs are:
 
 - `https://api.anthropic.com/v1/models`
 - `https://api.datadoghq.com/api/v1/validate`
+- `https://api.easypost.com/v2/addresses`
 - `https://api.getpostman.com/me`
 - `https://api.github.com/installation/repositories`
 - `https://api.github.com/user`
@@ -137,6 +141,7 @@ The supported URLs are:
 - `https://api.sendgrid.com/v3/scopes`
 - `https://api.stripe.com/v1/balance`
 - `https://app.terraform.io/api/v2/account/details`
+- `https://io.adafruit.com/api/v2/user`
 - `https://registry.npmjs.org/-/whoami`
 - `https://sts.amazonaws.com/`
 - `https://www.googleapis.com/discovery/v1/apis`

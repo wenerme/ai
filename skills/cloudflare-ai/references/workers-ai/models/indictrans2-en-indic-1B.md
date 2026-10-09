@@ -41,9 +41,8 @@ export default {
     const response = await env.AI.run(
       "@cf/ai4bharat/indictrans2-en-indic-1B",
       {
-        text: "I'll have an order of the moule frites",
-        source_lang: "english", // defaults to english
-        target_lang: "french",
+        text: "Hello, how are you?",
+        target_language: "hin_Deva",
       }
     );
 
@@ -63,9 +62,8 @@ def run(model, input):
     return response.json()
 
 output = run('@cf/ai4bharat/indictrans2-en-indic-1B', {
-  "text": "I'll have an order of the moule frites",
-  "source_lang": "english",
-  "target_lang": "french"
+  "text": "Hello, how are you?",
+  "target_language": "hin_Deva"
 })
 
 print(output)
@@ -75,7 +73,7 @@ print(output)
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B  \
     -X POST  \
     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
-    -d '{ "text": "Ill have an order of the moule frites", "source_lang": "english", "target_lang": "french" }'
+    -d '{ "text": "Hello, how are you?", "target_language": "hin_Deva" }'
 ```
 
 ## Parameters

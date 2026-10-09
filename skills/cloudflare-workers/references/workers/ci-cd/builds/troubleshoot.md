@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.pn
 
 # Troubleshooting builds
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to identify and resolve build errors, as well as troubleshoot common issues in the Workers Builds deployment process.
 
@@ -60,6 +60,14 @@ The API Token dropdown in Build Configuration settings may show stale tokens tha
 
 There is a maximum build duration of 20 minutes. If a build exceeds this time, then the build will be terminated and the above error log is shown. For more details, see [Workers Builds limits](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/).
 
+### Build succeeds but the site returns a 404 or blank page
+
+If the build and deployment succeed but requests to your Worker return a `404` or an empty page, the deployed Worker is likely serving a directory that does not contain your built site. Check that:
+
+- The build command in **Settings** > **Build** > **Build Configuration** runs your framework's build step (for example, `npm run build`).
+- The [`assets.directory`](https://developers.cloudflare.com/workers/static-assets/binding/#directory) in your Wrangler configuration file points to the folder your build writes to (for example, `./dist` or `./build`).
+- For a single-page application, [`assets.not_found_handling`](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) is set to `single-page-application` so that client-side routes do not return `404`.
+
 ### Git integration issues
 
 If you are running into errors associated with your Git integration, you can try removing access to your [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#removing-access) or [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#removing-access) integration from Cloudflare, then reinstalling the [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#reinstall-a-git-integration) or [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#reinstall-a-git-integration) integration.
@@ -77,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.png?v=bea231c9b08a06d4","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.png?v=bea231c9b08a06d4","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

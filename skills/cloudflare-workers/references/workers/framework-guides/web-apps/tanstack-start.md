@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/tanst
 
 # TanStack Start
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [TanStack Start ↗︎](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
 
@@ -34,7 +34,7 @@ yarn wrangler deploy
 pnpm wrangler deploy
 ```
 
-Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
+For more information, refer to [Automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
 TanStack StartDetected
 
@@ -42,11 +42,7 @@ Generated configuration
 
 wrangler.jsonc
 
-main:.output/server/index.mjs
-
-wrangler.jsonc
-
-assets:directory: .output/public
+main:@tanstack/react-start/server-entry
 
 wrangler.jsonc
 
@@ -101,23 +97,25 @@ If you have an existing TanStack Start application, configure it to run on Cloud
 1. Install `@cloudflare/vite-plugin` and `wrangler`:npmyarnpnpmbun
 
    ```
-   npm i @cloudflare/vite-plugin wrangler -- -D
+   npm i -D @cloudflare/vite-plugin wrangler
    ```
 
    ```
-   yarn add @cloudflare/vite-plugin wrangler -D
+   yarn add -D @cloudflare/vite-plugin wrangler
    ```
 
    ```
-   pnpm add @cloudflare/vite-plugin wrangler -D
+   pnpm add -D @cloudflare/vite-plugin wrangler
    ```
 
    ```
-   bun add @cloudflare/vite-plugin wrangler -D
+   bun add -d @cloudflare/vite-plugin wrangler
    ```
 
 
 2. Add the Cloudflare plugin to your Vite configuration:
+
+   If your Vite configuration includes another deployment adapter, such as `nitro()`, remove the adapter and its import before adding the Cloudflare Vite plugin.
 
    *vite.config.jsjs*
 
@@ -165,7 +163,7 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-28",
+   	"compatibility_date": "2026-10-09",
    	"compatibility_flags": ["nodejs_compat"],
    	"main": "@tanstack/react-start/server-entry",
    	"observability": {
@@ -178,7 +176,7 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-09"
    compatibility_flags = [ "nodejs_compat" ]
    main = "@tanstack/react-start/server-entry"
 
@@ -247,6 +245,24 @@ pnpm run preview
 
 TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypoint. Create a custom server entrypoint to add additional Workers handlers such as [Queues](https://developers.cloudflare.com/queues/) and [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/). This is also where you can add additional exports such as [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workflows](https://developers.cloudflare.com/workflows/).
 
+Note
+
+If you are using TypeScript, generate Workers types before adding a custom entrypoint:
+
+npmyarnpnpm
+
+```
+npm run cf-typegen
+```
+
+```
+yarn run cf-typegen
+```
+
+```
+pnpm run cf-typegen
+```
+
 1. Create a custom server entrypoint file:
 
    *src/server.jsjs*
@@ -263,7 +279,7 @@ TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypo
    	fetch: handler.fetch,
 
    	// Handle Queue messages
-   	async queue(batch, env, ctx) {
+   	async queue(batch, _env, _ctx) {
    		for (const message of batch.messages) {
    			console.log("Processing message:", message.body);
    			message.ack();
@@ -271,7 +287,7 @@ TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypo
    	},
 
    	// Handle Cron Triggers
-   	async scheduled(event, env, ctx) {
+   	async scheduled(event, _env, _ctx) {
    		console.log("Cron triggered:", event.cron);
    	},
    };
@@ -288,21 +304,21 @@ TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypo
    export { MyDurableObject } from "./my-durable-object";
 
    export default {
-   	fetch: handler.fetch,
+       fetch: handler.fetch,
 
-   	// Handle Queue messages
-   	async queue(batch, env, ctx) {
-   		for (const message of batch.messages) {
-   			console.log("Processing message:", message.body);
-   			message.ack();
-   		}
-   	},
+       // Handle Queue messages
+       async queue(batch, _env, _ctx) {
+           for (const message of batch.messages) {
+               console.log("Processing message:", message.body);
+               message.ack();
+           }
+       },
 
-   	// Handle Cron Triggers
-   	async scheduled(event, env, ctx) {
-   		console.log("Cron triggered:", event.cron);
-   	},
-   };
+       // Handle Cron Triggers
+       async scheduled(event, _env, _ctx) {
+           console.log("Cron triggered:", event.cron);
+       },
+   } satisfies ExportedHandler<Env>;
    ```
 
 
@@ -338,14 +354,10 @@ Example: Using Workflows
 
 Export a Workflow class from your custom entrypoint to run durable, multi-step tasks:
 
-*app/server.jsjs*
+*src/server.jsjs*
 
 ```js
-import {
-	WorkflowEntrypoint,
-	WorkflowStep,
-	WorkflowEvent,
-} from "cloudflare:workers";
+import { WorkflowEntrypoint, WorkflowStep } from "cloudflare:workers";
 
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
@@ -362,14 +374,11 @@ export class MyWorkflow extends WorkflowEntrypoint {
 }
 ```
 
-*app/server.tsts*
+*src/server.tsts*
 
 ```ts
-import {
-	WorkflowEntrypoint,
-	WorkflowStep,
-	WorkflowEvent,
-} from "cloudflare:workers";
+import { WorkflowEntrypoint, WorkflowStep } from "cloudflare:workers";
+import type { WorkflowEvent } from "cloudflare:workers";
 
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
 	async run(event: WorkflowEvent<{ input: string }>, step: WorkflowStep) {
@@ -436,30 +445,46 @@ binding = "AUTH_SERVICE"
 service = "auth-worker"
 ```
 
+The target Worker must expose RPC methods by extending <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/"><code>WorkerEntrypoint</code></a>. Generate types for both Workers by passing both Wrangler configuration files:
+
+npmyarnpnpm
+
+```
+npx wrangler types -c ./wrangler.jsonc -c ../auth-worker/wrangler.jsonc
+```
+
+```
+yarn wrangler types -c ./wrangler.jsonc -c ../auth-worker/wrangler.jsonc
+```
+
+```
+pnpm wrangler types -c ./wrangler.jsonc -c ../auth-worker/wrangler.jsonc
+```
+
 Call the bound Worker's methods from a server function:
 
-*app/routes/index.jsxjs*
+*src/routes/index.jsxjs*
 
 ```js
 import { createServerFn } from "@tanstack/react-start";
 import { env } from "cloudflare:workers";
 
 const verifyUser = createServerFn()
-	.inputValidator((token) => token)
+	.validator((token) => token)
 	.handler(async ({ data: token }) => {
 		const result = await env.AUTH_SERVICE.verify(token);
 		return result;
 	});
 ```
 
-*app/routes/index.tsxts*
+*src/routes/index.tsxts*
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
 import { env } from "cloudflare:workers";
 
 const verifyUser = createServerFn()
-	.inputValidator((token: string) => token)
+	.validator((token: string) => token)
 	.handler(async ({ data: token }) => {
 		const result = await env.AUTH_SERVICE.verify(token);
 		return result;
@@ -474,7 +499,7 @@ Your TanStack Start application can be fully integrated with the Cloudflare Deve
 
 Access bindings by [importing the `env` object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) in your server-side code:
 
-*app/routes/index.jsxjs*
+*src/routes/index.jsxjs*
 
 ```js
 import { createFileRoute } from "@tanstack/react-router";
@@ -488,7 +513,7 @@ export const Route = createFileRoute("/")({
 
 const getData = createServerFn().handler(() => {
 	// Access bindings via env
-	// For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.
+	// For example: env.MY_KV, env.MY_BUCKET, or env.AI
 });
 
 function RouteComponent() {
@@ -496,7 +521,7 @@ function RouteComponent() {
 }
 ```
 
-*app/routes/index.tsxts*
+*src/routes/index.tsxts*
 
 ```ts
 import { createFileRoute } from "@tanstack/react-router";
@@ -510,7 +535,7 @@ export const Route = createFileRoute("/")({
 
 const getData = createServerFn().handler(() => {
 	// Access bindings via env
-	// For example: env.MY_KV, env.MY_BUCKET, env.AI, etc.
+	// For example: env.MY_KV, env.MY_BUCKET, or env.AI
 });
 
 function RouteComponent() {
@@ -563,7 +588,7 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 Access the bucket in a server function:
 
-*app/routes/index.jsxjs*
+*src/routes/index.jsjs*
 
 ```js
 import { createServerFn } from "@tanstack/react-start";
@@ -584,7 +609,7 @@ const getFile = createServerFn()
 	});
 ```
 
-*app/routes/index.tsxts*
+*src/routes/index.tsts*
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -653,10 +678,6 @@ export default defineConfig({
 
 For more options, refer to [TanStack Start static prerendering ↗︎](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering).
 
-Note
-
-Requires `@tanstack/react-start` v1.138.0 or later.
-
 ### Prerendering data sources
 
 Caution
@@ -679,5 +700,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/#page","headline":"TanStack Start","description":"Deploy a TanStack Start application to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/og.png?v=7e028d16354c90aa","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/#page","headline":"TanStack Start","description":"Deploy a TanStack Start application to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/og.png?v=7e028d16354c90aa","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 ```

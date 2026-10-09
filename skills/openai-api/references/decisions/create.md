@@ -4,7 +4,7 @@
 
 Use this endpoint to ask classification or scoring questions about the same input. You’ll get the answers back in the order you asked the questions.
 
-For text, you can pass a string. You can also send user messages containing `input_text` and `input_image` parts, with up to 128 images per request. Images must be data URLs; external URLs and file IDs aren’t accepted. Other message roles, function calls, files, audio, and item references aren’t supported.
+For text, you can pass a string. You can also send user messages containing `input_text` and `input_image` parts, with up to 128 images per request. Images can be base64 data URLs or publicly accessible HTTP(S) URLs. File IDs aren’t accepted. Other message roles, function calls, files, audio, and item references aren’t supported.
 
 Sometimes a question returns a refusal instead of an answer. The result has type `refusal` and includes the question’s name, or `null` if you didn’t give it one.
 
@@ -12,7 +12,7 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
 - `input: string or array of DecisionInputMessage`
 
-  The text or images to evaluate for every question. Provide a text string or user messages containing text and inline images. Images must be inline data URLs; at most 128 images are allowed across all messages in one request. External URLs, files, audio, tools, and item references are not supported.
+  The text or images to evaluate for every question. Provide a text string or user messages containing text and images. Images can be base64 data URLs or publicly accessible HTTP(S) URLs; at most 128 images are allowed across all messages in one request. Files, audio, tools, and item references are not supported.
 
   - `string`
 
@@ -20,7 +20,7 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
     - `content: string or array of DecisionInputPart`
 
-      Text evidence or an ordered list of text and inline image parts.
+      Text evidence or an ordered list of text and image parts.
 
       - `string`
 
@@ -36,11 +36,11 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
         - `DecisionInputImage object { image_url, type, detail }`
 
-          An inline image. External URLs and file IDs are not supported.
+          An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
           - `image_url: string`
 
-            A base64-encoded image in a data URL.
+            A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
           - `type: "input_image"`
 
@@ -68,7 +68,7 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
 - `model: string`
 
-- `questions: array of object { instructions, type, name }  or object { choices, instructions, type, name }  or object { instructions, levels, type, name }`
+- `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
 
   - `Predicate object { instructions, type, name }`
 
@@ -140,7 +140,7 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
 - `Decision object { answers, model, usage }`
 
-  - `answers: array of object { name, probability, type }  or object { choice, confidence, name, 2 more }  or object { confidence, name, probabilities, 2 more }  or object { name, type }`
+  - `answers: array of Predicate { name, probability, type }  or Choice { choice, confidence, name, 2 more }  or Score { confidence, name, probabilities, 2 more }  or Refusal { name, type }`
 
     - `Predicate object { name, probability, type }`
 

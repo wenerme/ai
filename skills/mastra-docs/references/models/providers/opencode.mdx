@@ -5,7 +5,7 @@ description: "Browse OpenCode Zen model IDs, capabilities, context windows, and 
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 119 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 120 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -281,18 +281,6 @@ for await (const chunk of stream) {
   },
   {
     "model": "opencode/exo-free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "opencode/fledge-alpha-free",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -1044,6 +1032,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 524288,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "opencode/step-5-preview-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
   }

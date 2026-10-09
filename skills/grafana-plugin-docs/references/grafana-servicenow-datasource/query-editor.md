@@ -84,7 +84,7 @@ A Stats query retrieves aggregated statistics from a ServiceNow table using the 
 
 ### Show Field
 
-Select one or more fields and the aggregation(s) to apply to each field. The following aggregations are available:
+Select one or more fields and the aggregations to apply to each field. The following aggregations are available:
 
 Expand table
 
@@ -206,6 +206,15 @@ The input for filter values depends on the field type:
 - **Date fields:** Display a date picker when a date value is required.
 - **Choice fields:** Display a drop-down with available choices (when **Use Sys Tables?** is enabled).
 - **No-value operators:** Operators like **Is anything**, **Today**, **Not Today**, **Is Empty**, **Is Not Empty**, and **Is empty string** don’t display an additional input.
+
+### Filter performance
+
+Filter choices affect query speed on large tables:
+
+- The **Like** and **Not Like** operators perform partial-text matches that ServiceNow can’t resolve with an index, so they scan the table and can be slow. Use a more selective operator such as **Starts With** or **Equals** when possible.
+- The **Is one of** and **Is not one of** operators encode every value in the request URL. A filter with many values can produce a URL that ServiceNow or an intermediate proxy rejects. Keep these lists small, or split them into separate query groups using the **NQ** conjunction.
+
+For related troubleshooting steps, refer to [Query performance](/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#query-performance).
 
 ## Field references
 

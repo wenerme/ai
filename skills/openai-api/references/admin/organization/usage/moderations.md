@@ -74,7 +74,7 @@ Get moderations usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
     - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 

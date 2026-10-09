@@ -234,7 +234,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -342,7 +342,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -554,7 +554,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -662,7 +662,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -832,7 +832,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -940,7 +940,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -1286,7 +1286,7 @@ Updates reusable environment configuration without returning confidential values
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -1394,7 +1394,7 @@ Updates reusable environment configuration without returning confidential values
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 
@@ -1531,7 +1531,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       Whether the environment provisions a desktop and browser proxy.
 
-  - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
+  - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
@@ -1639,7 +1639,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       - `"inline"`
 
-  - `skills: array of object { skill_id, type, version }  or object { description, name, type }`
+  - `skills: array of SkillReference { skill_id, type, version }  or Inline { description, name, type }`
 
     Safe skill metadata, preserving unresolved version selectors.
 

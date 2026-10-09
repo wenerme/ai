@@ -20,7 +20,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 10 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -55,6 +55,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `env: optional map[string] or null`
 
       Environment variables made available to the agent.
+
+    - `environment_id: optional string`
+
+      An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
     - `environment_template_id: optional string`
 
@@ -1282,7 +1286,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
 
@@ -1290,7 +1294,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Respond to a computer-use request.
 
-      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+      - `request: BrowserAuthentication { credential_origin, fields, options, 2 more }  or BrowserOriginAccess { origin, reason, type }`
 
         The information needed to render the request.
 
