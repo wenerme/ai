@@ -5,7 +5,7 @@ description: "Browse Tinfoil model IDs, capabilities, context windows, and prici
 
 # [Tinfoil logo]Tinfoil
 
-Access 9 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
+Access 8 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
 
 Learn more in the [Tinfoil documentation](https://docs.tinfoil.sh).
 
@@ -74,18 +74,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.8,
     "outputCost": 5.75
-  },
-  {
-    "model": "tinfoil/glm-5-3-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.4,
-    "outputCost": 1.25
   },
   {
     "model": "tinfoil/gpt-oss-120b",

@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 241 modelsClear filters
+We found 242 modelsClear filters
 
 ## Compare models
 
@@ -1228,6 +1228,13 @@ Compare
 Compare
 
 [Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clef-flash</h3>CloudflareText Generation Clef-flash is a fast 9B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clef-flash/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
+[Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clef-omni</h3>CloudflareText Generation Clef-omni is a multimodal decision model built on a 30B-parameter mixture-of-experts (3B active) backbone. It turns a state and a schema of typed questions into decisions, reads the state as text, JSON, images, audio, or video, and returns a probability for every allowed option of every question.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clef-omni/)
 
 - Cloudflare-hosted
 - +1

@@ -102,19 +102,13 @@ patch_calls = [
 ```
 
 ```go
-response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+response, err := client.Responses.New(ctx, responses.ResponseNewParams{
 	Model: "gpt-6-astra",
 	Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(responseInput)},
 	Tools: []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
 })
 if err != nil {
-	panic(err)
-}
-patchCalls := make([]responses.ResponseOutputItemUnion, 0)
-for _, item := range response.Output {
-	if item.Type == "apply_patch_call" {
-		patchCalls = append(patchCalls, item)
-	}
+	return err
 }
 ```
 
@@ -230,25 +224,43 @@ followup = client.responses.create(
 ```
 
 ```go
-results := make(responses.ResponseInputParam, 0, len(patchCalls))
-for _, call := range patchCalls {
-	success, logOutput := applyOperation(call.Operation)
-	status := "completed"
-	if !success {
-		status = "failed"
+for turn := 0; ; turn++ {
+	if response.Status != responses.ResponseStatusCompleted {
+		return fmt.Errorf("response ended with status %s", response.Status)
 	}
-	result := responses.ResponseInputItemParamOfApplyPatchCallOutput(call.CallID, status)
-	result.OfApplyPatchCallOutput.Output = openai.String(logOutput)
-	results = append(results, result)
-}
-_, err = client.Responses.New(context.Background(), responses.ResponseNewParams{
-	Model:              "gpt-6-astra",
-	PreviousResponseID: openai.String(response.ID),
-	Input:              responses.ResponseNewParamsInputUnion{OfInputItemList: results},
-	Tools:              []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
-})
-if err != nil {
-	panic(err)
+	patchCalls := make([]responses.ResponseOutputItemUnion, 0)
+	for _, item := range response.Output {
+		if item.Type == "apply_patch_call" {
+			patchCalls = append(patchCalls, item)
+		}
+	}
+	if len(patchCalls) == 0 {
+		fmt.Println(response.OutputText())
+		return nil
+	}
+	if turn == 8 {
+		return fmt.Errorf("patch workflow exceeded eight tool turns")
+	}
+	results := make(responses.ResponseInputParam, 0, len(patchCalls))
+	for _, call := range patchCalls {
+		success, logOutput := applyOperation(files, call.Operation)
+		status := "completed"
+		if !success {
+			status = "failed"
+		}
+		result := responses.ResponseInputItemParamOfApplyPatchCallOutput(call.CallID, status)
+		result.OfApplyPatchCallOutput.Output = openai.String(logOutput)
+		results = append(results, result)
+	}
+	response, err = client.Responses.New(ctx, responses.ResponseNewParams{
+		Model:              "gpt-6-astra",
+		PreviousResponseID: openai.String(response.ID),
+		Input:              responses.ResponseNewParamsInputUnion{OfInputItemList: results},
+		Tools:              []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
+	})
+	if err != nil {
+		return err
+	}
 }
 ```
 

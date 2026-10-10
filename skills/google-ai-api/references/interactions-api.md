@@ -14,9 +14,102 @@ post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new
 
 ### Request body
 
-The request body structure depends on the interaction mode you choose:
-AgentInteraction Interaction for generating the completion using agents.
-agent AgentOption (required) The name of the \`Agent\` used for generating the interaction.
+The request body contains data with the following structure:
+model ModelOption (optional) The name of the \`Model\` used for generating the interaction.   
+**Required if \`agent\` is not provided.**
+The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
+
+#### Possible values
+
+- `gemma-4-26b-a4b-it`
+
+  Gemma 4 26B A4B IT
+- `gemma-4-31b-it`
+
+  Gemma 4 31B IT
+- `gemini-flash-latest`
+
+  Latest release of Gemini Flash
+- `gemini-flash-lite-latest`
+
+  Latest release of Gemini Flash-Lite
+- `gemini-pro-latest`
+
+  Latest release of Gemini Pro
+- `gemini-3.5-flash-lite`
+
+  Our smallest and most cost effective model, built for at scale usage.
+- `gemini-2.5-flash-image`
+
+  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
+- `gemini-3-flash-preview`
+
+  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+- `gemini-3.1-pro-preview`
+
+  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+- `gemini-3.1-pro-preview-customtools`
+
+  Gemini 3.1 Pro Preview optimized for custom tool usage
+- `gemini-3.1-flash-lite`
+
+  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-image`
+
+  Gemini 3.1 Flash Lite Image.
+- `gemini-3-pro-image`
+
+  Gemini 3 Pro Image
+- `nano-banana-pro-preview`
+
+  Gemini 3 Pro Image Preview
+- `gemini-3.1-flash-image`
+
+  Gemini 3.1 Flash Image.
+- `gemini-nano-banana-2.1`
+
+  Gemini Nano Banana 2.1.
+- `gemini-3.1-flash-tts-preview`
+
+  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+- `gemini-3.5-flash`
+
+  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
+- `gemini-3.6-flash`
+
+  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
+- `gemini-3.7-flash`
+
+  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
+- `gemini-3.8-flash`
+
+  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+- `gemini-3.8-flash-tts`
+
+  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
+- `gemini-3.8-flash-lite-tts`
+
+  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
+- `lyria-3-clip-preview`
+
+  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+- `lyria-3-pro-preview`
+
+  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-robotics-er-2-preview`
+
+  Gemini Robotics Embodied Reasoning 2 Preview
+- `lyria-3.5`
+
+  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+- `gemini-omni-1.1-flash`
+
+  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+- `gemini-omni-flash-preview`
+
+  Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
+**Required if \`model\` is not provided.**
 The agent to interact with.
 
 #### Possible values
@@ -33,148 +126,17 @@ The agent to interact with.
 - `antigravity-preview-05-2026`
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
-background boolean (optional) Input only. Whether to run the model interaction in the background.
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-INCOMPLETE and decoding can be resumed. Input: pass the latest token
-back unchanged in CreateInteraction to continue decoding.
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
-labels object (optional) The labels with user-defined metadata for the request.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
-previous_interaction_id string (optional) The ID of the previous interaction, if any.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
-safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-type HarmCategory (optional) Required. The type of harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-- `deferred`
-
-  Deferred service tier.
-store boolean (optional) Input only. Whether to store the response and request for later retrieval.
-stream boolean (optional) Input only. Whether the interaction will be streamed.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The inputs for the interaction (common to both Model and Agent).
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
-interaction completes.
-Message for configuring webhook events for a request.
-
-#### Fields
-
-uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
-registered webhooks.
-user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
-webhooks.
-ModelInteraction Interaction for generating the completion using models.
+response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-INCOMPLETE and decoding can be resumed. Input: pass the latest token
-back unchanged in CreateInteraction to continue decoding.
-created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
-environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
-config is set in the request.
-generation_config GenerationConfig (optional) Input only. Configuration parameters for the model interaction.
+generation_config GenerationConfig (optional) **Model Configuration**   
+Configuration parameters for the model interaction.   
+*Alternative to \`agent_config\`. Only applicable when \`model\` is set.*
 Configuration parameters for model interactions.
 
 #### Fields
@@ -295,112 +257,22 @@ values:
 - `extend`
 
   Extends an existing input video.
-id string (required) Required. Output only. A unique identifier for the interaction completion.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
+Configuration for the agent.   
+*Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+INCOMPLETE and decoding can be resumed. Input: pass the latest token
+back unchanged in CreateInteraction to continue decoding.
+environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
 labels object (optional) The labels with user-defined metadata for the request.
 
 Label keys and values can be no longer than 63 characters
 (Unicode codepoints) and can only contain lowercase letters, numeric
 characters, underscores, and dashes. International characters are allowed.
 Label values are optional. Label keys must start with a letter.
-model ModelOption (required) The name of the \`Model\` used for generating the interaction.
-The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
-
-#### Possible values
-
-- `gemini-2.5-flash`
-
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemma-4-26b-a4b-it`
-
-  Gemma 4 26B A4B IT
-- `gemma-4-31b-it`
-
-  Gemma 4 31B IT
-- `gemini-flash-latest`
-
-  Latest release of Gemini Flash
-- `gemini-flash-lite-latest`
-
-  Latest release of Gemini Flash-Lite
-- `gemini-pro-latest`
-
-  Latest release of Gemini Pro
-- `gemini-2.5-flash-lite`
-
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-2.5-flash-image`
-
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-3-flash-preview`
-
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.1-pro-preview`
-
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-pro-preview-customtools`
-
-  Gemini 3.1 Pro Preview optimized for custom tool usage
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3-pro-image`
-
-  Gemini 3 Pro Image
-- `nano-banana-pro-preview`
-
-  Gemini 3 Pro Image Preview
-- `gemini-3.1-flash-image`
-
-  Gemini 3.1 Flash Image.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-3.5-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3.6-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3.7-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3.8-flash`
-
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
-- `gemini-3.8-flash-tts`
-
-  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
-- `gemini-3.8-flash-lite-tts`
-
-  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-robotics-er-1.6-preview`
-
-  Gemini Robotics-ER 1.6 Preview
-- `gemini-robotics-er-2-preview`
-
-  Gemini Robotics Embodied Reasoning 2 Preview
-- `lyria-3.5`
-
-  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
-- `gemini-omni-1.1-flash`
-
-  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
-- `gemini-omni-flash-preview`
-
-  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 
@@ -462,10 +334,6 @@ type HarmCategory (optional) Required. The type of harm category to be blocked.
 - `sexually_explicit`
 
   Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
 - `image_hate`
 
   Images that contain hate speech.
@@ -498,44 +366,6 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `deferred`
 
   Deferred service tier.
-status enum (string) (required) Required. Output only. The status of the interaction.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `budget_exceeded`
-
-  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
-  (11).
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
-store boolean (optional) Input only. Whether to store the response and request for later retrieval.
-stream boolean (optional) Input only. Whether the interaction will be streamed.
-system_instruction string (optional) System instruction for the interaction.
-tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-updated string (required) Required. Output only. The time at which the response was last updated in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
 webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
 interaction completes.
 Message for configuring webhook events for a request.
@@ -1024,12 +854,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
 #### Possible values
 
-- `gemini-2.5-flash`
-
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-pro`
-
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
 - `gemma-4-26b-a4b-it`
 
   Gemma 4 26B A4B IT
@@ -1045,7 +869,7 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-pro-latest`
 
   Latest release of Gemini Pro
-- `gemini-2.5-flash-lite`
+- `gemini-3.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
 - `gemini-2.5-flash-image`
@@ -1063,6 +887,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.1-flash-lite`
 
   Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+- `gemini-3.1-flash-lite-image`
+
+  Gemini 3.1 Flash Lite Image.
 - `gemini-3-pro-image`
 
   Gemini 3 Pro Image
@@ -1072,21 +899,24 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.1-flash-image`
 
   Gemini 3.1 Flash Image.
+- `gemini-nano-banana-2.1`
+
+  Gemini Nano Banana 2.1.
 - `gemini-3.1-flash-tts-preview`
 
   Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
 - `gemini-3.5-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
 - `gemini-3.6-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
 - `gemini-3.7-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
 - `gemini-3.8-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
 - `gemini-3.8-flash-tts`
 
   Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
@@ -1099,9 +929,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-robotics-er-1.6-preview`
-
-  Gemini Robotics-ER 1.6 Preview
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
@@ -1113,7 +940,7 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
   Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
 - `gemini-omni-flash-preview`
 
-  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+  Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
 the JSON schema specified in this field.
@@ -1178,10 +1005,6 @@ type HarmCategory (optional) Required. The type of harm category to be blocked.
 - `sexually_explicit`
 
   Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
 - `image_hate`
 
   Images that contain hate speech.
@@ -1238,10 +1061,6 @@ values:
 
   The interaction is completed, but contains incomplete results (e.g.
   hitting max_tokens).
-- `budget_exceeded`
-
-  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
-  (11).
 - `queued`
 
   The interaction is queued, waiting for processing (e.g. waiting for
@@ -2439,6 +2258,8 @@ internal tokens).
 total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 InteractionStatusUpdate <br />
 
+continuation_token string (optional) An optional opaque continuation token used to resume decoding from the
+latest checkpoint after a disconnected stream.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
 event_type object (required) No description provided.
@@ -2469,14 +2290,147 @@ values:
 
   The interaction is completed, but contains incomplete results (e.g.
   hitting max_tokens).
-- `budget_exceeded`
-
-  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
-  (11).
 - `queued`
 
   The interaction is queued, waiting for processing (e.g. waiting for
   off-peak capacity).
+usage Usage (optional) Model usage statistics up to this checkpoint.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+count integer (optional) The number of grounding tool counts.
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+- `retrieval`
+
+  Grounding with customer's data, for example, VertexAISearch.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 StepDelta <br />
 
 delta StepDeltaData (required) No description provided.
@@ -2607,7 +2561,7 @@ FunctionResultDelta <br />
 
 is_error boolean (optional) No description provided.
 name string (optional) No description provided.
-result array (FunctionResultSubContent) or object or string (required) No description provided.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
@@ -2742,7 +2696,7 @@ Always set to `"mcp_server_tool_call"`.
 McpServerToolResultDelta <br />
 
 name string (optional) No description provided.
-result array (FunctionResultSubContent) or object or string (required) No description provided.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 server_name string (optional) No description provided.
 type object (required) No description provided.
 
@@ -3835,7 +3789,7 @@ FunctionResultStep Result of a function tool call.
 call_id string (required) Required. ID to match the ID from the function call block.
 is_error boolean (optional) Whether the tool call resulted in an error.
 name string (optional) The name of the tool that was called.
-result array (FunctionResultSubContent) or object or string (required) Required. The result of the tool call.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The result of the tool call.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
@@ -3930,7 +3884,7 @@ Always set to `"mcp_server_tool_call"`.
 McpServerToolResultStep MCPServer tool result step.
 call_id string (required) Required. ID to match the ID from the function call block.
 name string (optional) Name of the tool which is called for this specific tool call.
-result array (FunctionResultSubContent) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
+result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
 server_name string (optional) The name of the used MCP server.
 type object (required) No description provided.
 
@@ -4573,23 +4527,15 @@ Always set to `"remote"`.
 
 ### EnvironmentNetworkEgressAllowlist
 
-Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.
-
-#### Possible Types
-
-object Outbound networking configuration for the sandbox. When specified, restricts which external domains the sandbox can reach. Omit entirely to allow all outbound traffic with no header injection.
-allowlist array (EgressRule) (optional) List of allowed outbound domains. Only requests to listed domains are permitted. Use \[{'domain': '\*'}\] to allow all domains while still injecting headers on specific ones.
-A single domain allowlist rule with optional header injection.
+Network egress configuration for the environment.
 
 #### Fields
 
-credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
-domain string (optional) Domain to allow outbound requests to. Supports wildcards (e.g.
-'\*.googleapis.com'). Use '\*' to allow all domains.
-transform array (object) or object (optional) Headers to inject on all outbound requests matching this domain. Accepts a single dict or a list of dicts. The egress proxy injects these automatically.
-string Turns all network off.
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
 
-#### Possible values
+Possible
+values:
 
 - `disabled`
 

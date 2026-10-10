@@ -7,8 +7,8 @@ interactivity, all built on a foundation of state-of-the-art reasoning.
 
 ## Documentation
 
-Visit the [Gemini 3 Developer Guide](https://ai.google.dev/gemini-api/docs/gemini-3) page for full coverage of
-features and capabilities.
+Visit the [Gemini 3 Developer Guide](https://ai.google.dev/gemini-api/docs/latest-model) page for
+full coverage of features and capabilities.
 
 ## gemini-3-flash-preview
 

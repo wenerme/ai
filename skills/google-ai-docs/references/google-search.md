@@ -395,15 +395,20 @@ The output will show the text followed by its citations:
 
 ## Pricing
 
-When you use Grounding with Google Search with Gemini 3, your project is billed
-for each search query that the model decides to execute. If the model decides to
-execute multiple search queries to answer a single prompt (for example,
-searching for `"UEFA Euro 2024 winner"` and `"Spain vs England Euro 2024 final
-score"` within the same API call), this counts as two billable uses of the tool
-for that request. For billing purposes, we ignore the empty web search queries
-when counting unique queries. This billing model only applies to Gemini 3
-models; when you use search grounding with Gemini 2.5 or older models, your
-project is billed per prompt.
+When you use Grounding with Google Search with Gemini 3 and newer models, your
+project is billed for **each** search query that the model decides to execute.
+This per-query billing model includes 5,000 free search requests per month
+shared across all Gemini 3 and newer models, and then costs **$14 per 1,000
+search requests**.
+
+For example, if the model decides to execute multiple search queries to answer
+a single prompt (e.g. searching for `"UEFA Euro 2024 winner"` and `"Spain vs
+England Euro 2024 final score"` within the same API call), this counts as two
+billable uses of the tool for that request. For billing purposes, we ignore
+empty web search queries when counting unique queries.
+
+When you use search grounding with Gemini 2.5 or older models, your project is
+billed per prompt.
 
 For detailed pricing information, see the [Gemini API pricing
 page](https://ai.google.dev/gemini-api/docs/pricing).
@@ -416,10 +421,8 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 | Model | Grounding with Google Search |
 |---|---|
 | Gemini 3.8 Flash | ✔️ |
-| Gemini 3.7 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
 | Gemini 3.5 Flash-Lite | ✔️ |
-| Gemini 3.5 Flash | ✔️ |
 | Gemini 3.1 Flash Image Preview | ✔️ |
 | Gemini 3.1 Pro Preview | ✔️ |
 | Gemini 3 Pro Image Preview | ✔️ |
@@ -438,7 +441,8 @@ You can use Grounding with Google Search with other tools like
 [code execution](https://ai.google.dev/gemini-api/docs/code-execution),
 [URL context](https://ai.google.dev/gemini-api/docs/url-context), and
 [Grounding with Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding) (supported on
-Gemini 3.5 Flash and later models) to power more complex use cases. Gemini 3
+Gemini 3.5 Flash-Lite and later models) to power more complex use cases.
+Gemini 3
 models also support combining these built-in tools with custom tools (function
 calling). Learn more on the
 [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.

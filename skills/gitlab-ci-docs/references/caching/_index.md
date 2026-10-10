@@ -212,7 +212,7 @@ For more information, see [`cache: policy`](../yaml/_index.md#cachepolicy).
 
 ## Cache key names
 
-- `-protected` suffix for Maintainer role and higher [introduced](https://about.gitlab.com/releases/2025/11/26/patch-release-gitlab-18-6-1-released/) in GitLab 18.4.5.
+- `-protected` suffix for Maintainer role and higher [introduced](https://docs.gitlab.com/releases/patches/patch-release-gitlab-18-6-1-released/) in GitLab 18.4.5.
 
 A suffix is added to the cache key, with the exception of the [global fallback cache key](#global-fallback-key).
 

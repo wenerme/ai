@@ -16,13 +16,9 @@ New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extende
 Flagship creative text-to-speech model for studio-grade voice fidelity, expressive acting, Voice design, and Voice replication.
 New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts) [### Gemini 3.8 Flash-Lite TTS
 Fast, cost-efficient text-to-speech model for high-volume production, real-time voice agent cascades, and Voice replication.
-New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts) [### Gemini 3.7 Flash
-Our previous-generation Flash model for complex coding, agentic workflows, and reliable multi-step execution.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) [### Gemini 3.6 Flash
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts) [### Gemini 3.6 Flash
 Our previous-generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [### Gemini 3.5 Flash
-Our legacy Flash model, providing baseline speed and foundational performance for routine, high-throughput workloads.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3.5 Flash-Lite
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [### Gemini 3.5 Flash-Lite
 Our fastest, most cost-effective 3.5 model for high-throughput execution.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
@@ -63,9 +59,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Gemini 3.8 Live Extended Thinking](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extended-thinking) | ``` gemini-3.8-live-extended-thinking ``` |
 | [Gemini 3.8 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts) | ``` gemini-3.8-flash-tts ``` |
 | [Gemini 3.8 Flash-Lite TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts) | ``` gemini-3.8-flash-lite-tts ``` |
-| [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) | ``` gemini-3.7-flash ``` |
 | [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ``` gemini-3.6-flash ``` |
-| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ``` gemini-3.5-flash ``` |
 | [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ``` gemini-3.5-flash-lite ``` |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ``` gemini-3.1-flash-lite ``` |
 | [Nano Banana 2.1](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1) | ``` gemini-nano-banana-2.1 ``` |

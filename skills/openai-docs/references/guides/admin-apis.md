@@ -220,7 +220,7 @@ spendAlert, err := client.Admin.Organization.Projects.SpendAlerts.New(
 		NotificationChannel: openai.AdminOrganizationProjectSpendAlertNewParamsNotificationChannel{
 			Recipients:    []string{"billing@example.com"},
 			Type:          "email",
-			SubjectPrefix: openai.String("[OpenAI spend]"),
+			SubjectPrefix: openai.String("OpenAI spend"),
 		},
 		ThresholdAmount: 50000,
 	},

@@ -354,9 +354,7 @@ projects on the Paid Tier. You can view them directly from the
 | Model Name | Type | Model ID |
 |---|---|---|
 | Gemini 3.8 Flash | Model | `gemini-3.8-flash` |
-| Gemini 3.7 Flash | Model | `gemini-3.7-flash` |
 | Gemini 3.6 Flash | Model | `gemini-3.6-flash` |
-| Gemini 3.5 Flash | Model | `gemini-3.5-flash` |
 | Gemini 3.1 Pro Preview | Model | `gemini-3.1-pro-preview` |
 | Gemini 3.5 Flash-Lite | Model | `gemini-3.5-flash-lite` |
 | Gemini 3.1 Flash-Lite | Model | `gemini-3.1-flash-lite` |

@@ -356,37 +356,46 @@ print(response.output_text)
 ```
 
 ```go
-package main
-
-import (
-	"context"
-	"fmt"
-
-	"github.com/openai/openai-go/v3"
-	"github.com/openai/openai-go/v3/responses"
-)
-
-func main() {
-	client := openai.NewClient()
-	tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{
-		Environment: responses.FunctionShellToolEnvironmentUnionParam{OfLocal: &responses.LocalEnvironmentParam{
-			Skills: []responses.LocalSkillParam{{
-				Name:        "csv-insights",
-				Description: "Summarize CSV files and produce a markdown report.",
-				Path:        "<path-to-skill-folder>",
-			}},
-		}},
-	}}
-	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-		Model: "gpt-6-astra",
-		Tools: []responses.ToolUnionParam{tool},
-		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the csv-insights skill and run locally to summarize today's CSV reports in this repo.")},
-	})
+// The surrounding program prepares an isolated sandbox with the skill files.
+client := openai.NewClient()
+tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{Environment: responses.FunctionShellToolEnvironmentUnionParam{OfLocal: &responses.LocalEnvironmentParam{Skills: []responses.LocalSkillParam{{Name: "csv-insights", Description: "Summarize CSV files and produce a markdown report.", Path: "/workspace/skills/csv-insights"}}}}}}
+params := responses.ResponseNewParams{Model: "gpt-6-astra", Tools: []responses.ToolUnionParam{tool}, Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.")}}
+for turn := 0; turn <= 8; turn++ {
+	response, err := client.Responses.New(ctx, params)
 	if err != nil {
-		panic(err)
+		return err
 	}
-	fmt.Println(response.OutputText())
+	if response.Status != responses.ResponseStatusCompleted {
+		return fmt.Errorf("response ended with status %s", response.Status)
+	}
+	results := responses.ResponseInputParam{}
+	for _, item := range response.Output {
+		if item.Type != "shell_call" {
+			continue
+		}
+		if turn == 8 {
+			return fmt.Errorf("shell workflow exceeded eight tool turns")
+		}
+		result, err := executeShellCall(ctx, name, item.AsShellCall())
+		if err != nil {
+			return err
+		}
+		results = append(results, result)
+	}
+	if len(results) == 0 {
+		fmt.Println(response.OutputText())
+		// Read the artifact without executing generated code outside the container.
+		report, err := readReport(ctx, name)
+		if err != nil {
+			return fmt.Errorf("read generated report: %w", err)
+		}
+		fmt.Printf("Report:\n%s\n", report)
+		return nil
+	}
+	params.PreviousResponseID = openai.String(response.ID)
+	params.Input = responses.ResponseNewParamsInputUnion{OfInputItemList: results}
 }
+return fmt.Errorf("shell workflow exceeded eight turns")
 ```
 
 ```java

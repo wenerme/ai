@@ -5,7 +5,7 @@ description: "Browse DigitalOcean model IDs, capabilities, context windows, and 
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 101 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 102 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2,
     "outputCost": 10
+  },
+  {
+    "model": "digitalocean/anthropic-claude-5.5-haiku",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 0.1,
+    "outputCost": 0.5
   },
   {
     "model": "digitalocean/anthropic-claude-fable-5",

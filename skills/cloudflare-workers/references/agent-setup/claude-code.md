@@ -56,7 +56,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 ## Cloudflare platform access
@@ -153,23 +153,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

@@ -10,6 +10,9 @@ when you need your own image, compute, or private network.
 For tasks that interact with websites through a browser, see
 [Computer use](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use).
 
+To prepare the workspace before creating a session, see
+[Pre-warm sandboxes](https://developers.openai.com/api/docs/guides/agents-api/environments/prewarmed).
+
 ## Configure the sandbox
 
 Set `environment.type` to `openai_hosted` in your create-session request. Add

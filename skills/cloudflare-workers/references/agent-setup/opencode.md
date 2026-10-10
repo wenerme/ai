@@ -65,7 +65,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Set up a KV namespace for edge-cached session storage in my Worker.
+   Add a cron trigger to my Worker that processes a job queue every hour.
    ```
 
 ## Cloudflare platform access
@@ -162,15 +162,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
@@ -178,7 +170,15 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips

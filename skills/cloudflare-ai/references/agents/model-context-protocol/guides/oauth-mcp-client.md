@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/oa
 
 # Handle OAuth with MCP servers
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting to OAuth-protected MCP servers (like Slack or Notion), your users need to authenticate before your Agent can access their data. This guide covers implementing OAuth flows for seamless authorization.
 
@@ -38,8 +38,8 @@ export class MyAgent extends Agent {
 
 		if (url.pathname.endsWith("/connect") && request.method === "POST") {
 			const { id, authUrl } = await this.addMcpServer(
-				"Cloudflare Observability",
-				"https://observability.mcp.cloudflare.com/mcp",
+				"Cloudflare API",
+				"https://mcp.cloudflare.com/mcp",
 			);
 
 			if (authUrl) {
@@ -65,8 +65,8 @@ export class MyAgent extends Agent<Env> {
 
 		if (url.pathname.endsWith("/connect") && request.method === "POST") {
 			const { id, authUrl } = await this.addMcpServer(
-				"Cloudflare Observability",
-				"https://observability.mcp.cloudflare.com/mcp",
+				"Cloudflare API",
+				"https://mcp.cloudflare.com/mcp",
 			);
 
 			if (authUrl) {
@@ -462,7 +462,7 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 ## Complete example
 
-This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
+This example demonstrates a complete OAuth integration with the Cloudflare API MCP server. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
 ```js
 import { Agent, routeAgentRequest } from "agents";
@@ -485,8 +485,8 @@ export class MyAgent extends Agent {
 		// Connect to MCP server
 		if (url.pathname.endsWith("/connect") && request.method === "POST") {
 			const { id, authUrl } = await this.addMcpServer(
-				"Cloudflare Observability",
-				"https://observability.mcp.cloudflare.com/mcp",
+				"Cloudflare API",
+				"https://mcp.cloudflare.com/mcp",
 			);
 
 			if (authUrl) {
@@ -562,8 +562,8 @@ export class MyAgent extends Agent<Env> {
 		// Connect to MCP server
 		if (url.pathname.endsWith("/connect") && request.method === "POST") {
 			const { id, authUrl } = await this.addMcpServer(
-				"Cloudflare Observability",
-				"https://observability.mcp.cloudflare.com/mcp",
+				"Cloudflare API",
+				"https://mcp.cloudflare.com/mcp",
 			);
 
 			if (authUrl) {
@@ -631,5 +631,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/og.png?v=0c93b7fceb3b8d12","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/#page","headline":"Handle OAuth with MCP servers","description":"Implement OAuth authentication flows in Cloudflare Agents to connect to protected MCP servers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/oauth-mcp-client/og.png?v=0c93b7fceb3b8d12","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

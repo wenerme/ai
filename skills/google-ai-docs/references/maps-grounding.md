@@ -861,10 +861,13 @@ license terms, see the [Google Maps and Google Earth legal notices](https://www.
 
 Grounding with Google Maps pricing differs depending on the model generation:
 
-- **Gemini 3 models:** Your project is billed for each **search query** that the model decides to execute. A single **search prompt** (your API request to the model) might result in the model executing multiple search queries to find the necessary information. Each of these queries counts as a billable use of the tool.
-- **Gemini 2.5 and older models:** Your project is billed per **search prompt**. A request is only billed if the prompt successfully returns at least one Google Maps grounded result, regardless of how many individual search queries the model performed internally to get that result.
+- **Gemini 3 and newer models:** Your project is billed for each search query that the model decides to execute, with 5,000 free requests per month shared across all Gemini 3 and newer models, and then **$14 per 1,000 search
+  queries**. A single search prompt (your API request to the model) might result in the model executing multiple search queries to find the necessary information. Each of these queries counts as a billable use of the tool.
+- **Gemini 2.5 and older models:** Your project is billed per search prompt ($25 per 1,000 grounded prompts). A request is only billed if the prompt successfully returns at least one Google Maps grounded result, regardless of how many individual search queries the model performed internally to get that result.
 
-For detailed pricing information, see the [Gemini API pricing page](https://ai.google.dev/gemini-api/docs/pricing).
+The quota for Grounding with Google Maps typically aligns with the underlying
+Gemini model rate limits. For detailed pricing information, see the [Gemini API
+pricing page](https://ai.google.dev/gemini-api/docs/pricing).
 
 ## Supported models
 
@@ -873,10 +876,8 @@ The following models support Grounding with Google Maps:
 | Model | Grounding with Google Maps |
 |---|---|
 | [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) | ✔️ |
-| [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) | ✔️ |
 | [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ✔️ |
 | [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ✔️ |
-| [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ✔️ |
 | [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ✔️ |
 | [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ |
@@ -888,7 +889,8 @@ The following models support Grounding with Google Maps:
 
 You can use Grounding with Google Maps with other built-in tools like
 [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) (supported on
-Gemini 3.5 Flash and later models) to power more complex use cases. Gemini 3
+Gemini 3.5 Flash-Lite and later models) to power more complex use cases.
+Gemini 3
 models also support combining these built-in tools with custom tools (function
 calling). Learn more on the
 [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.

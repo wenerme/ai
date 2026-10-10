@@ -263,7 +263,7 @@ curl \
 
 ## Inspect turns and identify delegated commands
 
-Session turns are available through the public API. Use the `turn_id` from a command item with your saved session ID. The cURL example requires `jq`:
+Session turns are available through the public API. Use the `turn_id` from a command item with your saved session ID. The Go example searches root-agent and subagent turns with native SDK pagination, then retrieves the matching turn from its owning agent. Replace the illustrative IDs with IDs from your session. The cURL example requires `jq`:
 
 Identify delegated command execution
 
@@ -300,7 +300,7 @@ print(turn.subagent_id)
 ```
 
 ```go
-// Replace the illustrative IDs and URLs below with your own resource values.
+// Replace the illustrative session and turn IDs with values from your command item.
 import (
 	"context"
 	"fmt"
@@ -310,23 +310,48 @@ import (
 
 ctx := context.Background()
 client := openai.NewClient()
-result, err := client.Beta.Agents.Sessions.Turns.List(ctx,
-	"sess_123",
-	openai.BetaAgentSessionTurnListParams{
-		Limit: openai.Int(20),
-		Order: "desc",
-	})
+turn, err := findTurn(ctx, &client, "sess_123", "turn_123")
 if err != nil {
 	panic(err)
 }
-fmt.Println(result.Data)
-turn, err := client.Beta.Agents.Sessions.Turns.Get(ctx,
-	"sess_123",
-	"turn_123")
-if err != nil {
-	panic(err)
+if turn.SubagentID == "" {
+	fmt.Println("main agent")
+} else {
+	fmt.Println(turn.SubagentID)
 }
-fmt.Println(turn.SubagentID)
+
+// findTurn discovers the owning agent using native SDK pagination.
+func findTurn(ctx context.Context, client *openai.Client, sessionID, turnID string) (*openai.Turn, error) {
+	turns := client.Beta.Agents.Sessions.Turns.ListAutoPaging(ctx, sessionID,
+		openai.BetaAgentSessionTurnListParams{Limit: openai.Int(100)})
+	for turns.Next() {
+		if turns.Current().ID == turnID {
+			return client.Beta.Agents.Sessions.Turns.Get(ctx, sessionID, turnID)
+		}
+	}
+	if err := turns.Err(); err != nil {
+		return nil, err
+	}
+	subagents := client.Beta.Agents.Sessions.Subagents.ListAutoPaging(ctx, sessionID,
+		openai.BetaAgentSessionSubagentListParams{Limit: openai.Int(100)})
+	for subagents.Next() {
+		subagent := subagents.Current()
+		childTurns := client.Beta.Agents.Sessions.Subagents.Turns.ListAutoPaging(ctx, sessionID, subagent.ID,
+			openai.BetaAgentSessionSubagentTurnListParams{Limit: openai.Int(100)})
+		for childTurns.Next() {
+			if childTurns.Current().ID == turnID {
+				return client.Beta.Agents.Sessions.Subagents.Turns.Get(ctx, sessionID, subagent.ID, turnID)
+			}
+		}
+		if err := childTurns.Err(); err != nil {
+			return nil, err
+		}
+	}
+	if err := subagents.Err(); err != nil {
+		return nil, err
+	}
+	return nil, fmt.Errorf("turn %s not found in session %s", turnID, sessionID)
+}
 ```
 
 ```java
@@ -390,7 +415,7 @@ curl "https://api.openai.com/v1/agents/sessions/sess_123/turns/turn_123" \
 ```
 
 
-Use the returned `last_id` as the next page's `after` value when `has_more` is `true`.
+For manual pagination, use the returned `last_id` as the next page's `after` value when `has_more` is `true`. The Go example follows these pages automatically.
 
 Command items contain `turn_id`. Retrieve that turn and read `subagent_id` to identify the delegated agent that ran the command. A `null` subagent ID identifies root-agent work. Command-output truncation is not reported.
 

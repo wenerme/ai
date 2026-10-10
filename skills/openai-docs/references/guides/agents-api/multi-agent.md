@@ -20,7 +20,7 @@ Set `agent.multi_agent.enabled` to `true` when you create a session. The harness
 
 
 
-This example asks two subagents to review separate release notes, then combines their findings. It needs no environment or configured tools:
+This example explicitly requests two subagents in the user input. Each reviews one set of release notes, and the main agent combines their findings. It needs no environment or configured tools:
 
 Compare release notes
 
@@ -38,7 +38,7 @@ const events = await client.beta.agents.sessions.create({
   },
   environment: { type: "none" },
   input:
-    "Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
+    "Use two subagents, one for each release, and combine their findings into a labeled summary. Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
   stream: true,
 });
 events.withResultCollection();
@@ -64,7 +64,7 @@ with client.beta.agents.sessions.create(
         "multi_agent": {"enabled": True, "max_concurrent_subagents": 2},
     },
     environment={"type": "none"},
-    input="Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
+    input="Use two subagents, one for each release, and combine their findings into a labeled summary. Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
     stream=True,
 ).with_result_collection() as stream:
     for event in stream:
@@ -87,7 +87,7 @@ events := client.Beta.Agents.Sessions.NewStreaming(ctx, openai.BetaAgentSessionN
 	MultiAgent: openai.MultiAgentConfigParam{Enabled: true,
 		MaxConcurrentSubagents: openai.Int(2)}},
 	Environment: openai.EnvironmentParamUnion{OfParamNone: &openai.EnvironmentParamNone{}},
-	Input:       openai.BetaAgentSessionNewParamsInputUnion{OfString: openai.String("Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.")}})
+	Input:       openai.BetaAgentSessionNewParamsInputUnion{OfString: openai.String("Use two subagents, one for each release, and combine their findings into a labeled summary. Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.")}})
 defer events.Close()
 openai.BetaAgentSessionWithResultCollection(events)
 for events.Next() {
@@ -132,7 +132,9 @@ try (var events =
                         .build())
                 .environmentNone()
                 .input(
-                    "Release A: Search now supports filtering by date. Existing queries"
+                    "Use two subagents, one for each release, and combine their findings into"
+                        + " a labeled summary. Release A: Search now supports filtering by date."
+                        + " Existing queries"
                         + " continue to work. Release B: The export endpoint now returns a"
                         + " download URL instead of file bytes. Update clients to fetch that"
                         + " URL.")
@@ -159,7 +161,7 @@ events = client.beta.agents.sessions.create_streaming(
     }
   },
   environment: { type: "none" },
-  input: "Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL."
+  input: "Use two subagents, one for each release, and combine their findings into a labeled summary. Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL."
 )
 begin
   events.with_result_collection
@@ -183,7 +185,7 @@ curl --no-buffer --fail-with-body https://api.openai.com/v1/agents/sessions \
       "multi_agent": { "enabled": true, "max_concurrent_subagents": 2 }
     },
     "environment": { "type": "none" },
-    "input": "Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
+    "input": "Use two subagents, one for each release, and combine their findings into a labeled summary. Release A: Search now supports filtering by date. Existing queries continue to work. Release B: The export endpoint now returns a download URL instead of file bytes. Update clients to fetch that URL.",
     "stream": true
   }'
 ```

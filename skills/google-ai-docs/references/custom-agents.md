@@ -1750,7 +1750,7 @@ When creating a managed agent, the `id` you specify must follow these rules:
 ## Limitations
 
 - **Preview status**: Managed agents are in preview. Features and schemas may change.
-- **Base agent and models** : Only `antigravity-preview-09-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.8-flash` (default), `gemini-3.7-flash`, `gemini-3.6-flash`, `gemini-3.5-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
+- **Base agent and models** : Only `antigravity-preview-09-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.8-flash` (default), `gemini-3.6-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
 - **No versioning**: Agent versioning and rollback are not yet available.
 - **No subagent nesting**: Subagent delegation is not yet supported.
 - You can have up to 1000 managed agents.

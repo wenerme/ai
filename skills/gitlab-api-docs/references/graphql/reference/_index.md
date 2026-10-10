@@ -45755,6 +45755,7 @@ Fields:
 | <a id="group-name"></a>`name` | [`String`](#string) | Name of the group. |
 | <a id="group-namespacesettings"></a>`namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
 | <a id="group-orbit"></a>`orbit`  | [`OrbitNamespace`](#orbitnamespace) | Introduced in GitLab 19.5. Status: Experiment. Orbit data of the group. Returns null when Orbit is not available to the current user. |
+| <a id="group-orbitaccess"></a>`orbitAccess`  | [`OrbitAccess`](#orbitaccess) | Introduced in GitLab 19.5. Status: Experiment. Orbit access state of the top-level group. Returns null when the user cannot read the Orbit setting of the group. This field can only be resolved for one group in any single request. |
 | <a id="group-orbittrial"></a>`orbitTrial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial state of the top-level group. Returns null when the CustomersDot request fails. This field can only be resolved for one group in any single request. |
 | <a id="group-organizationeditpath"></a>`organizationEditPath`  | [`String`](#string) | Introduced in GitLab 17.1. Status: Experiment. Path for editing group at the organization level. |
 | <a id="group-packagesettings"></a>`packageSettings` | [`PackageSettings`](#packagesettings) | Package settings for the namespace. |
@@ -53788,6 +53789,19 @@ Fields:
 | <a id="oncallrotationactiveperiodtype-endtime"></a>`endTime` | [`String`](#string) | End of the rotation active period. |
 | <a id="oncallrotationactiveperiodtype-starttime"></a>`startTime` | [`String`](#string) | Start of the rotation active period. |
 
+### `OrbitAccess`
+
+Orbit access state of a group.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="orbitaccess-reason"></a>`reason`  | [`OrbitAccessReason`](#orbitaccessreason) | Introduced in GitLab 19.5. Status: Experiment. Cause of the access state when it has more than one cause. Null when the state has a single cause. |
+| <a id="orbitaccess-state"></a>`state`  | [`OrbitAccessState!`](#orbitaccessstate) | Introduced in GitLab 19.5. Status: Experiment. Access state of the group for Orbit. |
+| <a id="orbitaccess-trial"></a>`trial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial of the group. Null when the group is not in the trial flow. |
+| <a id="orbitaccess-turnondenialreason"></a>`turnOnDenialReason`  | [`OrbitTurnOnDenialReason`](#orbitturnondenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the user cannot turn Orbit on. Null when turning on is allowed or Orbit is already on. |
+
 ### `OrbitIndexingDomain`
 
 Indexing status of one Orbit domain.
@@ -53863,6 +53877,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="orbitnamespace-enabledat"></a>`enabledAt`  | [`Time`](#time) | Introduced in GitLab 19.5. Status: Experiment. When Orbit was turned on for the top-level group. Null for subgroups, projects, and when Orbit is off. |
 | <a id="orbitnamespace-indexingstatus"></a>`indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. |
 | <a id="orbitnamespace-itemcounts"></a>`itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. This field can be resolved for only one group or project in any single request. |
 
@@ -70441,6 +70456,7 @@ Status of a merge request risk assessment.
 | <a id="mergerequestriskassessmentstatus-failed"></a>`FAILED` | Assessment could not be completed. |
 | <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be assessed. |
 | <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)assessment. |
+| <a id="mergerequestriskassessmentstatus-scoring"></a>`SCORING` | Assessment result received, waiting for its score. |
 
 ### `MergeRequestRiskConfidenceTier`
 
@@ -70766,6 +70782,36 @@ Enum defining the type of OpenTelemetry metric.
 | <a id="opentelemetrymetrictype-histogram_type"></a>`HISTOGRAM_TYPE` | Histogram Type type. |
 | <a id="opentelemetrymetrictype-sum_type"></a>`SUM_TYPE` | Sum Type type. |
 
+### `OrbitAccessReason`
+
+Cause of an Orbit access state that has more than one cause.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="orbitaccessreason-beta"></a>`BETA`  | Introduced in GitLab 19.5. Status: Experiment. Access comes from the free-beta program. |
+| <a id="orbitaccessreason-credits_exhausted"></a>`CREDITS_EXHAUSTED`  | Introduced in GitLab 19.5. Status: Experiment. Trial ran out of credits before its end date. |
+| <a id="orbitaccessreason-free_plan"></a>`FREE_PLAN`  | Introduced in GitLab 19.5. Status: Experiment. Group is on a Free plan on GitLab.com. |
+| <a id="orbitaccessreason-no_access"></a>`NO_ACCESS`  | Introduced in GitLab 19.5. Status: Experiment. Group has no Orbit access under the promo gate. |
+| <a id="orbitaccessreason-no_license"></a>`NO_LICENSE`  | Introduced in GitLab 19.5. Status: Experiment. Instance has no Orbit license. |
+| <a id="orbitaccessreason-plan"></a>`PLAN`  | Introduced in GitLab 19.5. Status: Experiment. Access comes from the plan license. |
+| <a id="orbitaccessreason-promo_add_on"></a>`PROMO_ADD_ON`  | Introduced in GitLab 19.5. Status: Experiment. Access comes from the Orbit promo add-on. |
+| <a id="orbitaccessreason-trial_expired"></a>`TRIAL_EXPIRED`  | Introduced in GitLab 19.5. Status: Experiment. Trial reached its end date. |
+
+### `OrbitAccessState`
+
+Access state of a group for Orbit.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="orbitaccessstate-licensed"></a>`LICENSED`  | Introduced in GitLab 19.5. Status: Experiment. Group has Orbit access; see reason for the source. |
+| <a id="orbitaccessstate-not_configured"></a>`NOT_CONFIGURED`  | Introduced in GitLab 19.5. Status: Experiment. Orbit service is not set up on this instance. |
+| <a id="orbitaccessstate-trial_active"></a>`TRIAL_ACTIVE`  | Introduced in GitLab 19.5. Status: Experiment. Orbit trial is running. |
+| <a id="orbitaccessstate-trial_eligible"></a>`TRIAL_ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group can start an Orbit trial. |
+| <a id="orbitaccessstate-trial_ended"></a>`TRIAL_ENDED`  | Introduced in GitLab 19.5. Status: Experiment. Orbit trial has ended; see reason for the cause. |
+| <a id="orbitaccessstate-trial_not_eligible"></a>`TRIAL_NOT_ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group is not eligible for an Orbit trial. |
+| <a id="orbitaccessstate-trial_status_unavailable"></a>`TRIAL_STATUS_UNAVAILABLE`  | Introduced in GitLab 19.5. Status: Experiment. Trial status could not be read from CustomersDot. |
+| <a id="orbitaccessstate-unlicensed"></a>`UNLICENSED`  | Introduced in GitLab 19.5. Status: Experiment. Group has no Orbit access; see reason for the cause. |
+
 ### `OrbitIndexingPhase`
 
 Indexing phase of Orbit data.
@@ -70788,6 +70834,17 @@ State of the Orbit trial for a top-level group.
 | <a id="orbittrialstate-eligible"></a>`ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group can start a trial. |
 | <a id="orbittrialstate-ended"></a>`ENDED`  | Introduced in GitLab 19.5. Status: Experiment. Trial expired or used all its credits. |
 | <a id="orbittrialstate-not_eligible"></a>`NOT_ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group cannot start a trial. |
+
+### `OrbitTurnOnDenialReason`
+
+Reason the current user cannot turn Orbit on for a group.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="orbitturnondenialreason-forbidden"></a>`FORBIDDEN`  | Introduced in GitLab 19.5. Status: Experiment. User lacks permission to turn Orbit on for the group. |
+| <a id="orbitturnondenialreason-trial_ended"></a>`TRIAL_ENDED`  | Introduced in GitLab 19.5. Status: Experiment. Trial has ended, so Orbit can no longer be turned on. |
+| <a id="orbitturnondenialreason-trial_required"></a>`TRIAL_REQUIRED`  | Introduced in GitLab 19.5. Status: Experiment. Group must start a trial before Orbit can be turned on. |
+| <a id="orbitturnondenialreason-unavailable"></a>`UNAVAILABLE`  | Introduced in GitLab 19.5. Status: Experiment. Trial status could not be read from CustomersDot. |
 
 ### `OrganizationClusterAgentFilter`
 
