@@ -290,7 +290,7 @@ The `mcp debug` command shows the current auth status, tests HTTP connectivity, 
 
 ## Manage
 
-Your MCPs are available as tools in OpenCode, alongside built-in tools. So you can manage them through the OpenCode config like any other tool.
+Tools from your MCP servers are available in OpenCode alongside built-in tools. You can manage them through the OpenCode config like any other tool.
 
 ---
 
@@ -317,7 +317,7 @@ This means that you can enable or disable them globally.
 }
 ```
 
-We can also use a glob pattern to disable all matching MCPs.
+We can also use a glob pattern to disable all matching MCP tools.
 
 ```json title="opencode.json" {14}
 {
@@ -338,7 +338,7 @@ We can also use a glob pattern to disable all matching MCPs.
 }
 ```
 
-Here we are using the glob pattern `my-mcp*` to disable all MCPs.
+Here we are using the glob pattern `my-mcp*` to disable all matching MCP tools.
 
 ---
 

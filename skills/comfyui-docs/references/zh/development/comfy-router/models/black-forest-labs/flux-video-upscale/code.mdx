@@ -1,16 +1,18 @@
 ---
 title: "通过 Comfy Router 使用 FLUX Video Upscale"
 description: "使用 Python、TypeScript 和 cURL 代码片段，通过 Comfy Router 以 HTTP 方式调用 FLUX Video Upscale 对视频进行放大，并说明请求字段与结果结构"
-translationSourceHash: 9b1a79e9
+translationSourceHash: 0b09f0ee
 translationFrom: development/comfy-router/models/black-forest-labs/flux-video-upscale/code.mdx
 translationBlockHashes:
-  "_intro": 121a04b9
+  "_intro": cf804f5f
   "Quick start": b745a238
   "Schema": 4675f835
   "Examples": d1ffa3d6
 ---
 
 FLUX Video Upscale 的 API 参考。FLUX Video Upscale 是 Black Forest Labs 的视频放大器：发送一个视频，即可获得分辨率更高的版本。
+
+**输入：** 视频 · **输出：** 视频
 
 ## 快速开始
 
@@ -148,7 +150,7 @@ curl https://api.comfy.org/v2/models/bfl/video-upscale-v1/requests/$REQUEST_ID \
 
   
 
-## 架构
+## Schema
 
 ### 输入
 
