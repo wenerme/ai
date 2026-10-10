@@ -109,21 +109,21 @@
   },
   "claude-apps-gateway.md": {
     "url": "https://code.claude.com/docs/en/claude-apps-gateway",
-    "lastModified": "Sat, 10 Oct 2026 05:31:39 GMT",
-    "size": 56600,
-    "updatedAt": "2026-10-10T05:31:39.231Z"
+    "lastModified": "Sat, 10 Oct 2026 15:52:15 GMT",
+    "size": 57793,
+    "updatedAt": "2026-10-10T15:52:15.340Z"
   },
   "claude-apps-gateway-config.md": {
     "url": "https://code.claude.com/docs/en/claude-apps-gateway-config",
-    "lastModified": "Sat, 10 Oct 2026 05:31:39 GMT",
-    "size": 133044,
-    "updatedAt": "2026-10-10T05:31:39.589Z"
+    "lastModified": "Sat, 10 Oct 2026 15:52:16 GMT",
+    "size": 133149,
+    "updatedAt": "2026-10-10T15:52:16.146Z"
   },
   "claude-apps-gateway-deploy.md": {
     "url": "https://code.claude.com/docs/en/claude-apps-gateway-deploy",
-    "lastModified": "Sat, 10 Oct 2026 05:31:39 GMT",
-    "size": 62603,
-    "updatedAt": "2026-10-10T05:31:39.948Z"
+    "lastModified": "Sat, 10 Oct 2026 15:52:16 GMT",
+    "size": 62522,
+    "updatedAt": "2026-10-10T15:52:16.891Z"
   },
   "claude-apps-gateway-on-aws.md": {
     "url": "https://code.claude.com/docs/en/claude-apps-gateway-on-aws",
@@ -307,9 +307,9 @@
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
-    "lastModified": "Sat, 10 Oct 2026 05:31:51 GMT",
-    "size": 483885,
-    "updatedAt": "2026-10-10T05:31:51.328Z"
+    "lastModified": "Sat, 10 Oct 2026 15:52:32 GMT",
+    "size": 484191,
+    "updatedAt": "2026-10-10T15:52:32.232Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
@@ -691,9 +691,9 @@
   },
   "settings-reference.md": {
     "url": "https://code.claude.com/docs/en/settings-reference",
-    "lastModified": "Fri, 09 Oct 2026 05:50:52 GMT",
-    "size": 419891,
-    "updatedAt": "2026-10-09T05:50:52.488Z"
+    "lastModified": "Sat, 10 Oct 2026 15:53:21 GMT",
+    "size": 419923,
+    "updatedAt": "2026-10-10T15:53:21.286Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

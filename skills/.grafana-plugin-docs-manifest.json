@@ -1571,13 +1571,13 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 12591,
-    "updatedAt": "2026-10-05T05:28:32.455Z"
+    "size": 13053,
+    "updatedAt": "2026-10-10T16:03:51.457Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
-    "size": 8966,
-    "updatedAt": "2026-10-05T05:28:32.631Z"
+    "size": 8976,
+    "updatedAt": "2026-10-10T16:03:51.644Z"
   },
   "grafana-pathfinder-app/block-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
@@ -1586,8 +1586,8 @@
   },
   "grafana-pathfinder-app/getting-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
-    "size": 6963,
-    "updatedAt": "2026-10-05T05:28:32.986Z"
+    "size": 7228,
+    "updatedAt": "2026-10-10T16:03:52.030Z"
   },
   "grafana-pathfinder-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest.md",
