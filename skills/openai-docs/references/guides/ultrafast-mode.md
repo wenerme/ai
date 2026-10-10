@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Ultrafast mode is the fastest service tier in the OpenAI API. It is broadly available for GPT-6 Astra and GPT-6.1 Sol, with [preview access](https://openai.com/index/previewing-ultrafast/) for GPT-5.6 Sol. Use it when speed justifies the higher cost.
+Ultrafast mode is the fastest service tier in the OpenAI API. It is broadly available for GPT-6 Astra and GPT-6.1 Sol. Use it when speed justifies the higher cost.
 
 We strongly recommend [WebSockets](https://developers.openai.com/api/docs/guides/websocket-mode), especially for agentic applications that make many tool calls in quick succession. Without a persistent connection, network overhead can reduce the latency gains.
 

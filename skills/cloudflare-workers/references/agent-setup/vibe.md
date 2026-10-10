@@ -94,7 +94,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Configure Zero Trust access policies to protect my internal staging environment.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 ## Cloudflare platform access
@@ -191,15 +191,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
@@ -207,7 +203,11 @@ Configure caching rules and cache TTLs to reduce origin load for my e-commerce s
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

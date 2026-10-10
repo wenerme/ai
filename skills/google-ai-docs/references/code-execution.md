@@ -754,7 +754,7 @@ You can also use code execution as part of a multi-turn conversation using
 ## Input/output (I/O)
 
 In current Gemini models such as
-[Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-3.5-flash), code
+[Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash), code
 execution supports file input and graph output. Using these input and output
 capabilities, you can upload CSV and text files, ask questions about the
 files, and have [Matplotlib](https://matplotlib.org/) graphs generated as part

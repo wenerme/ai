@@ -119,7 +119,7 @@ request.
 
 Each model supports different thinking configurations which gives you control
 over cost, latency, and intelligence. For more details, see the
-[thinking guide](https://ai.google.dev/gemini-api/docs/thinking#set-budget).
+[thinking guide](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels).
 
 ### Python
 

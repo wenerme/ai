@@ -33,6 +33,23 @@ Clef is a 27B multimodal decision model that turns a state and a schema of typed
 | Vision | Yes |
 | Unit Pricing | $0.24 per M input tokens |
 
+How media inputs are billed
+
+Clef models convert media inputs to input tokens and bill them at the model's input token rate. Clef models do not charge for output tokens. For per-model rates, refer to [pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
+Images are tokenized as follows:
+
+1. **Resize**: The image keeps its aspect ratio, but:
+   - Each side is rounded to a multiple of 32 pixels.
+   - If the area is under about 65,000 pixels (256x256), it is scaled up to reach that.
+   - If the area is over about 1 megapixel, it is scaled down to fit.
+2. **Count patches**: Each 32x32-pixel block is one token: `tokens = (width / 32) x (height / 32)`.
+3. **Add markers**: 3 tokens are added to mark where the image starts and ends.
+
+Each image is capped at 1,024 tokens.
+
+Media tokens count toward the model's context window, together with the questions. If they exceed the context window, the request fails. Otherwise, the text `state` is truncated to fit the remaining space.
+
 ## Usage
 
 ```ts

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -235,6 +235,18 @@ MCP server portals use upstream OAuth callback URLs to authorize administrators 
 
 OAuth providers typically exact-match the full URI, including the path.
 
+If your upstream OAuth provider restricts redirect URIs, add the URLs that match your server's configuration:
+
+| OAuth configuration | **Use the Cloudflare-hosted OAuth callback** on? | Redirect URIs to allowlist at the upstream provider |
+| --- | --- | --- |
+| Automatic (DCR) | No | The [dashboard callback URL](#dashboard-callback-url) for administrator authorization. If users authorize with their own credentials, also add `https://<your-portal-hostname>/servers-callback` for each portal using this server. |
+| Automatic (DCR) | Yes | The [dashboard callback URL](#dashboard-callback-url) for administrator authorization. If users authorize with their own credentials, also add `https://oauth-callbacks.cloudflareaccess.com/cdn-cgi/access/outbound-oauth-callback`. |
+| Manual OAuth credentials | Not available | `https://oauth-callbacks.cloudflareaccess.com/cdn-cgi/access/outbound-oauth-callback`. The dashboard DCR callback URL is not used for this configuration. |
+
+For automatic (DCR) servers, expand **Advanced settings** to access the **Use the Cloudflare-hosted OAuth callback** setting.
+
+For manual OAuth configured through the API, register the [shared Cloudflare callback URL](#shared-cloudflare-callback-url) with the upstream provider. Set `is_shared_oauth_callback_enabled` to `true`. Cloudflare uses the shared callback URL regardless of the value of `registration_info.redirect_uris`, so you can omit this field. You cannot override the shared callback URL.
+
 #### Dashboard callback URL
 
 When Cloudflare registers the OAuth client using DCR, the dashboard uses the following callback URL:
@@ -255,13 +267,15 @@ End users never use the dashboard callback URL to authorize the upstream MCP ser
 
 When a user authorizes an upstream MCP server that requires per-user OAuth, the portal performs an OAuth authorization code flow with the upstream server on the user's behalf. As part of this flow, the portal registers a callback URL (`redirect_uri`) with the upstream server. The upstream server redirects to this URL after the user authorizes access.
 
-By default, the portal uses a callback URL on your portal domain:
+When the **Use the Cloudflare-hosted OAuth callback** setting is off, the portal uses a callback URL on your portal domain:
 
 ```txt
 https://<your-portal-hostname>/servers-callback
 ```
 
 Add the callback URL to the OAuth provider's redirect URI allowlist.
+
+Use `/servers-callback`, not `/server-callback`, for automatic (DCR) servers when the shared callback setting is off. Manual OAuth servers use the [shared Cloudflare callback URL](#shared-cloudflare-callback-url) instead.
 
 #### Shared Cloudflare callback URL
 
@@ -275,7 +289,7 @@ The **Use the Cloudflare-hosted OAuth callback** setting is not available when y
 
 When Cloudflare uses DCR to register the OAuth client, turn on **Use the Cloudflare-hosted OAuth callback** to use the shared callback URL for per-user authorization. If the setting is off, per-user authorization uses the [portal-scoped callback URL](#portal-callback-url).
 
-Use the shared callback URL if the upstream OAuth provider limits the number of allowed redirect URIs or if you want one callback URL for a server across multiple portals. The **Use the Cloudflare-hosted OAuth callback** setting is off by default. Configure it separately for each MCP server that uses DCR.
+Use the shared callback URL if the upstream OAuth provider limits the number of allowed redirect URIs or if you want one callback URL for a server across multiple portals. DCR still uses the dashboard callback URL for administrator authorization, regardless of whether the **Use the Cloudflare-hosted OAuth callback** setting is on. The setting is off by default. Configure it separately for each MCP server that uses DCR.
 
 To turn on the setting, go to **Zero Trust** > **Access controls** > **MCP Portals** > **MCP servers**, add or edit an MCP server that uses DCR, and turn on **Use the Cloudflare-hosted OAuth callback** under **Basic information** > **Advanced settings**.
 
@@ -610,6 +624,8 @@ The `auth_type` field accepts the following values:
 
 #### Manual OAuth credentials
 
+For manual OAuth, allowlist the shared callback URL at the upstream provider. Set `is_shared_oauth_callback_enabled` to `true` when creating the server through the API.
+
 To create an MCP server with a pre-registered OAuth client, set `auth_type` to `oauth` and provide both `auth_credentials` and `client_secret`. The `auth_credentials` value is required and must be a JSON-encoded string:
 
 ```bash
@@ -621,7 +637,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 		"name": "GitHub MCP Server",
 		"hostname": "https://github-mcp.example.com/mcp",
 		"auth_type": "oauth",
-		"auth_credentials": "{\"auth_mode\":\"manual\",\"config\":{\"authorization_endpoint\":\"https://github.com/login/oauth/authorize\",\"token_endpoint\":\"https://github.com/login/oauth/access_token\"},\"registration_info\":{\"client_id\":\"<client-id>\",\"redirect_uris\":[\"https://mcp.example.com/servers-callback\"],\"token_endpoint_auth_method\":\"client_secret_basic\",\"scope\":\"repo read:user\"}}",
+		"is_shared_oauth_callback_enabled": true,
+		"auth_credentials": "{\"auth_mode\":\"manual\",\"config\":{\"authorization_endpoint\":\"https://github.com/login/oauth/authorize\",\"token_endpoint\":\"https://github.com/login/oauth/access_token\"},\"registration_info\":{\"client_id\":\"<client-id>\",\"token_endpoint_auth_method\":\"client_secret_basic\",\"scope\":\"repo read:user\"}}",
 		"client_secret": "<client-secret>"
 	}'
 ```
@@ -631,7 +648,7 @@ The decoded `auth_credentials` object must contain:
 - `auth_mode`: Must be `manual`.
 - `config.authorization_endpoint` and `config.token_endpoint`: The upstream provider's OAuth endpoints. `issuer` and `revocation_endpoint` are optional.
 - `registration_info.client_id`: The client ID issued by the upstream provider.
-- `registration_info.redirect_uris`: At least one registered redirect URI. This can be omitted when `is_shared_oauth_callback_enabled` is `true`; Cloudflare then adds the shared callback URL.
+- `registration_info.redirect_uris`: Optional when `is_shared_oauth_callback_enabled` is `true`. Cloudflare uses the shared callback URL even if you provide a different URI. This field cannot override the shared callback URL.
 - `registration_info.token_endpoint_auth_method`: Optional. Accepted values are `none`, `client_secret_post`, and `client_secret_basic`.
 - `registration_info.scope`: Optional space-delimited scope string.
 
@@ -1275,5 +1292,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

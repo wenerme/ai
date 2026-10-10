@@ -72,6 +72,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Interactions in merge requests](../project/merge_requests/duo_in_merge_requests.md#interact-with-gitlab-duo)  Ask questions and discuss feedback in merge request comment threads. | Yes | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |
+| [Recommend Reviewers Flow](../project/merge_requests/reviews/automatic_reviewer_assignment.md#recommend-reviewers-flow)  Recommend the reviewers best suited to review a merge request. | No | Yes | Yes |
 | [Flow Creator Agent](agents/foundational_agents/flow_creator.md)  Create custom flows for the AI Catalog. | No | Yes  | Yes |
 | [Resolve review discussions](../project/merge_requests/duo_in_merge_requests.md#resolve-a-discussion-with-gitlab-duo)  Autonomously analyze a review discussion, push the requested changes, and resolve the thread. | No | Yes | Yes |
 | [SAST False Positive Detection Flow](../application_security/vulnerabilities/false_positive_detection.md)  Automatically identify and filter out false positives in SAST security scans. | No | No  | Yes |
@@ -113,4 +114,3 @@ but you require credits in your monthly commitment pool to access them.
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Agentic Breaking Change Resolution Flow](flows/foundational_flows/agentic-breaking-change-resolution.md)  Analyze pipeline failures on dependency bump merge requests and create code fixes to resolve breaking changes introduced by the dependency update. | No | No | Yes |
 | [Support Assistant](agents/foundational_agents/support_assistant.md)  Diagnose and resolve GitLab product problems. | No | Yes | Yes |
-| [Recommend Reviewers Flow](../project/merge_requests/reviews/automatic_reviewer_assignment.md#recommend-reviewers-with-the-recommend-reviewers-flow)  Recommend the reviewers best suited to review a merge request. | No | Yes | Yes |

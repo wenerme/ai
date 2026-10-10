@@ -18,7 +18,6 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Recommended third-party tools](https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/)
 - [Migrate DNS from BIND](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/)
 - [Domain Connect](https://developers.cloudflare.com/dns/reference/domain-connect/)
-- [Analytics MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics)
 
 Was this helpful?
 

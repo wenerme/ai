@@ -47,7 +47,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
    ```
 
 ## Cloudflare platform access
@@ -144,23 +144,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
 Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
 Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

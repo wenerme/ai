@@ -1089,9 +1089,7 @@ The supported values for `agent_config.model` are:
 | Model | Value in `agent_config.model` | Description |
 |---|---|---|
 | **Gemini 3.8 Flash** (default) | `gemini-3.8-flash` | Default balanced model for reasoning, coding, and tool use. |
-| **Gemini 3.7 Flash** | `gemini-3.7-flash` | Previous generation Flash model for reasoning, coding, and agentic workflows. |
 | **Gemini 3.6 Flash** | `gemini-3.6-flash` | Balanced Flash model for general agentic workflows. |
-| **Gemini 3.5 Flash** | `gemini-3.5-flash` | Lightweight model for general workflows. |
 | **Gemini 3.5 Flash-Lite** | `gemini-3.5-flash-lite` | Lightweight model optimized for low latency and cost-sensitive tasks. |
 
 When creating a managed agent with `agents.create`, you configure the model in the exact same way by passing `base_agent` and `agent_config`. Notice that you cannot override the model at interaction time for a managed agent created with `agents.create`. The model is locked to what was set when the agent was created. This ensures predictable tool calling behavior, consistent debugging, and adherence to security boundaries.

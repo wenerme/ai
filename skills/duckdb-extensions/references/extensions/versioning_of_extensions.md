@@ -66,6 +66,22 @@ their releases as GitHub releases, an example of which you can see in the [`delt
 Finally, there is a small exception: All [in-tree](https://duckdb.org/docs/current/extensions/advanced_installation_methods.html#in-tree-vs-out-of-tree) extensions simply
 follow DuckDB's release cycle.
 
+## Installing a Specific Extension Version
+
+To install a specific version of an extension, add a `VERSION` clause to the `INSTALL` statement:
+
+```sql
+INSTALL spatial VERSION 'v1.1.8';
+```
+
+The `VERSION` clause can be combined with a `FROM` clause that selects a [repository](https://duckdb.org/docs/current/extensions/installing_extensions.html#extension-repositories), and with `FORCE INSTALL` to replace an already installed version:
+
+```sql
+FORCE INSTALL spatial FROM core VERSION 'v1.1.8';
+```
+
+Pinning a version is mainly useful for extensions that publish their own versioned releases, i.e., pre-release and stable extensions. The requested version must be available for your DuckDB build and platform, otherwise the download fails with an HTTP error.
+
 ## Nightly Builds
 
 Just like DuckDB itself, DuckDB's core extensions have nightly or dev builds that can be used to try out features before they are officially released.

@@ -55,7 +55,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 ## Cloudflare platform access
@@ -156,7 +156,7 @@ Add real-time collaboration to my app using Durable Objects with WebSocket hiber
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
@@ -164,11 +164,11 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

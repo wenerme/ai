@@ -89,7 +89,7 @@ Example response:
 ### Create an instance service account
 
 - `email` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/178689) in GitLab 17.9.
-- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.4.
+- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.5.
 
 Creates an instance service account.
 
@@ -134,7 +134,7 @@ returns a `400 Bad request` error.
 ### Update an instance service account
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196309/) in GitLab 18.2.
-- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.4.
+- `external` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/583452) in GitLab 19.5.
 
 Updates a specified instance service account.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/organizations/limitations/
 
 # Limitations and troubleshooting
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limitations currently apply to Cloudflare Organizations. For common errors and resolutions, refer to [Troubleshooting](#troubleshooting).
 
@@ -22,11 +22,26 @@ Each Organization supports a maximum of **20,000 accounts** and **200,000 zones*
 
 ## API authentication
 
-User API Tokens support some Organization operations. They cannot complete the full Terraform resource lifecycle. Full user API Token support for Organization operations is planned. To manage Organization resources with Terraform, configure the Cloudflare provider with a Global API key and the registered account email.
+The following credentials support core Organization management operations and Terraform:
 
-A user API Token may create an Organization. A later Terraform refresh or `terraform plan` may fail when reading the Organization. If the request returns HTTP `403` with error code `10000`, use a Global API key and the account email instead.
+| Operation | Supported credentials |
+| --- | --- |
+| [List Organizations](https://developers.cloudflare.com/api/resources/organizations/methods/list/) | Global API key, or user API token with User Details Read or User Details Write |
+| [Create an Organization](https://developers.cloudflare.com/api/resources/organizations/methods/create/) | Global API key, or user API token with User Details Write |
+| [Read](https://developers.cloudflare.com/api/resources/organizations/methods/get/), [update](https://developers.cloudflare.com/api/resources/organizations/methods/update/), or [delete](https://developers.cloudflare.com/api/resources/organizations/methods/delete/) an Organization | Global API key |
+| [List accounts directly attached to an Organization](https://developers.cloudflare.com/api/resources/organizations/subresources/organization_accounts/methods/get/); [view](https://developers.cloudflare.com/api/resources/organizations/subresources/organization_profile/methods/get/) or [update](https://developers.cloudflare.com/api/resources/organizations/subresources/organization_profile/methods/update/) its profile; [manage its members](https://developers.cloudflare.com/api/resources/organizations/subresources/members/) | Global API key |
+| Accept or reject an Organization invitation | Global API key or user API token for the invited user; no additional token permission |
+| Create and manage an Organization with Terraform ([`cloudflare_organization` resource ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization)) | Global API key and the registered email address |
+| Look up an existing Organization with Terraform ([`cloudflare_organization` data source ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/organization)) | Global API key and the registered email address |
+| List Organizations with Terraform ([`cloudflare_organizations` data source ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/organizations)) | Global API key and the registered email address, or user API token with User Details Read or User Details Write |
 
-API Tokens remain the preferred authentication method for supported operations. A Global API key has full access to the user's Cloudflare resources. Refer to [Global API key limitations](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations).
+A supported credential must belong to a user with the required access.
+
+User API tokens cannot currently receive the Organization-scoped permissions required by operations that require a Global API key. Prefer user API tokens where the table supports them. When you use a Global API key, also provide the user's registered email address. A Global API key has full access to the user's Cloudflare resources. Refer to [Global API key limitations](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations).
+
+[Organization audit logs](https://developers.cloudflare.com/api/resources/organizations/subresources/logs/subresources/audit/methods/list/) and [billing usage](https://developers.cloudflare.com/api/resources/organizations/subresources/billing/subresources/usage/methods/get/) are separate subresources outside this matrix.
+
+Account moves and other account-scoped operations are also outside this matrix. Refer to each endpoint's **Security** and **Accepted Permissions** sections, including [move account to an Organization](https://developers.cloudflare.com/api/resources/accounts/subresources/account_organizations/methods/create/), [get account profile](https://developers.cloudflare.com/api/resources/accounts/subresources/account_profile/methods/get/), and [update account profile](https://developers.cloudflare.com/api/resources/accounts/subresources/account_profile/methods/update/).
 
 ## Enterprise Organizations
 
@@ -93,5 +108,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/limitations/#page","headline":"Limitations and troubleshooting","description":"Review the current limitations of Cloudflare Organizations and troubleshoot common errors.","url":"https://developers.cloudflare.com/fundamentals/organizations/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/limitations/og.png?v=2ad0096a325aa8d6","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/limitations/#page","headline":"Limitations and troubleshooting","description":"Review the current limitations of Cloudflare Organizations and troubleshoot common errors.","url":"https://developers.cloudflare.com/fundamentals/organizations/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/limitations/og.png?v=2ad0096a325aa8d6","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

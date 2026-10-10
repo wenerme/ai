@@ -1584,7 +1584,7 @@ You can override select policies by passing overrides:
 
 ### Prompt injection detection
 
-Computer Use for Gemini 3.5 Flash or later supports an advanced safety
+Computer Use for Gemini 3.5 Flash-Lite or later supports an advanced safety
 mechanism to detect prompt injection attacks. When enabled, this feature
 checks whether an included screenshot contains hidden adversarial
 instructions (for example, "Ignore previous commands") and blocks
@@ -1602,7 +1602,7 @@ in your Computer Use tool configuration:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.8-flash",
         input="Search for flight deals and summarize top results.",
         tools=[
             {
@@ -1620,7 +1620,7 @@ in your Computer Use tool configuration:
     const ai = new GoogleGenAI();
 
     const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.8-flash",
         input: "Search for flight deals and summarize top results.",
         tools: [
             {
@@ -1646,7 +1646,7 @@ in your Computer Use tool configuration:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.5-flash")
+            .model("gemini-3.8-flash")
             .input(InteractionsInput.of("Search for flight deals and summarize top results."))
             .tools(
                 Arrays.asList(
@@ -1681,7 +1681,7 @@ in your Computer Use tool configuration:
 
         _, err = client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.5-flash"),
+                Model: interactions.Model("gemini-3.8-flash"),
                 Input: interactions.NewInteractionsInput("Search for flight deals and summarize top results."),
                 Tools: []interactions.Tool{
                     interactions.NewTool(interactions.ComputerUse{
@@ -1701,7 +1701,7 @@ in your Computer Use tool configuration:
     curl "https://generativelanguage.googleapis.com/v1beta/interactions?key=${GEMINI_API_KEY}" \
     -H 'Content-Type: application/json' \
     -d '{
-      "model": "gemini-3.5-flash",
+      "model": "gemini-3.8-flash",
       "input": "Search for flight deals and summarize top results.",
       "tools": [
         {
@@ -2061,9 +2061,7 @@ data and systems:
 You can use Computer Use with the following models:
 
 - [**Gemini 3.8 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) (`gemini-3.8-flash`): The recommended model for computer use, featuring high-accuracy UI interaction and reliable tool calling.
-- [**Gemini 3.7 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) (`gemini-3.7-flash`): Previous stable model for computer use, featuring streamlined actions with intents, support for browser, mobile, and desktop environments, configurable safety policies, and prompt injection detection.
 - [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) (`gemini-3.5-flash-lite`): A low-latency, cost-effective model supporting computer use.
-- [**Gemini 3.5 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) (`gemini-3.5-flash`): Previous stable model supporting computer use.
 - [**Gemini 3 Flash Preview**](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) (`gemini-3-flash-preview`): Preview model supporting computer use.
 
 ## What's next
