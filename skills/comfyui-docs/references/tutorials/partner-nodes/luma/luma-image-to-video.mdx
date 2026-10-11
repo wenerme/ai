@@ -1,9 +1,9 @@
 ---
-title: "Luma Image to Video Partner Node"
-description: "Luma Image to Video Partner node workflow: convert a static image into video in ComfyUI, including required credits and node parameters."
+title: "Luma Image to Video (Legacy) Partner Node Guide"
+description: "How the retired Luma Image to Video Partner node worked in ComfyUI, why it stopped working, and which node replaces it."
 ---
 
-  **Deprecated**: The legacy **Luma Image to Video** node is deprecated, and Luma removes the endpoints it uses on October 24, 2026. Use the **Luma Ray 3.2 Image to Video** node instead.
+  **Deprecated**: The legacy **Luma Image to Video** node is deprecated, and Luma removes the endpoints it uses on October 24, 2026. Use the [**Luma Ray 3.2 Image to Video** node](/built-in-nodes/LumaRay32ImageToVideoNode) instead.
 
 The Luma Image to Video node allows you to convert static images into smooth, dynamic videos using Luma AI's advanced technology, bringing life and motion to your images.
 
@@ -21,26 +21,15 @@ The Luma Image to Video node requires at least one image input (`first_image` or
 
 ### 1. Download the Workflow
 
-The workflow information is included in the metadata of the video below. Download and drag it into ComfyUI to load the workflow.
+This page documents the retired **Luma Image to Video** node and the example workflow it shipped, which selected `ray-2`. Luma stops serving that model on October 24, 2026, so neither the node nor the example can run. The example and its step guide stay in this page's source as a comment.
 
-![Luma Image to Video Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/luma/i2v/luma_i2v.mp4)
+The replacement is a separate node. Its own guide:
 
-Download the following image to use as input:
+  
+    See the replacement node and its inputs.
+  
 
-![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/luma/i2v/input.png)
-
-### 2. Follow the Workflow Steps
-
-[Luma Image to Video Workflow Steps]
-
-Follow these basic steps to run the workflow:
-1. Upload your input image in the `first_image` node
-2. (Optional) Write prompts in the Luma Image to Video node to describe how you want the image animated
-3. (Optional) Modify the `Luma Concepts` node to control camera movement for professional cinematography
-4. Click `Run` or use `Ctrl(cmd) + Enter` to generate the video
-5. Once the API returns results, view the generated video in the `Save Video` node. The video will also be saved to the `ComfyUI/output/` directory
-
-### 3. Additional Notes
+### 2. Additional Notes
 
 - **Image Input Requirements**: At least one of `first_image` or `last_image` is required, with a maximum of 1 image per input
 - **Luma Concepts**: Controls camera movement for professional video effects

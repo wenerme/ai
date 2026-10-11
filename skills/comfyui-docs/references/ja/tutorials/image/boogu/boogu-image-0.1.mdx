@@ -1,6 +1,6 @@
 ---
 title: "Boogu-Image-0.1 ComfyUI ワークフロー例"
-description: "Boogu-Image-0.1 は、テキストから画像へ と指示駆動型編集のバリアントを持つ、10B パラメータの統合画像生成・編集モデルファミリーです。Apache-2.0 ライセンスです。"
+description: "Boogu-Image-0.1 は Apache-2.0 ライセンスの 10B パラメータ画像生成・編集モデルファミリーで、テキストから画像生成と指示駆動型編集のバリアントを提供します。"
 translationSourceHash: 547a132f
 translationFrom: tutorials/image/boogu/boogu-image-0.1.mdx
 translationBlockHashes:
@@ -30,6 +30,12 @@ translationBlockHashes:
 - [Hugging Face (Edit)](https://huggingface.co/Boogu/Boogu-Image-0.1-Edit-fp8)
 
 ## Boogu-Image-0.1-Turbo テキストから画像へのワークフロー
+
+### Boogu Turbo：テキストから画像へ {#image_boogu_image_0_1_turbo_t2i}
+
+Boogu Turbo モデルでテキストプロンプトから高品質な画像を生成します。4 ステップでフォトリアルな出力を行う、蒸留済み 10B パラメータのテキストから画像へのパイプラインです。
+
+[Boogu Turbo テキストから画像へのワークフロープレビュー]
 
   
     Comfy Cloud で開く
@@ -71,6 +77,12 @@ Boogu-Image-0.1-Turbo ワークフローは、拡散、テキストエンコー�
 
 ## Boogu-Image-0.1-Edit 画像編集ワークフロー
 
+### Boogu Image Edit 画像編集 {#image_boogu_image_0_1_edit}
+
+Boogu の指示駆動モデルで画像を編集します。入力画像を 1 枚使い、編集結果と並べて比較できるビューを生成します。
+
+[Boogu Image Edit ワークフロープレビュー]
+
   
     Comfy Cloud で開く
   
@@ -81,6 +93,10 @@ Boogu-Image-0.1-Turbo ワークフローは、拡散、テキストエンコー�
   
     このワークフロー用のサンプル入力画像を入手してください
   
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [tech_cowboy.png]
+</div>
 
 ### Boogu-Image-0.1-Edit モデルのダウンロード
 
