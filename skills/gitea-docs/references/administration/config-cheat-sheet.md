@@ -1316,7 +1316,6 @@ These options are written into the gitconfig file under `[git] HOME_PATH` when G
 
 - `diff.algorithm`: **histogram**
 - `core.logAllRefUpdates`: **true**
-- `gc.reflogExpire`: **90**
 
 ## Metrics (`metrics`)
 

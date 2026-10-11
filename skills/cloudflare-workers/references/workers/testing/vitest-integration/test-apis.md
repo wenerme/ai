@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/testing/vitest-integration/test
 
 # Test APIs
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides runtime helpers for writing tests. Some helpers are exported from the `cloudflare:workers` module, and others from the `cloudflare:test` module. Both modules are provided by the `@cloudflare/vitest-plugin` package, but can only be imported from test files that execute in the Workers runtime.
 
@@ -268,6 +268,46 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 - `applyD1Migrations(db:D1Database, migrations:D1Migration[], migrationTableName?:string)`: Promise\<void>
   - Applies all un-applied [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored in the `migrations` array to database `db`, recording migrations state in the `migrationsTableName` table. `migrationsTableName` defaults to `d1_migrations`. Call the [`readD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#readd1migrationsmigrationspath) function from the `@cloudflare/vitest-plugin/config` package inside Node.js to get the `migrations` array. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
+### Secrets Store
+
+Version
+
+Available in `@cloudflare/vitest-pool-workers` version **0.13.5** and later, and in all versions of `@cloudflare/vitest-plugin`.
+
+- `adminSecretsStore(binding:SecretsStoreSecret)`: SecretsStoreSecretAdmin
+  - Returns an admin API for a [Secrets Store binding](https://developers.cloudflare.com/secrets-store/integrations/workers/). Secrets Store bindings only expose a read-only `get()` method, so use this helper to seed, update, or remove secret values from within a test. After you create a secret, `binding.get()` returns its value.
+
+    Declare the result with `using` so the admin API is released at the end of the scope. If the admin API is not disposed, workerd logs a warning.
+
+    On `@cloudflare/vitest-pool-workers`, declare the result with `const` instead, because `using` requires `@cloudflare/vitest-plugin` version 1.2.4 or later.
+
+    ```ts
+    import { adminSecretsStore } from "cloudflare:test";
+    import { env } from "cloudflare:workers";
+    import { expect, it } from "vitest";
+
+    it("reads a seeded secret", async () => {
+      using admin = adminSecretsStore(env.MY_SECRET);
+      await admin.create("test-value");
+
+      expect(await env.MY_SECRET.get()).toBe("test-value");
+    });
+    ```
+
+    The returned `SecretsStoreSecretAdmin` object has the following methods:
+    - `create(value:string)`: Promise\<string>
+      - Creates a secret with the given value and returns its ID.
+    - `update(value:string, id:string)`: Promise\<string>
+      - Updates the secret with the given ID to a new value and returns its ID.
+    - `duplicate(id:string, newName:string)`: Promise\<string>
+      - Duplicates the secret with the given ID under a new name and returns the new secret's ID.
+    - `delete(id:string)`: Promise\<void>
+      - Deletes the secret with the given ID.
+    - `list()`: Promise<{ name: string; metadata?: { uuid: string } }\[]>
+      - Lists all secrets in the store.
+    - `get(id:string)`: Promise\<string>
+      - Returns the name of the secret with the given ID. To read a secret's value, call `get()` on the binding instead.
+
 ### Workflows
 
 Workflows with storage isolation
@@ -502,5 +542,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

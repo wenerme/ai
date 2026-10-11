@@ -65,7 +65,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 ## Cloudflare platform access
@@ -162,7 +162,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
@@ -170,15 +174,11 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

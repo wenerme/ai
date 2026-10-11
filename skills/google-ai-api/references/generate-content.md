@@ -82,7 +82,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.8-flash",
+        contents="Write a story about a magic backpack.",
     )
     print(response.text)
 
@@ -90,11 +91,11 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: "Write a story about a magic backpack.",
+      model: 'gemini-3.8-flash',
+      contents: 'Write a story about a magic backpack.',
     });
     console.log(response.text);
 
@@ -133,10 +134,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     Client client = new Client();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    "Write a story about a magic backpack.",
-                    null);
+        client.models.generateContent(
+            "gemini-3.8-flash", "Write a story about a magic backpack.", null);
 
     System.out.println(response.text());
 
@@ -150,7 +149,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.8-flash",
+        contents=["Tell me about this instrument", organ],
     )
     print(response.text)
 
@@ -158,17 +158,17 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const organ = await ai.files.upload({
-      file: path.join(media, "organ.jpg"),
+      file: path.join(media, 'organ.jpg'),
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       contents: [
         createUserContent([
-          "Tell me about this instrument", 
+          'Tell me about this instrument',
           createPartFromUri(organ.uri, organ.mimeType)
         ]),
       ],
@@ -187,10 +187,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "organ.jpg"), 
+    	ctx,
+    	filepath.Join(getMedia(), "organ.jpg"),
     	&genai.UploadFileConfig{
-    		MIMEType : "image/jpeg",
+    		MIMEType: "image/jpeg",
     	},
     )
     if err != nil {
@@ -250,11 +250,12 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     byte[] imageData = Files.readAllBytes(Paths.get(path));
 
     Content content =
-            Content.fromParts(
-                    Part.fromText("Tell me about this instrument."),
-                    Part.fromBytes(imageData, "image/jpeg"));
+        Content.fromParts(
+            Part.fromText("Tell me about this instrument."),
+            Part.fromBytes(imageData, "image/jpeg"));
 
-    GenerateContentResponse response = client.models.generateContent("gemini-3.8-flash", content, null);
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", content, null);
 
     System.out.println(response.text());
 
@@ -276,17 +277,17 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const audio = await ai.files.upload({
-      file: path.join(media, "sample.mp3"),
+      file: path.join(media, 'sample.mp3'),
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       contents: [
         createUserContent([
-          "Give me a summary of this audio file.",
+          'Give me a summary of this audio file.',
           createPartFromUri(audio.uri, audio.mimeType),
         ]),
       ],
@@ -305,10 +306,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "sample.mp3"), 
+    	ctx,
+    	filepath.Join(getMedia(), "sample.mp3"),
     	&genai.UploadFileConfig{
-    		MIMEType : "audio/mpeg",
+    		MIMEType: "audio/mpeg",
     	},
     )
     if err != nil {
@@ -393,10 +394,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     # Poll until the video file is completely processed (state becomes ACTIVE).
     while not myfile.state or myfile.state.name != "ACTIVE":
-        print("Processing video...")
-        print("File state:", myfile.state)
-        time.sleep(5)
-        myfile = client.files.get(name=myfile.name)
+      print("Processing video...")
+      print("File state:", myfile.state)
+      time.sleep(5)
+      myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content(
         model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
@@ -407,7 +408,7 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     let video = await ai.files.upload({
       file: path.join(media, 'Big_Buck_Bunny.mp4'),
@@ -422,10 +423,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       contents: [
         createUserContent([
-          "Describe this video clip",
+          'Describe this video clip',
           createPartFromUri(video.uri, video.mimeType),
         ]),
       ],
@@ -444,10 +445,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+    	ctx,
+    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
     	&genai.UploadFileConfig{
-    		MIMEType : "video/mp4",
+    		MIMEType: "video/mp4",
     	},
     )
     if err != nil {
@@ -569,10 +570,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "test.pdf"), 
+    	ctx,
+    	filepath.Join(getMedia(), "test.pdf"),
     	&genai.UploadFileConfig{
-    		MIMEType : "application/pdf",
+    		MIMEType: "application/pdf",
     	},
     )
     if err != nil {
@@ -677,30 +678,30 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const chat = ai.chats.create({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       history: [
         {
-          role: "user",
-          parts: [{ text: "Hello" }],
+          role: 'user',
+          parts: [{text: 'Hello'}],
         },
         {
-          role: "model",
-          parts: [{ text: "Great to meet you. What would you like to know?" }],
+          role: 'model',
+          parts: [{text: 'Great to meet you. What would you like to know?'}],
         },
       ],
     });
 
     const response1 = await chat.sendMessage({
-      message: "I have 2 dogs in my house.",
+      message: 'I have 2 dogs in my house.',
     });
-    console.log("Chat response 1:", response1.text);
+    console.log('Chat response 1:', response1.text);
 
     const response2 = await chat.sendMessage({
-      message: "How many paws are in my house?",
+      message: 'How many paws are in my house?',
     });
-    console.log("Chat response 2:", response2.text);
+    console.log('Chat response 2:', response2.text);
 
 ### Go
 
@@ -761,21 +762,20 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     Content userContent = Content.fromParts(Part.fromText("Hello"));
     Content modelContent =
-            Content.builder()
-                    .role("model")
-                    .parts(
-                            Collections.singletonList(
-                                    Part.fromText("Great to meet you. What would you like to know?")
-                            )
-                    ).build();
+        Content.builder()
+            .role("model")
+            .parts(
+                Collections.singletonList(
+                    Part.fromText("Great to meet you. What would you like to know?")))
+            .build();
 
-    Chat chat = client.chats.create(
+    Chat chat =
+        client.chats.create(
             "gemini-3.8-flash",
             GenerateContentConfig.builder()
-                    .systemInstruction(userContent)
-                    .systemInstruction(modelContent)
-                    .build()
-    );
+                .systemInstruction(userContent)
+                .systemInstruction(modelContent)
+                .build());
 
     GenerateContentResponse response1 = chat.sendMessage("I have 2 dogs in my house.");
     System.out.println(response1.text());
@@ -814,14 +814,14 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -831,23 +831,23 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
-    console.log("Cache created:", cache);
+    console.log('Cache created:', cache);
 
     const response = await ai.models.generateContent({
       model: modelName,
-      contents: "Please summarize this transcript",
-      config: { cachedContent: cache.name },
+      contents: 'Please summarize this transcript',
+      config: {cachedContent: cache.name},
     });
-    console.log("Response text:", response.text);
+    console.log('Response text:', response.text);
 
 ### Go
 
     ctx := context.Background()
     client, err := genai.NewClient(ctx, &genai.ClientConfig{
-    	APIKey:  os.Getenv("GEMINI_API_KEY"), 
+    	APIKey:  os.Getenv("GEMINI_API_KEY"),
     	Backend: genai.BackendGeminiAPI,
     })
     if err != nil {
@@ -856,10 +856,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -913,8 +913,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     from typing_extensions import TypedDict
 
     class Recipe(TypedDict):
-        recipe_name: str
-        ingredients: list[str]
+      recipe_name: str
+      ingredients: list[str]
 
     client = genai.Client()
     result = client.models.generate_content(
@@ -930,21 +930,21 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: "List a few popular cookie recipes.",
+      model: 'gemini-3.8-flash',
+      contents: 'List a few popular cookie recipes.',
       config: {
-        responseMimeType: "application/json",
+        responseMimeType: 'application/json',
         responseSchema: {
-          type: "array",
+          type: 'array',
           items: {
-            type: "object",
+            type: 'object',
             properties: {
-              recipeName: { type: "string" },
-              ingredients: { type: "array", items: { type: "string" } },
+              recipeName: {type: 'string'},
+              ingredients: {type: 'array', items: {type: 'string'}},
             },
-            required: ["recipeName", "ingredients"],
+            required: ['recipeName', 'ingredients'],
           },
         },
       },
@@ -955,7 +955,7 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     ctx := context.Background()
     client, err := genai.NewClient(ctx, &genai.ClientConfig{
-    	APIKey:  os.Getenv("GEMINI_API_KEY"), 
+    	APIKey:  os.Getenv("GEMINI_API_KEY"),
     	Backend: genai.BackendGeminiAPI,
     })
     if err != nil {
@@ -1021,36 +1021,34 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     Client client = new Client();
 
-    Schema recipeSchema = Schema.builder()
+    Schema recipeSchema =
+        Schema.builder()
             .type(Array.class.getSimpleName())
-            .items(Schema.builder()
+            .items(
+                Schema.builder()
                     .type(Object.class.getSimpleName())
                     .properties(
-                            Map.of("recipe_name", Schema.builder()
-                                            .type(String.class.getSimpleName())
-                                            .build(),
-                                    "ingredients", Schema.builder()
-                                            .type(Array.class.getSimpleName())
-                                            .items(Schema.builder()
-                                                    .type(String.class.getSimpleName())
-                                                    .build())
-                                            .build())
-                    )
+                        Map.of(
+                            "recipe_name",
+                            Schema.builder().type(String.class.getSimpleName()).build(),
+                            "ingredients",
+                            Schema.builder()
+                                .type(Array.class.getSimpleName())
+                                .items(Schema.builder().type(String.class.getSimpleName()).build())
+                                .build()))
                     .required(List.of("recipe_name", "ingredients"))
                     .build())
             .build();
 
     GenerateContentConfig config =
-            GenerateContentConfig.builder()
-                    .responseMimeType("application/json")
-                    .responseSchema(recipeSchema)
-                    .build();
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(recipeSchema)
+            .build();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    "List a few popular cookie recipes.",
-                    config);
+        client.models.generateContent(
+            "gemini-3.8-flash", "List a few popular cookie recipes.", config);
 
     System.out.println(response.text());
 
@@ -1065,13 +1063,14 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     response = client.models.generate_content(
         model="gemini-3.8-flash",
         contents=(
-            "Write and execute code that calculates the sum of the first 50 prime numbers. "
-            "Ensure that only the executable code and its resulting output are generated."
+            "Write and execute code that calculates the sum of the first 50"
+            " prime numbers. Ensure that only the executable code and its"
+            " resulting output are generated."
         ),
     )
     # Each part may contain text, executable code, or an execution result.
     for part in response.candidates[0].content.parts:
-        print(part, "\n")
+      print(part, "\n")
 
     print("-" * 80)
     # The .text accessor concatenates the parts into a markdown-formatted text.
@@ -1111,19 +1110,17 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     Client client = new Client();
 
-    String prompt = """
-            Write and execute code that calculates the sum of the first 50 prime numbers.
-            Ensure that only the executable code and its resulting output are generated.
-            """;
+    String prompt =
+        """
+        Write and execute code that calculates the sum of the first 50 prime numbers.
+        Ensure that only the executable code and its resulting output are generated.
+        """;
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    prompt,
-                    null);
+        client.models.generateContent("gemini-3.8-flash", prompt, null);
 
     for (Part part : response.candidates().get().getFirst().content().get().parts().get()) {
-        System.out.println(part + "\n");
+      System.out.println(part + "\n");
     }
 
     System.out.println("-".repeat(80));
@@ -1139,28 +1136,33 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     client = genai.Client()
 
     def add(a: float, b: float) -> float:
-        """returns a + b."""
-        return a + b
+      """returns a + b."""
+      return a + b
 
     def subtract(a: float, b: float) -> float:
-        """returns a - b."""
-        return a - b
+      """returns a - b."""
+      return a - b
 
     def multiply(a: float, b: float) -> float:
-        """returns a * b."""
-        return a * b
+      """returns a * b."""
+      return a * b
 
     def divide(a: float, b: float) -> float:
-        """returns a / b."""
-        return a / b
+      """returns a / b."""
+      return a / b
 
     # Create a chat session; function calling (via tools) is enabled in the config.
     chat = client.chats.create(
         model="gemini-3.8-flash",
-        config=types.GenerateContentConfig(tools=[add, subtract, multiply, divide]),
+        config=types.GenerateContentConfig(
+            tools=[add, subtract, multiply, divide]
+        ),
     )
     response = chat.send_message(
-        message="I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
+        message=(
+            "I have 57 cats, each owns 44 mittens, how many mittens is that in"
+            " total?"
+        )
     )
     print(response.text)
 
@@ -1240,22 +1242,22 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     // Map the function name to the actual arithmetic function.
     var result float64
     switch functionCall.Name {
-    	case "addNumbers":
-    		result = add(args.FirstParam, args.SecondParam)
-    	case "subtractNumbers":
-    		result = subtract(args.FirstParam, args.SecondParam)
-    	case "multiplyNumbers":
-    		result = multiply(args.FirstParam, args.SecondParam)
-    	case "divideNumbers":
-    		result = divide(args.FirstParam, args.SecondParam)
-    	default:
-    		return fmt.Errorf("unimplemented function: %s", functionCall.Name)
+    case "addNumbers":
+    	result = add(args.FirstParam, args.SecondParam)
+    case "subtractNumbers":
+    	result = subtract(args.FirstParam, args.SecondParam)
+    case "multiplyNumbers":
+    	result = multiply(args.FirstParam, args.SecondParam)
+    case "divideNumbers":
+    	result = divide(args.FirstParam, args.SecondParam)
+    default:
+    	return fmt.Errorf("unimplemented function: %s", functionCall.Name)
     }
     log.Printf("Function result: %v\n", result)
 
     // Prepare the final result message as content.
     resultContents := []*genai.Content{
-    	genai.NewContentFromText("The final result is " + fmt.Sprintf("%v", result), genai.RoleUser),
+    	genai.NewContentFromText("The final result is "+fmt.Sprintf("%v", result), genai.RoleUser),
     }
 
     // Use GenerateContent to send the final result.
@@ -1268,188 +1270,185 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
 ### Node.js
 
-      // Make sure to include the following import:
-      // import {GoogleGenAI} from '@google/genai';
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    // Make sure to include the following import:
+    // import {GoogleGenAI} from '@google/genai';
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
-      /**
-       * The add function returns the sum of two numbers.
-       * @param {number} a
-       * @param {number} b
-       * @returns {number}
-       */
-      function add(a, b) {
-        return a + b;
-      }
-
-      /**
-       * The subtract function returns the difference (a - b).
-       * @param {number} a
-       * @param {number} b
-       * @returns {number}
-       */
-      function subtract(a, b) {
-        return a - b;
-      }
-
-      /**
-       * The multiply function returns the product of two numbers.
-       * @param {number} a
-       * @param {number} b
-       * @returns {number}
-       */
-      function multiply(a, b) {
-        return a * b;
-      }
-
-      /**
-       * The divide function returns the quotient of a divided by b.
-       * @param {number} a
-       * @param {number} b
-       * @returns {number}
-       */
-      function divide(a, b) {
-        return a / b;
-      }
-
-      const addDeclaration = {
-        name: "addNumbers",
-        parameters: {
-          type: "object",
-          description: "Return the result of adding two numbers.",
-          properties: {
-            firstParam: {
-              type: "number",
-              description:
-                "The first parameter which can be an integer or a floating point number.",
-            },
-            secondParam: {
-              type: "number",
-              description:
-                "The second parameter which can be an integer or a floating point number.",
-            },
-          },
-          required: ["firstParam", "secondParam"],
-        },
-      };
-
-      const subtractDeclaration = {
-        name: "subtractNumbers",
-        parameters: {
-          type: "object",
-          description:
-            "Return the result of subtracting the second number from the first.",
-          properties: {
-            firstParam: {
-              type: "number",
-              description: "The first parameter.",
-            },
-            secondParam: {
-              type: "number",
-              description: "The second parameter.",
-            },
-          },
-          required: ["firstParam", "secondParam"],
-        },
-      };
-
-      const multiplyDeclaration = {
-        name: "multiplyNumbers",
-        parameters: {
-          type: "object",
-          description: "Return the product of two numbers.",
-          properties: {
-            firstParam: {
-              type: "number",
-              description: "The first parameter.",
-            },
-            secondParam: {
-              type: "number",
-              description: "The second parameter.",
-            },
-          },
-          required: ["firstParam", "secondParam"],
-        },
-      };
-
-      const divideDeclaration = {
-        name: "divideNumbers",
-        parameters: {
-          type: "object",
-          description:
-            "Return the quotient of dividing the first number by the second.",
-          properties: {
-            firstParam: {
-              type: "number",
-              description: "The first parameter.",
-            },
-            secondParam: {
-              type: "number",
-              description: "The second parameter.",
-            },
-          },
-          required: ["firstParam", "secondParam"],
-        },
-      };
-
-      // Step 1: Call generateContent with function calling enabled.
-      const generateContentResponse = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
-        contents:
-          "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
-        config: {
-          toolConfig: {
-            functionCallingConfig: {
-              mode: FunctionCallingConfigMode.ANY,
-            },
-          },
-          tools: [
-            {
-              functionDeclarations: [
-                addDeclaration,
-                subtractDeclaration,
-                multiplyDeclaration,
-                divideDeclaration,
-              ],
-            },
-          ],
-        },
-      });
-
-      // Step 2: Extract the function call.(
-      // Assuming the response contains a 'functionCalls' array.
-      const functionCall =
-        generateContentResponse.functionCalls &&
-        generateContentResponse.functionCalls[0];
-      console.log(functionCall);
-
-      // Parse the arguments.
-      const args = functionCall.args;
-      // Expected args format: { firstParam: number, secondParam: number }
-
-      // Step 3: Invoke the actual function based on the function name.
-      const functionMapping = {
-        addNumbers: add,
-        subtractNumbers: subtract,
-        multiplyNumbers: multiply,
-        divideNumbers: divide,
-      };
-      const func = functionMapping[functionCall.name];
-      if (!func) {
-        console.error("Unimplemented error:", functionCall.name);
-        return generateContentResponse;
-      }
-      const resultValue = func(args.firstParam, args.secondParam);
-      console.log("Function result:", resultValue);
-
-      // Step 4: Use the chat API to send the result as the final answer.
-      const chat = ai.chats.create({ model: "gemini-3.8-flash" });
-      const chatResponse = await chat.sendMessage({
-        message: "The final result is " + resultValue,
-      });
-      console.log(chatResponse.text);
-      return chatResponse;
+    /**
+     * The add function returns the sum of two numbers.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+     */
+    function add(a, b) {
+      return a + b;
     }
+
+    /**
+     * The subtract function returns the difference (a - b).
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+     */
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    /**
+     * The multiply function returns the product of two numbers.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+     */
+    function multiply(a, b) {
+      return a * b;
+    }
+
+    /**
+     * The divide function returns the quotient of a divided by b.
+     * @param {number} a
+     * @param {number} b
+     * @returns {number}
+     */
+    function divide(a, b) {
+      return a / b;
+    }
+
+    const addDeclaration = {
+      name: 'addNumbers',
+      parameters: {
+        type: 'object',
+        description: 'Return the result of adding two numbers.',
+        properties: {
+          firstParam: {
+            type: 'number',
+            description:
+                'The first parameter which can be an integer or a floating point number.',
+          },
+          secondParam: {
+            type: 'number',
+            description:
+                'The second parameter which can be an integer or a floating point number.',
+          },
+        },
+        required: ['firstParam', 'secondParam'],
+      },
+    };
+
+    const subtractDeclaration = {
+      name: 'subtractNumbers',
+      parameters: {
+        type: 'object',
+        description:
+            'Return the result of subtracting the second number from the first.',
+        properties: {
+          firstParam: {
+            type: 'number',
+            description: 'The first parameter.',
+          },
+          secondParam: {
+            type: 'number',
+            description: 'The second parameter.',
+          },
+        },
+        required: ['firstParam', 'secondParam'],
+      },
+    };
+
+    const multiplyDeclaration = {
+      name: 'multiplyNumbers',
+      parameters: {
+        type: 'object',
+        description: 'Return the product of two numbers.',
+        properties: {
+          firstParam: {
+            type: 'number',
+            description: 'The first parameter.',
+          },
+          secondParam: {
+            type: 'number',
+            description: 'The second parameter.',
+          },
+        },
+        required: ['firstParam', 'secondParam'],
+      },
+    };
+
+    const divideDeclaration = {
+      name: 'divideNumbers',
+      parameters: {
+        type: 'object',
+        description:
+            'Return the quotient of dividing the first number by the second.',
+        properties: {
+          firstParam: {
+            type: 'number',
+            description: 'The first parameter.',
+          },
+          secondParam: {
+            type: 'number',
+            description: 'The second parameter.',
+          },
+        },
+        required: ['firstParam', 'secondParam'],
+      },
+    };
+
+    // Step 1: Call generateContent with function calling enabled.
+    const generateContentResponse = await ai.models.generateContent({
+      model: 'gemini-3.8-flash',
+      contents:
+          'I have 57 cats, each owns 44 mittens, how many mittens is that in total?',
+      config: {
+        toolConfig: {
+          functionCallingConfig: {
+            mode: FunctionCallingConfigMode.ANY,
+          },
+        },
+        tools: [
+          {
+            functionDeclarations: [
+              addDeclaration,
+              subtractDeclaration,
+              multiplyDeclaration,
+              divideDeclaration,
+            ],
+          },
+        ],
+      },
+    });
+
+    // Step 2: Extract the function call.(
+    // Assuming the response contains a 'functionCalls' array.
+    const functionCall = generateContentResponse.functionCalls &&
+        generateContentResponse.functionCalls[0];
+    console.log(functionCall);
+
+    // Parse the arguments.
+    const args = functionCall.args;
+    // Expected args format: { firstParam: number, secondParam: number }
+
+    // Step 3: Invoke the actual function based on the function name.
+    const functionMapping = {
+      addNumbers: add,
+      subtractNumbers: subtract,
+      multiplyNumbers: multiply,
+      divideNumbers: divide,
+    };
+    const func = functionMapping[functionCall.name];
+    if (!func) {
+      console.error('Unimplemented error:', functionCall.name);
+      return generateContentResponse;
+    }
+    const resultValue = func(args.firstParam, args.secondParam);
+    console.log('Function result:', resultValue);
+
+    // Step 4: Use the chat API to send the result as the final answer.
+    const chat = ai.chats.create({model: 'gemini-3.8-flash'});
+    const chatResponse = await chat.sendMessage({
+      message: 'The final result is ' + resultValue,
+    });
+    console.log(chatResponse.text);
 
 ### Shell
 
@@ -1514,86 +1513,105 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     Client client = new Client();
 
     FunctionDeclaration addFunction =
-            FunctionDeclaration.builder()
-                    .name("addNumbers")
-                    .parameters(
-                            Schema.builder()
-                                    .type("object")
-                                    .properties(Map.of(
-                                            "firstParam", Schema.builder().type("number").description("First number").build(),
-                                            "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                    .required(Arrays.asList("firstParam", "secondParam"))
-                                    .build())
-                    .build();
+        FunctionDeclaration.builder()
+            .name("addNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
+                                Schema.builder()
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
     FunctionDeclaration subtractFunction =
-            FunctionDeclaration.builder()
-                    .name("subtractNumbers")
-                    .parameters(
-                            Schema.builder()
-                                    .type("object")
-                                    .properties(Map.of(
-                                            "firstParam", Schema.builder().type("number").description("First number").build(),
-                                            "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                    .required(Arrays.asList("firstParam", "secondParam"))
-                                    .build())
-                    .build();
+        FunctionDeclaration.builder()
+            .name("subtractNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
+                                Schema.builder()
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
     FunctionDeclaration multiplyFunction =
-            FunctionDeclaration.builder()
-                    .name("multiplyNumbers")
-                    .parameters(
-                            Schema.builder()
-                                    .type("object")
-                                    .properties(Map.of(
-                                            "firstParam", Schema.builder().type("number").description("First number").build(),
-                                            "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                    .required(Arrays.asList("firstParam", "secondParam"))
-                                    .build())
-                    .build();
+        FunctionDeclaration.builder()
+            .name("multiplyNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
+                                Schema.builder()
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
     FunctionDeclaration divideFunction =
-            FunctionDeclaration.builder()
-                    .name("divideNumbers")
-                    .parameters(
-                            Schema.builder()
-                                    .type("object")
-                                    .properties(Map.of(
-                                            "firstParam", Schema.builder().type("number").description("First number").build(),
-                                            "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                    .required(Arrays.asList("firstParam", "secondParam"))
-                                    .build())
-                    .build();
+        FunctionDeclaration.builder()
+            .name("divideNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
+                                Schema.builder()
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
-    GenerateContentConfig config = GenerateContentConfig.builder()
-            .toolConfig(ToolConfig.builder().functionCallingConfig(
-                    FunctionCallingConfig.builder().mode("ANY").build()
-            ).build())
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .toolConfig(
+                ToolConfig.builder()
+                    .functionCallingConfig(FunctionCallingConfig.builder().mode("ANY").build())
+                    .build())
             .tools(
-                    Collections.singletonList(
-                            Tool.builder().functionDeclarations(
-                                    Arrays.asList(
-                                            addFunction,
-                                            subtractFunction,
-                                            divideFunction,
-                                            multiplyFunction
-                                    )
-                            ).build()
-
-                    )
-            )
+                Collections.singletonList(
+                    Tool.builder()
+                        .functionDeclarations(
+                            Arrays.asList(
+                                addFunction, subtractFunction, divideFunction, multiplyFunction))
+                        .build()))
             .build();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
-                    config);
-
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
+            config);
 
     if (response.functionCalls() == null || response.functionCalls().isEmpty()) {
-        System.err.println("No function call received");
-        return null;
+      System.err.println("No function call received");
+      return null;
     }
 
     var functionCall = response.functionCalls().getFirst();
@@ -1638,14 +1656,14 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: "Tell me a story about a magic backpack.",
+      model: 'gemini-3.8-flash',
+      contents: 'Tell me a story about a magic backpack.',
       config: {
         candidateCount: 1,
-        stopSequences: ["x"],
+        stopSequences: ['x'],
         maxOutputTokens: 20,
         temperature: 1.0,
       },
@@ -1713,18 +1731,16 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     Client client = new Client();
 
     GenerateContentConfig config =
-            GenerateContentConfig.builder()
-                    .candidateCount(1)
-                    .stopSequences(List.of("x"))
-                    .maxOutputTokens(20)
-                    .temperature(1.0F)
-                    .build();
+        GenerateContentConfig.builder()
+            .candidateCount(1)
+            .stopSequences(List.of("x"))
+            .maxOutputTokens(20)
+            .temperature(1.0F)
+            .build();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    "Tell me a story about a magic backpack.",
-                    config);
+        client.models.generateContent(
+            "gemini-3.8-flash", "Tell me a story about a magic backpack.", config);
 
     System.out.println(response.text());
 
@@ -1737,8 +1753,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     client = genai.Client()
     unsafe_prompt = (
-        "I support Martians Soccer Club and I think Jupiterians Football Club sucks! "
-        "Write a ironic phrase about them including expletives."
+        "I support Martians Soccer Club and I think Jupiterians Football Club"
+        " sucks! Write a ironic phrase about them including expletives."
     )
     response = client.models.generate_content(
         model="gemini-3.8-flash",
@@ -1750,51 +1766,50 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
                     threshold="BLOCK_MEDIUM_AND_ABOVE",
                 ),
                 types.SafetySetting(
-                    category="HARM_CATEGORY_HARASSMENT", threshold="BLOCK_ONLY_HIGH"
+                    category="HARM_CATEGORY_HARASSMENT",
+                    threshold="BLOCK_ONLY_HIGH",
                 ),
             ]
         ),
     )
     try:
-        print(response.text)
+      print(response.text)
     except Exception:
-        print("No information generated by the model.")
+      print("No information generated by the model.")
 
     print(response.candidates[0].safety_ratings)
 
 ### Node.js
 
-      // Make sure to include the following import:
-      // import {GoogleGenAI} from '@google/genai';
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      const unsafePrompt =
-        "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
+    // Make sure to include the following import:
+    // import {GoogleGenAI} from '@google/genai';
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const unsafePrompt =
+        'I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.';
 
-      const response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
-        contents: unsafePrompt,
-        config: {
-          safetySettings: [
-            {
-              category: "HARM_CATEGORY_HATE_SPEECH",
-              threshold: "BLOCK_MEDIUM_AND_ABOVE",
-            },
-            {
-              category: "HARM_CATEGORY_HARASSMENT",
-              threshold: "BLOCK_ONLY_HIGH",
-            },
-          ],
-        },
-      });
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.8-flash',
+      contents: unsafePrompt,
+      config: {
+        safetySettings: [
+          {
+            category: 'HARM_CATEGORY_HATE_SPEECH',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE',
+          },
+          {
+            category: 'HARM_CATEGORY_HARASSMENT',
+            threshold: 'BLOCK_ONLY_HIGH',
+          },
+        ],
+      },
+    });
 
-      try {
-        console.log("Generated text:", response.text);
-      } catch (error) {
-        console.log("No information generated by the model.");
-      }
-      console.log("Safety ratings:", response.candidates[0].safetyRatings);
-      return response;
+    try {
+      console.log('Generated text:', response.text);
+    } catch (error) {
+      console.log('No information generated by the model.');
     }
+    console.log('Safety ratings:', response.candidates[0].safetyRatings);
 
 ### Go
 
@@ -1866,34 +1881,33 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     Client client = new Client();
 
-    String unsafePrompt = """
-             I support Martians Soccer Club and I think Jupiterians Football Club sucks!
-             Write a ironic phrase about them including expletives.
-            """;
+    String unsafePrompt =
+        """
+         I support Martians Soccer Club and I think Jupiterians Football Club sucks!
+         Write a ironic phrase about them including expletives.
+        """;
 
     GenerateContentConfig config =
-            GenerateContentConfig.builder()
-                    .safetySettings(Arrays.asList(
-                            SafetySetting.builder()
-                                    .category("HARM_CATEGORY_HATE_SPEECH")
-                                    .threshold("BLOCK_MEDIUM_AND_ABOVE")
-                                    .build(),
-                            SafetySetting.builder()
-                                    .category("HARM_CATEGORY_HARASSMENT")
-                                    .threshold("BLOCK_ONLY_HIGH")
-                                    .build()
-                    )).build();
+        GenerateContentConfig.builder()
+            .safetySettings(
+                Arrays.asList(
+                    SafetySetting.builder()
+                        .category("HARM_CATEGORY_HATE_SPEECH")
+                        .threshold("BLOCK_MEDIUM_AND_ABOVE")
+                        .build(),
+                    SafetySetting.builder()
+                        .category("HARM_CATEGORY_HARASSMENT")
+                        .threshold("BLOCK_ONLY_HIGH")
+                        .build()))
+            .build();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    unsafePrompt,
-                    config);
+        client.models.generateContent("gemini-3.8-flash", unsafePrompt, config);
 
     try {
-        System.out.println(response.text());
+      System.out.println(response.text());
     } catch (Exception e) {
-        System.out.println("No information generated by the model");
+      System.out.println("No information generated by the model");
     }
 
     System.out.println(response.candidates().get().getFirst().safetyRatings());
@@ -1919,12 +1933,12 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const response = await ai.models.generateContent({
-      model: "gemini-3.8-flash",
-      contents: "Good morning! How are you?",
+      model: 'gemini-3.8-flash',
+      contents: 'Good morning! How are you?',
       config: {
-        systemInstruction: "You are a cat. Your name is Neko.",
+        systemInstruction: 'You are a cat. Your name is Neko.',
       },
     });
     console.log(response.text);
@@ -1975,15 +1989,11 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     Content content = Content.builder().role("system").parts(ImmutableList.of(textPart)).build();
 
-    GenerateContentConfig config = GenerateContentConfig.builder()
-            .systemInstruction(content)
-            .build();
+    GenerateContentConfig config =
+        GenerateContentConfig.builder().systemInstruction(content).build();
 
     GenerateContentResponse response =
-            client.models.generateContent(
-                    "gemini-3.8-flash",
-                    "Good morning! How are you?",
-                    config);
+        client.models.generateContent("gemini-3.8-flash", "Good morning! How are you?", config);
 
     System.out.println(response.text());
 
@@ -2055,23 +2065,24 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     client = genai.Client()
     response = client.models.generate_content_stream(
-        model="gemini-3.8-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.8-flash",
+        contents="Write a story about a magic backpack.",
     )
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
 ### Node.js
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.8-flash",
-      contents: "Write a story about a magic backpack.",
+      model: 'gemini-3.8-flash',
+      contents: 'Write a story about a magic backpack.',
     });
-    let text = "";
+    let text = '';
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
@@ -2114,15 +2125,13 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     Client client = new Client();
 
     ResponseStream<GenerateContentResponse> responseStream =
-            client.models.generateContentStream(
-                    "gemini-3.8-flash",
-                    "Write a story about a magic backpack.",
-                    null);
+        client.models.generateContentStream(
+            "gemini-3.8-flash", "Write a story about a magic backpack.", null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
-        System.out.print(res.text());
-        response.append(res.text());
+      System.out.print(res.text());
+      response.append(res.text());
     }
 
     responseStream.close();
@@ -2137,32 +2146,33 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content_stream(
-        model="gemini-3.8-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.8-flash",
+        contents=["Tell me about this instrument", organ],
     )
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
 ### Node.js
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     const organ = await ai.files.upload({
-      file: path.join(media, "organ.jpg"),
+      file: path.join(media, 'organ.jpg'),
     });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       contents: [
         createUserContent([
-          "Tell me about this instrument", 
+          'Tell me about this instrument',
           createPartFromUri(organ.uri, organ.mimeType)
         ]),
       ],
     });
-    let text = "";
+    let text = '';
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
@@ -2179,10 +2189,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     	log.Fatal(err)
     }
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "organ.jpg"), 
+    	ctx,
+    	filepath.Join(getMedia(), "organ.jpg"),
     	&genai.UploadFileConfig{
-    		MIMEType : "image/jpeg",
+    		MIMEType: "image/jpeg",
     	},
     )
     if err != nil {
@@ -2238,21 +2248,17 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     byte[] imageData = Files.readAllBytes(Paths.get(path));
 
     Content content =
-            Content.fromParts(
-                    Part.fromText("Tell me about this instrument."),
-                    Part.fromBytes(imageData, "image/jpeg"));
-
+        Content.fromParts(
+            Part.fromText("Tell me about this instrument."),
+            Part.fromBytes(imageData, "image/jpeg"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-            client.models.generateContentStream(
-                    "gemini-3.8-flash",
-                    content,
-                    null);
+        client.models.generateContentStream("gemini-3.8-flash", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
-        System.out.print(res.text());
-        response.append(res.text());
+      System.out.print(res.text());
+      response.append(res.text());
     }
 
     responseStream.close();
@@ -2270,8 +2276,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
 ### Go
 
@@ -2285,10 +2291,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "sample.mp3"), 
+    	ctx,
+    	filepath.Join(getMedia(), "sample.mp3"),
     	&genai.UploadFileConfig{
-    		MIMEType : "audio/mpeg",
+    		MIMEType: "audio/mpeg",
     	},
     )
     if err != nil {
@@ -2377,23 +2383,23 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     # Poll until the video file is completely processed (state becomes ACTIVE).
     while not myfile.state or myfile.state.name != "ACTIVE":
-        print("Processing video...")
-        print("File state:", myfile.state)
-        time.sleep(5)
-        myfile = client.files.get(name=myfile.name)
+      print("Processing video...")
+      print("File state:", myfile.state)
+      time.sleep(5)
+      myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content_stream(
         model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
     )
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
 ### Node.js
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
     let video = await ai.files.upload({
       file: path.join(media, 'Big_Buck_Bunny.mp4'),
@@ -2408,15 +2414,15 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       contents: [
         createUserContent([
-          "Describe this video clip",
+          'Describe this video clip',
           createPartFromUri(video.uri, video.mimeType),
         ]),
       ],
     });
-    let text = "";
+    let text = '';
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
@@ -2434,10 +2440,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+    	ctx,
+    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
     	&genai.UploadFileConfig{
-    		MIMEType : "video/mp4",
+    		MIMEType: "video/mp4",
     	},
     )
     if err != nil {
@@ -2548,8 +2554,8 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     )
 
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
 ### Go
 
@@ -2563,10 +2569,10 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     }
 
     file, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "test.pdf"), 
+    	ctx,
+    	filepath.Join(getMedia(), "test.pdf"),
     	&genai.UploadFileConfig{
-    		MIMEType : "application/pdf",
+    		MIMEType: "application/pdf",
     	},
     )
     if err != nil {
@@ -2667,12 +2673,14 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
     )
     response = chat.send_message_stream(message="I have 2 dogs in my house.")
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
-    response = chat.send_message_stream(message="How many paws are in my house?")
+      print(chunk.text)
+      print("_" * 80)
+    response = chat.send_message_stream(
+        message="How many paws are in my house?"
+    )
     for chunk in response:
-        print(chunk.text)
-        print("_" * 80)
+      print(chunk.text)
+      print("_" * 80)
 
     print(chat.get_history())
 
@@ -2680,37 +2688,37 @@ An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const chat = ai.chats.create({
-      model: "gemini-3.8-flash",
+      model: 'gemini-3.8-flash',
       history: [
         {
-          role: "user",
-          parts: [{ text: "Hello" }],
+          role: 'user',
+          parts: [{text: 'Hello'}],
         },
         {
-          role: "model",
-          parts: [{ text: "Great to meet you. What would you like to know?" }],
+          role: 'model',
+          parts: [{text: 'Great to meet you. What would you like to know?'}],
         },
       ],
     });
 
-    console.log("Streaming response for first message:");
+    console.log('Streaming response for first message:');
     const stream1 = await chat.sendMessageStream({
-      message: "I have 2 dogs in my house.",
+      message: 'I have 2 dogs in my house.',
     });
     for await (const chunk of stream1) {
       console.log(chunk.text);
-      console.log("_".repeat(80));
+      console.log('_'.repeat(80));
     }
 
-    console.log("Streaming response for second message:");
+    console.log('Streaming response for second message:');
     const stream2 = await chat.sendMessageStream({
-      message: "How many paws are in my house?",
+      message: 'How many paws are in my house?',
     });
     for await (const chunk of stream2) {
       console.log(chunk.text);
-      console.log("_".repeat(80));
+      console.log('_'.repeat(80));
     }
 
     console.log(chat.getHistory());

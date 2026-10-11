@@ -69,14 +69,14 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -86,23 +86,23 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
-    console.log("Cache created:", cache);
+    console.log('Cache created:', cache);
 
     const response = await ai.models.generateContent({
       model: modelName,
-      contents: "Please summarize this transcript",
-      config: { cachedContent: cache.name },
+      contents: 'Please summarize this transcript',
+      config: {cachedContent: cache.name},
     });
-    console.log("Response text:", response.text);
+    console.log('Response text:', response.text);
 
 ### Go
 
     ctx := context.Background()
     client, err := genai.NewClient(ctx, &genai.ClientConfig{
-    	APIKey:  os.Getenv("GEMINI_API_KEY"), 
+    	APIKey:  os.Getenv("GEMINI_API_KEY"),
     	Backend: genai.BackendGeminiAPI,
     })
     if err != nil {
@@ -111,10 +111,10 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -234,14 +234,14 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -251,19 +251,19 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
-    const cacheName = cache.name; // Save the name for later
+    const cacheName = cache.name;  // Save the name for later
 
     // Later retrieve the cache
-    const retrievedCache = await ai.caches.get({ name: cacheName });
+    const retrievedCache = await ai.caches.get({name: cacheName});
     const response = await ai.models.generateContent({
       model: modelName,
-      contents: "Find a lighthearted moment from this transcript",
-      config: { cachedContent: retrievedCache.name },
+      contents: 'Find a lighthearted moment from this transcript',
+      config: {cachedContent: retrievedCache.name},
     });
-    console.log("Response text:", response.text);
+    console.log('Response text:', response.text);
 
 ### Go
 
@@ -278,10 +278,10 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -294,7 +294,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
     cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-    	Contents:          contents,
+    	Contents: contents,
     	SystemInstruction: genai.NewContentFromText(
     		"You are an expert analyzing transcripts.", genai.RoleUser,
     	),
@@ -338,7 +338,9 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     # Create a chat session with the given system instruction.
     chat = client.chats.create(
         model=model_name,
-        config=types.GenerateContentConfig(system_instruction=system_instruction),
+        config=types.GenerateContentConfig(
+            system_instruction=system_instruction
+        ),
     )
     document = client.files.upload(file=media / "a11.txt")
 
@@ -365,7 +367,10 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
     response = chat.send_message(
-        message="I didn't understand that last part, could you explain it in simpler language?"
+        message=(
+            "I didn't understand that last part, could you explain it in"
+            " simpler language?"
+        )
     )
     print("\n\nmodel:  ", response.text)
 
@@ -373,36 +378,37 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const modelName = "gemini-3.8-flash";
-    const systemInstruction = "You are an expert analyzing transcripts.";
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const modelName = 'gemini-3.8-flash';
+    const systemInstruction = 'You are an expert analyzing transcripts.';
 
     // Create a chat session with the system instruction.
     const chat = ai.chats.create({
       model: modelName,
-      config: { systemInstruction: systemInstruction },
+      config: {systemInstruction: systemInstruction},
     });
-    const filePath = path.join(media, "a11.txt");
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
+    console.log('Uploaded file name:', document.name);
 
     let response = await chat.sendMessage({
       message: createUserContent([
-        "Hi, could you summarize this transcript?",
+        'Hi, could you summarize this transcript?',
         createPartFromUri(document.uri, document.mimeType),
       ]),
     });
-    console.log("\n\nmodel:", response.text);
+    console.log('\n\nmodel:', response.text);
 
     response = await chat.sendMessage({
-      message: "Okay, could you tell me more about the trans-lunar injection",
+      message: 'Okay, could you tell me more about the trans-lunar injection',
     });
-    console.log("\n\nmodel:", response.text);
+    console.log('\n\nmodel:', response.text);
 
-    // To cache the conversation so far, pass the chat history as the list of contents.
+    // To cache the conversation so far, pass the chat history as the list of
+    // contents.
     const chatHistory = chat.getHistory();
     const cache = await ai.caches.create({
       model: modelName,
@@ -415,13 +421,13 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     // Continue the conversation using the cached content.
     const chatWithCache = ai.chats.create({
       model: modelName,
-      config: { cachedContent: cache.name },
+      config: {cachedContent: cache.name},
     });
     response = await chatWithCache.sendMessage({
       message:
-        "I didn't understand that last part, could you explain it in simpler language?",
+          'I didn\'t understand that last part, could you explain it in simpler language?',
     });
-    console.log("\n\nmodel:", response.text);
+    console.log('\n\nmodel:', response.text);
 
 ### Go
 
@@ -446,10 +452,10 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     }
 
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -461,7 +467,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     parts[0] = genai.Part{Text: "Hi, could you summarize this transcript?"}
     parts[1] = genai.Part{
     	FileData: &genai.FileData{
-    		FileURI :      document.URI,
+    		FileURI:  document.URI,
     		MIMEType: document.MIMEType,
     	},
     }
@@ -474,7 +480,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     fmt.Println("\n\nmodel: ", resp.Text())
 
     resp, err = chat.SendMessage(
-    	ctx, 
+    	ctx,
     	genai.Part{
     		Text: "Okay, could you tell me more about the trans-lunar injection",
     	},
@@ -502,7 +508,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     }
 
     resp, err = chat.SendMessage(
-    	ctx, 
+    	ctx,
     	genai.Part{
     		Text: "I didn't understand that last part, could you explain it in simpler language?",
     	},
@@ -601,14 +607,14 @@ The request body must be empty.
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -618,11 +624,11 @@ The request body must be empty.
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
-    const retrievedCache = await ai.caches.get({ name: cache.name });
-    console.log("Retrieved Cache:", retrievedCache);
+    const retrievedCache = await ai.caches.get({name: cache.name});
+    console.log('Retrieved Cache:', retrievedCache);
 
 ### Go
 
@@ -637,10 +643,10 @@ The request body must be empty.
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -654,7 +660,7 @@ The request body must be empty.
     }
 
     cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-    	Contents:          contents,
+    	Contents: contents,
     	SystemInstruction: genai.NewContentFromText(
     		"You are an expert analyzing transcripts.", genai.RoleUser,
     	),
@@ -763,14 +769,14 @@ End of mutually exclusive fields.
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -780,27 +786,27 @@ End of mutually exclusive fields.
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
 
     // Update the cache's time-to-live (ttl)
-    const ttl = `${2 * 3600}s`; // 2 hours in seconds
+    const ttl = `${2 * 3600}s`;  // 2 hours in seconds
     cache = await ai.caches.update({
       name: cache.name,
-      config: { ttl },
+      config: {ttl},
     });
-    console.log("After update (TTL):", cache);
+    console.log('After update (TTL):', cache);
 
-    // Alternatively, update the expire_time directly (in RFC 3339 format with a "Z" suffix)
-    const expireTime = new Date(Date.now() + 15 * 60000)
-      .toISOString()
-      .replace(/\.\d{3}Z$/, "Z");
+    // Alternatively, update the expire_time directly (in RFC 3339 format with a
+    // "Z" suffix)
+    const expireTime =
+        new Date(Date.now() + 15 * 60000).toISOString().replace(/\.\d{3}Z$/, 'Z');
     cache = await ai.caches.update({
       name: cache.name,
-      config: { expireTime: expireTime },
+      config: {expireTime: expireTime},
     });
-    console.log("After update (expire_time):", cache);
+    console.log('After update (expire_time):', cache);
 
 ### Go
 
@@ -815,10 +821,10 @@ End of mutually exclusive fields.
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -832,7 +838,7 @@ End of mutually exclusive fields.
     }
 
     cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-    	Contents:          contents,
+    	Contents: contents,
     	SystemInstruction: genai.NewContentFromText(
     		"You are an expert analyzing transcripts.", genai.RoleUser,
     	),
@@ -904,14 +910,14 @@ The request body must be empty.
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const filePath = path.join(media, "a11.txt");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const filePath = path.join(media, 'a11.txt');
     const document = await ai.files.upload({
       file: filePath,
-      config: { mimeType: "text/plain" },
+      config: {mimeType: 'text/plain'},
     });
-    console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.8-flash";
+    console.log('Uploaded file name:', document.name);
+    const modelName = 'gemini-3.8-flash';
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -921,11 +927,11 @@ The request body must be empty.
       model: modelName,
       config: {
         contents: contents,
-        systemInstruction: "You are an expert analyzing transcripts.",
+        systemInstruction: 'You are an expert analyzing transcripts.',
       },
     });
-    await ai.caches.delete({ name: cache.name });
-    console.log("Cache deleted:", cache.name);
+    await ai.caches.delete({name: cache.name});
+    console.log('Cache deleted:', cache.name);
 
 ### Go
 
@@ -940,10 +946,10 @@ The request body must be empty.
 
     modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "a11.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "a11.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -957,7 +963,7 @@ The request body must be empty.
     }
 
     cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-    	Contents:          contents,
+    	Contents: contents,
     	SystemInstruction: genai.NewContentFromText(
     		"You are an expert analyzing transcripts.", genai.RoleUser,
     	),

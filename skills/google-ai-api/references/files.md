@@ -114,14 +114,14 @@ The request body must be empty.
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const myfile = await ai.files.upload({
-      file: path.join(media, "poem.txt"),
+      file: path.join(media, 'poem.txt'),
     });
     const fileName = myfile.name;
     console.log(fileName);
 
-    const fetchedFile = await ai.files.get({ name: fileName });
+    const fetchedFile = await ai.files.get({name: fileName});
     console.log(fetchedFile);
 
 ### Go
@@ -136,7 +136,7 @@ The request body must be empty.
     }
     myfile, err := client.Files.UploadFromPath(
     	ctx,
-    	filepath.Join(getMedia(), "poem.txt"), 
+    	filepath.Join(getMedia(), "poem.txt"),
     	&genai.UploadFileConfig{
     		MIMEType: "text/plain",
     	},
@@ -202,21 +202,21 @@ The request body must be empty.
     client = genai.Client()
     print("My files:")
     for f in client.files.list():
-        print("  ", f.name)
+      print("  ", f.name)
 
 ### Node.js
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    console.log("My files:");
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    console.log('My files:');
     // Using the pager style to list files
-    const pager = await ai.files.list({ config: { pageSize: 10 } });
+    const pager = await ai.files.list({config: {pageSize: 10}});
     let page = pager.page;
     const names = [];
     while (true) {
       for (const f of page) {
-        console.log("  ", f.name);
+        console.log('  ', f.name);
         names.push(f.name);
       }
       if (!pager.hasNextPage()) break;
@@ -296,12 +296,12 @@ The request body must be empty.
     client.files.delete(name=myfile.name)
 
     try:
-        result = client.models.generate_content(
-            model="gemini-3.7-flash", contents=[myfile, "Describe this file."]
-        )
-        print(result)
+      result = client.models.generate_content(
+          model="gemini-3.8-flash", contents=[myfile, "Describe this file."]
+      )
+      print(result)
     except genai.errors.ClientError:
-        pass
+      pass
 
 ### Node.js
 
@@ -319,8 +319,8 @@ The request body must be empty.
     	log.Fatal(err)
     }
     myfile, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "poem.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "poem.txt"),
     	&genai.UploadFileConfig{
     		MIMEType: "text/plain",
     	},
@@ -335,7 +335,7 @@ The request body must be empty.
     }
     // Attempt to use the deleted file.
     parts := []*genai.Part{
-    	genai.NewPartFromURI(myfile.URI, myfile.MIMEType,),
+    	genai.NewPartFromURI(myfile.URI, myfile.MIMEType),
     	genai.NewPartFromText("Describe this file."),
     }
 
@@ -343,7 +343,7 @@ The request body must be empty.
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    _, err = client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    _, err = client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     // Expect an error when using a deleted file.
     if err != nil {
     	return nil
@@ -431,7 +431,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=[
             myfile,
             "\n\n",
@@ -444,22 +444,22 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const myfile = await ai.files.upload({
-      file: path.join(media, "Cajun_instruments.jpg"),
-      config: { mimeType: "image/jpeg" },
+      file: path.join(media, 'Cajun_instruments.jpg'),
+      config: {mimeType: 'image/jpeg'},
     });
-    console.log("Uploaded file:", myfile);
+    console.log('Uploaded file:', myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: 'gemini-3.8-flash',
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
-        "\n\n",
-        "Can you tell me about the instruments in this photo?",
+        '\n\n',
+        'Can you tell me about the instruments in this photo?',
       ]),
     });
-    console.log("result.text=", result.text);
+    console.log('result.text=', result.text);
 
 ### Go
 
@@ -472,10 +472,10 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	log.Fatal(err)
     }
     myfile, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+    	ctx,
+    	filepath.Join(getMedia(), "Cajun_instruments.jpg"),
     	&genai.UploadFileConfig{
-    		MIMEType : "image/jpeg",
+    		MIMEType: "image/jpeg",
     	},
     )
     if err != nil {
@@ -493,7 +493,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -563,7 +563,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.7-flash", contents=[myfile, "Describe this audio clip"]
+        model="gemini-3.8-flash", contents=[myfile, "Describe this audio clip"]
     )
     print(f"{result.text=}")
 
@@ -571,21 +571,21 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const myfile = await ai.files.upload({
-      file: path.join(media, "sample.mp3"),
-      config: { mimeType: "audio/mpeg" },
+      file: path.join(media, 'sample.mp3'),
+      config: {mimeType: 'audio/mpeg'},
     });
-    console.log("Uploaded file:", myfile);
+    console.log('Uploaded file:', myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: 'gemini-3.8-flash',
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
-        "Describe this audio clip",
+        'Describe this audio clip',
       ]),
     });
-    console.log("result.text=", result.text);
+    console.log('result.text=', result.text);
 
 ### Go
 
@@ -598,10 +598,10 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	log.Fatal(err)
     }
     myfile, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "sample.mp3"), 
+    	ctx,
+    	filepath.Join(getMedia(), "sample.mp3"),
     	&genai.UploadFileConfig{
-    		MIMEType : "audio/mpeg",
+    		MIMEType: "audio/mpeg",
     	},
     )
     if err != nil {
@@ -618,7 +618,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -685,7 +685,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=[myfile, "\n\n", "Can you add a few more lines to this poem?"],
     )
     print(f"{result.text=}")
@@ -694,21 +694,21 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const myfile = await ai.files.upload({
-      file: path.join(media, "poem.txt"),
+      file: path.join(media, 'poem.txt'),
     });
-    console.log("Uploaded file:", myfile);
+    console.log('Uploaded file:', myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: 'gemini-3.8-flash',
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
-        "\n\n",
-        "Can you add a few more lines to this poem?",
+        '\n\n',
+        'Can you add a few more lines to this poem?',
       ]),
     });
-    console.log("result.text=", result.text);
+    console.log('result.text=', result.text);
 
 ### Go
 
@@ -722,10 +722,10 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     }
 
     myfile, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "poem.txt"), 
+    	ctx,
+    	filepath.Join(getMedia(), "poem.txt"),
     	&genai.UploadFileConfig{
-    		MIMEType : "text/plain",
+    		MIMEType: "text/plain",
     	},
     )
     if err != nil {
@@ -743,7 +743,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -824,13 +824,13 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     # Poll until the video file is completely processed (state becomes ACTIVE).
     while not myfile.state or myfile.state.name != "ACTIVE":
-        print("Processing video...")
-        print("File state:", myfile.state)
-        time.sleep(5)
-        myfile = client.files.get(name=myfile.name)
+      print("Processing video...")
+      print("File state:", myfile.state)
+      time.sleep(5)
+      myfile = client.files.get(name=myfile.name)
 
     result = client.models.generate_content(
-        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
     )
     print(f"{result.text=}")
 
@@ -838,29 +838,29 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     let myfile = await ai.files.upload({
-      file: path.join(media, "Big_Buck_Bunny.mp4"),
-      config: { mimeType: "video/mp4" },
+      file: path.join(media, 'Big_Buck_Bunny.mp4'),
+      config: {mimeType: 'video/mp4'},
     });
-    console.log("Uploaded video file:", myfile);
+    console.log('Uploaded video file:', myfile);
 
     // Poll until the video file is completely processed (state becomes ACTIVE).
-    while (!myfile.state || myfile.state.toString() !== "ACTIVE") {
-      console.log("Processing video...");
-      console.log("File state: ", myfile.state);
+    while (!myfile.state || myfile.state.toString() !== 'ACTIVE') {
+      console.log('Processing video...');
+      console.log('File state: ', myfile.state);
       await sleep(5000);
-      myfile = await ai.files.get({ name: myfile.name });
+      myfile = await ai.files.get({name: myfile.name});
     }
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: 'gemini-3.8-flash',
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
-        "Describe this video clip",
+        'Describe this video clip',
       ]),
     });
-    console.log("result.text=", result.text);
+    console.log('result.text=', result.text);
 
 ### Go
 
@@ -873,10 +873,10 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	log.Fatal(err)
     }
     myfile, err := client.Files.UploadFromPath(
-    	ctx, 
-    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+    	ctx,
+    	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
     	&genai.UploadFileConfig{
-    		MIMEType : "video/mp4",
+    		MIMEType: "video/mp4",
     	},
     )
     if err != nil {
@@ -905,7 +905,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -981,7 +981,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=["Give me a summary of this pdf file.", sample_pdf],
     )
     print(response.text)
@@ -1016,7 +1016,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }

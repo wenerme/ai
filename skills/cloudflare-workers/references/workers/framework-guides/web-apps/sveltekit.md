@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/svelt
 
 # SvelteKit
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [SvelteKit ↗︎](https://svelte.dev/docs/kit/introduction) application and deploy to Cloudflare Workers.
 
@@ -35,6 +35,46 @@ pnpm wrangler deploy
 ```
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
+
+First deploy fails with \`Types file not found\`
+
+When Wrangler configures an existing SvelteKit project, it runs the Svelte CLI (`sv add`) to install the Cloudflare adapter. This adds `wrangler types --check` to the `build` script in your `package.json`. The types file does not exist yet, so the first build fails with the following error:
+
+```txt
+✘ [ERROR] Types file not found at worker-configuration.d.ts.
+```
+
+To fix this, generate the types file, then deploy again:
+
+npmyarnpnpm
+
+```
+npx wrangler types
+```
+
+```
+yarn wrangler types
+```
+
+```
+pnpm wrangler types
+```
+
+npmyarnpnpm
+
+```
+npx wrangler deploy
+```
+
+```
+yarn wrangler deploy
+```
+
+```
+pnpm wrangler deploy
+```
+
+You only need to do this once. Wrangler has already created your Wrangler configuration file, so the second deploy skips project setup.
 
 SvelteKitDetected
 
@@ -149,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/#page","headline":"SvelteKit","description":"Create a SvelteKit application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/og.png?v=ca4adb487e3c7611","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/#page","headline":"SvelteKit","description":"Create a SvelteKit application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/og.png?v=ca4adb487e3c7611","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}
 ```
