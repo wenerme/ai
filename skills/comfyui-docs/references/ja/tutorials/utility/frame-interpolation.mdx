@@ -1,8 +1,14 @@
 ---
 title: "ComfyUI フレーム補間ワークフロー"
 description: "ComfyUI の動画ワークフローで、フレーム補間を用いて動きを滑らかにし、フレームレートを向上させる方法を学びます"
-translationSourceHash: 22c5e6a8
+translationSourceHash: f4170014
 translationFrom: tutorials/utility/frame-interpolation.mdx
+translationBlockHashes:
+  "What is frame interpolation?": fd3f6c89
+  "Use cases": 0c4b4419
+  "Why frame interpolation matters": 300d9dc5
+  "Frame interpolation workflow": 5459489b
+  "Get started": 8dccf9dc
 ---
 
 ## フレーム補間とは？
@@ -27,4 +33,23 @@ translationFrom: tutorials/utility/frame-interpolation.mdx
 
 また、フレーム補間は単なる最終段階のポストプロセスとして扱われるだけでなく、前処理ステップとしても活用可能です。これにより、早い段階でフレームレートを標準化し、よりクリーンな時系列データを大規模なアニメーション・動画パイプラインへ供給することができます。
 
-  Comfy Cloud で実行
+## フレーム補間ワークフロー
+
+フレーム補間ワークフローは ComfyUI のテンプレートライブラリで利用できます。FILM または RIFE モデルを使って既存フレーム間に新しいフレームを挿入し、再生成せずにクリップのフレームレートを引き上げます。
+
+[フレーム補間ワークフローのプレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロード、またはテンプレートライブラリで &quot;Frame Interpolation: FILM or RIFE&quot; を検索
+  
+
+ワークフローは `ComfyUI/models/frame_interpolation/` から補間モデルを読み込みます。[film_net_fp16.safetensors](https://huggingface.co/Comfy-Org/frame_interpolation/resolve/main/frame_interpolation/film_net_fp16.safetensors) をダウンロードしてこのフォルダに配置するか、[Comfy-Org/frame_interpolation](https://huggingface.co/Comfy-Org/frame_interpolation) リポジトリの RIFE バリアントを使用してください。
+
+## はじめに
+
+1. ComfyUI を最新バージョンに更新し、[ComfyUI Manager](/ja/manager/overview) で必要なカスタムノードをインストールします。
+2. FILM モデルを `ComfyUI/models/frame_interpolation/` にダウンロードします。
+3. テンプレートライブラリを開き、`Frame Interpolation` を検索します。

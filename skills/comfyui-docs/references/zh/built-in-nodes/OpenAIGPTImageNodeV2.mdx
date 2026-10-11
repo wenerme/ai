@@ -42,7 +42,7 @@ mode: wide
 | `尺寸` | 图像尺寸。选择 "Custom" 以使用自定义宽度和高度（默认值：`"auto"`）。 | COMBO | 是 | `"auto"``"1024x1024"``"1024x1536"``"1536x1024"``"2048x2048"``"2048x1152"``"1152x2048"``"3840x2160"``"2160x3840"``"Custom"` |
 | `自定义宽度` | 仅当 `model.size` 为 "Custom" 时使用。必须是 16 的倍数（默认值：`1024`）。 | INT | 否 | 480 到 3840 (步长 16) |
 | `自定义高度` | 仅当 `model.size` 为 "Custom" 时使用。必须是 16 的倍数（默认值：`1024`）。 | INT | 否 | 480 到 3840 (步长 16) |
-| `背景` | 返回带背景或不带背景的图像（默认值：`"auto"`）。 | COMBO | 是 | `"auto"``"opaque"``"transparent"` |
+| `背景` | 返回带背景或不带背景的图像（默认值：`"auto"`）。 | COMBO | 是 | `"auto"``"opaque"` |
 | `质量` | 图像质量，影响成本和生成时间（默认值：`"low"`）。 | COMBO | 是 | `"low"``"medium"``"high"` |
 | `model.images` | 用于图像编辑的可选参考图像。最多 16 张图像。详情请参阅参考输入。 | IMAGE | 否 | 0 到 16 |
 | `model.mask` | 用于修复的可选蒙版（白色区域将被替换）。需要恰好一张参考图像。 | MASK | 否 | N/A |
@@ -85,4 +85,4 @@ mode: wide
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIGPTImageNodeV2/zh.md)
 
 ---
-**Source fingerprint (SHA-256):** `804ea35d0e2aa0b2993a293cb10cb41e2f9c6a3732304306253f7f7b1eb59b8a`
+**Source fingerprint (SHA-256):** `9cf1a9fa3e2cd98aff6c42432164ac5e6c55b7bcdc9815043cb359c6968ac172`
