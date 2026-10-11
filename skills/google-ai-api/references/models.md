@@ -106,15 +106,15 @@ The request body must be empty.
 
     print("List of models that support generateContent:\n")
     for m in client.models.list():
-        for action in m.supported_actions:
-            if action == "generateContent":
-                print(m.name)
+      for action in m.supported_actions:
+        if action == "generateContent":
+          print(m.name)
 
     print("List of models that support embedContent:\n")
     for m in client.models.list():
-        for action in m.supported_actions:
-            if action == "embedContent":
-                print(m.name)
+      for action in m.supported_actions:
+        if action == "embedContent":
+          print(m.name)
 
 ### Go
 
@@ -126,7 +126,6 @@ The request body must be empty.
     if err != nil {
     	log.Fatal(err)
     }
-
 
     // Retrieve the list of models.
     models, err := client.Models.List(ctx, &genai.ListModelsConfig{})

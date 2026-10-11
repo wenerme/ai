@@ -1422,6 +1422,9 @@ use [`get_vulnerability`](#get_vulnerability).
 
 Requires the security dashboard feature to be enabled.
 
+This tool is listed only when the licensed feature is available for you.
+For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
+
 | Parameter            | Type             | Required | Description |
 |----------------------|------------------|----------|-------------|
 | `project_full_path`  | string           | Yes      | Full path of the project (for example, `namespace/project` or `group/subgroup/project`). |
@@ -1447,6 +1450,9 @@ List critical and high severity vulnerabilities in project gitlab-org/gitlab
 Returns comprehensive details for a single vulnerability, including title, state, description,
 severity, and identifiers.
 
+This tool is listed only when the licensed feature is available for you.
+For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
+
 | Parameter          | Type   | Required | Description |
 |--------------------|--------|----------|-------------|
 | `vulnerability_id` | string | Yes      | Numeric ID of the vulnerability (for example, `567`). |
@@ -1465,6 +1471,9 @@ Get full details for vulnerability 567
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/613026) in GitLab 19.4.
 
 Performs write operations on a vulnerability in a GitLab project.
+
+This tool is listed only when the licensed feature is available for you.
+For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
 
 | Parameter            | Type   | Required | Description |
 |----------------------|--------|----------|-------------|
@@ -1795,9 +1804,15 @@ How are authorizations managed in this project?
 
 ## `attach_scan_profile`
 
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240685) in GitLab 19.2.
 
 Attaches the given security scan profile to the specified projects, or to all projects under the specified groups.
+
+This tool is listed only when the licensed feature is available for you.
+For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
 
 | Parameter                  | Type             | Required | Description |
 |----------------------------|------------------|----------|-------------|

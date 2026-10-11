@@ -61,12 +61,12 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const text = "Hello World!";
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+    const text = 'Hello World!';
     const result = await ai.models.embedContent({
-      model: "gemini-embedding-001",
+      model: 'gemini-embedding-001',
       contents: text,
-      config: { outputDimensionality: 10 },
+      config: {outputDimensionality: 10},
     });
     console.log(result.embeddings);
 
@@ -86,10 +86,10 @@ Note: Specifying a `title` for `RETRIEVAL_DOCUMENT` provides better quality embe
     contents := []*genai.Content{
     	genai.NewContentFromText(text, genai.RoleUser),
     }
-    result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001", 
+    result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001",
     	contents, &genai.EmbedContentConfig{
     		OutputDimensionality: &outputDim,
-    })
+    	})
     if err != nil {
     	log.Fatal(err)
     }
@@ -170,16 +170,16 @@ Fields `requests[]` ``object (`https://ai.google.dev/api/batch-api#EmbedContentR
 
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
     const texts = [
-      "What is the meaning of life?",
-      "How much wood would a woodchuck chuck?",
-      "How does the brain work?",
+      'What is the meaning of life?',
+      'How much wood would a woodchuck chuck?',
+      'How does the brain work?',
     ];
     const result = await ai.models.embedContent({
-      model: "gemini-embedding-001",
+      model: 'gemini-embedding-001',
       contents: texts,
-      config: { outputDimensionality: 10 },
+      config: {outputDimensionality: 10},
     });
     console.log(result.embeddings);
 
