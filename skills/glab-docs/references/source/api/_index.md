@@ -111,6 +111,11 @@ To pass a raw request body, use `--input` with a file path. Pass `-` to
 read from standard input. In this mode, parameters specified with `--field`
 flags are serialized into URL query parameters.
 
+A `--input` body is sent as `application/json`, which is what most GitLab
+endpoints require to parse it. To send a body of another type, set the
+header yourself with `--header 'Content-Type: ...'`; an explicit header is
+never overridden.
+
 In `--paginate` mode, all pages of results are requested sequentially until
 no more pages of results remain. For GraphQL requests:
 
@@ -211,7 +216,7 @@ glab api graphql --paginate -f query='
   -H, --header stringArray        Add an additional HTTP request header.
       --hostname string           The GitLab hostname for the request. Defaults to gitlab.com, or the authenticated host in the current Git directory.
   -i, --include                   Include HTTP response headers in the output.
-      --input string              The file to use as the body for the HTTP request.
+      --input string              The file to use as the body for the HTTP request. Sent as 'application/json' unless you set another 'Content-Type' with --header.
   -X, --method string             The HTTP method for the request. (default "GET")
       --output string             Format output as: json, ndjson. (default "json")
       --paginate                  Make additional HTTP requests to fetch all pages of results.

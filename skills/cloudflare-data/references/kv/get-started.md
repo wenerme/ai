@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc2398
 
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
 
@@ -49,7 +49,9 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use <a href="https://viteplus.dev/guide/env">Vite+ (<code>vp env</code>) ↗︎</a> to install and manage Node.js versions.
+
+For supported Node.js versions, refer to the <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler">Wrangler system requirements</a>.
 
 </details>
 
@@ -168,7 +170,7 @@ Note
 
 Workers KV Instant is currently in private beta. To enroll, contact your Cloudflare account team or [sign up ↗︎](https://www.cloudflare.com/resource/workers-kv-instant-beta/) and tell us about your use case.
 
-Use [Workers KV Instant](https://developers.cloudflare.com/kv/reference/kv-instant/) for small, read-heavy application configurations values that update infrequently and are proactively propagated across Cloudflare's network.
+Use Workers KV Instant for small, read-heavy application configurations values that update infrequently and are proactively propagated across Cloudflare's network.
 
 To optionally create a KV Instant namespace named `APP_CONFIG` with [Wrangler](https://developers.cloudflare.com/workers/wrangler/), pass `--experimental-mode instant`:
 
@@ -220,7 +222,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/names
 	}'
 ```
 
-KV Instance namespaces have additional limitations compared to classic namespaces. Refer to [KV Instant limits](https://developers.cloudflare.com/kv/platform/limits/#kv-instant) and [API differences](https://developers.cloudflare.com/kv/reference/kv-instant/#compare-api-behavior) before choosing this mode.
+KV Instance namespaces have additional limitations compared to classic namespaces. Refer to [KV Instant limits](https://developers.cloudflare.com/kv/platform/limits/#kv-instant) before choosing this mode.
 
 ## 3. Bind your Worker to your KV namespace
 
@@ -559,5 +561,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

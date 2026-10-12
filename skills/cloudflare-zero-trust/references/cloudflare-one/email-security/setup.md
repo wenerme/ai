@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/setup/og.
 
 # Before you begin
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you start the onboarding process, you will have to:
 
@@ -33,8 +33,8 @@ The following table compares features available across API, BCC/Journaling and M
 Note that:
 
 - All email providers support MX/Inline deployment.
-- Microsoft 365 or Google Workspace users who integrate Email security via API, BCC/Journaling can modify emails primarily through deletion or post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
-- Microsoft 365 or Google Workspace users who integrate Email security via MX/Inline can modify emails via post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/), [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) and [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/).
+- Microsoft 365 or Google Workspace users who integrate Email security via API, BCC/Journaling can modify emails primarily through deletion or post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/).
+- Microsoft 365 or Google Workspace users who integrate Email security via MX/Inline can modify emails via post-delivery [move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/), [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) and [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/).
 
 ## 1. Choose a deployment
 
@@ -48,7 +48,7 @@ If you are a [Google Workspace](https://developers.cloudflare.com/cloudflare-one
 
 #### Why you should consider post-delivery deployment
 
-Post-delivery deployment is time-efficient, because it does not involve MX changes. Post-delivery deployment does not disrupt mail flow. Post-delivery deployment allows you to enable [auto-move events](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) to hard or soft delete messages, and synchronize your [directory](https://developers.cloudflare.com/cloudflare-one/email-security/directories/) when you use Microsoft Graph API or Google Workspace.
+Post-delivery deployment is time-efficient, because it does not involve MX changes. Post-delivery deployment does not disrupt mail flow. Post-delivery deployment allows you to enable [auto-move events](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) to hard or soft delete messages, and synchronize your [directory](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/) when you use Microsoft Graph API or Google Workspace.
 
 Note
 
@@ -131,7 +131,7 @@ Follow the below checklist to ensure your email environment is set up correctly:
 | Associate an integration with an MX/Inline domain |  | Required |
 | Add/verify domains | Required | Required |
 | [Update MX records/connector](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/), then allow Cloudflare [egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) on downstream mail server |  | Required |
-| Populate [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [allow](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/)/ [block](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/) lists | Required | Required |
+| Populate [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) and [allow](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/)/ [block](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/) lists | Required | Required |
 | Configure [partner domain TLS](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/partner-domain-tls/) and admin quarantine |  | Required |
 | Configure [text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/) and [link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/) |  | Required |
 | Send a test email and verify it appears in **Monitoring** > [**Email activity**](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/#email-activity) with expected disposition | Required | Required |
@@ -152,5 +152,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/#page","headline":"Before you begin","description":"Before you begin resources and guides for Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/og.png?v=7a470699e725afcf","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/#page","headline":"Before you begin","description":"Before you begin resources and guides for Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/og.png?v=7a470699e725afcf","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

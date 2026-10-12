@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/configuration/cloudflare-access
 
 # Cloudflare Access
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Access, you can restrict who is authorized to access your application. You decide who is approved, and every request is checked before your Worker runs. Approved visitors are let through, while everyone else is shown a login page or blocked.
 
@@ -342,7 +342,7 @@ If you remove a more specific rule, a broader rule may still protect the Worker.
 - [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 - [Self-hosted Access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
 - [Routes and domains](https://developers.cloudflare.com/workers/configuration/routing/)
-- [Preview URLs](https://developers.cloudflare.com/workers/configuration/previews/)
+- [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/)
 
 Was this helpful?
 
@@ -353,5 +353,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/#page","headline":"Cloudflare Access","description":"Require sign-in before visitors can reach Cloudflare Workers, preview deployments, or all Workers in an account.","url":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/og.png?v=ec35e0ca6f3535fe","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/#page","headline":"Cloudflare Access","description":"Require sign-in before visitors can reach Cloudflare Workers, preview deployments, or all Workers in an account.","url":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/og.png?v=ec35e0ca6f3535fe","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

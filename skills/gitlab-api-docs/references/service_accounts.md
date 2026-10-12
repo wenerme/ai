@@ -180,8 +180,9 @@ Example response:
 - Subgroup service accounts [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/585513) in GitLab 18.10 [with a feature flag](../administration/feature_flags/_index.md) named `allow_subgroups_to_create_service_accounts`. Disabled by default.
 - Subgroup service accounts [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225485/) in GitLab 18.11. Feature flag `allow_subgroups_to_create_service_accounts` removed.
 
-Group service accounts are owned by a specific group and can be invited to the group where they were
-created or to any descendant subgroups or projects. They cannot be invited to ancestor groups.
+Group service accounts are owned by a specific group. A service account created in a top-level group
+can be invited to any group or project on the instance. A service account created in a subgroup can
+be invited only to that subgroup and its descendant subgroups or projects.
 
 Prerequisites:
 

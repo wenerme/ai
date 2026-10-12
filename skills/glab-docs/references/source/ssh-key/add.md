@@ -13,6 +13,8 @@ Creates a new SSH key owned by the currently authenticated user.
 
 Requires the '--title' flag.
 
+GitLab rejects a key whose fingerprint is already registered on your account, even when that key has expired. Use '--replace' to delete the existing key with the same SHA256 fingerprint and add it again with the new title, usage type, and expiration date.
+
 ```plaintext
 glab ssh-key add [key-file] [flags]
 ```
@@ -25,12 +27,16 @@ glab ssh-key add -t "my title"
 
 # Read ssh key from specified key file, upload and set the ssh key type to "authentication".
 glab ssh-key add ~/.ssh/id_ed25519.pub -t "my title" --usage-type "auth"
+
+# Re-register an expired key with a new expiration date.
+glab ssh-key add ~/.ssh/id_ed25519.pub -t "my title" --expires-at 2027-01-01 --replace
 ```
 
 ## Options
 
 ```plaintext
   -e, --expires-at string   The expiration date of the SSH key. Uses ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.
+      --replace             Delete an existing key with the same fingerprint, such as an expired key, before adding this one.
   -t, --title string        New SSH key's title.
   -u, --usage-type string   Usage scope for the key. Possible values: 'auth', 'signing' or 'auth_and_signing'. Default value: 'auth_and_signing'. (default "auth_and_signing")
 ```

@@ -628,7 +628,7 @@ The user will need to enroll a new authenticator the next time they access an ap
 
 Send a `DELETE` request to remove a specific authenticator:
 
-*Delete a user's MFA devicebash*
+*Delete a user's authenticatorbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USER_ID/mfa_authenticators/$AUTHENTICATOR_ID" \

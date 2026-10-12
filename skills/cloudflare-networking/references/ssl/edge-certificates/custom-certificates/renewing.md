@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/custom-certificat
 
 # Renewal and expiration
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Renew custom certificates
 
 Since Cloudflare cannot renew uploaded certificates, you should ensure that you replace or [update](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) an expiring custom certificate before it expires, otherwise your visitors may not be able to connect.
 
 Cloudflare automatically sends email notifications 30 and 14 days before your custom certificate expires. The email is sent to users who have the SSL/TLS, Administrator, or Super Administrator [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
+
+These notifications are reminders only. Cloudflare cannot renew an uploaded certificate for you — to maintain coverage, upload a replacement before the current certificate expires.
 
 Note
 
@@ -57,5 +59,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/#page","headline":"Renewal and expiration","description":"Learn how renewal and expiration work when using Cloudflare Custom SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/og.png?v=7c07ead0aff11db4","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/#page","headline":"Renewal and expiration","description":"Learn how renewal and expiration work when using Cloudflare Custom SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/renewing/og.png?v=7c07ead0aff11db4","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

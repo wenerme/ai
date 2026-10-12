@@ -233,7 +233,7 @@ To configure Super Bot Fight Mode:
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
    - For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
    - For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
-   - For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+   - For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/).
    - For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 With Super Bot Fight Mode, you can configure different actions for different bot types:

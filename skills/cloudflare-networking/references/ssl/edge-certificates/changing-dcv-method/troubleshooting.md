@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-meth
 
 # Troubleshooting
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your certificate is stuck in **Pending Validation** or failing to issue, the certificate authority (CA) may be unable to complete [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). This page helps you identify and resolve common DCV issues.
 
@@ -28,6 +28,7 @@ Use this checklist to identify common DCV issues:
 - [No redirects on the validation path](#redirection) - The `/.well-known/*` path must not redirect (especially HTTP to HTTPS in partial setups)
 - [DNS records are resolvable](#dns-settings-and-records) - DNSSEC must be valid, and records must resolve from all locations
 - [CAA records allow the CA](#caa-records) - CAA records must permit Cloudflare's partner CAs to issue certificates
+- [No stale or conflicting DCV records](#stale-or-conflicting-dcv-records) - `_acme-challenge` TXT records from prior orders can block validation
 - [No CA-side errors](#ca-errors) - Rate limits, policy blocks, or temporary CA issues
 
 ---
@@ -90,6 +91,25 @@ dig example.com CAA +short
 ```powershell
 Resolve-DnsName -Name example.com -Type CAA
 ```
+
+### Stale or conflicting DCV records
+
+When Cloudflare handles TXT validation for you (full setup or Delegated DCV), Cloudflare adds `_acme-challenge` TXT records when it requests a certificate from a certificate authority. Records from a previous or abandoned certificate order can persist and may not appear under **DNS** > **Records** in the dashboard.
+
+Review the following symptoms:
+
+- Certificate validation stays in **Pending Validation** even though the correct DCV records are in place.
+- You receive a renewal email, but adding the TXT record returns `An identical record already exists` when you have not configured a matching record.
+- `dig` returns `_acme-challenge` TXT records that you cannot find in the Cloudflare dashboard.
+- Your zone uses [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), but the certificate authority resolves a stale `_acme-challenge` TXT record instead of the delegation CNAME.
+
+To confirm, query the record from your authoritative nameservers:
+
+```bash
+dig _acme-challenge.example.com TXT +short @<AUTHORITATIVE_NAMESERVER>
+```
+
+Compare each value that `dig` returns with the tokens listed for your certificates that are pending validation (refer to [Get DCV values](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/#get-dcv-values)). If a value matches none of them and you can find the record in your DNS settings (under **DNS** > **Records**, or at your external DNS provider), it is yours to remove. If a value matches none of them and you cannot find the record in your DNS settings, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have the stale records removed. After the records are removed, you can send a `PATCH` request to the [validation endpoint](https://developers.cloudflare.com/api/resources/ssl/subresources/verification/methods/edit/) using the same DCV method to trigger revalidation.
 
 ## Certificate authority (CA) errors
 
@@ -227,5 +247,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve domain control validation failures.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve domain control validation failures.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

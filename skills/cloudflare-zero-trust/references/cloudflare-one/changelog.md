@@ -16,6 +16,25 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-12
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Unified dashboard navigation for Zero Trust**
+
+The Cloudflare dashboard now combines Zero Trust and main dashboard navigation. You can move between Cloudflare products from the same navigation.
+
+All customers can browse Zero Trust products from the primary navigation.
+
+Zero Trust customers can also access other services from this navigation. These include the developer platform, account memberships, and resource tagging.
+
+As part of this change, the Zero Trust Network items were removed in favor of the new experiences available under *Networking* navigation, and Resolvers & Proxies was moved under Traffic Controls (previously Traffic Policies).
+
+This update is available to all customers starting today.
+
+For more information, refer to the [Cloudflare One documentation](https://developers.cloudflare.com/cloudflare-one/).
+
 ## 2026-10-07
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -758,7 +777,7 @@ For more information on why this interaction is required, refer to [iOS limitati
 
 **New CASB integration for Zoom**
 
-[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) now integrates with [Zoom](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/). The integration connects through Cloudflare's pre-built OAuth application — no manual app setup in Zoom is required. After an initial scan, CASB continuously scans your Zoom account to surface new findings as your environment changes.
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) now integrates with Zoom. The integration connects through Cloudflare's pre-built OAuth application — no manual app setup in Zoom is required. After an initial scan, CASB continuously scans your Zoom account to surface new findings as your environment changes.
 
 Zoom is widely used for meetings, webinars, and collaboration. Misconfigurations in account settings, meeting security controls, and recording access can expose organizations to data leakage, unauthorized access, and compliance risk. Cloudflare CASB ingests Zoom account data via API to surface security findings across these areas.
 
@@ -774,7 +793,7 @@ Starting today, security teams can scan for security findings across the followi
 
 #### Learn more
 
-This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/) is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** > **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
+This integration is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** > **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
 
 ## 2026-09-02
 
@@ -1284,7 +1303,7 @@ This feature is available for the following Email security packages:
 - **Enterprise**
 - **Enterprise + PhishGuard**
 
-To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/).
+To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-content/).
 
 ## 2026-08-12
 
@@ -1604,7 +1623,7 @@ You can now set a maximum time-to-live (TTL) for DNS responses returned by Gatew
 The setting is available at two levels:
 
 - **Account level** - In **Traffic Policies** > **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
-- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
 
 Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
 
@@ -1904,7 +1923,7 @@ Update any dashboards, monitoring scripts, or automation that parses `connection
 - **A single way to identify a route.** Consolidating on `route_id` removes the need to URL-encode CIDR ranges into the path and matches how every other resource in the Zero Trust Networks API is addressed.
 - **Consistency across the API.** Both changes align these endpoints with Cloudflare's standard REST conventions for resource identifiers and nested detail endpoints.
 
-To learn more, refer to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/), the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/), and [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) documentation.
+To learn more, refer to the [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/), the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/), and [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) documentation.
 
 ## 2026-07-08
 
@@ -3876,7 +3895,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 To turn it off, edit the portal in **Access controls** > **AI controls** and turn off **Code Mode** under **Basic information**.
 
-When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, keeping authentication credentials and environment variables out of the model context.
+When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) environment, keeping authentication credentials and environment variables out of the model context.
 
 To use Code Mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
 
@@ -3905,7 +3924,7 @@ https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 
 #### `search_and_execute`
 
-Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
+Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
 
 ```txt
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
@@ -4771,7 +4790,7 @@ We have made it easier to validate connectivity when deploying [WARP Connector](
 
 You can now `ping` the WARP Connector host directly on its LAN IP address immediately after installation. This provides a fast, familiar way to confirm that the Connector is online and reachable within your network before testing access to downstream services.
 
-Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
+Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/post/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
 
 Learn more about deploying [WARP Connector](https://developers.cloudflare.com/mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
@@ -5601,7 +5620,7 @@ For more information, refer to [Gateway HTTP policy selectors](https://developer
 
 Email security relies on your submissions to continuously improve our detection models. However, we often receive submissions in formats that cannot be ingested, such as incomplete EMLs, screenshots, or text files.
 
-To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/submission-addresses/):
+To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/submission-addresses/):
 
 - **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗︎](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** > **Invalid submission emails** and turn the feature off.
 
@@ -5628,7 +5647,7 @@ This feature is available across these Email security packages:
 
 [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/) with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is now generally available for all Cloudflare customers. It enables secure, remote Windows server access without VPNs or RDP clients.
 
-Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
+Since we announced our [open beta](https://developers.cloudflare.com/changelog/post/2025-07-01-browser-based-rdp-open-beta/), we've made a few improvements:
 
 - Support for targets with IPv6.
 - Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/mesh/) as on-ramps.
@@ -5840,9 +5859,9 @@ All Email security roles no longer have read or write access to any of the other
 - **Email security Policy Admin**
 - **Email security Reporting**
 
-To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
+To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
 
-Also through customer feedback, we have created a new additive role to allow **Email security Analyst** to create, edit, and delete Email security policies, without needing to provide access via the **Email Configuration Admin** role. This role is called **Email security Policy Admin**, which can read all settings, but has write access to [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/), and [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/).
+Also through customer feedback, we have created a new additive role to allow **Email security Analyst** to create, edit, and delete Email security policies, without needing to provide access via the **Email Configuration Admin** role. This role is called **Email security Policy Admin**, which can read all settings, but has write access to [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/), and [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/).
 
 This feature is available across these Email security packages:
 
@@ -6922,7 +6941,7 @@ Cloudflare Email security customers who have Microsoft 365 environments can quic
 
 Simply deploy our add-in, create a DLP policy in Cloudflare, and configure Outlook to trigger behaviors like displaying a banner, alerting end users before sending, or preventing delivery entirely.
 
-Refer to [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) to learn more about this feature.
+Refer to [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/) to learn more about this feature.
 
 In GUI alert:
 
@@ -7066,7 +7085,7 @@ This feature is available across these Email security packages:
 
 You now have more transparency about team and user submissions for phishing emails through a **Reclassification** tab in the Zero Trust dashboard.
 
-Reclassifications happen when users or admins [submit a phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/) to Email security. Cloudflare reviews and - in some cases - reclassifies these emails based on improvements to our machine learning models.
+Reclassifications happen when users or admins [submit a phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/) to Email security. Cloudflare reviews and - in some cases - reclassifies these emails based on improvements to our machine learning models.
 
 This new tab increases your visibility into this process, allowing you to view what submissions you have made and what the outcomes of those submissions are.
 
@@ -7280,7 +7299,7 @@ Older product updates
 - <a href="https://developers.cloudflare.com/cloudflare-wan/changelog/">Magic WAN</a>
 - <a href="https://developers.cloudflare.com/network-interconnect/changelog/">Network Interconnect</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/">Risk score</a>
-- <a href="https://developers.cloudflare.com/changelog/cloudflare-one-client/">Cloudflare One Client</a>
+- <a href="https://developers.cloudflare.com/changelog/product/cloudflare-one-client/">Cloudflare One Client</a>
 
 </details>
 

@@ -47,7 +47,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 ## Cloudflare platform access
@@ -79,6 +79,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - turnstile-spinSet up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
+- workers-profilingProfile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.
 - wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
 
 </details>
@@ -144,23 +145,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

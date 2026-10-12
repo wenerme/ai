@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/phishguar
 
 # PhishGuard
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 PhishGuard is a team of analysts that routinely inspects your email environment and responds to threats that come through your email inbox.
 
 While Email security uses advanced technologies to protect your email inbox, PhishGuard offers an additional human component to protect your email environment against impersonation events, suspicious items, false negatives/false positives, and any new event that automated intelligent systems may miss due to a lack of context (for example, a compromised account activity).
 
-PhishGuard only works on a post-delivery environment (only emails that have already landed in your email inbox are reviewed). As a result, PhishGuard analysts may [submit a message for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) or [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) based on their findings.
+PhishGuard only works on a post-delivery environment (only emails that have already landed in your email inbox are reviewed). As a result, PhishGuard analysts may [submit a message for review](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/#submit-messages-for-review) or [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) based on their findings.
 
 Caution
 
@@ -80,7 +80,7 @@ Email threat hunting also gives you information on **Threat leads generated** an
 
 API Status allows you to monitor and configure the current status of API message auto-moves and directory integrations.
 
-Select **Message moves** to [configure auto-moves](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/). Select **Directory integration** to [configure directories](https://developers.cloudflare.com/cloudflare-one/email-security/directories/).
+Select **Message moves** to [configure auto-moves](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/). Select **Directory integration** to [configure directories](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/).
 
 ## Managed email security operations
 
@@ -88,7 +88,7 @@ Managed email security operations allows you to review the results of phish subm
 
 It displays the following:
 
-- Total [phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/)
+- Total [phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/)
 - Tracked incidents
 - Median time to resolve
 - Resolved track incidents
@@ -105,7 +105,7 @@ If you select the three dots, you can:
   - **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.
   - **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
 - Preview email.
-- [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
+- [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/).
 
 Was this helpful?
 
@@ -116,5 +116,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/#page","headline":"PhishGuard","description":"PhishGuard in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/og.png?v=d0d9bdc4aaa1808c","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/#page","headline":"PhishGuard","description":"PhishGuard in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/og.png?v=d0d9bdc4aaa1808c","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

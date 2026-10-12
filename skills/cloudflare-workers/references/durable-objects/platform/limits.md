@@ -151,7 +151,7 @@ The following table summarizes the wall time limits for different types of Worke
 
 | Invocation type | Wall time limit | Details |
 | --- | --- | --- |
-| Incoming HTTP request | Unlimited | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [`waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
+| Incoming HTTP request | Unlimited | No hard limit while the client remains connected. Workers requests are subject to the [grace period for runtime updates](https://developers.cloudflare.com/workers/platform/limits/#runtime-updates). A Worker that is still streaming a response body remains active. [`waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
 | [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) | 15 minutes | Scheduled Workers have a maximum wall time of 15 minutes per invocation. |
 | [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes | Each consumer invocation has a maximum wall time of 15 minutes. |
 | [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/) | 15 minutes | Alarm handler invocations have a maximum wall time of 15 minutes. |

@@ -88,8 +88,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -131,8 +130,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
 	--request PUT \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"enabled": true
 	}'
@@ -180,8 +178,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -256,8 +253,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?hosts=example.net&page=1&per_page=15&status=infrequent" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -331,8 +327,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts/8337233faec2357ff84465a919534e4d" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -414,8 +409,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections?page=1&per_page=15" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -481,8 +475,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connections/0a7bb628776f4e50a50d8594c4a01740" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -538,8 +531,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies?page=1&per_page=15" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -607,8 +599,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/beee03ada7e047e79f076785d8cd8b8e" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -674,8 +665,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"description": "My first content security rule in log mode",
 		"action": "log",

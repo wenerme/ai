@@ -54,7 +54,9 @@ To develop more advanced applications or [implement tests](https://developers.cl
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+Use [Vite+ (`vp env`) ↗︎](https://viteplus.dev/guide/env) to install and manage Node.js versions.
+
+For supported Node.js versions, refer to the [Wrangler system requirements](https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler).
 
 3. Run the following command, replacing the value of `[<DIRECTORY>]` which the location you want to put your Worker Script.
 

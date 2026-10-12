@@ -89,7 +89,7 @@ Note
 
 Workers KV Instant is currently in private beta. To enroll, contact your Cloudflare account team or [sign up ↗︎](https://www.cloudflare.com/resource/workers-kv-instant-beta/) and tell us about your use case.
 
-To create a [Workers KV Instant](https://developers.cloudflare.com/kv/reference/kv-instant/) namespace, pass `--experimental-mode instant`. This example creates a namespace named `APP_CONFIG` for small, infrequently updated configuration:
+To create a Workers KV Instant namespace, pass `--experimental-mode instant`. This example creates a namespace named `APP_CONFIG` for small, infrequently updated configuration:
 
 npmyarnpnpm
 

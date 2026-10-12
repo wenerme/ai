@@ -1836,8 +1836,8 @@
   },
   "grafana-pyroscope-app/choose-a-view.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view.md",
-    "size": 6581,
-    "updatedAt": "2026-09-23T04:43:26.199Z"
+    "size": 7181,
+    "updatedAt": "2026-10-12T19:57:47.184Z"
   },
   "grafana-pyroscope-app/concepts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts.md",
@@ -1871,23 +1871,23 @@
   },
   "grafana-pyroscope-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/get-started.md",
-    "size": 1973,
-    "updatedAt": "2026-09-23T04:43:27.302Z"
+    "size": 1861,
+    "updatedAt": "2026-10-12T19:57:48.216Z"
   },
   "grafana-pyroscope-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest.md",
-    "size": 2145,
-    "updatedAt": "2026-06-25T05:43:02.487Z"
+    "size": 2147,
+    "updatedAt": "2026-10-12T19:57:48.452Z"
   },
   "grafana-pyroscope-app/investigate.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate.md",
-    "size": 6401,
-    "updatedAt": "2026-09-22T14:56:03.215Z"
+    "size": 9802,
+    "updatedAt": "2026-10-12T19:57:48.606Z"
   },
   "grafana-pyroscope-app/investigate/flame-graph-ai.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/flame-graph-ai.md",
-    "size": 5212,
-    "updatedAt": "2026-09-22T14:56:03.408Z"
+    "size": 5211,
+    "updatedAt": "2026-10-12T19:57:48.788Z"
   },
   "grafana-redshift-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/alerting.md",

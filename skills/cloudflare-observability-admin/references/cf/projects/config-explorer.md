@@ -22,9 +22,9 @@ To learn how to structure a project's configuration, refer to [Programmatic conf
 
 Select a highlighted line to show its type and description below it.
 
-Generated from `@cloudflare/config`0.20.0
+Generated from `@cloudflare/config`0.23.0
 
-defineConfig6 optionsWorker18 optionsBindings35 optionsTriggers5 optionsExports7 options
+defineConfig6 optionsWorker18 optionsBindings37 optionsTriggers5 optionsExports7 options
 
 Expand allCopy
 
@@ -1313,6 +1313,33 @@ Binding to a headless browser usable from the Worker. For reference, see <a href
 
 <details>
 
+<summary>MY_ANALYTICS_SQL: bindings.analyticsSQL(), (analyticsSQL reference)</summary>
+
+
+
+<code>analyticsSQL</code>Builder<a href="#config-reference-bindings-bindings-analyticssql-default">Link to analyticsSQL</a>
+
+<code>analyticsSQL(options?: AnalyticsSQLBindingOptions): AnalyticsSQLBinding$1;</code>
+
+An Analytics SQL binding.
+
+<details>
+
+<summary>Options (1)</summary>
+
+
+
+<dl>
+
+<dt><code>dev?: BindingDevOptions</code></dt>
+<dd>Options that only apply during local development.</dd></dl></details>
+
+
+
+</details>
+
+<details>
+
 <summary>MY_D1: bindings.d1(), (d1 reference)</summary>
 
 
@@ -1741,6 +1768,52 @@ Binding to a Cloudflare Pipeline.
 <code>name: string</code>
 
 Name of the Pipeline to bind.
+
+</details>
+
+}),
+
+<details>
+
+<summary>MY_K2: bindings.k2({ (k2 reference)</summary>
+
+
+
+<code>k2</code>Builder<a href="#config-reference-bindings-bindings-k2-default">Link to k2</a>
+
+<code>k2(options: K2BindingOptions): K2Binding;</code>
+
+A producer binding to a K2 stream created using the Dashboard or API.
+
+<details>
+
+<summary>Options (2)</summary>
+
+
+
+<dl>
+
+<dt><code>stream: string</code></dt>
+<dd>The ID of the K2 stream.</dd>
+
+<dt><code>dev?: BindingDevOptions</code></dt>
+<dd>Always uses the real stream in development. Set remote to true to suppress the usage warning; false is unsupported.</dd></dl></details>
+
+
+
+</details>
+
+<details>
+
+<summary>stream: "value", (stream reference)</summary>
+
+
+
+<code>stream</code>Required<a href="#config-reference-bindings-bindings-k2-default-stream">Link to stream</a>
+
+<code>stream: string</code>
+
+The ID of the K2 stream.
 
 </details>
 

@@ -55,7 +55,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Build a serverless AI inference endpoint on Workers AI with streaming responses.
+   Add bot protection and rate limiting to my login and checkout endpoints.
    ```
 
 ## Cloudflare platform access
@@ -87,6 +87,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - turnstile-spinSet up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
+- workers-profilingProfile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.
 - wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
 
 </details>
@@ -152,19 +153,19 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
 Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt

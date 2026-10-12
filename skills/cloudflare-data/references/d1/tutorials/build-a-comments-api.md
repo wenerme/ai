@@ -29,7 +29,9 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use <a href="https://viteplus.dev/guide/env">Vite+ (<code>vp env</code>) ↗︎</a> to install and manage Node.js versions.
+
+For supported Node.js versions, refer to the <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler">Wrangler system requirements</a>.
 
 </details>
 
@@ -102,7 +104,7 @@ bun add hono
      "name": "d1-comments-api",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-10-12",
      "d1_databases": [
        {
          "binding": "DB",
@@ -117,7 +119,7 @@ bun add hono
    name = "d1-comments-api"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-12"
 
    [[d1_databases]]
    binding = "DB" # available in your Worker on env.DB

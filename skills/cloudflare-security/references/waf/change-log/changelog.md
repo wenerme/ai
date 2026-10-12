@@ -1,5 +1,5 @@
 ---
-description: You can now use cf.appsec.request.failed_detections to control how your rules handle requests when a security detection reports a failure.
+description: This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,24 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-12
+
+
+**WAF Release - 2026-10-12**
+
+This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products.
+
+**Key Findings**
+
+- CVE-2026-102989: A reflected Cross-Site Scripting (XSS) vulnerability affecting TanStack. Unauthenticated attackers can exploit this flaw to inject malicious scripts into web pages viewed by other users, potentially leading to session hijacking or unauthorized actions.
+- CVE-2026-21589: An arbitrary file access vulnerability affecting Atlassian products. Threat actors can exploit this flaw to read unauthorized files on the target system, risking the exposure of sensitive configuration data.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...02751ef3 | N/A | Generic Rules - Template Injection - 2 - Beta | Disabled | Disabled | This rule is merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
+| Cloudflare Managed Ruleset | ...4ee560b2 | N/A | TanStack - Reflected XSS - CVE:CVE-2026-102989 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e919cd31 | N/A | Atlassian - Arbitrary File Access - CVE:CVE-2026-21589 | N/A | Block | This is a new detection. |
 
 ## 2026-10-09
 
@@ -491,25 +509,8 @@ This emergency release adds a new managed rule to block active exploitation of a
 | Cloudflare Free Ruleset | ...b5ec246a | N/A | Generic Rules - Unauthenticated RCE | N/A | Block | This is a new detection. |
 | Cloudflare Free Ruleset | ...33697a1a | N/A | Generic Rules - SQLi | N/A | Block | This is a new detection. |
 
-## 2026-07-14
-
-
-**WAF Release - 2026-07-14**
-
-This release introduces new rules targeting critical infrastructure vulnerabilities. These include an unauthenticated memory disclosure flaw in Citrix NetScaler ADC and Gateway (CVE-2026-8451) and a high-severity pre-authentication remote code execution (RCE) vulnerability in Progress Kemp LoadMaster (CVE-2026-8037).
-
-**Key Findings**
-
-- CVE-2026-8451: An insufficient input validation vulnerability affects Citrix NetScaler ADC and NetScaler Gateway appliances configured as a SAML Identity Provider (IdP). Remote, unauthenticated attackers can exploit this flaw by sending malformed requests to trigger a memory overread, allowing them to leak chunks of sensitive data from adjacent appliance memory.
-- CVE-2026-8037: A critical OS command injection vulnerability in Progress Kemp LoadMaster load balancers allows unauthenticated remote attackers to achieve remote code execution (RCE).
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...76973ac4 | N/A | Citrix Netscaler ADC - Insufficient Input Validation - CVE:CVE-2026-8451 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...10233f36 | N/A | Progress Kemp LoadMaster - Remote Code Execution - CVE:CVE-2026-8037 | Log | Block | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"You can now use cf.appsec.request.failed_detections to control how your rules handle requests when a security detection reports a failure.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

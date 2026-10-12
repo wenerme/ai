@@ -45,7 +45,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Get deploymentsbash*
+*List Pages deploymentsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT_NAME/deployments" \

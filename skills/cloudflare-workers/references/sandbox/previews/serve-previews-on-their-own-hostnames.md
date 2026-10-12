@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/previews/serve-previews-on-thei
 
 # Serve previews on their own hostnames
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Serve each sandbox preview from its own hostname, such as `ada.example-previews.com`. Code in a preview runs in the visitor's browser, and each preview hostname is a separate origin. Code in one preview cannot read your application pages or the storage of another preview. Paths reach the server unchanged, so applications do not need a base path.
 
@@ -185,13 +185,50 @@ Serve each sandbox preview from its own hostname, such as `ada.example-previews.
 
 ## Serve previews under a subdomain
 
-[Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) covers a domain and its first-level subdomains, such as `ada.example-previews.com`. It does not cover deeper hostnames such as `ada.previews.example.com`. To serve previews under a subdomain, add [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) or an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) for it.
+To serve previews under a subdomain of a domain you already use, such as `previews.example.com`, name the wildcard record and the route after that subdomain:
+
+1. In the DNS settings of `example.com`, add a proxied `AAAA` record with the name `*.previews` and the content `100::`. A [wildcard record](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#wildcards-are-multi-level-by-default) named `*` does not apply below `previews.example.com` if that hostname has its own record, and it also matches every other unused subdomain of `example.com`. A record named `*.previews` matches only preview hostnames.
+2. In `wrangler.jsonc`, set `PREVIEW_DOMAIN` to the subdomain and route its subdomains to your Worker:
+
+   ```jsonc
+   {
+   	"vars": {
+   		"PREVIEW_DOMAIN": "previews.example.com",
+   	},
+   	"routes": [
+   		{
+   			"pattern": "*.previews.example.com/*",
+   			"zone_name": "example.com",
+   		},
+   	],
+   	"workers_dev": true,
+   }
+   ```
+
+   ```toml
+   workers_dev = true
+
+   [vars]
+   PREVIEW_DOMAIN = "previews.example.com"
+
+   [[routes]]
+   pattern = "*.previews.example.com/*"
+   zone_name = "example.com"
+   ```
+
+Certificates for deeper hostnames
+
+[Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) covers a domain and its first-level subdomains, such as `ada.example-previews.com`. It does not cover deeper hostnames such as `ada.previews.example.com`. To serve previews under a subdomain, add [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) or an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) for it. Without one, browsers show a certificate error on preview hostnames.
 
 Previews under a domain that your application also uses share cookies with your application. Browsers send a cookie set with `Domain=example.com` to every subdomain, including every preview under `previews.example.com`.
 
 ## Set cookies on preview hostnames
 
 Code in one preview can set a cookie with `Domain=example-previews.com`, and every other preview then receives that cookie. Set cookies on preview hostnames without a `Domain` attribute, and do not trust a cookie because it arrived on a preview hostname.
+
+## Troubleshooting
+
+**The server in the container uses HTTPS**: Serve plain HTTP from the container. Cloudflare handles TLS for the preview hostname, and your Worker forwards each request to the container over HTTP. A server that only accepts HTTPS, such as one started with `https.createServer()` in Node.js or with a framework's HTTPS flag, cannot handle these requests. Start the server with HTTP instead.
 
 ## Related resources
 
@@ -209,5 +246,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/#page","headline":"Serve previews on their own hostnames","description":"Give each sandbox preview its own hostname, so code in one preview cannot use your application cookies or the storage of another preview.","url":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/og.png?v=052e5363148687ab","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/#page","headline":"Serve previews on their own hostnames","description":"Give each sandbox preview its own hostname, so code in one preview cannot use your application cookies or the storage of another preview.","url":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/previews/serve-previews-on-their-own-hostnames/og.png?v=052e5363148687ab","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

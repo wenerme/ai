@@ -12,13 +12,17 @@ image: https://developers.cloudflare.com/workers/wrangler/install-and-update/og.
 
 # Install/Update Wrangler
 
-Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler is a command-line tool for building with Cloudflare developer products.
 
 ## Install Wrangler
 
-To install [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler), ensure you have [Node.js ↗︎](https://nodejs.org/en/) and [npm ↗︎](https://docs.npmjs.com/getting-started) installed, preferably using a Node version manager like [mise ↗︎](https://github.com/jdx/mise) or [nvm ↗︎](https://github.com/nvm-sh/nvm). Using a version manager helps avoid permission issues and allows you to change Node.js versions.
+To install [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler), ensure you have [Node.js ↗︎](https://nodejs.org/en/) and [npm ↗︎](https://docs.npmjs.com/getting-started) installed.
+
+Use [Vite+ (`vp env`) ↗︎](https://viteplus.dev/guide/env) to install and manage Node.js versions.
+
+For setup instructions, refer to [Install `vp` globally ↗︎](https://viteplus.dev/guide/#install-vp-globally). You can use `vp env` without adding Vite+ to your project.
 
 <details>
 
@@ -106,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/install-and-update/#page","headline":"Install/Update Wrangler","description":"Get started by installing Wrangler, and update to newer versions by following this guide.","url":"https://developers.cloudflare.com/workers/wrangler/install-and-update/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/install-and-update/og.png?v=fbf1ae1973fa242d","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/install-and-update/#page","headline":"Install/Update Wrangler","description":"Get started by installing Wrangler, and update to newer versions by following this guide.","url":"https://developers.cloudflare.com/workers/wrangler/install-and-update/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/install-and-update/og.png?v=fbf1ae1973fa242d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

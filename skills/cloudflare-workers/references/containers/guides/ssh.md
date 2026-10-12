@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/guides/ssh/og.png?v=4c9d3eeb
 
 # SSH
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/ssh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/ssh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Anyone with write access to a Container can SSH into it with Wrangler as long as a matching public key is listed in `authorized_keys`.
 
@@ -61,6 +61,12 @@ Once SSH is configured and the Container is running, open the SSH connection wit
 wrangler containers ssh <INSTANCE_ID>
 ```
 
+To run a command instead of the default shell, pass it after `--`. For interactive commands, such as `top`, also pass `--tty` to allocate a terminal:
+
+```bash
+wrangler containers ssh <INSTANCE_ID> --tty -- top
+```
+
 ## Use as SSH proxy
 
 You can use `wrangler containers ssh` as an OpenSSH `ProxyCommand`. This lets your local SSH client connect through Wrangler.
@@ -84,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/ssh/#page","headline":"SSH","description":"Connect to running container instances with SSH.","url":"https://developers.cloudflare.com/containers/guides/ssh/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/ssh/og.png?v=4c9d3eebfeaea9f5","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/ssh/#page","headline":"SSH","description":"Connect to running container instances with SSH.","url":"https://developers.cloudflare.com/containers/guides/ssh/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/ssh/og.png?v=4c9d3eebfeaea9f5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

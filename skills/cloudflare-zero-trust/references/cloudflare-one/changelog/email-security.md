@@ -52,7 +52,7 @@ This feature is available for the following Email security packages:
 - **Enterprise**
 - **Enterprise + PhishGuard**
 
-To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/).
+To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-content/).
 
 ## 2026-05-06
 
@@ -226,7 +226,7 @@ This feature is available across the following Email security packages:
 
 Email security relies on your submissions to continuously improve our detection models. However, we often receive submissions in formats that cannot be ingested, such as incomplete EMLs, screenshots, or text files.
 
-To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/submission-addresses/):
+To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/submission-addresses/):
 
 - **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗︎](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** > **Invalid submission emails** and turn the feature off.
 
@@ -297,9 +297,9 @@ All Email security roles no longer have read or write access to any of the other
 - **Email security Policy Admin**
 - **Email security Reporting**
 
-To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
+To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
 
-Also through customer feedback, we have created a new additive role to allow **Email security Analyst** to create, edit, and delete Email security policies, without needing to provide access via the **Email Configuration Admin** role. This role is called **Email security Policy Admin**, which can read all settings, but has write access to [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/), and [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/).
+Also through customer feedback, we have created a new additive role to allow **Email security Analyst** to create, edit, and delete Email security policies, without needing to provide access via the **Email Configuration Admin** role. This role is called **Email security Policy Admin**, which can read all settings, but has write access to [allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/), [trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/), and [blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/).
 
 This feature is available across these Email security packages:
 
@@ -449,7 +449,7 @@ Cloudflare Email security customers who have Microsoft 365 environments can quic
 
 Simply deploy our add-in, create a DLP policy in Cloudflare, and configure Outlook to trigger behaviors like displaying a banner, alerting end users before sending, or preventing delivery entirely.
 
-Refer to [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) to learn more about this feature.
+Refer to [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/) to learn more about this feature.
 
 In GUI alert:
 
@@ -513,7 +513,7 @@ This feature is available across these Email security packages:
 
 You now have more transparency about team and user submissions for phishing emails through a **Reclassification** tab in the Zero Trust dashboard.
 
-Reclassifications happen when users or admins [submit a phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/) to Email security. Cloudflare reviews and - in some cases - reclassifies these emails based on improvements to our machine learning models.
+Reclassifications happen when users or admins [submit a phish](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/) to Email security. Cloudflare reviews and - in some cases - reclassifies these emails based on improvements to our machine learning models.
 
 This new tab increases your visibility into this process, allowing you to view what submissions you have made and what the outcomes of those submissions are.
 

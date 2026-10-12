@@ -5,7 +5,7 @@ description: "Browse Meta model IDs, capabilities, context windows, and pricing.
 
 # [Meta logo]Meta
 
-Access 5 Meta models through Mastra's model router. Authentication is handled automatically using the `META_MODEL_API_KEY` environment variable.
+Access 6 Meta models through Mastra's model router. Authentication is handled automatically using the `META_MODEL_API_KEY` environment variable.
 
 Learn more in the [Meta documentation](https://dev.meta.ai/docs).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.1,
     "outputCost": 0.2
+  },
+  {
+    "model": "meta/muse-wonder-1.0",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -132,7 +144,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "meta/muse-spark-1.3-contributor"
+      ? "meta/muse-wonder-1.0"
       : "meta/muse-spark-1.1";
   }
 });

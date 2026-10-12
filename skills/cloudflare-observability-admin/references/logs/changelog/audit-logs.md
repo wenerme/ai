@@ -130,7 +130,7 @@ For more details, refer to the [Audit Logs v2 documentation](https://developers.
 
 [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/) is now available via Logpush.
 
-This expands on earlier releases of Audit Logs v2 in the [API](https://developers.cloudflare.com/changelog/2025-03-27-automatic-audit-logs-beta-release/) and [Dashboard UI](https://developers.cloudflare.com/changelog/2025-07-29-audit-logs-v2-ui-beta/).
+This expands on earlier releases of Audit Logs v2 in the [API](https://developers.cloudflare.com/changelog/post/2025-03-27-automatic-audit-logs-beta-release/) and [Dashboard UI](https://developers.cloudflare.com/changelog/post/2025-07-29-audit-logs-v2-ui-beta/).
 
 We recommend creating a new Logpush job for the Audit Logs v2 dataset.
 

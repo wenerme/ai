@@ -16,14 +16,14 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-10-06
+## 2026-10-12
 
 
-**WAF Release - Scheduled changes for 2026-10-12**
+**WAF Release - Scheduled changes for 2026-10-19**
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-10-06 | 2026-10-12 | Disable | N/A | ...02751ef3 | Generic Rules - Template Injection - 2 - Beta | This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
+| 2026-10-12 | 2026-10-19 | Log | N/A | ...5ea9966d | Broken Access Control - Directory Traversal (Beta) | This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8). |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

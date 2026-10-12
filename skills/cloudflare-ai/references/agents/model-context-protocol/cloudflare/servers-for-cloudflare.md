@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/cloudflar
 
 # Cloudflare's own MCP servers
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude ↗︎](https://modelcontextprotocol.io/quickstart/user), [Windsurf ↗︎](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground ↗︎](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP ↗︎](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).
 
@@ -22,9 +22,11 @@ Use the Streamable HTTP endpoint at `/mcp` for new connections. The servers supp
 
 ## Cloudflare API MCP server
 
-The [Cloudflare API MCP server ↗︎](https://github.com/cloudflare/mcp) provides access to the entire [Cloudflare API](https://developers.cloudflare.com/api/) — over 2,500 endpoints across DNS, Workers, R2, Zero Trust, and every other product — through just two tools: `search()` and `execute()`.
+The [Cloudflare API MCP server ↗︎](https://github.com/cloudflare/mcp) at `https://mcp.cloudflare.com/mcp` is the only MCP server you need to work with Cloudflare. It provides access to the entire [Cloudflare API](https://developers.cloudflare.com/api/) — over 2,500 endpoints across DNS, Workers, R2, Zero Trust, and every other product — and to the Cloudflare developer documentation.
 
-It uses [the search-and-execute Code Mode pattern](https://developers.cloudflare.com/agents/model-context-protocol/codemode/#search-and-execute), a technique where the model writes JavaScript against a typed representation of the OpenAPI spec and the Cloudflare API client, rather than loading individual tool definitions for each endpoint. The generated code runs inside an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) sandbox.
+The server provides the `search()` and `execute()` tools to find and call API endpoints, and the `docs()` tool to search Cloudflare developer documentation.
+
+It uses [the search-and-execute Code Mode pattern](https://developers.cloudflare.com/agents/model-context-protocol/codemode/#search-and-execute), a technique where the model writes JavaScript against a typed representation of the OpenAPI spec and the Cloudflare API client, rather than loading individual tool definitions for each endpoint. The generated code runs inside an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) sandbox.
 
 This approach uses approximately 1,000 tokens regardless of how many API endpoints exist. An equivalent MCP server that exposed every endpoint as a native tool would consume over 1 million tokens — more than the entire context window of most foundation models.
 
@@ -92,7 +94,7 @@ Clone the [cloudflare/skills ↗︎](https://github.com/cloudflare/skills) repos
 
 ## Product-specific MCP servers
 
-In addition to the Cloudflare API MCP server, Cloudflare provides product-specific MCP servers for targeted use cases:
+The following product-specific MCP servers are available for targeted use cases. These are **optional** — the [Cloudflare API MCP server](#cloudflare-api-mcp-server) already covers the full Cloudflare API. Most people should just use the main Cloudflare API MCP server.
 
 | Server Name | Description | Server URL |
 | --- | --- | --- |
@@ -114,5 +116,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/og.png?v=2698c333db6912a5","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/og.png?v=2698c333db6912a5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

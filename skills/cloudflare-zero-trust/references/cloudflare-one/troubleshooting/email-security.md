@@ -39,7 +39,7 @@ A false positive occurs when a legitimate email is incorrectly flagged as malici
 1. In the Email Security dashboard, go to **Investigation**.
 2. Find the email and select **Submit for reclassification**.
 3. Choose the correct disposition (for example, `Clean`).
-4. To prevent future blocks, add the sender to your [Acceptable Senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) list.
+4. To prevent future blocks, add the sender to your [Acceptable Senders](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/) list.
 
 ### Handle a false negative
 
@@ -59,7 +59,7 @@ Email Security may mark an email as **SPAM** if it fails DMARC authentication an
 **Solution**:
 
 - Ask the sender to fix their DMARC/SPF/DKIM records.
-- Configure an [Acceptable Sender](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) entry to suppress the failure for that specific sender.
+- Configure an [Acceptable Sender](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/) entry to suppress the failure for that specific sender.
 
 ## Delivery issues
 

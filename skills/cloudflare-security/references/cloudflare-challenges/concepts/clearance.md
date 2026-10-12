@@ -122,7 +122,7 @@ For more details on managing hostnames, refer to the [Hostname Management docume
 
 Note
 
-[JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/) are stored in the `cf_clearance` cookie.
+[JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) are stored in the `cf_clearance` cookie.
 
 The `cf_clearance` cookie cannot exceed the maximum size of 4096 bytes.
 

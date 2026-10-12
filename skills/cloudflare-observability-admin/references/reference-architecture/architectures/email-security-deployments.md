@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/em
 
 # Understanding Email Security Deployments
 
-Last updated Feb 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -126,7 +126,7 @@ Cisco offers a unique capability to integrate with Cloudflare using a connector 
 
 An alternative approach is to integrate via the Graph [API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/) in Microsoft 365. In this model, emails are delivered directly to the user inbox, where Cloudflare then receives copies of messages, scans them, and moves them as configured by [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions).
 
-This is performed by subscribing to all user mailboxes on the authorized domains. You have the ability to choose if the scope should be restricted to the Inbox only, or All Folders during the authorization process. Upon delivery to the mailbox, the subscription triggers an action within Microsoft 365 that sends Cloudflare a copy of the email to be scanned and assigned a disposition. Once the disposition has been assigned, our solution will look at the [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy and perform the desired action.
+This is performed by subscribing to all user mailboxes on the authorized domains. You have the ability to choose if the scope should be restricted to the Inbox only, or All Folders during the authorization process. Upon delivery to the mailbox, the subscription triggers an action within Microsoft 365 that sends Cloudflare a copy of the email to be scanned and assigned a disposition. Once the disposition has been assigned, our solution will look at the [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) policy and perform the desired action.
 
 ![API deployment](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1470,height=1173,format=svg/_astro/API.D-5LzkKL.svg)
 
@@ -179,7 +179,7 @@ Before deploying Email security via [API deployment](https://developers.cloudfla
 
 BCC/Journaling is very similar to API deployments with the exception of how emails are delivered to Cloudflare. As with API the email is delivered to the mailbox first, but at the same time an account specific email address is added to the email so a copy is transmitted via SMTP to Cloudflare for evaluation.
 
-Once Cloudflare receives the email, it will scan and determine the [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) of the email. Once an email has a disposition our solution will look at the API authorizations and [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy and perform the desired action. This method is less at risk to API Throttling as the APIs for Microsoft 365 and Google are only used to remediate emails.
+Once Cloudflare receives the email, it will scan and determine the [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) of the email. Once an email has a disposition our solution will look at the API authorizations and [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) policy and perform the desired action. This method is less at risk to API Throttling as the APIs for Microsoft 365 and Google are only used to remediate emails.
 
 ![BCC/Journaling deployment](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=522,format=svg/_astro/Journaling_Diagram.yvbQDbEw.svg)
 
@@ -224,7 +224,7 @@ When you choose mixed deployment, you need to consider that:
 
 ## Automated Post Delivery
 
-Cloudflare offers automated workflows based on continuous analysis and submissions. These features enable Cloudflare to move messages using the API [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) policy after delivery. This is best paired with the phish submissions or third-party user submissions.
+Cloudflare offers automated workflows based on continuous analysis and submissions. These features enable Cloudflare to move messages using the API [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) policy after delivery. This is best paired with the phish submissions or third-party user submissions.
 
 ### Submission Handling
 
@@ -234,7 +234,7 @@ Cloudflare prioritizes Administrator Submissions for false positives and negativ
 
 To summarize, Email security offers three core deployment models: API, BCC/Journaling, and Inline (or MX). Inline is the preferred deployment model as it filters and remediates malicious messages before they reach the user inbox, thereby removing dwell time risk and allowing for features like URL Rewriting and message modification.
 
-API and BCC/Journaling models are post-delivery solutions, integrating directly with platforms like Microsoft 365 or Google Workspace to inspect and [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) emails after they have landed in the user mailbox. While these post-delivery methods are easier to deploy and require no mail flow changes, they face limitations such as API throttling risks and the inability to modify message content (like subjects or body text).
+API and BCC/Journaling models are post-delivery solutions, integrating directly with platforms like Microsoft 365 or Google Workspace to inspect and [auto-move](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) emails after they have landed in the user mailbox. While these post-delivery methods are easier to deploy and require no mail flow changes, they face limitations such as API throttling risks and the inability to modify message content (like subjects or body text).
 
 Finally, the mixed deployment combines the benefits of Inline for external email protection (critical for systems like CRM or ticketing that ingest email) with BCC/Journaling for internal email evaluation.
 
@@ -247,5 +247,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/#page","headline":"Understanding Email Security Deployments","description":"This reference architecture describes the key architecture of Cloudflare Email security.","url":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/og.png?v=98b33a6bcfbf31a5","dateModified":"2026-02-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/#page","headline":"Understanding Email Security Deployments","description":"This reference architecture describes the key architecture of Cloudflare Email security.","url":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/email-security-deployments/og.png?v=98b33a6bcfbf31a5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
