@@ -40,7 +40,7 @@ review, and recovery state outside any one container.
 ![Diagram showing an agent harness running inside sandbox compute with filesystem access and gateway-mediated access to data, APIs, and the web.](<https://developers.openai.com/images/api/agents/harness_with_compute.png>)
 
 
-    <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+    <figcaption className="mt-3 text-sm text-secondary">
       Running the harness inside the sandbox can be convenient for prototypes,
       but it puts orchestration and model-directed execution in the same compute
       boundary.
@@ -53,7 +53,7 @@ review, and recovery state outside any one container.
 ![Diagram showing an agent harness separate from sandbox compute, where the harness accesses trusted services and the sandbox executes commands against a filesystem.](<https://developers.openai.com/images/api/agents/harness_separate_from_compute.png>)
 
 
-    <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+    <figcaption className="mt-3 text-sm text-secondary">
       The harness can run in your infrastructure while the sandbox handles
       provider-specific, stateful execution.
     </figcaption>

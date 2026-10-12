@@ -24,7 +24,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -78,7 +78,7 @@ Validate one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 

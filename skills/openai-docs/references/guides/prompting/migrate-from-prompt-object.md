@@ -66,6 +66,7 @@ func main() {
 	client := openai.NewClient()
 	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
 		Prompt: responses.ResponsePromptParam{
+			// Replace with your published prompt ID.
 			ID:      "pmpt_123",
 			Version: openai.String("1"),
 			Variables: map[string]responses.ResponsePromptVariableUnionParam{

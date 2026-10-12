@@ -13,6 +13,8 @@ Change an issue's labels, assignees, milestone, title, or
 description. Use `--label` and `--unlabel` to add or remove
 labels.
 
+Use `--estimate` and `--spend` to track time on the issue, the same as the `/estimate` and `/spend` quick actions. Durations use the GitLab time tracking format, for example `1mo 2w 3d 4h 5m`. `--spend` adds to the time already spent. `--remove-estimate` and `--remove-time-spent` reset the estimate and the time spent.
+
 `--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the issue already has, instead of replacing it.
 
 The `--attach` flag is an experiment. It might be
@@ -38,6 +40,12 @@ cat description.md | glab issue update 42 --description-file -
 
 # Add a screenshot to the existing description
 glab issue update 42 --attach ./screenshot.png
+
+# Set a time estimate and log time spent
+glab issue update 42 --estimate 2d --spend 1h30m
+
+# Reset the time estimate and the time spent
+glab issue update 42 --remove-estimate --remove-time-spent
 ```
 
 ## Options
@@ -49,10 +57,14 @@ glab issue update 42 --attach ./screenshot.png
   -d, --description string        Issue description. Set to "-" to open an editor.
       --description-file string   Read the issue description from a file. Use "-" to read from standard input.
       --due-date string           A date in 'YYYY-MM-DD' format.
+      --estimate string           Set the time estimate for the issue, for example '2d' or '3h30m'.
   -l, --label strings             Add labels.
       --lock-discussion           Lock discussion on issue.
   -m, --milestone string          Title of the milestone to assign Set to "" or 0 to unassign.
   -p, --public                    Make issue public.
+      --remove-estimate           Remove the time estimate from the issue.
+      --remove-time-spent         Remove all time spent from the issue.
+      --spend string              Add time spent on the issue, for example '1h30m'.
   -t, --title string              Title of issue.
       --unassign                  Unassign all users.
   -u, --unlabel strings           Remove labels.

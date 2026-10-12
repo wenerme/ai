@@ -14,8 +14,6 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these API keys.
 
-  - `array of string`
-
 - `batch: optional boolean or null`
 
   If `true`, return batch jobs only. If `false`, return non-batch jobs only. By default, return both.
@@ -38,21 +36,19 @@ Get Decisions API usage details for the organization.
 
   Group the usage data by the specified fields. Support fields include `project_id`, `user_id`, `api_key_id`, `model`, `batch`, `service_tier`, `api_source` or any combination of them. When grouped by `api_source`, results use `agents_api` for attributed Agents API activity and `unlabeled` for all other activity. Without source grouping, `api_source` is null.
 
-  - `array of "project_id" or "user_id" or "api_key_id" or 4 more`
+  - `"project_id"`
 
-    - `"project_id"`
+  - `"user_id"`
 
-    - `"user_id"`
+  - `"api_key_id"`
 
-    - `"api_key_id"`
+  - `"model"`
 
-    - `"model"`
+  - `"batch"`
 
-    - `"batch"`
+  - `"service_tier"`
 
-    - `"service_tier"`
-
-    - `"api_source"`
+  - `"api_source"`
 
 - `limit: optional number or null`
 
@@ -66,8 +62,6 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these models.
 
-  - `array of string`
-
 - `page: optional string or null`
 
   A cursor for use in pagination. Corresponding to the `next_page` field from the previous response.
@@ -76,13 +70,9 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these projects.
 
-  - `array of string`
-
 - `user_ids: optional array of string or null`
 
   Return only usage for these users.
-
-  - `array of string`
 
 ### Returns
 

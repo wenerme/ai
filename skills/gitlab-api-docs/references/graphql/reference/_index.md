@@ -49650,6 +49650,45 @@ Fields:
 | <a id="mlmodelversionlinks-packagepath"></a>`packagePath` | [`String`](#string) | Path to the package of the model version. |
 | <a id="mlmodelversionlinks-showpath"></a>`showPath` | [`String`](#string) | Path to the details page of the model version. |
 
+### `MavenLocalUpstream`
+
+Represents a Maven local upstream registry.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mavenlocalupstream-cachevalidityhours"></a>`cacheValidityHours`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Time before the cache expires for the local upstream registry. |
+| <a id="mavenlocalupstream-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the local upstream registry. |
+| <a id="mavenlocalupstream-localgroup"></a>`localGroup`  | [`MavenLocalUpstreamTargetGroup`](#mavenlocalupstreamtargetgroup) | Introduced in GitLab 19.5. Status: Experiment. Group the local upstream registry serves packages from. Null when the local upstream registry targets a project, or when the user cannot read the group. |
+| <a id="mavenlocalupstream-localproject"></a>`localProject`  | [`MavenLocalUpstreamTargetProject`](#mavenlocalupstreamtargetproject) | Introduced in GitLab 19.5. Status: Experiment. Project the local upstream registry serves packages from. Null when the local upstream registry targets a group, or when the user cannot read the project. |
+| <a id="mavenlocalupstream-metadatacachevalidityhours"></a>`metadataCacheValidityHours`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Time before the cache expires for Maven metadata. |
+| <a id="mavenlocalupstream-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.5. Status: Experiment. Name of the local upstream registry. |
+
+### `MavenLocalUpstreamTargetGroup`
+
+Group a Maven local upstream registry serves packages from.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mavenlocalupstreamtargetgroup-fullpath"></a>`fullPath`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. Full path of the group. |
+| <a id="mavenlocalupstreamtargetgroup-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the group. |
+| <a id="mavenlocalupstreamtargetgroup-weburl"></a>`webUrl`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Web URL of the group. |
+
+### `MavenLocalUpstreamTargetProject`
+
+Project a Maven local upstream registry serves packages from.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mavenlocalupstreamtargetproject-fullpath"></a>`fullPath`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. Full path of the project. |
+| <a id="mavenlocalupstreamtargetproject-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the project. |
+| <a id="mavenlocalupstreamtargetproject-weburl"></a>`webUrl`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Web URL of the project. |
+
 ### `MavenMetadata`
 
 Maven metadata.
@@ -49715,6 +49754,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mavenregistryupstreamwithupstream-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 18.2. Status: Experiment. ID of the registry upstream. |
 | <a id="mavenregistryupstreamwithupstream-position"></a>`position`  | [`Int!`](#int) | Introduced in GitLab 18.2. Status: Experiment. Position of the upstream registry in an ordered list. |
+| <a id="mavenregistryupstreamwithupstream-targetupstream"></a>`targetUpstream`  | [`MavenTargetUpstream`](#maventargetupstream) | Introduced in GitLab 19.5. Status: Experiment. Maven remote or local upstream associated with the registry upstream. |
 | <a id="mavenregistryupstreamwithupstream-upstream"></a>`upstream`  | [`MavenUpstream!`](#mavenupstream) | Introduced in GitLab 18.7. Status: Experiment. Maven upstream associated with the registry upstream. |
 
 ### `MavenUpstream`
@@ -53891,6 +53931,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="orbittrial-credits"></a>`credits`  | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced in GitLab 19.5. Status: Experiment. Credits of the trial. |
 | <a id="orbittrial-expireson"></a>`expiresOn`  | [`Date`](#date) | Introduced in GitLab 19.5. Status: Experiment. Last day of the trial, in UTC. Null before a trial starts. |
+| <a id="orbittrial-offer"></a>`offer`  | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced in GitLab 19.6. Status: Experiment. Terms of a new trial. Null unless the group can start one and CustomersDot sends valid terms. |
 | <a id="orbittrial-state"></a>`state`  | [`OrbitTrialState!`](#orbittrialstate) | Introduced in GitLab 19.5. Status: Experiment. State of the trial. |
 
 ### `OrbitTrialCredits`
@@ -53903,6 +53944,17 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="orbittrialcredits-remaining"></a>`remaining`  | [`Float`](#float) | Introduced in GitLab 19.5. Status: Experiment. Number of trial credits remaining. |
 | <a id="orbittrialcredits-total"></a>`total`  | [`Float`](#float) | Introduced in GitLab 19.5. Status: Experiment. Number of credits the trial started with. |
+
+### `OrbitTrialOffer`
+
+Terms of a new Orbit trial, as offered by CustomersDot.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="orbittrialoffer-durationdays"></a>`durationDays`  | [`Int`](#int) | Introduced in GitLab 19.6. Status: Experiment. Number of days a new trial lasts. |
+| <a id="orbittrialoffer-initialcredits"></a>`initialCredits`  | [`Float`](#float) | Introduced in GitLab 19.6. Status: Experiment. Number of free credits a new trial starts with. |
 
 ### `Organization`
 
@@ -72283,6 +72335,7 @@ Name of the feature that the callout is for.
 | Value | Description |
 | ----- | ----------- |
 | <a id="usercalloutfeaturenameenum-active_user_count_threshold"></a>`ACTIVE_USER_COUNT_THRESHOLD` | Callout feature name for active_user_count_threshold. |
+| <a id="usercalloutfeaturenameenum-analytics_dashboards_explore_intro_banner"></a>`ANALYTICS_DASHBOARDS_EXPLORE_INTRO_BANNER` | Callout feature name for analytics_dashboards_explore_intro_banner. |
 | <a id="usercalloutfeaturenameenum-branch_rules_tip_callout"></a>`BRANCH_RULES_TIP_CALLOUT` | Callout feature name for branch_rules_tip_callout. |
 | <a id="usercalloutfeaturenameenum-buy_pipeline_minutes_notification_dot"></a>`BUY_PIPELINE_MINUTES_NOTIFICATION_DOT` | Callout feature name for buy_pipeline_minutes_notification_dot. |
 | <a id="usercalloutfeaturenameenum-canary_deployment"></a>`CANARY_DEPLOYMENT` | Callout feature name for canary_deployment. |
@@ -75107,6 +75160,15 @@ One of:
 
 - [`CiBuildNeed`](#cibuildneed)
 - [`CiJob`](#cijob)
+
+#### `MavenTargetUpstream`
+
+Maven remote or local upstream that a registry upstream points to.
+
+One of:
+
+- [`MavenLocalUpstream`](#mavenlocalupstream)
+- [`MavenUpstream`](#mavenupstream)
 
 #### `NamespaceUnion`
 
