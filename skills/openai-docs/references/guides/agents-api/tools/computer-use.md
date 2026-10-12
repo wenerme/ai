@@ -594,12 +594,16 @@ Send the task and follow its result
 # Terminal 1: use session_id from the creation request.
 # Keep this stream open. Wait for HTTP 200 before sending input.
 set -o pipefail
+# Retain screenshot bytes privately even if saved history omits them.
+stream_file=$(mktemp -t openai-browser-stream.XXXXXX) || exit 1
+printf 'Saved event stream: %s\n' "$stream_file" >&2
 curl --silent --show-error --fail --no-buffer --dump-header - \
   --suppress-connect-headers \
   "https://api.openai.com/v1/agents/sessions/$session_id/events" \
   -H "OpenAI-Beta: agents=v1" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Accept: text/event-stream" \
+  | tee "$stream_file" \
   | jq --raw-input --unbuffered '
       if startswith("HTTP/") then .
       elif startswith("data:") then
@@ -636,6 +640,7 @@ curl --fail-with-body "https://api.openai.com/v1/agents/sessions/$session_id/eve
 ```
 
 ```javascript
+let screenshot;
 const events = await client.beta.agents.sessions.events.stream(session.id);
 const handledRequests = new Set();
 let completed = false;
@@ -675,6 +680,23 @@ try {
         }
         break;
       }
+      case "agent.session.turn.item.done": {
+        // Preserve streamed screenshots; retrieved history may omit image bytes.
+        const item = event.item;
+        if (item.type === "computer_use_call") {
+          const output = item.output;
+          if (
+            output?.type === "computer_screenshot" &&
+            output.image_url.startsWith("data:image/jpeg;base64,")
+          ) {
+            screenshot = Buffer.from(
+              output.image_url.split(",", 2)[1],
+              "base64"
+            );
+          }
+        }
+        break;
+      }
       case "agent.session.turn.output_text.done":
         console.log(event.text);
         break;
@@ -709,6 +731,7 @@ try {
 ```
 
 ```python
+last_screenshot = None
 handled_requests = set()
 completed = False
 with client.beta.agents.sessions.events.stream(session.id) as events:
@@ -741,6 +764,17 @@ with client.beta.agents.sessions.events.stream(session.id) as events:
                 ):
                     respond_to_origin_approval(client, session.id, approval)
                     handled_requests.add(approval.request_id)
+        elif event.type == "agent.session.turn.item.done":
+            # Preserve streamed screenshots; retrieved history may omit image bytes.
+            item = event.item
+            if item.type == "computer_use_call":
+                output = getattr(item, "output", None)
+                if output is not None and output.type == "computer_screenshot":
+                    prefix = "data:image/jpeg;base64,"
+                    if output.image_url.startswith(prefix):
+                        last_screenshot = base64.b64decode(
+                            output.image_url[len(prefix) :], validate=True
+                        )
         elif event.type == "agent.session.turn.output_text.done":
             print(event.text, flush=True)
         elif event.type == "agent.session.turn.completed":
@@ -766,7 +800,8 @@ with client.beta.agents.sessions.events.stream(session.id) as events:
 ```
 
 ```go
-handledRequests := map[string]bool{}
+var lastScreenshot []byte
+	handledRequests := map[string]bool{}
 	events := client.Beta.Agents.Sessions.Events.StreamStreaming(ctx, session.ID)
 	defer events.Close()
 	if err := events.Err(); err != nil {
@@ -812,6 +847,18 @@ eventLoop:
 				}
 				handledRequests[approval.RequestID] = true
 			}
+		case "agent.session.turn.item.done":
+			// Preserve streamed screenshots; retrieved history may omit image bytes.
+			item := event.Item
+			if item.Type == "computer_use_call" && item.Output.Type == "computer_screenshot" {
+				const prefix = "data:image/jpeg;base64,"
+				if strings.HasPrefix(item.Output.ImageURL, prefix) {
+					lastScreenshot, err = base64.StdEncoding.DecodeString(strings.TrimPrefix(item.Output.ImageURL, prefix))
+					if err != nil {
+						return err
+					}
+				}
+			}
 		case "agent.session.turn.output_text.done":
 			fmt.Println(event.Text)
 		case "agent.session.turn.completed":
@@ -838,6 +885,7 @@ eventLoop:
 ```
 
 ```java
+byte[] lastScreenshot = null;
 var handledRequests = new HashSet<String>();
 try (var events = client.beta().agents().sessions().events().streamStreaming(session.id())) {
   client
@@ -874,6 +922,19 @@ try (var events = client.beta().agents().sessions().events().streamStreaming(ses
         }
       }
     }
+    // Preserve streamed screenshots; retrieved history may omit image bytes.
+    if (event.turnItemDone().isPresent()
+        && event.turnItemDone().get().item().computerUseCall().isPresent()) {
+      var activity = event.turnItemDone().get().item().computerUseCall().get();
+      var output = activity.output();
+      if (output.isPresent()) {
+        String imageUrl = output.get().imageUrl();
+        String prefix = "data:image/jpeg;base64,";
+        if (imageUrl.startsWith(prefix)) {
+          lastScreenshot = Base64.getDecoder().decode(imageUrl.substring(prefix.length()));
+        }
+      }
+    }
     event.turnOutputTextDone().ifPresent(text -> System.out.println(text.text()));
     if (event.turnCompleted().filter(e -> e.turn().subagentId().isEmpty()).isPresent()) {
       completed = true;
@@ -897,6 +958,7 @@ try (var events = client.beta().agents().sessions().events().streamStreaming(ses
 ```
 
 ```csharp
+byte[]? lastScreenshot = null;
 HashSet<string> handledRequests = new(StringComparer.Ordinal);
 await using var events = await client.GetAgentSessionEventsAsync(session.Id);
 await client.CreateAgentSessionEventsAsync(
@@ -929,6 +991,23 @@ await foreach (var message in events)
             {
                 await RespondToOriginApprovalAsync(client, session.Id, approval);
                 handledRequests.Add(approval.RequestId);
+            }
+        }
+    }
+    else if (type == "agent.session.turn.item.done")
+    {
+        // Preserve streamed screenshots; retrieved history may omit image bytes.
+        JsonElement item = current.GetProperty("item");
+        if (item.GetProperty("type").GetString() == "computer_use_call"
+            && item.TryGetProperty("output", out JsonElement output)
+            && output.ValueKind == JsonValueKind.Object
+            && output.GetProperty("type").GetString() == "computer_screenshot")
+        {
+            const string prefix = "data:image/jpeg;base64,";
+            string imageUrl = output.GetProperty("image_url").GetString()!;
+            if (imageUrl.StartsWith(prefix, StringComparison.Ordinal))
+            {
+                lastScreenshot = Convert.FromBase64String(imageUrl[prefix.Length..]);
             }
         }
     }
@@ -967,6 +1046,7 @@ if (!completed)
 ```
 
 ```ruby
+last_screenshot = String.new(encoding: Encoding::BINARY)
 handled_requests = Set.new
 events = client.beta.agents.sessions.events.stream_streaming(session.id)
 begin
@@ -999,6 +1079,19 @@ begin
 
         respond_to_origin_approval(client, session.id, approval)
         handled_requests.add(approval.request_id)
+      end
+      false
+    when OpenAI::Beta::AgentSessionTurnItemDoneEvent
+      # Preserve streamed screenshots; retrieved history may omit image bytes.
+      item = event.item
+      if item.is_a?(OpenAI::Beta::AgentOutputItem::ComputerUseCall)
+        output = item.output
+        if output&.type.to_s == "computer_screenshot"
+          prefix = "data:image/jpeg;base64,"
+          if output.image_url.start_with?(prefix)
+            last_screenshot.replace(Base64.strict_decode64(output.image_url.delete_prefix(prefix)))
+          end
+        end
       end
       false
     when OpenAI::Beta::AgentSessionTurnOutputTextDoneEvent
@@ -1055,8 +1148,8 @@ To display the browser's progress in your application, set `include_screenshots`
 to `true` on the `computer_use` tool. Screenshots are excluded from API output
 by default; the agent can still observe them.
 
-Each browser operation returns its last emitted screenshot in `output`, when
-available:
+A completed browser activity event includes its last emitted screenshot in
+`item.output`, when available:
 
 ```json
 {
@@ -1072,12 +1165,17 @@ without an image.
 Screenshots can contain sensitive page or account data. Show them only to
   authorized users and keep them out of application logs.
 
-Retrieve saved browser activity after the turn completes. The SDK examples save
-the latest available screenshot to `browser-screenshot.jpg`.
+Capture available screenshots from `agent.session.turn.item.done` events while
+consuming the stream. Retrieved history can omit image bytes, so retain the image
+in your application rather than relying on a later items-list request. After the
+turn completes, the SDK examples list browser activity and save the latest captured
+screenshot. Most use `browser-screenshot.jpg`; Java uses a temporary file.
 
 Read browser activity
 
 ```bash
+# Screenshot bytes are retained in the private event stream file printed in terminal 1.
+# Keep that file: saved history may omit image bytes.
 # Save the first page privately; image data stays out of terminal output.
 activity_file=$(mktemp)
 curl --silent --show-error --fail-with-body --get \
@@ -1098,20 +1196,12 @@ printf 'Saved activity JSON: %s\n' "$activity_file"
 ```
 
 ```javascript
-let screenshot;
 for await (const item of client.beta.agents.sessions.items.list(session.id, {
   order: "asc",
   limit: 100,
 })) {
   if (item.type !== "computer_use_call") continue;
   console.log(item.title ?? "Browser activity", item.status);
-  const output = item.output;
-  if (
-    output?.type === "computer_screenshot" &&
-    output.image_url.startsWith("data:image/jpeg;base64,")
-  ) {
-    screenshot = Buffer.from(output.image_url.split(",", 2)[1], "base64");
-  }
 }
 if (screenshot) {
   const file = await open("browser-screenshot.jpg", "wx", 0o600);
@@ -1127,20 +1217,12 @@ if (screenshot) {
 ```
 
 ```python
-last_screenshot = None
 for item in client.beta.agents.sessions.items.list(
     session.id, order="asc", limit=100
 ):
     if item.type != "computer_use_call":
         continue
     print(item.title or "Browser activity", item.status)
-    output = getattr(item, "output", None)
-    if output is not None and output.type == "computer_screenshot":
-        prefix = "data:image/jpeg;base64,"
-        if output.image_url.startswith(prefix):
-            last_screenshot = base64.b64decode(
-                output.image_url[len(prefix) :], validate=True
-            )
 
 if last_screenshot is not None:
     screenshot_path = Path("browser-screenshot.jpg")
@@ -1156,7 +1238,6 @@ ready_to_delete = completed
 ```
 
 ```go
-var lastScreenshot []byte
 items := client.Beta.Agents.Sessions.Items.ListAutoPaging(ctx, session.ID, openai.BetaAgentSessionItemListParams{
 	Order: "asc", Limit: openai.Int(100),
 })
@@ -1171,16 +1252,6 @@ for items.Next() {
 		title = "Browser activity"
 	}
 	fmt.Println(title, activity.Status)
-	if !activity.JSON.Output.Valid() || activity.Output.Type != "computer_screenshot" {
-		continue
-	}
-	const prefix = "data:image/jpeg;base64,"
-	if strings.HasPrefix(activity.Output.ImageURL, prefix) {
-		lastScreenshot, err = base64.StdEncoding.DecodeString(strings.TrimPrefix(activity.Output.ImageURL, prefix))
-		if err != nil {
-			return err
-		}
-	}
 }
 if err := items.Err(); err != nil {
 	return err
@@ -1205,7 +1276,6 @@ readyToDelete = true
 ```
 
 ```java
-byte[] lastScreenshot = null;
 var items =
     client
         .beta()
@@ -1222,14 +1292,6 @@ for (var item : items.autoPager()) {
   if (item.computerUseCall().isEmpty()) continue;
   var activity = item.computerUseCall().get();
   System.out.println(activity.title().orElse("Browser activity") + " " + activity.status());
-  var output = activity.output();
-  if (output.isPresent()) {
-    String imageUrl = output.get().imageUrl();
-    String prefix = "data:image/jpeg;base64,";
-    if (imageUrl.startsWith(prefix)) {
-      lastScreenshot = Base64.getDecoder().decode(imageUrl.substring(prefix.length()));
-    }
-  }
 }
 if (lastScreenshot != null) {
   var screenshotPath = Files.createTempFile("browser-screenshot-", ".jpg");
@@ -1241,7 +1303,6 @@ if (lastScreenshot != null) {
 ```
 
 ```csharp
-byte[]? lastScreenshot = null;
 await foreach (AgentSessionItem item in client.GetAgentSessionItemsAsync(
     session.Id, limit: 100, order: AgentSessionItemCollectionOrder.Ascending))
 {
@@ -1250,14 +1311,7 @@ await foreach (AgentSessionItem item in client.GetAgentSessionItemsAsync(
         continue;
     }
     Console.WriteLine($"{activity.Title ?? "Browser activity"}: {activity.Status}");
-    if (activity.Output is ComputerUseOutputResourceComputerScreenshot screenshot)
-    {
-        const string prefix = "data:image/jpeg;base64,";
-        if (screenshot.ImageUrl.StartsWith(prefix, StringComparison.Ordinal))
-        {
-            lastScreenshot = Convert.FromBase64String(screenshot.ImageUrl[prefix.Length..]);
-        }
-    }
+
 }
 if (lastScreenshot is not null)
 {
@@ -1286,23 +1340,15 @@ else
 ```
 
 ```ruby
-last_screenshot = String.new(encoding: Encoding::BINARY)
 items = client.beta.agents.sessions.items.list(
   session.id,
   order: "asc",
   limit: 100
 )
 items.auto_paging_each do |item|
-  next unless item.is_a?(OpenAI::Beta::AgentComputerUseCallItem)
+  next unless item.is_a?(OpenAI::Beta::AgentSessionItem::ComputerUseCall)
 
   puts "#{item.title || "Browser activity"}: #{item.status}"
-  output = item.output
-  if output&.type.to_s == "computer_screenshot"
-    prefix = "data:image/jpeg;base64,"
-    if output.image_url.start_with?(prefix)
-      last_screenshot.replace(Base64.strict_decode64(output.image_url.delete_prefix(prefix)))
-    end
-  end
 end
 
 if last_screenshot.empty?

@@ -1456,7 +1456,7 @@ List user actions and configuration changes within this organization.
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
         The external storage provider configuration.
 
@@ -1512,7 +1512,7 @@ List user actions and configuration changes within this organization.
 
           - `workload_identity_provider_id: string`
 
-        - `Oci object { bucket, region, tenancy_ocid, type }`
+        - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
           - `bucket: string`
 
@@ -3301,7 +3301,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
         The external storage provider configuration.
 
@@ -3357,7 +3357,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
           - `workload_identity_provider_id: string`
 
-        - `Oci object { bucket, region, tenancy_ocid, type }`
+        - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
           - `bucket: string`
 
@@ -5369,7 +5369,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -5423,7 +5423,7 @@ Register one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -5694,7 +5694,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -5748,7 +5748,7 @@ List the organization's customer-managed external storage configurations.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -5911,7 +5911,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -5965,7 +5965,7 @@ Get one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -6069,7 +6069,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -6123,7 +6123,7 @@ Validate one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -6258,7 +6258,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -6312,7 +6312,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -6363,6 +6363,20 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
   - `workload_identity_project_number: string`
 
   - `workload_identity_provider_id: string`
+
+### Oci External Storage Provider
+
+- `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
+
+  - `bucket: string`
+
+  - `region: string`
+
+  - `tenancy_ocid: string`
+
+  - `type: "oci"`
+
+    - `"oci"`
 
 # Groups
 
@@ -21583,8 +21597,6 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these API keys.
 
-  - `array of string`
-
 - `batch: optional boolean or null`
 
   If `true`, return batch jobs only. If `false`, return non-batch jobs only. By default, return both.
@@ -21607,21 +21619,19 @@ Get Decisions API usage details for the organization.
 
   Group the usage data by the specified fields. Support fields include `project_id`, `user_id`, `api_key_id`, `model`, `batch`, `service_tier`, `api_source` or any combination of them. When grouped by `api_source`, results use `agents_api` for attributed Agents API activity and `unlabeled` for all other activity. Without source grouping, `api_source` is null.
 
-  - `array of "project_id" or "user_id" or "api_key_id" or 4 more`
+  - `"project_id"`
 
-    - `"project_id"`
+  - `"user_id"`
 
-    - `"user_id"`
+  - `"api_key_id"`
 
-    - `"api_key_id"`
+  - `"model"`
 
-    - `"model"`
+  - `"batch"`
 
-    - `"batch"`
+  - `"service_tier"`
 
-    - `"service_tier"`
-
-    - `"api_source"`
+  - `"api_source"`
 
 - `limit: optional number or null`
 
@@ -21635,8 +21645,6 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these models.
 
-  - `array of string`
-
 - `page: optional string or null`
 
   A cursor for use in pagination. Corresponding to the `next_page` field from the previous response.
@@ -21645,13 +21653,9 @@ Get Decisions API usage details for the organization.
 
   Return only usage for these projects.
 
-  - `array of string`
-
 - `user_ids: optional array of string or null`
 
   Return only usage for these users.
-
-  - `array of string`
 
 ### Returns
 
@@ -28051,117 +28055,127 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
 ### Usage Decisions Response
 
-- `UsageDecisionsResponse object { end_time, object, results, start_time }`
+- `UsageDecisionsResponse object { data, has_more, next_page, object }`
 
-  - `end_time: number`
+  - `data: array of object { end_time, object, results, start_time }`
 
-  - `object: "bucket"`
+    - `end_time: number`
 
-    - `"bucket"`
+    - `object: "bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }`
+      - `"bucket"`
 
-    - `input_tokens: number`
+    - `results: array of object { input_tokens, num_model_requests, object, 21 more }`
 
-      The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+      - `input_tokens: number`
 
-    - `num_model_requests: number`
+        The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-      The count of requests made to the model.
+      - `num_model_requests: number`
 
-    - `object: "organization.usage.decisions.result"`
+        The count of requests made to the model.
 
-      - `"organization.usage.decisions.result"`
+      - `object: "organization.usage.decisions.result"`
 
-    - `output_tokens: number`
+        - `"organization.usage.decisions.result"`
 
-      The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+      - `output_tokens: number`
 
-    - `api_key_id: optional string or null`
+        The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-      When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+      - `api_key_id: optional string or null`
 
-    - `api_source: optional "agents_api" or "unlabeled" or null`
+        When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      When grouped by `api_source`, `agents_api` identifies attributed Agents API activity and `unlabeled` includes all records without published source attribution, including historical and unknown origins. Unlabeled does not imply direct API usage. Without source grouping, this field is null.
+      - `api_source: optional "agents_api" or "unlabeled" or null`
 
-      - `"agents_api"`
+        When grouped by `api_source`, `agents_api` identifies attributed Agents API activity and `unlabeled` includes all records without published source attribution, including historical and unknown origins. Unlabeled does not imply direct API usage. Without source grouping, this field is null.
 
-      - `"unlabeled"`
+        - `"agents_api"`
 
-    - `batch: optional boolean or null`
+        - `"unlabeled"`
 
-      When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+      - `batch: optional boolean or null`
 
-    - `input_audio_tokens: optional number or null`
+        When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
 
-      The aggregated number of uncached audio input tokens used.
+      - `input_audio_tokens: optional number or null`
 
-    - `input_cache_write_12h_tokens: optional number or null`
+        The aggregated number of uncached audio input tokens used.
 
-      The aggregated number of input tokens written to the cache with a 12-hour retention period.
+      - `input_cache_write_12h_tokens: optional number or null`
 
-    - `input_cache_write_tokens: optional number or null`
+        The aggregated number of input tokens written to the cache with a 12-hour retention period.
 
-      The aggregated number of input tokens written to the cache with a 30-minute retention period.
+      - `input_cache_write_tokens: optional number or null`
 
-    - `input_cached_audio_tokens: optional number or null`
+        The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
-      The aggregated number of cached audio input tokens used.
+      - `input_cached_audio_tokens: optional number or null`
 
-    - `input_cached_image_tokens: optional number or null`
+        The aggregated number of cached audio input tokens used.
 
-      The aggregated number of cached image input tokens used.
+      - `input_cached_image_tokens: optional number or null`
 
-    - `input_cached_text_tokens: optional number or null`
+        The aggregated number of cached image input tokens used.
 
-      The aggregated number of cached text input tokens used.
+      - `input_cached_text_tokens: optional number or null`
 
-    - `input_cached_tokens: optional number or null`
+        The aggregated number of cached text input tokens used.
 
-      The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
+      - `input_cached_tokens: optional number or null`
 
-    - `input_image_tokens: optional number or null`
+        The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-      The aggregated number of uncached image input tokens used.
+      - `input_image_tokens: optional number or null`
 
-    - `input_text_tokens: optional number or null`
+        The aggregated number of uncached image input tokens used.
 
-      The aggregated number of uncached text input tokens used, excluding cache-write tokens.
+      - `input_text_tokens: optional number or null`
 
-    - `input_uncached_tokens: optional number or null`
+        The aggregated number of uncached text input tokens used, excluding cache-write tokens.
 
-      The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
+      - `input_uncached_tokens: optional number or null`
 
-    - `model: optional string or null`
+        The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
-      When `group_by=model`, this field provides the model name of the grouped usage result.
+      - `model: optional string or null`
 
-    - `output_audio_tokens: optional number or null`
+        When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      The aggregated number of audio output tokens used.
+      - `output_audio_tokens: optional number or null`
 
-    - `output_image_tokens: optional number or null`
+        The aggregated number of audio output tokens used.
 
-      The aggregated number of image output tokens used.
+      - `output_image_tokens: optional number or null`
 
-    - `output_text_tokens: optional number or null`
+        The aggregated number of image output tokens used.
 
-      The aggregated number of text output tokens used.
+      - `output_text_tokens: optional number or null`
 
-    - `project_id: optional string or null`
+        The aggregated number of text output tokens used.
 
-      When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+      - `project_id: optional string or null`
 
-    - `service_tier: optional string or null`
+        When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+      - `service_tier: optional string or null`
 
-    - `user_id: optional string or null`
+        When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
 
-      When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+      - `user_id: optional string or null`
 
-  - `start_time: number`
+        When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string or null`
+
+  - `object: "page"`
+
+    - `"page"`
 
 ### Usage Embeddings Response
 

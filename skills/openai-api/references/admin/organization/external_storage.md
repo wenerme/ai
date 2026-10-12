@@ -80,7 +80,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -134,7 +134,7 @@ Register one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -405,7 +405,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -459,7 +459,7 @@ List the organization's customer-managed external storage configurations.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -622,7 +622,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -676,7 +676,7 @@ Get one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -780,7 +780,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -834,7 +834,7 @@ Validate one customer-managed external storage configuration.
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -969,7 +969,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or Oci { bucket, region, tenancy_ocid, type }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or OciExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -1023,7 +1023,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
       - `workload_identity_provider_id: string`
 
-    - `Oci object { bucket, region, tenancy_ocid, type }`
+    - `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
 
       - `bucket: string`
 
@@ -1074,3 +1074,17 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
   - `workload_identity_project_number: string`
 
   - `workload_identity_provider_id: string`
+
+### Oci External Storage Provider
+
+- `OciExternalStorageProvider object { bucket, region, tenancy_ocid, type }`
+
+  - `bucket: string`
+
+  - `region: string`
+
+  - `tenancy_ocid: string`
+
+  - `type: "oci"`
+
+    - `"oci"`
