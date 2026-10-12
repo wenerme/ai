@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd4
 
 # Transformers
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Transformers let you run a SQL query against each batch of records before Logpush delivers them to your destination. Use them to filter records you do not want to store, reshape fields to match a downstream schema, redact sensitive values, compute new fields, or add static metadata.
 
@@ -133,7 +133,7 @@ Records that do not match the `WHERE` clause are dropped from the output.
 
 ### Supported SQL
 
-Transformers use the same SQL dialect as [Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/sql-reference/). The following operations are supported:
+Transformers use the same SQL dialect as [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/sql-reference/). The following operations are supported:
 
 - **Projection** - `SELECT` specific fields, rename with `AS`, compute new fields with expressions.
 - **Filtering** - `WHERE` clauses with the standard comparison, boolean, and null-check operators.
@@ -341,7 +341,7 @@ To debug, open the transformer in [Transformer Studio](#transformer-studio-ui) a
 
 - [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) - the fields your SQL queries reference
 - [Logpush job setup](https://developers.cloudflare.com/logs/logpush/logpush-job/) - creating and managing Logpush jobs
-- [Log fields reference](https://developers.cloudflare.com/logs/reference/log-fields/) - full field descriptions across datasets
+- [Log fields reference](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) - full field descriptions across datasets
 - [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) - simpler filtering without SQL
 
 Was this helpful?
@@ -353,5 +353,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd45bfcbf25bd72","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd45bfcbf25bd72","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

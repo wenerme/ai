@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # DLP profiles
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A DLP profile defines what sensitive data Cloudflare detects in your traffic. A profile combines one or more of the following building blocks:
 
@@ -37,7 +37,7 @@ To decide which data types to focus on, use [Passive Detection](https://develope
 
 Most predefined profiles match when any enabled detection entry matches. The **Personally Identifiable Information (PII) Record** profile is an exception and requires at least three unique detection entries in close proximity before the profile matches.
 
-You can now use this profile in a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy), [CASB integration](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/), [AI Gateway DLP policy](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/), or [Email Security outbound DLP policy](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).
+You can now use this profile in a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy), [CASB integration](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/), [AI Gateway DLP policy](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/), or [Email Security outbound DLP policy](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/).
 
 ## Build a custom profile
 
@@ -76,7 +76,7 @@ Existing entries include <a href="https://developers.cloudflare.com/cloudflare-o
 
 Before you apply a custom profile to production traffic, use [Test scan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/) to confirm that it detects the content you expect.
 
-You can now use this profile in a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy), [CASB integration](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/), [AI Gateway DLP policy](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/), or [Email Security outbound DLP policy](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).
+You can now use this profile in a [DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy), [CASB integration](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/casb-dlp/), [AI Gateway DLP policy](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/), or [Email Security outbound DLP policy](https://developers.cloudflare.com/cloudflare-one/email-security/policies/outbound/outbound-dlp/).
 
 Was this helpful?
 
@@ -87,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#page","headline":"DLP profiles","description":"DLP profiles in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/og.png?v=bd4d8e1591fa73e9","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#page","headline":"DLP profiles","description":"DLP profiles in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/og.png?v=bd4d8e1591fa73e9","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

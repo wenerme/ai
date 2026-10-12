@@ -42,9 +42,10 @@ LabelsSingle service label exploration and filtering
 
 Flame graphSingle service flame graph
 
-- Analyze the flame graph of a particular service, profile type, and label selection
-- Use tools like \*\*Analyze with Assistant\** (Grafana Cloud) or \*\*Explain Flame Graph\** (Grafana open source), GitHub code view, and function details to get deeper insights into performance.
-- Enable \*\*Exemplars\** to see individual profile markers on the timeseries and click one to inspect a single individual profile.
+- Analyze the flame graph of a particular service, profile type, and label selection.
+- Use tools like **Analyze with Assistant** (Grafana Cloud) or **Explain Flame Graph** (Grafana open source), GitHub code view, and function details to get deeper insights into performance.
+- Enable **Exemplars** to see individual profile markers on the timeseries and click one to inspect a single individual profile.
+- Use the [Span heatmap](#span-heatmap-profiles-to-traces) to investigate resource usage per span and open associated traces.
 
 Diff flame graphCompare the differences between two flame graphs
 
@@ -86,17 +87,22 @@ In this view, you can also:
 - Toggle between the top table, flame graph, and call tree, or show a combination of views.
 - Export profile data.
 
-#### Profiles to Traces
+#### Export profile data
 
-> Note
->
-> Profiles to Traces is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+To export profile data, click the **Export profile data** download icon above the flame graph. The options depend on the view:
 
-In the **Flame graph** view, use the **Profile timeline visualization** toggle to switch between **Time series** and **Span heatmap**. The span heatmap plots span-level profile exemplars, so you can move from aggregated profiles to the individual spans and traces behind them.
+- **Flame graph**: Download **png**, **json**, or **pprof**, or select **gcx command** to copy a `gcx profiles query` command that downloads the profile as a pprof file.
+- **Diff flame graph**: Download **png** or **json**, or select **gcx commands** to copy two `gcx profiles query` commands that download the baseline and comparison profiles as pprof files.
 
-Select a Tempo data source to load trace details. From the **Top span exemplars** table, you can **Open flame graph** to view the flame graph for a single span, or **Open trace** to view the associated trace from your Tempo data source.
+**png** is only available when the flame graph is showing.
 
-For the steps to use the span heatmap, refer to [Investigate trends and spikes](../investigate/#move-from-profiles-to-traces).
+#### Span heatmap (Profiles to Traces)
+
+Use the span heatmap to spot changes in resource usage across trace spans and find spans with unusually high profile values. Inspect an individual span’s flame graph to identify resource-intensive functions, or open its associated trace to understand request timing and relationships between services.
+
+The span heatmap is a visualization within the **Flame graph** view, not a separate **Exploration** tab. It requires span profiles in Pyroscope; viewing associated traces also requires matching trace data in Tempo.
+
+For the complete walkthrough and troubleshooting guidance, refer to [Move from profiles to traces](../investigate/#move-from-profiles-to-traces).
 
 ### Diff flame graph
 
@@ -109,6 +115,8 @@ To configure comparisons more quickly, you can use:
 - **Auto-select** to choose a comparison range automatically.
 - **Comparison presets** to apply saved or predefined comparisons.
 - **Sync time ranges** to keep baseline and comparison windows aligned.
+
+To export a diff flame graph, refer to [Export profile data](#export-profile-data).
 
 ### Favorites
 

@@ -235,7 +235,7 @@ wrangler containers push [TAG] [OPTIONS]
 Connect to a running Container instance using SSH. Refer to [SSH](https://developers.cloudflare.com/containers/guides/ssh/) for configuration details.
 
 ```txt
-wrangler containers ssh <INSTANCE_ID>
+wrangler containers ssh <INSTANCE_ID> [OPTIONS]
 ```
 
 You can also specify a command to run, instead of the default shell. For example:
@@ -244,8 +244,16 @@ You can also specify a command to run, instead of the default shell. For example
 wrangler containers ssh <INSTANCE_ID> -- ls -al
 ```
 
+Only the default shell gets a terminal automatically. To run an interactive command, such as `top`, pass `--tty`:
+
+```txt
+wrangler containers ssh <INSTANCE_ID> --tty -- top
+```
+
 - `INSTANCE_ID` `string` required
   - The ID of the Container instance to SSH into.
+- `-t, --tty` `boolean` optional
+  - Force pseudo-terminal (PTY) allocation. Use this when running an interactive command.
 
 Was this helpful?
 

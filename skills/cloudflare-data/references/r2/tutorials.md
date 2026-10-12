@@ -20,7 +20,7 @@ View tutorials to help you get started with R2.
 | --- | --- | --- |
 | [Data persistence with R2](https://developers.cloudflare.com/sandbox/sdk/tutorials/persistent-storage/) | 11 months ago | Intermediate |
 | [Build an end to end data pipeline](https://developers.cloudflare.com/basin-sql/tutorials/end-to-end-pipeline/) | last year | Intermediate |
-| [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/) | last year | Beginner |
+| [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/) | 2 years ago | Beginner |
 | [Use event notification to summarize PDF files on upload](https://developers.cloudflare.com/r2/tutorials/summarize-pdf/) | 2 years ago | Intermediate |
 | [Use SSE-C](https://developers.cloudflare.com/r2/examples/ssec/) | 2 years ago | Intermediate |
 | [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/) | 2 years ago | Intermediate |

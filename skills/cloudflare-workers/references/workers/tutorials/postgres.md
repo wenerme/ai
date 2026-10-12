@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/tutorials/postgres/og.png?v=4e5
 
 # Connect to a PostgreSQL database with Cloudflare Workers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a PostgreSQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of PostgreSQL.
 
@@ -22,7 +22,11 @@ To continue:
 
 1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
 2. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
-3. Install [`Node.js` ↗︎](https://nodejs.org/en/). Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+3. Install [`Node.js` ↗︎](https://nodejs.org/en/).
+
+   Use [Vite+ ( `vp env`) ↗︎](https://viteplus.dev/guide/env) to install and manage Node.js versions.
+
+   For supported Node.js versions, refer to the [Wrangler system requirements](https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler).
 4. Make sure you have access to a PostgreSQL database.
 
 ## 1. Create a Worker application
@@ -404,7 +408,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-09",
+	"compatibility_date": "2026-10-12",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -423,7 +427,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-10-12"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -476,5 +480,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/postgres/#page","headline":"Connect to a PostgreSQL database with Cloudflare Workers","description":"This tutorial explains how to connect to a Postgres database with Cloudflare Workers. The Workers application you create in this tutorial will interact with a product database inside of Postgres.","url":"https://developers.cloudflare.com/workers/tutorials/postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/postgres/og.png?v=4e5ca028d70d7723","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/postgres/#page","headline":"Connect to a PostgreSQL database with Cloudflare Workers","description":"This tutorial explains how to connect to a Postgres database with Cloudflare Workers. The Workers application you create in this tutorial will interact with a product database inside of Postgres.","url":"https://developers.cloudflare.com/workers/tutorials/postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/postgres/og.png?v=4e5ca028d70d7723","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
 ```

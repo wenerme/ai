@@ -43,4 +43,4 @@ Use your profiling data to identify issues and determine the root cause.](./inve
 
 [Changelog
 \
-Learn about the updates, new features, and bugfixes in this version.](https://github.com/grafana/explore-profiles/blob/main/CHANGELOG.md)
+Learn about the updates, new features, and bugfixes in this version.](https://github.com/grafana/profiles-drilldown/blob/main/CHANGELOG.md)

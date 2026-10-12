@@ -1501,7 +1501,7 @@ Older product updates
 - <a href="https://developers.cloudflare.com/cloudflare-wan/changelog/">Magic WAN</a>
 - <a href="https://developers.cloudflare.com/network-interconnect/changelog/">Network Interconnect</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/">Risk score</a>
-- <a href="https://developers.cloudflare.com/changelog/cloudflare-one-client/">Cloudflare One Client</a>
+- <a href="https://developers.cloudflare.com/changelog/product/cloudflare-one-client/">Cloudflare One Client</a>
 
 </details>
 

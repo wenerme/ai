@@ -152,7 +152,7 @@ Even when using the same compression algorithm end to end (between your origin s
 - [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)
 - [Polish](https://developers.cloudflare.com/images/polish/)
 - [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/)
-- [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/)
+- [JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)
 - [RUM](https://developers.cloudflare.com/speed/observatory/run-speed-test/#enable-real-user-monitoring-rum)
 
 To disable these settings for specific URI paths, create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).

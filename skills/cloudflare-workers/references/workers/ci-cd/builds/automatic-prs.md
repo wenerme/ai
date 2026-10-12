@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/og.p
 
 # Automatic pull requests
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds can automatically create pull requests in your repository to configure your project or resolve deployment issues. Automatic pull requests are not supported for Artifacts repositories.
 
@@ -66,7 +66,7 @@ This can happen when:
 
 The PR will update the `name` field in your Wrangler configuration to match the Worker name in the dashboard.
 
-For more details, refer to the [name conflict changelog](https://developers.cloudflare.com/changelog/2025-02-20-builds-name-conflict/).
+For more details, refer to the [name conflict changelog](https://developers.cloudflare.com/changelog/post/2025-02-20-builds-name-conflict/).
 
 ## Reviewing PRs
 
@@ -85,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/og.png?v=74e3558ea7009c6f","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/og.png?v=74e3558ea7009c6f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

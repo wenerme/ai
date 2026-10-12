@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-referen
 
 # RtkMessageListView
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which renders list of messages.
 
@@ -22,9 +22,9 @@ A component which renders list of messages.
 | --- | --- | --- | --- | --- |
 | `estimateItemSize` | `number` | ✅ | - | Estimated height of an item |
 | `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
-| `loadMore` | `(lastMessage: Message)` | ✅ | - | Function to load more messages. Messages returned from this will be prepended |
+| `loadMore` | `(lastMessage: Message) => Promise<Message[]>` | ✅ | - | Function to load more messages. Messages returned from this will be prepended |
 | `messages` | `Message[]` | ✅ | - | Messages to render |
-| `renderer` | `(message: Message, index: number)` | ✅ | - | Render function of the message |
+| `renderer` | `(message: Message, index: number) => HTMLElement` | ✅ | - | Render function of the message |
 | `visibleItemsCount` | `number` | ✅ | - | Maximum visible messages |
 
 ## Usage Examples
@@ -48,7 +48,7 @@ function MyComponent() {
   return (
     <RtkMessageListView
       estimateItemSize={42}
-      loadMore={(lastmessage: message)}
+      loadMore={handleEvent}
       messages={[]}
     />
   );
@@ -64,5 +64,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/#page","headline":"RtkMessageListView","description":"API reference for RtkMessageListView component (React Library)","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/og.png?v=f9e9e0d95ec20755","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/#page","headline":"RtkMessageListView","description":"API reference for RtkMessageListView component (React Library)","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkmessagelistview/og.png?v=f9e9e0d95ec20755","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

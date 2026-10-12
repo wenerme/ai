@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/email-security/monitorin
 
 # Monitoring
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you have chosen a domain to scan, Email security allows you to monitor the traffic scanned from your email inboxes.
 
@@ -32,8 +32,8 @@ The dashboard will display the following metrics:
 - [Disposition evaluation](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/)
 - Detection details
 - [Impersonations](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/)
-- [Phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/)
-- [Auto-move events](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/)
+- [Phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/)
+- [Auto-move events](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/)
 - [Detection settings metrics](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/)
 
 ## Email activity
@@ -87,13 +87,13 @@ Impersonations are a form of phishing attack where the actor pretends to be some
 - To view all impersonation emails, select **View all impersonation emails**.
 - To view impersonated users, select **View impersonated users**.
 
-Refer to [Trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/) to add a trusted domain, and [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) to add a user to the impersonation registry.
+Refer to [Trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/trusted-domains/) to add a trusted domain, and [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) to add a user to the impersonation registry.
 
 ## Phish submissions
 
 Phishing is a type of attack that involves stealing sensitive information with the aim of using and selling the information.
 
-A phish submission happens when a user or an administrator reports a phishing attack. Refer to [Phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/) to learn how to submit a phish.
+A phish submission happens when a user or an administrator reports a phishing attack. Refer to [Phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/submission-settings/) to learn how to submit a phish.
 
 Phish submissions displays the following information:
 
@@ -109,7 +109,7 @@ Auto-move events are emails moved to different inboxes based on the disposition 
 
 This panel shows you the total number of auto-moves and the source folder from which these retractions are originating from.
 
-Refer to [Auto-moves](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) to configure auto-move events.
+Refer to [Auto-moves](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/auto-moves/) to configure auto-move events.
 
 ## Detection settings metrics
 
@@ -119,7 +119,7 @@ Detection settings metric displays information about:
 - **Blocked traffic**: Traffic that Email security automatically blocks from senders. Blocked traffic shows metrics on emails that were blocked from user inboxes.
 - **Domain age**: The number of days since domain registration.
 
-Select **Configure** to configure policy and rules for [allowed traffic](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/), [blocked traffic](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/) and [domain age](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/).
+Select **Configure** to configure policy and rules for [allowed traffic](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/allow-policies/), [blocked traffic](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/) and [domain age](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/).
 
 Was this helpful?
 
@@ -130,5 +130,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/#page","headline":"Monitoring","description":"Monitoring in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/og.png?v=86bafd563c1438a4","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/#page","headline":"Monitoring","description":"Monitoring in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/og.png?v=86bafd563c1438a4","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

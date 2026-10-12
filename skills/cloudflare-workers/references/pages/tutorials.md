@@ -18,7 +18,7 @@ View tutorials to help you get started with Pages.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Point to Pages with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/) | last year | Beginner |
+| [Point to Pages with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/) | 2 years ago | Beginner |
 | [Migrating from Vercel to Pages](https://developers.cloudflare.com/pages/migrations/migrating-from-vercel/) | 2 years ago | Beginner |
 | [Build an API for your front end using Pages Functions](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/) | 2 years ago | Intermediate |
 | [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/) | 2 years ago | Intermediate |

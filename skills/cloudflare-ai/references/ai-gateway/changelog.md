@@ -32,7 +32,7 @@ AI Gateway's REST API now returns consistent responses when an AI provider rejec
 
 Update applications that handle AI Gateway REST API errors to treat HTTP `401` as an invalid or rejected provider credential.
 
-For details about providing provider credentials, refer to [Bring your own provider keys](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-key/).
+For details about providing provider credentials, refer to [Bring your own provider keys](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 
 ## 2026-10-02
 

@@ -16778,6 +16778,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-todocreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-todocreate-noteid"></a>`noteId`  | [`NoteID`](#noteid) | Introduced in GitLab 19.5. Status: Experiment. Global ID of a comment on the target to associate with the to-do item. Ignored when the `todo_for_comment` feature flag is disabled. |
 | <a id="mutation-todocreate-targetid"></a>`targetId` | [`TodoableID!`](#todoableid) | Global ID of the to-do item's parent. Issues, merge requests, designs, and epics are supported. |
 
 Fields:
@@ -33832,6 +33833,7 @@ Fields:
 | <a id="aifoundationalchatagent-description"></a>`description` | [`String!`](#string) | Description of the agent. |
 | <a id="aifoundationalchatagent-flowconfig"></a>`flowConfig` | [`AiFoundationalChatAgentFlowConfig`](#aifoundationalchatagentflowconfig) | Flow versioning parameters used when starting a workflow for this agent. Null for agents that resolve versioning elsewhere (e.g. AI Catalog-backed agents). |
 | <a id="aifoundationalchatagent-id"></a>`id` | [`AiFoundationalChatAgentID!`](#aifoundationalchatagentid) | Global ID of the foundational chat agent. |
+| <a id="aifoundationalchatagent-itemtype"></a>`itemType` | [`AiCatalogItemType!`](#aicatalogitemtype) | Type of the agent. |
 | <a id="aifoundationalchatagent-name"></a>`name` | [`String!`](#string) | Name of the agent. |
 | <a id="aifoundationalchatagent-reference"></a>`reference` | [`String!`](#string) | Reference ID of the agent. |
 | <a id="aifoundationalchatagent-referencewithversion"></a>`referenceWithVersion` | [`String`](#string) | Versioned reference of the agent. |
@@ -34008,8 +34010,10 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aigovernancetoolcall-actiontype"></a>`actionType` | [`AiToolActionType`](#aitoolactiontype) | Action type of the tool. Null when it is not known. |
 | <a id="aigovernancetoolcall-count"></a>`count` | [`Int!`](#int) | Number of tool invocations in the selected timeframe. |
-| <a id="aigovernancetoolcall-toolname"></a>`toolName` | [`String!`](#string) | Name of the tool. |
+| <a id="aigovernancetoolcall-title"></a>`title` | [`String!`](#string) | Display name of the tool, as shown on the Tool management tab. Same as `toolName` when no rule governs the tool. |
+| <a id="aigovernancetoolcall-toolname"></a>`toolName` | [`String!`](#string) | Name of the tool rule that governs the tool, or the name recorded in the audit event when no rule governs it. |
 
 ### `AiGovernanceToolCallsByRisk`
 
@@ -56123,6 +56127,7 @@ Fields:
 | <a id="project-duocontextexclusionsettings"></a>`duoContextExclusionSettings`  | [`DuoContextExclusionSettings`](#duocontextexclusionsettings) | Introduced in GitLab 18.2. Status: Experiment. Settings for excluding files from Duo context. |
 | <a id="project-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the project. |
 | <a id="project-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.9. Status: Experiment. Indicates whether GitLab Duo features are enabled for the project. |
+| <a id="project-duomcpservernames"></a>`duoMcpServerNames`  | [`[String!]`](#string) | Introduced in GitLab 19.6. Status: Experiment. Names of the distinct MCP servers used by the project's configured agents, sorted alphabetically. Resolved on request only, because it reads the configured agents and their versions. Shares its lookup with duoMcpServersCount when both are requested. |
 | <a id="project-duomcpserverscount"></a>`duoMcpServersCount`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of distinct MCP servers used by the project's configured agents. Resolved on request only, because it reads the configured agents and their versions. |
 | <a id="project-duoworkflowrunneravailable"></a>`duoWorkflowRunnerAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates whether the project has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it queries the project's runners and their managers. |
 | <a id="project-duoworkflowstatuscheck"></a>`duoWorkflowStatusCheck`  | [`DuoWorkflowEnablement`](#duoworkflowenablement) | Introduced in GitLab 17.7. Status: Experiment. Indicates whether Duo Agent Platform is enabled for the project. |
@@ -65010,6 +65015,7 @@ Fields:
 | <a id="workitemfeatures-notifications"></a>`notifications` | [`WorkItemWidgetNotifications`](#workitemwidgetnotifications) | Notifications widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-participants"></a>`participants` | [`WorkItemWidgetParticipants`](#workitemwidgetparticipants) | Participants widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-progress"></a>`progress` | [`WorkItemWidgetProgress`](#workitemwidgetprogress) | Progress widget of the work item. Returns `null` if the widget is not available for the work item. |
+| <a id="workitemfeatures-requester"></a>`requester` | [`WorkItemWidgetRequester`](#workitemwidgetrequester) | Requester widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-requirementlegacy"></a>`requirementLegacy` | [`WorkItemWidgetRequirementLegacy`](#workitemwidgetrequirementlegacy) | Requirement legacy widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-severity"></a>`severity` | [`WorkItemWidgetSeverity`](#workitemwidgetseverity) | Severity widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-startandduedate"></a>`startAndDueDate` | [`WorkItemWidgetStartAndDueDate`](#workitemwidgetstartandduedate) | Start and due date widget of the work item. Returns `null` if the widget is not available for the work item. |
@@ -65889,6 +65895,17 @@ Fields:
 | <a id="workitemwidgetprogress-startvalue"></a>`startValue` | [`Int`](#int) | Start value of the work item. |
 | <a id="workitemwidgetprogress-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 | <a id="workitemwidgetprogress-updatedat"></a>`updatedAt` | [`Time`](#time) | Timestamp of last progress update. |
+
+### `WorkItemWidgetRequester`
+
+Represents the requester widget.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemwidgetrequester-email"></a>`email` | [`String`](#string) | Email address of the non-GitLab user who requested the work item. For guests, the email address is obfuscated. |
+| <a id="workitemwidgetrequester-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 
 ### `WorkItemWidgetRequirementLegacy`
 
@@ -73145,6 +73162,7 @@ Type of a work item widget.
 | <a id="workitemwidgettype-notifications"></a>`NOTIFICATIONS` | Notifications widget. |
 | <a id="workitemwidgettype-participants"></a>`PARTICIPANTS` | Participants widget. |
 | <a id="workitemwidgettype-progress"></a>`PROGRESS` | Progress widget. |
+| <a id="workitemwidgettype-requester"></a>`REQUESTER` | Requester widget. |
 | <a id="workitemwidgettype-requirement_legacy"></a>`REQUIREMENT_LEGACY` | Requirement Legacy widget. |
 | <a id="workitemwidgettype-severity"></a>`SEVERITY` | Severity widget. |
 | <a id="workitemwidgettype-start_and_due_date"></a>`START_AND_DUE_DATE` | Start And Due Date widget. |
@@ -76997,6 +77015,7 @@ Implementations:
 - [`WorkItemWidgetNotifications`](#workitemwidgetnotifications)
 - [`WorkItemWidgetParticipants`](#workitemwidgetparticipants)
 - [`WorkItemWidgetProgress`](#workitemwidgetprogress)
+- [`WorkItemWidgetRequester`](#workitemwidgetrequester)
 - [`WorkItemWidgetRequirementLegacy`](#workitemwidgetrequirementlegacy)
 - [`WorkItemWidgetSeverity`](#workitemwidgetseverity)
 - [`WorkItemWidgetStartAndDueDate`](#workitemwidgetstartandduedate)

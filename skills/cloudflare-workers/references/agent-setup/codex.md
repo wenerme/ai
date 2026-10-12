@@ -55,7 +55,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Build a serverless AI inference endpoint on Workers AI with streaming responses.
    ```
 
 1. **Download Codex**
@@ -94,6 +94,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - turnstile-spinSet up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
+- workers-profilingProfile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.
 - wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
 
 </details>
@@ -159,7 +160,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
@@ -167,15 +168,15 @@ Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Tips

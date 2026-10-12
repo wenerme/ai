@@ -36,8 +36,7 @@ SDLC data, [Knowledge Graph](../project/repository/knowledge_graph/_index.md), [
 
 GitLab Duo Agentic Chat can autonomously retrieve and use:
 
-- Files, including images (PNG, JPEG, WebP), by searching your project or when you provide file paths
-- Images attached to issues and merge requests in the project, when you give the upload reference as it appears in the Markdown
+- Files (by searching your project or when you provide file paths)
 - Epics
 - Issues
 - Merge requests
@@ -46,8 +45,6 @@ GitLab Duo Agentic Chat can autonomously retrieve and use:
 - Work items
 
 Unlike non-agentic Chat, agentic Chat can search for these resources without requiring you to specify exact IDs or URLs. For example, you can ask "Find the merge request about authentication" and Chat searches for relevant merge requests.
-
-For image requirements, see [Image requirements](../project/merge_requests/developer.md#image-requirements).
 
 ### Extended context
 
@@ -71,8 +68,7 @@ The following context is available to the software development flow in GitLab Du
 
 ### When referenced explicitly
 
-- Files, including images (PNG, JPEG, WebP)
-- Images attached to issues and merge requests in the project
+- Files
 - Epics
 - Issues
 - Merge requests

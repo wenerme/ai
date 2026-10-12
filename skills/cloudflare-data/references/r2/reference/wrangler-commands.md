@@ -1017,7 +1017,7 @@ pnpm wrangler r2 bucket lifecycle add <BUCKET> [NAME] [PREFIX]
   The jurisdiction where the bucket exists
 - `--force` `boolean` alias: --ydefault: false
 
-  Skip confirmation and data catalog validation prompt
+  Skip confirmation and Basin Catalog validation prompt
 
 <details>
 
@@ -1179,7 +1179,7 @@ pnpm wrangler r2 bucket lifecycle set <BUCKET>
   The jurisdiction where the bucket exists
 - `--force` `boolean` alias: --ydefault: false
 
-  Skip confirmation and data catalog validation prompt
+  Skip confirmation and Basin Catalog validation prompt
 
 <details>
 
@@ -1875,7 +1875,7 @@ pnpm wrangler r2 object put <OBJECTPATH>
   The storage class of the object to be created
 - `--force` `boolean` alias: --ydefault: false
 
-  Skip data catalog validation prompt
+  Skip Basin Catalog validation prompt
 - `--file` `string` alias: --f
 
   The path of the file to upload
@@ -1938,7 +1938,7 @@ pnpm wrangler r2 object delete <OBJECTPATH>
   The jurisdiction where the object exists
 - `--force` `boolean` alias: --ydefault: false
 
-  Skip data catalog validation prompt
+  Skip Basin Catalog validation prompt
 
 <details>
 

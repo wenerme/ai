@@ -1,13 +1,13 @@
 ---
-title: "OpenCode Zen Models: IDs, Pricing & Usage"
-description: "Browse OpenCode Zen model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
+title: "OpenCode Models: IDs, Pricing & Usage"
+description: "Browse OpenCode model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
-# [OpenCode Zen logo]OpenCode Zen
+# [OpenCode logo]OpenCode
 
-Access 120 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 120 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
-Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
+Learn more in the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/).
 
 ```bash title=".env"
 OPENCODE_API_KEY=your-api-key
@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [OpenCode Zen documentation](https://opencode.ai/docs/zen) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/) for details.
 
 ## Models
 
@@ -1061,7 +1061,7 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    url: "https://opencode.ai/zen/v1",
+    url: "https://opencode.ai/inference/v1",
     id: "opencode/big-pickle",
     apiKey: process.env.OPENCODE_API_KEY,
     headers: {

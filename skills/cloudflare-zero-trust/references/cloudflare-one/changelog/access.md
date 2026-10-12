@@ -667,7 +667,7 @@ For more information, refer to [Access authentication logs](https://developers.c
 
 To turn it off, edit the portal in **Access controls** > **AI controls** and turn off **Code Mode** under **Basic information**.
 
-When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, keeping authentication credentials and environment variables out of the model context.
+When Code Mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) environment, keeping authentication credentials and environment variables out of the model context.
 
 To use Code Mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
 
@@ -694,7 +694,7 @@ https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
 
 #### `search_and_execute`
 
-Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
+Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
 
 ```txt
 https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
@@ -974,7 +974,7 @@ For more info:
 
 [Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/) with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is now generally available for all Cloudflare customers. It enables secure, remote Windows server access without VPNs or RDP clients.
 
-Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
+Since we announced our [open beta](https://developers.cloudflare.com/changelog/post/2025-07-01-browser-based-rdp-open-beta/), we've made a few improvements:
 
 - Support for targets with IPv6.
 - Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/mesh/) as on-ramps.
