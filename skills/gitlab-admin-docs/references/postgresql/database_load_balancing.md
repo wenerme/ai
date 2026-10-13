@@ -168,8 +168,6 @@ When the list of hosts is updated, old connections may take time to terminate. U
 
 ## Stale reads
 
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/327902) from GitLab Premium to GitLab Free in 14.0.
-
 GitLab checks each secondary's replication status before routing reads to it. If a secondary is
 lagging too far behind the primary, it is skipped until it catches up.
 

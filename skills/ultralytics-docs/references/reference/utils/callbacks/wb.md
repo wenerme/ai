@@ -22,7 +22,7 @@ keywords: Ultralytics, YOLO, WandB, callbacks, logging, metrics, visualizations,
 
 <hr>
 
-## ::: ultralytics.utils.callbacks.wb.on_pretrain_routine_start
+## ::: ultralytics.utils.callbacks.wb.on_pretrain_routine_end
 
 <hr>
 

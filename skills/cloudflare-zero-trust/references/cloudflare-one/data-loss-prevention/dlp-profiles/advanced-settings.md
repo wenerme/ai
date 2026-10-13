@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Profile settings
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Profile settings control detection behavior for an individual DLP profile. You configure these settings when you [build a custom profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) or edit an existing [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) or custom profile.
 
@@ -71,9 +71,9 @@ Confidence thresholds indicate how confident Cloudflare DLP is in a detection. D
 
 When you set a confidence threshold on a profile, DLP only triggers on detections at that level or higher:
 
-- **Low** (default) — Based on regular expressions with few proximity keywords. This is the most inclusive setting, with high tolerance for false positives
-- **Medium** — Applies additional validations, to filter out low confidence detections. This setting has a medium tolerance for false positives.
-- **Medium** — Applies additional validations to filter out low confidence detections. This setting has a medium tolerance for false positives.
+- **Low** (default) — Uses regular expressions with few proximity keywords. This is the most inclusive setting and has the highest tolerance for false positives.
+- **Medium** — Applies additional validation to filter out low-confidence detections. This setting has a medium tolerance for false positives.
+- **High** — Triggers only on detections classified as high confidence.
 
 Confidence threshold is set on the DLP profile. Not all detection entries support confidence thresholds — when you select a threshold in the dashboard, entries that support confidence scoring display their current level. Entries without a displayed confidence level either do not support this feature or use detection methods (such as exact match) where confidence scoring does not apply.
 
@@ -114,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#page","headline":"Profile settings","description":"Reference information for Profile settings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/og.png?v=65d349e1c93856f4","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#page","headline":"Profile settings","description":"Reference information for Profile settings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/og.png?v=65d349e1c93856f4","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

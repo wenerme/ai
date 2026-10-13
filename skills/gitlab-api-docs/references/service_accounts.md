@@ -410,6 +410,7 @@ curl --request DELETE \
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/526924) in GitLab 17.11.
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+- `all` value for the `state` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260698) in GitLab 19.6.
 
 Lists all personal access tokens for a service account in a specified group.
 
@@ -432,7 +433,7 @@ Supported attributes:
 | `revoked`          | boolean             | no       | If `true`, only returns revoked tokens. |
 | `search`           | string              | no       | If defined, returns tokens that include the specified value in the name. |
 | `sort`             | string              | no       | If defined, sorts the results by the specified value. Possible values: `created_asc`, `created_desc`, `expires_asc`, `expires_desc`, `last_used_asc`, `last_used_desc`, `name_asc`, `name_desc`. |
-| `state`            | string              | no       | If defined, returns tokens with the specified state. Possible values: `active` and `inactive`. |
+| `state`            | string              | no       | If defined, returns tokens with the specified state. Possible values: `active`, `inactive`, or `all`. `all` returns tokens in any state. |
 
 Example request:
 
@@ -820,6 +821,7 @@ curl --request DELETE \
 ### List all personal access tokens for a project service account
 
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+- `all` value for the `state` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260698) in GitLab 19.6.
 
 Lists all personal access tokens for a service account in a project.
 
@@ -842,7 +844,7 @@ Supported attributes:
 | `revoked`          | boolean             | no       | If `true`, only returns revoked tokens. |
 | `search`           | string              | no       | If defined, returns tokens that include the specified value in the name. |
 | `sort`             | string              | no       | If defined, sorts the results by the specified value. Possible values: `created_asc`, `created_desc`, `expires_asc`, `expires_desc`, `last_used_asc`, `last_used_desc`, `name_asc`, `name_desc`. |
-| `state`            | string              | no       | If defined, returns tokens with the specified state. Possible values: `active` and `inactive`. |
+| `state`            | string              | no       | If defined, returns tokens with the specified state. Possible values: `active`, `inactive`, or `all`. `all` returns tokens in any state. |
 
 Example request:
 

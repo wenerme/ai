@@ -378,11 +378,14 @@ Example of response
   {
     "key": "RUN_NIGHTLY_BUILD",
     "variable_type": "env_var",
-    "value": "true"
+    "value": "true",
+    "raw": false
   },
   {
     "key": "foo",
-    "value": "bar"
+    "variable_type": "env_var",
+    "value": "bar",
+    "raw": false
   }
 ]
 ```

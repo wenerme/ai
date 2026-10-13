@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vit
 
 # Core Web Vitals
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Core Web Vitals ↗︎](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed to measure the perceived performance of websites and web applications.
 
@@ -41,9 +41,30 @@ Each of these metrics represents an impact to the user experience, which is quan
 
 Cloudflare Web Analytics offers interactive exploration in Core Web Vitals by allowing you to filter data by URL, Browser, Operating System, Country, Element and more.
 
+### Sub-parts
+
+To support deeper investigation, the LCP and INP metrics are broken down into their respective sub-parts.
+
+LCP is broken into four phases, so you can see which one is impacting your perceived load time:
+
+1. **Time to First Byte:** how long the browser waits for the HTML document.
+2. **Resource load delay:** how long the browser takes to discover the LCP resource after the document starts arriving.
+3. **Resource load duration:** how long it takes to download that resource.
+4. **Element render delay:** the gap between the resource arriving and the element appearing on screen.
+
+![LCP sub-parts visual in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1704,height=384,format=webp/_astro/dash-web_analytics-lcp-sub-parts.CSpKXT00.png)
+
+INP is broken into three phases, guiding you to the area slowing down responsiveness:
+
+1. **Input delay:** how long an interaction (click, tap or key press) is blocked before it can be processed.
+2. **Processing duration:** how long your event handlers take to run.
+3. **Presentation delay:** how long the browser takes to render the next frame after the handlers finish.
+
+![INP sub-parts visual in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1704,height=382,format=webp/_astro/dash-web_analytics-inp-sub-parts.DWKDfc7K.png)
+
 ### Debug view
 
-Below each graph, the 'Debug View' section has the top five elements with a negative impact on each metric. Selecting the elements shown in the data table gives you more details about them.
+The 'Debug View' section has the top five elements with a negative impact on each metric. Selecting the elements shown in the data table gives you more details about them.
 
 Each table — LCP, INP, and CLS — also shows you the performance of these elements in the 75th percentile (P75) at a glance. Selecting in each row of the table lets you expand the element and have access to more information, including P50, P90 and P99 metrics.
 
@@ -100,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#page","headline":"Core Web Vitals","description":"View Core Web Vitals metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/","inLanguage":"en","image":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/og.png?v=fdb5afec2858c9bf","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#page","headline":"Core Web Vitals","description":"View Core Web Vitals metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/","inLanguage":"en","image":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/og.png?v=fdb5afec2858c9bf","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,8 +12,8 @@ This document is for new CLI maintainers.
 
 - Maintainer role in [`gitlab-org/cli`](https://gitlab.com/gitlab-org/cli) and [`gitlab-org/security/cli`](https://gitlab.com/gitlab-org/security/cli). To get it, ask existing maintainer.
 - Access to the "GitLab CLI Vault" and "GitLab.com Service - Platform Engineering - Code Review - gl" 1Password vaults. To get access to these vaults,
-  create an [access request](https://handbook.gitlab.com/handbook/business-technology/end-user-services/onboarding-access-requests/access-requests/).
-- Create an [Access Request](https://handbook.gitlab.com/handbook/business-technology/end-user-services/onboarding-access-requests/access-requests/) and ask to be added to `gitlab-cli@gitlab.com` email group. EMs and PMs on the extension team also have access to this email group.
+  create an [access request](https://handbook.gitlab.com/handbook/eta/corporate-it/end-user-services/access-requests/).
+- Create an [Access Request](https://handbook.gitlab.com/handbook/eta/corporate-it/end-user-services/access-requests/) and ask to be added to `gitlab-cli@gitlab.com` email group. EMs and PMs on the extension team also have access to this email group.
 
 ## Granting access to others
 

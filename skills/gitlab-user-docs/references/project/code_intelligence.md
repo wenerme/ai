@@ -151,7 +151,7 @@ After the job succeeds, browse your repository to see code intelligence informat
    - In the upper right, select **Find file**.
 1. Point to lines of code. Items on that line with information from code intelligence display a dotted line underneath them:
 
-   [Code intelligence]
+   [A code file with dotted underlines under a type definition, indicating that code intelligence information is available.]
 
 1. Select the item to learn more about it.
 

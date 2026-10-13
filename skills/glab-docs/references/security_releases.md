@@ -75,7 +75,7 @@ git push security security-9999
 
 ### Development
 
-Here, the process diverges from the [`gitlab-org/gitlab` security release process](https://gitlab.com/gitlab-org/release/docs/-/blob/master/general/security/developer.md).
+Here, the process diverges from the [`gitlab-org/gitlab` security release process](https://gitlab.com/gitlab-org/release/docs/-/blob/master/general/security/engineer.md).
 
 1. **Before developing the fix, make sure that you've already run the `scripts/security-harness` script.**
 1. Implement the fix and push it to your branch (`security-9999` for issue #9999).

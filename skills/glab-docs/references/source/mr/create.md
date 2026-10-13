@@ -53,6 +53,9 @@ glab mr create --fill --web
 # Fill from commits, expand each commit body into the description
 glab mr create --fill --fill-commit-body --yes
 
+# Fill from commits without pushing, for a branch already on the remote
+glab mr create --fill --push=false --yes
+
 # Use a merge request template for the description
 glab mr create -t "Fix login bug" --template bug_fix
 glab mr create -t "Security patch" --template security_fix.md --yes
@@ -85,13 +88,13 @@ glab mr create -t "Fix login bug" -d "Before and after:" --attach ./before.png -
   -d, --description string        Supply a description for the merge request. Set to "-" to open an editor.
       --description-file string   Read the merge request description from a file. Use "-" to read from standard input.
       --draft                     Mark merge request as a draft.
-  -f, --fill push                 Do not prompt for title or description, and just use commit info. Sets push to `true`, and pushes the branch.
+  -f, --fill                      Do not prompt for title or description, and just use commit info. Pushes the branch unless --push=false is set.
       --fill-commit-body          Fill description with each commit body when multiple commits. Can only be used with --fill.
   -H, --head OWNER/REPO           Select another head repository using the OWNER/REPO or `GROUP/NAMESPACE/REPO` format, the project ID, or the full URL.
   -l, --label strings             Add label by name. Multiple labels can be comma-separated or specified by repeating the flag.
   -m, --milestone string          The global ID or title of a milestone to assign.
       --no-editor                 Don't open editor to enter a description. If true, uses prompt. Defaults to false.
-      --push                      Push committed changes after creating merge request. Make sure you have committed changes.
+      --push                      Push committed changes before creating the merge request. Make sure you have committed changes. Defaults to true with --fill. Use --push=false to skip the push.
       --recover                   Save the options to a file if the merge request creation fails. If the file exists, the options are loaded from the recovery file. (EXPERIMENTAL)
   -i, --related-issue string      Create a merge request for an issue. If --title is not provided, uses the issue title.
       --remove-source-branch      Remove source branch on merge. Set to true/false to override project defaults, or omit to use project settings.
