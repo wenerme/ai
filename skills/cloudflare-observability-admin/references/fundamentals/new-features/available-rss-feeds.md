@@ -105,7 +105,7 @@ Included products
 - <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/">Digital Experience Monitoring</a><a href="https://developers.cloudflare.com/changelog/rss/dex.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/">Data Loss Prevention</a><a href="https://developers.cloudflare.com/changelog/rss/dlp.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/email-security/">Email security</a><a href="https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/">Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/gateway.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/">Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/gateway.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/mesh/">Cloudflare Mesh</a><a href="https://developers.cloudflare.com/changelog/rss/mesh.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/multi-cloud-networking/">Multi-Cloud Networking</a><a href="https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/">Risk Score</a><a href="https://developers.cloudflare.com/changelog/rss/risk-score.xml">Subscribe to RSS</a>
@@ -228,6 +228,7 @@ Included products
 
 </summary>
 
+- <a href="https://developers.cloudflare.com/byoip/">BYOIP</a><a href="https://developers.cloudflare.com/changelog/rss/byoip.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/magic-transit/">Magic Transit</a><a href="https://developers.cloudflare.com/changelog/rss/magic-transit.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/network-flow/">Network Flow</a><a href="https://developers.cloudflare.com/changelog/rss/network-flow.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/network-interconnect/">Network Interconnect</a><a href="https://developers.cloudflare.com/changelog/rss/network-interconnect.xml">Subscribe to RSS</a>

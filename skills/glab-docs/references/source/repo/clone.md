@@ -57,6 +57,9 @@ glab repo clone gitlab-org/cli -- --branch main --single-branch --depth 1
 # Clones all repos in a group
 glab repo clone -g everyonecancontribute --paginate
 
+# Clones all repos in a group, except those in one subgroup
+glab repo clone -g mygroup --exclude-subgroup domain/backend --paginate
+
 # Clones all non-archived repos in a group
 glab repo clone -g everyonecancontribute --archived=false --paginate
 
@@ -70,20 +73,21 @@ GITLAB_HOST=salsa.debian.org glab repo clone myrepo
 ## Options
 
 ```plaintext
-  -g, --group string          Specify the group to clone repositories from.
-  -p, --preserve-namespace    Clone the repository in a subdirectory based on namespace.
-      --active                Limit by project status. When true, returns active projects. When false, returns projects that are archived or marked for deletion. Used with the --group flag.
-  -a, --archived              Limit by archived status. Use with '-a=false' to exclude archived repositories. Used with the --group flag.
-  -G, --include-subgroups     Include projects in subgroups of this group. Default is true. Used with the --group flag. (default true)
-  -m, --mine                  Limit by projects in the group owned by the current authenticated user. Used with the --group flag.
-  -v, --visibility string     Limit by visibility: public, internal, private. Used with the --group flag.
-  -I, --with-issues-enabled   Limit by projects with the issues feature enabled. Default is false. Used with the --group flag.
-  -M, --with-mr-enabled       Limit by projects with the merge request feature enabled. Default is false. Used with the --group flag.
-  -S, --with-shared           Include projects shared to this group. Default is true. Used with the --group flag. (default true)
-      --paginate              Make additional HTTP requests to fetch all pages of projects before cloning. Respects --per-page.
-      --page int              Page number. (default 1)
-      --per-page int          Number of items to list per page. (default 30)
-      --wiki                  Clone the project's wiki repository.
+  -g, --group string               Specify the group to clone repositories from.
+  -p, --preserve-namespace         Clone the repository in a subdirectory based on namespace.
+      --active                     Limit by project status. When true, returns active projects. When false, returns projects that are archived or marked for deletion. Used with the --group flag.
+  -a, --archived                   Limit by archived status. Use with '-a=false' to exclude archived repositories. Used with the --group flag.
+  -G, --include-subgroups          Include projects in subgroups of this group. Default is true. Used with the --group flag. (default true)
+      --exclude-subgroup strings   Skip projects in this subgroup, as a path relative to the group, not a numeric ID. Repeat the flag, or separate values with commas, to skip more than one. Projects shared from other namespaces are not affected. Used with the --group flag.
+  -m, --mine                       Limit by projects in the group owned by the current authenticated user. Used with the --group flag.
+  -v, --visibility string          Limit by visibility: public, internal, private. Used with the --group flag.
+  -I, --with-issues-enabled        Limit by projects with the issues feature enabled. Default is false. Used with the --group flag.
+  -M, --with-mr-enabled            Limit by projects with the merge request feature enabled. Default is false. Used with the --group flag.
+  -S, --with-shared                Include projects shared to this group. Default is true. Used with the --group flag. (default true)
+      --paginate                   Make additional HTTP requests to fetch all pages of projects before cloning. Respects --per-page.
+      --page int                   Page number. (default 1)
+      --per-page int               Number of items to list per page. (default 30)
+      --wiki                       Clone the project's wiki repository.
 ```
 
 ## Options inherited from parent commands

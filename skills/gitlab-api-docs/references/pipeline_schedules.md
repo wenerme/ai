@@ -489,7 +489,8 @@ curl --request POST \
 {
     "key": "NEW_VARIABLE",
     "variable_type": "env_var",
-    "value": "new value"
+    "value": "new value",
+    "raw": false
 }
 ```
 
@@ -512,11 +513,12 @@ GET /projects/:id/pipeline_schedules/:pipeline_schedule_id/variables/:key
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
 
-| Attribute       | Type   | Description |
-| --------------- | ------ | ----------- |
-| `key`           | string | Key of the variable. |
-| `value`         | string | Value of the variable. |
-| `variable_type` | string | Type of the variable. Either `env_var` or `file`. |
+| Attribute       | Type    | Description |
+| --------------- | ------- | ----------- |
+| `key`           | string  | Key of the variable. |
+| `value`         | string  | Value of the variable. |
+| `variable_type` | string  | Type of the variable. Either `env_var` or `file`. |
+| `raw`           | boolean | Whether the variable is treated as a raw string. When `false`, variables in the value are [expanded](../ci/variables/_index.md#allow-cicd-variable-expansion). |
 
 Example request:
 
@@ -532,7 +534,8 @@ Example response:
 {
     "key": "NEW_VARIABLE",
     "variable_type": "env_var",
-    "value": "new value"
+    "value": "new value",
+    "raw": false
 }
 ```
 
@@ -549,7 +552,7 @@ PUT /projects/:id/pipeline_schedules/:pipeline_schedule_id/variables/:key
 | `id`                   | integer or string | Yes      | ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `key`                  | string            | Yes      | Key of a variable. |
 | `pipeline_schedule_id` | integer           | Yes      | ID of the pipeline schedule. |
-| `value`                | string            | Yes      | Value of a variable. |
+| `value`                | string            | No       | Value of a variable. |
 | `variable_type`        | string            | No       | Type of a variable. Available types are: `env_var` (default) and `file`. |
 
 ```shell
@@ -563,7 +566,8 @@ curl --request PUT \
 {
     "key": "NEW_VARIABLE",
     "value": "updated value",
-    "variable_type": "env_var"
+    "variable_type": "env_var",
+    "raw": false
 }
 ```
 
@@ -590,7 +594,9 @@ curl --request DELETE \
 ```json
 {
     "key": "NEW_VARIABLE",
-    "value": "updated value"
+    "value": "updated value",
+    "variable_type": "env_var",
+    "raw": false
 }
 ```
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-loc
 
 # Meeting Locale
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit allows you to customize all the text within the video call interface. You can personalize the text to align with your specific locale needs.
 
@@ -154,7 +154,7 @@ The `useLanguage` hook takes in your custom locale object as an argument and gen
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
-import RealtimeKitClient from "@cloudflare/realtimekit-angular";
+import RealtimeKitClient from "@cloudflare/realtimekit";
 import {
 	defaultLanguage,
 	useLanguage,
@@ -294,7 +294,7 @@ function App() {
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
-import RealtimeKitClient from "@cloudflare/realtimekit-angular";
+import RealtimeKitClient from "@cloudflare/realtimekit";
 import {
 	defaultLanguage,
 	useLanguage,
@@ -811,5 +811,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/og.png?v=8f80148548031940","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/og.png?v=8f80148548031940","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

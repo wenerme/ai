@@ -5,7 +5,7 @@ description: "Browse OpenCode model IDs, capabilities, context windows, and pric
 
 # [OpenCode logo]OpenCode
 
-Access 121 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 120 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/).
 
@@ -48,18 +48,6 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 32000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "opencode/cat-jam-free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

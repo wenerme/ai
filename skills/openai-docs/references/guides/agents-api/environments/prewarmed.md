@@ -20,7 +20,7 @@ You can also attach an environment while setup is still running. The agent's acc
 
 ## Pricing
 
-Pre-warming a sandbox is free, including container usage before attachment. Unattached pre-warmed sandboxes expire after five minutes.
+Pre-warming a sandbox is free, including container usage before attachment. Unattached pre-warmed sandboxes expire after 5 minutes.
 
 After you attach a pre-warmed sandbox to a session, standard [container pricing](https://developers.openai.com/api/docs/pricing#container-usage-pricing) applies.
 
@@ -28,7 +28,7 @@ After you attach a pre-warmed sandbox to a session, standard [container pricing]
 
 This example installs pandas and loads a small CSV before starting an agent. The agent then uses the prepared workspace to calculate the total.
 
-The create and attach examples require Python SDK 3.27.0, Node.js SDK 7.31.0, Java SDK 4.79.0, or Ruby SDK 0.102.0 or later. Upgrade your SDK if these methods are unavailable.
+Use Python SDK 3.28.0, Node.js SDK 7.32.0, Java SDK 4.80.0, or Ruby SDK 0.103.0 or later for this guide.
 
 ### 1. Create the environment
 
@@ -294,7 +294,7 @@ A newly created shared environment supports up to 128 attached sessions. Reusing
 
 | Error or symptom                                         | How to resolve                                                                                                                                                                              |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Attaching an expired environment.                        | Create a new environment and use its new ID. Unused environments expire after approximately five minutes. Retrying an expired ID will not restore its workspace.                            |
+| Attaching an expired environment.                        | Create a new environment and use its new ID. Unused environments expire after 5 minutes. Retrying an expired ID will not restore its workspace.                                             |
 | `404`: environment not found.                            | Check the environment ID and use the same organization, project, and creating identity as the creation request. If the environment has expired or is no longer available, create a new one. |
 | `409`: shared environment has reached its session limit. | A shared environment supports up to 128 attached sessions. Reuse an existing session or create another environment for additional sessions.                                                 |
 
@@ -486,14 +486,14 @@ curl \\\n  "https://api.openai.com/v1/agents/environments?limit=20&order=desc" \
 ```
 
 
-The list includes environments before and after session attachment, with statuses `pending`, `ready`, `connected`, or `disconnected`. It excludes failed, expired, deleted, and terminated environments. An environment appearing in the list may already be attached to one or more sessions.
+The list includes environments before and after session attachment, with statuses `pending`, `ready`, `connected`, `disconnected`, or `suspended`. It excludes failed, expired, deleted, and terminated environments. An environment appearing in the list may already be attached to one or more sessions.
 
 Results are newest first by default. If `has_more` is true, set `after` to the previous response's `last_id` to fetch the next page. `limit` accepts 1–100 and defaults to 20; `order` accepts `asc` or `desc`.
 
 ## Lifetime and reuse
 
 - **Multiple sessions can share one environment.** Pass the same `environment_id` when creating each session. They share the running workspace, including files, processes, installed packages, and environment configuration. Each session keeps its own conversation history. Changes to the workspace are visible to other attached sessions, so create separate environments when tasks need separate workspaces. A shared environment supports up to 128 attached sessions. This behavior applies to newly created standalone environments; older environments retain their original lifecycle.
-- **Unused environments expire.** An environment that remains unattached expires after approximately 5 minutes. Prewarm close to when you expect a task to start.
+- **Unused environments expire.** An environment that remains unattached expires after 5 minutes. Prewarm close to when you expect a task to start.
 - **Keep the creating identity consistent.** Retrieval, listing, and attachment require the same organization, project, and authenticated identity that created the environment. Different API keys for that identity can access the same environments, including after key rotation.
 - **Shared environments expire after inactivity.** The first attachment starts a 20-minute idle lifetime. Activity in any attached session or through the environment file API extends it; pending work and active turns prevent idle expiry. Deleting a session removes that session from the environment without deleting the shared workspace. Even after the last session is deleted, the environment remains available for attachment until its idle deadline. The API has no standalone environment deletion endpoint.
 

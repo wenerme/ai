@@ -415,8 +415,6 @@ and set **Maintainer** in the **Allowed to create** column.
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/259703) in GitLab Premium 13.9.
-
 Group-level release metrics are available by navigating to **Group** > **Analytics** > **CI/CD**.
 These metrics include:
 

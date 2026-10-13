@@ -5,8 +5,6 @@ Create bidirectional mirrors to push and pull changes between two Git repositori
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Moved to GitLab Premium in 13.9.
-
 > [!warning]
 > Bidirectional mirroring might cause conflicts.
 

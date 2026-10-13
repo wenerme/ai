@@ -18189,6 +18189,7 @@ Arguments:
 | <a id="mutation-userpreferencesupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-userpreferencesupdate-duodefaultnamespaceid"></a>`duoDefaultNamespaceId` | [`Int`](#int) | Default namespace context for Duo features when namespace can not be inferred. |
 | <a id="mutation-userpreferencesupdate-extensionsmarketplaceoptinstatus"></a>`extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus`](#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
+| <a id="mutation-userpreferencesupdate-firstdayofweek"></a>`firstDayOfWeek` | [`UserFirstDayOfWeek`](#userfirstdayofweek) | First day of the week in calendars and date pickers. Set to `null` to use the instance default. |
 | <a id="mutation-userpreferencesupdate-issuessort"></a>`issuesSort` | [`IssueSort`](#issuesort) | Sort order for issue lists. |
 | <a id="mutation-userpreferencesupdate-knowledgegraphgoverningnamespaceid"></a>`knowledgeGraphGoverningNamespaceId` | [`Int`](#int) | Governing and billing namespace for Orbit. |
 | <a id="mutation-userpreferencesupdate-mergerequestdashboardlisttype"></a>`mergeRequestDashboardListType` | [`MergeRequestsDashboardListType`](#mergerequestsdashboardlisttype) | Merge request dashboard list rendering type. |
@@ -39951,8 +39952,8 @@ Arguments:
 | <a id="countablevulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="countablevulnerability-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="countablevulnerability-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
-| <a id="countablevulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
-| <a id="countablevulnerability-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+| <a id="countablevulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
+| <a id="countablevulnerability-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
 
 ##### `CountableVulnerability.issueLinks`
 
@@ -46362,8 +46363,8 @@ Arguments:
 | <a id="group-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="group-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="group-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
-| <a id="group-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
-| <a id="group-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+| <a id="group-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
+| <a id="group-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
 
 ##### `Group.dependencyAggregations`
 
@@ -46395,8 +46396,8 @@ Arguments:
 | <a id="group-dependencyaggregations-projectids"></a>`projectIds`  | [`[ProjectID!]`](#projectid) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by projects within the group. |
 | <a id="group-dependencyaggregations-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="group-dependencyaggregations-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
-| <a id="group-dependencyaggregations-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
-| <a id="group-dependencyaggregations-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+| <a id="group-dependencyaggregations-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
+| <a id="group-dependencyaggregations-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
 
 ##### `Group.dependencyFirewallActivitySummary`
 
@@ -55955,7 +55956,7 @@ Arguments:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Recorded evaluations of the policies stored in the policy store for the organization or group, newest first. For a group, only evaluations of the group's own policies are returned. Returns `null` when the current user cannot read the policies of the container.
+Recorded evaluations of the policies stored in the policy store for the organization or group, newest first. For a group, evaluations of its own and descendant groups' policies are returned, plus evaluations of inherited policies recorded against the group's projects. Returns `null` when the current user cannot read the policies of the container.
 
 Returns [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection).
 
@@ -57034,8 +57035,8 @@ Arguments:
 | <a id="project-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="project-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="project-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
-| <a id="project-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
-| <a id="project-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+| <a id="project-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
+| <a id="project-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
 
 ##### `Project.dependencyFirewallActivitySummary`
 
@@ -63246,6 +63247,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="userpreferences-duodefaultnamespace"></a>`duoDefaultNamespace` | [`Namespace`](#namespace) | Default namespace context for Duo features when namespace cannot be inferred. |
 | <a id="userpreferences-extensionsmarketplaceoptinstatus"></a>`extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus!`](#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
+| <a id="userpreferences-firstdayofweek"></a>`firstDayOfWeek` | [`UserFirstDayOfWeek`](#userfirstdayofweek) | First day of the week in calendars and date pickers. Null when the user has not chosen one and the instance default applies. |
 | <a id="userpreferences-issuessort"></a>`issuesSort` | [`IssueSort`](#issuesort) | Sort order for issue lists. |
 | <a id="userpreferences-knowledgegraphgoverningnamespace"></a>`knowledgeGraphGoverningNamespace` | [`Namespace`](#namespace) | Governing and billing namespace for Orbit. |
 | <a id="userpreferences-mergerequestdashboardlisttype"></a>`mergeRequestDashboardListType` | [`MergeRequestsDashboardListType`](#mergerequestsdashboardlisttype) | Merge request dashboard list rendering type. |
@@ -63697,8 +63699,8 @@ Arguments:
 | <a id="vulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="vulnerability-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="vulnerability-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
-| <a id="vulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
-| <a id="vulnerability-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
+| <a id="vulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
+| <a id="vulnerability-dependencies-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise. |
 
 ##### `Vulnerability.issueLinks`
 
@@ -72436,6 +72438,16 @@ Filter for user activity events.
 | <a id="usereventfilter-push"></a>`PUSH` | Push events. |
 | <a id="usereventfilter-team"></a>`TEAM` | Team events. |
 | <a id="usereventfilter-wiki"></a>`WIKI` | Wiki page events. |
+
+### `UserFirstDayOfWeek`
+
+First day of the week in calendars and date pickers.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="userfirstdayofweek-monday"></a>`MONDAY` | Monday. |
+| <a id="userfirstdayofweek-saturday"></a>`SATURDAY` | Saturday. |
+| <a id="userfirstdayofweek-sunday"></a>`SUNDAY` | Sunday. |
 
 ### `UserGroupCalloutFeatureName`
 

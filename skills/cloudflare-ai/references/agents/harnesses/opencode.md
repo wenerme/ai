@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290
 
 # OpenCode
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenCode ↗︎](https://opencode.ai/v2/docs/build/sdk/) is an extensible agent harness. The Agents SDK's `OpenCodeHarness` runs its Workerd SDK inside a plain Durable Object. Refer to [OpenCode's Cloudflare SDK documentation ↗︎](https://opencode.ai/v2/docs/build/sdk/cloudflare/) for the embedded host API.
 
@@ -75,7 +75,7 @@ pnpm add agents@latest @opencode/sdk@2 @opencode/plugin@2
 bun add agents@latest @opencode/sdk@2 @opencode/plugin@2
 ```
 
-Use `agents` version 0.28.0 or later. The OpenCode packages are optional peer dependencies, required by this integration, with a supported range of `^2.0.24`.
+Use `agents` version 0.28.1 or later. The OpenCode packages are optional peer dependencies, required by this integration, with a supported range of `^2.0.24`.
 
 Add the Workers AI binding, a SQLite-backed Durable Object, and `nodejs_compat` to your Wrangler configuration:
 
@@ -84,7 +84,7 @@ Add the Workers AI binding, a SQLite-backed Durable Object, and `nodejs_compat` 
 	"name": "opencode-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-12",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI", "remote": true },
 	"durable_objects": {
@@ -98,7 +98,7 @@ Add the Workers AI binding, a SQLite-backed Durable Object, and `nodejs_compat` 
 name = "opencode-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -343,7 +343,7 @@ const all = await this.harness.sessions.list();
 | `setAgent(agent)` | Change the OpenCode agent, such as `"build"` or `"plan"`. |
 | `messages()` | Read the active context after the latest compaction. |
 | `history()` | Read the full transcript, including compacted messages. |
-| `events(signal)` | Subscribe to live and durable events for this session. |
+| `events()` | Open a stream with a snapshot of the session, then its live events. |
 | `log({ after, follow, signal })` | Replay durable events, optionally following new ones. |
 | `busy()` | Check for running, queued, or interrupted work awaiting recovery. |
 
@@ -351,11 +351,41 @@ const all = await this.harness.sessions.list();
 
 ## Stream events to clients
 
-`session.events()` returns an asynchronous iterable of live events, including text deltas. It does not include a transcript snapshot. Read `session.messages()` or `session.history()` for the transcript, then forward events over your chosen transport.
+`session.events()` returns a stream. Its `snapshot` holds the session's state when the stream opened: the full transcript, pending operations, whether the session is busy, and permissions OpenCode is waiting on. Call `start()` to receive every event after the snapshot, in batches:
 
-For replayable events, use `session.log()`. Save the `event.durable.seq` cursor and pass it as `after` when reconnecting. The durable log does not replay uncommitted live text deltas.
+```js
+const stream = await this.harness.session(sessionId).events();
+socket.send(JSON.stringify({ type: "snapshot", ...stream.snapshot }));
 
-Both subscriptions hold the host open. Stop them with an `AbortSignal` when no longer needed. Recreate subscriptions after the object restarts. The [example's WebSocket adapter ↗︎](https://github.com/cloudflare/agents/blob/main/examples/next/harnesses/opencode/src/sockets.ts) shows snapshots, event forwarding, and reattachment after startup.
+stream.start((events) => {
+	for (const event of events) {
+		socket.send(JSON.stringify({ type: "event", event }));
+	}
+});
+
+// When the client disconnects or the session is idle:
+await stream.stop();
+```
+
+```ts
+const stream = await this.harness.session(sessionId).events();
+socket.send(JSON.stringify({ type: "snapshot", ...stream.snapshot }));
+
+stream.start((events) => {
+	for (const event of events) {
+		socket.send(JSON.stringify({ type: "event", event }));
+	}
+});
+
+// When the client disconnects or the session is idle:
+await stream.stop();
+```
+
+Events use the same kinds as the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/): `run_start` and `run_end`, `operation_start` and `operation_end` (with the result `wait()` returns), `message_start` and `message_end`, `text_delta`, `reasoning_delta`, `tool_start` and `tool_end`, plus events for permissions and compaction. An event can repeat what the snapshot already shows, so key messages by ID.
+
+For OpenCode's own events, durable and replayable, use `session.log()`. Save the `event.durable.seq` cursor and pass it as `after` when reconnecting. The durable log does not replay uncommitted live text deltas.
+
+Both hold the host open. Call `stream.stop()` when you no longer need a stream, and stop `log()` with an `AbortSignal`. Open them again after the object restarts. The [example's WebSocket adapter ↗︎](https://github.com/cloudflare/agents/blob/main/examples/next/harnesses/opencode/src/sockets.ts) shows snapshots, event forwarding, and reattachment after startup.
 
 ## Add plugins
 
@@ -466,5 +496,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

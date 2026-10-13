@@ -769,7 +769,7 @@ List all items for a conversation with the given ID.
 
             The URL of the page searched for the pattern.
 
-    - `ImageGenerationCall object { id, result, status, 7 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -818,6 +818,44 @@ List all items for a conversation with the given ID.
         - `"opaque"`
 
         - `"auto"`
+
+      - `error: optional object { code, message, param, 2 more }`
+
+        Details of a moderation failure, when available.
+
+        - `code: string or null`
+
+          The error code.
+
+        - `message: string`
+
+          A description of the error.
+
+        - `param: string or null`
+
+          The related request parameter.
+
+        - `type: string`
+
+          The error type.
+
+        - `moderation_details: optional object { categories, moderation_stage }`
+
+          Public details for a `moderation_blocked` error, when available.
+
+          - `categories: array of string`
+
+            Public moderation categories. New category values may be added over time.
+
+          - `moderation_stage: "input" or "output" or "unknown"`
+
+            The stage where moderation blocked the image generation call.
+
+            - `"input"`
+
+            - `"output"`
+
+            - `"unknown"`
 
       - `output_format: optional "png" or "webp" or "jpeg" or null`
 

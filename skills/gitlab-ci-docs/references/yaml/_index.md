@@ -1399,7 +1399,7 @@ The following topics explain how to use keywords to configure CI/CD pipelines.
 
 - Running `after_script` commands for canceled jobs [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/10158) in GitLab 17.0.
 
-Use `after_script` to define an array of commands to run last, after a job's `before_script` and
+Use `after_script` to define commands to run last, after a job's `before_script` and
 `script` sections complete. `after_script` commands also run when:
 
 - The job is canceled while the `before_script` or `script` sections are still running.
@@ -1412,7 +1412,7 @@ the job configuration takes precedence and the default configuration is not used
 **Keyword type**: Job keyword. You can use it only as part of a job or in the
 [`default` section](#default).
 
-**Supported values**: An array including:
+**Supported values**: A string or an array of strings, including:
 
 - Single line commands.
 - Long commands [split over multiple lines](script.md#split-long-commands).
@@ -2014,13 +2014,13 @@ job:
 
 ### `before_script`
 
-Use `before_script` to define an array of commands that should run before each job's
+Use `before_script` to define commands that should run before each job's
 `script` commands, but after [artifacts](#artifacts) are restored.
 
 **Keyword type**: Job keyword. You can use it only as part of a job or in the
 [`default` section](#default).
 
-**Supported values**: An array including:
+**Supported values**: A string or an array of strings, including:
 
 - Single line commands.
 - Long commands [split over multiple lines](script.md#split-long-commands).
@@ -2517,7 +2517,7 @@ MR widget, pipeline job list, and analytics graphs.
 - An RE2 regular expression. Must start and end with `/`. Must match the coverage number.
   May match surrounding text as well, so you don't need to use a regular expression character group
   to capture the exact number.
-  Because it uses RE2 syntax, all groups must be non-capturing.
+  Use a capturing group to select the coverage percentage when the matched line contains other numbers.
 
 **Example of `coverage`**:
 
@@ -2538,6 +2538,7 @@ In this example:
 
 - If there is more than one matched line in the job output, the last line is used.
 - If there are multiple matches in a single line, the last match is used.
+- If the regular expression uses capturing groups, the last matched capture is used as the fragment.
 - If there are multiple coverage numbers in the matched fragment, the first number is used.
 - Leading zeros are removed.
 - Coverage output from [child pipelines](../pipelines/downstream_pipelines.md#parent-child-pipelines)
@@ -5801,7 +5802,7 @@ All jobs except [trigger jobs](#trigger) require a `script` keyword.
 
 **Keyword type**: Job keyword. You can use it only as part of a job.
 
-**Supported values**: An array including:
+**Supported values**: A string or an array of strings, including:
 
 - Single line commands.
 - Long commands [split over multiple lines](script.md#split-long-commands).

@@ -55,7 +55,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 ## Cloudflare platform access
@@ -74,6 +74,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 
 - agents-sdkBuild, debug, or review Cloudflare Agents SDK applications using the agents package.
 - basinBuild and troubleshoot Cloudflare Basin analytics workflows with Basin Pipelines, Basin Catalog, and Basin SQL. Use for streaming data into R2 Iceberg tables, managing catalogs, or querying those tables; also use for requests using the former Data Platform, Pipelines, R2 Data Catalog, or R2 SQL names.
+- cf-cliCloudflare's official cf CLI (beta) for the public Cloudflare API and Workers projects. Use for finding and running Cloudflare commands from the terminal — sign-in and profiles, cf cli search, cf schema, cf deploy/dev/build, resource commands for DNS, zones, D1, KV, and R2 — and for choosing between cf and Wrangler in a project.
 - cloudflareDiscover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.
 - cloudflare-email-serviceImplement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.
 - cloudflare-oneDesign, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.
@@ -88,7 +89,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
 - workers-profilingProfile or debug CPU usage and memory allocation in deployed Cloudflare Workers and Durable Objects. Then use this information to optimize your code.
-- wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
+- wranglerRun or troubleshoot Wrangler CLI commands in projects that have a wrangler.jsonc, wrangler.json, or wrangler.toml file, including local development, Previews, deployment, and resource management. For new projects and projects without a Wrangler configuration file, use the cf CLI instead.
 
 </details>
 
@@ -153,7 +154,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
@@ -161,15 +166,11 @@ Build a multi-tenant SaaS backend where each customer gets an isolated D1 databa
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips

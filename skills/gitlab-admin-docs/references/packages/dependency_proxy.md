@@ -5,9 +5,6 @@ Administrator's guide to managing a GitLab dependency proxy for frequently-acces
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/7934) in [GitLab Premium](https://about.gitlab.com/pricing/) 11.11.
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/273655) from GitLab Premium to GitLab Free in 13.6.
-
 You can use GitLab as a dependency proxy for frequently-accessed upstream artifacts, including container images and packages.
 
 This is the administration documentation. To learn how to use the

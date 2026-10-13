@@ -585,8 +585,6 @@ The following example response includes:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Moved to GitLab Premium in 13.9.
-
 Example request:
 
 ```shell

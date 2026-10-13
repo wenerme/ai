@@ -360,8 +360,8 @@ Settings related to the deletion of projects and groups.
 
 ### Delayed group deletion
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in 18.0.
-- [Increased deletion period](https://gitlab.com/groups/gitlab-org/-/work_items/17375) from seven days to 30 days in 18.0.2.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
+- Deletion period [changed](https://gitlab.com/groups/gitlab-org/-/work_items/17375) from seven days to 30 days in GitLab 18.0.2.
 
 Groups are permanently deleted after a 30-day delay.
 

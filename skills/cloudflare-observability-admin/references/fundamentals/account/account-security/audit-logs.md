@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/a
 
 # Audit Logs - version 2
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -31,10 +31,10 @@ A transition plan from Audit Logs v1 to Audit Logs v2 will be communicated in du
 Audit Logs (version 2) provide a unified and standardized system for tracking and recording actions across Cloudflare products. This system enhances transparency and accountability by offering comprehensive insights into user-initiated and system-initiated activities within your Cloudflare environment.
 
 - **Standardized logging**: Audit logs are automatically generated in a consistent format across all Cloudflare services, ensuring uniformity and eliminating inconsistencies.
-- **Expanded product coverage**: Audit Logs covers \~95% of Cloudflare products, capturing actions from key endpoints, such as `/accounts`, `/zones`, `/user`, and `/memberships` APIs.
+- **Expanded product coverage**: Audit Logs covers \~95% of Cloudflare products, capturing actions from key endpoints, such as `/accounts`, `/zones`, `/organizations`, `/user`, and `/memberships` APIs.
 - **Granular filtering**: Uniformly formatted logs allow for precise filtering by actions, actors, methods, and resources, facilitating efficient investigations.
 - **Enhanced context and transparency**: Each log entry includes detailed context, such as the authentication method used, the interface (API or dashboard) through which the action was performed, and mappings to Cloudflare Ray IDs for improved traceability.
-- **Comprehensive activity capture**: Audit Logs records create, update, and delete actions across all supported products. Selective logging of `GET` requests for sensitive read operations is planned for a future release.
+- **Comprehensive activity capture**: Audit Logs records create, update, delete, and view actions for the same endpoints covered above, with a small number of excluded endpoints.
 
 ## Retention
 
@@ -115,6 +115,12 @@ To access audit logs in the Cloudflare dashboard, go to **Manage Account** > **A
 Note
 
 The Audit Logs v2 is shown by default. You can switch between Audit Logs v2 and v1 as needed.
+
+#### View actions
+
+By default, the Audit Logs v2 dashboard excludes `view` actions to reduce noise. This default filter (**Action type** is not `view`) applies to both account-level and organization-level audit logs. To include `view` actions, remove this filter. To show only `view` actions, set **Action type** to `view`.
+
+`view` actions remain available through the API and Logpush regardless of the dashboard filter.
 
 #### Account analytics
 
@@ -398,7 +404,7 @@ The actor represents who or what performed the action. Its identity attributes d
 
 The action field captures the nature of the event and whether it was successful. It includes a high-level type (e.g., `create`, `update`, `delete`), a specific description (such as `SSO_LOGIN`), the timestamp of when the action occurred, and the result (`success` or `failure`).
 
-`view` actions correspond to `GET` requests. These are defined in the schema but not currently captured in Audit Logs. Selective `GET` logging for sensitive read operations is planned for a future release.
+`view` actions are recorded for supported endpoints and are available through the Audit Logs v2 API and Logpush. The dashboard excludes `view` actions by default. For details, refer to [View actions](#view-actions).
 
 ### Account
 
@@ -421,5 +427,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

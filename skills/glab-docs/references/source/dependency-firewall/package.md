@@ -11,7 +11,7 @@ Check a package against the GitLab Dependency Firewall. (EXPERIMENTAL)
 
 Check a single package coordinate against the GitLab Dependency Firewall policy for the current project and report the outcome (allow, warning, blocked). No package manager binary is required.
 
-Supported package URL (PURL) types are `npm`, `pypi`, `maven`, and `gem`. The PURL must include a version, for example `pkg:npm/left-pad@1.3.0`.
+Supported package URL (PURL) types are `npm`, `pypi`, `maven`, `gem`, and `cargo`. The PURL must include a version, for example `pkg:npm/left-pad@1.3.0`.
 
 This command does not write to the CI log at `.gitlab/df/ci-log.json`, so `glab dependency-firewall ci-summary` does not include its result.
 
@@ -46,6 +46,9 @@ glab dependency-firewall package pkg:maven/org.slf4j/slf4j-api@2.0.13
 
 # Check a RubyGems package version
 glab dependency-firewall package pkg:gem/rails@7.1.3
+
+# Check a Cargo package version
+glab dependency-firewall package pkg:cargo/serde@1.0.197
 
 ```
 
