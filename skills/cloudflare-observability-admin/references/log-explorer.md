@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/log-explorer/og.png?v=97d339d7f496e9b7
 
 # Log Explorer
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Store and explore your Cloudflare logs directly within the Cloudflare dashboard or API.
 
@@ -29,16 +29,25 @@ Contract customers can choose to store their logs in Log Explorer for up to two 
 
 ## Permissions
 
-Access to Log Explorer features is controlled through specific permissions. Each permission grants users the ability to perform certain actions, such as querying logs, managing datasets, or creating dashboards.
+Access to Log Explorer features depends on how you connect. Account members need a [member role](https://developers.cloudflare.com/fundamentals/manage-members/roles/), and API tokens need an [API token permission](https://developers.cloudflare.com/fundamentals/api/reference/permissions/). The token permissions are not member roles and do not appear in the role picker.
 
-| Feature | Required Permission | Description |
-| --- | --- | --- |
-| **Manage datasets** | `Logs Edit` | Add, enable, or disable datasets. |
-| **Log Search** | `Logs Read` | Query logs in the dashboard or via API. |
-| **Log Search (save query)** | `Logs Write` | Save log search queries. |
-| **Custom dashboards** | `Analytics Read` | Create and view custom dashboards. |
+| Feature | Member role | API token permission | Description |
+| --- | --- | --- | --- |
+| **Log Search** | Log Share Reader (Log Share and Administrator Read Only also work) | `Logs Read` | Query logs in the dashboard or via API. |
+| **Log Search (save query)** | Super Administrator or Administrator | `Logs Edit` | Save, edit, or delete log search queries. |
+| **Manage datasets** | Super Administrator or Administrator | `Logs Edit` | Add, enable, or disable datasets. |
+| **Custom dashboards** | Analytics | `Analytics Read` | Create and view custom dashboards. |
 
-These permissions apply across both the dashboard and the API, and must be granted at either the account or zone level depending on which datasets you need to access.
+The API lists `Logs Edit` as `Logs Write`. They are the same permission.
+
+Grant roles and permissions at the account level to query account-level datasets. A role assigned to specific zones only covers that zone's datasets.
+
+For zone-level datasets and saved queries, Log Share can also make changes.
+
+Some datasets need an additional member role:
+
+- Zero Trust datasets, such as Gateway and DEX, need Cloudflare Zero Trust PII.
+- Audit log datasets need Audit Logs Viewer.
 
 Authentication with the API can be done via an API token or API key with an email. Refer to [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) for further instructions.
 
@@ -87,5 +96,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/log-explorer/#page","headline":"Log Explorer","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/log-explorer/og.png?v=97d339d7f496e9b7","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/log-explorer/#page","headline":"Log Explorer","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/log-explorer/og.png?v=97d339d7f496e9b7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

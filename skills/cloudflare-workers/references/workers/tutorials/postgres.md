@@ -407,8 +407,9 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-12",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -426,8 +427,9 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "hyperdrive-example"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]

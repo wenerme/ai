@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Logging options
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Data Loss Prevention allows you to capture, store, and view the data that triggered a specific DLP policy for use as forensic evidence. DLP offers three logging approaches, each suited to different needs:
 
@@ -38,7 +38,7 @@ DLP can log the payload of matched HTTP requests in your Cloudflare logs. Use pa
 
 ### Turn on payload logging for a DLP policy
 
-You can enable payload logging for any Allow or Block HTTP policy that uses the [*DLP Profile*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector — the filter condition that matches traffic against your DLP detection profiles.
+You can enable payload logging for any Allow or Block HTTP policy that uses the [*DLP Profile*](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#dlp-profile) selector — the filter condition that matches traffic against your DLP detection profiles.
 
 1. Go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Edit an existing Allow or Block DLP policy, or [create a new policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy).
@@ -88,7 +88,7 @@ DLP can detect and log the prompt topic sent to an AI tool.
 
 ### Turn on AI prompt content logging for a DLP policy
 
-You can enable AI prompt content logging for any Allow or Block HTTP policy that uses the [*Application*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application) selector with a supported [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) application. This means your policy must target a specific AI application (such as ChatGPT) that Gateway can inspect at a granular level.
+You can enable AI prompt content logging for any Allow or Block HTTP policy that uses the [*Application*](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application) selector with a supported [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#granular-controls) application. This means your policy must target a specific AI application (such as ChatGPT) that Gateway can inspect at a granular level.
 
 1. Go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Edit an existing Allow or Block DLP policy, or [create a new policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#2-create-a-dlp-policy).
@@ -144,5 +144,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#page","headline":"Logging options","description":"Logging options in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/og.png?v=46baf0506105b9b7","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#page","headline":"Logging options","description":"Logging options in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/og.png?v=46baf0506105b9b7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

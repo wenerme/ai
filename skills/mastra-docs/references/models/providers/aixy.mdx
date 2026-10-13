@@ -5,7 +5,7 @@ description: "Browse Aixy model IDs, capabilities, context windows, and pricing.
 
 # [Aixy logo]Aixy
 
-Access 1 Aixy model through Mastra's model router. Authentication is handled automatically using the `AIXY_API_KEY` environment variable.
+Access 7 Aixy models through Mastra's model router. Authentication is handled automatically using the `AIXY_API_KEY` environment variable.
 
 Learn more in the [Aixy documentation](https://docs.aixy-gateway.com/integrations/overview).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "aixy/openai/gpt-4.1-mini"
+  model: "aixy/openai/gpt-5.6-luna"
 });
 
 // Generate a response
@@ -40,16 +40,88 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "aixy/openai/gpt-4.1-mini",
+    "model": "aixy/openai/gpt-5.6-luna",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 1047576,
-    "maxOutput": 32768,
-    "inputCost": 0.4,
-    "outputCost": 1.6
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1.2
+  },
+  {
+    "model": "aixy/openai/gpt-5.6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 4,
+    "outputCost": 20
+  },
+  {
+    "model": "aixy/openai/gpt-5.6-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 12
+  },
+  {
+    "model": "aixy/openai/gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "aixy/openai/gpt-6-luna",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.1,
+    "outputCost": 0.5
+  },
+  {
+    "model": "aixy/openai/gpt-6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "aixy/openai/gpt-6.1-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   }
 ]}
 />
@@ -66,7 +138,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.aixy-gateway.com/v1",
-    id: "aixy/openai/gpt-4.1-mini",
+    id: "aixy/openai/gpt-5.6-luna",
     apiKey: process.env.AIXY_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -84,8 +156,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "aixy/openai/gpt-4.1-mini"
-      : "aixy/openai/gpt-4.1-mini";
+      ? "aixy/openai/gpt-6.1-sol"
+      : "aixy/openai/gpt-5.6-luna";
   }
 });
 ```

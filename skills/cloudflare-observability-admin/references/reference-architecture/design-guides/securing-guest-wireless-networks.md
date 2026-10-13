@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/design-guides/se
 
 # Securing guest wireless networks
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -52,7 +52,7 @@ Cloudflare offers an enhanced, protected DNS resolver service for Zero Trust cus
 
 ### DNS locations
 
-Cloudflare [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes or data centers. [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) identifies locations differently depending on the DNS query protocol. IPv4 traffic is identified from the source IP address from which a DNS query originated. IPv6 traffic can be identified by the unique IPv6 resolver address created in the Cloudflare dashboard. The following sections describe how to ensure DNS queries are appropriately mapped to your physical locations depending on the network environment and protocols being used. Later in this document you will learn how to use the location's IP address as an attribute which you can apply to Gateway DNS policies.
+Cloudflare [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes or data centers. [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) identifies locations differently depending on the DNS query protocol. IPv4 traffic is identified from the source IP address from which a DNS query originated. IPv6 traffic can be identified by the unique IPv6 resolver address created in the Cloudflare dashboard. The following sections describe how to ensure DNS queries are appropriately mapped to your physical locations depending on the network environment and protocols being used. Later in this document you will learn how to use the location's IP address as an attribute which you can apply to Gateway DNS policies.
 
 The goal is to have DNS requests from your Wi-Fi networks be sent via Cloudflare's secure DNS and secure web gateway service, where your DNS policies can filter requests and block those you deem risky. This guide walks through the different possible network architectures you might have for guest networks and gives guidance on how to implement Cloudflare to protect devices on those guest Wi-Fi networks.
 
@@ -128,14 +128,14 @@ For example, if your guest wireless router is dynamically assigned an IPv6 addre
 
 Now that we have covered various options for sending DNS queries to Cloudflare's DNS resolvers and identifying your organization's guest wireless network—either by its source IP address or a dedicated resolver address—you're ready to create new locations in Zero Trust.
 
-To get started, navigate to **DNS Locations** in the Zero Trust dashboard. For detailed, step-by-step instructions, refer to the [**DNS Locations**](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) guide. When using IPv4 or IPv6 endpoint filtering and location matching, you can define a network and subnet mask in CIDR notation to represent your location's source IP addresses. For example:
+To get started, go to **DNS Locations** in the Zero Trust dashboard. For detailed, step-by-step instructions, refer to the [**DNS Locations**](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) guide. When using IPv4 or IPv6 endpoint filtering and location matching, you can define a network and subnet mask in CIDR notation to represent your location's source IP addresses. For example:
 
 - If all your wireless networks share a public IP address within the same subnet, you can apply a policy to all locations at once using a single DNS location object.
 - To assign unique policies to specific locations, use a host address ending in /32 to represent each location individually.
 
 ### Creating DNS policies
 
-To get started, navigate to firewall policies and select DNS in the Zero Trust dashboard. For detailed, step-by-step instructions, refer to the [DNS Policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) guide.
+To get started, go to firewall policies and select DNS in the Zero Trust dashboard. For detailed, step-by-step instructions, refer to the [DNS Policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) guide.
 
 To keep your policies organized, we recommend using meaningful names that clearly indicate their purpose. For instance, a policy named **Guest-Security-Block** conveys:
 
@@ -143,7 +143,7 @@ To keep your policies organized, we recommend using meaningful names that clearl
 - **Security**: The type of content being evaluated.
 - **Block**: The action being taken.
 
-Cloudflare provides a range of managed categories which you can use to filter a wide range of different types of threats. For example, adding into the DNS policy the [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) Malware will prevent a connected device from making a DNS request to any site that Cloudflare has tagged as being known as part of a malware campaign or might be hosting malware. As well as security categories, we also have [content categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) which identify sites such as Cryptocurrency, P2P sharing sites or adult themed sites. Cloudflare also manages a list of [applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/), so you can filter access to public cloud storage or file sharing sites.
+Cloudflare provides a range of managed categories which you can use to filter a wide range of different types of threats. For example, adding into the DNS policy the [security category](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#security-categories) Malware will prevent a connected device from making a DNS request to any site that Cloudflare has tagged as being known as part of a malware campaign or might be hosting malware. As well as security categories, we also have [content categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/#content-categories) which identify sites such as Cryptocurrency, P2P sharing sites or adult themed sites. Cloudflare also manages a list of [applications](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/), so you can filter access to public cloud storage or file sharing sites.
 
 Cloudflare also allows [custom feeds](https://developers.cloudflare.com/security-center/indicator-feeds/#publicly-available-feeds) where you can either subscribe to another vendor to provide a list of sites to filter, or you can use some of the built in government based threat feeds. This allows you to be very selective about what sites you wish to filter.
 
@@ -186,7 +186,7 @@ For these reasons you should also consider applying security in layers and add n
 To provide network level filtering, Cloudflare must be in the traffic path for more than just the DNS request. This is achieved by routing Internet-bound traffic over an [IPsec ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/) tunnel to Cloudflare. Cloudflare's [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) service allows third-party devices to establish IPsec or GRE tunnels to the Cloudflare network. It is also possible to just deploy our [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), a pre-configured lightweight network appliance that automatically creates the tunnel back to Cloudflare and can be managed remotely. Once traffic reaches Cloudflare multiple security controls can be overlaid such as:
 
 - Cloud based network firewall ([Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/))
-- Secure web gateway ([Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/))
+- Secure web gateway ([Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/))
 
 Below is the high level traffic flow that correlates to the above diagram:
 
@@ -205,7 +205,7 @@ If you are interested in learning more about Gateway, or other aspects of the Cl
 
 - [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 - [Cloudflare One Appliance deployment options · Cloudflare Reference Architecture docs](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/)
-- [DNS policies - Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
+- [DNS policies - Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/)
 
 Was this helpful?
 
@@ -216,5 +216,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/#page","headline":"Securing guest wireless networks","description":"This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/og.png?v=92dfe60c47eeed3f","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/#page","headline":"Securing guest wireless networks","description":"This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/og.png?v=92dfe60c47eeed3f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 ```

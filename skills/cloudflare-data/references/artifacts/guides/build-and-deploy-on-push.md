@@ -190,6 +190,7 @@ This guide defines those CI steps in a Workflow class named `CIWorkflow`. To sta
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "<worker-name>",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   "compatibility_date": "2026-06-16",
   "compatibility_flags": ["nodejs_compat"],
   "artifacts": [
@@ -262,6 +263,7 @@ This guide defines those CI steps in a Workflow class named `CIWorkflow`. To sta
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "<worker-name>"
 main = "src/index.ts"
+upload_source_maps = true
 compatibility_date = "2026-06-16"
 compatibility_flags = [ "nodejs_compat" ]
 

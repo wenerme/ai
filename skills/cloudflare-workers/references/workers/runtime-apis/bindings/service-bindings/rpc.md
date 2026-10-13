@@ -34,7 +34,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "worker_b",
-	"main": "./src/workerB.js"
+	"main": "./src/workerB.js",
+	"upload_source_maps": true
 }
 ```
 
@@ -42,6 +43,7 @@ For example, if Worker B implements the public method `add(a, b)`:
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_b"
 main = "./src/workerB.js"
+upload_source_maps = true
 ```
 
 ```js
@@ -90,6 +92,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "worker_a",
 	"main": "./src/workerA.js",
+	"upload_source_maps": true,
 	"services": [
 		{
 			"binding": "WORKER_B",
@@ -103,6 +106,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_a"
 main = "./src/workerA.js"
+upload_source_maps = true
 
 [[services]]
 binding = "WORKER_B"

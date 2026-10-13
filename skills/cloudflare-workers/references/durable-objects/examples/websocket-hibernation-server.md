@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/durable-objects/examples/websocket-hibe
 
 Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example is similar to the [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/) example, but uses the WebSocket Hibernation API. The WebSocket Hibernation API should be preferred for WebSocket server applications built on Durable Objects, since it significantly decreases duration charge, and provides additional features that pair well with WebSocket applications. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
@@ -417,6 +417,7 @@ Finally, configure your Wrangler file to include a Durable Object [binding](http
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "websocket-hibernation-server",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	"durable_objects": {
 		"bindings": [
 			{
@@ -440,6 +441,7 @@ Finally, configure your Wrangler file to include a Durable Object [binding](http
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "websocket-hibernation-server"
 main = "src/index.ts"
+upload_source_maps = true
 
 [[durable_objects.bindings]]
 name = "WEBSOCKET_HIBERNATION_SERVER"
@@ -463,5 +465,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/#page","headline":"Build a WebSocket server with WebSocket Hibernation","description":"Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.","url":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/og.png?v=7877994f4d9ae82b","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/#page","headline":"Build a WebSocket server with WebSocket Hibernation","description":"Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.","url":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/og.png?v=7877994f4d9ae82b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WebSockets"]}
 ```

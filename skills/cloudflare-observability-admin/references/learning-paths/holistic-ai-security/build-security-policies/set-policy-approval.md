@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/learning-paths/holistic-ai-security/bui
 
 # Set policy based on approval status
 
-Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you use specific AI tools within your organization, you may want to create policies to explicitly allow the usage of those tools while continuing to evaluate additional usage within your organization.
 
@@ -29,7 +29,7 @@ If you use specific AI tools within your organization, you may want to create po
 5. For **Action**, select **Allow**.
 6. Select **Create policy**.
 
-For more information, refer to [Block unauthorized applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#block-unauthorized-applications).
+For more information, refer to [Block unauthorized applications](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/#block-unauthorized-applications).
 
 ## Create a Gateway policy to redirect users towards approved AI tools
 
@@ -83,7 +83,7 @@ You can build policies that enable Prompt Capture for AI applications in specifi
 
 ## Configure Gateway to use ChatGPT workspace header
 
-If your organization uses [ChatGPT Business ↗︎](https://chatgpt.com/business/), you can configure a Gateway policy to enforce the use of your organization's workspace ID, ensuring all traffic to ChatGPT is correctly associated with your account. This will implement Gateway [tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/), which lets you manage how users interact with specific applications.
+If your organization uses [ChatGPT Business ↗︎](https://chatgpt.com/business/), you can configure a Gateway policy to enforce the use of your organization's workspace ID, ensuring all traffic to ChatGPT is correctly associated with your account. This will implement Gateway [tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tenant-control/), which lets you manage how users interact with specific applications.
 
 To create this policy, you will add a custom HTTP header to your Gateway policy. This header, `Chatgpt-Allowed-Workspace-Id`, ensures that only requests with your organization's unique workspace ID are permitted.
 
@@ -144,5 +144,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/#page","headline":"Set policy based on approval status","description":"Create Gateway policies for AI tool governance.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/og.png?v=38d7c05333c09f1b","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/#page","headline":"Set policy based on approval status","description":"Create Gateway policies for AI tool governance.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/og.png?v=38d7c05333c09f1b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

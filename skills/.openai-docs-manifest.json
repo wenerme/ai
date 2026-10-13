@@ -1820,18 +1820,18 @@
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",
     "skill": "openai-api",
-    "etag": "W/\"23e36383d1a0b317269aba03e86c7c2a\"",
-    "lastModified": "Mon, 12 Oct 2026 05:44:18 GMT",
-    "size": 821584,
-    "updatedAt": "2026-10-12T05:44:18.051Z"
+    "etag": "W/\"9256e28c09657898adfb9f73d600d556\"",
+    "lastModified": "Tue, 13 Oct 2026 06:41:29 GMT",
+    "size": 826144,
+    "updatedAt": "2026-10-13T06:41:29.780Z"
   },
   "openai-api/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/index.md",
     "skill": "openai-api",
-    "etag": "W/\"1c3baece7510dbfa82980fdecbad03bd\"",
-    "lastModified": "Mon, 12 Oct 2026 05:35:00 GMT",
-    "size": 821575,
-    "updatedAt": "2026-10-12T05:44:18.285Z"
+    "etag": "W/\"3ce02a2abbfa1f1cfe66b92b00b52840\"",
+    "lastModified": "Tue, 13 Oct 2026 06:41:30 GMT",
+    "size": 826135,
+    "updatedAt": "2026-10-13T06:41:30.172Z"
   },
   "openai-api/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -2196,10 +2196,10 @@
   "openai-api/admin/organization/projects.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/index.md",
     "skill": "openai-api",
-    "etag": "W/\"bd198127e0f21bce8b8a343527fd437a\"",
-    "lastModified": "Mon, 28 Sep 2026 18:16:26 GMT",
-    "size": 161639,
-    "updatedAt": "2026-09-28T18:16:26.877Z"
+    "etag": "W/\"8a3441e5be0dfbb867ded12ef13b0456\"",
+    "lastModified": "Tue, 13 Oct 2026 06:41:40 GMT",
+    "size": 166199,
+    "updatedAt": "2026-10-13T06:41:40.342Z"
   },
   "openai-api/admin/organization/projects/archive.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/methods/archive/index.md",
@@ -2244,10 +2244,10 @@
   "openai-api/admin/organization/projects/api_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/api_keys/index.md",
     "skill": "openai-api",
-    "etag": "W/\"13c9ff7b0c3eeb360c84af03c9ad5cda\"",
-    "lastModified": "Wed, 09 Sep 2026 04:27:47 GMT",
-    "size": 12323,
-    "updatedAt": "2026-09-09T04:27:47.032Z"
+    "etag": "W/\"69ceebea3f71c2fe372b746ba97dd635\"",
+    "lastModified": "Tue, 13 Oct 2026 06:41:41 GMT",
+    "size": 16883,
+    "updatedAt": "2026-10-13T06:41:41.688Z"
   },
   "openai-api/admin/organization/projects/api_keys/delete.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/api_keys/methods/delete/index.md",
@@ -2272,6 +2272,14 @@
     "lastModified": "Wed, 09 Sep 2026 04:27:47 GMT",
     "size": 3711,
     "updatedAt": "2026-09-09T04:27:47.883Z"
+  },
+  "openai-api/admin/organization/projects/api_keys/update.md": {
+    "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/api_keys/methods/update/index.md",
+    "skill": "openai-api",
+    "etag": "W/\"964ad23895470e4b97d95bde38d5b9ed\"",
+    "lastModified": "Tue, 13 Oct 2026 06:41:42 GMT",
+    "size": 4559,
+    "updatedAt": "2026-10-13T06:41:42.606Z"
   },
   "openai-api/admin/organization/projects/certificates.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects/subresources/certificates/index.md",

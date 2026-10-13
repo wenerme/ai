@@ -96,8 +96,9 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "browser-quick-action",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-12",
+  "compatibility_date": "2026-10-13",
   "browser": {
     "binding": "BROWSER"
   }
@@ -107,8 +108,9 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 ```toml
 name = "browser-quick-action"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 
 [browser]
 binding = "BROWSER"
@@ -270,8 +272,9 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "browser-worker",
 	"main": "src/index.js",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-12",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -290,8 +293,9 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "browser-worker"
 main = "src/index.js"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]

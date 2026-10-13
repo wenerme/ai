@@ -135,8 +135,9 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"$schema": "./node_modules/wrangler/config-schema.json",
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
+   	"upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-09",
+   	"compatibility_date": "2026-10-13",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -154,8 +155,9 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    "$schema" = "./node_modules/wrangler/config-schema.json"
    name = "hyperdrive-example"
    main = "src/index.ts"
+   upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-13"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -222,7 +224,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-09",
+	"compatibility_date": "2026-10-13",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -235,7 +237,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-10-13"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

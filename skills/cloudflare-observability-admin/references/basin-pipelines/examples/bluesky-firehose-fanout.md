@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/basin-pipelines/examples/bluesky-fireho
 
 Consume the Bluesky Jetstream firehose in a Durable Object, ingest it into a single Basin Pipelines stream, and use one pipeline with multiple SQL statements to route events into separate Basin Catalog tables by type.
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, you will consume the public [Bluesky Jetstream ↗︎](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [Basin Catalog](https://developers.cloudflare.com/basin-catalog/) as queryable Apache Iceberg tables.
 
@@ -313,8 +313,9 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-12",
+  "compatibility_date": "2026-10-13",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -348,8 +349,9 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 ```toml
 name = "bluesky-pipeline"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 
 [[pipelines]]
 binding = "BSKY_STREAM"
@@ -800,5 +802,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables","description":"Route Bluesky Jetstream events into multiple Basin Catalog tables using a single Basin Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/og.png?v=447a006739af8be5","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables","description":"Route Bluesky Jetstream events into multiple Basin Catalog tables using a single Basin Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/og.png?v=447a006739af8be5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

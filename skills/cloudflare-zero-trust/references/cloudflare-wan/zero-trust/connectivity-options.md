@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-
 
 # Connectivity options
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One provides multiple connectivity options for your users, devices, and network infrastructure. Each option serves different use cases, from protecting individual devices to connecting entire data centers.
 
@@ -115,9 +115,9 @@ Important to know
 
 DNS locations filter DNS traffic only. To filter HTTP traffic, use the Cloudflare One Client or proxy endpoints.
 
-For identity-based DNS policies without the Cloudflare One Client, configure [DNS over HTTPS with user tokens](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/#filter-doh-requests-by-user). To resolve internal domain names or route queries to private DNS servers, use [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) (Enterprise only).
+For identity-based DNS policies without the Cloudflare One Client, configure [DNS over HTTPS with user tokens](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/#filter-doh-requests-by-user). To resolve internal domain names or route queries to private DNS servers, use [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) (Enterprise only).
 
-For detailed configuration, refer to the [DNS locations documentation](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/).
+For detailed configuration, refer to the [DNS locations documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/).
 
 ---
 
@@ -136,7 +136,7 @@ Important to know
 
 Proxy endpoints only filter HTTP/HTTPS traffic routed through the PAC file. They do not support UDP traffic, HTTP/3, non-browser applications, or Browser Isolation.
 
-For detailed configuration, refer to the [Proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/).
+For detailed configuration, refer to the [Proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/).
 
 ---
 
@@ -479,8 +479,8 @@ This pattern serves organizations with strict compliance requirements that prohi
 - [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
 - [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 - [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
-- [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) - Filter DNS traffic without device agents
-- [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) - Filter web traffic using PAC files
+- [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) - Filter DNS traffic without device agents
+- [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) - Filter web traffic using PAC files
 - [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) - Secure web access without device agents
 
 For implementation guidance on combining Cloudflare One connectivity options, refer to the [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
@@ -494,5 +494,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/#page","headline":"Connectivity options","description":"Zero Trust connectivity options for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/og.png?v=c167a85b840f3bcb","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/#page","headline":"Connectivity options","description":"Zero Trust connectivity options for Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/og.png?v=c167a85b840f3bcb","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

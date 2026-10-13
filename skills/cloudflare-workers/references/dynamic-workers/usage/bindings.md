@@ -12,28 +12,28 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v
 
 # Bindings
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bindings let you control what a Dynamic Worker can access. When you create a Dynamic Worker, you decide exactly what resources and operations it can use.
 
 This allows you to:
 
-- **Give each Dynamic Worker its own resources** — Partition a [KV](https://developers.cloudflare.com/kv/) namespace, [R2](https://developers.cloudflare.com/r2/) bucket, or database so each worker only sees its own data.
-- **Expose custom capabilities** — Define your own methods that Dynamic Workers can call — like posting to a chat room, sending an email, or querying an internal service. You design the interface and the Dynamic Worker just calls it.
-- **Restrict and control access** — Inspect, transform, or reject calls before they reach the underlying resource.
+- **Give each Dynamic Worker its own resources**: Partition a [KV](https://developers.cloudflare.com/kv/) namespace, [R2](https://developers.cloudflare.com/r2/) bucket, or database so each Dynamic Worker only sees its own data.
+- **Expose custom capabilities**: Define your own methods that Dynamic Workers can call, such as posting to a chat room, sending an email, or querying an internal service. You design the interface, and the Dynamic Worker calls it.
+- **Restrict and control access**: Inspect, transform, or reject calls before they reach the underlying resource.
 
-## Custom Bindings with Dynamic Workers
+## Custom bindings with Dynamic Workers
 
 With custom bindings, you:
 
-- **Define the binding implementation in your loader Worker**: You create a class with methods. Because this runs in your loader Worker, that's where you can add authentication, logging, scope access per customer.
-- **Pass it to the Dynamic Worker as a binding**: It just calls methods like `this.env.CHAT_ROOM.post("Hello!")` without knowing anything about the implementation behind it.
+- **Define the binding implementation in your loader Worker**: You create a class with methods. Because this class runs in your loader Worker, you can add authentication and logging, and scope access per customer.
+- **Pass it to the Dynamic Worker as a binding**: The Dynamic Worker calls methods like `this.env.CHAT_ROOM.post("Hello!")` without knowing anything about the implementation behind it.
 
 ### How it works
 
 #### Step 1: Define the binding
 
-To create a custom binding, your loader Worker needs to implement a [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc#the-workerentrypoint-class) and export it. The methods you define on this class are the methods the Dynamic Worker will be able to call.
+To create a custom binding, your loader Worker needs to implement a [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc#the-workerentrypoint-class) and export it. The methods you define on this class are the methods the Dynamic Worker can call.
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -47,7 +47,7 @@ export class ChatRoom extends WorkerEntrypoint {
 
 #### Step 2: Pass it to the Dynamic Worker
 
-Your loader Worker will then create an instance of the exported class, called a stub, and pass it into the Dynamic Worker's `env`.
+Your loader Worker then creates an instance of the exported class, called a stub, and passes it into the Dynamic Worker's `env`.
 
 ```ts
 let chatRoom = ctx.exports.ChatRoom({ props: { roomName: "#bot-chat" } });
@@ -58,7 +58,7 @@ let worker = env.LOADER.load({
 });
 ```
 
-From the Dynamic Worker's perspective, `CHAT_ROOM` just looks like a regular binding with methods it can call:
+From the Dynamic Worker's perspective, `CHAT_ROOM` looks like a regular binding with methods it can call:
 
 ```ts
 // Inside the Dynamic Worker
@@ -67,7 +67,7 @@ await this.env.CHAT_ROOM.post("Hello!");
 
 #### Step 3: Customize per user with props
 
-One class can serve many different Dynamic Workers. Instead of defining a separate class for each user, you pass in `props` when creating the stub, which contains information specific to that user.
+One class can serve many different Dynamic Workers. Instead of defining a separate class for each user, pass in `props` when you create the stub. `props` contains information specific to that user.
 
 ```ts
 // Same class, different props per user
@@ -75,7 +75,7 @@ let aliceRoom = ctx.exports.ChatRoom({ props: { roomName: "#alice", apiKey: ALIC
 let bobRoom   = ctx.exports.ChatRoom({ props: { roomName: "#bob", apiKey: BOB_KEY } });
 ```
 
-When the Dynamic Worker calls a method on the binding, it's actually making a call back to your loader Worker, that's where the method runs. Inside that method, you can read the `props` via [`this.ctx.props`](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props, the Dynamic Worker never sees them.
+When the Dynamic Worker calls a method on the binding, it makes a call back to your loader Worker, where the method runs. Inside that method, you can read the `props` through [`this.ctx.props`](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props. The Dynamic Worker never sees them.
 
 ```ts
 export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
@@ -89,9 +89,9 @@ export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {
 
 ### Example: Chat room agent
 
-Here's a complete example putting it all together. Say you're building a platform where AI agents can post to chat rooms. Each agent should only be able to post to its assigned room and it should never see the API key used to authenticate.
+The following example puts it all together. Suppose you are building a platform where AI agents can post to chat rooms. Each agent should only be able to post to its assigned room, and it should never see the API key used to authenticate.
 
-You define a `ChatRoom` class in your parent Worker. This class has a `post` method, the only method the Dynamic Worker can call on this binding. Inside this class, you control which room the message goes to, which API key is used, and what name is attached to the message.
+You define a `ChatRoom` class in your loader Worker. This class has a `post` method, the only method the Dynamic Worker can call on this binding. Inside this class, you control which room the message goes to, which API key is used, and what name is attached to the message.
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -115,7 +115,7 @@ type ChatRoomProps = {
 };
 ```
 
-You export one `ChatRoom` class, but each stub you create can have different `props` — a different room name, a different API key, a different bot name. The `props` are set when you create the stub, and the Dynamic Worker never sees them.
+You export one `ChatRoom` class, but each stub you create can have different `props`, such as a different room name, API key, or bot name. The `props` are set when you create the stub, and the Dynamic Worker never sees them.
 
 Now pass it to a Dynamic Worker:
 
@@ -151,11 +151,11 @@ let worker = env.LOADER.load({
 return worker.getEntrypoint("Agent").run();
 ```
 
-The agent just calls `this.env.CHAT_ROOM.post("Hello!")`. It has no way to post to a different room, see or use the API key, or change the bot name attached to its messages.
+The agent calls `this.env.CHAT_ROOM.post("Hello!")`. It has no way to post to a different room, see or use the API key, or change the bot name attached to its messages.
 
-### Tip: Tell your agent about the types
+Tell your agent about the types
 
-For an AI agent to write code against your bindings, it needs to know the interface. Give your agent TypeScript type declarations with doc comments describing each method. Modern LLMs understand TypeScript well, making it the most concise way to describe a JavaScript API. This works even if the agent is writing plain JavaScript.
+For an AI agent to write code against your bindings, it needs to know the interface. Give your agent TypeScript type declarations with doc comments describing each method. Modern LLMs understand TypeScript well, which makes it the most concise way to describe a JavaScript API. This works even if the agent is writing plain JavaScript.
 
 Make sure your `WorkerEntrypoint` class extends the TypeScript type so the declarations stay in sync with the implementation.
 
@@ -202,25 +202,25 @@ let worker = env.LOADER.load({
 });
 ```
 
-The Dynamic Worker just uses it like any other binding:
+The Dynamic Worker uses it like any other binding:
 
 ```ts
-// Inside the Dynamic Worker, it just sees STORAGE with get and put
+// Inside the Dynamic Worker, it sees STORAGE with get and put
 let value = await this.env.STORAGE.get("settings");
 await this.env.STORAGE.put("settings", "dark-mode");
 ```
 
-This same pattern works for any resource your loader Worker has access to — [R2](https://developers.cloudflare.com/r2/) buckets or [D1](https://developers.cloudflare.com/d1/) databases. Bind the resource to your loader Worker, export a class that uses it, and pass the stub to the Dynamic Worker.
+This same pattern works for any resource your loader Worker has access to, such as [R2](https://developers.cloudflare.com/r2/) buckets or [D1](https://developers.cloudflare.com/d1/) databases. Bind the resource to your loader Worker, export a class that uses it, and pass the stub to the Dynamic Worker.
 
-For persistent storage that lives with each Dynamic Worker, see [Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/).
+For persistent storage that lives with each Dynamic Worker, refer to [Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/).
 
-## Capability-based Sandboxing
+## Capability-based sandboxing
 
-Custom bindings follow a capability-based security model — a Dynamic Worker can only access what you explicitly give it. If it hasn't received a stub for something, it can't access it.
+Custom bindings follow a capability-based security model: a Dynamic Worker can only access what you explicitly give it. If it has not received a stub for something, it cannot access it.
 
-This is powered by Workers RPC, also known as [Cap'n Web ↗︎](https://github.com/cloudflare/capnweb), an RPC system designed to pass object references across security boundaries. When a Dynamic Worker receives a stub, it can call that object's methods and each call is an RPC back to the original object in your loader Worker. Stubs have no global identifier and cannot be forged, the only way to obtain one is to receive it.
+This is powered by Workers RPC, also known as [Cap'n Web ↗︎](https://github.com/cloudflare/capnweb), an RPC system designed to pass object references across security boundaries. When a Dynamic Worker receives a stub, it can call that object's methods and each call is an RPC back to the original object in your loader Worker. Stubs have no global identifier and cannot be forged. The only way to obtain one is to receive it.
 
-Capability-based security is essential to the design of most successful sandboxes, though it's usually hidden as an implementation detail — Android has Binder, Chrome has Mojo, and Cloudflare Workers has Cap'n Web. Dynamic Workers directly expose this power to you, the developer, so that you can build your own strong sandbox.
+Capability-based security is essential to the design of most successful sandboxes, though it is usually hidden as an implementation detail. For example, Android has Binder, Chrome has Mojo, and Cloudflare Workers has Cap'n Web. Dynamic Workers directly expose this power to you, the developer, so that you can build your own strong sandbox.
 
 Was this helpful?
 
@@ -231,5 +231,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v=439992d543a1e32f","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v=439992d543a1e32f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -47,7 +47,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 ## Cloudflare platform access
@@ -145,23 +145,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

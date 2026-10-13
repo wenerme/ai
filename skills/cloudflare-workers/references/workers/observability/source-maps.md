@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/source-maps/og.pn
 
 # Source maps and stack traces
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
@@ -20,9 +20,9 @@ Most JavaScript code is first bundled, often transpiled, and then minified befor
 
 Source maps translate compiled and minified code back to the original code that you wrote. Source maps are combined with the stack trace returned by the JavaScript runtime to present you with a stack trace.
 
-## Source Maps
+## Enable source maps
 
-To enable source maps, add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
+Enable source maps for every JavaScript or TypeScript Worker to get stack traces with original file names and line numbers. Add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
 ```jsonc
 {
@@ -34,11 +34,39 @@ To enable source maps, add the following to your Worker's [Wrangler configuratio
 upload_source_maps = true
 ```
 
-When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy). ​​
+When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload). ​​
 
 Note
 
 Miniflare can also [output source maps ↗︎](https://miniflare.dev/developing/source-maps) for use in local development or [testing](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests).
+
+### Frameworks and custom builds
+
+When Vite or another build tool bundles your Worker, that tool must generate source maps. Setting `upload_source_maps` only enables uploading maps from an existing build.
+
+With the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), enable external maps for your [Worker environment](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/). For a Worker environment named `my_worker`, use:
+
+*vite.config.tsts*
+
+```ts
+import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+export default defineConfig({
+	plugins: [cloudflare()],
+	environments: {
+		my_worker: {
+			build: { sourcemap: true },
+		},
+	},
+});
+```
+
+Use `ssr` when your framework assigns the Worker to that environment. The plugin adds `upload_source_maps: true` to its output configuration when map generation is enabled. An explicit `upload_source_maps: false` disables uploads.
+
+For other build tools, emit external map files and preserve their `sourceMappingURL` references in the generated JavaScript. Keep server maps out of your public assets directory.
+
+To disable uploads, set `upload_source_maps` to `false` or pass `--no-upload-source-maps` when deploying or uploading a version.
 
 ## Stack traces
 
@@ -99,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

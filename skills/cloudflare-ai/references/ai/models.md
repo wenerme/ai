@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 242 modelsClear filters
+We found 250 modelsClear filters
 
 ## Compare models
 
@@ -146,6 +146,12 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-haiku-5.5</h3>AnthropicText Generation Claude Haiku 5.5 is a fast, cost-efficient model for high-volume, latency-sensitive tasks such as classification, extraction, routing, and subagent work.](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-5.5/)
+
+- Third-party
 
 Compare
 
@@ -502,6 +508,12 @@ Compare
 
 Compare
 
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>nano-banana-2.1</h3>GoogleText-to-Image Google's Nano Banana 2.1 image generation and editing model, optimized for a balance of quality and performance.](https://developers.cloudflare.com/ai/models/google/nano-banana-2.1/)
+
+- Third-party
+
+Compare
+
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>nano-banana-pro</h3>GoogleText-to-Image Google's higher-quality image generation model with improved detail and prompt adherence.](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/)
 
 - Third-party
@@ -563,6 +575,30 @@ Compare
 Compare
 
 [l<h3>ltx-2-5-fast</h3>lightricksText-to-Video Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and image-to-video workflows, with synchronized audio, configurable duration, resolution, and frame rate.](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/)
+
+- Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-1.1</h3>MetaText Generation Muse Spark 1.1 is Meta's agentic and coding model for multi-step tool loops, software engineering assistants, and long-context reasoning.](https://developers.cloudflare.com/ai/models/meta/muse-spark-1.1/)
+
+- Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-1.2</h3>MetaText Generation Muse Spark 1.2 is Meta's agentic and coding model for multi-step tool loops, software engineering assistants, and long-context reasoning.](https://developers.cloudflare.com/ai/models/meta/muse-spark-1.2/)
+
+- Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-1.3</h3>MetaText Generation Muse Spark 1.3 is Meta's latest agentic and coding model, tuned for multi-step tool loops, browser tasks, software engineering, and long-horizon reasoning.](https://developers.cloudflare.com/ai/models/meta/muse-spark-1.3/)
+
+- Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-wonder-1.0</h3>MetaText Generation Muse Wonder 1.0 is Meta's agentic and coding model for complex software engineering, multi-step tool loops, and long-context reasoning.](https://developers.cloudflare.com/ai/models/meta/muse-wonder-1.0/)
 
 - Third-party
 
@@ -1027,6 +1063,18 @@ Compare
 
 Compare
 
+[t<h3>starlight-fast-2</h3>topazvideo-to-video Topaz Labs Starlight Fast 2 (slf-2) enhances and upscales source video to 1080p or 4K with faster processing than Starlight Precise. It is designed for video restoration workflows where turnaround time is important.](https://developers.cloudflare.com/ai/models/topaz/starlight-fast-2/)
+
+- Third-party
+
+Compare
+
+[t<h3>starlight-precise-2-6</h3>topazvideo-to-video Topaz Labs Starlight Precise 2.6 (slp-2.6) is a video enhancement model that upscales and restores low-quality source video to 1080p or 4K. The quality-focused variant of the Starlight family, prioritizing detail reconstruction over speed. Billed using provider-reported processing credits.](https://developers.cloudflare.com/ai/models/topaz/starlight-precise-2-6/)
+
+- Third-party
+
+Compare
+
 [t<h3>jev</h3>typesafeText Generation Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.](https://developers.cloudflare.com/ai/models/typesafe/jev/)
 
 - Third-party
@@ -1348,28 +1396,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +3

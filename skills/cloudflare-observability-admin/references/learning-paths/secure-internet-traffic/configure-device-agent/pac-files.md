@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/learning-paths/secure-internet-traffic/
 
 # Determine when to use PAC files
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -47,7 +47,7 @@ PAC files are usually hosted in a centralized location where all of the devices 
 
 ## Create a PAC file
 
-For detailed instructions on creating a PAC file, refer to [Enable Gateway proxy with PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/).
+For detailed instructions on creating a PAC file, refer to [Enable Gateway proxy with PAC files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/).
 
 ### Best practices
 
@@ -69,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/og.png?v=8e73f517367ebd5e","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#page","headline":"Determine when to use PAC files","description":"Evaluate PAC files for proxy configuration.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/","inLanguage":"en","image":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/og.png?v=8e73f517367ebd5e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
