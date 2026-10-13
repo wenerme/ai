@@ -78,11 +78,16 @@ import react from "@vitejs/plugin-react";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
 export default defineConfig({
-	plugins: [react(), cloudflare()],
+	plugins: [react(), cloudflare({ viteEnvironment: { name: "worker" } })],
+	environments: {
+		worker: { build: { sourcemap: true } },
+	},
 });
 ```
 
-The Cloudflare Vite plugin does not require any configuration by default and will look for a `wrangler.jsonc`, `wrangler.json`, or `wrangler.toml` in the root of your application.
+The Cloudflare Vite plugin looks for a `wrangler.jsonc`, `wrangler.json`, or `wrangler.toml` in the root of your application.
+
+The `worker` environment generates [source maps](https://developers.cloudflare.com/workers/observability/source-maps/) for your Worker. The client environment keeps its existing source map settings.
 
 ### Create your Worker config file
 
@@ -93,7 +98,7 @@ Create a `wrangler.jsonc` file in the root of your project:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-13",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -103,7 +108,7 @@ Create a `wrangler.jsonc` file in the root of your project:
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -211,8 +216,9 @@ Update your Wrangler configuration file to add a `main` field that points to you
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-13",
   "main": "./worker/index.ts",
+  "upload_source_maps": true,
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -222,8 +228,9 @@ Update your Wrangler configuration file to add a `main` field that points to you
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 not_found_handling = "single-page-application"
@@ -266,8 +273,9 @@ If you would instead like to define the routes that invoke your Worker explicitl
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-13",
   "main": "./worker/index.ts",
+  "upload_source_maps": true,
   "assets": {
     "not_found_handling": "single-page-application",
     "run_worker_first": [
@@ -280,8 +288,9 @@ If you would instead like to define the routes that invoke your Worker explicitl
 ```toml
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 not_found_handling = "single-page-application"

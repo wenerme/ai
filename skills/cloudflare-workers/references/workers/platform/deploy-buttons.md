@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/platform/deploy-buttons/og.png?
 
 # Deploy to Cloudflare buttons
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you're building a Workers application and would like to share it with other developers, you can embed a Deploy to Cloudflare button in your README, blog post, or documentation to enable others to quickly deploy your application on their own Cloudflare account. Deploy to Cloudflare buttons eliminate the need for complex setup, allowing developers to get started with your public GitHub or GitLab repository in just a few clicks.
 
@@ -67,8 +67,9 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 {
   "name": "my-worker",
   "main": "./src/index.ts",
+  "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -78,8 +79,9 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 ```toml
 name = "my-worker"
 main = "./src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [vars]
 API_HOST = "https://example.com"
@@ -99,8 +101,9 @@ COOKIE_SIGNING_KEY=my-secret # comment
 {
   "name": "my-worker",
   "main": "./src/index.ts",
+  "upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -114,8 +117,9 @@ COOKIE_SIGNING_KEY=my-secret # comment
 ```toml
 name = "my-worker"
 main = "./src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"
@@ -182,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/deploy-buttons/og.png?v=c5d9ceffb1dd21fb","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/deploy-buttons/og.png?v=c5d9ceffb1dd21fb","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

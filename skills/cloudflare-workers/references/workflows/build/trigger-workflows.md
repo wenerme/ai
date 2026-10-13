@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/trigger-workflows/og.pn
 
 # Trigger Workflows
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
@@ -44,8 +44,9 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "workflows-tutorial",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"workflows": [
 		{
 			// The name of the Workflow
@@ -65,8 +66,9 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workflows-tutorial"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -85,8 +87,9 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "workflows-tutorial",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"workflows": [
 		{
 			"name": "workflows-tutorial",
@@ -102,8 +105,9 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "workflows-tutorial"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -409,5 +413,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/workflows/examples/wait-for-event/og.pn
 
 Implement a Cloudflare Workflow that processes user-uploaded images, awaits human approval, and performs AI-based image tagging upon approval.
 
-Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/wait-for-event/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/wait-for-event/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to use the `waitForEvent()` API in Cloudflare Workflows to introduce a human-in-the-loop step. The Workflow is triggered by an image upload, during which metadata is stored in a D1 database. The Workflow then waits for user approval, and upon approval, it uses Workers AI to generate image tags, which are stored in the database. An accompanying Next.js frontend application facilitates the image upload and approval process.
 
@@ -145,8 +145,9 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "workflows-waitforevent",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1,
@@ -181,8 +182,9 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 "$schema" = "node_modules/wrangler/config-schema.json"
 name = "workflows-waitforevent"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [observability]
 enabled = true
@@ -217,5 +219,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/examples/wait-for-event/og.png?v=93162668546496eb","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/wait-for-event/#page","headline":"Human-in-the-Loop Image Tagging with waitForEvent","description":"Human-in-the-loop Workflow with waitForEvent API","url":"https://developers.cloudflare.com/workflows/examples/wait-for-event/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/examples/wait-for-event/og.png?v=93162668546496eb","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Typescript"]}
 ```

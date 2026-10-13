@@ -42,7 +42,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 ## Cloudflare platform access
@@ -140,11 +140,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
@@ -152,11 +152,11 @@ Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

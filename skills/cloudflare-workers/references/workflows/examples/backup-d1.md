@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/workflows/examples/backup-d1/og.png?v=f
 
 Export a D1 database into R2 storage with Workflows
 
-Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/backup-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/examples/backup-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, we implement a Workflow that runs on a schedule using the `schedules` field on the Workflow binding. That Workflow initiates a backup for a D1 database using the REST API, and then stores the SQL dump in an [R2](https://developers.cloudflare.com/r2) bucket.
 
@@ -126,8 +126,9 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "backup-d1",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -156,8 +157,9 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "backup-d1"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -190,5 +192,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/backup-d1/#page","headline":"Export and save D1 database","description":"Send invoice when shopping cart is checked out and paid for","url":"https://developers.cloudflare.com/workflows/examples/backup-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/examples/backup-d1/og.png?v=f4273a2d7572c577","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/examples/backup-d1/#page","headline":"Export and save D1 database","description":"Send invoice when shopping cart is checked out and paid for","url":"https://developers.cloudflare.com/workflows/examples/backup-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/examples/backup-d1/og.png?v=f4273a2d7572c577","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/containers/examples/env-vars-and-secret
 
 Pass in environment variables and secrets to your container
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pass runtime environment variables through `env` in `ctx.container.start()`. Read Worker secrets, Secrets Store values, and KV data inside the Durable Object before starting its Container.
 
@@ -29,8 +29,9 @@ Create a [KV namespace](https://developers.cloudflare.com/kv/get-started/) and a
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "container-environment",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-02",
+  "compatibility_date": "2026-10-13",
   "observability": {
     "enabled": true
   },
@@ -81,8 +82,9 @@ Create a [KV namespace](https://developers.cloudflare.com/kv/get-started/) and a
 ```toml
 name = "container-environment"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-02"
+compatibility_date = "2026-10-13"
 
 [observability]
 enabled = true
@@ -503,5 +505,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Environment variables and secrets","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/og.png?v=d15710cc7365b856","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Environment variables and secrets","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/og.png?v=d15710cc7365b856","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

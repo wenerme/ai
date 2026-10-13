@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/rpc/og.png?v=900a6
 
 # Remote-procedure call (RPC)
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -33,7 +33,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "worker_b",
-	"main": "./src/workerB.js"
+	"main": "./src/workerB.js",
+	"upload_source_maps": true
 }
 ```
 
@@ -41,6 +42,7 @@ For example, if Worker B implements the public method `add(a, b)`:
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_b"
 main = "./src/workerB.js"
+upload_source_maps = true
 ```
 
 ```js
@@ -89,6 +91,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "worker_a",
 	"main": "./src/workerA.js",
+	"upload_source_maps": true,
 	"services": [
 		{
 			"binding": "WORKER_B",
@@ -102,6 +105,7 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker_a"
 main = "./src/workerA.js"
+upload_source_maps = true
 
 [[services]]
 binding = "WORKER_B"
@@ -173,7 +177,8 @@ Consider the following two Workers, connected via a [Service Binding](https://de
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "counter-service",
-	"main": "./src/counterService.js"
+	"main": "./src/counterService.js",
+	"upload_source_maps": true
 }
 ```
 
@@ -181,6 +186,7 @@ Consider the following two Workers, connected via a [Service Binding](https://de
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "counter-service"
 main = "./src/counterService.js"
+upload_source_maps = true
 ```
 
 ```js
@@ -242,6 +248,7 @@ This function can then be called by the client Worker:
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "client_worker",
 	"main": "./src/clientWorker.js",
+	"upload_source_maps": true,
 	"services": [
 		{
 			"binding": "COUNTER_SERVICE",
@@ -255,6 +262,7 @@ This function can then be called by the client Worker:
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "client_worker"
 main = "./src/clientWorker.js"
+upload_source_maps = true
 
 [[services]]
 binding = "COUNTER_SERVICE"
@@ -324,7 +332,8 @@ Consider the following example:
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "counter",
-	"main": "./src/counter.js"
+	"main": "./src/counter.js",
+	"upload_source_maps": true
 }
 ```
 
@@ -332,6 +341,7 @@ Consider the following example:
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "counter"
 main = "./src/counter.js"
+upload_source_maps = true
 ```
 
 ```js
@@ -399,6 +409,7 @@ The method `increment` can be called directly by the client, as can the public p
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "client-worker",
 	"main": "./src/clientWorker.js",
+	"upload_source_maps": true,
 	"services": [
 		{
 			"binding": "COUNTER_SERVICE",
@@ -413,6 +424,7 @@ The method `increment` can be called directly by the client, as can the public p
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "client-worker"
 main = "./src/clientWorker.js"
+upload_source_maps = true
 
 [[services]]
 binding = "COUNTER_SERVICE"
@@ -713,5 +725,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC)","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/rpc/og.png?v=900a62b1263ba25a","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC)","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/rpc/og.png?v=900a62b1263ba25a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 ```

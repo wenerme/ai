@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steeri
 
 # Traffic steering
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -21,7 +21,7 @@ When traffic enters Cloudflare's network, it needs to reach the correct destinat
 The Cloudflare Virtual Network is a virtual network overlay, private to your account, that spans all Cloudflare data centers globally. This overlay network provides:
 
 - Magic Transit delivery for [Denial of Service (DoS)](https://developers.cloudflare.com/ddos-protection/) and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) filtered Internet traffic, from the entry data center where the traffic ingressed, to your publicly addressed edge/border network.
-- Cloudflare WAN packet transport between IPsec/GRE tunnels, interconnects, [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/), and [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) connections such as [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+- Cloudflare WAN packet transport between IPsec/GRE tunnels, interconnects, [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/), and [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) connections such as [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 The Cloudflare Virtual Network supports routing the Cloudflare WAN traffic through anycast tunnels using [GRE and Internet Protocol Security (IPsec)](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) or [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/). You can add entries to the Cloudflare Virtual Network routing table through static route configuration or through routes learned through BGP peering. Traffic can also be routed automatically according to tracked flow state.
 
@@ -216,7 +216,7 @@ Features outside Cloudflare Network Firewall have the following availability:
 | --- | --- |
 | [Sample packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#sample-packet-captures) | Generally available. |
 | [Full packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/#full-packet-captures) | Not available. |
-| [Gateway filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) | Generally available. Supports WAN-to-Internet and WAN-to-WAN filtering. Contact your account team to enable WAN-to-WAN filtering. |
+| [Gateway filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) | Generally available. Supports WAN-to-Internet and WAN-to-WAN filtering. Contact your account team to enable WAN-to-WAN filtering. |
 | [Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/) | Generally available. |
 | [Workers VPC](https://developers.cloudflare.com/workers-vpc/) | Generally available. |
 | Application Services | Generally available. |
@@ -292,7 +292,7 @@ For traffic between WAN connections (IPsec to IPsec, GRE to GRE, and CNI to CNI)
 
 #### Site-to-site traffic with Gateway
 
-When [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) are applied to site-to-site WAN traffic, route selection follows these rules:
+When [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) are applied to site-to-site WAN traffic, route selection follows these rules:
 
 | Scenario | Behavior |
 | --- | --- |
@@ -599,7 +599,7 @@ You need to enable [legacy health checks](https://developers.cloudflare.com/clou
 
 By default, Cloudflare balances and steers traffic based on network-layer characteristics (IP, port etc). If you are using the Cloudflare WAN Connector, you can also steer traffic based on well-known applications. Application-aware policies provide easier management and more granularity over traffic flows.
 
-For more information, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+For more information, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/).
 
 Was this helpful?
 
@@ -610,5 +610,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

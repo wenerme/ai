@@ -19,7 +19,6 @@ Learn how to connect your private networks to Cloudflare.
 - [Connectivity options](https://developers.cloudflare.com/cloudflare-one/networks/connectivity-options/)
 - [Connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/)
 - [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/)
-- [Resolvers and proxies](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/)
 - [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)
 
 Was this helpful?

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/egress-control/og
 
 # Egress control
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When you run untrusted or AI-generated code in a dynamic Worker, you need to control what it can access on the network. You might want to:
+When you run untrusted or AI-generated code in a dynamic Worker, you need to control what it can access on the network. Common requirements include:
 
-- block all outbound access so the dynamic Worker can only use the [bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/) you give it
-- restrict outbound requests to a specific set of allowed destinations
-- inject credentials into outbound requests without exposing secrets to the dynamic Worker
-- log or audit every outbound request for observability
+- Block all outbound access so the dynamic Worker can only use the [bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/) you provide.
+- Restrict outbound requests to a specific set of allowed destinations.
+- Inject credentials into outbound requests without exposing secrets to the dynamic Worker.
+- Log or audit every outbound request for observability.
 
 The `globalOutbound` option in the `WorkerCode` object returned by `get()` or passed to `load()` controls all of this. It intercepts every `fetch()` and `connect()` call the dynamic Worker makes.
 
@@ -35,11 +35,11 @@ return {
 };
 ```
 
-This causes any `fetch()` or `connect()` request from the dynamic Worker to throw an exception.
+Any `fetch()` or `connect()` call from the dynamic Worker throws an exception.
 
-In this mode, you can still give the Dynamic Worker direct access to specific resources and services using [bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/). This is the cleanest and most secure way to design your sandbox: block the Internet, then constructively offer specific capabilities via bindings.
+In this mode, you can still give the Dynamic Worker direct access to specific resources and services using [bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/). This is the most secure way to design your sandbox: block the Internet, then provide specific capabilities through bindings.
 
-That said, if you need to offer compatibility with existing HTTP client libraries running directly inside your Dynamic Worker sandbox, then blocking `fetch()` may be infeasible, and you may prefer to intercept requests instead.
+If you need compatibility with existing HTTP client libraries running inside your Dynamic Worker sandbox, blocking `fetch()` may not be feasible. In that case, intercept requests instead.
 
 ## Intercept outbound requests
 
@@ -140,5 +140,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/#page","headline":"Egress control","description":"Restrict, intercept, and audit outbound network access for dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/og.png?v=5cc81b2003e8ce38","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/#page","headline":"Egress control","description":"Restrict, intercept, and audit outbound network access for dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/egress-control/og.png?v=5cc81b2003e8ce38","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

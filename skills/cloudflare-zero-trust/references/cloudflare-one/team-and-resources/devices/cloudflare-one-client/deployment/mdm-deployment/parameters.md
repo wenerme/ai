@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Parameters
 
-Last updated Sep 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each Cloudflare One Client (formerly WARP) supports the following set of parameters as part of their deployment, regardless of the deployment mechanism.
 
@@ -22,7 +22,7 @@ Most of the parameters listed below are also configurable in Cloudflare One unde
 
 ## Required for full Cloudflare Zero Trust features
 
-For the majority of Cloudflare Zero Trust features to work, you need to specify a team name. Examples of Cloudflare Zero Trust features which depend on the team name are [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+For the majority of Cloudflare Zero Trust features to work, you need to specify a team name. Examples of Cloudflare Zero Trust features which depend on the team name are [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/), [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 ### `organization`
 
@@ -38,7 +38,7 @@ This field is used to enforce DNS policies when deploying the client in DoH-only
 
 ### `gateway_unique_id`
 
-Instructs the client to direct all DNS queries to a specific [Gateway DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/). This value is only necessary if deploying without a [team name](#organization) or in an organization with multiple DNS locations. If you do not supply a DoH subdomain, we will automatically use the default Gateway DNS location for your organization.
+Instructs the client to direct all DNS queries to a specific [Gateway DNS location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/). This value is only necessary if deploying without a [team name](#organization) or in an organization with multiple DNS locations. If you do not supply a DoH subdomain, we will automatically use the default Gateway DNS location for your organization.
 
 **Value Type:** `string`
 
@@ -646,5 +646,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/og.png?v=42e8eaf40dcd5fbe","dateModified":"2026-09-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/og.png?v=42e8eaf40dcd5fbe","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp/accept-paymen
 
 # Accept payments with MPP
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Cloudflare Workers to accept Machine Payments Protocol (MPP) payments. Choose an integration based on the service you want to protect:
 
@@ -175,8 +175,9 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "mpp-server",
      "main": "src/index.ts",
+     "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-10-13",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -202,8 +203,9 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    ```toml
    name = "mpp-server"
    main = "src/index.ts"
+   upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-13"
    compatibility_flags = ["nodejs_compat"]
 
    [[durable_objects.bindings]]
@@ -350,5 +352,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/#page","headline":"Accept payments with MPP","description":"Accept Machine Payments Protocol (MPP) payments from an origin, Cloudflare Worker route, or Model Context Protocol (MCP) tool.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/og.png?v=c8d7691096adf0d2","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/#page","headline":"Accept payments with MPP","description":"Accept Machine Payments Protocol (MPP) payments from an origin, Cloudflare Worker route, or Model Context Protocol (MCP) tool.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/og.png?v=c8d7691096adf0d2","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

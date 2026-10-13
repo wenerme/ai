@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/migration-guides/
 
 # Migrate from Pages to Workers
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy full-stack applications, including front-end static assets and back-end APIs, as well as server-side rendered pages (SSR), with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/).
 
@@ -63,7 +63,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -73,7 +73,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 
 [assets]
 directory = "./dist/client/"
@@ -95,7 +95,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -106,7 +106,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 
 [assets]
 directory = "./dist/client/"
@@ -119,7 +119,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -130,7 +130,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 
 [assets]
 directory = "./dist/client/"
@@ -171,8 +171,9 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
-	"main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
+	"compatibility_date": "2026-10-13",
+	"main": "./dist/client/_worker.js",
+	"upload_source_maps": true, // or some other location if you moved the script out of the static asset directory
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -182,8 +183,9 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./dist/client/_worker.js"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/client/"
@@ -215,8 +217,9 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"main": "./dist/worker/index.js",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -226,8 +229,9 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./dist/worker/index.js"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/client/"
@@ -243,8 +247,9 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"main": "./dist/worker/index.js",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/client/",
 		"run_worker_first": true
@@ -255,8 +260,9 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./dist/worker/index.js"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/client/"
@@ -295,8 +301,9 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -306,8 +313,9 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/client/"
@@ -321,8 +329,9 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/client/",
 		"binding": "ASSETS"
@@ -333,8 +342,9 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/client/"
@@ -349,9 +359,10 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"placement": {
 		"mode": "smart"
 	},
@@ -365,9 +376,10 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [placement]
 mode = "smart"
@@ -409,8 +421,9 @@ To get a similar experience in Workers:
    {
        "name": "my-worker",
        // Set this to today's date
-       "compatibility_date": "2026-10-11",
+       "compatibility_date": "2026-10-13",
        "main": "./worker/index.ts",
+       "upload_source_maps": true,
        "assets": {
            "directory": "./dist/client/"
        },
@@ -422,8 +435,9 @@ To get a similar experience in Workers:
    ```toml
    name = "my-worker"
    # Set this to today's date
-   compatibility_date = "2026-10-11"
+   compatibility_date = "2026-10-13"
    main = "./worker/index.ts"
+   upload_source_maps = true
    preview_urls = true
    previews = { }
 
@@ -454,8 +468,9 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-10-11",
+	"compatibility_date": "2026-10-13",
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"workers_dev": true
 }
 ```
@@ -463,8 +478,9 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-10-11"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 workers_dev = true
 ```
 
@@ -596,5 +612,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/og.png?v=edab3eb43a5d9092","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/og.png?v=edab3eb43a5d9092","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

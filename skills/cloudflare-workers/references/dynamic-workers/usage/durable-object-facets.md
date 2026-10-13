@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/durable-object-fa
 
 # Durable Object Facets
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Object Facets let you load a [Durable Object](https://developers.cloudflare.com/durable-objects/) class from a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) and run it as a child of your own Durable Object. The child (the facet) gets its own isolated SQLite database, while your class acts as a supervisor that controls access.
 
@@ -38,8 +38,9 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-10-09",
+  "compatibility_date": "2026-10-13",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   "migrations": [
     {
       "tag": "v1",
@@ -58,8 +59,9 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-10-13"
 main = "src/index.ts"
+upload_source_maps = true
 
 [[migrations]]
 tag = "v1"
@@ -127,7 +129,7 @@ export class AppRunner extends DurableObject {
 
 		return this.env.LOADER.get(codeId, async () => {
 			return {
-				compatibilityDate: "2026-04-01",
+				compatibilityDate: "2026-10-13",
 				mainModule: "worker.js",
 				modules: { "worker.js": AGENT_CODE },
 				globalOutbound: null, // block network access
@@ -199,7 +201,7 @@ export class AppRunner extends DurableObject<Env> {
 
 		return this.env.LOADER.get(codeId, async () => {
 			return {
-				compatibilityDate: "2026-04-01",
+				compatibilityDate: "$today",
 				mainModule: "worker.js",
 				modules: { "worker.js": AGENT_CODE },
 				globalOutbound: null, // block network access
@@ -289,5 +291,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/#page","headline":"Durable Object Facets","description":"Run dynamically-loaded code with isolated persistent storage.","url":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/og.png?v=94fdf8e0117dba2a","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/#page","headline":"Durable Object Facets","description":"Run dynamically-loaded code with isolated persistent storage.","url":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/og.png?v=94fdf8e0117dba2a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

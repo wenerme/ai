@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limi
 
 # Rate Limiting
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Rate Limiting API lets you define rate limits and write code around them in your Worker.
 
@@ -36,6 +36,7 @@ First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bi
 ```jsonc
 {
 	"main": "src/index.js",
+	"upload_source_maps": true,
 	"ratelimits": [
 		{
 			"name": "MY_RATE_LIMITER",
@@ -56,6 +57,7 @@ First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bi
 
 ```toml
 main = "src/index.js"
+upload_source_maps = true
 
 [[ratelimits]]
 name = "MY_RATE_LIMITER"
@@ -114,6 +116,7 @@ For example, here is how you can define two rate limiting configurations for fre
 ```jsonc
 {
 	"main": "src/index.js",
+	"upload_source_maps": true,
 	"ratelimits": [
 		// Free user rate limiting
 		{
@@ -139,6 +142,7 @@ For example, here is how you can define two rate limiting configurations for fre
 
 ```toml
 main = "src/index.js"
+upload_source_maps = true
 
 [[ratelimits]]
 name = "FREE_USER_RATE_LIMITER"
@@ -269,5 +273,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#page","headline":"Rate Limiting","description":"Define rate limits and interact with them directly from your Cloudflare Worker","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/og.png?v=7e91c4cab8750517","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#page","headline":"Rate Limiting","description":"Define rate limits and interact with them directly from your Cloudflare Worker","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/og.png?v=7e91c4cab8750517","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

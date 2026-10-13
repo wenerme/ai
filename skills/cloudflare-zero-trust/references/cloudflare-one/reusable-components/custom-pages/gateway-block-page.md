@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/cust
 
 # Block page
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When Gateway blocks traffic with a [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#block) or [HTTP Block policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#block), you can configure a block page to display in your users' browsers. You can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
+When Gateway blocks traffic with a [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#block) or [HTTP Block policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#block), you can configure a block page to display in your users' browsers. You can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ To redirect users to a non-Cloudflare block page:
 
 Gateway will now redirect users to a custom page when user traffic matches a Block policy with the block page configured.
 
-To create an HTTP policy to redirect URLs, refer to the [Redirect action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#redirect).
+To create an HTTP policy to redirect URLs, refer to the [Redirect action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#redirect).
 
 #### Policy context
 
@@ -68,7 +68,7 @@ Policy context fields
 | --- | --- | --- |
 | User email | Email of the user that made the query. | <code>&amp;cf_user_email=user@example.com</code> |
 | Site URL | Full URL of the original HTTP request or domain name in DNS query. | <code>&amp;cf_site_uri=https%3A%2F%2Fmalware.testcategory.com%2F</code> |
-| URL category | <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/">Domain categories</a> of the URL to be redirected. | <code>&amp;cf_request_categories=New%20Domains,Newly%20Seen%20Domains</code> |
+| URL category | <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/">Domain categories</a> of the URL to be redirected. | <code>&amp;cf_request_categories=New%20Domains,Newly%20Seen%20Domains</code> |
 | Original HTTP referer | For HTTP traffic, the original HTTP referer header of the HTTP request. | <code>&amp;cf_referer=https%3A%2F%2Fexample.com%2F</code> |
 | Rule ID | ID of the Gateway policy that matched the request. | <code>&amp;cf_rule_id=6d48997c-a1ec-4b16-b42e-d43ab4d071d1</code> |
 | Source IP | Source IP address of the device that matched the policy. | <code>&amp;cf_source_ip=203.0.113.5</code> |
@@ -212,7 +212,7 @@ If the HTTP request comes from a different IP address than the DNS request, Gate
 
 On dual-stack networks, the source IP address of the DNS query and the block page connection may differ. The DNS query may go over IPv4 while the browser connects to the block page over IPv6, or the other way around. When this happens, the block page may fail to load. It may also display without policy context (rule ID, block reason, or custom redirect parameters).
 
-To resolve this issue, configure a [dedicated DNS resolver IP address](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#dedicated-dns-resolver-ip) for your DNS location. With dedicated IP addresses, the block server can identify the account based on the destination IP address regardless of the source address.
+To resolve this issue, configure a [dedicated DNS resolver IP address](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-resolver-ips/#dedicated-dns-resolver-ip) for your DNS location. With dedicated IP addresses, the block server can identify the account based on the destination IP address regardless of the source address.
 
 Was this helpful?
 
@@ -223,5 +223,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#page","headline":"Block page","description":"Block page in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/og.png?v=23dcd515acfc76b7","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#page","headline":"Block page","description":"Block page in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/og.png?v=23dcd515acfc76b7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

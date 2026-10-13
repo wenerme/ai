@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og
 
 # Extract a brand kit from any website
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A brand kit is the set of visual design decisions that make a website recognizable: its colors, typography, logo, and component styles. Extracting one automatically is useful for building design-system tooling, generating themed previews, seeding a coding agent with a site's look and feel, or auditing brand consistency across pages.
 
@@ -109,8 +109,9 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "brand-kit",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-09",
+  "compatibility_date": "2026-10-13",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -129,8 +130,9 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
 ```toml
 name = "brand-kit"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-09"
+compatibility_date = "2026-10-13"
 compatibility_flags = ["nodejs_compat"]
 
 # Browser Run binding — driven by Puppeteer.
@@ -734,5 +736,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/#page","headline":"Extract a brand kit from any website","description":"Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og.png?v=caff3fbc452d084f","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/#page","headline":"Extract a brand kit from any website","description":"Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og.png?v=caff3fbc452d084f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

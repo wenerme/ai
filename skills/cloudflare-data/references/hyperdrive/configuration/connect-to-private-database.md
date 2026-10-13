@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/configuration/connect-to-pri
 
 # Connect to a private database using Tunnel
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can securely connect to your private databases using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -73,9 +73,9 @@ If you are setting up the tunnel through the CLI instead ([locally-managed tunne
 
 ## 2. Create and configure Hyperdrive to connect to the Cloudflare Tunnel
 
-To restrict access to the Cloudflare Tunnel to Hyperdrive, a [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) must be configured with a [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that requires requests to contain a valid [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth).
+To restrict access to the Cloudflare Tunnel to Hyperdrive, a [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) must be configured with a [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) that requires requests to contain a valid [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth).
 
-The Cloudflare dashboard can automatically create and configure the underlying [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/), [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), and [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) on your behalf. Alternatively, you can manually create the Access application and configure the Policies.
+The Cloudflare dashboard can automatically create and configure the underlying [Cloudflare Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/), [Service Auth token](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth), and [Policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) on your behalf. Alternatively, you can manually create the Access application and configure the Policies.
 
 <details>
 
@@ -302,7 +302,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -315,7 +315,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -403,7 +403,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -416,7 +416,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -488,5 +488,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#page","headline":"Connect to a private database using Tunnel","description":"Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/og.png?v=f8ceb336accd279d","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#page","headline":"Connect to a private database using Tunnel","description":"Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/og.png?v=f8ceb336accd279d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

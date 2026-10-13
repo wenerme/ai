@@ -52,7 +52,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
    ```
 
 ## Cloudflare platform access
@@ -150,23 +150,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6
 
 # Playwright
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗︎](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-09-29",
+	"compatibility_date": "2026-10-13",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-29"
+compatibility_date = "2026-10-13"
 upload_source_maps = true
 
 [browser]
@@ -247,9 +247,10 @@ Then, add the KV namespace to your Wrangler configuration file:
 {
 	"name": "storage-state-examples",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-09-29",
+	"compatibility_date": "2026-10-13",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -265,9 +266,10 @@ Then, add the KV namespace to your Wrangler configuration file:
 ```toml
 name = "storage-state-examples"
 main = "src/index.ts"
+upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-29"
+compatibility_date = "2026-10-13"
 
 [browser]
 binding = "MYBROWSER"
@@ -469,5 +471,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/architectures/sa
 
 # Evolving to a SASE architecture with Cloudflare
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/sase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/sase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Download a [PDF version](https://developers.cloudflare.com/reference-architecture/static/cloudflare-evolving-to-a-sase-architecture.pdf) of this reference architecture.
 
@@ -191,7 +191,7 @@ SaaS applications are inherently always connected to and accessed via the public
 
 The SWG includes policies that examine outbound traffic requests and inbound content responses to determine if the user, device, or network location has access to resources on the Internet. Organizations can use these policies to control access to approved SaaS applications, as well as detect and block the use of unapproved applications (also known as [shadow IT ↗︎](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/)).
 
-Some SaaS applications allow organizations to configure an IP address allowlist, which limits access to the application based on the source IP address of the request. With Cloudflare, organizations can obtain dedicated [egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) addresses, which can be used as the source address for all traffic leaving their network. When combined with an allowlist in a SaaS application, organizations can ensure that users are only able to access applications if they are first connected to Cloudflare. (More detail on this approach is outlined in a later section about connecting user devices.)
+Some SaaS applications allow organizations to configure an IP address allowlist, which limits access to the application based on the source IP address of the request. With Cloudflare, organizations can obtain dedicated [egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/) addresses, which can be used as the source address for all traffic leaving their network. When combined with an allowlist in a SaaS application, organizations can ensure that users are only able to access applications if they are first connected to Cloudflare. (More detail on this approach is outlined in a later section about connecting user devices.)
 
 Another method to secure access to SaaS applications is to configure single sign-on (SSO) so that Cloudflare becomes an identity proxy — acting as the identity provider (IDP) — as part of the authentication and authorization process.
 
@@ -379,7 +379,7 @@ The agent can be [deployed](https://developers.cloudflare.com/cloudflare-one/tea
 
 When it is not possible to install software on the device, there are agentless approaches.
 
-One option is to configure the browser to forward HTTP requests to Cloudflare by configuring proxy server details in the browser or OS. Although this can be done manually, it is more common for organizations to automate the configuration of browser proxy settings using Internet-hosted [Proxy Auto-Configuration](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC) files. The browser identifies the PAC file location in several ways:
+One option is to configure the browser to forward HTTP requests to Cloudflare by configuring proxy server details in the browser or OS. Although this can be done manually, it is more common for organizations to automate the configuration of browser proxy settings using Internet-hosted [Proxy Auto-Configuration](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) (PAC) files. The browser identifies the PAC file location in several ways:
 
 - MDM software configuring the setting in the browser
 - In Windows domains, Group Policy Objects (GPO) can configure the browser's PAC file
@@ -413,7 +413,7 @@ Isolating web applications and applying policies to risky websites helps organiz
 
 #### Agentless DNS Filtering
 
-Another option for securing traffic via the Cloudflare network is to configure the device to forward DNS traffic to Cloudflare to be inspected and filtered. First [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/dns/#connect-dns-locations) are created which allow policies to be applied based on different network locations. They can be determined either by the source IP address for the request or you can use " [DNS over TLS ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/)" or " [DNS over HTTPS ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/)".
+Another option for securing traffic via the Cloudflare network is to configure the device to forward DNS traffic to Cloudflare to be inspected and filtered. First [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/dns/#connect-dns-locations) are created which allow policies to be applied based on different network locations. They can be determined either by the source IP address for the request or you can use " [DNS over TLS ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/)" or " [DNS over HTTPS ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/)".
 
 When using source IP addresses, either the device will need to be told which DNS servers to use, or the local DNS server on the network the device is connected to needs to forward all DNS queries to Cloudflare. For DNS over TLS or HTTPS support, the devices need to be configured and support varies. Our recommendation is to use DNS over HTTPS which has wider operating system support.
 
@@ -441,7 +441,7 @@ Notes:
 
 1. Running the device agent in DNS over HTTP mode provides user identity information, in addition to the same capabilities as connecting via DNS.
 2. To filter HTTPS traffic, the Cloudflare [certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) needs to be installed on each device. This can be automated when using the device agent.
-3. If configuring DNS over HTTPS, it is possible to inject a [service token](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/#filter-doh-requests-by-user) into the request, which associates the query with an authenticated user.
+3. If configuring DNS over HTTPS, it is possible to inject a [service token](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/#filter-doh-requests-by-user) into the request, which associates the query with an authenticated user.
 
 #### Checkpoint: Forwarding device traffic to Cloudflare
 
@@ -541,7 +541,7 @@ Connecting an IdP to Cloudflare provides the ability to make access decisions ba
 
 ### Lists
 
-Cloudflare's vast intelligent network continually monitors billions of web assets and [categorizes them](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) based on our threat intelligence and general knowledge of Internet content. You can use our free [Cloudflare Radar ↗︎](https://radar.cloudflare.com/) service to examine what categories might be applied to any specific domain. Policies can then include these categories to block known and potential security risks on the public Internet, as well as specific categories of content.
+Cloudflare's vast intelligent network continually monitors billions of web assets and [categorizes them](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) based on our threat intelligence and general knowledge of Internet content. You can use our free [Cloudflare Radar ↗︎](https://radar.cloudflare.com/) service to examine what categories might be applied to any specific domain. Policies can then include these categories to block known and potential security risks on the public Internet, as well as specific categories of content.
 
 Additionally, Cloudflare's SWG offers the flexibility to create and maintain customized [lists of data](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). These lists can be uploaded via CSV files, manually maintained, or integrated with other processes and applications using the Cloudflare API. A list can contain the following data:
 
@@ -672,7 +672,7 @@ It's worth noting that many of the capabilities described in this document can b
 | --- | --- |
 | Cloudflare Tunnels | [Understanding Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) - [Open source repository for `cloudflared` ↗︎](https://github.com/cloudflare/cloudflared) |
 | WAN as a Service | [Cloudflare WAN documentation](https://developers.cloudflare.com/cloudflare-wan/) - [WAN transformation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/) |
-| Secure Web Gateway | [How to build Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) |
+| Secure Web Gateway | [How to build Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) |
 | Zero Trust Network Access | [How to build Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) |
 | Remote Browser Isolation | [Understanding browser isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) |
 | API-Driven CASB | [Scanning SaaS applications](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) |
@@ -690,5 +690,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/sase/#page","headline":"Evolving to a SASE architecture with Cloudflare","description":"This reference architecture explains how organizations can work towards a SASE architecture using Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/architectures/sase/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/sase/og.png?v=9e3afe8757770ff9","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/sase/#page","headline":"Evolving to a SASE architecture with Cloudflare","description":"This reference architecture explains how organizations can work towards a SASE architecture using Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/architectures/sase/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/architectures/sase/og.png?v=9e3afe8757770ff9","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

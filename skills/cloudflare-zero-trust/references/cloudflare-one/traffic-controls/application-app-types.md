@@ -1,0 +1,198 @@
+---
+description: Reference information for Applications and app types in Gateway.
+title: Applications and app types
+image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/og.png?v=de28df73d8ca9888
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Applications and app types
+
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
+
+## Applications
+
+When you choose the *Application* selector in a Gateway policy builder, the **Value** field will include all supported applications and their respective app types. Alternatively, you can use the [Gateway API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/app_types/methods/list/) to fetch a list of applications, app types, and ID numbers.
+
+To manage a consolidated list of applications across Cloudflare One, you can use the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/).
+
+## App types
+
+Gateway sorts applications into the following app type groups:
+
+| Value | Definition |
+| --- | --- |
+| Artificial Intelligence | AI assistance applications |
+| Business | Applications used for general business purposes |
+| Collaboration & Online Meetings | Business communication and collaboration applications |
+| Dating | Online dating applications |
+| Development | Software development and development operations applications |
+| Education | Applications used for educational purposes and e-learning |
+| Email | Email applications |
+| Entertainment & Events | Applications used for entertainment content and event information |
+| Encrypted DNS | DNS encryption applications |
+| File Sharing | File sharing applications |
+| Finance & Accounting | Financial and accounting applications |
+| Food & Drink | Applications related to food delivery and recipe services |
+| Gaming | Games and gaming applications |
+| Health & Fitness | Applications used for health monitoring and fitness tracking |
+| Human Resources | Employee management applications and workforce tools |
+| Instant Messaging | Instant messaging applications |
+| IT Management | IT deployment management applications |
+| Legal | Legal tools and applications |
+| Lifestyle | Applications related to lifestyle and personal interests |
+| Music & Audio Streaming | Applications used for streaming music and audio |
+| Navigation | Applications used for maps and navigation services |
+| News, Books, & Magazines | Applications delivering news, books, and magazine content |
+| Photography & Graphic Design | Applications used for photography and graphic design |
+| Productivity | Business and productivity applications |
+| Public Cloud | Public cloud infrastructure management applications |
+| Sales & Marketing | Sales and marketing applications |
+| Search Engines | Web search engines and applications |
+| Security | Information security applications, including shadow IT |
+| Shopping | Online shopping applications |
+| Social Networking | Social networking applications |
+| Sports | Sports streaming and news applications |
+| Travel | Travel related applications |
+| Video Streaming & Editing | Applications used for streaming and editing video |
+| [Do Not Inspect](#do-not-inspect-applications) | Applications incompatible with the TLS certificate required by the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/) |
+
+## Application hostnames
+
+An application like Google Drive uses its own hostnames (for example, `drive.google.com`) and shared resources used by other applications (for example, `accounts.google.com` for login). Gateway separates these into [hostnames](#hostnames) and [support hostnames](#support-hostnames) so you can control the behavior of each application independently.
+
+### Hostnames
+
+Hostnames are domains that are core to the application and not [used by other applications](#overlapping-hostnames). These are the domains that Gateway blocks when you block an application. The App Library surfaces these hostnames in the [Hostnames table](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#overview) for an application.
+
+### Support hostnames
+
+Support hostnames are shared resources that applications depend on for content delivery, authentication, or third-party integrations. Because multiple applications share these hostnames, blocking them can cause unexpected side effects.
+
+For example, assume that `file-sharing-service.com` relies on `content-delivery.com`. If you allow access to `file-sharing-service.com` and its associated subdomains but not `content-delivery.com`, some of the functionality of `file-sharing-service.com` may break when Gateway matches the traffic.
+
+To prevent this, Gateway only uses support hostnames in Allow policies — it will allow support hostname connections but will not block them. For example, many Google applications use `accounts.google.com` for authentication. If you create an Allow policy for an application that lists `accounts.google.com` as a support hostname, Gateway will allow both `accounts.google.com` and the application's own domains.
+
+## Application controls
+
+When you use the [*Application* selector](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#granular-controls) in an HTTP policy with the *is* operator, you can choose specific actions and operations to match application traffic. Supported applications and operations include:
+
+<details>
+
+<summary>
+
+Artificial Intelligence
+
+</summary>
+
+- ChatGPT
+- Google Gemini
+- Perplexity
+- Claude
+
+</details>
+
+<details>
+
+<summary>
+
+File Sharing
+
+</summary>
+
+- Box
+- Dropbox
+- Google Drive
+- WeTransfer
+- Hightail
+- ShareFile
+- Smash
+
+</details>
+
+For more information, refer to [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/granular-controls/).
+
+## Usage
+
+### Overlapping hostnames
+
+Overlapping hostnames are most common for vendors with many applications, such as Google or Meta. When you use the Application selector in Gateway policies, actions taken by Gateway will be limited to the specific application defined. Gateway will also log other applications that use the same hostnames, but it will not take action unless the application was matched by the policy. For example, both the Facebook and Facebook Messenger apps use the `chat-e2ee.facebook.com` hostname. When evaluating traffic to the Facebook Messenger app, Gateway will only take action on Facebook Messenger traffic but may log both the Facebook and Facebook Messenger apps.
+
+To ensure Gateway evaluates traffic with your desired precedence, order your most specific policies with the highest priority according to [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#priority-within-a-policy-builder).
+
+### Do Not Inspect applications
+
+Gateway automatically groups applications incompatible with TLS decryption into the *Do Not Inspect* app type. As Cloudflare identifies incompatible applications, Gateway will periodically update this app type to add new applications. To ensure Gateway does not intercept any current or future incompatible traffic, you can [create a Do Not Inspect HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) with the entire *Do Not Inspect* app type selected.
+
+When managing applications with the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/), Do Not Inspect applications will appear under the corresponding application. For example, the App Library will group *Google Drive (Do Not Inspect)* under **Google Drive**.
+
+Install Cloudflare certificate manually to allow TLS decryption
+
+Instead of creating a Do Not Inspect policy for an application, you may be able to configure the application to [trust a Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#add-the-certificate-to-applications). Doing so will allow the application to function without losing visibility into your traffic.
+
+#### TLS decryption limitations
+
+Applications can be incompatible with [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) for various reasons:
+
+- **Certificate pinning**: Certificate pinning is a security mechanism used to prevent on-path attacks on the Internet by hardcoding information about the certificate that the application expects to receive. If the wrong certificate is received, even if it is trusted by the system, the application will refuse to connect.
+- **Non-web traffic**: Some applications send non-web traffic over TLS, such as Session Initiation Protocol (SIP) for voice and video calls and Extensible Messaging and Presence Protocol (XMPP) for chat. Gateway cannot inspect these protocols.
+
+#### Microsoft 365 integration
+
+To optimize performance for Microsoft 365 applications and services, you can bypass TLS decryption by turning on the Microsoft 365 traffic integration. This will create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) for all [Microsoft 365 domains and IP addresses ↗︎](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service) specified by Microsoft. This policy also uses Cloudflare intelligence to identify other Microsoft 365 traffic not explicitly defined.
+
+To turn on the Microsoft 365 integration:
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Policy settings**.
+2. In **Bypass decryption of Microsoft 365 traffic**, select **Create policy**.
+3. To verify the policy was created, select **View policy**. Alternatively, go to **Traffic policies** > **HTTP policies**. A policy named Microsoft 365 Auto Generated will be enabled in your list.
+
+All future Microsoft 365 traffic will bypass Gateway logging and filtering. To disable this behavior, turn off or delete the policy.
+
+### Terraform
+
+Terraform users can retrieve the app types list with the `cloudflare_zero_trust_gateway_app_types_list` data source. This allows you to create Gateway policies with the application's name rather than its numeric ID. For example:
+
+```tf
+data "cloudflare_zero_trust_gateway_app_types_list" "gateway_apptypes" {
+  account_id = var.cloudflare_account_id
+}
+
+locals {
+  apptypes_map = merge([
+    for c in data.cloudflare_zero_trust_gateway_app_types_list.gateway_apptypes.result :
+    { (c.name) = c.id }
+  ]...)
+}
+
+resource "cloudflare_zero_trust_gateway_policy" "zt_block_dns_apps" {
+  account_id = var.cloudflare_account_id
+  name       = "DNS Blocked apps"
+  action     = "block"
+  traffic    = "any(app.ids[*] in {${join(" ", [
+    local.apptypes_map["Discord"],
+    local.apptypes_map["GoToMeeting"],
+    local.apptypes_map["Greenhouse"],
+    local.apptypes_map["Zelle"],
+    local.apptypes_map["Microsoft Visual Studio"]
+  ])}})"
+}
+```
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#page","headline":"Applications and app types","description":"Reference information for Applications and app types in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/og.png?v=de28df73d8ca9888","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+```

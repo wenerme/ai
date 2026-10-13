@@ -116,90 +116,6 @@ This example saves the default WAV output audio (`audio/wav`) from the model dir
     }
     await main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "encoding/base64"
-        "encoding/binary"
-        "log"
-        "os"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func saveWaveFile(filename string, pcmData []byte) error {
-        f, err := os.Create(filename)
-        if err != nil {
-            return err
-        }
-        defer f.Close()
-
-        sampleRate := uint32(24000)
-        numChannels := uint16(1)
-        bitsPerSample := uint16(16)
-        byteRate := sampleRate * uint32(numChannels) * uint32(bitsPerSample/8)
-        blockAlign := numChannels * (bitsPerSample / 8)
-        dataSize := uint32(len(pcmData))
-
-        f.WriteString("RIFF")
-        binary.Write(f, binary.LittleEndian, uint32(36+dataSize))
-        f.WriteString("WAVEfmt ")
-        binary.Write(f, binary.LittleEndian, uint32(16))
-        binary.Write(f, binary.LittleEndian, uint16(1))
-        binary.Write(f, binary.LittleEndian, numChannels)
-        binary.Write(f, binary.LittleEndian, sampleRate)
-        binary.Write(f, binary.LittleEndian, byteRate)
-        binary.Write(f, binary.LittleEndian, blockAlign)
-        binary.Write(f, binary.LittleEndian, bitsPerSample)
-        f.WriteString("data")
-        binary.Write(f, binary.LittleEndian, dataSize)
-        _, err = f.Write(pcmData)
-        return err
-    }
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        generationConfig := &interactions.GenerationConfig{
-            SpeechConfig: genai.Ptr(interactions.NewSpeechConfigUnion([]interactions.SpeechConfig{
-                {Voice: genai.Ptr("Kore")},
-            })),
-        }
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash-tts"),
-                Input: interactions.NewInteractionsInput("Say cheerfully: Have a wonderful day!"),
-                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
-                    interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
-                )),
-                GenerationConfig: generationConfig,
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        if res.Interaction.OutputAudio != nil && res.Interaction.OutputAudio.Data != nil {
-            pcmBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputAudio.Data)
-            if err != nil {
-                log.Fatal(err)
-            }
-            if err := saveWaveFile("out.wav", pcmBytes); err != nil {
-                log.Fatal(err)
-            }
-        }
-    }
-
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -342,95 +258,6 @@ generation and an object (`{"speakers": [...]}`) for multi-speaker generation:
 
     await main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "encoding/base64"
-        "encoding/binary"
-        "log"
-        "os"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func saveWaveFile(filename string, pcmData []byte) error {
-        f, err := os.Create(filename)
-        if err != nil {
-            return err
-        }
-        defer f.Close()
-
-        sampleRate := uint32(24000)
-        numChannels := uint16(1)
-        bitsPerSample := uint16(16)
-        byteRate := sampleRate * uint32(numChannels) * uint32(bitsPerSample/8)
-        blockAlign := numChannels * (bitsPerSample / 8)
-        dataSize := uint32(len(pcmData))
-
-        f.WriteString("RIFF")
-        binary.Write(f, binary.LittleEndian, uint32(36+dataSize))
-        f.WriteString("WAVEfmt ")
-        binary.Write(f, binary.LittleEndian, uint32(16))
-        binary.Write(f, binary.LittleEndian, uint16(1))
-        binary.Write(f, binary.LittleEndian, numChannels)
-        binary.Write(f, binary.LittleEndian, sampleRate)
-        binary.Write(f, binary.LittleEndian, byteRate)
-        binary.Write(f, binary.LittleEndian, blockAlign)
-        binary.Write(f, binary.LittleEndian, bitsPerSample)
-        f.WriteString("data")
-        binary.Write(f, binary.LittleEndian, dataSize)
-        _, err = f.Write(pcmData)
-        return err
-    }
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        prompt := "TTS the following conversation between Joe and Jane:\n" +
-            "Joe: How's it going today Jane?\n" +
-            "Jane: Not too bad, how about you?"
-
-        generationConfig := &interactions.GenerationConfig{
-            SpeechConfig: genai.Ptr(interactions.NewSpeechConfigUnion([]interactions.SpeechConfig{
-                {Speaker: genai.Ptr("Joe"), Voice: genai.Ptr("Kore")},
-                {Speaker: genai.Ptr("Jane"), Voice: genai.Ptr("Puck")},
-            })),
-        }
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash-tts"),
-                Input: interactions.NewInteractionsInput(prompt),
-                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
-                    interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
-                )),
-                GenerationConfig: generationConfig,
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        if res.Interaction.OutputAudio != nil && res.Interaction.OutputAudio.Data != nil {
-            pcmBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputAudio.Data)
-            if err != nil {
-                log.Fatal(err)
-            }
-            if err := saveWaveFile("out.wav", pcmBytes); err != nil {
-                log.Fatal(err)
-            }
-        }
-    }
-
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -487,67 +314,146 @@ instructions by scope:
 See the [Prompting guide](https://ai.google.dev/gemini-api/docs/speech-generation#prompting-guide)
 for comprehensive best practices.
 
-### Go
+### Python
 
-    package main
+    import base64
+    from google import genai
 
-    import (
-        "context"
-        "log"
+    client = genai.Client()
 
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
+    interaction = client.interactions.create(
+        model="gemini-3.8-flash-tts",
+        input=[{
+            "type": "user_input",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Wait... <short pause> look under that fallen log! Is that a blue-spotted salamander?",
+                    "annotations": [{
+                        "type": "speech_metadata",
+                        "speaker": "Dr. Anya",
+                        "style": "whispered urgently",
+                    }],
+                },
+                {
+                    "type": "text",
+                    "text": "<gasp> No way! <laugh> We've been searching for this species all season!",
+                    "annotations": [{
+                        "type": "speech_metadata",
+                        "speaker": "Liam",
+                        "style": "warm and enthusiastic",
+                    }],
+                },
+            ],
+        }],
+        response_format={"type": "audio"},
+        generation_config={
+            "speech_config": {
+                "speakers": [
+                    {"speaker": "Dr. Anya", "voice": "Kore"},
+                    {"speaker": "Liam", "voice": "Puck"},
+                ],
+            }
+        },
     )
 
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
+    with open("out.wav", "wb") as f:
+        f.write(base64.b64decode(interaction.output_audio.data))
 
-        transcriptRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash"),
-                Input: interactions.NewInteractionsInput(
-                    "Generate a short transcript around 100 words that reads " +
-                        "like it was clipped from a podcast by excited herpetologists. " +
-                        "The hosts names are Dr. Anya and Liam.",
-                ),
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
+### JavaScript
 
-        var transcript string
-        if transcriptRes.Interaction.OutputText != nil {
-            transcript = *transcriptRes.Interaction.OutputText
-        }
+    import * as fs from 'node:fs';
+    import {GoogleGenAI} from '@google/genai';
 
-        generationConfig := &interactions.GenerationConfig{
-            SpeechConfig: genai.Ptr(interactions.NewSpeechConfigUnion([]interactions.SpeechConfig{
-                {Speaker: genai.Ptr("Dr. Anya"), Voice: genai.Ptr("Kore")},
-                {Speaker: genai.Ptr("Liam"), Voice: genai.Ptr("Puck")},
-            })),
-        }
+    async function main() {
+       const client = new GoogleGenAI({});
 
-        ttsRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash-tts"),
-                Input: interactions.NewInteractionsInput(transcript),
-                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
-                    interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
-                )),
-                GenerationConfig: generationConfig,
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-        _ = ttsRes
+       const interaction = await client.interactions.create({
+          model: 'gemini-3.8-flash-tts',
+          input: [{
+             type: 'user_input',
+             content: [
+                {
+                   type: 'text',
+                   text: 'Wait... <short pause> look under that fallen log! Is that a blue-spotted salamander?',
+                   annotations: [{
+                      type: 'speech_metadata',
+                      speaker: 'Dr. Anya',
+                      style: 'whispered urgently',
+                   }],
+                },
+                {
+                   type: 'text',
+                   text: "<gasp> No way! <laugh> We've been searching for this species all season!",
+                   annotations: [{
+                      type: 'speech_metadata',
+                      speaker: 'Liam',
+                      style: 'warm and enthusiastic',
+                   }],
+                },
+             ],
+          }],
+          response_format: { type: 'audio' },
+          generation_config: {
+             speech_config: {
+                speakers: [
+                   { speaker: 'Dr. Anya', voice: 'Kore' },
+                   { speaker: 'Liam', voice: 'Puck' },
+                ],
+             },
+          },
+       });
+
+       if (interaction.output_audio?.data) {
+          const audioBuffer = Buffer.from(interaction.output_audio.data, 'base64');
+          fs.writeFileSync('out.wav', audioBuffer);
+       }
     }
+
+    await main();
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "model": "gemini-3.8-flash-tts",
+        "input": [{
+          "type": "user_input",
+          "content": [
+            {
+              "type": "text",
+              "text": "Wait... <short pause> look under that fallen log! Is that a blue-spotted salamander?",
+              "annotations": [{
+                "type": "speech_metadata",
+                "speaker": "Dr. Anya",
+                "style": "whispered urgently"
+              }]
+            },
+            {
+              "type": "text",
+              "text": "<gasp> No way! <laugh> We'\''ve been searching for this species all season!",
+              "annotations": [{
+                "type": "speech_metadata",
+                "speaker": "Liam",
+                "style": "warm and enthusiastic"
+              }]
+            }
+          ]
+        }],
+        "response_format": {
+          "type": "audio"
+        },
+        "generation_config": {
+          "speech_config": {
+            "speakers": [
+              { "speaker": "Dr. Anya", "voice": "Kore" },
+              { "speaker": "Liam", "voice": "Puck" }
+            ]
+          }
+        }
+      }'
 
 ## Streaming speech generation
 
@@ -757,69 +663,6 @@ You can also specify `sample_rate` in Hertz (for example, `24000`, `16000`, or
        fs.writeFileSync('out.pcm', audioBuffer);
     }
     await main();
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "encoding/base64"
-        "log"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        generationConfig := &interactions.GenerationConfig{
-            SpeechConfig: genai.Ptr(interactions.NewSpeechConfigUnion([]interactions.SpeechConfig{
-                {Voice: genai.Ptr("Kore")},
-            })),
-        }
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash-tts"),
-                Input: interactions.NewInteractionsInput("Say cheerfully: Have a wonderful day!"),
-                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
-                    interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
-                )),
-                GenerationConfig: generationConfig,
-                Stream:           genai.Ptr(true),
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        stream := res.InteractionSSEStreamEvent
-        defer stream.Close()
-
-        for stream.Next() {
-            event := stream.Value()
-            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
-                if audioDelta := stepDelta.GetDeltaAudio(); audioDelta != nil && audioDelta.Data != nil {
-                    audioData, err := base64.StdEncoding.DecodeString(*audioDelta.Data)
-                    if err != nil {
-                        log.Fatal(err)
-                    }
-                    // Process the audio chunk (e.g. play it or write to a file)
-                    _ = audioData
-                }
-            }
-        }
-        if err := stream.Err(); err != nil {
-            log.Fatal(err)
-        }
-    }
 
 ### REST
 

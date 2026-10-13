@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c
 
 # Purge and invalidate the cache
 
-Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your Worker can delete its own cached responses at any time with `purge()`, or mark them stale with [`invalidate()`](#invalidate-cached-responses) so that the cache revalidates them with your Worker on the next request. Both are useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
@@ -329,8 +329,9 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 {
 	"name": "my-worker",
 	"main": "src/index.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-03",
+	"compatibility_date": "2026-10-13",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -339,8 +340,9 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 ```toml
 name = "my-worker"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-03"
+compatibility_date = "2026-10-13"
 
 [cache]
 enabled = true
@@ -721,5 +723,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purge and invalidate the cache","description":"Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purge and invalidate the cache","description":"Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

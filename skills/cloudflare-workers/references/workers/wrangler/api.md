@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/api/og.png?v=c08a17f64
 
 # API
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
@@ -735,6 +735,7 @@ The bindings supported by `getPlatformProxy` are:
     {
     	"name": "external-do-worker",
     	"main": "src/index.ts",
+        "upload_source_maps": true,
     	"compatibility_date": "XXXX-XX-XX"
     }
     ```
@@ -742,6 +743,7 @@ The bindings supported by `getPlatformProxy` are:
     ```toml
     name = "external-do-worker"
     main = "src/index.ts"
+    upload_source_maps = true
     compatibility_date = "XXXX-XX-XX"
     ```
 
@@ -786,5 +788,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/api/og.png?v=c08a17f641408034","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/api/og.png?v=c08a17f641408034","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/web-search/how-to-use/og.png?v=d825d667
 
 # How to use Web Search API
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/how-to-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-search/how-to-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can call Web Search API from any backend with the REST API, or from a Worker with the AI binding. Both methods route requests through an [AI Gateway](https://developers.cloudflare.com/ai-gateway/).
 
@@ -61,8 +61,9 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "web-search-worker",
      "main": "src/index.ts",
+     "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-10-13",
      "ai": {
        "binding": "AI"
      }
@@ -72,8 +73,9 @@ Call Web Search API from a Worker with the `websearch()` method on the [AI bindi
    ```toml
    name = "web-search-worker"
    main = "src/index.ts"
+   upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-13"
 
    [ai]
    binding = "AI"
@@ -323,5 +325,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-search/how-to-use/#page","headline":"How to use Web Search API","description":"Send web search requests through AI Gateway with the REST API or the Workers AI binding, bring your own provider key, and use web search as a tool for models.","url":"https://developers.cloudflare.com/web-search/how-to-use/","inLanguage":"en","image":"https://developers.cloudflare.com/web-search/how-to-use/og.png?v=d825d667b5bdb4f7","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-search/how-to-use/#page","headline":"How to use Web Search API","description":"Send web search requests through AI Gateway with the REST API or the Workers AI binding, bring your own provider key, and use web search as a tool for models.","url":"https://developers.cloudflare.com/web-search/how-to-use/","inLanguage":"en","image":"https://developers.cloudflare.com/web-search/how-to-use/og.png?v=d825d667b5bdb4f7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

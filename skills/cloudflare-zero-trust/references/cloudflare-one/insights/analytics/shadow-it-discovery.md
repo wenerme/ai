@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/analytics/shado
 
 # Shadow IT SaaS analytics
 
-Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. The dashboard aggregates data from Gateway HTTP traffic to track application usage across your organization. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
 
@@ -26,7 +26,7 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 ## Prerequisites
 
-To allow Cloudflare to discover shadow IT in your traffic, you must set up [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
+To allow Cloudflare to discover shadow IT in your traffic, you must set up [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/).
 
 ## Use Shadow IT SaaS analytics
 
@@ -53,7 +53,7 @@ Once you mark the status of an application, its badge will change. You can filte
 
 Note
 
-Approval status does not impact a user's ability to access an application. Users are allowed or blocked according to your [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). To filter traffic based on approval status, use the [*Application Status*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application-approval-status) selector.
+Approval status does not impact a user's ability to access an application. Users are allowed or blocked according to your [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/). To filter traffic based on approval status, use the [*Application Status*](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application-approval-status) selector.
 
 ### 2. Monitor usage
 
@@ -62,7 +62,7 @@ Review the Shadow IT SaaS analytics dashboard for application usage. Filter the 
 | Field | Description |
 | --- | --- |
 | Application | SaaS application's name and logo. |
-| Application type | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types) assigned by Cloudflare One. |
+| Application type | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#app-types) assigned by Cloudflare One. |
 | Application status | Application's approval status. |
 | Hostname | Hostname of the requested SaaS application. |
 | Country | Country code associated with the user's source IP address. |
@@ -71,10 +71,10 @@ To manage application statuses in bulk, select **Set Application Statuses** to r
 
 ### 3. Create policies
 
-After marking applications, you can create [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) based on application review status. For example, you can create policies that:
+After marking applications, you can create [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) based on application review status. For example, you can create policies that:
 
-- Launch all **Unreviewed** and **In review** applications in an [isolated browser](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#1-isolate-unreviewed-or-in-review-applications).
-- [Block access](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#2-block-unapproved-applications) to all **Unapproved** applications.
+- Launch all **Unreviewed** and **In review** applications in an [isolated browser](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/#1-isolate-unreviewed-or-in-review-applications).
+- [Block access](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/#2-block-unapproved-applications) to all **Unapproved** applications.
 - Limit file upload capabilities for specific application statuses.
 
 To create an HTTP status policy directly from Shadow IT Discovery:
@@ -112,5 +112,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/#page","headline":"Shadow IT SaaS analytics","description":"Reference information for Shadow IT SaaS analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/og.png?v=a3addf3de0a2660a","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/#page","headline":"Shadow IT SaaS analytics","description":"Reference information for Shadow IT SaaS analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/og.png?v=a3addf3de0a2660a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

@@ -47,5 +47,5 @@ Find out more about Text To Video [here](../tasks/text-to-video).
 
 <InferenceSnippet
     pipeline=text-to-video
-    providersMapping={ {"wavespeed":{"modelId":"TaoLiveAIGC/TaoMate-H3","providerModelId":"wavespeed-ai/minimax-h3/text-to-video-lora"} } }
+    providersMapping={ {"wavespeed":{"modelId":"larryvrh/MiniMax-H3-Turbo-Lora","providerModelId":"wavespeed-ai/minimax-h3/text-to-video-lora"} } }
 />

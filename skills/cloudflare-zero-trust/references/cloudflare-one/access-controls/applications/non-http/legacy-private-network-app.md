@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Private network applications (legacy)
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -28,7 +28,7 @@ Existing **Private Network** applications continue to function and can still be 
 
    Note
 
-   If you would like to create a policy for an IP/CIDR range instead of a specific IP address, you can build a [Gateway Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) using the **Destination IP** selector.
+   If you would like to create a policy for an IP/CIDR range instead of a specific IP address, you can build a [Gateway Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) using the **Destination IP** selector.
 6. Configure your [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) visibility and logo.
 7. Select **Next**. You will see two auto-generated Gateway Network policies: one that allows access to the destination IP and another that blocks access.
 8. Modify the policies to include additional identity-based conditions. For example:
@@ -44,7 +44,7 @@ Existing **Private Network** applications continue to function and can still be 
      | --- | --- | --- | --- |
      | Destination IP | in | `10.128.0.7` | Block |
 
-   Policies are evaluated in [numerical order](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence), so a user with an email ending in @example.com will be able to access `10.128.0.7` while all others will be blocked. For more information on building network policies, refer to our [dedicated documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
+   Policies are evaluated in [numerical order](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#order-of-precedence), so a user with an email ending in @example.com will be able to access `10.128.0.7` while all others will be blocked. For more information on building network policies, refer to our [dedicated documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/).
 9. Select **Add application**.
 
 Your application will appear on the **Applications** page.
@@ -58,5 +58,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/#page","headline":"Private network applications (legacy)","description":"Private network applications (legacy) in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/og.png?v=f2242eeb5c5c5981","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/#page","headline":"Private network applications (legacy)","description":"Private network applications (legacy) in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/legacy-private-network-app/og.png?v=f2242eeb5c5c5981","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

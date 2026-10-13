@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/guides/migrate-to-durable-ob
 
 # Migrate to the Durable Object scheduling policy
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You cannot change the scheduling policy of an existing Container application. To move from the `default` policy to the `durable_object` policy, create a replacement Container application and cut traffic over to it.
 
@@ -83,6 +83,7 @@ Custom instance objects use camel case at runtime. Rename `memory_mib` to `memor
    {
        "name": "sandbox-worker",
        "main": "src/index.ts",
+       "upload_source_maps": true,
        "compatibility_date": "2026-09-29",
        "containers": [
            // Existing application. Keep this entry unchanged.
@@ -132,6 +133,7 @@ Custom instance objects use camel case at runtime. Rename `memory_mib` to `memor
    ```toml
    name = "sandbox-worker"
    main = "src/index.ts"
+   upload_source_maps = true
    compatibility_date = "2026-09-29"
 
    [[containers]]
@@ -307,5 +309,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/#page","headline":"Migrate to the Durable Object scheduling policy","description":"Replace a Container application that uses the default scheduling policy with a Durable Object-managed application.","url":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/og.png?v=c4a9b833bc8d835b","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/#page","headline":"Migrate to the Durable Object scheduling policy","description":"Replace a Container application that uses the default scheduling policy with a Durable Object-managed application.","url":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-scheduling-policy/og.png?v=c4a9b833bc8d835b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

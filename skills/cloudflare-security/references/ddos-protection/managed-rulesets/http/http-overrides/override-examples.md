@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/h
 
 # Override examples
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Use cases
 
@@ -90,7 +90,7 @@ A false negative is a lack of identification. In the case of DDoS protection, th
 To address a false negative:
 
 - If you are a WAF/CDN customer, follow the steps in the [Proactive DDoS defense](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/) page, which guides you on enabling the *Under Attack* mode and creating rate limiting rules and WAF custom rules as needed.
-- If you are a Magic Transit customer, [use Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/add-policies/) to help mitigate the attack.
+- If you are a Magic Transit customer, [use Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/add-policies/) to help mitigate the attack.
 
 ### Incomplete mitigations
 
@@ -147,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/og.png?v=5f2c7cd87900684d","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/og.png?v=5f2c7cd87900684d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

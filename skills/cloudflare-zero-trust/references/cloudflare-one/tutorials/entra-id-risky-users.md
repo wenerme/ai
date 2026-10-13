@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky
 
 # Isolate risky Entra ID users
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Microsoft Entra ID (formerly Azure Active Directory) calculates a user's [risk level ↗︎](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk) based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 
@@ -26,7 +26,7 @@ This tutorial demonstrates how to automatically redirect users to a remote brows
 
 - Microsoft Entra ID Premium P2 license
 - [Cloudflare Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) add-on
-- [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) enabled on your devices
+- [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/) enabled on your devices
 - [npm ↗︎](https://docs.npmjs.com/getting-started) installation
 - [Node.js ↗︎](https://nodejs.org/en/) installation
 
@@ -88,8 +88,9 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    	"$schema": "./node_modules/wrangler/config-schema.json",
    	"name": "risky-users",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-09",
+   	"compatibility_date": "2026-10-13",
    	"main": "src/index.js",
+       "upload_source_maps": true,
    	"workers_dev": false,
    	"account_id": "<ACCOUNT-ID>",
    	"vars": {
@@ -106,8 +107,9 @@ To get started quickly, deploy our example Cloudflare Workers script by followin
    "$schema" = "./node_modules/wrangler/config-schema.json"
    name = "risky-users"
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-13"
    main = "src/index.js"
+   upload_source_maps = true
    workers_dev = false
    account_id = "<ACCOUNT-ID>"
 
@@ -161,7 +163,7 @@ Cloudflare Access will now synchronize changes in group membership with Entra ID
 
 ## 5. Create a browser isolation policy
 
-Finally, create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to isolate traffic for risky user groups.
+Finally, create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) to isolate traffic for risky user groups.
 
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
@@ -183,5 +185,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/#page","headline":"Isolate risky Entra ID users","description":"Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/og.png?v=369f02318800a6b5","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/#page","headline":"Isolate risky Entra ID users","description":"Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/og.png?v=369f02318800a6b5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
 ```

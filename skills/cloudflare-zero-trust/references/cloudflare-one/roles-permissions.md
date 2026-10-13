@@ -62,7 +62,7 @@ For more information on Email security roles, refer to [Account-scoped roles](ht
 ## Footnotes
 
 1. The **Cloudflare Zero Trust** role grants administrator access to all Zero Trust products including Access, Gateway, the Cloudflare One Client, Tunnel, Browser Isolation, CASB, DLP, DEX, and Email security. [↩](#user-content-fnref-1)
-2. Users with the **Cloudflare Zero Trust DNS Locations Write** role can view all DNS locations for an organization but can only create and edit [secure DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#secure-dns-locations). [↩](#user-content-fnref-2)
+2. Users with the **Cloudflare Zero Trust DNS Locations Write** role can view all DNS locations for an organization but can only create and edit [secure DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/#secure-dns-locations). [↩](#user-content-fnref-2)
 
 Was this helpful?
 

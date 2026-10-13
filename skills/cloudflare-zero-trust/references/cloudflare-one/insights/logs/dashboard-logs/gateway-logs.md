@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-
 
 # Gateway activity logs
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway activity logs record the DNS queries, Network packets, and HTTP requests inspected by Gateway. You can also download encrypted [SSH command logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/ssh-command-logs/) for sessions proxied by Gateway.
 
@@ -65,8 +65,8 @@ These settings only apply to logs displayed in Cloudflare One. Logpush data is u
 | --- | --- |
 | **Query name** | Name of the domain that was queried. |
 | **Query ID** | UUID of the query assigned by Cloudflare. |
-| **Email** | Email address of the user who registered the Cloudflare One Client where traffic originated from. If a non-identity on-ramp (such as a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)) or machine-level authentication (such as a [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)) was used, this value will be `non_identity@<team-domain>.cloudflareaccess.com`. |
-| **Action** | The [Action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#actions) Gateway applied to the query (such as Allow or Block). |
+| **Email** | Email address of the user who registered the Cloudflare One Client where traffic originated from. If a non-identity on-ramp (such as a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/)) or machine-level authentication (such as a [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)) was used, this value will be `non_identity@<team-domain>.cloudflareaccess.com`. |
+| **Action** | The [Action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#actions) Gateway applied to the query (such as Allow or Block). |
 | **Time** | Date and time of the DNS query. |
 | **Resolver decision** | The reason why Gateway applied a particular **Action** to the request. Refer to the [list of resolver decisions](#resolver-decisions). |
 | **Resolved IPs** | Resolved IP addresses in the response. |
@@ -76,7 +76,7 @@ These settings only apply to logs displayed in Cloudflare One. Logpush data is u
 
 | Field | Description |
 | --- | --- |
-| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) from where the DNS query was made. |
+| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) from where the DNS query was made. |
 | **Policy name** | Name of the matched policy. |
 | **Policy ID** | ID of the matched policy. |
 | **Policy description** | Description of the matched policy. |
@@ -100,7 +100,7 @@ These settings only apply to logs displayed in Cloudflare One. Logpush data is u
 | --- | --- |
 | **Query ID** | UUID of the query assigned by Cloudflare. |
 | **Query type** | Type of [DNS query ↗︎](https://en.wikipedia.org/wiki/List_of_DNS_record_types). |
-| **Initial query domain categories** | [Content categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) that the domain belongs to. |
+| **Initial query domain categories** | [Content categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) that the domain belongs to. |
 | **Matched categories** | Name of the Gateway policy category that match the domain. |
 | **Matched indicator feed names** | Name of the indicator feeds that matched a Gateway policy. |
 | **Query indicator feed names** | Name of the indicator feeds that a matched domain or IP belongs to. |
@@ -167,7 +167,7 @@ To log failed connections, use [network session logs](https://developers.cloudfl
 | **Source IP** | IP address of the user sending the packet. |
 | **Source Internal IP** | Private IP address assigned by the user's local network. |
 | **Destination IP** | IP address of the packet's target. |
-| **Action** | The Gateway [Action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#actions) taken based on the first rule that matched (such as Allow or Block). |
+| **Action** | The Gateway [Action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#actions) taken based on the first rule that matched (such as Allow or Block). |
 | **Session ID** | ID of the unique session. |
 | **Time** | Date and time of the session. |
 
@@ -175,7 +175,7 @@ To log failed connections, use [network session logs](https://developers.cloudfl
 
 | Field | Description |
 | --- | --- |
-| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) from where the DNS query was made. |
+| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) from where the DNS query was made. |
 | **Policy name** | Name of the matched policy. |
 | **Policy ID** | ID of the policy enforcing the decision Gateway made. |
 | **Policy description** | Description of the matched policy. |
@@ -207,11 +207,11 @@ To log failed connections, use [network session logs](https://developers.cloudfl
 | **Traffic Source** | How the traffic reached Cloudflare, such as the Cloudflare One Client, a [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node, or a [Workers VPC](https://developers.cloudflare.com/workers-vpc/) binding. |
 | **Traffic Destination** | How the traffic left Cloudflare, such as the Internet, a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), or a Mesh node. |
 | **Transport protocol** | Protocol over which the packet was sent. |
-| **Detected Protocol** | The detected [network protocol](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/). |
+| **Detected Protocol** | The detected [network protocol](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/). |
 | **SNI** | Host whose Server Name Indication (SNI) header Gateway will filter traffic against. |
 | **Virtual Network** | [Virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) that the client is connected to. |
 | **Category details** | Category or categories associated with the packet. |
-| **Proxy endpoint** | [PAC file proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) Gateway forwarded traffic to, if applicable. |
+| **Proxy endpoint** | [PAC file proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) Gateway forwarded traffic to, if applicable. |
 | **Application ID** | ID of the application that matched the domain. |
 | **Application name** | Name of the application that matched the domain. |
 
@@ -229,7 +229,7 @@ Gateway does not log HTTP bodies. The exception is error requests: when an HTTP 
 | --- | --- |
 | **Host** | Hostname in the HTTP header for the HTTP request. Gateway will log the SNI in this field if it responded to the request with a Do Not Inspect action. If Gateway does not receive the SNI, this field will be empty. |
 | **Email** | Email address of the user who made the HTTP request. This is generated by the Cloudflare One Client. |
-| **Action** | The Gateway [Action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#actions) taken based on the first rule that matched (such as Allow or Block). |
+| **Action** | The Gateway [Action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#actions) taken based on the first rule that matched (such as Allow or Block). |
 | **Request ID** | Unique ID of the request. |
 | **Time** | Date and time of the HTTP request. |
 | **Source internal IP** | Private IP address assigned by the user's local network. |
@@ -243,7 +243,7 @@ Gateway does not log HTTP bodies. The exception is error requests: when an HTTP 
 
 | Field | Description |
 | --- | --- |
-| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) from where the DNS query was made. |
+| **DNS location** | [User-configured location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) from where the DNS query was made. |
 | **Policy name** | Name of the matched policy. |
 | **Policy ID** | ID of the matched policy. |
 | **Policy description** | Description of the matched policy. |
@@ -282,10 +282,10 @@ Gateway does not log HTTP bodies. The exception is error requests: when an HTTP 
 | **Category details** | Detailed information on the category the blocked file belongs to. |
 | **Application ID** | ID of the application that matched the domain. |
 | **Application name** | Name of the application that matched the domain. |
-| **Categories** | [Content categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) that the domain belongs to. |
-| **Proxy endpoint** | [PAC file proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) Gateway forwarded traffic to, if applicable. |
+| **Categories** | [Content categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) that the domain belongs to. |
+| **Proxy endpoint** | [PAC file proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) Gateway forwarded traffic to, if applicable. |
 | **Virtual Network** | [Virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) that the client is connected to. |
-| **Sandbox scanned** | Status of the [file quarantine](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/). |
+| **Sandbox scanned** | Status of the [file quarantine](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/file-sandboxing/). |
 
 #### File detection details
 
@@ -331,5 +331,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#page","headline":"Gateway activity logs","description":"Review DNS queries, network traffic, and HTTP requests inspected by Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/og.png?v=b9af668e39abd999","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#page","headline":"Gateway activity logs","description":"Review DNS queries, network traffic, and HTTP requests inspected by Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/og.png?v=b9af668e39abd999","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

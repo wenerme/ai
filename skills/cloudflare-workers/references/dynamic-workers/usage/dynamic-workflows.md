@@ -84,8 +84,9 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker-loader",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-12",
+  "compatibility_date": "2026-10-13",
   "worker_loaders": [
     {
       "binding": "LOADER"
@@ -104,8 +105,9 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 ```toml
 name = "my-worker-loader"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 
 [[worker_loaders]]
 binding = "LOADER"

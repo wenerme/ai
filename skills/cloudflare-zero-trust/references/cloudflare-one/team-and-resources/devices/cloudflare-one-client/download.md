@@ -46,6 +46,32 @@ Latest release
 
 </summary>
 
+**Version:** Windows 2026.8.2110.0**Date:** 2026-10-12**Size:** 60.1 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2110.0">Download</a>
+
+#### Release notes
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (13)
+
+</summary>
+
+<details>
+
+<summary>
+
+Windows 2026.8.2100.0
+
+</summary>
+
 **Version:** Windows 2026.8.2100.0**Date:** 2026-10-07**Size:** 60.2 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2100.0">Download</a>
@@ -89,14 +115,6 @@ This release includes the following highlights:
 - A Windows DNS client regression may cause connectivity check failures on systems containing large hosts files. While this release includes a fix to mitigate this issue, users may still experience reduced DNS performance and connectivity check failures.
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (12)
-
-</summary>
 
 <details>
 
@@ -222,7 +240,7 @@ Windows 2026.6.822.0
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
+- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
 - Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices. See the <a href="https://blog.cloudflare.com/mandatory-authentication-mfa/">announcement blog</a> and <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/">documentation</a> for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/">Hardware-backed registration</a> for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
@@ -530,6 +548,32 @@ Latest release
 
 </summary>
 
+**Version:** macOS 2026.8.2110.0**Date:** 2026-10-12**Size:** 166 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.2110.0">Download</a>
+
+#### Release notes
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (11)
+
+</summary>
+
+<details>
+
+<summary>
+
+macOS 2026.8.2100.0
+
+</summary>
+
 **Version:** macOS 2026.8.2100.0**Date:** 2026-10-07**Size:** 166 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.2100.0">Download</a>
@@ -569,14 +613,6 @@ This release includes the following highlights:
 - None
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (10)
-
-</summary>
 
 <details>
 
@@ -664,7 +700,7 @@ macOS 2026.6.822.0
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
+- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/">Hardware-backed registration</a> for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
 - Added new warp-cli debug commands for interactive connection diagnosis. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging">Extra debug logging</a> for details.
@@ -897,6 +933,34 @@ Latest release
 
 </summary>
 
+**Version:** Linux 2026.8.2110.0**Date:** 2026-10-12**Size:** 74.7 MB
+
+AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.8.2110.0">Download</a>
+
+#### Release notes
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (12)
+
+</summary>
+
+<details>
+
+<summary>
+
+Linux 2026.8.2100.0
+
+</summary>
+
 **Version:** Linux 2026.8.2100.0**Date:** 2026-10-07**Size:** 77.2 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
@@ -935,14 +999,6 @@ This release includes the following highlights:
 - When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (11)
-
-</summary>
 
 <details>
 
@@ -1066,7 +1122,7 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
+- The client now applies DNS search suffixes configured in your <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles">device profile</a> / <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies">network policy</a>. Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes">DNS search suffixes</a> for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/">Hardware-backed registration</a> for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
 - Added new warp-cli debug commands for interactive connection diagnosis. See <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging">Extra debug logging</a> for details.

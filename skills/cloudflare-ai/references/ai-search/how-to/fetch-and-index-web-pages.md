@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pa
 
 # Fetch and index single web pages
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [`/content` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
@@ -87,8 +87,9 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "fetch-and-index",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-12",
+  "compatibility_date": "2026-10-13",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -106,8 +107,9 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 ```toml
 name = "fetch-and-index"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-12"
+compatibility_date = "2026-10-13"
 
 [browser]
 binding = "BROWSER"
@@ -453,5 +455,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/og.png?v=a5858494109c3db0","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/#page","headline":"Fetch and index single web pages","description":"Use the Browser Run /content endpoint to fetch a single web page's rendered HTML, then upload it to an AI Search instance's built-in storage so AI Search indexes it for search.","url":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/og.png?v=a5858494109c3db0","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

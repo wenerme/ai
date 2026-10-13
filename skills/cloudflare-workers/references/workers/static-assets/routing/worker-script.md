@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/static-assets/routing/worker-sc
 
 # Worker script
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you have both static assets and a Worker script configured, Cloudflare will first attempt to serve static assets if one matches the incoming request. You can read more about how we match assets in the [HTML handling docs](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 
@@ -42,8 +42,9 @@ If you need to always run your Worker script before serving static assets (for e
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/",
 		"binding": "ASSETS",
@@ -55,8 +56,9 @@ If you need to always run your Worker script before serving static assets (for e
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/"
@@ -130,8 +132,9 @@ You can also configure selective Worker-first routing using an array of route pa
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"main": "./worker/index.ts",
+	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist/",
 		"not_found_handling": "single-page-application",
@@ -144,8 +147,9 @@ You can also configure selective Worker-first routing using an array of route pa
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./worker/index.ts"
+upload_source_maps = true
 
 [assets]
 directory = "./dist/"
@@ -217,5 +221,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/og.png?v=ace0e6d8be5260df","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/og.png?v=ace0e6d8be5260df","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

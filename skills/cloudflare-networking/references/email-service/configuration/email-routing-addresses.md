@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/configuration/email-routi
 
 # Email routing rules and addresses
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Email Routing, a routing rule pairs an email pattern with a destination — either a verified email address or a Worker. You can route emails to either:
 
@@ -134,8 +134,9 @@ This feature requires Wrangler 4.113.0 or later.
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
   "main": "src/index.ts",
+  "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-13",
   "addresses": [
     "support@example.com",
     "*@example.com"
@@ -146,8 +147,9 @@ This feature requires Wrangler 4.113.0 or later.
 ```toml
 name = "my-worker"
 main = "src/index.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 addresses = ["support@example.com", "*@example.com"]
 ```
 
@@ -183,5 +185,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=63b8f54a38ce8f37","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/og.png?v=63b8f54a38ce8f37","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

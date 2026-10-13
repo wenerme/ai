@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # SSH with Access for Infrastructure
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) provides granular control over how users can connect to your SSH servers. Like the [self-managed SSH keys](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/) method, it uses the Cloudflare One Client on user devices and Cloudflare Tunnel on the server to create a secure, private connection through Cloudflare's network. Access for Infrastructure adds application-level policies with per-target and per-username controls, as well as SSH command logging.
 
@@ -31,7 +31,7 @@ Furthermore, Access for Infrastructure replaces traditional SSH keys with short-
 To connect your devices to Cloudflare:
 
 1. [Deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on your devices in Traffic and DNS mode.
-2. [Enable the Gateway proxy for TCP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy).
+2. [Enable the Gateway proxy for TCP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#turn-on-the-gateway-proxy).
 3. [Create device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to determine which devices can enroll to your Zero Trust organization.
 
 ## 3. Route server IPs through the Cloudflare One Client
@@ -310,7 +310,7 @@ The targets in this application are now secured by your infrastructure policies.
 
 ## 6. (Recommended) Configure network policies
 
-Traffic from the Cloudflare One Client to your infrastructure targets is filtered by both [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/network/) and the application-specific Access policies.
+Traffic from the Cloudflare One Client to your infrastructure targets is filtered by both [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/network/) and the application-specific Access policies.
 
 ### Catch-all block policy
 
@@ -318,14 +318,14 @@ To prevent Cloudflare One Client users from accessing your entire private networ
 
 ### Allow Access infrastructure targets
 
-By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
+By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |
    | Access Infrastructure Target | is | *Present* | Allow |
-2. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) using the dashboard or API.
+2. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#order-of-precedence) using the dashboard or API.
 
 This Gateway policy will apply to all Access for Infrastructure targets, including RDP and SSH.
 
@@ -971,5 +971,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/og.png?v=c2e8385d8c51f11a","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/og.png?v=c2e8385d8c51f11a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

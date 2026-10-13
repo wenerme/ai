@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/dns/internal-dns/connectivity/og.png?v=
 
 # Connect to Gateway resolver
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/connectivity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/internal-dns/connectivity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To connect to Cloudflare Gateway resolver - which is [required to reach private resources in Internal DNS](https://developers.cloudflare.com/dns/internal-dns/#architecture-overview) - you can use the following options:
 
-- DNS endpoints supported with [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/)
+- DNS endpoints supported with [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/)
   - DNS over UDP/TCP port 53 (IPv4 or IPv6)
   - DNS over TLS
   - DNS over HTTPS
-- [Proxy Auto-Configuration (PAC) files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)
+- [Proxy Auto-Configuration (PAC) files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/)
 - [WARP device client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 - [Clientless browser isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#filter-dns-queries)
 - [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)
@@ -34,5 +34,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/connectivity/#page","headline":"Connect to Gateway resolver","description":"Connect to the Internal DNS Gateway resolver.","url":"https://developers.cloudflare.com/dns/internal-dns/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/connectivity/og.png?v=a784affe3f64863d","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/connectivity/#page","headline":"Connect to Gateway resolver","description":"Connect to the Internal DNS Gateway resolver.","url":"https://developers.cloudflare.com/dns/internal-dns/connectivity/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/internal-dns/connectivity/og.png?v=a784affe3f64863d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

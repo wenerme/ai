@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # First-time setup
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through setting up the Cloudflare One Client (formerly WARP) for your organization for the first time. After completing these steps, your devices will route traffic through Cloudflare's network, where you can apply security policies.
 
@@ -51,7 +51,7 @@ Choose one of the [different ways](https://developers.cloudflare.com/cloudflare-
 
 Once the Cloudflare One Client is installed on the device, [log in to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/). The user is prompted to authenticate with one of your configured login methods. New organizations include the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as the default, so users can sign in with their Cloudflare account credentials. You can also connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) or enable a [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
 
-Next, build [Secure Web Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to filter DNS, HTTP, and Network traffic on your devices.
+Next, build [Secure Web Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) to filter DNS, HTTP, and Network traffic on your devices.
 
 ## DNS only mode
 
@@ -73,13 +73,13 @@ Create [device enrollment rules](https://developers.cloudflare.com/cloudflare-on
 
 ### 4. (Optional) Add a DNS location to Gateway.
 
-By default, the Cloudflare One Client sends DNS queries to Cloudflare using an encrypted protocol called DNS-over-HTTPS (DoH). If you need to apply different DNS policies to different offices or network locations, [add a DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) to Gateway. Gateway will assign a unique DoH subdomain to each location, which you provide as a parameter when deploying the Cloudflare One Client to your devices.
+By default, the Cloudflare One Client sends DNS queries to Cloudflare using an encrypted protocol called DNS-over-HTTPS (DoH). If you need to apply different DNS policies to different offices or network locations, [add a DNS location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) to Gateway. Gateway will assign a unique DoH subdomain to each location, which you provide as a parameter when deploying the Cloudflare One Client to your devices.
 
 ### 5. Download and deploy the Cloudflare One Client to your devices.
 
 Choose one of the [different ways](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to deploy the Cloudflare One Client, depending on what works best for your organization.
 
-Next, create [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to control how DNS queries from your devices get resolved.
+Next, create [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) to control how DNS queries from your devices get resolved.
 
 Was this helpful?
 
@@ -90,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#page","headline":"First-time setup","description":"First-time setup in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/og.png?v=823b8cf1b73e3b99","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#page","headline":"First-time setup","description":"First-time setup in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/og.png?v=823b8cf1b73e3b99","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

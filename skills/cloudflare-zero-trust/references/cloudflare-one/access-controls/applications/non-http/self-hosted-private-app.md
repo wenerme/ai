@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Secure a private IP or hostname
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure a self-hosted Access application to manage access to specific IPs or hostnames on your private network.
 
@@ -23,9 +23,9 @@ This feature replaces the legacy [private network app type](https://developers.c
 ## Prerequisites
 
 - Private IPs and hostnames are reachable over the Cloudflare One Client, Cloudflare WAN (formerly Magic WAN) or Browser Isolation. For more details, refer to [Connect a private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
-- Private hostnames route to your custom DNS resolver through [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) or [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
+- Private hostnames route to your custom DNS resolver through [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) or [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/).
 - Public IPs and hostnames can be used to define a private application, however the IP or hostname must route through Cloudflare via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/), or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
-- (Optional) Turn on [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) if you want to use Access JWTs to manage [HTTPS application sessions](#https-applications).
+- (Optional) Turn on [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) if you want to use Access JWTs to manage [HTTPS application sessions](#https-applications).
 
 ## Add your application to Access
 
@@ -74,7 +74,7 @@ This feature replaces the legacy [private network app type](https://developers.c
       - **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.
       - **Redirect URL**: Redirect to the specified website.
       - **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
-    - The following settings only apply to private hostnames and require [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/):
+    - The following settings only apply to private hostnames and require [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/):
       - [**Cross-Origin Resource Sharing (CORS) settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/)
       - [**Cookie settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cookie-settings)
       - **401 Response for Service Auth policies**: Return a `401` response code when a user (or machine) makes a request to the application without the correct [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
@@ -88,13 +88,13 @@ The authentication experience depends on the application's protocol.
 
 ### HTTPS applications
 
-If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is turned on and a user is accessing an HTTPS application on port `443`, Cloudflare Access will present a login page in the browser and issue an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) to your origin. This is the same cookie-based authentication flow used by [self-hosted public apps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
+If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) is turned on and a user is accessing an HTTPS application on port `443`, Cloudflare Access will present a login page in the browser and issue an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) to your origin. This is the same cookie-based authentication flow used by [self-hosted public apps](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is turned off, session management is [handled in the Cloudflare One Client](#other-non-http-applications) instead of in the browser.
+If [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) is turned off, session management is [handled in the Cloudflare One Client](#other-non-http-applications) instead of in the browser.
 
 Note
 
-If your origin uses a self-signed or otherwise untrusted certificate, create a Gateway HTTP Allow policy for the origin with the [untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#untrusted-certificates) set to *Pass through*. Otherwise, Gateway will block the connection before it reaches Access.
+If your origin uses a self-signed or otherwise untrusted certificate, create a Gateway HTTP Allow policy for the origin with the [untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#untrusted-certificates) set to *Pass through*. Otherwise, Gateway will block the connection before it reaches Access.
 
 ### Plaintext HTTP applications
 
@@ -112,14 +112,14 @@ While authentication is pending, the Cloudflare icon in the macOS menu bar or Wi
 
 ### Access vs Gateway policies
 
-By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
+By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |
    | Self-hosted Access App with Private Address | is | *Present* | Allow |
-2. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) using the dashboard or API.
+2. Update the policy's [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/#order-of-precedence) using the dashboard or API.
 
 Note
 
@@ -192,5 +192,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/#page","headline":"Secure a private IP or hostname","description":"Secure a private IP or hostname in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/og.png?v=506c529b8a9d6b56","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/#page","headline":"Secure a private IP or hostname","description":"Secure a private IP or hostname in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/og.png?v=506c529b8a9d6b56","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

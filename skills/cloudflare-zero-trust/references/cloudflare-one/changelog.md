@@ -18,6 +18,39 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## 2026-10-12
 
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Windows (version 2026.8.2110.0)**
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
+
+## 2026-10-12
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for macOS (version 2026.8.2110.0)**
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
+
+## 2026-10-12
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Linux (version 2026.8.2110.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.
+
+## 2026-10-12
+
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
@@ -161,7 +194,7 @@ This release includes the following highlights:
 
 ## 2026-10-07
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
 
 
 **Cloudflare Organizations is generally available**
@@ -321,18 +354,18 @@ For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-
 
 ## 2026-09-30
 
-[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Role-based access control for Browser Isolation policies**
 
 [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) support role-based access control (RBAC). Because isolation policies are Gateway HTTP policies with the *Isolate* action, Gateway's account-level and resource-scoped roles apply to them directly.
 
-Use the `Zero Trust HTTP Policies Admin` account-level role to grant access to all HTTP policies in the account. You can also assign a [resource-scoped role](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) to let a team member manage a specific isolation policy without exposing other Gateway resources.
+Use the `Zero Trust HTTP Policies Admin` account-level role to grant access to all HTTP policies in the account. You can also assign a [resource-scoped role](https://developers.cloudflare.com/cloudflare-one/traffic-controls/granular-permissions/) to let a team member manage a specific isolation policy without exposing other Gateway resources.
 
 [Policy settings](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings) such as copy/paste, file download/upload, keyboard, and printing are part of the policy object and follow the same permissions.
 
-For setup instructions, refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/).
+For setup instructions, refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/granular-permissions/).
 
 ## 2026-09-29
 
@@ -401,7 +434,7 @@ This beta release includes the following changes and improvements:
 
 ## 2026-09-29
 
-[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
 
 
 **Identify Mesh, Workers VPC, and Cloudflare Tunnel replicas in network logs**
@@ -476,12 +509,12 @@ To create a portal and connect an MCP client, refer to [MCP server portals](http
 
 ## 2026-09-23
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Traffic Destination selector in Gateway policies**
 
-Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) policies now include a **Traffic Destination** selector that identifies how traffic exits Cloudflare. This allows administrators to write policies that target specific off-ramp methods - for example, applying different rules to traffic destined for the public Internet compared to traffic routed through Cloudflare Tunnel or Cloudflare WAN.
+Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) policies now include a **Traffic Destination** selector that identifies how traffic exits Cloudflare. This allows administrators to write policies that target specific off-ramp methods - for example, applying different rules to traffic destined for the public Internet compared to traffic routed through Cloudflare Tunnel or Cloudflare WAN.
 
 #### Available traffic destination values
 
@@ -499,7 +532,7 @@ The selector uses the `net.offramp.type` API field in both HTTP and Network poli
 | --- | --- |
 | Traffic Destination | `net.offramp.type == "internet"` |
 
-For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
+For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/).
 
 ## 2026-09-23
 
@@ -542,7 +575,7 @@ For configuration instructions, refer to [Manage inactive service tokens](https:
 
 **Private MCP server support for MCP server portals**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now connect to MCP servers available only on your private network. The portal uses [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to reach [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and IP addresses without exposing the MCP server to the public Internet.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now connect to MCP servers available only on your private network. The portal uses [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) to reach [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and IP addresses without exposing the MCP server to the public Internet.
 
 Connect the server network to Cloudflare with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/), or another [Cloudflare One connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/). Configure a private hostname or CIDR route, then turn on **Route traffic through Cloudflare Gateway** when you add the server. OAuth authorization server endpoints, such as the authorization and token endpoints, must be accessible on the public Internet. If Cloudflare automatically registers the OAuth client through Dynamic Client Registration (DCR), the registration endpoint must also be accessible on the public Internet.
 
@@ -1243,12 +1276,12 @@ You can also set up these policies through the [Workers API](https://developers.
 
 ## 2026-08-13
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Detect and control software package downloads with package registry security**
 
-Cloudflare Gateway can now detect software package downloads and give you policy control over supply chain traffic. When a developer or CI/CD pipeline downloads a package through Gateway, the proxy identifies the registry protocol from the request URL and extracts the package ecosystem, name, version, and namespace. You can then write [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using `pkg.*` selectors to allow or block package downloads.
+Cloudflare Gateway can now detect software package downloads and give you policy control over supply chain traffic. When a developer or CI/CD pipeline downloads a package through Gateway, the proxy identifies the registry protocol from the request URL and extracts the package ecosystem, name, version, and namespace. You can then write [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) using `pkg.*` selectors to allow or block package downloads.
 
 #### Supported ecosystems
 
@@ -1278,9 +1311,9 @@ In the dashboard, select **Package Ecosystem** to access the package registry se
 
 Detection is based on the registry protocol rather than the hostname, so it works the same way whether traffic goes to a public registry, a corporate proxy such as Artifactory or Nexus, or a self-hosted mirror.
 
-Package registry security requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to be turned on.
+Package registry security requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) to be turned on.
 
-For more information, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/).
+For more information, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/package-registry-security/).
 
 ## 2026-08-12
 
@@ -1320,7 +1353,7 @@ For setup instructions, refer to [Enroll a FIDO2 key for infrastructure apps](ht
 
 ## 2026-08-12
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **MCP protocol detection and AI Security dashboard**
@@ -1329,7 +1362,7 @@ Cloudflare Gateway now automatically detects [Model Context Protocol (MCP) ↗�
 
 #### MCP policy selector
 
-A new **Is MCP** selector (`experimental.is_mcp`) is available in [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#is-mcp). Use this selector to build Gateway rules that allow, block, or isolate MCP traffic.
+A new **Is MCP** selector (`experimental.is_mcp`) is available in [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#is-mcp). Use this selector to build Gateway rules that allow, block, or isolate MCP traffic.
 
 This selector is currently in beta and may change before general availability.
 
@@ -1352,16 +1385,16 @@ A new **AI security report** dashboard under **Insights & Logs > Dashboards** pr
 
 ![AI security report dashboard showing MCP detection data including total MCP requests, users, servers, and Gateway policies for MCP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2406,height=928,format=webp/_astro/gateway-mcp-dashboard.C9jPahkp.png)
 
-For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/).
 
 ## 2026-08-12
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Traffic Source selector in Gateway policies**
 
-Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) policies now include a **Traffic Source** selector that identifies how traffic reaches Cloudflare. This allows administrators to write policies that target specific on-ramp methods - for example, applying different rules to traffic arriving via the Cloudflare One Client compared to traffic routed through an MCP portal or a proxy endpoint.
+Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) policies now include a **Traffic Source** selector that identifies how traffic reaches Cloudflare. This allows administrators to write policies that target specific on-ramp methods - for example, applying different rules to traffic arriving via the Cloudflare One Client compared to traffic routed through an MCP portal or a proxy endpoint.
 
 #### Available traffic source values
 
@@ -1371,7 +1404,7 @@ Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies
 | Mesh | `mesh` | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) connector |
 | Cloudflare WAN | `cloudflare_wan` | Traffic from [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (Magic WAN) |
 | Clientless RDP | `clientless_rdp` | Traffic from a clientless RDP session |
-| Proxy endpoint | `proxy_endpoint` | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file) |
+| Proxy endpoint | `proxy_endpoint` | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) (PAC file) |
 | Clientless Browser Isolation | `agentless_biso` | Traffic from [clientless Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) |
 | MCP portal | `mcp_portal` | Traffic from an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) |
 
@@ -1389,18 +1422,18 @@ A **Browser Isolation** selector is also available in Network and HTTP policies.
 | --- | --- |
 | Browser Isolation | `net.is_isolated == true` |
 
-For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
+For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/).
 
 ## 2026-08-11
 
-[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Hostname routing is now generally available, with a new public IP range for initial resolved IPs**
 
 [Hostname routing ↗︎](https://blog.cloudflare.com/tunnel-hostname-routing/) is now generally available. Instead of managing static IP lists and routes, you can route traffic by hostname across multiple Cloudflare One connectors:
 
-- **Cloudflare Tunnel**: route a [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) (for example, `wiki.internal.local`) to a private application behind your tunnel, or a [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) (for example, `bank.example.com`) to egress through a specific tunnel and anchor traffic to a dedicated exit node.
+- **Cloudflare Tunnel**: route a [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) (for example, `wiki.internal.local`) to a private application behind your tunnel, or a [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/egress-cloudflared/) (for example, `bank.example.com`) to egress through a specific tunnel and anchor traffic to a dedicated exit node.
 - **Cloudflare Mesh**: attract a [private or public hostname's traffic](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) to a Mesh node.
 
 Alongside GA, the default IPv4 range used for initial resolved IPs (also called token IPs) is changing from a Carrier-Grade NAT (CGNAT) range to a public Cloudflare-owned range:
@@ -1414,10 +1447,10 @@ This is the default range. You can [configure a custom initial resolved IP range
 
 **What is affected:** Initial resolved IPs are used by several features that associate a DNS query with the network connection that follows it:
 
-- [Private](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and [public](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) hostname routing for Cloudflare Tunnel
+- [Private](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) and [public](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/egress-cloudflared/) hostname routing for Cloudflare Tunnel
 - [Hostname routes](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes) for Cloudflare Mesh
 - [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
-- [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
+- [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
 
 You can check your account's current range, or configure a custom range, at any time from **Networking** > **IP addresses** > **Address space** > **Custom IPs**, or using the [Initial Resolved IP Subnet API](<https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/subnets/#(resource)%20zero_trust.networks.subnets.initial_resolved_ip>).
 
@@ -1611,7 +1644,7 @@ For configuration details and client behavior, refer to [Code Mode policies](htt
 
 ## 2026-07-28
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Control Cloudflare Gateway DNS caching with a maximum TTL setting**
@@ -1623,11 +1656,11 @@ You can now set a maximum time-to-live (TTL) for DNS responses returned by Gatew
 The setting is available at two levels:
 
 - **Account level** - In **Traffic Policies** > **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
-- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+- **Per-location** - Each [DNS location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) can inherit the account setting, disable the cap, or override it with a custom value.
 
 Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
 
-For more information, refer to [Maximum DNS TTL](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/).
+For more information, refer to [Maximum DNS TTL](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/maximum-dns-ttl/).
 
 ## 2026-07-21
 
@@ -1673,7 +1706,7 @@ Cloudflare Access now uses the standard browser-based login flow for [private ap
 
 Previously, plaintext HTTP private apps fell back to the same session flow used for SSH, RDP, and other non-HTTP protocols: users got an `Authentication required` pop-up from the Cloudflare One Client, then had to select the notification to open a browser and log in. Now, users hitting an HTTP private app see the Access login page directly in the browser and receive a standard Access [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) on success.
 
-This brings the HTTP experience in line with HTTPS apps (with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) turned on). No configuration change is required. The Cloudflare One Client is still required to route traffic to the private network, but it no longer manages the Access session for HTTP apps.
+This brings the HTTP experience in line with HTTPS apps (with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) turned on). No configuration change is required. The Cloudflare One Client is still required to route traffic to the private network, but it no longer manages the Access session for HTTP apps.
 
 Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloudflare One Client notification flow.
 
@@ -1698,12 +1731,12 @@ For details, refer to [Appliance operations](https://developers.cloudflare.com/c
 
 ## 2026-07-17
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **New header control options for Gateway HTTP policies**
 
-Cloudflare Gateway now supports advanced header control on [Allow policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#allow). Administrators can add, overwrite, or delete headers on matching requests using static values or dynamic variables.
+Cloudflare Gateway now supports advanced header control on [Allow policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#allow). Administrators can add, overwrite, or delete headers on matching requests using static values or dynamic variables.
 
 #### Header operations
 
@@ -1736,7 +1769,7 @@ Header values can include dynamic variables using the `@{...}` syntax. Gateway r
 
 You can mix static text and dynamic variables in a single header value. For example, `user-@{identity.email}` resolves to `user-jdoe@example.com`.
 
-For more information, refer to [Custom headers](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/).
+For more information, refer to [Custom headers](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tenant-control/).
 
 ## 2026-07-16
 
@@ -1753,7 +1786,7 @@ Bulk print is available in Chromium-based browsers and Firefox. For more informa
 
 ## 2026-07-15
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [DNS](https://developers.cloudflare.com/dns/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [DNS](https://developers.cloudflare.com/dns/)
 
 
 **Internal DNS is now generally available**
@@ -1764,7 +1797,7 @@ Bulk print is available in Chromium-based browsers and Firefox. For more informa
 
 - **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
 - **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
-- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) that already governs the rest of your traffic.
 
 Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
 
@@ -1779,7 +1812,7 @@ POST /zones
 }
 ```
 
-Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
 
 ## 2026-07-10
 
@@ -1794,7 +1827,7 @@ Source code detection requires a minimum of 500 characters to evaluate a file. F
 
 Enable and set [confidence levels](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#confidence-thresholds) to tune match sensitivity. A higher confidence level reduces false positives by requiring stronger signals that the content is truly source code. A lower confidence level catches more files at the cost of additional noise.
 
-Source code detection applies to standalone source code files in [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). It does not detect source code embedded within other file types or payloads, such as `.docx` files or chat messages.
+Source code detection applies to standalone source code files in [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/). It does not detect source code embedded within other file types or payloads, such as `.docx` files or chat messages.
 
 For more information, refer to [Source Code predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
 
@@ -2008,11 +2041,11 @@ This feature is in beta and available on all Zero Trust plans. For more informat
 
 **Browser Isolation support for authorization proxy endpoints**
 
-[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) now supports Gateway [authorization proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint). You can apply [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to traffic routed through authorization proxy endpoints, the same way you can for traffic from the Cloudflare One Client.
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) now supports Gateway [authorization proxy endpoints](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#authorization-endpoint). You can apply [HTTP Isolate policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to traffic routed through authorization proxy endpoints, the same way you can for traffic from the Cloudflare One Client.
 
-Previously, only [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint) supported Browser Isolation, and only with non-identity policies. Because authorization proxy endpoints authenticate users through an identity provider, you can now apply identity-based Isolate policies to PAC file-proxied traffic without requiring the Cloudflare One Client.
+Previously, only [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#source-ip-endpoint) supported Browser Isolation, and only with non-identity policies. Because authorization proxy endpoints authenticate users through an identity provider, you can now apply identity-based Isolate policies to PAC file-proxied traffic without requiring the Cloudflare One Client.
 
-To get started, [create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [build an Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/).
+To get started, [create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#authorization-endpoint) and [build an Isolate policy](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/).
 
 ## 2026-07-06
 
@@ -2046,7 +2079,7 @@ You can now add [hostname routes](https://developers.cloudflare.com/mesh/feature
 
    Requests `wiki.internal.local`
 2. DNS query↓
-3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
    Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
 4. [Hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes)↓
@@ -2120,12 +2153,12 @@ For setup instructions, refer to [Enforce MFA for infrastructure applications](h
 
 ## 2026-06-30
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/)
 
 
 **New permissions and roles for Gateway policies and lists**
 
-You can now assign granular, resource-scoped roles for [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) firewall policies and [Zero Trust lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Administrators can delegate access to specific policy types or list management without granting account-wide or product-wide control.
+You can now assign granular, resource-scoped roles for [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) firewall policies and [Zero Trust lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Administrators can delegate access to specific policy types or list management without granting account-wide or product-wide control.
 
 #### What is new
 
@@ -2157,7 +2190,7 @@ You can also now assign *Resource-scoped roles*. These roles are complementary t
 
 #### Get started
 
-- Refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) for setup instructions and supported resources.
+- Refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/granular-permissions/) for setup instructions and supported resources.
 - Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
 
 ## 2026-06-29
@@ -2171,7 +2204,7 @@ A new GA release for the Windows Cloudflare One Client is now available on the [
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
 - Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
@@ -2219,7 +2252,7 @@ A new GA release for the macOS Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the Secure Enclave whenever available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
 - Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
@@ -2262,7 +2295,7 @@ A new GA release for the Linux Cloudflare One Client is now available on the [st
 
 This release introduces multiple features from our previous beta release into stable release, including:
 
-- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
 - Upgraded security of device registration to be hardware-backed. Registration tokens can now be generated in the TPM (with TPM 2.0+) whenever it is available to provide stronger protection against device impersonation. See [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/) for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
 - Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
@@ -2412,7 +2445,7 @@ You can now define custom topics for AI prompt protection. Predefined [AI prompt
 
 You describe a custom topic in natural language, and Cloudflare DLP detects whether a prompt matches that topic based on context rather than specific keywords. For example, a topic that describes confidential merger discussions matches a prompt that paraphrases the deal, even when the prompt never uses the word merger or names the companies involved. To detect literal values such as internal codenames or product identifiers, use a [custom wordlist or pattern entry](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#custom-wordlist-datasets) instead.
 
-Custom topics run through the same [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) path as predefined AI prompt topics. Custom topics are available for ChatGPT, Google Gemini, Perplexity, and Claude.
+Custom topics run through the same [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#granular-controls) path as predefined AI prompt topics. Custom topics are available for ChatGPT, Google Gemini, Perplexity, and Claude.
 
 #### Create a custom AI prompt topic
 
@@ -2430,12 +2463,12 @@ For more information, refer to [AI prompt topics](https://developers.cloudflare.
 
 ## 2026-06-05
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
 
 
 **Filter Workers' public Internet traffic using Gateway policies**
 
-Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) binding with `network_id: "cf1:network"` now egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). This means your existing Zero Trust traffic policies — DNS, HTTP, Network, and egress — extend to traffic that originates from your Workers, the same way they do for WARP users today.
+Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) binding with `network_id: "cf1:network"` now egress to public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/). This means your existing Zero Trust traffic policies — DNS, HTTP, Network, and egress — extend to traffic that originates from your Workers, the same way they do for WARP users today.
 
 1. [Worker](https://developers.cloudflare.com/workers/)
 
@@ -2445,9 +2478,9 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
    Bind via [`cf1:network`](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 4. ↓
-5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+5. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
-   Policies applied: [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+   Policies applied: [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/) [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/)
 6. ↓
 7. ↗Public Internet
 
@@ -2457,7 +2490,7 @@ Workers using a [VPC Network](https://developers.cloudflare.com/workers-vpc/conf
 
 What you get by default:
 
-- **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
+- **Visibility.** Worker egress shows up in Gateway [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) logs alongside your other traffic, so you can audit what your Workers are calling and when.
 - **Enforcement.** Any existing Gateway policy whose selectors match a Worker request will apply — including allow / block lists, DNS category filtering, and HTTP destination rules. If you have already blocked a category for your workforce, your Workers inherit that block.
 
 ```jsonc
@@ -2489,7 +2522,7 @@ const response = await env.EGRESS.fetch("https://api.example.com/data");
 const response = await env.EGRESS.fetch("https://api.example.com/data");
 ```
 
-For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+For configuration options, refer to [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). For policy authoring, refer to [Cloudflare Gateway traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 ## 2026-06-04
 
@@ -2562,7 +2595,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 **Additional Changes and improvements**
 
-- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
 - Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
 - Added new warp-cli debug commands for interactive connection diagnosis. See [Extra debug logging](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#extra-debug-logging) for details.
@@ -2593,7 +2626,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 **Additional Changes and improvements**
 
-- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
+- The client now applies DNS search suffixes configured in your [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles) / [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies). Administrators can push a list of DNS search domains that the client appends to single-label queries, alongside any system-configured suffixes. See [DNS search suffixes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#dns-search-suffixes) for details.
 - Administrators can now control which virtual networks (VNETs) are available to which users via WARP device profile settings in the Zero Trust dashboard. Previously, every VNET in the organization was visible to every device; you can now scope the VNET picker per profile so users only see the networks relevant to them. See [VNET availability](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#vnet-availability) for details.
 - Added mandatory authentication. When enabled via MDM, the Cloudflare One Client blocks all Internet traffic from the moment the machine boots until the user authenticates, closing the visibility gap on newly deployed devices and during re-authentication. See the [announcement blog](https://blog.cloudflare.com/mandatory-authentication-mfa/) and [documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/) for details.
 - Added a local-file signal source for Emergency Disconnect. In addition to the existing HTTPS polling mechanism, administrators can now configure WARP to monitor for a file on disk; the presence of the file triggers an emergency disconnect even if both Cloudflare and your own infrastructure are unreachable. Either signal being asserted triggers disconnect; both must be cleared for normal operation to resume.
@@ -2675,22 +2708,22 @@ Traffic reroutes to the promoted replica immediately. Refer to [High availabilit
 
 ## 2026-05-27
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Write regex using natural language in Cloudflare One**
 
-[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policy selectors which support regular expressions can now be authored in the dashboard using natural language. When building a [policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/) with a regex-based selector (like `matches regex`), you can describe what you want to match in plain English and the Cloudflare Agent will generate and validate a corresponding regular expression.
+[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) policy selectors which support regular expressions can now be authored in the dashboard using natural language. When building a [policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/expression-syntax/) with a regex-based selector (like `matches regex`), you can describe what you want to match in plain English and the Cloudflare Agent will generate and validate a corresponding regular expression.
 
 ![Write policy regex using natural language](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=638,format=webp/_astro/gateway-regex-ai-generation.CtJ0S6FS.png)
 
-To get started, select a regex-compatible selector in the [Gateway policy builder](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and select the icon. You'll see an input field for natural language, such as "any URL starting with /api/v1" or ".com, .net, and .app hosts which contain `gooogle` in the host."
+To get started, select a regex-compatible selector in the [Gateway policy builder](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) and select the icon. You'll see an input field for natural language, such as "any URL starting with /api/v1" or ".com, .net, and .app hosts which contain `gooogle` in the host."
 
 You can also use the tool to explain existing regular expressions. If a policy already contains a regex pattern, you can instantly generate a plain-language description.
 
 A built-in feedback mechanism allows you to rate each interaction to help improve output quality over time.
 
-For more information, refer to [Cloudflare One firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and expect to see the same functionality supported soon in [Data loss prevention profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
+For more information, refer to [Cloudflare One firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) and expect to see the same functionality supported soon in [Data loss prevention profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
 
 ## 2026-05-27
 
@@ -2930,12 +2963,12 @@ For tunnel configuration guidance, refer to [Configure tunnel endpoints](https:/
 
 ## 2026-05-12
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Create Gateway firewall policies with natural language**
 
-Cloudflare Gateway now supports natural language policy creation for [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies. Administrators can describe the outcome they want in plain language, and Cloudflare will generate a complete policy rule that populates the policy builder form.
+Cloudflare Gateway now supports natural language policy creation for [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) firewall policies. Administrators can describe the outcome they want in plain language, and Cloudflare will generate a complete policy rule that populates the policy builder form.
 
 ![Create with AI button on the Gateway firewall policies page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2360,height=1088,format=webp/_astro/gateway-create-with-ai.BYG07coh.png)
 
@@ -2945,7 +2978,7 @@ The generated policy incorporates your account context - including lists, DLP pr
 
 A built-in feedback mechanism allows you to rate each generated policy and provide optional comments, which Cloudflare uses to improve output quality over time.
 
-For more information, refer to [Gateway firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+For more information, refer to [Gateway firewall policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 ## 2026-05-11
 
@@ -3195,18 +3228,18 @@ Digital experience tests also have enhanced configuration options including:
 
 ## 2026-04-29
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway Authorization Proxy and hosted PAC files are now generally available**
 
-The [Gateway Authorization Proxy](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [hosted PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) are now generally available for all plan types.
+The [Gateway Authorization Proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#authorization-endpoint) and [hosted PAC files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#create-a-hosted-pac-file) are now generally available for all plan types.
 
-Authorization proxy endpoints add an identity-aware option alongside the existing [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint), using [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) authentication to verify who a user is before applying Gateway filtering — without installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). Cloudflare-hosted PAC files let you create and distribute PAC files directly from Cloudflare One on Cloudflare's global network.
+Authorization proxy endpoints add an identity-aware option alongside the existing [source IP proxy endpoints](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#source-ip-endpoint), using [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) authentication to verify who a user is before applying Gateway filtering — without installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). Cloudflare-hosted PAC files let you create and distribute PAC files directly from Cloudflare One on Cloudflare's global network.
 
 These features are ideal for environments where deploying a device client is not an option, such as virtual desktops (VDI) or compliance-restricted endpoints.
 
-To get started, refer to the [proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/).
+To get started, refer to the [proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/).
 
 ## 2026-04-28
 
@@ -3285,12 +3318,12 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-04-24
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Network Session Logs now available for all on-ramps**
 
-[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) are now generated for all traffic proxied through Cloudflare Gateway, regardless of on-ramp type. This includes traffic from [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) egress — on-ramps that previously did not generate session logs.
+[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) are now generated for all traffic proxied through Cloudflare Gateway, regardless of on-ramp type. This includes traffic from [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) egress — on-ramps that previously did not generate session logs.
 
 Customers who already consume the `zero_trust_network_sessions` dataset via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/) may see increased log volume if they use these on-ramps.
 
@@ -3327,7 +3360,7 @@ For the full list of current beta limitations, refer to [Traffic steering beta l
 
 ## 2026-04-20
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Network session analytics dashboard**
@@ -3437,7 +3470,7 @@ The Gateway rule builder now features a redesigned user experience, bringing it 
 
 ![New Gateway rule builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=1494,format=webp/_astro/gateway-rule-builder.BxvzsN8s.png)
 
-For more information, refer to [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+For more information, refer to [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 #### Access application builder for self-hosted apps
 
@@ -3501,7 +3534,7 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 - Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
 - Supports [CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) for subnet routing through Mesh nodes.
 - Supports [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) with active-passive replicas for nodes with routes.
-- All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
+- All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
 
 #### What changed
 
@@ -3552,7 +3585,7 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-04-14
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Configure how sensitive data appears in DLP payload logs**
@@ -3759,7 +3792,7 @@ This applies to all Email Security packages:
 
 ## 2026-04-06
 
-[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Organizations](https://developers.cloudflare.com/fundamentals/organizations/)
 
 
 **Organizations is now in public beta for enterprises**
@@ -3772,13 +3805,13 @@ We're announcing the public beta of **Organizations** for enterprise customers, 
 
 **Self-serve onboarding**: Enterprise customers can [create an Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/) in the dashboard and assign accounts where they are already Super Administrators.
 
-**Centralized Account Management**: At launch, every Organization member has the Organization Super Admin role. Organization Super Admins can invite other users and manage any child account under the Organization implicitly. **Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) policies across multiple accounts within your Organization to simplify centralized policy management. **Implicit access**: Members of an Organization automatically receive Super Administrator permissions across child accounts, removing the need for explicit membership on each account. Additional Org-level roles will be available over the course of the year.
+**Centralized Account Management**: At launch, every Organization member has the Organization Super Admin role. Organization Super Admins can invite other users and manage any child account under the Organization implicitly. **Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/tiered-policies/organizations/) policies across multiple accounts within your Organization to simplify centralized policy management. **Implicit access**: Members of an Organization automatically receive Super Administrator permissions across child accounts, removing the need for explicit membership on each account. Additional Org-level roles will be available over the course of the year.
 
 **Unified analytics**: View, filter, and download aggregate HTTP analytics across all Organization child accounts from a single dashboard for centralized visibility into traffic patterns and security events.
 
 **Terraform provider support**: Manage Organizations with infrastructure as code from day one. Provision organizations, assign accounts, and configure settings programmatically with the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
 
-**Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies across multiple accounts within your Organization to simplify centralized policy management.
+**Shared policies**: Share [WAF](https://developers.cloudflare.com/waf/custom-rules/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) policies across multiple accounts within your Organization to simplify centralized policy management.
 
 Note
 
@@ -3866,7 +3899,7 @@ For more information, refer to [Manage portal sessions](https://developers.cloud
 
 ## 2026-04-01
 
-[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Logs UI refresh**
@@ -3981,24 +4014,24 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 ## 2026-03-24
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **OIDC Claims filtering now available in Gateway Firewall, Resolver, and Egress policies**
 
-Cloudflare Gateway now supports [OIDC Claims](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#oidc-claims) as a selector in Firewall, Resolver, and Egress policies. Administrators can use custom OIDC claims from their identity provider to build fine-grained, identity-based traffic policies across all Gateway policy types.
+Cloudflare Gateway now supports [OIDC Claims](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#oidc-claims) as a selector in Firewall, Resolver, and Egress policies. Administrators can use custom OIDC claims from their identity provider to build fine-grained, identity-based traffic policies across all Gateway policy types.
 
 With this update, you can:
 
-- Filter traffic in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies based on OIDC claim values.
-- Apply custom [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) to route DNS queries to specific resolvers depending on a user's OIDC claims.
-- Control [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) to assign dedicated egress IPs based on OIDC claim attributes.
+- Filter traffic in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) firewall policies based on OIDC claim values.
+- Apply custom [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) to route DNS queries to specific resolvers depending on a user's OIDC claims.
+- Control [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/) to assign dedicated egress IPs based on OIDC claim attributes.
 
 For example, you can create a policy that routes traffic differently for users with `department=engineering` in their OIDC claims, or restrict access to certain destinations based on a user's role claim.
 
 To get started, configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) on your identity provider and use the **OIDC Claims** selector in the Gateway policy builder.
 
-For more information, refer to [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/).
+For more information, refer to [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/).
 
 ## 2026-03-20
 
@@ -4036,9 +4069,9 @@ For setup instructions, refer to [Enable managed OAuth](https://developers.cloud
 
 **Route MCP server portal traffic through Cloudflare Gateway**
 
-[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now route traffic through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for richer HTTP request logging and data loss prevention (DLP) scanning.
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now route traffic through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) for richer HTTP request logging and data loss prevention (DLP) scanning.
 
-When Gateway routing is turned on, portal traffic appears in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). You can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to detect and block sensitive data sent to upstream MCP servers.
+When Gateway routing is turned on, portal traffic appears in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). You can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) with [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to detect and block sensitive data sent to upstream MCP servers.
 
 Note
 
@@ -4172,33 +4205,33 @@ For more information, refer to [Use risk scores in Access policies](https://deve
 
 ## 2026-03-04
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway Authorization Proxy and hosted PAC files (open beta)**
 
-The [Gateway Authorization Proxy](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and [PAC file hosting](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) are now in open beta for all plan types.
+The [Gateway Authorization Proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#authorization-endpoint) and [PAC file hosting](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#create-a-hosted-pac-file) are now in open beta for all plan types.
 
-Previously, [proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint) relied on static source IP addresses to authorize traffic, providing no user-level identity in logs or policies. The new authorization proxy replaces IP-based authorization with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) authentication, verifying who a user is before applying Gateway filtering without installing the WARP client.
+Previously, [proxy endpoints](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#source-ip-endpoint) relied on static source IP addresses to authorize traffic, providing no user-level identity in logs or policies. The new authorization proxy replaces IP-based authorization with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) authentication, verifying who a user is before applying Gateway filtering without installing the WARP client.
 
 This is ideal for environments where you cannot deploy a device client, such as virtual desktops (VDI), mergers and acquisitions, or compliance-restricted endpoints.
 
 #### Key capabilities
 
-- **Identity-aware proxy traffic** — Users authenticate through your identity provider (Okta, Microsoft Entra ID, Google Workspace, and others) via Cloudflare Access. Logs now show exactly which user accessed which site, and you can write [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) like "only the Finance team can access this accounting tool."
+- **Identity-aware proxy traffic** — Users authenticate through your identity provider (Okta, Microsoft Entra ID, Google Workspace, and others) via Cloudflare Access. Logs now show exactly which user accessed which site, and you can write [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/) like "only the Finance team can access this accounting tool."
 - **Multiple identity providers** — Display one or multiple login methods simultaneously, giving flexibility for organizations managing users across different identity systems.
-- **Cloudflare-hosted PAC files** — Create and host [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) directly in Cloudflare One with pre-configured templates for Okta and Azure, hosted at `https://pac.cloudflare-gateway.com/<account-id>/<slug>` on Cloudflare's global network.
+- **Cloudflare-hosted PAC files** — Create and host [PAC files](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#create-a-hosted-pac-file) directly in Cloudflare One with pre-configured templates for Okta and Azure, hosted at `https://pac.cloudflare-gateway.com/<account-id>/<slug>` on Cloudflare's global network.
 - **Simplified billing** — Each user occupies a seat, exactly like they do with the Cloudflare One Client. No new metrics to track.
 
 #### Get started
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
-2. [Create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint) and configure Access policies.
-3. [Create a hosted PAC file](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#create-a-hosted-pac-file) or write your own.
-4. [Configure browsers](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#3b-configure-browser-to-use-pac-file) to use the PAC file URL.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic controls** > **Proxy endpoints**.
+2. [Create an authorization proxy endpoint](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#authorization-endpoint) and configure Access policies.
+3. [Create a hosted PAC file](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#create-a-hosted-pac-file) or write your own.
+4. [Configure browsers](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/#3b-configure-browser-to-use-pac-file) to use the PAC file URL.
 5. [Install the Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) for HTTPS inspection.
 
-For more details, refer to the [proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and the [announcement blog post ↗︎](https://blog.cloudflare.com/gateway-authorization-proxy-identity-aware-policies/).
+For more details, refer to the [proxy endpoints documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) and the [announcement blog post ↗︎](https://blog.cloudflare.com/gateway-authorization-proxy-identity-aware-policies/).
 
 ## 2026-03-02
 
@@ -4286,12 +4319,12 @@ MCP server portals is currently in beta.
 
 ## 2026-02-27
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **New protocols added for Gateway Protocol Detection (Beta)**
 
-Gateway [Protocol Detection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/) now supports seven additional protocols in beta:
+Gateway [Protocol Detection](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/) now supports seven additional protocols in beta:
 
 | Protocol | Notes |
 | --- | --- |
@@ -4303,11 +4336,11 @@ Gateway [Protocol Detection](https://developers.cloudflare.com/cloudflare-one/tr
 | LDAP | Lightweight Directory Access Protocol |
 | NTP | Network Time Protocol |
 
-These protocols join the existing set of detected protocols (HTTP, HTTP2, SSH, TLS, DCERPC, MQTT, and TPKT) and can be used with the *Detected Protocol* selector in [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to identify and filter traffic based on the application-layer protocol, without relying on port-based identification.
+These protocols join the existing set of detected protocols (HTTP, HTTP2, SSH, TLS, DCERPC, MQTT, and TPKT) and can be used with the *Detected Protocol* selector in [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) to identify and filter traffic based on the application-layer protocol, without relying on port-based identification.
 
 If protocol detection is enabled on your account, these protocols will automatically be logged when detected in your Gateway network traffic.
 
-For more information on using Protocol Detection, refer to the [Protocol detection documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/).
+For more information on using Protocol Detection, refer to the [Protocol detection documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/).
 
 ## 2026-02-24
 
@@ -4892,7 +4925,7 @@ This applies to all Email Security packages:
 
 **Cloudflare admin activity logs capture creation of DNS over HTTP (DoH) users**
 
-Cloudflare [admin activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) now capture each time a [DNS over HTTP (DoH) user](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/) is created.
+Cloudflare [admin activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) now capture each time a [DNS over HTTP (DoH) user](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/) is created.
 
 These logs can be viewed from the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), pulled via the [Cloudflare API](https://developers.cloudflare.com/api/), and exported through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
@@ -4915,7 +4948,7 @@ For more information, refer to [NetFlow statistics](https://developers.cloudflar
 
 ## 2025-12-17
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - domain level SaaS analytics**
@@ -5208,13 +5241,13 @@ We strongly advise users of this undocumented feature to migrate to one of the f
 
 #### End-user devices
 
-The preferred method for enabling DNS-over-HTTPS on user devices is the [Cloudflare WARP client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). The WARP client automatically secures and proxies all DNS traffic from your device, integrating it with your organization's [Zero Trust policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and [posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+The preferred method for enabling DNS-over-HTTPS on user devices is the [Cloudflare WARP client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). The WARP client automatically secures and proxies all DNS traffic from your device, integrating it with your organization's [Zero Trust policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) and [posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 #### Servers, routers, and IoT devices
 
 For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/mesh/).
 
-Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/mesh/features/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/mesh/features/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 ## 2025-11-06
 
@@ -5256,7 +5289,7 @@ For configuration details, refer to [Designate WAN ports for breakout apps](http
 
 ## 2025-11-06
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Applications to be remapped to the new categories**
@@ -5331,7 +5364,7 @@ We have previously added new application categories to better reflect their cont
 | DHL Express | Shopping | Business |
 | UPS | Shopping | Business |
 
-For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/).
 
 ## 2025-10-28
 
@@ -5374,7 +5407,7 @@ To learn more about managing roles and permissions, refer to the [Manage account
 
 ## 2025-10-28
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **New Application Categories added for HTTP Traffic Management**
@@ -5402,16 +5435,16 @@ We encourage you to use this time to:
 - Review the new category structure.
 - Identify and adjust any existing HTTP policies that reference older categories to ensure a smooth transition.
 
-For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+For more information on creating HTTP policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/).
 
 ## 2025-10-20
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Schedule DNS policies from the UI**
 
-Admins can now create [scheduled DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/) directly from the Zero Trust dashboard, without using the API. You can configure policies to be active during specific, recurring times, such as blocking social media during business hours or gaming sites on school nights.
+Admins can now create [scheduled DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/timed-policies/) directly from the Zero Trust dashboard, without using the API. You can configure policies to be active during specific, recurring times, such as blocking social media during business hours or gaming sites on school nights.
 
 - **Preset Schedules**: Use built-in templates for common scenarios like Business Hours, School Days, Weekends, and more.
 - **Custom Schedules**: Define your own schedule with specific days and up to three non-overlapping time ranges per day.
@@ -5502,7 +5535,7 @@ This release contains minor fixes, improvements, and new features including Path
 
 ## 2025-10-10
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **New domain categories added**
@@ -5517,7 +5550,7 @@ We have added three new domain categories under the Technology parent category, 
 | 26 | Technology | 192 | Remote Access |
 | 26 | Technology | 193 | Shareware/Freeware |
 
-Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
+Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) to learn more.
 
 ## 2025-10-02
 
@@ -5563,7 +5596,7 @@ We have expanded Gateway's file type controls to include:
 - Microsoft Software Installer (msix, appx)
 - Apple Software Package (pkg)
 
-You can find these new options within the [*Upload File Types* and *Download File Types* selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
+You can find these new options within the [*Upload File Types* and *Download File Types* selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
 
 - **System**: *Apple Disk Image (dmg)*
 - **Executable**: *Microsoft Software Installer (msix)*, *Microsoft Software Installer (appx)*, *Apple Software Package (pkg)*
@@ -5573,27 +5606,27 @@ To ensure these file types are blocked effectively, please note the following be
 - DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
 - MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type *Unscannable*. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
 
-To get started, go to your HTTP policies in Zero Trust. For a full list of file types, refer to [supported file types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#supported-file-types).
+To get started, go to your HTTP policies in Zero Trust. For a full list of file types, refer to [supported file types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#supported-file-types).
 
 ## 2025-09-30
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Application granular controls for operations in SaaS applications**
 
-Gateway users can now apply granular controls to their file sharing and AI chat applications through [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies).
+Gateway users can now apply granular controls to their file sharing and AI chat applications through [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies).
 
 The new feature offers two methods of controlling SaaS applications:
 
 - **Application Controls** are curated groupings of Operations which provide an easy way for users to achieve a specific outcome. Application Controls may include *Upload*, *Download*, *Prompt*, *Voice*, and *Share* depending on the application.
 - **Operations** are controls aligned to the most granular action a user can take. This provides a fine-grained approach to enforcing policy and generally aligns to the SaaS providers API specifications in naming and function.
 
-Get started using [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls) and refer to the list of [supported applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#compatible-applications).
+Get started using [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/granular-controls) and refer to the list of [supported applications](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/granular-controls/#compatible-applications).
 
 ## 2025-09-25
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
 
 
 **Refine DLP Scans with New Body Phase Selector**
@@ -5609,7 +5642,7 @@ For example, consider a policy that blocks Social Security Numbers (SSNs). Previ
 
 All policies without this selector will continue to scan both request and response bodies to ensure continued protection.
 
-For more information, refer to [Gateway HTTP policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#body-phase).
+For more information, refer to [Gateway HTTP policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#body-phase).
 
 ## 2025-09-23
 
@@ -5686,7 +5719,7 @@ Previously, Tunnel routes could only be defined by IP address or [CIDR range](ht
 - **Precise Egress Control**: Route traffic for public hostnames (e.g., `bank.example.com`) through a specific Tunnel to enforce a dedicated source IP, solving the IP allowlist problem for third-party services.
 - **No More IP Lists**: This feature makes the workaround of maintaining dynamic IP Lists for Tunnel connections obsolete.
 
-Get started in the Tunnels section of the Zero Trust dashboard with your first [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) route.
+Get started in the Tunnels section of the Zero Trust dashboard with your first [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/egress-cloudflared/) route.
 
 Learn more in our [blog post ↗︎](https://blog.cloudflare.com/tunnel-hostname-routing/).
 
@@ -5748,16 +5781,16 @@ We’re expanding the list of processing locations to match our [Data Localizati
 
 ## 2025-09-11
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 
 **DNS filtering for private network onramps**
 
 [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) and [WARP Connector](https://developers.cloudflare.com/mesh/features/routes/#dns-filtering) users can now securely route their DNS traffic to the Gateway resolver without exposing traffic to the public Internet.
 
-Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
+Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/#selector-prerequisites).
 
-To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use *Source Internal IP* as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
+To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use *Source Internal IP* as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
 
 ## 2025-09-08
 
@@ -5897,7 +5930,7 @@ Customers can test the new DEX MCP server in less than one minute. To learn more
 
 ## 2025-08-27
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **Shadow IT - SaaS analytics dashboard**
@@ -5993,7 +6026,7 @@ To help you apply these topics quickly, we have also released five new predefine
 
 3. **Granular Guardrails**
 
-   You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
+   You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
 4. **Full Prompt Logging**
 
    To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
@@ -6002,7 +6035,7 @@ AI prompt protection is now available in open beta. To learn more about it, read
 
 ## 2025-08-21
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway BYOIP Dedicated Egress IPs now available.**
@@ -6011,11 +6044,11 @@ Enterprise Gateway users can now use Bring Your Own IP (BYOIP) for dedicated egr
 
 Admins can now onboard and use their own IPv4 or IPv6 prefixes to egress traffic from Cloudflare, delivering greater control, flexibility, and compliance for network traffic.
 
-Get started by following the [BYOIP onboarding process](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip). Once your IPs are onboarded, go to **Gateway** > **Egress policies** and select or create an egress policy. In **Select an egress IP**, choose *Use dedicated egress IPs (Cloudflare or BYOIP)*, then select your BYOIP address from the dropdown menu.
+Get started by following the [BYOIP onboarding process](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip). Once your IPs are onboarded, go to **Gateway** > **Egress policies** and select or create an egress policy. In **Select an egress IP**, choose *Use dedicated egress IPs (Cloudflare or BYOIP)*, then select your BYOIP address from the dropdown menu.
 
 ![Screenshot of a dropdown menu adding a BYOIP IPv4 address as a dedicated egress IP in a Gateway egress policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=933,height=459,format=webp/_astro/Gateway-byoip-dedicated-egress-ips.D0pzLAbV.png)
 
-For more information, refer to [BYOIP for dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip).
+For more information, refer to [BYOIP for dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip).
 
 ## 2025-08-15
 
@@ -6088,7 +6121,7 @@ Specifically, these two GraphQL endpoints are now compatible with CMB EU:
 
 ## 2025-07-28
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Scam domain category introduced under Security Threats**
@@ -6101,31 +6134,31 @@ We have introduced a new Security Threat category called **Scam**. Relevant doma
 | --- | --- | --- | --- |
 | 21 | Security Threats | 191 | Scam |
 
-Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
+Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) to learn more.
 
 ## 2025-07-24
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway HTTP Filtering on all ports available in open BETA**
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) can now apply [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to all proxied HTTP requests, not just traffic on standard HTTP (`80`) and HTTPS (`443`) ports. This means all requests can now be filtered by [A/V scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/), [file sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/), [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#data-in-transit), and more.
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) can now apply [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) to all proxied HTTP requests, not just traffic on standard HTTP (`80`) and HTTPS (`443`) ports. This means all requests can now be filtered by [A/V scanning](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/antivirus-scanning/), [file sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/file-sandboxing/), [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#data-in-transit), and more.
 
-You can turn this [setting](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports) on by going to **Settings** > **Network** > **Firewall** and choosing *Inspect on all ports*.
+You can turn this [setting](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/#inspect-on-all-ports) on by going to **Settings** > **Network** > **Firewall** and choosing *Inspect on all ports*.
 
 ![HTTP Inspection on all ports setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=535,format=webp/_astro/Gateway-Inspection-all-ports.CCmwX6D0.png)
 
-To learn more, refer to [Inspect on all ports (Beta)](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports).
+To learn more, refer to [Inspect on all ports (Beta)](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/#inspect-on-all-ports).
 
 ## 2025-07-22
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Google Bard Application replaced by Gemini**
 
-The **Google Bard** application (ID: 1198) has been deprecated and fully removed from the system. It has been replaced by the **Gemini** application (ID: 1340). Any existing Gateway policies that reference the old Google Bard application will no longer function. To ensure your policies continue to work as intended, you should update them to use the new Gemini application. We recommend replacing all instances of the deprecated Bard application with the new Gemini application in your Gateway policies. For more information about application policies, please see the [Cloudflare Gateway documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+The **Google Bard** application (ID: 1198) has been deprecated and fully removed from the system. It has been replaced by the **Gemini** application (ID: 1340). Any existing Gateway policies that reference the old Google Bard application will no longer function. To ensure your policies continue to work as intended, you should update them to use the new Gemini application. We recommend replacing all instances of the deprecated Bard application with the new Gemini application in your Gateway policies. For more information about application policies, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/).
 
 ## 2025-07-21
 
@@ -6319,12 +6352,12 @@ To access the new dashboard, log in to [Cloudflare One ↗︎](https://one.dash.
 
 ## 2025-06-18
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway will now evaluate Network policies before HTTP policies from July 14th, 2025**
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) will now evaluate [Network (Layer 4) policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) **before** [HTTP (Layer 7) policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). This change preserves your existing security posture and does not affect which traffic is filtered — but it may impact how notifications are displayed to end users.
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) will now evaluate [Network (Layer 4) policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) **before** [HTTP (Layer 7) policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/). This change preserves your existing security posture and does not affect which traffic is filtered — but it may impact how notifications are displayed to end users.
 
 This change will roll out progressively between **July 14–18, 2025**. If you use HTTP policies, we recommend reviewing your configuration ahead of rollout to ensure the user experience remains consistent.
 
@@ -6367,7 +6400,7 @@ This update is based on user feedback and aims to:
 
 ---
 
-To learn more, visit the [Gateway order of enforcement documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/).
+To learn more, visit the [Gateway order of enforcement documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/).
 
 ## 2025-06-05
 
@@ -6388,7 +6421,7 @@ Both features are accessible in the Cloudflare [Zero Trust dashboard ↗︎](htt
 
 ## 2025-05-29
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
 **New Gateway Analytics in the Cloudflare One Dashboard**
@@ -6408,7 +6441,7 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗�
 
 ## 2025-05-27
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Gateway Protocol Detection Now Available for Pay-as-you-go and Free Plans**
@@ -6417,7 +6450,7 @@ All Cloudflare One Gateway users can now use Protocol detection logging and filt
 
 With Protocol Detection, admins can identify and enforce policies on traffic proxied through Gateway based on the underlying network protocol (for example, HTTP, TLS, or SSH), enabling more granular traffic control and security visibility no matter your plan tier.
 
-This feature is available to enable in your account network settings for all accounts. For more information on using Protocol Detection, refer to the [Protocol detection documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/).
+This feature is available to enable in your account network settings for all accounts. For more information on using Protocol Detection, refer to the [Protocol detection documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/protocol-detection/).
 
 ## 2025-05-18
 
@@ -6432,7 +6465,7 @@ This feature is available to enable in your account network settings for all acc
 
 To view all available applications, log in to your Cloudflare [Zero Trust dashboard ↗︎](https://one.dash.cloudflare.com/), navigate to the **App Library** under **My Team**.
 
-For more information on creating Gateway policies, see our [Gateway policy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+For more information on creating Gateway policies, see our [Gateway policy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 ## 2025-05-16
 
@@ -6486,7 +6519,7 @@ This feature is available across these Email security packages:
 
 ## 2025-05-14
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Domain Categories improvements**
@@ -6511,7 +6544,7 @@ This feature is available across these Email security packages:
 | Government | Government/Legal |
 | Redirect | URL Alias/Redirect |
 
-Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) to learn more.
+Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflare-one/traffic-controls/domain-categories/) to learn more.
 
 ## 2025-05-13
 
@@ -6526,7 +6559,7 @@ With expanded support for major IdPs like Okta and Azure AD, this enhancement de
 
 ## 2025-05-13
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **New Applications Added for DNS Filtering**
@@ -6539,7 +6572,7 @@ With this update, you can:
 - Manage outbound traffic more effectively
 - Improve your organization's security and compliance posture
 
-For more information on creating DNS policies, see our [DNS policy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/).
+For more information on creating DNS policies, see our [DNS policy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/).
 
 ## 2025-05-12
 
@@ -6651,7 +6684,7 @@ For configuration details, refer to [DHCP server](https://developers.cloudflare.
 
 ## 2025-04-28
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **FQDN Filtering For Gateway Egress Policies**
@@ -6660,7 +6693,7 @@ Cloudflare One administrators can now control which egress IP is used based on a
 
 - Host, Domain, Content Categories, and Application selectors are now available in the Gateway Egress policy builder in beta.
 - During the beta period, you can use these selectors with traffic on-ramped to Gateway with the WARP client, proxy endpoints (commonly deployed with PAC files), or Cloudflare Browser Isolation.
-  - For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
+  - For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/#limitations).
 
 ![Egress by FQDN and Hostname](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=841,height=1045,format=webp/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8.png)
 
@@ -6690,7 +6723,7 @@ ICD-10 dataset remains available for use.
 
 ## 2025-04-11
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **HTTP redirect and custom block page redirect**
@@ -6700,7 +6733,7 @@ You can now use more flexible redirect capabilities in Cloudflare One with Gatew
 - A new **Redirect** action is available in the HTTP policy builder, allowing admins to redirect users to any URL when their request matches a policy. You can choose to preserve the original URL and query string, and optionally include policy context via query parameters.
 - For **Block** actions, admins can now configure a custom URL to display when access is denied. This block page redirect is set at the account level and can be overridden in DNS or HTTP policies. Policy context can also be passed along in the URL.
 
-Learn more in our documentation for [HTTP Redirect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#redirect) and [Block page redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page).
+Learn more in our documentation for [HTTP Redirect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#redirect) and [Block page redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page).
 
 ## 2025-04-09
 
@@ -6739,21 +6772,21 @@ This feature is available across these Email security packages:
 
 ## 2025-03-21
 
-[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Secure DNS Locations Management User Role**
 
-We're excited to introduce the [**Cloudflare Zero Trust Secure DNS Locations Write role**](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#secure-dns-locations), designed to provide DNS filtering customers with granular control over third-party access when configuring their Protective DNS (PDNS) solutions.
+We're excited to introduce the [**Cloudflare Zero Trust Secure DNS Locations Write role**](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/#secure-dns-locations), designed to provide DNS filtering customers with granular control over third-party access when configuring their Protective DNS (PDNS) solutions.
 
 Many DNS filtering customers rely on external service partners to manage their DNS location endpoints. This role allows you to grant access to external parties to administer DNS locations without overprovisioning their permissions.
 
 **Secure DNS Location Requirements:**
 
-- Mandate usage of [Bring your own DNS resolver IP addresses ↗︎](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/#bring-your-own-dns-resolver-ip) if available on the account.
+- Mandate usage of [Bring your own DNS resolver IP addresses](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-resolver-ips/#bring-your-own-dns-resolver-ip) if available on the account.
 - Require source network filtering for IPv4/IPv6/DoT endpoints; token authentication or source network filtering for the DoH endpoint.
 
-You can assign the new role via Cloudflare Dashboard (`Manage Accounts > Members`) or via API. For more information, refer to the [Secure DNS Locations documentation ↗︎](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#secure-dns-locations).
+You can assign the new role via Cloudflare Dashboard (`Manage Accounts > Members`) or via API. For more information, refer to the [Secure DNS Locations documentation](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/#secure-dns-locations).
 
 ## 2025-03-17
 
@@ -6996,21 +7029,21 @@ This feature is available across these Email security packages:
 
 ## 2025-02-03
 
-[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 
 **Block files that are password-protected, compressed, or otherwise unscannable.**
 
 Gateway HTTP policies can now block files that are password-protected, compressed, or otherwise unscannable.
 
-These unscannable files are now matched with the [Download and Upload File Types traffic selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) for HTTP policies:
+These unscannable files are now matched with the [Download and Upload File Types traffic selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#download-and-upload-file-types) for HTTP policies:
 
 - Password-protected Microsoft Office document
 - Password-protected PDF
 - Password-protected ZIP archive
 - Unscannable ZIP archive
 
-To get started inspecting and modifying behavior based on these and other rules, refer to [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
+To get started inspecting and modifying behavior based on these and other rules, refer to [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/).
 
 ## 2025-01-20
 
@@ -7265,7 +7298,7 @@ Next, configure Okta to receive your risk scores.
 
 ## 2024-06-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/) [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) [Email security](https://developers.cloudflare.com/cloudflare-one/email-security/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/) [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Network Flow](https://developers.cloudflare.com/network-flow/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Explore product updates for Cloudflare One**

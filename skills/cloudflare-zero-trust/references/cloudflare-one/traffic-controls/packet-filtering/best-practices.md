@@ -1,0 +1,35 @@
+---
+description: How Best practices works in Gateway.
+title: Best practices
+image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/og.png?v=7cc188f2cbe2feef
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Best practices
+
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+By default, Cloudflare Network Firewall allows all incoming (ingress) traffic that has passed through Cloudflare's core DDoS mitigations. To reduce your exposure to attacks and prevent unwanted traffic from reaching your network, configure rules using the following guidelines.
+
+If you are setting up firewall rules for the first time, start with the [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/minimal-ruleset/). If you have existing on-premises or edge firewall rules, the best approach is to replicate those rules in Network Firewall. If you are unable to export your current firewall rules, contact your Cloudflare Implementation Manager for help translating the rules into Network Firewall rules.
+
+- [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/minimal-ruleset/)
+- [Extended ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/extended-ruleset/)
+- [Magic Transit egress](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/magic-transit-egress/)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/#page","headline":"Best practices","description":"How Best practices works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/best-practices/og.png?v=7cc188f2cbe2feef","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

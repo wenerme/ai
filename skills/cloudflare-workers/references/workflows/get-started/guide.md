@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/get-started/guide/og.png?v=96
 
 # Build your first Workflow
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workflows allow you to build durable, multi-step applications using the Workers platform. A Workflow can automatically retry, persist state, run for hours or days, and coordinate between third-party APIs.
 
@@ -161,8 +161,9 @@ In your project directory, C3 will have generated the following:
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "my-workflow",
    	"main": "src/index.ts",
+       "upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-12",
+   	"compatibility_date": "2026-10-13",
    	"observability": {
    		"enabled": true
    	},
@@ -180,8 +181,9 @@ In your project directory, C3 will have generated the following:
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "my-workflow"
    main = "src/index.ts"
+   upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-12"
+   compatibility_date = "2026-10-13"
 
    [observability]
    enabled = true
@@ -201,8 +203,9 @@ In your project directory, C3 will have generated the following:
      "$schema": "node_modules/wrangler/config-schema.json",
      "name": "my-workflow",
      "main": "src/index.ts",
+     "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-12",
+     "compatibility_date": "2026-10-13",
      "workflows": [
        {
          "name": "my-workflow",
@@ -218,8 +221,9 @@ In your project directory, C3 will have generated the following:
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "my-workflow"
    main = "src/index.ts"
+   upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-12"
+   compatibility_date = "2026-10-13"
 
    [[workflows]]
    name = "my-workflow"
@@ -350,5 +354,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/get-started/guide/og.png?v=96c1b93bf642b79e","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/get-started/guide/og.png?v=96c1b93bf642b79e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

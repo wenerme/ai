@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/sase/ze
 
 # Zero Trust and Virtual Desktop Infrastructure
 
-Last updated Nov 21, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -93,7 +93,7 @@ Cloudflare's SASE platform is capable of much more than replacing VPNs and bolst
 
 ## Summary
 
-As shown, we have seen several ways to incorporate Cloudflare's Zero Trust services with your existing VDI, either by replacing it completely in favor of Remote Browser Isolation technology or further securing it with our [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) services.
+As shown, we have seen several ways to incorporate Cloudflare's Zero Trust services with your existing VDI, either by replacing it completely in favor of Remote Browser Isolation technology or further securing it with our [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) or [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) services.
 
 For more thorough background, explanation and action steps to a smooth migration be sure to read the following resources:
 
@@ -102,8 +102,8 @@ For more thorough background, explanation and action steps to a smooth migration
 - [Connect to private network services with Browser Isolation ↗︎](https://blog.cloudflare.com/browser-isolation-private-network/)
 - [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation)
 - [Determine When to use PAC Files](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
-- [Agentless DNS Configurations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/)
-- [PAC Files for Agentless HTTP Filtering](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)
+- [Agentless DNS Configurations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/)
+- [PAC Files for Agentless HTTP Filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/)
 
 As always, if you have any questions on these services, be sure to reach out to your Cloudflare team or contact us to [talk to an expert ↗︎](https://www.cloudflare.com/products/zero-trust/plans/enterprise/).
 
@@ -116,5 +116,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/#page","headline":"Zero Trust and Virtual Desktop Infrastructure","description":"This document provides a reference and guidance for using Cloudflare's Zero Trust services. It offers a vast improvement over remote access to web applications with greater security.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/og.png?v=4fd95cb88c3c72ec","dateModified":"2025-11-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/#page","headline":"Zero Trust and Virtual Desktop Infrastructure","description":"This document provides a reference and guidance for using Cloudflare's Zero Trust services. It offers a vast improvement over remote access to web applications with greater security.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/og.png?v=4fd95cb88c3c72ec","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

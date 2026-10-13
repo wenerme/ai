@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/workers/examples/spa-shell/og.png?v=f91
 
 Use HTMLRewriter to inject bootstrap data into an SPA shell — whether the shell is served from Workers Static Assets or fetched from an external origin.
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/spa-shell/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/spa-shell/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses a Worker and [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) to inject prefetched API data into a single-page application (SPA) shell. The Worker fetches bootstrap data in parallel with the HTML shell and streams the result to the browser, so the SPA has everything it needs before its JavaScript runs.
 
@@ -41,8 +41,9 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 {
 	"name": "my-spa",
 	"main": "src/worker.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./dist",
@@ -56,8 +57,9 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 ```toml
 name = "my-spa"
 main = "src/worker.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -207,8 +209,9 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 {
 	"name": "my-spa-proxy",
 	"main": "src/worker.ts",
+	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
 		"SPA_ORIGIN": "https://my-spa.example-hosting.com",
@@ -220,8 +223,9 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 ```toml
 name = "my-spa-proxy"
 main = "src/worker.ts"
+upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -479,5 +483,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/spa-shell/#page","headline":"Single Page App (SPA) shell with bootstrap data","description":"Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.","url":"https://developers.cloudflare.com/workers/examples/spa-shell/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/spa-shell/og.png?v=f911d2fce983ffa2","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SPA"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/examples/spa-shell/#page","headline":"Single Page App (SPA) shell with bootstrap data","description":"Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.","url":"https://developers.cloudflare.com/workers/examples/spa-shell/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/examples/spa-shell/og.png?v=f911d2fce983ffa2","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SPA"]}
 ```

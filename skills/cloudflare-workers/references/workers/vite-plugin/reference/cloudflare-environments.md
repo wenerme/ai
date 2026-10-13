@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflar
 
 # Cloudflare Environments
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
@@ -21,8 +21,9 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"main": "./src/index.ts",
+	"upload_source_maps": true,
 	"vars": {
 		"MY_VAR": "Top-level var"
 	},
@@ -45,8 +46,9 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./src/index.ts"
+upload_source_maps = true
 
 [vars]
 MY_VAR = "Top-level var"
@@ -65,6 +67,7 @@ If you run `CLOUDFLARE_ENV=production vite build` then the output `wrangler.json
 	"name": "my-worker",
 	"compatibility_date": "2025-04-03",
 	"main": "index.js",
+	"upload_source_maps": true,
 	"vars": { "MY_VAR": "Production var" }
 }
 ```
@@ -137,8 +140,9 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-13",
 	"main": "./src/index.ts",
+	"upload_source_maps": true,
 	"vars": {
 		"MY_VAR": "Top-level var"
 	},
@@ -161,8 +165,9 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-13"
 main = "./src/index.ts"
+upload_source_maps = true
 
 [vars]
 MY_VAR = "Top-level var"
@@ -201,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/#page","headline":"Cloudflare Environments","description":"Using Cloudflare environments with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/og.png?v=67f3d0d54c5a4476","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/#page","headline":"Cloudflare Environments","description":"Using Cloudflare environments with the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/og.png?v=67f3d0d54c5a4476","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

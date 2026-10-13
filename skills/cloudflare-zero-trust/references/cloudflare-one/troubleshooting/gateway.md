@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/
 
 # Gateway
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies.
 
@@ -45,7 +45,7 @@ If users see certificate warnings for every page, ensure that the [Cloudflare ro
 
 If you do not see analytics on the Gateway Overview page:
 
-- **Verify DNS traffic**: Ensure your devices are actually sending queries to Gateway. Check your [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) and verify the source IPv4 address.
+- **Verify DNS traffic**: Ensure your devices are actually sending queries to Gateway. Check your [DNS locations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) and verify the source IPv4 address.
 - **Check other resolvers**: Ensure that no other DNS resolvers are configured on the device, as they might be bypassing Gateway.
 - **Wait for processing**: It can take up to 5 minutes for analytics to appear in the dashboard.
 
@@ -89,7 +89,7 @@ A common point of confusion is how Gateway evaluates its different policy types 
 
 You have a high-precedence Allow or Do Not Scan policy for a specific application (such as Allow finance.example.com), but Gateway still block traffic with a low-precedence Block policy (such as Block All High-Risk Sites).
 
-The most important concept is [Gateway policy precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/), which Gateway enforces based on the policy's order number. A lower order number in the list means a higher precedence. Gateway stops processing further policies when it encounters the first rule that matches.
+The most important concept is [Gateway policy precedence](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/), which Gateway enforces based on the policy's order number. A lower order number in the list means a higher precedence. Gateway stops processing further policies when it encounters the first rule that matches.
 
 To resolve Gateway policy precedence issues:
 
@@ -100,7 +100,7 @@ To resolve Gateway policy precedence issues:
 
 ## TLS decryption breaks applications
 
-Turning on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) is required for Gateway features such as Data Loss Prevention (DLP), Browser Isolation, and application-aware HTTP policies. However, it can cause issues with certain types of software.
+Turning on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) is required for Gateway features such as Data Loss Prevention (DLP), Browser Isolation, and application-aware HTTP policies. However, it can cause issues with certain types of software.
 
 ### Symptom: command-line tools (CLI tools) or native applications fail with certificate errors
 
@@ -148,7 +148,7 @@ You have configured Gateway to resolve internal hostnames, but users are unable 
 
 For more information, refer to the full Gateway troubleshooting guide.
 
-[Full Gateway troubleshooting guide ❯](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/)
+[Full Gateway troubleshooting guide ❯](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/)
 
 Was this helpful?
 
@@ -159,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/#page","headline":"Gateway","description":"Gateway for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/og.png?v=99a900cbe73b71a8","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/#page","headline":"Gateway","description":"Gateway for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/gateway/og.png?v=99a900cbe73b71a8","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
