@@ -25,6 +25,7 @@ You can use:
 
 - Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7129) as a supported model on September 28, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model on October 7, 2026.
+- Nemotron 3 Ultra [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260904) as a supported model on October 8, 2026.
 
 GitLab-supported models offer different levels of functionality for GitLab Duo features,
 depending on the specific model and feature combination.
@@ -73,6 +74,7 @@ Any models supported on GitLab.com should also work on GitLab Duo Self-Hosted.
 | Mistral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | Mistral | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Nemotron | [Nemotron 3 Ultra 550B-A55B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
 | Qwen | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 
 ### Compatible models

@@ -55,7 +55,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 1. **Download Codex**
@@ -161,23 +161,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
 Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

@@ -56,7 +56,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
    ```
 
 ## Cloudflare platform access
@@ -159,19 +159,19 @@ Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Tips

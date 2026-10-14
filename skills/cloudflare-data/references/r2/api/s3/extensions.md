@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/api/s3/extensions/og.png?v=892da17f0
 
 # Extensions
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 implements some extensions on top of the basic S3 API. This page outlines these additional, available features. Some of the functionality described in this page requires setting a custom header. For examples on how to do so, refer to [Configure custom headers](https://developers.cloudflare.com/r2/examples/aws/custom-header).
 
@@ -61,6 +61,14 @@ This is only useful if you are creating buckets on demand because you do not kno
 ### cf-create-bucket-if-missing
 
 Add a `cf-create-bucket-if-missing` header with the value `true` to implicitly create the bucket if it does not exist yet. Refer to [Auto-creating buckets on upload](#auto-creating-buckets-on-upload) for a more detailed explanation of when to add this header.
+
+### Conditional operations in `PutObject`
+
+`PutObject` supports the standard S3 conditional headers `If-Match`, `If-None-Match`, `If-Modified-Since`, and `If-Unmodified-Since`. `If-None-Match: *` in particular is commonly used to implement "create-once" semantics: the write only succeeds if the key does not exist yet.
+
+These conditions are evaluated atomically, as part of the same write that commits the object. If two or more clients concurrently issue `PutObject` with `If-None-Match: *` for a previously absent key, at most one request succeeds and every other request fails with a `412 PreconditionFailed` error code. Competing conditional writes can never both observe success.
+
+A negative read (`NoSuchKey`) is not proof that a prior write failed if that write's outcome is unknown — an in-flight write may still commit after the read returns. Refer to [Consistency model](https://developers.cloudflare.com/r2/reference/consistency/#negative-reads-and-in-flight-writes) for details.
 
 ## CopyObject
 
@@ -120,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/extensions/#page","headline":"Extensions","description":"R2 extensions to the S3 API, including Unicode metadata and custom headers.","url":"https://developers.cloudflare.com/r2/api/s3/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/s3/extensions/og.png?v=892da17f0eccc604","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/extensions/#page","headline":"Extensions","description":"R2 extensions to the S3 API, including Unicode metadata and custom headers.","url":"https://developers.cloudflare.com/r2/api/s3/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/s3/extensions/og.png?v=892da17f0eccc604","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

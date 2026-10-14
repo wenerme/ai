@@ -4,7 +4,7 @@ Business logic scanning uses an AI agent to find authorization and access contro
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
-- Status: Experiment
+- Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 [with feature flags](../../../administration/feature_flags/_index.md) named `bl_security_analyzer` (`experiment` type) and `agentic_analyzer_security_ingestion` (`gitlab_com_derisk` type). Disabled by default.
 - Starting a scan from GitLab Duo Chat also requires the [feature flag](../../../administration/feature_flags/_index.md) named `duo_chat_flow_commands` (`wip` type). Disabled by default.
@@ -13,9 +13,10 @@ Business logic scanning uses an AI agent to find authorization and access contro
 > The availability of this feature is controlled by a feature flag. For more information, see the
 > history.
 
-Business logic scanning uses an AI agent to find vulnerabilities in how your application enforces
-its own rules. Pattern-based analyzers like [SAST](../sast/_index.md) often miss these
-vulnerabilities, because the code is valid and only the intent is wrong.
+Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find
+vulnerabilities in how your application enforces its own rules. Pattern-based analyzers like
+[SAST](../sast/_index.md) often miss these vulnerabilities, because the code is valid and only the
+intent is wrong.
 
 ## What business logic scanning finds
 
@@ -45,6 +46,9 @@ A scan starts in one of these ways:
 | [On a schedule](#scheduled-default-branch-scans) | Not available yet. | Not available yet. |
 
 ## Turn on business logic scanning
+
+Business logic scanning is in a closed beta. On GitLab.com, GitLab enables the feature flags for
+participating top-level groups. To request access, contact your account team.
 
 Prerequisites:
 

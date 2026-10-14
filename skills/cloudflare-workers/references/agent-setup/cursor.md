@@ -42,7 +42,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Set up a KV namespace for edge-cached session storage in my Worker.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 ## Cloudflare platform access
@@ -141,11 +141,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -153,11 +153,11 @@ Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

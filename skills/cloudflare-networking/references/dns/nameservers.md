@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dns/nameservers/og.png?v=115084dd9673af
 
 # Nameservers
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Nameservers are DNS servers that answer DNS queries about the domains they are authoritative for. When a visitor types your domain into a browser, the [DNS resolution process ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) passes through several server types and eventually reaches the authoritative nameservers for the final answer.
 
@@ -52,11 +52,11 @@ Each zone that uses advanced nameservers is assigned a set of three nameservers 
 
 With [custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/), your nameservers are hosted on your own domain (or domains) and, in this sense, are not Cloudflare branded.
 
-You provide fully qualified domain names — complete domain names like `ns1.example.com` — for your nameservers, and Cloudflare assigns one IPv4 and one IPv6 address to each.
+You provide fully qualified domain names — complete domain names like `ns1.example.com` — for your nameservers. Cloudflare assigns one IPv4 and one IPv6 address to each zone, account, or tenant custom nameserver. [Nameserver sets](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/) can assign one to three addresses from each family.
 
 Caution
 
-The advantages that come with Foundation DNS [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) are currently not available for [custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/). Make sure you only use one at a time.
+To use your own nameserver names with Advanced anycast network groups, create an [Advanced Custom Nameserver set](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#advanced-custom-nameserver-set). Zone, account, and tenant custom nameservers do not support Advanced anycast network groups. A zone can only use one nameserver configuration at a time.
 
 Was this helpful?
 
@@ -67,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/#page","headline":"Nameservers","description":"Manage Cloudflare nameservers for your zones.","url":"https://developers.cloudflare.com/dns/nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/og.png?v=115084dd9673af4c","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/#page","headline":"Nameservers","description":"Manage Cloudflare nameservers for your zones.","url":"https://developers.cloudflare.com/dns/nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/og.png?v=115084dd9673af4c","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -9,7 +9,7 @@ The Manage panel content varies by instance type. The screenshots on this page s
 
 Select **Manage** on an installation to open the settings panel.
 
-[Accessing the Manage panel]
+[Manage panel for a local instance: Update, Startup Args, Snapshots, Storage, Terminal, About]
 
 - Open the **Chooser** view (the home screen showing all your instances)
 - Click the ⋮ icon on an instance card
@@ -19,7 +19,7 @@ The panel has six tabs:
 
 ### Update Tab
 
-[Update tab]
+[Manage Update tab: ComfyUI version, update channel, and PyTorch package]
 
 This tab shows the current version, lets you check for updates, and configure the update channel.
 
@@ -32,11 +32,11 @@ This tab shows the current version, lets you check for updates, and configure th
 
 ### Startup Args Tab
 
-[Startup Args tab]
+[Manage Startup Args tab for instance launch arguments and beta args]
 
 Configure startup CLI arguments, Manager policy, launch mode, browser cache sharing, port conflict behavior, and environment variables.
 
-- **Startup Arguments**: Custom CLI arguments for ComfyUI (e.g. `--listen`). Click the gear icon for categorized flags.
+- **Startup Arguments**: Custom CLI arguments for ComfyUI (e.g. `--listen`). Click the gear icon for categorized flags. When beta features are enabled, a **+N beta** pill next to the field lists the beta arguments Comfy Desktop added for the running session, or the ones the next launch is eligible for.
 - **Manager Security Level**: Controls which node packs ComfyUI-Manager can install for this instance. Applies the next time you launch.
   - **Strict**: Blocks all node pack installs, updates, and uninstalls. Manager is read-only.
   - **Standard (recommended)**: Allows registered node packs. Blocks installs from unregistered sources (for example arbitrary git URLs).
@@ -58,7 +58,7 @@ Configure startup CLI arguments, Manager policy, launch mode, browser cache shar
 
 ### Snapshots Tab
 
-[Snapshots tab]
+[Manage Snapshots tab listing restore points for the instance]
 
 View, import, export, and create snapshots. Each entry shows version changes and package statistics.
 
@@ -79,7 +79,7 @@ View, import, export, and create snapshots. Each entry shows version changes and
 
 ### Storage Tab
 
-[Storage tab]
+[Manage Storage tab for per-instance model and I/O paths]
 
 Configure whether this instance uses the global shared folders, and add extra model directories that apply only to this instance.
 
@@ -91,7 +91,7 @@ Configure whether this instance uses the global shared folders, and add extra mo
 
 ### Terminal Tab
 
-[Terminal tab]
+[Manage Terminal tab showing the instance console]
 
 An interactive shell in this instance's folder. It works whether ComfyUI is running or stopped.
 
@@ -100,7 +100,7 @@ An interactive shell in this instance's folder. It works whether ComfyUI is runn
 
 ### About Tab
 
-[About tab]
+[Manage About tab with instance paths and version details]
 
 View installation details: ComfyUI version, hardware, Python and PyTorch versions, disk path, and usage.
 
