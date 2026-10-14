@@ -5,7 +5,7 @@ description: "Browse Prime Inference model IDs, capabilities, context windows, a
 
 # [Prime Inference logo]Prime Inference
 
-Access 60 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
+Access 64 Prime Inference models through Mastra's model router. Authentication is handled automatically using the `PRIME_API_KEY` environment variable.
 
 Learn more in the [Prime Inference documentation](https://docs.primeintellect.ai).
 
@@ -155,7 +155,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
+    "maxOutput": 943717,
     "inputCost": 0.44,
     "outputCost": 1.32
   },
@@ -185,7 +185,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "prime/deepseek/deepseek-v4.1-flash",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -287,7 +287,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 16384,
+    "maxOutput": 32768,
     "inputCost": 1.04,
     "outputCost": 2.253
   },
@@ -326,6 +326,18 @@ for await (const chunk of stream) {
     "maxOutput": 209715,
     "inputCost": 0.165,
     "outputCost": 0.66
+  },
+  {
+    "model": "prime/mistralai/mixtral-8x22b-instruct",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 65536,
+    "maxOutput": 52428,
+    "inputCost": 2.2,
+    "outputCost": 6.6
   },
   {
     "model": "prime/moonshotai/kimi-k2-0905",
@@ -568,6 +580,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "prime/openai/gpt-5.6-luna-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 1,
+    "outputCost": 6
+  },
+  {
     "model": "prime/openai/gpt-5.6-sol",
     "imageInput": true,
     "audioInput": false,
@@ -580,7 +604,31 @@ for await (const chunk of stream) {
     "outputCost": 30
   },
   {
+    "model": "prime/openai/gpt-5.6-sol-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
     "model": "prime/openai/gpt-5.6-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2.5,
+    "outputCost": 15
+  },
+  {
+    "model": "prime/openai/gpt-5.6-terra-pro",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -647,7 +695,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 117964,
+    "maxOutput": 65536,
     "inputCost": 0.35,
     "outputCost": 0.75
   },

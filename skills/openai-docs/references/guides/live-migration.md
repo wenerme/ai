@@ -79,33 +79,149 @@ Use `response.create` to start or continue delegated Responses work. GPT-Live ma
 
 ### Split conversation and backend instructions
 
-Move conversation style and delegation guidance into `session.instructions`. Move business rules and tool-use instructions into `delegation.responses.instructions`. For a backend you run yourself, keep those rules in its existing prompt.
+When migrating a Realtime assistant to GPT-Live, start with your existing prompt. Move speaking style and turn-taking instructions into the Live prompt, and add rules for when to delegate. Keep task instructions and tool-use procedures in the backend prompt.
 
-**Before: one Realtime prompt**
+If you're adding voice to a text agent, [reuse its existing backend prompt](https://developers.openai.com/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt) and write a Live prompt for the spoken interaction.
+
+#### Keep the experience consistent
+
+Keep your assistant’s role, audience, and purpose, and preserve the details that shape the conversation:
+
+- Greetings, introductions, and spoken disclosures, including any required wording or order.
+- Language and pronunciation requirements, such as “Speak English.”
+- Personality, warmth, empathy, formality, and pacing.
+- The level of detail in spoken answers and examples that show the intended style.
+- How it acknowledges the user, pauses to listen, and responds to interruptions.
+
+A short Live prompt can still ask for detailed spoken answers.
+
+#### Write the Live prompt
+
+Use the [recommended prompt structure](https://developers.openai.com/api/docs/guides/live-prompting#recommended-prompt-structure) for the assistant's identity, speaking style, and conversational behavior. Keep `Backchannel policy` and `Interruption policy` to describe listening acknowledgments and how the assistant responds when someone speaks over it.
+
+Live needs to know what the backend can do so it can delegate accurately. Describe those capabilities in plain language. Function names and tool schemas belong in the backend, which handles tool calls.
+
+Under `Delegation policy`, adapt these sections to your application:
+
+- **`Backend tools`:** List the capabilities your application supports, using the same terms as your existing prompt. For example: “Check appointment availability and schedule callbacks.”
+- **`Delegate to the backend when`:** State when to use those capabilities, such as “Delegate when the user asks to schedule a callback.” Include corrections, confirmations, and new details needed for work already in progress.
+- **`Do not delegate to the backend when`:** Describe what Live can handle directly, such as a greeting, a brief clarification, or repeating information from the conversation or a still-current backend result.
+
+Describe how Live should communicate progress, ask the backend's next question, or relay a verified result.
+
+If your assistant ends calls, give Live instructions for the farewell and for delegating the end-call request. Put the actual end-call tool and sequence in the backend. For example, a procedure might require the application to finish playing the farewell, disconnect, cancel pending calculations, and block further saves. Live handles the farewell and delegation; the backend and application handle those remaining steps.
+
+#### Adapt your backend prompt
+
+Use your original prompt as the starting point. Keep its wording, order, examples, and structure wherever they still apply. If it mainly describes tasks, most of it can stay as written.
+
+Keep instructions here for:
+
+- Interpreting the user's request, applying corrections, collecting missing information, and tracking task progress.
+- Using domain facts, checking eligibility, and consulting the records or services that establish the answer.
+- Following procedures for searches, updates, confirmations, routing, transfers, callbacks, and other supported actions.
+- Applying safety, privacy, and authorization rules, handling failures, and restricting actions after a transfer or call end.
+- Preparing accurate facts, task status, and the next question for Live to communicate.
+
+Move instructions for voice, greetings, turn-taking, and when to delegate into the Live prompt. Adapt instructions that assume the backend speaks directly to the user so it returns information for Live instead. Keep safety and privacy limits in both prompts wherever they affect what that model may say, ask, or do.
+
+Keep function names, argument requirements, and tool-use procedures in backend instructions. Put tool definitions in your backend's tool configuration. Your application executes its tools and enforces permissions, argument validation, and required confirmations against the current task state.
+
+Use the backend model to understand requests, corrections, and confirmations from the conversation. Regular expressions, keyword lists, and exact-phrase rules miss meaning that depends on earlier speech or a correction. For example, “yes” may confirm a slot, acknowledge a question, or refer to an earlier suggestion.
+
+Preserve the rules for work already running when the caller interrupts or the call is transferred or ended. Stopping speech leaves backend work running. If the caller asks to cancel, the backend and application need to handle that cancellation and report its outcome to Live.
+
+#### Resolve conflicting instructions
+
+Review the original prompt and both new prompts for instructions that disagree. Combine repeated instructions, and keep specific conditions and exceptions alongside the rules they qualify. Check permissions, question limits, confirmations, and what may happen after a call ends.
+
+Separate what the user wants from what has happened. If a caller changes Friday to Thursday, the latest request tells the backend to work on Thursday. The booking record tells it whether Friday was already booked. Your existing confirmation and authorization rules determine which changes it can make next.
+
+Resolve product choices with the people responsible for them before using the prompts. For example, if one instruction says to continue a booking and another says to stop all work when the caller interrupts, decide which behavior the application should provide. Record the agreed behavior in the prompts and the application logic that enforces it.
+
+Check that each required action has an implementation. Ending a call requires an end-call capability; a spoken goodbye alone leaves the connection open. If a capability is missing, decide whether to implement it or agree on a supported alternative with the team that owns the workflow.
+
+#### Review both prompts
+
+Compare both prompts with the original and check that every required behavior has a place:
+
+- The Live prompt preserves the assistant's identity, vocabulary, speaking style, disclosures, and interruption behavior.
+- The backend prompt preserves the task procedures, facts, conditions, examples, permissions, and failure handling.
+- Delegation covers new requests, corrections, confirmations, and requests that combine conversation with task information.
+- The two prompts agree on question limits, when an action is confirmed, and how to handle continuing work, cancellation, transfers, and call ending.
+
+Put the Live prompt in `session.instructions`. For Responses delegation, put the backend prompt in `session.delegation.responses.instructions`; for client delegation, keep it in your existing agent's configuration. Keep tool definitions with the backend. See [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation) for configuration and result handling.
+
+<details>
+<summary>Example: split an appointment prompt</summary>
+
+This appointment assistant already has `check_availability` and `book_appointment` tools. Its original prompt combines speaking style with a booking procedure. The split keeps the same greeting, confirmation requirements, and correction handling.
+
+**Original prompt**
 
 ```text
-Help callers book appointments. Speak briefly. Check availability with the tool,
-ask the caller to confirm a slot, then book it. Never claim an unverified booking.
+You are Rowan, the appointment assistant for Northstar Repairs.
+Speak English, calmly and briefly. Greet the caller once with:
+"Hello, this is Rowan from Northstar Repairs. How can I help?"
+Use brief listening acknowledgments. Stop speaking when interrupted.
+
+Help callers find and book appointments. Ask for the preferred date
+and time zone if missing, then use check_availability.
+Offer only returned slots. Ask the caller to confirm the exact slot
+before calling book_appointment.
+If the caller changes the date, time zone, or slot, discard the earlier
+confirmation and check availability again.
+Report a booking only after the tool confirms success. If the outcome
+is unclear, say it is unconfirmed and do not retry automatically.
 ```
 
-**After: GPT-Live conversation instructions**
+**Live prompt**
 
 ```text
-Help callers book appointments. Keep spoken replies brief. Delegate availability
-checks and booking requests. Ask the caller to confirm the proposed slot.
-Only announce a booking when the backend reports that it succeeded.
+You are Rowan, the appointment assistant for Northstar Repairs.
+Speak English, calmly and briefly. Greet the caller once with:
+"Hello, this is Rowan from Northstar Repairs. How can I help?"
+
+Backchannel policy: Use brief listening acknowledgments.
+
+Interruption policy: Stop speaking when interrupted and listen.
+
+Delegation policy:
+Backend tools:
+- Appointments: check available times and book appointments.
+
+Delegate to the backend when:
+- The caller wants to find or book an appointment.
+- The caller supplies or corrects a date, time zone, or slot, or
+  answers a booking question, including confirming a slot.
+
+Do not delegate to the backend when:
+- The caller greets you or asks you to repeat a still-current result.
+- You need a brief clarification to understand what they are asking.
+
+Relay the backend's questions and results. Offer only slots it returns.
+Do not claim a booking is complete until the backend confirms success.
+If the backend reports an unclear outcome, say it is unconfirmed.
 ```
 
-**After: backend instructions**
+**Backend prompt**
 
 ```text
-Use the appointment tools to check current availability. Before booking, verify
-that the caller confirmed the exact slot and still has permission to book it.
-Apply the latest correction. Return verified availability, booking, or failure
-status with the date, time, and time zone.
+Help callers find and book appointments for Northstar Repairs.
+Ask for the preferred date and time zone if missing, then use
+check_availability. Offer only returned slots.
+Ask the caller to confirm the exact slot before calling book_appointment.
+If the caller changes the date, time zone, or slot, discard the earlier
+confirmation and check availability again.
+Report a booking only after the tool confirms success. If the outcome
+is unclear, report it as unconfirmed and do not retry automatically.
+
+Return the available slots, booking outcome, or next question for the
+voice assistant to communicate. Interpret the caller's latest answers
+and corrections using the conversation and current task state.
 ```
 
-Enforce confirmation and permission checks in your application before executing a tool. Prompt instructions guide the models; they do not enforce those checks. See [Prompting voice models](https://developers.openai.com/api/docs/guides/live-prompting) for prompt design.
+</details>
 
 ### Adapt your function handlers
 

@@ -59,6 +59,9 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+`continuationToken` `string (https://developers.google.com/discovery/v1/type-format format)` Optional. An opaque continuation token used to resume generation from a previous `models.generateContent` or `models.streamGenerateContent` response that stopped with `finishReason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
+
+A base64-encoded string.
 `labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
 
 Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
@@ -2042,6 +2045,9 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+`continuationToken` `string (https://developers.google.com/discovery/v1/type-format format)` Optional. An opaque continuation token used to resume generation from a previous `models.generateContent` or `models.streamGenerateContent` response that stopped with `finishReason` set to `CONTINUATION`. Note that `contents` is mandatory and must identically replicate the prompt and conversation history from the initial request when continuation token is provided in a request.
+
+A base64-encoded string.
 `labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
 
 Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
@@ -2841,7 +2847,7 @@ Fields `promptTokenCount` `integer` Number of tokens in the prompt. When `cached
 `candidatesTokenCount` `integer` Total number of tokens across all the generated response candidates.
 `toolUsePromptTokenCount` `integer` Output only. Number of tokens present in tool-use prompt(s).
 `thoughtsTokenCount` `integer` Output only. Number of tokens of thoughts for thinking models.
-`totalTokenCount` `integer` Total token count for the generation request (prompt + thoughts + response candidates).
+`totalTokenCount` `integer` Total token count for the generation request (prompt + tool-use prompt + thoughts + response candidates).
 `promptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed in the request input.
 `cacheTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities of the cached content in the request input.
 `candidatesTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were returned in the response.
@@ -2953,12 +2959,15 @@ This field is populated for `GenerateContent` calls.
 `avgLogprobs` `number` Output only. Average log probability score of the candidate.
 `logprobsResult` ``object (`https://ai.google.dev/api/generate-content#LogprobsResult`)`` Output only. Log-likelihood scores for the response tokens and top tokens
 `urlContextMetadata` ``object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`)`` Output only. Metadata related to url context retrieval tool.
+`continuationToken` `string (https://developers.google.com/discovery/v1/type-format format)` An optional opaque continuation token returned when `finishReason` is `CONTINUATION`. Clients can pass this token in a subsequent `GenerateContentRequest` to continue generation.
+
+A base64-encoded string.
 `index` `integer` Output only. Index of the candidate in the list of response candidates.
 `finishMessage` `string` Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finishReason` is set.
 
 | JSON representation |
 |---|
-| ``` { "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "finishReason": enum (`https://ai.google.dev/api/generate-content#FinishReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ], "citationMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`) }, "tokenCount": integer, "groundingAttributions": [ { object (`https://ai.google.dev/api/generate-content#GroundingAttribution`) } ], "groundingMetadata": { object (`https://ai.google.dev/api/generate-content#GroundingMetadata`) }, "avgLogprobs": number, "logprobsResult": { object (`https://ai.google.dev/api/generate-content#LogprobsResult`) }, "urlContextMetadata": { object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`) }, "index": integer, "finishMessage": string } ``` |
+| ``` { "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "finishReason": enum (`https://ai.google.dev/api/generate-content#FinishReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ], "citationMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`) }, "tokenCount": integer, "groundingAttributions": [ { object (`https://ai.google.dev/api/generate-content#GroundingAttribution`) } ], "groundingMetadata": { object (`https://ai.google.dev/api/generate-content#GroundingMetadata`) }, "avgLogprobs": number, "logprobsResult": { object (`https://ai.google.dev/api/generate-content#LogprobsResult`) }, "urlContextMetadata": { object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`) }, "continuationToken": string, "index": integer, "finishMessage": string } ``` |
 
 ## FinishReason
 
@@ -2988,6 +2997,7 @@ Defines the reason why the model stopped generating tokens.
 | `MALFORMED_RESPONSE` | Finished due to malformed response. |
 | `ESCALATION` | Request was filtered by an escalation rule. |
 | `PUP_LIMITED_DISABLED` | Indicates that token generation stopped because the user account is limited or disabled due to Prohibited Use Policy (PUP) violations. |
+| `CONTINUATION` | Token generation was stopped because the response reached the per-request token limit, but generation is not yet complete. The model response can be continued via a subsequent request using the returned `continuationToken`. Note, the `maxOutputTokens` is cumulative across continuation hops and must be monotonically increased or omitted. |
 
 ## GroundingAttribution
 
@@ -4326,6 +4336,8 @@ Note: The default value varies by model, see the `Model.output_token_limit` attr
 Note: The default value varies by model, see the `Model.temperature` attribute of the `Model` returned from the `getModel` function.
 
 Values can range from \[0.0, 2.0\].
+
+This field is no longer supported and is silently ignored on Gemini 3.6 Flash and newer models.
 `topP` `number` Optional. The maximum cumulative probability of tokens to consider when sampling.
 
 The model uses combined Top-k and Top-p (nucleus) sampling.
@@ -4333,11 +4345,15 @@ The model uses combined Top-k and Top-p (nucleus) sampling.
 Tokens are sorted based on their assigned probabilities so that only the most likely tokens are considered. Top-k sampling directly limits the maximum number of tokens to consider, while Nucleus sampling limits the number of tokens based on the cumulative probability.
 
 Note: The default value varies by `Model` and is specified by the`Model.top_p` attribute returned from the `getModel` function. An empty `topK` attribute indicates that the model doesn't apply top-k sampling and doesn't allow setting `topK` on requests.
+
+This field is no longer supported and is silently ignored on Gemini 3.6 Flash and newer models.
 `topK` `integer` Optional. The maximum number of tokens to consider when sampling.
 
 Gemini models use Top-p (nucleus) sampling or a combination of Top-k and nucleus sampling. Top-k sampling considers the set of `topK` most probable tokens. Models running with nucleus sampling don't allow topK setting.
 
 Note: The default value varies by `Model` and is specified by the`Model.top_p` attribute returned from the `getModel` function. An empty `topK` attribute indicates that the model doesn't apply top-k sampling and doesn't allow setting `topK` on requests.
+
+This field is no longer supported and is silently ignored on Gemini 3.6 Flash and newer models.
 `seed` `integer` Optional. Seed used in decoding. If not set, the request uses a randomly generated seed.
 `presencePenalty` `number` Optional. Presence penalty applied to the next token's logprobs if the token has already been seen in the response.
 
@@ -4700,10 +4716,11 @@ Configures the realtime input behavior in `BidiGenerateContent`.
 Fields `automaticActivityDetection` ``object (`https://ai.google.dev/api/generate-content#AutomaticActivityDetection`)`` Optional. If not set, automatic activity detection is enabled by default. If automatic voice detection is disabled, the client must send activity signals.
 `activityHandling` ``enum (`https://ai.google.dev/api/generate-content#ActivityHandling`)`` Optional. Defines what effect activity has.
 `turnCoverage` ``enum (`https://ai.google.dev/api/generate-content#TurnCoverage`)`` Optional. Defines which input is included in the user's turn.
+`interimTranscriptTimestampEnabled` `boolean` Optional. Configures interim transcript timestamps.
 
 | JSON representation |
 |---|
-| ``` { "automaticActivityDetection": { object (`https://ai.google.dev/api/generate-content#AutomaticActivityDetection`) }, "activityHandling": enum (`https://ai.google.dev/api/generate-content#ActivityHandling`), "turnCoverage": enum (`https://ai.google.dev/api/generate-content#TurnCoverage`) } ``` |
+| ``` { "automaticActivityDetection": { object (`https://ai.google.dev/api/generate-content#AutomaticActivityDetection`) }, "activityHandling": enum (`https://ai.google.dev/api/generate-content#ActivityHandling`), "turnCoverage": enum (`https://ai.google.dev/api/generate-content#TurnCoverage`), "interimTranscriptTimestampEnabled": boolean } ``` |
 
 ## AutomaticActivityDetection
 

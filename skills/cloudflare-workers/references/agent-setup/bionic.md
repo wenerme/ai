@@ -47,7 +47,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 ## Cloudflare platform access
@@ -146,23 +146,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+```
+
+```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

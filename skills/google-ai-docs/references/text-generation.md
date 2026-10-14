@@ -340,7 +340,10 @@ a `system_instruction` parameter to configure the model's behavior.
       }'
 
 You can also override default generation parameters, such as
-temperature, using the `generation_config` parameter.
+`max_output_tokens` or `thinking_level`, using the `generation_config` parameter.
+
+> [!NOTE]
+> **Note:** Gemini 4 and Gemini 3.6+ models ignore custom values for `temperature`, `top_p`, and `top_k` and return deprecation warning headers. Remove these sampling parameters from your requests.
 
 ### Python
 
@@ -352,7 +355,7 @@ temperature, using the `generation_config` parameter.
         model="gemini-3.8-flash",
         input="Explain how AI works",
         generation_config={
-            "temperature": 1.0
+            "max_output_tokens": 500
         }
     )
     print(interaction.output_text)
@@ -368,7 +371,7 @@ temperature, using the `generation_config` parameter.
         model: "gemini-3.8-flash",
         input: "Explain how AI works",
         generation_config: {
-          temperature: 1.0,
+          max_output_tokens: 500,
         },
       });
       console.log(interaction.output_text);

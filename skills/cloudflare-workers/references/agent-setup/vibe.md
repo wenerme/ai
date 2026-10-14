@@ -94,7 +94,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 ## Cloudflare platform access
@@ -193,23 +193,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
 Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

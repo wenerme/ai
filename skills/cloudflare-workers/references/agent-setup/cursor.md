@@ -42,7 +42,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Configure Zero Trust access policies to protect my internal staging environment.
+   Set up a KV namespace for edge-cached session storage in my Worker.
    ```
 
 ## Cloudflare platform access
@@ -141,23 +141,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
 Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

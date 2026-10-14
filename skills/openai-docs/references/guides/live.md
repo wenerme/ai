@@ -38,17 +38,22 @@ For your first test, listen to the assistant and check that its answer reflects 
 
 GPT-Live voice sessions are billed by duration, per second. See the [model pricing](https://developers.openai.com/api/docs/models/gpt-live-1) for the current rate. Backend model and tool usage is billed separately. See [Cost optimization](https://developers.openai.com/api/docs/guides/voice-latency-cost?api=live) for usage accounting and ways to reduce costs.
 
+## Sample apps and client SDKs
+
+- **[OpenAI Live Console](https://github.com/openai/openai-live-console)** is a local sample app for exploring GPT-Live conversations, delegation, and backend tool activity.
+- **[Switchboard OpenAI Live Toolkit](https://github.com/switchboard-sdk/openai-live-toolkit)** is a third-party React Native SDK for building GPT-Live applications on iOS.
+
 ## Choose a connection
 
-- **[WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live)** for browser voice applications. It carries microphone and speaker audio on media tracks and JSON events on a data channel.
-- **[WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live)** for server-side audio integrations. One connection carries audio and control events.
+- **[WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live)** is recommended for audio connections in browser, mobile, and server applications. It carries audio on media tracks and JSON events on a data channel.
+- **[WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live)** are a supported alternative. One connection carries audio and control events.
 - **[Telephony and SIP](https://developers.openai.com/api/docs/guides/voice-sip?api=live)** for connecting phone calls.
 
 To monitor or control an existing session from your backend, add a [server-side connection](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live). This additional WebSocket is called a **sideband**; audio continues through the session’s primary connection.
 
 ## Partner integrations
 
-If your application already uses **LiveKit**, **Twilio**, **Telnyx**, or **Daily/Pipecat**, follow the [partner integration overview](https://developers.openai.com/api/docs/guides/live-partner-integrations) to connect its existing calls or audio streams to GPT-Live.
+If your application already uses **LiveKit**, **Twilio**, **Telnyx**, **Bandwidth**, or **Daily/Pipecat**, follow the [partner integration overview](https://developers.openai.com/api/docs/guides/live-partner-integrations) to connect its existing calls or audio streams to GPT-Live.
 
 ## Continue building
 

@@ -171,7 +171,7 @@ Create a RAG pipeline using Vectorize and Workers AI to answer questions over my
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
@@ -179,11 +179,11 @@ Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

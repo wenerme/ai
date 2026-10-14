@@ -10,14 +10,14 @@ Choose your API to see its connection steps and session events.
 
 A phone call can reach GPT-Live through a SIP trunk or through an application that relays audio. Choose the path that fits your existing phone system and where your application needs to process audio.
 
-| Connection          | Audio and application responsibilities                                                                                                                   |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Direct SIP          | The provider exchanges call audio with OpenAI. Your application handles webhooks, session configuration, call decisions, and business logic.             |
-| Server audio bridge | Your application relays provider or room audio to GPT-Live over WebSocket. It manages both connections, event translation, playback, and call lifecycle. |
+| Connection          | Audio and application responsibilities                                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Direct SIP          | The provider exchanges call audio with OpenAI. Your application handles webhooks, session configuration, call decisions, and business logic.                       |
+| Server audio bridge | Your application relays provider or room audio to GPT-Live over WebRTC or WebSocket. It manages both connections, event translation, playback, and call lifecycle. |
 
-A provider's connection to your application and your application's connection to OpenAI are separate. For example, a caller can join a room through SIP while an agent in that room connects to GPT-Live over WebSocket.
+A provider's connection to your application and your application's connection to OpenAI are separate. For example, a caller can join a room through SIP while an agent in that room connects to GPT-Live over WebRTC.
 
-Using Twilio, Telnyx, LiveKit, or Daily/Pipecat? See [GPT-Live partner integrations](https://developers.openai.com/api/docs/guides/live-partner-integrations) for provider-specific guides.
+Using Twilio, Telnyx, Bandwidth, LiveKit, or Daily/Pipecat? See [GPT-Live partner integrations](https://developers.openai.com/api/docs/guides/live-partner-integrations) for provider-specific guides.
 
 ### Direct SIP
 
@@ -173,7 +173,7 @@ Each creation request places a new call. `X-Client-Request-Id` doesn't
 
 ### Server audio bridges
 
-Use the [GPT-Live WebSocket connection](https://developers.openai.com/api/docs/guides/voice-websockets?api=live) when your application receives an audio stream from a phone provider or an agent framework. The application authenticates both connections, translates their event envelopes, and relays audio in both directions.
+We recommend [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live) for the connection from your audio bridge to GPT-Live. [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live) are also supported. Your application authenticates both connections, handles their events, and relays audio in both directions.
 
 GPT-Live supports raw G.711 μ-law and A-law audio at 8 kHz over WebSocket. When the provider stream uses the same codec, sample rate, and channel count, your application can forward the raw audio bytes without converting them to PCM. Preserve audio order and wrap the audio bytes in the message format required by each connection.
 
@@ -183,7 +183,8 @@ Keep the provider's call or room identifier alongside the OpenAI session ID so y
 
 ## Next steps with GPT-Live
 
-- [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live): connect a server audio stream to GPT-Live.
+- [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live): use the recommended audio connection to GPT-Live.
+- [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live): stream audio over a supported alternative.
 - [Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live): manage a session from your backend.
 - [Delegation and tools](https://developers.openai.com/api/docs/guides/live-delegation): connect speech to your reasoning and tool backend.
 - [Managing sessions](https://developers.openai.com/api/docs/guides/live-conversations): handle transcripts, session state, and close.

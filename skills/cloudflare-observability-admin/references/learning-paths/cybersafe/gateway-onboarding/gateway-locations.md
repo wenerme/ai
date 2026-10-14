@@ -29,6 +29,7 @@ To add a DNS location to Gateway:
 5. (Optional) Toggle the following settings:
    - **Enable EDNS client subnet** sends a user's IP geolocation to authoritative DNS nameservers. [EDNS Client Subnet (ECS)](https://developers.cloudflare.com/cloudflare-one/glossary/?term=ecs) helps reduce latency by routing the user to the closest origin server. Cloudflare enables EDNS in a privacy preserving way by not sending the user's exact IP address but rather the first `/24` range of the larger range that contains their IP address. This `/24` range will share the same geographic location as the user's exact IP address.
    - **Set as Default DNS Location** sets this location as the default DoH endpoint for DNS queries.
+   - **Enable DNS64** requests [DNS64](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns64/) synthesis for queries that match this location. Use this setting for an IPv6-only network with network address translation from IPv6 to IPv4 (NAT64).
 6. Select **Continue**.
 7. (Optional) Turn on source IP filtering for your configured endpoints, then add any source IPv4/IPv6 addresses to validate.
    - Endpoint authentication is required for standard IPv4 addresses and optional for dedicated IPv4 addresses.

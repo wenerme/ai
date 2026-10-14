@@ -56,7 +56,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 ## Cloudflare platform access
@@ -155,7 +155,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
@@ -163,15 +163,15 @@ Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

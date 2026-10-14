@@ -245,15 +245,17 @@ Muting input leaves the session running: the model can keep generating speech, a
 
 ### Greet before the caller speaks
 
-To have GPT-Live open the conversation, send greeting instructions after `session.started`. Specify the language, what the assistant should say, and that it should begin immediately, then pause to listen. Use the application’s chosen greeting language until the caller speaks. For example:
+For best results when GPT-Live should open the conversation, include greeting instructions in a `developer` message in `session.input` when you create the session. On WebSocket, include the message in the `session.start` event instead of waiting until `session.started` to append it. This makes the greeting instructions available from the start.
+
+Specify the language, what the assistant should say, and that it should begin immediately, then pause to listen. Use the application’s chosen greeting language until the caller speaks. For example, use this text for the developer message:
 
 > Greet the caller now in English. Introduce yourself as the support assistant and ask how you can help. Then pause and listen.
 
-1. Keep input audio running throughout this sequence, including silence before the caller speaks. On WebSocket, continue sending `session.input_audio.append`; on WebRTC, keep the input audio track active.
-2. Send the instructions once with `session.instructions.append` and `delegation_id: null`.
-3. Match `session.instructions.appended` to your command using `client_event_id`, and handle any error. This acknowledgment confirms that the instructions were accepted.
+1. Add the message to `session.input` with `role: "developer"` and one `input_text` content part. See [Seed a session with prior conversation](#seed-a-session-with-prior-conversation) for the message format.
+2. Wait for `session.started`, then keep input audio running, including silence before the caller speaks. On WebSocket, continue sending `session.input_audio.append`; on WebRTC, keep the input audio track active.
+3. Check the output audio and transcript to verify that the assistant greeted the caller. Startup instructions can improve greeting behavior, but do not guarantee that the model will speak.
 
-For exact wording and a known playback-completion point, play a verified recording or rendered clip through your application and [control GPT-Live playback while it plays](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#control-playback-when-needed). Test greetings in the languages you support, including when the caller starts speaking during the greeting. See [Prompting voice models](https://developers.openai.com/api/docs/guides/live-prompting) for prompt design.
+For predictable greeting playback, exact wording, or a known playback-completion point, play a verified recording or rendered clip through your application and [control GPT-Live playback while it plays](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#control-playback-when-needed). Test greetings in the languages you support, including when the caller starts speaking during the greeting. See [Prompting voice models](https://developers.openai.com/api/docs/guides/live-prompting) for prompt design.
 
 ### Deliver a disclosure
 

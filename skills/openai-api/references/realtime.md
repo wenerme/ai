@@ -7223,7 +7223,7 @@
 
     Additional details about the status.
 
-    - `error: optional object { code, type }`
+    - `error: optional object { code, message, type }`
 
       A description of the error that caused the response to fail,
       populated when the `status` is `failed`.
@@ -7231,6 +7231,10 @@
       - `code: optional string`
 
         Error code, if any.
+
+      - `message: optional string`
+
+        A human-readable error message.
 
       - `type: optional string`
 
@@ -8405,7 +8409,7 @@
 
   Additional details about the status.
 
-  - `error: optional object { code, type }`
+  - `error: optional object { code, message, type }`
 
     A description of the error that caused the response to fail,
     populated when the `status` is `failed`.
@@ -8413,6 +8417,10 @@
     - `code: optional string`
 
       Error code, if any.
+
+    - `message: optional string`
+
+      A human-readable error message.
 
     - `type: optional string`
 
@@ -9976,7 +9984,7 @@
 
         Additional details about the status.
 
-        - `error: optional object { code, type }`
+        - `error: optional object { code, message, type }`
 
           A description of the error that caused the response to fail,
           populated when the `status` is `failed`.
@@ -9984,6 +9992,10 @@
           - `code: optional string`
 
             Error code, if any.
+
+          - `message: optional string`
+
+            A human-readable error message.
 
           - `type: optional string`
 
@@ -17214,7 +17226,7 @@
 
       Additional details about the status.
 
-      - `error: optional object { code, type }`
+      - `error: optional object { code, message, type }`
 
         A description of the error that caused the response to fail,
         populated when the `status` is `failed`.
@@ -17222,6 +17234,10 @@
         - `code: optional string`
 
           Error code, if any.
+
+        - `message: optional string`
+
+          A human-readable error message.
 
         - `type: optional string`
 
@@ -17929,7 +17945,7 @@
 
       Additional details about the status.
 
-      - `error: optional object { code, type }`
+      - `error: optional object { code, message, type }`
 
         A description of the error that caused the response to fail,
         populated when the `status` is `failed`.
@@ -17937,6 +17953,10 @@
         - `code: optional string`
 
           Error code, if any.
+
+        - `message: optional string`
+
+          A human-readable error message.
 
         - `type: optional string`
 
