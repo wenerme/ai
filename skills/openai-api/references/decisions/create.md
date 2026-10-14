@@ -2,11 +2,7 @@
 
 **post** `/decisions`
 
-Use this endpoint to ask classification or scoring questions about the same input. You’ll get the answers back in the order you asked the questions.
-
-For text, you can pass a string. You can also send user messages containing `input_text` and `input_image` parts, with up to 128 images per request. Images can be base64 data URLs or publicly accessible HTTP(S) URLs. File IDs aren’t accepted. Other message roles, function calls, files, audio, and item references aren’t supported.
-
-Sometimes a question returns a refusal instead of an answer. The result has type `refusal` and includes the question’s name, or `null` if you didn’t give it one.
+Use this endpoint to quickly answer classification or scoring questions about some input. You can ask multiple questions in one request.
 
 ### Body Parameters
 
@@ -68,7 +64,11 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
 - `model: string`
 
+  The model to use. Only `gpt-6-luna` is supported.
+
 - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
+
+  Ask 1–200 questions about the input. Each question can be a predicate, choice, or score. Answers come back in the same order.
 
   - `Predicate object { instructions, type, name }`
 
@@ -141,6 +141,8 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 - `Decision object { answers, model, usage }`
 
   - `answers: array of Predicate { name, probability, type }  or Choice { choice, confidence, name, 2 more }  or Score { confidence, name, probabilities, 2 more }  or Refusal { name, type }`
+
+    Answers in question order. Any question can return a refusal instead of an answer; other questions can still receive answers. A refusal has `type: "refusal"` and the question's `name`, or `null` if it was unnamed.
 
     - `Predicate object { name, probability, type }`
 
@@ -222,7 +224,11 @@ Sometimes a question returns a refusal instead of an answer. The result has type
 
   - `model: string`
 
+    The model used.
+
   - `usage: object { input_tokens, input_tokens_details, output_tokens, 2 more }`
+
+    Token usage for the request.
 
     - `input_tokens: number`
 

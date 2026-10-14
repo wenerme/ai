@@ -2849,7 +2849,7 @@ jq -n '{
 
   - `InputAudioUnmuteEvent object { type, event_id }`
 
-    Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`.
+    Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`. An active audio fixture still pauses inference until playback finishes.
 
     - `type: "session.input_audio.unmute"`
 
@@ -2863,7 +2863,7 @@ jq -n '{
 
   - `InstructionsAppendEvent object { content, delegation_id, type, event_id }`
 
-    Append instructions to the Live conversation while it is running, optionally associating them with an existing client delegation.
+    Append developer instructions to the Live conversation while it is running, optionally associating them with an existing client delegation. Rejected while an audio fixture is active. These instructions remain in conversation history through compaction and are included in future backend delegations. For external audio, describe content already delivered so the assistant does not repeat it.
 
     - `content: string`
 
@@ -2885,7 +2885,7 @@ jq -n '{
 
   - `ThinkingAppendEvent object { content, delegation_id, type, event_id }`
 
-    Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation.
+    Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
     - `content: string`
 
@@ -2907,7 +2907,7 @@ jq -n '{
 
   - `CommentaryAppendEvent object { content, delegation_id, type, event_id }`
 
-    Provide context the Live model can communicate to the user, optionally for an existing client delegation.
+    Provide context the Live model can communicate to the user, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
     - `content: string`
 
@@ -7319,7 +7319,7 @@ jq -n '{
 
 - `CommentaryAppendEvent object { content, delegation_id, type, event_id }`
 
-  Provide context the Live model can communicate to the user, optionally for an existing client delegation.
+  Provide context the Live model can communicate to the user, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
   - `content: string`
 
@@ -9203,7 +9203,7 @@ jq -n '{
 
 - `InputAudioMutedEvent object { event_id, type, client_event_id }`
 
-  Returned when a session.input_audio.mute command is accepted. Input audio is no longer sent to the model; sideband audio reflection continues.
+  Acknowledges a session.input_audio.mute command. An independent input mute sends silence to the model and preserves sideband audio reflection. Fixture playback does not emit this event.
 
   - `event_id: string`
 
@@ -9223,7 +9223,7 @@ jq -n '{
 
 - `InputAudioUnmuteEvent object { type, event_id }`
 
-  Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`.
+  Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`. An active audio fixture still pauses inference until playback finishes.
 
   - `type: "session.input_audio.unmute"`
 
@@ -9239,7 +9239,7 @@ jq -n '{
 
 - `InputAudioUnmutedEvent object { event_id, type, client_event_id }`
 
-  Returned when a session.input_audio.unmute command is accepted. Input audio is sent to the model again.
+  Acknowledges a session.input_audio.unmute command, removing the independent input mute. An active audio fixture still pauses inference until playback finishes. Fixture playback does not emit this event.
 
   - `event_id: string`
 
@@ -9291,7 +9291,7 @@ jq -n '{
 
 - `InstructionsAppendEvent object { content, delegation_id, type, event_id }`
 
-  Append instructions to the Live conversation while it is running, optionally associating them with an existing client delegation.
+  Append developer instructions to the Live conversation while it is running, optionally associating them with an existing client delegation. Rejected while an audio fixture is active. These instructions remain in conversation history through compaction and are included in future backend delegations. For external audio, describe content already delivered so the assistant does not repeat it.
 
   - `content: string`
 
@@ -16607,7 +16607,7 @@ jq -n '{
 
 ### Server Event
 
-- `ServerEvent = SessionStartedEvent or SessionUpdatedEvent or InputAudioMutedEvent or 19 more`
+- `ServerEvent = SessionStartedEvent or SessionUpdatedEvent or InputAudioMutedEvent or 21 more`
 
   Server events for Live. Response lifecycle events are wrapped inside response.event; dispatch the nested event by its full type and tolerate new response event types. Follow the [Live prompting guide](https://developers.openai.com/api/docs/guides/live-prompting) when designing the conversation and delegation policy.
 
@@ -17629,7 +17629,7 @@ jq -n '{
 
   - `InputAudioMutedEvent object { event_id, type, client_event_id }`
 
-    Returned when a session.input_audio.mute command is accepted. Input audio is no longer sent to the model; sideband audio reflection continues.
+    Acknowledges a session.input_audio.mute command. An independent input mute sends silence to the model and preserves sideband audio reflection. Fixture playback does not emit this event.
 
     - `event_id: string`
 
@@ -17647,7 +17647,7 @@ jq -n '{
 
   - `InputAudioUnmutedEvent object { event_id, type, client_event_id }`
 
-    Returned when a session.input_audio.unmute command is accepted. Input audio is sent to the model again.
+    Acknowledges a session.input_audio.unmute command, removing the independent input mute. An active audio fixture still pauses inference until playback finishes. Fixture playback does not emit this event.
 
     - `event_id: string`
 
@@ -17658,6 +17658,38 @@ jq -n '{
       The event type, always `session.input_audio.unmuted`.
 
       - `"session.input_audio.unmuted"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
+  - `SessionOutputAudioFixturePlaying object { event_id, type, client_event_id }`
+
+    The existing playback path has accepted the validated audio fixture. This acknowledgment does not identify when the listener receives the first sample. The optional client_event_id echoes the play command.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.output_audio.fixture.playing"`
+
+      - `"session.output_audio.fixture.playing"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
+  - `SessionOutputAudioFixturePlayed object { event_id, type, client_event_id }`
+
+    The complete audio fixture has drained from the server mixer and normal inference has resumed. Transport buffers may still contain audio; this event does not prove listener-side completion. The optional client_event_id echoes the play command. This event is not emitted for canceled or failed playback.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.output_audio.fixture.played"`
+
+      - `"session.output_audio.fixture.played"`
 
     - `client_event_id: optional string`
 
@@ -25427,7 +25459,7 @@ jq -n '{
 
 - `ThinkingAppendEvent object { content, delegation_id, type, event_id }`
 
-  Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation.
+  Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
   - `content: string`
 
@@ -26283,7 +26315,7 @@ jq -n '{
 
   - `InputAudioUnmuteEvent object { type, event_id }`
 
-    Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`.
+    Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`. An active audio fixture still pauses inference until playback finishes.
 
     - `type: "session.input_audio.unmute"`
 
@@ -26297,7 +26329,7 @@ jq -n '{
 
   - `InstructionsAppendEvent object { content, delegation_id, type, event_id }`
 
-    Append instructions to the Live conversation while it is running, optionally associating them with an existing client delegation.
+    Append developer instructions to the Live conversation while it is running, optionally associating them with an existing client delegation. Rejected while an audio fixture is active. These instructions remain in conversation history through compaction and are included in future backend delegations. For external audio, describe content already delivered so the assistant does not repeat it.
 
     - `content: string`
 
@@ -26319,7 +26351,7 @@ jq -n '{
 
   - `ThinkingAppendEvent object { content, delegation_id, type, event_id }`
 
-    Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation.
+    Provide silent reasoning or progress context to the Live model, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
     - `content: string`
 
@@ -26341,7 +26373,7 @@ jq -n '{
 
   - `CommentaryAppendEvent object { content, delegation_id, type, event_id }`
 
-    Provide context the Live model can communicate to the user, optionally for an existing client delegation.
+    Provide context the Live model can communicate to the user, optionally for an existing client delegation. Rejected while an audio fixture is active.
 
     - `content: string`
 
@@ -30751,7 +30783,7 @@ jq -n '{
 
 ### Fork Server Event
 
-- `ForkServerEvent = SessionStartedEvent or SessionUpdatedEvent or InputAudioMutedEvent or 19 more`
+- `ForkServerEvent = SessionStartedEvent or SessionUpdatedEvent or InputAudioMutedEvent or 21 more`
 
   Server events for Live. Response lifecycle events are wrapped inside response.event; dispatch the nested event by its full type and tolerate new response event types. Follow the [Live prompting guide](https://developers.openai.com/api/docs/guides/live-prompting) when designing the conversation and delegation policy.
 
@@ -31773,7 +31805,7 @@ jq -n '{
 
   - `InputAudioMutedEvent object { event_id, type, client_event_id }`
 
-    Returned when a session.input_audio.mute command is accepted. Input audio is no longer sent to the model; sideband audio reflection continues.
+    Acknowledges a session.input_audio.mute command. An independent input mute sends silence to the model and preserves sideband audio reflection. Fixture playback does not emit this event.
 
     - `event_id: string`
 
@@ -31791,7 +31823,7 @@ jq -n '{
 
   - `InputAudioUnmutedEvent object { event_id, type, client_event_id }`
 
-    Returned when a session.input_audio.unmute command is accepted. Input audio is sent to the model again.
+    Acknowledges a session.input_audio.unmute command, removing the independent input mute. An active audio fixture still pauses inference until playback finishes. Fixture playback does not emit this event.
 
     - `event_id: string`
 
@@ -31802,6 +31834,38 @@ jq -n '{
       The event type, always `session.input_audio.unmuted`.
 
       - `"session.input_audio.unmuted"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
+  - `SessionOutputAudioFixturePlaying object { event_id, type, client_event_id }`
+
+    The existing playback path has accepted the validated audio fixture. This acknowledgment does not identify when the listener receives the first sample. The optional client_event_id echoes the play command.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.output_audio.fixture.playing"`
+
+      - `"session.output_audio.fixture.playing"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command associated with this server event, when supplied.
+
+  - `SessionOutputAudioFixturePlayed object { event_id, type, client_event_id }`
+
+    The complete audio fixture has drained from the server mixer and normal inference has resumed. Transport buffers may still contain audio; this event does not prove listener-side completion. The optional client_event_id echoes the play command. This event is not emitted for canceled or failed playback.
+
+    - `event_id: string`
+
+      The unique ID of the Live server event.
+
+    - `type: "session.output_audio.fixture.played"`
+
+      - `"session.output_audio.fixture.played"`
 
     - `client_event_id: optional string`
 

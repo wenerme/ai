@@ -13,6 +13,15 @@ Yes. The source is on [GitHub](https://github.com/Comfy-Org/Comfy-Desktop). Comf
 
 Comfy Desktop is one of several installation options. You can still use the **Portable (Windows)** install, **Manual Install**, or **Comfy Cloud** depending on your needs. Desktop is recommended for most users due to its ease of use and features like one-click updates and snapshot management.
 
+No. Comfy Desktop checks for a new version shortly after it launches and then every 10 minutes, and that check has no off switch. The only update setting is **Automatically install Desktop updates** in **Desktop Settings → Updates**, and it is on by default.
+
+- **On**: a new version downloads in the background and installs without asking. The title bar shows **Downloading update…** while it downloads, then **Desktop Update Ready** when the update is ready to apply.
+- **Off**: Comfy Desktop still checks and still tells you, but it stops downloading on its own. The title bar shows a **Desktop Update** pill instead, and clicking it downloads the update and offers to restart.
+
+The ComfyUI version inside an instance is updated separately. Use the instance's **Update** tab and pick the **Stable** or **Latest on GitHub** channel there.
+
+On Linux, the in-app updater does not apply to `.deb` installs. Download the new package with the [universal download link](https://dl.todesktop.com/241130tqe9q3y) and install it with `sudo apt install ./*.deb`.
+
 ## Installation & Setup
 
 See [system requirements](/installation/system_requirements) for full details.
@@ -83,6 +92,8 @@ Your installations, models, and settings are kept.
 - Create a manual snapshot from the instance's **Snapshots** tab before retrying
 - If the issue persists, restore to a previous snapshot and try again
 
+During **New Instance**, Comfy Desktop checks free space on the install drive. **Low Disk Space** is a warning — select **Continue Anyway** to proceed, or choose another path. **Not Enough Space for Template Models** blocks that template; pick a lighter workflow or free space. Very small disks may skip the template step. See [Creating a New Instance](/installation/desktop/usage/instance-management#creating-a-new-instance).
+
 The Desktop app writes a rotating `app.log` file. The fastest way to find it is **Desktop Settings → Logs → Diagnostics → Open logs folder** (☰ menu in the top-left).
 
 Default log folders:
@@ -94,6 +105,10 @@ Default log folders:
 Look for `app.log`. Previous sessions rotate to timestamped `app.log_*.log` files.
 
 For ComfyUI process output (not the Desktop app itself), open the instance **Manage** panel and use the **Terminal** tab. See [Manage](/installation/desktop/usage/manage).
+
+ComfyUI does not natively integrate with [Ollama](https://ollama.ai) for diffusion model backends. However, you can use Ollama-served LLMs for prompt generation and text processing through **custom nodes** available in the ComfyUI Manager registry.
+
+For connecting ComfyUI to LLM services, see [Install Custom Nodes](/installation/install_custom_node).
 
 Comfy Desktop and its installations are separate on disk. To uninstall the app and its installations:
 

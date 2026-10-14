@@ -83,6 +83,18 @@ Small, reusable building blocks for your UI.
 
 `RtkTooltip`
 
+![Device Selector - Speaker](https://developers.cloudflare.com/_astro/rtk-speaker-selector.X13QS2md.png)⛶
+
+`RtkSpeakerSelector`
+
+![Device Selector - Microphone](https://developers.cloudflare.com/_astro/rtk-microphone-selector.Cdl6ET7B.png)⛶
+
+`RtkMicrophoneSelector`
+
+![Device Selector - Camera](https://developers.cloudflare.com/_astro/rtk-camera-selector.CxMH5OUh.png)⛶
+
+`RtkCameraSelector`
+
 ## UI Components
 
 Interactive controls and interface elements.
@@ -147,7 +159,7 @@ Complete, feature-rich components combining multiple elements.
 
 `RtkImageViewer`
 
-![Leave Meeting](https://developers.cloudflare.com/_astro/rtk-leave-meeting.UTk-KYGb.svg)⛶
+![Leave Meeting](https://developers.cloudflare.com/_astro/rtk-leave-meeting.D9be2RLC.png)⛶
 
 `RtkLeaveMeeting`
 
@@ -155,9 +167,21 @@ Complete, feature-rich components combining multiple elements.
 
 `RtkMixedGrid`
 
-![Participants](https://developers.cloudflare.com/_astro/rtk-participants.BOkCsJBY.svg)⛶
+![Participants](https://developers.cloudflare.com/_astro/rtk-participants.ZMpOYMTU.png)⛶
 
 `RtkParticipants`
+
+![Participants Stage List](https://developers.cloudflare.com/_astro/rtk-participants.ZMpOYMTU.png)⛶
+
+`RtkParticipantsStageList`
+
+![Participants Stage Queue](https://developers.cloudflare.com/_astro/rtk-participants-stage-queue.Dhlgozv_.png)⛶
+
+`RtkParticipantsStageQueue`
+
+![Polls](https://developers.cloudflare.com/_astro/rtk-polls.IPtfn97C.png)⛶
+
+`RtkPolls`
 
 ![Participants Audio](https://developers.cloudflare.com/_astro/rtk-participants-audio.eIvUPjU6.svg)⛶
 
@@ -167,25 +191,41 @@ Complete, feature-rich components combining multiple elements.
 
 `RtkPlugins`
 
-![Polls](https://developers.cloudflare.com/_astro/rtk-polls.hqdlJT0t.svg)⛶
-
-`RtkPolls`
-
-![Screenshare View](https://developers.cloudflare.com/_astro/rtk-screenshare-view.BrwMCMAU.svg)⛶
+![Screenshare View](https://developers.cloudflare.com/_astro/rtk-screenshare-view.DnhXvQvn.png)⛶
 
 `RtkScreenshareView`
 
-![Settings](https://developers.cloudflare.com/_astro/rtk-settings.CsWuIao-.svg)⛶
+![Settings](https://developers.cloudflare.com/_astro/rtk-settings.B8Q6Buwk.png)⛶
 
 `RtkSettings`
 
-![Settings Audio](https://developers.cloudflare.com/_astro/rtk-settings-audio.CHFFN2ir.svg)⛶
+![Settings Audio](https://developers.cloudflare.com/_astro/rtk-settings.B8Q6Buwk.png)⛶
 
 `RtkSettingsAudio`
 
-![Settings Video](https://developers.cloudflare.com/_astro/rtk-settings-video.CFt8Yu2W.svg)⛶
+![Settings Video](https://developers.cloudflare.com/_astro/rtk-settings-video.CG1qFgeE.png)⛶
 
 `RtkSettingsVideo`
+
+![Debugger](https://developers.cloudflare.com/_astro/rtk-debugger.BuJioP-d.png)⛶
+
+`RtkDebugger`
+
+![System Debugger](https://developers.cloudflare.com/_astro/rtk-debugger-system.CbDqp_a5.png)⛶
+
+`RtkDebuggerSystem`
+
+![Audio Debugger](https://developers.cloudflare.com/_astro/rtk-debugger-audio._mkSg4sG.png)⛶
+
+`RtkDebuggerAudio`
+
+![Video Debugger](https://developers.cloudflare.com/_astro/rtk-debugger.BuJioP-d.png)⛶
+
+`RtkDebuggerVideo`
+
+![Screenshare Debugger](https://developers.cloudflare.com/_astro/rtk-debugger-screenshare.Aavsip2G.png)⛶
+
+`RtkDebuggerScreenshare`
 
 ![Sidebar](https://developers.cloudflare.com/_astro/rtk-sidebar.aKSWOJhh.svg)⛶
 
@@ -199,6 +239,18 @@ Complete, feature-rich components combining multiple elements.
 
 `RtkSpotlightGrid`
 
+![Create Breakout Rooms](https://developers.cloudflare.com/_astro/rtk-breakout-room-manager.Dnwz3FID.png)⛶
+
+`RtkBreakoutRoomManager`
+
+![Manage Breakout Rooms](https://developers.cloudflare.com/_astro/rtk-breakout-rooms-manager.DEUqUUgc.png)⛶
+
+`RtkBreakoutRoomsManager`
+
+![Breakout Room Toggle](https://developers.cloudflare.com/_astro/rtk-breakout-room-toggle.DNXy8FAs.png)⛶
+
+`RtkBreakoutRoomToggle`
+
 ## Screen Components
 
 Full-screen views for different meeting states.
@@ -206,6 +258,10 @@ Full-screen views for different meeting states.
 ![Ended Screen](https://developers.cloudflare.com/_astro/rtk-ended-screen.CYpO8OXh.svg)⛶
 
 `RtkEndedScreen`
+
+![Waiting Screen](https://developers.cloudflare.com/_astro/rtk-waiting-screen.DkSB3U8g.png)⛶
+
+`RtkWaitingScreen`
 
 ![Idle Screen](https://developers.cloudflare.com/_astro/rtk-idle-screen.CN-poFx4.svg)⛶
 
@@ -215,7 +271,7 @@ Full-screen views for different meeting states.
 
 `RtkMeeting`
 
-![Setup Screen](https://developers.cloudflare.com/_astro/rtk-setup-screen.BRYS9Jjp.svg)⛶
+![Setup Screen](https://developers.cloudflare.com/_astro/rtk-setup-screen.BHni0Rw5.png)⛶
 
 `RtkSetupScreen`
 

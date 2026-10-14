@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d7
 
 # Consistency model
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/consistency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/consistency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details R2's consistency model, including where R2 is strongly, globally consistent and which operations this applies to.
 
@@ -44,6 +44,21 @@ Additional notes:
 - Copying an object within the same bucket also follows the same read-after-write consistency that writing a new object would. The "copied" object is immediately readable by all clients once the copy operation completes.
 - To delete an R2 bucket, it must be completely empty before deletion is allowed. If you attempt to delete a bucket that still contains objects, you will receive an error such as: `The bucket you tried to delete (X) is not empty (account Y)` or `Bucket X cannot be deleted because it isn’t empty.` For instructions on emptying and deleting a bucket, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).
 
+## Conditional writes
+
+R2 evaluates conditional write headers (for example `If-Match` and `If-None-Match` on `PutObject`) atomically, as part of the same write that commits the object:
+
+- The condition is always evaluated against the committed state of the bucket at the moment the write commits, never against an older snapshot.
+- Competing conditional writes to the same key are serialized. When two or more clients concurrently issue `PutObject` with `If-None-Match: *` for a previously absent key, at most one request succeeds and every other request fails with a `412 PreconditionFailed` error. It is therefore safe to rely on `If-None-Match: *` for "create-once" semantics: two concurrent conditional writes can never both observe success.
+
+For S3 API usage, refer to [Conditional operations in `PutObject`](https://developers.cloudflare.com/r2/api/s3/extensions/#conditional-operations-in-putobject).
+
+## Negative reads and in-flight writes
+
+A strongly consistent read (`HeadObject` or `GetObject`) that returns `NoSuchKey` (404) tells you that the object did not exist at the moment the read was processed. This absence is **not** final with respect to an earlier `PutObject` whose outcome is still unknown: a request that was still in flight — for example, a client that lost its connection before receiving the response — may still commit after the negative read has returned. Reads are never stale, but they do not wait for or cancel earlier writes.
+
+If you need to treat a negative read as proof that a write failed, first make sure the original write has definitively completed (either succeeded or returned a definitive error) before trusting the read. Alternatively, retry the write with `If-None-Match: *`: it fails with `412 PreconditionFailed` if the ambiguous write did in fact commit.
+
 ## Caching
 
 Note
@@ -69,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/consistency/#page","headline":"Consistency model","description":"R2 provides strong global consistency for reads, writes, deletes, and list operations.","url":"https://developers.cloudflare.com/r2/reference/consistency/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d731e0f576d8a","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/consistency/#page","headline":"Consistency model","description":"R2 provides strong global consistency for reads, writes, deletes, and list operations.","url":"https://developers.cloudflare.com/r2/reference/consistency/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/reference/consistency/og.png?v=024d731e0f576d8a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

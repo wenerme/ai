@@ -68,7 +68,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build a serverless AI inference endpoint on Workers AI with streaming responses.
+   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
    ```
 
 ## Cloudflare platform access
@@ -167,23 +167,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

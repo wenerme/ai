@@ -52,7 +52,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 ## Cloudflare platform access
@@ -151,7 +151,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
@@ -159,15 +163,11 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
 Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Tips
