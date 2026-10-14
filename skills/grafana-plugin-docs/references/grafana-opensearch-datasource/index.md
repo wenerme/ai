@@ -56,6 +56,30 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 >
 > Plugins are automatically updated in Grafana Cloud.
 
+## Query with the Grafana CLI
+
+You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
+
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+
+For example, to query your OpenSearch data source, use `gcx datasources opensearch`:
+
+sh [Copy code to clipboard] Copy
+
+```sh
+# Search documents with a Lucene query
+gcx datasources opensearch query -d <DATASOURCE_UID> 'app:frontend AND level:error' --since 1h
+
+# Aggregate document counts over time, split by a field
+gcx datasources opensearch metrics -d <DATASOURCE_UID> 'level:error' --group-by app.keyword --since 6h
+
+# List indices and mapped fields to explore the data
+gcx datasources opensearch list-indices -d <DATASOURCE_UID>
+gcx datasources opensearch list-fields -d <DATASOURCE_UID>
+```
+
+Replace *`<DATASOURCE_UID>`* with the UID of your OpenSearch data source. The `query` command takes a Lucene expression and a time range (`--since`); `metrics` buckets documents over time and can split series with `--group-by`; `list-indices` and `list-fields` let you explore available indices and their mapped fields.
+
 ## Related resources
 
 - [OpenSearch documentation](https://opensearch.org/docs/latest/)

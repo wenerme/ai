@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
    ```
 
 For a screenshot-by-screenshot walkthrough — including the OAuth authorization page, verifying the server is running, and using natural language to create and delete DNS records — refer to the [detailed walkthrough](https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/).
@@ -158,19 +158,19 @@ Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Tips

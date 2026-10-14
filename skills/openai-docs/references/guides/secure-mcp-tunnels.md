@@ -89,6 +89,19 @@ If the Platform organization and ChatGPT workspace are already linked, you can a
 | Host running `tunnel-client` | `mtls.api.openai.com:443` over HTTPS on `/v1/tunnel/*` | Polling and response posting when control-plane mTLS is configured. |
 | Host running `tunnel-client` | The configured stdio command or MCP server URL         | Forwarding MCP requests from inside your network.                   |
 
+## Limits
+
+Secure MCP Tunnel applies these default hosted-service limits to connector MCP traffic:
+
+| Limit                          | Default                                           | Scope                                                                                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MCP request rate               | 600 requests per minute (10 per second sustained) | Shared by requests with the same tunnel ID and calling application ID across MCP channels. If the calling application ID is unavailable, requests with the same tunnel ID and user share the limit. Running more than one `tunnel-client` process does not multiply the allowance. |
+| Serialized request or response | 10 MiB (10,485,760 bytes)                         | Applies to the complete serialized tunnel envelope, including headers and protocol metadata, so usable MCP content is slightly smaller. The service applies the limit to each streaming notification and final response.                                                           |
+| Request deadline               | 120 seconds                                       | One absolute budget from when the request enters the hosted queue through final response delivery. Queue time consumes this budget, and progress notifications do not reset it.                                                                                                    |
+| Pending queue                  | 1,000 requests per tunnel                         | Shared across MCP channels. Counts requests waiting for `tunnel-client` to poll them; requests already fetched for execution are not included.                                                                                                                                     |
+
+These limits are service protections, not throughput or latency guarantees. Queue-record retention for cleanup does not extend the 120-second request deadline. To request a change to these limits, contact [OpenAI Support](https://help.openai.com/en/articles/6614161-how-can-i-contact-support).
+
 ## Set up tunnel-client
 
 Open [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels), then use the download link there or the latest public `tunnel-client` release from [openai/tunnel-client](https://github.com/openai/tunnel-client/releases/latest). Keep your runbook pointed at the latest-release URL instead of hard-coding a specific release URL.
@@ -138,6 +151,40 @@ Run `tunnel-client` in the same trust boundary that can already reach the privat
 Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, then **Add custom MCP server**, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one. Configure authentication, review the risk warning, and select **I understand and want to continue**, then **Create as a plugin**.
 
 If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the app creator has Tunnels **Read** + **Use**.
+
+## Set up and verify with Codex
+
+To have Codex guide the setup, give it browser access to Platform and ChatGPT
+and terminal access to the host that can reach your private MCP server. Paste
+this prompt into Codex:
+
+```text
+Help me set up and verify a private Secure MCP Tunnel from my internal MCP
+server to ChatGPT end to end. Use browser/computer access and a terminal,
+following https://developers.openai.com/api/docs/guides/secure-mcp-tunnels
+and https://github.com/openai/tunnel-client/blob/master/docs/onboarding.md;
+check the current UI and CLI help as you go.
+
+First identify the intended Platform organization and ChatGPT workspace, MCP
+server HTTP URL or stdio command, and client host. Inspect any existing tunnel,
+key, and ChatGPT custom MCP plugin; reuse suitable resources. Confirm the
+tunnel's organization and workspace association and permissions: tunnel
+creators need Tunnels Read + Manage; the restricted runtime key and plugin
+operator need Tunnels Read + Use.
+
+Keep literal secrets out of chat, command arguments, logs, screenshots, and
+config files. Have me enter them locally through a secure input or environment
+reference. Install the supported tunnel-client; run
+`tunnel-client help quickstart`, configure the server, run
+`tunnel-client doctor --profile <name> --explain`, start the client, and
+verify readiness and active polling. Keep it running for discovery and calls.
+
+In ChatGPT Plugins, add or finish a private custom MCP server with
+Connection: Tunnel, select the same tunnel, configure required authentication,
+and make a safe representative tool call. Report observed evidence for each
+checkpoint and the exact error and next action for any blocker. Call setup
+complete only after the ChatGPT tool call succeeds.
+```
 
 ## Connect from the Responses API
 

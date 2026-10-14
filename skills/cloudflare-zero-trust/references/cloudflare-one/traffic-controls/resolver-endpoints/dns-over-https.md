@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolve
 
 # DNS over HTTPS (DoH)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Gateway, you can filter DNS over HTTPS (DoH) requests by [DNS location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/) or by user without needing to install the Cloudflare One Client on your devices.
 
@@ -205,6 +205,28 @@ Host: dns.cloudflare-gateway.com
 cf-dns-location: 9y65g5srsm
 Accept: application/dns-message
 ```
+
+## Request DNS64
+
+To request [DNS64](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns64/) for a DoH query, include the `cf-dns-options` header with the value `dns64`. DNS64 synthesizes `AAAA` records from `A` records for IPv6-only networks. These networks require network address translation from IPv6 to IPv4 (NAT64).
+
+To run this example, replace `<YOUR_DOH_SUBDOMAIN>` with the DoH subdomain for your location:
+
+```bash
+curl --get "https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query" \
+  --header "accept: application/dns-json" \
+  --header "cf-dns-options: dns64" \
+  --data-urlencode "name=ipv4only.arpa" \
+  --data-urlencode "type=AAAA"
+```
+
+The header requests synthesis independently of the **Enable DNS64** location setting. It supports DoH requests in DNS wire format or JSON.
+
+Use the same endpoint authentication as your other DoH requests.
+
+You can also turn on DNS64 for a location. DoH requests in DNS wire format also support Extension Mechanisms for DNS (EDNS). Send an empty option `65051` to request DNS64.
+
+For configuration and expected answers, refer to [DNS64](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns64/).
 
 ## Filter DoH requests by user
 
@@ -436,5 +458,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/#page","headline":"DNS over HTTPS (DoH)","description":"DNS over HTTPS (DoH) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/og.png?v=d8562a17c66bcd58","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/#page","headline":"DNS over HTTPS (DoH)","description":"DNS over HTTPS (DoH) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-endpoints/dns-over-https/og.png?v=d8562a17c66bcd58","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

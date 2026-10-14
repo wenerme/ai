@@ -10,6 +10,8 @@ Describe the conversational behavior you want, and let GPT-Live choose the wordi
 
 Your application checks permissions and required confirmations before executing an action.
 
+To adapt an existing Realtime prompt, follow [Split conversation and backend instructions](https://developers.openai.com/api/docs/guides/live-migration?migration-path=realtime#split-conversation-and-backend-instructions).
+
 ## Recommended prompt structure
 
 Start with this template and add instructions as needed. See [session configuration](https://developers.openai.com/api/docs/guides/live-conversations#configuration-fields) for field limits.
@@ -125,7 +127,7 @@ If a name is unclear, ask how to pronounce or spell it.
 Say the user's name Rosalia as "roh-sah-LEE-ah", IPA /rosaˈli.a/ (Spanish).
 ```
 
-To open the conversation in a chosen language, wait for `session.started`, keep input audio running, and send `session.instructions.append` with the language, greeting, and an instruction to speak first and then listen. Handle its acknowledgment or error while audio continues. Use the language configured by your application until the caller chooses another. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the complete sequence and options for exact playback.
+To open the conversation in a chosen language, include a `developer` message in `session.input` when you create the session. Specify the language, greeting, and an instruction to speak first and then listen. On WebSocket, include this message in `session.start` instead of appending it after startup. After `session.started`, keep input audio running. Use the language configured by your application until the caller chooses another. Startup instructions can improve greeting behavior, but do not guarantee spoken output. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the complete sequence and application-controlled playback options.
 
 ### Translation
 

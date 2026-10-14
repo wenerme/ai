@@ -71,7 +71,7 @@ Register supported tools in `delegation.responses.tools`. Set `delegation.respon
 
 Set `delegation.responses.parallel_tool_calls` to `true` to allow multiple tool calls in a response, or `false` for sequential calls. Your application executes custom functions and checks their dependencies and required approvals. These settings apply after GPT-Live delegates; use the [live prompt](https://developers.openai.com/api/docs/guides/live-prompting#delegation) to guide when it should delegate.
 
-The Responses configuration requires a backend `model` at creation. It supports `function` definitions and `web_search` entries in `tools`. It also exposes `max_output_tokens` (at least 16 when set), `service_tier`, and the `reasoning` and `text` settings supported by the selected backend model. See [Reduce backend latency](#reduce-backend-latency) for settings you can tune.
+The Responses configuration requires a backend `model` at creation. In addition to the tools below, it exposes `max_output_tokens` (at least 16 when set), `service_tier`, and the `reasoning` and `text` settings supported by the selected backend model. See [Reduce backend latency](#reduce-backend-latency) for settings you can tune.
 
 If [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) is available for your model and project, consider it for latency-sensitive calls. For GPT-Live, select it with `delegation.responses.service_tier: "priority"`.
 
@@ -80,6 +80,24 @@ Send `session.update` with changes in `session.delegation.responses` to update t
 To switch between Responses and client delegation, create a new Live session. Updating `delegation` to `null` selects client mode, so sending it to a running Responses session fails with `immutable_field_update`.
 
 These settings use familiar Responses concepts, but Live supports a subset of the standalone Responses API. Live supplies conversation context and initiates delegated work. Configure the backend through the session; the Live `response.create` command uses that configuration and does not accept a standalone Responses request body.
+
+### Add hosted tools
+
+Add [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [Code Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), [hosted shell](https://developers.openai.com/api/docs/guides/tools-shell), or [image generation](https://developers.openai.com/api/docs/guides/tools-image-generation) to `delegation.responses.tools`. Follow the linked guides for configuration, model support, and required resources. Responses runs these tools and returns their results automatically.
+
+For shell, use a hosted container, optionally with [Skills](https://developers.openai.com/api/docs/guides/tools-skills). Local shell requires your application to run calls. Live does not support shell `domain_secrets`.
+
+### Add MCP and other tools
+
+Responses delegation also supports [MCP](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search), [programmatic tool calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling), [functions and custom tools](https://developers.openai.com/api/docs/guides/function-calling), [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [local shell](https://developers.openai.com/api/docs/guides/tools-shell#local-shell-mode), and [apply patch](https://developers.openai.com/api/docs/guides/tools-apply-patch). Use the linked guides for setup. Return application results and approval decisions through the [Live continuation flow](#return-tool-results-and-approvals).
+
+Live passes the MCP `authorization` and `headers` you provide to Responses, but doesn't include those values in the session configuration it sends back to your application. You don't need to resend them when updating other settings, such as instructions. If you replace `delegation.responses.tools`, include the MCP credentials again.
+
+### Handle configuration errors
+
+Live validates Responses settings asynchronously after startup and when the settings change. `session.started` and `session.updated` do not wait for this validation. Listen for an `error` with code `responses_validation_failed` and check its message for the unsupported setting or inaccessible resource. The session stays open and the settings are not rolled back; correct them with `session.update`.
+
+Validation does not guarantee later tool execution. Resource access and tool availability can change, so continue handling backend errors during delegated work. Configuring hosted tools can initialize resources such as containers during validation.
 
 ## Steer the live conversation from your application
 
@@ -108,7 +126,29 @@ For Responses-backed work, `session.delegation.created` has `target: "responses"
 
 When the top-level event type is `response.event`, dispatch on `envelope.event.type`. Save the outer `delegation_id` to associate the backend event with its delegation. Your handler may also receive nested Responses lifecycle events beyond those shown here.
 
+Hosted tool progress, citations, files, and generated images arrive in these nested events. Read individual output-item and partial-image events to collect results; the forwarded lifecycle snapshots omit their output arrays. Use the corresponding Responses file or container APIs to download files. For large image or artifact events, use a WebSocket or sideband connection because a WebRTC data channel's message limit can be smaller.
+
 Live speech and delegated work continue independently. A completed backend response does not itself mean the user heard the answer. Use the Live output transcript and audio for the spoken part of the interaction.
+
+### Return tool results and approvals
+
+For tools that need application input, collect completed calls from nested `response.output_item.done` events. Perform the authorized action or approval check, then send the matching item with `response.item.create`:
+
+| Received item                                 | Result item                                                            |
+| --------------------------------------------- | ---------------------------------------------------------------------- |
+| `function_call`                               | `function_call_output`                                                 |
+| `custom_tool_call`                            | `custom_tool_call_output`                                              |
+| `computer_call`                               | `computer_call_output`                                                 |
+| Local `shell_call`                            | `shell_call_output`                                                    |
+| `apply_patch_call`                            | `apply_patch_call_output`                                              |
+| `tool_search_call` with `execution: "client"` | `tool_search_output` with `execution: "client"` and discovered `tools` |
+| `mcp_approval_request`                        | `mcp_approval_response`                                                |
+
+Match results to calls with `call_id`. For MCP approval decisions, instead set `approval_request_id` to the approval request's `id`, and set `approve` to `true` or `false`. A completed `mcp_call` does not itself require a client result. Follow each tool's result schema, including `caller` metadata for programmatic function calls and any required computer safety acknowledgments.
+
+Submit results for every pending call, then send `response.create`. Appending an item alone does not resume the backend. Missing results produce `tool_outputs_required`, or `function_call_outputs_required` when only function results are missing. Duplicate results and mismatched result types are rejected.
+
+You can submit results and request continuation before the current backend response completes. An accepted `response.create` waits for that completion; do not resend it. If the backend emits more calls afterward, submit their results and send another `response.create`.
 
 
 
@@ -301,19 +341,21 @@ If the outcome is unclear, state that and explain what needs to be checked.
 
 Keep large structured payloads, lengthy tool output, and Markdown intended for display in the backend. Give GPT-Live the relevant facts and let it choose how to say them. A concise tool result doesn't need an additional model call to rewrite it for speech.
 
-With client delegation, [return the result directly to GPT-Live](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=client#receive-a-client-delegation). With Responses delegation, follow the [function-result flow](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=responses#complete-a-client-actionable-function-call) to continue backend work.
+With client delegation, [return the result directly to GPT-Live](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=client#receive-a-client-delegation). With Responses delegation, [return any required tool results or approvals](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=responses#return-tool-results-and-approvals) to continue backend work. Hosted tools continue without application-supplied results.
 
 ## Send the right kind of update
 
 Choose an event based on how GPT-Live should use the content:
 
-| What you want to send                                                                                       | Event                         |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| System-level instructions for the live model, such as a greeting, disclosure, or direction to stop speaking | `session.instructions.append` |
-| Information for internal reasoning, not spoken on append but usable for relevant user questions             | `session.thinking.append`     |
-| Information the model should speak aloud, paraphrasing the appended text                                    | `session.commentary.append`   |
+| What you want to send                                                                             | Event                         |
+| ------------------------------------------------------------------------------------------------- | ----------------------------- |
+| Instructions for an ongoing live conversation, such as a disclosure or direction to stop speaking | `session.instructions.append` |
+| Information for internal reasoning, not spoken on append but usable for relevant user questions   | `session.thinking.append`     |
+| Information the model should speak aloud, paraphrasing the appended text                          | `session.commentary.append`   |
 
 All three use a plain-string `content`, limited to 500 tokens per append. Include `delegation_id`: use the original client delegation ID for an update about that task, or `null` for general session context. A non-null ID must identify a known client delegation. Instructions still apply to the live session; an ID does not turn them into a separate backend prompt.
+
+For an opening greeting, include a `developer` message in `session.input` at startup instead. See [Greet before the caller speaks](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks).
 
 An appended instruction can interrupt the model's current speech or behavior. Use it when the application needs to redirect the conversation; enforce any related tool or action block in application state.
 
@@ -520,7 +562,7 @@ To help a caller discuss a photo or screen, send the image and relevant context 
   
 
 
-With Responses delegation, configure a vision-capable backend model. Queue a supported Responses image input item with `response.item.create`, then send `response.create` to run or resume backend work. Return all required pending function results before continuing. See [Handle Responses delegation](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=responses#handle-responses-delegation).
+With Responses delegation, configure a vision-capable backend model. Queue a supported Responses image input item with `response.item.create`, then send `response.create` to run or resume backend work. Return all required pending tool results and approvals before continuing. See [Handle Responses delegation](https://developers.openai.com/api/docs/guides/live-delegation?delegation-mode=responses#handle-responses-delegation).
 
   
 

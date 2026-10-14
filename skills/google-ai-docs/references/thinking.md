@@ -1,4 +1,4 @@
-The [Gemini 3 and 2.5 series models](https://ai.google.dev/gemini-api/docs/models) use a
+[Gemini models](https://ai.google.dev/gemini-api/docs/models) use a
 "thinking process" that significantly improves their reasoning and multi-step
 planning abilities, making them highly effective for complex tasks such as
 coding, advanced mathematics, and data analysis.
@@ -90,7 +90,7 @@ Initiating an interaction with a thinking model is similar to any other interact
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-pro"),
+                Model: interactions.Model("gemini-3.8-flash"),
                 Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor and provide a simple, everyday example."),
             }),
         })
@@ -556,6 +556,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
 | Model | Default Thinking | Levels Supported |
 |---|---|---|
+| gemini-4-argon | On (medium) | low, medium, high |
 | gemini-3.8-flash | On (medium) | low, medium, high |
 | gemini-3.6-flash | On (medium) | minimal, low, medium, high |
 | gemini-3.5-flash-lite | On (minimal) | minimal, low, medium, high |
@@ -710,6 +711,12 @@ any thinking tokens generated). To reduce cost or latency without truncating
 responses, lower `thinking_level` (`low` or `medium`) instead of setting a
 small `max_output_tokens`.
 
+For Gemini 4 models (`gemini-4-argon`), keep the following context and output limits in mind:
+
+- **Shared 1M context window:** Input, thinking, and output tokens share a single 1M-token context window (`1,048,576` tokens). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens).
+- **Default synchronous output cap (64K):** When `background=False` (for both streaming and non-streaming requests), the default and maximum `max_output_tokens` cap is `65,536` tokens. Setting `max_output_tokens > 65536` with `background=False` returns a `400` error.
+- **Long decode (up to 1M tokens):** To allow Gemini 4 to reason and generate beyond `65,536` tokens (up to `1,048,576` tokens), set `background=True` and configure `max_output_tokens` greater than `65,536`. See [Long decode](https://ai.google.dev/gemini-api/docs/long-decode) for details.
+
 ## Thought signatures
 
 Thought signatures are encrypted representations of the model's internal reasoning. They are required to maintain reasoning continuity across multi-turn interactions.
@@ -853,4 +860,5 @@ Use thinking models efficiently by following these guidelines.
 
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation): Basic text responses
 - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling): Connect to tools
+- [Gemini 4 guide](https://ai.google.dev/gemini-api/docs/latest-model): What's new in Gemini 4
 - [Gemini 3 guide](https://ai.google.dev/gemini-api/docs/gemini-3): Model-specific features

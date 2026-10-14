@@ -55,7 +55,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
    ```
 
 1. **Download Codex**
@@ -161,23 +161,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

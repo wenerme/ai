@@ -166,8 +166,8 @@
   },
   "grafana-athena-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest.md",
-    "size": 3086,
-    "updatedAt": "2026-06-25T05:41:35.269Z"
+    "size": 4943,
+    "updatedAt": "2026-10-14T01:00:33.177Z"
   },
   "grafana-athena-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-athena-datasource/latest/query-editor.md",
@@ -751,8 +751,8 @@
   },
   "grafana-exploretraces-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/access.md",
-    "size": 3370,
-    "updatedAt": "2026-06-25T05:41:59.032Z"
+    "size": 3375,
+    "updatedAt": "2026-10-14T01:00:51.070Z"
   },
   "grafana-exploretraces-app/concepts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts.md",
@@ -766,8 +766,8 @@
   },
   "grafana-exploretraces-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started.md",
-    "size": 6321,
-    "updatedAt": "2026-08-25T10:55:22.048Z"
+    "size": 6371,
+    "updatedAt": "2026-10-14T01:00:51.513Z"
   },
   "grafana-exploretraces-app/get-started/example-investigation.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation.md",
@@ -1491,8 +1491,8 @@
   },
   "grafana-opensearch-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest.md",
-    "size": 3238,
-    "updatedAt": "2026-06-25T05:42:49.898Z"
+    "size": 4755,
+    "updatedAt": "2026-10-14T01:01:13.363Z"
   },
   "grafana-opensearch-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/query-editor.md",

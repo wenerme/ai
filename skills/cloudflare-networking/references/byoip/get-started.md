@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/byoip/get-started/og.png?v=813afd918459
 
 # Get started
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to onboard your own IP prefixes to Cloudflare. Before you begin, you must contact your account team to confirm that your contract includes BYOIP and that your account has the required service configuration.
 
@@ -32,6 +32,7 @@ You must meet all of the following requirements. Cloudflare cannot onboard your 
   - [ARIN ↗︎](https://www.arin.net/)
   - [LACNIC ↗︎](https://lacnic.net/)
   - [RIPE ↗︎](https://www.ripe.net/)
+- Minimum IPv4 prefix size of /24 and/or minimum IPv6 prefix of a /48 with a maximum prefix size of a /32.
 - Your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) records must contain:
   - A `route` or `route6` object that exactly matches each prefix you want to onboard.
   - An `origin` that matches the ASN Cloudflare will use to advertise the prefix.
@@ -259,5 +260,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/byoip/get-started/og.png?v=813afd9184592636","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/byoip/get-started/og.png?v=813afd9184592636","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

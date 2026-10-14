@@ -2327,7 +2327,7 @@ restarting the entire task.
 
     interaction = client.interactions.create(
         input="Can you elaborate on the second point in the report?",
-        model="gemini-3.1-pro-preview",
+        model="gemini-4-argon",
         previous_interaction_id="COMPLETED_INTERACTION_ID"
     )
 
@@ -2337,7 +2337,7 @@ restarting the entire task.
 
     const interaction = await client.interactions.create({
         input: 'Can you elaborate on the second point in the report?',
-        model: 'gemini-3.1-pro-preview',
+        model: 'gemini-4-argon',
         previous_interaction_id: 'COMPLETED_INTERACTION_ID'
     });
     console.log(interaction.steps.at(-1).content[0].text);
@@ -2354,7 +2354,7 @@ restarting the entire task.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.1-pro-preview")
+            .model("gemini-4-argon")
             .input(InteractionsInput.of("Can you elaborate on the second point in the report?"))
             .previousInteractionId("COMPLETED_INTERACTION_ID")
             .build();
@@ -2387,7 +2387,7 @@ restarting the entire task.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:                 interactions.Model("gemini-3.1-pro-preview"),
+                Model:                 interactions.Model("gemini-4-argon"),
                 Input:                 interactions.NewInteractionsInput("Can you elaborate on the second point in the report?"),
                 PreviousInteractionID: genai.Ptr("COMPLETED_INTERACTION_ID"),
             }),
@@ -2408,7 +2408,7 @@ restarting the entire task.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
         "input": "Can you elaborate on the second point in the report?",
-        "model": "gemini-3.1-pro-preview",
+        "model": "gemini-4-argon",
         "previous_interaction_id": "COMPLETED_INTERACTION_ID"
     }'
 

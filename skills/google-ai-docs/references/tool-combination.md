@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Preview** : Built-in and custom tools combinations are in [Preview](https://cloud.google.com/products#product-launch-stages) and supported for [Gemini 3](https://ai.google.dev/gemini-api/docs/models#gemini-3) models only.
+> **Preview** : Built-in and custom tools combinations are in [Preview](https://cloud.google.com/products#product-launch-stages) and supported for [Gemini 4](https://ai.google.dev/gemini-api/docs/models#gemini-4) and [Gemini 3](https://ai.google.dev/gemini-api/docs/models#gemini-3) models.
 
 Gemini allows the combination of [built-in tools](https://ai.google.dev/gemini-api/docs/tools), such
 as `google_search`, and [function calling](https://ai.google.dev/gemini-api/docs/function-calling)

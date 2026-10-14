@@ -36,9 +36,18 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-pro-latest`
 
   Latest release of Gemini Pro
-- `gemini-3.5-flash-lite`
+- `gemini-2.5-flash`
+
+  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
+- `gemini-3.5-flash-lite`
+
+  Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
@@ -96,6 +105,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-robotics-er-1.6-preview`
+
+  Gemini Robotics-ER 1.6 Preview
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
@@ -260,9 +272,6 @@ values:
 agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
 Configuration for the agent.   
 *Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-INCOMPLETE and decoding can be resumed. Input: pass the latest token
-back unchanged in CreateInteraction to continue decoding.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
 specifying remote environment sources or a string referencing an existing
 environment ID.
@@ -822,9 +831,6 @@ The agent to interact with.
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-INCOMPLETE and decoding can be resumed. Input: pass the latest token
-back unchanged in CreateInteraction to continue decoding.
 created string (optional) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
@@ -869,9 +875,18 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-pro-latest`
 
   Latest release of Gemini Pro
-- `gemini-3.5-flash-lite`
+- `gemini-2.5-flash`
+
+  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
+- `gemini-2.5-pro`
+
+  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+- `gemini-2.5-flash-lite`
 
   Our smallest and most cost effective model, built for at scale usage.
+- `gemini-3.5-flash-lite`
+
+  Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
 - `gemini-2.5-flash-image`
 
   Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
@@ -929,6 +944,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `lyria-3-pro-preview`
 
   Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+- `gemini-robotics-er-1.6-preview`
+
+  Gemini Robotics-ER 1.6 Preview
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
@@ -4392,13 +4410,7 @@ Configuration for a custom environment.
 
 #### Fields
 
-env object or string (optional) Environment variables to set in the sandbox environment.
-
-#### Possible Types
-
-object <br />
-
-string A direct string value.
+env object (optional) Environment variables to set in the sandbox environment.
 environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
 update the existing environment instead of creating a new one.
 network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.

@@ -5,11 +5,13 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Run the GitLab Orbit CLI. (EXPERIMENTAL)
+Query the GitLab Orbit context graph. (EXPERIMENTAL)
 
 ## Synopsis
 
 Run the GitLab Orbit CLI through glab.
+
+Coding agents: run `glab orbit --yes skills get orbit` to load the Orbit skill. `--yes` installs the binary without a prompt on first use.
 
 Every command and flag, including `--help`, is forwarded verbatim to the managed Orbit binary. glab downloads, verifies, and updates that binary for you on first use. Until the binary is installed, `--help` shows this text instead. glab passes your resolved GitLab credential to the binary on every invocation, so remote commands such as `glab orbit query` need no separate login.
 

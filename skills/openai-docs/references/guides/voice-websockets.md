@@ -8,7 +8,9 @@ Choose your API to see its connection steps and session events.
 
 ## Connect a server to GPT-Live
 
-Use a primary WebSocket when your server captures audio or relays an audio stream for a client. It carries audio and JSON events in both directions. Keep the project API key on that trusted server. For browser and mobile applications, start with [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live).
+We recommend [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live) for GPT-Live audio connections, including server-to-server integrations.
+
+WebSockets are also supported. A primary WebSocket carries audio and JSON events in both directions. Keep the project API key on your trusted server.
 
 This guide covers streaming audio to GPT-Live. To monitor or control an existing session, see [Server-side controls](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live). To connect a reasoning and tool backend to the Responses API, see [Responses WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode).
 

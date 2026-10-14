@@ -8,6 +8,8 @@ As we launch safer and more capable models, we regularly retire older models. So
 
 This page lists all API deprecations, along with recommended replacements.
 
+To monitor model shutdowns programmatically, call the [List models endpoint](https://developers.openai.com/api/reference/resources/models/methods/list) (`GET /v1/models`) and check each model's optional `shutdown_date` field. When present, this field contains the shutdown date as a `YYYY-MM-DD` string, or `null` if no shutdown date has been announced; the field is also available from the [Retrieve a model endpoint](https://developers.openai.com/api/reference/resources/models/methods/retrieve).
+
 ## Model deprecation notice periods
 
 We provide advance notice before retiring models so customers have time to plan and migrate. When we announce a model deprecation, we notify customers who are actively using the model by email and document the deprecation on this page.
@@ -34,6 +36,19 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 Upcoming deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-10-14: GPT-4 series model deprecations
+
+On October 14, 2026, we notified developers using certain GPT-4 series models of their deprecation and removal from the API on January 14, 2027.
+
+| Shutdown date    | Model / system                                    | Recommended replacement |
+| ---------------- | ------------------------------------------------- | ----------------------- |
+| January 14, 2027 | GPT-4o (`gpt-4o-2024-08-06`, `gpt-4o-2024-11-20`) | `gpt-6-luna`            |
+| January 14, 2027 | GPT-4o mini (`gpt-4o-mini-2024-07-18`)            | `gpt-6-luna`            |
+| January 14, 2027 | GPT-4.1 (`gpt-4.1-2025-04-14`)                    | `gpt-6-luna`            |
+| January 14, 2027 | GPT-4.1 mini (`gpt-4.1-mini-2025-04-14`)          | `gpt-6-luna`            |
+
+Fine-tuned versions of these models follow the same shutdown schedule as their underlying base models.
+
 ### 2026-10-01: GPT-5.3-Codex, GPT-5.1, GPT-5.4-Nano
 
 The following models are deprecated and will be removed from the API on April 1, 2027, with six months' notice. Migrate to the recommended replacements before the shutdown date.
@@ -54,14 +69,6 @@ The following text-to-speech models are deprecated and will be removed from the 
 | Jan 6, 2027   | `tts-1-hd`                   | `gpt-realtime-2.1-mini` |
 | Jan 6, 2027   | `gpt-4o-mini-tts-2025-03-20` | `gpt-realtime-2.1-mini` |
 | Jan 6, 2027   | `gpt-4o-mini-tts-2025-12-15` | `gpt-realtime-2.1-mini` |
-
-### 2026-09-11: GPT-5.4-Cyber
-
-The `gpt-5.4-cyber` model is deprecated and will be removed from the API on October 1, 2026. Migrate to the most capable cyber model available to you before the shutdown date.
-
-| Shutdown date | Model / system  | Recommended replacement                        |
-| ------------- | --------------- | ---------------------------------------------- |
-| Oct 1, 2026   | `gpt-5.4-cyber` | The most capable cyber model available to you. |
 
 ### 2026-08-26: Transcription models
 
@@ -163,19 +170,6 @@ Inference on fine-tuned models will continue to be available until the base mode
 | July 2, 2026 | Creating fine-tuning jobs is no longer available to organizations that have not run inference on a fine-tuned model in the past 60 days.                                                         |
 | Jan 6, 2027  | Active existing customers will no longer be able to create new fine-tuning jobs on this date. Inference on fine-tuned models will be disabled only when the underlying base model is deprecated. |
 
-## Past deprecations
-
-Past deprecations are listed below, with the most recent announcements at the top.
-
-### 2026-05-08: `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots
-
-On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots of their deprecation and removal from the API.
-
-| Shutdown date | Model / system        | Recommended replacement |
-| ------------- | --------------------- | ----------------------- |
-| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
-| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
-
 ### 2026-04-22: Legacy GPT model snapshots
 
 To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models. Access to these models will be shut down on the dates below.
@@ -204,6 +198,27 @@ We are also removing fine-tuned versions as below:
 | October 23, 2026 | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5.6-luna`                     |
 | October 23, 2026 | `ft-babbage-002`             | `gpt-5.6-terra`                    |
 | October 23, 2026 | `ft-davinci-002`             | `gpt-5.6-terra`                    |
+
+## Past deprecations
+
+Past deprecations are listed below, with the most recent announcements at the top.
+
+### 2026-09-11: GPT-5.4-Cyber
+
+The `gpt-5.4-cyber` model is deprecated and will be removed from the API on October 1, 2026. Migrate to the most capable cyber model available to you before the shutdown date.
+
+| Shutdown date | Model / system  | Recommended replacement                        |
+| ------------- | --------------- | ---------------------------------------------- |
+| Oct 1, 2026   | `gpt-5.4-cyber` | The most capable cyber model available to you. |
+
+### 2026-05-08: `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots
+
+On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots of their deprecation and removal from the API.
+
+| Shutdown date | Model / system        | Recommended replacement |
+| ------------- | --------------------- | ----------------------- |
+| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
+| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
 
 ### 2026-04-22: Legacy GPT model snapshots (July 2026 shutdown)
 

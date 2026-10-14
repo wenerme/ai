@@ -2,19 +2,18 @@ In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers implicit caching to optimize performance and costs.
 
 > [!NOTE]
-> **Note:** The **Interactions API** only supports implicit caching. Explicit caching (manually creating and managing cache objects) is not supported in the Interactions API. To use explicit caching, switch to the [generateContent API](https://ai.google.dev/gemini-api/docs/generate-content/caching).
+> **Note:** The **Interactions API** only supports implicit caching. Explicit caching (manually creating and managing cache objects) is not supported in the Interactions API, or for Gemini 4 Argon and onward. To use explicit caching on supported Gemini 3 and 2.5 models, switch to the [generateContent API](https://ai.google.dev/gemini-api/docs/generate-content/caching).
 
 ## Implicit caching
 
 Implicit caching is enabled by default for all Gemini 2.5 and newer models. It is
 supported for both [stateful](https://ai.google.dev/gemini-api/docs/text-generation#multi-turn-conversations) (using `previous_interaction_id`)
 and [stateless](https://ai.google.dev/gemini-api/docs/text-generation#stateless-conversations) conversation modes.
-We automatically pass on cost savings if your request hits caches. There is nothing you need to do
-in order to enable this. The minimum input
-token count for context caching is listed in the following table for each model:
+We automatically pass on cost savings if your request hits caches. You don't need to configure anything to turn it on. The following table lists the minimum input token count for each model:
 
 | Model | Min token limit |
 |---|---|
+| Gemini 4 Argon | 4,096 |
 | Gemini 3.8 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
 | Gemini 3.1 Pro Preview | 4,096 |
