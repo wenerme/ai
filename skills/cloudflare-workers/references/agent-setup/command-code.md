@@ -68,7 +68,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 ## Cloudflare platform access
@@ -167,23 +167,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

@@ -168,6 +168,14 @@ Retrieves a model response with the given ID.
 
           The public continuation instruction.
 
+    - `param: optional string or null`
+
+      The request parameter associated with the error, or null if none was recorded.
+
+    - `type: optional string or null`
+
+      The original error type, or null if it was not recorded.
+
   - `incomplete_details: object { reason }  or null`
 
     Details about why the response is incomplete.

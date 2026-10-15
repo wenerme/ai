@@ -16,8 +16,8 @@ Use arrow keys to navigate jobs and logs.
 - `Enter` to toggle through a job's logs / traces, or display a child pipeline.
   Trigger jobs are marked with a `»`.
 - `Esc` or `q` to close the logs or trace, or return to the parent pipeline.
-- `Ctrl+R`, `Ctrl+P` to run, retry, or play a job. Use `Tab` or arrow keys to
-  navigate the modal, and `Enter` to confirm.
+- `Ctrl+R`, `Ctrl+P` to run, retry, or play a job. Use `Tab`, arrow keys, or
+  `h`/`j`/`k`/`l` to navigate the modal, and `Enter` to confirm.
 - `Ctrl+D` to cancel a job. If the selected job isn't running or pending,
   quits the CI/CD view.
 - `Ctrl+S` to show the full name of the selected job.

@@ -8,61 +8,227 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
 ### Body Parameters
 
-- `input: string or array of DecisionInputMessage`
+- `input: string or array of DecisionInputMessage or FunctionCall { arguments, call_id, name, 4 more }  or FunctionCallOutput { call_id, output, type, 2 more }  or 2 more`
 
-  The text or images to evaluate for every question. Provide a text string or user messages containing text and images. Images can be base64 data URLs or publicly accessible HTTP(S) URLs; at most 128 images are allowed across all messages in one request. Files, audio, tools, and item references are not supported.
+  The input to evaluate for every question. Provide a text string or an ordered array of messages, function calls and outputs, or custom tool calls and outputs. Each tool output must identify a matching call by call ID. User messages and tool outputs can contain text and images; developer and system messages can contain only input text, and assistant messages can contain output text or refusals. Images can be base64 data URLs or publicly accessible HTTP(S) URLs; at most 128 images are allowed per request. Files, audio, and item references are not supported.
 
   - `string`
 
-  - `array of DecisionInputMessage`
+  - `array of DecisionInputMessage or FunctionCall { arguments, call_id, name, 4 more }  or FunctionCallOutput { call_id, output, type, 2 more }  or 2 more`
 
-    - `content: string or array of DecisionInputPart`
+    - `DecisionInputMessage object { content, role, phase, type }`
 
-      Text evidence or an ordered list of text and image parts.
+      A user message containing input text or images, a developer or system message containing input text, or an assistant message containing output text or refusals. System messages are rendered as developer messages.
 
-      - `string`
+      - `content: string or array of DecisionInputPart`
 
-      - `Parts = array of DecisionInputPart`
+        Text evidence or an ordered list of text and image parts.
 
-        - `DecisionInputText object { text, type }`
+        - `string`
 
-          - `text: string`
+        - `Parts = array of DecisionInputPart`
 
-          - `type: "input_text"`
+          - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
-            - `"input_text"`
+            - `text: string`
 
-        - `DecisionInputImage object { image_url, type, detail }`
+            - `type: "input_text"`
 
-          An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+              - `"input_text"`
 
-          - `image_url: string`
+            - `prompt_cache_breakpoint: optional object { mode }  or null`
 
-            A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `type: "input_image"`
+              - `mode: "explicit"`
 
-            - `"input_image"`
+                The breakpoint mode. Always `explicit`.
 
-          - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `"explicit"`
 
-            The image detail level, using the selected model's image profile. Defaults to auto.
+          - `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
 
-            - `"low"`
+            An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
-            - `"high"`
+            - `image_url: string`
 
-            - `"auto"`
+              A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-            - `"original"`
+            - `type: "input_image"`
 
-    - `role: "user"`
+              - `"input_image"`
 
-      - `"user"`
+            - `detail: optional "low" or "high" or "auto" or "original" or null`
 
-    - `type: optional "message"`
+              The image detail level, using the selected model's image profile. Defaults to auto.
 
-      - `"message"`
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
+
+              - `"original"`
+
+            - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+              - `mode: "explicit"`
+
+                The breakpoint mode. Always `explicit`.
+
+                - `"explicit"`
+
+          - `OutputText object { text, type }`
+
+            - `text: string`
+
+            - `type: "output_text"`
+
+              - `"output_text"`
+
+          - `Refusal object { refusal, type }`
+
+            - `refusal: string`
+
+            - `type: "refusal"`
+
+              - `"refusal"`
+
+      - `role: "user" or "developer" or "system" or "assistant"`
+
+        - `"user"`
+
+        - `"developer"`
+
+        - `"system"`
+
+        - `"assistant"`
+
+      - `phase: optional "commentary" or "final_answer" or null`
+
+        The phase of an assistant message.
+
+        - `"commentary"`
+
+        - `"final_answer"`
+
+      - `type: optional "message"`
+
+        - `"message"`
+
+    - `FunctionCall object { arguments, call_id, name, 4 more }`
+
+      - `arguments: string`
+
+      - `call_id: string`
+
+      - `name: string`
+
+      - `type: "function_call"`
+
+        - `"function_call"`
+
+      - `id: optional string or null`
+
+      - `namespace: optional string or null`
+
+      - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `FunctionCallOutput object { call_id, output, type, 2 more }`
+
+      - `call_id: string`
+
+      - `output: string or array of DecisionInputText or DecisionInputImage`
+
+        Text evidence or an ordered list of text and image parts.
+
+        - `string`
+
+        - `Parts = array of DecisionInputText or DecisionInputImage`
+
+          - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
+
+          - `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
+
+            An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+      - `type: "function_call_output"`
+
+        - `"function_call_output"`
+
+      - `id: optional string or null`
+
+      - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `CustomToolCall object { call_id, input, name, 4 more }`
+
+      - `call_id: string`
+
+      - `input: string`
+
+      - `name: string`
+
+      - `type: "custom_tool_call"`
+
+        - `"custom_tool_call"`
+
+      - `id: optional string or null`
+
+      - `namespace: optional string or null`
+
+      - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `CustomToolCallOutput object { call_id, output, type, 2 more }`
+
+      - `call_id: string`
+
+      - `output: string or array of DecisionInputText or DecisionInputImage`
+
+        Text evidence or an ordered list of text and image parts.
+
+        - `string`
+
+        - `Parts = array of DecisionInputText or DecisionInputImage`
+
+          - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
+
+          - `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
+
+            An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+      - `type: "custom_tool_call_output"`
+
+        - `"custom_tool_call_output"`
+
+      - `id: optional string or null`
+
+      - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+        - `"in_progress"`
+
+        - `"completed"`
+
+        - `"incomplete"`
 
 - `model: string`
 
@@ -133,6 +299,28 @@ Use this endpoint to quickly answer classification or scoring questions about so
       - `"score"`
 
     - `name: optional string`
+
+- `prompt_cache_key: optional string or null`
+
+  Partition prompt cache reuse by caller-provided key.
+
+- `prompt_cache_options: optional object { mode, ttl }  or null`
+
+  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
+
+  - `mode: optional "implicit" or "explicit" or null`
+
+    Controls whether OpenAI automatically creates an implicit cache breakpoint. Defaults to `implicit`. With `implicit`, OpenAI creates one implicit breakpoint and writes up to the latest three explicit breakpoints in the request. With `explicit`, OpenAI does not create an implicit breakpoint and writes up to the latest four explicit breakpoints. If there are no explicit breakpoints, the request does not use prompt caching.
+
+    - `"implicit"`
+
+    - `"explicit"`
+
+  - `ttl: optional "30m"`
+
+    The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+
+    - `"30m"`
 
 - `safety_identifier: optional string or null`
 
@@ -444,7 +632,7 @@ curl https://api.openai.com/v1/decisions \
 
 ### Decision Input Image
 
-- `DecisionInputImage object { image_url, type, detail }`
+- `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
 
   An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
@@ -468,11 +656,21 @@ curl https://api.openai.com/v1/decisions \
 
     - `"original"`
 
+  - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`
+
 ### Decision Input Message
 
-- `DecisionInputMessage object { content, role, type }`
+- `DecisionInputMessage object { content, role, phase, type }`
 
-  A user message containing text or images.
+  A user message containing input text or images, a developer or system message containing input text, or an assistant message containing output text or refusals. System messages are rendered as developer messages.
 
   - `content: string or array of DecisionInputPart`
 
@@ -482,7 +680,7 @@ curl https://api.openai.com/v1/decisions \
 
     - `Parts = array of DecisionInputPart`
 
-      - `DecisionInputText object { text, type }`
+      - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
         - `text: string`
 
@@ -490,7 +688,17 @@ curl https://api.openai.com/v1/decisions \
 
           - `"input_text"`
 
-      - `DecisionInputImage object { image_url, type, detail }`
+        - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
+      - `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
 
         An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
@@ -514,9 +722,49 @@ curl https://api.openai.com/v1/decisions \
 
           - `"original"`
 
-  - `role: "user"`
+        - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
+
+      - `OutputText object { text, type }`
+
+        - `text: string`
+
+        - `type: "output_text"`
+
+          - `"output_text"`
+
+      - `Refusal object { refusal, type }`
+
+        - `refusal: string`
+
+        - `type: "refusal"`
+
+          - `"refusal"`
+
+  - `role: "user" or "developer" or "system" or "assistant"`
 
     - `"user"`
+
+    - `"developer"`
+
+    - `"system"`
+
+    - `"assistant"`
+
+  - `phase: optional "commentary" or "final_answer" or null`
+
+    The phase of an assistant message.
+
+    - `"commentary"`
+
+    - `"final_answer"`
 
   - `type: optional "message"`
 
@@ -524,11 +772,11 @@ curl https://api.openai.com/v1/decisions \
 
 ### Decision Input Part
 
-- `DecisionInputPart = DecisionInputText or DecisionInputImage`
+- `DecisionInputPart = DecisionInputText or DecisionInputImage or OutputText { text, type }  or Refusal { refusal, type }`
 
   An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
-  - `DecisionInputText object { text, type }`
+  - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
     - `text: string`
 
@@ -536,7 +784,17 @@ curl https://api.openai.com/v1/decisions \
 
       - `"input_text"`
 
-  - `DecisionInputImage object { image_url, type, detail }`
+    - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
+  - `DecisionInputImage object { image_url, type, detail, prompt_cache_breakpoint }`
 
     An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
@@ -560,12 +818,48 @@ curl https://api.openai.com/v1/decisions \
 
       - `"original"`
 
+    - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `mode: "explicit"`
+
+        The breakpoint mode. Always `explicit`.
+
+        - `"explicit"`
+
+  - `OutputText object { text, type }`
+
+    - `text: string`
+
+    - `type: "output_text"`
+
+      - `"output_text"`
+
+  - `Refusal object { refusal, type }`
+
+    - `refusal: string`
+
+    - `type: "refusal"`
+
+      - `"refusal"`
+
 ### Decision Input Text
 
-- `DecisionInputText object { text, type }`
+- `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
   - `text: string`
 
   - `type: "input_text"`
 
     - `"input_text"`
+
+  - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+    - `mode: "explicit"`
+
+      The breakpoint mode. Always `explicit`.
+
+      - `"explicit"`

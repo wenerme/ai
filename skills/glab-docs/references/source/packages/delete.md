@@ -9,8 +9,9 @@ Delete a package from a project's package registry.
 
 ## Synopsis
 
-Packages are identified by their numeric ID. Use `glab packages list`
-to find the ID.
+Identify the package by its numeric ID (as a positional argument or with
+`--id`), or by `--name` and `--version`. When using `--name`,
+`--package-type` defaults to `generic`.
 
 The command asks for confirmation before deleting; use `-y` to skip
 the prompt in scripts.
@@ -19,7 +20,7 @@ By default, the package is removed from the current project. Use `--repo`
 to target another project.
 
 ```plaintext
-glab packages delete <id> [flags]
+glab packages delete [<id> | --id <id> | --name <name>] [flags]
 ```
 
 ## Aliases
@@ -33,9 +34,17 @@ rm
 ```console
 # Delete a package by ID
 glab packages delete 1
+glab packages delete --id 1
+
+# Delete a generic package by name and version
+glab packages delete --name example-generic --version 1.0.0
+
+# Delete a package by name, version and type
+glab packages delete --name example-maven --version 1.0.0 --package-type maven
 
 # Skip the confirmation prompt
 glab packages delete 1 -y
+glab packages delete --name example-generic --version 1.0.0 --yes
 
 # Use the 'rm' alias
 glab packages rm 1
@@ -45,7 +54,11 @@ glab packages rm 1
 ## Options
 
 ```plaintext
-  -y, --yes   Skip the confirmation prompt.
+      --id int                ID of the package to remove.
+      --name string           Name of the package to remove.
+      --package-type string   Type of the package to remove, used with --name. One of: cargo, composer, conan, debian, generic, golang, helm, maven, ml_model, npm, nuget, pypi, rpm, rubygems, terraform_module. (default "generic")
+      --version string        Version of the package.
+  -y, --yes                   Skip the confirmation prompt.
 ```
 
 ## Options inherited from parent commands

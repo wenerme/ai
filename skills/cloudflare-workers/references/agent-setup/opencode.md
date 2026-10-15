@@ -65,7 +65,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 ## Cloudflare platform access
@@ -164,7 +164,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
@@ -172,15 +172,15 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
 Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

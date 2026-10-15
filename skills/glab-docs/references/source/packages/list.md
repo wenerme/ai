@@ -51,7 +51,7 @@ glab packages list -R owner/repo
 ```plaintext
       --jq string             Filter JSON output with a jq expression.
   -n, --name string           Filter packages by name (substring match).
-      --package-type string   Filter packages by type. One of: composer, conan, debian, generic, golang, helm, maven, npm, nuget, pypi, terraform_module.
+      --package-type string   Filter packages by type. One of: cargo, composer, conan, debian, generic, golang, helm, maven, ml_model, npm, nuget, pypi, rpm, rubygems, terraform_module.
   -p, --page int              Page number. (default 1)
   -P, --per-page int          Number of items to list per page. (default 30)
 ```

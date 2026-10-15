@@ -5,7 +5,7 @@ description: "Browse Ofox model IDs, capabilities, context windows, and pricing.
 
 # [Ofox logo]Ofox
 
-Access 152 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 153 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -746,6 +746,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.75,
     "outputCost": 3.75
+  },
+  {
+    "model": "ofox/google/gemini-4-argon",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "ofox/minimax/m2-her",

@@ -323,9 +323,9 @@ A date in the form yyyy-mm-dd, which will be used to determine which version of 
 
 <code>env</code>Optional<a href="#config-default-export-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -430,7 +430,7 @@ The `worker` object supports these fields:
 | `logpush` | No | Sends trace events to Workers Logpush |
 | `observability` | No | Configures logs, traces, and sampling |
 | `placement` | No | Configures smart or targeted placement |
-| `previewUrls` | No | Controls [version preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) |
+| `previewUrls` | No | Controls [version preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) |
 | `tailConsumers` | No | Sends events to Tail Workers |
 | `triggers` | No | Declares routes, queues, schedules, and sockets |
 | `unsafe` | No | Passes unsupported metadata through to deployment |
@@ -572,9 +572,9 @@ A date in the form yyyy-mm-dd, which will be used to determine which version of 
 
 <code>env</code>Optional<a href="#config-bindings-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -834,7 +834,7 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 <dt><code>entrypoint?: string | WorkerModule</code></dt>
 <dd>The entrypoint module that will be executed. May be either a path string (e.g. <code>"./src/index.ts"</code>) or a module namespace imported with the <code>cf-worker</code> import attribute.</dd>
 
-<dt><code>assets?: { /** How to handle HTML requests. */ htmlHandling?: "auto-trailing-slash" | "drop-trailing-slash" | "force-trailing-slash" | "none"; /** How to handle requests that do not match an asset. */ notFoundHandling?: "single-page-application" | "404-page" | "none"; /** * Matches will be routed to the User Worker, and matches to negative rules will go to the Asset Worker. * * Can also be `true`, indicating that every request should be routed to the User Worker. */ runWorkerFirst?: string[] | boolean; }</code></dt>
+<dt><code>assets?: { /** How to handle HTML requests. */ htmlHandling?: "auto-trailing-slash" | "drop-trailing-slash" | "force-trailing-slash" | "none"; /** How to handle requests that do not match an asset. */ notFoundHandling?: "single-page-application" | "404-page" | "none"; /** * The public URL prefix under which the application is served. */ basePath?: string; /** * Matches will be routed to the User Worker, and matches to negative rules will go to the Asset Worker. * * Can also be `true`, indicating that every request should be routed to the User Worker. */ runWorkerFirst?: string[] | boolean; }</code></dt>
 <dd>Specify the directory of static assets to deploy/serve. More details at <a href="https://developers.cloudflare.com/workers/frameworks/">https://developers.cloudflare.com/workers/frameworks/</a> For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#assets">https://developers.cloudflare.com/workers/wrangler/configuration/#assets</a></dd>
 
 <dt><code>domains?: string[]</code></dt>
@@ -870,8 +870,8 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 <dt><code>unsafe?: { /** * Arbitrary key/value pairs that will be included in the uploaded metadata. Values specified * here will always be applied to metadata last, so can add new or override existing fields. */ metadata?: Record&lt;string, unknown&gt;; /** * Used for internal capnp uploads for the Workers runtime. */ capnp?: { basePath: string; sourceSchemas: string[]; compiledSchema?: never; } | { basePath?: never; sourceSchemas?: never; compiledSchema: string; }; }</code></dt>
 <dd>"Unsafe" tables for runtime features that aren't directly supported by this configuration. Values are forwarded verbatim in the Worker's upload metadata.</dd>
 
-<dt><code>env?: Record&lt;string, Binding&gt;</code></dt>
-<dd>Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.</dd>
+<dt><code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code></dt>
+<dd>Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.</dd>
 
 <dt><code>exports?: Record&lt;string, Export&gt;</code></dt>
 <dd>Configuration for named exports declared by the Worker. Each entry's key is the exported class name; the value configures the export. - Construct entries with <code>exports.durableObject(...)</code>. - Declares Durable Object classes exported from this Worker. For more information about Durable Objects, see the documentation at <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">https://developers.cloudflare.com/workers/learning/using-durable-objects</a>. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects">https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects</a>. - Construct entries with <code>exports.workflow(...)</code>. - Declares Workflows defined by this Worker. For more information about Workflows, see the documentation at <a href="https://developers.cloudflare.com/workflows/">https://developers.cloudflare.com/workflows/</a>.</dd>
@@ -1169,9 +1169,9 @@ A date in the form yyyy-mm-dd, which will be used to determine which version of 
 
 <code>env</code>Optional<a href="#config-cross-worker-web-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -3242,9 +3242,9 @@ Attach a Container application to this Durable Object by config reference.
 
 <code>env</code>Optional<a href="#config-container-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 

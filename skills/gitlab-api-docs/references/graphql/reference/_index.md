@@ -19098,9 +19098,10 @@ Arguments:
 | <a id="mutation-workitemdecisioncreate-description"></a>`description` | [`String`](#string) | Context of the decision. |
 | <a id="mutation-workitemdecisioncreate-discussionid"></a>`discussionId` | [`DiscussionID`](#discussionid) | Global ID of the originating discussion thread. |
 | <a id="mutation-workitemdecisioncreate-options"></a>`options` | [`[WorkItemDecisionOptionInput!]`](#workitemdecisionoptioninput) | Candidate options of the decision. Maximum of 5 options. Incompatible with resolution. |
+| <a id="mutation-workitemdecisioncreate-question"></a>`question` | [`String`](#string) | Question being decided. Required unless resolution is provided. |
 | <a id="mutation-workitemdecisioncreate-resolution"></a>`resolution` | [`WorkItemDecisionResolutionInput`](#workitemdecisionresolutioninput) | When present, records the decision as resolved at creation. Incompatible with options. |
 | <a id="mutation-workitemdecisioncreate-sourcelink"></a>`sourceLink` | [`String`](#string) | URL of the comment, discussion, or external resource that prompted the decision. |
-| <a id="mutation-workitemdecisioncreate-title"></a>`title` | [`String`](#string) | Question being decided. Required unless resolution is provided. |
+| <a id="mutation-workitemdecisioncreate-title"></a>`title`  | [`String`](#string) | Deprecated in GitLab 19.6. Use `question`. |
 | <a id="mutation-workitemdecisioncreate-workitemid"></a>`workItemId` | [`WorkItemID!`](#workitemid) | Global ID of the work item. |
 
 Fields:
@@ -19181,12 +19182,13 @@ Arguments:
 | <a id="mutation-workitemdecisionupdate-discussionid"></a>`discussionId` | [`DiscussionID`](#discussionid) | Global ID of the originating discussion thread. |
 | <a id="mutation-workitemdecisionupdate-id"></a>`id` | [`WorkItemsDecisionID!`](#workitemsdecisionid) | Global ID of the decision. |
 | <a id="mutation-workitemdecisionupdate-options"></a>`options` | [`[WorkItemDecisionOptionUpdateInput!]`](#workitemdecisionoptionupdateinput) | Existing options of the decision to update. Maximum of 6 options. |
+| <a id="mutation-workitemdecisionupdate-question"></a>`question` | [`String`](#string) | Question being decided. |
 | <a id="mutation-workitemdecisionupdate-resolutionrationale"></a>`resolutionRationale` | [`String`](#string) | Reasoning for the resolution. Can only be updated on resolved decisions. |
 | <a id="mutation-workitemdecisionupdate-resolvedbyid"></a>`resolvedById` | [`UserID`](#userid) | Global ID of the user who resolved the decision. Can only be updated on resolved decisions. |
 | <a id="mutation-workitemdecisionupdate-resolvingnoteid"></a>`resolvingNoteId` | [`NoteID`](#noteid) | Global ID of the comment that resolved the decision. Can only be updated on resolved decisions. |
 | <a id="mutation-workitemdecisionupdate-selectedoptioncontent"></a>`selectedOptionContent` | [`String`](#string) | Content of the selected option. Unless exactly one option is selected, a new selected option with this content is added and any selected options are deselected. Can only be updated on resolved decisions. |
 | <a id="mutation-workitemdecisionupdate-sourcelink"></a>`sourceLink` | [`String`](#string) | URL of the comment, discussion, or external resource that prompted the decision. |
-| <a id="mutation-workitemdecisionupdate-title"></a>`title` | [`String`](#string) | Question being decided. |
+| <a id="mutation-workitemdecisionupdate-title"></a>`title`  | [`String`](#string) | Deprecated in GitLab 19.6. Use `question`. |
 
 Fields:
 
@@ -56373,8 +56375,8 @@ Fields:
 | <a id="project-duocontextexclusionsettings"></a>`duoContextExclusionSettings`  | [`DuoContextExclusionSettings`](#duocontextexclusionsettings) | Introduced in GitLab 18.2. Status: Experiment. Settings for excluding files from Duo context. |
 | <a id="project-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the project. |
 | <a id="project-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.9. Status: Experiment. Indicates whether GitLab Duo features are enabled for the project. |
-| <a id="project-duomcpservernames"></a>`duoMcpServerNames`  | [`[String!]`](#string) | Introduced in GitLab 19.6. Status: Experiment. Names of the distinct MCP servers used by the project's configured agents, sorted alphabetically. Resolved on request only, because it reads the configured agents and their versions. Shares its lookup with duoMcpServersCount when both are requested. |
-| <a id="project-duomcpserverscount"></a>`duoMcpServersCount`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of distinct MCP servers used by the project's configured agents. Resolved on request only, because it reads the configured agents and their versions. |
+| <a id="project-duomcpservernames"></a>`duoMcpServerNames`  | [`[String!]`](#string) | Introduced in GitLab 19.6. Status: Experiment. Names of the distinct MCP servers used by the project's configured agents, sorted alphabetically. Servers blocked for the project's namespace are not listed. Resolved on request only, because it reads the configured agents and their versions. Shares its lookup with duoMcpServersCount when both are requested. |
+| <a id="project-duomcpserverscount"></a>`duoMcpServersCount`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of distinct MCP servers used by the project's configured agents. Servers blocked for the project's namespace are not counted. Resolved on request only, because it reads the configured agents and their versions. |
 | <a id="project-duoworkflowrunneravailable"></a>`duoWorkflowRunnerAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates whether the project has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it queries the project's runners and their managers. |
 | <a id="project-duoworkflowstatuscheck"></a>`duoWorkflowStatusCheck`  | [`DuoWorkflowEnablement`](#duoworkflowenablement) | Introduced in GitLab 17.7. Status: Experiment. Indicates whether Duo Agent Platform is enabled for the project. |
 | <a id="project-duoworkflowusablerunnertype"></a>`duoWorkflowUsableRunnerType`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Runner type (instance_type, group_type, or project_type) of the runner that can pick up GitLab Duo Agent Platform workloads, or null when none can. Shares its runner scan with duoWorkflowRunnerAvailable when both are requested. |
@@ -65196,13 +65198,14 @@ Fields:
 | <a id="workitemdecision-id"></a>`id`  | [`WorkItemsDecisionID!`](#workitemsdecisionid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the decision. |
 | <a id="workitemdecision-noteurl"></a>`noteUrl`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. URL of the comment that resolved the decision. |
 | <a id="workitemdecision-options"></a>`options`  | [`WorkItemDecisionOptionConnection`](#workitemdecisionoptionconnection) | Introduced in GitLab 19.4. Status: Experiment. Candidate options of the decision. |
+| <a id="workitemdecision-question"></a>`question`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Question being decided. May be absent for decisions recorded as already resolved at creation. |
 | <a id="workitemdecision-resolutionrationale"></a>`resolutionRationale`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Reasoning given when the decision was resolved. |
 | <a id="workitemdecision-resolvedat"></a>`resolvedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp when the decision was resolved. |
 | <a id="workitemdecision-resolvedby"></a>`resolvedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who resolved the decision. |
 | <a id="workitemdecision-resolvingnoteid"></a>`resolvingNoteId`  | [`NoteID`](#noteid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the comment that resolved the decision. |
 | <a id="workitemdecision-sourcelink"></a>`sourceLink`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. URL of the comment, discussion, or external resource that prompted the decision. Present only on manually created decisions. |
 | <a id="workitemdecision-state"></a>`state`  | [`WorkItemDecisionState!`](#workitemdecisionstate) | Introduced in GitLab 19.5. Status: Experiment. State of the decision. |
-| <a id="workitemdecision-title"></a>`title`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Question being decided. May be absent for decisions recorded as already resolved at creation. |
+| <a id="workitemdecision-title"></a>`title`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Question being decided. Deprecated, use question instead. May be absent for decisions recorded as already resolved at creation. |
 
 ### `WorkItemDecisionOption`
 

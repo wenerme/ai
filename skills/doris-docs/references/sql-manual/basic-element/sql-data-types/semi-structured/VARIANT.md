@@ -79,6 +79,7 @@ field_definition:
 - The `field_definition` list is the [Schema Template](#schema-template). It fixes the storage type of selected paths.
 - `properties(...)` sets column-level storage properties. See [Column properties](#column-properties).
 - A VARIANT column can be `NULL` or `NOT NULL`. Its only allowed default value is `NULL`.
+- A top-level VARIANT column name cannot contain a dot (`.`), even when quoted with backticks: for example, `` `v.x` VARIANT `` is invalid. This restriction applies to `CREATE TABLE` and `ALTER TABLE`; it does not restrict JSON field names inside a VARIANT value.
 
 ```sql
 CREATE TABLE IF NOT EXISTS example_tbl (
@@ -539,6 +540,13 @@ The Schema Template cannot be changed after the column is created. See [ALTER TA
 
 ## ALTER TABLE
 
+`ADD COLUMN` (including batch additions), `MODIFY COLUMN`, and `RENAME COLUMN` must also use a top-level VARIANT column name without dots. For example, the following statement is rejected:
+
+```sql
+ALTER TABLE example_tbl ADD COLUMN `v.x` VARIANT;
+-- ERROR: Cannot use `VARIANT` type column named with a `.` character: v.x
+```
+
 `ALTER TABLE` supports:
 
 - `ADD COLUMN` of a nullable VARIANT column, with or without a Schema Template and properties.
@@ -658,7 +666,7 @@ SELECT * FROM tbl WHERE v['id_2'] MATCH 'Apache';
 You can specify index properties for certain VARIANT subpaths, and even configure both tokenized and non-tokenized inverted indexes for the same path. Path-specific indexes require the path type to be declared via Schema Template.
 
 ```sql
--- Common properties: field_pattern (target path), analyzer, parser, support_phrase, etc.
+-- Common properties: field_pattern (target path), analyzer, parser, support_phrase, norms, etc.
 CREATE TABLE IF NOT EXISTS tbl (
     k BIGINT,
     v VARIANT<'content' : STRING>,
@@ -684,6 +692,18 @@ CREATE TABLE IF NOT EXISTS tbl (
 SELECT * FROM tbl WHERE v['pattern_1'] MATCH 'Doris';
 SELECT * FROM tbl WHERE v['pattern_1'] = 'Doris';
 ```
+
+Tokenized indexes on VARIANT paths write BM25 norms by default, costing one byte per row per path, including rows with no value for that path. For paths used only for filtering, disable norms with `"norms" = "false"`. Without `field_pattern`, this property applies to all subpaths covered by the index:
+
+```sql
+CREATE TABLE IF NOT EXISTS tbl (
+    k BIGINT,
+    v VARIANT<'body_*' : STRING>,
+    INDEX idx_body(v) USING INVERTED PROPERTIES("parser" = "english", "field_pattern" = "body_*", "norms" = "false")
+);
+```
+
+Disabling norms does not affect `MATCH` filtering, but `score()` returns an error when it reads a segment without norms. The BE config `inverted_index_skip_norms_for_variant` disables norms for all VARIANT paths. See [Record Length and the norms Property](../../../../table-design/index/inverted-index/scoring.md#record-length-and-the-norms-property) for details.
 
 ### When indexes don’t work
 

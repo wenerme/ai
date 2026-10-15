@@ -5,7 +5,7 @@ description: "Browse Agnes AI model IDs, capabilities, context windows, and pric
 
 # [Agnes AI logo]Agnes AI
 
-Access 3 Agnes AI models through Mastra's model router. Authentication is handled automatically using the `AGNES_API_KEY` environment variable.
+Access 4 Agnes AI models through Mastra's model router. Authentication is handled automatically using the `AGNES_API_KEY` environment variable.
 
 Learn more in the [Agnes AI documentation](https://agnes-ai.com/doc).
 
@@ -40,18 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "agnes/agnes-2.0-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 512000,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "agnes/agnes-2.5-flash",
     "imageInput": true,
     "audioInput": false,
@@ -74,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.45,
     "outputCost": 0.9
+  },
+  {
+    "model": "agnes/agnes-3.0-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -108,7 +108,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "agnes/agnes-2.5-pro-alpha"
+      ? "agnes/agnes-3.0-flash"
       : "agnes/agnes-2.0-flash";
   }
 });

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952
 
 # Develop, build, and deploy
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf` develops, builds, and deploys Workers projects with the same CLI that manages the rest of your Cloudflare account. To create a project, follow [Deploy your first Worker](https://developers.cloudflare.com/cf/get-started/first-worker/).
 
@@ -249,9 +249,9 @@ A date in the form yyyy-mm-dd, which will be used to determine which version of 
 
 <code>env</code>Optional<a href="#modes-config-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -326,7 +326,7 @@ Upload a Worker Version without deploying it:
 cf workers versions create
 ```
 
-This command builds and validates the project the same way as `cf deploy`. It accepts `--prebuilt`, `--mode`, `--message`, `--tag`, `--secrets-file`, `--dry-run`, and `--worker`. Use `--preview-alias <ALIAS>` to give the version a [preview URL](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) alias.
+This command builds and validates the project the same way as `cf deploy`. It accepts `--prebuilt`, `--mode`, `--message`, `--tag`, `--secrets-file`, `--dry-run`, and `--worker`. Use `--preview-alias <ALIAS>` to give the version a [preview URL](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) alias.
 
 To send traffic to an uploaded version, create a deployment:
 
@@ -505,5 +505,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/projects/#page","headline":"Develop, build, and deploy","description":"Run, build, and deploy Workers projects with the Cloudflare CLI, including modes, prebuilt deploys, and previews.","url":"https://developers.cloudflare.com/cf/projects/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/projects/og.png?v=08ae0671b2972952","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

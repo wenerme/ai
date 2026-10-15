@@ -23,7 +23,7 @@ Cache key objects for invoked recipes can be printed to standard error with
 `just -vv`.
 
 The environment variables included in `environment` may be controlled with
-`[cache(environment = EXPRESSION])`<sup>master<sup>.
+`[cache(environment = EXPRESSION])`<sup>1.59.0<sup>.
 
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where
 `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in
