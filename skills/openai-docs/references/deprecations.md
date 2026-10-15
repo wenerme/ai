@@ -82,6 +82,7 @@ For information about the recommended replacements, see the [transcription guide
 | Feb 26, 2027  | `gpt-4o-transcribe`         | `gpt-live-transcribe` or `gpt-transcribe` |
 | Feb 26, 2027  | `gpt-4o-mini-transcribe`    | `gpt-live-transcribe` or `gpt-transcribe` |
 | Feb 26, 2027  | `gpt-4o-transcribe-diarize` | `gpt-live-transcribe` or `gpt-transcribe` |
+| Feb 26, 2027  | `/v1/audio/translations`    | `v1/realtime/translations`                |
 
 ### 2026-07-20: Legacy audio, realtime, and transcription models
 

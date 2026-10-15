@@ -94,7 +94,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Create a Logpush job to stream Workers analytics to my data warehouse.
+   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
    ```
 
 ## Cloudflare platform access
@@ -193,23 +193,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

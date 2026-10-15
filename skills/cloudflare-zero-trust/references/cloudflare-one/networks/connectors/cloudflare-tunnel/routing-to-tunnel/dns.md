@@ -16,6 +16,10 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 When you create a tunnel, Cloudflare generates a subdomain at `<UUID>.cfargotunnel.com`. You point a CNAME record at this subdomain to route traffic from your hostname to the tunnel.
 
+FedRAMP High
+
+On accounts in Cloudflare's [FedRAMP High ↗︎](https://www.cloudflare.com/cloudflare-for-government/) environment, CNAME records must point to the tunnel subdomain `<UUID>.fed-cfargotunnel.com` instead of `<UUID>.cfargotunnel.com`. A CNAME record that points to `<UUID>.cfargotunnel.com` will return a `530` error with error code `1033`, even when the tunnel is healthy. For more information, refer to [Error 1033](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1033/).
+
 The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the same Cloudflare account. If someone discovers your tunnel UUID, they cannot create a DNS record in another account to proxy traffic through it.
 
 ## Create a DNS record

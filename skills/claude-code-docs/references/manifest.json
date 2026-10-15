@@ -49,9 +49,9 @@
   },
   "artifacts.md": {
     "url": "https://code.claude.com/docs/en/artifacts",
-    "lastModified": "Wed, 14 Oct 2026 10:22:48 GMT",
-    "size": 40939,
-    "updatedAt": "2026-10-14T10:22:48.638Z"
+    "lastModified": "Thu, 15 Oct 2026 10:20:39 GMT",
+    "size": 41550,
+    "updatedAt": "2026-10-15T10:20:39.434Z"
   },
   "authentication.md": {
     "url": "https://code.claude.com/docs/en/authentication",
@@ -265,9 +265,9 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Thu, 15 Oct 2026 00:48:35 GMT",
-    "size": 146843,
-    "updatedAt": "2026-10-15T00:48:35.255Z"
+    "lastModified": "Thu, 15 Oct 2026 10:20:54 GMT",
+    "size": 152873,
+    "updatedAt": "2026-10-15T10:20:54.045Z"
   },
   "desktop-ios-simulator.md": {
     "url": "https://code.claude.com/docs/en/desktop-ios-simulator",
@@ -307,9 +307,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Thu, 15 Oct 2026 00:48:38 GMT",
-    "size": 171035,
-    "updatedAt": "2026-10-15T00:48:38.535Z"
+    "lastModified": "Thu, 15 Oct 2026 10:20:56 GMT",
+    "size": 171352,
+    "updatedAt": "2026-10-15T10:20:56.716Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -523,9 +523,9 @@
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
-    "lastModified": "Wed, 14 Oct 2026 10:23:24 GMT",
-    "size": 152599,
-    "updatedAt": "2026-10-14T10:23:24.639Z"
+    "lastModified": "Thu, 15 Oct 2026 10:21:12 GMT",
+    "size": 152754,
+    "updatedAt": "2026-10-15T10:21:12.128Z"
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",
@@ -769,9 +769,9 @@
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",
-    "lastModified": "Sun, 11 Oct 2026 05:28:23 GMT",
-    "size": 78596,
-    "updatedAt": "2026-10-11T05:28:23.957Z"
+    "lastModified": "Thu, 15 Oct 2026 10:21:40 GMT",
+    "size": 79379,
+    "updatedAt": "2026-10-15T10:21:40.628Z"
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",
@@ -787,9 +787,9 @@
   },
   "workflows.md": {
     "url": "https://code.claude.com/docs/en/workflows",
-    "lastModified": "Wed, 14 Oct 2026 10:24:09 GMT",
-    "size": 41364,
-    "updatedAt": "2026-10-14T10:24:09.338Z"
+    "lastModified": "Thu, 15 Oct 2026 10:21:51 GMT",
+    "size": 41601,
+    "updatedAt": "2026-10-15T10:21:51.152Z"
   },
   "worktrees.md": {
     "url": "https://code.claude.com/docs/en/worktrees",

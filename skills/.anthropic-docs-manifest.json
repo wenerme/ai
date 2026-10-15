@@ -530,8 +530,8 @@
   "anthropic-docs/build-with-claude/claude-platform-on-aws.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws",
     "skill": "anthropic-docs",
-    "size": 100116,
-    "updatedAt": "2026-10-15T00:50:22.945Z"
+    "size": 100113,
+    "updatedAt": "2026-10-15T10:22:24.692Z"
   },
   "anthropic-docs/build-with-claude/claude-on-vertex-ai.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai",
@@ -1670,8 +1670,8 @@
   "anthropic-api/api/claude-platform-on-aws-iam-actions.md": {
     "url": "https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions",
     "skill": "anthropic-api",
-    "size": 55367,
-    "updatedAt": "2026-10-15T00:51:41.026Z"
+    "size": 58445,
+    "updatedAt": "2026-10-15T10:23:34.470Z"
   },
   "anthropic-api/api/versioning.md": {
     "url": "https://platform.claude.com/docs/en/api/versioning",

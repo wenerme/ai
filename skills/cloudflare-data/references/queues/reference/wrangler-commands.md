@@ -900,7 +900,7 @@ pnpm wrangler queues subscription create <QUEUE>
   The event source type
 - `--events` `string` required
 
-  Comma-separated list of event types to subscribe to
+  Comma-separated list of event types to subscribe to (for artifacts.repo, use pushed, not cf.artifacts.repo.pushed)
 - `--name` `string` Name for the subscription (auto-generated if not provided)
 - `--enabled` `boolean` default: true
 
@@ -910,6 +910,8 @@ pnpm wrangler queues subscription create <QUEUE>
 - `--workflow-name` `string` Workflow name (required for workflows.workflow source)
 - `--zone-id` `string` Zone ID (required for email.sending source)
 - `--domain` `string` Sending domain — zone apex or verified subdomain (required for email.sending source)
+- `--source-namespace` `string` Artifacts namespace (required for artifacts.repo source)
+- `--source-repo-name` `string` Artifacts repository name (required for artifacts.repo source)
 
 <details>
 

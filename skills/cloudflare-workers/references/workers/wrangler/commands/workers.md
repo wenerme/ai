@@ -1248,7 +1248,7 @@ pnpm wrangler versions upload [PATH]
 - `--jsx-fragment` `string` The function that is called for each JSX fragment
 - `--tsconfig` `string` Path to a custom tsconfig.json file
 - `--minify` `boolean` Minify the Worker
-- `--upload-source-maps` `boolean` Include source maps when uploading this Worker
+- `--upload-source-maps` `boolean` Include source maps when uploading this Worker (defaults to true)
 - `--dry-run` `boolean` Compile a project and run checks without actually uploading the Worker
 - `--secrets-file` `string` Path to a file containing secrets to upload with the version (JSON or .env format). Applies additively with secrets from previous deployments - omitted secrets will not be deleted.
 - `--keep-vars` `boolean` default: false
@@ -1550,7 +1550,7 @@ Global flags
 
 ### `versions secret bulk`
 
-Create or update a secret variable for a Worker
+Create, update, or delete multiple secret variables for a Worker
 
 npmyarnpnpm
 
@@ -1566,7 +1566,7 @@ yarn wrangler versions secret bulk [FILE]
 pnpm wrangler versions secret bulk [FILE]
 ```
 
-- `[FILE]` `string` The file of key-value pairs to upload, as JSON in form {"key": value, ...} or .dev.vars file in the form KEY=VALUE
+- `[FILE]` `string` The file of key-value pairs to create, update, or delete, as JSON in form {"key": "value", ...} or .env file in the form KEY=VALUE. Set a key to null in the JSON file to delete it. Deletion is not supported with .env files. If omitted, Wrangler expects to receive input from stdin rather than a file.
 - `--name` `string` Name of the Worker
 - `--message` `string` Description of this deployment
 - `--tag` `string` A tag for this version

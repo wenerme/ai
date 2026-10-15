@@ -22,7 +22,7 @@ To learn how to structure a project's configuration, refer to [Programmatic conf
 
 Select a highlighted line to show its type and description below it.
 
-Generated from `@cloudflare/config`0.23.0
+Generated from `@cloudflare/config`0.25.0
 
 defineConfig6 optionsWorker18 optionsBindings37 optionsTriggers5 optionsExports7 options
 
@@ -256,7 +256,7 @@ The entrypoint module that will be executed. May be either a path string (e.g. <
 
 <code>assets</code>Optional<a href="#config-reference-worker-workerconfig-assets">Link to assets</a>
 
-<code>assets?: { /** How to handle HTML requests. */ htmlHandling?: "auto-trailing-slash" | "drop-trailing-slash" | "force-trailing-slash" | "none"; /** How to handle requests that do not match an asset. */ notFoundHandling?: "single-page-application" | "404-page" | "none"; /** * Matches will be routed to the User Worker, and matches to negative rules will go to the Asset Worker. * * Can also be `true`, indicating that every request should be routed to the User Worker. */ runWorkerFirst?: string[] | boolean; }</code>
+<code>assets?: { /** How to handle HTML requests. */ htmlHandling?: "auto-trailing-slash" | "drop-trailing-slash" | "force-trailing-slash" | "none"; /** How to handle requests that do not match an asset. */ notFoundHandling?: "single-page-application" | "404-page" | "none"; /** * The public URL prefix under which the application is served. */ basePath?: string; /** * Matches will be routed to the User Worker, and matches to negative rules will go to the Asset Worker. * * Can also be `true`, indicating that every request should be routed to the User Worker. */ runWorkerFirst?: string[] | boolean; }</code>
 
 Specify the directory of static assets to deploy/serve. More details at <a href="https://developers.cloudflare.com/workers/frameworks/">https://developers.cloudflare.com/workers/frameworks/</a> For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#assets">https://developers.cloudflare.com/workers/wrangler/configuration/#assets</a>
 
@@ -701,9 +701,9 @@ Arbitrary key/value pairs that will be included in the uploaded metadata. Values
 
 <code>env</code>Optional<a href="#config-reference-worker-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -1026,9 +1026,9 @@ A date in the form yyyy-mm-dd, which will be used to determine which version of 
 
 <code>env</code>Optional<a href="#config-reference-bindings-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 
@@ -1313,15 +1313,15 @@ Binding to a headless browser usable from the Worker. For reference, see <a href
 
 <details>
 
-<summary>MY_ANALYTICS_SQL: bindings.analyticsSQL(), (analyticsSQL reference)</summary>
+<summary>MY_ANALYTICS: bindings.analytics(), (analytics reference)</summary>
 
 
 
-<code>analyticsSQL</code>Builder<a href="#config-reference-bindings-bindings-analyticssql-default">Link to analyticsSQL</a>
+<code>analytics</code>Builder<a href="#config-reference-bindings-bindings-analytics-default">Link to analytics</a>
 
-<code>analyticsSQL(options?: AnalyticsSQLBindingOptions): AnalyticsSQLBinding$1;</code>
+<code>analytics(options?: AnalyticsSQLBindingOptions): AnalyticsSQLBinding$1;</code>
 
-An Analytics SQL binding.
+An Analytics binding.
 
 <details>
 

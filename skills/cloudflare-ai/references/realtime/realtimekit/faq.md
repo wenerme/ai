@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2
 
 # FAQ
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### API token
 
@@ -429,6 +429,28 @@ If you are still unable to send a message, please contact support.
 
 </details>
 
+### Notifications
+
+<details>
+
+<summary>
+
+Why are SDK notifications not visible when my meeting tab is in the background or minimized? How can I see them without returning to the tab?
+
+</summary>
+
+Browsers do not show in-page content outside a backgrounded tab or minimized window. RealtimeKit UI Kit notifications are in-page elements, so they follow this browser behavior. Picture in Picture is a separate browser feature that can show participant video in a floating window, but it does not show notifications.<br>
+
+A host may need to know when someone enters the waiting room, a participant joins, or recording starts while they are viewing another tab. To display system notifications outside the meeting tab, choose an approach:
+
+- **Notifications API in the page:** Use the browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification">Notification() constructor ↗︎</a> after requesting <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission_static">notification permission ↗︎</a>. This can notify users while the page is open. <a href="https://caniuse.com/mdn-api_notification_notification">Browser support ↗︎</a> varies, and the constructor does not work in most mobile browsers.
+- **Service worker notifications:** Use a service worker with <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification">showNotification() ↗︎</a>. This works in more browsers, including many mobile browsers. The meeting page must pass SDK events to the worker. A service worker alone cannot continue receiving SDK events after the tab closes.
+- **Web Push:** Use a service worker, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API ↗︎</a>, and a push subscription. Keep the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe">VAPID private key on your server ↗︎</a>. Your backend can send push messages even when the meeting tab is closed.
+
+Choose notification triggers based on where the event is available. While the meeting page is open, the SDK exposes <a href="https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/">participant join, leave, audio, and video events</a>, <a href="https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#events">local audio and video events</a>, and <a href="https://developers.cloudflare.com/realtime/realtimekit/core/chat/#receiving-chat-messages">chat updates</a>. For backend-triggered notifications, subscribe to <a href="https://developers.cloudflare.com/realtime/realtimekit/webhooks/#supported-events">RealtimeKit webhooks</a>, then send relevant events to your clients. Webhooks cover a smaller set of events, including participant joins and recording status changes. They do not provide individual chat messages or waiting-room arrivals.
+
+</details>
+
 ### Recording
 
 <details>
@@ -582,5 +604,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -56,7 +56,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 ## Cloudflare platform access
@@ -155,23 +155,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

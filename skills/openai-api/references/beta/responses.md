@@ -132,6 +132,14 @@ the `background` parameter set to `true` can be cancelled.
 
           The public continuation instruction.
 
+    - `param: optional string or null`
+
+      The request parameter associated with the error, or null if none was recorded.
+
+    - `type: optional string or null`
+
+      The original error type, or null if it was not recorded.
+
   - `incomplete_details: object { reason }  or null`
 
     Details about why the response is incomplete.
@@ -28698,6 +28706,14 @@ as input for the model's response.
 
           The public continuation instruction.
 
+    - `param: optional string or null`
+
+      The request parameter associated with the error, or null if none was recorded.
+
+    - `type: optional string or null`
+
+      The original error type, or null if it was not recorded.
+
   - `incomplete_details: object { reason }  or null`
 
     Details about why the response is incomplete.
@@ -40890,6 +40906,14 @@ Retrieves a model response with the given ID.
         - `message: string`
 
           The public continuation instruction.
+
+    - `param: optional string or null`
+
+      The request parameter associated with the error, or null if none was recorded.
+
+    - `type: optional string or null`
+
+      The original error type, or null if it was not recorded.
 
   - `incomplete_details: object { reason }  or null`
 
@@ -58042,6 +58066,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The public continuation instruction.
 
+    - `param: optional string or null`
+
+      The request parameter associated with the error, or null if none was recorded.
+
+    - `type: optional string or null`
+
+      The original error type, or null if it was not recorded.
+
   - `incomplete_details: object { reason }  or null`
 
     Details about why the response is incomplete.
@@ -69518,6 +69550,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `message: string`
 
             The public continuation instruction.
+
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
 
     - `incomplete_details: object { reason }  or null`
 
@@ -81425,6 +81465,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The public continuation instruction.
 
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
+
     - `incomplete_details: object { reason }  or null`
 
       Details about why the response is incomplete.
@@ -92582,7 +92630,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Error
 
-- `BetaResponseError object { code, message, misalignment }`
+- `BetaResponseError object { code, message, misalignment, 2 more }`
 
   An error object returned when the model fails to generate a Response.
 
@@ -92671,6 +92719,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `message: string`
 
         The public continuation instruction.
+
+  - `param: optional string or null`
+
+    The request parameter associated with the error, or null if none was recorded.
+
+  - `type: optional string or null`
+
+    The original error type, or null if it was not recorded.
 
 ### Beta Response Error Event
 
@@ -92827,6 +92883,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `message: string`
 
             The public continuation instruction.
+
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
 
     - `incomplete_details: object { reason }  or null`
 
@@ -104490,6 +104554,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The public continuation instruction.
 
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
+
     - `incomplete_details: object { reason }  or null`
 
       Details about why the response is incomplete.
@@ -115715,6 +115787,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `message: string`
 
             The public continuation instruction.
+
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
 
     - `incomplete_details: object { reason }  or null`
 
@@ -152761,6 +152841,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The public continuation instruction.
 
+      - `param: optional string or null`
+
+        The request parameter associated with the error, or null if none was recorded.
+
+      - `type: optional string or null`
+
+        The original error type, or null if it was not recorded.
+
     - `incomplete_details: object { reason }  or null`
 
       Details about why the response is incomplete.
@@ -166130,6 +166218,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `message: string`
 
               The public continuation instruction.
+
+        - `param: optional string or null`
+
+          The request parameter associated with the error, or null if none was recorded.
+
+        - `type: optional string or null`
+
+          The original error type, or null if it was not recorded.
 
       - `incomplete_details: object { reason }  or null`
 

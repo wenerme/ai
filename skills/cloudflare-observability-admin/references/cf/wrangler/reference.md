@@ -546,9 +546,9 @@ Default: <code>[]</code>
 
 <code>env</code>Optional<a href="#orders-api-config-workerconfig-env">Link to env</a>
 
-<code>env?: Record&lt;string, Binding&gt;</code>
+<code>env?: Record&lt;string, Binding | false | null | undefined&gt;</code>
 
-Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc.
+Bindings exposed on the Worker's <code>env</code> object. Construct entries with <code>bindings.kv(...)</code>, <code>bindings.r2(...)</code>, etc. Entries set to <code>false</code>, <code>null</code>, or <code>undefined</code> are omitted, which allows bindings to be included conditionally.
 
 </details>
 

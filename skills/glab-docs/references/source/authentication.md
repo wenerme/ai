@@ -160,7 +160,7 @@ is ignored. For more information, see [token precedence](#token-precedence).
 ## CI job token
 
 To authenticate your installation of `glab` with a CI job token, the `glab` command must be run in a GitLab CI job.
-The token is automatically provided by the GitLab Runner via the `CI_JOB_TOKEN` environment variable.
+The token is automatically provided by the GitLab Runner through the `CI_JOB_TOKEN` environment variable.
 
 Endpoints allowing the use of the CI job token are listed in the
 [GitLab documentation](https://docs.gitlab.com/ci/jobs/ci_job_token/#job-token-access).
