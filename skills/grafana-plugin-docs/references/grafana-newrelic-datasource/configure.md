@@ -13,7 +13,7 @@ This document explains how to configure the New Relic data source in Grafana.
 
 Before configuring the data source, ensure you have:
 
-- **Grafana permissions:** Organization administrator role or datasources:create permission via RBAC.
+- **Grafana permissions:** Organization administrator role or `datasources:create` permission via RBAC.
 - **New Relic User API key:** Also called a Personal API key. To create one, refer to [New Relic API keys](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key).
 - **New Relic Account ID:** To find yours, refer to [Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/).
 
@@ -33,14 +33,14 @@ The following table describes the available configuration settings.
 
 Expand table
 
-| Setting                             | Description                                                                                                                                                              |
-|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                            | The name used to refer to the data source in panels and queries.                                                                                                         |
-| **Default**                         | Toggle to make this the default data source for new panels.                                                                                                              |
-| **Personal API Key / User API key** | Your New Relic User API key. To create one, refer to [New Relic API keys](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key).                  |
-| **Account ID**                      | Your New Relic Account ID. To find yours, refer to [Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/).                 |
-| **Region**                          | The New Relic region where your account is hosted. Select `US` or `EU`. When left unset, the region defaults to US.                                                      |
-| **Timeout in Seconds**              | Maximum time in seconds to wait for a response from the New Relic API. Default: `300`. Increase this if you experience timeouts with complex queries or large data sets. |
+| Setting                             | Description                                                                                                                                                             |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                            | The name used to refer to the data source in panels and queries.                                                                                                        |
+| **Default**                         | Toggle to make this the default data source for new panels.                                                                                                             |
+| **Personal API Key / User API key** | Your New Relic User API key. To create one, refer to [New Relic API keys](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key).                 |
+| **Account ID**                      | Your New Relic Account ID. To find yours, refer to [Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/).                |
+| **Region**                          | The New Relic region where your account is hosted. Select `US` or `EU`. When left unset, the region defaults to US.                                                     |
+| **Timeout in Seconds**              | Maximum time in seconds to wait for a response from the New Relic API. Default: `300`. Increase this if you experience timeouts with complex queries or large datasets. |
 
 ## Verify the connection
 
@@ -50,7 +50,7 @@ If the test fails, refer to [Troubleshoot New Relic data source issues](/docs/pl
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions the New Relic data source:
 

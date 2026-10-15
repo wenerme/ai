@@ -597,8 +597,8 @@ adding milestones for ancestor groups raises an error.
 
 ## Collect release evidence
 
-- Tier: Premium, Ultimate
-- Offering: GitLab Self-Managed, GitLab Dedicated
+- Tier: Free, Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Creates an evidence for an existing release.
 

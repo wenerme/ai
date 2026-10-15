@@ -67,6 +67,8 @@ Modifies a project in the organization.
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -75,7 +77,11 @@ Modifies a project in the organization.
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 

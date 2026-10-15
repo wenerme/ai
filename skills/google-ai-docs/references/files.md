@@ -596,7 +596,7 @@ the model to parse the problem before answering the prompt.
 | ![](https://ai.google.dev/static/gemini-api/docs/images/math.jpg) Parse the formula in the image first. Then based on the formula, answer "what's the 4th term in the sequence?". | *Click to expand the result* $$ b(n) = b(n-1) \* (-3) $$ $$ b(1) = 15 $$ 1. Substitute n = 4 into the formula: $$ b(4) = b(4-1) \* (-3) $$ $$ b(4) = b(3) \* (-3) $$ 2. We don't know the value of b(3), so substitute n = 3 into the formula: $$ b(3) = b(3-1) \* (-3) $$ $$ b(3) = b(2) \* (-3) $$ 3. We don't know the value of b(2), so substitute n = 2 into the formula: $$ b(2) = b(2-1) \* (-3) $$ $$ b(2) = b(1) \* (-3) $$ 4. We know the value of b(1) is 15, so substitute it into the formula: $$ b(2) = 15 \* (-3) $$ $$ b(2) = -45 $$ 5. Now that we know the value of b(2), substitute it into the formula for b(3): $$ b(3) = b(2) \* (-3) $$ $$ b(3) = -45 \* (-3) $$ $$ b(3) = 135 $$ 6. Now that we know the value of b(3), substitute it into the formula for b(4): $$ b(4) = b(3) \* (-3) $$ $$ b(4) = 135 \* (-3) $$ $$ b(4) = -405 $$ Therefore, the 4th term in the sequence is -405. |
 
 This model response is correct - now to make the response even more streamlined,
-you can ask the model to to think step-by-step.
+you can ask the model to think step-by-step.
 
 <br />
 

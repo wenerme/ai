@@ -94,7 +94,7 @@ However, if you choose to collect images or take your own pictures, you'll need 
 - **[Image Segmentation](https://www.ultralytics.com/glossary/image-segmentation):** You'll label each pixel in the image according to the object it belongs to, creating detailed object boundaries.
 
 <p align="center">
-  [Bounding box, polygon, and keypoint annotations]
+  [Types of image annotation for classification, object detection, semantic segmentation, and instance segmentation]
 </p>
 
 [Data collection and annotation](./data-collection-and-annotation.md) can be a time-consuming manual effort. A dedicated annotation tool makes it faster: [Ultralytics Platform](https://platform.ultralytics.com) provides a built-in [annotation editor](../platform/data/annotation.md) with [SAM-powered smart annotation](https://www.ultralytics.com/annotate) for detection, segmentation, and OBB data, saving labels directly in YOLO format.

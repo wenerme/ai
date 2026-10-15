@@ -17,7 +17,53 @@ Before investigating specific errors, verify that the data source health check p
 2. Click **Save &amp; test**.
 3. Confirm you see the message **Plugin health check OK**.
 
-If the health check fails, start with the [Configuration errors](#configuration-errors) or [Connection errors](#connection-errors) sections.
+If the health check fails, first confirm that your Enterprise plugin license is valid. Refer to [Licensing issues](#licensing-issues). Otherwise, start with the [Configuration errors](#configuration-errors) or [Connection errors](#connection-errors) sections.
+
+## Licensing issues
+
+The New Relic data source is an Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled. A missing, expired, or incorrectly provisioned license is the most common cause of a failed health check, and it prevents the plugin from starting before it sends any request to New Relic. These problems usually require a change to your license or plan rather than a change to your New Relic credentials.
+
+### “Plugin health check failed”
+
+This error appears when the plugin backend fails to start. For an Enterprise plugin, the most common cause is a missing or invalid license rather than a problem with your New Relic API key or Account ID.
+
+**Symptoms:**
+
+- **Save &amp; test**, or the plugin catalog, reports `Plugin health check failed` with no further detail.
+- The data source fails immediately, before it sends any request to New Relic.
+- The Grafana server log contains an error similar to `invalid license for the enterprise plugin`.
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                                                      | Solution                                                                                                                                                                                                                                               |
+|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Grafana Cloud Free plan                                    | The New Relic plugin isn’t available on the Free tier. Upgrade to a Pro plan with the Enterprise plugins add-on, or to an Advanced plan.                                                                                                               |
+| Pro plan without the Enterprise plugins add-on             | Upgrading from Free to Pro doesn’t automatically include Enterprise plugins. Purchase the Enterprise plugins add-on, then enable the plugin from the account management page. Contact your Grafana account team for details.                           |
+| Self-managed Grafana without an Enterprise license         | Activate a valid [Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Review your current license in [Administration &gt; General &gt; Stats and license](/docs/grafana/latest/administration/stats-and-license/). |
+| License not provisioned after a contract change or renewal | Contact [Grafana Support](/support/) to verify that your license entitlements include the New Relic plugin.                                                                                                                                            |
+
+### Plugin stops working after a contract change or renewal
+
+If the plugin was working but stops after a contract renewal or a change to your entitlements, the updated license may not have been provisioned correctly.
+
+**Solutions:**
+
+1. Verify your current entitlements in the Grafana Cloud portal under your organization settings.
+2. For self-managed Grafana, re-download and apply the updated Enterprise license, then restart Grafana.
+3. Contact [Grafana Support](/support/) to confirm that the license includes the New Relic data source plugin.
+
+### Enterprise plugins aren’t available on a second stack or new instance
+
+Enterprise plugin entitlements apply per Grafana Cloud stack. If you can install the plugin on one stack but not on another, the entitlement may not be applied to the new stack.
+
+**Solutions:**
+
+1. Confirm that Enterprise plugins are enabled for the specific stack where you’re installing the plugin.
+2. Contact [Grafana Support](/support/) to have your entitlement applied to the additional stack.
+
+For billing or plan questions, such as whether a plugin is tracked correctly on your account, contact your Grafana account team.
 
 ## Configuration errors
 
@@ -132,9 +178,9 @@ These errors occur when executing queries against the New Relic API.
 
 **Solution:** Verify the macro syntax. Valid formats include:
 
-- `$__timeSeries` — no arguments, expands to `TIMESERIES`
-- `$__timeSeries(1 minute)` — fixed interval
-- `$__timeSeries(1h, 1 minute, 6h, 5 minutes)` — conditional intervals as comma-separated duration/aggregation pairs
+- `$__timeSeries`: no arguments, expands to `TIMESERIES`
+- `$__timeSeries(1 minute)`: fixed interval
+- `$__timeSeries(1h, 1 minute, 6h, 5 minutes)`: conditional intervals as comma-separated duration/aggregation pairs
 
 Duration arguments must be valid time duration strings (for example, `1h`, `30m`, `1 minute`).
 
@@ -307,8 +353,46 @@ These issues relate to using the New Relic data source with Grafana Alerting. Fo
 
 1. Verify the application has traffic during the evaluation period. Low-traffic applications may have gaps in data.
 2. Include `$__timeFilter` in the query to match the evaluation window.
-3. Configure the alert rule’s no data handling under **Configure no data and error handling** — choose **OK** for low-traffic applications to avoid false alerts.
+3. Configure the alert rule’s no data handling under **Configure no data and error handling**. Choose **OK** for low-traffic applications to avoid false alerts.
 4. Widen the evaluation interval to capture more data.
+
+## Data discrepancies with recording rules
+
+Grafana recording rules run a query on a schedule and store each result as a new metric. Because a recording rule writes a single value at each evaluation interval, the recorded metric is a sampled approximation of the underlying New Relic data, not an exact copy.
+
+### Recorded metric values drift from raw New Relic data
+
+**Symptoms:**
+
+- A panel backed by a recording rule shows different values than the same query run directly against New Relic.
+- The difference grows over time, especially for counts, sums, or rates.
+
+**Cause:** A recording rule evaluates its query on a fixed interval and writes one data point per evaluation. Grafana doesn’t guarantee that recorded metrics exactly match the raw data. Aggregations in the query and the lag between evaluations produce a divergence that can compound over long time ranges. This is expected behavior for recording rules across all data sources, not a New Relic-specific problem.
+
+**Solutions:**
+
+1. For exact data fidelity, query New Relic directly with a raw NRQL query instead of reading from the recorded metric.
+2. If you use recording rules to store the results of expensive queries, shorten the evaluation interval to improve resolution. A shorter interval reduces the divergence but doesn’t eliminate it.
+3. Align the evaluation interval of any alert rule that reads a recorded metric with the recording rule’s interval, so the alert acts on fresh data.
+4. For more information, refer to [Configure recording rules](/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/).
+
+## Blank or incomplete scheduled reports
+
+Scheduled PDF reports can render blank or partial panels when a data source is slow to return data. Grafana reporting applies a fixed rendering timeout, and any panel that doesn’t finish loading before that timeout renders empty. Because New Relic queries can take longer than queries to other data sources, reports that include New Relic panels are more likely to reach this limit.
+
+This rendering timeout is a Grafana reporting setting. It’s separate from the data source’s **Timeout in Seconds** setting, which controls only the New Relic API request. Changing **Timeout in Seconds** doesn’t affect report rendering.
+
+**Symptoms:**
+
+- Scheduled PDF reports intermittently show blank or partially loaded New Relic panels.
+- The same panels render correctly when you view them interactively in a dashboard.
+
+**Solutions:**
+
+1. Reduce the time New Relic queries take to run. Narrow the dashboard time range, add filters to reduce the result set, and avoid unnecessarily large queries. Refer to [Query timeout](#query-timeout).
+2. On self-managed Grafana, increase the reporting rendering timeout. Set `rendering_timeout` in the `[reporting]` section of the Grafana configuration file. The default is `10s`. For details, refer to [Configure Grafana Enterprise](/docs/grafana/latest/setup-grafana/configure-grafana/enterprise-configuration/#rendering_timeout).
+3. On Grafana Cloud, you can’t change the rendering timeout directly. Contact [Grafana Support](/support/) to request an increase.
+4. Keep Grafana up to date. Some blank-panel issues in reports are caused by rendering bugs that are fixed in later Grafana releases.
 
 ## Enable debug logging
 

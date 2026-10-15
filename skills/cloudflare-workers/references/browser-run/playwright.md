@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6
 
 # Playwright
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗︎](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-15",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-15"
 upload_source_maps = true
 
 [browser]
@@ -250,7 +250,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"upload_source_maps": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-15",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -269,7 +269,7 @@ main = "src/index.ts"
 upload_source_maps = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-15"
 
 [browser]
 binding = "MYBROWSER"
@@ -309,17 +309,17 @@ await env.KV.put("storageState", JSON.stringify(updatedStorageState));
 
 ### Keep Alive
 
-If users omit the `browser.close()` statement, the browser instance will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
+If users omit the `browser.close()` statement, the browser instance will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 20 minutes, by using the `keep_alive` option, set in milliseconds:
 
 ```js
-const browser = await playwright.launch(env.MYBROWSER, { keep_alive: 600000 });
+const browser = await playwright.launch(env.MYBROWSER, { keep_alive: 1200000 });
 ```
 
-Using the above, the browser will stay open for up to 10 minutes, even if inactive.
+Using the above, the browser will stay open for up to 20 minutes, even if inactive.
 
 Note
 
-This is an inactivity timeout, not a maximum session duration. Sessions can remain open longer than 10 minutes as long as they stay active. To keep a session open beyond the inactivity timeout, send a command at least once within your configured window (for example, every 10 minutes). Refer to [session duration limits](https://developers.cloudflare.com/browser-run/limits/#is-there-a-maximum-session-duration) for more information.
+This is an inactivity timeout, not a maximum session duration. Sessions can remain open longer than 20 minutes as long as they stay active. To keep a session open beyond the inactivity timeout, send a command at least once within your configured window (for example, every 20 minutes). Refer to [session duration limits](https://developers.cloudflare.com/browser-run/limits/#is-there-a-maximum-session-duration) for more information.
 
 ### Session Reuse
 
@@ -471,5 +471,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/playwright/og.png?v=59ac9c6a5521c13a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

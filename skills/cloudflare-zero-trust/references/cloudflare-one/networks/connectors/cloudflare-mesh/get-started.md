@@ -222,7 +222,7 @@ The dashboard wizard configures the following Cloudflare One settings automatica
 | [Device enrollment policy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) | Allows devices to enroll into your Cloudflare One account using email-based [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/). Only created if you do not already have an existing device enrollment policy in your account. |
 | [Device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) | Creates a profile configured with [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in **Include mode**, so only Mesh traffic routes through Cloudflare. This prevents disrupting existing network connectivity on your server. Only created if you do not already have an active Mesh node (formerly WARP Connector) in your account. |
 | [Allow all Cloudflare One traffic to reach enrolled devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-all-cloudflare-one-traffic-to-reach-enrolled-devices) and [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) | Enables device-to-device connectivity for Mesh networking. |
-| [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) | Enables TCP and UDP proxying for Mesh services. ICMP proxying is optional and supports diagnostics such as `ping` and `traceroute`. |
+| [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/) | Enables TCP and UDP proxying for Mesh services. ICMP proxying is optional and supports diagnostics such as `ping` and `traceroute`. |
 
 For automated deployments, the device profile documentation includes API and Terraform examples. Set `service_mode_v2 = { mode = "warp" }`, replace the generic example's `wireguard` protocol with `tunnel_protocol = "masque"`, and configure Split Tunnels to route `100.96.0.0/12` through Cloudflare. Match Mesh nodes with `identity.email == "warp_connector@<TEAM_NAME>.cloudflareaccess.com"`, and place this profile before broader profiles. The device enrollment documentation includes the Terraform enrollment-policy flow.
 
@@ -252,7 +252,7 @@ If your account already has a Cloudflare One deployment, the setup wizard will n
 - **Mesh connectivity** — In your device profile settings, enable [Allow all Cloudflare One traffic to reach enrolled devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-all-cloudflare-one-traffic-to-reach-enrolled-devices).
 - **Unique device IPs** — Enable [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) so that each participant gets a routable Mesh IP.
 - **Client mode** — Mesh nodes must run in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/). DNS-only or proxy-only modes are not supported.
-- **Traffic proxying** — Turn on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) for the protocols you use. TCP and UDP carry Mesh services. ICMP supports diagnostic tools such as `ping` and `traceroute`.
+- **Traffic proxying** — Turn on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/) for the protocols you use. TCP and UDP carry Mesh services. ICMP supports diagnostic tools such as `ping` and `traceroute`.
 
 ## Troubleshooting
 
@@ -268,6 +268,7 @@ For general client issues, refer to [Troubleshoot the Cloudflare One Client](htt
 ## Next steps
 
 - [**Connect client devices**](https://developers.cloudflare.com/mesh/guides/connect-client-devices/) — Platform-specific installation details, Split Tunnel configuration, and firewall considerations.
+- [**Run Mesh on Linux**](https://developers.cloudflare.com/mesh/guides/run-mesh-on-linux/) — Install a Mesh node on Debian, Ubuntu, or RHEL, with each command explained.
 - [**Run in Docker / Kubernetes**](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/) — Deploy a Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD pipelines.
 - [**Add routes**](https://developers.cloudflare.com/mesh/features/routes/) — Make an entire subnet behind your node reachable (databases, printers, other servers).
 - [**Enable high availability**](https://developers.cloudflare.com/mesh/features/high-availability/) — Run multiple replicas for production resilience.

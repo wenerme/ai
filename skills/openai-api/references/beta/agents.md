@@ -21562,11 +21562,11 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID \
 
 # Files
 
-## Create an agent environment file
+## Write an agent environment file
 
 **post** `/agents/environments/{environment_id}/files`
 
-Copies inline bytes or a Files API file into a connected execution environment. See [environment files](/api/docs/guides/agents-api/environments/files).
+Copies inline bytes or a Files API file into a connected execution environment, replacing an existing regular file at the same path. Upload between turns and wait for success before starting the next turn. See [environment files](/api/docs/guides/agents-api/environments/files).
 
 ### Path Parameters
 

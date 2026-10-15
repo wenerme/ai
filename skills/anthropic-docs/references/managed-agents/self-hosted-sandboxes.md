@@ -51,7 +51,7 @@ This quickstart runs one always-on worker with the `ant` CLI, sends it a session
 
 <Steps>
   <Step title="Create a self-hosted environment">
-    In the [Console](https://platform.claude.com/workspaces/default/environments): **Workspace > Environments > New > Self-hosted**
+    In the Claude Console, go to the [Environments](https://platform.claude.com/environments) page (`platform.claude.com/environments`), click **Create environment**, and under **Hosting** select **Self-hosted**.
 
     Or through the API:
 
@@ -190,7 +190,7 @@ This quickstart runs one always-on worker with the `ant` CLI, sends it a session
         For Linux environments, download the release binary directly.
 
         ```bash
-        VERSION=1.40.0
+        VERSION=1.41.0
         OS=$(uname -s | tr '[:upper:]' '[:lower:]')
         case $(uname -m) in
           x86_64) ARCH=amd64 ;;

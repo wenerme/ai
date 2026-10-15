@@ -8720,6 +8720,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -8728,7 +8730,11 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -8817,6 +8823,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
   - `"JP_STORAGE"`
 
+  - `"JP_STORAGE_PROCESSING"`
+
   - `"KR_STORAGE"`
 
   - `"CA_STORAGE"`
@@ -8825,7 +8833,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
   - `"IN_STORAGE"`
 
+  - `"IN_STORAGE_PROCESSING"`
+
   - `"AU_STORAGE"`
+
+  - `"AU_STORAGE_PROCESSING"`
 
   - `"GB_STORAGE"`
 
@@ -8877,6 +8889,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -8885,7 +8899,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -9009,6 +9027,8 @@ Returns a list of projects.
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -9017,7 +9037,11 @@ Returns a list of projects.
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -9152,6 +9176,8 @@ Retrieves a project.
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -9160,7 +9186,11 @@ Retrieves a project.
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -9284,6 +9314,8 @@ Modifies a project in the organization.
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -9292,7 +9324,11 @@ Modifies a project in the organization.
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -9385,6 +9421,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -9393,7 +9431,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 
@@ -9407,7 +9449,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
 ### Project Residency
 
-- `ProjectResidency = "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+- `ProjectResidency = "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 12 more`
 
   - `"GLOBAL"`
 
@@ -9417,6 +9459,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
   - `"JP_STORAGE"`
 
+  - `"JP_STORAGE_PROCESSING"`
+
   - `"KR_STORAGE"`
 
   - `"CA_STORAGE"`
@@ -9425,7 +9469,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
   - `"IN_STORAGE"`
 
+  - `"IN_STORAGE_PROCESSING"`
+
   - `"AU_STORAGE"`
+
+  - `"AU_STORAGE_PROCESSING"`
 
   - `"GB_STORAGE"`
 
@@ -9902,8 +9950,18 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 **post** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Updates the expiration of an existing API key in the project, including a
+Updates the scopes and/or expiration of an existing API key in the project, including a
 service-account-owned key. Requires permission to write project API keys.
+
+Provide at least one of `scopes` or `expires_in_seconds`. Omitted fields stay
+unchanged; neither field accepts `null`. Both changes are saved together.
+
+`scopes` replaces the key's scope restrictions using the same scope identifiers
+as the dashboard. An empty array means All permissions, subject to the owner's
+effective access; it does not mean no access. Use `["api.all.read"]` for read-only
+access or specific scopes such as `["api.files.read"]` for restricted access.
+This does not change user or service-account roles or grant admin permissions.
+Scope changes follow the same authentication-cache propagation as dashboard edits.
 
 Provide `expires_in_seconds` to set the expiration relative to this request.
 The value must satisfy the organization's and project's expiry policies.
@@ -9918,9 +9976,13 @@ the new request. The response contains only the redacted key, not its secret.
 
 ### Body Parameters
 
-- `expires_in_seconds: number`
+- `expires_in_seconds: optional number`
 
-  Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request.
+  Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
+
+- `scopes: optional array of string`
+
+  Replace the API key scope restrictions. Omit to leave scopes unchanged. An empty array removes key restrictions (All permissions), subject to the owner's effective permissions. Use ["api.all.read"] for read-only access. Scopes do not change the owner's roles or grant administrative permissions.
 
 ### Returns
 
@@ -10026,9 +10088,7 @@ the new request. The response contains only the redacted key, not its secret.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "expires_in_seconds": 1
-        }'
+    -d '{}'
 ```
 
 #### Response
@@ -10068,7 +10128,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
 curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"expires_in_seconds": 86400}'
+  -d '{"scopes": ["api.all.read"], "expires_in_seconds": 86400}'
 ```
 
 #### Response

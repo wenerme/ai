@@ -113,6 +113,31 @@ SELECT apdex(duration, 0.5) FROM Transaction WHERE appName = 'my-app' $__timeFil
 
 Set **Format** to `Table`. Set the alert condition threshold to **Is below 0.85**.
 
+### Metric count alert (Data Explorer)
+
+Alert when the number of reported data points exceeds a threshold. This example uses the Data Explorer default, **From** set to `Metric`. The **From** list comes from the New Relic account set in the data source configuration, and it includes only event types that account reported in the last hour. `Transaction` appears only when that account reported it.
+
+1. Create a new alert rule and select the **Data Explorer** query type.
+2. Select `Metric` in **From**.
+3. In **Select**, set the attribute to `*` and the aggregation to **Count**.
+4. Set **Format** to `TABLE` so the query omits the `TIMESERIES` keyword. Data Explorer generates:
+
+   SQL [Copy code to clipboard] Copy
+
+   ```sql
+   SELECT count(*) FROM Metric $__timeFilter
+   ```
+5. Set the **alert condition**: set **When** to `Last` and the threshold to the count to alert on, for example **Is above 1000**. `Last` evaluates the single value this query returns.
+
+### Metric threshold alert (Metrics)
+
+The **Metrics** query type works directly for threshold alerts on APM metric data, without writing NRQL:
+
+1. Create a new alert rule and select the **Metrics** query type.
+2. Select the **Application** to monitor.
+3. Select the **Metric** and **Value** to evaluate, for example the average response time.
+4. Set the **alert condition**: set **When** to `Last` and define the threshold.
+
 ## Best practices
 
 Follow these recommendations to create reliable alerts with New Relic data.
@@ -131,10 +156,12 @@ SELECT average(duration) FROM Transaction WHERE appName = 'my-app' $__timeFilter
 
 When your query returns multiple time series (for example, queries with `FACET`), configure the **When** reducer in the alert condition to aggregate them into a single value:
 
-- **Last** — Use the most recent value.
-- **Mean** — Average across all series.
-- **Max/Min** — Use the highest or lowest value.
-- **Sum** — Total across all series.
+- **Last**: Use the most recent value.
+- **Mean**: Average across all series.
+- **Median**: Use the median value.
+- **Max/Min**: Use the highest or lowest value.
+- **Sum**: Total across all series.
+- **Count**: Use the number of points in each series.
 
 For complex multi-query setups, switch to **Advanced** mode and add separate Reduce and Threshold expressions.
 
@@ -154,9 +181,9 @@ Configure what happens when no data is returned or when a query error occurs:
 1. In the alert rule, find **Configure no data and error handling**.
 2. For **Alert state if no data or all values are null**, choose an appropriate action:
 
-   - **No Data** — Set the alert state to `No Data`.
-   - **Alerting** — Treat no data as an active alert.
-   - **OK** — Treat no data as a healthy state.
+   - **No Data**: Set the alert state to `No Data`.
+   - **Alerting**: Treat no data as an active alert.
+   - **OK**: Treat no data as a healthy state.
 
 > Tip
 >

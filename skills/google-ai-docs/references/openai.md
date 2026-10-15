@@ -16,7 +16,7 @@ aren't already using the OpenAI libraries, we recommend that you call the
     )
 
     response = client.chat.completions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         messages=[
             {   "role": "system",
                 "content": "You are a helpful assistant."
@@ -40,7 +40,7 @@ aren't already using the OpenAI libraries, we recommend that you call the
     });
 
     const response = await openai.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         messages: [
             {   role: "system",
                 content: "You are a helpful assistant." 
@@ -60,7 +60,7 @@ aren't already using the OpenAI libraries, we recommend that you call the
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.8-flash",
         "messages": [
           {
             "role": "user",
@@ -78,7 +78,7 @@ What changed? Just three lines!
   tells the OpenAI library to send requests to the Gemini API endpoint instead of
   the default URL.
 
-- **`model="gemini-3.6-flash"`**: Choose a compatible Gemini model
+- **`model="gemini-3.8-flash"`**: Choose a compatible Gemini model
 
 ## Thinking
 
@@ -90,8 +90,8 @@ control over how much the model will think.
 Different Gemini models have different reasoning configurations, you can see how
 they map to OpenAI's reasoning efforts as follows:
 
-| `reasoning_effort` (OpenAI) | `thinking_level` (Gemini 3.1 Pro) | `thinking_level` (Gemini 3.1 Flash-Lite) | `thinking_level` (Gemini 3 Flash) | `thinking_budget` (Gemini 2.5) |
-| `reasoning_effort` (OpenAI) | `thinking_level` (Gemini 3.1 Pro) | `thinking_level` (Gemini 3.1 Flash-Lite) | `thinking_level` (Gemini 3 Flash) | `thinking_budget` (Gemini 2.5) |
+| `reasoning_effort` (OpenAI) | `thinking_level` (Gemini 4 Argon) | `thinking_level` (Gemini 3.1 Flash-Lite) | `thinking_level` (Gemini 3 Flash) | `thinking_budget` (Gemini 2.5) |
+| `reasoning_effort` (OpenAI) | `thinking_level` (Gemini 4 Argon) | `thinking_level` (Gemini 3.1 Flash-Lite) | `thinking_level` (Gemini 3 Flash) | `thinking_budget` (Gemini 2.5) |
 |---|---|---|---|---|
 | `minimal` | `low` | `minimal` | `minimal` | `1,024` |
 | `low` | `low` | `low` | `low` | `1,024` |
@@ -99,7 +99,7 @@ they map to OpenAI's reasoning efforts as follows:
 | `high` | `high` | `high` | `high` | `24,576` |
 
 If no `reasoning_effort` is specified, Gemini uses the model's
-default [level](https://ai.google.dev/gemini-api/docs/thinking#levels) or [budget](https://ai.google.dev/gemini-api/docs/thinking#set-budget).
+default [level or budget](https://ai.google.dev/gemini-api/docs/thinking#thinking-levels).
 
 If you want to disable thinking, you can set `reasoning_effort` to `"none"` for
 2.5 models. Reasoning cannot be turned off for Gemini 2.5 Pro or 3 models.
@@ -114,7 +114,7 @@ If you want to disable thinking, you can set `reasoning_effort` to `"none"` for
     )
 
     response = client.chat.completions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         reasoning_effort="low",
         messages=[
             {   "role": "system",
@@ -139,7 +139,7 @@ If you want to disable thinking, you can set `reasoning_effort` to `"none"` for
     });
 
     const response = await openai.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         reasoning_effort: "low",
         messages: [
             {   role: "system",
@@ -160,7 +160,7 @@ If you want to disable thinking, you can set `reasoning_effort` to `"none"` for
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.8-flash",
         "reasoning_effort": "low",
         "messages": [
           {
@@ -187,7 +187,7 @@ functionality, so they can't be used at the same time.
     )
 
     response = client.chat.completions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         messages=[{"role": "user", "content": "Explain to me how AI works"}],
         extra_body={
           'extra_body': {
@@ -213,7 +213,7 @@ functionality, so they can't be used at the same time.
     });
 
     const response = await openai.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         messages: [{role: "user", content: "Explain to me how AI works",}],
         extra_body: {
           "google": {
@@ -233,7 +233,7 @@ functionality, so they can't be used at the same time.
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer GEMINI_API_KEY" \
       -d '{
-          "model": "gemini-3.6-flash",
+          "model": "gemini-3.8-flash",
             "messages": [{"role": "user", "content": "Explain to me how AI works"}],
             "extra_body": {
               "google": {
@@ -262,7 +262,7 @@ The Gemini API supports [streaming responses](https://ai.google.dev/gemini-api/d
     )
 
     response = client.chat.completions.create(
-      model="gemini-3.6-flash",
+      model="gemini-3.8-flash",
       messages=[
         {
             "role": "system",
@@ -289,7 +289,7 @@ The Gemini API supports [streaming responses](https://ai.google.dev/gemini-api/d
 
     async function main() {
       const completion = await openai.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         messages: [
           {
               "role": "system",
@@ -316,7 +316,7 @@ The Gemini API supports [streaming responses](https://ai.google.dev/gemini-api/d
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer GEMINI_API_KEY" \
       -d '{
-          "model": "gemini-3.6-flash",
+          "model": "gemini-3.8-flash",
           "messages": [
               {"role": "user", "content": "Explain to me how AI works"}
           ],
@@ -360,7 +360,7 @@ generative models and is [supported in the Gemini API](https://ai.google.dev/gem
 
     messages = [{"role": "user", "content": "What's the weather like in Chicago today?"}]
     response = client.chat.completions.create(
-      model="gemini-3.6-flash",
+      model="gemini-3.8-flash",
       messages=messages,
       tools=tools,
       tool_choice="auto"
@@ -401,7 +401,7 @@ generative models and is [supported in the Gemini API](https://ai.google.dev/gem
       ];
 
       const response = await openai.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         messages: messages,
         tools: tools,
         tool_choice: "auto",
@@ -418,7 +418,7 @@ generative models and is [supported in the Gemini API](https://ai.google.dev/gem
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer GEMINI_API_KEY" \
     -d '{
-      "model": "gemini-3.6-flash",
+      "model": "gemini-3.8-flash",
       "messages": [
         {
           "role": "user",
@@ -475,7 +475,7 @@ Gemini models are natively multimodal and provide best in class performance on
     base64_image = encode_image("Path/to/agi/image.jpeg")
 
     response = client.chat.completions.create(
-      model="gemini-3.6-flash",
+      model="gemini-3.8-flash",
       messages=[
         {
           "role": "user",
@@ -541,7 +541,7 @@ Gemini models are natively multimodal and provide best in class performance on
 
       try {
         const response = await openai.chat.completions.create({
-          model: "gemini-3.6-flash",
+          model: "gemini-3.8-flash",
           messages: messages,
         });
 
@@ -561,7 +561,7 @@ Gemini models are natively multimodal and provide best in class performance on
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer GEMINI_API_KEY" \
         -d "{
-          \"model\": \"gemini-3.6-flash\",
+          \"model\": \"gemini-3.8-flash\",
           \"messages\": [
             {
               \"role\": \"user\",
@@ -778,7 +778,7 @@ Analyze audio input:
       base64_audio = base64.b64encode(audio_file.read()).decode('utf-8')
 
     response = client.chat.completions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         messages=[
         {
           "role": "user",
@@ -816,7 +816,7 @@ Analyze audio input:
 
     async function main() {
       const response = await client.chat.completions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.8-flash",
         messages: [
           {
             role: "user",
@@ -853,7 +853,7 @@ Analyze audio input:
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer GEMINI_API_KEY" \
         -d "{
-          \"model\": \"gemini-3.6-flash\",
+          \"model\": \"gemini-3.8-flash\",
           \"messages\": [
             {
               \"role\": \"user\",
@@ -892,7 +892,7 @@ Gemini models can output JSON objects in any [structure you define](https://ai.g
         participants: list[str]
 
     completion = client.beta.chat.completions.parse(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         messages=[
             {"role": "system", "content": "Extract the event information."},
             {"role": "user", "content": "John and Susan are going to an AI conference on Friday."},
@@ -920,7 +920,7 @@ Gemini models can output JSON objects in any [structure you define](https://ai.g
     });
 
     const completion = await openai.chat.completions.parse({
-      model: "gemini-3.6-flash",
+      model: "gemini-3.8-flash",
       messages: [
         { role: "system", content: "Extract the event information." },
         { role: "user", content: "John and Susan are going to an AI conference on Friday" },
@@ -986,20 +986,21 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You ca
 
 ## Batch API
 
-You can create [batch jobs](https://ai.google.dev/gemini-api/docs/batch-mode), submit them, and check
+You can create [batch jobs](https://ai.google.dev/gemini-api/docs/batch-api), submit them, and check
 their status using the OpenAI library.
 
 You'll need to prepare the JSONL file in OpenAI input format. For example:
 
-    {"custom_id": "request-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gemini-3.6-flash", "messages": [{"role": "user", "content": "Tell me a one-sentence joke."}]}}
-    {"custom_id": "request-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gemini-3.6-flash", "messages": [{"role": "user", "content": "Why is the sky blue?"}]}}
+    {"custom_id": "request-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gemini-3.8-flash", "messages": [{"role": "user", "content": "Tell me a one-sentence joke."}]}}
+    {"custom_id": "request-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gemini-3.8-flash", "messages": [{"role": "user", "content": "Why is the sky blue?"}]}}
 
 OpenAI compatibility for Batch supports creating a batch,
 monitoring job status, and viewing batch results.
 
 Compatibility for upload and download is currently not supported. Instead, the
 following example uses the `genai` client for uploading and downloading
-[files](https://ai.google.dev/gemini-api/docs/files), the same as when using the Gemini [Batch API](https://ai.google.dev/gemini-api/docs/batch-mode#input-file).
+[files](https://ai.google.dev/gemini-api/docs/files), the same as when using the Gemini
+[Batch API](https://ai.google.dev/gemini-api/docs/batch-api#input-file).
 
 ### Python
 
@@ -1079,7 +1080,7 @@ inference tiers.
     )
 
     completion = client.chat.completions.create(
-      model="gemini-3.6-flash",
+      model="gemini-3.8-flash",
       messages=[
         {"role": "user", "content": "Write a short poem about clouds."}
       ],
@@ -1133,7 +1134,7 @@ Here's an example of using `extra_body` to set `cached_content`:
     )
 
     stream = client.chat.completions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.8-flash",
         n=1,
         messages=[
             {
@@ -1210,7 +1211,7 @@ Retrieve a Gemini model:
       base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
     )
 
-    model = client.models.retrieve("gemini-3.6-flash")
+    model = client.models.retrieve("gemini-3.8-flash")
     print(model.id)
 
 ### JavaScript
@@ -1223,7 +1224,7 @@ Retrieve a Gemini model:
     });
 
     async function main() {
-      const model = await openai.models.retrieve("gemini-3.6-flash");
+      const model = await openai.models.retrieve("gemini-3.8-flash");
       console.log(model.id);
     }
 
@@ -1231,7 +1232,7 @@ Retrieve a Gemini model:
 
 ### REST
 
-    curl https://generativelanguage.googleapis.com/v1beta/openai/models/gemini-3.6-flash \
+    curl https://generativelanguage.googleapis.com/v1beta/openai/models/gemini-3.8-flash \
     -H "Authorization: Bearer GEMINI_API_KEY"
 
 ## Current limitations

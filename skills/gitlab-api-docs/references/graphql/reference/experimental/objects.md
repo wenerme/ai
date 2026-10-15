@@ -22148,7 +22148,6 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `isIncidentManagement` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Indicates whether the work item type is for incident management. |
 | `isServiceDesk` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Indicates whether the work item type is for service desk. |
 | `name` | [`String!`](scalars.md#string) | Name of the work item type. |
-| `showProjectSelector` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Indicates whether the work item type should show the project selector. |
 | `supportedConversionTypes` | [`[WorkItemType!]`](#workitemtype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.8.Supported conversion types for the work item type. |
 | `supportsMoveAction` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Indicates whether the work item type can be moved or not. |
 | `supportsRoadmapView` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Indicates whether the work item type supports roadmap view. |

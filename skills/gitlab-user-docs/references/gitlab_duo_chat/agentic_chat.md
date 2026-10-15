@@ -87,6 +87,7 @@ To use Chat in the GitLab UI:
    If you have selected a new chat, from the dropdown list, select an agent.
 
    A Chat conversation opens in the GitLab Duo sidebar on the right side of your screen.
+
 1. Under the chat text box, ensure the **Agentic** toggle is turned on.
 1. Enter your question in the chat text box and press <kbd>Enter</kbd> or select **Send**.
    - You can provide additional [context](../duo_agent_platform/context.md#gitlab-duo-agentic-chat) for your chat.
@@ -211,7 +212,7 @@ Turn on GitLab Duo Chat:
 Then, to use GitLab Duo Chat:
 
 1. In the left sidebar, select **GitLab Duo Agent Platform** ().
-1. Select the **Chat** tab.
+1. If you use the [classic layout](#change-the-layout-in-your-ide), select the **Chat** tab.
 1. Select **Refresh page** if prompted.
 1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
 
@@ -232,7 +233,7 @@ Turn on GitLab Duo Chat:
 Then, to use GitLab Duo Chat:
 
 1. On the right tool window bar, select **GitLab Duo Agent Platform** ().
-1. Select the **Chat** tab.
+1. If you use the [classic layout](#change-the-layout-in-your-ide), select the **Chat** tab.
 1. In the message box, enter your question and press <kbd>Enter</kbd> or select **Send**.
 
 ### Use GitLab Duo Chat in Visual Studio
@@ -254,6 +255,62 @@ Then, to use GitLab Duo Chat:
 1. Select **Extensions** > **GitLab** > **Open Agentic Chat**.
 1. In the message box, enter your question and press **Enter**.
 
+## Change the layout in your IDE
+
+- New layout [made the default](https://gitlab.com/groups/gitlab-org/editor-extensions/-/epics/243) in GitLab for VS Code 7.2.0 and GitLab Duo plugin for JetBrains IDEs 3.50.0.
+
+In VS Code and JetBrains IDEs, the **GitLab Duo Agent Platform** panel uses the new layout by default.
+The new layout has no tabs. You start conversations, view your chat history, and select
+an agent and model in the same view.
+
+The classic layout has separate **Chat** and **Flows** tabs. Switch to the classic layout to:
+
+- Use the [Software Development Flow](../../editor_extensions/software_development.md).
+- View the flows you have run in your IDE.
+
+Your IDE remembers the layout you select.
+Visual Studio uses the classic layout only.
+
+### Switch to the classic layout
+
+Before the layout changes, an optional survey asks why you are switching.
+You can:
+
+- Select one or more reasons, then select **Share feedback**.
+- Select **Don't show again** to switch without answering.
+- Select **Dismiss** () to switch without answering.
+  The survey appears again the next time you switch.
+
+After you share feedback or select **Don't show again**, the survey does not appear again.
+
+### VS Code
+
+To switch to the classic layout:
+
+1. In the sidebar, select **GitLab Duo Agent Platform** ().
+1. In the panel title bar, select **Use classic layout**.
+1. Optional. Complete the survey.
+
+### JetBrains IDEs
+
+To switch to the classic layout:
+
+1. On the tool window bar, select **GitLab Duo Agent Platform** ().
+1. In the tool window title bar, select **Use classic layout**.
+1. Optional. Complete the survey.
+
+You can also switch in the settings. Go to **Settings** > **Tools** > **GitLab Duo**, and under
+**GitLab Duo Agent Platform**, select the **Use classic layout** checkbox.
+
+### Switch to the new layout
+
+To switch back to the new layout:
+
+- In VS Code, in the **GitLab Duo Agent Platform** panel title bar, select **Use new layout**.
+- In a JetBrains IDE, in the **GitLab Duo Agent Platform** tool window title bar, select **Use new layout**.
+  You can also go to **Settings** > **Tools** > **GitLab Duo**, and under **GitLab Duo Agent Platform**,
+  clear the **Use classic layout** checkbox.
+
 ## View the chat history
 
 - Chat history [introduced](https://gitlab.com/groups/gitlab-org/-/epics/17922) on IDEs in GitLab 18.2.
@@ -264,12 +321,14 @@ To view your chat history:
 - In the GitLab UI, on the GitLab Duo sidebar, select **GitLab Duo Chat history**
   ().
 
-- In your IDE, in the upper-right corner of the message box, select
-  **Chat history** ().
+- In your IDE, at the top of the panel, select **History** ().
+  In the [classic layout](#change-the-layout-in-your-ide), in the upper-right corner of the
+  message box, select **Chat history** ().
 
 In the GitLab UI, all of the conversations in your chat history are visible.
 
-In your IDE, the last 20 conversations are visible. [Issue 1308](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/issues/1308) proposes to change this.
+In your IDE, scroll down the chat history to load older conversations.
+In the classic layout, only the last 20 conversations are visible.
 
 ## Have multiple conversations
 
@@ -283,9 +342,7 @@ Your conversations synchronize across GitLab Duo Chat in the GitLab UI and your 
 1. Open GitLab Duo Chat in the GitLab UI or your IDE.
 1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
 1. Create a new Chat conversation:
-
    - In the GitLab UI, you can do either of the following:
-
      - To create a new conversation with a specific agent:
        1. On the GitLab Duo sidebar, select **Add new chat** ().
        1. From the dropdown list, select an agent.
@@ -293,16 +350,19 @@ Your conversations synchronize across GitLab Duo Chat in the GitLab UI and your 
        in the message box, type `/new` and press <kbd>Enter</kbd> or select **Send**.
 
      A new Chat conversation replaces the existing one.
+
    - Under the Chat text box, ensure the **Agentic** toggle is turned on.
-   - In your IDE, in the upper-right corner of the message box, select **New chat**
-     ().
+   - In your IDE, at the top of the panel, select **New chat** ().
+     In the classic layout, **New chat** is in the upper-right corner of the message box.
+
 1. Enter your question and press <kbd>Enter</kbd> or select **Send**.
 1. To view all of your conversations, look at your [chat history](#view-the-chat-history).
 1. To switch between conversations, in your chat history, select the
    appropriate conversation.
 1. To search for a specific conversation in the chat history:
    - GitLab UI: In the **Search for a thread** text box, enter your search term.
-   - IDE: In the **Search chats** text box, enter your search term.
+   - IDE: In the **Search history** text box, enter your search term.
+     In the classic layout, use the **Search chats** text box.
 
 Because of LLM context window limits, conversations are truncated to 200,000 tokens
 (roughly 800,000 characters) each.
@@ -377,7 +437,7 @@ To select a model:
   1. Select a model from the dropdown list.
 - In your IDE:
   1. In the sidebar, select **GitLab Duo Agent Platform** ().
-  1. Select the **Chat** tab.
+  1. If you use the [classic layout](#change-the-layout-in-your-ide), select the **Chat** tab.
   1. Select a model from the dropdown list.
 
 ## Select an agent
@@ -406,7 +466,8 @@ To select an agent:
 After you create a conversation with an agent:
 
 - The conversation remembers the agent you selected. You cannot select a different
-  agent for that conversation.
+  agent for that conversation. In the new IDE layout, if you select a different agent,
+  Chat asks you to confirm, then starts a new conversation.
 - If you use the chat history to go back to the same conversation, it uses the same agent.
 - If you go back to a conversation and the associated agent is no longer available,
   you cannot continue that conversation.
@@ -542,24 +603,24 @@ All approvals reset when you start a new conversation.
 
 ## Chat feature comparison
 
-| Capability                                              | GitLab Duo Non-Agentic Chat |                                                         GitLab Duo Agentic Chat                                                                                                           |
-| ------------                                            |------|                                                         -------------                                                                                                          |
-| Ask general programming questions |                       Yes  |                                                          Yes                                                                                                                   |
-| Get answers about an open file in the editor |     Yes  |                                                          Yes. Provide the path of the file in your question.                                                                   |
-| Provide context about specified files |                   Yes. Use `/include` to add a file to the conversation.[^not-in-ide-chat] |        Yes. Provide the path of the file in your question.                                                                   |
-| Autonomously search project contents |                    No |                                                            Yes                                                                                                                   |
-| Autonomously create files and change files |              No |                                                            Yes. Ask it to change files. It might overwrite changes that you have made manually and have not committed yet.  |
-| Retrieve issues and MRs without specifying IDs |          No |                                                            Yes. Search by other criteria. For example, an MR or issue's title or assignee.                                       |
-| Combine information from multiple sources |               No |                                                            Yes                                                                                                                   |
-| Analyze pipeline logs |                                   Yes. Requires GitLab Duo Enterprise add-on. |                          Yes                                                                                                                   |
-| Restart a conversation |                                  Yes. Use `/new` or `/reset`. |                             Yes. Use `/new` or, if in the UI, `/reset`.                                                                                       |
-| Delete a conversation |                                   Yes, in the chat history.|                                             Yes, in the chat history                                                                                                            |
-| Create issues and MRs |                                   No |                                                            Yes                                                                                                                   |
-| Use Git read-only commands |                                                 No |                                                            Yes                                                  |
-| Use Git write commands |                                                 No |                                                            Yes, UI only                                                  |
-| Run Shell commands |                                      No |                                                            Yes, IDEs only                                                                                                        |
-| Run MCP tools |                                      No |                                                            Yes, IDEs only                                                                                                          |
-| Approve tools for a session |                        No |                                                            Yes, IDEs only                                                                                                          |
+| Capability                                     | GitLab Duo Non-Agentic Chat                                              | GitLab Duo Agentic Chat                                                                                           |
+| ---------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Ask general programming questions              | Yes                                                                      | Yes                                                                                                               |
+| Get answers about an open file in the editor   | Yes                                                                      | Yes. Provide the path of the file in your question.                                                               |
+| Provide context about specified files          | Yes. Use `/include` to add a file to the conversation.[^not-in-ide-chat] | Yes. Provide the path of the file in your question. In the new IDE layout, you can also type `@` to add the file. |
+| Autonomously search project contents           | No                                                                       | Yes                                                                                                               |
+| Autonomously create files and change files     | No                                                                       | Yes. Ask it to change files. It might overwrite changes that you have made manually and have not committed yet.   |
+| Retrieve issues and MRs without specifying IDs | No                                                                       | Yes. Search by other criteria. For example, an MR or issue's title or assignee.                                   |
+| Combine information from multiple sources      | No                                                                       | Yes                                                                                                               |
+| Analyze pipeline logs                          | Yes. Requires GitLab Duo Enterprise add-on.                              | Yes                                                                                                               |
+| Restart a conversation                         | Yes. Use `/new` or `/reset`.                                             | Yes. Use `/new` or, if in the UI, `/reset`.                                                                       |
+| Delete a conversation                          | Yes, in the chat history.                                                | Yes, in the chat history                                                                                          |
+| Create issues and MRs                          | No                                                                       | Yes                                                                                                               |
+| Use Git read-only commands                     | No                                                                       | Yes                                                                                                               |
+| Use Git write commands                         | No                                                                       | Yes, UI only                                                                                                      |
+| Run Shell commands                             | No                                                                       | Yes, IDEs only                                                                                                    |
+| Run MCP tools                                  | No                                                                       | Yes, IDEs only                                                                                                    |
+| Approve tools for a session                    | No                                                                       | Yes, IDEs only                                                                                                    |
 
 [^not-in-ide-chat]: Not available when using GitLab Duo Non-Agentic Chat in the Web IDE.
 

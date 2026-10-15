@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/functions
 
 # Functions
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
 
@@ -569,6 +569,85 @@ Note
 
 You can only use the `to_string()` function in rewrite expressions of [Transform Rules](https://developers.cloudflare.com/rules/transform/) and target URL expressions of [dynamic URL redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/).
 
+### `trim`
+
+`trim(source String | Bytes, trim_set String optional)`: `String | Bytes`
+
+Removes matching bytes from both ends of `source`. Bytes within the remaining value are unaffected.
+
+The `source` must be a field or a function result. It cannot be a literal value.
+
+By default, the function removes these ASCII whitespace bytes:
+
+- Tab ( `\x09`)
+- Line feed ( `\x0a`)
+- Vertical tab ( `\x0b`)
+- Form feed ( `\x0c`)
+- Carriage return ( `\x0d`)
+- Space ( `\x20`)
+
+The optional `trim_set` argument replaces the default whitespace set. It must be a constant string without duplicate bytes.
+
+The function matches individual bytes rather than substrings or Unicode characters.
+
+An empty `trim_set` string leaves `source` unchanged. Empty input, or input containing only matching bytes, returns an empty value.
+
+If `source` is nil, the function returns nil. For details, refer to [Missing values](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#missing-values).
+
+All HTTP products support this function on all plans.
+
+For example, if `http.request.headers["x-label"][0]` is `" hello world "`, this expression returns `"hello world"`:
+
+```txt
+trim(http.request.headers["x-label"][0])
+```
+
+To remove surrounding slashes, provide a custom byte set. If `http.request.uri.path` is `"//blog/post//"`, this expression returns `"blog/post"`:
+
+```txt
+trim(http.request.uri.path, "/")
+```
+
+### `trim_end`
+
+`trim_end(source String | Bytes, trim_set String optional)`: `String | Bytes`
+
+Removes matching bytes from the end of `source`. By default, it removes trailing ASCII whitespace.
+
+If `source` is nil, the function returns nil.
+
+All HTTP products support this function on all plans.
+
+The `source` must be a field or a function result. It cannot be a literal value. The optional `trim_set` argument must be a constant string without duplicate bytes.
+
+For default bytes and custom byte matching, refer to [`trim()`](#trim).
+
+For example, if `http.request.uri.path` is `"//blog/post//"`, this expression returns `"//blog/post"`:
+
+```txt
+trim_end(http.request.uri.path, "/")
+```
+
+### `trim_start`
+
+`trim_start(source String | Bytes, trim_set String optional)`: `String | Bytes`
+
+Removes matching bytes from the start of `source`. By default, it removes leading ASCII whitespace.
+
+If `source` is nil, the function returns nil.
+
+All HTTP products support this function on all plans.
+
+The `source` must be a field or a function result. It cannot be a literal value. The optional `trim_set` argument must be a constant string without duplicate bytes.
+
+For default bytes and custom byte matching, refer to [`trim()`](#trim).
+
+For example, if `http.request.uri.path` is `"//blog/post//"`, this expression returns `"blog/post//"`:
+
+```txt
+trim_start(http.request.uri.path, "/")
+```
+
 ### `upper`
 
 `upper(String)`: `String`
@@ -812,5 +891,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

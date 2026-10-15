@@ -28,6 +28,10 @@ Use the flag for your package manager:
 - `--npm`: writes a `//{host}{path}/:_authToken` entry
   in `~/.npmrc`. You still need to point npm at the registry, with a
   `registry=` or `@scope:registry=` line.
+- `--yarn`: writes an `npmRegistries` entry with `npmAuthToken`
+  and `npmAlwaysAuth` in `~/.yarnrc.yml`, for Yarn 2 and later. Set
+  an `npmRegistryServer` that matches `--registry`. Rewriting the
+  file can change its formatting, like indentation, blank lines, and line endings.
 - `--sbt`: writes a `credentials +=` line in
   `~/.sbt/1.0/credentials.sbt`, which assumes a stock sbt 1.x.
   An sbt that moved its global base, with
@@ -59,8 +63,9 @@ Registry and alias selection:
   actually backs. If you name a container registry here, it receives the
   wrong token and the error only surfaces on the next pull.
 - `--registry-alias` applies to `--maven` and
-  `--gradle` only, because `--npm` and
-  `--sbt` key their entries on `--registry` itself.
+  `--gradle` only, because `--npm`, `--sbt`,
+  and `--yarn` key their entries on `--registry`
+  itself.
   For `--gradle`, use an alias that is a valid identifier
   in your build script: the default is derived from the registry
   host and contains hyphens, which Groovy cannot interpolate as
@@ -90,6 +95,9 @@ glab artifact-registry login --gradle --registry https://ar.example.com --durati
 # Configure npm to authenticate against a registry for two hours
 glab artifact-registry login --npm --registry https://ar.example.com --duration 2h
 
+# Configure Yarn 2 or later to authenticate against a registry for two hours
+glab artifact-registry login --yarn --registry https://ar.example.com --duration 2h
+
 # Configure sbt to authenticate against a registry for two hours
 glab artifact-registry login --sbt --registry https://ar.example.com --duration 2h
 
@@ -107,6 +115,7 @@ glab artifact-registry login --sbt --registry https://ar.example.com --duration 
       --registry string         Registry to authenticate against. For --docker, a bare hostname; for others, typically a URL.
       --registry-alias string   Alias/ID to register the registry under (Maven/Gradle only). Defaults to a name derived from --registry.
       --sbt                     Configure sbt to authenticate against the registry. Writes to ~/.sbt/1.0/credentials.sbt.
+      --yarn                    Configure Yarn 2 or later to authenticate against the registry. Writes to ~/.yarnrc.yml. For Yarn 1, use --npm.
 ```
 
 ## Options inherited from parent commands

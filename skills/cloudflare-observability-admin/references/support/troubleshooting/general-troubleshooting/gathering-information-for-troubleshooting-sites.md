@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Gathering information for troubleshooting sites
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About this guide
 
@@ -38,6 +38,7 @@ Use this table to quickly identify which troubleshooting method to use based on 
 | Caching issues | [curl (caching)](#caching) | Cache misses, stale content, cache headers |
 | SSL/TLS certificate issues | [curl (SSL/TLS)](#ssltls-certificates) | Certificate errors, TLS version issues |
 | Connection timeouts/drops | [Traceroute](#perform-a-traceroute) / [MTR](#perform-a-mtr) | Network path issues, latency between hops |
+| Site unreachable from specific networks | [Traceroute](#perform-a-traceroute) / [MTR](#perform-a-mtr) | Suspected ISP blocking of Cloudflare IP prefixes |
 | Packet loss, connection resets | [Packet capture](#run-packet-captures) | Layer 3/4 issues, SSL handshake failures |
 | Identifying serving location | [Cloudflare data center](#identify-the-cloudflare-data-center-serving-your-request) | Determine which Cloudflare PoP is serving requests |
 
@@ -420,6 +421,8 @@ Use this when you need to **correlate specific requests with Cloudflare's logs**
 
 The **CF-RAY** header traces a website request through Cloudflare's network. Provide the **CF-RAY** of a web request to Cloudflare support when troubleshooting an issue. You can also add **CF-RAY** to your logs by editing your origin web server configuration with the snippet below that corresponds to your brand of web server:
 
+If a request fails with a connection timeout and returns no **CF-RAY** header, the request most likely never reached Cloudflare's network. This pattern can point to an ISP blocking traffic to specific Cloudflare IP addresses. For more information, refer to [Potential ISP blocking of Cloudflare IP addresses](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/potential-isp-blocking/).
+
 #### For Apache web servers, add `%{CF-Ray}i` to LogFormat
 
 ```plaintext
@@ -519,5 +522,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/og.png?v=9365c8130b724b70","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/og.png?v=9365c8130b724b70","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

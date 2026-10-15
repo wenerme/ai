@@ -31,3 +31,7 @@ keywords: Ultralytics, TensorBoard, callbacks, machine learning, training visual
 <hr>
 
 ## ::: ultralytics.utils.callbacks.tensorboard.on_fit_epoch_end
+
+<hr>
+
+## ::: ultralytics.utils.callbacks.tensorboard.teardown

@@ -52,7 +52,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 ## Cloudflare platform access
@@ -155,19 +155,19 @@ Add real-time collaboration to my app using Durable Objects with WebSocket hiber
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

@@ -31,8 +31,9 @@ Expand table
 
 To use the New Relic data source, you need:
 
+- Grafana 11.6.7 or later.
 - A New Relic account with a [User API key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key) and your [Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/).
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
 
 ## Known limitations
 
@@ -56,7 +57,7 @@ After configuring the data source, you can:
 
 - Add [Annotations](/docs/plugins/grafana-newrelic-datasource/latest/annotations/) to overlay deployment and alert events on your graphs.
 - Configure [Template variables](/docs/plugins/grafana-newrelic-datasource/latest/template-variables/) for dynamic dashboards.
-- Use [Explore](/docs/grafana/latest/explore/) to run ad-hoc NRQL queries without building a dashboard.
+- Use [Explore](/docs/grafana/latest/explore/) to run free-form NRQL queries without building a dashboard.
 - Add [Transformations](/docs/grafana/latest/panels/transformations/) to manipulate query results.
 - Set up [Alerting](/docs/plugins/grafana-newrelic-datasource/latest/alerting/) to monitor your New Relic data.
 
@@ -64,7 +65,7 @@ After configuring the data source, you can:
 
 The New Relic plugin includes the following pre-built dashboard:
 
-- **Host Metrics** — Displays key host-level metrics from New Relic Infrastructure.
+- **Host Metrics**: Displays key host-level metrics from New Relic Infrastructure.
 
 To import the dashboard:
 

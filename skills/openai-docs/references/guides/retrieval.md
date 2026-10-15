@@ -365,7 +365,7 @@ The rewritten query will be available in the result's `search_query` field.
 
 ### Attribute filtering
 
-Attribute filtering helps narrow down results by applying criteria, such as restricting searches to a specific date range. You can define and combine criteria in `attribute_filter` to target files based on their attributes before performing semantic search.
+Attribute filtering helps narrow down results by applying criteria, such as restricting searches to a specific date range. You can define and combine criteria in `filters` to target files based on their attributes before performing semantic search.
 
 Use **comparison filters** to compare a specific `key` in a file's `attributes` with a given `value`, and **compound filters** to combine multiple filters using `and` and `or`.
 
@@ -391,6 +391,8 @@ Compound filter
 
 
 Below are some example filters.
+
+The filename examples below match a custom `filename` attribute, which you must explicitly set on each vector store file, such as `{"filename": "example.txt"}`. They don't automatically match the uploaded file's name.
 
 
 
@@ -445,7 +447,7 @@ Filenames
 ```json
 {
   "type": "in",
-  "property": "filename",
+  "key": "filename",
   "value": ["example.txt", "example2.txt"]
 }
 ```
@@ -462,7 +464,7 @@ Exclude filenames
 ```json
 {
   "type": "nin",
-  "property": "filename",
+  "key": "filename",
   "value": ["draft.txt", "internal_notes.md"]
 }
 ```

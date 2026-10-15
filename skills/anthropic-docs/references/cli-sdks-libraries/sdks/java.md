@@ -15,7 +15,7 @@ The Anthropic Java SDK provides convenient access to the Claude API from applica
 <Tabs>
   <Tab title="Gradle">
     ```kotlin
-    implementation("com.anthropic:anthropic-java:2.71.0")
+    implementation("com.anthropic:anthropic-java:2.72.0")
     ```
   </Tab>
 
@@ -24,7 +24,7 @@ The Anthropic Java SDK provides convenient access to the Claude API from applica
     <dependency>
         <groupId>com.anthropic</groupId>
         <artifactId>anthropic-java</artifactId>
-        <version>2.71.0</version>
+        <version>2.72.0</version>
     </dependency>
     ```
   </Tab>
@@ -432,7 +432,7 @@ private static Object callTool(BetaToolUseBlock toolUseBlock) {
 
 ### Tool name conversion
 
-Tool names are derived from the camel case tool class names (for example, `GetWeather`) and converted to snake case (for example, `get_weather`). Word boundaries begin where the current character is not the first character, is upper-case, and either the preceding character is lower-case, or the following character is lower-case. For example, `MyJSONParser` becomes `my_json_parser` and `ParseJSON` becomes `parse_json`. This conversion can be overridden using the `@JsonTypeName` annotation.
+Tool names are derived from the camel case tool class names (for example, `GetWeather`) and converted to snake case (for example, `get_weather`). Word boundaries begin where the current character is not the first character, is uppercase, and either the preceding character is lowercase, or the following character is lowercase. For example, `MyJSONParser` becomes `my_json_parser` and `ParseJSON` becomes `parse_json`. This conversion can be overridden using the `@JsonTypeName` annotation.
 
 ### Local tool JSON schema validation
 
@@ -660,7 +660,7 @@ Duration.ofSeconds(
 
 This results in a timeout of up to 60 minutes, scaled by the `maxTokens` parameter, unless overridden.
 
-For non-streaming requests, the dynamic timeout scales from a 30 second minimum up to a 10 minute maximum based on `maxTokens`.
+For non-streaming requests, the dynamic timeout scales from a 30-second minimum up to a 10-minute maximum based on `maxTokens`.
 
 To set a custom timeout per-request:
 
