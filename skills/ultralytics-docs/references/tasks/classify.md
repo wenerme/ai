@@ -7,7 +7,7 @@ model_name: yolo26n-cls
 
 # Image Classification with Ultralytics YOLO {#image-classification}
 
-[Ultralytics YOLO image classification of objects and scenes]
+[Ultralytics YOLO image classification of leaves as healthy, rust, or powdery mildew]
 
 [Image classification](https://www.ultralytics.com/glossary/image-classification) is the simplest of the supported tasks and involves classifying an entire image into one of a set of predefined classes.
 

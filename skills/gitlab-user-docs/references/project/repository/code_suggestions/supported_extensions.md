@@ -24,45 +24,47 @@ You can express interest in other IDE extension support [in this issue](https://
 
 ## Supported languages by IDE
 
-In VS Code, Code Suggestions works with all languages that the IDE supports, except plain text.
+In VS Code and JetBrains IDEs, Code Suggestions works with all languages that the IDE supports,
+except plain text.
 For some languages, like Kotlin, Scala, or Terraform, you must install a third-party extension to
 add support for the language to VS Code.
 You can [turn off Code Suggestions for specific languages](#manage-languages-for-code-suggestions).
 
-For the other IDEs, the following table lists the languages Code Suggestions supports by default.
-Code Suggestions also works with other languages, but you must [manually add support](#add-support-for-more-languages).
-
-| Language                            | Web IDE     | JetBrains IDEs | Visual Studio 2022 for Windows | Neovim                   | Eclipse |
-|-------------------------------------|-------------|----------------|--------------------------------|--------------------------|---------|
-| C                                   | Yes | No     | Yes                    | Yes              | Yes |
-| C++                                 | Yes | Yes    | Yes                    | Yes              | Yes |
-| C#                                  | Yes | Yes    | Yes                    | Yes              | Yes |
-| CSS                                 | Yes | No     | No                     | No               | No |
-| Go                                  | Yes | Yes    | Yes                    | Yes              | Yes |
-| Google SQL                          | Yes | Yes    | Yes                    | Yes              | No |
-| HAML                                | Yes | Yes    | Yes                    | Yes              | Yes |
-| HTML                                | Yes | No     | No                     | No               | No |
-| Java                                | Yes | Yes    | Yes                    | Yes              | Yes |
-| JavaScript                          | Yes | Yes    | Yes                    | Yes              | Yes |
-| Kotlin                              | No  | Yes    | Yes                    | Yes              | Yes |
-| Markdown                            | Yes | No     | No                     | No               | No |
-| PHP                                 | Yes | Yes    | Yes                    | Yes              | Yes |
-| Python                              | Yes | Yes    | Yes                    | Yes              | Yes |
-| Ruby                                | Yes | Yes    | Yes                    | Yes              | Yes |
-| Rust                                | Yes | Yes    | Yes                    | Yes              | Yes |
-| Scala                               | No  | Yes    | Yes                    | Yes              | Yes |
-| Shell scripts (`bash` only)         | Yes | Yes    | Yes                    | Yes              | Yes |
-| Svelte                              | Yes | Yes    | Yes                    | Yes              | Yes |
-| Swift                               | Yes | Yes    | Yes                    | Yes              | Yes |
-| TypeScript (`.ts` and `.tsx` files) | Yes | Yes    | Yes                    | Yes              | Yes |
-| Terraform                           | No  | Yes    | No                     | Yes[^requires-third-party] | Yes |
-| Vue                                 | Yes | Yes    | Yes                    | Yes              | Yes |
-
-[^requires-third-party]: Neovim requires a third-party extension that provides the `terraform` file type.
-
 > [!note]
 > Some languages are not supported in all JetBrains IDEs, or might require additional
-> plugin support. Refer to the JetBrains documentation for specifics on your IDE.
+> plugin support.
+
+For Web IDE, Visual Studio, Neovim, and Eclipse, the following table lists the languages
+Code Suggestions supports by default.
+Code Suggestions also works with other languages, but you must [manually add support](#add-support-for-more-languages).
+
+| Language                            | Web IDE     | Visual Studio 2022 for Windows | Neovim                   | Eclipse |
+|-------------------------------------|-------------|--------------------------------|--------------------------|---------|
+| C                                   | Yes | Yes                    | Yes              | Yes |
+| C++                                 | Yes | Yes                    | Yes              | Yes |
+| C#                                  | Yes | Yes                    | Yes              | Yes |
+| CSS                                 | Yes | No                     | No               | No |
+| Go                                  | Yes | Yes                    | Yes              | Yes |
+| Google SQL                          | Yes | Yes                    | Yes              | No |
+| HAML                                | Yes | Yes                    | Yes              | Yes |
+| HTML                                | Yes | No                     | No               | No |
+| Java                                | Yes | Yes                    | Yes              | Yes |
+| JavaScript                          | Yes | Yes                    | Yes              | Yes |
+| Kotlin                              | No  | Yes                    | Yes              | Yes |
+| Markdown                            | Yes | No                     | No               | No |
+| PHP                                 | Yes | Yes                    | Yes              | Yes |
+| Python                              | Yes | Yes                    | Yes              | Yes |
+| Ruby                                | Yes | Yes                    | Yes              | Yes |
+| Rust                                | Yes | Yes                    | Yes              | Yes |
+| Scala                               | No  | Yes                    | Yes              | Yes |
+| Shell scripts (`bash` only)         | Yes | Yes                    | Yes              | Yes |
+| Svelte                              | Yes | Yes                    | Yes              | Yes |
+| Swift                               | Yes | Yes                    | Yes              | Yes |
+| TypeScript (`.ts` and `.tsx` files) | Yes | Yes                    | Yes              | Yes |
+| Terraform                           | No  | No                     | Yes[^requires-third-party] | Yes |
+| Vue                                 | Yes | Yes                    | Yes              | Yes |
+
+[^requires-third-party]: Neovim requires a third-party extension that provides the `terraform` file type.
 
 ## Support for Infrastructure-as-Code (IaC)
 
@@ -74,11 +76,14 @@ Code Suggestions works with infrastructure-as-code interfaces, including:
 
 ## Manage languages for Code Suggestions
 
+In VS Code and JetBrains IDEs, Code Suggestions is turned on by default for all languages
+except plain text.
+You can turn it off for specific languages.
+
+### VS Code
+
 - [Introduced](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/blob/main/CHANGELOG.md#4210-2024-07-16) in GitLab for VS Code 4.21.0
 - Suggestions for all languages [turned on](https://gitlab.com/gitlab-org/gitlab-vscode-extension/-/releases/v6.92.0) by default in GitLab for VS Code 6.92.0 during the GitLab 19.5 release.
-
-In VS Code, Code Suggestions is turned on for all languages by default.
-You can turn it off for specific languages.
 
 To turn Code Suggestions off or on for the language of the current file:
 
@@ -110,34 +115,45 @@ for this language.
 If you turned off languages in the **Enabled Supported Languages** setting of an earlier version
 of the extension, it adds them to **Disabled Languages** when you update.
 
+### JetBrains IDEs
+
+- Suggestions for all languages [turned on](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.49.0) by default in the GitLab Duo plugin for JetBrains IDEs 3.49.0 during the GitLab 19.5 release.
+- Turning off any language in settings [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-jetbrains-plugin/-/releases/v3.50.0) in the GitLab Duo plugin for JetBrains IDEs 3.50.0 during the GitLab 19.6 release.
+
+Prerequisites:
+
+- For the status bar option, Code Suggestions is turned on and the GitLab Language Server
+  is running.
+
+To turn Code Suggestions off or on for the language of the current file:
+
+1. In your JetBrains IDE, open a file in the language.
+1. In the status bar, select the GitLab Duo icon.
+1. Select **Disable Code Suggestions for** the language to turn it off, or
+   **Enable Code Suggestions for** the language to turn it back on.
+
+This option is not available for plain text files.
+
+To turn Code Suggestions off or on for any language:
+
+1. In your JetBrains IDE, go to **Settings** > **Tools** > **GitLab Duo**.
+1. Under **Languages with Code Suggestions Disabled**:
+   - To turn off a language, select **Add Language**, then select the language.
+   - To turn a language back on, select **Remove** () next to it.
+1. Select **Apply** or **OK**.
+
+If you turned off languages in an earlier version of the plugin, they stay off when you update.
+If you added languages to the **Additional languages** setting of an earlier version,
+they are turned on when you update, even if you also turned them off.
+
 ## Add support for more languages
 
-In VS Code, you do not need to add languages. Code Suggestions works with all languages except plain text.
+In VS Code and JetBrains IDEs, you do not need to add languages.
+Code Suggestions works with all languages except plain text.
 
 In other IDEs, if your desired language doesn't have Code Suggestions available by default,
 you can add support for your language locally.
 However, Code Suggestions might not function as expected.
-
-### JetBrains IDEs
-
-Prerequisites:
-
-- You have installed and enabled the
-  [GitLab Duo plugin for JetBrains IDEs](../../../../editor_extensions/jetbrains_ide/_index.md).
-- You have completed the [JetBrains extension setup](../../../../editor_extensions/jetbrains_ide/setup.md)
-  instructions, and authorized the extension to access your GitLab account.
-
-To do this:
-
-1. Find your desired language in the list of
-   [language identifiers](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocumentItem).
-   You need the identifier for your languages in a later step.
-1. In your IDE, in the top bar, select your IDE name, then select **Settings**.
-1. In the left sidebar, select **Tools** > **GitLab Duo**.
-1. Under **Code Suggestions Enabled Languages** > **Additional languages**, add the identifier for each language
-   you want to support. Identifiers should be in lowercase, like `html`. Separate multiple identifiers with commas,
-   like `html,powershell,latex`, and don't add leading periods to each identifier.
-1. Select **OK**.
 
 ### Eclipse
 

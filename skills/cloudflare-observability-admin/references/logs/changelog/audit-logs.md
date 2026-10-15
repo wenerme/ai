@@ -16,6 +16,23 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
+## 2026-10-13
+
+
+**Audit Logs v2 now captures view actions**
+
+Audit Logs v2 now records `view` actions for supported endpoints, providing visibility into read activity across Cloudflare products. These actions correspond to `GET` requests and provide additional context for security investigations and forensic analysis.
+
+The Audit Logs v2 dashboard excludes `view` actions by default to reduce noise. Remove the default **Action type** is not `view` filter to include them, or set **Action type** to `view` to show only view actions.
+
+View actions are always available through the Audit Logs v2 API and Logpush, regardless of the dashboard filter.
+
+Caution
+
+`GET` requests can generate a high volume of audit logs. When using the API or Logpush, apply appropriate filters to limit the volume of delivered logs.
+
+For more information, refer to the [Audit Logs v2 documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#view-actions).
+
 ## 2026-07-27
 
 

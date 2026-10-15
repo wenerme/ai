@@ -92,7 +92,7 @@ Select **Open in Codex** to start a task, or **Copy prompt** to paste the prompt
 ```text
 Use Promptfoo to evaluate and improve an important AI workflow in this application.
 
-Read the repository instructions and reuse any existing eval setup. Choose a user-facing behavior to test, asking me if the goal is unclear. Build realistic test cases covering common requests, edge cases, and adversarial inputs. Define success with assertions that check the behavior users need.
+Read the repository instructions and reuse any existing eval setup. Choose a user-facing behavior to test, asking me if the goal is unclear. Build test cases based on the application's inputs, covering common requests, edge cases, and adversarial inputs. Define success with assertions that check the expected behavior.
 
 Run a baseline, inspect the failures, and test one targeted change to the prompt or configuration. Compare both versions using the same cases and assertions. Report improvements and regressions, including latency and cost when available. Keep the assertions fixed so the comparison stays meaningful.
 

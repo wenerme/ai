@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9c
 
 # Puppeteer
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Puppeteer ↗︎](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
@@ -86,17 +86,17 @@ This script [launches ↗︎](https://pptr.dev/api/puppeteer.puppeteernode.launc
 
 ### Keep Alive
 
-If users omit the `browser.close()` statement, it will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
+If users omit the `browser.close()` statement, it will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 20 minutes, by using the `keep_alive` option, set in milliseconds:
 
 ```js
-const browser = await puppeteer.launch(env.MYBROWSER, { keep_alive: 600000 });
+const browser = await puppeteer.launch(env.MYBROWSER, { keep_alive: 1200000 });
 ```
 
-Using the above, the browser will stay open for up to 10 minutes, even if inactive.
+Using the above, the browser will stay open for up to 20 minutes, even if inactive.
 
 Note
 
-This is an inactivity timeout, not a maximum session duration. Sessions can remain open longer than 10 minutes as long as they stay active. To keep a session open beyond the inactivity timeout, send a command at least once within your configured window (for example, every 10 minutes). Refer to [session duration limits](https://developers.cloudflare.com/browser-run/limits/#is-there-a-maximum-session-duration) for more information.
+This is an inactivity timeout, not a maximum session duration. Sessions can remain open longer than 20 minutes as long as they stay active. To keep a session open beyond the inactivity timeout, send a command at least once within your configured window (for example, every 20 minutes). Refer to [session duration limits](https://developers.cloudflare.com/browser-run/limits/#is-there-a-maximum-session-duration) for more information.
 
 ### Set a custom user agent
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -33244,6 +33244,21 @@ Arguments:
 | <a id="aicatalogagent-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
 | <a id="aicatalogagent-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
 
+##### `AiCatalogAgent.hasDirectProjectConfigurationsInGroup`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.
+
+Returns [`Boolean`](#boolean).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogagent-hasdirectprojectconfigurationsingroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group. |
+
 ##### `AiCatalogAgent.latestVersion`
 
 Latest version of the item.
@@ -33372,6 +33387,21 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="aicatalogflow-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
 | <a id="aicatalogflow-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
+
+##### `AiCatalogFlow.hasDirectProjectConfigurationsInGroup`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.
+
+Returns [`Boolean`](#boolean).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogflow-hasdirectprojectconfigurationsingroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group. |
 
 ##### `AiCatalogFlow.latestVersion`
 
@@ -33600,6 +33630,21 @@ Arguments:
 | <a id="aicatalogskill-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
 | <a id="aicatalogskill-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
 
+##### `AiCatalogSkill.hasDirectProjectConfigurationsInGroup`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.
+
+Returns [`Boolean`](#boolean).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-hasdirectprojectconfigurationsingroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group. |
+
 ##### `AiCatalogSkill.latestVersion`
 
 Latest version of the item.
@@ -33715,6 +33760,21 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="aicatalogthirdpartyflow-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
 | <a id="aicatalogthirdpartyflow-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
+
+##### `AiCatalogThirdPartyFlow.hasDirectProjectConfigurationsInGroup`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.
+
+Returns [`Boolean`](#boolean).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogthirdpartyflow-hasdirectprojectconfigurationsingroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group. |
 
 ##### `AiCatalogThirdPartyFlow.latestVersion`
 
@@ -45909,6 +45969,28 @@ Arguments:
 | <a id="group-addoneligibleusers-search"></a>`search` | [`String`](#string) | Search the user list. |
 | <a id="group-addoneligibleusers-sort"></a>`sort` | [`GitlabSubscriptionsUserSort`](#gitlabsubscriptionsusersort) | Sort the user list. |
 
+##### `Group.aiCatalogItems`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+AI Catalog items that the group can enable. This field can be resolved for only one group in any single request.
+
+Returns [`AiCatalogItemConnection!`](#aicatalogitemconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-aicatalogitems-enabledby"></a>`enabledBy` | [`[AiCatalogGroupItemEnabledBy!]`](#aicataloggroupitemenabledby) | Return only items enabled in any of these ways. Returns all items the group can enable when omitted or empty. |
+| <a id="group-aicatalogitems-itemtypes"></a>`itemTypes` | [`[AiCatalogItemType!]`](#aicatalogitemtype) | Types of items to retrieve. |
+| <a id="group-aicatalogitems-search"></a>`search` | [`String`](#string) | Search items by name and description. |
+| <a id="group-aicatalogitems-sort"></a>`sort` | [`AiCatalogItemsSort`](#aicatalogitemssort) | Sort order of items. |
+
 ##### `Group.aiDomainSettings`
 
 - Introduced in GitLab 19.0.
@@ -52344,6 +52426,7 @@ Fields:
 | <a id="mergerequestriskassessment-confidence"></a>`confidence` | [`Int`](#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
 | <a id="mergerequestriskassessment-confidencetier"></a>`confidenceTier` | [`MergeRequestRiskConfidenceTier`](#mergerequestriskconfidencetier) | Tier derived from the confidence score. |
 | <a id="mergerequestriskassessment-contributingsignals"></a>`contributingSignals` | [`[MergeRequestRiskContributingSignal!]!`](#mergerequestriskcontributingsignal) | What each signal contributed to the score. |
+| <a id="mergerequestriskassessment-contributions"></a>`contributions` | [`[MergeRequestRiskContribution!]!`](#mergerequestriskcontribution) | What each signal and risk domain contributed to the score. |
 | <a id="mergerequestriskassessment-domaintags"></a>`domainTags` | [`[String!]!`](#string) | Risk domains the change touches, used to route specialist review. |
 | <a id="mergerequestriskassessment-duoworkflowid"></a>`duoWorkflowId` | [`Int`](#int) | ID of the Duo workflow session that produced the assessment. |
 | <a id="mergerequestriskassessment-missingsignals"></a>`missingSignals` | [`[MergeRequestRiskMissingSignal!]!`](#mergerequestriskmissingsignal) | Signals that could not be measured, which is why confidence may be low. |
@@ -52365,6 +52448,20 @@ Fields:
 | <a id="mergerequestriskcontributingsignal-detail"></a>`detail` | [`String`](#string) | Human-readable explanation of the contribution. |
 | <a id="mergerequestriskcontributingsignal-label"></a>`label` | [`String`](#string) | Human-readable name of the signal or claim. Null when the key matches neither a registered signal nor a risk domain. |
 | <a id="mergerequestriskcontributingsignal-signal"></a>`signal` | [`String!`](#string) | Name of the signal or claim. |
+
+### `MergeRequestRiskContribution`
+
+Contribution a signal or a risk domain made to a merge request risk score.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestriskcontribution-contribution"></a>`contribution` | [`Float!`](#float) | Points the signal or risk domain added to the overall score. |
+| <a id="mergerequestriskcontribution-description"></a>`description` | [`String`](#string) | Human-readable name of the signal or risk domain. |
+| <a id="mergerequestriskcontribution-evidence"></a>`evidence` | [`String`](#string) | Human-readable explanation of the contribution. |
+| <a id="mergerequestriskcontribution-identifier"></a>`identifier` | [`String!`](#string) | Name of the signal or risk domain. |
+| <a id="mergerequestriskcontribution-kind"></a>`kind` | [`MergeRequestRiskContributionKind!`](#mergerequestriskcontributionkind) | Whether the contribution came from a signal or a risk domain. |
 
 ### `MergeRequestRiskMissingSignal`
 
@@ -54084,7 +54181,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="orbittrial-credits"></a>`credits`  | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced in GitLab 19.5. Status: Experiment. Credits of the trial. |
 | <a id="orbittrial-expireson"></a>`expiresOn`  | [`Date`](#date) | Introduced in GitLab 19.5. Status: Experiment. Last day of the trial, in UTC. Null before a trial starts. |
-| <a id="orbittrial-offer"></a>`offer`  | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced in GitLab 19.6. Status: Experiment. Terms of a new trial. Null unless the group can start one and CustomersDot sends valid terms. |
+| <a id="orbittrial-offer"></a>`offer`  | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced in GitLab 19.6. Status: Experiment. Terms of a new trial. Null unless the current user can start the trial and CustomersDot sends valid terms. |
 | <a id="orbittrial-state"></a>`state`  | [`OrbitTrialState!`](#orbittrialstate) | Introduced in GitLab 19.5. Status: Experiment. State of the trial. |
 
 ### `OrbitTrialCredits`
@@ -65389,7 +65486,6 @@ Fields:
 | <a id="workitemtype-isincidentmanagement"></a>`isIncidentManagement`  | [`Boolean`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. Indicates whether the work item type is for incident management. |
 | <a id="workitemtype-isservicedesk"></a>`isServiceDesk`  | [`Boolean`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. Indicates whether the work item type is for service desk. |
 | <a id="workitemtype-name"></a>`name` | [`String!`](#string) | Name of the work item type. |
-| <a id="workitemtype-showprojectselector"></a>`showProjectSelector`  | [`Boolean`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. Indicates whether the work item type should show the project selector. |
 | <a id="workitemtype-supportedconversiontypes"></a>`supportedConversionTypes`  | [`[WorkItemType!]`](#workitemtype) | Introduced in GitLab 17.8. Status: Experiment. Supported conversion types for the work item type. |
 | <a id="workitemtype-supportsmoveaction"></a>`supportsMoveAction`  | [`Boolean`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. Indicates whether the work item type can be moved or not. |
 | <a id="workitemtype-supportsroadmapview"></a>`supportsRoadmapView`  | [`Boolean`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. Indicates whether the work item type supports roadmap view. |
@@ -66839,6 +66935,15 @@ Possible flow configuration types for AI Catalog agents.
 | Value | Description |
 | ----- | ----------- |
 | <a id="aicatalogflowconfigtype-chat"></a>`CHAT` | Chat flow configuration. |
+
+### `AiCatalogGroupItemEnabledBy`
+
+Ways an AI Catalog item can be enabled in a group.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aicataloggroupitemenabledby-inheritance"></a>`INHERITANCE` | Enabled for all projects in the group through group inheritance. Only top-level groups can enable items this way. Matches no items unless the `ai_catalog_group_inherited_consumers` feature flag is enabled. |
+| <a id="aicataloggroupitemenabledby-project_direct"></a>`PROJECT_DIRECT` | Enabled directly in any descendant project in the group. |
 
 ### `AiCatalogItemConsumerKind`
 
@@ -69069,6 +69174,7 @@ Type of a dependency firewall policy rule.
 | ----- | ----------- |
 | <a id="dependencyfirewallruletype-license"></a>`LICENSE` | Rule matching on package licenses. |
 | <a id="dependencyfirewallruletype-malicious"></a>`MALICIOUS` | Rule matching on packages flagged as malicious. |
+| <a id="dependencyfirewallruletype-package_version"></a>`PACKAGE_VERSION` | Rule matching on an exact package name and version. |
 | <a id="dependencyfirewallruletype-risk_severity"></a>`RISK_SEVERITY` | Rule matching on vulnerability counts per severity level. |
 | <a id="dependencyfirewallruletype-vulnerability"></a>`VULNERABILITY` | Rule matching on package vulnerabilities. |
 
@@ -70687,6 +70793,15 @@ Confidence tier derived from a merge request risk confidence score.
 | <a id="mergerequestriskconfidencetier-medium"></a>`MEDIUM` | Medium confidence. |
 | <a id="mergerequestriskconfidencetier-very_high"></a>`VERY_HIGH` | Very high confidence. |
 
+### `MergeRequestRiskContributionKind`
+
+What made a contribution to a merge request risk score.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="mergerequestriskcontributionkind-domain"></a>`DOMAIN` | Risk domain the classification flagged as touched. |
+| <a id="mergerequestriskcontributionkind-signal"></a>`SIGNAL` | Signal measured from the merge request. |
+
 ### `MergeRequestRiskTier`
 
 Risk tier derived from a merge request risk score.
@@ -71072,6 +71187,7 @@ Reason the current user cannot turn Orbit on for a group.
 | Value | Description |
 | ----- | ----------- |
 | <a id="orbitturnondenialreason-forbidden"></a>`FORBIDDEN`  | Introduced in GitLab 19.5. Status: Experiment. User lacks permission to turn Orbit on for the group. |
+| <a id="orbitturnondenialreason-purchase_required"></a>`PURCHASE_REQUIRED`  | Introduced in GitLab 19.6. Status: Experiment. Group must purchase Orbit before it can be turned on, because no trial can start. |
 | <a id="orbitturnondenialreason-trial_ended"></a>`TRIAL_ENDED`  | Introduced in GitLab 19.5. Status: Experiment. Trial has ended, so Orbit can no longer be turned on. |
 | <a id="orbitturnondenialreason-trial_required"></a>`TRIAL_REQUIRED`  | Introduced in GitLab 19.5. Status: Experiment. Group must start a trial before Orbit can be turned on. |
 | <a id="orbitturnondenialreason-unavailable"></a>`UNAVAILABLE`  | Introduced in GitLab 19.5. Status: Experiment. Trial status could not be read from CustomersDot. |
@@ -75641,6 +75757,21 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="aicatalogitem-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
 | <a id="aicatalogitem-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
+
+###### `AiCatalogItem.hasDirectProjectConfigurationsInGroup`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.
+
+Returns [`Boolean`](#boolean).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogitem-hasdirectprojectconfigurationsingroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group. |
 
 ###### `AiCatalogItem.latestVersion`
 

@@ -16,6 +16,54 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dns.xml)
 
+## 2026-10-14
+
+
+**Configure Advanced Custom Nameservers with nameserver sets (beta)**
+
+[Nameserver sets](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/) are now available in beta to Enterprise accounts. A nameserver set groups two to five custom nameserver names with Cloudflare-assigned IP addresses. You can assign the set to zones in the same account.
+
+Enterprise customers using Cloudflare DNS can create Advanced Custom Nameserver sets. These sets distribute addresses across Advanced anycast network groups to improve resiliency.
+
+Compared to legacy `custom_ns` sets, modern nameserver sets offer several advantages:
+
+- **Sets are reusable objects.** Accounts are no longer limited to 5 numbered sets. Create a set once and assign it to one or more zones in the same account.
+- **Custom address counts.** Assign each nameserver up to 3 IPv4 and 3 IPv6 addresses. This allows for more flexible setups.
+- **Diverse addresses.** IPv4 and IPv6 addresses are now both selected from a diverse set of prefixes for increased redundancy.
+- **Support for Advanced Custom Nameservers.** Set `advanced` to `true` to allocate addresses from Advanced anycast network groups, providing the same benefits as Cloudflare branded [Advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) to your custom nameservers.
+- **Explicit changes.** Sets are immutable, so adding or removing a nameserver name never changes the configuration of zones that already use a set.
+
+Create a set by sending a `POST` request to `/accounts/{account_id}/dns_settings/nameserver_sets` with the following body:
+
+```json
+{
+	"advanced": true,
+	"ip_set": 1,
+	"nameservers": [
+		{ "name": "ns1.example.com" },
+		{ "name": "ns2.example.com" },
+		{ "name": "ns3.example.com" }
+	]
+}
+```
+
+Then, send a `PATCH` request to `/zones/{zone_id}/dns_settings` with the returned nameserver set ID:
+
+```json
+{
+	"nameservers": {
+		"type": "custom",
+		"nameserver_set_id": "0123456789abcdef0123456789abcdef"
+	}
+}
+```
+
+This configures the zone to use the nameserver set.
+
+For more information, including other setup steps, refer to [Nameserver sets](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/).
+
+Legacy `custom_ns` sets remain supported. A single account can use both.
+
 ## 2026-10-06
 
 
@@ -47,7 +95,7 @@ Shadow metadata is also available in DNS records API responses when you set `inc
 
 - **Consolidate DNS operations.** Public and private DNS run on one platform, with one API, one audit trail, and one place to set policy.
 - **Simplify split-horizon DNS.** Internal and external resolution are defined as separate [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) over shared zones, managed from a single control plane — so there is no drift to chase down.
-- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) that already governs the rest of your traffic.
+- **Extend Zero Trust to DNS.** Resolver policies decide which users and devices resolve against which view, enforced by the same [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) that already governs the rest of your traffic.
 
 Setting up Internal DNS takes three steps: create a zone, create a view, and define a resolver policy.
 
@@ -62,7 +110,7 @@ POST /zones
 }
 ```
 
-Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
+Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) for Enterprise customers. To get started, refer to the [Internal DNS documentation](https://developers.cloudflare.com/dns/internal-dns/).
 
 ## 2026-07-09
 
@@ -288,7 +336,7 @@ Participating beta testers can now fully configure [Internal DNS](https://develo
 #### Internal DNS enables customers to:
 
 - Map internal hostnames to private IPs for services, devices, and applications not exposed to the public Internet
-- Resolve internal DNS queries securely through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- Resolve internal DNS queries securely through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 - Use split-horizon DNS to return different responses based on network context
 - Consolidate internal and public DNS zones within a single management platform
 

@@ -1,5 +1,5 @@
 ---
-description: This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products.
+description: This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,23 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-14
+
+
+**WAF Release - 2026-10-14 - Emergency**
+
+This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) vulnerability found in popular web frameworks.
+
+**Key Findings**
+
+Key Findings
+
+- Generic Rules - Remote Code Execution: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...fd1bf420 | N/A | Generic Rules - Remote Code Execution | N/A | Block | This is a new detection. |
 
 ## 2026-10-12
 
@@ -490,27 +507,8 @@ Several of the disclosed vulnerabilities are not possible to block at WAF layer,
 | Cloudflare Managed Ruleset | ...836855a4 | N/A | Generic Rules - Command Execution - Header - Beta | Disabled | - | This detection has been removed. |
 | Cloudflare Managed Ruleset | ...6d060a0d | N/A | Generic Rules - Command Execution - URI - Beta | Disabled | - | This detection has been removed. |
 
-## 2026-07-17
-
-
-**WAF Release - 2026-07-17 - Emergency**
-
-This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE) and SQL injection (SQLi) vulnerability found in popular web frameworks.
-
-**Key Findings**
-
-- Generic Frameworks - Unauthenticated RCE: Attackers can execute arbitrary system commands with web server privileges by sending malicious input containing invalid path sequences during request processing.
-- Generic Frameworks - SQLi: Attackers can execute unauthorized database queries due to a failure to sanitize input values within request parameters.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...550664b6 | N/A | Generic Rules - Unauthenticated RCE | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...ed933fcc | N/A | Generic Rules - SQLi | N/A | Block | This is a new detection. |
-| Cloudflare Free Ruleset | ...b5ec246a | N/A | Generic Rules - Unauthenticated RCE | N/A | Block | This is a new detection. |
-| Cloudflare Free Ruleset | ...33697a1a | N/A | Generic Rules - SQLi | N/A | Block | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces new detections to mitigate recent vulnerabilities affecting TanStack and Atlassian products.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

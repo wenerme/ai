@@ -7,7 +7,7 @@ model_name: yolo26n-sem
 
 # Semantic Segmentation with Ultralytics YOLO
 
-[Semantic segmentation examples]
+[Semantic segmentation of a city street into road, sidewalk, car, person, bicycle, vegetation, building, and sky classes]
 
 [Semantic segmentation](https://www.ultralytics.com/glossary/semantic-segmentation) assigns a class label to every pixel in an image, producing a dense class map that covers the entire scene. Unlike [instance segmentation](segment.md), which separates individual objects, semantic segmentation groups all pixels of the same class together regardless of how many distinct objects are present.
 

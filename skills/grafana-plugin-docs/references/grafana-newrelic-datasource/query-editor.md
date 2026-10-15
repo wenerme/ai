@@ -18,11 +18,11 @@ This document explains how to use the New Relic query editor to build queries in
 
 The query editor supports five query types, selectable from the **Service** switcher at the top of the editor:
 
-- **Metrics** — Query APM metric data for a specific application.
-- **Data Explorer** — Build NRQL queries visually without writing raw NRQL.
-- **NRQL Editor** — Write raw NRQL queries with code completion.
-- **Logs** — Search and view logs stored in New Relic.
-- **Traces** — Search for distributed traces or look up a specific trace by ID.
+- **Metrics**: Query APM metric data for a specific application.
+- **Data Explorer**: Build NRQL queries visually without writing raw NRQL.
+- **NRQL Editor**: Write raw NRQL queries with code completion.
+- **Logs**: Search and view logs stored in New Relic.
+- **Traces**: Search for distributed traces or look up a specific trace by ID.
 
 ## Metrics
 
@@ -50,26 +50,63 @@ Data Explorer lets you build [NRQL](https://docs.newrelic.com/docs/query-your-da
 
 Expand table
 
-| Field           | Description                                                                                                                                                                                                 |
-|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **From**        | The data type to query (for example, `Transaction`, `SystemSample`). Changing this field resets the rest of the query to defaults.                                                                          |
-| **Select**      | One or more aggregations to include in the `SELECT` clause. You can perform arithmetic operations over two aggregated fields. Each item can optionally be filtered using a NRQL `FILTER` expression.        |
-| **Where**       | *(Optional)* Raw NRQL filter condition. For example: `appName = 'my-app' AND serverName IN ('server1','server2')`. This field accepts Grafana template variables.                                           |
-| **Facet**       | *(Optional)* Separate and group results by attribute values. Use **FACET BY CASES** to group by more complex conditions.                                                                                    |
-| **Time Filter** | *(Optional)* Filter data based on a time range. Select **Dashboard time** to use Grafana’s selected time range (default), or choose a fixed time window.                                                    |
-| **Format**      | Select `TIMESERIES` or `TABLE`. `TIMESERIES` adds the `TIMESERIES` keyword and returns data aggregated by time period. `TABLE` returns summary data without time aggregation.                               |
-| **Interval**    | *(Optional)* When using the `TIMESERIES` format, set the aggregation interval. Options: `AUTO`, `MAX`, or `CUSTOM`. When set to `CUSTOM`, you can specify a duration and unit (seconds, minutes, or hours). |
-| **Slide By**    | *(Optional)* When using a custom interval with the `TIMESERIES` format, set a sliding time window range using the `SLIDE BY` clause.                                                                        |
+| Field           | Description                                                                                                                                                                                                                                                                          |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **From**        | Event type to query. Defaults to `Metric`. The drop-down lists event types that the configured New Relic account reported in the last hour. `Transaction` appears only when that account reported it during that hour. Changing this field resets the rest of the query to defaults. |
+| **Select**      | One or more aggregations to include in the `SELECT` clause. You can perform arithmetic operations over two aggregated fields. Each item can optionally be filtered using a NRQL `FILTER` expression.                                                                                 |
+| **Where**       | *(Optional)* Raw NRQL filter condition. For example: `appName = 'my-app' AND serverName IN ('server1','server2')`. This field accepts Grafana template variables.                                                                                                                    |
+| **Facet**       | *(Optional)* Group results. **None** returns one series. **BY FIELD** groups by an attribute. **BY CASES** groups by conditions you enter.                                                                                                                                           |
+| **Time Filter** | *(Optional)* Filter data based on a time range. Select **Dashboard Time** to use the Grafana selected time range (default), or choose a fixed time window.                                                                                                                           |
+| **Format**      | Select `TIMESERIES` or `TABLE`. `TIMESERIES` adds the `TIMESERIES` keyword and returns data aggregated by time period. `TABLE` returns summary data without time aggregation.                                                                                                        |
+| **Interval**    | *(Optional)* When using the `TIMESERIES` format, set the aggregation interval. Options: `AUTO`, `MAX`, or `CUSTOM`. When set to `CUSTOM`, you can specify a duration and unit (seconds, minutes, or hours).                                                                          |
+| **Slide By**    | *(Optional)* When using a custom interval with the `TIMESERIES` format, set a sliding time window range using the `SLIDE BY` clause.                                                                                                                                                 |
 
 You can preview the generated NRQL query in the **NRQL preview** section. To further customize the query, click **Switch to NRQL Editor** to switch to the raw NRQL editor.
 
 The available aggregation functions in the **Select** field include: `count`, `average`, `sum`, `latest`, `median`, `max`, `min`, `uniqueCount`, and `uniques`.
 
+### Data Explorer example
+
+Data Explorer starts with **From** set to `Metric`, **Select** set to `*` and **Count**, **Facet** set to **None**, **Time filter** set to **Dashboard Time**, and **Format** set to `TIMESERIES`. **NRQL preview** shows:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT count(*) FROM Metric $__timeFilter TIMESERIES AUTO
+```
+
+**From** lists event types that the configured New Relic account reported in the last hour. `Transaction` appears only when that account reported transaction data in that hour. Select an event type from the list.
+
+To build the default query:
+
+1. Select the **Data Explorer** query type.
+2. Select `Metric` in **From**.
+3. In **Select**, set the attribute to `*` and the aggregation to **Count**.
+4. Leave **Facet** set to **None**.
+5. Set **Time filter** to **Dashboard Time**.
+6. Set **Format** to `TIMESERIES` and **Interval** to `AUTO`.
+
+To return one summary value, set **Format** to `TABLE`. Data Explorer omits `TIMESERIES`:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT count(*) FROM Metric $__timeFilter
+```
+
+To combine two aggregations, click **+ Add row** and choose an operand. For example, click **Add filter** on the first **Count** row, enter `appName = 'my-app'`, then set the second row’s operand to `/` and its aggregation to **Count** on `*`. Data Explorer generates:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT filter(count(*), WHERE appName = 'my-app') / count(*) FROM Metric $__timeFilter TIMESERIES AUTO
+```
+
 For more information about NRQL syntax, refer to the [New Relic NRQL documentation](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/).
 
 ## NRQL Editor
 
-The NRQL Editor lets you write raw [New Relic Query Language](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/) queries. Code completion displays as you type — highlight an option with the arrow keys and press **Tab** to select it.
+The NRQL Editor lets you write raw [New Relic Query Language](https://docs.newrelic.com/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/) queries. Code completion displays as you type. Highlight an option with the arrow keys and press **Tab** to select it.
 
 Expand table
 
@@ -137,7 +174,7 @@ SELECT average(cpuPercent) FROM SystemSample $__timeFilter $__timeSeries(60m, 1 
 
 ### COMPARE WITH queries
 
-NRQL queries that use the `COMPARE WITH` clause automatically render comparison data as dotted lines in time-series visualizations, making it easy to compare current data with historical periods.
+NRQL queries that use the `COMPARE WITH` clause automatically render comparison data as dotted lines in time-series visualizations, so you can compare current data with historical periods.
 
 For example, compare this week’s response time with last week:
 
@@ -176,7 +213,7 @@ For more information about Synthetics monitoring queries, refer to [Events repor
 
 ## Logs
 
-The Logs query type lets you search and view logs stored in the New Relic `Log` table. Results are displayed in Grafana’s log format and are automatically filtered by the dashboard time range. A maximum of 2000 records are returned per query due to NRQL API limitations.
+The Logs query type lets you search and view logs stored in the New Relic `Log` table. Results are displayed in the Grafana log format and are automatically filtered by the dashboard time range. A maximum of 2000 records are returned per query due to NRQL API limitations.
 
 Expand table
 

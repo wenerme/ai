@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 250 modelsClear filters
+We found 251 modelsClear filters
 
 ## Compare models
 
@@ -470,6 +470,12 @@ Compare
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash-tts</h3>GoogleText-to-Speech Gemini 3.8 Flash TTS is Google's flagship text-to-speech model for expressive, natural speech generation.](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash-tts/)
+
+- Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-4-argon</h3>GoogleText Generation Google's frontier model for deep work on complex, real-world tasks across coding, finance, legal, cybersecurity and science. The first model in the Gemini 4 family.](https://developers.cloudflare.com/ai/models/google/gemini-4-argon/)
 
 - Third-party
 

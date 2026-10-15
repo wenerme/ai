@@ -42,7 +42,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 ## Cloudflare platform access
@@ -141,15 +141,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
 Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
@@ -158,6 +154,10 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 
 ```txt
 Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Tips

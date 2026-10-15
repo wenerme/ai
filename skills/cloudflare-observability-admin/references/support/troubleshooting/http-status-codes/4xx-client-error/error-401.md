@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/support/troubleshooting/http-status-cod
 
 # Error 401
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 401 Unauthorized
 
@@ -30,6 +30,15 @@ If the client resends the request with the same credentials and the challenge re
 
 When encountering a `401` error while using the Cloudflare API, ensure that you are providing the correct authentication credentials (for example, [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) or [keys](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/)). Double-check that the credentials are active and properly formatted. If the error persists, refer to the `WWW-Authenticate` header in the response for guidance on resolving the issue.
 
+For a website or application, a `401` usually comes from the origin server, which requires authentication that the request did not provide. If the application is protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/), Access can also return a `401` instead of redirecting to its login page, for example:
+
+- Requests that use a service token, when [strict service token authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#strict-service-token-authentication) is on.
+- AJAX sub-requests with an [expired session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#ajax) that send the `X-Requested-With: XMLHttpRequest` header.
+- Non-browser clients, when [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#authorization-flow) is enabled.
+- Non-browser traffic that fails Cloudflare One Client authentication, when [401 responses for non-browser traffic](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#return-401-responses-for-non-browser-traffic) are enabled.
+
+To tell the two apart, check whether the request reached your origin server's logs.
+
 Was this helpful?
 
 YesNo
@@ -39,5 +48,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/#page","headline":"Error 401","description":"Troubleshoot HTTP 401 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/og.png?v=029b39da1e14f6e8","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/#page","headline":"Error 401","description":"Troubleshoot HTTP 401 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-401/og.png?v=029b39da1e14f6e8","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

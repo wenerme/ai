@@ -23,7 +23,7 @@ Pass `--agents codex,cursor` to also sync Codex and Cursor sessions. glab instal
 
 Safe to run multiple times: existing hooks are not duplicated, and an existing fallback periodic sync job is replaced. Run `glab govern doctor` afterwards to verify the setup.
 
-Run `glab govern setup --uninstall` to remove the fallback periodic sync job. To remove the hooks, delete the `glab govern audit sync` entries from `~/.claude/settings.json`.
+Run `glab govern setup --uninstall` to remove everything setup installed: the hooks, the fallback periodic sync job, and Codex and Cursor session syncing. Other hooks and settings in `~/.claude/settings.json` are left unchanged.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -46,7 +46,7 @@ $ glab govern setup --no-fallback-sync
 # Also sync Codex and Cursor sessions through the fallback periodic sync
 $ glab govern setup --agents codex,cursor
 
-# Remove the fallback periodic sync
+# Remove the hooks and the fallback periodic sync
 $ glab govern setup --uninstall
 
 ```
@@ -56,7 +56,7 @@ $ glab govern setup --uninstall
 ```plaintext
       --agents strings     Also sync sessions from these agents, found by the fallback periodic sync without hooks: codex, cursor. Replaces the agents enabled by an earlier run. Multiple agents can be comma-separated or specified by repeating the flag.
       --no-fallback-sync   Install only the hooks, without the fallback periodic sync job.
-      --uninstall          Remove the fallback periodic sync job and stop syncing Codex and Cursor sessions. The hooks are left in place.
+      --uninstall          Remove the hooks and the fallback periodic sync job, and stop syncing Codex and Cursor sessions.
   -y, --yes                Skip confirmation prompt.
 ```
 

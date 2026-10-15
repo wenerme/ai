@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Add an infrastructure application
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -175,25 +175,26 @@ The sort parameter also uses `:` in `order=tag:<key>` because it identifies the 
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
-5. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
-6. Enter the **Protocol** and **Port** that will be used to connect to the server.
-7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
+5. (Optional) Select a **Session duration** from the dropdown menu. This sets the maximum time an infrastructure connection can remain open before it is automatically closed. Defaults to 24 hours.
+6. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
+7. Enter the **Protocol** and **Port** that will be used to connect to the server.
+8. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
 
    Note
 
    Access for Infrastructure only supports assigning one protocol per port. You can reuse a port/protocol pairing across infrastructure applications, but the port cannot be reassigned to another protocol.
-8. Select **Next**.
-9. To secure your targets, configure a policy that defines who can connect and how they can connect:
-   1. Enter any name for your policy.
-   2. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).
-   3. In **Connection context**, configure the following settings:
-      - **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).
-      - **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.
+9. Select **Next**.
+10. To secure your targets, configure a policy that defines who can connect and how they can connect:
+11. Enter any name for your policy.
+12. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).
+13. In **Connection context**, configure the following settings:
+    - **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).
+    - **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.
 
-      Note
+    Note
 
-      Cloudflare will not create new users on the target. UNIX users must already be present on the server.
-10. Select **Add application**.
+    Cloudflare will not create new users on the target. UNIX users must already be present on the server.
+14. Select **Add application**.
 
 Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:
 
@@ -222,6 +223,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 	--json '{
 		"name": "Example infrastructure app",
 		"type": "infrastructure",
+		"session_duration": "24h",
 		"target_criteria": [
 				{
 						"port": 22,
@@ -291,9 +293,10 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 
    ```tf
    resource "cloudflare_zero_trust_access_application" "infra-app" {
-   	account_id = var.cloudflare_account_id
-   	name       = "Example infrastructure app"
-   	type       = "infrastructure"
+   	account_id       = var.cloudflare_account_id
+   	name             = "Example infrastructure app"
+   	type             = "infrastructure"
+   	session_duration = "24h"
 
    	target_criteria {
    		port     = 22
@@ -352,7 +355,7 @@ Users must pass the policies in your Access application before they are granted 
 
 You can require independent MFA before users connect with SSH. The application configuration selects the supported infrastructure authenticators: PIV key (`piv_key`), FIDO2 key (`ssh_fido2_key`), or both.
 
-Application-level settings define the default authenticators and session duration. A policy can define custom settings for specific users or usernames.
+Application-level settings define the default authenticators and [session duration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#session-duration). A policy can define custom settings for specific users or usernames.
 
 For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
 
@@ -507,5 +510,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/og.png?v=831ab85e6f501eb2","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/og.png?v=831ab85e6f501eb2","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
 ```

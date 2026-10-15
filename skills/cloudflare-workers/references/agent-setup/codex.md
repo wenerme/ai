@@ -55,7 +55,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Add bot protection and rate limiting to my login and checkout endpoints.
    ```
 
 1. **Download Codex**
@@ -161,29 +161,28 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
 Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips
 
 - The Cloudflare API MCP server uses Code Mode — Codex writes JavaScript against a typed API to reach any of 2,500+ endpoints in \~1,000 tokens.
-- Try the `/cloudflare:build-agent` slash command to scaffold a complete Agents SDK project, or `/cloudflare:build-mcp` for a remote MCP server.
 
 ### [Cloudflare MCP server repository](https://github.com/cloudflare/mcp-server-cloudflare)
 
@@ -278,5 +277,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/codex/#page","headline":"Codex + Cloudflare","description":"OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.","url":"https://developers.cloudflare.com/agent-setup/codex/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/codex/og.png?v=a071c5162a14c963","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/codex/#page","headline":"Codex + Cloudflare","description":"OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.","url":"https://developers.cloudflare.com/agent-setup/codex/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/codex/og.png?v=a071c5162a14c963","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -31,6 +31,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
   - `"JP_STORAGE"`
 
+  - `"JP_STORAGE_PROCESSING"`
+
   - `"KR_STORAGE"`
 
   - `"CA_STORAGE"`
@@ -39,7 +41,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
   - `"IN_STORAGE"`
 
+  - `"IN_STORAGE_PROCESSING"`
+
   - `"AU_STORAGE"`
+
+  - `"AU_STORAGE_PROCESSING"`
 
   - `"GB_STORAGE"`
 
@@ -91,6 +97,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"JP_STORAGE"`
 
+    - `"JP_STORAGE_PROCESSING"`
+
     - `"KR_STORAGE"`
 
     - `"CA_STORAGE"`
@@ -99,7 +107,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"IN_STORAGE"`
 
+    - `"IN_STORAGE_PROCESSING"`
+
     - `"AU_STORAGE"`
+
+    - `"AU_STORAGE_PROCESSING"`
 
     - `"GB_STORAGE"`
 

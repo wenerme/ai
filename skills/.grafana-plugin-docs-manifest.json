@@ -1431,8 +1431,8 @@
   },
   "grafana-newrelic-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/alerting.md",
-    "size": 7031,
-    "updatedAt": "2026-06-25T05:42:44.795Z"
+    "size": 8504,
+    "updatedAt": "2026-10-15T01:00:30.757Z"
   },
   "grafana-newrelic-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/annotations.md",
@@ -1441,18 +1441,18 @@
   },
   "grafana-newrelic-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/configure.md",
-    "size": 5603,
-    "updatedAt": "2026-06-25T05:42:45.521Z"
+    "size": 5599,
+    "updatedAt": "2026-10-15T01:00:31.062Z"
   },
   "grafana-newrelic-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest.md",
-    "size": 4293,
-    "updatedAt": "2026-06-25T05:42:45.875Z"
+    "size": 4327,
+    "updatedAt": "2026-10-15T01:00:31.212Z"
   },
   "grafana-newrelic-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/query-editor.md",
-    "size": 14669,
-    "updatedAt": "2026-06-25T05:42:46.509Z"
+    "size": 16881,
+    "updatedAt": "2026-10-15T01:00:31.365Z"
   },
   "grafana-newrelic-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/template-variables.md",
@@ -1461,8 +1461,8 @@
   },
   "grafana-newrelic-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting.md",
-    "size": 16862,
-    "updatedAt": "2026-06-25T05:42:47.294Z"
+    "size": 24337,
+    "updatedAt": "2026-10-15T01:00:31.686Z"
   },
   "grafana-odbc-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-odbc-datasource/latest.md",

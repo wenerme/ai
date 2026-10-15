@@ -861,4 +861,4 @@ Use thinking models efficiently by following these guidelines.
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation): Basic text responses
 - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling): Connect to tools
 - [Gemini 4 guide](https://ai.google.dev/gemini-api/docs/latest-model): What's new in Gemini 4
-- [Gemini 3 guide](https://ai.google.dev/gemini-api/docs/gemini-3): Model-specific features
+- [Gemini 3 guide](https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.8): Model-specific features

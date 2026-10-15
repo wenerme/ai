@@ -65,7 +65,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 ## Cloudflare platform access
@@ -164,7 +164,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
@@ -172,22 +172,22 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips
 
 - The Cloudflare API MCP server uses Code Mode — OpenCode writes JavaScript to reach any of 2,500+ endpoints in \~1,000 tokens.
 - OpenCode supports 75+ LLMs — you can use Cloudflare Workers AI as the model provider for a fully Cloudflare-native workflow.
-- Use OpenCode's plan agent (Tab key) to break down complex Workers projects before coding — pair it with `/cloudflare:build-agent` or `/cloudflare:build-mcp` slash commands.
+- Use OpenCode's plan agent (Tab key) to break down complex Workers projects before coding.
 
 ## FAQ
 
@@ -278,5 +278,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

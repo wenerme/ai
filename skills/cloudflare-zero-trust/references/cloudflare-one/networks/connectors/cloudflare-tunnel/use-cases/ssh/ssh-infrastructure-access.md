@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # SSH with Access for Infrastructure
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) provides granular control over how users can connect to your SSH servers. Like the [self-managed SSH keys](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/) method, it uses the Cloudflare One Client on user devices and Cloudflare Tunnel on the server to create a secure, private connection through Cloudflare's network. Access for Infrastructure adds application-level policies with per-target and per-username controls, as well as SSH command logging.
 
@@ -152,25 +152,26 @@ Next, create an Access application to secure the target.
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
-5. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
-6. Enter the **Protocol** and **Port** that will be used to connect to the server.
-7. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
+5. (Optional) Select a **Session duration** from the dropdown menu. This sets the maximum time an infrastructure connection can remain open before it is automatically closed. Defaults to 24 hours.
+6. In **Target criteria**, choose which targets this application covers. Match targets by hostname, tag, or both. Use `include` to match any value. Use `require` to match all values. Use `exclude` to reject matching targets.
+7. Enter the **Protocol** and **Port** that will be used to connect to the server.
+8. (Optional) If a protocol runs on more than one port, select **Add new target criteria** and reconfigure the same target criteria and protocol with a different port number.
 
    Note
 
    Access for Infrastructure only supports assigning one protocol per port. You can reuse a port/protocol pairing across infrastructure applications, but the port cannot be reassigned to another protocol.
-8. Select **Next**.
-9. To secure your targets, configure a policy that defines who can connect and how they can connect:
-   1. Enter any name for your policy.
-   2. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).
-   3. In **Connection context**, configure the following settings:
-      - **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).
-      - **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.
+9. Select **Next**.
+10. To secure your targets, configure a policy that defines who can connect and how they can connect:
+11. Enter any name for your policy.
+12. Create a rule that matches the users who are allowed to reach the targets. For more information, refer to [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and review the list of [infrastructure policy selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#infrastructure-policy-selectors).
+13. In **Connection context**, configure the following settings:
+    - **SSH user**: Enter the UNIX usernames that users can log in as (for example, `root` or `ec2-user`).
+    - **Allow users to log in as their email alias**: (Optional) When selected, users who match your policy definition will be able to access the target using their lowercased email address prefix. For example, `Jdoe@company.com` could log in as `jdoe`.
 
-      Note
+    Note
 
-      Cloudflare will not create new users on the target. UNIX users must already be present on the server.
-10. Select **Add application**.
+    Cloudflare will not create new users on the target. UNIX users must already be present on the server.
+14. Select **Add application**.
 
 Make a `POST` request to the [Access applications](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) endpoint:
 
@@ -199,6 +200,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 	--json '{
 		"name": "Example infrastructure app",
 		"type": "infrastructure",
+		"session_duration": "24h",
 		"target_criteria": [
 				{
 						"port": 22,
@@ -268,9 +270,10 @@ The following example requires Cloudflare provider version `>=4.45.0`.
 
    ```tf
    resource "cloudflare_zero_trust_access_application" "infra-app" {
-   	account_id = var.cloudflare_account_id
-   	name       = "Example infrastructure app"
-   	type       = "infrastructure"
+   	account_id       = var.cloudflare_account_id
+   	name             = "Example infrastructure app"
+   	type             = "infrastructure"
+   	session_duration = "24h"
 
    	target_criteria {
    		port     = 22
@@ -605,7 +608,18 @@ The following SSH features are not supported:
 
 ### Session duration
 
-SSH sessions have a maximum expected duration of 10 hours. For more information, refer to [Troubleshoot Access](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#long-lived-ssh-sessions-disconnect).
+Infrastructure applications enforce a configurable session duration, which defaults to 24 hours. When the session duration elapses, any active SSH connections through that application are closed and users must reconnect. When a target matches multiple infrastructure applications, the shortest session duration applies.
+
+To configure the session duration:
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+2. Select an existing infrastructure application and choose **Configure**, or create a new infrastructure application.
+3. Select a **Session duration** from the dropdown menu.
+4. Save the application.
+
+You can also set `session_duration` via the [API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/) when creating or updating an infrastructure application. The value must be a non-negative duration in whole seconds (for example, `30m`, `8h`, or `2h45m`).
+
+Separately, all connections proxied through Cloudflare Gateway have a maximum guaranteed duration of 10 hours due to periodic service releases. For more information, refer to [Troubleshoot Access](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#long-lived-ssh-sessions-disconnect).
 
 ## Troubleshooting
 
@@ -971,5 +985,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/og.png?v=c2e8385d8c51f11a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/og.png?v=c2e8385d8c51f11a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

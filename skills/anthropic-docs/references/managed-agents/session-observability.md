@@ -10,11 +10,11 @@ featureMetadata:
   betaHeader: managed-agents-2026-04-01
 ---
 
-Use the session viewer in the Claude Console to inspect what an agent did in a session, without writing any code. Use the session's `usage` (java, php; csharp, go: `Usage`) totals to see what that work consumed.
+Use the session viewer in the Claude Console to inspect what an agent did in a session, without writing any code. Use the session's `usage` (csharp, go: `Usage`) totals to see what that work consumed.
 
 ## Inspect a session in the Console
 
-The session viewer is only accessible to Developers and Admins. To open it, go to the Console sidebar and select **Sessions** under **Managed Agents**. The list shows every session in the workspace with its status, agent, token usage, cost, and creation time. Select a session to open it.
+The session viewer is only accessible to Developers and Admins. To open it, go to the [Sessions](https://platform.claude.com/sessions) page (`platform.claude.com/sessions`) in the Claude Console. The list shows every session in the workspace with its status, agent, token usage, cost, and creation time. Select a session to open it.
 
 The session viewer shows:
 
@@ -83,7 +83,7 @@ Each [session thread](https://platform.claude.com/docs/en/managed-agents/session
 
 ### Read usage from the stream
 
-You don't have to poll the session to observe these totals. The `session.usage` event carries the same cumulative snapshot on the session stream and in the event history. The snapshot holds the `usage` (java, php; csharp, go: `Usage`) object plus the session's `budget` (java, php; csharp, go: `Budget`), which is `null` when the session has none.
+You don't have to poll the session to observe these totals. The `session.usage` event carries the same cumulative snapshot on the session stream and in the event history. The snapshot holds the `usage` (csharp, go: `Usage`) object, plus the session's `budget` (csharp, go: `Budget`) if the session has one.
 
 The event is emitted on idle transitions rather than on a timer:
 
