@@ -9,11 +9,13 @@ description: "Grafana Metrics Drilldown lets you browse Prometheus-compatible me
 
 Grafana Metrics Drilldown is a queryless experience for browsing Prometheus-compatible metrics. Quickly find related metrics in a few clicks, without needing to write a PromQL query.
 
+[Grafana Learning Journeys]
+
 Start your learning experience with Grafana Learning Paths
 
 Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore data using Metrics Drilldown](/docs/learning-journeys/drilldown-metrics/).
 
-[Start learning](https://grafana.com/docs/learning-journeys/drilldown-metrics/)
+[Start learning→](https://grafana.com/docs/learning-journeys/drilldown-metrics/)
 
 > Note
 >

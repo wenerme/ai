@@ -9,11 +9,13 @@ description: "Learn about the new experience for browsing your Loki logs without
 
 Welcome to our new experience for Loki. Grafana Logs Drilldown lets you automatically visualize and explore your logs without having to write queries.
 
+[Grafana Learning Journeys]
+
 Start your learning experience with Grafana Learning Paths
 
 Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore logs using Logs Drilldown](/docs/learning-journeys/drilldown-logs/).
 
-[Start learning](https://grafana.com/docs/learning-journeys/drilldown-logs/)
+[Start learning→](https://grafana.com/docs/learning-journeys/drilldown-logs/)
 
 Using Logs Drilldown you can:
 

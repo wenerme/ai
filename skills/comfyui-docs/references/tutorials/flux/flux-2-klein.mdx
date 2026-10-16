@@ -1,5 +1,5 @@
 ---
-title: "ComfyUI Flux.2 Klein 4B Guide"
+title: "ComfyUI FLUX.2 Klein 4B Guide"
 description: "A quick introduction to FLUX.2 [klein] 4B and how to run text-to-image and image editing workflows in ComfyUI."
 ---
 
@@ -7,33 +7,33 @@ description: "A quick introduction to FLUX.2 [klein] 4B and how to run text-to-i
 
 ## About FLUX.2 [klein]
 
-FLUX.2 [Klein] is the fastest model in the Flux family, unifying text-to-image and image editing in one compact architecture. It's designed for interactive workflows, immediate previews, and latency-critical applications, with distilled variants delivering end-to-end inference around one second while keeping strong quality for single- and multi-reference editing.
+FLUX.2 [Klein] is the fastest model in the FLUX family, unifying text-to-image and image editing in one compact architecture. It's designed for interactive workflows, immediate previews, and latency-critical applications, with distilled variants delivering end-to-end inference around one second while keeping strong quality for single- and multi-reference editing.
 
 **Model highlights:**
 - Two 4B types: Base (undistilled) for maximum flexibility and fine-tuning; Distilled (4-step) for speed-first deployments
 - Performance: distilled ~1.2s (5090) · 8.4GB VRAM; base ~17s (5090) · 9.2GB VRAM
 - Editing support: style transforms, semantic edits, object replacement/removal, multi-reference composition, iterative edits
 
-## Flux.2 Klein 4B Workflows
+## FLUX.2 Klein 4B Workflows
 
-### Flux.2 [Klein] 4B: Text to Image {#image_flux2_klein_text_to_image}
+### FLUX.2 [Klein] 4B: Text to Image {#image_flux2_klein_text_to_image}
 
-[Flux.2 Klein 4B text-to-image workflow preview]
+[FLUX.2 Klein 4B text-to-image workflow preview]
 
   
     Run this workflow on Comfy Cloud
   
   
-    Download the text-to-image workflow for Flux.2 Klein 4B.
+    Download the text-to-image workflow for FLUX.2 Klein 4B.
   
 
 **Example output**
 
-![Flux.2 Klein 4B text-to-image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_text_to_image.png)
+![FLUX.2 Klein 4B text-to-image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_text_to_image.png)
 
-### Flux.2 [Klein] 4B: Image Edit {#image_flux2_klein_image_edit_4b_base}
+### FLUX.2 [Klein] 4B: Image Edit {#image_flux2_klein_image_edit_4b_base}
 
-[Flux.2 Klein 4B image edit base workflow preview]
+[FLUX.2 Klein 4B image edit base workflow preview]
 
   
     Run this workflow on Comfy Cloud
@@ -60,11 +60,11 @@ Upload these files to the matching `LoadImage` nodes:
 
 **Example output**
 
-![Flux.2 Klein 4B image edit base example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
+![FLUX.2 Klein 4B image edit base example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
 
-### Flux.2 [Klein] 4B Distilled: Image Edit {#image_flux2_klein_image_edit_4b_distilled}
+### FLUX.2 [Klein] 4B Distilled: Image Edit {#image_flux2_klein_image_edit_4b_distilled}
 
-[Flux.2 Klein 4B image edit distilled workflow preview]
+[FLUX.2 Klein 4B image edit distilled workflow preview]
 
   
     Run this workflow on Comfy Cloud
@@ -91,9 +91,9 @@ Upload these files to the matching `LoadImage` nodes:
 
 **Example output**
 
-![Flux.2 Klein 4B image edit distilled example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
+![FLUX.2 Klein 4B image edit distilled example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
 
-## Flux.2 Klein 4B Model Downloads
+## FLUX.2 Klein 4B Model Downloads
 
     Text encoder for 4B models.
   
@@ -121,26 +121,26 @@ Upload these files to the matching `LoadImage` nodes:
 │          └── flux2-vae.safetensors
 ```
 
-## Flux.2 Klein 9B Workflows
+## FLUX.2 Klein 9B Workflows
 
-### Flux.2 [Klein] 9B: Text to Image {#image_flux2_text_to_image_9b}
+### FLUX.2 [Klein] 9B: Text to Image {#image_flux2_text_to_image_9b}
 
-[Flux.2 Klein 9B text-to-image workflow preview]
+[FLUX.2 Klein 9B text-to-image workflow preview]
 
   
     Run this workflow on Comfy Cloud
   
   
-    Download the text-to-image workflow for Flux.2 Klein 9B.
+    Download the text-to-image workflow for FLUX.2 Klein 9B.
   
 
 **Example output**
 
-![Flux.2 Klein 9B text-to-image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image_9b.png)
+![FLUX.2 Klein 9B text-to-image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image_9b.png)
 
-### Flux.2 [Klein] 9B: Image Edit {#image_flux2_klein_image_edit_9b_base}
+### FLUX.2 [Klein] 9B: Image Edit {#image_flux2_klein_image_edit_9b_base}
 
-[Flux.2 Klein 9B image edit base workflow preview]
+[FLUX.2 Klein 9B image edit base workflow preview]
 
   
     Run this workflow on Comfy Cloud
@@ -167,11 +167,11 @@ Upload these files to the matching `LoadImage` nodes:
 
 **Example output**
 
-![Flux.2 Klein 9B image edit base example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
+![FLUX.2 Klein 9B image edit base example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
 
-### Flux.2 [Klein] 9B Distilled: Image Edit {#image_flux2_klein_image_edit_9b_distilled}
+### FLUX.2 [Klein] 9B Distilled: Image Edit {#image_flux2_klein_image_edit_9b_distilled}
 
-[Flux.2 Klein 9B image edit distilled workflow preview]
+[FLUX.2 Klein 9B image edit distilled workflow preview]
 
   
     Run this workflow on Comfy Cloud
@@ -198,9 +198,9 @@ Upload these files to the matching `LoadImage` nodes:
 
 **Example output**
 
-![Flux.2 Klein 9B image edit distilled example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
+![FLUX.2 Klein 9B image edit distilled example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
 
-## Flux.2 Klein 9B Model Downloads
+## FLUX.2 Klein 9B Model Downloads
 
 For diffusion models, please visit BFL's repo, accept the agreement, and then download the models.
 

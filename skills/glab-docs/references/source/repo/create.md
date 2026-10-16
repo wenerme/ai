@@ -55,7 +55,7 @@ glab repo create <host>/path/to/repository
       --readme README.md       Initialize project with README.md. The repository is cloned locally after creation to ensure the local branch matches the remote.
       --remoteName origin      Remote name for the Git repository you're in. Defaults to origin if not provided. (default "origin")
   -s, --skipGitInit            Skip local repository setup (skips both 'git init' and cloning).
-  -t, --tag stringArray        The list of tags for the project.
+  -t, --tag stringArray        The list of topics for the project.
 ```
 
 ## Options inherited from parent commands

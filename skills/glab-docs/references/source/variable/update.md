@@ -13,6 +13,11 @@ You can pass the variable value from standard input. Use `--group`
 to update a variable for a group instead of the current project.
 The `--scope` flag does not apply to group variables.
 
+Only the attributes you pass are changed. For example, `--protected`,
+`--masked`, `--raw`, `--type` and `--description` keep their
+current values unless you set them. To turn a boolean attribute off, use
+`--protected=false`.
+
 ```plaintext
 glab variable update <key> <value> [flags]
 ```

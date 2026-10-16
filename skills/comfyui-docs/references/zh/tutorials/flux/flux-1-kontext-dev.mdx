@@ -1,13 +1,13 @@
 ---
-title: "ComfyUI Flux Kontext Dev 原生工作流示例"
+title: "ComfyUI FLUX Kontext Dev 原生工作流示例"
 description: "ComfyUI 的 FLUX.1 Kontext Dev 工作流：使用 Black Forest Labs 开源 12B 多模态编辑模型，通过文本和图像输入编辑图片。"
-translationSourceHash: 644dbe55
+translationSourceHash: 6b87ee9a
 translationFrom: tutorials/flux/flux-1-kontext-dev.mdx
 translationBlockHashes:
   "_intro": 51c48128
   "About FLUX.1 Kontext Dev": bb2f00f7
   "Model Download": e6b40970
-  "Flux.1 Kontext Dev Workflow": 5284c9c2
+  "FLUX.1 Kontext Dev Workflow": 8408eb0d
 ---
 
 <iframe
@@ -69,19 +69,19 @@ FLUX.1 Kontext 是 Black Forest Labs 推出的突破性多模态图像编辑模�
 │       └── t5xxl_fp16.safetensors or t5xxl_fp8_e4m3fn_scaled.safetensors
 ```
 
-## Flux.1 Kontext Dev 工作流
+## FLUX.1 Kontext Dev 工作流
 
-### Flux Kontext Dev 图像编辑 {#flux_kontext_dev_basic}
+### FLUX Kontext Dev 图像编辑 {#flux_kontext_dev_basic}
 
 智能图像编辑，保持角色一致性，编辑特定部分而不影响其他部分，并保留原始风格。
 
-[Flux Kontext Dev workflow preview]
+[FLUX Kontext Dev workflow preview]
 
   
     在 Comfy Cloud 中打开
   
   
-    下载 JSON 或在模板库中搜索&quot;Flux Kontext Dev&quot;
+    下载 JSON 或在模板库中搜索&quot;FLUX Kontext Dev&quot;
   
 
 **输入素材**
@@ -100,7 +100,7 @@ FLUX.1 Kontext 是 Black Forest Labs 推出的突破性多模态图像编辑模�
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
   [Input image]
-  [Flux Kontext Dev example output]
+  [FLUX Kontext Dev example output]
 </div>
 
 此工作流使用 `Load Image(from output)` 节点来加载要编辑的图像，方便你在多轮编辑中继续使用编辑后的图像。

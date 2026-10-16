@@ -69,7 +69,11 @@ hearing from your users about their experiences.
   user and reduce the chance that one user's misuse disrupts access for your
   broader organization. Use a unique string to represent each user. To protect
   privacy, hash email addresses or usernames before sending them to avoid
-  disclosing personally identifiable information.
+  disclosing personally identifiable information. For the direct Images API,
+  send the same stable identifier as `safety_identifier` for [image
+  generation](https://developers.openai.com/api/reference/resources/images/methods/generate) and [image
+  edits](https://developers.openai.com/api/reference/resources/images/methods/edit). The `user` parameter is
+  deprecated but remains supported for backward compatibility.
 
 When you are ready to do more, consider other prevention measures:
 

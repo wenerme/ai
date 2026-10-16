@@ -17,11 +17,13 @@ Grafana Traces Drilldown helps you visualize insights from your Tempo traces dat
 - Save and load filter configurations to quickly return to previous investigations
 - Do all of this without writing TraceQL queries
 
+[Grafana Learning Journeys]
+
 Start your learning experience with Grafana Learning Paths
 
 Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore traces using Traces Drilldown](/docs/learning-journeys/drilldown-traces/).
 
-[Start learning](https://grafana.com/docs/learning-journeys/drilldown-traces/)
+[Start learning→](https://grafana.com/docs/learning-journeys/drilldown-traces/)
 
 You can use the Drilldown apps to explore your telemetry data. Refer to [Telemetry signal workflows](/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
 

@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 615 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 616 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -1586,6 +1586,18 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 0.5,
     "outputCost": 0.5
+  },
+  {
+    "model": "nano-gpt/fireworks/ember-1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "nano-gpt/GalrionSoftworks/MN-LooseCannon-12B-v1",
@@ -5040,7 +5052,7 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.09,
+    "inputCost": 0.1,
     "outputCost": 1.1
   },
   {

@@ -1,13 +1,13 @@
 ---
-title: "Flux.1 Krea Dev ComfyUI ワークフローチュートリアル"
-description: "Black Forest Labs と Krea が共同開発したオープンソースの Flux.1 Krea Dev モデルを ComfyUI で使い、自然なディテールと独自の美しさを持つ画像を生成します。"
-translationSourceHash: 7376f0f0
+title: "FLUX.1 Krea Dev ComfyUI ワークフローチュートリアル"
+description: "Black Forest Labs と Krea が共同開発したオープンソースの FLUX.1 Krea Dev モデルを ComfyUI で使い、自然なディテールと独自の美しさを持つ画像を生成します。"
+translationSourceHash: d5f97ee0
 translationFrom: tutorials/flux/flux1-krea-dev.mdx
 ---
 
-[Flux.1 Krea Dev ポスター]
+[FLUX.1 Krea Dev ポスター]
 
-[Flux.1 Krea Dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev) は、Black Forest Labs（BFL）と Krea が共同で開発した先進的なテキストから画像を生成するモデルです。現在、テキストから画像生成に特化した最高品質のオープンソース FLUX モデルです。
+[FLUX.1 Krea Dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev) は、Black Forest Labs（BFL）と Krea が共同で開発した先進的なテキストから画像を生成するモデルです。現在、テキストから画像生成に特化した最高品質のオープンソース FLUX モデルです。
 
 **モデルの特長**
 
@@ -19,24 +19,24 @@ translationFrom: tutorials/flux/flux1-krea-dev.mdx
 **モデルライセンス**
 本モデルは、[flux-1-dev-non-commercial-license](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/blob/main/LICENSE.md) の下で公開されています。
 
-## Flux.1 Krea Dev ComfyUI ワークフロー
+## FLUX.1 Krea Dev ComfyUI ワークフロー
 
-### Flux.1 Krea Dev {#flux1_krea_dev}
+### FLUX.1 Krea Dev {#flux1_krea_dev}
 
 フォトリアリズムを極限まで追求した、ファインチューニング済みの FLUX モデルです。
 
-[Flux.1 Krea Dev ワークフロープレビュー]
+[FLUX.1 Krea Dev ワークフロープレビュー]
 
   
     Comfy Cloud でこのワークフローを実行
   
   
-    JSON をダウンロード、またはテンプレートライブラリで「Flux.1 Krea Dev」を検索
+    JSON をダウンロード、またはテンプレートライブラリで「FLUX.1 Krea Dev」を検索
   
 
 **出力例**
 
-![Flux.1 Krea Dev 出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/flux1_krea_dev.png)
+![FLUX.1 Krea Dev 出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/flux1_krea_dev.png)
 
 #### 1. ワークフローファイル
 
@@ -53,7 +53,7 @@ translationFrom: tutorials/flux/flux1-krea-dev.mdx
 
 `flux1-dev.safetensors` ファイルをブラウザからダウンロードするには、[black-forest-labs/FLUX.1-Krea-dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/) の利用規約に同意する必要があります。
 
-以前に Flux 関連のワークフローを使用したことがある場合、以下のモデルは共通しており、再度ダウンロードする必要はありません。
+以前に FLUX 関連のワークフローを使用したことがある場合、以下のモデルは共通しており、再度ダウンロードする必要はありません。
 
 **テキストエンコーダー**
 - [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/blob/main/clip_l.safetensors?download=true)
@@ -83,7 +83,7 @@ ComfyUI/
 
 以下の画像を参考に、すべてのモデルファイルが正しく読み込まれていることを確認してください。
 
-[ComfyUI Flux Krea Dev ワークフロー]
+[ComfyUI FLUX Krea Dev ワークフロー]
 
 1. `Load Diffusion Model` ノードに `flux1-krea-dev_fp8_scaled.safetensors` または `flux1-krea-dev.safetensors` が読み込まれていることを確認します
     - `flux1-krea-dev_fp8_scaled.safetensors` は低 VRAM ユーザーに推奨されます
