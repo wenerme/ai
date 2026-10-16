@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/version-management/troubleshooting/og.p
 
 # Troubleshooting
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to resolve common issues with Version Management. If the steps below do not solve your problem, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include the details listed in [Information for Support](#information-for-support).
 
@@ -77,6 +77,23 @@ Version creation is stuck
 </summary>
 
 If version creation appears stuck (the status does not change for an extended period), wait a few minutes and refresh the dashboard. If the issue persists, contact Cloudflare Support with the details listed in <a href="#information-for-support">Information for Support</a>.
+
+</details>
+
+<details>
+
+<summary>
+
+Missing Global API Key
+
+</summary>
+
+A <a href="https://developers.cloudflare.com/fundamentals/api/get-started/keys/">Global API Key</a> is required to be able to compare or clone version.
+
+To retrieve your Global API key:
+
+1. In the Cloudflare dashboard and select **User Profile** &gt; **API Tokens**.<a href="https://dash.cloudflare.com/profile/api-tokens">Go to **API Tokens** ↗</a>
+2. In the **API Keys** section, select <code>View</code> button of **Global API Key**.
 
 </details>
 
@@ -177,5 +194,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.","url":"https://developers.cloudflare.com/version-management/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/version-management/troubleshooting/og.png?v=ec74c3437266aead","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot common issues with Version Management, including enablement problems, clone failures, and known limitations.","url":"https://developers.cloudflare.com/version-management/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/version-management/troubleshooting/og.png?v=ec74c3437266aead","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

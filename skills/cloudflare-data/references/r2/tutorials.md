@@ -25,7 +25,7 @@ View tutorials to help you get started with R2.
 | [Use SSE-C](https://developers.cloudflare.com/r2/examples/ssec/) | 2 years ago | Intermediate |
 | [Use R2 as static asset storage with Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/use-r2-as-static-asset-storage-for-pages/) | 2 years ago | Intermediate |
 | [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/) | 2 years ago | Intermediate |
-| [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) | 2 years ago | Intermediate |
+| [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) | 3 years ago | Intermediate |
 | [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/) | 3 years ago | Beginner |
 | [Use Cloudflare R2 as a Zero Trust log destination](https://developers.cloudflare.com/cloudflare-one/tutorials/r2-logs/) | 3 years ago | Beginner |
 | [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/) | 3 years ago | Beginner |
@@ -33,6 +33,9 @@ View tutorials to help you get started with R2.
 | [Mastodon](https://developers.cloudflare.com/r2/tutorials/mastodon/) | 4 years ago | Beginner |
 | [Postman](https://developers.cloudflare.com/r2/tutorials/postman/) | 4 years ago | Beginner |
 | [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/) |  | Intermediate |
+| [Capture a downloaded file](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/download-capture/) |  | Intermediate |
+| [Store headers and bodies as JSON](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-capture/) |  | Intermediate |
+| [Capture a screenshot](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/screenshot/) |  | Beginner |
 
 Was this helpful?
 

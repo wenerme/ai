@@ -18,7 +18,7 @@ Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Reference for sending outbound emails using the Workers binding, the REST API, or SMTP.
 
-- [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
+- [Email Sending Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 - [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/)
 - [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/)
 

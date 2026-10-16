@@ -24,7 +24,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 70 modelsClear filters
+We found 71 modelsClear filters
 
 ## Compare models
 
@@ -412,6 +412,13 @@ Compare
 Compare
 
 [![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.JZysY-g3.svg)<h3>phoenix-1.0</h3>LeonardoText-to-Image Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
+[d<h3>phonellm-mini-alpha-2</h3>daily-coText Generation PhoneLLM is an open model tuned for voice agents. The model is based on Nemotron Nano 30B base capabilities and excels at typical voice agent tasks with thinking disabled.](https://developers.cloudflare.com/workers-ai/models/phonellm-mini-alpha-2/)
 
 - Cloudflare-hosted
 - +1

@@ -1110,9 +1110,9 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -5970,9 +5970,9 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-sta
 
 # HTTP filtering
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secure Web Gateway allows you to inspect HTTP traffic and control which websites users can visit. DNS filtering can only block or allow entire domains (for example, all of `dropbox.com`). HTTP filtering goes deeper — it inspects full URLs and request content, so you can block a specific page like `dropbox.com/shared-folder`, scan file uploads for sensitive data, or enforce acceptable use policies based on what users are actually doing on a site.
 
@@ -54,7 +54,7 @@ To create a new HTTP policy:
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
-4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.
+4. Under **Traffic**, build a logical expression that defines the traffic you want to match.
 5. Choose an **Action** to take when traffic matches the logical expression. For example, if you have configured TLS decryption, some applications that use [embedded certificates](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#inspection-limitations) may not support HTTP inspection, such as some Google products. You can create a policy to bypass inspection for these applications:
 
    | Selector | Operator | Value | Action |
@@ -138,7 +138,7 @@ For more information, refer to [HTTP policies](https://developers.cloudflare.com
 
 ## 4. Add optional policies
 
-Refer to our list of [common HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies) for other policies you may want to create. Common additions include blocking file downloads by type, isolating risky websites in a [remote browser](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and adding Do Not Inspect rules for applications that break under TLS decryption (for example, apps that use certificate pinning to enforce their own certificates). Do Not Inspect rules tell Gateway to skip decryption for specific destinations so those applications continue to work.
+Refer to our list of [common HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/common-policies/) for other policies you may want to create. Common additions include blocking file downloads by type, isolating risky websites in a [remote browser](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), and adding Do Not Inspect rules for applications that break under TLS decryption (for example, apps that use certificate pinning to enforce their own certificates). Do Not Inspect rules tell Gateway to skip decryption for specific destinations so those applications continue to work.
 
 Was this helpful?
 
@@ -149,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/#page","headline":"HTTP filtering","description":"HTTP filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/og.png?v=ebafe190bef5a2e1","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/#page","headline":"HTTP filtering","description":"HTTP filtering in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/og.png?v=ebafe190bef5a2e1","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

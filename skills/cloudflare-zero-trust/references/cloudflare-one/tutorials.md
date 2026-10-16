@@ -22,7 +22,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 | [Create and secure an AI agent wrapper using AI Gateway and Zero Trust](https://developers.cloudflare.com/cloudflare-one/tutorials/ai-wrapper-tenant-control/) | last year | Advanced |
 | [Use Cloudflare Tunnels with Kubernetes client-go credential plugins](https://developers.cloudflare.com/cloudflare-one/tutorials/tunnel-kubectl/) | 2 years ago | Intermediate |
 | [Send SSO attributes to Access-protected origins with Workers](https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/) | 2 years ago | Advanced |
-| [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) | 2 years ago | Intermediate |
+| [Protect an R2 Bucket with Cloudflare Access](https://developers.cloudflare.com/r2/tutorials/cloudflare-access/) | 3 years ago | Intermediate |
 | [Use virtual networks to change user egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/) | 3 years ago | Intermediate |
 | [Access and secure a MySQL database using Cloudflare Tunnel and network policies](https://developers.cloudflare.com/cloudflare-one/tutorials/mysql-network-policy/) | 3 years ago | Intermediate |
 | [Access a web application via its private hostname without the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/tutorials/clientless-access-private-dns/) | 3 years ago | Intermediate |
@@ -41,6 +41,13 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 | [MongoDB SSH](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/) | 6 years ago | Advanced |
 | [Zero Trust GitLab SSH & HTTP](https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/) | 6 years ago | Advanced |
 | [Require U2F with Okta](https://developers.cloudflare.com/cloudflare-one/tutorials/okta-u2f/) | 6 years ago | Intermediate |
+| [Display a coaching page](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/coaching-page/) |  | Beginner |
+| [Capture a downloaded file](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/download-capture/) |  | Intermediate |
+| [Store headers and bodies as JSON](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-capture/) |  | Intermediate |
+| [Redact a JSON field](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-redaction/) |  | Intermediate |
+| [Capture a screenshot](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/screenshot/) |  | Beginner |
+| [Send a Slack notification](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/slack-notification/) |  | Beginner |
+| [Watermark HTML pages](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/watermark/) |  | Beginner |
 
 Was this helpful?
 

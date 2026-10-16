@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/og.png?
 
 # Traffic controls
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Secure Web Gateway (SWG) is a security service that sits between an organization's users and the Internet. It inspects outbound traffic to enforce security policies, block threats, and prevent data loss. Core SWG capabilities include:
 
@@ -128,6 +128,18 @@ Use egress policies to connect to partners or services that only allow traffic f
 
 <summary>
 
+Integrate Workers (beta)
+
+</summary>
+
+Use the HTTP <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/">Forward action</a> to run a Worker on permitted requests and responses. Gateway handles proxy connections and routing while your Worker runs custom transformations or background tasks. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/">Integrate Workers</a>.
+
+</details>
+
+<details>
+
+<summary>
+
 Resolver policies
 
 </summary>
@@ -178,6 +190,7 @@ The following table maps common traffic-filtering goals to the best Cloudflare G
 | Block domains (all pages) | DNS | Prevents the domain from resolving |
 | Block non-HTTP traffic (SSH, RDP) | Network | Inspects TCP/UDP packets on any port |
 | Block malware and threats | DNS *and* HTTP | DNS blocks known-bad domains. HTTP catches threats in allowed traffic. |
+| Run custom logic on permitted web traffic | HTTP Forward (beta) | Invokes a Worker to transform requests or responses, or start background work |
 | Assign static egress IPs | Egress | Lets third-party services identify your organization |
 | Drop traffic before other policies run | Packet filtering | Blocks by packet attributes without user context |
 | Route DNS to custom nameservers | Resolver | Overrides the default Cloudflare resolver |
@@ -226,7 +239,7 @@ flowchart LR
 2. The request reaches Cloudflare through an **on-ramp** — the Cloudflare One Client, a DNS resolver configuration, a proxy endpoint, or a network tunnel.
 3. Cloudflare processes the request at the **nearest edge location**, not a centralized data center. This keeps latency low regardless of where the user connects from.
 4. Gateway evaluates the request against your configured policies in [order of enforcement](https://developers.cloudflare.com/cloudflare-one/traffic-controls/order-of-enforcement/): DNS policies first, then network policies, then HTTP policies.
-5. If policies allow the request, Gateway proxies it to the destination server and inspects the response on the return path.
+5. For permitted HTTP requests, Gateway invokes the Worker selected by the first matching policy using the [Forward action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/). Permitted traffic without a Forward match is proxied directly. Gateway inspects the final response on the return path.
 
 For details on how Gateway proxies traffic and establishes connections, refer to [Proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/).
 
@@ -243,5 +256,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/#page","headline":"Traffic controls","description":"Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/og.png?v=851a06665e6efad7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Video"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/#page","headline":"Traffic controls","description":"Filter DNS, network, and HTTP traffic with Cloudflare Gateway traffic policies.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/og.png?v=851a06665e6efad7","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","Video"]}
 ```

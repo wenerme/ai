@@ -55,7 +55,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 ## Cloudflare platform access
@@ -154,23 +154,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
 Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

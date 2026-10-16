@@ -1,7 +1,7 @@
 ---
-description: Detect and process hard bounce notifications in Email Service to maintain sender reputation.
-title: Handle hard bounce emails
-image: https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/og.png?v=f92896647ebafb09
+description: Detect hard bounce notifications and store recipients in Workers KV.
+title: Hard bounce handling
+image: https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/og.png?v=f99a6c6d7fdb1fa0
 ---
 
 [Skip to content](#main-content)
@@ -10,15 +10,15 @@ image: https://developers.cloudflare.com/email-service/examples/email-routing/ha
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Handle hard bounce emails
+# Hard bounce handling
 
 Detect and handle hard bounce emails to maintain sender reputation and manage undeliverable addresses
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Handle hard bounce notifications to automatically remove invalid email addresses from your mailing lists and maintain good sender reputation.
+This example detects hard bounce notifications and stores recipient addresses in Workers KV.
 
-## What are hard bounces?
+## Identify hard bounces
 
 Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
@@ -27,7 +27,7 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 - Mailbox full: The recipient's mailbox has exceeded storage limits
 - Email blocked: The recipient's server permanently rejects emails
 
-## Configuration
+## Configure bindings
 
 Configure your worker to handle bounce notifications:
 
@@ -35,7 +35,7 @@ Configure your worker to handle bounce notifications:
 {
 	"name": "bounce-handler",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-16",
 	"send_email": [{ "name": "EMAIL" }],
 	"kv_namespaces": [
 		{
@@ -49,7 +49,7 @@ Configure your worker to handle bounce notifications:
 ```toml
 name = "bounce-handler"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-16"
 
 [[send_email]]
 name = "EMAIL"
@@ -59,7 +59,7 @@ binding = "SUPPRESSION_LIST"
 id = "your-kv-namespace-id"
 ```
 
-## Hard bounce detection
+## Detect hard bounces
 
 ```javascript
 import * as PostalMime from "postal-mime";
@@ -202,7 +202,7 @@ async function handleHardBounce(bounceInfo, env) {
 }
 ```
 
-## Testing hard bounce handling
+## Test the handler
 
 Create a test bounce notification:
 
@@ -237,7 +237,7 @@ Message-ID: <original123@yourdomain.com>
 Welcome! Thanks for signing up.'
 ```
 
-## Checking suppression list
+## Check the suppression list
 
 Add a utility function to check if an email is suppressed before sending:
 
@@ -276,7 +276,7 @@ export async function sendEmail(recipient, subject, content, env) {
 
 ## Next steps
 
-- Learn about [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) to improve deliverability
+- Review [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) to improve deliverability
 - Set up [metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) to monitor bounce rates
 - Implement [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) for incoming emails
 
@@ -289,5 +289,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/#page","headline":"Handle hard bounce emails","description":"Detect and process hard bounce notifications in Email Service to maintain sender reputation.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/og.png?v=f92896647ebafb09","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/#page","headline":"Hard bounce handling","description":"Detect hard bounce notifications and store recipients in Workers KV.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/og.png?v=f99a6c6d7fdb1fa0","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

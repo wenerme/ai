@@ -1,5 +1,5 @@
 ---
-description: Send emails from any application using the Email Service REST API with standard HTTP requests.
+description: Email Sending REST API requests, responses, authentication, and errors.
 title: REST API
 image: https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/rest-api/
 
 # REST API
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API allows you to send emails from any application using a standard HTTP request to `POST /accounts/{account_id}/email/sending/send`. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
 
@@ -28,7 +28,7 @@ Authenticate with a [Cloudflare API token](https://developers.cloudflare.com/fun
 Authorization: Bearer <API_TOKEN>
 ```
 
-## Send an email
+## Request example
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
@@ -43,7 +43,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
   }'
 ```
 
-For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
+For multiple recipients, CC/BCC, and named addresses, refer to [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
 
 ## Attachments
 
@@ -69,7 +69,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/s
   }'
 ```
 
-For inline images and file uploads, see [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
+For inline images and file uploads, refer to [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
 
 ## Custom headers
 
@@ -117,7 +117,7 @@ Workers binding vs REST API responses
 
 The REST API returns recipient-grouped delivery status. The [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) returns a single `messageId` per `send()` call instead.
 
-## Error handling
+## Error responses
 
 The REST API returns standard Cloudflare API error responses. A failed request returns an `errors` array with numeric error codes and machine-readable messages:
 
@@ -135,9 +135,9 @@ The REST API returns standard Cloudflare API error responses. A failed request r
 }
 ```
 
-REST API error codes:
+The REST API returns the following error codes:
 
-| HTTP Status | Code | Message | Description |
+| HTTP status | Code | Message | Description |
 | --- | --- | --- | --- |
 | 400 | 10001 | `email.sending.error.invalid_request_schema` | Invalid request format |
 | 400 | 10200 | `email.sending.error.email.too_big` | Email exceeds size limit |
@@ -158,11 +158,11 @@ Workers binding vs REST API errors
 
 The REST API returns standard Cloudflare API numeric error codes, while the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) throws errors with string codes (for example, `E_SENDER_NOT_VERIFIED`). Refer to the [Workers API error codes table](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#error-codes) for the string error codes.
 
-## Next steps
+## Related resources
 
 - Refer to the [Email Sending API reference](https://developers.cloudflare.com/api/resources/email_sending/methods/send/) for the full request and response schemas.
-- See the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) for sending emails directly from Cloudflare Workers using bindings.
-- See [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client.
+- Refer to the [Email Sending Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) for sending emails directly from Cloudflare Workers using bindings.
+- Refer to [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client.
 - Review [email headers](https://developers.cloudflare.com/email-service/reference/headers/) for threading, list management, and custom tracking headers.
 
 Was this helpful?
@@ -174,5 +174,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Send emails from any application using the Email Service REST API with standard HTTP requests.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Email Sending REST API requests, responses, authentication, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

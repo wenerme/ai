@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/images/optimization/transformations/ove
 
 # Overview
 
-Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/overview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Transformations are requests to optimize and manipulate remote images that are stored outside of Images.
 
@@ -32,9 +32,9 @@ To serve transformations on your zone, you must first enable the feature:
 
 When the browser requests a transformed image, Cloudflare checks the edge cache for a previously optimized version with the same parameters:
 
-**On a cache hit** — Cloudflare serves the optimized image directly from the edge without contacting the origin or re-applying the optimization parameters.
+**On a cache [HIT](https://developers.cloudflare.com/cache/concepts/cache-responses/#hit)** — Cloudflare serves the optimized image directly from the edge without contacting the origin or re-applying the optimization parameters.
 
-**On a cache miss** — Cloudflare fetches the original image from the source origin, applies the requested parameters (e.g. `format`, `width`, `quality`), caches the transformed result, and serves it to the browser. The original image is also cached to speed up future transformations of the same source.
+**On a cache [MISS](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss)** — Cloudflare fetches the original image from the source origin, applies the requested parameters (e.g. `format`, `width`, `quality`), caches the transformed result, and serves it to the browser. The original image is also cached to speed up future transformations of the same source.
 
 Each unique combination of source image and parameters is cached and billed separately. The first request for each unique version within a calendar month is billed as one [unique transformation](https://developers.cloudflare.com/images/optimization/features), regardless of cache status. Subsequent requests for this transformation do not incur billable usage within the same calendar month.
 
@@ -44,8 +44,8 @@ After enabling transformations on your zone, you can configure how Cloudflare ha
 
 - **[Define source origins](https://developers.cloudflare.com/images/optimization/transformations/sources)** — Specify which origins Cloudflare can pull source images from. By default, Cloudflare only accepts source images from the same zone where transformations are served.
 - **[Create transformation flows](https://developers.cloudflare.com/images/optimization/transformations/flows)** — Set up automated rules that apply image optimization to matching requests without requiring URL changes or custom code.
-- **[Control origin access](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access)** — Use Workers to add custom logic for validating and controlling access to source images.
-- **[Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules)** — Use Transform Rules to rewrite image URLs and serve transformations from custom paths.
+- **[Control origin access](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access)** — Use [Workers](https://developers.cloudflare.com/workers/) to add custom logic for validating and controlling access to source images.
+- **[Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules)** — Use [Transform Rules](https://developers.cloudflare.com/rules/transform/) to rewrite image URLs and serve transformations from custom paths.
 
 Was this helpful?
 
@@ -56,5 +56,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/overview/#page","headline":"Overview","description":"Cloudflare Images transformations optimize and cache remote images from any origin at the edge.","url":"https://developers.cloudflare.com/images/optimization/transformations/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/overview/og.png?v=8e907e1d08eb810a","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/overview/#page","headline":"Overview","description":"Cloudflare Images transformations optimize and cache remote images from any origin at the edge.","url":"https://developers.cloudflare.com/images/optimization/transformations/overview/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/overview/og.png?v=8e907e1d08eb810a","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -5,7 +5,7 @@ description: "Browse DigitalOcean model IDs, capabilities, context windows, and 
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 102 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 103 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -722,6 +722,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.9,
     "outputCost": 1.7
+  },
+  {
+    "model": "digitalocean/nemotron-3.5-super-vl",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.3,
+    "outputCost": 0.65
   },
   {
     "model": "digitalocean/nemotron-nano-12b-v2-vl",

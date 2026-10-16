@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Early Hints for SaaS
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/) allows the browser to begin loading resources while the origin server is compiling the full response. This improves webpage’s loading speed for the end user. As a SaaS provider, you may prioritize speed for some of your custom hostnames. Using custom metadata, you can [enable Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#enable-early-hints) per custom hostname.
 
@@ -67,7 +67,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
 	}'
 ```
 
-4. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
+4. For an existing custom hostname, use a `GET` call to retrieve its `id` and current `ssl.settings` values:
 
 <details>
 
@@ -92,7 +92,26 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames?hostn
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-5. Then make an API call such as the example below, specifying `"early_hints": "on"`:
+For example, the response may contain the following settings:
+
+```json
+{
+  "ssl": {
+    "settings": {
+      "ciphers": [
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-AES128-GCM-SHA256"
+      ],
+      "early_hints": "off",
+      "http2": "on",
+      "min_tls_version": "1.2",
+      "tls_1_3": "on"
+    }
+  }
+}
+```
+
+5. Copy the complete `ssl.settings` object from the response. Change only `early_hints` to `on`, then make a `PATCH` call:
 
 <details>
 
@@ -116,19 +135,21 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"ssl": {
-				"method": "http",
-				"type": "dv",
 				"settings": {
+						"ciphers": [
+								"ECDHE-ECDSA-AES128-GCM-SHA256",
+								"ECDHE-RSA-AES128-GCM-SHA256"
+						],
+						"early_hints": "on",
 						"http2": "on",
 						"min_tls_version": "1.2",
-						"tls_1_3": "on",
-						"early_hints": "on"
+						"tls_1_3": "on"
 				}
 		}
 	}'
 ```
 
-Currently, all options within `settings` are required in order to prevent those options from being set to default. You can pull the current settings state prior to updating Early Hints by leveraging the output that returns the `id` for the hostname.
+A `PATCH` request replaces the existing `ssl.settings` object. The example copies every setting from the sample response. Copy the values from your response, and omit settings that were not present.
 
 Was this helpful?
 
@@ -139,5 +160,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/#page","headline":"Early Hints for SaaS","description":"Enable Early Hints per custom hostname to preload resources and speed up page loads.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/og.png?v=74ad1d266e95344b","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/#page","headline":"Early Hints for SaaS","description":"Enable Early Hints per custom hostname to preload resources and speed up page loads.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/performance/early-hints-for-saas/og.png?v=74ad1d266e95344b","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

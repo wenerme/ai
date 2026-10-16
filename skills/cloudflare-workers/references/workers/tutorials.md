@@ -18,8 +18,8 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 10 days ago | Intermediate |
-| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 11 days ago | Intermediate |
+| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 22 days ago | Intermediate |
+| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 23 days ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 4 months ago | Beginner |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 7 months ago | Intermediate |
 | [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/) | 11 months ago | Advanced |
@@ -62,6 +62,13 @@ View tutorials to help you get started with Workers.
 | [Extract a brand kit from any website](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/) |  | Intermediate |
 | [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/) |  | Intermediate |
 | [Pre-render pages for crawlers](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/) |  | Intermediate |
+| [Display a coaching page](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/coaching-page/) |  | Beginner |
+| [Capture a downloaded file](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/download-capture/) |  | Intermediate |
+| [Store headers and bodies as JSON](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-capture/) |  | Intermediate |
+| [Redact a JSON field](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-redaction/) |  | Intermediate |
+| [Capture a screenshot](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/screenshot/) |  | Beginner |
+| [Send a Slack notification](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/slack-notification/) |  | Beginner |
+| [Watermark HTML pages](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/watermark/) |  | Beginner |
 
 Was this helpful?
 

@@ -49206,9 +49206,9 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -54066,9 +54066,9 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -60665,9 +60665,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -68058,9 +68058,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -70817,9 +70817,9 @@ as input for the model's response.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -77780,9 +77780,9 @@ as input for the model's response.
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -82640,9 +82640,9 @@ as input for the model's response.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -89981,9 +89981,9 @@ Retrieves a model response with the given ID.
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -94841,9 +94841,9 @@ Retrieves a model response with the given ID.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -103581,9 +103581,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -107140,9 +107140,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -112000,9 +112000,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -118625,9 +118625,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -123485,9 +123485,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -130539,9 +130539,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -135399,9 +135399,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -141958,9 +141958,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -146818,9 +146818,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -153628,9 +153628,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -158488,9 +158488,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -164862,9 +164862,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -169722,9 +169722,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -175934,9 +175934,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -180925,9 +180925,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -186787,9 +186787,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"find_in_page"`
 
-        - `url: string`
+        - `url: optional string or null`
 
-          The URL of the page searched for the pattern.
+          The URL of the page searched for the pattern, when available.
 
     - `agent: optional object { agent_name }  or null`
 
@@ -191538,9 +191538,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -196308,9 +196308,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -201915,9 +201915,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -206775,9 +206775,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -215293,9 +215293,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"find_in_page"`
 
-                - `url: string`
+                - `url: optional string or null`
 
-                  The URL of the page searched for the pattern.
+                  The URL of the page searched for the pattern, when available.
 
             - `agent: optional object { agent_name }  or null`
 
@@ -220153,9 +220153,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -228798,9 +228798,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"find_in_page"`
 
-              - `url: string`
+              - `url: optional string or null`
 
-                The URL of the page searched for the pattern.
+                The URL of the page searched for the pattern, when available.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -235239,9 +235239,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -241058,9 +241058,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"find_in_page"`
 
-            - `url: string`
+            - `url: optional string or null`
 
-              The URL of the page searched for the pattern.
+              The URL of the page searched for the pattern, when available.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -246317,9 +246317,9 @@ Returns a list of input items for a given response.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -251273,9 +251273,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -256239,9 +256239,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 

@@ -6,6 +6,7 @@ Navigate between chained merge requests that build on each other to deliver a fe
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/232425) in GitLab 19.1.
+- Same-author requirement [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240177) in GitLab 19.2.
 
 When you split a large change into smaller merge requests that build on each other, GitLab groups
 them into a stack. Each merge request in a stack targets the source branch of the merge request
@@ -18,8 +19,10 @@ Use stacks to:
 - Keep the relationship between dependent merge requests visible during review.
 
 GitLab detects a stack automatically. A merge request joins a stack when it targets another open
-merge request's source branch, or when another open merge request targets its source branch. A
-stack can contain up to 20 merge requests. If a stack contains more than 20 merge requests, GitLab
+merge request's source branch, or when another open merge request targets its source branch.
+Both merge requests must have the same author.
+If a merge request in the chain has a different author, the stack stops before that merge request.
+A stack can contain up to 20 merge requests. If a stack contains more than 20 merge requests, GitLab
 does not show the stack control.
 
 To create stacked merge requests from the command line, use

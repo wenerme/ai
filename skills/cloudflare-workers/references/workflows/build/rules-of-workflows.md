@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/rules-of-workflows/og.p
 
 # Rules of Workflows
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Workflow contains one or more steps. Each step is a self-contained, individually retryable component of a Workflow. Steps may emit (optional) state that allows a Workflow to persist and continue from that step, even if a Workflow fails due to a network or infrastructure issue.
 
@@ -158,6 +158,7 @@ Otherwise, your entire Workflow might not be as durable as you might think, and 
 - 🔴 Do not call separate services in the same step (unless you need it to prove idempotency).
 - 🔴 Do not make too many service calls in the same step (unless you need it to prove idempotency).
 - 🔴 Do not do too much CPU-intensive work inside a single step - sometimes the engine may have to restart, and it will start over from the beginning of that step.
+- 🔴 Avoid nested steps, particularly `step.sleep()` or `step.waitForEvent()` within a `step.do()`.
 
 *index.jsjs*
 
@@ -694,7 +695,7 @@ export class MyWorkflow extends WorkflowEntrypoint {
 }
 ```
 
-To ensure consistency, we suggest to surround the `Promise.race()` or `Promise.any()` within a `step.do()`, as this will ensure caching consistency across multiple passages.
+To ensure consistency, we suggest to surround the `Promise.race()` or `Promise.any()` within a single `step.do()`, as this will ensure caching consistency across multiple passages. Avoid nesting `step.do()` calls inside the race — use plain async functions so that only the outer step is cached.
 
 *index.jsjs*
 
@@ -704,23 +705,24 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
-		// ✅ Good: The `Promise.race` is surrounded by a `step.do`, ensuring deterministic caching behavior.
-		const race_return = await step.do("Promise step", async () => {
+		// ✅ Good: The `Promise.race` is surrounded by a single `step.do`, ensuring deterministic
+		// caching behavior, and it does not nest `step.do` calls inside the race.
+		const race_return = await step.do("race step", async () => {
 			return await Promise.race([
-				step.do("Promise first race", async () => {
+				(async () => {
 					await sleep(1000);
 					return "first";
-				}),
-				step.do("Promise second race", async () => {
+				})(),
+				(async () => {
 					return "second";
-				}),
+				})(),
 			]);
 		});
 
 		await step.sleep("Sleep step", "2 hours");
 
 		return await step.do("Another step", async () => {
-			// This step will return `second` because the `Promise.race` was surround by the `step.do` method.
+			// This step will return `second` because the `Promise.race` was surrounded by the `step.do` method.
 			return race_return;
 		});
 	}
@@ -735,23 +737,24 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-		// ✅ Good: The `Promise.race` is surrounded by a `step.do`, ensuring deterministic caching behavior.
-		const race_return = await step.do("Promise step", async () => {
+		// ✅ Good: The `Promise.race` is surrounded by a single `step.do`, ensuring deterministic
+		// caching behavior, and it does not nest `step.do` calls inside the race.
+		const race_return = await step.do("race step", async () => {
 			return await Promise.race([
-				step.do("Promise first race", async () => {
+				(async () => {
 					await sleep(1000);
 					return "first";
-				}),
-				step.do("Promise second race", async () => {
+				})(),
+				(async () => {
 					return "second";
-				}),
+				})(),
 			]);
 		});
 
 		await step.sleep("Sleep step", "2 hours");
 
 		return await step.do("Another step", async () => {
-			// This step will return `second` because the `Promise.race` was surround by the `step.do` method.
+			// This step will return `second` because the `Promise.race` was surrounded by the `step.do` method.
 			return race_return;
 		});
 	}
@@ -1133,5 +1136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/#page","headline":"Rules of Workflows","description":"Best practices for building resilient Workflows, including idempotency, state management, and error handling.","url":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/og.png?v=d41ea2e8f47b17f3","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/#page","headline":"Rules of Workflows","description":"Best practices for building resilient Workflows, including idempotency, state management, and error handling.","url":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/og.png?v=d41ea2e8f47b17f3","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

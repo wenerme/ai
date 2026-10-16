@@ -16,11 +16,13 @@ Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 With Cloudflare Gateway, you can [enable and configure](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/) any combination of DNS, network, and HTTP policies.
 
+## Enforcement flowchart
+
 ```
 flowchart TB
     %% Accessibility
     accTitle: Gateway order of enforcement
-    accDescr: Flowchart describing the order of enforcement for Gateway policies.
+    accDescr: Flowchart describing request enforcement for Gateway policies. After HTTP request policies, the first matching Forward policy invokes a Worker before body policies and inspection. Gateway inspects the original body before delivering it to the Worker, and a Block decision from body policies or inspection can interrupt the Worker. Gateway inspects the final response returned by the Worker.
 
  subgraph Resolution["Resolution"]
         dns2["1.1.1.1"]
@@ -35,7 +37,11 @@ flowchart TB
  subgraph HTTP["HTTP policies"]
         http1{{"Do Not Inspect policies"}}
         http2["Isolate policies  <br>(with Browser Isolation add-on)"]
-        http3["Allow, Block, Do Not Scan, Quarantine, and Redirect policies, DLP, and anti-virus scanning"]
+        http3["HTTP request policies: Allow, Block, Do Not Scan, Quarantine, and Redirect"]
+        forward["First matching Forward policy (beta), if any"]
+        worker["Worker selected by the policy"]
+        body["Body policies and inspection: DLP, anti-virus scanning, and file sandboxing"]
+        blocked["Block response"]
         https["HTTP or HTTPS?"]
   end
  subgraph Proxy["Proxy"]
@@ -59,9 +65,19 @@ flowchart TB
     http2 --> http3
     http0 --> magic["Cloudflare Network Firewall (Enterprise users only)"]
     magic --> egress1
-    egress1 --> tcp["Check for origin availability (TCP SYN)"]
+    egress1 --> timing{"Defer upstream connection for a Worker?"}
+    timing -- No --> tcp["Check for origin availability (TCP SYN)"]
+    timing -- Yes --> network1
     tcp --> network1
-    http3 --> internet
+    http3 -- Permitted request --> forward
+    http3 -- Blocked --> blocked
+    forward -- Matches --> worker
+    forward -- Original body --> body
+    body -- Inspected body stream, Forward matches --> worker
+    body -- Blocked --> blocked
+    body -. Body Block interrupts Worker .-> worker
+    worker -- next, connect upstream if deferred --> internet
+    body -- No Forward match, connect upstream if deferred --> internet
     https -- HTTPS --> http1
     https -- HTTP --> http2
     network1 --> https & nonhttp
@@ -95,9 +111,13 @@ Comparison of old and new order of enforcement
 
 ## Connection establishment
 
-When a user connects to a server with Gateway, Gateway first establishes a TCP connection with the destination server on the port the user requested. Because TCP traffic is proxied by Cloudflare, the connection Gateway establishes with the origin is independent from the connection users establish with Gateway. This means Gateway assigns a new source IP and port to the user's connection and no details from the user's TCP handshake are included in the TCP handshake with the origin server.
+For traffic that Gateway does not forward to a Worker, Gateway first establishes a TCP connection with the destination server on the port the user requested. Because TCP traffic is proxied by Cloudflare, the connection Gateway establishes with the origin is independent from the connection users establish with Gateway. This means Gateway assigns a new source IP and port to the user's connection and no details from the user's TCP handshake are included in the TCP handshake with the origin server.
 
 If the TCP connection to the destination server is successful, Gateway will apply policies. If Gateway policies allow the connection, Gateway will connect the user to the destination server. If Gateway policies block the connection, Gateway will end the connection and will not send any data between the user and the destination server. If the TCP connection to the destination server is unsuccessful, Gateway will not run any policies and retry TCP connections from the user to the server.
+
+For requests handled by a Worker invoked through the [Forward action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/#how-it-works) (beta), Gateway defers the original upstream connection until the Worker calls `next()`. A Worker that returns a synthetic response without calling `next()` does not send the request to the origin.
+
+The following flowchart describes connections that Gateway does not forward to a Worker:
 
 ```
 flowchart TD
@@ -125,7 +145,7 @@ Connections to Zero Trust will always appear in your [Zero Trust network session
 
 ### Filter TCP SYN packets with Cloudflare Network Firewall
 
-Because Gateway sends a TCP SYN to the destination server before evaluating policies, Gateway Network or HTTP Block policies do not prevent the initial TCP SYN from reaching the destination server. If you need to prevent TCP SYN packets from being sent to specific destination IP addresses, you can create a [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/) rule to block traffic at the packet level. As shown in the [enforcement flowchart](#order-of-enforcement), Cloudflare Network Firewall evaluates traffic before Gateway checks for origin availability.
+For traffic that Gateway does not forward to a Worker, Gateway sends a TCP SYN to the destination server before evaluating policies. Therefore, Gateway Network or HTTP Block policies do not prevent the initial TCP SYN from reaching the destination server. If you need to prevent TCP SYN packets from being sent to specific destination IP addresses, you can create a [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-one/traffic-controls/packet-filtering/) rule to block traffic at the packet level. As shown in the [enforcement flowchart](#enforcement-flowchart), Cloudflare Network Firewall evaluates traffic before Gateway checks for origin availability.
 
 Note
 
@@ -189,7 +209,9 @@ Gateway applies HTTP policies based on a combination of [action type](https://de
 1. All Do Not Inspect policies are evaluated first, in order of precedence.
 2. If no policies match, all Isolate policies are evaluated in order of precedence.
 3. All Allow, Block and Do Not Scan policies are evaluated in order of precedence.
-4. The body of the HTTP request, including Data Loss Prevention (DLP), AV scanning, and file sandboxing, is evaluated.
+4. For traffic permitted by HTTP request policies, Gateway evaluates Forward policies in order of precedence and invokes the first matching Worker. Traffic that matches no Forward policy continues without a Worker.
+5. Gateway then evaluates body policies and inspects the original request body, including Data Loss Prevention (DLP), AV scanning, and file sandboxing, before delivering it to the Worker or origin. A Block decision from body policies or inspection can interrupt an already-running Worker.
+6. Gateway inspects the final response, including any changes or synthetic response produced by the Worker.
 
 This order of enforcement allows Gateway to first determine whether decryption should occur. If a site matches a Do Not Inspect policy, it is automatically allowed through Gateway and bypasses all other HTTP policies.
 
@@ -201,7 +223,15 @@ Next, Gateway checks decrypted traffic against your Isolate policies. When a use
 
 Next, Gateway evaluates all Allow, Block, and Do Not Scan policies. These policies apply to both isolated and non-isolated traffic. For example, if `example.com` is isolated and `example.com/subpage` is blocked, Gateway will block the subpage (`example.com/subpage`) inside of the remote browser.
 
-Lastly, Gateway inspects the body of the HTTP request by evaluating it against DLP policies, and running anti-virus scanning and file sandboxing. If DLP Block policies are present, the action Gateway ultimately takes may not match the action it initially logs. For more information, refer to [DLP policy precedence](#dlp-policy-precedence).
+Gateway then evaluates Forward policies before body policies and inspection, including DLP policies, anti-virus scanning, and file sandboxing. If DLP Block policies are present, the action Gateway ultimately takes may not match the action it initially logs.
+
+For more information, refer to [DLP policy precedence](#dlp-policy-precedence).
+
+A matching Allow policy does not skip the Forward phase. An HTTP request policy with a Block action prevents Worker invocation, while a Block decision from body policies or inspection can interrupt the Worker.
+
+Gateway inspects the original request body before delivering it to the Worker and the final response returned by the Worker. Modified request bytes do not receive another request-side inspection.
+
+Refer to [Forward traffic](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/#how-it-works).
 
 ### Resolver policies
 
@@ -227,7 +257,11 @@ Do Not Inspect policies are evaluated before all other HTTP policies. If traffic
 
 Order of precedence refers to the priority of individual policies within the DNS, network, or HTTP policy builder. Gateway evaluates policies in ascending order beginning with the lowest value.
 
-The order of precedence follows the first match principle. Once traffic matches an Allow or Block policy, evaluation stops and no subsequent policies can override the decision. Therefore, Cloudflare recommends assigning the most specific policies and exceptions with the highest precedence and the most general policies with the lowest precedence.
+The order of precedence follows the first match principle. Once traffic matches an Allow or Block policy, evaluation stops in that filtering phase.
+
+Later filtering policies in the same phase cannot override the decision. HTTP traffic permitted by HTTP request policies still undergoes the separate Forward phase, then body policies and inspection.
+
+Therefore, Cloudflare recommends assigning the most specific policies and exceptions with the highest precedence and the most general policies with the lowest precedence.
 
 #### Cloudflare dashboard
 

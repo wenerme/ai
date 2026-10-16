@@ -46,6 +46,9 @@ glab issue create -m release-1.0.1 -t "security fix" --label security --web --re
 glab issue create -t "Bug Report" --template bug
 glab issue create -t "Feature Request" --template feature_proposal.md --yes
 
+# Use a template file from outside the repository
+glab issue create -t "Bug Report" --template ~/team-templates/bug.md
+
 # Read the description from a file
 glab issue create -t "we need this feature" --description-file description.md
 
@@ -73,7 +76,7 @@ glab issue create -t "Login button misaligned" -d "See below." --attach ./screen
   -m, --milestone string          The global ID or title of a milestone to assign.
       --no-editor                 Don't open editor to enter a description. If set to true, uses prompt.
       --recover                   Save the options to a file if the issue fails to be created. If the file exists, the options will be loaded from the recovery file. (EXPERIMENTAL)
-      --template string           Name of a template in '.gitlab/issue_templates/' to pre-populate the description. The '.md' extension is optional. Templates are loaded from the local repository only.
+      --template string           Template to pre-populate the description. A name is looked up in '.gitlab/issue_templates/' of the local repository, and the '.md' extension is optional. A value that is absolute or contains a path separator is read as a file path, for example '~/templates/bug.md'.
   -e, --time-estimate string      Set time estimate for the issue.
   -s, --time-spent string         Set time spent for the issue.
   -t, --title string              Issue title.

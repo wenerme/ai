@@ -1,7 +1,7 @@
 ---
-description: Passwordless login system using magic links sent via email with JWT tokens and session management.
-title: Magic link authentication
-image: https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/og.png?v=7942ad05cb77d202
+description: Generate and email a login link from a Worker.
+title: Email a login link
+image: https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/og.png?v=a014a614113a81d9
 ---
 
 [Skip to content](#main-content)
@@ -10,13 +10,13 @@ image: https://developers.cloudflare.com/email-service/examples/email-sending/ma
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Magic link authentication
+# Email a login link
 
-Implement passwordless authentication by sending secure, time-limited login links via email.
+Generate and email a login link from a Worker.
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example demonstrates how to send a magic link email for passwordless authentication using Cloudflare Email Service.
+This example generates a login link and emails it with Cloudflare Email Service.
 
 Configure the email binding in your Wrangler configuration file:
 
@@ -37,7 +37,7 @@ name = "EMAIL"
 DOMAIN = "yourdomain.com"
 ```
 
-The Worker exposes a `POST /send-magic-link` route that validates the submitted email address, generates a single-use token, and emails the recipient a time-limited login link. The following code implements that handler.
+The Worker exposes a `POST /send-magic-link` route. It checks the email address, generates a random token, and emails a login link.
 
 ```typescript
 interface Env {
@@ -69,7 +69,7 @@ async function handleSendMagicLink(
 		});
 	}
 
-	// Generate a simple secure token (you would implement proper JWT/token handling)
+	// Generate a random token for the login link
 	const token = crypto.randomUUID();
 	const magicUrl = `https://${env.DOMAIN}/login?token=${token}`;
 
@@ -82,14 +82,12 @@ async function handleSendMagicLink(
 			<h1>Login to your account</h1>
 			<p>Click the link below to log in:</p>
 			<p><a href="${magicUrl}">Login Now</a></p>
-			<p>This link expires in 15 minutes.</p>
 		`,
 		text: `
 			Login to your account
 
 			Click this link to log in: ${magicUrl}
 
-			This link expires in 15 minutes.
 		`,
 	});
 
@@ -121,5 +119,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/#page","headline":"Magic link authentication","description":"Passwordless login system using magic links sent via email with JWT tokens and session management.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/og.png?v=7942ad05cb77d202","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/#page","headline":"Email a login link","description":"Generate and email a login link from a Worker.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/og.png?v=a014a614113a81d9","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

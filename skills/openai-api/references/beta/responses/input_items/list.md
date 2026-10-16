@@ -957,9 +957,9 @@ Returns a list of input items for a given response.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
       - `agent: optional object { agent_name }  or null`
 

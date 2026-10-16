@@ -5,7 +5,7 @@ description: "Browse Fireworks AI model IDs, capabilities, context windows, and 
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 22 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 23 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/models/muse-spark-open",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 1.25,
+    "outputCost": 4.25
   },
   {
     "model": "fireworks-ai/accounts/fireworks/models/nemotron-3-ultra-nvfp4",

@@ -16,6 +16,38 @@ Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-10-15
+
+
+**Application Library now supports custom applications**
+
+Starting today, you can create [custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) in the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/) and reference them in Gateway DNS, Network, and HTTP policies. You can define an application with hostnames, IP subnets, or both. Then, optionally add TCP or UDP ports or port ranges to restrict HTTP and Network matching.
+
+![Custom application form with a name, application ID, category, two hostnames, and a TCP port 443 constraint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1928,height=1108,format=webp/_astro/custom-application-create.hLzR_NQZ.png)
+
+This release also improves search and filtering in the Application Library, updates the interfaces, data, and metrics used to review applications, and makes it easier to select and manage applications in the Gateway policy builder.
+
+![Gateway HTTP policy builder with a custom application selected in the Application selector under the Artificial Intelligence category](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1472,height=1324,format=webp/_astro/custom-application-gateway-policy-builder.DFnrNoHS.png)
+
+For more information, refer to [Custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) and [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/).
+
+## 2026-10-15
+
+
+**Gateway and Workers integration is now in public beta**
+
+Cloudflare Gateway now integrates with Cloudflare Workers in public beta on all Zero Trust plans. You can use the **Forward** action in [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) to run your own code on matching, permitted traffic without managing a separate proxy.
+
+The **Forward** action lets you transform HTTP requests and responses, return a coaching page, or run background tasks such as Slack notifications and R2 captures. Your Worker receives the request and [Gateway context](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/available-context/), including connection metadata, user identity, and device posture when available.
+
+![A matching Gateway Forward policy sends HTTP traffic to a Worker, which processes requests and responses for Internet or private-network upstream services.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=1053,format=webp/_astro/gateway-workers-forward.CFUFJAE0.png)
+
+Gateway handles the proxy connection, TLS decryption, and upstream routing. It evaluates HTTP request policies before Forward policies and inspects the final response before returning it to the user.
+
+Gateway inspects the original request body before delivering it to your Worker. A body-inspection Block decision can interrupt the Worker.
+
+To get started, [deploy a Worker and configure a Forward policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/), or adapt one of the [Worker templates](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/).
+
 ## 2026-10-13
 
 
@@ -517,7 +549,7 @@ To get started, refer to the [proxy endpoints documentation](https://developers.
 
 [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) are now generated for all traffic proxied through Cloudflare Gateway, regardless of on-ramp type. This includes traffic from [proxy endpoints (PAC files)](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy-endpoints/) and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) egress — on-ramps that previously did not generate session logs.
 
-Customers who already consume the `zero_trust_network_sessions` dataset via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/) may see increased log volume if they use these on-ramps.
+Customers who already consume the `zero_trust_network_sessions` dataset via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) or [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/) may see increased log volume if they use these on-ramps.
 
 For field definitions, refer to [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). For traffic analysis, refer to [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
 

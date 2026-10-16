@@ -353,6 +353,7 @@ projects on the Paid Tier. You can view them directly from the
 
 | Model Name | Type | Model ID |
 |---|---|---|
+| Gemini 4 Argon | Model | `gemini-4-argon` |
 | Gemini 3.8 Flash | Model | `gemini-3.8-flash` |
 | Gemini 3.6 Flash | Model | `gemini-3.6-flash` |
 | Gemini 3.1 Pro Preview | Model | `gemini-3.1-pro-preview` |
@@ -399,7 +400,6 @@ available** in the Interactions API:
 - **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)**
 - **[Automatic function calling (Python)](https://ai.google.dev/gemini-api/docs/function-calling?example=meeting#automatic_function_calling_python_only)**
 - **[Explicit caching](https://ai.google.dev/gemini-api/docs/caching)** : Note that server-side implicit caching is available in the Interactions API via `previous_interaction_id`.
-- **[Safety settings](https://ai.google.dev/gemini-api/docs/safety-settings)**: Custom safety settings are not supported in the Interactions API.
 
 ## Feedback
 

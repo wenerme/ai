@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1e
 
 # Builds
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a repository hosted by Artifacts, GitHub, or GitLab, enabling automated builds and deployments for your Worker on push.
 
@@ -22,12 +22,12 @@ To connect a repository hosted in Artifacts, refer to the [Artifacts integration
 
 ### Connect a new Worker
 
-To create a new Worker and connect it to a GitHub or GitLab repository:
+To create a new Worker and connect it to a repository:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
-3. Select **Get started** next to **Import a repository**.
-4. Under **Import a repository**, select a **Git account**.
+3. Select **Artifacts**, **GitHub**, or **GitLab**.
+4. If prompted, authenticate with your Git provider.
 5. Select the repository you want to import from the list. You can also use the search bar to narrow the results.
 6. Configure your project and select **Save and Deploy**.
 7. Preview your Worker at its provided [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain.
@@ -104,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

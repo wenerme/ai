@@ -765,9 +765,9 @@ List all items for a conversation with the given ID.
 
             - `"find_in_page"`
 
-          - `url: string`
+          - `url: optional string or null`
 
-            The URL of the page searched for the pattern.
+            The URL of the page searched for the pattern, when available.
 
     - `ImageGenerationCall object { id, result, status, 8 more }`
 

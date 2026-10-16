@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Cisco Meraki MX (static routing)
 
-Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide provides step-by-step instructions for configuring Cisco Meraki MX appliances to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with Cisco Meraki administration and have an active Cloudflare WAN subscription.
 
@@ -221,7 +221,7 @@ Contact Cloudflare to request assistance with adding the `internal_authorized_pr
 
 ### Cloudflare Gateway HTTP policy
 
-Define an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to permit the tunnel monitoring probe source IP address to reach the IP/URL (HTTP — port 80/tcp).
+Define an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) to permit the tunnel monitoring probe source IP address to reach the IP/URL (HTTP — port 80/tcp).
 
 Note
 
@@ -710,7 +710,7 @@ If blocked, create a rule to restore tunnel monitoring HTTP requests. Refer to [
 
 Available in:
 
-- [Log Explorer](https://developers.cloudflare.com/log-explorer/)
+- [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/)
 - [Logpush](https://developers.cloudflare.com/logs/logpush/) > [IPsec logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/)
 
 IPsec logs can help diagnose a variety of issues related to IPsec tunnels, including:
@@ -753,5 +753,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/#page","headline":"Cisco Meraki MX (static routing)","description":"Integrate Cisco Meraki MX with Zero Trust networking using static routing.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/og.png?v=5cd894d751624b00","dateModified":"2026-09-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/#page","headline":"Cisco Meraki MX (static routing)","description":"Integrate Cisco Meraki MX with Zero Trust networking using static routing.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/cisco-meraki-static/og.png?v=5cd894d751624b00","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

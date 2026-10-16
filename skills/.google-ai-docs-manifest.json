@@ -134,8 +134,8 @@
   "google-ai-docs/long-context.md": {
     "url": "https://ai.google.dev/gemini-api/docs/long-context",
     "skill": "google-ai-docs",
-    "size": 10905,
-    "updatedAt": "2026-06-24T01:21:52.747Z"
+    "size": 11329,
+    "updatedAt": "2026-10-16T00:59:15.179Z"
   },
   "google-ai-docs/prompting-strategies.md": {
     "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
@@ -152,14 +152,14 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 82171,
-    "updatedAt": "2026-10-15T00:58:24.833Z"
+    "size": 82169,
+    "updatedAt": "2026-10-16T00:59:17.115Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 8788,
-    "updatedAt": "2026-10-10T05:40:08.190Z"
+    "size": 8887,
+    "updatedAt": "2026-10-16T00:59:18.276Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",
@@ -200,8 +200,8 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 137664,
-    "updatedAt": "2026-10-14T00:59:11.686Z"
+    "size": 138030,
+    "updatedAt": "2026-10-16T00:59:22.532Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
@@ -218,8 +218,8 @@
   "google-ai-docs/safety-settings.md": {
     "url": "https://ai.google.dev/gemini-api/docs/safety-settings",
     "skill": "google-ai-docs",
-    "size": 11028,
-    "updatedAt": "2026-09-18T04:36:26.972Z"
+    "size": 10036,
+    "updatedAt": "2026-10-16T00:59:26.502Z"
   },
   "google-ai-docs/safety-guidance.md": {
     "url": "https://ai.google.dev/gemini-api/docs/safety-guidance",
@@ -260,8 +260,8 @@
   "google-ai-docs/interactions-overview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
     "skill": "google-ai-docs",
-    "size": 18746,
-    "updatedAt": "2026-10-10T05:40:20.708Z"
+    "size": 18646,
+    "updatedAt": "2026-10-16T00:59:32.985Z"
   },
   "google-ai-docs/streaming.md": {
     "url": "https://ai.google.dev/gemini-api/docs/streaming",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/reference/certificate-validity-peri
 
 # Validity periods and renewal
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For certificates managed by Cloudflare, attempts to renew start at the auto renewal period and continue up until 24 hours before expiration. The auto renewal period varies according to the certificate validity period, as explained in the sections below.
 
@@ -57,11 +57,13 @@ For SSL for SaaS certificates, refer to [Renew certificates](https://developers.
 
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
-[HTTP validation](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/) is attempted on renewals but will fall back to TXT validation depending on the certificate validity period:
+[HTTP validation](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/) is attempted on renewals and may fall back to TXT validation for certificate flows covered by this schedule:
 
 - 90-days certificates: after failing for 15 days
 - 30-days certificates: after failing for 7 days
 - 14-days certificates: after failing for 3 days
+
+This fallback schedule does not apply to Custom Hostname certificates. For more information, refer to [Renew Custom Hostname certificates](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/renew-certificates/).
 
 ## Benefits of shorter validity periods
 
@@ -82,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#page","headline":"Validity periods and renewal","description":"Learn about Cloudflare SSL certificate validity periods, auto renewal processes, and the benefits of shorter validity periods for enhanced security.","url":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/og.png?v=50c3b9fc64139183","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/#page","headline":"Validity periods and renewal","description":"Learn about Cloudflare SSL certificate validity periods, auto renewal processes, and the benefits of shorter validity periods for enhanced security.","url":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/og.png?v=50c3b9fc64139183","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

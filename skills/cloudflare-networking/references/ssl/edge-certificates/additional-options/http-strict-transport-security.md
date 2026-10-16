@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/edge-certificates/additional-option
 
 # HTTP Strict Transport Security (HSTS)
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 HSTS protects HTTPS web servers from downgrade attacks. These attacks redirect web browsers from an HTTPS web server to an attacker-controlled server, allowing bad actors to compromise user data and cookies.
 
@@ -93,6 +93,10 @@ Note
 
 Once HSTS **Preload** is configured, submit requests for addition to each browser’s preload list. Chrome, Firefox/Mozilla, and Safari use the Chrome preload list. A minimum **Max Age Header** of 12 months is required for inclusion in HSTS preload lists.
 
+Testing with external scanners
+
+HSTS settings are applied per hostname. When using external scanners such as [SSL Labs ↗︎](https://www.ssllabs.com/ssltest/), ensure you are testing the exact hostname where HSTS is configured. Scanning an IP address or a different hostname will not show the HSTS header.
+
 Was this helpful?
 
 YesNo
@@ -102,5 +106,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/#page","headline":"HTTP Strict Transport Security (HSTS)","description":"Enforce HTTPS connections with HSTS response headers.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/og.png?v=df0e54ddd3069c3a","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/#page","headline":"HTTP Strict Transport Security (HSTS)","description":"Enforce HTTPS connections with HSTS response headers.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/og.png?v=df0e54ddd3069c3a","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 ```

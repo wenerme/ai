@@ -649,6 +649,10 @@ Automatically isolates the subject of an image by replacing the background with 
 
 This feature uses an open-source model called BiRefNet through [Workers AI](https://developers.cloudflare.com/workers-ai/). Read more about Cloudflare's [approach to responsible AI ↗︎](https://www.cloudflare.com/trust-hub/responsible-ai/).
 
+Pricing
+
+Parameters that use AI inference are billed as standard Images transformations. Each unique request counts toward your [Images Transformed](https://developers.cloudflare.com/images/pricing/#images-transformed) usage. There is no additional charge from [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) or separate Neuron billing for these parameters.
+
 | ![Original image](https://developers.cloudflare.com/_astro/original.DuemPfHh.jpg) | ![segment=foreground output](https://developers.cloudflare.com/_astro/segment-foreground.B6UYNLDs.png) |
 | --- | --- |
 | **Original** | `segment=foreground` |

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-
 
 # Egress policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -99,11 +99,13 @@ Selectors are the criteria that Gateway uses to match egress traffic against a p
 
 ### Application Beta
 
-You can apply egress policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
+You can apply egress policies to Cloudflare-managed applications and [custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) created in your account with the same Application selector. Refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
 
 | UI name | API example |
 | --- | --- |
 | Application | `any(app.ids[*] in {505})` |
+
+For custom applications, a hostname or destination IP must match the application's definition. Configured ports and protocols further restrict the match. Refer to [custom application matching](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#custom-application-matching).
 
 This selector is only available for traffic onboarded to Traffic and DNS mode, PAC files, or Browser Isolation. For more information, refer to [Selector prerequisites](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/#selector-prerequisites).
 
@@ -328,7 +330,7 @@ The **Or** operator will only work with conditions in the same expression group.
 
 ### Selector prerequisites
 
-The [Application](#application), [Content Categories](#content-categories), [Domain](#domain), and [Host](#host) selectors require additional setup before they work in egress policies. Before deploying policies with these selectors, refer to [Host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors).
+The [Application](#application), [Content Categories](#content-categories), [Domain](#domain), and [Host](#host) selectors require additional setup before they work in egress policies. Before deploying policies with these selectors, refer to [Host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/).
 
 These selectors also resolve the destination IP address when Gateway processes the DNS query, not when the egress policy is applied. If the resolved destination IP and your egress IP are in different regions, connections to destinations that enforce geo-restriction or IP-allowlisting may fail. Refer to [DNS resolution location](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/host-selectors/#dns-resolution-location) for details.
 
@@ -341,5 +343,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/#page","headline":"Egress policies","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/og.png?v=add0d1c809396ba6","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/#page","headline":"Egress policies","description":"Configure Egress policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/og.png?v=add0d1c809396ba6","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 ```

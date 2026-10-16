@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/spectrum/reference/configuration-option
 
 # Configuration options
 
-Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
 
@@ -98,6 +98,14 @@ If [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules
 Note
 
 Network analytics data for Spectrum does not reflect the outcomes of IP Access rules. Instead, to verify whether traffic was allowed or blocked based on these rules, consult the Spectrum event logs.
+
+Health checks and IP Access Rules
+
+When IP Access Rules are enabled with an allowlist model (allow specific IPs, block all others), health checks targeting the Spectrum application may be blocked, causing endpoints to appear unhealthy. This applies when the Spectrum application is the target of a Cloudflare Health Check or a Load Balancer monitor. To prevent this, add [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/) to your allowlist. Refer to [Spectrum Troubleshooting](https://developers.cloudflare.com/spectrum/reference/troubleshooting/#health-checks-fail-when-ip-access-rules-are-enabled) for details.
+
+Note
+
+[Custom rules](https://developers.cloudflare.com/waf/custom-rules/) (WAF rules) do not apply to Spectrum applications configured with the TCP/UDP application type. IP Access Rules are the only supported IP-based filtering mechanism for these applications. Refer to [Spectrum Limitations](https://developers.cloudflare.com/spectrum/reference/limitations/#ip-access-control) for details.
 
 ## Argo Smart Routing
 
@@ -212,5 +220,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/configuration-options/og.png?v=a0f8992ba404a747","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/configuration-options/og.png?v=a0f8992ba404a747","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

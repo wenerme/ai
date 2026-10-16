@@ -18,7 +18,7 @@ Advanced patterns and examples for sending emails with Cloudflare Email Service.
 
 - [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/)
 - [User signup flow](https://developers.cloudflare.com/email-service/examples/email-sending/signup-flow/)
-- [Magic link authentication](https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/)
+- [Email a login link](https://developers.cloudflare.com/email-service/examples/email-sending/magic-link/)
 - [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/)
 - [Send email over SMTP](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/)
 - [Sync recipient records](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/)

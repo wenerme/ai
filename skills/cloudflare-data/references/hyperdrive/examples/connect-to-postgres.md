@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres
 
 # Connect to PostgreSQL
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive supports PostgreSQL and PostgreSQL-compatible databases, [popular drivers](#supported-drivers) and Object Relational Mapper (ORM) libraries that use those drivers.
 
@@ -40,7 +40,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-01",
+	"compatibility_date": "2026-10-16",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-01"
+compatibility_date = "2026-10-16"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -70,8 +70,8 @@ Hyperdrive uses Workers [TCP socket support](https://developers.cloudflare.com/w
 
 | Driver | Documentation | Minimum Version Required | Notes |
 | --- | --- | --- | --- |
-| node-postgres - `pg` (recommended) | [node-postgres - `pg` documentation ↗︎](https://node-postgres.com/) | `pg@8.13.0` | `8.11.4` introduced a bug with URL parsing and will not work. `8.11.5` fixes this. Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
-| Postgres.js | [Postgres.js documentation ↗︎](https://github.com/porsager/postgres) | `postgres@3.4.4` | Supported in both Workers & Pages. |
+| node-postgres - `pg` (recommended) | [node-postgres - `pg` documentation ↗︎](https://node-postgres.com/) | `pg@8.16.3` | `8.11.4` introduced a bug with URL parsing and will not work. `8.11.5` fixes this. Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
+| Postgres.js | [Postgres.js documentation ↗︎](https://github.com/porsager/postgres) | `postgres@3.4.5` | Supported in both Workers & Pages. |
 | Drizzle | [Drizzle documentation ↗︎](https://orm.drizzle.team/) | `0.26.2`^ | |
 | Kysely | [Kysely documentation ↗︎](https://kysely.dev/) | `0.26.3`^ | |
 | [rust-postgres ↗︎](https://github.com/sfackler/rust-postgres) | [rust-postgres documentation ↗︎](https://docs.rs/postgres/latest/postgres/) | `v0.19.8` | Use the [`query_typed` ↗︎](https://docs.rs/postgres/latest/postgres/struct.Client.html#method.query_typed) method for best performance. |
@@ -173,7 +173,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-01",
+	"compatibility_date": "2026-10-16",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -186,7 +186,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-01"
+compatibility_date = "2026-10-16"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -266,7 +266,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-10-01",
+	"compatibility_date": "2026-10-16",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -279,7 +279,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-10-01"
+compatibility_date = "2026-10-16"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -348,5 +348,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/#page","headline":"Connect to PostgreSQL","description":"Use Hyperdrive to connect to PostgreSQL and PostgreSQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/og.png?v=b46b2c0c6274c318","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/#page","headline":"Connect to PostgreSQL","description":"Use Hyperdrive to connect to PostgreSQL and PostgreSQL-compatible databases from Cloudflare Workers.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/og.png?v=b46b2c0c6274c318","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

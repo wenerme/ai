@@ -583,7 +583,7 @@ generation across 1K, 2K, and 4K resolutions.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Input price | Not available | $0.75 (text, image, video) |
+| Input price | Not available | $0.75 (text/image/video) |
 | Output price | Not available | $3.75 (text and thinking) $15.00 (images) Equivalent to $0.0168 per 1K image^\*^, $0.0252 per 2K image^\*^, and $0.0567 per 4K image^\*^. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 

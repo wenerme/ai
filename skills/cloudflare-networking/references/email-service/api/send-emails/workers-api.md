@@ -1,7 +1,7 @@
 ---
-description: Send emails directly from Cloudflare Workers using the Email Service binding and send() method.
-title: Workers API
-image: https://developers.cloudflare.com/email-service/api/send-emails/workers-api/og.png?v=bce7e41c11423abf
+description: Email Sending Workers API methods, types, binding, and errors.
+title: Email Sending Workers API
+image: https://developers.cloudflare.com/email-service/api/send-emails/workers-api/og.png?v=84b629fb5504662d
 ---
 
 [Skip to content](#main-content)
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/workers-a
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Workers API
+# Email Sending Workers API
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers API provides native email sending capabilities directly from your Cloudflare Workers through bindings. If you are not using Workers, you can send emails using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) instead.
 
@@ -31,7 +31,7 @@ Configure a `send_email` binding in your Wrangler configuration file to enable e
 name = "EMAIL"
 ```
 
-You can restrict which senders and recipients a binding may use. Refer to [Configure send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/) for the available restriction attributes and examples.
+You can restrict which senders and recipients a binding may use. Refer to [send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/) for the available restriction attributes and examples.
 
 ## `send()` method
 
@@ -84,7 +84,7 @@ interface EmailSendResult {
 
 Local development with binary attachments
 
-When using `wrangler dev` without [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings), `ArrayBuffer` and `ArrayBufferView` content in attachments cannot be serialized by the local simulator. Refer to [local development for email sending](https://developers.cloudflare.com/email-service/local-development/sending/#known-limitations).
+When using `wrangler dev` without [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings), `ArrayBuffer` and `ArrayBufferView` content in attachments cannot be serialized by the local simulator. Refer to [local development for email sending](https://developers.cloudflare.com/email-service/observability/local-development/sending/#known-limitations).
 
 ### Basic usage
 
@@ -98,7 +98,7 @@ const response = await env.EMAIL.send({
 });
 ```
 
-For multiple recipients, CC/BCC, and named addresses, see [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
+For multiple recipients, CC/BCC, and named addresses, refer to [Specify recipients](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/).
 
 ### Attachments
 
@@ -121,7 +121,7 @@ const response = await env.EMAIL.send({
 });
 ```
 
-For inline images and file uploads, see [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
+For inline images and file uploads, refer to [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/).
 
 ## Error handling
 
@@ -186,7 +186,7 @@ export default {
 
 The following error codes may be returned when sending emails:
 
-| Error Code | Description | Common Causes |
+| Error code | Description | Common causes |
 | --- | --- | --- |
 | `E_VALIDATION_ERROR` | Validation error in the payload | Invalid email format, missing required fields, malformed data |
 | `E_FIELD_MISSING` | Required field is missing | Missing `to`, `from`, or `subject` fields |
@@ -246,10 +246,10 @@ export default {
 
 ## Next steps
 
-- See the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) for sending emails without Workers
-- See [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client
-- See [practical examples](https://developers.cloudflare.com/email-service/examples/) of email sending patterns
-- Learn about [email routing](https://developers.cloudflare.com/email-service/api/route-emails/) for handling incoming emails
+- Refer to the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) for sending emails without Workers
+- Refer to [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) for sending from any SMTP-capable application or mail client
+- Refer to [email sending examples](https://developers.cloudflare.com/email-service/examples/email-sending/) for common patterns
+- Refer to the [Email Routing API](https://developers.cloudflare.com/email-service/api/route-emails/) for handling incoming emails
 - Explore [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) for better deliverability
 
 Was this helpful?
@@ -261,5 +261,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Workers API","description":"Send emails directly from Cloudflare Workers using the Email Service binding and send() method.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/og.png?v=bce7e41c11423abf","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/#page","headline":"Email Sending Workers API","description":"Email Sending Workers API methods, types, binding, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/workers-api/og.png?v=84b629fb5504662d","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

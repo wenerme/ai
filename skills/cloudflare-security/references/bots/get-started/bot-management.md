@@ -50,14 +50,12 @@ Cloudflare recommends that you deploy the following basic settings and customize
 
 ### Enable the latest Machine Learning version
 
-Cloudflare encourages Enterprise customers to enable auto-updates to its Machine Learning models to get the newest bot detection models as they are released.
-
-To enable auto-updates:
+Enterprise customers with auto-updates to the machine learning model turned on get Adaptive Intelligence. To check or change the setting:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot Management**.
-4. Under **Configurations**, select the edit icon for **Auto-updates to the Machine Learning Model** and turn it on.
+4. Under **Configurations**, select the edit icon for **Auto-update machine learning** and turn it on.
 
 ### Block AI Bots
 

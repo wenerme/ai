@@ -12,30 +12,30 @@ image: https://developers.cloudflare.com/bots/reference/machine-learning-models/
 
 # Machine Learning models
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/machine-learning-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/reference/machine-learning-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Enable auto-updates to the Machine Learning models
 
-Cloudflare encourages Enterprise customers to enable auto-updates to its Machine Learning models to get the newest bot detection models as they are released.
-
-To enable auto-updates:
+Enterprise customers with auto-updates to the machine learning model turned on get Adaptive Intelligence. To check or change the setting:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot Management**.
-4. Under **Configurations**, select the edit icon for **Auto-updates to the Machine Learning Model** and turn it on.
+4. Under **Configurations**, select the edit icon for **Auto-update machine learning** and turn it on.
 
 ### What will change
 
-If you are on an older Machine Learning model, you will see a score change to requests scored by the **Machine Learning** source instantly. If you are already on the latest model, you will see changes only after a new Machine Learning model becomes the global default.
+Enabling auto-updates moves your traffic onto the model behind Adaptive Intelligence. This model retrains more frequently than fixed, numbered versions were released, so your bot score reflects newly identified attack patterns as the model learns them, rather than only when a new version ships.
 
-Customers will be notified via email and dashboard prior to a new Machine Learning model becoming the global default.
+If you are on an older, fixed Machine Learning model, you will see a score change to requests scored by the **Machine Learning** source as soon as you enable auto-updates.
 
 ### Risks of not updating
 
-By not updating to the latest version, you will be using a Machine Learning model no longer maintained or monitored by our engineering team. As Internet traffic changes and new trends evolve, scoring accuracy by older versions may degrade.
+If you do not enable auto-updates, your traffic continues to be scored by your current fixed model version. Cloudflare does not maintain or monitor fixed model versions after they are superseded, and scoring accuracy degrades as attack patterns evolve beyond what that version was trained on.
 
 ### Model versions and release notes
+
+The following table lists released versions through v9, the final fixed version. Enabling auto-updates moves you off numbered versions entirely, onto Adaptive Intelligence.
 
 | Version | Release Notes | Launch Date |
 | --- | --- | --- |
@@ -58,5 +58,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/machine-learning-models/#page","headline":"Machine Learning models","description":"Manage auto-updates for Bot Management machine learning models.","url":"https://developers.cloudflare.com/bots/reference/machine-learning-models/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/reference/machine-learning-models/og.png?v=2c5a51dacee49773","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/machine-learning-models/#page","headline":"Machine Learning models","description":"Manage auto-updates for Bot Management machine learning models.","url":"https://developers.cloudflare.com/bots/reference/machine-learning-models/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/reference/machine-learning-models/og.png?v=2c5a51dacee49773","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

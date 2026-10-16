@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/
 
 # VPC Networks
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
@@ -58,7 +58,7 @@ The `remote` flag must be set to `true` to enable remote bindings during local d
 - Any Mesh node or client device in your account
 - Subnet routes and hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh
 - Destinations reachable through [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramps (GRE, IPsec, and CNI)
-- Public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) — with your existing Zero Trust traffic policies enforced and traffic logged in DNS, HTTP, and Network logs
+- Public Internet destinations through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) — with your existing Zero Trust traffic policies enforced and traffic logged in DNS, HTTP, and Network logs
 
 All of this without specifying a particular Cloudflare Tunnel UUID.
 
@@ -68,6 +68,8 @@ Use `cf1:network` when:
 - You want to access your entire private network from a Worker without managing individual Cloudflare Tunnel bindings
 - Your private network topology may change (new connections, new nodes, new routes) and you do not want to update Worker configuration each time
 - You want Worker egress to public destinations to flow through Cloudflare Gateway for policy enforcement and visibility
+
+Gateway drops HTTP traffic from Workers VPC if it matches a [Forward policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/#known-limitations) (beta). Exclude Workers VPC traffic from your Forward policies.
 
 Note
 
@@ -188,5 +190,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

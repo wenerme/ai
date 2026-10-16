@@ -68,7 +68,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 ## Cloudflare platform access
@@ -171,19 +171,19 @@ Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
+Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
 Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## October, 2026
 
+### Oct 15
+
+Feature · Model: gpt-live-1 · Model: gpt-6-luna · API: v1/live/sessions
+
+Added native [Decisions integration in GPT-Live](https://developers.openai.com/api/docs/guides/decisions-voice). Your app can act while your user is speaking or react to what Live says. Let Live call Decisions directly through native delegation, or trigger decisions as input or output transcript deltas arrive.
+
 ### Oct 8
 
 Feature · Model: gpt-6.1-sol · API: v1/responses

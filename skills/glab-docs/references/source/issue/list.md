@@ -35,7 +35,7 @@ glab issue list --milestone release-2.0.0 --opened
 
 ```plaintext
   -A, --all                    Get all issues.
-  -a, --assignee string        Filter issue by assignee <username>.
+  -a, --assignee string        Filter issue by assignee <username>, @me, @none (unassigned), or @any (assigned).
       --author string          Filter issue by author <username>.
   -c, --closed                 Get only closed issues.
   -C, --confidential           Filter by confidential issues.

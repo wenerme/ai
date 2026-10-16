@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a
 
 # Known issues
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Here are some known bugs and issues with Cloudflare Pages:
 
@@ -92,24 +92,93 @@ npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAM
 
 Use the `--force` flag to skip the confirmation prompt and to force deletion of aliased deployments.
 
-To delete *all* your deployments for a particular project name, you could run the following shell script:
+To delete *all* of your preview deployments for a particular project, save and run one of the following scripts, passing your project name as the first argument. Each script finds your production deployment, keeps it, and deletes the remaining preview deployments in parallel. You can optionally pass a second argument to control how many deletions run at once (the default is `5`):
 
-```sh
-prod_id=""
-while :; do
-  ids=$(npx wrangler pages deployment list --project-name <PROJECT_NAME> --json | jq -r '.[].Id')
-  to_delete=$(echo "$ids" | grep -v -F -x "$prod_id" | grep .)
-  [ -z "$to_delete" ] && { echo "Done. Production: $prod_id"; break; }
-  echo "Deleting $(echo "$to_delete" | wc -l | tr -d ' ') deployments..."
-  while IFS= read -r id; do
-    if ! npx wrangler pages deployment delete "$id" --project-name <PROJECT_NAME> --force 2>&1 | tee /tmp/wrangler-del.log | grep -q "Successfully deleted"; then
-      grep -q "active production deployment" /tmp/wrangler-del.log && prod_id="$id"
-    fi
-  done <<< "$to_delete"
-done
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+project="${1:?usage: $0 <project-name> [parallelism]}"
+parallel="${2:-5}"
+
+deployments=$(npx --no-install wrangler pages deployment list \
+    --project-name "$project" --json)
+
+prod_id=$(jq -r '[.[] | select(.Environment == "Production")][0].Id // empty' <<<"$deployments")
+if [ -z "$prod_id" ]; then
+    echo "No production deployment found for '$project' - aborting." >&2
+    echo "This script keeps your production deployment, so it needs one to run." >&2
+    echo "Create a production deployment by deploying to your production branch (for example: npx wrangler pages deploy <output-dir> --project-name $project), then re-run this script." >&2
+    exit 1
+fi
+
+to_delete=$(jq -r '.[] | select(.Environment != "Production") | .Id' <<<"$deployments")
+count=$(printf '%s\n' "$to_delete" | grep -c . || true)
+
+if [ "$count" -eq 0 ]; then
+    echo "Nothing to delete. Production: $prod_id"
+    exit 0
+fi
+
+echo "Production: $prod_id. Deleting $count preview deployments..."
+
+failed=$(printf '%s\n' "$to_delete" | xargs -n1 -P "$parallel" -I{} \
+    sh -c 'npx --no-install wrangler pages deployment delete "$1" --project-name "$2" --force >/dev/null 2>&1 \
+           || echo "$1"' _ {} "$project")
+
+if [ -n "$failed" ]; then
+    echo "The following deployments failed to delete:" >&2
+    printf '%s\n' "$failed" >&2
+    exit 1
+fi
+
+echo "Done."
 ```
 
-Note that this will not delete the active production deployment if one exists.
+```powershell
+param(
+    [Parameter(Mandatory=$true)][string]$ProjectName,
+    [int]$Throttle = 5
+)
+
+$ErrorActionPreference = "Stop"
+$env:CLOUDFLARE_ACCOUNT_ID = $env:CLOUDFLARE_ACCOUNT_ID  # ensure inherited into runspaces
+
+$deployments = npx --no-install wrangler pages deployment list `
+    --project-name $ProjectName --json | ConvertFrom-Json
+
+$prod = $deployments | Where-Object { $_.Environment -eq "Production" } | Select-Object -First 1
+if (-not $prod) {
+    throw "No production deployment found for '$ProjectName' - aborting to avoid data loss. This script keeps your production deployment, so it needs one to run. Create a production deployment by deploying to your production branch (for example: npx wrangler pages deploy <output-dir> --project-name $ProjectName), then re-run this script."
+}
+
+$toDelete = $deployments | Where-Object { $_.Environment -ne "Production" }
+
+if ($toDelete.Count -eq 0) {
+    Write-Output "Nothing to delete. Production: $($prod.Id)"
+    return
+}
+
+Write-Output "Production: $($prod.Id). Deleting $($toDelete.Count) preview deployments..."
+
+$results = $toDelete | ForEach-Object -Parallel {
+    $id = $_.Id
+    npx --no-install wrangler pages deployment delete $id `
+        --project-name $using:ProjectName --force *> $null
+    [pscustomobject]@{ Id = $id; ExitCode = $LASTEXITCODE }
+} -ThrottleLimit $Throttle
+
+$failed = $results | Where-Object { $_.ExitCode -ne 0 }
+if ($failed) {
+    Write-Warning "$($failed.Count) deletions failed:"
+    $failed | Format-Table -AutoSize
+    exit 1
+}
+
+Write-Output "Done."
+```
+
+These scripts will not delete the active production deployment if one exists.
 
 ## Use Pages as Origin in Cloudflare Load Balancer
 
@@ -126,5 +195,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a712c74821f807c","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a712c74821f807c","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

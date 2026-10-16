@@ -60,6 +60,9 @@ glab mr create --fill --push=false --yes
 glab mr create -t "Fix login bug" --template bug_fix
 glab mr create -t "Security patch" --template security_fix.md --yes
 
+# Use a template file from outside the repository
+glab mr create -t "Fix login bug" --template ~/team-templates/bug_fix.md
+
 # Create against another project without a local clone. All inputs must be passed as flags; no --push, --fill, or --template.
 glab mr create --repo group/project --source-branch feature-branch --target-branch main --title "Add feature" --description "Details..." --yes
 
@@ -103,7 +106,7 @@ glab mr create -t "Fix login bug" -d "Before and after:" --attach ./before.png -
   -s, --source-branch string      Create a merge request from this branch. Default is the current branch.
       --squash-before-merge       Squash commits into a single commit when merging. Set to true/false to override project defaults, or omit to use project settings.
   -b, --target-branch string      The target or base branch into which you want your code merged into.
-      --template string           Name of a template in '.gitlab/merge_request_templates/' to pre-populate the description. The '.md' extension is optional. Templates are loaded from the local repository only.
+      --template string           Template to pre-populate the description. A name is looked up in '.gitlab/merge_request_templates/' of the local repository, and the '.md' extension is optional. A value that is absolute or contains a path separator is read as a file path, for example '~/templates/feature.md'.
   -t, --title string              Supply a title for the merge request.
   -w, --web                       Continue merge request creation in a browser.
       --wip                       Mark merge request as a draft. Alternative to --draft.

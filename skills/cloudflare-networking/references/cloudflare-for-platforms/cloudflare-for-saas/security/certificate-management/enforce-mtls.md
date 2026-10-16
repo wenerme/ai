@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # TLS Management
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Mutual TLS (mTLS) ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
 
@@ -156,9 +156,9 @@ Minimum TLS version for custom hostname
 2. Find the hostname to which you want to apply Minimum TLS Version. Select **Edit**.
 3. Choose the desired TLS version under **Minimum TLS Version** and select **Save**.
 
-In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. Besides the <code>settings</code> specifications, you must include <code>type</code> and <code>method</code> within the <code>ssl</code> object, as explained below.
+In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. A <code>PATCH</code> request replaces the existing <code>ssl.settings</code> object. Retrieve and reuse all current settings to avoid resetting unrelated values.
 
-1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to check what are the current values for <code>ssl.type</code> and <code>ssl.method</code>.
+1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to retrieve the current <code>ssl.settings</code> object.
 
 <details>
 
@@ -229,7 +229,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-2. After you take note of these values, make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint, providing both the minimum TLS version you want to define and the same <code>type</code> and <code>method</code> values that you obtained from the previous step.
+2. Copy the complete <code>ssl.settings</code> object. Change only <code>min_tls_version</code>, then make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint. Omit settings that were not present in the <code>GET</code> response.
 
 <details>
 
@@ -253,10 +253,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"ssl": {
-				"method": "http",
-				"type": "dv",
 				"settings": {
-						"min_tls_version:": "1.2"
+						"min_tls_version": "1.2"
 				}
 		}
 	}'
@@ -288,9 +286,9 @@ Restrict cipher suites for custom hostname
 
 </summary>
 
-In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. Besides the <code>settings</code> specifications, you must include <code>type</code> and <code>method</code> within the <code>ssl</code> object, as explained below.
+In the API documentation, refer to <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">SSL properties of a custom hostname</a>. A <code>PATCH</code> request replaces the existing <code>ssl.settings</code> object. Retrieve and reuse all current settings to avoid resetting unrelated values.
 
-1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to check what are the current values for <code>ssl.type</code> and <code>ssl.method</code>.
+1. Make a <code>GET</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/">Custom Hostname Details</a> endpoint to retrieve the current <code>ssl.settings</code> object.
 
 <details>
 
@@ -335,7 +333,13 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
       ],
       "issuer": "",
       "method": "http",
-      "settings": {},
+      "settings": {
+        "ciphers": ["ECDHE-RSA-AES256-GCM-SHA384"],
+        "early_hints": "on",
+        "http2": "on",
+        "min_tls_version": "1.2",
+        "tls_1_3": "on"
+      },
       "signature": "SHA256WithRSA",
       "type": "dv",
       "uploaded_on": "2020-02-06T18:11:23.531995Z",
@@ -361,7 +365,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
   }
 ```
 
-2. After you take note of these values, make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint, providing both the list of authorized cipher suites and the same <code>type</code> and <code>method</code> values that you obtained from the previous step.
+2. Copy the complete <code>ssl.settings</code> object. Change only <code>ciphers</code>, then make a <code>PATCH</code> request to the <a href="https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/">Edit Custom Hostname</a> endpoint. Omit settings that were not present in the <code>GET</code> response.
 
 <details>
 
@@ -385,13 +389,15 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"ssl": {
-				"method": "http",
-				"type": "dv",
 				"settings": {
 						"ciphers": [
 								"ECDHE-ECDSA-AES128-GCM-SHA256",
 								"ECDHE-RSA-AES128-GCM-SHA256"
-						]
+						],
+						"early_hints": "on",
+						"http2": "on",
+						"min_tls_version": "1.2",
+						"tls_1_3": "on"
 				}
 		}
 	}'
@@ -562,5 +568,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#page","headline":"TLS Management","description":"Configure mTLS enforcement and minimum TLS version per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/og.png?v=f143e18a661b0d85","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#page","headline":"TLS Management","description":"Configure mTLS enforcement and minimum TLS version per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/og.png?v=f143e18a661b0d85","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TLS"]}
 ```

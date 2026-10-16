@@ -12,27 +12,25 @@ image: https://developers.cloudflare.com/ai-gateway/reference/pricing/og.png?v=e
 
 # Pricing
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway is available to use on all plans.
 
 AI Gateway's core features available today are offered for free, and all it takes is a Cloudflare account and one line of code to [get started](https://developers.cloudflare.com/ai-gateway/get-started/). Core features include: dashboard analytics, caching, and rate limiting.
 
-We will continue to build and expand AI Gateway. Some new features may be additional core features that will be free while others may be part of a premium plan. We will announce these as they become available.
-
 You can monitor your usage in the AI Gateway dashboard.
 
 ## Logs
 
-Log pricing depends on when you created your first gateway.
+AI Gateway stores logs in either Workers Logs or Legacy Logs, depending on when your account created its first gateway.
 
-### New AI Gateway customers
+### Workers Logs
 
-Customers who create their first gateway on or after September 24, 2026 follow [Workers Logs pricing and retention](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing).
+Accounts that created their first gateway on or after September 24, 2026 store logs in Workers Logs and follow [Workers Logs pricing and retention](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing).
 
-### Existing AI Gateway customers
+### Legacy Logs
 
-Customers who created a gateway before September 24, 2026 use [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/). Persistent log storage is available on all plans with these limits:
+Accounts that created a gateway before September 24, 2026 use [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/). Persistent log storage is available on all plans with these limits:
 
 | Plan | Log storage limit |
 | --- | --- |
@@ -57,11 +55,7 @@ A 5% fee is applied to all credits purchased through [Unified Billing](https://d
 
 ## Logpush
 
-Logpush is available to all AI Gateway customers on the Workers Paid plan.
-
-|  | Paid plan |
-| --- | --- |
-| Requests | 10 million / month, +$0.05/million |
+[Logpush](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/) is available to all AI Gateway customers. Exports of AI Gateway logs are billed according to [Logpush pricing](https://developers.cloudflare.com/logs/logpush/pricing/), based on the volume of logs exported and transformed.
 
 ## Pricing notes
 
@@ -76,5 +70,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing","description":"Review AI Gateway pricing for logs and premium features.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/reference/pricing/og.png?v=ef3d0446a25cd6db","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing","description":"Review AI Gateway pricing for logs and premium features.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/reference/pricing/og.png?v=ef3d0446a25cd6db","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

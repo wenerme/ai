@@ -19,6 +19,8 @@ Repository-local settings live in the repository's `.git/glab-cli/config.yml` an
 
 If no user configuration file exists, `glab` falls back to a read-only system-wide one. This command always reports the user location.
 
+Your own configuration file must not be readable by anyone else, so it needs mode `600`. A system-wide one, in a directory listed in `XDG_CONFIG_DIRS`, is read whatever its read permissions, but is refused if it is writable by group or others.
+
 ```plaintext
 glab config path [flags]
 ```
