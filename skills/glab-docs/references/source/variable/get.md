@@ -13,6 +13,15 @@ Prints the value of a single variable by key. Use `--scope` to
 select a variable in a specific environment, or `--group` to read a
 group variable instead.
 
+By default the command reads one level only. Pass `--inherited` to
+fall back to the groups above the project and then to the instance,
+in the order CI resolves a variable: the project first, then each
+parent group closest first, then instance variables.
+
+A level that does not define the key, or that you cannot read, is
+skipped. Instance variables apply to every environment, so
+`--scope` does not filter them.
+
 ```plaintext
 glab variable get <key> [flags]
 ```
@@ -23,12 +32,16 @@ glab variable get <key> [flags]
 glab variable get VAR_KEY
 glab variable get -g GROUP VAR_KEY
 glab variable get -s SCOPE VAR_KEY
+
+# Read the project, then its parent groups, then the instance
+glab variable get --inherited VAR_KEY
 ```
 
 ## Options
 
 ```plaintext
   -g, --group string    Get variable for a group.
+      --inherited       If the key is not defined at the selected level, look in the groups above it, then in instance variables.
       --jq string       Filter JSON output with a jq expression.
   -F, --output string   Format output as: text, json. (default "text")
   -s, --scope string    The environment_scope of the variable. Values: all (*), or specific environments. (default "*")

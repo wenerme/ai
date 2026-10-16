@@ -40,7 +40,7 @@ For current overage rates, refer to the [Cloudflare plans page ↗︎](https://w
 | [Images](https://developers.cloudflare.com/images/pricing/) | Transformations and storage | Varies by plan | [Images pricing](https://developers.cloudflare.com/images/pricing/) |
 | [Spectrum](https://developers.cloudflare.com/spectrum/) | Data transfer | None | [Spectrum](https://developers.cloudflare.com/spectrum/) |
 | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) | Rule requests | Varies by plan | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) |
-| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/) | Log ingestion | None | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/) |
+| [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/pricing/) | Log ingestion | None | [Log Explorer pricing](https://developers.cloudflare.com/observability/logs/log-explorer/pricing/) |
 | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) | Seats and usage-based services | Varies by plan | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) |
 | [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/) | Stored dimensions and queried vectors | Varies by plan | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/) |
 | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) | Data points read and written | Varies by plan | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |

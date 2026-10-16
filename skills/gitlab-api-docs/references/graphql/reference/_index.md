@@ -13433,6 +13433,27 @@ Fields:
 | <a id="mutation-orbitexcludedgroupdestroy-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-orbitexcludedgroupdestroy-group"></a>`group` | [`Group`](#group) | Group removed from exclusions. |
 
+### `Mutation.orbitInstanceStartTrial`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Input type: `OrbitInstanceStartTrialInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-orbitinstancestarttrial-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-orbitinstancestarttrial-access"></a>`access` | [`OrbitAccess`](#orbitaccess) | Instance Orbit access state after starting the trial. |
+| <a id="mutation-orbitinstancestarttrial-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-orbitinstancestarttrial-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
 ### `Mutation.orbitStartTrial`
 
 - Introduced in GitLab 19.5.
@@ -16656,6 +16677,30 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-terraformstatelock-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-terraformstatelock-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.terraformStateRestore`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Restores a soft-deleted Terraform state. The state is not restored when terraform_state_delayed_deletion is disabled.
+
+Input type: `TerraformStateRestoreInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-terraformstaterestore-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-terraformstaterestore-id"></a>`id` | [`TerraformStateID!`](#terraformstateid) | Global ID of the Terraform state. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-terraformstaterestore-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-terraformstaterestore-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during restore. |
+| <a id="mutation-terraformstaterestore-terraformstate"></a>`terraformState` | [`TerraformState`](#terraformstate) | Terraform state after restore. |
 
 ### `Mutation.terraformStateUnlock`
 
@@ -33902,6 +33947,19 @@ Fields:
 | <a id="aiflowscheduletype-project"></a>`project` | [`Project!`](#project) | Project of the flow schedule. |
 | <a id="aiflowscheduletype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow schedule was last updated. |
 
+### `AiFlowTriggerLastRun`
+
+Details of the most recent run of a flow trigger.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowtriggerlastrun-error"></a>`error` | [`String`](#string) | Error message of a scheduled run that failed before a session started. |
+| <a id="aiflowtriggerlastrun-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the run finished, or null if the run is not finished. |
+| <a id="aiflowtriggerlastrun-startedat"></a>`startedAt` | [`Time!`](#time) | Timestamp of when the run started. |
+| <a id="aiflowtriggerlastrun-status"></a>`status` | [`AiFlowTriggerRunStatus!`](#aiflowtriggerrunstatus) | Status of the run. |
+
 ### `AiFlowTriggerType`
 
 Represents an AI flow trigger.
@@ -33922,8 +33980,11 @@ Fields:
 | <a id="aiflowtriggertype-goals"></a>`goals`  | [`JSON!`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="aiflowtriggertype-group"></a>`group`  | [`Group`](#group) | Introduced in GitLab 19.6. Status: Experiment. Group of the flow trigger. Null for project flow triggers. |
 | <a id="aiflowtriggertype-id"></a>`id` | [`ID!`](#id) | ID of the flow trigger. |
+| <a id="aiflowtriggertype-lastrun"></a>`lastRun`  | [`AiFlowTriggerLastRun`](#aiflowtriggerlastrun) | Introduced in GitLab 19.6. Status: Experiment. Details of the most recent run, or null if the flow trigger has never run. |
 | <a id="aiflowtriggertype-precondition"></a>`precondition`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Enforced filter conditions from the foundational flow definition. |
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project`](#project) | Project of the flow trigger. Null for group flow triggers. |
+| <a id="aiflowtriggertype-runningcount"></a>`runningCount`  | [`Int!`](#int) | Introduced in GitLab 19.6. Status: Experiment. Number of sessions of the flow trigger that are created or running. |
+| <a id="aiflowtriggertype-sessions"></a>`sessions`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 19.6. Status: Experiment. Sessions started by the flow trigger, newest first. Returns sessions for only one flow trigger per request. |
 | <a id="aiflowtriggertype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow trigger was last updated. |
 | <a id="aiflowtriggertype-user"></a>`user` | [`UserCore`](#usercore) | Service account of the flow trigger. |
 
@@ -34084,7 +34145,7 @@ Fields:
 | <a id="aigovernancesession-agenttype"></a>`agentType` | [`String`](#string) | Type of the agent that ran the session, for example `claude-code`. Values differ between sources. |
 | <a id="aigovernancesession-auditevents"></a>`auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Returns no events for GitLab Duo sessions delivered through a private messaging integration. This field can only be resolved for one session in any single request. (see [Connections](#connections)) |
 | <a id="aigovernancesession-auditeventscount"></a>`auditEventsCount` | [`Int`](#int) | Number of audit events recorded for the session. |
-| <a id="aigovernancesession-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. Null for sessions from sources other than GitLab Duo. |
+| <a id="aigovernancesession-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. Null for GitLab Duo sessions without a workflow, and for sessions from other sources when ClickHouse is not enabled. |
 | <a id="aigovernancesession-flowtype"></a>`flowType` | [`String`](#string) | Flow type of the session, for example `chat`. Values differ between sources. |
 | <a id="aigovernancesession-id"></a>`id` | [`AiGovernanceSessionID!`](#aigovernancesessionid) | Global ID of the session. |
 | <a id="aigovernancesession-project"></a>`project` | [`Project`](#project) | Project the session belongs to. Null for namespace-scoped sessions, or when the current user cannot read the project. |
@@ -50098,7 +50159,7 @@ Fields:
 | <a id="mergerequest-downvotes"></a>`downvotes` | [`Int!`](#int) | Number of downvotes for the merge request. |
 | <a id="mergerequest-draft"></a>`draft` | [`Boolean!`](#boolean) | Indicates if the merge request is a draft. |
 | <a id="mergerequest-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the merge request. |
-| <a id="mergerequest-duoworkflows"></a>`duoWorkflows`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 18.10. Status: Experiment. Duo Workflow sessions associated with the merge request. |
+| <a id="mergerequest-duoworkflows"></a>`duoWorkflows`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 18.10. Status: Experiment. GitLab Duo Agent Platform flow sessions associated with the merge request. Chat sessions are excluded. |
 | <a id="mergerequest-forceremovesourcebranch"></a>`forceRemoveSourceBranch` | [`Boolean`](#boolean) | Indicates if the project settings will lead to source branch deletion after merge. |
 | <a id="mergerequest-groupedapprovalsleft"></a>`groupedApprovalsLeft`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of approvals left, counting Code Owner rules that share a section and approvers as a single rule. |
 | <a id="mergerequest-groupedapprovalsrequired"></a>`groupedApprovalsRequired`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of approvals required, counting Code Owner rules that share a section and approvers as a single rule. |
@@ -53996,6 +54057,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="orbit-access"></a>`access`  | [`OrbitAccess`](#orbitaccess) | Introduced in GitLab 19.6. Status: Experiment. Orbit access state of the instance on GitLab Self-Managed and GitLab Dedicated. Null on GitLab.com, where access is per top-level group, and for users who are not administrators. |
 | <a id="orbit-excludedgroups"></a>`excludedGroups` | [`GroupConnection`](#groupconnection) | Top-level groups excluded from automatic Orbit indexing. Administrators only. (see [Connections](#connections)) |
 
 #### Fields with arguments
@@ -54029,17 +54091,34 @@ Arguments:
 | <a id="orbit-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
 | <a id="orbit-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 
+##### `Orbit.memberGroups`
+
+The highest group of each group tree where the current user has at least the Reporter role. With `enabled: true`, only the groups that Orbit answers for.
+
+Returns [`GroupConnection`](#groupconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="orbit-membergroups-enabled"></a>`enabled` | [`Boolean`](#boolean) | Return only groups with Orbit turned on. |
+| <a id="orbit-membergroups-search"></a>`search` | [`String`](#string) | Search query for the group name or full path. |
+
 ### `OrbitAccess`
 
-Orbit access state of a group.
+Orbit access state of a group, or of the instance on GitLab Self-Managed and GitLab Dedicated.
 
 Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="orbitaccess-reason"></a>`reason`  | [`OrbitAccessReason`](#orbitaccessreason) | Introduced in GitLab 19.5. Status: Experiment. Cause of the access state when it has more than one cause. Null when the state has a single cause. |
-| <a id="orbitaccess-state"></a>`state`  | [`OrbitAccessState!`](#orbitaccessstate) | Introduced in GitLab 19.5. Status: Experiment. Access state of the group for Orbit. |
-| <a id="orbitaccess-trial"></a>`trial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial of the group. Null when the group is not in the trial flow. |
+| <a id="orbitaccess-state"></a>`state`  | [`OrbitAccessState!`](#orbitaccessstate) | Introduced in GitLab 19.5. Status: Experiment. Access state of the group or the instance for Orbit. |
+| <a id="orbitaccess-trial"></a>`trial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial of the group or the instance. Null outside the trial flow. |
 | <a id="orbitaccess-turnondenialreason"></a>`turnOnDenialReason`  | [`OrbitTurnOnDenialReason`](#orbitturnondenialreason) | Introduced in GitLab 19.5. Status: Experiment. Reason the user cannot turn Orbit on. Null when turning on is allowed or Orbit is already on. |
 
 ### `OrbitIndexing`
@@ -54166,8 +54245,8 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="orbitnamespace-access"></a>`access`  | [`OrbitAccess`](#orbitaccess) | Introduced in GitLab 19.6. Status: Experiment. Orbit access state of the top-level group. Null for subgroups, projects, and when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
-| <a id="orbitnamespace-enabled"></a>`enabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether Orbit is turned on for the group. False for subgroups. Null for projects. |
-| <a id="orbitnamespace-enabledat"></a>`enabledAt`  | [`Time`](#time) | Introduced in GitLab 19.5. Status: Experiment. Timestamp when Orbit was turned on for the top-level group. Null for subgroups, projects, when Orbit is off, and when Orbit is not available to the current user. |
+| <a id="orbitnamespace-enabled"></a>`enabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether Orbit is turned on for the top-level group of the group. Null for projects. |
+| <a id="orbitnamespace-enabledat"></a>`enabledAt`  | [`Time`](#time) | Introduced in GitLab 19.5. Status: Experiment. Timestamp when Orbit was turned on for the top-level group of the group. Null for projects, when Orbit is off, and when Orbit is not available to the current user. |
 | <a id="orbitnamespace-indexing"></a>`indexing`  | [`OrbitIndexing`](#orbitindexing) | Introduced in GitLab 19.6. Status: Experiment. Indexing state of the group or project. Null when Orbit is not available to the current user. |
 | <a id="orbitnamespace-indexingstatus"></a>`indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. Null when Orbit is not available to the current user. |
 | <a id="orbitnamespace-itemcounts"></a>`itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for only one group or project in any single request. |
@@ -54175,7 +54254,7 @@ Fields:
 
 ### `OrbitTrial`
 
-Orbit trial of a top-level group, as reported by CustomersDot.
+Orbit trial of a top-level group or of the instance, as reported by CustomersDot.
 
 Fields:
 
@@ -56576,7 +56655,12 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="project-aiflowtriggers-active"></a>`active`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Filter AI flow triggers by whether they are active. |
+| <a id="project-aiflowtriggers-eventtype"></a>`eventType`  | [`AiFlowTriggerEventType`](#aiflowtriggereventtype) | Introduced in GitLab 19.6. Status: Experiment. Filter AI flow triggers by event type. `MERGE_REQUEST` also matches `MERGE_REQUEST_READY` and `MERGE_REQUEST_CODE_CONFLICT`. |
 | <a id="project-aiflowtriggers-ids"></a>`ids` | [`[AiFlowTriggerID!]`](#aiflowtriggerid) | Filter AI flow triggers by IDs. |
+| <a id="project-aiflowtriggers-kind"></a>`kind`  | [`AiFlowTriggerKind`](#aiflowtriggerkind) | Introduced in GitLab 19.6. Status: Experiment. Filter AI flow triggers by kind. |
+| <a id="project-aiflowtriggers-search"></a>`search`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Search AI flow triggers by name, config path, or catalog item name. Maximum 255 characters. |
+| <a id="project-aiflowtriggers-sort"></a>`sort`  | [`AiFlowTriggerSort`](#aiflowtriggersort) | Introduced in GitLab 19.6. Status: Experiment. Sort AI flow triggers by the criteria. |
 
 ##### `Project.aiGovernanceMetrics`
 
@@ -65581,7 +65665,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="workitemwidgetaisession-duoworkflows"></a>`duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | Duo Workflow sessions associated with the work item. (see [Connections](#connections)) |
+| <a id="workitemwidgetaisession-duoworkflows"></a>`duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | GitLab Duo Agent Platform flow sessions associated with the work item. Chat sessions are excluded. (see [Connections](#connections)) |
 | <a id="workitemwidgetaisession-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 
 ### `WorkItemWidgetAssignees`
@@ -67174,6 +67258,41 @@ Possible event types for flow triggers.
 | <a id="aiflowtriggereventtype-pipeline_hooks"></a>`PIPELINE_HOOKS` | Flow trigger pipeline_hooks event. |
 | <a id="aiflowtriggereventtype-scheduled"></a>`SCHEDULED`  | Introduced in GitLab 19.4. Status: Experiment. Flow trigger scheduled event. |
 | <a id="aiflowtriggereventtype-work_item"></a>`WORK_ITEM` | Flow trigger work_item event. |
+
+### `AiFlowTriggerKind`
+
+Kinds of flow triggers.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aiflowtriggerkind-event"></a>`EVENT` | Flow trigger that runs when an event occurs. |
+| <a id="aiflowtriggerkind-scheduled"></a>`SCHEDULED`  | Introduced in GitLab 19.6. Status: Experiment. Flow trigger that runs on a schedule. |
+
+### `AiFlowTriggerRunStatus`
+
+Status of a flow trigger run.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aiflowtriggerrunstatus-awaiting_input"></a>`AWAITING_INPUT` | Run is paused or waiting for input or approval. |
+| <a id="aiflowtriggerrunstatus-canceled"></a>`CANCELED` | Run was stopped before it finished. |
+| <a id="aiflowtriggerrunstatus-failed"></a>`FAILED` | Run failed. |
+| <a id="aiflowtriggerrunstatus-pending"></a>`PENDING` | Run has been created and has not started. |
+| <a id="aiflowtriggerrunstatus-running"></a>`RUNNING` | Run is in progress. |
+| <a id="aiflowtriggerrunstatus-succeeded"></a>`SUCCEEDED` | Run finished successfully. |
+
+### `AiFlowTriggerSort`
+
+Values for sorting AI flow triggers.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aiflowtriggersort-created_asc"></a>`CREATED_ASC` | Created at ascending order. |
+| <a id="aiflowtriggersort-created_desc"></a>`CREATED_DESC` | Created at descending order. |
+| <a id="aiflowtriggersort-name_asc"></a>`NAME_ASC` | Name by ascending order. |
+| <a id="aiflowtriggersort-name_desc"></a>`NAME_DESC` | Name by descending order. |
+| <a id="aiflowtriggersort-updated_asc"></a>`UPDATED_ASC` | Updated at ascending order. |
+| <a id="aiflowtriggersort-updated_desc"></a>`UPDATED_DESC` | Updated at descending order. |
 
 ### `AiFlowsMetadataClientType`
 
@@ -73245,8 +73364,9 @@ Status of the asynchronous workplan generation flow for a work item.
 
 | Value | Description |
 | ----- | ----------- |
+| <a id="workitemagentplangenerationstatus-canceled"></a>`CANCELED` | Indicates the flow was canceled by a user. |
 | <a id="workitemagentplangenerationstatus-completed"></a>`COMPLETED` | Indicates the flow finished successfully. |
-| <a id="workitemagentplangenerationstatus-failed"></a>`FAILED` | Indicates the flow ended without completing. Includes flows canceled by a user. |
+| <a id="workitemagentplangenerationstatus-failed"></a>`FAILED` | Indicates the flow ended without completing. |
 | <a id="workitemagentplangenerationstatus-generating"></a>`GENERATING` | Indicates a workplan generation flow is in progress. |
 | <a id="workitemagentplangenerationstatus-needs_input"></a>`NEEDS_INPUT` | Indicates the flow is waiting for user input. |
 | <a id="workitemagentplangenerationstatus-not_started"></a>`NOT_STARTED` | No workplan generation flow has run for the work item. |
@@ -78741,6 +78861,7 @@ Arguments:
 | <a id="securityscanprofileautoremediationinput-cooldown"></a>`cooldown`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Minimum number of days after a package is released before it can be used. |
 | <a id="securityscanprofileautoremediationinput-enabled"></a>`enabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether auto-remediation is enabled. |
 | <a id="securityscanprofileautoremediationinput-openmergerequestslimit"></a>`openMergeRequestsLimit`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Maximum number of open auto-remediation merge requests at once. |
+| <a id="securityscanprofileautoremediationinput-runnertags"></a>`runnerTags`  | [`[String!]`](#string) | Introduced in GitLab 19.6. Status: Experiment. Runner tags applied to the auto-remediation job. |
 | <a id="securityscanprofileautoremediationinput-severitylevel"></a>`severityLevel`  | [`VulnerabilitySeverity`](#vulnerabilityseverity) | Introduced in GitLab 19.3. Status: Experiment. Minimum vulnerability severity that triggers an automated upgrade. Findings below this threshold are skipped. |
 | <a id="securityscanprofileautoremediationinput-upgradepolicy"></a>`upgradePolicy`  | [`SecurityScanProfileUpgradePolicy`](#securityscanprofileupgradepolicy) | Introduced in GitLab 19.3. Status: Experiment. Highest version bump allowed when remediating. |
 

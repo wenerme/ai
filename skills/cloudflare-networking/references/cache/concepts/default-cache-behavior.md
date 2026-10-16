@@ -65,7 +65,7 @@ To cache additional content, refer to [Cache Rules](https://developers.cloudflar
 
 ## Edge TTL
 
-By default, Cloudflare caches certain HTTP response codes with the following Edge Cache TTL when a `cache-control` directive or `expires` response header are not present.
+By default, Cloudflare caches certain HTTP response codes with the following  [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl) when a `cache-control` directive or `expires` response header are not present.
 
 | HTTP status code | Default TTL |
 | --- | --- |

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/malicious-uploads/og.png
 
 # Malicious uploads detection
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/malicious-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The malicious uploads detection is a [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) that scans files and other content uploaded to your application for malware.
 
@@ -84,11 +84,24 @@ This means a request whose content was only partly scanned can produce the same 
 Notes
 
 - The AV scanner will not scan some particular types of files, namely the following:
-  - Password-protected archives
+  - Password-protected files. Refer to [Encrypted content](#encrypted-content) for supported file types.
   - Archives with more than three recursion levels
   - Archives with more than 300 files
   - PGP-encrypted files
 - In rare cases, the AV scanner may time out and fail to analyze a content object. When this happens, the `cf.waf.content_scan.has_failed` field will be set to true. This field refers to scans that were attempted but did not complete. It is not set for content that the scanner did not reach because of the 50 MB size limit.
+
+## Encrypted content
+
+Content scanning detects when a content object is password-protected (encrypted), for the following file types:
+
+- ZIP archives
+- RAR archives
+- PDF files
+- Microsoft Office files ( `.docx`, `.doc`, `.xlsx`, `.xls`, `.pptx`, `.ppt`)
+
+When content scanning detects an encrypted content object, it sets `cf.waf.content_scan.has_encrypted_obj` to `true`. The scanner cannot determine whether encrypted content is malicious, so the content object's result in `cf.waf.content_scan.obj_results` is reported as `not scanned`, and `cf.waf.content_scan.has_failed` is not set for encrypted content.
+
+To block or challenge encrypted uploads, use `cf.waf.content_scan.has_encrypted_obj` in a custom rule.
 
 ## Custom scan expressions
 
@@ -117,6 +130,7 @@ When content scanning is enabled, you can use the following fields in WAF rules:
 | Number of malicious content objects <br> [`cf.waf.content_scan.num_malicious_obj`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.num_malicious_obj/) <br> `Integer` | The number of malicious content objects detected in the request (zero or greater). |
 | Content scan has failed <br> [`cf.waf.content_scan.has_failed`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.has_failed/) <br> `Boolean` | Indicates whether the file scanner was unable to scan any of the content objects detected in the request. |
 | Content scan truncated <br> [`cf.waf.content_scan.truncated`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.truncated/) <br> `Boolean` | Indicates whether the request body exceeded the size limit for content scanning and was truncated before scanning, meaning the scan results may be incomplete. Refer to [Size limit](#size-limit). |
+| Has encrypted content object <br> [`cf.waf.content_scan.has_encrypted_obj`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.has_encrypted_obj/) <br> `Boolean` | Indicates whether the request contains at least one password-protected (encrypted) content object. Refer to [Encrypted content](#encrypted-content). |
 | Number of content objects <br> [`cf.waf.content_scan.num_obj`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.num_obj/) <br> `Integer` | The number of content objects detected in the request (zero or greater). |
 | Content object size <br> [`cf.waf.content_scan.obj_sizes`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.obj_sizes/) <br> `Array<Integer>` | An array of file sizes in bytes, in the order the content objects were detected in the request. |
 | Content object type <br> [`cf.waf.content_scan.obj_types`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.content_scan.obj_types/) <br> `Array<String>` | An array of file types in the order the content objects were detected in the request. |
@@ -133,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/#page","headline":"Malicious uploads detection","description":"Scan uploaded files for malware and malicious content.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/malicious-uploads/og.png?v=4271ad4c8fa8ab1f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/malicious-uploads/#page","headline":"Malicious uploads detection","description":"Scan uploaded files for malware and malicious content.","url":"https://developers.cloudflare.com/waf/detections/malicious-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/malicious-uploads/og.png?v=4271ad4c8fa8ab1f","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

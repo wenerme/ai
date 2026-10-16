@@ -102,11 +102,13 @@ List the organization's customer-managed external storage configurations.
 
         - `"oci"`
 
-  - `status: "pending" or "validated" or "unhealthy"`
+  - `status: "pending" or "validated" or "degraded" or "unhealthy"`
 
     - `"pending"`
 
     - `"validated"`
+
+    - `"degraded"`
 
     - `"unhealthy"`
 

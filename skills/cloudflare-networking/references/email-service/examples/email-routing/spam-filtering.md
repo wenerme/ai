@@ -1,5 +1,5 @@
 ---
-description: Build spam detection for Email Service with keyword analysis, domain reputation checks, and AI-based filtering.
+description: Filter email with subject keywords and trusted-domain heuristics.
 title: Spam filtering
 image: https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/og.png?v=bcadf0d23ef36e90
 ---
@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/email-service/examples/email-routing/sp
 
 # Spam filtering
 
-Implement intelligent spam detection with keyword analysis, domain reputation, and machine learning techniques
+Filter email with subject keywords and trusted-domain heuristics
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build spam filtering systems with keyword matching, domain validation, and intelligent detection methods for effective email security.
+This example scores incoming email using subject keywords and sender-domain heuristics.
 
 ## Basic spam filter
 
@@ -160,9 +160,9 @@ function getScoreRange(score: number): string {
 }
 ```
 
-## Advanced spam detection with AI
+## Optional Workers AI integration
 
-For more sophisticated spam detection, you can enhance the basic filter using [Workers AI](https://developers.cloudflare.com/workers-ai/) to analyze email content with machine learning models. This approach can identify subtle spam patterns that keyword-based filters might miss.
+The basic spam filter uses simple heuristic checks. You can optionally use [Workers AI](https://developers.cloudflare.com/workers-ai/) to analyze email content.
 
 ## Next steps
 
@@ -179,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/#page","headline":"Spam filtering","description":"Build spam detection for Email Service with keyword analysis, domain reputation checks, and AI-based filtering.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/og.png?v=bcadf0d23ef36e90","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/#page","headline":"Spam filtering","description":"Filter email with subject keywords and trusted-domain heuristics.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/og.png?v=bcadf0d23ef36e90","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

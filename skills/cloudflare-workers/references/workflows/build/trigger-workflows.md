@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/trigger-workflows/og.pn
 
 # Trigger Workflows
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
@@ -46,7 +46,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-16",
 	"workflows": [
 		{
 			// The name of the Workflow
@@ -68,7 +68,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-16"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -89,7 +89,7 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-16",
 	"workflows": [
 		{
 			"name": "workflows-tutorial",
@@ -107,7 +107,7 @@ name = "workflows-tutorial"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-16"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -273,9 +273,150 @@ let instance = await env.MY_WORKFLOW.get("abc-123");
 await instance.restart(); // Returns Promise<void>
 ```
 
-Restarting an instance will immediately cancel any in-progress steps, erase any intermediate state, and treat the Workflow as if it was run for the first time.
+Restarting an instance will immediately cancel any in-progress steps, erase any intermediate state, and treat the Workflow as if it was run for the first time. However, the restarted instance maintains the concurrency slot of the previous instance instead of returning to the queued state.
+
+Caution
+
+Exercise caution when using the `restart()` method to avoid concurrency slot deprivation. If you call the `restart()` method recursively without a conditional, that instance will run indefinitely, effectively eliminating a concurrency slot.
 
 To restart an instance from a specific step instead of the beginning, refer to [`restart`](https://developers.cloudflare.com/workflows/build/workers-api/#restart) in the Workers API reference.
+
+Because a restart erases all intermediate state, keep any state that must survive a restart outside of the instance itself. The following example uses the `restart` method to maintain a document processing pipeline:
+
+- Chunks of a document are stored in, and retrieved from, R2 with an identifiable object [prefix](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2listoptions).
+- Each [R2 object key](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2object-definition) is used as the `instanceId` for processing that chunk.
+- The workflow retrieves 100 chunks at a time, processes the chunks, and updates their prefix.
+- Then, if there are remaining objects with the original prefix, the Workflow instance restarts.
+
+*index.jsjs*
+
+```js
+export class MyWorkflow extends WorkflowEntrypoint {
+	async run(event, step) {
+		const listResult = await step.do("list files from R2", async () => {
+			// Restarts delete all state with the exception of search params.
+			// So we will need a cursor to keep track of progress.
+			const maybeCursor = await this.env.CHUNKS_BUCKET.get(
+				`cursor/${event.instanceId}`,
+			);
+
+			const cursor = maybeCursor
+				? (await maybeCursor.json()).cursor
+				: undefined;
+
+			// List first 100 files from R2 with prefix "chunked/"
+			const listed = await this.env.CHUNKS_BUCKET.list({
+				prefix: "chunked/",
+				limit: 100,
+				cursor,
+			});
+
+			if (listed.truncated) {
+				const cursor = listed.cursor;
+				await this.env.CHUNKS_BUCKET.put(
+					`cursor/${event.instanceId}`,
+					JSON.stringify({ cursor }),
+					{
+						httpMetadata: {
+							contentType: "application/json",
+						},
+					},
+				);
+			}
+
+			return {
+				keys: listed.objects.map((obj) => obj.key),
+				truncated: listed.truncated,
+			};
+		});
+
+		for (const key of listResult.keys) {
+			await step.do(`process file: ${key}`, async () => {
+				return await doSomething(key, this.env.CHUNKS_BUCKET, event.instanceId);
+			});
+		}
+
+		await step.do("restart workflow", async () => {
+			if (listResult.truncated) {
+				// There are still chunks to process, restarting the workflow to continue processing.
+				const instance = await this.env.CHUNK_PROCESSOR.get(event.instanceId);
+				await instance.restart();
+			} else {
+				// If the workflow has ended we reset the cursor, so that we can preserve determinism.
+				// If/when we re-run this workflow we will still process all the files.
+				await this.env.CHUNKS_BUCKET.delete(`cursor/${event.instanceId}`);
+
+				return "was not truncated, done";
+			}
+		});
+	}
+}
+```
+
+*index.tsts*
+
+```ts
+export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		const listResult = await step.do("list files from R2", async () => {
+			// Restarts delete all state with the exception of search params.
+			// So we will need a cursor to keep track of progress.
+			const maybeCursor = await this.env.CHUNKS_BUCKET.get(
+				`cursor/${event.instanceId}`,
+			);
+
+			const cursor = maybeCursor
+				? (await maybeCursor.json<{ cursor: string }>()).cursor
+				: undefined;
+
+			// List first 100 files from R2 with prefix "chunked/"
+			const listed = await this.env.CHUNKS_BUCKET.list({
+				prefix: "chunked/",
+				limit: 100,
+				cursor,
+			});
+
+			if (listed.truncated) {
+				const cursor = listed.cursor;
+				await this.env.CHUNKS_BUCKET.put(
+					`cursor/${event.instanceId}`,
+					JSON.stringify({ cursor }),
+					{
+						httpMetadata: {
+							contentType: "application/json",
+						},
+					},
+				);
+			}
+
+			return {
+				keys: listed.objects.map((obj) => obj.key),
+				truncated: listed.truncated,
+			};
+		});
+
+		for (const key of listResult.keys) {
+			await step.do(`process file: ${key}`, async () => {
+				return await doSomething(key, this.env.CHUNKS_BUCKET, event.instanceId);
+			});
+		}
+
+		await step.do("restart workflow", async () => {
+			if (listResult.truncated) {
+				// There are still chunks to process, restarting the workflow to continue processing.
+				const instance = await this.env.CHUNK_PROCESSOR.get(event.instanceId);
+				await instance.restart();
+			} else {
+				// If the workflow has ended we reset the cursor, so that we can preserve determinism.
+				// If/when we re-run this workflow we will still process all the files.
+				await this.env.CHUNKS_BUCKET.delete(`cursor/${event.instanceId}`);
+
+				return "was not truncated, done";
+			}
+		});
+	}
+}
+```
 
 ### Delete Workflow instances
 
@@ -413,5 +554,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/trigger-workflows/#page","headline":"Trigger Workflows","description":"Trigger Workflows from Workers bindings, the REST API, or the Wrangler CLI.","url":"https://developers.cloudflare.com/workflows/build/trigger-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/trigger-workflows/og.png?v=48434d0a23d3b226","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

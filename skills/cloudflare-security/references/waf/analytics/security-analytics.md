@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/analytics/security-analytics/og.png
 
 # Security Analytics
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Analytics displays information about all incoming HTTP requests for your domain, including requests not handled by Cloudflare security products. This gives you visibility into your full traffic profile, not only the requests that triggered a security rule.
 
@@ -159,7 +159,7 @@ Additionally, you can use the slider tool below the chart to filter incoming req
 
 Security Analytics shows request logs for the selected time frame and applied filters, along with detailed information and security analyses of those requests.
 
-By default, Security Analytics uses sampled logs (a subset of your traffic rather than every individual request). Sampling allows Cloudflare to return results in seconds, even when query volumes are large. If you are subscribed to [Log Explorer](https://developers.cloudflare.com/log-explorer/), you may also have access to [raw logs](#raw-logs).
+By default, Security Analytics uses sampled logs (a subset of your traffic rather than every individual request). Sampling allows Cloudflare to return results in seconds, even when query volumes are large. If you are subscribed to [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/), you may also have access to [raw logs](#raw-logs).
 
 #### Sampled logs
 
@@ -194,7 +194,7 @@ To switch from raw logs back to sampled logs, select **Switch back to sampled lo
 
 ##### Query raw logs using Log Explorer
 
-You can switch to [Log Explorer](https://developers.cloudflare.com/log-explorer/) to dive deeper on your analysis while applying the same filters you used in Security Analytics. Raw logs in Security Analytics are based on the same data source used in Log Explorer.
+You can switch to [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/) to dive deeper on your analysis while applying the same filters you used in Security Analytics. Raw logs in Security Analytics are based on the same data source used in Log Explorer.
 
 Note
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/analytics/security-analytics/og.png?v=f985d175dc54fab2","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/analytics/security-analytics/og.png?v=f985d175dc54fab2","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

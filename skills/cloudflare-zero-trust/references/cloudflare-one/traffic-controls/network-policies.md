@@ -299,11 +299,13 @@ All destination IPs and hostnames secured by an [Access self-hosted private appl
 
 ### Application
 
-You can apply network policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
+You can apply network policies to Cloudflare-managed applications and [custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) created in your account with the same Application selector. Refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
 
 | UI name | API example |
 | --- | --- |
 | Application | `any(app.ids[*] in {505})` |
+
+For custom applications, a hostname or destination IP must match the application's definition. Configured ports and protocols further restrict the match. Refer to [custom application matching](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#custom-application-matching).
 
 ### Browser Isolation Beta
 

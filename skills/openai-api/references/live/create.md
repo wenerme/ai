@@ -159,9 +159,9 @@ retry can place another call.
 
             The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
 
-  - `delegation: optional ClientDelegation or Responses { responses, type }  or null`
+  - `delegation: optional ClientDelegation or Responses { responses, type }  or Decisions { decisions, type }  or null`
 
-    Who handles tasks delegated by the Live model. Omitted or null selects your application; use `responses` to let the API manage a Responses backend.
+    Who handles tasks delegated by the Live model. Omitted or null selects your application; use `responses` or `decisions` to delegate to the corresponding API.
 
     - `ClientDelegation object { type }`
 
@@ -779,9 +779,69 @@ retry can place another call.
 
         - `"responses"`
 
+    - `Decisions object { decisions, type }`
+
+      - `decisions: DecisionsDelegationConfig`
+
+        - `model: string`
+
+        - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+
+          Native Decision API questions evaluated together, in order.
+
+          - `Choice object { choices, instructions, type, name }`
+
+            - `choices: array of object { value, description }`
+
+              - `value: string or boolean`
+
+                - `string`
+
+                - `boolean`
+
+              - `description: optional string`
+
+            - `instructions: string`
+
+            - `type: "choice"`
+
+              - `"choice"`
+
+            - `name: optional string`
+
+          - `Predicate object { instructions, type, name }`
+
+            - `instructions: string`
+
+            - `type: "predicate"`
+
+              - `"predicate"`
+
+            - `name: optional string`
+
+          - `Score object { instructions, levels, type, name }`
+
+            - `instructions: string`
+
+            - `levels: array of object { label, description }`
+
+              - `label: string`
+
+              - `description: optional string`
+
+            - `type: "score"`
+
+              - `"score"`
+
+            - `name: optional string`
+
+      - `type: "decisions"`
+
+        - `"decisions"`
+
   - `input: optional array of InitialItem`
 
-    Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and 8,192 rendered tokens in total.
+    Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and a configured rendered-token limit (8,192 by default).
 
     - `Developer object { content, role, id, 2 more }`
 
@@ -934,6 +994,74 @@ retry can place another call.
   - `store: optional boolean`
 
     Whether to store the session for later forking and recording download. Defaults to false for new sessions.
+
+  - `triggers: optional array of DecisionTrigger`
+
+    At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
+
+    - `decisions: object { questions }`
+
+      Questions evaluated using the current transcript and the session's shared Decision items.
+
+      - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+
+        Native Decision API questions evaluated together, in order.
+
+        - `Choice object { choices, instructions, type, name }`
+
+          - `choices: array of object { value, description }`
+
+            - `value: string or boolean`
+
+              - `string`
+
+              - `boolean`
+
+            - `description: optional string`
+
+          - `instructions: string`
+
+          - `type: "choice"`
+
+            - `"choice"`
+
+          - `name: optional string`
+
+        - `Predicate object { instructions, type, name }`
+
+          - `instructions: string`
+
+          - `type: "predicate"`
+
+            - `"predicate"`
+
+          - `name: optional string`
+
+        - `Score object { instructions, levels, type, name }`
+
+          - `instructions: string`
+
+          - `levels: array of object { label, description }`
+
+            - `label: string`
+
+            - `description: optional string`
+
+          - `type: "score"`
+
+            - `"score"`
+
+          - `name: optional string`
+
+    - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
+
+      - `"session.input_transcript.delta"`
+
+      - `"session.output_transcript.delta"`
+
+    - `type: "decisions"`
+
+      - `"decisions"`
 
 - `transport: Webrtc { sdp, type }  or Sip { destination, trunk, type }`
 

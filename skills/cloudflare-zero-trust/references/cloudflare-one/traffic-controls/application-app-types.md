@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/applica
 
 # Applications and app types
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
 
@@ -21,6 +21,44 @@ Gateway allows you to create DNS, Network, and HTTP policies based on applicatio
 When you choose the *Application* selector in a Gateway policy builder, the **Value** field will include all supported applications and their respective app types. Alternatively, you can use the [Gateway API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/app_types/methods/list/) to fetch a list of applications, app types, and ID numbers.
 
 To manage a consolidated list of applications across Cloudflare One, you can use the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/).
+
+### Custom applications
+
+You can [create a custom application in the Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/#create-a-custom-application) and select it by name in the existing **Application** selector for DNS, HTTP, and network policies. Custom and Cloudflare-managed applications can appear in the same condition. Custom applications are available only in the account that owns them.
+
+For API and Terraform rules, use the application's assigned numeric ID with the existing application fields, such as `app.ids`, `app.hosts_ids`, and `app.supports_ids`. The human-readable **Application ID** entered during creation is not the numeric ID used in a rule expression.
+
+To retrieve custom application IDs, list your account's applications with `GET /accounts/{account_id}/resource-library/applications`. The legacy Gateway `app_types` endpoint returns the Cloudflare-managed catalog and does not include custom applications.
+
+For example, replace `<CUSTOM_APPLICATION_NUMERIC_ID>` with the numeric ID to match the application:
+
+```txt
+any(app.ids[*] in {<CUSTOM_APPLICATION_NUMERIC_ID>})
+```
+
+Editing the application's network identifiers updates what referencing rules match after the definition propagates to Gateway. You do not need to replace its ID or recreate the rules. A custom application cannot be deleted while a Gateway rule or reusable profile references it, including a rule that is turned off. Refer to [Delete a custom application](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/#delete-a-custom-application).
+
+#### Custom application matching
+
+Gateway matches a custom application when the hostname or destination IP matches its definition. If the definition includes both hostnames and IP subnets, either can match independently. Multiple entries within each field are also alternatives.
+
+Hostnames match the specified domain and its subdomains. For example, `example.com` matches both `example.com` and `api.example.com`. Choose specific hostnames when you need to limit the scope of a custom application.
+
+In HTTP and network policies, configured port protocols add a restriction to the hostname or IP match. The destination must also match one of the configured port/protocol pairs or inclusive ranges. If **Port protocols** is empty, the definition applies to any port and protocol. A port/protocol match alone does not identify an application.
+
+For example, define a custom application with the hostname `crm.example.com`, the IP subnet `192.0.2.0/24`, and the port protocol `tcp/443`:
+
+| Traffic | Matches the custom application in an HTTP or network policy? |
+| --- | --- |
+| `crm.example.com` on TCP port `443`, outside the configured IP subnet | Yes. The hostname and port/protocol match. |
+| A destination in `192.0.2.0/24` on TCP port `443`, with a different hostname or no hostname | Yes. The IP subnet and port/protocol match. |
+| `crm.example.com` on TCP port `8443` | No. The port does not match. |
+| A destination in `192.0.2.0/24` on UDP port `443` | No. The protocol does not match. |
+| An unrelated hostname and IP on TCP port `443` | No. Neither the hostname nor the IP subnet matches. |
+
+DNS policies match the query hostname before resolution and can also match resolved IP addresses after resolution. DNS application matching does not use the application's port/protocol constraints because a DNS query does not identify the destination port of the subsequent connection. For the example application, a query for `crm.example.com` can match even when the subsequent connection would use port `8443`.
+
+[Support hostnames](#support-hostnames) identify application dependencies. Gateway includes them in Allow policies and excludes them from Block policies, using the same behavior as support hostnames for Cloudflare-managed applications. Adding support hostnames does not replace the requirement for a primary hostname or IP subnet. Refer to [custom application limits](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/#custom-application-limits) for the combined hostname limit, IP subnet limits, and port formats.
 
 ## App types
 
@@ -134,7 +172,7 @@ When managing applications with the [Application Library](https://developers.clo
 
 Install Cloudflare certificate manually to allow TLS decryption
 
-Instead of creating a Do Not Inspect policy for an application, you may be able to configure the application to [trust a Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#add-the-certificate-to-applications). Doing so will allow the application to function without losing visibility into your traffic.
+Instead of creating a Do Not Inspect policy for an application, you may be able to configure the application to [trust a Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#5-add-the-certificate-to-applications). Doing so will allow the application to function without losing visibility into your traffic.
 
 #### TLS decryption limitations
 
@@ -194,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#page","headline":"Applications and app types","description":"Reference information for Applications and app types in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/og.png?v=de28df73d8ca9888","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#page","headline":"Applications and app types","description":"Reference information for Applications and app types in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/og.png?v=de28df73d8ca9888","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

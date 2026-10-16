@@ -1,0 +1,128 @@
+---
+description: Find answers to common questions about Log Explorer.
+title: FAQ
+image: https://developers.cloudflare.com/observability/logs/log-explorer/faq/og.png?v=b756f8bb3748eaa8
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/observability/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# FAQ
+
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+These questions cover Log Explorer (Legacy).
+
+## Which fields (or columns) are available for querying?
+
+All fields listed in [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) for the [supported datasets](https://developers.cloudflare.com/observability/logs/log-explorer/manage-datasets/#supported-datasets) can be queried.
+
+## Why is the `MatchedRules` field empty for some requests?
+
+`MatchedRules` is populated only by security and transformation rules (WAF, Rate Limiting, Transform Rules, Snippets). Cache rules do not populate this field. If you are investigating cache behavior, use the `Cache*` fields such as `CacheCacheStatus` instead.
+
+## Why does my query not complete or time out?
+
+Queries perform best when their parameters focus on narrower ranges of time. You may experience query timeouts when your query would return a large quantity of data. Consider refining your query to improve performance.
+
+## Why do I not see any logs in my queries after enabling the dataset?
+
+Ingestion starts from the moment you enable the dataset. Logs for events that occurred before you enabled the dataset are not available. Make sure that new events have been generated since enabling the dataset, and check again.
+
+## My query returned an error. How do I figure out what went wrong?
+
+We are actively working on improving error codes. If you receive a generic error, check your SQL syntax (if you are using the custom SQL feature), and make sure you have included a date and a limit. If the query still fails it is likely timing out. Try refining your filters.
+
+## Where is the data stored?
+
+The data is stored in Cloudflare R2. Each dataset is stored on a per-customer level, similar to Cloudflare D1, ensuring that your data is kept separate from that of other customers. In the future, this single-tenant storage model will provide you with the flexibility to create your own retention policies and decide in which regions you want to store your data.
+
+## Does Log Explorer support Customer Metadata Boundary?
+
+Customer Metadata Boundary is currently not supported for Log Explorer.
+
+## Are there any constraints on the log volume that Log Explorer can support?
+
+We are continually scaling the Log Explorer data platform. At present, Log Explorer supports log ingestion rates of up to 50,000 records per second. If your needs exceed this, contact your account team.
+
+## How is Log Explorer different from Logpush? Do I need both?
+
+Log Explorer lets you search and analyze your Cloudflare logs directly in the dashboard or via API. [Logpush](https://developers.cloudflare.com/logs/logpush/), on the other hand, delivers raw logs to third-party SIEMs or storage systems. You generally do not need both, but some customers choose to use these datasets for quick investigation and Logpush for long-term storage or integration with other tools.
+
+## Is there a free version or trial of Log Explorer?
+
+Log Explorer is available as a paid add-on for any Application Services or Zero Trust purchase. There is no free version at this time.
+
+## How is Log Explorer billed?
+
+Billing is based on the volume of logs indexed and stored, measured in gigabytes (GB). Your charges scale with the amount of log data you choose to retain. Unlike query-based billing models (for example, BigQuery), charges are not based on how often you search or scan your data. Once logs are ingested and stored, you can query them without additional cost.
+
+## Are logs from attack traffic included in my Log Explorer usage?
+
+Yes. In general, billing is based on the total volume of logs ingested and stored, including attack traffic. Since these logs are often critical for investigating security incidents, they are treated the same as all other log data.
+
+However, logs generated from Layer 7 (L7) DDoS attack traffic are not ingested by default and therefore do not count toward your usage.
+
+## How does Log Explorer store data in R2, and why do I not see it in my own R2 bucket?
+
+Log Explorer uses Cloudflare Logpush and R2 behind the scenes to stream and store logs. For technical and performance reasons, the data is stored in internal, customer-specific R2 buckets managed by Cloudflare. These buckets are single-tenant to keep your data isolated, but they are not visible in your account's R2 interface. You are not billed separately for this storage — it is included in your usage.
+
+## Are Custom Dashboards based on R2 Log Explorer data, or on GraphQL?
+
+Custom Dashboards use [GraphQL](https://developers.cloudflare.com/analytics/graphql-api/sampling/) for standard analytics datasets.
+
+Customers with the Log Explorer add-on can also select Log Explorer datasets to create charts from raw, unsampled log data. This is supported on all plans and account types, with no additional enablement required.
+
+You cannot turn a saved or active query directly into a Custom Dashboard chart.
+
+For more information, refer to [Custom dashboards](https://developers.cloudflare.com/analytics/custom-dashboards/).
+
+## How can I track my Log Explorer usage?
+
+Your monthly usage is displayed at the top of the Log Search and Manage Datasets dashboard sections.
+
+![Usage display in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1078,height=380,format=webp/_astro/log-explorer-usage.CTcGXtWV.png)
+
+## How do I turn off Log Explorer?
+
+To turn off Log Explorer you must:
+
+1. **Stop log ingestion to immediately stop incurring additional charges.** To stop log ingestion, turn off any datasets that are on at both the account level and zone level.
+2. **Cancel the Log Explorer subscription to stop renewal.** Your subscription may remain active until the end of the current billing cycle.
+
+### 1. Stop log ingestion
+
+After performing the following steps, you will immediately stop incurring additional charges for Log Explorer.
+
+#### Review and turn off account-level datasets
+
+1. In the Cloudflare dashboard, go to the account-level **Manage datasets** page. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
+
+#### Review and turn off zone-level datasets
+
+1. In the Cloudflare dashboard, go to the zone-level **Manage datasets** page. [Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/log-explorer/manage-sources)
+2. Turn off each dataset you no longer need using the toggle. To confirm each operation, select **Stop ingesting logs**.
+3. Repeat for all relevant zones.
+
+### 2. Cancel the Log Explorer subscription
+
+This operation will stop Log Explorer's renewal.
+
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. In the **Subscriptions** tab, find the Log Explorer subscription and select **Cancel**.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/logs/log-explorer/faq/#page","headline":"FAQ","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/observability/logs/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/logs/log-explorer/faq/og.png?v=b756f8bb3748eaa8","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

@@ -55,7 +55,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 1. **Download Codex**
@@ -161,7 +161,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
@@ -169,15 +177,7 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

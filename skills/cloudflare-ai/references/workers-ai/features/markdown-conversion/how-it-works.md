@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers-ai/features/markdown-conversion
 
 # How it works
 
-Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Pre-processing
 
@@ -29,9 +29,9 @@ When we detect an HTML file, a series of things happen to the HTML content befor
 - If the `cssSelector` option is:
   - present, then only those elements that match the selector are kept for further processing;
   - missing, then elements such as `<header>`, `<footer>` and `<head>` are removed from the text.
-- If a base URL was obtained previously, relative links in the remaining HTML are resolved to fully qualified URLs
+- If a base URL was obtained previously, relative links in the remaining HTML are resolved to fully qualified URLs.
 
-<sup>1</sup> The host can also be set per request, using the HTML conversion options. Refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#html) for more details.
+<sup>1</sup> You can also set the base URL for each request with the HTML conversion options. Refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#html) for more details.
 
 ### Images
 
@@ -67,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/og.png?v=54dd4472fb6acd18","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#page","headline":"How it works","description":"Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/og.png?v=54dd4472fb6acd18","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

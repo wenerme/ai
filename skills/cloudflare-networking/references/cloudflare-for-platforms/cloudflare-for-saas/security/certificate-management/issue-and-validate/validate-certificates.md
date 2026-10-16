@@ -24,12 +24,13 @@ When you [create a custom hostname](https://developers.cloudflare.com/api/resour
 
 ### Non-wildcard certificates
 
-Specific (non-wildcard) custom hostnames can use [HTTP based DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/) for certificate renewals, as long as:
+Specific (non-wildcard) custom hostnames can use [HTTP-based DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/) for certificate renewals when:
 
 - The hostname is pointing to the SaaS provider.
 - The hostname's traffic is proxying through the Cloudflare network.
+- The hostname does not use [Delegated DCV](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/).
 
-If your custom hostnames do not meet these requirements, use another validation method.
+Cloudflare may use HTTP validation even if you selected TXT for initial issuance. If your custom hostnames do not meet these requirements, retrieve the current `ssl.method` and `ssl.validation_records`. These fields identify whether to use manual HTTP or TXT validation.
 
 ### Wildcard certificates
 

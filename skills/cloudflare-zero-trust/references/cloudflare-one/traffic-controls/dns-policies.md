@@ -389,11 +389,13 @@ The Override action cannot be used with selectors evaluated during or after DNS 
 
 ### Application
 
-You can apply DNS policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
+You can apply DNS policies to Cloudflare-managed applications and [custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) created in your account with the same Application selector. Refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
 
 | UI name | API example | Evaluation phase |
 | --- | --- | --- |
-| Application | `any(app.ids[*] in {505})` | Before DNS resolution |
+| Application | `any(app.ids[*] in {505})` | Before and after DNS resolution |
+
+DNS application matching uses hostnames and resolved IP addresses, without checking the application's port/protocol constraints. Refer to [custom application matching](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#custom-application-matching).
 
 ### Authoritative Nameserver IP
 

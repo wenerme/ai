@@ -1,7 +1,7 @@
 ---
-description: Export encrypted AI Gateway logs to external storage using Workers Logpush.
-title: Workers Logpush
-image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=fe56d798a9d4e71c
+description: Export encrypted AI Gateway logs to external storage using Logpush.
+title: Logpush
+image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132
 ---
 
 [Skip to content](#main-content)
@@ -10,23 +10,21 @@ image: https://developers.cloudflare.com/ai-gateway/observability/logging/logpus
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Workers Logpush
+# Logpush
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Workers Logpush on and off in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) settings. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/ai-gateway/reference/pricing).
+AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Logpush on and off in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) settings. For pricing information, refer to [Logpush pricing](https://developers.cloudflare.com/logs/logpush/pricing/).
 
-Workers Logpush works with [AI Gateway logging](https://developers.cloudflare.com/ai-gateway/observability/logging/) and [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/).
-
-This guide explains how to set up Workers Logpush for AI Gateway, generate an RSA key pair for encryption, and decrypt the logs once they are received.
+This guide explains how to set up Logpush for AI Gateway, generate an RSA key pair for encryption, and decrypt the logs once they are received.
 
 For Legacy Logs on Workers Paid, you can store 10 million logs per gateway. If saving stops at this limit, logs are not saved or exported. Delete older logs or turn on automatic deletion to resume exports.
 
-Workers Logpush supports four jobs per account. Each exported log can be up to 1 MB.
+Logpush supports four jobs per account. Each exported log can be up to 1 MB.
 
 Note
 
-To export logs using Workers Logpush, you must have logs turned on for the gateway.
+To export logs using Logpush, you must have logs turned on for the gateway.
 
 Need a higher limit?
 
@@ -42,9 +40,9 @@ Once encrypted, both the AES-encrypted data and the RSA-encrypted AES key are se
 
 This method combines the best of both worlds: the efficiency of AES for data encryption with the secure key exchange capabilities of RSA, ensuring data integrity, confidentiality, and performance are all optimally maintained throughout the data lifecycle.
 
-## Setting up Workers Logpush
+## Configure Logpush
 
-To configure Workers Logpush for AI Gateway, follow these steps:
+To configure Logpush for AI Gateway, follow these steps:
 
 ## 1. Generate an RSA key pair locally
 
@@ -91,17 +89,17 @@ node {file name}
 
 ## 2. Upload public key to gateway settings
 
-Once you have generated the key pair, upload the public key to your AI Gateway settings. This key will be used to encrypt your logs. In order to enable Workers Logpush, you will need logs enabled for that gateway.
+Once you have generated the key pair, upload the public key to your AI Gateway settings. This key will be used to encrypt your logs. In order to enable Logpush, you will need logs enabled for that gateway.
 
 ## 3. Set up Logpush
 
-Uploading your public key enables Workers Logpush for the gateway, but logs will not be exported until you also create and enable a Logpush job that specifies where to send them. Both steps are required.
+Uploading your public key enables Logpush for the gateway, but logs will not be exported until you also create and enable a Logpush job that specifies where to send them. Both steps are required.
 
 To create the Logpush job, choose your destination and follow the steps in the [Enable destinations](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) documentation. For example, to export logs to Cloudflare R2, refer to [Enable Cloudflare R2](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/). When configuring the job, select the AI Gateway dataset.
 
 ## 4. Receive encrypted logs
 
-After configuring Workers Logpush, logs will be sent encrypted using the public key you uploaded. To access the data, you will need to decrypt it using your private key. The logs will be sent to the object storage provider that you have selected.
+After configuring Logpush, logs will be sent encrypted using the public key you uploaded. To access the data, you will need to decrypt it using your private key. The logs will be sent to the object storage provider that you have selected.
 
 ## 5. Decrypt logs
 
@@ -243,5 +241,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/#page","headline":"Workers Logpush","description":"Export encrypted AI Gateway logs to external storage using Workers Logpush.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=fe56d798a9d4e71c","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/#page","headline":"Logpush","description":"Export encrypted AI Gateway logs to external storage using Logpush.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/og.png?v=766096e7fe00e132","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

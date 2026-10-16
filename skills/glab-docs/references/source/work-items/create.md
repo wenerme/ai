@@ -41,6 +41,9 @@ cat description.md | glab work-items create --type issue --title "Add feature" -
 # Attach a screenshot to the description
 glab work-items create --type issue --title "Add feature" --attach ./screenshot.png
 
+# Create a work item in an iteration
+glab work-items create --type issue --title "Add feature" --iteration 123
+
 ```
 
 ## Options
@@ -51,6 +54,7 @@ glab work-items create --type issue --title "Add feature" --attach ./screenshot.
   -d, --description string        Description of the work item. Set to "-" to open an editor.
       --description-file string   Read the work item description from a file. Use "-" to read from standard input.
   -g, --group string              Create work items for a group or subgroup.
+      --iteration int             Add the work item to the iteration with this ID.
       --jq string                 Filter JSON output with a jq expression.
   -F, --output string             Format output as: text, json. (default "text")
   -R, --repo string               Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.

@@ -27,7 +27,7 @@ Pages offers support for [GitHub ↗︎](https://github.com/) and [GitLab ↗︎
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** > **Pages** > **Connect to Git**.
 
-You will be prompted to sign in with your preferred Git provider. This allows Cloudflare Pages to deploy your projects, and update your PRs with [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
+Select **GitHub** or **GitLab**. If prompted, authenticate with your Git provider. This allows Cloudflare Pages to deploy your projects and update your pull requests with [preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
 
 Note
 

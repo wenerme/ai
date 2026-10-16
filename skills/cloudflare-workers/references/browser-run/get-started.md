@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/get-started/og.png?v=dd8170
 
 # Get started
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
 
@@ -98,7 +98,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
   "main": "src/index.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-10-16",
   "browser": {
     "binding": "BROWSER"
   }
@@ -110,7 +110,7 @@ name = "browser-quick-action"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-16"
 
 [browser]
 binding = "BROWSER"
@@ -173,6 +173,44 @@ Other Quick Actions endpoints include:
 Check out the full list of [Quick Actions endpoints](https://developers.cloudflare.com/browser-run/quick-actions/).
 
 ## Browser Sessions
+
+Browser Sessions give you full control over a headless browser. You can connect from anywhere using the REST API, or from a Cloudflare Worker using a browser binding.
+
+### Prerequisites
+
+- Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- Create a [Cloudflare API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permissions.
+
+### Create a browser session
+
+A single API call gives you a live browser session you can see and interact with:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000&targets=true" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+*Responsejson*
+
+```json
+{
+	"sessionId": "1909cef7-23e8-4394-bc31-27404bf4348f",
+	"targets": [
+		{
+			"devtoolsFrontendUrl": "https://live.browser.run/ui/inspector?wss=..."
+		}
+	]
+}
+```
+
+Copy the `devtoolsFrontendUrl` and open it in your browser. You now have a real browser session running on Cloudflare that you can interact with directly: enter a URL, click around, and inspect the page.
+
+You can drive browser sessions programmatically using [CDP](https://developers.cloudflare.com/browser-run/cdp/), [Puppeteer](https://developers.cloudflare.com/browser-run/cdp/puppeteer/), or [Playwright](https://developers.cloudflare.com/browser-run/cdp/playwright/) from any environment. Browser sessions also support:
+
+- **[Live View](https://developers.cloudflare.com/browser-run/features/live-view/)**: See and interact with a remote session in real time, useful for debugging automation scripts or monitoring browser activity.
+- **[Session Recording](https://developers.cloudflare.com/browser-run/features/session-recording/)**: Record browser sessions for playback, so you can review what happened during an automation run.
+- **[Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)**: Pause automation and hand control to a human for tasks that require manual intervention, like solving CAPTCHAs or completing login flows.
 
 ### Prerequisites
 
@@ -274,7 +312,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-16",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER"
@@ -295,7 +333,7 @@ name = "browser-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-16"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -430,5 +468,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/get-started/og.png?v=dd8170fd00373d46","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/get-started/#page","headline":"Get started","description":"Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.","url":"https://developers.cloudflare.com/browser-run/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/get-started/og.png?v=dd8170fd00373d46","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

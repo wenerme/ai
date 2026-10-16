@@ -18,7 +18,7 @@ Advanced patterns and examples for routing incoming emails with Cloudflare Email
 
 - [Email storage and processing](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/)
 - [Spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/)
-- [Handle hard bounce emails](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/)
+- [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/)
 
 Was this helpful?
 

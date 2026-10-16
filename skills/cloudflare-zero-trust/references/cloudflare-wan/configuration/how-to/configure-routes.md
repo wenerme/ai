@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/con
 
 # Configure routes
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Cloudflare Virtual Network routing table through static route configuration or routes learned from BGP peering over IPsec and GRE tunnels or CNI with Dataplane v2 (closed beta).
 
@@ -39,7 +39,7 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-1. Go to **Routes** page. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+1. Go to the **Routes** page. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
 3. Enter a descriptive name for your route in **Description**.
 4. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
@@ -461,6 +461,118 @@ If you are configuring BGP peering for a tunnel (GRE or IPsec) you must be aware
 
   When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does not support TCP MD5 authentication).
 
+### Filter BGP routes
+
+BGP filter profiles control routes exchanged over your peering session with Cloudflare. They apply to BGP over GRE or IPsec tunnels.
+
+Each account-scoped profile requires a unique name, one match action, and up to 1,000 Classless Inter-Domain Routing (CIDR) targets.
+
+Match actions have the following behavior:
+
+| Match action | Behavior |
+| --- | --- |
+| `allow` | Accept matching routes and reject everything else. |
+| `deny` | Reject matching routes and accept everything else. |
+
+Each CIDR target has a matching mode that determines whether the prefix and its subnets match:
+
+| Matching mode | Syntax | Matches |
+| --- | --- | --- |
+| Exact prefix | `10.0.0.0/8` | Only `10.0.0.0/8`. |
+| Prefix and more-specific routes | `10.0.0.0/8+` | `10.0.0.0/8` and every more-specific subnet. |
+| Exact length | `10.0.0.0/8{16}` | Every `/16` subnet within `10.0.0.0/8`. |
+| Length range | `10.0.0.0/8{16,24}` | Every `/16` through `/24` subnet within the prefix. |
+
+Each tunnel supports one import filter and one export filter.
+
+Import filters apply to routes Cloudflare receives from the peer. Rejected routes do not enter the Magic routing table. Rejected routes remain in the local routing information base (RIB-in). Making the filter more permissive adds them to the Magic routing table without a route refresh.
+
+Export filters apply to routes selected for peer advertisement. Prefixes in the tunnel's `extra_prefixes` field bypass export filters.
+
+#### Create profiles
+
+1. Go to the **Routes** page. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+2. From the **BGP filter profiles** tab, select **Create filter profile**.
+3. Enter a descriptive **Name** for your filter profile and optionally add a **Description**.
+4. Choose **Allow** or **Deny** as the **Action** to take when a route matches a target.
+5. Add a **Target** by entering a CIDR prefix in **CIDR prefix**. Choose which **Match** mode this target should use.
+6. If you want to add more targets, choose **Add target**.
+7. Select **Create**.
+
+You need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+
+The following request creates an allow profile for corporate subnets:
+
+*Create BGP Filter Profilebash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/bgp/filter_profiles" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Allowed on-premises imports",
+		"description": "Corporate subnets accepted from the customer router",
+		"match_action": "allow",
+		"targets": [
+				"10.0.0.0/8+",
+				"192.168.0.0/16",
+				"2001:db8::/32+"
+		]
+	}'
+```
+
+Profile targets have these requirements:
+
+- Targets must use valid CIDR network addresses without whitespace. Cloudflare rejects duplicate or equivalent targets.
+- Profiles support IPv4 and IPv6 targets, but not IPv4-mapped IPv6 targets.
+
+#### Assign profiles
+
+1. Go to the **Connectors** page and choose **IPsec/GRE tunnels**. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+2. Choose **Create a tunnel** to make a new tunnel or choose **Configure BGP** from the three-dot menu next to an existing tunnel.
+3. Select a profile from **Import filter profile**. To remove it, select **X** next to the selected profile.
+4. Repeat for **Export filter profile**.
+5. Choose **Add tunnels** or **Save**.
+
+The following request assigns import and export profiles to a GRE tunnel. Set each field to a profile ID from your account.
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Update GRE Tunnelbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnels/$GRE_TUNNEL_ID" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"bgp": {
+				"import_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
+				"export_filter_id": "b2c3d4e5f6a78901b2c3d4e5f6a78901"
+		}
+	}'
+```
+
+To remove an assigned profile, set its corresponding field to `null`.
+
+Profile assignments have these behaviors and limits:
+
+- Changing a profile or a tunnel's profile assignments does not reset BGP sessions.
+- You cannot delete an in-use profile. Detach the profile from all tunnels first.
+- Cloudflare enforces the 5,000-route RIB-in limit before import filtering. Rejected routes still count toward this limit.
+
 ## Next steps
 
 Now that you have configured your tunnels and routes, the next step is to create a site. Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to check, at a glance, the state of your on-ramps and set up health alert settings so that Cloudflare notifies you when there are issues with the site's on-ramps.
@@ -476,5 +588,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. You can also use BGP peering to exchange routes dynamically. Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. You can also use BGP peering to exchange routes dynamically. Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

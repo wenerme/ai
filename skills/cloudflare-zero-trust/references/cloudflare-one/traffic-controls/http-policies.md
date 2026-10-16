@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # HTTP policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -360,6 +360,28 @@ When you turn on both options, Gateway will preserve the original path and query
 cloudflare.com/redirect-path/path/to/page?querystring=Y&k=1&cf_user_email=user@example.com
 ```
 
+### Forward Beta
+
+API value: `forward`
+
+Public beta
+
+The Gateway Forward action is available in public beta on all Zero Trust plans. Workers usage is subject to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/).
+
+Forward invokes a Worker on permitted HTTP traffic. The Worker can modify a request before sending it to its original destination, transform the response, return a synthetic response, or run background work.
+
+Forward policies run in a separate phase after HTTP request policies and before body policies and inspection. Gateway invokes the Worker selected by the first matching Forward policy in order of precedence.
+
+Gateway inspects the original body before delivering it to the Worker. A body-inspection Block decision can interrupt the Worker.
+
+An Allow decision does not skip the Forward phase. A Forward policy does not override a Block decision.
+
+Use request metadata selectors, identity, and device posture conditions to select traffic. Body inspection results, DLP matches, and response selectors cannot select a Worker.
+
+HTTPS traffic requires TLS decryption. Do Not Inspect traffic bypasses Forward. Gateway does not invoke a Worker for CONNECT tunnels, protocol upgrades, or trailers. WebSocket traffic connects directly to the original upstream service and bypasses the Worker. Refer to [Known limitations](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/#known-limitations) for protocol restrictions and other constraints.
+
+Refer to [Forward traffic](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/) for setup, the Worker entrypoint, and inspection order. Start with a [Worker template](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/) for notifications, capture, or transformation.
+
 ### Isolate
 
 API value: `isolate`
@@ -676,11 +698,13 @@ The review approval status of an application from [Shadow IT Discovery](https://
 
 ### Application
 
-You can apply HTTP policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
+You can apply HTTP policies to Cloudflare-managed applications and [custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) created in your account with the same Application selector. Refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/) for more information.
 
 | UI name | API example |
 | --- | --- |
 | Application | `any(app.ids[*] in {505})` |
+
+For custom applications, a hostname or destination IP must match the application's definition. Configured ports and protocols further restrict the match. Refer to [custom application matching](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#custom-application-matching).
 
 Multiple API selectors required for Terraform
 
@@ -730,7 +754,7 @@ Applications within a specific [security category](https://developers.cloudflare
 
 Note
 
-Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#gateway-with-warp-default).
+Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#traffic-and-dns-mode-default).
 
 The continent where the request is destined. Geolocation is determined from the target IP address. To specify a continent, enter its two-letter code into the **Value** field:
 
@@ -752,7 +776,7 @@ The continent where the request is destined. Geolocation is determined from the 
 
 Note
 
-Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#gateway-with-warp-default).
+Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#traffic-and-dns-mode-default).
 
 The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
@@ -764,7 +788,7 @@ The country that the request is destined for. Geolocation is determined from the
 
 Note
 
-Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#gateway-with-warp-default).
+Only applies to traffic sent through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/set-up/#traffic-and-dns-mode-default).
 
 The IP address of the request's target.
 
@@ -1233,5 +1257,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#page","headline":"HTTP policies","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/og.png?v=09272ecf64fa8fc1","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#page","headline":"HTTP policies","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/og.png?v=09272ecf64fa8fc1","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
 ```

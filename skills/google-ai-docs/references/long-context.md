@@ -1,5 +1,3 @@
-# Long context
-
 Many Gemini models come with large context windows of 1 million or more tokens.
 Historically, large language models (LLMs) were significantly limited by
 the amount of text (or tokens) that could be passed to the model at one time.
@@ -26,6 +24,8 @@ to the model, which will subsequently generate a response. An analogy for the
 context window is short term memory. There is a limited amount of information
 that can be stored in someone's short term memory, and the same is true for
 generative models.
+
+In Gemini 4 (`gemini-4-argon`), the 1M-token context window is **shared across input, thinking, and output tokens** , and the model can generate up to 1M output tokens using [long decode](https://ai.google.dev/gemini-api/docs/long-decode). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens). Earlier Gemini 3 and 2.5 models use separate 1M input and 64K output budgets.
 
 You can read more about how models work under the hood in our [generative models
 guide](https://ai.google.dev/gemini-api/docs/prompting-strategies#under-the-hood).
@@ -120,10 +120,9 @@ Some emerging and standard use cases for video long context include:
 - Real-time video processing
 
 When working with videos, it is important to consider how the [videos are
-processed into tokens](https://ai.google.dev/gemini-api/docs/tokens#media-token), which affects
+processed into tokens](https://ai.google.dev/gemini-api/docs/tokens#video), which affects
 billing and usage limits. You can learn more about prompting with video files in
-the [Prompting
-guide](https://ai.google.dev/gemini-api/docs/prompting_with_media?lang=python#prompting-with-videos).
+the [Prompting guide](https://ai.google.dev/gemini-api/docs/files#prompt-guide).
 
 ### Long form audio
 
@@ -143,7 +142,7 @@ Some emerging and standard use cases for audio context include:
 - Voice assistants
 
 You can learn more about prompting with audio files in the [Prompting
-guide](https://ai.google.dev/gemini-api/docs/prompting_with_media?lang=python#prompting-with-videos).
+guide](https://ai.google.dev/gemini-api/docs/files#prompt-guide).
 
 ## Long context optimizations
 

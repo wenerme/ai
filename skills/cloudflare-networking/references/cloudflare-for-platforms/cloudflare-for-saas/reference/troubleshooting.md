@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Troubleshooting
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Certificate stuck in pending validation
 
@@ -97,7 +97,28 @@ As Let's Encrypt - one of the [certificate authorities (CAs)](https://developers
 
 Consider the following solutions:
 
-- Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to an empty string ( `""`): this sets the custom hostname certificate to "default CA", leaving the choice up to Cloudflare. Cloudflare will always attempt to issue the certificate from a more compatible CA, such as [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services), and will only fall back to using Let’s Encrypt if there is a [CAA record](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) in place that blocks Google from issuing a certificate.<details><summary>
+- Use the [Custom Hostname Details](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/) endpoint to retrieve the current `ssl.method`, `ssl.type`, and complete `ssl.settings` object. Then use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set `certificate_authority` to an empty string ( `""`). Reuse the current method, type, and settings. This sets the custom hostname certificate to "default CA", leaving the choice up to Cloudflare. Cloudflare will always attempt to issue the certificate from a more compatible CA, such as [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services), and will only fall back to using Let’s Encrypt if there is a [CAA record](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/) in place that blocks Google from issuing a certificate.
+
+  For example, the following response values must remain unchanged when you update `certificate_authority`:
+
+  ```json
+  {
+    "method": "txt",
+    "type": "dv",
+    "settings": {
+      "ciphers": [
+        "ECDHE-ECDSA-AES128-GCM-SHA256",
+        "ECDHE-RSA-AES128-GCM-SHA256"
+      ],
+      "early_hints": "on",
+      "http2": "on",
+      "min_tls_version": "1.2",
+      "tls_1_3": "on"
+    }
+  }
+  ```
+
+  <details><summary>
 
   Example API call</summary>
 
@@ -111,14 +132,24 @@ Consider the following solutions:
     "ssl": {
         "method": "txt",
         "type": "dv",
-        "certificate_authority": ""
+        "certificate_authority": "",
+        "settings": {
+            "ciphers": [
+                "ECDHE-ECDSA-AES128-GCM-SHA256",
+                "ECDHE-RSA-AES128-GCM-SHA256"
+            ],
+            "early_hints": "on",
+            "http2": "on",
+            "min_tls_version": "1.2",
+            "tls_1_3": "on"
+        }
     }
   }'
   ```
 
   </details>
 
-- Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
+- Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, include the current `method`, `type`, and complete `settings` object.
 - If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
 
 ## Custom hostname fails to verify because the zone is held
@@ -148,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/og.png?v=9d2a249f28a574a1","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/og.png?v=9d2a249f28a574a1","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

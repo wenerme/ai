@@ -426,6 +426,20 @@ Products
 
 [**Business Continuity Guide** Build a business continuity strategy for the Cloudflare One Client using available disconnection mechanisms and decision guidance for service degradation scenarios.](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/)
 
+[**Display a coaching page** Return a custom explanatory HTML page from a Gateway Worker without forwarding the request upstream.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/coaching-page/)
+
+[**Capture a downloaded file** Save a bounded copy of a Gateway-proxied attachment to a private R2 bucket in the background.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/download-capture/)
+
+[**Store headers and bodies as JSON** Archive selected HTTP headers and bounded JSON request and response bodies in a private R2 bucket.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-capture/)
+
+[**Redact a JSON field** Replace a specific top-level JSON field in a bounded application request before continuing through Gateway.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/json-redaction/)
+
+[**Capture a screenshot** Capture a public webpage in an independent browser and save the screenshot to R2 without awaiting it in the user's response.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/screenshot/)
+
+[**Send a Slack notification** Send a background Slack notification for a selected Gateway HTTP request.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/slack-notification/)
+
+[**Watermark HTML pages** Add a visible user watermark to HTML responses using the Gateway Forward action and HTMLRewriter.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/watermark/)
+
 [**Use the Cloudflare One Client as an on-ramp** Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/)
 
 [**DNSSEC migration tutorial** Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/)

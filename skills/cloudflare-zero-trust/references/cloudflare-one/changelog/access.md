@@ -19,6 +19,23 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 ## 2026-10-14
 
 
+**Account context in Access deny redirects**
+
+App-aware Cloudflare Access deny redirects include an `account_id` query parameter when account context is available. Custom block pages can use it to identify the account that owns the application represented by `kid`.
+
+For example, a custom redirect can include:
+
+```txt
+https://denied.example.com/?kid=<APP_AUD>&account_id=<ACCOUNT_ID>&original_url=app.example.com%2Fadmin
+```
+
+The account ID helps block-page integrations look up applications through account-scoped APIs. It is context, not proof of authentication or authorization.
+
+For parameter descriptions and an example, refer to [Custom redirect URL parameters](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/#custom-redirect-url-parameters).
+
+## 2026-10-14
+
+
 **Infrastructure applications support a configurable session duration**
 
 [Infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) now have a configurable session duration with a default value of 24 hours. You can set the session duration when creating or editing an infrastructure application in the dashboard or via the API.

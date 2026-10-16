@@ -74,6 +74,7 @@ Choose the guide for the environment where your workload runs:
 - **[Oracle Cloud Infrastructure](https://developers.openai.com/api/docs/guides/workload-identity-federation/oracle-cloud)**: Use instance principal tokens from an Oracle identity domain.
 - **[GitHub Actions](https://developers.openai.com/api/docs/guides/workload-identity-federation/github-actions)**: Use OIDC tokens in continuous integration workflows.
 - **[SPIFFE](https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe)**: Use SPIFFE JWT-SVIDs issued by SPIRE or a compatible provider.
+- **[Idira](https://developers.openai.com/api/docs/guides/workload-identity-federation/idira)**: Use SPIFFE JWT-SVIDs issued by Idira Secure Workload Access.
 
 
 

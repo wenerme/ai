@@ -1,5 +1,5 @@
 ---
-description: Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.
+description: Email Service SMTP endpoint, authentication, limits, responses, and errors.
 title: SMTP
 image: https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.png?v=13757de7404f5225
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.p
 
 # SMTP
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/smtp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service exposes an authenticated SMTP submission endpoint so you can send emails from any application, framework, or off-the-shelf mail client that speaks SMTP. Use SMTP when the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) and the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) are not a good fit — for example, when integrating an existing application that already speaks SMTP, or a language-native SMTP library (Nodemailer, `smtplib`, PHPMailer, JavaMail).
 
@@ -31,7 +31,7 @@ smtp.mx.cloudflare.net:465
 | Security | Implicit TLS (also called SMTPS) |
 | SMTP `AUTH` | `PLAIN` or `LOGIN` |
 | Username | The literal string `api_token` |
-| Password | A Cloudflare API token (see below) |
+| Password | A Cloudflare API token (refer to [Prerequisites](#prerequisites)) |
 
 Cloudflare only offers SMTP submission on port `465` with implicit TLS. Plaintext SMTP, opportunistic `STARTTLS` on port `587`, and unauthenticated relay on port `25` are not supported for outbound submission. Port `25` is reserved for inbound mail to [Email Routing](https://developers.cloudflare.com/email-service/api/route-emails/).
 
@@ -123,7 +123,7 @@ When **Drop suppressed recipients** is on and all recipients are suppressed, SMT
 
 ## Examples
 
-For language-specific examples — curl, Nodemailer, Python `smtplib`, and PHPMailer — see [Send email over SMTP](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/).
+For language-specific examples — curl, Nodemailer, Python `smtplib`, and PHPMailer — refer to [Send email over SMTP](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/).
 
 ## Limits
 
@@ -136,7 +136,7 @@ The following per-session limits apply to SMTP submission:
 | `AUTH` command timeout | 30 seconds |
 | `DATA` command timeout | 300 seconds |
 
-Account-wide quotas (daily sending limits, content limits, header limits) are shared with the REST API and the Workers binding. See [Limits](https://developers.cloudflare.com/email-service/platform/limits/) for the full list.
+Account-wide quotas (daily sending limits, content limits, header limits) are shared with the REST API and the Workers binding. Refer to [Limits](https://developers.cloudflare.com/email-service/platform/limits/) for the full list.
 
 ## Response codes
 
@@ -154,7 +154,7 @@ Cloudflare's SMTP server returns standard [RFC 5321 ↗︎](https://datatracker.
 | `500` / `501` | Syntax error in command or arguments. |
 | `503` | Bad sequence of commands (for example, `MAIL FROM` before `AUTH`). |
 | `530 5.7.0` | Authentication required. |
-| `535 5.7.8` | Authentication failed. See [Troubleshooting](#troubleshooting). |
+| `535 5.7.8` | Authentication failed. Refer to [Troubleshooting](#troubleshooting). |
 | `550 5.7.1` | Sender or relay denied — usually the `MAIL FROM` domain is not onboarded. |
 | `552 5.3.4` | Message exceeds the 5 MiB `SIZE` limit. |
 | `554` | Transaction failed — content rejected by policy. |
@@ -171,7 +171,7 @@ If all recipients are suppressed while dropping is on, SMTP may return `250 2.0.
 
 Use [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/) to confirm delivery. Suppressed recipients appear with a **Rejected** result.
 
-Suppression produces a `message.rejected` event in [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) with `rejection.reason` set to `suppressed`.
+Suppression produces a `message.rejected` event in [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/reference/event-subscriptions/) with `rejection.reason` set to `suppressed`.
 
 ## Troubleshooting
 
@@ -196,13 +196,13 @@ The message body (including attachments after MIME encoding) is larger than 5 Mi
 
 Cloudflare's SMTP endpoint requires TLS from connect (implicit TLS). Make sure your client is configured for SSL/TLS on port `465`, not `STARTTLS` on port `587` (which is not supported).
 
-For authentication problems related to SPF, DKIM, or DMARC on the recipient side, see [Troubleshoot SPF, DKIM and DMARC](https://developers.cloudflare.com/email-service/reference/troubleshooting/).
+For authentication problems related to SPF, DKIM, or DMARC on the recipient side, refer to [Troubleshoot SPF, DKIM and DMARC](https://developers.cloudflare.com/email-service/reference/troubleshooting/).
 
 ## Related resources
 
 - [Send email over SMTP](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/) — examples for curl, Nodemailer, Python, and PHP.
 - [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) — send emails over HTTPS.
-- [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — send emails from a Cloudflare Worker using bindings.
+- [Email Sending Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — send emails from a Cloudflare Worker using bindings.
 - [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — onboard a domain for Email Sending.
 - [MTA-STS](https://developers.cloudflare.com/email-service/configuration/mta-sts/) — enforce TLS for incoming mail.
 - [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — supported headers and threading hints.
@@ -217,5 +217,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP","description":"Send emails from any SMTP-capable application or mail client using authenticated SMTP submission on smtp.mx.cloudflare.net.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.png?v=13757de7404f5225","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/#page","headline":"SMTP","description":"Email Service SMTP endpoint, authentication, limits, responses, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/smtp/og.png?v=13757de7404f5225","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

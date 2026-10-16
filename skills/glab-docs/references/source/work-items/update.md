@@ -42,6 +42,9 @@ cat description.md | glab work-items update 42 --description-file -
 # Add a screenshot to the existing description
 glab work-items update 42 --attach ./screenshot.png
 
+# Move a work item to another iteration
+glab work-items update 42 --iteration 123
+
 ```
 
 ## Options
@@ -53,6 +56,7 @@ glab work-items update 42 --attach ./screenshot.png
       --description-file string   Read the work item description from a file. Use "-" to read from standard input.
       --duedate string            Update the due date for the work item.
   -g, --group string              Update work items for a group or subgroup.
+      --iteration int             Move the work item to the iteration with this ID.
       --jq string                 Filter JSON output with a jq expression.
   -m, --milestone string          Update the work item milestone with the title or ID.
   -F, --output string             Format output as: text, json. (default "text")

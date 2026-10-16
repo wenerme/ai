@@ -144,7 +144,7 @@ Try a different search term, or clear your filters.
 
 [F**Fraud Detection** Sequence rules use cookies to track the order and timing of requests](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/)
 
-[**Gateway** Set up policies to inspect DNS, Network, HTTP, and Egress traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+[**Gateway** Set up policies to inspect DNS, Network, HTTP, and Egress traffic](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
 [G**Geo Key Manager** Control SSL/TLS key storage for compliance and security](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/)
 
@@ -172,7 +172,7 @@ Try a different search term, or clear your filters.
 
 [**Load Balancing** Maximize application performance and availability](https://developers.cloudflare.com/load-balancing/)
 
-[**Log Explorer** Store and explore your logs in the Cloudflare dashboard or API](https://developers.cloudflare.com/log-explorer/)
+[**Log Explorer** Store and explore your logs in the Cloudflare dashboard or API](https://developers.cloudflare.com/observability/logs/log-explorer/)
 
 [**Logs** Access detailed logs with metadata from Cloudflare products](https://developers.cloudflare.com/logs/)
 

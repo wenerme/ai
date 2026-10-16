@@ -26,7 +26,7 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To view members using the dashboard:
 
-In the \[Cloudflare dashboard, go to the **Members** page.
+In the Cloudflare dashboard, go to the **Members** page.
 
 [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 
@@ -39,13 +39,19 @@ To manage account members, you must have a role of **Super Administrator** and h
 To add a member to your account:
 
 1. In the Cloudflare dashboard, go to the **Members** page. [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
-2. Select **Invite**.
-3. Fill out the following information:
-   - **Invite members**: Enter one or more email addresses (if multiple, separate addresses with commas).
-   - **Scope**: Use a variety of fields to adjust the [scope](https://developers.cloudflare.com/fundamentals/manage-members/roles/) of your roles.
-   - **Roles**: Choose one or more [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to assign your members.
-4. Select **Continue to summary**.
-5. Review the information, then select **Invite**.
+2. Select **Invite members**.
+3. Under **Add email addresses**, enter one or more email addresses. Separate multiple addresses with commas.
+4. Under **Add permission policies**, create the first permission policy for these members:
+
+   a. Choose the policy's [scope](https://developers.cloudflare.com/fundamentals/manage-members/scope/): either the entire account, or specific resources such as individual domains, Workers, or Access applications.
+
+   b. Select one or more [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) to include in the policy. Search by role name, or expand a role category (for example, **App Security** or **Cloudflare One / Zero Trust**) and select individual roles. To select every role in a category, select the category's checkbox.
+
+   c. Select **Create policy**.
+5. (Optional) Repeat the previous step to add more permission policies with different scopes or roles.
+6. Select **Invite members**.
+
+Each invitee receives an email invitation and appears on the **Members** page with a **Pending** status until they accept it.
 
 Note
 
@@ -60,10 +66,11 @@ To manage account members, you must have a role of **Super Administrator** and h
 To edit member permissions using the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Members** page. [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
-2. Select a member record, then select **Edit**.
-3. Update the scope and roles of their permissions.
-4. Select **Continue to summary**.
-5. Review the information, then select **Update**.
+2. On the member's row, select **...** > **View & Edit permission policies**.
+3. On the **Permission policies** tab, make your changes:
+   - To add a policy, select **Create a policy**, choose the [scope](https://developers.cloudflare.com/fundamentals/manage-members/scope/) and [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/), then select **Create policy**.
+   - To change an existing policy, select **...** > **Edit policy** on its row, adjust the scope and roles, then save your changes.
+   - To remove a policy, select **...** > **Delete policy** on its row.
 
 To edit member permissions using the API, get a [list of roles](https://developers.cloudflare.com/api/resources/accounts/subresources/roles/methods/list/) available for an account.
 
@@ -92,10 +99,8 @@ curl --request PUT \
 
 If you invited a member to your account but they cannot find the invitation or the invitation expires, you can resend the invitation through the Cloudflare dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select your account<sup>[1](#user-content-fn-1)</sup>.
-2. Go to **Manage Account** > **Members**.
-3. Select a member record where their **Status** is **Invite Pending**.
-4. Select **Resend invite**.
+1. In the Cloudflare dashboard, go to the **Members** page.<sup>[1](#user-content-fn-1)</sup>[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
+2. On the row of the member whose **Status** is **Pending**, select **...** > **Resend invite**.
 
 ## Footnotes
 
@@ -105,12 +110,11 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-To revoke a member's access to your account:
+To revoke a member's access to your account, or to cancel a pending invitation:
 
 1. In the Cloudflare dashboard, go to the **Members** page. [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
-2. Locate an account member and expand their record.
-3. Click **Revoke**.
-4. Click **Yes, revoke access**.
+2. On the member's row, select **...** > **Remove member**.
+3. In the confirmation dialog, select **Remove member**.
 
 To revoke a member's access to your account using the API, send a [`DELETE` request](https://developers.cloudflare.com/api/resources/accounts/subresources/members/methods/delete/).
 

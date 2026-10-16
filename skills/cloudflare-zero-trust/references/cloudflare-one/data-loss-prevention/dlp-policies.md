@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp
 
 # Scan HTTP traffic
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies. To enforce DLP policies, first configure a **DLP profile** that defines what sensitive data patterns to detect. Then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data.
+You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) policies. To enforce DLP policies, first configure a **DLP profile** that defines what sensitive data patterns to detect. Then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data.
 
 Before creating a policy, use [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/) to explore sensitive data in sampled Gateway traffic. Its findings can help you choose which data types and destinations your policy should cover.
 
@@ -24,9 +24,9 @@ To scan AI prompts and responses without Gateway HTTP filtering, you can also en
 
 ## Prerequisites
 
-- Set up [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/). This routes your users' web traffic through Cloudflare Gateway so it can be inspected.
-  - HTTP filtering requires turning on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP traffic.
-- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption). Because most web traffic is encrypted with HTTPS, Gateway must decrypt it before DLP can scan the request body for sensitive data.
+- Set up [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-controls/get-started/http/). This routes your users' web traffic through Cloudflare Gateway so it can be inspected.
+  - HTTP filtering requires turning on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#turn-on-the-gateway-proxy) for TCP traffic.
+- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#turn-on-tls-decryption). Because most web traffic is encrypted with HTTPS, Gateway must decrypt it before DLP can scan the request body for sensitive data.
 
 ## 1. Configure a DLP profile
 
@@ -34,11 +34,11 @@ A DLP profile defines the sensitive data patterns you want to detect — for exa
 
 ## 2. Create a DLP policy
 
-DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). To start logging or blocking traffic, create a policy for DLP:
+DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/). To start logging or blocking traffic, create a policy for DLP:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Select **HTTP**.
 2. Select **Add a policy**.
-3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:
+3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:
 
    | Selector | Operator | Value | Logic | Action |
    | --- | --- | --- | --- | --- |
@@ -48,6 +48,14 @@ DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP
 4. Select **Create policy**.
 
 Gateway now applies the configured action when traffic matches the complete HTTP policy.
+
+### DLP with the Forward action Beta
+
+When you use [Forward](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/) to invoke a Worker, Gateway scans the original request body before delivering it to the Worker. A DLP Block decision can interrupt an already-running Worker.
+
+Gateway scans the final response after the Worker. Modified request bytes are not scanned again before reaching the origin.
+
+Worker context does not include DLP match details. DLP matches cannot select a Forward policy.
 
 ## 3. Test DLP policy
 
@@ -92,5 +100,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#page","headline":"Scan HTTP traffic","description":"Scan HTTP traffic in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/og.png?v=7d935df33cf16f76","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#page","headline":"Scan HTTP traffic","description":"Scan HTTP traffic in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/og.png?v=7d935df33cf16f76","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-po
 
 # TLS decryption
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Gateway can perform [SSL/TLS decryption ↗︎](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect).
 
@@ -21,6 +21,8 @@ When you turn on TLS decryption, Gateway will decrypt all traffic sent over HTTP
 Cloudflare prevents traffic interference by decrypting, inspecting, and re-encrypting HTTPS requests in its data centers in memory only. Gateway only stores eligible cache content at rest. All cache disks are encrypted at rest. You can configure where TLS decryption takes place with [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) in the [Cloudflare Data Localization Suite (DLS)](https://developers.cloudflare.com/data-localization/). To further control what data centers traffic egresses from, you can use [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/).
 
 Cloudflare supports connections from users to Gateway over TLS 1.1, 1.2, and 1.3.
+
+The [Forward action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/) (beta) also requires TLS decryption for HTTPS traffic. Gateway does not invoke a Worker for traffic matching Do Not Inspect. If you configure a Worker to archive decrypted content, that storage is controlled by your Worker code and bindings.
 
 ## Turn on TLS decryption
 
@@ -70,7 +72,7 @@ Applications that use certificate pinning and mTLS authentication do not trust C
 
 If you try to perform TLS decryption on an application with an incompatible certificate configuration, the application may return an SSL or trust error and/or fail to load. To resolve this issue, you can:
 
-- Add a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#add-the-certificate-to-applications) to supported applications.
+- Add a [Cloudflare certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#5-add-the-certificate-to-applications) to supported applications.
 - Create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) to exempt applications from inspection. The [Application selector](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application) provides a list of trusted applications that are known to use embedded certificates. Note that if you create a Do Not Inspect policy for an application or website, you will lose the ability to log or block HTTP requests, apply DLP policies, and perform AV scanning.
 - Configure a [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in Include mode to ensure Gateway will only inspect traffic destined for your IPs or domains. This is useful for organizations that deploy Zero Trust on users' personal devices or otherwise expect personal applications to be used.
 
@@ -145,7 +147,7 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3. However, some e
 
 When FIPS compliance is enabled, Gateway will only choose [FIPS-compliant cipher suites](#cipher-suites) when connecting to the origin. If the origin does not support FIPS-compliant ciphers, the request will fail.
 
-FIPS-compliant traffic defaults to [HTTP/3](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/). To enforce HTTP policies for UDP traffic, you must turn on the [Gateway proxy for UDP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/#enable-http3-inspection).
+FIPS-compliant traffic defaults to [HTTP/3](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/). To enforce HTTP policies for UDP traffic, you must turn on the [Gateway proxy for UDP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/http3/#turn-on-http3-inspection).
 
 ## FedRAMP compliance
 
@@ -207,5 +209,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#page","headline":"TLS decryption","description":"How TLS decryption works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/og.png?v=2ed79a9907b8362d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/#page","headline":"TLS decryption","description":"How TLS decryption works in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/og.png?v=2ed79a9907b8362d","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

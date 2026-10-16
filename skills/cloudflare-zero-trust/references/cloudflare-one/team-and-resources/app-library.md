@@ -1,5 +1,5 @@
 ---
-description: Application Library in Zero Trust.
+description: View and manage applications in Cloudflare One, including custom applications.
 title: Application Library
 image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/og.png?v=c262ba0aaa3d16c7
 ---
@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-l
 
 # Application Library
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Application Library allows users to manage their SaaS applications in Cloudflare One by consolidating views across all relevant products: [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Cloud Access Security Broker (CASB)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). The App Library provides visibility and control for available applications, as well as the ability to view categorized hostnames and manage configuration for Access for SaaS and Gateway policies. For example, you can use the App Library to review how Gateway uses specific hostnames to match against application traffic.
+The Application Library allows users to manage their SaaS applications in Cloudflare One by consolidating views across all relevant products: [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Cloud Access Security Broker (CASB)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). The App Library provides visibility and control for available applications, as well as the ability to view categorized hostnames and manage configuration for Access for SaaS and Gateway policies. For example, you can use the App Library to review how Gateway uses specific hostnames to match against application traffic.
 
-To access the App Library in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Application library**. Each application card will list the number of hostnames associated with the application, the supported Cloudflare One product usage, and the [app type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types).
+To access the App Library in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Application library**. Each application card will list the number of hostnames associated with the application, the supported Cloudflare One product usage, and the [app type](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#app-types).
 
-The App Library groups [Do Not Inspect applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#do-not-inspect-applications) within the corresponding application. For example, the App Library will group *Google Drive (Do Not Inspect)* under **Google Drive**. Traffic that does not match a known application will not be included in the App Library.
+The App Library groups [Do Not Inspect applications](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#do-not-inspect-applications) within the corresponding application. For example, the App Library will group *Google Drive (Do Not Inspect)* under **Google Drive**. Traffic that does not match a known application will not be included in the App Library.
+
+You can also [create custom applications](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/) to identify internal services or applications that are not in the Cloudflare-managed catalog. Use custom applications in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#application), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/#application) policies with the existing **Application** selector.
 
 ## View application details
 
@@ -31,17 +33,17 @@ The **Overview** tab shows details about an application, including:
 - Name
 - Shadow IT [review status](#review-applications)
 - Number of hostnames
-- [App type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types)
+- [App type](https://developers.cloudflare.com/cloudflare-one/traffic-controls/application-app-types/#app-types)
 - Supported Cloudflare One applications
 - Application ID for use with the API and Terraform
 
 ### Findings
 
-The **Findings** tab shows any connected [CASB integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/#manage-casb-integrations) for the selected application, as well as instances of any detected [posture findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#posture-findings) and [content findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#content-findings) for each integration.
+The **Findings** tab shows any connected [CASB integrations](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/#manage-casb-integrations) for the selected application, as well as instances of any detected [posture findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#posture-findings) and [content findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#content-findings) for each integration.
 
 ### Policies
 
-The **Policies** tab shows any [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) policies related to the selected application.
+The **Policies** tab shows any [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) and [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) policies related to the selected application.
 
 ### Usage
 
@@ -72,7 +74,7 @@ Once you mark the status of an application, its badge will change. You can filte
 
 Note
 
-Approval status does not impact a user's ability to access an application. Users are allowed or blocked according to your [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). To filter traffic based on approval status, use the [*Application Status*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#application-approval-status) selector.
+Approval status does not impact a user's ability to access an application. Users are allowed or blocked according to your [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/). To filter traffic based on approval status, use the [*Application Status*](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application-approval-status) selector.
 
 ## Application confidence scorecards
 
@@ -142,5 +144,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#page","headline":"Application Library","description":"Application Library in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/og.png?v=c262ba0aaa3d16c7","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/#page","headline":"Application Library","description":"View and manage applications in Cloudflare One, including custom applications.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/og.png?v=c262ba0aaa3d16c7","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -5,7 +5,7 @@ description: "Browse OpenCode Go model IDs, capabilities, context windows, and p
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 38 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 31 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/v2/docs/console/go/).
 
@@ -46,7 +46,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
+    "contextWindow": 1048576,
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
@@ -158,18 +158,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.1,
     "outputCost": 0.5
-  },
-  {
-    "model": "opencode-go/grok-4.6",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 500000,
-    "maxOutput": 500000,
-    "inputCost": 2,
-    "outputCost": 6
   },
   {
     "model": "opencode-go/grok-4.7",
@@ -304,18 +292,6 @@ for await (const chunk of stream) {
     "outputCost": 0.87
   },
   {
-    "model": "opencode-go/minimax-m2.7",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 204800,
-    "maxOutput": 131072,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
     "model": "opencode-go/minimax-m3",
     "imageInput": true,
     "audioInput": false,
@@ -400,7 +376,7 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
-    "model": "opencode-go/step-5-preview-free",
+    "model": "opencode-go/step-5-preview",
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,
@@ -408,8 +384,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1,
+    "outputCost": 2.7
   }
 ]}
 />

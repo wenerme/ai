@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/ap
 
 # Security reports
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Application Security reports provide cyber attack insights and trends for all of the Enterprise zones in your Cloudflare account.
 
@@ -49,7 +49,7 @@ Each report includes the following sections:
 - Top five most targeted hostnames
 - Top five most effective mitigation rules
 
-To view more details, apply filters, analyze the data, and generate ad-hoc reports, use the [Security Analytics dashboard](https://developers.cloudflare.com/waf/analytics/security-analytics/) or [Log Explorer](https://developers.cloudflare.com/log-explorer/).
+To view more details, apply filters, analyze the data, and generate ad-hoc reports, use the [Security Analytics dashboard](https://developers.cloudflare.com/waf/analytics/security-analytics/) or [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/).
 
 ### Industry benchmarks
 
@@ -146,5 +146,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/#page","headline":"Security reports","description":"View account-wide application security reports covering WAF, bots, DDoS, and API Shield.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/og.png?v=5f8604bf99c289db","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/#page","headline":"Security reports","description":"View account-wide application security reports covering WAF, bots, DDoS, and API Shield.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/og.png?v=5f8604bf99c289db","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

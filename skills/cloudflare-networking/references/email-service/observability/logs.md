@@ -1,7 +1,7 @@
 ---
-description: View and analyze Email Service sending and routing activity logs with authentication and delivery details.
-title: Email logs
-image: https://developers.cloudflare.com/email-service/observability/logs/og.png?v=955b4c4bef055e32
+description: Email Service activity statuses, authentication details, and message fields.
+title: Activity log
+image: https://developers.cloudflare.com/email-service/observability/logs/og.png?v=7322ea94b0a5a48d
 ---
 
 [Skip to content](#main-content)
@@ -10,15 +10,13 @@ image: https://developers.cloudflare.com/email-service/observability/logs/og.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Email logs
+# Activity log
 
-View and analyze email sending and routing activity logs with detailed authentication and delivery information
+Email sending and routing statuses, authentication details, and message fields
 
-Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/observability/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Email Service provides comprehensive logging for both email sending and routing activities. Access detailed logs through the Cloudflare dashboard to monitor email flow, troubleshoot delivery issues, and analyze authentication status.
-
-## Activity log
+The Email Service Activity log lists sending and routing events. Each event includes delivery and authentication details.
 
 The Activity log allows you to sort through all email activities and check actions taken by Email Service. In the dashboard you can filter the Activity log to a time range between 30 minutes and 30 days, or specify a custom range.
 
@@ -26,7 +24,7 @@ The Activity log surfaces the same per-event data that is also available program
 
 For Email Routing, you can expand an individual email in the Activity log to inspect authentication results ([SPF ↗︎](https://datatracker.ietf.org/doc/html/rfc7208), [DKIM ↗︎](https://datatracker.ietf.org/doc/html/rfc6376), and [DMARC ↗︎](https://datatracker.ietf.org/doc/html/rfc7489)).
 
-### Email sending logs
+## Email sending statuses
 
 For outbound emails sent through Email Service:
 
@@ -36,7 +34,7 @@ For outbound emails sent through Email Service:
 - **Rejected**: Email was not sent because the recipient is on your account's [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/).
 - **Failed**: Email failed to send due to configuration or authentication issues.
 
-### Email routing logs
+## Email routing statuses
 
 For inbound emails processed through Email Routing:
 
@@ -47,7 +45,7 @@ For inbound emails processed through Email Routing:
 - **Delivery failed**: Email could not be delivered to the destination address.
 - **Error**: Email could not be processed due to an internal error.
 
-## Viewing email details
+## Email details
 
 Select any email in the Activity log to expand its details and view authentication and delivery information.
 
@@ -80,31 +78,6 @@ For sent emails, expand the email in the Activity log to open the **Preview** se
 
 To make sent messages previewable, turn on [**Email preview**](https://developers.cloudflare.com/email-service/configuration/domains/#email-preview) for the sending domain. Previews cover messages sent while the setting is turned on and are retained for about seven days. New sending domains have **Email preview** turned on automatically.
 
-## Best practices for log monitoring
-
-### Regular review
-
-- Monitor logs daily during initial setup
-- Check weekly for ongoing operations
-- Review immediately after configuration changes
-
-### Key metrics to watch
-
-- Authentication failure rates
-- Bounce patterns and trends
-- Delivery success rates
-
-### Troubleshooting workflow
-
-1. Identify the issue: Use logs to pinpoint failure types
-2. Check authentication: Verify SPF, DKIM, DMARC configuration
-3. Adjust configuration: Make necessary DNS or routing changes
-4. Monitor improvement: Track metrics after changes
-
----
-
-Email logs provide the visibility needed to maintain high deliverability and properly route incoming emails. Use this data to optimize your email configuration and quickly resolve any delivery issues.
-
 Was this helpful?
 
 YesNo
@@ -114,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/logs/#page","headline":"Email logs","description":"View and analyze Email Service sending and routing activity logs with authentication and delivery details.","url":"https://developers.cloudflare.com/email-service/observability/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/observability/logs/og.png?v=955b4c4bef055e32","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/observability/logs/#page","headline":"Activity log","description":"Email Service activity statuses, authentication details, and message fields.","url":"https://developers.cloudflare.com/email-service/observability/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/observability/logs/og.png?v=7322ea94b0a5a48d","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

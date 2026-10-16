@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/trouble
 
 # Troubleshooting
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you troubleshoot common issues with Cloudflare Gateway policies.
 
@@ -142,6 +142,12 @@ You have configured Gateway to resolve internal hostnames, but users are unable 
 | Split Tunnel excludes the private IP range | If your internal resources are in a private IP range (such as `10.0.0.0/8`), that range must be included in the tunnel. If it is in the Exclude list of your Split Tunnel configuration, the Cloudflare One Client will not proxy the traffic. |
 | Local Domain Fallback misconfiguration | Use resolver policies for corporate DNS. Only use Local Domain Fallback for domains specific to a user's immediate physical network. |
 
+## Worker errors with the Forward action Beta
+
+If a Forward policy does not invoke your Worker or requests fail after enabling it, refer to [Forward troubleshooting](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/forward-traffic/#troubleshooting). Worker invocation failures fail closed. Check HTTP filtering, TLS decryption, policy order, the named entrypoint, and Workers Logs before widening your policy scope.
+
+Deleting a Worker used by a Forward policy leaves the policy active. Matching requests fail with HTTP `500`. Update the policy to select an existing Worker, or delete the policy.
+
 Was this helpful?
 
 YesNo
@@ -151,5 +157,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot Troubleshooting issues in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/og.png?v=c6fad8bb279af90e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot Troubleshooting issues in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/og.png?v=c6fad8bb279af90e","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

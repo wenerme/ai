@@ -6,7 +6,7 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 5 more }`
 
   The response from the image generation endpoint.
 
@@ -61,6 +61,10 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
     - `"xhigh"`
 
     - `"max"`
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
   - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 
@@ -147,6 +151,7 @@ curl https://api.openai.com/v1/images/variations \
   ],
   "output_format": "png",
   "quality": "low",
+  "safety_identifier": "safety_identifier",
   "size": "1024x1024",
   "usage": {
     "input_tokens": 0,

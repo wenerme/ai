@@ -860,4 +860,4 @@ The Decisions API supports Zero Data Retention (ZDR) and HIPAA use for eligible 
 
 ## Add voice control
 
-Use [client delegation with the Live API](https://developers.openai.com/api/docs/guides/decisions-voice) to choose actions from voice requests and report their results to the user.
+[Connect voice to Decisions](https://developers.openai.com/api/docs/guides/decisions-voice) to choose an action from a spoken request or react as your user or GPT-Live speaks.

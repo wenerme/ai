@@ -34,6 +34,8 @@ enabled, these variables also override `CI_JOB_TOKEN`.
 
 To pass a token on standard input, use `--stdin`.
 
+To configure glab as the Git credential helper for the host without a prompt, for example in a CI/CD job, use `--setup-git-credential-helper`.
+
 In interactive mode, glab detects GitLab instances from your Git remotes
 and lists them as options, so you do not have to type the hostname manually.
 
@@ -86,6 +88,9 @@ GLAB_ENABLE_CI_AUTOLOGIN=true glab release list -R $CI_PROJECT_PATH
 # CI/CD setup with manual login: use when the command does not support CI job tokens, or you need a personal access token
 glab auth login --hostname $CI_SERVER_FQDN --job-token $CI_JOB_TOKEN --api-protocol $CI_SERVER_PROTOCOL
 
+# Non-interactive setup that also lets Git push and pull with the same token
+glab auth login --hostname $CI_SERVER_FQDN --token $GITLAB_TOKEN --setup-git-credential-helper
+
 ```
 
 ## Options
@@ -99,6 +104,7 @@ glab auth login --hostname $CI_SERVER_FQDN --job-token $CI_JOB_TOKEN --api-proto
       --hostname string                     The hostname of the GitLab instance to authenticate with. When omitted, glab prompts in interactive mode, or uses the host resolved from your Git remotes, GITLAB_HOST, and your configuration.
       --insecure-storage                    Store the token as plaintext in the configuration file instead of the operating system's keyring.
   -j, --job-token string                    CI job token.
+      --setup-git-credential-helper         Configure glab as the Git credential helper for this host without prompting. Use this in non-interactive runs, such as CI/CD jobs.
       --ssh-hostname string                 SSH hostname for instances with a different SSH endpoint. A port is not required; Git uses the port from the remote URL. Also skips the SSH hostname prompt in interactive mode.
       --stdin                               Read the token from standard input.
   -t, --token string                        Your GitLab access token.

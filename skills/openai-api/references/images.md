@@ -8,7 +8,7 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 5 more }`
 
   The response from the image generation endpoint.
 
@@ -63,6 +63,10 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
     - `"xhigh"`
 
     - `"max"`
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
   - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 
@@ -149,6 +153,7 @@ curl https://api.openai.com/v1/images/variations \
   ],
   "output_format": "png",
   "quality": "low",
+  "safety_identifier": "safety_identifier",
   "size": "1024x1024",
   "usage": {
     "input_tokens": 0,
@@ -331,6 +336,10 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `"auto"`
 
+- `safety_identifier: optional string or null`
+
+  A stable identifier for an end user in your organization, used for safety monitoring and abuse detection. Hash a username or email address to avoid sending identifying information. A non-empty value takes precedence over the deprecated `user` parameter. If omitted, null, or empty, the API uses `user` when available. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+
 - `size: optional string or "auto" or "1024x1024" or "1536x1024" or "1024x1536" or null`
 
   The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
@@ -355,12 +364,11 @@ Creates an edited or extended image given one or more source images and a prompt
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI
-  monitor and detect abuse.
+  Deprecated: use `safety_identifier` instead. This parameter remains accepted for backward compatibility and is used when `safety_identifier` is omitted, null, or empty. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 5 more }`
 
   The response from the image generation endpoint.
 
@@ -415,6 +423,10 @@ Creates an edited or extended image given one or more source images and a prompt
     - `"xhigh"`
 
     - `"max"`
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
   - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 
@@ -506,6 +518,7 @@ curl https://api.openai.com/v1/images/edits \
   ],
   "output_format": "png",
   "quality": "low",
+  "safety_identifier": "safety_identifier",
   "size": "1024x1024",
   "usage": {
     "input_tokens": 0,
@@ -694,6 +707,10 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
   - `"b64_json"`
 
+- `safety_identifier: optional string or null`
+
+  A stable identifier for an end user in your organization, used for safety monitoring and abuse detection. Hash a username or email address to avoid sending identifying information. A non-empty value takes precedence over the deprecated `user` parameter. If omitted, null, or empty, the API uses `user` when available. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+
 - `size: optional string or "auto" or "1024x1024" or "1536x1024" or 5 more or null`
 
   The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
@@ -736,11 +753,11 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+  Deprecated: use `safety_identifier` instead. This parameter remains accepted for backward compatibility and is used when `safety_identifier` is omitted, null, or empty. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 5 more }`
 
   The response from the image generation endpoint.
 
@@ -795,6 +812,10 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
     - `"xhigh"`
 
     - `"max"`
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
   - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 
@@ -868,6 +889,7 @@ curl https://api.openai.com/v1/images/generations \
           "output_format": "png",
           "partial_images": 1,
           "quality": "medium",
+          "safety_identifier": "user-1234",
           "size": "1024x1024",
           "style": "vivid",
           "user": "user-1234"
@@ -889,6 +911,7 @@ curl https://api.openai.com/v1/images/generations \
   ],
   "output_format": "png",
   "quality": "low",
+  "safety_identifier": "safety_identifier",
   "size": "1024x1024",
   "usage": {
     "input_tokens": 0,
@@ -990,7 +1013,7 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
 ### Image Edit Completed Event
 
-- `ImageEditCompletedEvent object { b64_json, background, created_at, 5 more }`
+- `ImageEditCompletedEvent object { b64_json, background, created_at, 6 more }`
 
   Emitted when image editing has completed and the final image is available.
 
@@ -1089,6 +1112,10 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
     - `total_tokens: number`
 
       The total number of tokens (images and text) used for the image generation.
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
 ### Image Edit Partial Image Event
 
@@ -1250,7 +1277,7 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
       - `"image_edit.partial_image"`
 
-  - `ImageEditCompletedEvent object { b64_json, background, created_at, 5 more }`
+  - `ImageEditCompletedEvent object { b64_json, background, created_at, 6 more }`
 
     Emitted when image editing has completed and the final image is available.
 
@@ -1350,9 +1377,13 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
         The total number of tokens (images and text) used for the image generation.
 
+    - `safety_identifier: optional string or null`
+
+      The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
+
 ### Image Gen Completed Event
 
-- `ImageGenCompletedEvent object { b64_json, background, created_at, 5 more }`
+- `ImageGenCompletedEvent object { b64_json, background, created_at, 6 more }`
 
   Emitted when image generation has completed and the final image is available.
 
@@ -1451,6 +1482,10 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
     - `total_tokens: number`
 
       The total number of tokens (images and text) used for the image generation.
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
 ### Image Gen Partial Image Event
 
@@ -1612,7 +1647,7 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
       - `"image_generation.partial_image"`
 
-  - `ImageGenCompletedEvent object { b64_json, background, created_at, 5 more }`
+  - `ImageGenCompletedEvent object { b64_json, background, created_at, 6 more }`
 
     Emitted when image generation has completed and the final image is available.
 
@@ -1712,6 +1747,10 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
         The total number of tokens (images and text) used for the image generation.
 
+    - `safety_identifier: optional string or null`
+
+      The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
+
 ### Image Model
 
 - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 9 more`
@@ -1742,7 +1781,7 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
 
 ### Images Response
 
-- `ImagesResponse object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 5 more }`
 
   The response from the image generation endpoint.
 
@@ -1797,6 +1836,10 @@ data: {"type":"image_generation.completed","b64_json":"...","usage":{"total_toke
     - `"xhigh"`
 
     - `"max"`
+
+  - `safety_identifier: optional string or null`
+
+    The effective safety identifier used for safety monitoring and abuse detection. This is the non-empty `safety_identifier` from the request, or the deprecated `user` value when `safety_identifier` is omitted, null, or empty.
 
   - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 

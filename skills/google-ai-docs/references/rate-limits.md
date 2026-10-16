@@ -35,9 +35,9 @@ charges. Whether these limits apply to your account depends on your billing
 history and [usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
 
 The following table shows the spend-based rate limits for each
-[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers). These limits are evaluated on a rolling 10-minute
-window. Whether these limits apply to your account depends on your billing
-history and account standing.
+[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers). These limits are
+evaluated on a rolling 10-minute window. Whether these limits apply to your
+account depends on your billing history and account standing.
 
 | Usage tier | Spend rate limit (per 10 minutes) |
 |---|---|
@@ -108,6 +108,7 @@ limits, separate from the non-batch API calls.
 | Model | Batch enqueued tokens |
 | Text-out models |||||
 |---|---|---|---|---|
+| Gemini 4 Argon | 5,000,000 |
 | Gemini 3.1 Pro Preview | 5,000,000 |
 | Gemini 3.5 Flash-Lite | 10,000,000 |
 | Gemini 3.8 Flash | 3,000,000 |
@@ -135,6 +136,7 @@ limits, separate from the non-batch API calls.
 | Model | Batch enqueued tokens |
 | Text-out models |||||
 |---|---|---|---|---|
+| Gemini 4 Argon | 500,000,000 |
 | Gemini 3.1 Pro Preview | 500,000,000 |
 | Gemini 3.5 Flash-Lite | 500,000,000 |
 | Gemini 3.1 Flash Lite | 500,000,000 |
@@ -162,6 +164,7 @@ limits, separate from the non-batch API calls.
 | Model | Batch enqueued tokens |
 | Text-out models |||||
 |---|---|---|---|---|
+| Gemini 4 Argon | 1,000,000,000 |
 | Gemini 3.1 Pro Preview | 1,000,000,000 |
 | Gemini 3.5 Flash-Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Lite | 1,000,000,000 |
@@ -189,10 +192,13 @@ limits, separate from the non-batch API calls.
 To transition from the Free tier to a paid tier, you must first
 [set up billing in AI Studio](https://ai.google.dev/gemini-api/docs/billing).
 
-Once your project meets the [specified criteria](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers), it will be
+Once your project meets the
+[specified criteria](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers), it will be
 automatically upgraded to the next tier. Tier upgrades from the Free to Tier 1
 will typically take effect instantly, and subsequent tier upgrades will take
-effect within 10 minutes. Navigate to the [Projects page](https://aistudio.google.com/projects) in AI Studio to check your tiers.
+effect within 10 minutes. Navigate to the
+[Projects page](https://aistudio.google.com/projects) in AI Studio to check your
+tiers.
 
 ## Request a rate limit increase
 

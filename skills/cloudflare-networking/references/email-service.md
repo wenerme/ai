@@ -1,5 +1,5 @@
 ---
-description: Send transactional emails and route incoming emails to Workers or email addresses with Cloudflare Email Service.
+description: Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.
 title: Cloudflare Email Service
 image: https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b
 ---
@@ -12,124 +12,22 @@ image: https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b
 
 # Cloudflare Email Service
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Send transactional emails and route incoming emails to Workers or email addresses
+Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.
 
-Cloudflare Email Service provides powerful email capabilities:
+Cloudflare Email Service sends transactional email and handles incoming email.
 
-- **Email Sending** Beta for outbound transactional emails Available on Workers Paid plan
-- **Email Routing** for handling incoming emails with Workers or routing to email addresses Available on Free and Paid plans
+- **Email Sending** Beta sends outbound transactional emails. Available on Workers Paid plan
+- **Email Routing** processes incoming emails with Workers or forwards them to destination addresses. Available on Free and Paid plans
 
 Note
 
-Sending to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) in your account is free on all plans, even when only Email Routing is configured.
+Sending to [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) in your account is free on Workers Free and Paid plans, even when only Email Routing is configured.
 
-Together, these two features make it possible for you to send and receive emails from your applications. For example, you can use Email Service for:
+Use Email Sending for account emails, order confirmations, and alerts. Use Email Routing to process or forward incoming messages.
 
-- Transactional emails (welcome messages, password resets, order confirmations)
-- Authentication flows (magic links, email verification, two-factor authentication)
-- Notifications and alerts
-- Custom email addresses (support@, contact@, orders@)
-- Emails as a mode of interaction for agents, such as send an email to create an issue in ticket tracking
-
-Access Email Service directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), from any platform using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or over [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/):
-
-Send emails with the `EMAIL` binding and handle incoming emails with the `email()` handler in `src/index.ts`:
-
-```ts
-interface Env {
-	EMAIL: SendEmail;
-}
-
-export default {
-	// Handle HTTP requests (Email Sending)
-	async fetch(request, env, ctx): Promise<Response> {
-		// Send a welcome email
-		await env.EMAIL.send({
-			to: "user@example.com",
-			from: "welcome@yourdomain.com",
-			subject: "Welcome to our service!",
-			html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-			text: "Welcome! Thanks for signing up.",
-		});
-
-		return new Response("Email sent successfully");
-	},
-
-	// Handle incoming emails (Email Routing)
-	async email(message, env, ctx): Promise<void> {
-		// Forward to support team
-		if (message.to.includes("support@yourdomain.com")) {
-			await message.forward("team@yourdomain.com");
-		}
-
-		// Send auto-reply
-		await env.EMAIL.send({
-			to: message.from,
-			from: "noreply@yourdomain.com",
-			subject: "We received your message",
-			html: "<h1>Thank you!</h1><p>We'll get back to you soon.</p>",
-		});
-	},
-} satisfies ExportedHandler<Env>;
-```
-
-Add the bindings to your Wrangler configuration file:
-
-```jsonc
-{
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "<ENTER_WORKER_NAME>",
-	"main": "src/index.ts",
-	"upload_source_maps": true,
-	"compatibility_date": "$today",
-
-	// Email sending
-	"send_email": [
-		{
-			"name": "EMAIL"
-		}
-	],
-
-	// Email routing
-	"addresses": ["support@yourdomain.com"]
-}
-```
-
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/email/sending/send" \
-  --header "Authorization: Bearer <API_TOKEN>" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "to": "user@example.com",
-    "from": "welcome@yourdomain.com",
-    "subject": "Welcome to our service!",
-    "html": "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-    "text": "Welcome! Thanks for signing up."
-  }'
-```
-
-Cloudflare also provides official SDKs for the REST API: [Node](https://developers.cloudflare.com/api/node/), [Python](https://developers.cloudflare.com/api/python/), and [Go](https://developers.cloudflare.com/api/go/).
-
-```sh
-cat > mail.txt <<EOF
-From: welcome@yourdomain.com
-To: user@example.com
-Subject: Welcome to our service!
-
-Thanks for signing up.
-EOF
-
-curl --ssl-reqd \
-  --url "smtps://smtp.mx.cloudflare.net:465" \
-  --user "api_token:<API_TOKEN>" \
-  --mail-from "welcome@yourdomain.com" \
-  --mail-rcpt "user@example.com" \
-  --upload-file mail.txt
-```
-
-See the full [API reference](https://developers.cloudflare.com/email-service/api/send-emails/) for the REST API, Workers binding, and SMTP.
+Send email through the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/).
 
 [Get started](https://developers.cloudflare.com/email-service/get-started/)
 
@@ -139,7 +37,7 @@ See the full [API reference](https://developers.cloudflare.com/email-service/api
 
 [Email Sending](https://developers.cloudflare.com/email-service/get-started/send-emails/)
 
-Send transactional emails with high deliverability and global performance.
+Send transactional emails from Workers or other applications.
 
 Use Email Sending
 
@@ -151,13 +49,13 @@ Use Email Routing
 
 [Deliverability](https://developers.cloudflare.com/email-service/concepts/deliverability/)
 
-Automatic IP reputation management and deliverability optimization.
+Review email authentication and sender reputation factors.
 
 Use Deliverability
 
 [Analytics & Observability](https://developers.cloudflare.com/email-service/observability/)
 
-Monitor email performance with comprehensive metrics and alerting.
+Review sending and routing activity, metrics, and analytics.
 
 Use Analytics & Observability
 
@@ -173,15 +71,15 @@ Use API
 
 [Workers](https://developers.cloudflare.com/workers/)
 
-Build serverless applications that can send emails directly from the edge.
+Send and process email from Workers.
 
 [Queues](https://developers.cloudflare.com/queues/)
 
-Process email events asynchronously with Workers Queues integration.
+Send Email Sending events to a queue.
 
 [Analytics Engine](https://developers.cloudflare.com/analytics/)
 
-Store and analyze custom email metrics with Workers Analytics Engine.
+Store custom metrics from email Workers.
 
 ---
 
@@ -189,15 +87,15 @@ Store and analyze custom email metrics with Workers Analytics Engine.
 
 ### [Platform limits](https://developers.cloudflare.com/email-service/platform/limits/)
 
-Learn about Email Service limits and quotas.
+Review Email Service limits and quotas.
 
 ### [Pricing](https://developers.cloudflare.com/email-service/platform/pricing/)
 
-Understand Email Service pricing and plans.
+Review Email Service pricing and plans.
 
 ### [Examples](https://developers.cloudflare.com/email-service/examples/)
 
-Explore practical examples and implementation patterns.
+View Email Service code examples.
 
 ### [Discord](https://discord.cloudflare.com)
 
@@ -216,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/#page","headline":"Cloudflare Email Service","description":"Send transactional emails and route incoming emails to Workers or email addresses with Cloudflare Email Service.","url":"https://developers.cloudflare.com/email-service/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/email-service/#page","headline":"Cloudflare Email Service","description":"Send transactional email and route incoming email with Cloudflare Email Service. Arbitrary-recipient sending requires Workers Paid, while routing supports Workers Free and Paid.","url":"https://developers.cloudflare.com/email-service/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/og.png?v=9f1e4a6a5ef85e5b","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

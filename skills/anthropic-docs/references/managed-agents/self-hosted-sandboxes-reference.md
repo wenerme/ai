@@ -87,7 +87,7 @@ The Python, TypeScript, and Go SDKs provide three helpers at different levels of
 
 `EnvironmentWorker` manages the `AgentToolContext` and the toolset automatically. Pass a `tools` (go: `ToolsFunc`) factory to customize the tool list:
 
-<CodeGroup exclude="shell">
+<CodeGroup exclude="shell, csharp, java, php, ruby">
   ```python Python
   EnvironmentWorker(client, ..., tools=lambda env: [beta_bash_tool(env), my_custom_tool])
   ```
@@ -101,10 +101,9 @@ The Python, TypeScript, and Go SDKs provide three helpers at different levels of
   });
   ```
 
-  ```csharp C#
-  // EnvironmentWorker is not currently available in the C# SDK.
-  // To answer custom tool calls directly, see the session event stream.
-  ```
+  <CodeGroupItem language="C#">
+    The C# SDK does not have `EnvironmentWorker`. To answer custom tool calls from your own code, send each result on the session's event stream, as in [Return a custom tool result](https://platform.claude.com/docs/en/managed-agents/events-and-streaming#return-a-custom-tool-result).
+  </CodeGroupItem>
 
   ```go Go
   worker := environments.NewEnvironmentWorker(client, environments.EnvironmentWorkerOptions{
@@ -116,20 +115,17 @@ The Python, TypeScript, and Go SDKs provide three helpers at different levels of
   })
   ```
 
-  ```java Java
-  // EnvironmentWorker is not currently available in the Java SDK.
-  // To answer custom tool calls directly, see the session event stream.
-  ```
+  <CodeGroupItem language="Java">
+    The Java SDK does not have `EnvironmentWorker`. To answer custom tool calls from your own code, send each result on the session's event stream, as in [Return a custom tool result](https://platform.claude.com/docs/en/managed-agents/events-and-streaming#return-a-custom-tool-result).
+  </CodeGroupItem>
 
-  ```php PHP
-  // EnvironmentWorker is not currently available in the PHP SDK.
-  // To answer custom tool calls directly, see the session event stream.
-  ```
+  <CodeGroupItem language="PHP">
+    The PHP SDK does not have `EnvironmentWorker`. To answer custom tool calls from your own code, send each result on the session's event stream, as in [Return a custom tool result](https://platform.claude.com/docs/en/managed-agents/events-and-streaming#return-a-custom-tool-result).
+  </CodeGroupItem>
 
-  ```ruby Ruby
-  # EnvironmentWorker is not currently available in the Ruby SDK.
-  # To answer custom tool calls directly, see the session event stream.
-  ```
+  <CodeGroupItem language="Ruby">
+    The Ruby SDK does not have `EnvironmentWorker`. To answer custom tool calls from your own code, send each result on the session's event stream, as in [Return a custom tool result](https://platform.claude.com/docs/en/managed-agents/events-and-streaming#return-a-custom-tool-result).
+  </CodeGroupItem>
 </CodeGroup>
 
 ### Work poller
@@ -137,7 +133,7 @@ The Python, TypeScript, and Go SDKs provide three helpers at different levels of
 | Option                                                                               | Description                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `drain` (go: `Drain`)                                                                | Whether to stop polling once the queue is empty rather than waiting for new work.                                                                                                                                                                                                                                                              |
-| `block_ms` (python; typescript: `blockMs`; go: `BlockMs`)                            | How long each poll waits for work to arrive before returning, in milliseconds. Must be between 1 and 999; the helper re-polls automatically. Pass `null` (typescript; python: `None`; go: `param.Null[int64]()`) for a non-blocking check. Defaults to a 999 ms long-poll.                                                                     |
+| `block_ms` (typescript: `blockMs`; go: `BlockMs`)                                    | How long each poll waits for work to arrive before returning, in milliseconds. Must be between 1 and 999; the helper re-polls automatically. Pass `null` (python: `None`; go: `param.Null[int64]()`) for a non-blocking check. Defaults to a 999 ms long-poll.                                                                                 |
 | `reclaim_older_than_ms` (typescript: `reclaimOlderThanMs`; go: `ReclaimOlderThanMs`) | Re-claims work items that were claimed but never acknowledged within this many milliseconds.                                                                                                                                                                                                                                                   |
 | `auto_stop` (typescript: `autoStop`; go: `AutoStop`)                                 | Whether to post a stop signal for each work item once your loop body finishes with it. Set it to `false` (python: `False`; go: `param.NewOpt(false)`) when whatever runs the work item posts the stop itself. `handle_item()` (typescript: `handleItem()`; go: `HandleItem()`) does, and so does a sandbox you launch that owns the stop call. |
 
@@ -147,7 +143,7 @@ For a complete example, see [Launch sandboxes from the SDK poller](https://platf
 
 `client.beta.sessions.events.tool_runner()` (typescript: `client.beta.sessions.events.toolRunner()`; go: `client.Beta.Sessions.Events.NewToolRunner()`) takes a tool list as `tools` (go: `Tools`). To build that list, set up `AgentToolContext` yourself and call `beta_agent_toolset_20260401(env)` (typescript: `betaAgentToolset20260401(ctx)`; go: `agenttoolset.BetaAgentToolset20260401(env)`):
 
-<CodeGroup exclude="shell">
+<CodeGroup exclude="shell, csharp, java, php, ruby">
   ```python Python
   from anthropic.lib.tools.agent_toolset import (
       AgentToolContext,
@@ -172,9 +168,9 @@ For a complete example, see [Launch sandboxes from the SDK poller](https://platf
   const tools = betaAgentToolset20260401(ctx);
   ```
 
-  ```csharp C#
-  // AgentToolContext is not currently available in the C# SDK.
-  ```
+  <CodeGroupItem language="C#">
+    The C# SDK does not have `AgentToolContext`.
+  </CodeGroupItem>
 
   ```go Go
   env := &agenttoolset.AgentToolContext{Workdir: "/workspace"}
@@ -185,17 +181,17 @@ For a complete example, see [Launch sandboxes from the SDK poller](https://platf
   tools := agenttoolset.BetaAgentToolset20260401(env)
   ```
 
-  ```java Java
-  // AgentToolContext is not currently available in the Java SDK.
-  ```
+  <CodeGroupItem language="Java">
+    The Java SDK does not have `AgentToolContext`.
+  </CodeGroupItem>
 
-  ```php PHP
-  // AgentToolContext is not currently available in the PHP SDK.
-  ```
+  <CodeGroupItem language="PHP">
+    The PHP SDK does not have `AgentToolContext`.
+  </CodeGroupItem>
 
-  ```ruby Ruby
-  # AgentToolContext is not currently available in the Ruby SDK.
-  ```
+  <CodeGroupItem language="Ruby">
+    The Ruby SDK does not have `AgentToolContext`.
+  </CodeGroupItem>
 </CodeGroup>
 
 ### AgentToolContext and the agent toolset

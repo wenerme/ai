@@ -16,6 +16,8 @@ The identifier can be one of the following:
 - Discussion ID: full 40-character hex string or an 8+ character prefix
 - Note ID: integer note ID (looks up the parent discussion automatically)
 
+The merge request comes first, then the discussion. Without a merge request, the merge request for the current branch is used. With --repo, the merge request is required.
+
 If a prefix matches multiple discussions, an error is returned with the ambiguous matches.
 
 This feature is an experiment and is not ready for production use.
@@ -32,6 +34,9 @@ glab mr note reopen [<id> | <branch>] <discussion-id> [flags]
 ```console
 # Reopen a discussion on merge request 123 by prefix
 glab mr note reopen 123 abc12345
+
+# Reopen a discussion on merge request 123 in another repository
+glab mr note reopen 123 abc12345 -R OWNER/REPO
 
 # Reopen a discussion by note ID
 glab mr note reopen 3107030349

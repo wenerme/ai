@@ -35,7 +35,7 @@ glab incident list --milestone release-2.0.0 --opened
 
 ```plaintext
   -A, --all                    Get all incidents.
-  -a, --assignee string        Filter incident by assignee <username>.
+  -a, --assignee string        Filter incident by assignee <username>, @me, @none (unassigned), or @any (assigned).
       --author string          Filter incident by author <username>.
   -c, --closed                 Get only closed incidents.
   -C, --confidential           Filter by confidential incidents.

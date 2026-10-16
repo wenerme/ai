@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/spectrum/reference/troubleshooting/og.p
 
 # Troubleshooting
 
-Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To investigate issues with a Spectrum application, use the logs and diagnostics described on this page. For API validation errors returned when creating or updating an application, refer to [Error codes](https://developers.cloudflare.com/spectrum/reference/error-codes/).
 
@@ -33,6 +33,37 @@ When a Spectrum application uses a [virtual network origin](https://developers.c
 ### Cloudflare WAN as the connector
 
 For tunnel health, BGP, and routing diagnostics on WAN-connected origins, refer to [Troubleshoot Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/).
+
+## Health checks fail when IP Access Rules are enabled
+
+### Applies to
+
+This issue applies when a Spectrum application is the target of a health check:
+
+- A standalone Cloudflare [Health Check](https://developers.cloudflare.com/health-checks/) is configured against the Spectrum application, or
+- A [Load Balancer monitor](https://developers.cloudflare.com/load-balancing/monitors/) uses the Spectrum application as an endpoint (the Spectrum app is the target of the Load Balancer).
+
+This issue does **not** apply when the Spectrum application's **origin** is a Load Balancer hostname. In that architecture, the Load Balancer monitor probes the origin servers directly, not through the Spectrum application, so IP Access Rules on the Spectrum app do not affect the monitor.
+
+### Symptoms
+
+- Cloudflare Health Checks or Load Balancer monitors report the Spectrum endpoint as unhealthy.
+- Removing IP Access Rules from the Spectrum application causes health checks to succeed.
+- The Spectrum application works correctly for client traffic that is allowed by the IP Access Rules.
+
+### Cause
+
+When you turn on [IP Access Rules](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) on a Spectrum application, all incoming connections are evaluated against your rules based on source IP — including connections from Cloudflare's own health check probes. If your rules use an allowlist model (allow specific IPs, block all others), Cloudflare's health check source IPs will be blocked.
+
+Switching the health check from HTTP to TCP does **not** bypass IP Access Rules, because the rules evaluate the incoming connection before the health-check protocol is negotiated.
+
+### Solution
+
+Add Cloudflare's IP ranges to your IP Access Rules allowlist. You can find the current list of Cloudflare IP addresses at [cloudflare.com/ips ↗︎](https://www.cloudflare.com/ips/).
+
+If you need to restrict client access but cannot allowlist Cloudflare IPs on the Spectrum application, move access control to your origin instead of using IP Access Rules on the Spectrum app.
+
+If IP Access Rules remain enabled without allowing Cloudflare probe IPs, health checks will continue to fail.
 
 ## Cannot create Spectrum application — DNS record already exists
 
@@ -146,5 +177,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Where to find logs and diagnostics for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/og.png?v=1606887ee62bacda","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Where to find logs and diagnostics for Spectrum applications.","url":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/troubleshooting/og.png?v=1606887ee62bacda","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

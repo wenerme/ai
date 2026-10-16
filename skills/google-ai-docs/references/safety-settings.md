@@ -1,160 +1,96 @@
 The Gemini API provides safety settings that you can adjust during the
 prototyping stage to determine if your application requires a more or less
-restrictive safety configuration. You can adjust these settings across four
+restrictive safety configuration. You can adjust these settings across
 filter categories to restrict or allow certain types of content.
 
-This guide covers how the Gemini API handles safety settings and filtering and
-how you can change the safety settings for your application.
+This guide covers how to set safety settings on an interaction, what happens
+when content is blocked, and which categories and thresholds you can use.
 
 > [!NOTE]
 > **Note:** Applications that use less restrictive safety settings may be subject to review. See the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions) for more information.
 
-## Safety filters
+## Set safety settings
 
-The Gemini API's adjustable safety filters cover the following categories:
+Pass a list of `safety_settings` when you create an interaction. Each setting
+pairs a harm category (`type`) with a block threshold (`threshold`).
 
-| Category | Description |
-|---|---|
-| Harassment | Negative or harmful comments targeting identity and/or protected attributes. |
-| Hate speech | Content that is rude, disrespectful, or profane. |
-| Sexually explicit | Contains references to sexual acts or other lewd content. |
-| Dangerous | Promotes, facilitates, or encourages harmful acts. |
-
-These categories are defined in [`HarmCategory`](https://ai.google.dev/api/rest/v1/HarmCategory). You
-can use these filters to adjust what's appropriate for your use case. For
-example, if you're building video game dialogue, you may deem it acceptable to
-allow more content that's rated as *Dangerous* due to the nature of the game.
-
-In addition to the adjustable safety filters, the Gemini API has built-in
-protections against core harms, such as content that endangers child safety.
-These types of harm are always blocked and cannot be adjusted.
-
-### Content safety filtering level
-
-The Gemini API categorizes the probability level of content being unsafe as
-`HIGH`, `MEDIUM`, `LOW`, or `NEGLIGIBLE`.
-
-The Gemini API blocks content based on the probability of content being unsafe
-and not the severity. This is important to consider because some content can
-have low probability of being unsafe even though the severity of harm could
-still be high. For example, comparing the sentences:
-
-1. The robot punched me.
-2. The robot slashed me up.
-
-The first sentence might result in a higher probability of being unsafe, but you
-might consider the second sentence to be a higher severity in terms of violence.
-Given this, it is important that you carefully test and consider what the
-appropriate level of blocking is needed to support your key use cases while
-minimizing harm to end users.
-
-### Safety filtering per request
-
-You can adjust the safety settings for each request you make to the API. When
-you make a request, the content is analyzed and assigned a safety rating. The
-safety rating includes the category and the probability of the harm
-classification. For example, if the content was blocked due to the harassment
-category having a high probability, the safety rating returned would have
-category equal to `HARASSMENT` and harm probability set to `HIGH`.
-
-Due to the model's inherent safety, additional filters are **Off** by default.
-If you choose to enable them, you can configure the system to block content
-based on its probability of being unsafe. The default model behavior covers most
-use cases, so you should only adjust these settings if consistently is required
-for your application.
-
-The following table describes the block settings you can adjust for each
-category. For example, if you set the block setting to **Block few** for the
-**Hate speech** category, everything that has a high probability of being hate
-speech content is blocked. But anything with a lower probability is allowed.
-
-| Threshold (Google AI Studio) | Threshold (API) | Description |
-|---|---|---|
-| Off | `OFF` | Turn off the safety filter |
-| Block none | `BLOCK_NONE` | Always show regardless of probability of unsafe content |
-| Block few | `BLOCK_ONLY_HIGH` | Block when high probability of unsafe content |
-| Block some | `BLOCK_MEDIUM_AND_ABOVE` | Block when medium or high probability of unsafe content |
-| Block most | `BLOCK_LOW_AND_ABOVE` | Block when low, medium or high probability of unsafe content |
-| N/A | `HARM_BLOCK_THRESHOLD_UNSPECIFIED` | Threshold is unspecified, block using default threshold |
-
-If the threshold is not set, the default block threshold is **Off** for Gemini
-2.5 and 3 models.
-
-You can set these settings for each request you make to the generative service.
-See the [`HarmBlockThreshold`](https://ai.google.dev/api/generate-content#harmblockthreshold) API
-reference for details.
-
-### Safety feedback
-
-[`generateContent`](https://ai.google.dev/api/generate-content#method:-models.generatecontent)
-returns a
-[`GenerateContentResponse`](https://ai.google.dev/api/generate-content#generatecontentresponse) which
-includes safety feedback.
-
-Prompt feedback is included in
-[`promptFeedback`](https://ai.google.dev/api/generate-content#promptfeedback). If
-`promptFeedback.blockReason` is set, then the content of the prompt was blocked.
-
-Response candidate feedback is included in
-[`Candidate.finishReason`](https://ai.google.dev/api/generate-content#candidate) and
-[`Candidate.safetyRatings`](https://ai.google.dev/api/generate-content#candidate). If response
-content was blocked and the `finishReason` was `SAFETY`, you can inspect
-`safetyRatings` for more details. The content that was blocked is not returned.
-
-## Adjust safety settings
-
-This section covers how to adjust the safety settings in both Google AI Studio
-and in your code.
-
-### Google AI Studio
-
-You can adjust safety settings in Google AI Studio.
-
-Click **Safety settings** under **Advanced settings** in the **Run settings** panel to open the **Run
-safety settings** modal. In the modal, you can use the sliders to adjust the
-content filtering level per safety category:
-
-![](https://ai.google.dev/static/gemini-api/docs/images/safety_settings_ui.png)
-
-> [!NOTE]
-> **Note:** You are responsible for ensuring that safety settings for your intended use case comply with the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions).
-
-When you send a request (for example, by asking the model a question), a
-**Content blocked** message appears if the request's content is blocked. To see
-more details, hold the pointer over the
-**Content blocked** text to see the category and the probability of the harm
-classification.
-
-### Code examples
-
-The following code snippet shows how to set safety settings in your
-`GenerateContent` call. This sets the threshold for the hate speech
-(`HARM_CATEGORY_HATE_SPEECH`) category. Setting this category to
-`BLOCK_LOW_AND_ABOVE` blocks any content that has a low or higher probability of
-being hate speech. To understand the threshold settings, see [Safety filtering
-per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filtering-per-request).
+The following example sets the hate speech (`hate_speech`) category to
+`block_low_and_above`, which blocks any content that has a low or higher
+probability of being hate speech:
 
 ### Python
 
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
-    response = client.models.generate_content(
+    interaction = client.interactions.create(
         model="gemini-3.8-flash",
-        contents="Some potentially unsafe prompt",
-        config=types.GenerateContentConfig(
-          safety_settings=[
-            types.SafetySetting(
-                category=types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                threshold=types.HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-            ),
-          ]
-        )
+        input="Some potentially unsafe prompt.",
+        safety_settings=[
+            {
+                "type": "hate_speech",
+                "threshold": "block_low_and_above",
+            }
+        ],
     )
 
-    print(response.text)
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const ai = new GoogleGenAI({});
+
+    async function main() {
+      const interaction = await ai.interactions.create({
+        model: "gemini-3.8-flash",
+        input: "Some potentially unsafe prompt.",
+        safety_settings: [
+          {
+            type: "hate_speech",
+            threshold: "block_low_and_above",
+          },
+        ],
+      });
+      console.log(interaction.output_text);
+    }
+
+    await main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.HarmCategory;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.SafetySetting;
+    import com.google.genai.gaos.models.interactions.Threshold;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.List;
+
+    Client client = new Client();
+
+    SafetySetting hateSpeechSafety =
+        SafetySetting.builder()
+            .type(HarmCategory.HATE_SPEECH)
+            .threshold(Threshold.BLOCK_LOW_AND_ABOVE)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("Some potentially unsafe prompt."))
+            .safetySettings(List.of(hateSpeechSafety))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### Go
 
@@ -164,7 +100,10 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
         "context"
         "fmt"
         "log"
+
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -174,105 +113,141 @@ per request](https://ai.google.dev/gemini-api/docs/safety-settings#safety-filter
             log.Fatal(err)
         }
 
-        config := &genai.GenerateContentConfig{
-            SafetySettings: []*genai.SafetySetting{
-                {
-                    Category:  "HARM_CATEGORY_HATE_SPEECH",
-                    Threshold: "BLOCK_LOW_AND_ABOVE",
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Some potentially unsafe prompt."),
+                SafetySettings: []interactions.SafetySetting{
+                    {
+                        Type:      interactions.HarmCategoryHateSpeech,
+                        Threshold: interactions.ThresholdBlockLowAndAbove,
+                    },
                 },
-            },
-        }
-
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("Some potentially unsafe prompt."),
-            config,
-        )
+            }),
+        })
         if err != nil {
             log.Fatal(err)
         }
-        fmt.Println(response.Text())
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
     }
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    const ai = new GoogleGenAI({});
-
-    const safetySettings = [
-      {
-        category: "HARM_CATEGORY_HATE_SPEECH",
-        threshold: "BLOCK_LOW_AND_ABOVE",
-      },
-    ];
-
-    async function main() {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.8-flash",
-        contents: "Some potentially unsafe prompt.",
-        config: {
-          safetySettings: safetySettings,
-        },
-      });
-      console.log(response.text);
-    }
-
-    await main();
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.types.GenerateContentConfig;
-    import com.google.genai.types.GenerateContentResponse;
-    import com.google.genai.types.HarmBlockThreshold;
-    import com.google.genai.types.HarmCategory;
-    import com.google.genai.types.SafetySetting;
-    import java.util.Arrays;
-
-    Client client = new Client();
-
-    SafetySetting hateSpeechSafety =
-        SafetySetting.builder()
-            .category(HarmCategory.Known.HARM_CATEGORY_HATE_SPEECH)
-            .threshold(HarmBlockThreshold.Known.BLOCK_LOW_AND_ABOVE)
-            .build();
-
-    GenerateContentConfig config =
-        GenerateContentConfig.builder()
-            .safetySettings(Arrays.asList(hateSpeechSafety))
-            .build();
-
-    GenerateContentResponse response =
-        client.models.generateContent(
-            "gemini-3.8-flash", "Some potentially unsafe prompt.", config);
-
-    System.out.println(response.text());
 
 ### REST
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H "Content-Type: application/json" \
-      -X POST \
+      -H 'Content-Type: application/json' \
+      -H "Api-Revision: 2026-05-20" \
       -d '{
-        "safetySettings": [
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_LOW_AND_ABOVE"}
-        ],
-        "contents": [{
-            "parts":[{
-                "text": "'\''Some potentially unsafe prompt.'\''"
-            }]
-        }]
-    }'
+        "model": "gemini-3.8-flash",
+        "input": "Some potentially unsafe prompt.",
+        "safety_settings": [
+          {"type": "hate_speech", "threshold": "block_low_and_above"}
+        ]
+      }'
+
+You can include one setting per category. Categories you don't set use the
+default threshold, which is **Off** for Gemini 2.5 and later models.
+
+## When content is blocked
+
+If a safety filter blocks the input or the model's response, the interaction
+fails with an HTTP `400` error. The blocked content isn't returned.
+
+The error `code` tells you why the request was blocked:
+
+- `safety`: The input or response was blocked by a safety filter.
+- `jailbreak`, `prohibited_content`, or `blocklist`: The input was blocked for that reason. The error `message` starts with `Input blocked:`.
+
+For example:
+
+    {
+      "error": {
+        "code": "safety",
+        "message": "Request blocked due to safety violations (harmful content). Please modify your input and retry."
+      }
+    }
+
+For background interactions (`background=true`), the interaction's `status` is
+set to `failed`, and the same `code` and `message` appear in its `errors` list.
+When streaming, the error arrives as an `error` event.
+
+## Safety filters
+
+The Gemini API's adjustable safety filters cover the following categories:
+
+| Category | Value (API) | Description |
+|---|---|---|
+| Harassment | `harassment` | Abusive, threatening, or content intended to bully, torment, or ridicule. |
+| Hate speech | `hate_speech` | Content that promotes violence or incites hatred against individuals or groups based on certain attributes. |
+| Sexually explicit | `sexually_explicit` | Content that contains sexually explicit material. |
+| Dangerous | `dangerous_content` | Content that promotes, facilitates, or enables dangerous activities. |
+| Jailbreak | `jailbreak` | Prompts designed to bypass safety filters. |
+
+You can use these filters to adjust what's appropriate for your use case. For
+example, if you're building video game dialogue, you may deem it acceptable to
+allow more content that's rated as *Dangerous* due to the nature of the game.
+
+In addition to the adjustable safety filters, the Gemini API has built-in
+protections against core harms, such as content that endangers child safety.
+These types of harm are always blocked and cannot be adjusted.
+
+## Block thresholds
+
+Due to the model's inherent safety, additional filters are **Off** by default.
+The default model behavior covers most use cases, so you should only adjust
+these settings if it's consistently required for your application.
+
+The following table describes the thresholds you can set for each category. For
+example, if you set **Hate speech** to **Block few** (`block_only_high`),
+content with a high probability of being hate speech is blocked, and anything
+with a lower probability is allowed.
+
+| Threshold (Google AI Studio) | Threshold (API) | Description |
+|---|---|---|
+| Off | `off` | Turn off the safety filter |
+| Block few | `block_only_high` | Block when high probability of unsafe content |
+| Block some | `block_medium_and_above` | Block when medium or high probability of unsafe content |
+| Block most | `block_low_and_above` | Block when low, medium or high probability of unsafe content |
+
+### Probability versus severity
+
+The Gemini API rates the probability of content being unsafe as high, medium,
+low, or negligible. It blocks content based on that probability, not on the
+severity of the harm. Some content can have a low probability of being unsafe
+even though the harm could be severe. For example, compare these sentences:
+
+1. The robot punched me.
+2. The robot slashed me up.
+
+The first sentence might have a higher probability of being unsafe, but you
+might consider the second more severe. Test carefully to find the level of
+blocking that supports your use case while minimizing harm to end users.
+
+## Adjust safety settings in Google AI Studio
+
+Click **Safety settings** under **Advanced settings** in the **Run settings**
+panel to open the **Run safety settings** modal. In the modal, you can use the
+sliders to adjust the content filtering level per safety category:
+
+![](https://ai.google.dev/static/gemini-api/docs/images/safety_settings_ui.png)
+
+> [!NOTE]
+> **Note:** You are responsible for ensuring that safety settings for your intended use case comply with the [Terms of Service](https://ai.google.dev/gemini-api/terms#use-restrictions).
+
+When you send a request (for example, by asking the model a question), a
+**Content blocked** message appears if the request's
+content is blocked. To see more details, hold the pointer over the
+**Content blocked** text to see the category and the probability of the harm
+classification.
 
 ## Next steps
 
-- See the [API reference](https://ai.google.dev/api) to learn more about the full API.
+- See the [Interactions API reference](https://ai.google.dev/api/interactions-api) to learn more about the full API.
 - Review the [safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) for a general look at safety considerations when developing with LLMs.
 - Learn more about assessing probability versus severity from the [Jigsaw
-  team](https://developers.perspectiveapi.com/s/about-the-api-score)
+  team](https://developers.perspectiveapi.com/s/about-the-api-score).
 - Learn more about the products that contribute to safety solutions like the [Perspective
-  API](https://medium.com/jigsaw/reducing-toxicity-in-large-language-models-with-perspective-api-c31c39b7a4d7). \* You can use these safety settings to create a toxicity classifier. See the [classification
-  example](https://ai.google.dev/examples/train_text_classifier_embeddings) to get started.
+  API](https://medium.com/jigsaw/reducing-toxicity-in-large-language-models-with-perspective-api-c31c39b7a4d7).

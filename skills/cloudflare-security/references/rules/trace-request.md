@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/rules/trace-request/og.png?v=7fea2167ab
 
 # Trace a request
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/trace-request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/trace-request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
@@ -32,7 +32,7 @@ Use Trace when you need to test what would happen with a simulated request:
 - Simulating requests from different geolocations or conditions
 - Confirming that WAF, cache, and firewall rules will not block or modify a specific path before you turn on a new feature — for example, checking that WAF custom rules or rate limiting rules will not intercept your [Google tag gateway for advertisers](https://developers.cloudflare.com/google-tag-gateway/) measurement path
 
-Use [Log Explorer](https://developers.cloudflare.com/log-explorer/) when you need to investigate what actually happened with real production traffic:
+Use [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/) when you need to investigate what actually happened with real production traffic:
 
 - Analyzing historical data and trends
 - Investigating security incidents after they occur
@@ -57,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/trace-request/og.png?v=7fea2167ab36f3c4","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/#page","headline":"Trace a request","description":"Trace a request through Cloudflare to see which rules match and apply.","url":"https://developers.cloudflare.com/rules/trace-request/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/trace-request/og.png?v=7fea2167ab36f3c4","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
