@@ -776,8 +776,8 @@
   },
   "grafana-exploretraces-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest.md",
-    "size": 2987,
-    "updatedAt": "2026-06-25T05:42:00.865Z"
+    "size": 3017,
+    "updatedAt": "2026-10-16T10:31:32.662Z"
   },
   "grafana-exploretraces-app/investigate.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate.md",
@@ -1206,8 +1206,8 @@
   },
   "grafana-lokiexplore-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest.md",
-    "size": 3742,
-    "updatedAt": "2026-08-27T09:08:31.805Z"
+    "size": 3772,
+    "updatedAt": "2026-10-16T10:31:45.457Z"
   },
   "grafana-lokiexplore-app/labels-and-fields.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields.md",
@@ -1306,8 +1306,8 @@
   },
   "grafana-metricsdrilldown-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest.md",
-    "size": 2599,
-    "updatedAt": "2026-06-25T05:42:28.489Z"
+    "size": 2629,
+    "updatedAt": "2026-10-16T10:31:48.343Z"
   },
   "grafana-ml-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-ml-app/latest.md",

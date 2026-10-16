@@ -3926,6 +3926,8 @@ Arguments:
 | <a id="mutation-aiflowtriggercreate-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 19.0. Status: Experiment. Filter conditions for the AI flow trigger. |
 | <a id="mutation-aiflowtriggercreate-goals"></a>`goals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="mutation-aiflowtriggercreate-projectpath"></a>`projectPath` | [`ID!`](#id) | Full path of the project the AI flow trigger is associated with. |
+| <a id="mutation-aiflowtriggercreate-readymergerequestsonfinish"></a>`readyMergeRequestsOnFinish`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| <a id="mutation-aiflowtriggercreate-statusonfinish"></a>`statusOnFinish`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | <a id="mutation-aiflowtriggercreate-userid"></a>`userId` | [`UserID`](#userid) | Service account for the AI flow trigger. |
 
 Fields:
@@ -3977,6 +3979,8 @@ Arguments:
 | <a id="mutation-aiflowtriggerupdate-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Filter conditions for the AI flow trigger. |
 | <a id="mutation-aiflowtriggerupdate-goals"></a>`goals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="mutation-aiflowtriggerupdate-id"></a>`id` | [`AiFlowTriggerID!`](#aiflowtriggerid) | ID of the flow trigger to update. |
+| <a id="mutation-aiflowtriggerupdate-readymergerequestsonfinish"></a>`readyMergeRequestsOnFinish`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| <a id="mutation-aiflowtriggerupdate-statusonfinish"></a>`statusOnFinish`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | <a id="mutation-aiflowtriggerupdate-userid"></a>`userId` | [`UserID`](#userid) | Service account for the AI flow trigger. |
 
 Fields:
@@ -33983,8 +33987,10 @@ Fields:
 | <a id="aiflowtriggertype-lastrun"></a>`lastRun`  | [`AiFlowTriggerLastRun`](#aiflowtriggerlastrun) | Introduced in GitLab 19.6. Status: Experiment. Details of the most recent run, or null if the flow trigger has never run. |
 | <a id="aiflowtriggertype-precondition"></a>`precondition`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Enforced filter conditions from the foundational flow definition. |
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project`](#project) | Project of the flow trigger. Null for group flow triggers. |
+| <a id="aiflowtriggertype-readymergerequestsonfinish"></a>`readyMergeRequestsOnFinish`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | <a id="aiflowtriggertype-runningcount"></a>`runningCount`  | [`Int!`](#int) | Introduced in GitLab 19.6. Status: Experiment. Number of sessions of the flow trigger that are created or running. |
 | <a id="aiflowtriggertype-sessions"></a>`sessions`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 19.6. Status: Experiment. Sessions started by the flow trigger, newest first. Returns sessions for only one flow trigger per request. |
+| <a id="aiflowtriggertype-statusonfinish"></a>`statusOnFinish`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | <a id="aiflowtriggertype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow trigger was last updated. |
 | <a id="aiflowtriggertype-user"></a>`user` | [`UserCore`](#usercore) | Service account of the flow trigger. |
 
@@ -34950,6 +34956,8 @@ Arguments:
 | <a id="analytics-duoworkflows-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by flow creation timestamp. Start of the range. |
 | <a id="analytics-duoworkflows-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by flow creation timestamp. End of the range. |
 | <a id="analytics-duoworkflows-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
+| <a id="analytics-duoworkflows-dropreason"></a>`dropReason` | [`[String!]`](#string) | Filter by one or many drop reasons (job_failed, no_status_reported, no_activity, workload_not_created, api_reported, preconditions_not_met, start_failed). Unrecognized values match nothing. |
+| <a id="analytics-duoworkflows-dropreasonnot"></a>`dropReasonNot` | [`[String!]`](#string) | Exclude one or many drop reasons. Flows with no recorded reason are excluded whenever at least one value is recognized. Unrecognized values are ignored. Maximum is 100. |
 | <a id="analytics-duoworkflows-flowtypesusedfrom"></a>`flowTypesUsedFrom` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. Start of the range. |
 | <a id="analytics-duoworkflows-flowtypesusedto"></a>`flowTypesUsedTo` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. End of the range. |
 | <a id="analytics-duoworkflows-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including flows from their descendants. |
@@ -43316,6 +43324,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsedimensions-dropreason"></a>`dropReason` | [`String`](#string) | Why a failed flow was dropped (job_failed, no_status_reported, no_activity, workload_not_created, api_reported, preconditions_not_met, start_failed). Returns `null` for flows that did not fail or whose drop recorded no reason. |
 | <a id="duoworkflowsaggregationresponsedimensions-model"></a>`model` | [`DuoWorkflowsModelMetadata`](#duoworkflowsmodelmetadata) | Model used by the flow, resolved to catalog metadata. |
 | <a id="duoworkflowsaggregationresponsedimensions-modelused"></a>`modelUsed` | [`String`](#string) | Model used by the flow. |
 | <a id="duoworkflowsaggregationresponsedimensions-project"></a>`project` | [`Project`](#project) | Project the flow ran in. Returns `null` for flows not scoped to a project. |
@@ -68460,6 +68469,7 @@ Values for sorting CI/CD job analytics.
 | <a id="cijobfailurereason-scheduler_failure"></a>`SCHEDULER_FAILURE` | A job that failed due to scheduler failure. |
 | <a id="cijobfailurereason-script_failure"></a>`SCRIPT_FAILURE` | A job that failed due to script failure. |
 | <a id="cijobfailurereason-secrets_manager_access_denied"></a>`SECRETS_MANAGER_ACCESS_DENIED` | A job that failed due to secrets manager access denied. |
+| <a id="cijobfailurereason-secrets_manager_source_not_accessible"></a>`SECRETS_MANAGER_SOURCE_NOT_ACCESSIBLE` | A job that failed due to secrets manager source not accessible. |
 | <a id="cijobfailurereason-secrets_provider_not_found"></a>`SECRETS_PROVIDER_NOT_FOUND` | A job that failed due to secrets provider not found. |
 | <a id="cijobfailurereason-server_timeout_canceling"></a>`SERVER_TIMEOUT_CANCELING` | A job that failed due to server timeout canceling. |
 | <a id="cijobfailurereason-server_timeout_running"></a>`SERVER_TIMEOUT_RUNNING` | A job that failed due to server timeout running. |

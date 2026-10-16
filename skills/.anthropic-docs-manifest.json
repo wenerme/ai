@@ -848,32 +848,32 @@
   "anthropic-docs/manage-claude/wif-reference.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference",
     "skill": "anthropic-docs",
-    "size": 47086,
-    "updatedAt": "2026-10-15T00:50:44.162Z"
+    "size": 47305,
+    "updatedAt": "2026-10-16T10:22:57.301Z"
   },
   "anthropic-docs/manage-claude/wif-providers/aws.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/aws",
     "skill": "anthropic-docs",
-    "size": 33072,
-    "updatedAt": "2026-10-15T00:50:44.599Z"
+    "size": 35209,
+    "updatedAt": "2026-10-16T10:22:57.706Z"
   },
   "anthropic-docs/manage-claude/wif-providers/gcp.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/gcp",
     "skill": "anthropic-docs",
-    "size": 20679,
-    "updatedAt": "2026-10-15T00:50:45.125Z"
+    "size": 22648,
+    "updatedAt": "2026-10-16T10:22:58.185Z"
   },
   "anthropic-docs/manage-claude/wif-providers/azure.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/azure",
     "skill": "anthropic-docs",
-    "size": 66080,
-    "updatedAt": "2026-10-15T00:50:45.608Z"
+    "size": 70186,
+    "updatedAt": "2026-10-16T10:22:58.596Z"
   },
   "anthropic-docs/manage-claude/wif-providers/github-actions.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/github-actions",
     "skill": "anthropic-docs",
-    "size": 14927,
-    "updatedAt": "2026-10-15T00:50:46.020Z"
+    "size": 14931,
+    "updatedAt": "2026-10-16T10:22:58.989Z"
   },
   "anthropic-docs/manage-claude/wif-providers/kubernetes.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/kubernetes",
@@ -884,14 +884,14 @@
   "anthropic-docs/manage-claude/wif-providers/spiffe.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
     "skill": "anthropic-docs",
-    "size": 30625,
-    "updatedAt": "2026-10-15T00:50:46.941Z"
+    "size": 30660,
+    "updatedAt": "2026-10-16T10:22:59.835Z"
   },
   "anthropic-docs/manage-claude/wif-providers/okta.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/okta",
     "skill": "anthropic-docs",
-    "size": 22320,
-    "updatedAt": "2026-10-15T00:50:47.379Z"
+    "size": 24305,
+    "updatedAt": "2026-10-16T10:23:00.250Z"
   },
   "anthropic-docs/manage-claude/usage-cost-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-api",
@@ -932,14 +932,14 @@
   "anthropic-docs/manage-claude/opentelemetry/sdk.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry/sdk",
     "skill": "anthropic-docs",
-    "size": 32002,
-    "updatedAt": "2026-10-16T00:51:43.638Z"
+    "size": 32005,
+    "updatedAt": "2026-10-16T10:23:03.098Z"
   },
   "anthropic-docs/manage-claude/opentelemetry/api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/opentelemetry/api",
     "skill": "anthropic-docs",
-    "size": 39574,
-    "updatedAt": "2026-10-16T00:51:44.023Z"
+    "size": 39577,
+    "updatedAt": "2026-10-16T10:23:03.439Z"
   },
   "anthropic-docs/manage-claude/data-residency.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/data-residency",
@@ -1664,8 +1664,8 @@
   "anthropic-api/api/opentelemetry/spans.md": {
     "url": "https://platform.claude.com/docs/en/api/opentelemetry/spans",
     "skill": "anthropic-api",
-    "size": 94060,
-    "updatedAt": "2026-10-15T00:51:39.768Z"
+    "size": 94062,
+    "updatedAt": "2026-10-16T10:23:46.313Z"
   },
   "anthropic-api/api/rate-limits.md": {
     "url": "https://platform.claude.com/docs/en/api/rate-limits",
@@ -1712,8 +1712,8 @@
   "anthropic-docs/agents-and-tools/agent-skills/claude-api-skill.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/claude-api-skill",
     "skill": "anthropic-docs",
-    "size": 15770,
-    "updatedAt": "2026-10-16T00:52:36.313Z"
+    "size": 15815,
+    "updatedAt": "2026-10-16T10:23:48.935Z"
   },
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",

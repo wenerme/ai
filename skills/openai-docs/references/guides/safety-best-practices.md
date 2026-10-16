@@ -167,6 +167,20 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 
+For the Images API, include `safety_identifier` on each [image
+generation](https://developers.openai.com/api/reference/resources/images/methods/generate)
+(`POST /v1/images/generations`) and [image
+edit](https://developers.openai.com/api/reference/resources/images/methods/edit) (`POST /v1/images/edits`)
+request. Send it as a JSON property for JSON requests or a form field for
+multipart image edits. Use the same stable identifier for an end user across
+requests within your organization, and keep it to 128 characters or fewer.
+
+The `user` parameter in the Images API is deprecated. To migrate, send the identifier
+you previously supplied as `user` in `safety_identifier` instead. Existing
+requests using `user` remain supported. If you provide both fields, a nonempty
+`safety_identifier` takes precedence. If `safety_identifier` is omitted, `null`, or an empty
+string, the API uses `user` when available.
+
 For Realtime API requests, provide the same stable, privacy-preserving identifier
 with the `OpenAI-Safety-Identifier` header. When you create an ephemeral Realtime
 client secret, include the header on the server-side request that creates the
@@ -176,8 +190,8 @@ connection request.
 
 Safety identifiers do not carry over between APIs or sessions. If your
 application already sends `safety_identifier` with Responses API requests, pass
-the same stable value separately when you create or connect each Realtime
-session.
+the same stable value separately in each Images API request and when you create
+or connect each Realtime session.
 
 ### Revoke compromised API keys
 

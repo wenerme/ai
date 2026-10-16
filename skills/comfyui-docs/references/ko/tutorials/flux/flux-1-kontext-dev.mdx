@@ -1,13 +1,13 @@
 ---
-title: "ComfyUI Flux Kontext Dev 네이티브 워크플로우 예시"
+title: "ComfyUI FLUX Kontext Dev 네이티브 워크플로우 예시"
 description: "ComfyUI용 FLUX.1 Kontext Dev 워크플로: Black Forest Labs의 오픈소스 12B 멀티모달 편집 모델로 텍스트 및 이미지 입력을 사용해 이미지를 편집합니다."
-translationSourceHash: 644dbe55
+translationSourceHash: 6b87ee9a
 translationFrom: tutorials/flux/flux-1-kontext-dev.mdx
 translationBlockHashes:
   "_intro": 51c48128
   "About FLUX.1 Kontext Dev": bb2f00f7
   "Model Download": e6b40970
-  "Flux.1 Kontext Dev Workflow": 5284c9c2
+  "FLUX.1 Kontext Dev Workflow": 8408eb0d
 ---
 
 <iframe
@@ -69,19 +69,19 @@ FLUX.1 Kontext 제품군과 동일한 핵심 기능을 공유합니다:
 │       └── t5xxl_fp16.safetensors or t5xxl_fp8_e4m3fn_scaled.safetensors
 ```
 
-## Flux.1 Kontext Dev 워크플로우
+## FLUX.1 Kontext Dev 워크플로우
 
-### Flux Kontext Dev 이미지 편집 {#flux_kontext_dev_basic}
+### FLUX Kontext Dev 이미지 편집 {#flux_kontext_dev_basic}
 
 캐릭터 일관성을 유지하고, 다른 부분에 영향을 주지 않으면서 특정 부분을 편집하고, 원본 스타일을 보존하는 스마트 이미지 편집입니다.
 
-[Flux Kontext Dev workflow preview]
+[FLUX Kontext Dev workflow preview]
 
   
     Comfy Cloud에서 열기
   
   
-    JSON을 다운로드하거나 템플릿 라이브러리에서 &quot;Flux Kontext Dev&quot; 검색
+    JSON을 다운로드하거나 템플릿 라이브러리에서 &quot;FLUX Kontext Dev&quot; 검색
   
 
 **입력 자료**
@@ -100,7 +100,7 @@ FLUX.1 Kontext 제품군과 동일한 핵심 기능을 공유합니다:
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
   [Input image]
-  [Flux Kontext Dev example output]
+  [FLUX Kontext Dev example output]
 </div>
 
 이 워크플로우는 `Load Image(from output)` 노드를 사용하여 편집할 이미지를 로드하므로, 여러 번의 편집을 위해 편집된 이미지를 더 편리하게 활용할 수 있습니다.

@@ -658,10 +658,10 @@
   "openai-docs/guides/csam-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/csam-guidance.md",
     "skill": "openai-docs",
-    "etag": "W/\"168966d34999d42247062aa7ab07bd2b\"",
-    "lastModified": "Wed, 07 Oct 2026 17:26:18 GMT",
-    "size": 11712,
-    "updatedAt": "2026-10-07T17:31:17.823Z"
+    "etag": "W/\"02cd1d8167ef87246f0a5eb59f87694a\"",
+    "lastModified": "Fri, 16 Oct 2026 09:29:28 GMT",
+    "size": 12083,
+    "updatedAt": "2026-10-16T10:27:15.039Z"
   },
   "openai-docs/guides/custom-chatkit.md": {
     "url": "https://developers.openai.com/api/docs/guides/custom-chatkit.md",
@@ -1258,10 +1258,10 @@
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"3ae95c395f8a9c30d7dcd7d7bdad8d38\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:48 GMT",
-    "size": 9277,
-    "updatedAt": "2026-09-11T04:24:48.891Z"
+    "etag": "W/\"3de46afc3fef2c421e71cd3c794ba731\"",
+    "lastModified": "Fri, 16 Oct 2026 08:22:08 GMT",
+    "size": 10217,
+    "updatedAt": "2026-10-16T10:27:31.414Z"
   },
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",
@@ -1306,10 +1306,10 @@
   "openai-docs/guides/secure-mcp-tunnels.md": {
     "url": "https://developers.openai.com/api/docs/guides/secure-mcp-tunnels.md",
     "skill": "openai-docs",
-    "etag": "W/\"d59544f80771997aef1d077ff74444e3\"",
-    "lastModified": "Wed, 14 Oct 2026 00:46:22 GMT",
-    "size": 21310,
-    "updatedAt": "2026-10-14T00:56:33.745Z"
+    "etag": "W/\"b8ff132b5cdc8b8827ae28c49620cb3c\"",
+    "lastModified": "Fri, 16 Oct 2026 08:29:46 GMT",
+    "size": 21773,
+    "updatedAt": "2026-10-16T10:27:32.728Z"
   },
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",
@@ -5160,6 +5160,14 @@
     "lastModified": "Fri, 31 Jul 2026 02:43:37 GMT",
     "size": 6744,
     "updatedAt": "2026-07-31T03:46:40.603Z"
+  },
+  "openai-api/realtime/translations/connect.md": {
+    "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/translations/methods/connect/index.md",
+    "skill": "openai-api",
+    "etag": "\"1f728dcf52cbc8d6f2332bac99cc305a\"",
+    "lastModified": "Fri, 16 Oct 2026 10:29:22 GMT",
+    "size": 56,
+    "updatedAt": "2026-10-16T10:29:22.645Z"
   },
   "openai-api/realtime/translations/client_secrets.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/translations/subresources/client_secrets/index.md",

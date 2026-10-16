@@ -1,13 +1,13 @@
 ---
-title: "Flux.1 Krea Dev ComfyUI 工作流教程"
-description: "在 ComfyUI 中使用 Black Forest Labs 与 Krea 联合打造的开源 Flux.1 Krea Dev 模型生成图像，呈现自然细节与独特美学风格。"
-translationSourceHash: 7376f0f0
+title: "FLUX.1 Krea Dev ComfyUI 工作流教程"
+description: "在 ComfyUI 中使用 Black Forest Labs 与 Krea 联合打造的开源 FLUX.1 Krea Dev 模型生成图像，呈现自然细节与独特美学风格。"
+translationSourceHash: d5f97ee0
 translationFrom: tutorials/flux/flux1-krea-dev.mdx
 ---
 
-[Flux.1 Krea Dev 海报]
+[FLUX.1 Krea Dev 海报]
 
-[Flux.1 Krea Dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev) 是由 Black Forest Labs (BFL) 与 Krea 合作开发的先进文生图模型。这是目前最好的开源 FLUX 模型，专为文生图而设计。
+[FLUX.1 Krea Dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev) 是由 Black Forest Labs (BFL) 与 Krea 合作开发的先进文生图模型。这是目前最好的开源 FLUX 模型，专为文生图而设计。
 
 **模型特点**
 
@@ -19,24 +19,24 @@ translationFrom: tutorials/flux/flux1-krea-dev.mdx
 **模型许可**
 该模型采用 [flux-1-dev-non-commercial-license](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/blob/main/LICENSE.md) 许可发布
 
-## Flux.1 Krea Dev ComfyUI 工作流
+## FLUX.1 Krea Dev ComfyUI 工作流
 
-### Flux.1 Krea Dev {#flux1_krea_dev}
+### FLUX.1 Krea Dev {#flux1_krea_dev}
 
 这是一款微调的 FLUX 模型，将照片级真实感推向极致。
 
-[Flux.1 Krea Dev 工作流预览]
+[FLUX.1 Krea Dev 工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
   
   
-    下载 JSON，或在模板库中搜索「Flux.1 Krea Dev」
+    下载 JSON，或在模板库中搜索「FLUX.1 Krea Dev」
   
 
 **输出示例**
 
-![Flux.1 Krea Dev 输出示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/flux1_krea_dev.png)
+![FLUX.1 Krea Dev 输出示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/flux1_krea_dev.png)
 
 #### 1. 工作流文件
 
@@ -53,7 +53,7 @@ translationFrom: tutorials/flux/flux1-krea-dev.mdx
 
 `flux1-dev.safetensors` 文件需要先同意 [black-forest-labs/FLUX.1-Krea-dev](https://huggingface.co/black-forest-labs/FLUX.1-Krea-dev/) 协议才能通过浏览器下载。
 
-如果您之前使用过 Flux 相关的工作流，以下模型是相同的，无需再次下载
+如果您之前使用过 FLUX 相关的工作流，以下模型是相同的，无需再次下载
 
 **文本编码器**
 - [clip_l.safetensors](https://huggingface.co/comfyanonymous/flux_text_encoders/blob/main/clip_l.safetensors?download=true)
@@ -83,7 +83,7 @@ ComfyUI/
 
 请参考下图确保所有模型文件已正确加载
 
-[ComfyUI Flux Krea Dev 工作流]
+[ComfyUI FLUX Krea Dev 工作流]
 
 1. 确保 `Load Diffusion Model` 节点中加载了 `flux1-krea-dev_fp8_scaled.safetensors` 或 `flux1-krea-dev.safetensors`
     - `flux1-krea-dev_fp8_scaled.safetensors` 推荐给低显存用户

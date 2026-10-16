@@ -1,48 +1,48 @@
 ---
-title: "ComfyUI Flux.2 Klein 4B 指南"
+title: "ComfyUI FLUX.2 Klein 4B 指南"
 description: "快速了解 FLUX.2 [klein] 4B，并在 ComfyUI 中运行文生图与图像编辑工作流。"
-translationSourceHash: 0b0cbbe2
+translationSourceHash: 98542515
 translationFrom: tutorials/flux/flux-2-klein.mdx
 translationBlockHashes:
   "_intro": 980a68e5
-  "About FLUX.2 [klein]": bb088cd5
-  "Flux.2 Klein 4B Workflows": 942ab81a
-  "Flux.2 Klein 4B Model Downloads": 85893271
-  "Flux.2 Klein 9B Workflows": 1ac29066
-  "Flux.2 Klein 9B Model Downloads": f5b2f2a1
+  "About FLUX.2 [klein]": 556eac08
+  "FLUX.2 Klein 4B Workflows": 8095f2bc
+  "FLUX.2 Klein 4B Model Downloads": f8158c6b
+  "FLUX.2 Klein 9B Workflows": 99d18075
+  "FLUX.2 Klein 9B Model Downloads": 0407c874
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Y9foxm9OYEU?si=FeueXTTBoIkydjk7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## 关于 FLUX.2 [Klein]
 
-FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将文生图与图像编辑统一在紧凑架构中。它面向交互式工作流、即时预览与低延迟场景；蒸馏版本可在约 1 秒内完成端到端推理，并在单图与多图参考编辑中保持出色画质。
+FLUX.2 [Klein] 是 FLUX 系列中目前(2026年1月15日)最快的模型，将文生图与图像编辑统一在紧凑架构中。它面向交互式工作流、即时预览与低延迟场景；蒸馏版本可在约 1 秒内完成端到端推理，并在单图与多图参考编辑中保持出色画质。
 
 **模型亮点：**
 - 两种 4B 版本：Base（未蒸馏）适合最大灵活性与微调；Distilled（4 步）用于速度优先的部署
 - 性能：蒸馏版约 ~1.2s（5090）· 8.4GB 显存；Base 约 ~17s（5090）· 9.2GB 显存
 - 编辑能力：风格转换、语义编辑、物体替换/移除、多参考合成、迭代式编辑
 
-## Flux.2 Klein 4B 工作流
+## FLUX.2 Klein 4B 工作流
 
-### Flux.2 [Klein] 4B 文生图 {#image_flux2_klein_text_to_image}
+### FLUX.2 [Klein] 4B 文生图 {#image_flux2_klein_text_to_image}
 
-[Flux.2 Klein 4B 文生图工作流预览]
+[FLUX.2 Klein 4B 文生图工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
   
   
-    下载 Flux.2 Klein 4B 文生图工作流。
+    下载 FLUX.2 Klein 4B 文生图工作流。
   
 
 **示例输出**
 
-![Flux.2 Klein 4B 文生图示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_text_to_image.png)
+![FLUX.2 Klein 4B 文生图示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_text_to_image.png)
 
-### Flux.2 [Klein] 4B 图像编辑 {#image_flux2_klein_image_edit_4b_base}
+### FLUX.2 [Klein] 4B 图像编辑 {#image_flux2_klein_image_edit_4b_base}
 
-[Flux.2 Klein 4B 图像编辑基础工作流预览]
+[FLUX.2 Klein 4B 图像编辑基础工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
@@ -69,11 +69,11 @@ FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将�
 
 **示例输出**
 
-![Flux.2 Klein 4B 图像编辑基础示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
+![FLUX.2 Klein 4B 图像编辑基础示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
 
-### Flux.2 [Klein] 4B Distilled 图像编辑 {#image_flux2_klein_image_edit_4b_distilled}
+### FLUX.2 [Klein] 4B Distilled 图像编辑 {#image_flux2_klein_image_edit_4b_distilled}
 
-[Flux.2 Klein 4B 图像编辑蒸馏版工作流预览]
+[FLUX.2 Klein 4B 图像编辑蒸馏版工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
@@ -100,9 +100,9 @@ FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将�
 
 **示例输出**
 
-![Flux.2 Klein 4B 图像编辑蒸馏版示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
+![FLUX.2 Klein 4B 图像编辑蒸馏版示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
 
-## Flux.2 Klein 4B 模型下载
+## FLUX.2 Klein 4B 模型下载
 
     4B 模型文本编码器。
   
@@ -130,26 +130,26 @@ FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将�
 │          └── flux2-vae.safetensors
 ```
 
-## Flux.2 Klein 9B 工作流
+## FLUX.2 Klein 9B 工作流
 
-### Flux.2 [Klein] 9B：文生图 {#image_flux2_text_to_image_9b}
+### FLUX.2 [Klein] 9B：文生图 {#image_flux2_text_to_image_9b}
 
-[Flux.2 Klein 9B 文生图工作流预览]
+[FLUX.2 Klein 9B 文生图工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
   
   
-    下载 Flux.2 Klein 9B 文生图工作流。
+    下载 FLUX.2 Klein 9B 文生图工作流。
   
 
 **示例输出**
 
-![Flux.2 Klein 9B 文生图示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image_9b.png)
+![FLUX.2 Klein 9B 文生图示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image_9b.png)
 
-### Flux.2 [Klein] 9B：图像编辑 {#image_flux2_klein_image_edit_9b_base}
+### FLUX.2 [Klein] 9B：图像编辑 {#image_flux2_klein_image_edit_9b_base}
 
-[Flux.2 Klein 9B 图像编辑基础工作流预览]
+[FLUX.2 Klein 9B 图像编辑基础工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
@@ -176,11 +176,11 @@ FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将�
 
 **示例输出**
 
-![Flux.2 Klein 9B 图像编辑基础示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
+![FLUX.2 Klein 9B 图像编辑基础示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
 
-### Flux.2 [Klein] 9B Distilled：图像编辑 {#image_flux2_klein_image_edit_9b_distilled}
+### FLUX.2 [Klein] 9B Distilled：图像编辑 {#image_flux2_klein_image_edit_9b_distilled}
 
-[Flux.2 Klein 9B 蒸馏版图像编辑工作流预览]
+[FLUX.2 Klein 9B 蒸馏版图像编辑工作流预览]
 
   
     在 Comfy Cloud 上运行此工作流
@@ -207,9 +207,9 @@ FLUX.2 [Klein] 是 Flux 系列中目前(2026年1月15日)最快的模型，将�
 
 **示例输出**
 
-![Flux.2 Klein 9B 蒸馏版图像编辑示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
+![FLUX.2 Klein 9B 蒸馏版图像编辑示例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
 
-## Flux.2 Klein 9B 模型下载
+## FLUX.2 Klein 9B 模型下载
 
 扩散模型需要访问 BFL 仓库，接受协议后才能下载。
 
