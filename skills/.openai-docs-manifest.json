@@ -850,10 +850,10 @@
   "openai-docs/guides/image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/image-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"e501f5851e9456b509462222519dc7af\"",
-    "lastModified": "Sat, 03 Oct 2026 01:30:24 GMT",
-    "size": 113590,
-    "updatedAt": "2026-10-03T05:07:57.748Z"
+    "etag": "W/\"452bce4cf231850b65a4b98a6ad8ce52\"",
+    "lastModified": "Sat, 17 Oct 2026 08:02:16 GMT",
+    "size": 114425,
+    "updatedAt": "2026-10-17T10:25:19.534Z"
   },
   "openai-docs/guides/image-prompting.md": {
     "url": "https://developers.openai.com/api/docs/guides/image-prompting.md",
@@ -1266,10 +1266,10 @@
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",
     "skill": "openai-docs",
-    "etag": "W/\"9a88080a4d0f0adb130013833f13bd80\"",
-    "lastModified": "Fri, 02 Oct 2026 15:45:31 GMT",
-    "size": 9676,
-    "updatedAt": "2026-10-02T16:21:57.916Z"
+    "etag": "W/\"d8e027eea73be746b0986aa18e403d62\"",
+    "lastModified": "Sat, 17 Oct 2026 08:40:49 GMT",
+    "size": 10099,
+    "updatedAt": "2026-10-17T10:25:31.763Z"
   },
   "openai-docs/guides/safety-checks/cybersecurity.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity.md",
@@ -1490,10 +1490,10 @@
   "openai-docs/guides/tools-image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-image-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"fb74a8cdd09edfd7bebbc3da566223da\"",
-    "lastModified": "Fri, 11 Sep 2026 04:24:56 GMT",
-    "size": 35692,
-    "updatedAt": "2026-09-11T04:24:56.703Z"
+    "etag": "W/\"00a44f97e51490cf0e1fa44ba7454208\"",
+    "lastModified": "Sat, 17 Oct 2026 08:02:02 GMT",
+    "size": 36072,
+    "updatedAt": "2026-10-17T10:25:38.240Z"
   },
   "openai-docs/guides/tools-local-shell.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-local-shell.md",

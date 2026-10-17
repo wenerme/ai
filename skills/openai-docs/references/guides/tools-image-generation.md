@@ -15,6 +15,12 @@ When you include the `image_generation` tool in your request, the model can deci
 
 The `image_generation_call` tool call result will include a base64-encoded image.
 
+If your application serves individual end users, include a stable,
+privacy-preserving `safety_identifier` on each top-level Responses request,
+including later edits. It is a request parameter, not an `image_generation`
+tool option. See [image safety identifiers](https://developers.openai.com/api/docs/guides/image-generation#safety-identifiers)
+for guidance on both image APIs.
+
 Generate an image
 
 ```javascript

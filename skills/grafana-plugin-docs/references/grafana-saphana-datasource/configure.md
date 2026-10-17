@@ -15,6 +15,7 @@ The SAP HANA data source has the following requirements.
 
 Grafana requirements:
 
+- Grafana version `11.6.7` or later.
 - One of the following:
 
   - [Grafana Cloud](/products/cloud/) Free, Pro, or Advanced account.
@@ -24,7 +25,7 @@ Grafana requirements:
 SAP HANA requirements:
 
 - SAP HANA URL, username, and password, along with the necessary permissions.
-- Connectivity between the Grafana server and your SAP HANA server. If the connection is protected by firewall rules, you need to allow Grafana’s IP to connect.
+- Connectivity between the Grafana server and your SAP HANA server. If the connection is protected by firewall rules, you need to allow the Grafana IP address to connect.
 
 ## Add the SAP HANA data source
 
@@ -38,43 +39,87 @@ Complete the following steps to add a new SAP HANA data source:
 4. Select the SAP HANA data source.
 5. Click **Add new data source** in the upper right.
 
-Grafana takes you to the **Settings** tab, where you will set up your SAP HANA configuration.
+Grafana takes you to the **Settings** tab, where you set up your SAP HANA configuration.
 
 ## Configure the data source in the UI
 
-The following table lists the configuration options for SAP HANA.
+At the top of the settings page, set the standard Grafana fields:
+
+- **Name:** The data source name. This is how you refer to the data source in panels and queries.
+- **Default:** Toggle to select this data source as the default in dashboard panels.
+
+The SAP HANA settings are grouped into the same sections you see in the UI: **HTTP**, **Auth**, **TLS / SSL Settings**, **Tenant Properties**, and **Additional Properties**.
+
+### HTTP
+
+Configure how Grafana reaches your SAP HANA instance.
 
 Expand table
 
-| Setting             | Description                                                                                                                                                                                                                                                                           |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**            | The data source name. This is how you refer to the data source in panels and queries.                                                                                                                                                                                                 |
-| **Default**         | Toggle to select this data source as the default in dashboard panels.                                                                                                                                                                                                                 |
-| **Server address**  | **Required.** The base address of the SAP HANA instance (excluding the http/https prefixes). Example: `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx.hana.trial-us10.hanacloud.ondemand.com`                                                                                                         |
-| **Username**        | **Required.** Username to connect to SAP HANA instance. This user must have required permissions to query the database.                                                                                                                                                               |
-| **Password**        | **Required.** Password for the SAP HANA user.                                                                                                                                                                                                                                         |
-| **Server port**     | The port of the SAP HANA instance. Example: `443` or `39013`. SAP HANA Cloud typically uses `443`, while on-premises or multi-tenant instances use their respective ports. An alternative to using the port for tenant instances is to fill in the database name and instance number. |
-| **Default schema**  | Default schema to use. If not specified, you need to specify the schema in every query.                                                                                                                                                                                               |
-| **Database name**   | For tenant databases. The database name you want to connect to.                                                                                                                                                                                                                       |
-| **Instance number** | For tenant databases. The instance number. The server port is inferred with the formula: `3<instance>13`. Refer to [SAP HANA documentation](https://help.sap.com/docs/SAP_HANA_PLATFORM/78209c1d3a9b41cd8624338e42a12bf6/7a9343c9f2a2436faa3cfdb5ca00c052.html).                      |
-| **Timeout**         | The timeout for database connections in seconds. Default: `30`.                                                                                                                                                                                                                       |
+| Setting            | Description                                                                                                                                                                                                |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Server address** | **Required.** The base address of the SAP HANA instance (excluding the http/https prefixes). Example: `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx.hana.trial-us10.hanacloud.ondemand.com`                              |
+| **Server port**    | The port of the SAP HANA instance. Example: `443` or `39013`. SAP HANA Cloud typically uses `443`. This field is optional if you provide both a **Tenant instance number** and a **Tenant database name**. |
 
-### TLS settings
+### Auth
 
-The following settings control TLS/SSL configuration for secure connections:
+Provide the credentials Grafana uses to authenticate.
 
 Expand table
 
-| Setting             | Description                                                                                                                                          |
-|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **TLS**             | Enable TLS/SSL encryption for the connection to SAP HANA. Enabled by default. Disable only when your SAP HANA instance does not have TLS configured. |
-| **Skip TLS verify** | Enable this option to skip TLS verification. Default: `false`.                                                                                       |
-| **TLS Client Auth** | Enable this option to provide client certificate and key. Default: `false`.                                                                          |
-| **With CA Cert**    | Needed for verifying self-signed TLS certificates. Default: `false`.                                                                                 |
+| Setting      | Description                                                                                                                                                                                   |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Username** | Username to connect to the SAP HANA instance. This user must have the permissions required to query the database. Required unless you enable **TLS Client Auth**, in which case it’s ignored. |
+| **Password** | Password for the SAP HANA user. Required unless you enable **TLS Client Auth**, in which case it’s ignored.                                                                                   |
+
+### TLS / SSL settings
+
+TLS is enabled by default. When TLS is enabled, the additional TLS options appear. Disabling TLS hides and resets these options.
+
+Expand table
+
+| Setting             | Description                                                                                                                                                                   |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **TLS**             | Enable TLS/SSL encryption for the connection to SAP HANA. Enabled by default. Disable only when your SAP HANA instance does not have TLS configured (plain text connections). |
+| **Skip TLS Verify** | Skip verification of the server’s TLS certificate. Appears only when TLS is enabled. Default: `false`. Not recommended for production.                                        |
+| **TLS Client Auth** | Authenticate with an X.509 client certificate and key instead of a username and password. Appears only when TLS is enabled. Default: `false`.                                 |
+| **With CA Cert**    | Verify the server against a CA certificate you provide. Needed for self-signed certificates or an internal CA. Appears only when TLS is enabled. Default: `false`.            |
+
+When **TLS Client Auth** is enabled, **Client Cert** and **Client Key** fields appear. When **With CA Cert** is enabled, a **CA Cert** field appears. Provide each certificate in PEM format.
+
+> Note
+>
+> When you enable **TLS Client Auth**, the data source authenticates with the provided client certificate and key. Any values in the **Username** and **Password** fields are ignored.
+
+### Tenant Properties
+
+Use these settings to connect to a tenant database. You can connect either by host and port, or by providing a tenant database name and instance number instead of a port.
+
+Expand table
+
+| Setting                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Tenant database name**   | The tenant database name to connect to. Optional. When set together with an instance number, the **Server port** is derived from the instance number and isn’t required.                                                                                                                                                                                                                                                     |
+| **Tenant instance number** | The tenant instance number. Optional. When you set both a tenant instance number and a **Tenant database name**, the connection uses port `3<instance>13` and any **Server port** you set is ignored. An instance number on its own still requires a **Server port**. Refer to [SAP HANA documentation](https://help.sap.com/docs/SAP_HANA_PLATFORM/78209c1d3a9b41cd8624338e42a12bf6/7a9343c9f2a2436faa3cfdb5ca00c052.html). |
+
+### Additional Properties
+
+Configure optional query and connection behavior.
+
+Expand table
+
+| Setting            | Description                                                                             |
+|--------------------|-----------------------------------------------------------------------------------------|
+| **Default schema** | Default schema to use. If not specified, you need to specify the schema in every query. |
+| **Timeout**        | The timeout for database connections in seconds. Default: `30`.                         |
 
 ### Secure Socks Proxy
 
-If you’re using Grafana 10.0 or later, you can enable the **Secure Socks Proxy** option to proxy the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a datasource connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+Enable the **Secure Socks Proxy** option to proxy the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+
+> Note
+>
+> This option appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled in your Grafana configuration.
 
 ## Find the right port to connect
 
@@ -148,7 +193,7 @@ GRANT SELECT ON SCHEMA <SCHEMA> TO <USER>;
 
 Limit access to SAP HANA data by clicking on the **Permissions** tab in the data source configuration page to enable [data source permissions](/docs/grafana/latest/administration/data-source-management/). On the permissions page, admins can enable permissions and restrict query permissions to specific users and teams.
 
-## Configure the data source with provisioning
+## Provision the data source
 
 You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
 
@@ -171,8 +216,11 @@ datasources:
       tlsAuth: false
       tlsAuthWithCACert: false
       defaultSchema: EXAMPLE
-      databaseName: DATABASE
-      instance: "01"
+      # databaseName and instance are for tenant databases. When both are set, the
+      # connection uses port 3<instance>13 (for example, 30113) and the port above is ignored.
+      # databaseName: DATABASE
+      # instance: "01"
+      timeout: "30" # Must be a quoted string. An unquoted number fails with "could not parse json".
     secureJsonData:
       password: $SECURE_HANA_PASSWORD_FROM_ENVIRONMENT_VAR
       tlsCACert:
@@ -182,7 +230,7 @@ datasources:
     editable: false
 ```
 
-## Configure the data source with Terraform
+## Provision with Terraform
 
 You can configure the SAP HANA data source as code using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). This approach enables version-controlled, reproducible data source configurations across environments.
 
@@ -212,8 +260,12 @@ resource "grafana_data_source" "sap_hana" {
     port          = var.sap_hana_port
     username      = var.sap_hana_username
     defaultSchema = var.sap_hana_default_schema
+    # When databaseName and instance are both set, the connection uses port
+    # 3<instance>13 and the port above is ignored. Leave them empty to use the port.
     databaseName  = var.sap_hana_database_name
     instance      = var.sap_hana_instance
+    # If you add a timeout, pass it as a quoted string (for example, "30"). An
+    # unquoted number fails with "could not parse json".
     # tlsDisabled = false  # TLS is enabled by default. Set to true only for plaintext (non-TLS) HANA instances.
     tlsSkipVerify = false
     tlsAuth       = false
@@ -233,7 +285,7 @@ variable "grafana_url" {
 }
 
 variable "grafana_auth" {
-  description = "Grafana authentication (e.g., admin:password or API key)"
+  description = "Grafana authentication (for example, admin:password or API key)"
   type        = string
   sensitive   = true
 }

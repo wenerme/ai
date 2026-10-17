@@ -40,6 +40,21 @@ To ensure these models are used responsibly, you may need to complete the [API
   console](https://platform.openai.com/settings/organization/general) before
   using GPT Image models.
 
+### Safety identifiers
+
+If your application serves individual end users, include a stable,
+privacy-preserving `safety_identifier` in each [image generation](https://developers.openai.com/api/reference/resources/images/methods/generate)
+or [image edit](https://developers.openai.com/api/reference/resources/images/methods/edit) request. Hash a
+username or email address instead of sending identifying information, and keep
+the identifier to 128 characters or fewer. Safety identifiers are recommended
+but not required.
+
+The Images API `user` parameter is deprecated. Send the same identifier as
+`safety_identifier` instead. Existing requests using `user` remain supported. A
+nonempty `safety_identifier` takes precedence over `user`; when
+`safety_identifier` is omitted, `null`, or an empty string, the API uses `user`
+when available.
+
 <div
   className="not-prose"
   style={{ float: "right", margin: "10px 0 10px 10px" }}
@@ -3571,9 +3586,9 @@ A larger non-square resolution can sometimes produce fewer output tokens than
       <th style={{ textAlign: "left", padding: "8px", width: "14%" }}>
         Quality
       </th>
-      <th style={{ padding: "8px", width: "19.33%" }}>1024 x 1024</th>
-      <th style={{ padding: "8px", width: "19.33%" }}>1024 x 1536</th>
-      <th style={{ padding: "8px", width: "19.34%" }}>1536 x 1024</th>
+      <th style={{ padding: "8px", width: "19.33%" }}>1024 × 1024</th>
+      <th style={{ padding: "8px", width: "19.33%" }}>1024 × 1536</th>
+      <th style={{ padding: "8px", width: "19.34%" }}>1536 × 1024</th>
     </tr>
   </thead>
   <tbody>

@@ -1961,23 +1961,23 @@
   },
   "grafana-saphana-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/alerting.md",
-    "size": 6598,
-    "updatedAt": "2026-06-25T05:43:08.097Z"
+    "size": 10317,
+    "updatedAt": "2026-10-17T10:30:31.189Z"
   },
   "grafana-saphana-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/annotations.md",
-    "size": 3543,
-    "updatedAt": "2026-06-25T05:43:08.451Z"
+    "size": 5242,
+    "updatedAt": "2026-10-17T10:30:31.353Z"
   },
   "grafana-saphana-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/configure.md",
-    "size": 13871,
-    "updatedAt": "2026-08-11T02:46:17.093Z"
+    "size": 16286,
+    "updatedAt": "2026-10-17T10:30:31.522Z"
   },
   "grafana-saphana-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest.md",
-    "size": 3296,
-    "updatedAt": "2026-06-25T05:43:09.193Z"
+    "size": 3280,
+    "updatedAt": "2026-10-17T10:30:31.683Z"
   },
   "grafana-saphana-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/query-editor.md",
