@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-creden
 
 # Authenticate against R2 with temporary credentials
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 
@@ -89,15 +89,17 @@ type R2Scope =
   | "admin-read-only"
   | "admin-read-write";
 
-export interface TempCredentialOptions {
-  scope: R2Scope;
-  // Optional: narrow the credential to specific S3 operations.
-  actions?: string[];
+// Permitted operations: set exactly one of `scope` or `actions`, never both.
+type PermittedOperations =
+  | { scope: R2Scope; actions?: never }
+  | { actions: [string, ...string[]]; scope?: never };
+
+export type TempCredentialOptions = PermittedOperations & {
   // Time-to-live in seconds. Defaults to 1 hour.
   ttlSeconds?: number;
   // Optional: restrict access to specific prefixes or objects.
   paths?: { prefixPaths?: string[]; objectPaths?: string[] };
-}
+};
 
 export async function createTempCredentials(
   endpoint: string,
@@ -113,13 +115,12 @@ export async function createTempCredentials(
 }> {
   const ttl = opts.ttlSeconds ?? 3600;
 
-  const claims: Record<string, unknown> = {
-    bucket,
-    scope: opts.scope,
-  };
+  const claims: Record<string, unknown> = { bucket };
 
-  if (opts.actions !== undefined && opts.actions.length > 0) {
+  if (opts.actions !== undefined) {
     claims.actions = opts.actions;
+  } else {
+    claims.scope = opts.scope;
   }
 
   if (opts.paths !== undefined) {
@@ -172,7 +173,6 @@ const creds = await createTempCredentials(
   PARENT_SECRET_ACCESS_KEY,
   "my-bucket",
   {
-    scope: "object-read-only",
     actions: ["GetObject", "HeadObject"],
     ttlSeconds: 900,
     paths: { prefixPaths: ["data/"] },
@@ -220,5 +220,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/#page","headline":"Authenticate against R2 with temporary credentials","description":"Authenticate against R2 with temporary credentials.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/og.png?v=1938303a00674d0e","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/#page","headline":"Authenticate against R2 with temporary credentials","description":"Authenticate against R2 with temporary credentials.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/og.png?v=1938303a00674d0e","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

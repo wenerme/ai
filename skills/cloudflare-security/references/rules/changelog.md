@@ -123,6 +123,17 @@ http.request.uri.path ne raw.http.request.uri.path
 
 For supported operators and examples, refer to [Compare dynamic values](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#compare-dynamic-values).
 
+## 2026-09-30
+
+
+**Longer rule descriptions in logs**
+
+Cloudflare logs now include up to 128 bytes of a rule description, increased from 80 bytes. Longer descriptions provide more context when investigating matched rules and make it easier to identify the relevant rule without referring back to its configuration.
+
+Descriptions longer than 128 bytes are truncated without splitting a UTF-8 character. This change does not affect the Rulesets API, which continues to accept rule descriptions of up to 4,096 bytes.
+
+For more information, refer to [Rule object structure and properties](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#rule-object-structure-and-properties).
+
 ## 2026-09-22
 
 

@@ -27,15 +27,44 @@ If the health check fails, start with the [Configuration errors](#configuration-
 
 Configuration errors occur when required fields are missing or contain invalid values during data source setup.
 
-### Missing required fields
+### Required fields are missing or invalid
+
+When a required field is missing, **Save &amp; test** fails with one of the following errors.
 
 Expand table
 
-| Error                      | Solution                                                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Server address is required | Provide the base address of the SAP HANA instance (excluding http/https prefixes). Example: `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx.hana.trial-us10.hanacloud.ondemand.com` |
-| Username is required       | Provide a username with permissions to query the database.                                                                                                          |
-| Password is required       | Provide the password for the SAP HANA user.                                                                                                                         |
+| Error                                                                              | Cause                                                                                                          | Solution                                                                                                                                                            |
+|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `invalid server name. Either empty or not set`                                     | The **Server address** field is empty.                                                                         | Provide the base address of the SAP HANA instance (excluding http/https prefixes). Example: `xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx.hana.trial-us10.hanacloud.ondemand.com` |
+| `invalid port or instance. add a port or tenant instance + tenant database name`   | No **Server port** is set, and a **Tenant instance number** and **Tenant database name** aren’t both provided. | Set a **Server port**, or provide both a **Tenant instance number** and a **Tenant database name**.                                                                 |
+| `username is either empty or not set and TLS Client authentication is not enabled` | No **Username** is set and **TLS Client Auth** is disabled.                                                    | Provide a username with permissions to query the database, or enable **TLS Client Auth**.                                                                           |
+| `password is either empty or not set and TLS Client authentication is not enabled` | No **Password** is set and **TLS Client Auth** is disabled.                                                    | Provide the password for the SAP HANA user, or enable **TLS Client Auth**.                                                                                          |
+| `could not parse json`                                                             | A provisioned field has the wrong type, for example an unquoted `timeout` value.                               | Quote values that the data source expects as strings. Set `timeout` as a quoted string, such as `"30"`.                                                             |
+| `failed to parse TLS CA PEM certificate`                                           | The **CA Cert** isn’t valid PEM data.                                                                          | Provide the CA certificate in PEM format.                                                                                                                           |
+| `tls: failed to find any PEM data in certificate input`                            | The **Client Cert** isn’t valid PEM data.                                                                      | Provide the client certificate in PEM format.                                                                                                                       |
+| `tls: failed to find any PEM data in key input`                                    | The **Client Key** isn’t valid PEM data.                                                                       | Provide the client key in PEM format.                                                                                                                               |
+
+## Connection errors
+
+Connection errors occur when Grafana cannot successfully communicate with the SAP HANA database.
+
+### Authentication failed
+
+**Symptoms:**
+
+- Save &amp; test fails with authentication errors
+- Error message indicates invalid credentials
+
+**Possible causes and solutions:**
+
+Expand table
+
+| Cause                               | Solution                                                                 |
+|-------------------------------------|--------------------------------------------------------------------------|
+| Invalid username or password        | Verify the credentials are correct. Test them using a SAP HANA client.   |
+| User account locked                 | Check if the user account is locked in SAP HANA and unlock if necessary. |
+| Password expired                    | Reset the password in SAP HANA.                                          |
+| User not enabled for client connect | Run `ALTER USER <USER> ENABLE CLIENT CONNECT;`                           |
 
 ### Port configuration issues
 
@@ -68,28 +97,6 @@ WHERE DATABASE_NAME='<DBNAME>'
 ```
 
 For detailed guidance, refer to the [SAP HANA documentation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/440f6efe693d4b82ade2d8b182eb1efb.html).
-
-## Connection errors
-
-Connection errors occur when Grafana cannot successfully communicate with the SAP HANA database.
-
-### Authentication failed
-
-**Symptoms:**
-
-- Save &amp; test fails with authentication errors
-- Error message indicates invalid credentials
-
-**Possible causes and solutions:**
-
-Expand table
-
-| Cause                               | Solution                                                                 |
-|-------------------------------------|--------------------------------------------------------------------------|
-| Invalid username or password        | Verify the credentials are correct. Test them using a SAP HANA client.   |
-| User account locked                 | Check if the user account is locked in SAP HANA and unlock if necessary. |
-| Password expired                    | Reset the password in SAP HANA.                                          |
-| User not enabled for client connect | Run `ALTER USER <USER> ENABLE CLIENT CONNECT;`                           |
 
 ### Connection refused or timeout
 
@@ -174,7 +181,7 @@ Expand table
 
 **Solutions:**
 
-1. Verify macro syntax is correct (e.g., `$__timeFilter(column)` not `$_timeFilter(column)`).
+1. Verify macro syntax is correct (for example, `$__timeFilter(column)` not `$_timeFilter(column)`).
 2. Check the **Query Inspector** to see how macros are being expanded.
 3. Ensure time columns are of the correct data type for the macro being used.
 
@@ -228,7 +235,7 @@ These issues relate to slow queries or database load.
 3. Optimize queries to reduce database work.
 4. Limit the number of panels per dashboard.
 
-## Enable debug logging
+## Enable debug logs
 
 To capture detailed error information for troubleshooting:
 

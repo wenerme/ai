@@ -5,7 +5,7 @@ description: "Browse Scaleway model IDs, capabilities, context windows, and pric
 
 # [Scaleway logo]Scaleway
 
-Access 17 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 18 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.468,
     "outputCost": 0.936
+  },
+  {
+    "model": "scaleway/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 32768,
+    "inputCost": 0.672,
+    "outputCost": 2.016
   },
   {
     "model": "scaleway/gemma-4-26b-a4b-it",

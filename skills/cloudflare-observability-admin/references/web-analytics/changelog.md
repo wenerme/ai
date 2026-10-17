@@ -18,6 +18,12 @@ Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytic
 
 [Subscribe to RSS](https://developers.cloudflare.com/web-analytics/changelog/index.xml)
 
+## 2026-10-16
+
+1. Bug fix to ignore same-page soft navigations when the URL does not change
+2. Google's web-vitals library upgraded to version 6.2.3
+3. Further improvements of OS version collection on iOS/MacOS
+
 ## 2026-10-05
 
 1. Allow `__cfBeacon` JavaScript object to override `data-cf-beacon` configuration

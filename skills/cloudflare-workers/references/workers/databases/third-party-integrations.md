@@ -32,6 +32,7 @@ You can connect to multiple databases by configuring separate sets of secrets fo
 
 ## Popular providers
 
+- [MongoDB](https://developers.cloudflare.com/workers/databases/third-party-integrations/mongodb/)
 - [Neon](https://developers.cloudflare.com/workers/databases/third-party-integrations/neon/)
 - [PlanetScale](https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/)
 - [Supabase](https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/)

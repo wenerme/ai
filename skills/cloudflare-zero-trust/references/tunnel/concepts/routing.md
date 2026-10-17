@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/tunnel/concepts/routing/og.png?v=77cf48
 
 # Routing
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/concepts/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/concepts/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel routes traffic from Cloudflare's network to services running behind `cloudflared`. When you [publish an application](https://developers.cloudflare.com/tunnel/get-started/#publish-an-application), you map a public hostname to a local service — for example, `app.example.com` to `http://localhost:8080` — and Cloudflare applies CDN caching, WAF, and DDoS protection before forwarding the request to your origin.
 
@@ -34,6 +34,16 @@ Note
 Public hostname routes proxy traffic through Cloudflare. On Free, Pro, and Business plans, the [service-specific terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business) require you to use a specific paid service to serve video and other large files.
 
 Refer to [Delivering videos with Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/) for more information. To transfer large files privately, use a [private network route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) instead.
+
+### Published application limits
+
+A single remotely-managed tunnel supports roughly 5,000–10,000 published applications. The limit is based on the size of the tunnel configuration, which can be up to 1 MB.
+
+The tunnel configuration is the set of ingress rules and origin settings that Cloudflare stores for a remotely-managed tunnel when you add published applications in the dashboard or with the API. Each published application adds one ingress rule, and a typical rule is 100–200 bytes. Rules with long hostnames, paths, or many [origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/) take up more space and reduce the number of published applications a tunnel can hold.
+
+Published applications do not count toward the account limit for [routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/). Routes are CIDR and hostname routes for private network traffic, and have a separate limit of 50,000 per account.
+
+If you need to publish more applications, distribute them across multiple tunnels. Each account includes 1,000 tunnels. To run more, refer to [Tunnels for Platforms](https://developers.cloudflare.com/tunnel/features/tunnels-for-platforms/).
 
 ## Supported protocols
 
@@ -232,5 +242,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/concepts/routing/#page","headline":"Routing","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/concepts/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/concepts/routing/og.png?v=77cf48f030d654f8","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/concepts/routing/#page","headline":"Routing","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/concepts/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/concepts/routing/og.png?v=77cf48f030d654f8","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}
 ```

@@ -331,7 +331,7 @@ Gemini 4 Argon is available at introductory pricing through November 30, 2026:
   - **Cached input tokens:** Implicit caching discounts cached input by 95%, to $0.10 per 1M tokens ($0.20 starting December 1, 2026).
 - **Output tokens, including thinking tokens:** $10.00 per 1M tokens ($20.00 starting December 1, 2026)
 
-Gemini 4 Argon is not available on the Free tier or on the [Google AI Pro](https://ai.google.dev/gemini-api/docs/google-ai-plans) plan. For complete pricing tiers, see the [pricing page](https://ai.google.dev/gemini-api/docs/pricing#gemini-4-argon).
+Gemini 4 Argon is not available on the Free tier. For complete pricing tiers, see the [pricing page](https://ai.google.dev/gemini-api/docs/pricing#gemini-4-argon).
 
 ## Other models
 

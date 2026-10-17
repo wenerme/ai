@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-conne
 
 # 0-RTT Connection Resumption
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zero round trip time resumption (0-RTT) improves performance for clients who have previously connected to your website, reducing latency for returning users. This feature is especially beneficial for those who frequently visit your application or connect over mobile networks.
 
@@ -43,6 +43,10 @@ Note
 
 The 0-RTT Connection Resumption is only established between the client and Cloudflare. It does not extend to the origin server.
 
+## Security considerations
+
+0-RTT reduces latency by allowing requests before the connection handshake completes. By design, these requests can be replayed and, for QUIC, processed before the client source IP address is validated. Before enabling 0-RTT, evaluate whether these risks are compatible with your security requirements.
+
 Was this helpful?
 
 YesNo
@@ -52,5 +56,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/#page","headline":"0-RTT Connection Resumption","description":"Resume TLS connections faster with zero round-trip time.","url":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/og.png?v=48c55b1d4fcc336b","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/#page","headline":"0-RTT Connection Resumption","description":"Resume TLS connections faster with zero round-trip time.","url":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/optimization/protocol/0-rtt-connection-resumption/og.png?v=48c55b1d4fcc336b","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -2,9 +2,495 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Computer use lets a model operate browser and desktop interfaces. Use it to fill out forms, test user flows, or complete tasks in applications through their UI.
+Computer use lets a model operate a browser or desktop interface. Use it to fill out forms, test user flows, or complete tasks in an application.
 
-You provide the environment and execute the model's requests. The model uses screenshots and other tool results to decide what to do next. Choose how to connect it to your application:
+Choose a path based on what the model needs to see and who runs the environment:
+
+| Task | Start here |
+| --- | --- |
+| Use screenshots and mouse or keyboard actions in your browser or desktop | Use [`ComputerToolset`](https://developers.openai.com/api/docs/guides/tools-computer-use?sdk-task=computer#run-your-first-task) with the Responses computer tool. |
+| Read page text or use controls and tabs in your browser | Use [`BrowserToolset`](https://developers.openai.com/api/docs/guides/tools-computer-use?sdk-task=browser#run-your-first-task). Your driver exposes selected operations as function tools. |
+| Run a browser hosted by OpenAI | Follow the separate [Agents API computer use guide](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use). |
+
+For public information that needs no interaction, use [web search](https://developers.openai.com/api/docs/guides/tools-web-search).
+
+## Use the SDK
+
+The SDK runs the Responses tool loop in Python or Node. Your application supplies a **driver**: code that reads the environment or performs an allowed action. Your application owns the session, permissions, and cleanup.
+
+### Connect a hosted environment
+
+Use a partner's browser or desktop instead of running one yourself. Some integrations provide a driver; others expose controls that your application maps to the SDK. Follow the partner's guide for setup and supported package versions.
+
+| Environment | Integration |
+| --- | --- |
+| Browserbase | Use the Stagehand browser driver with a hosted Browserbase session. Follow the [Stagehand integration guide](https://docs.stagehand.dev/v4/integrations/agent-frameworks/openai-cua-toolset-quickstart) or see the [Python and TypeScript examples](https://github.com/browserbase/openai-cua-toolset). |
+| Browser Use | Use the [Browser Use library driver](https://docs.browser-use.com/open-source/customize/integrations/openai) or connect existing Playwright code with the [Browser Use Cloud integration](https://docs.browser-use.com/cloud/tutorials/integrations/openai). Both guides use Python. |
+| Daytona | Use `ComputerToolset` with a Daytona desktop sandbox. Follow the [Daytona computer-use helpers guide](https://www.daytona.io/docs/en/guides/openai/openai-computer-use-helpers/) (Python). For an Agents SDK example, see the [Daytona computer-use recipe](https://developers.openai.com/cookbook/examples/agents_sdk/computer_use_with_daytona/computer_use_with_daytona). |
+| E2B Desktop | Run computer actions or execute code in a desktop sandbox. Follow the [E2B computer-use guide](https://docs.e2b.dev/agents/openai-computer-use) or see the [Python](https://github.com/e2b-dev/e2b-cookbook/tree/main/examples/openai-computer-use-python) and [TypeScript](https://github.com/e2b-dev/e2b-cookbook/tree/main/examples/openai-computer-use-js) examples. |
+
+Set a session timeout and close or release the session even if the run fails. Check the provider dashboard if cleanup fails. Use provider network rules to restrict the sites and resources the session can reach.
+
+### Run your first task
+
+Use Python 3.11 or later, or Node.js 22.6 or later. [Create and export an API key](https://developers.openai.com/api/docs/quickstart#create-and-export-an-api-key). Both examples use a temporary local browser and make Responses API calls, which may incur charges.
+
+Install the packages and Chromium in a new folder:
+
+```sh
+# Python
+python3 -m venv .venv
+.venv/bin/python -m pip install openai==3.31.0 playwright==1.61.0
+.venv/bin/python -m playwright install chromium
+
+# Node
+npm install openai@7.33.0 playwright@1.61.1
+npx playwright install chromium
+```
+
+On Windows, use `py -3` instead of `python3` and `.venv\Scripts\python.exe` instead of `.venv/bin/python`.
+
+
+
+The model sees a screenshot of a fictional parcel pickup page and clicks to reveal the pickup details. The driver allows only screenshots and a left click on that control. It blocks page requests and closes the browser when the run ends. The script makes at most six Responses requests and checks the page before reporting success. Your project needs access to a model that supports the computer tool.
+
+Save the matching example as `pickup.py` or `pickup.mjs`:
+
+Reveal pickup details using computer actions
+
+```javascript
+import OpenAI, { ComputerToolset } from "openai";
+import { chromium } from "playwright";
+
+class PickupDriver {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async screenshot() {
+    const image = await this.page.screenshot({ type: "png" });
+    return {
+      type: "computer_screenshot",
+      image_url: "data:image/png;base64," + image.toString("base64"),
+    };
+  }
+
+  async allowed(action) {
+    if (action.type === "screenshot") return true;
+    if (
+      action.type !== "click" ||
+      action.button !== "left" ||
+      action.keys?.length
+    )
+      return false;
+    const box = await this.page.locator("summary").boundingBox();
+    return Boolean(
+      box &&
+      box.x <= action.x &&
+      action.x < box.x + box.width &&
+      box.y <= action.y &&
+      action.y < box.y + box.height
+    );
+  }
+
+  async click(action) {
+    // The page may have changed after approval, so bind the click again.
+    if (!(await this.allowed(action)))
+      throw new Error("Pickup details moved or the click is not allowed.");
+    await this.page.mouse.click(action.x, action.y);
+  }
+
+  refuse(action) {
+    throw new Error(`This exercise does not allow ${action.type}.`);
+  }
+
+  double_click = this.refuse;
+  drag = this.refuse;
+  keypress = this.refuse;
+  move = this.refuse;
+  scroll = this.refuse;
+  type = this.refuse;
+  wait = this.refuse;
+}
+
+async function main() {
+  const client = new OpenAI({ timeout: 30_000, maxRetries: 0 });
+  const browser = await chromium.launch({ env: {}, chromiumSandbox: true });
+  try {
+    const page = await browser.newPage({
+      viewport: { width: 1024, height: 768 },
+    });
+    await page.route("**/*", (route) => route.abort());
+    await page.setContent(
+      "<title>Parcel pickup</title><main>" +
+        "<h1>Parcel pickup</h1><p>Order #1042 is ready.</p>" +
+        "<details><summary>Show pickup details</summary>" +
+        "<p>Locker 18. Pickup code: 6249.</p></details></main>"
+    );
+    const driver = new PickupDriver(page);
+    const tools = new ComputerToolset(driver);
+    try {
+      const response = await tools.run(
+        client,
+        {
+          model: "gpt-6.1-sol",
+          store: false,
+          input:
+            "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
+        },
+        { beforeAction: (action) => driver.allowed(action), maxSteps: 6 }
+      );
+      if ((await page.locator("details").getAttribute("open")) === null) {
+        throw new Error("Pickup details are still closed.");
+      }
+      console.log(
+        "Verified pickup details:",
+        await page.locator("details p").innerText()
+      );
+      console.log("Answer:", response.output_text);
+    } finally {
+      tools.close();
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
+await main();
+```
+
+```python
+import asyncio
+import base64
+
+from openai import AsyncComputerToolset, AsyncOpenAI
+from playwright.async_api import async_playwright
+
+
+class PickupDriver:
+    def __init__(self, page):
+        self.page = page
+
+    async def screenshot(self):
+        image = await self.page.screenshot(type="png")
+        return {
+            "type": "computer_screenshot",
+            "image_url": "data:image/png;base64," + base64.b64encode(image).decode(),
+        }
+
+    async def allowed(self, action):
+        if action.type == "screenshot":
+            return True
+        if action.type != "click" or action.button != "left" or action.keys:
+            return False
+        box = await self.page.locator("summary").bounding_box()
+        return bool(
+            box
+            and box["x"] <= action.x < box["x"] + box["width"]
+            and box["y"] <= action.y < box["y"] + box["height"]
+        )
+
+    async def click(self, action):
+        # The page may have changed after approval, so bind the click again.
+        if not await self.allowed(action):
+            raise RuntimeError("Pickup details moved or the click is not allowed.")
+        await self.page.mouse.click(action.x, action.y)
+
+    async def refuse(self, action):
+        raise RuntimeError(f"This exercise does not allow {action.type}.")
+
+    double_click = drag = keypress = move = scroll = type = wait = refuse
+
+
+async def main():
+    async with (
+        async_playwright() as playwright,
+        AsyncOpenAI(timeout=30, max_retries=0) as client,
+    ):
+        browser = await playwright.chromium.launch(env={}, chromium_sandbox=True)
+        try:
+            page = await browser.new_page(viewport={"width": 1024, "height": 768})
+            await page.route("**/*", lambda route: route.abort())
+            await page.set_content(
+                "<title>Parcel pickup</title><main>"
+                "<h1>Parcel pickup</h1><p>Order #1042 is ready.</p>"
+                "<details><summary>Show pickup details</summary>"
+                "<p>Locker 18. Pickup code: 6249.</p></details></main>"
+            )
+            driver = PickupDriver(page)
+            tools = AsyncComputerToolset(driver)
+            try:
+                response = await tools.run(
+                    client,
+                    {
+                        "model": "gpt-6.1-sol",
+                        "store": False,
+                        "input": "Take a screenshot. Open 'Show pickup details' and report the locker and pickup code. Use only screenshots and left clicks.",
+                    },
+                    before_action=driver.allowed,
+                    max_steps=6,
+                )
+                if await page.locator("details").get_attribute("open") is None:
+                    raise RuntimeError("Pickup details are still closed.")
+                print(
+                    "Verified pickup details:",
+                    await page.locator("details p").inner_text(),
+                )
+                print("Answer:", response.output_text)
+            finally:
+                tools.close()
+        finally:
+            await browser.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+
+Run `.venv/bin/python pickup.py` or `node pickup.mjs`. On success, the script prints `Verified pickup details: Locker 18. Pickup code: 6249.`, followed by the model's answer. Pending API safety checks stop this sample; add a human approval callback only when your application can handle them.
+
+  
+
+  
+
+
+The model types a name into a visitor badge form and clicks **Create badge**. The driver exposes only page reading, typing, and clicking. Its confirmation callback permits only this form's controls and the name Mira. The script verifies the page result before reporting success.
+
+Save the matching example as `badge.py` or `badge.mjs`:
+
+Create a visitor badge in a local browser
+
+```javascript
+import OpenAI from "openai";
+import { BrowserToolset } from "openai/helpers/browser";
+import { ResponsesToolRunner } from "openai/helpers/responses-tool-runner";
+import { chromium } from "playwright";
+
+class BadgeForm {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async state() {
+    return {
+      tabs: [
+        {
+          id: "badge",
+          title: await this.page.title(),
+          url: this.page.url(),
+          active: true,
+        },
+      ],
+    };
+  }
+
+  async read_page(_args) {
+    return {
+      version: 1,
+      text: await this.page.locator("body").innerText(),
+      elements: [
+        { ref: "name", role: "textbox", label: "Name" },
+        { ref: "save", role: "button", label: "Create badge" },
+      ],
+      omitted: [],
+    };
+  }
+
+  async type(args) {
+    await this.page.locator("#name").fill(args.text);
+  }
+
+  async click(_args) {
+    await this.page.locator("#save").click();
+  }
+
+  async confirm({ member, arguments: args }) {
+    if (
+      this.page.url() !== "about:blank" ||
+      (args.tab_id !== null && args.tab_id !== "badge")
+    ) {
+      return false;
+    }
+    return (
+      (member === "type" && args.target === "name" && args.text === "Mira") ||
+      (member === "click" && args.target === "save")
+    );
+  }
+}
+
+async function main() {
+  const client = new OpenAI({ timeout: 30_000, maxRetries: 0 });
+  const browser = await chromium.launch({ env: {}, chromiumSandbox: true });
+  try {
+    const page = await browser.newPage();
+    await page.route("**/*", (route) => route.abort());
+    await page.setContent(`
+      <title>Visitor badge</title>
+      <label>Name <input id="name"></label>
+      <button id="save" onclick="document.querySelector('output').innerText =
+        'Badge ready: ' + document.querySelector('#name').value">Create badge</button>
+      <output></output>
+    `);
+    const driver = new BadgeForm(page);
+    const tools = new BrowserToolset(driver, {
+      members: ["read_page", "type", "click"],
+      confirm: driver.confirm.bind(driver),
+    });
+    const response = await new ResponsesToolRunner({ browser: tools }).run(
+      client,
+      {
+        model: "gpt-6-astra",
+        store: false,
+        input: "Create a visitor badge for Mira.",
+      },
+      { maxSteps: 6 }
+    );
+    const result = await page.locator("output").innerText();
+    if (result !== "Badge ready: Mira") {
+      throw new Error(`The badge was not created: ${JSON.stringify(result)}`);
+    }
+    console.log(result);
+    console.log("Answer:", response.output_text);
+  } finally {
+    await browser.close();
+  }
+}
+
+await main();
+```
+
+```python
+import asyncio
+
+from openai import AsyncOpenAI
+from openai.lib.browser import AsyncBrowserToolset
+from openai.lib.responses_tool_runner import AsyncResponsesToolRunner
+from playwright.async_api import async_playwright
+
+
+class BadgeForm:
+    def __init__(self, page):
+        self.page = page
+
+    async def state(self):
+        return {
+            "tabs": [
+                {
+                    "id": "badge",
+                    "title": await self.page.title(),
+                    "url": self.page.url,
+                    "active": True,
+                }
+            ]
+        }
+
+    async def read_page(self, args):
+        return {
+            "version": 1,
+            "text": await self.page.locator("body").inner_text(),
+            "elements": [
+                {"ref": "name", "role": "textbox", "label": "Name"},
+                {"ref": "save", "role": "button", "label": "Create badge"},
+            ],
+            "omitted": [],
+        }
+
+    async def type(self, args):
+        await self.page.locator("#name").fill(args["text"])
+
+    async def click(self, args):
+        await self.page.locator("#save").click()
+
+    async def confirm(self, context):
+        args = context["arguments"]
+        if self.page.url != "about:blank" or args["tab_id"] not in (None, "badge"):
+            return False
+        return (
+            context["member"] == "type"
+            and args["target"] == "name"
+            and args["text"] == "Mira"
+        ) or (context["member"] == "click" and args["target"] == "save")
+
+
+async def main():
+    async with (
+        async_playwright() as playwright,
+        AsyncOpenAI(timeout=30, max_retries=0) as client,
+    ):
+        browser = await playwright.chromium.launch(env={}, chromium_sandbox=True)
+        try:
+            page = await browser.new_page()
+            await page.route("**/*", lambda route: route.abort())
+            await page.set_content("""
+                <title>Visitor badge</title>
+                <label>Name <input id="name"></label>
+                <button id="save" onclick="document.querySelector('output').innerText =
+                  'Badge ready: ' + document.querySelector('#name').value">Create badge</button>
+                <output></output>
+            """)
+            driver = BadgeForm(page)
+            tools = AsyncBrowserToolset(
+                driver, members=["read_page", "type", "click"], confirm=driver.confirm
+            )
+            response = await AsyncResponsesToolRunner(browser=tools).run(
+                client,
+                {
+                    "model": "gpt-6-astra",
+                    "store": False,
+                    "input": "Create a visitor badge for Mira.",
+                },
+                max_steps=6,
+            )
+            result = await page.locator("output").inner_text()
+            if result != "Badge ready: Mira":
+                raise RuntimeError(f"The badge was not created: {result!r}")
+            print(result)
+            print("Answer:", response.output_text)
+        finally:
+            await browser.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+
+Run `.venv/bin/python badge.py` or `node badge.mjs`. On success, the script prints `Badge ready: Mira`, followed by the model's answer.
+
+
+
+If the API rejects the tool or Chromium cannot start, [troubleshoot the run](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#troubleshoot-a-run). If clicks miss, [check the screenshot and coordinates](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#fix-missed-clicks).
+
+### Check model access, cost, and data
+
+- **Model:** For browser function tools, check that the model supports Responses and function calling. If your driver returns images, check image input too. For screenshot-based computer actions, check the model's **Tools** section for computer use. See the [models catalog](https://developers.openai.com/api/docs/models) and check your project's access.
+- **Cost:** Each Responses request can incur charges for input and output tokens. Screenshots count as image input. Check [API pricing](https://developers.openai.com/api/docs/pricing#built-in-tools), [estimate image input cost](https://developers.openai.com/api/docs/guides/image-cost-calculator), or [inspect request usage](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#inspect-usage-and-timing). A hosted environment may charge separately.
+- **Data:** The SDK sends returned page text or screenshots to OpenAI. The examples set `store` to `false`, but that does not remove every form of data retention. Review [data controls](https://developers.openai.com/api/docs/guides/your-data#storage-requirements-and-retention-controls-per-endpoint) and [image-input exceptions](https://developers.openai.com/api/docs/guides/your-data#image-and-file-inputs). Your environment provider has its own data policy.
+
+### See and approve changes
+
+Next, try the booking demo in [Python](https://github.com/openai/openai-python/blob/v3.31.0/examples/browser-use-demo/README.md) or [Node](https://github.com/openai/openai-node/blob/v7.33.0/examples/browser-use-demo/README.md). It fills a fictional reservation, asks for approval before submission, and checks the saved fields and confirmation. You can watch the browser, take control, return control, or stop. Both versions include a local rehearsal with a real browser and no API call.
+
+To watch SDK actions on a desktop, try the [visual desktop demo](https://developers.openai.com/api/docs/guides/tools-computer-use-integration#watch-and-control-a-local-desktop).
+
+<a id="add-a-desktop"></a>
+
+### Adapt the driver
+
+Replace the sample page with an environment your application controls. For a browser driver, expose only the operations the task needs with `members`. For a computer driver, implement the required methods and reject unsupported actions. Keep the session open until the run ends, then close resources your application created.
+
+Page content can influence the model. Use a fresh browser profile or isolated desktop. Limit network access, and keep credentials out of page text and screenshots. Ask for approval before making changes, and check the saved result before reporting success. See the [driver reference](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers) for method contracts, approval, URL policy, and recovery.
+
+### Switch to Decisions for bounded choices
+
+Use Responses when the model must choose actions and generate their arguments. Use Decisions only when your application already knows every allowed action and its complete arguments. For example, an app might offer `route_billing`, `route_technical`, and `review`. Decisions selects an option; your application still approves and performs it, then checks the result. Discard choices when the page changes. See the [Decisions guide](https://developers.openai.com/api/docs/guides/decisions).
+
+To try it in the booking demo, use a key with Decisions access, set `OPENAI_DECISIONS_MODEL`, and restart the server. Start a new run and select **Decisions**.
+
+## Use the API directly
+
+Use the Responses API directly when you need to manage the tool loop yourself. You provide the environment and execute the model's requests. Choose how to connect it to your application:
 
 <a id="choose-an-integration-path"></a>
 
@@ -23,13 +509,13 @@ If you already expose UI operations through [function calling](https://developer
 <a id="option-3-use-a-code-execution-harness"></a>
 <a id="use-a-code-execution-harness"></a>
 
-## Use code execution
+### Use code execution
 
 A code-execution integration gives the model a function tool that accepts a script. Your application runs the script in an isolated browser or desktop environment and returns its output, including screenshots. Keep the environment available between calls so the model can build on earlier work.
 
 <a id="before-running-the-examples"></a>
 
-### Run the sample app
+#### Run the sample app
 
 The [CUA sample app](https://github.com/openai/openai-cua-sample-app#first-run) includes JavaScript/Playwright and Python/PyAutoGUI implementations, with local tasks and a shared console:
 
@@ -41,7 +527,7 @@ Use the app's README for installation, desktop permissions, and supported enviro
 
 <a id="code-execution-harness-examples"></a>
 
-### Connect your own runtime
+#### Connect your own runtime
 
 The following example shows the API loop for a runtime you provide. Python, Ruby, and Go send Python code to a desktop runtime that uses PyAutoGUI; JavaScript uses Playwright to operate a browser. Each client exposes an ordinary function tool and returns text or images with the original `call_id`.
 
@@ -376,7 +862,7 @@ func runComputerUse(ctx context.Context, client openai.Client, endpoint, prompt 
 
 For a complete client adapter and the expected text and image output shape, see [Connect to your execution service](https://developers.openai.com/api/docs/guides/tools-computer-use-integration#connect-to-your-execution-service). The service interface in those examples belongs to your application; it is not an OpenAI-hosted endpoint.
 
-### Preserve state and return observations
+#### Preserve state and return observations
 
 Keep the browser or desktop session alive between calls. A persistent Python or JavaScript namespace can also preserve variables. Describe the available objects and helpers in the tool definition so the model knows what it can use.
 
@@ -387,9 +873,9 @@ The API conversation and the execution environment have separate state. Preserve
 <a id="provide-the-environment-and-control-the-loop"></a>
 <a id="option-1-run-the-built-in-computer-use-loop"></a>
 
-## Use the computer tool
+### Use the computer tool
 
-Use this alternative when your integration expects structured actions instead of generated code. For the recommended approach, start with [code execution](#use-code-execution).
+Use this alternative when your integration expects structured actions instead of generated code.
 
 To try this path, follow the [same sample-app setup](https://github.com/openai/openai-cua-sample-app#first-run), select **Native** mode, and run a built-in scenario. Use a model that supports the [computer tool](https://developers.openai.com/api/docs/models).
 
@@ -405,7 +891,7 @@ For environment setup and action handlers, use the [integration recipes](https:/
 <a id="2-send-the-task"></a>
 <a id="1-send-the-task"></a>
 
-### Send the task
+#### Send the task
 
 Enable `computer` in the `tools` array and describe the result you want:
 
@@ -503,7 +989,7 @@ puts(response.output)
 <a id="3-run-every-returned-action"></a>
 <a id="2-execute-the-requested-actions"></a>
 
-### Execute the requested actions
+#### Execute the requested actions
 
 A `computer_call` contains an ordered `actions` array. For example, this call selects the search field and types `penguin`:
 
@@ -540,7 +1026,7 @@ Use the [action-handler examples](https://developers.openai.com/api/docs/guides/
 <a id="4-return-the-updated-screen"></a>
 <a id="3-return-the-screenshot"></a>
 
-### Return the screenshot
+#### Return the screenshot
 
 Return a `computer_call_output` whose `call_id` matches the call you handled. Use `previous_response_id` to continue the model conversation:
 

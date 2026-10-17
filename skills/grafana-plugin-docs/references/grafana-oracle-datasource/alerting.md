@@ -107,6 +107,10 @@ Grafana evaluates alert queries on the server side, not in the browser. The Graf
 - Network connectivity between the Grafana server and Oracle must be reliable.
 - Query performance matters, slow queries can cause missed evaluation cycles.
 
+## Recording rules
+
+You can precompute and store the result of an Oracle query as a metric using Grafana-managed recording rules. Create these through the recording rule flow in Grafana Alerting, not through a data source query selector. Refer to [Grafana Alerting rules](/docs/grafana/latest/alerting/alerting-rules/).
+
 ## Limitations
 
 - **Grafana Cloud:** TNSNames and Kerberos authentication are not supported. Use TCP connection with basic authentication and [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for private databases.

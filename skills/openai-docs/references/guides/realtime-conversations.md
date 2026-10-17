@@ -886,7 +886,7 @@ import java.util.Base64;
 // Pass the complete PCM16, 24 kHz, mono recording from your application.
 static void sendAudioItem(RealtimeConnection connection, byte[] pcmAudio) throws Exception {
   String fullAudio = Base64.getEncoder().encodeToString(pcmAudio);
-  connection.send(
+  var event =
       RealtimeClientEvent.ofConversationItemCreate(
           ConversationItemCreateEvent.builder()
               .item(
@@ -897,7 +897,18 @@ static void sendAudioItem(RealtimeConnection connection, byte[] pcmAudio) throws
                               .audio(fullAudio)
                               .build())
                       .build())
-              .build()));
+              .build());
+  // Retry only explicit admission rejections; these guarantee nothing was sent.
+  long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(5);
+  while (true) {
+    try {
+      connection.send(event);
+      return;
+    } catch (com.openai.core.http.WebSocketWriteNotAttempted.Busy busy) {
+      if (System.nanoTime() >= deadline) throw busy;
+      Thread.sleep(10);
+    }
+  }
 }
 ```
 

@@ -2,7 +2,402 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-These recipes support the [computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use). Use the sections you need to connect the tool to your environment or expose an existing browser or desktop interface.
+Use these recipes to connect the [computer use tool](https://developers.openai.com/api/docs/guides/tools-computer-use) to a browser or desktop you manage. They cover environment setup, action handling, screenshots, and user consent.
+
+For a first hands-on exercise, [try the booking demo](https://developers.openai.com/api/docs/guides/tools-computer-use#see-and-approve-changes) in Python or Node. Select the local rehearsal to fill a fictional reservation, approve submission, and check the saved result in a real local browser. Rehearsal uses scripted choices and needs no API key. It tests the sample's own driver. To adapt it, follow [Check a custom driver locally](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#check-a-custom-driver-locally) and add checks for your environment.
+
+If you use the SDK helpers, the [driver reference](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers) covers driver methods, approvals, session cleanup, and failure handling. The direct API recipes below show how to manage the action loop yourself.
+
+## Choose a hosted environment
+
+See [hosted environment options](https://developers.openai.com/api/docs/guides/tools-computer-use#connect-a-hosted-environment) for partner guides.
+
+## Watch and control a local desktop
+
+Run this on your own computer with a local Docker engine and Docker Compose. It starts a Linux desktop with an editor. You can see and control the desktop in your browser. The initial exercise uses `ComputerToolset.execute` with fixed actions and needs no API key. The optional live run lets the Responses computer tool choose actions.
+
+1. Create an empty directory. Save these two files there.
+
+Dockerfile
+
+```dockerfile
+FROM debian:bookworm-slim
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DISPLAY=:99
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    xfce4 \
+    dbus-x11 \
+    xvfb \
+    xdotool \
+    imagemagick \
+    x11-utils \
+    firefox-esr \
+ && rm -rf /var/lib/apt/lists/* \
+ && useradd --create-home --shell /bin/sh myuser
+
+USER myuser
+WORKDIR /home/myuser
+
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    mousepad novnc websockify x11vnc \
+ && rm -rf /var/lib/apt/lists/*
+USER myuser
+RUN touch /home/myuser/dispatch.txt
+CMD set -eu; \
+    Xvfb :99 -screen 0 1280x800x24 -nolisten tcp & \
+    display_pid=$!; \
+    until xdpyinfo -display :99 >/dev/null 2>&1; do \
+      kill -0 "$display_pid"; sleep 0.2; \
+    done; \
+    dbus-run-session -- startxfce4 & \
+    xdotool search --sync --onlyvisible --class xfce4-panel >/dev/null; \
+    mousepad /home/myuser/dispatch.txt & \
+    exec x11vnc -display :99 -listen 0.0.0.0 -forever -shared -nopw -rfbport 5900
+```
+
+
+compose.yaml
+
+```plain
+services:
+  desktop:
+    build:
+      context: .
+    image: cua-visual-desktop-demo
+    container_name: cua-visual-desktop
+    init: true
+    networks: [desktop]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 256
+    mem_limit: 2g
+    cpus: 2
+    shm_size: 512m
+  viewer:
+    image: cua-visual-desktop-demo
+    pull_policy: never
+    command: ["websockify", "--web=/usr/share/novnc", "6080", "desktop:5900"]
+    depends_on: [desktop]
+    init: true
+    ports:
+      - "127.0.0.1:6080:6080"
+    networks: [desktop, viewer]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 512m
+    cpus: 1
+networks:
+  desktop:
+    internal: true
+  viewer: {}
+```
+
+
+2. Start the desktop from that directory:
+
+```bash
+docker compose up --build -d
+```
+
+Open [the local desktop](http://127.0.0.1:6080/vnc.html?autoconnect=1&resize=scale). Wait until `dispatch.txt` appears in the editor. This is the live Linux desktop, so you can type in the window yourself.
+
+3. Install one SDK on the host:
+
+```bash
+# Python 3.11+
+python3 -m venv .venv
+.venv/bin/python -m pip install openai==3.31.0
+
+# Or Node.js 22.6+
+npm install openai@7.33.0
+```
+
+On Windows, use `py -3` instead of `python3` and `.venv\Scripts\python.exe` instead of `.venv/bin/python`.
+
+Save the matching sample as `dispatch.py` or `dispatch.mjs` in the same directory.
+
+Write and verify a dispatch note
+
+```javascript
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import { setTimeout as delay } from "node:timers/promises";
+import OpenAI, { ComputerToolset } from "openai";
+
+const note = "Dispatch #1042: ready for pickup.";
+const exec = promisify(execFile);
+
+async function desktop(...args) {
+  const { stdout } = await exec(
+    "docker",
+    ["exec", "cua-visual-desktop", ...args],
+    {
+      encoding: "buffer",
+      timeout: 10_000,
+      maxBuffer: 4 * 1024 * 1024,
+    }
+  );
+  return stdout;
+}
+
+class EditorDriver {
+  async screenshot() {
+    const image = await desktop("import", "-window", "root", "png:-");
+    return {
+      type: "computer_screenshot",
+      image_url: "data:image/png;base64," + image.toString("base64"),
+    };
+  }
+
+  async focusEditor() {
+    const windows = await desktop(
+      "xdotool",
+      "search",
+      "--onlyvisible",
+      "--class",
+      "mousepad"
+    );
+    const window = windows.toString().trim().split("\n").at(-1);
+    if (!window) throw new Error("The dispatch editor is not open.");
+    await desktop("xdotool", "windowactivate", "--sync", window);
+  }
+
+  async type(action) {
+    if (action.text !== note)
+      throw new Error("Only the dispatch note is allowed.");
+    await this.focusEditor();
+    await desktop(
+      "xdotool",
+      "type",
+      "--clearmodifiers",
+      "--delay",
+      "25",
+      "--",
+      action.text
+    );
+  }
+
+  async keypress(action) {
+    const keys = action.keys.join("+");
+    if (keys !== "CTRL+A" && keys !== "CTRL+S") {
+      throw new Error("Only Select All and Save are allowed.");
+    }
+    await this.focusEditor();
+    await desktop("xdotool", "key", "--clearmodifiers", keys.toLowerCase());
+  }
+
+  refuse(action) {
+    throw new Error(`This exercise does not allow ${action.type}.`);
+  }
+
+  click = this.refuse;
+  double_click = this.refuse;
+  drag = this.refuse;
+  move = this.refuse;
+  scroll = this.refuse;
+  wait = this.refuse;
+}
+
+const tools = new ComputerToolset(new EditorDriver());
+try {
+  if (process.argv.includes("--live")) {
+    const existing = (await desktop("cat", "/home/myuser/dispatch.txt"))
+      .toString()
+      .trim();
+    if (existing === note) {
+      throw new Error(
+        "Clear the note in the editor and save before a live run."
+      );
+    }
+    const client = new OpenAI({ timeout: 30_000, maxRetries: 0 });
+    await tools.run(
+      client,
+      {
+        model: "gpt-6.1-sol",
+        store: false,
+        input:
+          `The open editor has dispatch.txt. Replace its content with exactly "${note}". ` +
+          "Use screenshot, CTRL+A, type, CTRL+S only. The driver focuses the editor.",
+      },
+      { maxSteps: 6 }
+    );
+  } else {
+    await tools.execute({
+      id: "cu_dispatch",
+      call_id: "call_dispatch",
+      type: "computer_call",
+      status: "completed",
+      pending_safety_checks: [],
+      actions: [
+        { type: "keypress", keys: ["CTRL", "A"] },
+        { type: "type", text: note },
+        { type: "keypress", keys: ["CTRL", "S"] },
+      ],
+    });
+  }
+  // Saving is asynchronous; check the file independently of the screenshot.
+  let saved = "";
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    saved = (await desktop("cat", "/home/myuser/dispatch.txt"))
+      .toString()
+      .trim();
+    if (saved === note) break;
+    await delay(100);
+  }
+  if (saved !== note)
+    throw new Error(`The editor did not save the note: ${saved}`);
+  console.log("Verified:", saved);
+} finally {
+  tools.close();
+}
+```
+
+```python
+import base64
+import subprocess
+import sys
+import time
+
+from openai import ComputerToolset, OpenAI
+from openai.types.responses import ResponseComputerToolCall, computer_action
+
+NOTE = "Dispatch #1042: ready for pickup."
+
+
+def desktop(*args):
+    return subprocess.check_output(
+        ["docker", "exec", "cua-visual-desktop", *args], timeout=10
+    )
+
+
+class EditorDriver:
+    def screenshot(self):
+        image = desktop("import", "-window", "root", "png:-")
+        return {
+            "type": "computer_screenshot",
+            "image_url": "data:image/png;base64," + base64.b64encode(image).decode(),
+        }
+
+    def focus_editor(self):
+        window = desktop(
+            "xdotool", "search", "--onlyvisible", "--class", "mousepad"
+        ).splitlines()[-1]
+        desktop("xdotool", "windowactivate", "--sync", window.decode())
+
+    def type(self, action):
+        if action.text != NOTE:
+            raise ValueError("Only the dispatch note is allowed.")
+        self.focus_editor()
+        desktop(
+            "xdotool", "type", "--clearmodifiers", "--delay", "25", "--", action.text
+        )
+
+    def keypress(self, action):
+        keys = tuple(action.keys)
+        if keys not in (("CTRL", "A"), ("CTRL", "S")):
+            raise ValueError("Only Select All and Save are allowed.")
+        self.focus_editor()
+        desktop("xdotool", "key", "--clearmodifiers", "ctrl+" + keys[1].lower())
+
+    def refuse(self, action):
+        raise ValueError(f"This exercise does not allow {action.type}.")
+
+    click = double_click = drag = move = scroll = wait = refuse
+
+
+tools = ComputerToolset(EditorDriver())
+try:
+    if "--live" in sys.argv:
+        if desktop("cat", "/home/myuser/dispatch.txt").decode().strip() == NOTE:
+            raise RuntimeError(
+                "Clear the note in the editor and save before a live run."
+            )
+        with OpenAI(timeout=30, max_retries=0) as client:
+            tools.run(
+                client,
+                {
+                    "model": "gpt-6.1-sol",
+                    "store": False,
+                    "input": (
+                        f'The open editor has dispatch.txt. Replace its content with exactly "{NOTE}". '
+                        "Use screenshot, CTRL+A, type, CTRL+S only. The driver focuses the editor."
+                    ),
+                },
+                max_steps=6,
+            )
+    else:
+        tools.execute(
+            ResponseComputerToolCall(
+                id="cu_dispatch",
+                call_id="call_dispatch",
+                type="computer_call",
+                status="completed",
+                pending_safety_checks=[],
+                actions=[
+                    computer_action.Keypress(type="keypress", keys=["CTRL", "A"]),
+                    computer_action.Type(type="type", text=NOTE),
+                    computer_action.Keypress(type="keypress", keys=["CTRL", "S"]),
+                ],
+            )
+        )
+    # Saving is asynchronous; check the file independently of the screenshot.
+    for _ in range(20):
+        saved = desktop("cat", "/home/myuser/dispatch.txt").decode().strip()
+        if saved == NOTE:
+            break
+        time.sleep(0.1)
+    if saved != NOTE:
+        raise RuntimeError(f"The editor did not save the note: {saved!r}")
+    print("Verified:", saved)
+finally:
+    tools.close()
+```
+
+
+4. Keep the viewer open and run the sample:
+
+```bash
+.venv/bin/python dispatch.py
+# Or:
+node dispatch.mjs
+```
+
+The SDK selects the editor's text, types a fictional note, saves it, and captures the desktop. It independently reads the guest file and prints `Verified: Dispatch #1042: ready for pickup.` The text should also appear in the viewer. The driver focuses the editor before every action and refuses inputs beyond the fixed note, Select All, and Save. Wait for the command to finish before typing in the viewer again.
+
+
+
+### Run the same task with the Responses API
+
+
+
+Set `OPENAI_API_KEY` on the host using the [API key setup instructions](https://developers.openai.com/api/docs/quickstart#create-and-export-an-api-key). Use a project with access to the [computer tool](https://developers.openai.com/api/docs/guides/tools-computer-use). Clear the editor and save the empty file before testing the live path. The sample refuses to run if the note is already saved, so a previous run cannot pass the check for it.
+
+```bash
+.venv/bin/python dispatch.py --live
+# Or:
+node dispatch.mjs --live
+```
+
+This run uses at most six Responses requests and verifies the file in the same way. It stops if the model requests a safety check or an input this driver does not support. API usage is billed to your project. Only the host SDK reads the API key; screenshots and prompts go to OpenAI.
+
+
+
+
+
+5. Stop and remove the guest after either run, including a failed run:
+
+```bash
+docker compose down
+```
+
+The helper closes when the script exits; the guest stays open so you can inspect the result. `docker compose down` removes the guest, viewer, and their networks. It leaves the local build image and files in your working directory.
+
+Use a local Docker engine on a trusted single-user host. The viewer has no password and listens at `127.0.0.1:6080` on the Docker host. Other local users can access it. Only the viewer connects to both networks; it serves the desktop at the fixed address `desktop:5900`. The guest stays on the internal network with no host files, credentials, or Docker socket mounted. Keep those networks and the port binding for this exercise. For a deployed service, authenticate each session and restrict outbound network access.
+
+If the page will not connect, run `docker compose logs desktop viewer`. If the guest name is in use, stop only your previous demo; do not reuse someone else's desktop. If port 6080 is occupied, free the port or choose a different host port in `compose.yaml` and open that port in your browser. Keep the `127.0.0.1` binding. If the editor is closed or the command fails, run `docker compose down`, start again, and wait for the editor before retrying.
 
 ## Prepare an environment
 
@@ -66,52 +461,44 @@ with sync_playwright() as p:
 
 
 
-### Set up a local virtual machine
+### Set up a caller-managed Docker container
 
 
 
-For a desktop application, provide a VM or container and translate the returned actions into operating system input events.
+This recipe uses a container you manage and translates returned actions into operating system input events. It is separate from the [isolated desktop example](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#use-an-isolated-desktop).
 
 #### Create a Docker image
 
-The following Dockerfile starts an Ubuntu desktop with `Xvfb`, `x11vnc`, and Firefox:
+Save this Dockerfile in an empty directory. It installs a Debian desktop with `Xvfb` and Firefox. The container runs as an ordinary user. The action and screenshot helpers below use `docker exec`, so this recipe does not start a VNC server or publish any ports.
 
 Dockerfile
 
 ```dockerfile
-FROM ubuntu:22.04
+FROM debian:bookworm-slim
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DISPLAY=:99
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     xfce4 \
-    xfce4-goodies \
-    x11vnc \
+    dbus-x11 \
     xvfb \
     xdotool \
     imagemagick \
-    x11-apps \
-    sudo \
-    software-properties-common \
+    x11-utils \
     firefox-esr \
- && apt-get remove -y light-locker xfce4-screensaver xfce4-power-manager || true \
- && apt-get clean && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* \
+ && useradd --create-home --shell /bin/sh myuser
 
-RUN useradd -ms /bin/bash myuser \
-    && echo "myuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER myuser
 WORKDIR /home/myuser
 
-RUN x11vnc -storepasswd secret /home/myuser/.vncpass
-
-EXPOSE 5900
-CMD ["/bin/sh", "-c", "\
-    Xvfb :99 -screen 0 1280x800x24 >/dev/null 2>&1 & \
-    x11vnc -display :99 -forever -rfbauth /home/myuser/.vncpass -listen 0.0.0.0 -rfbport 5900 >/dev/null 2>&1 & \
-    export DISPLAY=:99 && \
-    startxfce4 >/dev/null 2>&1 & \
-    sleep 2 && echo 'Container running!' && \
-    tail -f /dev/null \
-"]
+CMD set -eu; \
+    Xvfb :99 -screen 0 1280x800x24 -nolisten tcp & \
+    display_pid=$!; \
+    until xdpyinfo -display :99 >/dev/null 2>&1; do \
+      kill -0 "$display_pid"; sleep 0.2; \
+    done; \
+    exec dbus-run-session -- startxfce4
 ```
 
 
@@ -121,13 +508,29 @@ Build the image:
 docker build -t cua-image .
 ```
 
-Run the container:
+Run the container without a network:
 
 ```bash
-docker run --rm -it --name cua-image -p 5900:5900 -e DISPLAY=:99 cua-image
+docker run --rm -d --name cua-image \
+  --network none \
+  --cap-drop ALL --security-opt no-new-privileges \
+  --pids-limit 256 --memory 2g --cpus 2 --shm-size 512m \
+  cua-image
 ```
 
-Create a helper for shelling into the container:
+Check that the desktop is ready and save its current screen on the host:
+
+```bash
+docker exec cua-image xdpyinfo -display :99
+docker exec cua-image xdotool search --sync --onlyvisible --class xfce4-panel
+docker exec cua-image import -window root png:- > desktop.png
+```
+
+The second command waits until the desktop panel appears. Open `desktop.png` to view the desktop. Run the screenshot command again after actions to view the latest screen. If the display is still starting, wait a moment and repeat the commands. For a complete Python or Node task, use the [isolated desktop example](https://developers.openai.com/api/docs/guides/tools-computer-use-sdk-drivers#use-an-isolated-desktop).
+
+The container can use its own loopback interface but cannot reach external sites, other containers, or the host network. Do not mount your personal files, credentials, or the Docker socket. For internet tasks, use a VM or an environment with egress rules that allow only the sites required by the task.
+
+Create a helper that passes the command arguments directly to the container:
 
 Execute commands on the container
 
@@ -174,13 +577,23 @@ const vm = {
 import subprocess
 
 
-def docker_exec(cmd: str, container_name: str, decode: bool = True):
-    safe_cmd = cmd.replace('"', '\\"')
-    docker_cmd = f'docker exec {container_name} sh -c "{safe_cmd}"'
-    output = subprocess.check_output(docker_cmd, shell=True)
-    if decode:
-        return output.decode("utf-8", errors="ignore")
-    return output
+def docker_exec(container_name, executable, args, *, decode=True, env=None):
+    environment_args = [
+        part
+        for name, value in (env or {}).items()
+        for part in ("--env", f"{name}={value}")
+    ]
+    output = subprocess.check_output(
+        [
+            "docker",
+            "exec",
+            *environment_args,
+            container_name,
+            executable,
+            *map(str, args),
+        ]
+    )
+    return output.decode("utf-8", errors="ignore") if decode else output
 
 
 class VM:
@@ -192,6 +605,14 @@ class VM:
 vm = VM(display=":99", container_name="cua-image")
 ```
 
+
+When you finish, stop the container:
+
+```bash
+docker stop cua-image
+```
+
+`--rm` discards the files inside the container when it stops. Screenshots you saved on the host remain until you remove them. This setup is for local experiments on a trusted host. For a deployed service, use per-session authentication, isolated hosts or VMs, resource and egress policies, and audited cleanup.
 
 
 
@@ -826,7 +1247,7 @@ async function handleComputerActions(vm, actions) {
         await dockerExec(
           vm.containerName,
           "xdotool",
-          ["type", "--delay", 0, action.text],
+          ["type", "--delay", 0, "--", action.text],
           { env: { DISPLAY: vm.display } }
         );
         break;
@@ -865,14 +1286,18 @@ def handle_computer_actions(vm, actions):
                 reject_modifiers(action)
                 button = normalize_xdotool_button(getattr(action, "button", "left"))
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click {button}",
                     vm.container_name,
+                    "xdotool",
+                    ["mousemove", action.x, action.y, "click", button],
+                    env={"DISPLAY": vm.display},
                 )
             case "double_click":
                 reject_modifiers(action)
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 1",
                     vm.container_name,
+                    "xdotool",
+                    ["mousemove", action.x, action.y, "click", "--repeat", 2, 1],
+                    env={"DISPLAY": vm.display},
                 )
             case "drag":
                 reject_modifiers(action)
@@ -881,23 +1306,31 @@ def handle_computer_actions(vm, actions):
                     raise ValueError("drag action requires at least two path points")
                 start_x, start_y = path[0]
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {start_x} {start_y} mousedown 1",
                     vm.container_name,
+                    "xdotool",
+                    ["mousemove", start_x, start_y, "mousedown", 1],
+                    env={"DISPLAY": vm.display},
                 )
                 for x, y in path[1:]:
                     docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {x} {y}",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", x, y],
+                        env={"DISPLAY": vm.display},
                     )
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mouseup 1",
                     vm.container_name,
+                    "xdotool",
+                    ["mouseup", 1],
+                    env={"DISPLAY": vm.display},
                 )
             case "move":
                 reject_modifiers(action)
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                     vm.container_name,
+                    "xdotool",
+                    ["mousemove", action.x, action.y],
+                    env={"DISPLAY": vm.display},
                 )
             case "scroll":
                 reject_modifiers(action)
@@ -907,24 +1340,32 @@ def handle_computer_actions(vm, actions):
                 )
 
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                     vm.container_name,
+                    "xdotool",
+                    ["mousemove", action.x, action.y],
+                    env={"DISPLAY": vm.display},
                 )
                 for button in buttons:
                     docker_exec(
-                        f"DISPLAY={vm.display} xdotool click {button}",
                         vm.container_name,
+                        "xdotool",
+                        ["click", button],
+                        env={"DISPLAY": vm.display},
                     )
             case "keypress":
                 keys = "+".join(normalize_xdotool_key(key) for key in action.keys)
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool key '{keys}'",
                     vm.container_name,
+                    "xdotool",
+                    ["key", keys],
+                    env={"DISPLAY": vm.display},
                 )
             case "type":
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool type --delay 0 '{action.text}'",
                     vm.container_name,
+                    "xdotool",
+                    ["type", "--delay", 0, "--", action.text],
+                    env={"DISPLAY": vm.display},
                 )
             case "wait":
                 time.sleep(2)
@@ -1284,7 +1725,7 @@ async function handleComputerActions(vm, actions) {
         await dockerExec(
           vm.containerName,
           "xdotool",
-          ["type", "--delay", 0, action.text],
+          ["type", "--delay", 0, "--", action.text],
           { env: { DISPLAY: vm.display } }
         );
         break;
@@ -1315,8 +1756,10 @@ def with_modifiers(vm, keys, callback):
     try:
         for key in normalized_keys:
             docker_exec(
-                f"DISPLAY={vm.display} xdotool keydown '{key}'",
                 vm.container_name,
+                "xdotool",
+                ["keydown", key],
+                env={"DISPLAY": vm.display},
             )
             pressed_keys.append(key)
 
@@ -1324,8 +1767,10 @@ def with_modifiers(vm, keys, callback):
     finally:
         for key in reversed(pressed_keys):
             docker_exec(
-                f"DISPLAY={vm.display} xdotool keyup '{key}'",
                 vm.container_name,
+                "xdotool",
+                ["keyup", key],
+                env={"DISPLAY": vm.display},
             )
 
 
@@ -1338,8 +1783,10 @@ def handle_computer_actions(vm, actions):
                     vm,
                     getattr(action, "keys", None),
                     lambda: docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click {button}",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", action.x, action.y, "click", button],
+                        env={"DISPLAY": vm.display},
                     ),
                 )
             case "double_click":
@@ -1347,8 +1794,10 @@ def handle_computer_actions(vm, actions):
                     vm,
                     getattr(action, "keys", None),
                     lambda: docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click --repeat 2 1",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", action.x, action.y, "click", "--repeat", 2, 1],
+                        env={"DISPLAY": vm.display},
                     ),
                 )
             case "drag":
@@ -1359,17 +1808,23 @@ def handle_computer_actions(vm, actions):
                 def do_drag():
                     start_x, start_y = path[0]
                     docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {start_x} {start_y} mousedown 1",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", start_x, start_y, "mousedown", 1],
+                        env={"DISPLAY": vm.display},
                     )
                     for x, y in path[1:]:
                         docker_exec(
-                            f"DISPLAY={vm.display} xdotool mousemove {x} {y}",
                             vm.container_name,
+                            "xdotool",
+                            ["mousemove", x, y],
+                            env={"DISPLAY": vm.display},
                         )
                     docker_exec(
-                        f"DISPLAY={vm.display} xdotool mouseup 1",
                         vm.container_name,
+                        "xdotool",
+                        ["mouseup", 1],
+                        env={"DISPLAY": vm.display},
                     )
 
                 with_modifiers(vm, getattr(action, "keys", None), do_drag)
@@ -1378,8 +1833,10 @@ def handle_computer_actions(vm, actions):
                     vm,
                     getattr(action, "keys", None),
                     lambda: docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", action.x, action.y],
+                        env={"DISPLAY": vm.display},
                     ),
                 )
             case "scroll":
@@ -1390,26 +1847,34 @@ def handle_computer_actions(vm, actions):
 
                 def do_scroll():
                     docker_exec(
-                        f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y}",
                         vm.container_name,
+                        "xdotool",
+                        ["mousemove", action.x, action.y],
+                        env={"DISPLAY": vm.display},
                     )
                     for button in buttons:
                         docker_exec(
-                            f"DISPLAY={vm.display} xdotool click {button}",
                             vm.container_name,
+                            "xdotool",
+                            ["click", button],
+                            env={"DISPLAY": vm.display},
                         )
 
                 with_modifiers(vm, getattr(action, "keys", None), do_scroll)
             case "keypress":
                 keys = "+".join(normalize_xdotool_key(key) for key in action.keys)
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool key '{keys}'",
                     vm.container_name,
+                    "xdotool",
+                    ["key", keys],
+                    env={"DISPLAY": vm.display},
                 )
             case "type":
                 docker_exec(
-                    f"DISPLAY={vm.display} xdotool type --delay 0 '{action.text}'",
                     vm.container_name,
+                    "xdotool",
+                    ["type", "--delay", 0, "--", action.text],
+                    env={"DISPLAY": vm.display},
                 )
             case "wait":
                 time.sleep(2)
@@ -1826,8 +2291,10 @@ async function captureScreenshot(vm) {
 ```python
 def capture_screenshot(vm):
     return docker_exec(
-        f"export DISPLAY={vm.display} && import -window root png:-",
         vm.container_name,
+        "import",
+        ["-window", "root", "png:-"],
+        env={"DISPLAY": vm.display},
         decode=False,
     )
 ```

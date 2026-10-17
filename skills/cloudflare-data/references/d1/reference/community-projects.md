@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/reference/community-projects/og.png?
 
 # Community projects
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/community-projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/community-projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Members of the Cloudflare developer community and broader developer ecosystem have built and/or contributed tooling — including ORMs (Object Relational Mapper) libraries, query builders, and CLI tools — that build on top of D1.
 
@@ -101,6 +101,16 @@ Staff Directory is a demo project using D1, [HonoX ↗︎](https://github.com/ho
 - [Documentation ↗︎](https://hub.nuxt.com)
 - [Example ↗︎](https://github.com/Atinux/nuxt-todos-edge)
 
+### Grainlift
+
+Grainlift connects D1 to DuckDB, Python, and browser applications. Clients query the database through Arrow Database Connectivity (ADBC).
+
+Its open-source gateway runs on Cloudflare Workers in your account.
+
+- [GitHub ↗︎](https://github.com/Query-farm/grainlift-cloudflare)
+- [Grainlift documentation ↗︎](https://query.farm/products/grainlift/)
+- [Your Cloudflare data, in DuckDB ↗︎](https://query.farm/blog/query-cloudflare-from-duckdb/)
+
 ## Feedback
 
 To report a bug or file feature requests for these community projects, create an issue directly on the project's repository.
@@ -114,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

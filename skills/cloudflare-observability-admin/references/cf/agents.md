@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803
 
 # Use cf with coding agents
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents can use `cf` to work with your Cloudflare account. Commands return JSON and describe their own inputs, so an agent can find and run the right command without prior knowledge of `cf`.
 
@@ -107,6 +107,26 @@ the cf CLI unless the project has a Wrangler configuration file."
 
 Root and group `--help` output starts with a reminder for agents to use `cf cli search` first. A command's own `--help` shows its usage as plain text. If an agent types a command that does not exist, `cf` lists the closest matches.
 
+## Find Cloudflare documentation
+
+You and your agent can use `cf docs search` to find guides, tutorials, and examples across Cloudflare products. The search uses live Cloudflare documentation and requires an Internet connection, but no Cloudflare login.
+
+1. Describe the task or ask a question:
+
+   ```sh
+   cf docs search "proxy a DNS record"
+   ```
+
+   Put the query in quotes. The command returns up to five ranked JSON results, each with a `title`, `description`, and `url`.
+2. Choose a result and fetch its URL with the `Accept: text/markdown` header to read the complete page as Markdown:
+
+   ```sh
+   curl -H "Accept: text/markdown" \
+     https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/baseline/proxy-dns-records/
+   ```
+
+Use `cf cli search` to find commands and `cf docs search` to find documentation. Keep both kinds of search generic: do not include account IDs, domains, email addresses, tokens, or other identifying information.
+
 ## Read command output
 
 Results go to standard output as JSON. Messages, such as the selected zone, and errors go to standard error. When standard output is not a terminal, it contains only the result, so an agent can parse it or filter it with `jq` without extra flags.
@@ -175,5 +195,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/agents/#page","headline":"Use cf with coding agents","description":"Set up the Cloudflare CLI for coding agents, and help agents find, inspect, and safely run the right commands.","url":"https://developers.cloudflare.com/cf/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/agents/og.png?v=99988aee6616b803","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

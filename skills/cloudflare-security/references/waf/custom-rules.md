@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/custom-rules/og.png?v=79e0914871b39
 
 # Custom rules
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom rules allow you to control incoming traffic by filtering requests to a zone. They work as customized web application firewall (WAF) rules that you can use to perform actions like *Block* or *Managed Challenge* on incoming requests. You can also use the *Skip* action in a custom rule to [skip one or more Cloudflare security features](https://developers.cloudflare.com/waf/custom-rules/skip/).
 
@@ -27,11 +27,7 @@ Custom rules are evaluated in order, and some actions like *Block* will stop the
 
 ## Custom rulesets
 
-To define sets of custom rules that apply to more than one zone, use [custom rulesets](https://developers.cloudflare.com/waf/account/custom-rulesets/). At the zone level, all customers can create and deploy custom rulesets. Custom rulesets at the account level require an Enterprise plan.
-
-Note
-
-Currently, the Cloudflare dashboard does not support working with custom rulesets at the zone level. You will need to [use the Cloudflare API](https://developers.cloudflare.com/waf/custom-rules/create-api/) to configure or deploy these rulesets.
+At the zone level, all customers can create and deploy [custom rulesets](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/) in the dashboard or via the API. To define sets of custom rules that apply to more than one zone, use [account-level custom rulesets](https://developers.cloudflare.com/waf/account/custom-rulesets/). Account-level custom rulesets require an Enterprise plan.
 
 ## Interaction with other app security features
 
@@ -74,5 +70,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/#page","headline":"Custom rules","description":"Block, challenge, or allow requests matching custom expressions.","url":"https://developers.cloudflare.com/waf/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/og.png?v=79e0914871b39ca0","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/#page","headline":"Custom rules","description":"Block, challenge, or allow requests matching custom expressions.","url":"https://developers.cloudflare.com/waf/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/og.png?v=79e0914871b39ca0","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

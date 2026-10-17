@@ -8,6 +8,14 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## October, 2026
 
+### Oct 16
+
+Feature · Model: gpt-live-1 · API: v1/audio/voices · API: v1/live/sessions
+
+Released [prompt-to-voice](https://developers.openai.com/api/docs/guides/custom-voices#create-a-voice-from-a-description) for all API customers. Create a custom voice from a text description through the API or voice Playground, then reuse it in GPT-Live sessions. Creating a prompt-generated voice is free; speech generation uses regular GPT-Live session billing.
+
+Added nine [natural voices for GPT-Live](https://developers.openai.com/api/docs/guides/live-conversations#voice-options): Nuri, Juni, and Flitz (German); Brise and Sillage (French); Nira (Hindi); Harema and Shida (Japanese); and Noeul (Korean).
+
 ### Oct 15
 
 Feature · Model: gpt-live-1 · Model: gpt-6-luna · API: v1/live/sessions

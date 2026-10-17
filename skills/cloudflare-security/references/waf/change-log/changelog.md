@@ -199,6 +199,7 @@ This release introduces new threat detections to enhance protection against comm
 | Cloudflare Managed Ruleset | ...ca453d31 | N/A | SSRF - Cloud - 3 | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...e540f17f | N/A | Version Control - Information Disclosure - Beta | Log | Block | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
 | Cloudflare Managed Ruleset | ...ba458b4b | N/A | Command Injection - Generic 10 | Log | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...7b58420b | N/A | XSS, HTML Injection - Script Tag | Block | Block | Reverts the detection changes introduced on August 25, 2026 |
 
 ## 2026-09-10
 

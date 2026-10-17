@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/account-limits/og.png?v=
 
 # Account limits
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/account-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/account-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the default account limits for rules, applications, fields, and other features. These limits may be increased on Enterprise accounts. To request a limit increase, contact your account team.
 
@@ -85,16 +85,21 @@ HTTP policies using [Forward](https://developers.cloudflare.com/cloudflare-one/t
 | Feature | Limit |
 | --- | --- |
 | `cloudflared` tunnels per account | 1,000 |
-| Routes (CIDR routes + Hostname routes) per account | 1,000 (shared with Cloudflare Mesh) |
+| Routes (CIDR routes + Hostname routes) per account | 50,000 (shared with Cloudflare Mesh) |
+| Published applications per tunnel | Limited by 1 MB configuration size |
 | Active `cloudflared` replicas per tunnel | 25 |
 | Virtual networks per account | 1,000 |
+
+To run more than 1,000 tunnels in a single account, refer to [Tunnels for Platforms](https://developers.cloudflare.com/tunnel/features/tunnels-for-platforms/).
+
+Published applications (public hostnames) do not count toward the routes limit. For details, refer to [Published application limits](https://developers.cloudflare.com/tunnel/concepts/routing/#published-application-limits).
 
 ## Cloudflare Mesh
 
 | Feature | Limit |
 | --- | --- |
 | Mesh nodes per account | 50 |
-| Routes (CIDR routes) per account | 1,000 (shared with Cloudflare Tunnel) |
+| Routes (CIDR routes + Hostname routes) per account | 50,000 (shared with Cloudflare Tunnel) |
 
 ## Digital Experience Monitoring (DEX)
 
@@ -147,5 +152,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/account-limits/#page","headline":"Account limits","description":"Reference information for Account limits in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/account-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/account-limits/og.png?v=4b7cfe0f2c26aa59","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/account-limits/#page","headline":"Account limits","description":"Reference information for Account limits in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/account-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/account-limits/og.png?v=4b7cfe0f2c26aa59","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

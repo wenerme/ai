@@ -47,7 +47,7 @@ For enterprise deployments, powered by [Gemini Enterprise Agent Platform](https:
 Our flagship reasoning model, built for complex software engineering, deep mathematical and scientific problem solving, autonomous multi-step agents, and long-decode generation up to 1M tokens.
 
 > [!NOTE]
-> **Note:** Gemini 4 Argon is not available on the Free tier or on the [Google AI Pro](https://ai.google.dev/gemini-api/docs/google-ai-plans) plan.
+> **Note:** Gemini 4 Argon is not available on the Free tier.
 
 ### Standard
 

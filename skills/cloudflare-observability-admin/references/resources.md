@@ -76,6 +76,8 @@ Products
 
 [**Connect to a PostgreSQL database with Cloudflare Workers** This tutorial explains how to connect to a Postgres database with Cloudflare Workers. The Workers application you create in this tutorial will interact with a product database inside of Postgres.](https://developers.cloudflare.com/workers/tutorials/postgres/)
 
+[**Connect to a MongoDB database with Cloudflare Workers** This tutorial explains how to connect to a MongoDB database with Cloudflare Workers. The Workers application you create in this tutorial will query a movies database in MongoDB.](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/)
+
 [**Query D1 using Prisma ORM** This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/)
 
 [**Protect your forms** This tutorial will guide you through integrating Cloudflare Turnstile to protect your web forms, such as login, signup, or contact forms.](https://developers.cloudflare.com/turnstile/tutorials/login-pages/)

@@ -490,31 +490,28 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
     const client = new GoogleGenAI({});
 
-    // 1. Define the custom function
-    const get_weather_tool = {
-      type: "function",
-      name: "get_weather",
-      description: "Gets the current weather for a given location.",
-      parameters: {
-        type: "object",
-        properties: {
-          location: {
-            type: "string",
-            description: "The city and country, e.g. San Francisco, USA",
-          },
-        },
-        required: ["location"],
-      },
-    };
-
-    // 2. Call the agent with the custom tool (Turn 1)
+    // 1. Call the agent with the custom tool (Turn 1)
     const interaction = await client.interactions.create({
       agent: "antigravity-preview-09-2026",
       input: "What is the weather in Tokyo?",
       environment: "remote",
       tools: [
         { type: "code_execution" },
-        get_weather_tool,
+        {
+          type: "function",
+          name: "get_weather",
+          description: "Gets the current weather for a given location.",
+          parameters: {
+            type: "object",
+            properties: {
+              location: {
+                type: "string",
+                description: "The city and country, e.g. San Francisco, USA",
+              },
+            },
+            required: ["location"],
+          },
+        },
       ],
     }, { timeout: 300000 });
 
@@ -523,39 +520,41 @@ The following example demonstrates a 2-turn interaction. The agent first request
       // Filesystem tools (like write_to_file) are also represented as function calls
       // but are executed automatically by the environment.
       const executedCalls = new Set(
-        interaction.steps
+        (interaction.steps || [])
           .filter(s => s.type === "function_result")
           .map(s => s.call_id)
       );
-      const pendingCalls = interaction.steps.filter(
+      const pendingCalls = (interaction.steps || []).filter(
         s => s.type === "function_call" && !executedCalls.has(s.id)
       );
 
       if (pendingCalls.length > 0) {
         const fcStep = pendingCalls[0];
-        console.log(`Function to call: ${fcStep.name} (ID: ${fcStep.id})`);
+        if (fcStep.type === "function_call") {
+          console.log(`Function to call: ${fcStep.name} (ID: ${fcStep.id})`);
 
-        // 3. Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
-        const functionResult = {
-          temperature: 23,
-          unit: "celsius"
-        };
+          // Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
+          const functionResult = {
+            temperature: 23,
+            unit: "celsius"
+          };
 
-        const finalInteraction = await client.interactions.create({
-          agent: "antigravity-preview-09-2026",
-          previous_interaction_id: interaction.id, // Reference the interaction ID
-          environment: interaction.environment_id,
-          input: [
-            {
-              type: "function_result",
-              name: fcStep.name,
-              call_id: fcStep.id,
-              result: functionResult,
-            }
-          ],
-        }, { timeout: 300000 });
+          const finalInteraction = await client.interactions.create({
+            agent: "antigravity-preview-09-2026",
+            previous_interaction_id: interaction.id, // Reference the interaction ID
+            environment: interaction.environment_id,
+            input: [
+              {
+                type: "function_result",
+                name: fcStep.name,
+                call_id: fcStep.id,
+                result: functionResult,
+              }
+            ],
+          }, { timeout: 300000 });
 
-        console.log(finalInteraction.output_text);
+          console.log(finalInteraction.output_text);
+        }
       } else {
         console.log("No pending function calls.");
       }
@@ -965,7 +964,7 @@ When registering an MCP server, you must specify the following fields in the `to
 
 For `antigravity-preview-09-2026`, the default model is **Gemini 3.8 Flash** (`gemini-3.8-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.8-flash`.
 
-You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability.
+You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability. For example, set `model` to **Gemini 4 Argon** (`gemini-4-argon`) for complex software engineering and reasoning tasks:
 
 ### Python
 
@@ -979,7 +978,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
         environment="remote",
         agent_config={
             "type": "antigravity",
-            "model": "gemini-3.5-flash-lite",
+            "model": "gemini-4-argon",
         },
     )
 
@@ -997,7 +996,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
         environment: "remote",
         agent_config: {
             type: "antigravity",
-            model: "gemini-3.5-flash-lite",
+            model: "gemini-4-argon",
         },
     }, { timeout: 300000 });
 
@@ -1022,7 +1021,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
         .environment(CreateAgentInteractionEnvironment.of("remote"))
         .agentConfig(
             AntigravityAgentConfig.builder()
-                .model("gemini-3.5-flash-lite")
+                .model("gemini-4-argon")
                 .build()
         )
         .build();
@@ -1057,7 +1056,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
                 Input:       interactions.NewInteractionsInput("Summarize the key differences between functional and object-oriented programming."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
-                    Model: genai.Ptr("gemini-3.5-flash-lite"),
+                    Model: genai.Ptr("gemini-4-argon"),
                 })),
             }),
         })
@@ -1080,7 +1079,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
           "environment": "remote",
           "agent_config": {
               "type": "antigravity",
-              "model": "gemini-3.5-flash-lite"
+              "model": "gemini-4-argon"
           }
       }'
 
@@ -1089,6 +1088,7 @@ The supported values for `agent_config.model` are:
 | Model | Value in `agent_config.model` | Description |
 |---|---|---|
 | **Gemini 3.8 Flash** (default) | `gemini-3.8-flash` | Default balanced model for reasoning, coding, and tool use. |
+| **Gemini 4 Argon** | `gemini-4-argon` | Frontier reasoning model for complex software engineering, deep problem solving, and long-horizon agentic tasks. |
 | **Gemini 3.6 Flash** | `gemini-3.6-flash` | Balanced Flash model for general agentic workflows. |
 | **Gemini 3.5 Flash-Lite** | `gemini-3.5-flash-lite` | Lightweight model optimized for low latency and cost-sensitive tasks. |
 
@@ -2337,7 +2337,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
         input: "Analyze the dataset in /workspace/data.csv and generate a summary report.",
         agent_config: {
             type: "antigravity",
-            max_total_tokens: 50000
+            max_total_tokens: "50000"
         },
         environment: {
             type: "remote",
@@ -2351,7 +2351,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
         },
     });
     console.log(`Status: ${interaction.status}`);
-    console.log(`Tokens used: ${interaction.usage.total_tokens}`);
+    console.log(`Tokens used: ${interaction.usage?.total_tokens}`);
 
 ### Java
 
@@ -2502,7 +2502,7 @@ are preserved. Send a new interaction referencing the original interaction `id` 
         environment: interaction.environment_id,
         agent_config: {
             type: "antigravity",
-            max_total_tokens: 50000
+            max_total_tokens: "50000"
         }
     });
     console.log(`Status: ${continuation.status}`);

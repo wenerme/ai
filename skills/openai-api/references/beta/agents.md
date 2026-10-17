@@ -74,7 +74,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests. Defaults to `auto`.
 
@@ -97,6 +97,10 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -1780,7 +1784,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests.
 
@@ -1803,6 +1807,10 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -4432,7 +4440,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 9 more }`
 
   A Managed Agents session.
 
@@ -5211,18 +5219,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
-
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
 
 ### Agent Session Assistant Message
 
@@ -6081,18 +6077,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `vault_ids: array of string`
 
       The IDs of vaults made available to the session.
-
-    - `spend_control: optional object { consumed, limit }`
-
-      Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-      - `consumed: number or null`
-
-        Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-      - `limit: number`
-
-        The configured positive limit in USD cents.
 
   - `type: "agent.session.created"`
 
@@ -7871,18 +7855,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `vault_ids: array of string`
 
         The IDs of vaults made available to the session.
-
-      - `spend_control: optional object { consumed, limit }`
-
-        Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-        - `consumed: number or null`
-
-          Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-        - `limit: number`
-
-          The configured positive limit in USD cents.
 
     - `type: "agent.session.created"`
 
@@ -10722,18 +10694,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The IDs of vaults made available to the session.
 
-    - `spend_control: optional object { consumed, limit }`
-
-      Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-      - `consumed: number or null`
-
-        Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-      - `limit: number`
-
-        The configured positive limit in USD cents.
-
   - `type: "agent.session.failed"`
 
     The type of the object. Always `agent.session.failed`.
@@ -11530,18 +11490,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       The IDs of vaults made available to the session.
 
-    - `spend_control: optional object { consumed, limit }`
-
-      Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-      - `consumed: number or null`
-
-        Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-      - `limit: number`
-
-        The configured positive limit in USD cents.
-
   - `type: "agent.session.idle"`
 
     The type of the object. Always `agent.session.idle`.
@@ -12337,18 +12285,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `vault_ids: array of string`
 
       The IDs of vaults made available to the session.
-
-    - `spend_control: optional object { consumed, limit }`
-
-      Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-      - `consumed: number or null`
-
-        Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-      - `limit: number`
-
-        The configured positive limit in USD cents.
 
   - `type: "agent.session.in_progress"`
 
@@ -14403,18 +14339,6 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `vault_ids: array of string`
 
       The IDs of vaults made available to the session.
-
-    - `spend_control: optional object { consumed, limit }`
-
-      Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-      - `consumed: number or null`
-
-        Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-      - `limit: number`
-
-        The configured positive limit in USD cents.
 
   - `type: "agent.session.requires_action"`
 
@@ -23817,7 +23741,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     The service tier used for model requests.
 
@@ -23840,6 +23764,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `"fast"`
 
       Uses the fast service tier.
+
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
 
   - `text: optional AgentTextParam or null`
 
@@ -24175,14 +24103,6 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
-- `spend_control: optional object { limit }  or null`
-
-  Optional spending limit in USD cents. Omission or null creates an unlimited session.
-
-  - `limit: number or null`
-
-    Positive USD cents, or null to remove the limit.
-
 - `stream: optional boolean`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -24193,7 +24113,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 9 more }`
 
   A Managed Agents session.
 
@@ -24973,18 +24893,6 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     The IDs of vaults made available to the session.
 
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
-
 ### Example
 
 ```http
@@ -25089,11 +24997,7 @@ curl https://api.openai.com/v1/agents/sessions \
   },
   "vault_ids": [
     "string"
-  ],
-  "spend_control": {
-    "consumed": 0,
-    "limit": 1
-  }
+  ]
 }
 ```
 
@@ -25960,18 +25864,6 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     The IDs of vaults made available to the session.
 
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
-
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -26090,11 +25982,7 @@ curl https://api.openai.com/v1/agents/sessions \
       },
       "vault_ids": [
         "string"
-      ],
-      "spend_control": {
-        "consumed": 0,
-        "limit": 1
-      }
+      ]
     }
   ],
   "first_id": "first_id",
@@ -26116,7 +26004,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 9 more }`
 
   A Managed Agents session.
 
@@ -26895,18 +26783,6 @@ Retrieves the current state of a managed agent session. See [managing sessions](
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
-
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
 
 ### Example
 
@@ -27006,11 +26882,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ],
-  "spend_control": {
-    "consumed": 0,
-    "limit": 1
-  }
+  ]
 }
 ```
 
@@ -27056,7 +26928,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `"max"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     Omit to keep the current tier. Null resets it to auto.
 
@@ -27080,21 +26952,17 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Uses the fast service tier.
 
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
+
 - `metadata: optional map[string] or null`
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
-- `spend_control: optional object { limit }  or null`
-
-  Omit to retain the limit; null or a null limit removes it without resetting spend.
-
-  - `limit: number or null`
-
-    Positive USD cents, or null to remove the limit.
-
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 9 more }`
 
   A Managed Agents session.
 
@@ -27873,18 +27741,6 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
-
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
 
 ### Example
 
@@ -27985,11 +27841,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ],
-  "spend_control": {
-    "consumed": 0,
-    "limit": 1
-  }
+  ]
 }
 ```
 
@@ -29602,18 +29454,6 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `vault_ids: array of string`
 
         The IDs of vaults made available to the session.
-
-      - `spend_control: optional object { consumed, limit }`
-
-        Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-        - `consumed: number or null`
-
-          Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-        - `limit: number`
-
-          The configured positive limit in USD cents.
 
     - `type: "agent.session.created"`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/traces/spans-and-
 
 # Spans and attributes
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers provides automatic tracing instrumentation **out of the box** - no code changes or SDK are required.
 
@@ -48,6 +48,21 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 - `cloudflare.outcome` - The outcome of the Worker invocation (e.g., `ok`, `exception`, `exceededCpu`, `exceededMemory`)
 - `cloudflare.cpu_time_ms` - The CPU time used by the Worker invocation, in milliseconds
 - `cloudflare.wall_time_ms` - The wall time used by the Worker invocation, in milliseconds
+
+---
+
+### Warning attributes
+
+Workers tracing may attach warning attributes to a span when a non-fatal error condition is encountered while recording telemetry for that span. These are diagnostic indicators about the span's telemetry state (for example, a span that was never closed). When present, both attributes are set together.
+
+- `cloudflare.warning.type` - A closed-set identifier indicating the type of warning condition encountered. See [Warning types](#warning-types) for the set of defined values.
+- `cloudflare.warning.message` - A free-form, human-readable explanation of the warning condition.
+
+#### Warning types
+
+The following values are defined for `cloudflare.warning.type`:
+
+- `span_not_ended` - The span was still open when its parent invocation span closed. Workers tracing force-closes the span and attaches this warning.
 
 ---
 
@@ -605,5 +620,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/og.png?v=88b898105587c218","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/#page","headline":"Spans and attributes","description":"Review the spans and attributes automatically captured by Workers tracing, including fetch calls, bindings, and handler invocations.","url":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/og.png?v=88b898105587c218","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
