@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 252 modelsClear filters
+We found 260 modelsClear filters
 
 ## Compare models
 
@@ -264,6 +264,12 @@ Compare
 
 Compare
 
+[![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-3-image-klein</h3>Black Forest LabsText-to-Image FLUX 3 Image Klein is Black Forest Labs' 5.6B-parameter image model for text-to-image, image editing, and multi-reference generation with up to 10 reference images. It supports native 4K output and bounding-box layout control.](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-image-klein/)
+
+- Third-party
+
+Compare
+
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-3-video</h3>Black Forest LabsText-to-Video FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/)
 
 - Third-party
@@ -271,6 +277,12 @@ Compare
 Compare
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-video-upscale</h3>Black Forest Labsvideo-to-video FLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio.](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/)
+
+- Third-party
+
+Compare
+
+[b<h3>ad-delayer</h3>briaImage-to-Document Ad Delayer turns a finished, flat ad image into an editable JSON layer document: a background plate, product and logo cutouts, live text with typography, and vector shapes, with each image layer hosted as its own file. It is designed for flat ads; results for ordinary photographs are not guaranteed. Bria trains it exclusively on licensed data.](https://developers.cloudflare.com/ai/models/bria/ad-delayer/)
 
 - Third-party
 
@@ -381,6 +393,13 @@ Compare
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)<h3>music-v2</h3>ElevenLabsMusic Generation ElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan.](https://developers.cloudflare.com/ai/models/elevenlabs/music-v2/)
 
 - Third-party
+
+Compare
+
+[![Fireworks logo](https://developers.cloudflare.com/_astro/fireworks.CeRQXhcu.svg)<h3>ember-1</h3>FireworksText Generation Fireworks' Ember-1 is a specialized long-context multimodal reasoning model built on Kimi K3. It produces shorter reasoning traces using approximately 40% fewer tokens while maintaining comparable quality across Fireworks' evaluations.](https://developers.cloudflare.com/ai/models/fireworks/ember-1/)
+
+- Third-party
+- +1
 
 Compare
 
@@ -580,6 +599,12 @@ Compare
 
 Compare
 
+[k<h3>krea-3</h3>kreaImage-to-Image Krea 3 is Krea's image generation and editing model, in beta. It edits one or more reference images from a text instruction, or generates an image from the prompt alone. References are passed as HTTP(S) URLs in image\_urls (up to 8). Outputs go up to 2K, with optional thinking\_mode, aspect\_ratio, seed and regional\_edit controls.](https://developers.cloudflare.com/ai/models/krea/krea-3/)
+
+- Third-party
+
+Compare
+
 [l<h3>ltx-2-5-fast</h3>lightricksText-to-Video Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and image-to-video workflows, with synchronized audio, configurable duration, resolution, and frame rate.](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/)
 
 - Third-party
@@ -599,6 +624,12 @@ Compare
 Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-1.3</h3>MetaText Generation Muse Spark 1.3 is Meta's latest agentic and coding model, tuned for multi-step tool loops, browser tasks, software engineering, and long-horizon reasoning.](https://developers.cloudflare.com/ai/models/meta/muse-spark-1.3/)
+
+- Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-open</h3>MetaText Generation Meta's most capable open-weight model, built for agentic coding. Show it a screenshot, chart, or photo alongside your request and it reasons over both to write working code, call tools, and carry multi-step tasks across a 1M-token context.](https://developers.cloudflare.com/ai/models/meta/muse-spark-open/)
 
 - Third-party
 
@@ -975,6 +1006,12 @@ Compare
 
 Compare
 
+[![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-flash</h3>RecraftText-to-Image Recraft V4.1 Flash is Recraft's fastest and lowest-cost image model, generating a 1K raster image in about 1.3 seconds with quality close to Recraft V4.1. Built for high-volume generation and rapid iteration, with strong results for photography, portraits, atmospheric scenes, mixed media, and logo concepts. It outputs raster images only and does not support styles.](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-flash/)
+
+- Third-party
+
+Compare
+
 [![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)<h3>recraftv4-1-pro</h3>RecraftText-to-Image Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned for high aesthetics, with strong composition, text rendering, and refined design taste. Built for print and production work.](https://developers.cloudflare.com/ai/models/recraft/recraftv4-1-pro/)
 
 - Third-party
@@ -1045,6 +1082,12 @@ Compare
 
 Compare
 
+[r<h3>beam-1.0-501b-a23b</h3>reflection-aiText Generation Beam-1.0-501B-A23B is Reflection AI's open-weights mixture-of-experts model with 501B total parameters and 23B active parameters, built for coding, reasoning, and agentic workloads.](https://developers.cloudflare.com/ai/models/reflection-ai/beam-1.0-501b-a23b/)
+
+- Third-party
+
+Compare
+
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>aleph-2</h3>RunwayMLText-to-Video RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/)
 
 - Third-party
@@ -1085,6 +1128,12 @@ Compare
 
 - Third-party
 - +1
+
+Compare
+
+[t<h3>jev-1.14.0</h3>typesafeText Generation Jev 1.14 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, Score, and Box questions and returns calibrated answers with probabilities and confidence. Image inputs and Box questions are beta and dreamer-ready, not recommended for production.](https://developers.cloudflare.com/ai/models/typesafe/jev-1.14.0/)
+
+- Third-party
 
 Compare
 

@@ -2,13 +2,147 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Custom voices enable you to create a unique voice for your agent or application. These voices can be used for audio output with the [Text to Speech API](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), the [Realtime API](https://developers.openai.com/api/reference/resources/realtime), or the [Chat Completions API with audio output](https://developers.openai.com/api/docs/guides/audio-chat-completions).
+Custom voices enable you to create a voice for your agent or application. Choose how to create the voice:
 
-To create a custom voice, you’ll provide a short sample audio reference that the model will seek to replicate.
+- **From a description:** Use prompt-to-voice to generate a voice for [GPT-Live](https://developers.openai.com/api/docs/guides/live). Describe the vocal qualities you want in a text prompt.
+- **From a recording:** Provide a consent recording and a short reference sample. These voices can be used with GPT-Live, the [Text to Speech API](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), the [Realtime API](https://developers.openai.com/api/reference/resources/realtime), or the [Chat Completions API with audio output](https://developers.openai.com/api/docs/guides/audio-chat-completions).
+
+To choose an existing GPT-Live voice, see [Voice options](https://developers.openai.com/api/docs/guides/live-conversations#voice-options).
+
+## Create a voice from a description
+
+Prompt-to-voice creates and saves a voice from a text description. You don't need a reference recording or a consent recording for this workflow.
+
+Prompt-to-voice is generally available to all API customers. Prompt-generated
+  voices work with GPT-Live. They aren't supported by the Text to Speech,
+  Realtime, or Chat Completions APIs.
+
+### Responsible use
+
+- **Use voices responsibly.** Don’t impersonate others or violate our [Usage Policies](https://openai.com/policies/usage-policies/).
+- **Use adult voices.** Children's voices aren't allowed.
+- **Be transparent.** Tell listeners that the speech is AI-generated, and preserve any provenance metadata, watermarks, or other indicators of its synthetic origin.
+- **Voices aren’t guaranteed to be unique.** Others may generate similar voices or output. Your output ownership rights remain governed by your Agreement with OpenAI.
+- **[Terms](https://openai.com/policies/service-terms/)** apply to your and your end users’ use of prompt-to-voice.
+
+### Create and save the voice
+
+Create a voice through the API or in the [voice Playground](https://platform.openai.com/audio/voices/edit). Creating a prompt-generated voice is free. Using it to generate speech in GPT-Live is billed at regular session rates.
+
+Send a JSON request to `/v1/audio/voices` with `type` set to `prompt`:
+
+```bash
+curl --fail-with-body https://api.openai.com/v1/audio/voices \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type": "prompt",
+    "name": "Support assistant",
+    "prompt": "A calm, reassuring adult voice for a customer support assistant. Speak with an American English accent, a mid-range pitch, a smooth, warm tone, and a steady, conversational pace.",
+    "model": "auto"
+  }' \
+  -o voice.json
+```
+
+
+`script_hint` is an optional example script used to guide voice generation. If you leave it out, the service generates a script from your voice description. To supply your own, include up to 2,000 characters of representative speech. Blank or too-short scripts are rejected.
+
+Each successful request creates a new saved voice. The response contains metadata, including its ID, creation time in Unix seconds, and original voice-description prompt. It doesn't include audio or a preview:
+
+```json
+{
+  "object": "audio.voice",
+  "id": "voice_123",
+  "name": "Support assistant",
+  "created_at": 0,
+  "type": "prompt",
+  "prompt": "A calm, reassuring adult voice for a customer support assistant. Speak with an American English accent, a mid-range pitch, a smooth, warm tone, and a steady, conversational pace."
+}
+```
+
+Save the returned `id` and retain the original voice prompt. Reuse a saved voice when you want the same voice in another session. You can create up to 100 prompt-generated voices per organization. This limit also applies when your application creates voices for its customers.
+
+### Describe the voice
+
+Describe vocal qualities in plain language. For example:
+
+```text
+A calm, reassuring adult voice for a customer support assistant. Speak with an
+American English accent, a mid-range pitch, a smooth, warm tone, and a steady,
+conversational pace.
+```
+
+The following examples show qualities you can describe. These are words in your prompt, rather than separate API parameters:
+
+| Quality         | What to describe                                          | Example wording                        |
+| --------------- | --------------------------------------------------------- | -------------------------------------- |
+| Accent          | Regional pronunciation and accent strength                | American English, with a strong accent |
+| Age             | The perceived age of the voice                            | An adult in their 30s                  |
+| Presentation    | How the voice presents                                    | Feminine                               |
+| Pitch           | How low or high the voice sounds                          | Mid-range pitch                        |
+| Timbre          | The tone of the voice                                     | Smooth and rich                        |
+| Texture         | Raspiness, hoarseness, or clarity                         | Smooth                                 |
+| Loudness        | Vocal effort                                              | Moderate vocal effort                  |
+| Speech rate     | How quickly the voice speaks                              | Medium pace                            |
+| Distinctiveness | How pronounced the voice's individual character should be | Moderately distinctive                 |
+
+Describe the qualities themselves. Don't request imitation of a named person, public figure, or fictional character. Children's voices aren't allowed; describe an adult voice.
+
+### Example descriptions
+
+Use these descriptions as starting points and listen to the results in your application.
+
+**Calm assistant**
+
+```text
+A warm adult voice with a mid-range pitch and smooth, rich timbre.
+Use moderate vocal effort and an unhurried, reassuring delivery.
+```
+
+**Lively guide**
+
+```text
+A bright, clear adult voice with a slightly higher pitch and a lightly textured timbre.
+Use a lively, conversational delivery at a brisk but easy-to-follow pace.
+```
+
+Keep conversation rules, such as answer length, interruptions, and when to delegate, in your [GPT-Live session instructions](https://developers.openai.com/api/docs/guides/live-prompting).
+
+### Listen to the voice in GPT-Live
+
+Listening to a voice in the Playground runs a GPT-Live session and is billed as a regular session.
+
+Set `session.audio.output.voice.id` to the returned voice ID. For voice performance, include the original voice description in `session.instructions` alongside your application's conversation instructions.
+
+Replace `voice_123` with the ID returned by your creation request:
+
+```json
+{
+  "model": "gpt-live-1",
+  "instructions": "You are a helpful voice assistant. A calm, reassuring adult voice for a customer support assistant. Speak with an American English accent, a mid-range pitch, a smooth, warm tone, and a steady, conversational pace.",
+  "audio": { "output": { "voice": { "id": "voice_123" } } }
+}
+```
+
+For [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=live), include this configuration in the JSON `session` field alongside `transport`. For [WebSockets](https://developers.openai.com/api/docs/guides/voice-websockets?api=live), include it in the first `session.start` event. Follow the connection guide to send audio and hear the voice. Choose the voice at startup; start a new session to try a different voice.
+
+Voice creation through `/v1/audio/voices`, including creation from recordings, isn't compatible with Zero Data Retention. GPT-Live speech generations are eligible for Zero Data Retention when it's enabled for your organization or project. Stored session recordings, recording downloads, and session forking aren't available with Zero Data Retention. See the [data controls](https://developers.openai.com/api/docs/guides/your-data#v1livesessions) for session storage and retention requirements.
+
+### Refine and reuse
+
+Change one quality at a time and compare the results using the same short passage and a few conversational turns. Listen for the accent, pace, and other qualities your application needs. Keep the voice ID you prefer and reuse it.
+
+Each creation request saves a new voice. To try another saved voice, start a new GPT-Live session with its ID.
+
+## Create a voice from a recording
+
+To create a voice from a recording, provide a short sample audio reference that the model will seek to replicate.
 
 
 
-    {"Custom voices are limited to eligible customers. Contact our "}
+    {
+      "Custom voices created from recordings are limited to eligible customers. Contact our "
+    }
     [{"sales team"}](https://openai.com/contact-sales/)
     {
       " to learn more. Once enabled for your organization, you’ll have access to the "
@@ -18,11 +152,15 @@ To create a custom voice, you’ll provide a short sample audio reference that t
   
 
 
-## Creating a voice
 
-Currently, voices must be created through an API request. See the API reference for the full set of API operations.
 
-Creating a voice requires two separate audio recordings:
+
+
+### Prepare and upload the recordings
+
+Voices from recordings must be created through an API request. See the API reference for the full set of API operations.
+
+Creating a voice from a recording requires two separate audio recordings:
 
 1. **Consent recording:** This recording captures the voice actor providing consent to create a likeness of their voice. The actor must read one of the consent phrases provided below.
 2. **Sample recording:** The actual audio sample that the model will try to adhere to. The voice must match the consent recording.
@@ -39,7 +177,7 @@ The quality of your custom voice is highly dependent on the quality of the sampl
 
 **Requirements and limitations**
 
-- At most 20 voices can be created per organization.
+- At most 20 voices from recordings can be created per organization.
 - The audio samples must be 30 seconds or less.
 - The audio samples must be one of the following types: `mpeg`, `wav`, `ogg`, `aac`, `flac`, `webm`, or `mp4`.
 
@@ -50,24 +188,24 @@ Refer to the Text-to-Speech Supplemental Agreement for additional terms of use.
 The consent audio recording must only include one of the following phrases. Any divergence from the script will lead to a failure.
 
 
-| Language | Phrase                                                                                                                                                |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `de`     | Ich bin der Eigentümer dieser Stimme und bin damit einverstanden, dass OpenAI diese Stimme zur Erstellung eines synthetischen Stimmmodells verwendet. |
-| `en`     | I am the owner of this voice and I consent to OpenAI using this voice to create a synthetic voice model.                                              |
-| `es`     | Soy el propietario de esta voz y doy mi consentimiento para que OpenAI la utilice para crear un modelo de voz sintética.                              |
-| `fr`     | Je suis le propriétaire de cette voix et j'autorise OpenAI à utiliser cette voix pour créer un modèle de voix synthétique.                            |
-| `hi`     | मैं इस आवाज का मालिक हूं और मैं सिंथेटिक आवाज मॉडल बनाने के लिए OpenAI को इस आवाज का उपयोग करने की सहमति देता हूं                                     |
-| `id`     | Saya adalah pemilik suara ini dan saya memberikan persetujuan kepada OpenAI untuk menggunakan suara ini guna membuat model suara sintetis.            |
-| `it`     | Sono il proprietario di questa voce e acconsento che OpenAI la utilizzi per creare un modello di voce sintetica.                                      |
-| `ja`     | 私はこの音声の所有者であり、OpenAIがこの音声を使用して音声合成 モデルを作成することを承認します。                                                     |
-| `ko`     | 나는 이 음성의 소유자이며 OpenAI가 이 음성을 사용하여 음성 합성 모델을 생성할 것을 허용합니다.                                                        |
-| `nl`     | Ik ben de eigenaar van deze stem en ik geef OpenAI toestemming om deze stem te gebruiken om een synthetisch stemmodel te maken.                       |
-| `pl`     | Jestem właścicielem tego głosu i wyrażam zgodę na wykorzystanie go przez OpenAI w celu utworzenia syntetycznego modelu głosu.                         |
-| `pt`     | Eu sou o proprietário desta voz e autorizo o OpenAI a usá-la para criar um modelo de voz sintética.                                                   |
-| `ru`     | Я являюсь владельцем этого голоса и даю согласие OpenAI на использование этого голоса для создания модели синтетического голоса.                      |
-| `uk`     | Я є власником цього голосу і даю згоду OpenAI використовувати цей голос для створення синтетичної голосової моделі.                                   |
-| `vi`     | Tôi là chủ sở hữu giọng nói này và tôi đồng ý cho OpenAI sử dụng giọng nói này để tạo mô hình giọng nói tổng hợp.                                     |
-| `zh`     | 我是此声音的拥有者并授权OpenAI使用此声音创建语音合成模型                                                                                              |
+| Language          | Phrase                                                                                                                                                |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| German (`de`)     | Ich bin der Eigentümer dieser Stimme und bin damit einverstanden, dass OpenAI diese Stimme zur Erstellung eines synthetischen Stimmmodells verwendet. |
+| English (`en`)    | I am the owner of this voice and I consent to OpenAI using this voice to create a synthetic voice model.                                              |
+| Spanish (`es`)    | Soy el propietario de esta voz y doy mi consentimiento para que OpenAI la utilice para crear un modelo de voz sintética.                              |
+| French (`fr`)     | Je suis le propriétaire de cette voix et j'autorise OpenAI à utiliser cette voix pour créer un modèle de voix synthétique.                            |
+| Hindi (`hi`)      | मैं इस आवाज का मालिक हूं और मैं सिंथेटिक आवाज मॉडल बनाने के लिए OpenAI को इस आवाज का उपयोग करने की सहमति देता हूं                                     |
+| Indonesian (`id`) | Saya adalah pemilik suara ini dan saya memberikan persetujuan kepada OpenAI untuk menggunakan suara ini guna membuat model suara sintetis.            |
+| Italian (`it`)    | Sono il proprietario di questa voce e acconsento che OpenAI la utilizzi per creare un modello di voce sintetica.                                      |
+| Japanese (`ja`)   | 私はこの音声の所有者であり、OpenAIがこの音声を使用して音声合成 モデルを作成することを承認します。                                                     |
+| Korean (`ko`)     | 나는 이 음성의 소유자이며 OpenAI가 이 음성을 사용하여 음성 합성 모델을 생성할 것을 허용합니다.                                                        |
+| Dutch (`nl`)      | Ik ben de eigenaar van deze stem en ik geef OpenAI toestemming om deze stem te gebruiken om een synthetisch stemmodel te maken.                       |
+| Polish (`pl`)     | Jestem właścicielem tego głosu i wyrażam zgodę na wykorzystanie go przez OpenAI w celu utworzenia syntetycznego modelu głosu.                         |
+| Portuguese (`pt`) | Eu sou o proprietário desta voz e autorizo o OpenAI a usá-la para criar um modelo de voz sintética.                                                   |
+| Russian (`ru`)    | Я являюсь владельцем этого голоса и даю согласие OpenAI на использование этого голоса для создания модели синтетического голоса.                      |
+| Ukrainian (`uk`)  | Я є власником цього голосу і даю згоду OpenAI використовувати цей голос для створення синтетичної голосової моделі.                                   |
+| Vietnamese (`vi`) | Tôi là chủ sở hữu giọng nói này và tôi đồng ý cho OpenAI sử dụng giọng nói này để tạo mô hình giọng nói tổng hợp.                                     |
+| Chinese (`zh`)    | 我是此声音的拥有者并授权OpenAI使用此声音创建语音合成模型                                                                                              |
 
 Then upload the recording via the API. A successful upload will return the consent recording ID that you’ll reference later. Note the consent can be used for multiple different voice creations if the same voice actor is making multiple attempts.
 
@@ -97,7 +235,11 @@ curl https://api.openai.com/v1/audio/voices \
 
 If successful, the created voice will be listed under the [Audio tab](https://platform.openai.com/audio/voices).
 
-## Using a voice during speech generation
+
+
+
+
+## Using a voice from a recording during speech generation
 
 Speech generation will work as usual. Specify the ID of the voice in the `voice` parameter when [creating speech](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), or when initiating a [realtime session](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/create#realtime_create_call-session-audio-output-voice).
 
@@ -154,7 +296,11 @@ puts(session_config)
 ```
 
 
-## Use a custom voice with GPT-Live
+
+
+
+
+## Use a voice from a recording with GPT-Live
 
 Use a project-scoped API key approved for both GPT-Live and custom voice
 creation. Reading consent phrases and using a custom voice require

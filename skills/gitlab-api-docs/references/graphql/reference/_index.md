@@ -16125,6 +16125,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-securityscanprofileattach-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-securityscanprofileattach-groupids"></a>`groupIds` | [`[GroupID!]`](#groupid) | Group IDs to attach the profile to. |
+| <a id="mutation-securityscanprofileattach-mode"></a>`mode` | [`SecurityScanProfileAttachMode`](#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. |
 | <a id="mutation-securityscanprofileattach-projectids"></a>`projectIds` | [`[ProjectID!]`](#projectid) | Project IDs to attach the profile to. |
 | <a id="mutation-securityscanprofileattach-securityscanprofileid"></a>`securityScanProfileId` | [`SecurityScanProfileID!`](#securityscanprofileid) | Security scan profile ID to attach. |
 
@@ -34985,6 +34986,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-mergerequests-authorhuman"></a>`authorHuman` | [`[Boolean!]`](#boolean) | Filter by whether the merge request author is a human user. Bots, service accounts, and other non-human user types are not human. Merge requests with no author count as not authored by a human. |
 | <a id="analytics-mergerequests-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
 | <a id="analytics-mergerequests-authoridnot"></a>`authorIdNot` | [`[String!]`](#string) | Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100. |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
@@ -42826,6 +42828,7 @@ Fields:
 | <a id="duoworkflow-user"></a>`user` | [`UserCore`](#usercore) | User who created the session. |
 | <a id="duoworkflow-userid"></a>`userId` | [`UserID!`](#userid) | ID of the user. |
 | <a id="duoworkflow-userpermissions"></a>`userPermissions` | [`DuoWorkflowPermissions`](#duoworkflowpermissions) | Permissions of the current user for the workflow. |
+| <a id="duoworkflow-webpath"></a>`webPath` | [`String`](#string) | Web path of the session. |
 | <a id="duoworkflow-websearchenabled"></a>`webSearchEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether web search is enabled for the session. |
 | <a id="duoworkflow-weburl"></a>`webUrl` | [`String`](#string) | URL of the session. |
 | <a id="duoworkflow-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Associated work item (issue or epic), if any. |
@@ -45774,7 +45777,9 @@ Fields:
 | <a id="governpolicy-actions"></a>`actions`  | [`[JSON!]`](#json) | Introduced in GitLab 19.4. Status: Experiment. Actions of the policy. |
 | <a id="governpolicy-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was created. |
 | <a id="governpolicy-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Description of the policy. |
+| <a id="governpolicy-group"></a>`group`  | [`Group`](#group) | Introduced in GitLab 19.6. Status: Experiment. Group the policy belongs to. Null for organization-wide policies, or when the current user cannot read the group. |
 | <a id="governpolicy-id"></a>`id`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the policy. |
+| <a id="governpolicy-inherited"></a>`inherited`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Whether the group whose policies are being listed inherits the policy, from its organization or an ancestor group. A descendant group's policy is not inherited. Either way, a policy can only be changed from the group that owns it. Always false outside a group policy list. |
 | <a id="governpolicy-lifecyclestate"></a>`lifecycleState`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Lifecycle state of the policy. |
 | <a id="governpolicy-mode"></a>`mode`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Enforcement mode of the policy. |
 | <a id="governpolicy-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the policy. |
@@ -45903,6 +45908,8 @@ Fields:
 | <a id="group-duoautomodeenabled"></a>`duoAutoModeEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates whether Duo Agent Platform auto mode is enabled for the group. |
 | <a id="group-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.10. Status: Experiment. Indicates whether GitLab Duo features are enabled for the group. |
 | <a id="group-duosettingspath"></a>`duoSettingsPath`  | [`String`](#string) | Introduced in GitLab 18.9. Status: Experiment. Path of the group Duo settings page. |
+| <a id="group-duoworkflowrunneravailable"></a>`duoWorkflowRunnerAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether the group has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it scans the runners the group can use and their managers. |
+| <a id="group-duoworkflowusablerunnertype"></a>`duoWorkflowUsableRunnerType`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Runner type (instance_type, group_type, or project_type) of the runner that can pick up GitLab Duo Agent Platform workloads, or null when none can. Shares its runner scan with duoWorkflowRunnerAvailable when both are requested. |
 | <a id="group-editpath"></a>`editPath` | [`String!`](#string) | Path for editing group. |
 | <a id="group-emailsdisabled"></a>`emailsDisabled` | [`Boolean`](#boolean) | Indicates if a group has email notifications disabled. |
 | <a id="group-emailsenabled"></a>`emailsEnabled` | [`Boolean`](#boolean) | Indicates if a group has email notifications enabled. |
@@ -45946,7 +45953,7 @@ Fields:
 | <a id="group-namespacesettings"></a>`namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
 | <a id="group-orbit"></a>`orbit`  | [`OrbitNamespace`](#orbitnamespace) | Introduced in GitLab 19.5. Status: Experiment. Orbit data of the group. |
 | <a id="group-orbitaccess"></a>`orbitAccess`  | [`OrbitAccess`](#orbitaccess) | Introduced in GitLab 19.5. Status: Experiment. Orbit access state of the top-level group. Returns null when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
-| <a id="group-orbittrial"></a>`orbitTrial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial state of the top-level group. Returns null when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+| <a id="group-orbittrial"></a>`orbitTrial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial state of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Returns null when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
 | <a id="group-organizationeditpath"></a>`organizationEditPath`  | [`String`](#string) | Introduced in GitLab 17.1. Status: Experiment. Path for editing group at the organization level. |
 | <a id="group-packagesettings"></a>`packageSettings` | [`PackageSettings`](#packagesettings) | Package settings for the namespace. |
 | <a id="group-parent"></a>`parent` | [`Group`](#group) | Parent group. |
@@ -54259,7 +54266,7 @@ Fields:
 | <a id="orbitnamespace-indexing"></a>`indexing`  | [`OrbitIndexing`](#orbitindexing) | Introduced in GitLab 19.6. Status: Experiment. Indexing state of the group or project. Null when Orbit is not available to the current user. |
 | <a id="orbitnamespace-indexingstatus"></a>`indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. Null when Orbit is not available to the current user. |
 | <a id="orbitnamespace-itemcounts"></a>`itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for only one group or project in any single request. |
-| <a id="orbitnamespace-trial"></a>`trial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.6. Status: Experiment. Orbit trial of the top-level group. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+| <a id="orbitnamespace-trial"></a>`trial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.6. Status: Experiment. Orbit trial of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
 
 ### `OrbitTrial`
 
@@ -54269,7 +54276,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="orbittrial-credits"></a>`credits`  | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced in GitLab 19.5. Status: Experiment. Credits of the trial. |
+| <a id="orbittrial-credits"></a>`credits`  | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced in GitLab 19.5. Status: Experiment. Credits of the trial. On GitLab Self-Managed and GitLab Dedicated, null unless the current user is an administrator. |
 | <a id="orbittrial-expireson"></a>`expiresOn`  | [`Date`](#date) | Introduced in GitLab 19.5. Status: Experiment. Last day of the trial, in UTC. Null before a trial starts. |
 | <a id="orbittrial-offer"></a>`offer`  | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced in GitLab 19.6. Status: Experiment. Terms of a new trial. Null unless the current user can start the trial and CustomersDot sends valid terms. |
 | <a id="orbittrial-state"></a>`state`  | [`OrbitTrialState!`](#orbittrialstate) | Introduced in GitLab 19.5. Status: Experiment. State of the trial. |
@@ -72286,6 +72293,15 @@ Controls GitLab Advanced SAST diff-based scanning.
 | ----- | ----------- |
 | <a id="securityscanprofileadvancedsastpartialscan-differential"></a>`DIFFERENTIAL`  | Introduced in GitLab 19.4. Status: Experiment. Enable diff-based scanning. |
 | <a id="securityscanprofileadvancedsastpartialscan-disabled"></a>`DISABLED`  | Introduced in GitLab 19.4. Status: Experiment. Disable diff-based scanning. |
+
+### `SecurityScanProfileAttachMode`
+
+Attach mode for security scan profiles.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofileattachmode-append"></a>`APPEND` | Adds the profile alongside existing profiles of the same type. |
+| <a id="securityscanprofileattachmode-replace"></a>`REPLACE` | Replaces existing profiles of the same type on the target projects. |
 
 ### `SecurityScanProfileDependencyResolutionJob`
 

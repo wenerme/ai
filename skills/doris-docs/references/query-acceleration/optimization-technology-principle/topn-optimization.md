@@ -39,6 +39,8 @@ SELECT * FROM tablex WHERE xxx ORDER BY c1, c2 ... LIMIT n
 1. **Table type limitation**: Only Duplicate tables and Unique MOW tables are supported. Using this optimization on a Unique MOR table may produce incorrect results.
 2. **n value limitation**: When `n` is too large, the memory consumption of the optimization rises significantly. The optimization is not enabled when `n` exceeds the session variable `topn_opt_limit_threshold`.
 
+3. **Two-phase read limitation**: Since 4.1.5, TopN lazy materialization for internal Doris tables requires `light_schema_change` and does not support Aggregate Key tables. In dev, tables with a sequence-column mapping are also excluded from this optimization. When these conditions are not met, Doris uses the regular TopN execution path and the query remains available.
+
 ## Configuration Parameters
 
 The following four parameters are all session variables. You can set them for a single SQL statement or globally.

@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/tunnel/features/og.png?v=0053a6b3921d30
 Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 - [Locally-managed tunnels](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/)
+- [Tunnels for Platforms](https://developers.cloudflare.com/tunnel/features/tunnels-for-platforms/)
 
 Was this helpful?
 

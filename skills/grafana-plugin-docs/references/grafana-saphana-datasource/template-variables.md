@@ -13,7 +13,7 @@ For more information about variables in Grafana, refer to [Templates and variabl
 
 ## Supported variable types
 
-The SAP HANA plugin provides data source support for the following Grafana variable types:
+You can use most Grafana variable types in dashboards that query SAP HANA. The **Query** type is backed by the SAP HANA data source and runs an SQL query to fetch values. The other types listed below are provided by Grafana and work regardless of the data source. The **Ad hoc filters** type isn’t supported by this data source.
 
 Expand table
 
@@ -83,6 +83,12 @@ The plugin handles query results as follows:
 
 You can use Grafana template variables anywhere in your SAP HANA queries. Variables are replaced with their current values when the query executes.
 
+By default, the data source quotes variable values with single quotes, so a value inserts as `'london'` and a multi-value selection inserts as `'london','perth'`. To change this behavior, use a format modifier as described in [Format variable values](#format-variable-values).
+
+> Note
+>
+> The default single-quote formatting doesn’t escape single quotes within a value, so a value such as `O'Brien` produces invalid SQL. Avoid the default quoting for values that might contain single quotes.
+
 ### Single value variables
 
 Use the standard variable syntax to insert a single value:
@@ -133,6 +139,24 @@ SQL [Copy code to clipboard] Copy
 SELECT * FROM "users" WHERE "city" IN ($cities)
 ```
 
+### Chained variables
+
+You can build dependent variables where one query variable filters its results using the value of another. This creates cascading drop-downs, for example a schema variable that narrows a table variable.
+
+In this example, a `${schema}` variable is defined first, then a `${table}` variable uses it:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+-- Variable: schema
+SELECT SCHEMA_NAME FROM SYS.SCHEMAS ORDER BY SCHEMA_NAME
+
+-- Variable: table (depends on schema)
+SELECT TABLE_NAME FROM SYS.TABLES WHERE SCHEMA_NAME IN (${schema}) ORDER BY TABLE_NAME
+```
+
+When you change the `${schema}` selection, Grafana re-runs the `table` variable query and updates its options.
+
 ## Variable syntax
 
 The SAP HANA plugin supports multiple variable syntax formats:
@@ -143,6 +167,22 @@ Expand table
 |-------------------|-----------|-----------------------------------------|
 | `$variablename`   | `$host`   | Simple syntax                           |
 | `${variablename}` | `${host}` | Advanced syntax with formatting options |
+
+### Format variable values
+
+By default, the data source inserts variable values with single quotes. When you need different formatting, for example an unquoted value or a custom delimiter, append a format modifier to the variable name.
+
+Expand table
+
+| Syntax                | Result (single value) | Result (multi-value) |
+|-----------------------|-----------------------|----------------------|
+| `${city}`             | `'london'`            | `'london','perth'`   |
+| `${city:raw}`         | `london`              | `london,perth`       |
+| `${city:singlequote}` | `'london'`            | `'london','perth'`   |
+| `${city:doublequote}` | `"london"`            | `"london","perth"`   |
+| `${city:csv}`         | `london`              | `london,perth`       |
+
+For the full list of format options, refer to [Advanced variable format options](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
 
 ## Additional resources
 

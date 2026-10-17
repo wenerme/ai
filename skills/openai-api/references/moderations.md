@@ -9,7 +9,7 @@ more in the [moderation guide](/api/docs/guides/moderation).
 
 ### Body Parameters
 
-- `input: string or array of string or array of object { image_url, type }  or object { text, type }`
+- `input: string or array of string or array of ImageURL { image_url, type }  or Text { text, type }`
 
   Input (or inputs) to classify. Can be a single string, an array of strings, or
   an array of multi-modal input objects similar to other models.
@@ -22,7 +22,7 @@ more in the [moderation guide](/api/docs/guides/moderation).
 
     An array of strings to classify for moderation.
 
-  - `array of object { image_url, type }  or object { text, type }`
+  - `array of ImageURL { image_url, type }  or Text { text, type }`
 
     An array of multi-modal inputs to the moderation model.
 
@@ -307,7 +307,7 @@ curl https://api.openai.com/v1/moderations \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "input": "I want to kill them.",
+          "input": "...text to classify goes here...",
           "model": "omni-moderation-2024-09-26"
         }'
 ```
@@ -517,7 +517,7 @@ curl https://api.openai.com/v1/moderations \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "omni-moderation-latest",
-    "input": "I want to kill them."
+    "input": "...text to classify goes here..."
   }'
 ```
 

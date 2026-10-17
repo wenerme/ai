@@ -40,7 +40,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `"max"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     Omit to keep the current tier. Null resets it to auto.
 
@@ -64,21 +64,17 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       Uses the fast service tier.
 
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
+
 - `metadata: optional map[string] or null`
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
-- `spend_control: optional object { limit }  or null`
-
-  Omit to retain the limit; null or a null limit removes it without resetting spend.
-
-  - `limit: number or null`
-
-    Positive USD cents, or null to remove the limit.
-
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 9 more }`
 
   A Managed Agents session.
 
@@ -858,18 +854,6 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     The IDs of vaults made available to the session.
 
-  - `spend_control: optional object { consumed, limit }`
-
-    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
-
-    - `consumed: number or null`
-
-      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
-
-    - `limit: number`
-
-      The configured positive limit in USD cents.
-
 ### Example
 
 ```http
@@ -969,10 +953,6 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ],
-  "spend_control": {
-    "consumed": 0,
-    "limit": 1
-  }
+  ]
 }
 ```

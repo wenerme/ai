@@ -12,25 +12,34 @@ image: https://developers.cloudflare.com/workers/databases/connecting-to-databas
 
 # Connect to databases
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/connecting-to-databases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/connecting-to-databases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers can connect to and query your data in both SQL and NoSQL databases, including:
 
-- Cloudflare's own [D1](https://developers.cloudflare.com/d1/), a serverless SQL-based database.
-- Traditional hosted relational databases, including Postgres and MySQL, using [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) (recommended) to significantly speed up access.
-- Serverless databases, including Supabase, MongoDB Atlas, PlanetScale, and Prisma.
+- Cloudflare's own [D1](https://developers.cloudflare.com/d1/) serverless SQL database, and [Durable Objects](https://developers.cloudflare.com/durable-objects/) with SQLite storage.
+- Traditional hosted databases: relational databases such as Postgres and MySQL, using [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) (recommended) to significantly speed up access, and NoSQL databases such as MongoDB.
+- Serverless databases, including Supabase, PlanetScale, and Prisma.
 
-### D1 SQL database
+### D1 and Durable Objects
+
+Cloudflare provides two SQL database options native to Workers, both backed by SQLite and accessed through a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) rather than a network connection.
 
 D1 is Cloudflare's own SQL-based, serverless database. It is optimized for global access from Workers, and can scale out with multiple, smaller (10GB) databases, such as per-user, per-tenant or per-entity databases. Similar to some serverless databases, D1 pricing is based on query and storage costs.
+
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) offer a lower-level building block: a [SQLite-backed Durable Object](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/) embeds a private SQLite database (up to 10 GB) that you query synchronously through the [SQL storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) (`ctx.storage.sql.exec`). Because storage is colocated with compute, this suits per-user, per-tenant, or per-entity SQL state and distributed-system coordination. D1 is itself built on Durable Objects.
 
 | Database | Library or Driver | Connection Method |
 | --- | --- | --- |
 | [D1](https://developers.cloudflare.com/d1/) | [Workers binding](https://developers.cloudflare.com/d1/worker-api/), integrates with [Prisma ↗︎](https://www.prisma.io/), [Drizzle ↗︎](https://orm.drizzle.team/), and other ORMs | [Workers binding](https://developers.cloudflare.com/d1/worker-api/), [REST API](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/create/) |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/) | [SQL storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) (`ctx.storage.sql`) | [Workers binding](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/) |
 
-### Traditional SQL databases
+### Traditional databases
 
-Traditional databases use SQL drivers that use [TCP sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) to connect to the database. TCP is the de-facto standard protocol that many databases, such as PostgreSQL and MySQL, use for client connectivity. These drivers are also widely compatible with your preferred ORM libraries and query builders.
+Traditional databases connect over [TCP sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) using a native driver. TCP is the de-facto standard protocol that many databases use for client connectivity, and these drivers are widely compatible with your preferred ORM libraries and query builders.
+
+#### SQL databases
+
+Relational databases such as PostgreSQL and MySQL connect using their native SQL drivers over TCP.
 
 This also includes serverless databases that are PostgreSQL or MySQL-compatible like [Supabase](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/supabase/), [Neon](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/neon/), or PlanetScale (either [MySQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/planetscale/) or [PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/planetscale-postgres/)), which can be connected to using both native [TCP sockets and Hyperdrive](https://developers.cloudflare.com/hyperdrive/) or [serverless HTTP-based drivers](https://developers.cloudflare.com/workers/databases/connecting-to-databases/#serverless-databases) (detailed below).
 
@@ -44,6 +53,14 @@ Speed up database connectivity with Hyperdrive
 Connecting to SQL databases with TCP sockets requires multiple roundtrips to establish a secure connection before a query to the database is made. Since a connection must be re-established on every Worker invocation, this adds unnecessary latency.
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) solves this by pooling database connections globally to eliminate unnecessary roundtrips and speed up your database access. Learn more about [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+
+#### NoSQL databases
+
+MongoDB is a document-oriented database that connects over TCP using its native Node.js driver. [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) does not support MongoDB, so to pool connections and reduce latency, persist the client inside a [Durable Object](https://developers.cloudflare.com/durable-objects/). Refer to [Connect to MongoDB](https://developers.cloudflare.com/workers/databases/third-party-integrations/mongodb/) for setup instructions.
+
+| Database | Integration | Library or Driver | Connection Method |
+| --- | --- | --- | --- |
+| [MongoDB](https://developers.cloudflare.com/workers/databases/third-party-integrations/mongodb/) | Direct connection | [mongodb ↗︎](https://www.npmjs.com/package/mongodb), [mongoose ↗︎](https://mongoosejs.com/) | [TCP Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) via native driver |
 
 ### Serverless databases
 
@@ -98,5 +115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/#page","headline":"Connect to databases","description":"Learn about the different kinds of database integrations Cloudflare supports.","url":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/og.png?v=f2da1644609ab41e","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/#page","headline":"Connect to databases","description":"Learn about the different kinds of database integrations Cloudflare supports.","url":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/databases/connecting-to-databases/og.png?v=f2da1644609ab41e","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -79,7 +79,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [PagerDuty data source](/docs/plugins/grafana-pagerduty-datasource/latest/ "PagerDuty data source")
 - [Profiles Drilldown](/docs/plugins/grafana-pyroscope-app/latest/ "Profiles Drilldown")
 - [Salesforce data source](/docs/plugins/grafana-salesforce-datasource/latest/ "Salesforce data source")
-- [SAP HANA data source for Grafana](/docs/plugins/grafana-saphana-datasource/latest/ "SAP HANA data source for Grafana")
+- [SAP HANA data source](/docs/plugins/grafana-saphana-datasource/latest/ "SAP HANA data source")
 - [Sentry data source](/docs/plugins/grafana-sentry-datasource/latest/ "Sentry data source")
 - [ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/ "ServiceNow data source")
 - [Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/ "Snowflake data source")

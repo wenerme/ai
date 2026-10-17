@@ -18,7 +18,7 @@ Expand table
 | Requirement         | Details                                                                                                                                                            |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **License**         | Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-oracle-datasource`.                                        |
-| **Grafana version** | 11.6.7 or later (for plugin v3.4.x). Refer to the [version compatibility](#version-compatibility) table for older versions.                                        |
+| **Grafana version** | 11.6.7 or later. Refer to the [version compatibility](#version-compatibility) table for older plugin versions.                                                     |
 | **Architecture**    | `linux/amd64` only. ARM64 (including Apple Silicon) is not supported.                                                                                              |
 | **Network access**  | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to `grafana.com` or a local plugin ZIP. |
 
@@ -119,7 +119,7 @@ For environments without internet access:
    Bash [Copy code to clipboard] Copy
 
    ```bash
-   unzip grafana-oracle-datasource-3.4.0.linux_amd64.zip -d /var/lib/grafana/plugins/
+   unzip grafana-oracle-datasource-3.5.1.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
@@ -148,14 +148,15 @@ Expand table
 
 | Plugin version | Minimum Grafana version | Notes                                                      |
 |----------------|-------------------------|------------------------------------------------------------|
-| 3.4.x          | 11.6.7                  | Current release. Row Limit setting added.                  |
+| 3.5.x          | 11.6.7                  | Current release. Easy Connect Plus connection type added.  |
+| 3.4.x          | 11.6.7                  | Row Limit setting added.                                   |
 | 3.3.x          | 11.6.7                  | TNSNames restored (v3.3.0). Field migration fix (v3.3.3).  |
 | 3.0.x to 3.2.x | 10.0.0                  | New go-ora driver. Breaking changes for Wallet/LDAP users. |
 | 2.x            | 8.0.0                   | Legacy Oracle Instant Client driver.                       |
 
 > Warning
 >
-> Plugin v2.x is not compatible with Grafana 13.x or later. Upgrade to plugin v3.x before upgrading Grafana.
+> Plugin v2.x uses the legacy Oracle Instant Client driver and is no longer maintained. Upgrade to plugin v3.x before upgrading Grafana.
 
 ### Upgrade steps
 
@@ -175,12 +176,14 @@ Expand table
 
 Expand table
 
-| Symptom                                                | Solution                                                                                                                                                                                                    |
-|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `oracle-plugin_linux_amd64: no such file or directory` | The plugin binary is missing. Reinstall using `grafana cli plugins install grafana-oracle-datasource` and restart Grafana.                                                                                  |
-| `Could not load plugin: 404 Not Found`                 | The plugin files are corrupted. Uninstall (`grafana cli plugins remove grafana-oracle-datasource`), reinstall, and restart.                                                                                 |
-| “Unsigned plugin” error                                | Ensure you’re installing from the official Grafana plugin catalog. For air-gapped installs, set `allow_loading_unsigned_plugins = grafana-oracle-datasource` in `grafana.ini` only if you trust the source. |
-| Data source settings corrupted after upgrade           | Re-enter connection details and click **Save &amp; test**. For provisioned data sources, redeploy the provisioning YAML.                                                                                    |
+| Symptom                                                     | Solution                                                                                                                                                                                                                                                                                                                                                                                     |
+|-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `oracle-plugin_linux_amd64: no such file or directory`      | The plugin binary is missing. Reinstall using `grafana cli plugins install grafana-oracle-datasource` and restart Grafana.                                                                                                                                                                                                                                                                   |
+| `Could not load plugin: 404 Not Found`                      | The plugin files are corrupted. Uninstall (`grafana cli plugins remove grafana-oracle-datasource`), reinstall, and restart.                                                                                                                                                                                                                                                                  |
+| “Unsigned plugin” error                                     | This indicates an incomplete or corrupted copy, not a plugin that must be allowed as unsigned. Re-download the official signed ZIP from your [Grafana account portal](/orgs), extract the complete plugin directory including `MANIFEST.txt`, ensure the folder name matches the plugin ID `grafana-oracle-datasource`, and confirm the architecture is `linux/amd64`. Then restart Grafana. |
+| Plugin is disabled or fails to load after upgrading Grafana | An outdated plugin version can be incompatible with a newer Grafana. Update to the latest version with `grafana cli plugins update grafana-oracle-datasource`, confirm it meets the [version compatibility](#version-compatibility) requirements, and restart Grafana.                                                                                                                       |
+| Plugin doesn’t load after a major Grafana upgrade           | Verify the plugin directory ownership and permissions: `chown -R grafana:grafana /var/lib/grafana/plugins/grafana-oracle-datasource`. On Grafana Cloud, where the plugin updates automatically, contact [Grafana Support](/support/) if a failed update leaves the plugin unavailable.                                                                                                       |
+| Data source settings corrupted after upgrade                | Re-enter connection details and click **Save &amp; test**. For provisioned data sources, redeploy the provisioning YAML.                                                                                                                                                                                                                                                                     |
 
 Refer to [Upgrade from v2.x to v3.x](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#upgrade-from-v2x-to-v3x) for breaking changes specific to the v3 migration.
 

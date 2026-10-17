@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/client-certificates/troubleshooting
 
 # Troubleshooting
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your query returns an error even after configuring and embedding a client SSL certificate, check the following settings.
 
@@ -116,7 +116,7 @@ To list and revoke certificates, refer to the [client certificates API](https://
 
 ### Bring your own CA (BYOCA)
 
-Each Enterprise account can upload up to five CA certificates for [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/). This quota is shared across [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/), [Workers mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/), and [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+Each Enterprise account can upload up to five CA certificates for [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/). This quota is shared across [API Shield](https://developers.cloudflare.com/api-shield/security/mtls/configure/), [Workers mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/), and [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/).
 
 If you exceed this limit, the API returns:
 
@@ -163,11 +163,13 @@ When uploading a CA certificate for [Bring your own CA (BYOCA)](https://develope
 
 ### Upload the CA certificate, not a leaf certificate
 
-The certificate you upload must be a CA certificate — that is, it must have `Basic Constraints: CA=TRUE` in its extensions. It is the certificate that directly issued your client certificates, not a client certificate itself.
+The certificate you upload must be a CA certificate — that is, it must have `Basic Constraints: CA=TRUE` in its extensions. Upload the CA certificates in your client certificates' chain, not a client certificate itself.
 
-A common cause of upload failure is uploading a leaf (client) certificate instead of the CA certificate. If your certificate chain is `Root CA → Intermediate CA → Client certificate`, upload the Intermediate CA (which has `CA:TRUE`), not the client certificate.
+A common cause of upload failure is uploading a leaf (client) certificate instead of the CA certificate. If your certificate chain is `Root CA → Intermediate CA → Client certificate`, upload the full CA chain in a single PEM file, with the Intermediate CA followed by the Root CA.
 
-To confirm whether a certificate is a CA certificate, run:
+If you upload only the Intermediate CA, mTLS validation fails for every request, even when the hostname is associated with the CA. In your HTTP request logs, `ClientMTLSAuthCertFingerprint` matches the expected client certificate, but `ClientMTLSAuthStatus` is `unknown`.
+
+To confirm that a certificate is a CA certificate, run the following command on each certificate in the chain:
 
 ```sh
 openssl x509 -in certificate.pem -noout -text | grep -A1 "Basic Constraints"
@@ -197,5 +199,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot issues with client certificates","url":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot issues with client certificates","url":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

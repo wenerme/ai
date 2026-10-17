@@ -15,10 +15,9 @@ Native delegation skips a round trip through your app. With [custom delegation](
 
 ## Let Live delegate
 
-Use delegation when you want Live to recognize a request and hand the next step to your app. Consider two requests a driver might make:
+In one request, Live can ask Decisions to choose among actions you define and decide whether your app should call the [Responses API](https://developers.openai.com/api/reference/responses/overview).
 
-- **“Make it warmer.”** Decisions selects `increase` for the cabin temperature and `none` for the other questions. Raise the cabin setting from 70°F to 71°F, read it back from the dashboard, and give Live the result so it can say, “It’s set to 71 degrees.”
-- **“Why is my windshield fogging up?”** Decisions selects `on` for the defogger and `explain` for the explanation. Turn on the defogger, read its actual state, and use the [Responses API](https://developers.openai.com/api/reference/responses/overview) to explain why the windshield fogged up. Live can then say, “The defogger is on. Moisture in the cabin condenses on the cold glass.”
+Say you are building a voice assistant for a car. A driver can ask to turn the temperature up or down, turn the windshield defogger on or off, or get directions and find a place to eat. A choice of `none` leaves that cabin control unchanged.
 
 ### Adjust the cabin
 
@@ -27,7 +26,7 @@ Use delegation when you want Live to recognize a request and hand the next step 
 Driver
 
     
-“Make it warmer.”
+“I feel a little cold.”
 
   
 
@@ -43,22 +42,22 @@ Decision results
           
 Cabin temperature
 
-          **+1°F**
+          **Up**
         </li>
         <li>
           
 Defogger
 
           
-No-op
+None
 
         </li>
         <li>
           
-Responses
+Call Responses
 
           
-No-op
+No
 
         </li>
       </ul>
@@ -66,35 +65,13 @@ No-op
 
     
 
+      **Your app**
       
 
-        **Your app**
-        
-Cabin temperature
-
+        {
+          "Raise the temperature, read back the new setting, and append the full cabin state to Decisions. Wait for confirmation, then send the result to Live."
+        }
       
-
-      
-
-        
-
-          70
-°F
-
-        
-
-        
-→
-
-        **
-          71
-°F
-
-        **
-      
-
-      
-Set and verified on the dashboard
 
     
 
@@ -106,18 +83,22 @@ Set and verified on the dashboard
 Live replies
 
     
-“It’s set to 71 degrees.”
+“I turned up the temperature a bit.”
 
 
 
-### Add a Responses explanation
+### Handle a request beyond cabin controls
 
 
 
 Driver
 
     
-“Why is my windshield fogging up?”
+
+      {
+        "“My windshield is foggy, so please defog it, navigate to San Francisco, and find me some good restaurants there.”"
+      }
+    
 
   
 
@@ -134,7 +115,7 @@ Decision results
 Cabin temperature
 
           
-No-op
+None
 
         </li>
         <li data-action="true">
@@ -145,9 +126,9 @@ Defogger
         </li>
         <li data-action="true">
           
-Responses
+Call Responses
 
-          **Explain**
+          **Yes**
         </li>
       </ul>
     
@@ -170,10 +151,11 @@ On
         
 
           
-2. Ask Responses why
 
+            {
+              "2. Send the driver’s full request and the cabin results to Responses"
+            }
           
-Explanation
 
         
 
@@ -181,7 +163,8 @@ Explanation
 
       
 
-        Return the observed state and explanation to Live.
+        Use the tool calls from Responses to start navigation to San Francisco
+        and find restaurants there. Return both results to Responses.
       
 
     
@@ -191,11 +174,12 @@ Explanation
   
 
     
-Live replies
+Live reports
 
     
 
-      “The defogger is on. Moisture in the cabin condenses on the cold glass.”
+      The defogger state, whether navigation started, and the restaurants your
+      search found.
 
 
 
@@ -208,7 +192,7 @@ In your WebRTC session request, put this object under `session`, alongside your 
 ```json
 {
   "model": "gpt-live-1",
-  "instructions": "Delegate requests to warm the cabin or clear windshield fog, and questions about windshield fogging. Wait for the app to report the result before describing it.",
+  "instructions": "Delegate the driver’s whole request, including cabin controls, navigation, and local search. Wait for the app to report what happened, then tell the driver in natural language.",
   "delegation": {
     "type": "decisions",
     "decisions": {
@@ -217,20 +201,28 @@ In your WebRTC session request, put this object under `session`, alongside your 
         {
           "type": "choice",
           "name": "cabin_temperature",
-          "instructions": "Choose increase if the driver asks to make the cabin warmer. Otherwise choose none.",
-          "choices": [{ "value": "increase" }, { "value": "none" }]
+          "instructions": "Choose temperature_up if the driver feels cold or wants more heat, temperature_down if they feel hot or want to cool down, or none if the request is unrelated.",
+          "choices": [
+            { "value": "temperature_up" },
+            { "value": "temperature_down" },
+            { "value": "none" }
+          ]
         },
         {
           "type": "choice",
           "name": "windshield_defogger",
-          "instructions": "Choose on if the driver asks to clear windshield fog or asks why the windshield is fogging up. Otherwise choose none.",
-          "choices": [{ "value": "on" }, { "value": "none" }]
+          "instructions": "Choose on if the driver reports a foggy windshield or asks to defog it, off if they say the glass is clear now or ask to turn the defogger off, or none if the request is unrelated.",
+          "choices": [
+            { "value": "on" },
+            { "value": "off" },
+            { "value": "none" }
+          ]
         },
         {
           "type": "choice",
-          "name": "explanation",
-          "instructions": "Choose explain if the driver asks why the windshield is fogging up. Otherwise choose none.",
-          "choices": [{ "value": "explain" }, { "value": "none" }]
+          "name": "needs_response",
+          "instructions": "Choose yes if any part of the request goes beyond these cabin controls, such as getting directions or finding restaurants. Otherwise choose no.",
+          "choices": [{ "value": "yes" }, { "value": "no" }]
         }
       ]
     }
@@ -238,42 +230,44 @@ In your WebRTC session request, put this object under `session`, alongside your 
 }
 ```
 
-Decisions receives the conversation transcript and any context you add with `decision.item.create`. After `session.started`, send the current dashboard state and wait for `decision.item.created`:
+Live sends the conversation transcript to Decisions automatically.
+
+### Run actions and report results
+
+Save `delegation.id` from `session.delegation.created`. On the `decision.event` with that `delegation_id`, look for `event.type` of `decision.completed` and read each choice by its question name in `event.decision.answers`. An answer of `none` is a no-op for that action. If you filter WebRTC events, allow both `session.delegation.created` and `decision.event`.
+
+For “I feel a little cold,” Decisions selects `temperature_up`, `none`, and `no`. Raise the temperature and read back the actual setting. Suppose the dashboard now shows a target of 22 °C in automatic mode, with the defogger off. Send that confirmed cabin state to Decisions with `decision.item.create`.
 
 ```json
 {
   "type": "decision.item.create",
-  "event_id": "evt_cabin_70",
+  "event_id": "evt_cabin_after_temperature_up_1",
   "item": {
     "type": "message",
     "role": "user",
     "content": [
       {
         "type": "input_text",
-        "text": "Cabin set to 70°F. Windshield defogger off."
+        "text": "Use the latest cabin state snapshot as the current state. Cabin temperature is set to 22 °C in automatic mode. Windshield defogger is off."
       }
     ]
   }
 }
 ```
 
-Keep the returned `item.id`. When the setting changes, remove the old state with `decision.item.delete`, wait for `decision.item.deleted`, then add the new state.
+Append a compact snapshot of the full cabin state only when the dashboard state changes. Treat the newest snapshot as current. Keeping earlier inputs in place preserves the prefix for prompt caching.
 
-### Run actions and report results
-
-Save `delegation.id` from `session.delegation.created`. On the `decision.event` with that `delegation_id`, look for `event.type` of `decision.completed` and read each choice by its question name in `event.decision.answers`. An answer of `none` is a no-op for that action. If you filter WebRTC events, allow both `session.delegation.created` and `decision.event`.
-
-When `cabin_temperature` is `increase`, change the setting, verify it, and send the result with [`session.commentary.append`](https://developers.openai.com/api/docs/guides/live-delegation#send-the-right-kind-of-update). Use the delegation ID from this request:
+Wait for `decision.item.created`, then send the result to Live with [`session.commentary.append`](https://developers.openai.com/api/docs/guides/live-delegation#send-the-right-kind-of-update), using the delegation ID from this request.
 
 ```json
 {
   "type": "session.commentary.append",
   "delegation_id": "del_cabin_1",
-  "content": "The dashboard now shows the cabin is set to 71°F."
+  "content": "I raised the cabin temperature and confirmed the new setting on the dashboard."
 }
 ```
 
-When `windshield_defogger` is `on`, turn on the defogger and read its state. When `explanation` is `explain`, call Responses from your server with `api.responses.write` permission. Include the driver’s question and the state you observed:
+For the San Francisco request, Decisions selects `none`, `on`, and `yes`. Turn on the defogger, read back its state, and append the updated cabin snapshot as above. Then call Responses from your server with `api.responses.write` permission. Include the cabin results and the driver’s full request so Responses can connect “there” to San Francisco.
 
 ```bash
 curl https://api.openai.com/v1/responses \
@@ -281,13 +275,41 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -d '{
     "model": "gpt-6.1-sol",
-    "instructions": "Explain why the windshield fogged up in one short, conversational sentence. The app will report the actual defogger state.",
-    "input": "Driver: Why is my windshield fogging up? Dashboard: windshield defogger is now on."
+    "instructions": "The car has handled the cabin controls. Use the tools for the rest of the request, then briefly tell the driver what happened based on the results.",
+    "input": "Driver: My windshield is foggy, so please defog it, navigate to San Francisco, and find me some good restaurants there.\nCabin results: Windshield defogger confirmed on. Temperature unchanged.",
+    "tools": [
+      {
+        "type": "function",
+        "name": "start_navigation",
+        "description": "Start navigation to a destination and report whether the route started.",
+        "parameters": {
+          "type": "object",
+          "properties": { "destination": { "type": "string" } },
+          "required": ["destination"],
+          "additionalProperties": false
+        },
+        "strict": true
+      },
+      {
+        "type": "function",
+        "name": "find_restaurants",
+        "description": "Find well-rated restaurants in the named city or area.",
+        "parameters": {
+          "type": "object",
+          "properties": { "location": { "type": "string" } },
+          "required": ["location"],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ]
   }'
 ```
 
 
-Send the observed defogger state and the explanation to Live with `session.commentary.append` and this request’s delegation ID.
+This is the initial request in the [Responses function-calling flow](https://developers.openai.com/api/docs/guides/function-calling#handling-function-calls). For each `function_call`, run the named function with the supplied arguments, then return a `function_call_output` with the actual result or error and the matching `call_id`. Continue until Responses returns its final answer.
+
+Send Live only the concise final answer from Responses and the confirmed cabin state. Use `session.commentary.append` with the same `delegation_id`.
 
 ## React to transcripts
 

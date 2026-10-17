@@ -1511,8 +1511,8 @@
   },
   "grafana-oracle-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/alerting.md",
-    "size": 4883,
-    "updatedAt": "2026-07-09T04:41:52.576Z"
+    "size": 5204,
+    "updatedAt": "2026-10-17T00:59:20.457Z"
   },
   "grafana-oracle-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/annotations.md",
@@ -1536,8 +1536,8 @@
   },
   "grafana-oracle-datasource/install.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install.md",
-    "size": 9362,
-    "updatedAt": "2026-07-09T04:41:53.428Z"
+    "size": 11482,
+    "updatedAt": "2026-10-17T00:59:21.315Z"
   },
   "grafana-oracle-datasource/kerberos.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos.md",
@@ -1981,18 +1981,18 @@
   },
   "grafana-saphana-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/query-editor.md",
-    "size": 18731,
-    "updatedAt": "2026-06-25T05:43:09.573Z"
+    "size": 25358,
+    "updatedAt": "2026-10-17T00:59:37.256Z"
   },
   "grafana-saphana-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/template-variables.md",
-    "size": 5315,
-    "updatedAt": "2026-06-25T05:43:09.935Z"
+    "size": 7670,
+    "updatedAt": "2026-10-17T00:59:37.407Z"
   },
   "grafana-saphana-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/troubleshooting.md",
-    "size": 10580,
-    "updatedAt": "2026-06-25T05:43:10.307Z"
+    "size": 13369,
+    "updatedAt": "2026-10-17T00:59:37.560Z"
   },
   "grafana-sentry-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/alerting.md",
@@ -2576,8 +2576,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9656,
-    "updatedAt": "2026-10-09T06:02:28.765Z"
+    "size": 9632,
+    "updatedAt": "2026-10-17T00:59:55.165Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

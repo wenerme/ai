@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/og.png
 
 # Custom rulesets (zone level)
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom rulesets are collections of custom rules that you can deploy at the zone or [account level](https://developers.cloudflare.com/waf/account/custom-rulesets/).
 
@@ -20,17 +20,44 @@ Like [custom rules](https://developers.cloudflare.com/waf/custom-rules/), custom
 
 For example, you can apply a custom ruleset to all incoming requests of your zone or to a subset of incoming requests.
 
-At the zone level, all customers can create and deploy custom rulesets. Custom rulesets at the account level require an Enterprise plan. For more details, refer to [Availability](https://developers.cloudflare.com/waf/custom-rules/#availability).
+At the zone level, all customers can create and deploy custom rulesets. Custom rulesets at the account level require an Enterprise plan. For plan limits, refer to [Availability](https://developers.cloudflare.com/waf/custom-rules/#availability).
 
 Use case: Different teams managing different sets of custom rules
 
 Consider creating custom rulesets instead of managing individual custom rules at the zone level to allow different teams in your company to manage different sets of rules independently, including [via Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-custom-rules/#create-and-deploy-a-custom-ruleset).
 
-## Deploy a custom ruleset via API
+## Create and deploy a custom ruleset in the dashboard
 
-Note
+To create and deploy a custom ruleset at the zone level:
 
-Currently, the Cloudflare dashboard does not support working with custom rulesets at the zone level. You will need to use the Cloudflare API to configure or deploy these rulesets.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. In **Custom rules**, select **Create ruleset**.
+3. Enter a name and, optionally, a description for the custom ruleset.
+4. Under **Scope**, define when the custom ruleset should run.
+   - Select **All incoming requests** to apply the ruleset to all incoming requests for the zone.
+   - Select **Custom filter expression** to define which requests should run the ruleset. Use the **Field**, **Operator**, and **Value** fields to build an expression. Alternatively, select **Edit expression** to use the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor).
+5. To add a rule to the ruleset, select **Add rule**.
+6. Enter a descriptive name in **Rule name**.
+7. Under **When incoming requests match**, define the requests to which the rule applies. Use the **Field**, **Operator**, and **Value** fields to build an expression. Alternatively, select **Edit expression** to use the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor).
+8. In **Choose action**, select an action for matching requests.
+9. Select **Deploy**.
+10. (Optional) Add other rules to the custom ruleset.
+11. Select **Create**.
+
+## Edit a custom ruleset in the dashboard
+
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. In **Custom rules**, select the three dots next to the custom ruleset you want to update > **Edit**.
+3. Update the ruleset scope or its rules.
+4. Deploy any rule changes, and then select **Back to rulesets list**.
+
+## Delete a custom ruleset in the dashboard
+
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. In **Custom rules**, select the three dots next to the custom ruleset you want to delete > **Delete**.
+3. To confirm the operation, select **Delete**.
+
+## Deploy a custom ruleset via the API
 
 Creating a custom ruleset does not activate it. Custom rulesets only run when a rule with the `execute` action references them from a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) — the top-level ruleset that Cloudflare evaluates for each request in a given [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/).
 
@@ -274,5 +301,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level)","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/og.png?v=3bb0ad69da39d3f3","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level)","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/og.png?v=3bb0ad69da39d3f3","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
