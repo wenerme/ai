@@ -1,5 +1,5 @@
 ---
-title: "SAP HANA data source for Grafana | Grafana Enterprise Plugins documentation"
+title: "SAP HANA data source | Grafana Enterprise Plugins documentation"
 description: "Introduction to the SAP HANA data source plugin for Grafana."
 ---
 
@@ -18,7 +18,7 @@ The SAP HANA data source plugin allows you to query and visualize data from your
 The SAP HANA data source supports the following deployment types:
 
 - **SAP HANA Cloud** - SAP’s cloud-hosted database service where SAP manages all infrastructure.
-- **SAP HANA on-premises** - Self-hosted SAP HANA deployment that you run on your own infrastructure.
+- **SAP HANA on-premises** - Self-managed SAP HANA deployment that you run on your own infrastructure.
 - **Tenant databases** - Connect to a tenant either by host and port, or with host, database name, and instance number.
 
 ## Get started
@@ -32,7 +32,7 @@ The following documents help you get started with the SAP HANA data source:
 
 ## Additional features
 
-Once you have configured the SAP HANA data source, you can:
+After you configure the SAP HANA data source, you can:
 
 - Add [Annotations](/docs/plugins/grafana-saphana-datasource/latest/annotations/) to overlay SAP HANA events on your graphs.
 - Configure and use [Template variables](/docs/plugins/grafana-saphana-datasource/latest/template-variables/) for dynamic dashboards.

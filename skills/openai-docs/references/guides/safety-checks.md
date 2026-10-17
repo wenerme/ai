@@ -21,9 +21,11 @@ If your org engages in suspicious activity that violates our safety policies, we
 
 To route warning and deactivation notices for a safety identifier to your investigation or support workflow, see [Safety enforcement notifications](https://developers.openai.com/api/docs/guides/safety-enforcement).
 
-The `safety_identifier` parameter is available in both the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) and older [Chat Completions API](https://developers.openai.com/api/reference/resources/chat). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
+The `safety_identifier` parameter is available in the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create), [Chat Completions API](https://developers.openai.com/api/reference/resources/chat), and [Images API](https://developers.openai.com/api/docs/guides/image-generation#safety-identifiers). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
 
-Safety identifiers do not carry over between APIs or sessions. If your application already sends `safety_identifier` with Responses API requests, pass the same stable value separately when you create or connect each Realtime session.
+Safety identifiers do not carry over between APIs or sessions. If your application already sends `safety_identifier` with Responses API requests, pass the same stable value separately in each Images API request and when you create or connect each Realtime session.
+
+For the Images API, include `safety_identifier` in each image generation or edit request. Keep the identifier to 128 characters or fewer. See [image safety identifiers](https://developers.openai.com/api/docs/guides/image-generation#safety-identifiers) for migration from the deprecated `user` parameter.
 
 
 
