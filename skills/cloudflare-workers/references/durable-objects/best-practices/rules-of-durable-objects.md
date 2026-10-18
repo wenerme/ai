@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/rules-of
 
 # Rules of Durable Objects
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects provide a powerful primitive for building stateful, coordinated applications. Each Durable Object is a single-threaded, globally-unique instance with its own persistent storage. Understanding how to design around these properties is essential for building effective applications.
 
@@ -1587,9 +1587,13 @@ export default {
 
 Refer to [Invoke methods](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) for more details on RPC and the legacy `fetch()` handler.
 
-### Initialize Durable Objects explicitly with an `init()` method
+### Read a Durable Object's identity from `ctx.id`
 
-Durable Objects do not know their own name or ID from within. If your Durable Object needs to know its identity (for example, to store a reference to itself or to communicate with related objects), you must explicitly initialize it.
+A Durable Object can read its own ID from `this.ctx.id`. If the caller accessed the Durable Object with `getByName()` or `idFromName()`, `this.ctx.id.name` holds that name. You do not need to pass the name as an argument or store it yourself. This also works in [alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/), where there is no caller to pass the name.
+
+`ctx.id.name` is `undefined` if the Durable Object was created with `newUniqueId()`, was accessed with `idFromString()`, or was given a name longer than 1,024 bytes. Refer to [Durable Object ID](https://developers.cloudflare.com/durable-objects/api/id/#name) for details.
+
+If your Durable Object needs application-defined data that is not part of its ID (for example, who created it), use an explicit `init()` method to store that data.
 
 *index.jsjs*
 
@@ -1597,37 +1601,24 @@ Durable Objects do not know their own name or ID from within. If your Durable Ob
 import { DurableObject } from "cloudflare:workers";
 
 export class ChatRoom extends DurableObject {
-	roomId = null;
+	// The name passed to getByName() or idFromName()
+	getRoomId() {
+		const roomId = this.ctx.id.name;
+		if (!roomId) {
+			throw new Error("ChatRoom must be accessed by name.");
+		}
+		return roomId;
+	}
 
-	// Call this after creating the Durable Object for the first time
-	async init(roomId, createdBy) {
-		// Check if already initialized
-		const existing = await this.ctx.storage.get("roomId");
+	// Store application-defined data that is not part of the ID
+	async init(createdBy) {
+		const existing = await this.ctx.storage.get("createdBy");
 		if (existing) {
 			return; // Already initialized
 		}
 
-		// Store the identity
-		await this.ctx.storage.put("roomId", roomId);
 		await this.ctx.storage.put("createdBy", createdBy);
 		await this.ctx.storage.put("createdAt", Date.now());
-
-		// Cache in memory for this session
-		this.roomId = roomId;
-	}
-
-	async getRoomId() {
-		if (this.roomId) {
-			return this.roomId;
-		}
-
-		const stored = await this.ctx.storage.get("roomId");
-		if (!stored) {
-			throw new Error("ChatRoom not initialized. Call init() first.");
-		}
-
-		this.roomId = stored;
-		return stored;
 	}
 }
 
@@ -1636,11 +1627,10 @@ export default {
 		const url = new URL(request.url);
 		const roomId = url.searchParams.get("room") ?? "lobby";
 
-		const id = env.CHAT_ROOM.idFromName(roomId);
-		const stub = env.CHAT_ROOM.get(id);
+		const stub = env.CHAT_ROOM.getByName(roomId);
 
 		// Initialize on first access
-		await stub.init(roomId, "system");
+		await stub.init("system");
 
 		return new Response(`Room ${await stub.getRoomId()} ready`);
 	},
@@ -1657,37 +1647,24 @@ export interface Env {
 }
 
 export class ChatRoom extends DurableObject<Env> {
-	private roomId: string | null = null;
+	// The name passed to getByName() or idFromName()
+	getRoomId(): string {
+		const roomId = this.ctx.id.name;
+		if (!roomId) {
+			throw new Error("ChatRoom must be accessed by name.");
+		}
+		return roomId;
+	}
 
-	// Call this after creating the Durable Object for the first time
-	async init(roomId: string, createdBy: string) {
-		// Check if already initialized
-		const existing = await this.ctx.storage.get("roomId");
+	// Store application-defined data that is not part of the ID
+	async init(createdBy: string) {
+		const existing = await this.ctx.storage.get("createdBy");
 		if (existing) {
 			return; // Already initialized
 		}
 
-		// Store the identity
-		await this.ctx.storage.put("roomId", roomId);
 		await this.ctx.storage.put("createdBy", createdBy);
 		await this.ctx.storage.put("createdAt", Date.now());
-
-		// Cache in memory for this session
-		this.roomId = roomId;
-	}
-
-	async getRoomId(): Promise<string> {
-		if (this.roomId) {
-			return this.roomId;
-		}
-
-		const stored = await this.ctx.storage.get<string>("roomId");
-		if (!stored) {
-			throw new Error("ChatRoom not initialized. Call init() first.");
-		}
-
-		this.roomId = stored;
-		return stored;
 	}
 }
 
@@ -1696,11 +1673,10 @@ export default {
 		const url = new URL(request.url);
 		const roomId = url.searchParams.get("room") ?? "lobby";
 
-		const id = env.CHAT_ROOM.idFromName(roomId);
-		const stub = env.CHAT_ROOM.get(id);
+		const stub = env.CHAT_ROOM.getByName(roomId);
 
 		// Initialize on first access
-		await stub.init(roomId, "system");
+		await stub.init("system");
 
 		return new Response(`Room ${await stub.getRoomId()} ready`);
 	},
@@ -2669,5 +2645,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

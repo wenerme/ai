@@ -62,8 +62,8 @@ These are used internally by the runner and actions. They are typically not need
 | Name | Description | Example |
 |---|---|---|
 | `ACTIONS_CACHE_URL` | URL for the actions cache service. | `http://192.168.1.10:8088/` |
-| `ACTIONS_ID_TOKEN_REQUEST_TOKEN` | Token for OIDC requests. Only set when configured. | `***` |
-| `ACTIONS_ID_TOKEN_REQUEST_URL` | URL to request OIDC tokens. Only set when configured. | `https://gitea.com/login/oauth/access_token` |
+| `ACTIONS_ID_TOKEN_REQUEST_TOKEN` | Token for OIDC requests. Only set when `id-token: write` is granted. | `***` |
+| `ACTIONS_ID_TOKEN_REQUEST_URL` | URL to request OIDC tokens. Only set when `id-token: write` is granted. | `https://gitea.com/api/actions/oidc/token?` |
 | `ACTIONS_RESULTS_URL` | URL for storing artifacts. | `https://gitea.com` |
 | `ACTIONS_RUNTIME_TOKEN` | Authentication token for the Actions pipeline API. | `***` |
 | `ACTIONS_RUNTIME_URL` | URL for the Gitea Actions pipeline API. | `https://gitea.com/api/actions_pipeline/` |

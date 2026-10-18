@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/hand
 
 # MCP handler APIs
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Agents SDK provides two server handler paths:
 
@@ -119,7 +119,7 @@ function createServer() {
 		"hello",
 		{
 			description: "Return a greeting",
-			inputSchema: { name: z.string().optional() },
+			inputSchema: z.object({ name: z.string().optional() }),
 		},
 		async ({ name }) => ({
 			content: [{ type: "text", text: `Hello, ${name ?? "World"}!` }],
@@ -153,7 +153,7 @@ function createServer() {
 		"hello",
 		{
 			description: "Return a greeting",
-			inputSchema: { name: z.string().optional() },
+			inputSchema: z.object({ name: z.string().optional() }),
 		},
 		async ({ name }) => ({
 			content: [{ type: "text", text: `Hello, ${name ?? "World"}!` }],
@@ -443,10 +443,11 @@ interface McpAuthContext {
 
 ```js
 import { getMcpAuthContext } from "agents/mcp/server";
+import { z } from "zod";
 
 server.registerTool(
 	"whoami",
-	{ description: "Return the current identity", inputSchema: {} },
+	{ description: "Return the current identity", inputSchema: z.object({}) },
 	async (_args, context) => {
 		const auth = getMcpAuthContext();
 
@@ -468,10 +469,11 @@ server.registerTool(
 
 ```ts
 import { getMcpAuthContext } from "agents/mcp/server";
+import { z } from "zod";
 
 server.registerTool(
 	"whoami",
-	{ description: "Return the current identity", inputSchema: {} },
+	{ description: "Return the current identity", inputSchema: z.object({}) },
 	async (_args, context) => {
 		const auth = getMcpAuthContext();
 
@@ -520,5 +522,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"MCP handler APIs","description":"Create stateless or legacy MCP server handlers for Cloudflare Workers with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/og.png?v=8656f1af1f0b68d0","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"MCP handler APIs","description":"Create stateless or legacy MCP server handlers for Cloudflare Workers with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/og.png?v=8656f1af1f0b68d0","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

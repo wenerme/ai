@@ -51,13 +51,14 @@ Valid access mode values for each scope are `read`, `write`, and `none`.
 - `wiki`
 - `projects`
 - `packages` (if supported by the target feature)
+- `id-token` (`write` allows requesting [OpenID Connect tokens](openid-connect.md), `read` grants nothing)
 
 If you specify both `contents` and a more granular scope (like `code` or `releases`), the granular scope wins for that unit.
 
 ### Compatibility notes
 
 Gitea supports a subset of GitHub Actions permission scopes.
-GitHub-only scopes such as `statuses`, `checks`, `deployments`, `id-token`, `security-events`, and `pages` are not currently supported by Gitea Actions.
+GitHub-only scopes such as `statuses`, `checks`, `deployments`, `security-events`, and `pages` are not currently supported by Gitea Actions.
 
 Gitea also exposes repository-unit scopes that do not exist as separate scopes in GitHub Actions:
 
@@ -73,15 +74,18 @@ If neither the workflow nor the job defines `permissions:`, Gitea uses the confi
 - **Permissive**: read and write permissions for most units in the job's repository (backwards-compatible default).
 - **Restricted**: read-only permissions for `code`, `releases`, and `packages` in the job's repository, and no access to other units by default.
 
+Neither mode includes `id-token`.
+
 ## Maximum token permissions (clamping)
 
-You can configure a maximum permission per repository unit.
+You can configure a maximum permission per repository unit and for `id-token`.
 The job's effective permissions are computed as:
 
 `effective = min(requested, maximum)`
 
 This means workflows can reduce permissions for a job, but cannot exceed your configured maximum.
 If you don't configure a maximum, the maximum defaults to `write` for all scopes.
+Maximums saved before Gitea supported `id-token` deny it until you set it to `write`.
 
 ## Where to configure
 
@@ -95,7 +99,7 @@ Note: Repository-level token permission settings are only shown once **Repositor
 
 ## Fork pull requests
 
-For security reasons, workflows triggered by pull requests from forks are always restricted to read-only permissions for repository contents, regardless of workflow `permissions:` or settings.
+For security reasons, workflows triggered by pull requests from forks are always restricted to read-only permissions for repository contents, regardless of workflow `permissions:` or settings. They also get no OpenID Connect tokens.
 
 ## Cross-repository access
 

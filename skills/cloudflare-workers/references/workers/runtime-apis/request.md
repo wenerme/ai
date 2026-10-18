@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/request/og.png?v=d
 
 # Request
 
-Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [`Request` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
@@ -73,7 +73,7 @@ An object containing properties that you want to apply to the request.
   - The request body, if any.
   - Note that a request using the GET or HEAD method cannot have a body.
 - `redirect` `string` optional
-  - The redirect mode to use: `follow`, `error`, or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
+  - The redirect mode to use: `follow` or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`. Workers does not implement the `error` mode from the Fetch standard: passing `redirect: "error"` throws a `TypeError` as soon as the `Request` is constructed (including inside `fetch(url, init)`), before any request is sent. Use `manual` and check the status code of the returned response instead.
 - `signal` AbortSignal optional
   - If provided, the request can be canceled by triggering an abort on the corresponding `AbortController`.
 
@@ -204,7 +204,7 @@ All properties of an incoming `Request` object (the request you receive from the
 - `method` string read-only
   - Contains the request’s method, for example, `GET`, `POST`, etc.
 - `redirect` string read-only
-  - The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
+  - The redirect mode to use: `follow` or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The `error` mode from the Fetch standard is not implemented in Workers, and passing it throws a `TypeError` when the `Request` is constructed. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 - `signal` AbortSignal read-only
   - The `AbortSignal` corresponding to this request. If you use the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
 
@@ -470,5 +470,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/request/og.png?v=d9715d666d09fc6d","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/request/og.png?v=d9715d666d09fc6d","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -83,7 +83,7 @@ Service steps have no section of their own in the job log.
 ### Job token permissions (`permissions`)
 
 `permissions` and `jobs.<job_id>.permissions` control the `GITEA_TOKEN` permissions, clamped by the repository and owner settings and further restricted for fork pull requests and cross-repository access.
-GitHub-only scopes like `statuses`, `checks`, `deployments`, `id-token`, `security-events` and `pages` are not supported, while Gitea adds `code`, `releases`, `wiki` and `projects`.
+GitHub-only scopes like `statuses`, `checks`, `deployments`, `security-events` and `pages` are not supported, while Gitea adds `code`, `releases`, `wiki` and `projects`. `id-token` works like on GitHub, see [OpenID Connect](openid-connect.md).
 See [Actions job token permissions](token-permissions.md).
 
 ### Downloading actions

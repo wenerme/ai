@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/environments/og.png?v=
 
 # Environments
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler allows you to use environments to create different configurations for the same Worker application. Environments are configured in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
@@ -167,17 +167,21 @@ FOO = "<staging-var>"
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "worker-b",
-	"services": {
-		"binding": "<BINDING_NAME>",
-		"service": "worker-a",
-	},
+	"services": [
+		{
+			"binding": "<BINDING_NAME>",
+			"service": "worker-a",
+		},
+	],
 	// Note how `service = "worker-a-staging"`
 	"env": {
 		"staging": {
-			"service": {
-				"binding": "<BINDING_NAME>",
-				"service": "worker-a-staging",
-			},
+			"services": [
+				{
+					"binding": "<BINDING_NAME>",
+					"service": "worker-a-staging",
+				},
+			],
 		},
 	},
 }
@@ -187,11 +191,11 @@ FOO = "<staging-var>"
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "worker-b"
 
-[services]
+[[services]]
 binding = "<BINDING_NAME>"
 service = "worker-a"
 
-[env.staging.service]
+[[env.staging.services]]
 binding = "<BINDING_NAME>"
 service = "worker-a-staging"
 ```
@@ -414,5 +418,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/environments/#page","headline":"Environments","description":"Use environments to create different configurations for the same Worker application.","url":"https://developers.cloudflare.com/workers/wrangler/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/environments/og.png?v=81f75318307e956b","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/environments/#page","headline":"Environments","description":"Use environments to create different configurations for the same Worker application.","url":"https://developers.cloudflare.com/workers/wrangler/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/environments/og.png?v=81f75318307e956b","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

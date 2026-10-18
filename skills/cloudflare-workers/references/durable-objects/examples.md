@@ -18,7 +18,7 @@ Explore the following examples for Durable Objects.
 
 [**Use ReadableStream with Durable Object and Workers** Stream ReadableStream from Durable Objects.](https://developers.cloudflare.com/durable-objects/examples/readable-stream/)
 
-[**Use RpcTarget class to handle Durable Object metadata** Access the name from within a Durable Object using RpcTarget.](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/)
+[**Use RpcTarget class to handle Durable Object metadata** Pass metadata to a Durable Object using RpcTarget.](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/)
 
 [**Durable Object Time To Live** Use the Durable Objects Alarms API to implement a Time To Live (TTL) for Durable Object instances.](https://developers.cloudflare.com/durable-objects/examples/durable-object-ttl/)
 

@@ -5,7 +5,7 @@ description: "Browse Deep Infra model IDs, capabilities, context windows, and pr
 
 # [Deep Infra logo]Deep Infra
 
-Access 75 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 76 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -195,6 +195,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "deepinfra/deepseek-ai/DeepSeek-V4.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.2,
+    "outputCost": 0.6
+  },
+  {
+    "model": "deepinfra/deepseek-ai/DeepSeek-V4.1-Flash-1017",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
