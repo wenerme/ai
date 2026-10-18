@@ -5,7 +5,7 @@ description: "Browse engy model IDs, capabilities, context windows, and pricing.
 
 # [engy logo]engy
 
-Access 8 engy models through Mastra's model router. Authentication is handled automatically using the `ENGY_API_KEY` environment variable.
+Access 9 engy models through Mastra's model router. Authentication is handled automatically using the `ENGY_API_KEY` environment variable.
 
 Learn more in the [engy documentation](https://engy.ai/pricing).
 
@@ -53,6 +53,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "engy/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.04,
+    "outputCost": 0.08
+  },
+  {
+    "model": "engy/deepseek-v4.1-flash-1017",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

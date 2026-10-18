@@ -360,3 +360,6 @@ Causing it to receive the default when not passed in the invocation:
 $ just foo
 bar=goodbye
 ```
+
+If `--help` or `-h` is passed to a recipe that does not define that option, the
+recipe's help string is printed and execution stops<sup>master</sup>.

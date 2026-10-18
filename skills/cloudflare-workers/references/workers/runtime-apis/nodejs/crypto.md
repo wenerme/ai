@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/og.p
 
 # crypto
 
-Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,6 +24,7 @@ All `node:crypto` APIs are fully supported in Workers with the following excepti
 
 - The functions [generateKeyPair ↗︎](https://nodejs.org/api/crypto.html#cryptogeneratekeypairtype-options-callback) and [generateKeyPairSync ↗︎](https://nodejs.org/api/crypto.html#cryptogeneratekeypairsynctype-options) do not support DSA or DH key pairs.
 - `argon2` and `argon2Sync` are not supported.
+- `randomUUIDv7` is not supported.
 - `ed448` and `x448` curves are not supported.
 - It is not possible to manually enable or disable [FIPS mode ↗︎](https://nodejs.org/docs/latest/api/crypto.html#fips-mode).
 
@@ -40,5 +41,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/#page","headline":"crypto","description":"Use the Node.js crypto module in Cloudflare Workers for hashing, encryption, signing, and verification.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/og.png?v=cd88243647811f9f","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/#page","headline":"crypto","description":"Use the Node.js crypto module in Cloudflare Workers for hashing, encryption, signing, and verification.","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/og.png?v=cd88243647811f9f","dateModified":"2026-10-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

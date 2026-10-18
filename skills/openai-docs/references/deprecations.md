@@ -298,7 +298,6 @@ To improve reliability and make it easier for developers to choose the right mod
 | Shutdown date | Model / system                                                                                                             | Recommended replacement |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | 2026‑03‑26    | `gpt-4-0314`                                                                                                               | `gpt-5` or `gpt-4.1*`   |
-| 2026‑03‑26    | `gpt-4-1106-preview`                                                                                                       | `gpt-5` or `gpt-4.1*`   |
 | 2026‑03‑26    | `gpt-4-0125-preview` (including `gpt-4-turbo-preview` and `gpt-4-turbo-preview-completions`, which point to this snapshot) | `gpt-5` or `gpt-4.1*`   |
 
 \*For tasks that are especially latency sensitive and don't require reasoning

@@ -11,7 +11,7 @@ The CLIPLoader node loads a text encoder model (CLIP, T5, or similar) from a fil
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
 | `clip_name` | The filename of the text encoder model to load. This must be a file located in the `ComfyUI/models/text_encoders/` directory. | STRING | Yes | List of files found in the `text_encoders` folder |
-| `type` | The architecture type of the model being loaded. This determines which specific encoder variant to use (default: `"stable_diffusion"`). | COMBO | Yes | `"stable_diffusion"``"stable_cascade"``"sd3"``"stable_audio"``"mochi"``"ltxv"``"pixart"``"cosmos"``"lumina2"``"wan"``"hidream"``"chroma"``"ace"``"omnigen2"``"qwen_image"``"hunyuan_image"``"flux2"``"ovis"``"longcat_image"``"cogvideox"``"lens"``"pixeldit"``"ideogram4"``"boogu"``"krea2"``"joyimage"``"mage"``"minimax"``"yue2"``"flux3"` |
+| `type` | The architecture type of the model being loaded. This determines which specific encoder variant to use (default: `"stable_diffusion"`). | COMBO | Yes | `"stable_diffusion"``"stable_cascade"``"sd3"``"stable_audio"``"mochi"``"ltxv"``"pixart"``"cosmos"``"lumina2"``"wan"``"hidream"``"chroma"``"ace"``"omnigen2"``"qwen_image"``"hunyuan_image"``"flux2"``"ovis"``"longcat_image"``"cogvideox"``"lens"``"pixeldit"``"ideogram4"``"boogu"``"krea2"``"joyimage"``"mage"``"minimax"``"yue2"``"flux3"``"moss_image"` |
 | `device` | The device to load the model onto. `"default"` uses the GPU if available, while `"cpu"` forces CPU loading. This is an advanced option (default: `"default"`). | COMBO | No | `"default"``"cpu"` |
 
 ### Supported Type-to-Encoder Mappings
@@ -35,6 +35,7 @@ The `type` parameter selects the correct encoder for a given model architecture.
 | lens | gpt-oss-20b |
 | pixeldit | gemma 2 2B elm |
 | minimax | MiniMax H3 Qwen3-VL or Music3 Qwen/RVQ |
+| flux3 | qwen3-vl 4B |
 
 ## Outputs
 
@@ -45,4 +46,4 @@ The `type` parameter selects the correct encoder for a given model architecture.
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ClipLoader/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `4a410c9d0d06d9d9bfee263eaa10d72ede59c22899f104592f3baf75cd6ced98`
+**Source fingerprint (SHA-256):** `3abcb39dd6ce4935f51127d4d38a8474ecf80a4df70d702f3eea68d400be91a5`

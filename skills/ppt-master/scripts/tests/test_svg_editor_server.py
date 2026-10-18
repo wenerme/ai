@@ -148,6 +148,18 @@ class StagingDraftTests(unittest.TestCase):
         self.assertFalse(self.draft.exists())
         self.assertEqual(client.get('/api/slide/01.svg').get_json()['undo_depth'], 0)
 
+    def test_save_refuses_staged_work_when_svg_changed_on_disk(self) -> None:
+        client = self._client()
+        self._stage(client)
+        changed = SLIDE_SVG.replace('width="10"', 'width="20"')
+        self.svg_path.write_text(changed, encoding='utf-8')
+
+        response = client.post('/api/save-all')
+        self.assertIn('changed on disk', response.get_json()['error'])
+        self.assertEqual(response.get_json()['files_modified'], [])
+        self.assertEqual(self.svg_path.read_text(encoding='utf-8'), changed)
+        self.assertTrue(self.draft.exists())
+
     def test_unreadable_draft_is_set_aside(self) -> None:
         self.draft.parent.mkdir()
         self.draft.write_text('{not json', encoding='utf-8')
@@ -182,3 +194,31 @@ class StagingDraftTests(unittest.TestCase):
         body = self._client().post('/api/save-all').get_json()
         self.assertEqual(body, {'status': 'ok', 'files_modified': [], 'draft_saved': True})
         self.assertFalse(self.draft.exists())
+
+
+class AnnotationHelperTests(unittest.TestCase):
+    def test_user_ids_with_the_temp_prefix_are_kept(self) -> None:
+        from xml.etree import ElementTree as ET
+        from svg_editor.annotations import assign_temp_ids, strip_unused_temp_ids
+
+        root = ET.fromstring(
+            '<svg><defs><linearGradient id="_edit_gradient"/></defs>'
+            '<rect fill="url(#_edit_gradient)"/><text id="_edit_7">T</text></svg>'
+        )
+        assign_temp_ids(root)
+        strip_unused_temp_ids(root, set())
+        ids = {elem.get('id') for elem in root.iter()}
+        self.assertIn('_edit_gradient', ids)
+        self.assertNotIn('_edit_7', ids)
+
+    def test_leading_dot_numbers_keep_following_line_in_place(self) -> None:
+        from xml.etree import ElementTree as ET
+        from svg_editor.annotations import promote_tspan_to_text
+
+        root = ET.fromstring(
+            '<svg><text y="100" x="0"><tspan id="a" dy=".5">A</tspan>'
+            '<tspan id="b" dy=".5">B</tspan></text></svg>'
+        )
+        self.assertEqual(promote_tspan_to_text(root, 'a', '20', '30'), (True, None))
+        following = next(elem for elem in root.iter() if elem.get('id') == 'b')
+        self.assertEqual(float(following.get('dy')), 1.0)
