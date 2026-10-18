@@ -1,5 +1,5 @@
 ---
-description: Access the name from within a Durable Object using RpcTarget.
+description: Pass metadata to a Durable Object using RpcTarget.
 title: Use RpcTarget class to handle Durable Object metadata
 image: https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/og.png?v=7abae1644e934869
 ---
@@ -12,15 +12,17 @@ image: https://developers.cloudflare.com/durable-objects/examples/reference-do-n
 
 # Use RpcTarget class to handle Durable Object metadata
 
-Access the name from within a Durable Object using RpcTarget.
+Pass metadata to a Durable Object using RpcTarget.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When working with Durable Objects, you will need to access the name that was used to create the Durable Object via `idFromName()`. This name is typically a meaningful identifier that represents what the Durable Object is responsible for (like a user ID, room name, or resource identifier).
+When working with Durable Objects, you will often need the name that was used to create the Durable Object via `idFromName()`. This name is typically a meaningful identifier that represents what the Durable Object is responsible for (like a user ID, room name, or resource identifier).
 
-However, there is a limitation in the current implementation: even though you can create a Durable Object with `.idFromName(name)`, you cannot directly access this name inside the Durable Object via `this.ctx.id.name`.
+Note
 
-The `RpcTarget` pattern shown below offers a solution by creating a communication layer that automatically carries the name with each method call. This keeps your API clean while ensuring the Durable Object has access to its own name.
+If the caller accesses the Durable Object with `getByName()` or `idFromName()`, you can read the name directly inside the Durable Object from `this.ctx.id.name`. You do not need the pattern on this page for that. Refer to [Durable Object ID](https://developers.cloudflare.com/durable-objects/api/id/#name) for details, including when `ctx.id.name` is `undefined`.
+
+The `RpcTarget` pattern in the following examples is useful when you need to pass metadata that is not available on `ctx.id`, or when `ctx.id.name` is `undefined` (for example, when the caller uses `idFromString()`). It creates a communication layer that automatically carries the metadata with each method call, which keeps your API clean.
 
 Based on your needs, you can either store the metadata temporarily in the `RpcTarget` class, or use Durable Object storage to persist the metadata for the lifetime of the object.
 
@@ -280,5 +282,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/#page","headline":"Use RpcTarget class to handle Durable Object metadata","description":"Access the name from within a Durable Object using RpcTarget.","url":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/og.png?v=7abae1644e934869","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/#page","headline":"Use RpcTarget class to handle Durable Object metadata","description":"Pass metadata to a Durable Object using RpcTarget.","url":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/og.png?v=7abae1644e934869","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

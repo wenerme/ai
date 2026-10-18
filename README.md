@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 51498 files, 518 MiB total
+> 125 skills, 51509 files, 519 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1434,7 +1434,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 895 | 9.0 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 961 | 20 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6933 | 38 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6943 | 38 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1672 | 10 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
@@ -1451,7 +1451,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 91 | 816 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
-| [gitea-docs](./skills/gitea-docs/SKILL.md) | 101 | 701 KiB |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | 102 | 704 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 371 | 4.8 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 260 | 19 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
@@ -1517,7 +1517,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 552 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 228 | 1.4 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 182 | 1.7 MiB |
-| [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 317 KiB |
+| [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 318 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 282 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |

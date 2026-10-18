@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/platform/pricing/og.png
 
 # Pricing
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can incur two types of billing: compute and storage.
 
@@ -234,7 +234,7 @@ In this scenario, the estimated monthly cost would be calculated as:
 
 - 100 WebSocket connections \* 100 Durable Objects to establish the WebSockets = 10,000 initial WebSocket connection requests.
 - 100 messages per minute<sup>1</sup> \* 100 Durable Objects \* 60 minutes \* 24 hours \* 30 days = 432,000,000 requests.
-- 10,000 + (432 million requests / 20 for WebSocket billing ratio) = 21,610,000 million requests.
+- 10,000 + (432 million requests / 20 for WebSocket billing ratio) = 21,610,000 requests.
 - 21,610,000 requests - included 1 million requests = 20,610,000 billable requests.
 - (rounded) 21,000,000 requests x $0.15 / 1,000,000 = $3.15.
 
@@ -282,5 +282,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/pricing/og.png?v=692e099f34a1b330","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/pricing/og.png?v=692e099f34a1b330","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

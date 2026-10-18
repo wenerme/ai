@@ -5,7 +5,7 @@ description: "Browse Cortecs model IDs, capabilities, context windows, and prici
 
 # [Cortecs logo]Cortecs
 
-Access 104 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 105 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -266,6 +266,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 0.201,
     "outputCost": 0.6
+  },
+  {
+    "model": "cortecs/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 64000,
+    "inputCost": 0.511,
+    "outputCost": 1.534
   },
   {
     "model": "cortecs/devstral-2512",
