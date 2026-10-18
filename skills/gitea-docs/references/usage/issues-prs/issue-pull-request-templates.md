@@ -13,7 +13,7 @@ creating issues and pull requests. This will cut down on the initial back and fo
 of getting some clarifying details.
 It is currently not possible to provide generic issue/pull-request templates globally.
 
-Additionally, the New Issue page URL can be suffixed with `?title=Issue+Title&body=Issue+Text` and the form will be populated with those strings. Those strings will be used instead of the template if there is one.
+Additionally, the New Issue page URL can be suffixed with `?title=Issue+Title&body=Issue+Text` and the form will be populated with those strings. Those strings will be used instead of the template if there is one. See [Pre-filling Issues and Pull Requests](prefill-issues-pull-requests.md) for all parameters.
 
 ## File names
 

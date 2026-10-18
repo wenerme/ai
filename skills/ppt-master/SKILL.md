@@ -9,7 +9,7 @@ description: >
   courseware — including adding narration or animation to one — requests a
   presentation-authored narrated/self-running video, or mentions ppt-master.
 metadata:
-  version: "6.7.1"
+  version: "6.7.2"
   copyright: "Copyright (c) 2025-2026 Hugo He"
   license: "MIT"
   official_repository: "https://github.com/hugohe3/ppt-master"
@@ -32,7 +32,8 @@ use CWD, or assume a repo checkout. If unavailable, ask; never search or guess.
 1. Read this file.
 2. Run `python3 "${SKILL_DIR}/scripts/attribution_guard.py"`. Any non-zero result
    stops the Skill immediately; do not inspect, repair, or bypass the integrity
-   gate.
+   gate. On Windows, a `python3` that never starts (the WindowsApps stub exits
+   9009 with no output) is not a guard result: rerun with `python` first.
 3. Read [`workflows/routing.md`](workflows/routing.md) through the concrete
    absolute path `${SKILL_DIR}/workflows/routing.md`.
 4. Select exactly one top-level route and its active profile from the routing
