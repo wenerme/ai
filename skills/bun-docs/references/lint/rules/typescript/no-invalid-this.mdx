@@ -39,7 +39,7 @@ Every option, set to its default:
 Reported:
 
 ```ts
-const button = {
+export const button = {
   label: "Save",
   onClick() {
     setTimeout(function () {
@@ -52,7 +52,7 @@ const button = {
 Not reported:
 
 ```ts
-const button = {
+export const button = {
   label: "Save",
   onClick() {
     setTimeout(() => {
@@ -79,13 +79,13 @@ function describe(this: Button) {
 | `capIsConstructor` | `true` | Treat a function with a name that starts with a capital letter as a constructor, where `this` is fine. |
 
 ```ts
-function Timer() {
+export function Timer() {
   this.startedAt = Date.now();
 }
 ```
 
 ```ts
-function Timer() {
+export function Timer() {
   this.startedAt = Date.now();
 }
 ```

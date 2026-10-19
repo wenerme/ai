@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/local-development/local-dev-tun
 
 # Share a local dev server
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) when you need to share a preview, test a webhook, or access your app from another device.
 
@@ -151,14 +151,17 @@ export default defineConfig({
 
 ## Security considerations
 
-Anyone with the tunnel URL can reach your dev server, so review what your app exposes before enabling a tunnel.
+The [local development security considerations](https://developers.cloudflare.com/workers/local-development/#security-considerations) apply with or without a tunnel. A tunnel increases exposure by making your dev server remotely reachable. It does not add security isolation around the local `workerd` process.
+
+Unless the tunnel is protected by access controls, anyone with its URL can reach your dev server. Review what your app exposes before starting a tunnel.
 
 - Pay special attention to ungated preview or admin endpoints.
+- Do not expose endpoints that accept and execute code supplied by users.
 - Review any [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) connected to real resources.
 - Review any code that proxies requests to private or internal services.
-- If you are using the Cloudflare Vite plugin with `vite dev`, HMR and module serving may expose source files, file paths, or project structure over the tunnel. If you only need to share a built preview, prefer `vite preview` for public sharing.
+- If you are using the Cloudflare Vite plugin with `vite dev`, HMR and module serving may expose source files, file paths, or project structure over the tunnel. If you only need to share a built preview, prefer `vite preview` for public sharing. This reduces source exposure but does not add runtime isolation.
 - Local dev-related routes, such as `/cdn-cgi/*`, remain restricted and are not exposed over the tunnel.
-- If you need a stable hostname or stricter access control, use a named tunnel protected by Cloudflare Access.
+- If you need a stable hostname or stricter access control, use a named tunnel protected by Cloudflare Access. Access restricts who can reach the server but does not harden the local runtime.
 
 ## Related docs
 
@@ -173,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/#page","headline":"Share a local dev server","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/og.png?v=1b1ab53357b8bed6","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/#page","headline":"Share a local dev server","description":"Expose a local Wrangler or Vite dev server over a public tunnel URL.","url":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/og.png?v=1b1ab53357b8bed6","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

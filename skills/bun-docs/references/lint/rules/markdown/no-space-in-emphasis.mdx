@@ -16,6 +16,8 @@ deprecated: false
 
 `--fix` removes the space.
 
+Only markers that were meant as markers count. A `*` with a space on both sides is a character of the text, and so is one that's stuck to a word on the wrong side, as in `*.ts, *.tsx`. `@eslint/markdown` reports both, and its fix turns `2 * 3 * 4` into `2 *3* 4`.
+
 ## Configure
 
 Off by default. It needs an ESLint config that says which files are in the language:
@@ -52,7 +54,11 @@ Not reported:
 ```md
 This is **important** and _this_ too.
 
-2 * 3 is 6.
+2 * 3 * 4 is 24.
+
+It matches *.ts, *.tsx and *.css.
+
+In C: char *a, *b;
 ```
 
 ## Options
