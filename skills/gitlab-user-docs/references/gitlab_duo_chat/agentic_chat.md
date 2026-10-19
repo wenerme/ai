@@ -3,7 +3,7 @@
 Use GitLab Duo Agentic Chat to answer complex questions and create or edit files autonomously.
 
 - Tier: [Free](../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 ### Model information
 

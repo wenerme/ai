@@ -2137,6 +2137,7 @@ Prerequisites:
 
 - `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
 - `all` value for the `state` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260698) in GitLab 19.6.
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634390) in GitLab 19.6.
 
 Lists all personal access tokens associated with enterprise users in a top-level group.
 
@@ -2185,6 +2186,11 @@ Example response:
   }
 ]
 ```
+
+> [!note]
+> For tokens created with granular scopes, the response also includes a
+> `granular_scopes` attribute. For more information, see
+> [List all personal access tokens](personal_access_tokens.md#list-all-personal-access-tokens).
 
 ### List all group and project access tokens for a group
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/concepts/og.png?v=4b7889d92e13
 
 # Concepts
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flagship organizes feature flags into apps. You define flags with variants and targeting rules, then evaluate them within Cloudflare's global network.
 
@@ -71,20 +71,33 @@ Refer to [Targeting rules](https://developers.cloudflare.com/flagship/targeting/
 
 ## Evaluation context
 
-The evaluation context is a set of key-value attributes that describe the current user or request (for example, `userId`, `country`, `plan`).
+The evaluation context describes the current user or request. It is an object whose top-level keys are attribute names.
+
+Each value can be a string, finite number, boolean, `null`, array, or nested object. Arrays and objects can recursively contain the same value types.
 
 You pass the context as the third argument to evaluation methods on the binding:
+
+```js
+const value = await env.FLAGS.getBooleanValue("new-checkout", false, {
+	userId: "user-42",
+	profile: { plan: "enterprise" },
+	tags: ["beta"],
+});
+```
 
 ```ts
 const value = await env.FLAGS.getBooleanValue("new-checkout", false, {
 	userId: "user-42",
-	country: "US",
+	profile: { plan: "enterprise" },
+	tags: ["beta"],
 });
 ```
 
 When using the [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/), you pass context through the OpenFeature evaluation context object.
 
 Flagship uses context attributes to match targeting rules and to determine percentage rollout bucketing. A consistent context (for example, the same `userId`) produces the same rollout result on every evaluation.
+
+Evaluation context is input to an evaluation. It is separate from [JSON flag variants](#variants), which are values returned by an evaluation.
 
 Avoid sending sensitive data in evaluation context. Only include attributes needed by targeting rules or rollout bucketing.
 
@@ -101,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts","description":"Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/concepts/og.png?v=4b7889d92e13e891","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/concepts/#page","headline":"Concepts","description":"Understand Flagship core concepts including apps, flags, variants, targeting rules, evaluation context, and flag propagation.","url":"https://developers.cloudflare.com/flagship/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/concepts/og.png?v=4b7889d92e13e891","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

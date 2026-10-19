@@ -1,7 +1,7 @@
 # CI Expert Agent
 
 - Tier: Free, Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587460) as a [beta](../../../../policy/development_stages_support.md#beta) in GitLab 18.10
   [with a feature flag](../../../../administration/feature_flags/_index.md) named `foundational_pipeline_authoring_agent`.

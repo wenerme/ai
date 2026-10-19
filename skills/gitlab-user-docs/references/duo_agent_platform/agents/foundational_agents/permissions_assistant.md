@@ -1,7 +1,7 @@
 # Permissions Assistant
 
 - Tier: Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592230) as a [beta](../../../../policy/development_stages_support.md#beta) feature in GitLab 18.11.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/596613) in GitLab 19.2.

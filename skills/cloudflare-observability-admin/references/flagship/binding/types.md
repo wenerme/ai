@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/flagship/binding/types/og.png?v=24c1f6b
 
 # Types
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Flagship binding uses the following TypeScript types. These are available from the `@cloudflare/workers-types` package after running `npx wrangler types`.
+The Flagship binding uses the following TypeScript types. Generate binding types with `wrangler types` or use the `@cloudflare/workers-types` package.
 
 ## `Flagship`
 
@@ -30,11 +30,25 @@ Refer to the [methods reference](https://developers.cloudflare.com/flagship/bind
 
 ## `FlagshipEvaluationContext`
 
-A record of attribute names to values passed for [targeting rules](https://developers.cloudflare.com/flagship/targeting/). Use this to provide user attributes such as user ID, country, or plan type.
+A record of attributes passed to [targeting rules](https://developers.cloudflare.com/flagship/targeting/). Values can recursively contain arrays and objects.
 
 ```ts
-type FlagshipEvaluationContext = Record<string, string | number | boolean>;
+type FlagshipEvaluationContextValue =
+	| string
+	| number
+	| boolean
+	| null
+	| FlagshipEvaluationContextValue[]
+	| { [key: string]: FlagshipEvaluationContextValue };
+
+type FlagshipEvaluationContext = Record<string, FlagshipEvaluationContextValue>;
 ```
+
+Numbers must be finite. The binding rejects `NaN`, `Infinity`, unsupported objects, and cyclic values.
+
+The runtime also accepts valid JavaScript `Date` values. The binding normalizes each date to an ISO 8601 string. Invalid dates produce an `INVALID_CONTEXT` error.
+
+Serialize `Date` values to ISO 8601 strings before passing them to the binding in TypeScript. The context type describes JSON values and does not include `Date`.
 
 ## `FlagshipEvaluationDetails`
 
@@ -47,6 +61,7 @@ interface FlagshipEvaluationDetails<T> {
 	variant?: string;
 	reason?: string;
 	errorCode?: string;
+	errorMessage?: string;
 }
 ```
 
@@ -57,6 +72,7 @@ interface FlagshipEvaluationDetails<T> {
 | `variant` | `string` | The name of the matched variant, if any. |
 | `reason` | `string` | Why the flag resolved to this value (for example, `"TARGETING_MATCH"` or `"DEFAULT"`). |
 | `errorCode` | `string` | An error code if evaluation failed (for example, `"TYPE_MISMATCH"` or `"GENERAL"`). |
+| `errorMessage` | `string` | A description of the evaluation error, if any. |
 
 Refer to [evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/) for the full list of possible values.
 
@@ -69,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/binding/types/og.png?v=24c1f6be0778f055","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/binding/types/#page","headline":"Types","description":"TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.","url":"https://developers.cloudflare.com/flagship/binding/types/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/binding/types/og.png?v=24c1f6be0778f055","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

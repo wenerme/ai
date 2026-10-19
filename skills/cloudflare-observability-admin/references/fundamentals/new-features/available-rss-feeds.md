@@ -95,6 +95,7 @@ Included products
 - <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Access</a><a href="https://developers.cloudflare.com/changelog/rss/access.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/">Browser Isolation</a><a href="https://developers.cloudflare.com/changelog/rss/browser-isolation.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/">CASB</a><a href="https://developers.cloudflare.com/changelog/rss/casb.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/">Cloud Workload Security</a><a href="https://developers.cloudflare.com/changelog/rss/cloud-workload-security.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-network-firewall/">Cloudflare Network Firewall</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-network-firewall.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-one/">Cloudflare One</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/">Cloudflare One Appliance</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-one-appliance.xml">Subscribe to RSS</a>
@@ -145,6 +146,7 @@ Included products
 - <a href="https://developers.cloudflare.com/analytics/">Analytics</a><a href="https://developers.cloudflare.com/changelog/rss/analytics.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/">Audit Logs</a><a href="https://developers.cloudflare.com/changelog/rss/audit-logs.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/billing/">Billing</a><a href="https://developers.cloudflare.com/changelog/rss/billing.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a><a href="https://developers.cloudflare.com/changelog/rss/cf.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/fundamentals/">Cloudflare Fundamentals</a><a href="https://developers.cloudflare.com/changelog/rss/fundamentals.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/fundamentals/api/reference/sdks/">Go SDK</a><a href="https://developers.cloudflare.com/changelog/rss/go-sdk.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/observability/logs/log-explorer/">Log Explorer</a><a href="https://developers.cloudflare.com/changelog/rss/log-explorer.xml">Subscribe to RSS</a>
@@ -188,7 +190,6 @@ Included products
 - <a href="https://developers.cloudflare.com/basin-pipelines/">Basin Pipelines</a><a href="https://developers.cloudflare.com/changelog/rss/basin-pipelines.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/basin-sql/">Basin SQL</a><a href="https://developers.cloudflare.com/changelog/rss/basin-sql.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/browser-run/">Browser Run</a><a href="https://developers.cloudflare.com/changelog/rss/browser-run.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a><a href="https://developers.cloudflare.com/changelog/rss/cf.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/containers/">Containers</a><a href="https://developers.cloudflare.com/changelog/rss/containers.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/d1/">D1</a><a href="https://developers.cloudflare.com/changelog/rss/d1.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/durable-objects/">Durable Objects</a><a href="https://developers.cloudflare.com/changelog/rss/durable-objects.xml">Subscribe to RSS</a>

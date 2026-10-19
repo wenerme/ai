@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/targeting/og.png?v=3091e56ea67
 
 # Targeting rules
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Targeting rules let you serve different flag values to different users based on their attributes. Each flag can have zero or more rules.
 
@@ -35,14 +35,36 @@ A rule consists of:
 Each condition compares an attribute from the evaluation context against a value using an operator:
 
 - **Attribute** — The context key to evaluate (for example, `userId`, `country`, `plan`).
-- **Operator** — The comparison to perform. Flagship supports [11 operators](https://developers.cloudflare.com/flagship/targeting/operators/).
+- **Operator** — The comparison to perform. Flagship supports [13 operators](https://developers.cloudflare.com/flagship/targeting/operators/).
 - **Value** — The value to compare against. Can be a string, number, or array depending on the operator.
 
 If the evaluation context does not include the attribute referenced by a condition, that condition does not match.
 
+The following rule matches an enterprise profile with the `beta` tag:
+
+```json
+{
+	"conditions": [
+		{
+			"attribute": "profile.plan",
+			"operator": "equals",
+			"value": "enterprise"
+		},
+		{ "attribute": "tags", "operator": "has", "value": "beta" }
+	],
+	"serve_variation": "on"
+}
+```
+
+Dot-separated attributes traverse nested context objects. Paths can contain at most five segments.
+
+A literal top-level key takes precedence over path traversal. For example, `"profile.plan"` uses that exact top-level key when both forms exist.
+
 ## Logical grouping
 
 Conditions within a rule can be grouped with `AND`/`OR` operators and nested up to five levels deep.
+
+Condition grouping depth is separate from context value nesting. It is also separate from the five-segment attribute path limit.
 
 For example, to target enterprise users in the US or Canada:
 
@@ -68,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/targeting/#page","headline":"Targeting rules","description":"Serve different Flagship flag values to different users based on attributes, conditions, and logical grouping.","url":"https://developers.cloudflare.com/flagship/targeting/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/targeting/og.png?v=3091e56ea674733c","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/targeting/#page","headline":"Targeting rules","description":"Serve different Flagship flag values to different users based on attributes, conditions, and logical grouping.","url":"https://developers.cloudflare.com/flagship/targeting/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/targeting/og.png?v=3091e56ea674733c","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

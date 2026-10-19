@@ -64,9 +64,9 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -109,6 +109,10 @@ Get costs details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -552,6 +556,7 @@ curl https://api.openai.com/v1/organization/costs \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,

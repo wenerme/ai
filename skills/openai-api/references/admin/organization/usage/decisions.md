@@ -84,7 +84,7 @@ Get Decisions API usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }`
+  - `results: array of object { input_tokens, num_model_requests, object, 22 more }`
 
     - `input_tokens: number`
 
@@ -125,6 +125,10 @@ Get Decisions API usage details for the organization.
     - `input_cache_write_12h_tokens: optional number or null`
 
       The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+    - `input_cache_write_30m_tokens: optional number or null`
+
+      The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
     - `input_cache_write_tokens: optional number or null`
 
@@ -222,6 +226,7 @@ curl https://api.openai.com/v1/organization/usage/decisions \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,

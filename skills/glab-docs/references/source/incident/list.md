@@ -29,6 +29,7 @@ glab incident list --all
 glab incident ls --all
 glab incident list --assignee=@me
 glab incident list --milestone release-2.0.0 --opened
+glab incident list --updated-after 2026-10-01T00:00:00Z
 ```
 
 ## Options
@@ -39,6 +40,8 @@ glab incident list --milestone release-2.0.0 --opened
       --author string          Filter incident by author <username>.
   -c, --closed                 Get only closed incidents.
   -C, --confidential           Filter by confidential incidents.
+      --created-after time     Filter incidents created after a certain date (RFC 3339, for example 2026-10-01T00:00:00Z).
+      --created-before time    Filter incidents created before a certain date (RFC 3339, for example 2026-10-01T00:00:00Z).
   -e, --epic int               List issues belonging to a given epic (requires --group, no pagination support).
   -g, --group string           Select a group or subgroup. Ignored if a repo argument is set.
       --in string              Search in: title, description. (default "title,description")
@@ -56,6 +59,8 @@ glab incident list --milestone release-2.0.0 --opened
   -R, --repo string            Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
       --search string          Search <string> in the fields defined by '--in'.
   -s, --sort string            Sort direction for --order field: asc or desc. (default "desc")
+      --updated-after time     Filter incidents updated after a certain date (RFC 3339, for example 2026-10-01T00:00:00Z).
+      --updated-before time    Filter incidents updated before a certain date (RFC 3339, for example 2026-10-01T00:00:00Z).
 ```
 
 ## Options inherited from parent commands

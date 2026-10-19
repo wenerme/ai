@@ -76,9 +76,9 @@ Get audio speeches usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -121,6 +121,10 @@ Get audio speeches usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -564,6 +568,7 @@ curl https://api.openai.com/v1/organization/usage/audio_speeches \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -702,9 +707,9 @@ Get audio transcriptions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -747,6 +752,10 @@ Get audio transcriptions usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -1190,6 +1199,7 @@ curl https://api.openai.com/v1/organization/usage/audio_transcriptions \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -1310,9 +1320,9 @@ Get code interpreter sessions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -1355,6 +1365,10 @@ Get code interpreter sessions usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -1798,6 +1812,7 @@ curl https://api.openai.com/v1/organization/usage/code_interpreter_sessions \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -1942,9 +1957,9 @@ Get completions usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -1987,6 +2002,10 @@ Get completions usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -2430,6 +2449,7 @@ curl https://api.openai.com/v1/organization/usage/completions \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -2574,9 +2594,9 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -2619,6 +2639,10 @@ Get costs details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -3062,6 +3086,7 @@ curl https://api.openai.com/v1/organization/costs \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -3213,7 +3238,7 @@ Get Decisions API usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 21 more }`
+  - `results: array of object { input_tokens, num_model_requests, object, 22 more }`
 
     - `input_tokens: number`
 
@@ -3254,6 +3279,10 @@ Get Decisions API usage details for the organization.
     - `input_cache_write_12h_tokens: optional number or null`
 
       The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+    - `input_cache_write_30m_tokens: optional number or null`
+
+      The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
     - `input_cache_write_tokens: optional number or null`
 
@@ -3351,6 +3380,7 @@ curl https://api.openai.com/v1/organization/usage/decisions \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -3497,9 +3527,9 @@ Get embeddings usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3542,6 +3572,10 @@ Get embeddings usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -3985,6 +4019,7 @@ curl https://api.openai.com/v1/organization/usage/embeddings \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -4123,9 +4158,9 @@ Get file search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4168,6 +4203,10 @@ Get file search calls usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -4611,6 +4650,7 @@ curl https://api.openai.com/v1/organization/usage/file_search_calls \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -4776,9 +4816,9 @@ Get images usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4821,6 +4861,10 @@ Get images usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -5264,6 +5308,7 @@ curl https://api.openai.com/v1/organization/usage/images \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -5404,9 +5449,9 @@ Get moderations usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -5449,6 +5494,10 @@ Get moderations usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -5892,6 +5941,7 @@ curl https://api.openai.com/v1/organization/usage/moderations \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -6012,9 +6062,9 @@ Get vector stores usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -6057,6 +6107,10 @@ Get vector stores usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -6500,6 +6554,7 @@ curl https://api.openai.com/v1/organization/usage/vector_stores \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -6648,9 +6703,9 @@ Get web search calls usage details for the organization.
 
     - `"bucket"`
 
-  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -6693,6 +6748,10 @@ Get web search calls usage details for the organization.
       - `input_cache_write_12h_tokens: optional number`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
       - `input_cache_write_tokens: optional number`
 
@@ -7136,6 +7195,7 @@ curl https://api.openai.com/v1/organization/usage/web_search_calls \
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,
+          "input_cache_write_30m_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,
@@ -7241,9 +7301,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7286,6 +7346,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -7715,9 +7779,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -7760,6 +7824,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -8189,9 +8257,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -8234,6 +8302,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -8663,9 +8735,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -8708,6 +8780,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -9137,9 +9213,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -9182,6 +9258,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -9611,7 +9691,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of object { input_tokens, num_model_requests, object, 21 more }`
+    - `results: array of object { input_tokens, num_model_requests, object, 22 more }`
 
       - `input_tokens: number`
 
@@ -9652,6 +9732,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
       - `input_cache_write_12h_tokens: optional number or null`
 
         The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+      - `input_cache_write_30m_tokens: optional number or null`
+
+        The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
       - `input_cache_write_tokens: optional number or null`
 
@@ -9735,9 +9819,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -9780,6 +9864,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -10209,9 +10297,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -10254,6 +10342,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -10683,9 +10775,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -10728,6 +10820,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -11157,9 +11253,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -11202,6 +11298,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -11631,9 +11731,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -11676,6 +11776,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 
@@ -12105,9 +12209,9 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
       - `"bucket"`
 
-    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 21 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+    - `results: array of OrganizationUsageCompletionsResult { input_tokens, num_model_requests, object, 22 more }  or OrganizationUsageEmbeddingsResult { input_tokens, num_model_requests, object, 4 more }  or OrganizationUsageModerationsResult { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
+      - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 22 more }`
 
         The aggregated completions usage details of the specific time bucket.
 
@@ -12150,6 +12254,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `input_cache_write_12h_tokens: optional number`
 
           The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
+        - `input_cache_write_30m_tokens: optional number or null`
+
+          The aggregated number of input tokens written to the cache with a 30-minute retention period. May be absent or null for older responses.
 
         - `input_cache_write_tokens: optional number`
 

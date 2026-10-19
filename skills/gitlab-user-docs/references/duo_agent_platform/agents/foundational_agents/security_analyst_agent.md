@@ -1,7 +1,7 @@
 # Security Analyst Agent
 
 - Tier: Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19659) in GitLab 18.6.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
