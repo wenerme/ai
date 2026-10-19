@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f
 
 # OpenFeature SDK
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Evaluate Flagship feature flags using OpenFeature.
 
@@ -38,6 +38,24 @@ Flagship SDKs are organized by language. The TypeScript SDK has separate setup g
 Note
 
 If you are running inside a Cloudflare Worker, the [binding](https://developers.cloudflare.com/flagship/binding/) is the recommended approach because it avoids HTTP overhead. You can also [pass the binding to the OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) to get the best of both. Use the SDK without a binding when running in non-Worker runtimes like Node.js or the browser.
+
+## Context support
+
+The TypeScript, Python, and Go SDKs support structured context from version `0.6.0`. Context support depends on the evaluation client and transport:
+
+| Client or API | Context support |
+| --- | --- |
+| Direct Workers binding | Recursive JSON values; valid `Date` values normalize to strings |
+| TypeScript server provider | Recursive JSON values and `Date`, with binding or HTTP evaluation |
+| TypeScript client provider | Recursive JSON values and `Date` |
+| Python provider | Recursive JSON values and `datetime` |
+| Go provider | Recursive JSON values and `time.Time` |
+| Wrangler | String values from each `--context` argument |
+| Evaluation API `POST` | Recursive JSON values |
+
+The SDKs send structured context over HTTP using `POST`. Context containing only strings, numbers, booleans, or dates uses `GET` query parameters. Dates normalize to strings, including within nested objects and arrays.
+
+Use the [evaluation API `POST` endpoint](https://developers.cloudflare.com/flagship/reference/evaluation-api/#send-structured-json-context) when sending structured context without an SDK.
 
 ## Installation
 
@@ -109,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, and Go applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

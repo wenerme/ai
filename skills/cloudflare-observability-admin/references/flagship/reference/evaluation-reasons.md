@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/evaluation-reasons/o
 
 # Evaluation reasons and error codes
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you evaluate a flag using the binding's `*Details` methods or the OpenFeature SDK, the response includes a `reason` field that explains why a particular value was returned. If an error occurs, the response includes an `errorCode` field.
 
@@ -36,9 +36,15 @@ When an evaluation error occurs, the method returns the default value you provid
 | --- | --- |
 | `TYPE_MISMATCH` | The flag's variant type does not match the requested type. For example, calling `getBooleanValue` on a flag whose variant is a string. The default value is returned. |
 | `FLAG_NOT_FOUND` | The specified flag key does not exist in the app. The default value is returned. |
-| `INVALID_CONTEXT` | The evaluation context contains unsupported values, such as objects or arrays in HTTP evaluation. The default value is returned. |
+| `INVALID_CONTEXT` | The context has an invalid shape or unsupported value, contains a non-finite number or cycle, or exceeds a limit. |
 | `PARSE_ERROR` | The SDK received an invalid evaluation response. The default value is returned. |
 | `GENERAL` | An unexpected error occurred during evaluation, such as a timeout or network failure. The default value is returned. |
+
+## Invalid context behavior
+
+Binding `*Details()` methods return the supplied default value for invalid context. They set `reason` to `ERROR`, `errorCode` to `INVALID_CONTEXT`, and include an `errorMessage`.
+
+The direct data-plane HTTP `POST` endpoint returns a `400` response instead. Refer to [Evaluation API](https://developers.cloudflare.com/flagship/reference/evaluation-api/) for a request example.
 
 ## Example
 
@@ -71,7 +77,7 @@ switch (details.reason) {
 }
 
 if (details.errorCode) {
-	console.error(`Evaluation error: ${details.errorCode}`);
+	console.error(`Evaluation error: ${details.errorCode}`, details.errorMessage);
 }
 ```
 
@@ -102,7 +108,7 @@ switch (details.reason) {
 }
 
 if (details.errorCode) {
-	console.error(`Evaluation error: ${details.errorCode}`);
+	console.error(`Evaluation error: ${details.errorCode}`, details.errorMessage);
 }
 ```
 
@@ -115,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/og.png?v=86b5d4b48cd4e205","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/og.png?v=86b5d4b48cd4e205","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

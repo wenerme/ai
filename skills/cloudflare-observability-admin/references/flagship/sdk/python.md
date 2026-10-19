@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96
 
 # Python SDK
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -100,7 +100,9 @@ Cached values may be stale until the TTL expires. Keep the TTL short for flags t
 
 ## Evaluation context
 
-Context attributes are sent as URL query parameters. Supported values are strings, integers, floats, booleans, and `datetime` values. Dictionaries, lists, tuples, and other complex values raise `InvalidContextError`.
+From version `0.6.0`, context attributes can contain strings, integers, finite floats, booleans, `None`, dictionaries with string keys, lists, and tuples. The provider recursively normalizes `datetime` values to ISO 8601 strings.
+
+The provider sends structured context using `POST` with a JSON body. Context containing only strings, numbers, booleans, or datetimes uses `GET` query parameters. Unsupported values, non-finite numbers, and cycles raise `InvalidContextError`.
 
 ## Async evaluation
 
@@ -126,5 +128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/python/#page","headline":"Python SDK","description":"Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/python/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96f39f9e","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/python/#page","headline":"Python SDK","description":"Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/python/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96f39f9e","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

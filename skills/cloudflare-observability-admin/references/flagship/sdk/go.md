@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35
 
 # Go SDK
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -127,7 +127,9 @@ The cache is per-provider instance, guarded by a mutex for concurrent use, and c
 
 ## Evaluation context
 
-Context attributes are sent as URL query parameters. Supported values are strings, numeric types, booleans, and `time.Time`. `nil` values are skipped. Maps, slices, structs, and other complex values return `INVALID_CONTEXT` through OpenFeature and do not trigger an HTTP request.
+From version `0.6.0`, context attributes can contain strings, finite numeric values, booleans, `nil`, maps with string keys, slices, and arrays. The provider recursively normalizes `time.Time` values to RFC 3339 strings.
+
+The provider sends structured context using `POST` with a JSON body. Context containing only strings, numbers, booleans, or times uses `GET` query parameters. Unsupported values, such as other structs, and non-finite numbers return `INVALID_CONTEXT` through OpenFeature without triggering an HTTP request.
 
 Was this helpful?
 
@@ -138,5 +140,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35c8","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35c8","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

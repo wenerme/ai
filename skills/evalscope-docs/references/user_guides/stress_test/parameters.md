@@ -100,6 +100,7 @@ The keys carried by `--dataset-args` are documented in the sections where they a
 | `openqa` | Automatically downloads [OpenQA](https://www.modelscope.cn/datasets/AI-ModelScope/HC3-Chinese/summary) from ModelScopePrompts are relatively short (usually <100 tokens)Uses `question` field from jsonl file when `dataset_path` is specified | ✓ |
 | `longalpaca` | Automatically downloads [LongAlpaca-12k](https://www.modelscope.cn/datasets/AI-ModelScope/LongAlpaca-12k/dataPeview) from ModelScopePrompts are much longer (generally >6000 tokens)Uses `instruction` field from jsonl file when `dataset_path` is specified | ✓ |
 | `line_by_line` | Each line is a plain prompt, an OpenAI messages JSON array, or a complete request-body JSON object; JSON is forwarded unchanged**Requires `dataset_path`** | ✓ (Required) |
+| `open_decisions` | Automatically downloads [OpenDecisions](https://modelscope.cn/datasets/evalscope/OpenDecisions) from ModelScopeConverts items into System One decision request bodies; use with `--api systemone` only | ✓ (directory) |
 | `random` | Randomly generates prompts based on `prefix-length`, `max-prompt-length`, and `min-prompt-length`**Requires `tokenizer-path`**[Usage example](./examples.md#random-dataset) | ✗ |
 | `custom` | Custom dataset parserSee [Custom Dataset Guide](custom.md#custom-dataset) | ✓ |
 
@@ -214,7 +215,8 @@ The `prefix_file` in this section injects a **real text** prefix for real datase
 
 | Parameter | Type | Description | Default |
 |-----------|------|-------------|---------|
-| `--prefix-length` | `int` | Length of the random token prefixOnly effective for the `random` dataset; all requests share the same prefix, which can be used to induce prefix-cache hits | `0` |
+| `--prefix-length` | `int` | Length of the random token prefixFor the `random` dataset; raw token length of each shared prefix in the per-run pool | `0` |
+| `--prefix-count` | `int` | Number of distinct shared raw token prefixes per run; requests use `request_index % prefix_count`, including warmup. Must be >= 1; values > 1 require `--dataset random`, `--prefix-length > 0`, and no `--prompt`. | `1` |
 | `--image-width` | `int` | Image width for random VL dataset | `224` |
 | `--image-height` | `int` | Image height for random VL dataset | `224` |
 | `--image-format` | `str` | Image format for random VL dataset | `RGB` |

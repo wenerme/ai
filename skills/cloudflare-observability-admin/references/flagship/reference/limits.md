@@ -1,5 +1,5 @@
 ---
-description: Platform limits for Flagship, including maximum apps per account, flags per app, condition nesting depth, and configuration size.
+description: Platform and evaluation context limits for Flagship apps, flags, rules, and requests.
 title: Limits
 image: https://developers.cloudflare.com/flagship/reference/limits/og.png?v=765ae85e3152a3d3
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/limits/og.png?v=765a
 
 # Limits
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flagship enforces the following limits.
 
@@ -26,7 +26,7 @@ Flagship enforces the following limits.
 | Condition attribute names | 64 chars |
 | Condition string values | 256 chars |
 | Variant value size | 10 KB |
-| Condition nesting depth | 5 levels |
+| Condition grouping depth | 5 levels |
 | Flag description | 512 chars |
 | Flag configuration size per app | 25 MB |
 
@@ -34,9 +34,22 @@ Note
 
 The apps-per-account and flags-per-app limits are soft limits. If your use case requires higher limits, contact Cloudflare support.
 
+## Evaluation context limits
+
+The following limits apply to each evaluation context:
+
+| Feature | Limit | Scope |
+| --- | --- | --- |
+| Top-level attributes | 100 | All evaluation paths |
+| Top-level key length | 1–256 chars | All evaluation paths |
+| Value nesting depth | 10 levels | All evaluation paths |
+| Serialized UTF-8 JSON size | 32 KiB | All evaluation paths |
+| Values visited during traversal | 10,000 values | Data-plane HTTP and Workers binding only |
+
 ## Notes
 
-- Condition nesting depth counts from the top-level condition group. A flat list of conditions (no nesting) has a depth of 1.
+- Condition grouping depth counts from the top-level condition group. A flat list of conditions has a depth of one.
+- Context value nesting and attribute path traversal use separate limits. Targeting attribute paths can contain up to five segments.
 - Flag keys, app names, condition set names, and variant keys can contain letters, numbers, hyphens, and underscores.
 - All variants on a flag must use the same value type: boolean, string, number, or JSON.
 - Flag configuration size refers to the total serialized size of all flags within a single app, including their variants and rules.
@@ -50,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/limits/#page","headline":"Limits","description":"Platform limits for Flagship, including maximum apps per account, flags per app, condition nesting depth, and configuration size.","url":"https://developers.cloudflare.com/flagship/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/limits/og.png?v=765ae85e3152a3d3","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/limits/#page","headline":"Limits","description":"Platform and evaluation context limits for Flagship apps, flags, rules, and requests.","url":"https://developers.cloudflare.com/flagship/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/limits/og.png?v=765ae85e3152a3d3","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

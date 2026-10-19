@@ -16,6 +16,23 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-19
+
+[Cloud Workload Security](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/)
+
+
+**Cloud Workload Security is now available in Beta**
+
+[Cloud Workload Security (CWS)](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/) is now available in Beta. Apply policy controls to cloud API requests before they reach your cloud provider.
+
+Define policies with request filters and Rego checks. For example, block requests that would make an R2 bucket public. Use workloads and policy sets to target your cloud environments.
+
+Manage your policies in the Cloudflare dashboard. Run the CWS proxy in your environment and route client requests through it to enforce your policies.
+
+CWS requires a Zero Trust subscription. The Zero Trust Free plan is sufficient.
+
+To configure your first guardrail, follow [Get started with Cloud Workload Security](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/get-started/).
+
 ## 2026-10-16
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)

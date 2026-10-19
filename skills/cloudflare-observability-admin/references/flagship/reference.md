@@ -16,6 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 - [Limits](https://developers.cloudflare.com/flagship/reference/limits/)
 - [Evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/)
+- [Evaluation API](https://developers.cloudflare.com/flagship/reference/evaluation-api/)
 - [API reference](https://developers.cloudflare.com/api/resources/flagship/)
 - [Wrangler commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/)
 

@@ -36,6 +36,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `bigcodebench` | [BigCodeBench](../../benchmarks/bigcodebench.md) | `Coding` |
 | `bigcodebench_hard` | [BigCodeBench-Hard](../../benchmarks/bigcodebench_hard.md) | `Coding` |
 | `biomix_qa` | [BioMixQA](../../benchmarks/biomix_qa.md) | `Knowledge`, `MCQ`, `Medical` |
+| `bird_sql` | [BIRD-SQL Mini-Dev](../../benchmarks/bird_sql.md) | `Coding`, `Reasoning` |
 | `boolq` | [BoolQ](../../benchmarks/boolq.md) | `MCQ` |
 | `broad_twitter_corpus` | [BroadTwitterCorpus](../../benchmarks/broad_twitter_corpus.md) | `Knowledge`, `NER` |
 | `ceval` | [C-Eval](../../benchmarks/ceval.md) | `Chinese`, `Knowledge`, `MCQ` |
@@ -58,10 +59,12 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `drivel_selection` | [DrivelologyNarrativeSelection](../../benchmarks/drivel_selection.md) | `MCQ` |
 | `drivel_writing` | [DrivelologyNarrativeWriting](../../benchmarks/drivel_writing.md) | `Knowledge`, `Reasoning` |
 | `drop` | [DROP](../../benchmarks/drop.md) | `Reasoning` |
+| `ds1000` | [DS-1000](../../benchmarks/ds1000.md) | `Coding` |
 | `eq_bench` | [EQ-Bench](../../benchmarks/eq_bench.md) | `InstructionFollowing` |
 | `fin_ner` | [FinNER](../../benchmarks/fin_ner.md) | `Knowledge`, `NER` |
 | `frames` | [FRAMES](../../benchmarks/frames.md) | `LongContext`, `Reasoning` |
 | `general_arena` | [GeneralArena](../../benchmarks/general_arena.md) | `Arena`, `Custom` |
+| `general_decision` | [General Decision](../../benchmarks/general_decision.md) | `Custom`, `Decision` |
 | `general_mcq` | [General-MCQ](../../benchmarks/general_mcq.md) | `Custom`, `MCQ` |
 | `general_qa` | [General-QA](../../benchmarks/general_qa.md) | `Custom`, `QA` |
 | `genia_ner` | [GeniaNER](../../benchmarks/genia_ner.md) | `Knowledge`, `NER` |
@@ -85,6 +88,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `indic_boolq` | [BoolQ-Indic](../../benchmarks/indic_boolq.md) | `MCQ`, `MultiLingual`, `ReadingComprehension` |
 | `indic_param` | [IndicParam](../../benchmarks/indic_param.md) | `Knowledge`, `MCQ`, `MultiLingual` |
 | `iquiz` | [IQuiz](../../benchmarks/iquiz.md) | `Chinese`, `Knowledge`, `MCQ` |
+| `jevbench` | [JevBench public subset](../../benchmarks/jevbench.md) | `Decision` |
 | `jnlpba` | [JNLPBA](../../benchmarks/jnlpba.md) | `Knowledge`, `NER` |
 | `jnlpba_rare` | [JNLPBA-Rare](../../benchmarks/jnlpba_rare.md) | `Knowledge`, `NER` |
 | `kina` | [KINA](../../benchmarks/kina.md) | `Knowledge`, `MCQ` |
@@ -120,6 +124,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `needle_haystack` | [Needle-in-a-Haystack](../../benchmarks/needle_haystack.md) | `LongContext`, `Retrieval` |
 | `one_million_bench` | [$OneMillion-Bench](../../benchmarks/one_million_bench.md) | `Agent`, `Knowledge`, `MultiLingual`, `QA`, `Reasoning` |
 | `ontonotes5` | [OntoNotes5](../../benchmarks/ontonotes5.md) | `Knowledge`, `NER` |
+| `open_decisions` | [OpenDecisions](../../benchmarks/open_decisions.md) | `Decision` |
 | `openai_mrcr` | [OpenAI MRCR](../../benchmarks/openai_mrcr.md) | `LongContext`, `Retrieval` |
 | `perspective_gap_prompt_writing` | [PerspectiveGap Prompt Writing](../../benchmarks/perspective_gap_prompt_writing.md) | `Agent`, `InstructionFollowing` |
 | `perspective_gap_role_assignment` | [PerspectiveGap Role Assignment](../../benchmarks/perspective_gap_role_assignment.md) | `Agent`, `InstructionFollowing` |
@@ -140,10 +145,12 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `simple_qa` | [SimpleQA](../../benchmarks/simple_qa.md) | `Knowledge`, `QA` |
 | `siqa` | [SIQA](../../benchmarks/siqa.md) | `Commonsense`, `MCQ`, `Reasoning` |
 | `sparc` | [SPaRC](../../benchmarks/sparc.md) | `Reasoning` |
+| `stsb` | [STS-B Decision](../../benchmarks/stsb.md) | `Decision` |
 | `super_gpqa` | [SuperGPQA](../../benchmarks/super_gpqa.md) | `Knowledge`, `MCQ` |
 | `swe_bench_lite` | [SWE-bench_Lite](../../benchmarks/swe_bench_lite.md) | `Coding` |
 | `swe_bench_verified` | [SWE-bench_Verified](../../benchmarks/swe_bench_verified.md) | `Coding` |
 | `swe_bench_verified_mini` | [SWE-bench_Verified_mini](../../benchmarks/swe_bench_verified_mini.md) | `Coding` |
+| `tablebench` | [TableBench](../../benchmarks/tablebench.md) | `QA`, `Reasoning` |
 | `tool_bench` | [ToolBench-Static](../../benchmarks/tool_bench.md) | `FunctionCalling`, `Reasoning` |
 | `trivia_qa` | [TriviaQA](../../benchmarks/trivia_qa.md) | `QA`, `ReadingComprehension` |
 | `triviaqa_indic` | [TriviaQA-Indic-MCQ](../../benchmarks/triviaqa_indic.md) | `Knowledge`, `MCQ`, `MultiLingual` |
@@ -191,6 +198,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/bigcodebench.md
 ../../benchmarks/bigcodebench_hard.md
 ../../benchmarks/biomix_qa.md
+../../benchmarks/bird_sql.md
 ../../benchmarks/boolq.md
 ../../benchmarks/broad_twitter_corpus.md
 ../../benchmarks/ceval.md
@@ -213,10 +221,12 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/drivel_selection.md
 ../../benchmarks/drivel_writing.md
 ../../benchmarks/drop.md
+../../benchmarks/ds1000.md
 ../../benchmarks/eq_bench.md
 ../../benchmarks/fin_ner.md
 ../../benchmarks/frames.md
 ../../benchmarks/general_arena.md
+../../benchmarks/general_decision.md
 ../../benchmarks/general_mcq.md
 ../../benchmarks/general_qa.md
 ../../benchmarks/genia_ner.md
@@ -240,6 +250,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/indic_boolq.md
 ../../benchmarks/indic_param.md
 ../../benchmarks/iquiz.md
+../../benchmarks/jevbench.md
 ../../benchmarks/jnlpba.md
 ../../benchmarks/jnlpba_rare.md
 ../../benchmarks/kina.md
@@ -275,6 +286,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/needle_haystack.md
 ../../benchmarks/one_million_bench.md
 ../../benchmarks/ontonotes5.md
+../../benchmarks/open_decisions.md
 ../../benchmarks/openai_mrcr.md
 ../../benchmarks/perspective_gap_prompt_writing.md
 ../../benchmarks/perspective_gap_role_assignment.md
@@ -295,10 +307,12 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/simple_qa.md
 ../../benchmarks/siqa.md
 ../../benchmarks/sparc.md
+../../benchmarks/stsb.md
 ../../benchmarks/super_gpqa.md
 ../../benchmarks/swe_bench_lite.md
 ../../benchmarks/swe_bench_verified.md
 ../../benchmarks/swe_bench_verified_mini.md
+../../benchmarks/tablebench.md
 ../../benchmarks/tool_bench.md
 ../../benchmarks/trivia_qa.md
 ../../benchmarks/triviaqa_indic.md

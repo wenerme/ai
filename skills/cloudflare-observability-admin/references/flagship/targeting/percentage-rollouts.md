@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/
 
 # Percentage rollouts
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Percentage rollouts let you gradually release a feature to a fraction of your users. Any [targeting rule](https://developers.cloudflare.com/flagship/targeting/) can include a rollout percentage between 0 and 100.
 
@@ -28,21 +28,29 @@ For example, a rule can target users on the `enterprise` plan, then serve the ne
 {
 	"priority": 1,
 	"conditions": [
-		{ "attribute": "plan", "operator": "equals", "value": "enterprise" }
+		{
+			"attribute": "profile.plan",
+			"operator": "equals",
+			"value": "enterprise"
+		}
 	],
 	"serve_variation": "on",
 	"rollout": {
 		"percentage": 10,
-		"attribute": "userId"
+		"attribute": "profile.id"
 	}
 }
 ```
+
+The `profile.id` path resolves an ID from nested context. A bucketing path can contain at most five segments.
 
 The `reason` in evaluation details is `SPLIT` when a percentage rollout serves the variant.
 
 ## Sticky bucketing
 
 Flagship uses consistent hashing on a configurable attribute to assign users to a rollout bucket. The same user always receives the same flag value for a given rollout configuration. This ensures a consistent experience across repeated evaluations.
+
+For sticky bucketing, the resolved attribute must be a string, number, or boolean. Flagship converts that scalar to a stable hash input.
 
 By default, the bucketing attribute is `targetingKey`. You can configure which attribute to use for bucketing when you set up the rollout in the dashboard.
 
@@ -59,11 +67,13 @@ Choose a bucketing attribute based on what should remain stable:
 
 For most feature releases and experiments, use a stable user or account identifier. Use request-level values only when changing between requests is acceptable, such as for traffic sampling.
 
-Random assignment without targetingKey
+Random assignment without a bucketing value
 
-If `targetingKey` is not present in the evaluation context and no alternative bucketing attribute is configured, Flagship cannot produce a stable hash. In this case the rollout bucket is assigned randomly on each evaluation, meaning the same user may receive different flag values across requests.
+If the bucketing path is missing or resolves to `null`, Flagship assigns a random bucket for each evaluation. The same user may receive different values across requests.
 
 Always provide a stable `targetingKey` (or configure a consistent bucketing attribute) to guarantee sticky bucketing.
+
+If the bucketing path resolves to an array or object, the rule fails. Evaluation then continues to the next rule.
 
 ## Common rollout patterns
 
@@ -218,5 +228,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/#page","headline":"Percentage rollouts","description":"Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.","url":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/og.png?v=a3dcce827a686601","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/#page","headline":"Percentage rollouts","description":"Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.","url":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/og.png?v=a3dcce827a686601","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

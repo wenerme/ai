@@ -1,7 +1,7 @@
 # Support Assistant
 
 - Tier: Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237380) as a [beta](../../../../policy/development_stages_support.md#beta) in GitLab 19.2.

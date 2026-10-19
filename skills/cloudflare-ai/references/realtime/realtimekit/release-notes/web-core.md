@@ -16,6 +16,16 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-core/index.xml)
 
+## 2026-10-19
+
+**RealtimeKit Web Core 2.0.4**
+
+**Fixes**
+
+- Fixed a device selection priority issue in mobile browsers that caused "Headset earpiece" to be selected instead of the speaker.
+- Fixed a resource leak that kept the audio activity reporter running after a participant left a meeting.
+- Fixed an issue where a waitlisted participant's request disappeared from the host's waitlist after the participant reconnected.
+
 ## 2026-10-12
 
 **RealtimeKit Web Core 2.0.3**

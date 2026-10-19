@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/wrangler-commands/og
 
 # Wrangler commands
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `wrangler flagship` to manage Flagship apps and feature flags from the command line. Every `wrangler flagship flags` command takes the app ID as the first argument. Most subcommands then take a flag key, for example `wrangler flagship flags get <APP_ID> <KEY>`. List-style commands, such as `wrangler flagship flags list <APP_ID>`, take only the app ID.
 
@@ -234,6 +234,7 @@ Conditions compare attributes from the evaluation context with rule values. The 
 ```sh
 --rule "serve=on; when=plan equals pro"
 --rule "serve=on; when=country in [US,CA,UK]"
+--rule "serve=on; when=tags has beta"
 --rule "serve=off; when=email ends_with @example.com"
 --rule "serve=strict; when=score less_than 20"
 ```
@@ -258,7 +259,7 @@ Use `AND` and `OR` to combine conditions. `AND` has higher precedence than `OR`.
 --rule 'serve=on; when=country in ["US","CA"]'
 ```
 
-For `in` and `not_in`, pass a bracketed list. Wrangler rejects malformed lists, empty list items, unterminated quotes, and unbalanced brackets before sending the request.
+For `in` and `not_in`, pass a bracketed list. For `has` and `not_has`, pass the scalar array member to find. Wrangler rejects malformed lists, empty list items, unterminated quotes, and unbalanced brackets before sending the request.
 
 Use `--rule-json` for deeply nested logical groups or if you prefer to pass the API rule shape directly. Wrangler validates `--rule-json` against the Flagship rule schema and rejects unknown or conflicting fields.
 
@@ -579,6 +580,8 @@ wrangler flagship flags evaluate <APP_ID> premium-banner \
 ```
 
 Context values are sent to the evaluation endpoint as strings. Use the same attribute names that your targeting rules expect.
+
+JSON-looking `--context` values remain strings. Wrangler does not create nested objects or arrays from these values.
 
 Evaluation output includes:
 
@@ -1991,5 +1994,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

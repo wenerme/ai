@@ -80,6 +80,8 @@ Try a different search term, or clear your filters.
 
 [**Client-side security** Provide client-side protection for your website visitors](https://developers.cloudflare.com/client-side-security/)
 
+[**Cloud Workload Security** Apply request-level policies to cloud API traffic through a proxy in your environment](https://developers.cloudflare.com/cloudflare-one/cloud-workload-security/)
+
 [**Cloudflare CLI** Manage Cloudflare resources from one command-line interface](https://developers.cloudflare.com/cf/)
 
 [**Cloudflare for Platforms** Build your own multi-tenant platform using Cloudflare as infrastructure](https://developers.cloudflare.com/cloudflare-for-platforms/)

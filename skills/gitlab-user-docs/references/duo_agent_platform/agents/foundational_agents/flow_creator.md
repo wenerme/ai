@@ -1,7 +1,7 @@
 # Flow Creator
 
 - Tier: Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22644) in GitLab 19.3.
 
