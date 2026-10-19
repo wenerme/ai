@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/workers/og.pn
 
 # Workers
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler commands for creating, developing, deploying, and managing Workers.
 
@@ -50,6 +50,8 @@ Start a local server for developing your Worker.
 ```txt
 wrangler dev [<SCRIPT>] [OPTIONS]
 ```
+
+By default, `wrangler dev` executes your Worker in a local `workerd` process, which is not a hardened sandbox. Only run code you trust. For more information, refer to [Local development security considerations](https://developers.cloudflare.com/workers/local-development/#security-considerations).
 
 Note
 
@@ -120,7 +122,7 @@ None of the options for this command are required. Many of these options can be 
 - `--persist-to` `string` optional
   - Specify directory to use for local persistence.
 - `--remote` `boolean` (default: false) optional
-  - Develop against remote resources and data stored on Cloudflare's network.
+  - Execute your Worker in a preview environment on Cloudflare. All bindings connect to remote resources.
 - `--tunnel` `boolean` (default: false) optional
   - Expose your local dev server over a Cloudflare Tunnel. For more information, refer to [Share a local dev server](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/).
 - `--tunnel-name` `string` optional
@@ -1926,5 +1928,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/commands/workers/og.png?v=23e946081c972e5c","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/commands/workers/og.png?v=23e946081c972e5c","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

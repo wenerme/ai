@@ -109,7 +109,7 @@ For details, see the [`IN` documentation](https://duckdb.org/docs/current/sql/ex
 
 `NULL` values are ignored in most aggregate functions.
 
-Aggregate functions that do not ignore `NULL` values include: `first`, `last`, `list` and `array_agg`. To exclude `NULL` values from those aggregate functions, the [`FILTER` clause](https://duckdb.org/docs/current/sql/query_syntax/filter.html) can be used.
+Aggregate functions that do not ignore `NULL` values include: `first`, `last`, `list` and `array_agg`. To exclude `NULL` values from these results, use a [`FILTER` clause](https://duckdb.org/docs/current/sql/query_syntax/filter.html) with a predicate that excludes the relevant null rows, such as `list(x) FILTER (WHERE x IS NOT NULL)`. A different filter predicate does not remove `NULL` values from rows that pass it.
 
 <!-- test:setup DROP TABLE IF EXISTS integers; -->
 

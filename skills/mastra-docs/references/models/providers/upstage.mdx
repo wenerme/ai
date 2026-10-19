@@ -5,7 +5,7 @@ description: "Browse Upstage model IDs, capabilities, context windows, and prici
 
 # [Upstage logo]Upstage
 
-Access 4 Upstage models through Mastra's model router. Authentication is handled automatically using the `UPSTAGE_API_KEY` environment variable.
+Access 5 Upstage models through Mastra's model router. Authentication is handled automatically using the `UPSTAGE_API_KEY` environment variable.
 
 Learn more in the [Upstage documentation](https://developers.upstage.ai).
 
@@ -50,6 +50,18 @@ for await (const chunk of stream) {
     "maxOutput": 4096,
     "inputCost": 0.15,
     "outputCost": 0.15
+  },
+  {
+    "model": "upstage/solar-mini4",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.1,
+    "outputCost": 0.4
   },
   {
     "model": "upstage/solar-pro2",

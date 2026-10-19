@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/configuration/routing/routes/og
 
 # Routes
 
-Last updated Jun 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -183,7 +183,7 @@ If a route pattern hostname begins with `*`, then it matches the host and all su
 
 Caution
 
-Because `*` matches zero or more of **any character** (not just subdomains), `*example.com` will also match hostnames that are not subdomains of `example.com`. If you only want to match `example.com` and its subdomains, use two separate routes (`example.com/*` and `*.example.com/*`) instead.
+Because `*` matches zero or more of **any character** (not just subdomains), `*example.com` matches any hostname ending in `example.com`. This includes `myexample.com` and `not-example.com`. To match only `example.com` and its subdomains, use two separate routes: `example.com/*` and `*.example.com/*`.
 
 The following examples illustrate the difference between `*example.com/*` and `*.example.com/*`:
 
@@ -192,7 +192,21 @@ The following examples illustrate the difference between `*example.com/*` and `*
 | `https://example.com/` | Matches | Does not match |
 | `https://www.example.com/path` | Matches | Matches |
 | `https://myexample.com/` | Matches | Does not match |
-| `https://not-example.com/` | Does not match | Does not match |
+| `https://not-example.com/` | Matches | Does not match |
+
+Zone scope
+
+Cloudflare evaluates Workers routes within the [zone](https://developers.cloudflare.com/dns/zone-setups/) where you create them. For ordinary zone routing, a matching pattern does not make unrelated domains such as `myexample.com` or `not-example.com` use the `example.com` zone's routes. Those rows illustrate the wildcard's string-matching behavior.
+
+[Cloudflare for SaaS custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/#how-custom-hostname-traffic-reaches-your-worker) can send traffic through the provider's zone, where its Workers routes are evaluated.
+
+The distinction matters for subdomain patterns within a zone. For example, `*sub.example.com/*` in the `example.com` zone matches `sub.example.com`, `foo.sub.example.com`, and `notsub.example.com`.
+
+| Request URL | `*sub.example.com/*` | `*.sub.example.com/*` |
+| --- | --- | --- |
+| `https://sub.example.com/` | Matches | Does not match |
+| `https://foo.sub.example.com/path` | Matches | Matches |
+| `https://notsub.example.com/` | Matches | Does not match |
 
 #### Paths may optionally end with `*`
 
@@ -221,5 +235,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/routes/og.png?v=b6f408ea01b32541","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/routes/#page","headline":"Routes","description":"Map URL patterns to Cloudflare Workers to run your code on matching requests.","url":"https://developers.cloudflare.com/workers/configuration/routing/routes/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/routes/og.png?v=b6f408ea01b32541","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

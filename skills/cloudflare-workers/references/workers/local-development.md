@@ -12,11 +12,21 @@ image: https://developers.cloudflare.com/workers/local-development/og.png?v=f54c
 
 # Local development
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [`workerd` ↗︎](https://github.com/cloudflare/workerd).
+You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code in a local [`workerd` ↗︎](https://github.com/cloudflare/workerd) process. `workerd` also powers the hosted Workers platform.
 
 [By default](https://developers.cloudflare.com/workers/local-development/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/local-development/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
+
+## Security considerations
+
+Miniflare is not a hardened sandbox
+
+Do not use Miniflare to run untrusted or potentially malicious Worker code directly on your machine. Run the entire development process inside an appropriate secure sandbox, such as a virtual machine.
+
+Miniflare starts a local [`workerd` ↗︎](https://github.com/cloudflare/workerd#warning-workerd-is-not-a-hardened-sandbox) process. This warning applies to default local execution with `wrangler dev`, `vite dev`, `vite preview`, direct Miniflare use, and Miniflare-based testing tools. Setting `remote: true` on a binding changes which resource your code accesses, but your Worker code still executes locally. By contrast, legacy `wrangler dev --remote` executes your Worker code on Cloudflare.
+
+Miniflare is not a security boundary for untrusted code. Although `workerd` attempts to restrict Worker code to configured resources, an implementation bug could allow code to escape those restrictions. The hosted Workers platform applies [additional layers of defense in depth](https://developers.cloudflare.com/workers/reference/security-model/) that Miniflare does not provide locally.
 
 ## Core concepts
 
@@ -96,7 +106,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-18",
 
 	"r2_buckets": [
 		{
@@ -111,7 +121,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-18"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -131,7 +141,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-18",
 
 	"env": {
 		"production": {
@@ -158,7 +168,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-18"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -580,5 +590,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/og.png?v=f54ca19c6e1d7c99","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/og.png?v=f54ca19c6e1d7c99","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
