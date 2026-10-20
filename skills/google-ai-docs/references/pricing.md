@@ -474,6 +474,9 @@ equates to an effective price of approximately $0.10 per second.
 
 [Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-omni-flash-preview)
 
+> [!WARNING]
+> **Warning:** Gemini Omni Flash Preview (`gemini-omni-flash-preview`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on October 22, 2026; migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) (`gemini-omni-1.1-flash`) to avoid service disruption.
+
 Our next-generation video generation and editing model.
 
 ### Standard
@@ -1184,6 +1187,9 @@ speech generation for more natural outputs and easier to steer prompts.
 
 
 [Try Veo 3.1](https://deepmind.google/models/veo/)
+
+> [!WARNING]
+> **Warning:** Veo 3.1 Preview (`veo-3.1-generate-preview`, `veo-3.1-fast-generate-preview`, and `veo-3.1-lite-generate-preview`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on October 22, 2026; migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) (`gemini-omni-1.1-flash`) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
 
 A fast video generation model.
 

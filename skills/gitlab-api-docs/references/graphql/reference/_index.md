@@ -678,6 +678,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="query-artifactregistryroleassignments-assigneeids"></a>`assigneeIds` | [`[UserID!]`](#userid) | Global IDs of users to read direct role assignments on repositories for, at most 20. Cannot be combined with `resourceIds`. The organization owner and admins of the Artifact Registry namespace may use it. |
 | <a id="query-artifactregistryroleassignments-resourceids"></a>`resourceIds` | [`[String!]`](#string) | UUIDs of the Artifact Registry resources to read role assignments for. Empty reads the whole organization, which only the organization owner may do. |
 | <a id="query-artifactregistryroleassignments-roles"></a>`roles` | [`[ArtifactRegistryRole!]`](#artifactregistryrole) | Only return assignments for these roles. |
 
@@ -1217,6 +1218,12 @@ Arguments:
 A user's frecently visited groups.
 
 Returns [`[Group!]`](#group).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="query-frecentgroups-scopetoorganization"></a>`scopeToOrganization` | [`Boolean`](#boolean) | Limits results to groups in the current organization. |
 
 ### `Query.frecentProjects`
 
@@ -12430,7 +12437,8 @@ Arguments:
 | <a id="mutation-mergerequestcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestcreate-description"></a>`description` | [`String`](#string) | Description of the merge request (Markdown rendered as HTML for caching). |
 | <a id="mutation-mergerequestcreate-labels"></a>`labels` | [`[String!]`](#string) | Labels of the merge request. |
-| <a id="mutation-mergerequestcreate-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date after which the merge request can be merged. |
+| <a id="mutation-mergerequestcreate-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date and time after which the merge request can be merged. |
+| <a id="mutation-mergerequestcreate-mergebefore"></a>`mergeBefore`  | [`Time`](#time) | Introduced in GitLab 19.6. Status: Experiment. Date and time before which the merge request can be merged. |
 | <a id="mutation-mergerequestcreate-projectpath"></a>`projectPath` | [`ID!`](#id) | Project full path the merge request is associated with. |
 | <a id="mutation-mergerequestcreate-removesourcebranch"></a>`removeSourceBranch` | [`Boolean`](#boolean) | Indicates if the source branch of the merge request will be deleted after merge. |
 | <a id="mutation-mergerequestcreate-sourcebranch"></a>`sourceBranch` | [`String!`](#string) | Source branch of the merge request. |
@@ -12839,7 +12847,8 @@ Arguments:
 | <a id="mutation-mergerequestupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestupdate-description"></a>`description` | [`String`](#string) | Description of the merge request (Markdown rendered as HTML for caching). |
 | <a id="mutation-mergerequestupdate-iid"></a>`iid` | [`String!`](#string) | IID of the merge request to mutate. |
-| <a id="mutation-mergerequestupdate-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date after which the merge request can be merged. |
+| <a id="mutation-mergerequestupdate-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date and time after which the merge request can be merged. |
+| <a id="mutation-mergerequestupdate-mergebefore"></a>`mergeBefore`  | [`Time`](#time) | Introduced in GitLab 19.6. Status: Experiment. Date and time before which the merge request can be merged. |
 | <a id="mutation-mergerequestupdate-overriderequestedchanges"></a>`overrideRequestedChanges` | [`Boolean`](#boolean) | Override all requested changes. Can only be set by users who have permissionto merge this merge request. |
 | <a id="mutation-mergerequestupdate-projectpath"></a>`projectPath` | [`ID!`](#id) | Project the merge request to mutate is in. |
 | <a id="mutation-mergerequestupdate-removesourcebranch"></a>`removeSourceBranch` | [`Boolean`](#boolean) | Indicates if the source branch of the merge request will be deleted after merge. |
@@ -18290,6 +18299,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-userpreferencesupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-userpreferencesupdate-duodefaultnamespaceid"></a>`duoDefaultNamespaceId` | [`Int`](#int) | Default namespace context for Duo features when namespace can not be inferred. |
+| <a id="mutation-userpreferencesupdate-emojiskintone"></a>`emojiSkinTone`  | [`EmojiSkinTone`](#emojiskintone) | Introduced in GitLab 19.6. Status: Experiment. Default skin tone for emoji that have skin tone variants. |
 | <a id="mutation-userpreferencesupdate-extensionsmarketplaceoptinstatus"></a>`extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus`](#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
 | <a id="mutation-userpreferencesupdate-firstdayofweek"></a>`firstDayOfWeek` | [`UserFirstDayOfWeek`](#userfirstdayofweek) | First day of the week in calendars and date pickers. Set to `null` to use the instance default. |
 | <a id="mutation-userpreferencesupdate-issuessort"></a>`issuesSort` | [`IssueSort`](#issuesort) | Sort order for issue lists. |
@@ -20666,6 +20676,7 @@ Fields:
 | <a id="aiflowtriggertypeconnection-edges"></a>`edges` | [`[AiFlowTriggerTypeEdge]`](#aiflowtriggertypeedge) | A list of edges. |
 | <a id="aiflowtriggertypeconnection-nodes"></a>`nodes` | [`[AiFlowTriggerType]`](#aiflowtriggertype) | A list of nodes. |
 | <a id="aiflowtriggertypeconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+| <a id="aiflowtriggertypeconnection-runstats"></a>`runStats`  | [`AiFlowTriggerRunStats`](#aiflowtriggerrunstats) | Introduced in GitLab 19.6. Status: Experiment. Statistics of the runs created in the last 30 days by all flow triggers in the collection, not only the current page. |
 
 ##### Fields with arguments
 
@@ -34044,6 +34055,17 @@ Fields:
 | <a id="aiflowscheduletype-project"></a>`project` | [`Project!`](#project) | Project of the flow schedule. |
 | <a id="aiflowscheduletype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow schedule was last updated. |
 
+### `AiFlowTriggerDailyRunCount`
+
+Number of runs of a flow trigger created on one UTC day.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowtriggerdailyruncount-date"></a>`date` | [`Date!`](#date) | UTC day the runs were created on. |
+| <a id="aiflowtriggerdailyruncount-runs"></a>`runs` | [`Int!`](#int) | Number of runs created on the day. |
+
 ### `AiFlowTriggerLastRun`
 
 Details of the most recent run of a flow trigger.
@@ -34056,6 +34078,21 @@ Fields:
 | <a id="aiflowtriggerlastrun-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the run finished, or null if the run is not finished. |
 | <a id="aiflowtriggerlastrun-startedat"></a>`startedAt` | [`Time!`](#time) | Timestamp of when the run started. |
 | <a id="aiflowtriggerlastrun-status"></a>`status` | [`AiFlowTriggerRunStatus!`](#aiflowtriggerrunstatus) | Status of the run. |
+
+### `AiFlowTriggerRunStats`
+
+Statistics of the runs of a flow trigger created in the last 30 days.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowtriggerrunstats-dailyvolume"></a>`dailyVolume` | [`[AiFlowTriggerDailyRunCount!]!`](#aiflowtriggerdailyruncount) | Number of runs created on each UTC day. Days without runs are omitted. |
+| <a id="aiflowtriggerrunstats-failedruns"></a>`failedRuns` | [`Int!`](#int) | Number of runs that failed. |
+| <a id="aiflowtriggerrunstats-finishedruns"></a>`finishedRuns` | [`Int!`](#int) | Number of runs that finished successfully. |
+| <a id="aiflowtriggerrunstats-mediandurationseconds"></a>`medianDurationSeconds` | [`Float`](#float) | Median time in seconds from creation to last update of runs that finished, failed, or were stopped. Null if no run has ended. |
+| <a id="aiflowtriggerrunstats-stoppedruns"></a>`stoppedRuns` | [`Int!`](#int) | Number of runs that were stopped. |
+| <a id="aiflowtriggerrunstats-totalruns"></a>`totalRuns` | [`Int!`](#int) | Number of runs. |
 
 ### `AiFlowTriggerType`
 
@@ -34081,6 +34118,7 @@ Fields:
 | <a id="aiflowtriggertype-precondition"></a>`precondition`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Enforced filter conditions from the foundational flow definition. |
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project`](#project) | Project of the flow trigger. Null for group flow triggers. |
 | <a id="aiflowtriggertype-readymergerequestsonfinish"></a>`readyMergeRequestsOnFinish`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.6. Status: Experiment. Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| <a id="aiflowtriggertype-runstats"></a>`runStats`  | [`AiFlowTriggerRunStats`](#aiflowtriggerrunstats) | Introduced in GitLab 19.6. Status: Experiment. Statistics of the runs of the flow trigger created in the last 30 days. |
 | <a id="aiflowtriggertype-runningcount"></a>`runningCount`  | [`Int!`](#int) | Introduced in GitLab 19.6. Status: Experiment. Number of sessions of the flow trigger that are created or running. |
 | <a id="aiflowtriggertype-sessions"></a>`sessions`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 19.6. Status: Experiment. Sessions started by the flow trigger, newest first. Returns sessions for only one flow trigger per request. |
 | <a id="aiflowtriggertype-statusonfinish"></a>`statusOnFinish`  | [`String`](#string) | Introduced in GitLab 19.6. Status: Experiment. Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
@@ -50281,7 +50319,8 @@ Fields:
 | <a id="mergerequest-iid"></a>`iid` | [`String!`](#string) | Internal ID of the merge request. |
 | <a id="mergerequest-inprogressmergecommitsha"></a>`inProgressMergeCommitSha` | [`String`](#string) | Commit SHA of the merge request if merge is in progress. |
 | <a id="mergerequest-labels"></a>`labels` | [`LabelConnection`](#labelconnection) | Labels of the merge request. (see [Connections](#connections)) |
-| <a id="mergerequest-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date after which the merge request can be merged. |
+| <a id="mergerequest-mergeafter"></a>`mergeAfter` | [`Time`](#time) | Date and time after which the merge request can be merged. |
+| <a id="mergerequest-mergebefore"></a>`mergeBefore`  | [`Time`](#time) | Introduced in GitLab 19.6. Status: Experiment. Date and time before which the merge request can be merged. |
 | <a id="mergerequest-mergecommitsha"></a>`mergeCommitSha` | [`String`](#string) | SHA of the merge request commit (set once merged). |
 | <a id="mergerequest-mergeerror"></a>`mergeError` | [`String`](#string) | Error message due to a merge error. |
 | <a id="mergerequest-mergeongoing"></a>`mergeOngoing` | [`Boolean!`](#boolean) | Indicates if a merge is currently occurring. |
@@ -63782,6 +63821,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="userpreferences-duodefaultnamespace"></a>`duoDefaultNamespace` | [`Namespace`](#namespace) | Default namespace context for Duo features when namespace cannot be inferred. |
+| <a id="userpreferences-emojiskintone"></a>`emojiSkinTone`  | [`EmojiSkinTone!`](#emojiskintone) | Introduced in GitLab 19.6. Status: Experiment. Default skin tone for emoji that have skin tone variants. |
 | <a id="userpreferences-extensionsmarketplaceoptinstatus"></a>`extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus!`](#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
 | <a id="userpreferences-firstdayofweek"></a>`firstDayOfWeek` | [`UserFirstDayOfWeek`](#userfirstdayofweek) | First day of the week in calendars and date pickers. Null when the user has not chosen one and the instance default applies. |
 | <a id="userpreferences-issuessort"></a>`issuesSort` | [`IssueSort`](#issuesort) | Sort order for issue lists. |
@@ -66796,6 +66836,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="codereviewmetrics-approvemergerequestduocoderevieweventcount"></a>`approveMergeRequestDuoCodeReviewEventCount` | [`Int`](#int) | Total count of `approve_merge_request_duo_code_review` event. |
 | <a id="codereviewmetrics-assignduosuggestedreviewereventcount"></a>`assignDuoSuggestedReviewerEventCount` | [`Int`](#int) | Total count of `assign_duo_suggested_reviewer` event. |
 | <a id="codereviewmetrics-createduosuggestedreviewerseventcount"></a>`createDuoSuggestedReviewersEventCount` | [`Int`](#int) | Total count of `create_duo_suggested_reviewers` event. |
 | <a id="codereviewmetrics-encounterduocodereviewerrorduringrevieweventcount"></a>`encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
@@ -66817,6 +66858,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="codereviewusermetrics-approvemergerequestduocoderevieweventcount"></a>`approveMergeRequestDuoCodeReviewEventCount` | [`Int`](#int) | Total count of `approve_merge_request_duo_code_review` event. |
 | <a id="codereviewusermetrics-assignduosuggestedreviewereventcount"></a>`assignDuoSuggestedReviewerEventCount` | [`Int`](#int) | Total count of `assign_duo_suggested_reviewer` event. |
 | <a id="codereviewusermetrics-createduosuggestedreviewerseventcount"></a>`createDuoSuggestedReviewersEventCount` | [`Int`](#int) | Total count of `create_duo_suggested_reviewers` event. |
 | <a id="codereviewusermetrics-encounterduocodereviewerrorduringrevieweventcount"></a>`encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
@@ -67677,6 +67719,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-agent_platform_session_started"></a>`AGENT_PLATFORM_SESSION_STARTED` | Agent platform session was started. |
 | <a id="aiusageeventtype-agent_platform_session_stopped"></a>`AGENT_PLATFORM_SESSION_STOPPED` | Agent platform session was stopped. |
 | <a id="aiusageeventtype-ai_duo_messaging_feedback_submitted"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED` | Feedback was submitted on a Duo agent response in a messaging surface. |
+| <a id="aiusageeventtype-approve_merge_request_duo_code_review"></a>`APPROVE_MERGE_REQUEST_DUO_CODE_REVIEW` | Duo Code Review approved a merge request. |
 | <a id="aiusageeventtype-assign_duo_suggested_reviewer"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER` | Duo suggested reviewers were added as reviewers to a merge request. |
 | <a id="aiusageeventtype-click_duo_agentic_subscription_expired_learn_more"></a>`CLICK_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_LEARN_MORE` | User clicked learn more on Duo Agent Platform subscription expired state. |
 | <a id="aiusageeventtype-click_duo_agentic_subscription_expired_upgrade"></a>`CLICK_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_UPGRADE` | User clicked upgrade on Duo Agent Platform subscription expired state. |
@@ -67745,6 +67788,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-ai_catalog_total_count_desc"></a>`AI_CATALOG_TOTAL_COUNT_DESC` | Ai Catalog total event count in descending order. |
 | <a id="aiusermetricssort-ai_duo_messaging_feedback_submitted_asc"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED_ASC` | Ai Duo Messaging Feedback Submitted event count in ascending order. |
 | <a id="aiusermetricssort-ai_duo_messaging_feedback_submitted_desc"></a>`AI_DUO_MESSAGING_FEEDBACK_SUBMITTED_DESC` | Ai Duo Messaging Feedback Submitted event count in descending order. |
+| <a id="aiusermetricssort-approve_merge_request_duo_code_review_asc"></a>`APPROVE_MERGE_REQUEST_DUO_CODE_REVIEW_ASC` | Approve Merge Request Duo Code Review event count in ascending order. |
+| <a id="aiusermetricssort-approve_merge_request_duo_code_review_desc"></a>`APPROVE_MERGE_REQUEST_DUO_CODE_REVIEW_DESC` | Approve Merge Request Duo Code Review event count in descending order. |
 | <a id="aiusermetricssort-assign_duo_suggested_reviewer_asc"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER_ASC` | Assign Duo Suggested Reviewer event count in ascending order. |
 | <a id="aiusermetricssort-assign_duo_suggested_reviewer_desc"></a>`ASSIGN_DUO_SUGGESTED_REVIEWER_DESC` | Assign Duo Suggested Reviewer event count in descending order. |
 | <a id="aiusermetricssort-chat_total_count_asc"></a>`CHAT_TOTAL_COUNT_ASC` | Chat total event count in ascending order. |
@@ -69618,7 +69663,7 @@ Detailed representation of whether a GitLab merge request can be merged.
 | <a id="detailedmergestatus-locked_lfs_files"></a>`LOCKED_LFS_FILES` | Merge request includes locked LFS files. |
 | <a id="detailedmergestatus-locked_paths"></a>`LOCKED_PATHS` | Merge request includes locked paths. |
 | <a id="detailedmergestatus-mergeable"></a>`MERGEABLE` | Branch can be merged. |
-| <a id="detailedmergestatus-merge_time"></a>`MERGE_TIME` | Merge request may not be merged until after the specified time. |
+| <a id="detailedmergestatus-merge_time"></a>`MERGE_TIME` | Merge request may not be merged outside the specified time frame. |
 | <a id="detailedmergestatus-need_rebase"></a>`NEED_REBASE` | Merge request needs to be rebased. |
 | <a id="detailedmergestatus-not_approved"></a>`NOT_APPROVED` | Merge request must be approved before merging. |
 | <a id="detailedmergestatus-not_open"></a>`NOT_OPEN` | Merge request must be open before merging. |
@@ -69832,6 +69877,19 @@ Values for sorting Duo Workflows.
 | <a id="duoworkflowsworkflowsort-created_desc"></a>`created_desc`  | Deprecated in GitLab 13.5. Renamed. Use `CREATED_DESC` instead. |
 | <a id="duoworkflowsworkflowsort-updated_asc"></a>`updated_asc`  | Deprecated in GitLab 13.5. Renamed. Use `UPDATED_ASC` instead. |
 | <a id="duoworkflowsworkflowsort-updated_desc"></a>`updated_desc`  | Deprecated in GitLab 13.5. Renamed. Use `UPDATED_DESC` instead. |
+
+### `EmojiSkinTone`
+
+Default skin tone for emoji that have skin tone variants.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="emojiskintone-dark"></a>`DARK` | Dark skin tone. |
+| <a id="emojiskintone-default"></a>`DEFAULT` | No skin tone. Emoji keep their default yellow. |
+| <a id="emojiskintone-light"></a>`LIGHT` | Light skin tone. |
+| <a id="emojiskintone-medium"></a>`MEDIUM` | Medium skin tone. |
+| <a id="emojiskintone-medium_dark"></a>`MEDIUM_DARK` | Medium-dark skin tone. |
+| <a id="emojiskintone-medium_light"></a>`MEDIUM_LIGHT` | Medium-light skin tone. |
 
 ### `EntryType`
 
@@ -73036,6 +73094,7 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-web_ide_ci_environments_guidance"></a>`WEB_IDE_CI_ENVIRONMENTS_GUIDANCE` | Callout feature name for web_ide_ci_environments_guidance. |
 | <a id="usercalloutfeaturenameenum-work_item_decision_log_popover"></a>`WORK_ITEM_DECISION_LOG_POPOVER` | Callout feature name for work_item_decision_log_popover. |
 | <a id="usercalloutfeaturenameenum-work_item_epic_feedback"></a>`WORK_ITEM_EPIC_FEEDBACK` | Callout feature name for work_item_epic_feedback. |
+| <a id="usercalloutfeaturenameenum-work_item_ticket_migration"></a>`WORK_ITEM_TICKET_MIGRATION` | Callout feature name for work_item_ticket_migration. |
 
 ### `UserEventFilter`
 
@@ -73079,7 +73138,6 @@ Name of the feature that the callout is for.
 | <a id="usergroupcalloutfeaturename-end_of_trial_modal"></a>`END_OF_TRIAL_MODAL` | Callout feature name for end_of_trial_modal. |
 | <a id="usergroupcalloutfeaturename-enforcement_at_limit_alert"></a>`ENFORCEMENT_AT_LIMIT_ALERT` | Callout feature name for enforcement_at_limit_alert. |
 | <a id="usergroupcalloutfeaturename-expired_duo_enterprise_trial_widget"></a>`EXPIRED_DUO_ENTERPRISE_TRIAL_WIDGET` | Callout feature name for expired_duo_enterprise_trial_widget. |
-| <a id="usergroupcalloutfeaturename-expired_duo_pro_trial_widget"></a>`EXPIRED_DUO_PRO_TRIAL_WIDGET` | Callout feature name for expired_duo_pro_trial_widget. |
 | <a id="usergroupcalloutfeaturename-expired_trial_status_widget"></a>`EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
 | <a id="usergroupcalloutfeaturename-explore_premium_request_painted_door"></a>`EXPLORE_PREMIUM_REQUEST_PAINTED_DOOR` | Callout feature name for explore_premium_request_painted_door. |
 | <a id="usergroupcalloutfeaturename-free_group_limited_alert"></a>`FREE_GROUP_LIMITED_ALERT` | Callout feature name for free_group_limited_alert. |

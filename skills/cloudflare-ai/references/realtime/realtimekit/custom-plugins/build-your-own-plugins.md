@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/bui
 
 # Build your own plugins
 
-Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to build a custom plugin and run it inside a meeting using the Cloudflare RealtimeKit Core SDK.
 
@@ -26,7 +26,7 @@ ReactWeb ComponentsAngular
 
 ## Prerequisites
 
-This page builds on the [Initialize SDK](https://developers.cloudflare.com/realtime/realtimekit/core/) and [Plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) guides. Read those first.
+This page builds on the [Initialize SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/) and [Plugins](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) guides. Read those first.
 
 The examples assume you have already imported the necessary packages and initialized the SDK.
 
@@ -37,7 +37,7 @@ A plugin has two parts:
 - A **component**: a DOM element ( `HTMLElement`) that holds your plugin's UI and logic.
 - A **registration**: a configuration object you pass to the SDK so it can list, activate, and render the component.
 
-RealtimeKit synchronizes activation state across the session. To share plugin data between participants, use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/).
+RealtimeKit synchronizes activation state across the session. To share plugin data between participants, use the [meeting key-value store](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/).
 
 ## 1. Build the plugin component
 
@@ -125,7 +125,7 @@ RealtimeKitClient.init({
 });
 ```
 
-For a description of every configuration field, refer to [Register a plugin](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/#register-a-plugin).
+For a description of every configuration field, refer to [Register a plugin](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/#register-a-plugin).
 
 After registration, the plugin appears in `meeting.plugins.all`. Activate it to make it active for everyone in the session.
 
@@ -160,14 +160,14 @@ plugin.on("closed", () => {
 });
 ```
 
-For the full list of plugin events, refer to [Listen to plugin events](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/#listen-to-plugin-events).
+For the full list of plugin events, refer to [Listen to plugin events](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/#listen-to-plugin-events).
 
 ## 4. Sync data across participants
 
 Each participant runs their own copy of the plugin component, so you need a way to share state between them. RealtimeKit offers two built-in options for real-time communication:
 
-- [Collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) — a shared key-value store that syncs state across the session.
-- [Message broadcasts](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/) — send custom events to every participant in a meeting.
+- [Meeting key-value store](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/) — a shared key-value store that syncs state across the session.
+- [Message broadcast](https://developers.cloudflare.com/realtime/realtimekit/collaboration/message-broadcast/) — send custom events to every participant in a meeting.
 
 For plugins with simple requirements, these built-in APIs are enough to handle your collaborative logic.
 
@@ -193,8 +193,8 @@ For richer, full-featured collaboration, you can pair your plugin with a dedicat
 
 ## Next steps
 
-- Review the [Plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) API for the complete `Plugin` and `Plugins` reference.
-- Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to build richer shared experiences.
+- Review the [Plugins](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) API for the complete `Plugin` and `Plugins` reference.
+- Use the [meeting key-value store](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/) to build richer shared experiences.
 - Get started with the [RealtimeKit plugins example ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
 
 Was this helpful?
@@ -206,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/#page","headline":"Build your own plugins","description":"Build custom plugins for RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/og.png?v=29ebad8492d51816","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/#page","headline":"Build your own plugins","description":"Build custom plugins for RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/og.png?v=29ebad8492d51816","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

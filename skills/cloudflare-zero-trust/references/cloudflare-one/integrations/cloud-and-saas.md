@@ -61,6 +61,7 @@ The workflow pages for managing findings and webhooks appear first, followed by 
   - [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/casb/)
   - [Troubleshoot integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/)
   - [Troubleshoot compute accounts](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/)
+- [Zoom](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/)
 
 Was this helpful?
 

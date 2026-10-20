@@ -69,7 +69,7 @@ Expand table
 | `${__timeFrom}` | The start of the dashboard time range, used as the default `since` parameter. |
 | `${__timeTo}`   | The end of the dashboard time range, used as the default `until` parameter.   |
 
-For more information about built-in variables, refer to [Global variables](/docs/grafana/latest/visualizations/dashboards/variables/global-variables/).
+For more information about built-in variables, refer to [Built-in variables](/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
 
 ## Use variables in queries
 

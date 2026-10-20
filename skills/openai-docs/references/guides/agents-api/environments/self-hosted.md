@@ -224,7 +224,6 @@ Choose a sandbox provider to run code and work with files. See [Sandbox lifecycl
 | Daytona                           | [Daytona setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/daytona)           |
 | Blaxel                            | [Blaxel setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/blaxel)             |
 | E2B                               | [E2B setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/e2b)                   |
-| Runloop                           | [Runloop setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/runloop)           |
 | DigitalOcean                      | [DigitalOcean setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/digitalocean) |
 | AWS Lambda MicroVMs               | [AWS setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/aws)                   |
 | Oracle Cloud Infrastructure (OCI) | [OCI setup](https://developers.openai.com/api/docs/guides/agents-api/environments/providers/oci)                   |

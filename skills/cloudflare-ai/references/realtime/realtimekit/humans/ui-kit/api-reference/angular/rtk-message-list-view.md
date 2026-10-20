@@ -1,0 +1,60 @@
+---
+description: API reference for rtk-message-list-view component (Angular Library)
+title: rtk-message-list-view
+image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-message-list-view/og.png?v=55f712ce9ad1d8f2
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# rtk-message-list-view
+
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-message-list-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+A component which renders list of messages.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `estimateItemSize` | `number` | ✅ | - | Estimated height of an item |
+| `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
+| `loadMore` | `(lastMessage: Message) => Promise<Message[]>` | ✅ | - | Function to load more messages. Messages returned from this will be prepended |
+| `messages` | `Message[]` | ✅ | - | Messages to render |
+| `renderer` | `(message: Message, index: number) => HTMLElement` | ✅ | - | Render function of the message |
+| `visibleItemsCount` | `number` | ✅ | - | Maximum visible messages |
+
+## Usage Examples
+
+### Basic Usage
+
+```html
+<!-- component.html -->
+<rtk-message-list-view></rtk-message-list-view>
+```
+
+### With Properties
+
+```html
+<!-- component.html -->
+<rtk-message-list-view
+ estimateItemSize="42"
+ loadMore="handleEvent"
+ [messages]="[]">
+</rtk-message-list-view>
+```
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-message-list-view/#page","headline":"rtk-message-list-view","description":"API reference for rtk-message-list-view component (Angular Library)","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-message-list-view/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/angular/rtk-message-list-view/og.png?v=55f712ce9ad1d8f2","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

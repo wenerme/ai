@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 619 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 621 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -1080,8 +1080,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.66,
-    "outputCost": 1.98
+    "inputCost": 0.1452,
+    "outputCost": 0.4356
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v3.2",
@@ -1177,7 +1177,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 393216,
     "inputCost": 0.1,
-    "outputCost": 0.6
+    "outputCost": 0.5
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4-flash-vision-exp",
@@ -1224,8 +1224,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.66,
-    "outputCost": 1.98
+    "inputCost": 0.1452,
+    "outputCost": 0.4356
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4-pro-0813:thinking",
@@ -1236,8 +1236,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.66,
-    "outputCost": 1.98
+    "inputCost": 0.1452,
+    "outputCost": 0.4356
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4-pro:thinking",
@@ -1273,7 +1273,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 393216,
     "inputCost": 0.1,
-    "outputCost": 0.6
+    "outputCost": 0.5
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4.1-flash-1017:thinking",
@@ -1285,7 +1285,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 393216,
     "inputCost": 0.1,
-    "outputCost": 0.6
+    "outputCost": 0.5
   },
   {
     "model": "nano-gpt/deepseek/deepseek-v4.1-flash:thinking",
@@ -2472,8 +2472,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.0675,
-    "outputCost": 0.225
+    "inputCost": 0.0765,
+    "outputCost": 0.255
   },
   {
     "model": "nano-gpt/google/gemma-4-26b-a4b-it-cybersecurity",
@@ -2496,8 +2496,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.0675,
-    "outputCost": 0.225
+    "inputCost": 0.0765,
+    "outputCost": 0.255
   },
   {
     "model": "nano-gpt/google/gemma-4-31b-it",
@@ -2702,6 +2702,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.04,
     "outputCost": 0.15
+  },
+  {
+    "model": "nano-gpt/inception/mercury-3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.1,
+    "outputCost": 0.35
   },
   {
     "model": "nano-gpt/inclusionai/ling-3.0-flash",
@@ -3268,6 +3280,18 @@ for await (const chunk of stream) {
     "outputCost": 0.96
   },
   {
+    "model": "nano-gpt/minimax/minimax-m3.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 524288,
+    "inputCost": 0.15,
+    "outputCost": 0.6
+  },
+  {
     "model": "nano-gpt/MiniMaxAI/MiniMax-M1-80k",
     "imageInput": false,
     "audioInput": false,
@@ -3672,8 +3696,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 65536,
-    "inputCost": 0.45,
-    "outputCost": 1.95
+    "inputCost": 0.43225,
+    "outputCost": 1.82
   },
   {
     "model": "nano-gpt/moonshotai/kimi-k2.6:thinking",
@@ -3684,8 +3708,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 65536,
-    "inputCost": 0.45,
-    "outputCost": 1.95
+    "inputCost": 0.43225,
+    "outputCost": 1.82
   },
   {
     "model": "nano-gpt/moonshotai/kimi-k2.7-code",
@@ -5399,7 +5423,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 65536,
+    "maxOutput": 131072,
     "inputCost": 1.475,
     "outputCost": 4.425
   },
@@ -5411,7 +5435,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 65536,
+    "maxOutput": 131072,
     "inputCost": 1.475,
     "outputCost": 4.425
   },
@@ -6384,8 +6408,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 64000,
-    "inputCost": 0.834,
-    "outputCost": 2.501
+    "inputCost": 0.7506,
+    "outputCost": 2.2509
   },
   {
     "model": "nano-gpt/TheDrummer/Anubis-70B-v1",

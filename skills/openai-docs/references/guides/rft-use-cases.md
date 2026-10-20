@@ -15,7 +15,7 @@ OpenAI is winding down the fine-tuning platform. The platform is no longer
 
 ## When to use reinforcement fine-tuning
 
-Agentic workflows are designed to make decisions that are both correct and verifiable. RFT can help by providing explicit rubrics and using code‑based or LLM‑based graders to measure functional success, factual accuracy, or policy compliance.
+An agentic workflow is designed to make decisions that are both correct and verifiable. RFT can help by providing explicit rubrics and using code‑based or LLM‑based graders to measure functional success, factual accuracy, or policy compliance.
 
 Across early users, three clear use cases have emerged:
 
@@ -118,321 +118,6 @@ Results
 > "Thanks to powerful base models and easy-to-use Reinforced Fine-Tuning APIs, we were able to significantly boost performance on our task with a small set of high-quality samples."
 >
 > —[ChipStack](https://www.chipstack.ai), next-generation of AI-powered tools for chip design and verification
-
-
-
-#### Production-ready API snippets that compile and pass AST checks
-
-
-
-Use case
-
-    
-
-> **Company**: [Runloop](https://www.runloop.ai) is a platform for AI-powered coding agents to be deployed into production and built with public and custom benchmarking capabilities to refine performance.
->
-> **Problem to solve**: Runloop wanted to improve model performance at using third-party APIs, such as the Stripe API, which can be large and complex without a human in the loop. If they could train a model to use the Stripe API, Runloop could turn economically impactful business cases into working code.
->
-> **Objective**: Their goal was teaching the model to master usage of the Stripe API, including writing complete code snippets for arbitrary user requests by either adapting information from existing integration guides, merging information from multiple guides, or inferring information not explicitly stated in the guides. They used RFT with two primary rewards:
->
-> 1. Reward the model for outputting the answer in a Markdown format that aligns with expectation of how a "dynamic" integration guide should look.
-> 1. Reward the model for producing "correct" code snippets by validating the outputted code via AST Grep. This allows them to confirm the model is making the correct Stripe SDK calls with the correct parameters and in some cases even in the correct order.
-
-
-  
-
-  
-
-    
-Grader code
-
-    
-
-````python
-# Note this file gets uploaded to the OpenAI API as a grader
-from ast_grep_py import SgRoot
-from pydantic import BaseModel, Field  # type: ignore
-from typing import Any
-import re
-
-SUPPORTED_LANGUAGES = ['typescript', 'javascript', 'ts', 'js']
-
-class CodeBlock(BaseModel):
-    language: str = Field(
-        description="Programming language of the code block (e.g., 'python', 'javascript')",
-        examples=["python", "javascript", "typescript"]
-    )
-    path: str = Field(
-        description="Target file path where the code should be written",
-        examples=["main.py", "src/app.js", "index.html"]
-    )
-    code: str = Field(
-        description="Actual code content extracted from the code block"
-    )
-
-class ASTGrepPattern(BaseModel):
-    file_path_mask: str = Field(..., description="The file path pattern to match against")
-    pattern: str = Field(..., description="The main AST grep pattern to search for")
-    additional_greps: list[str] | None = Field(
-        default=None,
-        description="Additional patterns that must also be present in the matched code"
-    )
-
-def extract_code_blocks(llm_output: str) -> list[CodeBlock]:
-    # Regular expression to match code blocks with optional language and path
-    try:
-        pattern = r"```(\w+\s+)?([\w./-]+)?\n([\s\S]*?)\n```"
-        matches = list(re.finditer(pattern, llm_output, re.DOTALL))
-
-        print(f"Found {len(matches)} code blocks in the LLM output")
-
-        # Check if any code blocks were found
-        if not matches:
-            raise Exception("No code blocks found in the LLM response")
-
-        code_blocks: list[CodeBlock] = []
-        for match in matches:
-            language = match.group(1) or ""
-            path = match.group(2) or ""
-            code = match.group(3)
-
-            # Clean the path and language
-            path = path.strip()
-            language = language.strip()
-
-            # If path is relative (doesn't start with /), prefix with /home/user/testbed/
-            if path and not path.startswith("/"):
-                original_path = path
-                path = f"/home/user/testbed/{path}"
-                print(
-                    f"Converting relative path '{original_path}' to absolute path '{path}'"
-                )
-
-            code_blocks.append(
-                CodeBlock(language=language, path=path, code=code.strip())
-            )
-
-        # Check for missing language or path in code blocks
-        missing_language = [
-            i for i, block in enumerate(code_blocks) if not block.language
-        ]
-        missing_path = [i for i, block in enumerate(code_blocks) if not block.path]
-
-        if missing_language:
-            print(
-                f"WARNING: Code blocks at positions {missing_language} are missing language identifiers"
-            )
-            raise Exception(
-                f"Code blocks at positions {missing_language} are missing language identifiers"
-            )
-
-        if missing_path:
-            print(
-                f"WARNING: Code blocks at positions {missing_path} are missing file paths"
-            )
-            raise Exception(
-                f"Code blocks at positions {missing_path} are missing file paths"
-            )
-
-        paths = [block.path for block in code_blocks if block.path]
-        print(
-            f"Successfully extracted {len(code_blocks)} code blocks with paths: {', '.join(paths)}"
-        )
-
-    except Exception as e:
-        print(f"Error extracting code blocks: {str(e)}")
-        raise
-
-    return code_blocks
-
-
-def calculate_ast_grep_score(code_blocks: list[CodeBlock], ast_greps: Any) -> float:
-    # Convert ast_greps to list if it's a dict
-    if isinstance(ast_greps, dict):
-        ast_greps = [ast_greps]
-
-    # Parse each grep pattern into the Pydantic model
-    parsed_patterns: list[ASTGrepPattern] = []
-    for grep in ast_greps:
-        try:
-            pattern = ASTGrepPattern(**grep)
-            parsed_patterns.append(pattern)
-        except Exception as e:
-            print(f"Error parsing AST grep pattern: {e}")
-            return 0.0
-
-    if not parsed_patterns:
-        return 0.0
-
-    total_score = 0.0
-    pattern_count = len(parsed_patterns)
-
-    # Filter code blocks to only include TypeScript and JavaScript files
-    supported_blocks = [
-        block for block in code_blocks
-        if block.language.lower() in SUPPORTED_LANGUAGES
-    ]
-
-    if not supported_blocks:
-        print("No TypeScript or JavaScript code blocks found to analyze")
-        return 0.0
-
-    for pattern in parsed_patterns:
-        # Find matching code blocks based on path prefix
-        matching_blocks = [
-            block for block in supported_blocks
-            if block.path.startswith(pattern.file_path_mask)
-        ]
-
-        if not matching_blocks:
-            print(f"No matching code blocks found for path prefix: {pattern.file_path_mask}")
-            continue
-
-        pattern_found = False
-        for block in matching_blocks:
-            try:
-                # Create AST root for the code block
-                root = SgRoot(block.code, block.language)
-                node = root.root()
-
-                # Check main pattern
-                matches = node.find(pattern=pattern.pattern)
-                if not matches:
-                    continue
-
-                # If we have additional greps, check them too
-                if pattern.additional_greps:
-                    all_additional_found = True
-                    for additional_grep in pattern.additional_greps:
-                        if additional_grep not in block.code:
-                            all_additional_found = False
-                            break
-
-                    if not all_additional_found:
-                        continue
-
-                # If we get here, we found a match with all required patterns
-                pattern_found = True
-                break
-
-            except Exception as e:
-                print(f"Error processing code block {block.path}: {e}")
-                continue
-
-        if pattern_found:
-            total_score += 1.0
-
-    # Return average score across all patterns
-    return total_score / pattern_count if pattern_count > 0 else 0.0
-
-def grade_format(output_text: str) -> float:
-        # Find <plan> and </plan> tags
-    plan_start = output_text.find('<plan>')
-    plan_end = output_text.find('</plan>')
-
-    # Find <code> and </code> tags
-    code_start = output_text.find('<code>')
-    code_end = output_text.find('</code>')
-
-    reward = 0.0
-
-    if plan_start == -1 or plan_end == -1 or code_start == -1 or code_end == -1:
-        print(f'missing plan or code tags. format reward: {reward}')
-        return reward
-    reward += 0.1 # total: 0.1
-
-    if not (plan_start < plan_end < code_start < code_end):
-        print(f'tags present but not in the correct order. format reward: {reward}')
-        return reward
-    reward += 0.1 # total: 0.2
-
-    # Check if there are any stray tags
-    plan_tags = re.findall(r'</?plan>', output_text)
-    code_tags = re.findall(r'</?code>', output_text)
-
-    if len(plan_tags) != 2 or len(code_tags) != 2:
-        print(f'found stray plan or code tags. format reward: {reward}')
-        return reward
-    reward += 0.2 # total: 0.4
-
-    # Extract content after </code> tag
-    after_tags = output_text[code_end + len('</code>'):].strip()
-    if after_tags:
-        print(f'found text after code tags. format reward: {reward}')
-        return reward
-    reward += 0.2 # total: 0.6
-
-    # Extract content inside <plan> tags
-    plan_content = output_text[plan_start + len('<plan>'):plan_end].strip()
-    if not plan_content:
-        print(f'no plan content found. format reward: {reward}')
-        return reward
-    reward += 0.1 # total: 0.7
-
-    # Extract content inside <code> tags
-    code_content = output_text[code_start + len('<code>'):code_end].strip()
-    if not code_content:
-        print(f'no code content found. format reward: {reward}')
-        return reward
-    reward += 0.1 # total: 0.8
-
-    # Extract content between </plan> and <code> tags
-    between_tags = output_text[plan_end + len('</plan>'):code_start].strip()
-    if between_tags:
-        print(f'found text between plan and code tags. format reward: {reward}')
-        return reward
-    reward += 0.2 # total: 1.0
-
-    if reward == 1.0:
-        print(f'global format reward: {reward}')
-
-    return reward
-
-def grade(sample: Any, item: Any) -> float:
-    try:
-        output_text = sample["output_text"]
-
-        format_reward = grade_format(output_text)
-        if format_reward < 1.0:
-            return format_reward
-
-        # Extract code content for grading
-        code_start = output_text.find('<code>')
-        code_end = output_text.find('</code>')
-        code_to_grade: str = output_text[code_start + len('<code>'):code_end].strip()
-        code_blocks: list[CodeBlock] = []
-        try:
-            code_blocks = extract_code_blocks(code_to_grade)
-        except Exception as e:
-            print(f'error extracting code blocks: {e}')
-            return 0.5
-
-        ast_greps = item["reference_answer"]["ast_greps"]
-        ast_grep_score = calculate_ast_grep_score(code_blocks, ast_greps)
-
-        return (format_reward + ast_grep_score) / 2.0
-    except Exception as e:
-        print(f"Error during grading: {str(e)}")
-        return 0.0
-````
-
-
-  
-
-  
-
-    
-Results
-
-    
-
-> Looking at the total reward (format and AST Grep) together, Runloop has seen improvements of on average **12%** of the RFT model compared to the base o3-mini model on the benchmark.
->
-> They implement two types of tests, one providing explicit content from the integration guides (assessing reasoning and instruction following) and one without (assessing knowledge recall). Both variants saw improvement of over **8%**.
->
-> “OpenAIs RFT platform gives us access to the best generalized reasoning models in the world, with the toolset to supercharge that reasoning on problem domains important to our business.”
->
-> —[Runloop](https://www.runloop.ai/)
 
 
 
@@ -636,7 +321,7 @@ Results
 
 ### 3. Apply complex rules correctly
 
-This use case involves pulling verifiable facts or entities from unstructured inputs into clearly defined schemas (e.g., JSON objects, condition codes, medical codes, legal citations, or financial metrics).
+This use case involves pulling verifiable facts or entities from unstructured inputs into defined schemas (for example, JSON objects, condition codes, medical codes, legal citations, or financial metrics).
 
 Successful extraction tasks typically benefit from precise, continuous grading methodologies—like span-level F1 scores, fuzzy text-matching metrics, or numeric accuracy checks—to evaluate how accurately the extracted information aligns with ground truth. Define explicit success criteria and detailed rubrics. Then, the model can achieve reliable, repeatable improvements.
 
@@ -773,7 +458,7 @@ Results
 
 **Before implementing RFT, we strongly recommended creating and running an eval for the task you intend to fine-tune on**. If the model you intend to fine-tune scores at either the absolute minimum or absolute maximum possible score, then RFT won’t be useful to you.
 
-RFT works by reinforcing better answers to provided prompts. If we can’t distinguish the quality of different answers (i.e., if they all receive the minimum or maximum possible score), then there's no training signal to learn from. However, if your eval scores somewhere in the range between the minimum and maximum possible scores, there's enough data to work with.
+RFT works by reinforcing better answers to provided prompts. If we can’t distinguish the quality of different answers (that is, if they all receive the minimum or maximum possible score), then there's no training signal to learn from. However, if your eval scores somewhere in the range between the minimum and maximum possible scores, there's enough data to work with.
 
 An effective eval reveals opportunities where human experts consistently agree but current frontier models struggle, presenting a valuable gap for RFT to close. [Get started with evals](https://developers.openai.com/api/docs/guides/evals).
 
@@ -781,14 +466,16 @@ An effective eval reveals opportunities where human experts consistently agree b
 
 To see improvements in your fine-tuned model, there are two main places to revisit and refine: making sure your task is well defined, and making your grading scheme more robust.
 
-### Reframe or clarify your task
+<a id="reframe-or-clarify-your-task"></a>
+
+### Revise or clarify your task
 
 Good tasks give the model a fair chance to learn and let you quantify improvements.
 
 - **Start with a task the model can already solve occasionally**. RFT works by sampling many answers, keeping what looks best, and nudging the model toward those answers. If the model never gets the answer correct today, it cannot improve.
 - **Make sure each answer can be graded**. A grader must read an answer and produce a score without a person in the loop. We support multiple [grader types](https://developers.openai.com/api/docs/guides/graders), including custom Python graders and LLM judges. If you can't write code to judge the answer with an available grader, RFT is not the right tool.
 - **Remove doubt about the “right” answer**. If two careful people often disagree on the solution, the task is too fuzzy. Rewrite the prompt, add context, or split the task into clearer parts until domain experts agree.
-- **Limit lucky guesses**. If the task is multiple choice with one obvious best pick, the model can win by chance. Add more classes, ask for short open‑ended text, or tweak the format so guessing is costly.
+- **Limit lucky guesses**. If the task is multiple choice with one best option, the model can win by chance. Add more classes, ask for short open‑ended text, or tweak the format so guessing is costly.
 
 ### Strengthen your grader
 

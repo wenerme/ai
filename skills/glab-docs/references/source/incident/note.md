@@ -37,6 +37,9 @@ glab incident note 123
 # Comment with the message given inline
 glab incident note 123 --message "Looking into this now."
 
+# Create an internal note, visible only to project members
+glab incident note 123 --message "Rotating the leaked token now." --internal
+
 # Attach a screenshot alongside the message
 glab incident note 123 --message "Here is the repro." --attach ./screenshot.png
 
@@ -48,6 +51,7 @@ pngpaste - | glab incident note 123 --attach -
 
 ```plaintext
       --attach stringArray   (EXPERIMENTAL) Upload a file and reference it at the end of the comment. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+      --internal             Create the note as an internal note, visible only to project members.
   -m, --message string       Message text.
 ```
 

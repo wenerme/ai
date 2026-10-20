@@ -200,8 +200,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/ratelimit_block" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -250,8 +249,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_pages/ratelimit_block" \
 	--request PUT \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"state": "customized",
 		"url": "https://example.com/rate_limiting_block_error_page.html"

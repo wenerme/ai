@@ -471,18 +471,18 @@
   },
   "grafana-clickhouse-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor.md",
-    "size": 37492,
-    "updatedAt": "2026-10-01T05:41:07.360Z"
+    "size": 37780,
+    "updatedAt": "2026-10-20T01:00:09.419Z"
   },
   "grafana-clickhouse-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables.md",
-    "size": 15404,
-    "updatedAt": "2026-08-25T01:54:29.476Z"
+    "size": 15722,
+    "updatedAt": "2026-10-20T01:00:09.578Z"
   },
   "grafana-clickhouse-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting.md",
-    "size": 37246,
-    "updatedAt": "2026-10-01T05:41:07.667Z"
+    "size": 37403,
+    "updatedAt": "2026-10-20T01:00:09.762Z"
   },
   "grafana-cloudflare-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting.md",
@@ -2421,8 +2421,8 @@
   },
   "grafana-vercel-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/template-variables.md",
-    "size": 5358,
-    "updatedAt": "2026-07-21T06:50:49.139Z"
+    "size": 5362,
+    "updatedAt": "2026-10-20T01:01:17.988Z"
   },
   "grafana-vercel-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting.md",
@@ -3676,8 +3676,8 @@
   },
   "yesoreyeram-infinity-datasource/query/macros.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros.md",
-    "size": 8983,
-    "updatedAt": "2026-06-25T05:44:59.800Z"
+    "size": 8996,
+    "updatedAt": "2026-10-20T01:01:59.406Z"
   },
   "yesoreyeram-infinity-datasource/query/time-formats.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/time-formats.md",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/analytics-integrations/splunk
 
 # Troubleshooting
 
-Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to resolve common issues when analyzing [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) through the [Cloudflare App for Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
@@ -35,7 +35,7 @@ Defaulting to timestamp of previous event.
 
 If you cannot upgrade immediately, or if you maintain a customized `props.conf`, update the `cloudflare:json` stanza on your indexer or heavy forwarder to match both keys, then restart the Splunk service:
 
-```plaintext
+```ini
 [cloudflare:json]
 TRUNCATE = 100000
 TIME_PREFIX = "(?:EdgeStartTimestamp|Datetime)"\s*:\s*"
@@ -82,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues when analyzing Cloudflare Logs with the Cloudflare App for Splunk.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/og.png?v=a82f5705220ea820","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues when analyzing Cloudflare Logs with the Cloudflare App for Splunk.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/og.png?v=a82f5705220ea820","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

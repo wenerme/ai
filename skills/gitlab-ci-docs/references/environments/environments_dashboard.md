@@ -16,9 +16,9 @@ see which pipelines are green and which are red allowing you to
 diagnose if there is a block at a particular point, or if there's
 a more systemic problem you need to investigate.
 
-1. In the top bar, select **Search or go to**.
-1. Select **Your work**.
-1. Select **Environments**.
+1. In the top bar, select .
+1. Select .
+1. Select .
 
 [Environments Dashboard showing two rows of projects with their deployment environments and pipeline status.]
 
@@ -32,9 +32,9 @@ Review apps and other grouped environments are not displayed.
 
 To add a project to the dashboard:
 
-1. Select **Add projects** in the home screen of the dashboard.
-1. Search and add one or more projects using the **Search your projects** field.
-1. Select **Add projects**.
+1. Select  in the home screen of the dashboard.
+1. Search and add one or more projects using the  field.
+1. Select .
 
 Once added, you can see a summary of each project's environment operational
 health, including the latest commit, pipeline status, and deployment time.

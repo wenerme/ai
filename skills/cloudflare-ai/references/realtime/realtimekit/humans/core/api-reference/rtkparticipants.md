@@ -1,0 +1,290 @@
+---
+title: RTKParticipants
+image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/og.png?v=2a1d7451ac9c7547
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# RTKParticipants
+
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+This module represents all the participants in the meeting (except the local user). It consists of 4 maps:
+
+- `joined`: A map of all participants that have joined the meeting.
+- `waitlisted`: A map of all participants that have been added to the waitlist.
+- `active`: A map of active participants who should be displayed in the meeting grid.
+- `pinned`: A map of pinned participants.
+
+- [RTKParticipants](#module_RTKParticipants)
+  - [.waitlisted](#module_RTKParticipants+waitlisted)
+  - [.joined](#module_RTKParticipants+joined)
+  - [.active](#module_RTKParticipants+active)
+  - [.videoSubscribed](#module_RTKParticipants+videoSubscribed)
+  - [.audioSubscribed](#module_RTKParticipants+audioSubscribed)
+  - [.pinned](#module_RTKParticipants+pinned)
+  - [.all](#module_RTKParticipants+all)
+  - [.pip](#module_RTKParticipants+pip)
+  - [.viewMode](#module_RTKParticipants+viewMode)
+  - [.currentPage](#module_RTKParticipants+currentPage)
+  - [.lastActiveSpeaker](#module_RTKParticipants+lastActiveSpeaker)
+  - [.selectedPeers](#module_RTKParticipants+selectedPeers)
+  - [.count](#module_RTKParticipants+count)
+  - [.maxActiveParticipantsCount](#module_RTKParticipants+maxActiveParticipantsCount)
+  - [.pageCount](#module_RTKParticipants+pageCount)
+  - [.setMaxActiveParticipantsCount(limit)](#module_RTKParticipants+setMaxActiveParticipantsCount)
+  - [.acceptWaitingRoomRequest(id)](#module_RTKParticipants+acceptWaitingRoomRequest)
+  - [.acceptAllWaitingRoomRequest(userIds)](#module_RTKParticipants+acceptAllWaitingRoomRequest)
+  - [.rejectWaitingRoomRequest(id)](#module_RTKParticipants+rejectWaitingRoomRequest)
+  - [.setViewMode(viewMode)](#module_RTKParticipants+setViewMode)
+  - [.subscribe(peerIds, \[kinds\])](#module_RTKParticipants+subscribe)
+  - [.unsubscribe(peerIds, \[kinds\])](#module_RTKParticipants+unsubscribe)
+  - [.setPage(page)](#module_RTKParticipants+setPage)
+  - [.disableAllAudio(allowUnmute)](#module_RTKParticipants+disableAllAudio)
+  - [.disableAllVideo()](#module_RTKParticipants+disableAllVideo)
+  - [.kickAll()](#module_RTKParticipants+kickAll)
+  - [.broadcastMessage(type, payload, target)](#module_RTKParticipants+broadcastMessage)
+  - [.getAllJoinedPeers(searchQuery, limit, offset)](#module_RTKParticipants+getAllJoinedPeers)
+  - [.getParticipantsInMeetingPreJoin()](#module_RTKParticipants+getParticipantsInMeetingPreJoin)
+
+### meeting.participants.waitlisted
+
+Returns a list of participants waiting to join the meeting.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.joined
+
+Returns a list of all participants in the meeting.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.active
+
+Returns a list of participants whose streams are currently consumed.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.videoSubscribed
+
+Returns a list of participants whose video streams are currently consumed.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.audioSubscribed
+
+Returns a list of participants whose audio streams are currently consumed.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.pinned
+
+Returns a list of participants who have been pinned.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.all
+
+Returns all added participants irrespective of whether they are currently in the meeting or not
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.pip
+
+Return the controls for Picture-in-Picture
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.viewMode
+
+Indicates whether the meeting is in 'ACTIVE\_GRID' mode or 'PAGINATED' mode.
+
+In 'ACTIVE\_GRID' mode, participants are populated in the participants.active map dynamically. The participants present in the map will keep changing when other participants unmute their audio or turn on their videos.
+
+In 'PAGINATED' mode, participants are populated in the participants.active map just once, and the participants in the map will only change if the page number is changed by the user using setPage(page).
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.currentPage
+
+This indicates the current page that has been set by the user in PAGINATED mode. If the meeting is in ACTIVE\_GRID mode, this value will be 0.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.lastActiveSpeaker
+
+This stores the `participantId` of the last participant who spoke in the meeting.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.selectedPeers
+
+Keeps a list of all participants who have been present in the selected peers list.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.count
+
+Returns the number of participants who are joined in the meeting.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.maxActiveParticipantsCount
+
+Returns the maximum number of participants that can be present in the active map.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.pageCount
+
+Returns the number of pages that are available in the meeting in PAGINATED mode. If the meeting is in ACTIVE\_GRID mode, this value will be 0.
+
+**Kind**: instance property of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.setMaxActiveParticipantsCount(limit)
+
+Updates the maximum number of participants that are populated in the active map.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| limit | `number` | Updated max limit |
+
+### meeting.participants.acceptWaitingRoomRequest(id)
+
+Accepts requests from waitlisted participants if user has appropriate permissions.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | `string` | peerId or userId of the waitlisted participant. |
+
+### meeting.participants.acceptAllWaitingRoomRequest(userIds)
+
+We need a new event for socket service events since if we send them all together, sequence of events can be unreliable
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type |
+| --- | --- |
+| userIds | `Array.<string>` |
+
+### meeting.participants.rejectWaitingRoomRequest(id)
+
+Rejects requests from waitlisted participants if user has appropriate permissions.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | `string` | participantId of the waitlisted participant. |
+
+### meeting.participants.setViewMode(viewMode)
+
+Sets the view mode of the meeting to either ACTIVE\_GRID or PAGINATED.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| viewMode | `ViewMode` | The mode in which the active map should be populated |
+
+### meeting.participants.subscribe(peerIds, \[kinds])
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type |
+| --- | --- |
+| peerIds | `Array.<string>` |
+| \[kinds] | `Array.<('audio'\|'video'\|'screenshareAudio'\|'screenshareVideo')>` |
+
+### meeting.participants.unsubscribe(peerIds, \[kinds])
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type |
+| --- | --- |
+| peerIds | `Array.<string>` |
+| \[kinds] | `Array.<('audio'\|'video'\|'screenshareAudio'\|'screenshareVideo')>` |
+
+### meeting.participants.setPage(page)
+
+Populates the active map with participants present in the page number indicated by the parameter `page` in PAGINATED mode. Does not do anything in ACTIVE\_GRID mode.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| page | `number` | The page number to be set. |
+
+### meeting.participants.disableAllAudio(allowUnmute)
+
+Disables audio for all participants in the meeting.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| allowUnmute | `boolean` | Allow participants to unmute after they are muted. |
+
+### meeting.participants.disableAllVideo()
+
+Disables video for all participants in the meeting.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.kickAll()
+
+Kicks all participants from the meeting.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+### meeting.participants.broadcastMessage(type, payload, target)
+
+Broadcasts the message to participants
+
+If no `target` is specified it is sent to all participants including `self`.
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| type | `string` | |
+| payload | `BroadcastMessagePayload` | |
+| target | `BroadcastMessageTarget` | object containing a list of `participantIds` or object containing `presetName` - every user with that preset will be sent the message |
+
+### meeting.participants.getAllJoinedPeers(searchQuery, limit, offset)
+
+Returns all peers currently present in the room If you are in a group call, use `meeting.participants.joined` instead
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+| Param | Type |
+| --- | --- |
+| searchQuery | `string` |
+| limit | `number` |
+| offset | `number` |
+
+### meeting.participants.getParticipantsInMeetingPreJoin()
+
+Returns all peers currently in the room, is a non paginated call and should only be used if you are in a non room joined state, if in a joined group call, use `meeting.participants.joined`
+
+**Kind**: instance method of [`RTKParticipants`](#module_RTKParticipants)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/#page","headline":"RTKParticipants","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkparticipants/og.png?v=2a1d7451ac9c7547","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

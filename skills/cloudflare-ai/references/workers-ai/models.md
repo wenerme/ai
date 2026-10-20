@@ -24,7 +24,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 71 modelsClear filters
+We found 72 modelsClear filters
 
 ## Compare models
 
@@ -93,6 +93,13 @@ Compare
 Compare
 
 [![BAAI logo](https://developers.cloudflare.com/_astro/baai.BooZR_xF.svg)<h3>bge-small-en-v1.5</h3>BAAIText Embeddings BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector](https://developers.cloudflare.com/workers-ai/models/bge-small-en-v1.5/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
+[Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/workers-ai/models/clairic/)
 
 - Cloudflare-hosted
 - +1
@@ -227,28 +234,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/workers-ai/models/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/workers-ai/models/glm-5.3/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/workers-ai/models/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +3

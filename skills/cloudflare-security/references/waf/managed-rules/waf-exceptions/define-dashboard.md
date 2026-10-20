@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define
 
 # Add an exception in the dashboard
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1. Go to the zone or account dashboard page
 
@@ -48,6 +48,14 @@ To add an exception at the account level (Enterprise plans only):
    1. Select all the rules in the current page by selecting the checkbox in the table header, near **Description/Rule ID**. The table header will display `10 rules selected (of <TOTAL> rules)`.![Rule selection page showing the option to select all the rules in the ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=616,height=202,format=webp/_astro/waf-exception-select-all-rules.CBp6LP58.png)
    2. Select **Select all \<TOTAL> rules** in the table header to select all the rules across all pages.
 5. Select **Next**.
+
+Skipping the OWASP anomaly score rule (949110)
+
+In the [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/), each matching rule increases the [request threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score), and rule `949110: Inbound Anomaly Score Exceeded` applies the configured ruleset action when the score reaches the [threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold).
+
+An exception that skips only some OWASP rules may leave the threat score above the threshold, so 949110 can still match and apply the configured action. To fully exempt matching requests from OWASP, skip rule 949110 itself or select all the rules of the Cloudflare OWASP Core Ruleset. Either option removes all OWASP score-based protection for matching requests.
+
+Alternatively, **Skip all remaining rules** also bypasses 949110, but it skips every remaining rule of all WAF managed rulesets for matching requests — not only OWASP rules.
 
 ## 4. Create the exception
 
@@ -85,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#page","headline":"Add an exception in the dashboard","description":"Use the Cloudflare dashboard to create exceptions that skip the execution of WAF managed rulesets or specific ruleset rules.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/og.png?v=e3ed79a634b3ab29","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#page","headline":"Add an exception in the dashboard","description":"Use the Cloudflare dashboard to create exceptions that skip the execution of WAF managed rulesets or specific ruleset rules.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/og.png?v=e3ed79a634b3ab29","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -39,6 +39,7 @@ Match the message you see to a section below.
 | `Auto mode classifier transcript exceeded context window` | [Server errors](#auto-mode-cannot-determine-the-safety-of-an-action) |
 | `Agent aborted: auto mode classifier request refused by the safety safeguard` | [Server errors](#auto-mode-cannot-determine-the-safety-of-an-action) |
 | `The server-side auto mode classifier gave no verdict` | [Server errors](#the-server-returned-no-safety-verdict) |
+| `<tool> was not reviewed and did not run: the conversation is too long for auto mode's classifier` | [Server errors](#was-not-reviewed-and-did-not-run) |
 | `Auto mode is unavailable — the server returned no safety verdict for the last 10 responses` | [Server errors](#the-server-returned-no-safety-verdict) |
 | `Agent terminated early due to an API error` | [Server errors](#agent-terminated-early-due-to-an-api-error) |
 | `You've hit your session limit` / `You've hit your weekly limit` / `You've hit your Opus limit` / `You've hit your Sonnet limit` | [Usage limits](#youve-hit-your-session-limit) |
@@ -463,7 +464,7 @@ You can tune retry behavior with these environment variables:
 | [`CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS`](/docs/en/env-vars) | unset | Maximum time in milliseconds that each API request spends waiting out `429` and `529` errors when `CLAUDE_CODE_RETRY_WATCHDOG` is set. When unset, the wait has no limit. Requires Claude Code v2.1.295 or later. |
 | [`CLAUDE_CODE_OVERLOADED_RETRY_BASE_DELAY_MS`](/docs/en/env-vars) | 500 | Starting delay in milliseconds of the backoff between retries of a request that the API rejects with a `529` overloaded error. Raise it, up to 32000, to spread the retries over a longer window when the API is at capacity. Has no effect when `CLAUDE_CODE_RETRY_WATCHDOG` is set to `1`, or when the rejected request was sent in [fast mode](/docs/en/fast-mode#handle-rate-limits). Requires Claude Code v2.1.292 or later. |
 | [`CLAUDE_CODE_OVERLOADED_RETRY_MAX_DELAY_MS`](/docs/en/env-vars) | 32000 | Ceiling in milliseconds on the backoff between retries of a request that the API rejects with a `529` overloaded error. Raise it, up to 64000, so that later retries keep spreading apart when the API is at capacity. Has no effect when `CLAUDE_CODE_RETRY_WATCHDOG` is set to `1`, or when the rejected request was sent in [fast mode](/docs/en/fast-mode#handle-rate-limits). Requires Claude Code v2.1.296 or later. |
-| [`API_TIMEOUT_MS`](/docs/en/env-vars) | 600000 | Per-request timeout in milliseconds. Raise it for slow networks or proxies. It also caps how long Claude Code waits for response headers, described in [No response from API](#no-response-from-api). |
+| [`API_TIMEOUT_MS`](/docs/en/env-vars) | 600000 | Time in milliseconds that each request attempt has to receive its response headers. It doesn't limit how long a streaming response runs after that. Raise it for slow networks or proxies. For how it caps the first-byte deadline, see [No response from API](#no-response-from-api). |
 | [`CLAUDE_CODE_NONSTREAMING_TIMEOUT_RETRIES`](/docs/en/env-vars) | unset | Limit on re-sends of a [non-streaming request](#streaming-response-ended-before-any-complete-data-was-received) that times out. At the limit, the request fails. A response from Claude that takes longer than the timeout to generate times out again on every re-send, so set a low number such as `0` to fail sooner. Each non-streaming attempt times out after 300 seconds in a local session, or after `API_TIMEOUT_MS` when you set a positive value. Requires Claude Code v2.1.285 or later. |
 | [`CLAUDE_STREAM_FIRST_BYTE_TIMEOUT_MS`](/docs/en/env-vars) | unset | Deadline in milliseconds for the first response byte of a streaming request. Requires Claude Code v2.1.242 or later. For how Claude Code picks the deadline when this is unset, see [No response from API](#no-response-from-api). |
 
@@ -519,7 +520,7 @@ The API didn't respond before the connection deadline.
 Request timed out
 ```
 
-This can happen during periods of high load or when the model is generating a very large response. The default request timeout is 10 minutes.
+The default request timeout is 10 minutes.
 
 **What to do:**
 
@@ -605,7 +606,7 @@ When the classifier model is unavailable:
 <model> is temporarily unavailable, so auto mode cannot determine the safety of <tool> right now. Wait a moment and then try this action again.
 ```
 
-In an interactive session, a dim `Not run · auto mode's check had no usable answer` row appears under the tool call instead of this message. Press `Ctrl+O` to read the message in the [transcript viewer](/docs/en/interactive-mode#transcript-viewer). The denials under [The server returned no safety verdict](#the-server-returned-no-safety-verdict) show the same row. Before v2.1.296, the message appeared under the call as a red error.
+In an interactive session, a dim `Not run · auto mode's check had no usable answer` row appears under the tool call instead of this message. Press `Ctrl+O` to read the message in the [transcript viewer](/docs/en/interactive-mode#transcript-viewer). The `gave no verdict` denials under [The server returned no safety verdict](#the-server-returned-no-safety-verdict) show the same row. Before v2.1.296, the message appeared under the call as a red error.
 
 When Claude Code can determine the failure category, it names the category in parentheses after `temporarily unavailable`, for example `<model> is temporarily unavailable (rate-limited), so auto mode cannot determine the safety of <tool> right now`. The categories are `(rate-limited)`, `(overloaded)`, `(server error)`, `(timed out)`, and `(connection failed)`. If `(timed out)` or `(connection failed)` repeats, check your connection; see [Unable to connect to API](#unable-to-connect-to-api). Before v2.1.229, the message never named a category and read `Wait briefly and then try this action again`.
 
@@ -616,6 +617,7 @@ When no category fits, the message appears with no category in parentheses; more
 * Retry after a few seconds; Claude sees the same message and usually retries on its own. A transient failure is unrelated to [auto mode eligibility](/docs/en/permission-modes#eliminate-prompts-with-auto-mode); you don't need to change settings
 * If retries keep failing, continue with read-only tasks and come back to the blocked action later
 * On Amazon Bedrock, if the message returns on every retry, check that your account can invoke the model it names: for standard Amazon Bedrock models, confirm your [IAM policy](/docs/en/amazon-bedrock#iam-configuration) allows invoking it; for Mantle model IDs, [contact your AWS account team](/docs/en/amazon-bedrock#mantle-endpoint-errors)
+* If the message returns on every retry and names the model you set in [`CLAUDE_CODE_AUTO_MODE_MODEL`](/docs/en/permission-modes#choose-the-classifier-model), check that the API or cloud provider your session runs on serves that model ID. If it doesn't, set the variable to a model ID it serves, or unset the variable to use the [default classifier model](/docs/en/permission-modes#default-classifier-model).
 
 When a classifier request fails because your OAuth token expired or was rotated by another session, Claude Code refreshes the token and retries the request once, so a routine token expiry doesn't surface as this message. Before v2.1.216, an expired or rotated token failed each classifier request, and auto mode denied every checked action with this message until the token was refreshed.
 
@@ -650,7 +652,7 @@ Before v2.1.225, Claude Code counted these refusals toward the pause thresholds 
 * In an interactive session, switch to a different [permission mode](/docs/en/permission-modes) so you can approve the action when prompted
 * Start a fresh conversation without the triggering content
 
-When the conversation has grown larger than the classifier's context window:
+When the conversation is too long for Claude Code's classifier request and Claude Code can't [compact it on its own](#was-not-reviewed-and-did-not-run):
 
 ```text theme={null}
 Auto mode classifier transcript exceeded context window — falling back to manual approval (try /compact to reduce conversation size)
@@ -691,12 +693,34 @@ The stop message appears in a different place in each kind of session:
 
 **What to do:**
 
+* In an interactive session, press `Ctrl+O` to read the denial text in the [transcript viewer](/docs/en/interactive-mode#transcript-viewer).
+* If the denial names `(the conversation is too long for the check)`, run `/compact` at the Claude Code prompt to shorten the conversation. Until the conversation is shorter, sending another message gets the same denial. If you turned [auto-compact](/docs/en/settings-reference#autocompactenabled) off, turn it back on so Claude Code compacts on its own next time.
 * Send another message to have Claude try again. The count of responses starts over.
 * If the stop repeats and your requests go through an [LLM gateway or proxy](/docs/en/llm-gateway), check whether it cuts streaming responses short or rewrites them. [Server-side classifier review](/docs/en/permission-modes#server-side-classifier-review) says which gateway behavior causes denials, and the [gateway compatibility guide](/docs/en/llm-gateway-protocol#feature-pass-through) lists what to pass through unchanged.
 * Set `CLAUDE_CODE_AUTO_MODE_SERVER=0` before you start Claude Code to use its own classifier requests instead. Before v2.1.281, Claude Code didn't read the variable on a direct connection to the Anthropic API.
 * To approve the actions yourself instead, [switch out of auto mode](/docs/en/permission-modes#switch-permission-modes)
 
 Before v2.1.280, Claude Code denied each action from a response without a verdict immediately and never stopped the turn.
+
+Before v2.1.302, on a direct connection to the Anthropic API, Claude Code didn't compact a conversation that had grown too long for the server's check.
+
+### Was not reviewed and did not run
+
+A `was not reviewed and did not run` denial means the conversation is too long for the [auto mode](/docs/en/permission-modes#eliminate-prompts-with-auto-mode) classifier to check the action, so the action didn't run. Claude Code returns this message to Claude:
+
+```text theme={null}
+<tool> was not reviewed and did not run: the conversation is too long for auto mode's classifier. Claude Code will try to compact the conversation before the next request; if this action is still needed after that, issue it again and it will be reviewed normally.
+```
+
+If the compaction fails, later actions the classifier can't check get one of two other messages:
+
+* A [`gave no verdict (the conversation is too long for the check)`](#the-server-returned-no-safety-verdict) denial
+* The [`Auto mode classifier transcript exceeded context window`](#auto-mode-cannot-determine-the-safety-of-an-action) message
+
+**What to do:**
+
+* If the compaction the message announces succeeds, you don't need to do anything.
+* If you see either of those two messages, run `/compact` at the Claude Code prompt to shorten the conversation yourself. If you turned [auto-compact](/docs/en/settings-reference#autocompactenabled) off, turn it back on so Claude Code compacts on its own next time.
 
 ### Agent terminated early due to an API error
 
@@ -4320,7 +4344,8 @@ Agent 'code-reviewer' would be spawned with zero tools — refusing. Its tools l
 * Correct each entry the error names against the [tools available to subagents](/docs/en/sub-agents#available-tools)
 * Remove entries for tools the session doesn't have, such as MCP tools from a server that isn't connected
 * If the entry names a connected MCP server, compare the entry with that server's name as the server's [tool names](/docs/en/permissions#mcp) spell it, such as `reports__v2` in `mcp__reports__v2__get_totals`. For that server, write `mcp__reports__v2__*`, which is `mcp__` followed by the whole name and `__*`. With the shorter `mcp__reports`, which names a server called `reports`, the subagent gets none of the `reports__v2` tools
-* For a tool that [background subagents drop](/docs/en/sub-agents#available-tools), such as `CronCreate`, remove the entry. To keep the tool, [turn fork mode off](/docs/en/sub-agents#turn-fork-mode-on-or-off) and ask Claude to run the subagent in the foreground
+* For a tool that [background subagents drop](/docs/en/sub-agents#available-tools), such as `CronCreate`, remove the entry
+* To keep a tool such as `CronCreate` instead, [let Claude wait for the subagent](/docs/en/sub-agents#let-claude-wait-for-a-subagent), since a subagent Claude waits for runs in the foreground and keeps the tool. If the definition sets `background: true`, remove that field first, because it keeps the subagent in the background
 * Delete the `tools` field instead of listing tools to give the subagent every [tool available to subagents](/docs/en/sub-agents#available-tools)
 * For a `tools` list that contains only `Agent`, raise the [depth limit](/docs/en/sub-agents#let-subagents-spawn-their-own-subagents) or give the agent at least one other tool: Claude Code withholds `Agent` at that limit, so a list with nothing else in it resolves to no tools
 

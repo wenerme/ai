@@ -26,10 +26,10 @@ Prerequisites:
 
 To enable merged results pipelines in a project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. Under **Merge options**, select **Enable merged results pipelines**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Under , select .
+1. Select .
 
 > [!warning]
 > If you enable this setting without configuring merge request pipelines in your
@@ -63,7 +63,7 @@ To resolve this issue:
 ### Successful merged results pipeline overrides a failed branch pipeline
 
 You might encounter a situation where a failed branch pipeline is ignored when the
-[**Pipelines must succeed** setting](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
+[ setting](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
 is activated.
 
 This issue occurs due to the pipeline logic prioritization.

@@ -313,7 +313,7 @@ An illustrative response excerpt:
 
 The `probability` is the model's estimate that the condition is true. Use it to flag photos for review based on a threshold you choose.
 
-Images must be inline base64 data URLs. Hosted HTTP or HTTPS image URLs and `file_id` inputs aren't supported by this endpoint. Combine `input_text` and `input_image` parts in a user message to evaluate images together with instructions or other context.
+Provide images as inline base64 data URLs or publicly accessible HTTP or HTTPS URLs. This endpoint doesn't support `file_id` inputs. Combine `input_text` and `input_image` parts in a user message to evaluate images together with instructions or other context.
 
 ## Select from fixed options
 

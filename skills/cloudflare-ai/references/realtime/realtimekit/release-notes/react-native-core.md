@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/reac
 
 # React Native Core SDK
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/index.xml)
 
@@ -32,7 +32,7 @@ This is a major breaking release. Review all breaking changes below before upgra
 - Requires Expo 56 or above (for Expo users).
 - Requires iOS 15.1 or above.
 - Requires @cloudflare/react-native-webrtc v137.0.1 or above.
-- Removed `RealtimeKitCore` import in iOS Screenshare setup and added a Podfile installer script to automatically add references to the Screenshare related files. Refer documentation for [iOS screen sharing](https://developers.cloudflare.com/realtime/realtimekit/core/ios-screen-sharing/).
+- Removed `RealtimeKitCore` import in iOS Screenshare setup and added a Podfile installer script to automatically add references to the Screenshare related files. Refer documentation for [iOS screen sharing](https://developers.cloudflare.com/realtime/realtimekit/humans/core/ios-screen-sharing/).
 - `initClient` return type changed from `Promise<RealtimeKitClient>` to `Promise<RealtimeKitClient | undefined>`. Code that assumes `initClient` always returns a defined value must add a null check.
 
 **Features**
@@ -180,5 +180,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/#page","headline":"React Native Core SDK","description":"Release notes and changelog for the RealtimeKit React Native Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/og.png?v=75db0aa4d16b1d5a","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/#page","headline":"React Native Core SDK","description":"Release notes and changelog for the RealtimeKit React Native Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/og.png?v=75db0aa4d16b1d5a","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

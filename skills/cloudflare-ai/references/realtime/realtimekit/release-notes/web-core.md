@@ -34,7 +34,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 - When the signaling WebSocket disconnects but the media connection remains healthy, audio, video, and screen sharing continue without restarting. This avoids media dropouts and reduces reconnection time from 20–30 seconds to a fraction of a second.
 - The SDK now establishes the signaling connection and fetches participant details in parallel, reducing meeting initialization time.
-- Web Core API, signaling, logging, and call-statistics traffic now use `api.realtime.cloudflare.com`. With Web Core 2.0.3, you no longer need to separately allowlist `api-silos.realtime.cloudflare.com`, `da-collector.realtime.cloudflare.com`, or `socket-edge.realtime.cloudflare.com`. Refer to the [Network allowlist](https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/) for all required domains.
+- Web Core API, signaling, logging, and call-statistics traffic now use `api.realtime.cloudflare.com`. With Web Core 2.0.3, you no longer need to separately allowlist `api-silos.realtime.cloudflare.com`, `da-collector.realtime.cloudflare.com`, or `socket-edge.realtime.cloudflare.com`. Refer to the [Network allowlist](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/) for all required domains.
 - Participant order, pinned participants, selected views, pagination, and manual media subscriptions are now preserved during reconnection.
 
 **Fixes**
@@ -52,7 +52,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 **Enhancements**
 
 - Generated API documentation now identifies class names correctly, providing more accurate type suggestions for TypeScript users.
-- Starting a recording that is already in progress now returns error code `1005` instead of the generic error code `1000`. If your [`onError` callback](https://developers.cloudflare.com/realtime/realtimekit/core/#advanced-options) handles error code `1000` for this case, update it to handle `1005`.
+- Starting a recording that is already in progress now returns error code `1005` instead of the generic error code `1000`. If your [`onError` callback](https://developers.cloudflare.com/realtime/realtimekit/humans/core/#advanced-options) handles error code `1000` for this case, update it to handle `1005`.
 
 **Fixes**
 
@@ -261,7 +261,7 @@ Connected Meetings:
 
 **Features**
 
-- Simulcast support is now available to all RealtimeKit clients. Configure it per participant in Preset via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit), [Preset API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create) using the `config.media.video.simulcast` field, or while [initializing the SDK](https://developers.cloudflare.com/realtime/realtimekit/core/).
+- Simulcast support is now available to all RealtimeKit clients. Configure it per participant in Preset via the [RealtimeKit dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit), [Preset API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create) using the `config.media.video.simulcast` field, or while [initializing the SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/).
 - Added 4K UHD video support in media production (configurable in Preset and API). Falls back to the maximum supported resolution if the camera does not support 4K.
 
 ## 2026-03-10
@@ -373,7 +373,7 @@ The following methods are deprecated due to scalability limitations (limited to 
 
 - Fixed an issue where camera switching between front and rear cameras was not working on Android devices
 - Fixed device selection logic to prioritize media devices more effectively
-- Added PIP support for [Reactions](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/#reactions-1)
+- Added PIP support for [Reactions](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addons/#reactions-1)
 
 ## 2025-11-18
 

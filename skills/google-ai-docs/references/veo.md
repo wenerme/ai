@@ -1,3 +1,7 @@
+> [!WARNING]
+> Veo 3.1 Preview (`veo-3.1-generate-preview`, `veo-3.1-fast-generate-preview`, and `veo-3.1-lite-generate-preview`) in the Gemini API is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on **October 22, 2026** . Migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) (`gemini-omni-1.1-flash`) or the GA models available through the [Gemini
+> Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service interruptions.
+
 > [!NOTE]
 > **Note:** This feature is currently only available with the generateContent API. Please follow the content on this page for more information.
 
@@ -1961,7 +1965,7 @@ as you envision it.
 
 ### Prompting for extension
 
-To [extend](https://ai.google.dev/gemini-api/docs/veo#extending_veo_videos) your Veo-generated
+To [extend](https://ai.google.dev/gemini-api/docs/veo#extending-veo-videos) your Veo-generated
 video with Veo 3.1 (not available for Veo 3.1 Lite), use the video as an input
 along with an optional text prompt. Extend finalizes the final second or 24
 frames of your video and continues the action.

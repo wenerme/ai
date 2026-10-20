@@ -12,6 +12,12 @@ Check out an open merge request.
 Defaults to the currently checked-out branch. Use `--branch` to
 override the local branch name used for the checkout.
 
+Use `--worktree` to check out the merge request into a Git worktree at the given path. Your current working directory and any work in progress stay untouched. If you run the command again with the same path, it updates the existing worktree.
+
+You can only check out a branch in one worktree at a time. If a branch is already checked out elsewhere, use `--branch` to check it out under a different name.
+
+To remove the worktree when you are done, run `git worktree remove <path>`.
+
 ```plaintext
 glab mr checkout [<id> | <branch> | <url>] [flags]
 ```
@@ -25,6 +31,9 @@ glab mr checkout 12 --branch todo-fix
 glab mr checkout new-feature --set-upstream-to=upstream/main
 glab mr checkout https://gitlab.com/gitlab-org/cli/-/merge_requests/1234
 
+# Check out into a separate worktree
+glab mr checkout 123 --worktree ../review-mr-123
+
 # Uses the checked-out branch
 glab mr checkout
 ```
@@ -35,6 +44,7 @@ glab mr checkout
   -b, --branch string            Check out merge request with name <branch>.
   -f, --force                    Reset local branch to remote when they have diverged. Refuses if working tree has changes that would be lost.
   -u, --set-upstream-to string   Set tracking of checked-out branch to [REMOTE/]BRANCH.
+      --worktree string          Check out the merge request into a Git worktree at <path> instead of the current working directory. Re-running updates an existing worktree at that path.
 ```
 
 ## Options inherited from parent commands
