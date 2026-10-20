@@ -2670,6 +2670,9 @@ func run() error {
     "schema_definition": {
       "type": "object",
       "properties": {
+        "description": {
+          "type": "string"
+        },
         "type": {
           "type": "string",
           "enum": [
@@ -4311,6 +4314,9 @@ func run() error {
     "schema_definition": {
       "type": "object",
       "properties": {
+        "description": {
+          "type": "string"
+        },
         "type": {
           "type": "string",
           "enum": [

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.
 
 # Run Docker-in-Docker
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -35,29 +35,40 @@ Create a custom Dockerfile that combines the sandbox binary with Docker. The Doc
 *Dockerfiledockerfile*
 
 ```dockerfile
-FROM docker:dind-rootless
-USER root
+FROM docker:dind
 
-# Use the musl build so it runs on Alpine-based docker:dind-rootless
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /container-server/sandbox /sandbox
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /bin/bash /bin/bash
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8
-COPY --from=docker.io/cloudflare/sandbox:0.7.4-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
+# Use the musl build so it runs on Alpine-based docker:dind
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /container-server/sandbox /sandbox
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libstdc++.so.6 /usr/lib/libstdc++.so.6
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libgcc_s.so.1 /usr/lib/libgcc_s.so.1
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /bin/bash /bin/bash
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libreadline.so.8 /usr/lib/libreadline.so.8
+COPY --from=docker.io/cloudflare/sandbox:0.12.11-musl /usr/lib/libreadline.so.8.2 /usr/lib/libreadline.so.8.2
 
-# Create startup script that starts dockerd with
-# iptables disabled, waits for readiness, then keeps running
+# Start dockerd without iptables or IP forwarding, wait up to 60 seconds
+# for it to accept connections, then keep running
 RUN printf '#!/bin/sh\n\
-  set -eu\n\
-  dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false &\n\
-  until docker version >/dev/null 2>&1; do sleep 0.2; done\n\
-  echo "Docker is ready"\n\
-  wait\n' > /home/rootless/boot-docker-for-dind.sh && chmod +x /home/rootless/boot-docker-for-dind.sh
+set -eu\n\
+dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false --ip-forward=false --exec-opt native.cgroupdriver=cgroupfs &\n\
+timeout 60 sh -c "until docker version >/dev/null 2>&1; do sleep 0.2; done"\n\
+echo "Docker is ready"\n\
+wait\n' > /usr/local/bin/start-docker.sh && chmod +x /usr/local/bin/start-docker.sh
 
-ENTRYPOINT ["/sandbox"]
-CMD ["/home/rootless/boot-docker-for-dind.sh"]
+# Mount /tmp before the sandbox starts. Otherwise the docker:dind
+# entrypoint mounts a new /tmp over the sandbox's session files.
+ENTRYPOINT ["/bin/sh", "-c", "mountpoint -q /tmp || mount -t tmpfs none /tmp; exec /sandbox \"$@\"", "--"]
+CMD ["/usr/local/bin/start-docker.sh"]
 ```
+
+Match the `cloudflare/sandbox` image tag to the version of `@cloudflare/sandbox` in your Worker.
+
+The sandbox runs the `CMD` script when it starts:
+
+- `--iptables=false`, `--ip6tables=false`, and `--ip-forward=false` stop Docker from changing network settings that Containers do not allow.
+- `--exec-opt native.cgroupdriver=cgroupfs` makes Docker manage cgroups directly instead of through systemd, which the container does not run.
+- If dockerd does not accept connections within 60 seconds, the script exits and the sandbox stops, so the failure shows up in your logs. Set `SANDBOX_LOG_LEVEL` to `debug` to log the output of dockerd. Refer to [Sandbox options](https://developers.cloudflare.com/sandbox/sdk/configuration/sandbox-options/).
+
+The script does not appear in `listProcesses()`, because the sandbox starts it outside its process list.
 
 Working with disabled iptables
 
@@ -67,14 +78,26 @@ To send or receive traffic from a container running within Docker-in-Docker, use
 
 This allows you to connect to the container, but it means each inner container has access to your outer container's network stack. Ensure you understand the security implications of this setup before proceeding.
 
+Deployed sandboxes only
+
+Docker-in-Docker does not work under `wrangler dev`. Docker needs a privileged container, and local development cannot start one.
+
 ## Use Docker in your sandbox
 
-Once deployed, you can run Docker commands through the sandbox:
+Once deployed, you can run Docker commands through the sandbox. Docker becomes ready a few seconds after the sandbox starts, so wait for `docker version` to succeed first:
 
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
 
 const sandbox = getSandbox(env.Sandbox, "docker-sandbox");
+
+// Wait for the Docker daemon
+const ready = await sandbox.exec(
+	"timeout 60 sh -c 'until docker version >/dev/null 2>&1; do sleep 0.2; done'",
+);
+if (!ready.success) {
+	throw new Error("Docker did not start");
+}
 
 // Build an image
 await sandbox.writeFile(
@@ -102,6 +125,14 @@ console.log(run.stdout); // "Hello from Docker!"
 import { getSandbox } from "@cloudflare/sandbox";
 
 const sandbox = getSandbox(env.Sandbox, "docker-sandbox");
+
+// Wait for the Docker daemon
+const ready = await sandbox.exec(
+	"timeout 60 sh -c 'until docker version >/dev/null 2>&1; do sleep 0.2; done'",
+);
+if (!ready.success) {
+	throw new Error("Docker did not start");
+}
 
 // Build an image
 await sandbox.writeFile(
@@ -131,6 +162,7 @@ Docker-in-Docker in Cloudflare Containers has the following limitations:
 
 - **No iptables** - Network isolation features that rely on iptables are not available
 - **Ephemeral storage** - Built images and containers are lost when the sandbox sleeps. You must persist them manually.
+- **No local development** - Docker cannot start under `wrangler dev`
 
 ## Related resources
 
@@ -147,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/#page","headline":"Run Docker-in-Docker","description":"Run Docker commands inside a Sandbox SDK 0.x container.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.png?v=a9338674365fe277","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/#page","headline":"Run Docker-in-Docker","description":"Run Docker commands inside a Sandbox SDK 0.x container.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/docker-in-docker/og.png?v=a9338674365fe277","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

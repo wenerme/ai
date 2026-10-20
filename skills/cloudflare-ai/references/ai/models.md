@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 261 modelsClear filters
+We found 262 modelsClear filters
 
 ## Compare models
 
@@ -1369,6 +1369,13 @@ Compare
 
 - Cloudflare-hosted
 - +2
+
+Compare
+
+[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4.1-flash-1017</h3>DeepSeekText Generation We introduce DeepSeek-V4.1-Flash, a multimodal Mixture-of-Experts (MoE) model with 552B backbone parameters and support for contexts of up to one million tokens. The model natively processes images and text, and generates text autoregressively.](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4.1-flash-1017/)
+
+- Cloudflare-hosted
+- +3
 
 Compare
 

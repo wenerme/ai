@@ -112,6 +112,18 @@ Type: `string`
 
 The JA4 TLS client fingerprint.
 
+## OriginResponseStatus
+
+Type: `int`
+
+The HTTP response status returned by the origin server. A value of 0 indicates that no origin response was received.
+
+## RawUserID
+
+Type: `string`
+
+The original user identifier associated with the event. This field can contain personally identifiable information.
+
 ## RayID
 
 Type: `string`

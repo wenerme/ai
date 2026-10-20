@@ -499,7 +499,10 @@ func main() {
 	for stream.Next() {
 		event := stream.Current()
 		fmt.Println(event.Type)
-		cursor = event.SequenceNumber
+		// Keepalives use connection counters, not stored-event resume positions.
+		if event.Type != "keepalive" {
+			cursor = event.SequenceNumber
+		}
 		if event.Response.ID != "" {
 			responseID = event.Response.ID
 		}

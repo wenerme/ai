@@ -62,6 +62,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `ds1000` | [DS-1000](../../benchmarks/ds1000.md) | `Coding` |
 | `eq_bench` | [EQ-Bench](../../benchmarks/eq_bench.md) | `InstructionFollowing` |
 | `fin_ner` | [FinNER](../../benchmarks/fin_ner.md) | `Knowledge`, `NER` |
+| `finqa` | [FinQA](../../benchmarks/finqa.md) | `Math`, `QA`, `Reasoning` |
 | `frames` | [FRAMES](../../benchmarks/frames.md) | `LongContext`, `Reasoning` |
 | `general_arena` | [GeneralArena](../../benchmarks/general_arena.md) | `Arena`, `Custom` |
 | `general_decision` | [General Decision](../../benchmarks/general_decision.md) | `Custom`, `Decision` |
@@ -151,6 +152,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `swe_bench_verified` | [SWE-bench_Verified](../../benchmarks/swe_bench_verified.md) | `Coding` |
 | `swe_bench_verified_mini` | [SWE-bench_Verified_mini](../../benchmarks/swe_bench_verified_mini.md) | `Coding` |
 | `tablebench` | [TableBench](../../benchmarks/tablebench.md) | `QA`, `Reasoning` |
+| `tat_qa` | [TAT-QA](../../benchmarks/tat_qa.md) | `Math`, `QA`, `Reasoning` |
 | `tool_bench` | [ToolBench-Static](../../benchmarks/tool_bench.md) | `FunctionCalling`, `Reasoning` |
 | `trivia_qa` | [TriviaQA](../../benchmarks/trivia_qa.md) | `QA`, `ReadingComprehension` |
 | `triviaqa_indic` | [TriviaQA-Indic-MCQ](../../benchmarks/triviaqa_indic.md) | `Knowledge`, `MCQ`, `MultiLingual` |
@@ -224,6 +226,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/ds1000.md
 ../../benchmarks/eq_bench.md
 ../../benchmarks/fin_ner.md
+../../benchmarks/finqa.md
 ../../benchmarks/frames.md
 ../../benchmarks/general_arena.md
 ../../benchmarks/general_decision.md
@@ -313,6 +316,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/swe_bench_verified.md
 ../../benchmarks/swe_bench_verified_mini.md
 ../../benchmarks/tablebench.md
+../../benchmarks/tat_qa.md
 ../../benchmarks/tool_bench.md
 ../../benchmarks/trivia_qa.md
 ../../benchmarks/triviaqa_indic.md
