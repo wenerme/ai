@@ -1422,7 +1422,11 @@ the new request. The response contains only the redacted key, not its secret.
 curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{}'
+    -d '{
+          "scopes": [
+            "api.all.read"
+          ]
+        }'
 ```
 
 #### Response

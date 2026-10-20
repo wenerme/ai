@@ -73,8 +73,8 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.0-flash-lite` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
 | `gemini-2.0-flash-lite-001` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
 | Preview models ||||
-| `gemini-2.0-flash-lite-preview` | February 5, 2025 | December 9, 2025 | `gemini-2.5-flash-lite` |
-| `gemini-2.0-flash-lite-preview-02-05` | February 5, 2025 | December 9, 2025 | `gemini-2.5-flash-lite` |
+| `gemini-2.0-flash-lite-preview` | February 5, 2025 | December 9, 2025 | `gemini-3.1-flash-lite` |
+| `gemini-2.0-flash-lite-preview-02-05` | February 5, 2025 | December 9, 2025 | `gemini-3.1-flash-lite` |
 
 ## Live API models
 
@@ -135,10 +135,10 @@ Already-shutdown models are indicated with gray backgrounds.
 | `imagen-4.0-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
 | `imagen-4.0-ultra-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
 | `imagen-4.0-fast-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
-| `imagen-3.0-generate-002` | February 6, 2025 | November 10, 2025 | `imagen-4.0-generate-001` |
+| `imagen-3.0-generate-002` | February 6, 2025 | November 10, 2025 | `gemini-nano-banana-2.1` |
 | Preview models ||||
-| `imagen-4.0-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `imagen-4.0-generate-001` |
-| `imagen-4.0-ultra-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `imagen-4.0-ultra-generate-001` |
+| `imagen-4.0-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `gemini-nano-banana-2.1` |
+| `imagen-4.0-ultra-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `gemini-nano-banana-2.1` |
 
 ## Veo models
 
@@ -177,8 +177,10 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | Preview models ||||
-| `gemini-robotics-er-1.6-preview` | April 14, 2026 | August 31, 2026 | gemini-robotics-er-2-preview |
-| `gemini-robotics-er-1.5-preview` | September 25, 2025 | April 30, 2026 | `gemini-robotics-er-1.6-preview` |
+| `gemini-robotics-er-2-preview` | July 30, 2026 | No shutdown date announced |   |
+| `gemini-robotics-er-2-streaming-preview` | July 30, 2026 | No shutdown date announced |   |
+| `gemini-robotics-er-1.6-preview` | April 14, 2026 | August 31, 2026 | `gemini-robotics-er-2-preview` |
+| `gemini-robotics-er-1.5-preview` | September 25, 2025 | April 30, 2026 | `gemini-robotics-er-2-preview` |
 
 ## Managed agents
 
@@ -186,7 +188,7 @@ Already-shutdown models are indicated with gray backgrounds.
 |---|---|---|---|
 | Preview agents ||||
 | `antigravity-preview-09-2026` | September 17, 2026 | No shutdown date announced |   |
-| `antigravity-preview-05-2026` | May 19, 2026 | October 5, 2026 | `antigravity-preview-09-2026` |
 | `deep-research-preview-04-2026` | April 21, 2026 | No shutdown date announced |   |
 | `deep-research-max-preview-04-2026` | April 21, 2026 | No shutdown date announced |   |
 | `deep-research-pro-preview-12-2025` | December 11, 2025 | October 23, 2026 | `deep-research-preview-04-2026` |
+| `antigravity-preview-05-2026` | May 19, 2026 | October 5, 2026 | `antigravity-preview-09-2026` |

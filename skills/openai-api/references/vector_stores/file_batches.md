@@ -284,7 +284,11 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches \
     -H 'Content-Type: application/json' \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
+    -d '{
+          "file_ids": [
+            "string"
+          ]
+        }'
 ```
 
 #### Response

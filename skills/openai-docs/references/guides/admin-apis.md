@@ -116,7 +116,7 @@ if err != nil {
 	panic(err)
 }
 
-println(modelPermissions.Mode)
+fmt.Println(modelPermissions.Mode)
 ```
 
 ```java
@@ -229,7 +229,7 @@ if err != nil {
 	panic(err)
 }
 
-println(spendAlert.ID)
+fmt.Println(spendAlert.ID)
 ```
 
 ```java
@@ -380,7 +380,7 @@ if err != nil {
 	panic(err)
 }
 
-println(invite.ID)
+fmt.Println(invite.ID)
 ```
 
 ```java
@@ -443,7 +443,7 @@ if err != nil {
 }
 
 for _, auditLog := range auditLogs.Data {
-	println(auditLog.ID)
+	fmt.Println(auditLog.ID)
 }
 ```
 

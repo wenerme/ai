@@ -46,6 +46,32 @@ Latest release
 
 </summary>
 
+**Version:** Windows 2026.8.2115.0**Date:** 2026-10-20**Size:** 60.1 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2115.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (14)
+
+</summary>
+
+<details>
+
+<summary>
+
+Windows 2026.8.2110.0
+
+</summary>
+
 **Version:** Windows 2026.8.2110.0**Date:** 2026-10-12**Size:** 60.1 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2110.0">Download</a>
@@ -55,14 +81,6 @@ Latest release
 This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
 
 
-
-<details>
-
-<summary>
-
-Previous version history (13)
-
-</summary>
 
 <details>
 
@@ -548,6 +566,32 @@ Latest release
 
 </summary>
 
+**Version:** macOS 2026.8.2115.0**Date:** 2026-10-20**Size:** 166 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.2115.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (12)
+
+</summary>
+
+<details>
+
+<summary>
+
+macOS 2026.8.2110.0
+
+</summary>
+
 **Version:** macOS 2026.8.2110.0**Date:** 2026-10-12**Size:** 166 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.2110.0">Download</a>
@@ -557,14 +601,6 @@ Latest release
 This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
 
 
-
-<details>
-
-<summary>
-
-Previous version history (11)
-
-</summary>
 
 <details>
 
@@ -933,6 +969,34 @@ Latest release
 
 </summary>
 
+**Version:** Linux 2026.8.2115.0**Date:** 2026-10-20**Size:** 74.7 MB
+
+AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (x86-64) Debian 13 (x86-64) Fedora 43 (x86-64) Fedora 44 (x86-64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-intel/version/2026.8.2115.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
+
+<details>
+
+<summary>
+
+Previous version history (13)
+
+</summary>
+
+<details>
+
+<summary>
+
+Linux 2026.8.2110.0
+
+</summary>
+
 **Version:** Linux 2026.8.2110.0**Date:** 2026-10-12**Size:** 74.7 MB
 
 AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
@@ -944,14 +1008,6 @@ AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm
 This hotfix resolves an issue where the client could repeatedly disconnect and reconnect when a split tunnel configuration with hostname-based entries failed to apply.</details>
 
 
-
-<details>
-
-<summary>
-
-Previous version history (12)
-
-</summary>
 
 <details>
 

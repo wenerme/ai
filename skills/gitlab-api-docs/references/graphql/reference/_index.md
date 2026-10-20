@@ -11412,7 +11412,7 @@ Arguments:
 | <a id="mutation-iterationcadencecreate-grouppath"></a>`groupPath` | [`ID!`](#id) | Group where the iteration cadence is created. |
 | <a id="mutation-iterationcadencecreate-iterationsinadvance"></a>`iterationsInAdvance` | [`Int`](#int) | Number of future iterations to schedule in addition to the current one. |
 | <a id="mutation-iterationcadencecreate-rollover"></a>`rollOver` | [`Boolean`](#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| <a id="mutation-iterationcadencecreate-startdate"></a>`startDate` | [`Time`](#time) | Timestamp of the automation start date. |
+| <a id="mutation-iterationcadencecreate-startdate"></a>`startDate` | [`Time`](#time) | Automation start date. |
 | <a id="mutation-iterationcadencecreate-title"></a>`title` | [`String`](#string) | Title of the iteration cadence. |
 
 Fields:
@@ -11458,7 +11458,7 @@ Arguments:
 | <a id="mutation-iterationcadenceupdate-id"></a>`id` | [`IterationsCadenceID!`](#iterationscadenceid) | Global ID of the iteration cadence. |
 | <a id="mutation-iterationcadenceupdate-iterationsinadvance"></a>`iterationsInAdvance` | [`Int`](#int) | Number of future iterations to schedule in addition to the current one. |
 | <a id="mutation-iterationcadenceupdate-rollover"></a>`rollOver` | [`Boolean`](#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| <a id="mutation-iterationcadenceupdate-startdate"></a>`startDate` | [`Time`](#time) | Timestamp of the automation start date. |
+| <a id="mutation-iterationcadenceupdate-startdate"></a>`startDate` | [`Time`](#time) | Automation start date. |
 | <a id="mutation-iterationcadenceupdate-title"></a>`title` | [`String`](#string) | Title of the iteration cadence. |
 
 Fields:
@@ -12890,6 +12890,69 @@ Fields:
 | <a id="mutation-mergerequestupdateapprovalrule-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestupdateapprovalrule-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-mergerequestupdateapprovalrule-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request after mutation. |
+
+### `Mutation.mergeRequestsCsvExport`
+
+- Introduced in GitLab 19.6.
+- Status: Experiment.
+
+Input type: `MergeRequestsCsvExportInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestscsvexport-approvedby"></a>`approvedBy` | [`[String!]`](#string) | Usernames of the approvers. |
+| <a id="mutation-mergerequestscsvexport-approver"></a>`approver` | [`[String!]`](#string) | Usernames of possible approvers. |
+| <a id="mutation-mergerequestscsvexport-assigneeusername"></a>`assigneeUsername` | [`String`](#string) | Username of the assignee. |
+| <a id="mutation-mergerequestscsvexport-assigneeusernames"></a>`assigneeUsernames` | [`[String!]`](#string) | Usernames of users assigned to the merge request. |
+| <a id="mutation-mergerequestscsvexport-assigneewildcardid"></a>`assigneeWildcardId` | [`AssigneeWildcardId`](#assigneewildcardid) | Filter by assignee presence. Incompatible with assigneeUsernames and assigneeUsername. |
+| <a id="mutation-mergerequestscsvexport-authorusername"></a>`authorUsername` | [`String`](#string) | Username of the author. |
+| <a id="mutation-mergerequestscsvexport-blobpath"></a>`blobPath`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Path of the blob changed in merge request. Requires state, targetBranches, and createdAfter arguments. |
+| <a id="mutation-mergerequestscsvexport-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestscsvexport-closedafter"></a>`closedAfter` | [`Time`](#time) | Merge requests closed after the date. |
+| <a id="mutation-mergerequestscsvexport-closedbefore"></a>`closedBefore` | [`Time`](#time) | Merge requests closed before the date. |
+| <a id="mutation-mergerequestscsvexport-createdafter"></a>`createdAfter` | [`Time`](#time) | Merge requests created after the timestamp. |
+| <a id="mutation-mergerequestscsvexport-createdbefore"></a>`createdBefore` | [`Time`](#time) | Merge requests created before the timestamp. |
+| <a id="mutation-mergerequestscsvexport-deployedafter"></a>`deployedAfter` | [`Time`](#time) | Merge requests deployed after the timestamp. |
+| <a id="mutation-mergerequestscsvexport-deployedbefore"></a>`deployedBefore` | [`Time`](#time) | Merge requests deployed before the timestamp. |
+| <a id="mutation-mergerequestscsvexport-deploymentid"></a>`deploymentId` | [`String`](#string) | ID of the deployment. |
+| <a id="mutation-mergerequestscsvexport-draft"></a>`draft` | [`Boolean`](#boolean) | Limit result to draft merge requests. |
+| <a id="mutation-mergerequestscsvexport-environmentname"></a>`environmentName` | [`String`](#string) | Environment merge requests have been deployed to. |
+| <a id="mutation-mergerequestscsvexport-ignoredreviewerusername"></a>`ignoredReviewerUsername`  | [`String`](#string) | Introduced in GitLab 18.0. Status: Experiment. Username of the reviewer to ignore when searching by reviewer state. |
+| <a id="mutation-mergerequestscsvexport-iids"></a>`iids` | [`[String!]`](#string) | Array of IIDs of merge requests, for example `[1, 2]`. |
+| <a id="mutation-mergerequestscsvexport-in"></a>`in` | [`[IssuableSearchableField!]`](#issuablesearchablefield) | Specify the fields to perform the search in. Defaults to `[TITLE, DESCRIPTION]`. Requires the `search` argument.'. |
+| <a id="mutation-mergerequestscsvexport-labelname"></a>`labelName` | [`[String]`](#string) | Labels applied to the merge request. |
+| <a id="mutation-mergerequestscsvexport-labels"></a>`labels`  | [`[String!]`](#string) | Deprecated in GitLab 17.1. Use `labelName`. |
+| <a id="mutation-mergerequestscsvexport-mergedafter"></a>`mergedAfter` | [`Time`](#time) | Merge requests merged after the date. |
+| <a id="mutation-mergerequestscsvexport-mergedbefore"></a>`mergedBefore` | [`Time`](#time) | Merge requests merged before the date. |
+| <a id="mutation-mergerequestscsvexport-mergedby"></a>`mergedBy` | [`String`](#string) | Username of the merger. |
+| <a id="mutation-mergerequestscsvexport-milestonetitle"></a>`milestoneTitle` | [`String`](#string) | Title of the milestone. Incompatible with milestoneWildcardId. |
+| <a id="mutation-mergerequestscsvexport-milestonewildcardid"></a>`milestoneWildcardId` | [`MilestoneWildcardId`](#milestonewildcardid) | Filter issues by milestone ID wildcard. Incompatible with milestoneTitle. |
+| <a id="mutation-mergerequestscsvexport-myreactionemoji"></a>`myReactionEmoji` | [`String`](#string) | Filter by your reaction emoji. |
+| <a id="mutation-mergerequestscsvexport-not"></a>`not` | [`MergeRequestsResolverNegatedParams`](#mergerequestsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
+| <a id="mutation-mergerequestscsvexport-or"></a>`or` | [`UnionedMergeRequestFilterInput`](#unionedmergerequestfilterinput) | List of arguments with inclusive OR. |
+| <a id="mutation-mergerequestscsvexport-projectpath"></a>`projectPath` | [`ID!`](#id) | Full project path. |
+| <a id="mutation-mergerequestscsvexport-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
+| <a id="mutation-mergerequestscsvexport-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mutation-mergerequestscsvexport-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
+| <a id="mutation-mergerequestscsvexport-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
+| <a id="mutation-mergerequestscsvexport-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
+| <a id="mutation-mergerequestscsvexport-search"></a>`search` | [`String`](#string) | Search query for title or description. |
+| <a id="mutation-mergerequestscsvexport-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
+| <a id="mutation-mergerequestscsvexport-state"></a>`state` | [`MergeRequestState`](#mergerequeststate) | Merge request state. If provided, all resolved merge requests will have the state. |
+| <a id="mutation-mergerequestscsvexport-subscribed"></a>`subscribed` | [`SubscriptionStatus`](#subscriptionstatus) | Merge requests the current user is subscribed to. |
+| <a id="mutation-mergerequestscsvexport-targetbranches"></a>`targetBranches` | [`[String!]`](#string) | Array of target branch names. All resolved merge requests will have one of these branches as their target. |
+| <a id="mutation-mergerequestscsvexport-updatedafter"></a>`updatedAfter` | [`Time`](#time) | Merge requests updated after the timestamp. |
+| <a id="mutation-mergerequestscsvexport-updatedbefore"></a>`updatedBefore` | [`Time`](#time) | Merge requests updated before the timestamp. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestscsvexport-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestscsvexport-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-mergerequestscsvexport-message"></a>`message` | [`String`](#string) | Export request result message. |
 
 ### `Mutation.mergeTrainsDeleteCar`
 
@@ -19400,7 +19463,7 @@ Fields:
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Generates a workplan for a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `duo_workplan_async_flow` feature flag is enabled; returns an error otherwise.
+Generates a workplan for a work item asynchronously through a Duo Agent Platform flow. Available only when the `workplan` feature flag is enabled; returns an error otherwise.
 
 Input type: `WorkItemGenerateWorkplanInput`
 
@@ -19475,7 +19538,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Resumes a paused workplan generation flow that is awaiting input, sending the replies left on the questions the flow asked. Available only when the `duo_workplan_async_flow` feature flag is enabled; returns an error otherwise.
+Resumes a paused workplan generation flow that is awaiting input, sending the replies left on the questions the flow asked. Available only when the `workplan` feature flag is enabled; returns an error otherwise.
 
 Input type: `WorkItemResumeWorkplanInput`
 
@@ -49665,7 +49728,7 @@ Fields:
 | <a id="iterationcadence-id"></a>`id` | [`IterationsCadenceID!`](#iterationscadenceid) | Global ID of the iteration cadence. |
 | <a id="iterationcadence-iterationsinadvance"></a>`iterationsInAdvance` | [`Int`](#int) | Number of future iterations to schedule in addition to the current one. |
 | <a id="iterationcadence-rollover"></a>`rollOver` | [`Boolean!`](#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| <a id="iterationcadence-startdate"></a>`startDate` | [`Time`](#time) | Timestamp of the automation start date. |
+| <a id="iterationcadence-startdate"></a>`startDate` | [`Date`](#date) | Automation start date. |
 | <a id="iterationcadence-title"></a>`title` | [`String!`](#string) | Title of the iteration cadence. |
 
 ### `JiraImport`
@@ -65896,9 +65959,9 @@ Fields:
 | <a id="workitemwidgetagentplan-aiplanningenabled"></a>`aiPlanningEnabled` | [`Boolean!`](#boolean) | Indicates whether AI planning is enabled for the work item. |
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
-| <a id="workitemwidgetagentplan-generationstatus"></a>`generationStatus`  | [`WorkItemAgentPlanGenerationStatus`](#workitemagentplangenerationstatus) | Introduced in GitLab 19.4. Status: Experiment. Status of the asynchronous workplan generation flow for the work item. Reflects the most recent `workplan/v1` Duo Agent Platform workflow, if any; creation of that workflow is currently gated by the `duo_workplan_async_flow` feature flag. |
-| <a id="workitemwidgetagentplan-openquestionscount"></a>`openQuestionsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of questions asked by workplan flows whose thread is not resolved, across every run on the work item. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
-| <a id="workitemwidgetagentplan-questions"></a>`questions`  | [`WorkItemAgentPlanQuestionConnection`](#workitemagentplanquestionconnection) | Introduced in GitLab 19.5. Status: Experiment. Questions asked by workplan flows, across every run on the work item, oldest first. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-generationstatus"></a>`generationStatus`  | [`WorkItemAgentPlanGenerationStatus`](#workitemagentplangenerationstatus) | Introduced in GitLab 19.4. Status: Experiment. Status of the asynchronous workplan generation flow for the work item. Reflects the most recent `workplan/v1` Duo Agent Platform workflow, if any; creation of that workflow is currently gated by the `workplan` feature flag. |
+| <a id="workitemwidgetagentplan-openquestionscount"></a>`openQuestionsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of questions asked by workplan flows whose thread is not resolved, across every run on the work item. Null when no workplan flow has run on the work item. Only available when the `workplan` feature flag is enabled. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-questions"></a>`questions`  | [`WorkItemAgentPlanQuestionConnection`](#workitemagentplanquestionconnection) | Introduced in GitLab 19.5. Status: Experiment. Questions asked by workplan flows, across every run on the work item, oldest first. Null when no workplan flow has run on the work item. Only available when the `workplan` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 | <a id="workitemwidgetagentplan-readinessscorefeedback"></a>`readinessScoreFeedback`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-readinessscorefeedbackhtml"></a>`readinessScoreFeedbackHtml`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. GitLab Flavored Markdown rendering of `readiness_score_feedback`. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
