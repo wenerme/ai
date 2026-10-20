@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/realtime/realtimekit/webinar/og.png?v=c
 
 # Set up a webinar
 
-Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In a RealtimeKit webinar, presenters publish audio and video from the [stage](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#stage). Viewers watch and can request to join the stage.
 
-This guide sets up a webinar using the default webinar [presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) and renders it with [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/). To build a custom interface instead, use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/) with [stage management](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/).
+This guide sets up a webinar using the default webinar [presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) and renders it with [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/). To build a custom interface instead, use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/) with [stage management](https://developers.cloudflare.com/realtime/realtimekit/humans/core/stage-management/).
 
 ## Webinar roles
 
@@ -34,7 +34,7 @@ Before you set up a webinar, make sure that you have:
 - A [Cloudflare account ↗︎](https://dash.cloudflare.com) with a RealtimeKit app.
 - An API token with Realtime Admin permissions. Keep it server-side. Do not expose it in frontend code.
 - A backend that can call the RealtimeKit REST API to create meetings and add participants.
-- A frontend application ready to integrate [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/).
+- A frontend application ready to integrate [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/).
 
 If you have not completed these requirements, refer to [Quickstart](https://developers.cloudflare.com/realtime/realtimekit/quickstart/).
 
@@ -44,7 +44,7 @@ If you have not completed these requirements, refer to [Quickstart](https://deve
 2. Create a meeting using the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/). Save the returned meeting `id` for the next step.
 3. Add each presenter and viewer to the meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). Assign `webinar_presenter` to presenters and `webinar_viewer` to viewers.
 4. Deliver each participant's returned `authToken` only to the frontend session for that specific user.
-5. Initialize [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) with the participant's `authToken`. UI Kit renders the webinar interface, including stage controls, based on the participant's preset.
+5. Initialize [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/) with the participant's `authToken`. UI Kit renders the webinar interface, including stage controls, based on the participant's preset.
 
 <details>
 
@@ -76,7 +76,7 @@ For the complete request schema, refer to <a href="https://developers.cloudflare
 
 A viewer whose preset has **Behaviour** set to **Can request to join** can request access to the stage from the UI Kit interface. A presenter whose preset has **Accept Requests** turned on receives the request and can accept or reject it.
 
-Once accepted, the viewer joins the stage and can publish audio and video like a presenter. RealtimeKit UI Kit handles this by default. To build a custom interface, implement the same behavior with the stage management APIs in [Stage Management](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/).
+Once accepted, the viewer joins the stage and can publish audio and video like a presenter. RealtimeKit UI Kit handles this by default. To build a custom interface, implement the same behavior with the stage management APIs in [Stage Management](https://developers.cloudflare.com/realtime/realtimekit/humans/core/stage-management/).
 
 ## Verify the webinar
 
@@ -87,11 +87,11 @@ Once accepted, the viewer joins the stage and can publish audio and video like a
 
 ## Pricing
 
-Both presenters and viewers are billed as Audio/Video Participants. For detailed pricing information, refer to [Pricing](https://developers.cloudflare.com/realtime/realtimekit/pricing/).
+Both presenters and viewers are billed as Audio/Video Participants. For detailed pricing information, refer to [Pricing](https://developers.cloudflare.com/realtime/realtimekit/platform/pricing/).
 
 ## Next steps
 
-- Customize the webinar interface with a [custom control bar](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/) or [UI Kit addons](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/).
+- Customize the webinar interface with a [custom control bar](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/custom-controlbar/) or [UI Kit addons](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/addons/).
 - Review [video and simulcast recommendations](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/#webinar-audience-is-view-only) for presenter and viewer media quality.
 - [Record the webinar](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/) and store the recording in your own storage.
 - Use [webhooks](https://developers.cloudflare.com/realtime/realtimekit/webhooks/) to track webinar lifecycle events in your backend.
@@ -105,5 +105,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webinar/#page","headline":"Set up a webinar","description":"Set up a RealtimeKit webinar with presenters and viewers, then manage requests to join the stage.","url":"https://developers.cloudflare.com/realtime/realtimekit/webinar/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/webinar/og.png?v=c39debd7a18c6de6","dateModified":"2026-09-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webinar/#page","headline":"Set up a webinar","description":"Set up a RealtimeKit webinar with presenters and viewers, then manage requests to join the stage.","url":"https://developers.cloudflare.com/realtime/realtimekit/webinar/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/webinar/og.png?v=c39debd7a18c6de6","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

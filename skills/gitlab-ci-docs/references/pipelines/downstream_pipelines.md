@@ -182,12 +182,6 @@ The artifact containing the generated YAML file must be within [instance limits]
 <i class="fa-youtube-play" aria-hidden="true"></i>
 For an overview, see [Create child pipelines using dynamically generated configurations](https://www.youtube.com/watch?v=nMdfus2JWHM).
 
-For an example project that generates a dynamic child pipeline, see
-[Dynamic Child Pipelines with Jsonnet](https://gitlab.com/gitlab-org/project-templates/jsonnet).
-This project shows how to use a data templating language to generate your `.gitlab-ci.yml` at runtime.
-You can use a similar process for other templating languages like
-[Dhall](https://dhall-lang.org/) or [ytt](https://get-ytt.io/).
-
 #### Trigger a dynamic child pipeline
 
 To trigger a child pipeline from a dynamically generated configuration file:
@@ -316,13 +310,13 @@ In the [pipeline details page](_index.md#pipeline-details), downstream pipelines
 as a list of cards on the right of the graph. From this view, you can:
 
 - Select a trigger job to see the triggered downstream pipeline's jobs.
-- Select **Expand jobs**  on a pipeline card to expand the view
+- Select   on a pipeline card to expand the view
   with the downstream pipeline's jobs. You can view one downstream pipeline at a time.
 - Hover over a pipeline card to have the job that triggered the downstream pipeline highlighted.
 
 ### Retry failed and canceled jobs in a downstream pipeline
 
-To retry failed and canceled jobs, select **Retry** ():
+To retry failed and canceled jobs, select  ():
 
 - From the downstream pipeline's details page.
 - On the pipeline's card in the pipeline graph view.
@@ -333,11 +327,11 @@ You can recreate a downstream pipeline by retrying its corresponding trigger job
 
 To recreate a downstream pipeline:
 
-- Select **Run again** () on the trigger job's card in the pipeline graph view.
+- Select  () on the trigger job's card in the pipeline graph view.
 
 ### Cancel a downstream pipeline
 
-To cancel a downstream pipeline that is still running, select **Cancel** ():
+To cancel a downstream pipeline that is still running, select  ():
 
 - From the downstream pipeline's details page.
 - On the pipeline's card in the pipeline graph view.
@@ -453,7 +447,7 @@ dynamically generated child pipelines, and pipelines created by pipeline executi
 Reports from [scan execution policies](../../user/application_security/policies/scan_execution_policies.md) are not supported.
 
 Test results and [security findings](../../user/application_security/detect/security_scanning_results.md)
-from child pipelines also appear in the parent pipeline's **Tests** and **Security** tabs.
+from child pipelines also appear in the parent pipeline's  and  tabs.
 
 Child pipeline security findings can trigger [merge request approval policies](../../user/application_security/policies/merge_request_approval_policies.md).
 If a child pipeline detects vulnerabilities, you might need additional approvals before you can merge.

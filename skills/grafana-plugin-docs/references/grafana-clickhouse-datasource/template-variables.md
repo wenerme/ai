@@ -238,7 +238,7 @@ Expand table
 
 ## Hide table name in ad hoc filter keys
 
-By default, ad hoc filter keys are shown as `table.column`. To show only the column name (without the table prefix), enable the **Hide table name in ad hoc filters** option in the data source settings. This makes the filter drop-down cleaner when all queries target the same table.
+By default, ad hoc filter keys are shown as `table.column`, and a filter applies only to queries that read from that table. To show only the column name (without the table prefix), enable the **Hide table name in ad hoc filters** option in the data source settings. Filters then apply to every query, so use this option when all queries target the same table.
 
 ## Map and JSON types (OpenTelemetry)
 
@@ -248,7 +248,7 @@ Ad hoc filters work with Map and JSON types for OpenTelemetry data. **Map** is t
 
 By default, ad hoc filters are applied automatically by detecting the target table from your SQL. For queries that use CTEs, subqueries, or ClickHouse-specific syntax (for example `INTERVAL` or parameterized aggregate functions), automatic detection can fail. In those cases, use the `$__adHocFilters('table_name')` macro to specify where to apply the filters.
 
-The macro expands to the ClickHouse `additional_table_filters` setting with the currently active ad hoc filter conditions. Place it in the **SETTINGS** clause of your query.
+The macro expands to the ClickHouse `additional_table_filters` setting with the currently active ad hoc filter conditions. Place it in the **SETTINGS** clause of your query. The macro applies every active filter to the tables you name, including a filter whose key names a different table, so use it when a panel reads a view, a Distributed table, or a joined table instead of the table the filter keys come from.
 
 > Note
 >

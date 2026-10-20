@@ -69,8 +69,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json
@@ -120,8 +119,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules" \
 	--request PUT \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '[
 		{
 				"expression": "http.request.uri.path wildcard \"/images/*\"",

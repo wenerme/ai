@@ -2,6 +2,22 @@ This guide introduces all the models available through the Gemini API.
 
 *** ** * ** ***
 
+## Gemini 4
+
+### Stable
+
+[### Gemini 4 Argon
+Our flagship reasoning model with a unified 1M context window and long decodes up to 1M tokens.
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-4-argon)
+
+### All Gemini 4 models
+
+| Model | Endpoint |
+|---|---|
+| [Gemini 4 Argon](https://ai.google.dev/gemini-api/docs/models/gemini-4-argon) | ``` gemini-4-argon ``` |
+
+*** ** * ** ***
+
 ## Gemini 3
 
 ### Stable
@@ -32,13 +48,13 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image
 State-of-the-art image generation and editing models for highly contextual native image creation.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.5 Transcribe
 Low-latency speech-to-text model with utterance-based language detection, speaker diarization, and word timestamps.
-New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe)
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) [### Gemini Omni Flash
+Fast video generation, editing, keyframe interpolation, and extension with native audio.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 ### Preview
 
-[### Gemini 3.1 Pro
-Advanced intelligence, complex problem-solving skills, and powerful agentic and vibe coding capabilities.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [### Gemini 3 Flash
+[### Gemini 3 Flash
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.5 Live Translate
 Low-latency, real-time speech to speech translation model that supports 70+ languages.
@@ -46,9 +62,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-prev
 Legacy Live API preview model. We recommend updating to Gemini 3.8 Live.
 New](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Legacy TTS preview model. We recommend updating to Gemini 3.8 Flash TTS or Gemini 3.8 Flash-Lite TTS.
-Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
-Fast video generation, editing, keyframe interpolation, and extension with native audio.
-New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview)
 
 ### All Gemini 3 models
 
@@ -66,13 +80,13 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) | ``` gemini-3.1-flash-image ``` |
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | ``` gemini-3.1-flash-lite-image ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | ``` gemini-3-pro-image ``` |
+| [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
+| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-1.1-flash ``` |
 | [Gemini 3.1 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ``` gemini-3.1-pro-preview ``` |
 | [Gemini 3 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ``` gemini-3-flash-preview ``` |
 | [Gemini 3.5 Live Translate](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) | ``` gemini-3.5-live-translate-preview ``` |
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | ``` gemini-3.1-flash-live-preview ``` |
 | [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | ``` gemini-3.1-flash-tts-preview ``` |
-| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-1.1-flash ``` |
-| [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
 
 ## Gemini 2.5 Flash
 
@@ -131,10 +145,10 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Nano Banana 2.1](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1) | High-efficiency image generation and editing model with improved visual quality, typography, and multi-turn consistency. | ``` gemini-nano-banana-2.1 ``` |
 | [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) | High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds. | ``` gemini-3.1-flash-image ``` |
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | Designed as the efficiency specialist of the image generation family, offering ultra-low latency and cost-effective image generation and editing. | ``` gemini-3.1-flash-lite-image ``` |
-| [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview) | State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio. | ``` veo-3.1-generate-preview ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering. | ``` gemini-3-pro-image ``` |
-| [Veo 3.1 Lite](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview) | High-efficiency, low-cost, developer-first video generation, editing, and cinematic control from the Veo 3.1 family. | ``` veo-3.1-lite-generate-preview ``` |
 | [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | Fast video generation, editing, keyframe interpolation, and extension with native audio. | ``` gemini-omni-1.1-flash ``` |
+| [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview) | Legacy video generation preview model (shutting down October 22, 2026). We recommend updating to Gemini Omni Flash. | ``` veo-3.1-generate-preview ``` |
+| [Veo 3.1 Lite](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview) | Legacy low-cost video generation preview model (shutting down October 22, 2026). We recommend updating to Gemini Omni Flash. | ``` veo-3.1-lite-generate-preview ``` |
 | [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) | State-of-the-art native image generation and editing designed for fast, creative workflows. | ``` gemini-2.5-flash-image ``` |
 | Imagen 4 (Shut down) | Text-to-image model featuring fast and ultra-fast generation (shut down). | ``` imagen-4.0-generate ``` |
 

@@ -18,6 +18,7 @@ RealtimeKit ships a Core SDK and UI Kit for each supported platform. Select your
 
 - [Web Core SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-core/)
 - [Web UI Kit](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/)
+- [Web Virtual Background](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-virtual-bg/)
 - [Web UI Addons](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ui-kit-addons/)
 - [Recording SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/recording-sdk/)
 - [Android Core SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/)

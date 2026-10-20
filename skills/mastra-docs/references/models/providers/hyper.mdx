@@ -5,7 +5,7 @@ description: "Browse Charm Hyper model IDs, capabilities, context windows, and p
 
 # [Charm Hyper logo]Charm Hyper
 
-Access 22 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
+Access 23 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
 
 Learn more in the [Charm Hyper documentation](https://hyper.charm.land).
 
@@ -70,7 +70,19 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
+    "contextWindow": 1000000,
+    "maxOutput": 262144,
+    "inputCost": 0.33,
+    "outputCost": 1.31
+  },
+  {
+    "model": "hyper/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
     "maxOutput": 262144,
     "inputCost": 0.33,
     "outputCost": 1.31

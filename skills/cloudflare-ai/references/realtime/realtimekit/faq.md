@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2
 
 # FAQ
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### API token
 
@@ -299,7 +299,7 @@ Do I need a new preset for every meeting or participant?
 
 Presets are **re-usable** set of rules and configurations that are defined at the App level. You can use the same preset for multiple participants.
 
-Read more about presets <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/">here</a>.
+For more information, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/">Presets</a>.
 
 </details>
 
@@ -319,7 +319,7 @@ We **recommend using our UI Kits** For most use cases.
 
 Please Note: When you use our UI Kit, you also get the core SDK with it, which can be used to build additional features based on your needs.
 
-For more information please refer to our <a href="https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/">SDK Selection Guide</a>
+For more information, refer to the <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/sdk-selection/">SDK selection guide</a>.
 
 </details>
 
@@ -335,7 +335,7 @@ How can I set an end user's camera quality to 1080p?
 
 When initializing RealtimeKit, you can set the media configurations for camera quality.
 
-Refer to the media configurations <a href="https://developers.cloudflare.com/realtime/realtimekit/core/#advanced-options">here</a> for more details.
+For the media configuration options, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/#advanced-options">Advanced options</a>.
 
 Higher camera quality increases bandwidth usage and may impact meeting performance on lower-end devices if the end user's device is not powerful enough to handle 1080p from multiple peers.
 
@@ -351,7 +351,7 @@ How can I set a custom frame rate for an end user's camera feed?
 
 When initializing RealtimeKit, you can set the media configurations for camera.
 
-Refer to the media configurations <a href="https://developers.cloudflare.com/realtime/realtimekit/core/#advanced-options">here</a> for more details.
+For the media configuration options, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/#advanced-options">Advanced options</a>.
 
 Higher video frame rates increase bandwidth usage and may impact the video feed quality of other peers in the meeting if there are bandwidth issues with the end user's device. Set the video frame rate to a lower value (for example, &lt;= 30) in group calls. The current default is 24/30 FPS based on the simulcast layer.
 
@@ -387,7 +387,7 @@ How can I set a custom frame rate for screen share?
 
 When initializing RealtimeKit, you can set the media configurations for screen share.
 
-Refer to the media configurations <a href="https://developers.cloudflare.com/realtime/realtimekit/core/#advanced-options">here</a> for more details.
+For the media configuration options, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/#advanced-options">Advanced options</a>.
 
 Higher screen share frame rates increase bandwidth usage and may impact the video feed quality of other peers in the meeting if there are bandwidth issues with the end user's device. Set the screen share frame rate to a lower value (for example, &lt;= 30) in group calls. In most use cases, 5 FPS (default) is sufficient for screen share.
 
@@ -403,7 +403,7 @@ What do I need to do to enable screen sharing with the iOS SDK?
 
 The iOS platform requires the use of a <a href="https://developer.apple.com/documentation/replaykit/rpbroadcastsamplehandler">Broadcast Upload Extension ↗︎</a> that you will need to include in your apps.
 
-You can find more detailed steps for it on its <a href="https://developers.cloudflare.com/realtime/realtimekit/core/ios-screen-sharing/">dedicated page</a>.
+You can find more detailed steps for it on its <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/ios-screen-sharing/">dedicated page</a>.
 
 </details>
 
@@ -421,7 +421,7 @@ There could be multiple reasons for this.
 
 First, try a sample meeting on the <a href="https://examples.realtime.cloudflare.com/">demo app ↗︎</a>. If you cannot send a message in the demo app, contact support. If you can send a message in the demo app, the issue is on the integration side.
 
-To troubleshoot integration issues, first check if the user has joined the meeting successfully. If the user has <a href="https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/">joined</a> the meeting successfully, check if the user's <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/">preset</a> has permissions to send messages. If you are using a custom UI, check if the core <a href="https://developers.cloudflare.com/realtime/realtimekit/core/chat/">Chat APIs</a> are working to eliminate the Core SDK from the usual suspects.
+To troubleshoot integration issues, first check if the user has joined the meeting successfully. If the user has <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/">joined</a> the meeting successfully, check if the user's <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/">preset</a> has permissions to send messages. If you are using a custom UI, check if the core <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/chat/">Chat APIs</a> are working to eliminate the Core SDK from the usual suspects.
 
 If this does not solve the issue, check if your framework is blocking the UI. Frameworks like Material UI can block input focus using focus traps in Drawer component. There is usually a prop to disable the focus trap. Material UI has a <code>disableEnforceFocus</code> prop for this purpose.
 
@@ -447,7 +447,7 @@ A host may need to know when someone enters the waiting room, a participant join
 - **Service worker notifications:** Use a service worker with <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification">showNotification() ↗︎</a>. This works in more browsers, including many mobile browsers. The meeting page must pass SDK events to the worker. A service worker alone cannot continue receiving SDK events after the tab closes.
 - **Web Push:** Use a service worker, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API ↗︎</a>, and a push subscription. Keep the <a href="https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe">VAPID private key on your server ↗︎</a>. Your backend can send push messages even when the meeting tab is closed.
 
-Choose notification triggers based on where the event is available. While the meeting page is open, the SDK exposes <a href="https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/">participant join, leave, audio, and video events</a>, <a href="https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#events">local audio and video events</a>, and <a href="https://developers.cloudflare.com/realtime/realtimekit/core/chat/#receiving-chat-messages">chat updates</a>. For backend-triggered notifications, subscribe to <a href="https://developers.cloudflare.com/realtime/realtimekit/webhooks/#supported-events">RealtimeKit webhooks</a>, then send relevant events to your clients. Webhooks cover a smaller set of events, including participant joins and recording status changes. They do not provide individual chat messages or waiting-room arrivals.
+Choose notification triggers based on where the event is available. While the meeting page is open, the SDK exposes <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/remote-participants/events/">participant join, leave, audio, and video events</a>, <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/local-participant/#events">local audio and video events</a>, and <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/chat/#receiving-chat-messages">chat updates</a>. For backend-triggered notifications, subscribe to <a href="https://developers.cloudflare.com/realtime/realtimekit/webhooks/#supported-events">RealtimeKit webhooks</a>, then send relevant events to your clients. Webhooks cover a smaller set of events, including participant joins and recording status changes. They do not provide individual chat messages or waiting-room arrivals.
 
 </details>
 
@@ -479,7 +479,7 @@ Which domains and ports must I allowlist when my network restricts outbound traf
 
 </summary>
 
-If your network restricts outbound traffic, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/">Network allowlist</a> for the domains and ports required for your RealtimeKit integration.
+If your network restricts outbound traffic, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/">Network allowlist</a> for the domains and ports required for your RealtimeKit integration.
 
 </details>
 
@@ -491,7 +491,7 @@ How can I check if my network and devices are ready for a RealtimeKit meeting?
 
 </summary>
 
-Go to <a href="https://test.realtime.cloudflare.com/">test.realtime.cloudflare.com ↗︎</a> and run the pre-call test. The test checks your camera, microphone, and network, and verifies connectivity to Cloudflare Realtime endpoints, so you can confirm that the required services are not blocked by your network or firewall before joining a meeting. For required domains and ports, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/">Network allowlist</a>.
+Go to <a href="https://test.realtime.cloudflare.com/">test.realtime.cloudflare.com ↗︎</a> and run the pre-call test. The test checks your camera, microphone, and network, and verifies connectivity to Cloudflare Realtime endpoints, so you can confirm that the required services are not blocked by your network or firewall before joining a meeting. For required domains and ports, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/">Network allowlist</a>.
 
 </details>
 
@@ -507,7 +507,7 @@ Can I use the Cloudflare hosted demo app or examples in my website as an iframe?
 
 We strongly recommend against embedding the Cloudflare hosted demo app or examples as an iframe in your website, even if you pass authentication tokens via URL parameters.
 
-Instead, set up the default meeting UI in your own website by following the <a href="https://developers.cloudflare.com/realtime/realtimekit/ui-kit/">UI Kit setup guide</a> or deploy the <a href="https://github.com/cloudflare/realtimekit-web-examples/">RealtimeKit web examples ↗︎</a> under your own domain. The effort required for either approach is minimal and provides significant benefits:
+Instead, set up the default meeting UI in your own website by following the <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/">UI Kit setup guide</a> or deploy the <a href="https://github.com/cloudflare/realtimekit-web-examples/">RealtimeKit web examples ↗︎</a> under your own domain. The effort required for either approach is minimal and provides significant benefits:
 
 - **Control**: You maintain full control over the user experience, structure, and interface.
 - **Stability**: Your implementation remains consistent and will not change overnight, protecting your product from sudden disruptions.
@@ -567,7 +567,7 @@ For composite recordings, a recorder joins the meeting as a hidden virtual parti
 
 After the final participant leaves, the recorder remains active for the meeting's <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/#(resource)%20realtime_kit.meetings%20%3E%20(method)%20create%20%3E%20(params)%200%20%3E%20(param)%20session_keep_alive_time_in_secs%20%3E%20(schema)"><code>session_keep_alive_time_in_secs</code></a>. The default is 60 seconds, and the maximum is 600 seconds.
 
-RealtimeKit does not charge participant minutes for the recorder. Instead, it charges export minutes for the recorded duration. Refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/pricing/">RealtimeKit pricing</a> for current rates.
+RealtimeKit does not charge participant minutes for the recorder. Instead, it charges export minutes for the recorded duration. Refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/platform/pricing/">RealtimeKit pricing</a> for current rates.
 
 <br>
 
@@ -582,7 +582,7 @@ When <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subre
 When someone starts recording during an active session:
 
 - If recording starts at 4:20 p.m. and the final participant leaves at 5:00 p.m., it stops at 5:01 p.m. by default. RealtimeKit charges 41 export minutes.
-- If recording starts at 4:20 p.m. and someone calls <a href="https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/"><code>kickAll()</code></a> at 5:00 p.m., recording stops immediately. RealtimeKit charges 40 export minutes.
+- If recording starts at 4:20 p.m. and someone calls <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/end-a-session/"><code>kickAll()</code></a> at 5:00 p.m., recording stops immediately. RealtimeKit charges 40 export minutes.
 - If a meeting and recording start at 4:20 p.m., the meeting uses a two-minute keep-alive period, and all participants close their tabs at 5:00 p.m., recording stops at 5:02 p.m. RealtimeKit charges 42 export minutes.
 
 <br>
@@ -591,7 +591,7 @@ This keep-alive period helps workflows that must preserve a single recording acr
 
 <br>
 
-The export charges include the keep-alive period. To avoid this extra time, explicitly end the session by calling <a href="https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/"><code>kickAll()</code></a> or the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_all_participants/">Kick all participants API</a>.
+The export charges include the keep-alive period. To avoid this extra time, explicitly end the session by calling <a href="https://developers.cloudflare.com/realtime/realtimekit/humans/core/end-a-session/"><code>kickAll()</code></a> or the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_all_participants/">Kick all participants API</a>.
 
 </details>
 
@@ -604,5 +604,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

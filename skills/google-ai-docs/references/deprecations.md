@@ -144,15 +144,15 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `veo-3.0-generate-001` | September 9, 2025 | June 30, 2026 | `veo-3.1-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
-| `veo-3.0-fast-generate-001` | September 9, 2025 | June 30, 2026 | `veo-3.1-fast-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
-| `veo-2.0-generate-001` | April 9, 2025 | June 30, 2026 | `veo-3.1-generate-preview` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
+| `veo-3.0-generate-001` | September 9, 2025 | June 30, 2026 | `gemini-omni-1.1-flash` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
+| `veo-3.0-fast-generate-001` | September 9, 2025 | June 30, 2026 | `gemini-omni-1.1-flash` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
+| `veo-2.0-generate-001` | April 9, 2025 | June 30, 2026 | `gemini-omni-1.1-flash` or the GA models on the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) |
 | Preview models ||||
 | `veo-3.1-lite-generate-preview` | March 31, 2026 | October 22, 2026 | `gemini-omni-1.1-flash` |
 | `veo-3.1-generate-preview` | October 15, 2025 | October 22, 2026 | `gemini-omni-1.1-flash` |
 | `veo-3.1-fast-generate-preview` | October 15, 2025 | October 22, 2026 | `gemini-omni-1.1-flash` |
-| `veo-3.0-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-generate-preview` |
-| `veo-3.0-fast-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-fast-generate-preview` |
+| `veo-3.0-generate-preview` | July 31, 2025 | November 12, 2025 | `gemini-omni-1.1-flash` |
+| `veo-3.0-fast-generate-preview` | July 31, 2025 | November 12, 2025 | `gemini-omni-1.1-flash` |
 
 ## Gemini Omni Flash models
 

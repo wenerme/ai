@@ -263,7 +263,6 @@ If you're using a Bitbucket Cloud API token for authentication, the token must h
 
 - `read:repository:bitbucket`
 - `read:pullrequest:bitbucket`
-- `read:issue:bitbucket`
 
 ## Related topics
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/images/pricing/og.png?v=a34632d306ff834
 
 # Pricing
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in [R2](https://developers.cloudflare.com/r2/).
 
@@ -55,13 +55,15 @@ Images Stored and Images Delivered apply only to images that are stored in your 
 
 ### Images Transformed
 
-A unique transformation is a request to transform an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/optimization/features/). This metric is used when using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/) or optimizing images that are stored outside of Images.
+When using the [Images binding](https://developers.cloudflare.com/images/optimization/binding/) or optimizing images stored outside of Images, you will incur $0.50 for every 1,000 unique transformations.
 
-For example, if you transform `thumbnail.jpg` as 100x100, then this counts as one unique transformation. If you transform the same `thumbnail.jpg` as 200x200, then this counts as a separate unique transformation.
+A transformation is a request to optimize an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/optimization/features/). Billing follows these rules:
 
-You are billed on the number of unique transformations that are requested within each calendar month. Repeat requests for the same transformation within the same month are counted only once for that month. Calls to the Images binding's [`.info()`](https://developers.cloudflare.com/images/optimization/binding/#infostream) method are not billed.
-
-The `format` parameter counts as only one billable transformation, even if multiple copies of an image are served. In other words, if `width=100,format=auto/thumbnail.jpg` is served to some users as AVIF and to others as WebP, then this counts as one unique transformation instead of two.
+- Each combination of a source image and optimization parameters counts as a unique transformation. For example, serving `thumbnail.jpg` as 100x100 pixels and 200x200 pixels count as two unique transformations.
+- Cloudflare counts the number of unique transformations requested in each calendar month.
+- Repeated requests for the same transformation within the same calendar month count only once, regardless of how many times the transformed image is served.
+- Cloudflare excludes `format` and `quality` when determining whether a transformation is unique. Requests with different `format` and `quality` settings count as one unique transformation. For example, `width=100,format=auto/thumbnail.jpg` counts as one unique transformation whether Cloudflare serves the image as AVIF or WebP.
+- Calls to the Images binding's [`.info()`](https://developers.cloudflare.com/images/optimization/binding/#infostream) method are not billed.
 
 #### Example #1
 
@@ -125,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/images/pricing/og.png?v=a34632d306ff8346","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/pricing/#page","headline":"Pricing","description":"Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.","url":"https://developers.cloudflare.com/images/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/images/pricing/og.png?v=a34632d306ff8346","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

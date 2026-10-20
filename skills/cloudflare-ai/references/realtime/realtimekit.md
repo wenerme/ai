@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/og.png?v=31a73b0d5
 
 # RealtimeKit
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare RealtimeKit lets you build your own audio and video experiences inside web and mobile apps. It routes media on [Cloudflare's global WebRTC infrastructure](https://developers.cloudflare.com/realtime/sfu/concepts/architecture/), so you can deliver low-latency experiences to a global audience without scaling media servers or choosing regions.
 
@@ -26,7 +26,7 @@ Your application controls who can join and what they can do. RealtimeKit provide
 
 Add multiparty calls to collaboration tools, customer portals, and online communities.
 
-### [Virtual classrooms](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/)
+### [Virtual classrooms](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/breakout-rooms/)
 
 Split a class into smaller discussion rooms and assign participants automatically or manually.
 
@@ -92,7 +92,7 @@ Add meeting AI
 
 [In-meeting apps](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/)
 
-Add your own browser-based, interactive apps such as whiteboard, document viewer into the meeting layout. Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to synchronize plugin state across participants.
+Add your own browser-based, interactive apps such as whiteboard, document viewer into the meeting layout. Use the [meeting key-value store](https://developers.cloudflare.com/realtime/realtimekit/collaboration/meeting-key-value-store/) to synchronize plugin state across participants.
 
 Build a plugin
 
@@ -108,15 +108,15 @@ RealtimeKit gives you two ways to build the client experience. Choose based on h
 
 ### RealtimeKit UI Kit
 
-Use [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) when you want prebuilt screens and controls for joining and running a call. It includes the setup screen, participant grid, media controls, chat, and polls. Use the default layout or customize individual components and branding.
+Use [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/) when you want prebuilt screens and controls for joining and running a call. It includes the setup screen, participant grid, media controls, chat, and polls. Use the default layout or customize individual components and branding.
 
 RealtimeKit UI Kit includes RealtimeKit Core SDK, so you can use its APIs when prebuilt components don't cover your workflow.
 
 ### RealtimeKit Core SDK
 
-Use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/) to build every screen and interaction yourself. It provides direct access to session, participant, and media state while RealtimeKit manages signaling and media routing.
+Use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/humans/core/) to build every screen and interaction yourself. It provides direct access to session, participant, and media state while RealtimeKit manages signaling and media routing.
 
-Compare supported platforms and packages in [SDK selection](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/).
+Compare supported platforms and packages in [SDK selection](https://developers.cloudflare.com/realtime/realtimekit/humans/sdk-selection/).
 
 Was this helpful?
 
@@ -127,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"RealtimeKit","description":"Build in-app audio and video with RealtimeKit SDKs and customizable UI components.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/og.png?v=31a73b0d5312318c","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"RealtimeKit","description":"Build in-app audio and video with RealtimeKit SDKs and customizable UI components.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/og.png?v=31a73b0d5312318c","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

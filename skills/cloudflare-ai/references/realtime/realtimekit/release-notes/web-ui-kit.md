@@ -22,7 +22,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **Enhancements**
 
-- Web UI Kit assets now use a single hostname, `rtk-assets.realtime.cloudflare.com`. You no longer need to allowlist `rtk-uploads.realtime.cloudflare.com`. Refer to the [Network allowlist](https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/) for domain requirements.
+- Web UI Kit assets now use a single hostname, `rtk-assets.realtime.cloudflare.com`. You no longer need to allowlist `rtk-uploads.realtime.cloudflare.com`. Refer to the [Network allowlist](https://developers.cloudflare.com/realtime/realtimekit/platform/network-allowlist/) for domain requirements.
 
 **Fixes**
 
@@ -56,7 +56,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **Fixes**
 
-- The `joinError` state has been superseded by `preJoinError` to cover all errors that occur before or during joining the meeting. Refer to [State management](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/) for details on UI Kit states.
+- The `joinError` state has been superseded by `preJoinError` to cover all errors that occur before or during joining the meeting. Refer to [State management](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/state-management/) for details on UI Kit states.
 - The `rtk-idle-screen` now displays user-friendly error messages instead of just an infinite loader, helping customers identify issues and retry.
 - Fixed errors thrown by the Core SDK not being captured and shown properly by the UI Kit.
 

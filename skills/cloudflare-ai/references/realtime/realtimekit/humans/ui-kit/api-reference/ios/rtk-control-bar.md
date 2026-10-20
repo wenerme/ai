@@ -1,0 +1,78 @@
+---
+description: API reference for RtkControlBar component (iOS Library)
+title: RtkControlBar
+image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar/og.png?v=42c8c4e6952d0763
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# RtkControlBar
+
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Base control bar view with a More menu button and an End Call button. Serves as the foundation for `RtkMeetingControlBar` and `RtkWebinarControlBar`.
+
+## Initializer parameters
+
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance |
+| `delegate` | `RtkTabBarDelegate?` | ✅ | - | Delegate for handling tab bar interactions |
+| `presentingViewController` | `UIViewController` | ✅ | - | View controller used for presenting modal screens |
+| `appearance` | `RtkControlBarAppearance` | ❌ | `RtkControlBarAppearanceModel()` | Appearance configuration for the control bar |
+| `settingViewControllerCompletion` | `(() -> Void)?` | ❌ | `nil` | Closure called when the settings view controller dismisses |
+| `onLeaveMeetingCompletion` | `(() -> Void)?` | ❌ | `nil` | Closure called when the participant leaves the meeting |
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `moreButton` | `RtkMoreButtonControlBar` | - | - | The More menu button (read-only) |
+| `endCallButton` | `RtkEndMeetingControlBarButton` | - | - | The End Call button |
+
+## Usage Examples
+
+### Basic Usage
+
+```swift
+import RealtimeKitUI
+
+let controlBar = RtkControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self
+)
+view.addSubview(controlBar)
+```
+
+### With completion handlers
+
+```swift
+import RealtimeKitUI
+
+let controlBar = RtkControlBar(
+    meeting: rtkClient,
+    delegate: self,
+    presentingViewController: self,
+    onLeaveMeetingCompletion: {
+        self.dismiss(animated: true)
+    }
+)
+view.addSubview(controlBar)
+```
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar/#page","headline":"RtkControlBar","description":"API reference for RtkControlBar component (iOS Library)","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/ios/rtk-control-bar/og.png?v=42c8c4e6952d0763","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

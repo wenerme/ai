@@ -949,6 +949,8 @@ Example response:
 
 ## Retrieve your user preferences
 
+- `emoji_skin_tone` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/633107) in GitLab 19.6.
+
 Retrieves your user preferences.
 
 Prerequisites:
@@ -967,11 +969,14 @@ Example response:
   "user_id": 1,
   "view_diffs_file_by_file": true,
   "show_whitespace_in_diffs": false,
-  "pass_user_identities_to_ci_jwt": false
+  "pass_user_identities_to_ci_jwt": false,
+  "emoji_skin_tone": "default"
 }
 ```
 
 ## Update your user preferences
+
+- `emoji_skin_tone` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/633107) in GitLab 19.6.
 
 Updates your user preferences.
 
@@ -989,7 +994,8 @@ PUT /user/preferences
   "user_id": 1,
   "view_diffs_file_by_file": true,
   "show_whitespace_in_diffs": false,
-  "pass_user_identities_to_ci_jwt": false
+  "pass_user_identities_to_ci_jwt": false,
+  "emoji_skin_tone": "default"
 }
 ```
 
@@ -1000,6 +1006,7 @@ Supported attributes:
 | `view_diffs_file_by_file`        | Yes      | Flag indicating the user sees only one file diff per page. |
 | `show_whitespace_in_diffs`       | Yes      | Flag indicating the user sees whitespace changes in diffs. |
 | `pass_user_identities_to_ci_jwt` | Yes      | Flag indicating the user passes their external identities as CI information. This attribute does not contain enough information to identify or authorize the user in an external system. The attribute is internal to GitLab, and must not be passed to third-party services. For more information and examples, see [Token Payload](../ci/secrets/id_token_authentication.md#token-payload). |
+| `emoji_skin_tone`                | No       | Default skin tone for emoji that have skin tone variants. One of `default`, `light`, `medium_light`, `medium`, `medium_dark`, or `dark`. |
 
 ## Upload an avatar for yourself
 

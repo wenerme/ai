@@ -5,7 +5,7 @@ description: "Browse MiniMax (minimax.io) model IDs, capabilities, context windo
 
 # [MiniMax (minimax.io) logo]MiniMax (minimax.io)
 
-Access 7 MiniMax (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
+Access 8 MiniMax (minimax.io) models through Mastra's model router. Authentication is handled automatically using the `MINIMAX_API_KEY` environment variable.
 
 Learn more in the [MiniMax (minimax.io) documentation](https://platform.minimax.io/docs/guides/quickstart).
 
@@ -122,6 +122,18 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "minimax/MiniMax-M3.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 512000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   }
 ]}
 />
@@ -156,7 +168,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "minimax/MiniMax-M3"
+      ? "minimax/MiniMax-M3.1-Flash"
       : "minimax/MiniMax-M2";
   }
 });

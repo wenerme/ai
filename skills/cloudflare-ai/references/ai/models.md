@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 260 modelsClear filters
+We found 261 modelsClear filters
 
 ## Compare models
 
@@ -1323,6 +1323,13 @@ Compare
 
 Compare
 
+[Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clairic</h3>CloudflareText Generation Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clairic/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
 [Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clef</h3>CloudflareText Generation Clef is a 27B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.](https://developers.cloudflare.com/ai/models/@cf/cloudflare/clef/)
 
 - Cloudflare-hosted
@@ -1451,28 +1458,28 @@ Compare
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 - Cloudflare-hosted
 - +2
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
 - +3

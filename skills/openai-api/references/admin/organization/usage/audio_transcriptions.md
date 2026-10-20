@@ -126,7 +126,7 @@ Get audio transcriptions usage details for the organization.
 
       - `input_cache_write_tokens: optional number`
 
-        The aggregated number of input tokens written to the cache with a 30-minute retention period.
+        The aggregated number of input tokens written to the cache across 30-minute and 12-hour retention periods.
 
       - `input_cached_audio_tokens: optional number`
 

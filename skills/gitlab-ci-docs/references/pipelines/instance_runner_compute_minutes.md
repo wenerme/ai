@@ -60,8 +60,8 @@ compute usage trends and how many compute minutes remain.
 
 In some cases, the quota limit is replaced by one of the following labels:
 
-- **Unlimited**: For namespaces with unlimited compute quota.
-- **Not supported**: For namespaces where instance runners are not enabled.
+- : For namespaces with unlimited compute quota.
+- : For namespaces where instance runners are not enabled.
 
 ### View usage for a group
 
@@ -71,9 +71,9 @@ Prerequisites:
 
 To view compute usage for your group:
 
-1. In the top bar, select **Search or go to** and find your group. The group must not be a subgroup.
-1. Select **Settings** > **Usage quotas**.
-1. Select the **Pipelines** tab.
+1. In the top bar, select  and find your group. The group must not be a subgroup.
+1. Select  > .
+1. Select the  tab.
 
 The projects list shows projects with compute usage or instance runners usage
 in the current month only. The list includes all projects in the namespace and its
@@ -84,8 +84,8 @@ subgroups, sorted in descending order of compute usage.
 You can view the compute usage for your personal namespace:
 
 1. In the upper-right corner, select your avatar.
-1. Select **Edit profile**.
-1. In the left sidebar, select **Usage quotas**.
+1. Select .
+1. In the left sidebar, select .
 
 The projects list shows [personal projects](../../user/project/working_with_projects.md)
 with compute usage or instance runners usage in the current month only.

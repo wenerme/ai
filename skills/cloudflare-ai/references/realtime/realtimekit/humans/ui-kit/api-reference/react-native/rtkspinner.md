@@ -1,0 +1,57 @@
+---
+description: API reference for RtkSpinner component (React Native Library)
+title: RtkSpinner
+image: https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkspinner/og.png?v=8739ee4d74485a8e
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# RtkSpinner
+
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkspinner/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+An animated loading spinner component.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `style` | `object` | ❌ | - | Custom styles to override spinner appearance |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
+
+function MyComponent() {
+	return <RtkSpinner />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkSpinner } from "@cloudflare/realtimekit-react-native-ui";
+
+function MyComponent() {
+	return <RtkSpinner style={{ width: 48, height: 48 }} />;
+}
+```
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkspinner/#page","headline":"RtkSpinner","description":"API reference for RtkSpinner component (React Native Library)","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkspinner/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/ui-kit/api-reference/react-native/rtkspinner/og.png?v=8739ee4d74485a8e","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

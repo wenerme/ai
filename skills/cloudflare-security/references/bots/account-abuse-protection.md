@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=
 
 # Account Abuse Protection (Early Access)
 
-Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Identify and mitigate attacks on your customer and user accounts.
 
@@ -137,7 +137,7 @@ The following fields can be used in new and existing Security Rules.
 
 | Field | Description | Values |
 | --- | --- | --- |
-| `cf.fraud_detection.disposable_domain` | Flags whether a domain for a given email is included in a known list of temporary email providers. | `True` or `False` |
+| `cf.fraud_detection.disposable_email` | Flags whether a domain for a given email is included in a known list of temporary email providers. | `True` or `False` |
 | `cf.fraud.email_risk` | Measures risk of email based on randomness of characters in the username and domain. | `Low` represents low risk due to reduced randomness and simple emails. <br>`Medium` represents medium risk based on larger strings with slightly more randomness. <br>`High` represents high risk based on larger and random character strings. <br>`Unknown` |
 
 #### Other rules
@@ -171,5 +171,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access)","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=9d30dd9cfa06989c","dateModified":"2026-08-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access)","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=9d30dd9cfa06989c","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 ```

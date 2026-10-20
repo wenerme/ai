@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/release-notes/andr
 
 # Android Core SDK
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.xml)
 
@@ -70,7 +70,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 **Features**
 
 - **AI Transcription** — A new `RtkAi` class (exposed as `client.ai`) provides access to real-time transcripts. Implement `RtkAiEventListener` and register it with `addAiEventListener()` to receive `onTranscript(data: RtkTranscriptionData)` callbacks. A `transcriptionEnabled` permission is available on `MiscellaneousPermissions`.
-- **Connected Meetings (Breakout Rooms)** — A new `RtkConnectedMeetings` class (exposed as `client.connectedMeetings`) enables breakout room workflows. Register an `RtkConnectedMeetingsEventListener` to handle room transitions and state updates. See the [Breakout Rooms](https://developers.cloudflare.com/realtime/realtimekit/core/breakout-rooms/) documentation for a full guide.
+- **Connected Meetings (Breakout Rooms)** — A new `RtkConnectedMeetings` class (exposed as `client.connectedMeetings`) enables breakout room workflows. Register an `RtkConnectedMeetingsEventListener` to handle room transitions and state updates. See the [Breakout Rooms](https://developers.cloudflare.com/realtime/realtimekit/humans/core/breakout-rooms/) documentation for a full guide.
 - **Chat: Edit and Delete** — Messages can now be edited and deleted. New methods on `RtkChat`: `editTextMessage()`, `editImageMessage()`, `editFileMessage()`, and `deleteMessage()`. `RtkChatEventListener` gains `onMessageEdited()` and `onMessageDeleted()` callbacks. `ChatMessage` now includes an `isEdited` flag.
 - **Chat: Fetch and Pagination** — New methods on `RtkChat` — `fetchPublicMessages()`, `fetchPrivateMessages()`, `fetchPinnedMessages()`, and `getMessages()` — allow fetching historical messages with cursor-based pagination via `FetchMessagesResult(messages, hasMore)`.
 - **Client-Declared Plugins** — Plugins are now configured entirely on the client via `RtkClientPluginConfig` and `RtkClientPluginPermissions`. `RtkPlugin` exposes the new `icon` and `permissions` properties accordingly.
@@ -308,7 +308,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **Features**
 
-- Reimplemented middlewares using WebRTC-native primitives to resolve intermittent crashes and other issues, check out the new [Video Processing](https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/) docs section to learn more
+- Reimplemented middlewares using WebRTC-native primitives to resolve intermittent crashes and other issues, check out the new [Video Processing](https://developers.cloudflare.com/realtime/realtimekit/humans/core/video-effects/) docs section to learn more
 - `VideoDevice` now properly labels multiple cameras based on their camera characteristics such as wide-angle and telephoto
 
 **Fixes**
@@ -402,5 +402,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#page","headline":"Android Core SDK","description":"Release notes and changelog for the RealtimeKit Android Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/og.png?v=4d6157cc7e9a9d9f","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#page","headline":"Android Core SDK","description":"Release notes and changelog for the RealtimeKit Android Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/og.png?v=4d6157cc7e9a9d9f","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
