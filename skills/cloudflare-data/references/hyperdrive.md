@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/og.png?v=a9e8ea8c4285a41d
 
 # Hyperdrive (Postgres & MySQL)
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turn your existing regional database into a globally distributed database.
 
@@ -20,7 +20,7 @@ Available on Free and Paid plans
 
 Hyperdrive is a service that accelerates queries you make to existing databases, making it faster to access your data from across the globe from [Cloudflare Workers](https://developers.cloudflare.com/workers/), irrespective of your users' location.
 
-Hyperdrive supports any Postgres or MySQL database, including those hosted on AWS, Google Cloud, Azure, Neon and PlanetScale. Hyperdrive also supports Postgres-compatible databases like CockroachDB and Timescale. You do not need to write new code or replace your favorite tools: Hyperdrive works with your existing code and tools you use.
+Hyperdrive supports any Postgres or MySQL database, including those hosted on AWS, Google Cloud, Azure, Supabase, Neon, and PlanetScale. Hyperdrive also supports Postgres-compatible databases like CockroachDB and Timescale. You do not need to write new code or replace your favorite tools: Hyperdrive works with your existing code and tools you use.
 
 Use Hyperdrive's connection details from your Cloudflare Workers application with your existing database drivers and object-relational mapping (ORM) libraries.
 
@@ -206,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/#page","headline":"Hyperdrive (Postgres & MySQL)","description":"Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.","url":"https://developers.cloudflare.com/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/og.png?v=a9e8ea8c4285a41d","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/#page","headline":"Hyperdrive (Postgres & MySQL)","description":"Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.","url":"https://developers.cloudflare.com/hyperdrive/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/og.png?v=a9e8ea8c4285a41d","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

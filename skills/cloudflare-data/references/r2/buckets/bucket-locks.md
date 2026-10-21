@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/buckets/bucket-locks/og.png?v=eafbff
 
 # Bucket locks
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/bucket-locks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/bucket-locks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bucket locks prevent the deletion and overwriting of objects in an R2 bucket for a specified period — or indefinitely. When enabled, bucket locks enforce retention policies on your objects, helping protect them from accidental or premature deletions.
 
@@ -146,7 +146,8 @@ If multiple rules apply to the same prefix or object key, the strictest (longest
 ## Notes
 
 - Rules without prefix apply to all objects in the bucket.
-- Rules apply to both new and existing objects in the bucket.
+- Bucket locks protect both existing objects and objects created after the rule is enabled. They do not prevent new object creation.
+- Once a rule update succeeds, changes to protected objects are blocked from that point on. This includes overwrites, deletes, completing uploads that started earlier, and removal by lifecycle rules.
 - Bucket lock rules take precedence over [lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/). For example, if a lifecycle rule attempts to delete an object at 30 days but a bucket lock rule requires it be retained for 90 days, the object will not be deleted until the 90-day requirement is met.
 - A bucket cannot be emptied while any bucket lock rules are configured. Remove all lock rules before [emptying a bucket](https://developers.cloudflare.com/r2/buckets/delete-buckets/#empty-a-bucket). Bucket lock rules also apply when [deleting folders](https://developers.cloudflare.com/r2/objects/delete-objects/) from the dashboard.
 
@@ -159,5 +160,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/bucket-locks/#page","headline":"Bucket locks","description":"Prevent deletion and overwriting of R2 objects by enabling bucket lock retention policies.","url":"https://developers.cloudflare.com/r2/buckets/bucket-locks/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/bucket-locks/og.png?v=eafbffc34d8d5f49","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/bucket-locks/#page","headline":"Bucket locks","description":"Prevent deletion and overwriting of R2 objects by enabling bucket lock retention policies.","url":"https://developers.cloudflare.com/r2/buckets/bucket-locks/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/bucket-locks/og.png?v=eafbffc34d8d5f49","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

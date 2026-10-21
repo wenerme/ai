@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/turnstile/troubleshooting/testing/og.pn
 
 # Test your Turnstile implementation
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/testing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use dummy sitekeys and secret keys to test your Turnstile implementation without triggering real challenges that would interfere with automated testing suites.
 
@@ -163,6 +163,7 @@ Production secret keys will reject the dummy token. You must also use a dummy se
 | `1x00000000000000000000AA` | `1x0000000000000000000000000000000AA` | This combination will always result in successful validation. |
 | `2x00000000000000000000AB` | `2x0000000000000000000000000000000AA` | This combination will always fail. |
 | `1x00000000000000000000AA` | `3x0000000000000000000000000000000AA` | This combination will always fail with "timeout-or-duplicate" error. |
+| `3x00000000000000000000FF` | `1x0000000000000000000000000000000AA` | This combination forces an interactive challenge. After the visitor solves it, server-side validation always succeeds. |
 
 Was this helpful?
 
@@ -173,5 +174,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/#page","headline":"Test your Turnstile implementation","description":"Test your Turnstile implementation with test site keys.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/og.png?v=2f969f8ae0f3f8fb","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/#page","headline":"Test your Turnstile implementation","description":"Test your Turnstile implementation with test site keys.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/troubleshooting/testing/og.png?v=2f969f8ae0f3f8fb","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

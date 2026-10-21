@@ -116,6 +116,24 @@ WHERE hostname IN ($hostname)
 
 Grafana interpolates multi-value variables as single-quoted, comma-separated values (for example, `'host1','host2','host3'`).
 
+### Interval variables
+
+Use an interval variable to let users control the time-grouping granularity of a query. Reference the variable inside a time-grouping macro:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  $__timeGroup(sample_time, '$interval') AS time,
+  AVG(cpu_percent) AS value
+FROM system_metrics
+WHERE $__timeFilter(sample_time)
+GROUP BY $__timeGroup(sample_time, '$interval')
+ORDER BY time
+```
+
+Grafana’s built-in `$__interval` variable works the same way and adjusts the grouping automatically based on the panel’s time range and width.
+
 ### Variable syntax reference
 
 For the full variable syntax including advanced formatting options, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).

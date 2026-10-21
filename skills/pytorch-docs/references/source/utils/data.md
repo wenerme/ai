@@ -560,7 +560,7 @@ for batch_ndx, sample in enumerate(loader):
 .. currentmodule:: torch.utils.data.datapipes.iter.streamreader
 
 .. autosummary::
-    :toctree: generated
+    :toctree: ../generated
     :nosignatures:
 
     StreamReaderIterDataPipe
@@ -570,7 +570,7 @@ for batch_ndx, sample in enumerate(loader):
 .. currentmodule:: torch.utils.data.datapipes.utils.common
 
 .. autosummary::
-    :toctree: generated
+    :toctree: ../generated
     :nosignatures:
 
     StreamWrapper

@@ -153,6 +153,10 @@ Expand table
 
 The data source supports two authentication methods. The available methods depend on your connection type.
 
+> Note
+>
+> Only Basic and Kerberos authentication are supported. Cloud-provider identity authentication, such as AWS IAM authentication for Amazon RDS for Oracle, is not supported. For Amazon RDS, use a database user with Basic authentication.
+
 ### Basic authentication
 
 Basic authentication is available with both connection methods. Authenticate using an Oracle username and password.
@@ -189,7 +193,7 @@ Expand table
 
 > Note
 >
-> Wallet-based SSL/TLS requires the wallet files to be present on the Grafana server’s filesystem, so it isn’t available in Grafana Cloud.
+> Wallet-based SSL/TLS requires the wallet files to be present on the Grafana server’s filesystem, so it isn’t available in Grafana Cloud. For TLS in Grafana Cloud, use an Easy Connect Plus connection string with a `tcps://` prefix, which enables TLS without a wallet. Connections that require a client wallet for mutual TLS (mTLS), such as some Oracle Autonomous Database configurations, must use a self-managed Grafana instance.
 
 ## Additional settings
 

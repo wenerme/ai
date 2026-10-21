@@ -88,18 +88,6 @@ for await (const chunk of stream) {
     "outputCost": 0.5
   },
   {
-    "model": "ofox/anthropic/claude-opus-4.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 64000,
-    "inputCost": 5,
-    "outputCost": 25
-  },
-  {
     "model": "ofox/anthropic/claude-opus-4.6",
     "imageInput": true,
     "audioInput": false,
@@ -158,18 +146,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 4,
     "outputCost": 20
-  },
-  {
-    "model": "ofox/anthropic/claude-sonnet-4.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 64000,
-    "inputCost": 3,
-    "outputCost": 15
   },
   {
     "model": "ofox/anthropic/claude-sonnet-4.6",
@@ -556,18 +532,6 @@ for await (const chunk of stream) {
     "outputCost": 1.32
   },
   {
-    "model": "ofox/deepseek/deepseek-v4-flash-vision-exp",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": 0.44,
-    "outputCost": 1.32
-  },
-  {
     "model": "ofox/deepseek/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -878,18 +842,6 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.6,
     "outputCost": 2.4
-  },
-  {
-    "model": "ofox/moonshotai/kimi-k2.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.6,
-    "outputCost": 3
   },
   {
     "model": "ofox/moonshotai/kimi-k2.6",
@@ -1538,54 +1490,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.71,
     "outputCost": 5.14
-  },
-  {
-    "model": "ofox/volcengine/doubao-seed-1-6",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": 0.12,
-    "outputCost": 0.29
-  },
-  {
-    "model": "ofox/volcengine/doubao-seed-1-6-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256000,
-    "maxOutput": 32000,
-    "inputCost": 0.03,
-    "outputCost": 0.22
-  },
-  {
-    "model": "ofox/volcengine/doubao-seed-1-6-vision",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256000,
-    "maxOutput": 32000,
-    "inputCost": 0.12,
-    "outputCost": 1.15
-  },
-  {
-    "model": "ofox/volcengine/doubao-seed-1-8",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": 0.12,
-    "outputCost": 0.29
   },
   {
     "model": "ofox/volcengine/doubao-seed-2.0-code",

@@ -80,7 +80,9 @@ After the minimum cacheable token length, you can choose where to place cache br
 
 
 
-For GPT-5.6 and later, cache writes cost 1.25× the standard, uncached input-token rate. Subsequent reads cost 0.1× that rate on most of these models and 0.05× on [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol). At the 0.1× read rate, writing a prefix once and fully reusing it once costs 1.35× its ordinary input cost, compared with 2× for processing it twice without caching. Across ten requests, one write and nine full reads cost 2.15× at that rate, compared with 10× without caching.
+For GPT-5.6 and later, cache writes cost 1.25× the standard, uncached input-token rate for the default 30-minute lifetime. In the Responses API, you can choose a [12-hour minimum lifetime](#cache-lifetime) at a write rate of 2.5× ordinary input. Subsequent reads cost 0.1× the ordinary input rate on most of these models and 0.05× on [GPT-6.1 Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), regardless of the selected lifetime.
+
+At the 0.1× read rate with 30-minute writes, writing a prefix once and fully reusing it once costs 1.35× its ordinary input cost, compared with 2× for processing it twice without caching. Across ten requests, one write and nine full reads cost 2.15× at that rate, compared with 10× without caching.
 
 Both implicit and explicit caching are supported, where explicit caching gives you more control over which context is written to cache.
 
@@ -135,7 +137,7 @@ For GPT-5.6 and later, the cache lookup boundaries in the incoming request are:
 
 ## Cache lifetime
 
-Cache entries are not stored indefinitely. A later request can reuse a cached prefix only while its entry remains available, and reusing the prefix refreshes its lifetime without another cache-write charge. The lifetime and retention settings [depend on the model](#summary-of-model-differences).
+Cache entries are not stored indefinitely. The minimum cache lifetime, retention settings, and behavior when a request reuses a prefix [depend on the model](#summary-of-model-differences).
 
 <a id="prompt-cache-retention"></a>
 
@@ -149,7 +151,77 @@ Cache entries are not stored indefinitely. A later request can reuse a cached pr
 
 
 
-Use `prompt_cache_options.ttl` to control the minimum cache lifetime. The only supported value, `30m`, is also the default. A cached prefix remains eligible for reuse for 30 minutes after its most recent write or reuse, though OpenAI may retain it longer.
+In the Responses API, set `prompt_cache_options.ttl` to choose the minimum cache lifetime:
+
+| Value             | Minimum lifetime | Cache-write rate                    | When to use it                                                       |
+| ----------------- | ---------------- | ----------------------------------- | -------------------------------------------------------------------- |
+| `"30m"` (default) | 30 minutes       | 1.25× the uncached input-token rate | Conversations and agent steps that reuse context frequently.         |
+| `"12h"`           | 12 hours         | 2.5× the uncached input-token rate  | Stable instructions or reference material reused across longer gaps. |
+
+These are total write rates, not surcharges on top of ordinary input. Cache-read rates are the same for both lifetimes. OpenAI may retain entries longer than the requested minimum; `"12h"` does not set a deletion deadline or change the [maximum data-retention policy](https://developers.openai.com/api/docs/guides/your-data#storage-requirements-and-retention-controls-per-endpoint).
+
+The request-level `ttl` applies to the implicit breakpoint and to explicit breakpoints without their own `ttl`. Set `prompt_cache_breakpoint.ttl` to override it for an individual explicit breakpoint. Omitting both settings preserves the default `"30m"` behavior. Unsupported values return `400 invalid_request_error`. These settings do not change the older-model `prompt_cache_retention` parameter.
+
+**Mix lifetimes in one request**
+
+Keep material reused throughout the day at the start of the prompt and give its breakpoint a `"12h"` lifetime. Use `"30m"` for session context that changes more frequently. This example sets a 30-minute request default and overrides it for the shared prefix. Explicit-only mode leaves the current question after the last breakpoint, so that content does not incur a cache-write charge.
+
+Responses API request with 12-hour and 30-minute breakpoints
+
+```json
+{
+  "model": "gpt-6.1-sol",
+  "prompt_cache_options": { "mode": "explicit", "ttl": "30m" },
+  "input": [
+    {
+      "role": "developer",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Shared instructions and reference material reused throughout the day...",
+          "prompt_cache_breakpoint": { "mode": "explicit", "ttl": "12h" }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "Session context reused over the next few minutes...",
+          "prompt_cache_breakpoint": { "mode": "explicit" }
+        },
+        {
+          "type": "input_text",
+          "text": "The current question, which does not need a cache write..."
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+Replace the placeholder text with your content. Each prefix you want to cache must meet the model's [minimum cacheable length](#summary-of-model-differences).
+
+**Overlapping writes and lifetime changes**
+
+A breakpoint covers the entire prefix before it. Within one request, each token is billed once at the longest lifetime of the selected writes covering it. A later 12-hour write also gives earlier selected breakpoints within that prefix 12-hour coverage.
+
+These examples assume any existing cached prefix matches an [eligible lookup boundary](#how-prefix-matching-works) in the new request.
+
+| Cache state before the request                | Selected breakpoints                           | Billed reads | Billed 30-minute writes | Billed 12-hour writes |
+| --------------------------------------------- | ---------------------------------------------- | ------------ | ----------------------- | --------------------- |
+| No cached prefix                              | `"12h"` at 2,000 tokens, then `"30m"` at 5,000 | 0            | 3,000                   | 2,000                 |
+| No cached prefix                              | `"30m"` at 2,000 tokens, then `"12h"` at 5,000 | 0            | 0                       | 5,000                 |
+| Valid 30-minute coverage through 2,000 tokens | `"12h"` at 5,000                               | 0            | 0                       | 5,000                 |
+| Valid 12-hour coverage through 2,000 tokens   | `"30m"` at 5,000                               | 2,000        | 3,000                   | 0                     |
+
+Upgrading valid 30-minute coverage to 12 hours charges a new 12-hour write for those tokens, without credit for the earlier write. Any portion already covered by a valid 12-hour entry remains a cache read.
+
+A 30-minute read refreshes coverage to at least 30 minutes after that read. If it uses an entry with valid 12-hour coverage, it preserves the later of the existing expiry and 30 minutes after the read. It does not restart a 12-hour clock or incur another write charge.
+
+The minimum lifetime governs eligibility for cache-read pricing. It does not guarantee that every request reuses stored KV tensors or has lower latency.
 
 
 
@@ -227,18 +299,18 @@ Using separate keys can make cached token usage and billing easier to explain fo
 
 ## Summary of model differences
 
-| Behavior                   | GPT-5.6 and later                                   | GPT-5.5 and GPT-5.5 Pro                                     | Other earlier models                                                            |
-| -------------------------- | --------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Implicit breakpoints       | At the end of the latest eligible message.          | Spaced at regular 2,048-token intervals.                    | Spaced at regular, model-dependent intervals.                                   |
-| Explicit breakpoints       | Supported                                           | Not supported                                               | Not supported                                                                   |
-| `prompt_cache_key`         | Optional for separate cache accounting              | Use a stable key to optimize cache routing                  | Use a stable key to optimize cache routing                                      |
-| Minimum cacheable prefix   | 1,024 visible input tokens                          | Varies by request settings                                  | Varies by request settings                                                      |
-| Cached-token reporting     | Exact eligible boundary, excluding hidden tokens    | Excludes hidden tokens and rounds down to a multiple of 128 | Excludes hidden tokens and rounds down to a multiple of 128                     |
-| Cache read charge          | 0.1× uncached input (0.05× for GPT-6.1 Sol)         | Model-dependent cached-input rate                           | Model-dependent cached-input rate                                               |
-| Cache write charge         | 1.25× the uncached input-token rate                 | No additional cache-write charge                            | No additional cache-write charge                                                |
-| Cache lifetime control     | `prompt_cache_options.ttl`                          | `prompt_cache_retention`                                    | `prompt_cache_retention`                                                        |
-| Supported retention values | `"30m"`                                             | `"24h"` only                                                | `"in_memory"` or `"24h"`<sup>[\*](#extended-retention-models)</sup>             |
-| Cache lifetime             | At least 30 minutes after the latest write or reuse | Typically around 30 minutes, up to 24 hours                 | Typically 5 to 10 minutes inactive for `in_memory`, or up to 24 hours for `24h` |
+| Behavior                   | GPT-5.6 and later                                                                   | GPT-5.5 and GPT-5.5 Pro                                     | Other earlier models                                                            |
+| -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Implicit breakpoints       | At the end of the latest eligible message.                                          | Spaced at regular 2,048-token intervals.                    | Spaced at regular, model-dependent intervals.                                   |
+| Explicit breakpoints       | Supported                                                                           | Not supported                                               | Not supported                                                                   |
+| `prompt_cache_key`         | Optional for separate cache accounting                                              | Use a stable key to optimize cache routing                  | Use a stable key to optimize cache routing                                      |
+| Minimum cacheable prefix   | 1,024 visible input tokens                                                          | Varies by request settings                                  | Varies by request settings                                                      |
+| Cached-token reporting     | Exact eligible boundary, excluding hidden tokens                                    | Excludes hidden tokens and rounds down to a multiple of 128 | Excludes hidden tokens and rounds down to a multiple of 128                     |
+| Cache read charge          | 0.1× uncached input (0.05× for GPT-6.1 Sol)                                         | Model-dependent cached-input rate                           | Model-dependent cached-input rate                                               |
+| Cache write charge         | 1.25× for `"30m"`; 2.5× for `"12h"` in the Responses API                            | No additional cache-write charge                            | No additional cache-write charge                                                |
+| Cache lifetime control     | `prompt_cache_options.ttl`                                                          | `prompt_cache_retention`                                    | `prompt_cache_retention`                                                        |
+| Supported retention values | `"30m"` (default), or `"12h"` in the Responses API                                  | `"24h"` only                                                | `"in_memory"` or `"24h"`<sup>[\*](#extended-retention-models)</sup>             |
+| Cache lifetime             | Minimum lifetime of 30 minutes or 12 hours; see [refresh behavior](#cache-lifetime) | Typically around 30 minutes, up to 24 hours                 | Typically 5 to 10 minutes inactive for `in_memory`, or up to 24 hours for `24h` |
 
 <a id="extended-retention-models"></a>
 
@@ -450,7 +522,7 @@ Send a follow-up request
 ```
 
 
-Note: Tokens written to the cache during a prewarm request are billed at the standard cache-write rate.
+Tokens written to the cache during a prewarm request are billed at the [cache-write rate for the selected lifetime](#cache-lifetime).
 
 
 
@@ -496,6 +568,8 @@ On models before GPT-5.6, `prompt_cache_key` is important for optimizing cache h
 
 
 
+For Responses API models that support `prompt_cache_options`, use `"30m"` for frequently reused context and consider `"12h"` for stable prefixes reused across longer gaps. Compare the higher 12-hour write rate with the cost of rewriting the prefix after 30-minute coverage expires. Use breakpoint overrides to give shared material a longer lifetime than session-specific context. See [Cache lifetime](#cache-lifetime) for examples and billing rules.
+
 For earlier models, prefer setting `prompt_cache_retention` to `"24h"` for extended retention when the model and your data-retention requirements allow it. See [Cache lifetime](#cache-lifetime) for supported settings and defaults.
 
 
@@ -516,7 +590,7 @@ For earlier models, prefer setting `prompt_cache_retention` to `"24h"` for exten
 
 If many requests reuse the same developer instructions and tool definitions, but that shared prefix falls below the model's [minimum cacheable length](#summary-of-model-differences), consider shortening it or expanding it with useful, stable instructions, examples, or reference material. Measure whether cache reuse offsets the additional input tokens and any cache-write charges, and ensure evaluations and behaviour remain stable.
 
-The chart highlights the minimum cacheable length cost trap where short prefix lengths can cost more uncached than expanding to the minimum cacheable token length.
+The chart highlights the minimum cacheable length cost trap where short prefix lengths can cost more uncached than expanding to the minimum cacheable token length. It uses the 30-minute cache-write rate for GPT-5.6 and later.
 
 <a id="mathematical-details"></a>
 
@@ -534,7 +608,7 @@ $$
 
 Expand when $$L > L_{\mathrm{break\text{-}even}}$$; keeping the shorter prefix costs less when $$L < L_{\mathrm{break\text{-}even}}$$. At equality, the costs are the same. The smallest whole-token length for which expansion is cheaper is $$\left\lfloor L_{\mathrm{break\text{-}even}} \right\rfloor + 1$$. Conversely, shrinking a cacheable prefix below $$M$$ loses caching: under the same assumptions, the shorter uncached prefix must fall below $$L_{\mathrm{break\text{-}even}}$$ to cost less than caching $$M$$ tokens. There is no universal maximum-cost prompt length; the crossover depends on reuse and pricing.
 
-For example, using the usual cache-read rate with $$M = 1{,}024$$, $$r = 0.1$$, and $$w = 1.25$$, the crossover is $$102.4 + \frac{1{,}177.6}{N}$$ tokens. Across 10 requests, expanding an original prefix of at least 221 tokens to 1,024 tokens is cheaper. As reuse grows, the crossover approaches 102.4 tokens. A 103-token prefix needs at least 1,963 total requests to benefit; a prefix of 102 tokens or fewer never does under these assumptions. This comparison excludes performance, output tokens, and unchanged request costs. Additional misses, writes, or different model rates change the result.
+For example, using the usual cache-read rate and 30-minute writes with $$M = 1{,}024$$, $$r = 0.1$$, and $$w = 1.25$$, the crossover is $$102.4 + \frac{1{,}177.6}{N}$$ tokens. Across 10 requests, expanding an original prefix of at least 221 tokens to 1,024 tokens is cheaper. As reuse grows, the crossover approaches 102.4 tokens. A 103-token prefix needs at least 1,963 total requests to benefit; a prefix of 102 tokens or fewer never does under these assumptions. This comparison excludes performance, output tokens, and unchanged request costs. Additional misses, writes, or different model rates change the result.
 
 
 
@@ -554,11 +628,38 @@ For example, using the usual cache-read rate with $$M = 1{,}024$$, $$r = 0.1$$, 
 
 
 
-- **Measure actual cache performance.** Track `usage.input_tokens_details.cached_tokens`, `usage.input_tokens_details.cache_write_tokens`, input-token counts, latency, and realized cost. Track the token cache-hit rate by dividing total cached tokens by total input tokens, aggregating both counts by user, workspace, day, or another useful grouping.
+- **Measure actual cache performance.** Track `usage.input_tokens_details.cached_tokens`, `usage.input_tokens_details.cache_write_tokens`, the write counts by lifetime, input-token counts, latency, and realized cost. Track the token cache-hit rate by dividing total cached tokens by total input tokens, aggregating both counts by user, workspace, day, or another useful grouping.
 - **Calculate input cost.** Use the token counts in `response.usage` and the model's [prices per million tokens](https://developers.openai.com/api/docs/pricing).
 - **Use the prompt caching dashboard.** Monitor cache hit rates in the [Prompt Caching Dashboard](https://platform.openai.com/usage?usage_section=prompt-caching).
 
-Calculate input cost
+For Responses API models that support `prompt_cache_options`, `input_tokens_details.cache_write_tokens_details` breaks writes into `ttl_30m_tokens` and `ttl_12h_tokens`. These counts do not overlap and sum to `cache_write_tokens`. Both fields are returned, including when one is zero. `cached_tokens` counts billed reads and excludes tokens charged as writes, including upgrades from 30-minute to 12-hour coverage.
+
+Input usage fields with both write lifetimes
+
+```json
+{
+  "usage": {
+    "input_tokens": 12000,
+    "input_tokens_details": {
+      "cached_tokens": 4000,
+      "cache_write_tokens": 7000,
+      "cache_write_tokens_details": {
+        "ttl_30m_tokens": 3000,
+        "ttl_12h_tokens": 4000
+      }
+    }
+  }
+}
+```
+
+
+In this usage example, 1,000 input tokens are ordinary input: `12000 - 4000 - 7000`. To calculate input cost, multiply ordinary input tokens by the model's input price, `cached_tokens` by its cached-input price, `ttl_30m_tokens` by 1.25× its input price, and `ttl_12h_tokens` by 2.5× its input price. Add these amounts and divide by 1,000,000 when using prices per million tokens. Do not add `cache_write_tokens` again after counting its two components.
+
+For example, at an input price of $1 per million tokens and a cached-input price of $0.10 per million, this usage costs `(1000 + 4000 × 0.1 + 3000 × 1.25 + 4000 × 2.5) / 1000000 = $0.01515` for input. Use your model's actual rates, including its cached-input rate.
+
+The following helper uses one cache-write multiplier for all writes. Use `1.25` when all writes have a 30-minute lifetime, or `2.5` when all have a 12-hour lifetime. For requests with both lifetimes, calculate each write component separately as described here.
+
+Calculate input cost with one cache-write rate
 
 ```javascript
 function calculateInputCost(

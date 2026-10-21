@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Connect a private hostname
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instead of managing static IP lists and routes, you can connect users to private HTTP and non-HTTP applications using their hostnames (for example, `wiki.internal.local`). Private hostname routes are especially useful when the application has an unknown or ephemeral IP, which often occurs when infrastructure is provisioned by a third-party cloud provider.
 
@@ -288,6 +288,12 @@ By default, SNI selectors only apply to HTTPS traffic on port `443`. To inspect 
 
 Additionally, SNI selectors will only apply to Cloudflare One Client traffic. If your users will be connecting from other [on-ramps](#device-connectivity), you can allow or block network traffic using the [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/#destination-ip) selector instead of SNI.
 
+Origins with private or self-signed certificates
+
+If your private HTTPS application presents a certificate that is not issued by a publicly trusted certificate authority (for example, a self-signed certificate or one issued by your organization's internal CA), Gateway cannot validate the certificate and returns [Error 526](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/) when [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) is turned on.
+
+To reach the application, create a Gateway HTTP Allow policy that matches it and set the [untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#untrusted-certificates) to *Pass through*. This also applies when you secure the application with an [Access self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) over HTTPS on port `443`, because the browser-based login flow depends on TLS decryption.
+
 ### 4. Test the connection
 
 End users can now reach the application by going to its private hostname. For example, to connect to a private web application, open a browser and go to `wiki.internal.local`.
@@ -327,6 +333,7 @@ If you cannot connect, verify the following:
    ```
 
    If the request fails, confirm that the initial resolved IP [routes through the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). You can also check your [tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing to the application's private IP.
+5. **Check for certificate errors** - If your private HTTPS application returns [Error 526](https://developers.cloudflare.com/cloudflare-one/traffic-controls/troubleshooting/), Gateway could not validate the origin's certificate. Create a Gateway HTTP Allow policy that matches the application and set the [untrusted certificate action](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#untrusted-certificates) to *Pass through*.
 
 ## Limitations
 
@@ -368,5 +375,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/og.png?v=8a696e856c49ddc9","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/og.png?v=8a696e856c49ddc9","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

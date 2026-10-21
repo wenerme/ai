@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/reference/community-projects/og.png?
 
 # Community projects
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/community-projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/community-projects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Members of the Cloudflare developer community and broader developer ecosystem have built and/or contributed tooling — including ORMs (Object Relational Mapper) libraries, query builders, and CLI tools — that build on top of D1.
 
@@ -64,6 +64,13 @@ Drizzle is a headless TypeScript ORM with a head which runs on Node, Bun and Den
 - [GitHub ↗︎](https://github.com/drizzle-team/drizzle-orm)
 - [D1 example ↗︎](https://orm.drizzle.team/docs/connect-cloudflare-d1)
 
+### UQL
+
+UQL is a TypeScript ORM that queries with plain JSON objects and generates migrations from your entities. It binds to D1 through `uql-orm/d1`, and keeps to D1's limits, such as the bound-parameter cap, by splitting large writes across statements.
+
+- [Docs ↗︎](https://uql-orm.dev/cloudflare-d1)
+- [GitHub ↗︎](https://github.com/rogerpadilla/uql)
+
 ### workers-qb
 
 `workers-qb` is a zero-dependency query builder that provides a simple standardized interface while keeping the benefits and speed of using raw queries over a traditional ORM. While not intended to provide ORM-like functionality, `workers-qb` makes it easier to interact with your database from code for direct SQL access.
@@ -76,6 +83,12 @@ Drizzle is a headless TypeScript ORM with a head which runs on Node, Bun and Den
 Instead of running the `wrangler d1 execute` command in your terminal every time you want to interact with your database, you can interact with D1 from within the `d1-console`. Created by a Discord Community Champion, this gives the benefit of executing multi-line queries, obtaining command history, and viewing a cleanly formatted table output.
 
 - [GitHub ↗︎](https://github.com/isaac-mcfadyen/d1-console)
+
+### D1 Migration Guard
+
+`d1-migration-guard` is a free, zero-dependency CLI that runs three safety checks against your D1 migrations before you run `wrangler d1 migrations apply`: migration filename ordering/duplicate-number detection, `wrangler.toml` `database_id` validation, and a pattern scan for destructive SQL (`DROP TABLE`, `DROP COLUMN`, unfiltered `DELETE`). It reads local files only and never calls `wrangler` or touches a live database.
+
+- [GitHub ↗︎](https://github.com/MattBridges/d1-migration-guard)
 
 ### L1
 
@@ -124,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/reference/community-projects/#page","headline":"Community projects","description":"Explore community-built ORMs, query builders, and tools that integrate with D1.","url":"https://developers.cloudflare.com/d1/reference/community-projects/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/reference/community-projects/og.png?v=d512bd58bb66e712","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

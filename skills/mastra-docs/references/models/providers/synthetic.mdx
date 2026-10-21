@@ -5,7 +5,7 @@ description: "Browse Synthetic model IDs, capabilities, context windows, and pri
 
 # [Synthetic logo]Synthetic
 
-Access 11 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
+Access 12 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
 
 Learn more in the [Synthetic documentation](https://synthetic.new/pricing).
 
@@ -41,6 +41,18 @@ for await (const chunk of stream) {
   models={[
   {
     "model": "synthetic/hf:deepseek-ai/DeepSeek-V4.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 65536,
+    "inputCost": 0.6,
+    "outputCost": 1.2
+  },
+  {
+    "model": "synthetic/hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

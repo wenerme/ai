@@ -119,7 +119,7 @@ Responses output can include non-message items, such as reasoning items, before 
 
 ### Add a local file to the prompt
 
-For a simple local file, build the prompt inline with command substitution:
+For a local file, build the prompt inline with command substitution:
 
 ```bash
 openai responses create \
@@ -142,7 +142,7 @@ The note says the launch checklist is ready except for final support ownership.
 
 ### Passing request bodies
 
-Use flags for short scalar inputs. Use a YAML heredoc for multiline prompts, tools, files, or nested request bodies. The heredoc can contain the same request fields you would otherwise pass as flags.
+Use flags for short scalar inputs. Use a YAML here-document for multiline prompts, tools, files, or nested request bodies. The here-document can contain the same request fields you would otherwise pass as flags.
 
 Be careful with string values that look like YAML, especially prompts that contain `:` or `{}`. On flags, the generated parser may interpret those values as structured YAML instead of plain text. If a prompt starts looking like configuration, put it under `input: |` in a YAML body instead:
 
@@ -413,6 +413,12 @@ If a local image edit upload fails with an `UploadFile` type error, update the C
 
 ## Speech
 
+These Speech API examples use the deprecated `gpt-4o-mini-tts` model, which
+  will shut down on **January 6, 2027**. Migrate to `gpt-realtime-2.1-mini`
+  using the [Realtime API](https://developers.openai.com/api/docs/guides/realtime). Changing only the model
+  ID in `openai audio:speech create` isn't supported. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-10-01-text-to-speech-models).
+
 Create an MP3 locally with the speech API:
 
 Command:
@@ -458,7 +464,7 @@ Command:
 
 ```bash
 openai audio:transcriptions create \
-  --model gpt-4o-transcribe \
+  --model gpt-transcribe \
   --file ./speech.mp3 \
   --transform text \
   --raw-output
@@ -471,11 +477,16 @@ Output:
 The OpenAI CLI can call the API from ordinary shell scripts.
 ```
 
-Use the response format that matches the artifact you need:
+The example above uses the recommended [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text) model. The following specialized examples remain available for existing integrations:
+
+`whisper-1` and `gpt-4o-transcribe-diarize` are deprecated and will shut down
+  on **February 26, 2027**. Changing to the recommended transcription model
+  doesn't preserve every output format or metadata field. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-08-26-transcription-models) and
+  [transcription workflows](https://developers.openai.com/api/docs/guides/transcription).
 
 | Need                        | Command shape                                                        |
 | --------------------------- | -------------------------------------------------------------------- |
-| Plain transcript text       | `--model gpt-4o-transcribe --transform text --raw-output`            |
 | Subtitle files              | `--model whisper-1 --response-format srt` or `--response-format vtt` |
 | Segment or word timestamps  | `--model whisper-1 --response-format verbose_json`                   |
 | Speaker-labeled diarization | `--model gpt-4o-transcribe-diarize --response-format diarized_json`  |
@@ -552,7 +563,7 @@ To provision a new machine credential, [create a project](https://developers.ope
 
 ### Create a project, service account, and API key
 
-Creating a service account in that project returns an unredacted API key for the service account.
+Creating a service account in that project returns the full API key for the service account.
 
 Command:
 

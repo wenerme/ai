@@ -1,5 +1,5 @@
 ---
-description: Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.
+description: Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.
 title: Tools
 image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=9
 
 # Tools
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think provides built-in workspace file tools on every turn, plus integration points for custom tools, code execution, and dynamic extensions.
 
@@ -20,7 +20,7 @@ Think provides built-in workspace file tools on every turn, plus integration poi
 
 On every turn, Think merges tools from multiple sources. Later sources override earlier ones if names collide:
 
-1. **Workspace tools** — `read`, `write`, `edit`, `list`, `find`, `grep`, `delete`, `bash` (built-in)
+1. **Workspace tools** — `read`, `ls`, `find`, `grep`, `write`, `edit`, `delete`, plus `exec` and `publish` when configured (built-in)
 2. **`getTools()`** — your custom server-side tools
 3. **Extension tools** — tools from loaded extensions (prefixed by extension name)
 4. **Session tools** — `set_context`, `load_context`, `search_context` (from `configureSession`)
@@ -32,58 +32,51 @@ Tools belong to the agent running the turn. For parent-child orchestration, use 
 
 ## Built-in workspace tools
 
-Every Think agent gets `this.workspace` — a virtual filesystem backed by Durable Object SQLite. Workspace tools are automatically available to the model with no configuration.
+Every Think agent gets `this.workspace`, a `Workspace` from [`@cloudflare/computer` ↗︎](https://github.com/cloudflare/computer) stored in the Durable Object's SQLite. Think adds Computer's AI SDK tools to every turn with no configuration.
 
 | Tool | Description |
 | --- | --- |
-| `read` | Read text with line numbers; pass images and PDFs to multimodal models |
-| `write` | Write content to a file (creates parent directories) |
-| `edit` | Apply a find-and-replace edit to an existing file (supports fuzzy matching) |
-| `list` | List files and directories in a path |
+| `read` | Read text with line and byte paging; pass images and PDFs to multimodal models |
+| `ls` | List files and directories in a path, with pagination |
 | `find` | Find files matching a glob pattern |
 | `grep` | Search file contents by regex or fixed string |
+| `write` | Write content to a file (creates parent directories) |
+| `edit` | Apply exact text replacements to a file, falling back to whitespace-tolerant search |
 | `delete` | Delete a file or directory |
-| `bash` | Run a sandboxed Bash script against workspace files |
+| `exec` | Run a command or module on one of the Workspace's execution backends |
+| `publish` | Share a workspace file through a presigned URL, when the Workspace has assets |
 
-The `bash` tool is enabled by default. It mounts workspace files into a `just-bash` virtual filesystem, runs with network access disabled, and writes created, updated, and deleted files and empty directories back to the workspace. Use it for shell-style workflows that combine multiple file operations; use the narrower tools for simple reads, writes, and edits.
+Paths are absolute. Computer's tools and backends treat `/workspace` as the working root, and Think writes its own files there too.
 
-To keep tool calls bounded, the Bash tool snapshots up to 1,000 workspace files by default and skips files larger than 1 MB. Skipped files are reported in the tool result and are treated as protected during write-back so the script cannot accidentally overwrite or delete content that was not mounted. You can tune `maxWorkspaceFiles`, `maxWorkspaceFileBytes`, `maxOutputBytes`, `timeout`, and `network` through `workspaceBash`.
+`@cloudflare/computer` is a peer dependency of Think:
 
-Disable the default Bash tool for conservative deployments:
-
-```js
-export class MyAgent extends Think {
-	workspaceBash = false;
-
-	getModel() {
-		/* ... */
-	}
-}
+```sh
+npm install @cloudflare/computer
 ```
 
-```ts
-export class MyAgent extends Think<Env> {
-	workspaceBash = false;
+### Run code with `exec`
 
-	getModel() {
-		/* ... */
-	}
-}
-```
-
-### R2 spillover
-
-By default, the workspace stores everything in SQLite. For large files, override `workspace` to add R2 spillover:
+The default Workspace has no execution backends, so there is no `exec` tool until you add one. Configure the backends, and the modules they offer, on the Workspace:
 
 ```js
 import { Think } from "@cloudflare/think";
-import { Workspace } from "@cloudflare/shell";
+import { Workspace } from "@cloudflare/computer";
+import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript";
+import { createGitClient } from "@cloudflare/computer/git";
+import { createGitModule } from "@cloudflare/computer/modules/git";
 
 export class MyAgent extends Think {
 	workspace = new Workspace({
-		sql: this.ctx.storage.sql,
-		r2: this.env.R2,
-		name: () => this.name,
+		storage: this.ctx.storage,
+		git: createGitClient(),
+		backends: [
+			new WorkerJavaScriptBackend({
+				id: "js",
+				loader: this.env.LOADER,
+				access: "read-write",
+				modules: { "ws:git": createGitModule() },
+			}),
+		],
 	});
 
 	getModel() {
@@ -94,13 +87,23 @@ export class MyAgent extends Think {
 
 ```ts
 import { Think } from "@cloudflare/think";
-import { Workspace } from "@cloudflare/shell";
+import { Workspace } from "@cloudflare/computer";
+import { WorkerJavaScriptBackend } from "@cloudflare/computer/backends/worker-javascript";
+import { createGitClient } from "@cloudflare/computer/git";
+import { createGitModule } from "@cloudflare/computer/modules/git";
 
 export class MyAgent extends Think<Env> {
 	override workspace = new Workspace({
-		sql: this.ctx.storage.sql,
-		r2: this.env.R2,
-		name: () => this.name,
+		storage: this.ctx.storage,
+		git: createGitClient(),
+		backends: [
+			new WorkerJavaScriptBackend({
+				id: "js",
+				loader: this.env.LOADER,
+				access: "read-write",
+				modules: { "ws:git": createGitModule() },
+			}),
+		],
 	});
 
 	getModel() {
@@ -109,25 +112,87 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-This requires an R2 bucket binding:
+The JavaScript backend runs code in a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), so it needs a Worker Loader binding:
 
 ```jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "r2_buckets": [
+  "worker_loaders": [
     {
-      "binding": "R2",
-      "bucket_name": "agent-files"
+      "binding": "LOADER"
     }
   ]
 }
 ```
 
 ```toml
-[[r2_buckets]]
-binding = "R2"
-bucket_name = "agent-files"
+[[worker_loaders]]
+binding = "LOADER"
 ```
+
+Computer also ships a `just-bash` shell backend that runs in Dynamic Workers, and a container backend with a full Linux userland. Refer to the [Computer README ↗︎](https://github.com/cloudflare/computer/tree/main/packages/computer#choosing-a-backend) for each backend's bindings.
+
+### Call the agent's tools from code
+
+Give a JavaScript backend a `ws:tools` module, and code the model runs with `exec` can import the agent's tools. Code reads files through `node:fs/promises`, so serve `getTools()` rather than the workspace tools:
+
+```js
+import { createToolBindings } from "@cloudflare/computer/modules/tools";
+import { forAISDKTools } from "@cloudflare/computer/tools/ai-sdk";
+
+new WorkerJavaScriptBackend({
+	id: "js",
+	loader: this.env.LOADER,
+	modules: {
+		"ws:tools": createToolBindings(forAISDKTools(() => this.getTools())),
+	},
+});
+```
+
+```ts
+import { createToolBindings } from "@cloudflare/computer/modules/tools";
+import { forAISDKTools } from "@cloudflare/computer/tools/ai-sdk";
+
+new WorkerJavaScriptBackend({
+	id: "js",
+	loader: this.env.LOADER,
+	modules: {
+		"ws:tools": createToolBindings(forAISDKTools(() => this.getTools())),
+	},
+});
+```
+
+Code the model runs with `exec`:
+
+```js
+import { readFile } from "node:fs/promises";
+import { getWeather } from "ws:tools";
+
+export default async function () {
+	const cities = JSON.parse(await readFile("/workspace/cities.json", "utf8"));
+	const reports = [];
+	for (const city of cities) reports.push((await getWeather({ city })).text);
+	return reports;
+}
+```
+
+`ws:tools` does not export tools that need approval or tools that run in the browser, because nothing can approve or run them from code. Calls from code do not go through `beforeToolCall`. Refer to [`ws:tools` ↗︎](https://github.com/cloudflare/computer/blob/main/docs/17_isolate_javascript.md#wstools) for how calls and results work.
+
+### Change the tools
+
+`exec` offers every backend the Workspace has, and each backend describes itself to the model. To change a built-in tool, return a tool with the same name from `getTools()`. It replaces the built-in. To hide tools for a turn, return `activeTools` from `beforeTurn`.
+
+### Upgrade from `@cloudflare/shell`
+
+Earlier versions of Think used a `Workspace` from `@cloudflare/shell`, which is now deprecated. Computer stores files in different tables, and Think does not move your data. To keep an existing workspace, copy its files with the script in [Migrating from `@cloudflare/shell` to `@cloudflare/computer` ↗︎](https://github.com/cloudflare/agents/blob/main/docs/shell/migrating-to-computer.md).
+
+The upgrade also changes the tools:
+
+- `list` is now `ls`.
+- The in-process `bash` tool is gone. Add a backend to the Workspace to get `exec`.
+- `workspaceBash`, `createWorkspaceTools`, and `@cloudflare/think/tools/workspace` are removed, with no replacement. To change a built-in tool, return a tool with the same name from `getTools()`. To hide tools for a turn, return `activeTools` from `beforeTurn`.
+
+Refer to [Upgrading to a Computer workspace ↗︎](https://github.com/cloudflare/agents/blob/main/docs/think/index.md#upgrading-to-a-computer-workspace) for the full list.
 
 ## Custom tools
 
@@ -207,7 +272,7 @@ getTools(): ToolSet {
 			inputSchema: z.object({ path: z.string() }),
 			needsApproval: async ({ path }) => path.startsWith("/important/"),
 			execute: async ({ path }) => {
-				await this.workspace.rm(path);
+				await this.workspace.fs.rm(path);
 				return { deleted: path };
 			},
 		}),
@@ -336,16 +401,21 @@ export class MyAgent extends Think<Env> {
 
 ## Code execution tool
 
+Deprecated
+
+`createExecuteTool` and `createExecuteRuntime` are deprecated. Use `exec` on a JavaScript backend with a `ws:tools` module instead. Refer to [Call the agent's tools from code](#call-the-agents-tools-from-code). The execute tool keeps working until it is removed along with `@cloudflare/codemode`.
+
 Let the LLM write and run JavaScript in a sandboxed Worker, recorded on a durable Code Mode runtime (abort-and-replay, human approvals, audit trail, reusable snippets). Requires `@cloudflare/codemode` and a `worker_loaders` binding.
 
 ```sh
 npm install @cloudflare/codemode
 ```
 
-The one-liner infers everything from the agent — `state.*` from `this.workspace`, the executor from `env.LOADER`, and a live browser (`cdp.*`) from `env.BROWSER` if bound:
+The one-liner infers the executor from `env.LOADER` and a live browser (`cdp.*`) from `env.BROWSER` if bound. Pass tools for `tools.*`, including the workspace tools if the sandbox should reach the workspace:
 
 ```js
 import { Think } from "@cloudflare/think";
+import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
 
 export class MyAgent extends Think {
@@ -355,7 +425,9 @@ export class MyAgent extends Think {
 
 	getTools() {
 		return {
-			execute: createExecuteTool(this),
+			execute: createExecuteTool(this, {
+				tools: createAITools({ workspace: this.workspace }),
+			}),
 		};
 	}
 }
@@ -363,6 +435,7 @@ export class MyAgent extends Think {
 
 ```ts
 import { Think } from "@cloudflare/think";
+import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { createExecuteTool } from "@cloudflare/think/tools/execute";
 
 export class MyAgent extends Think<Env> {
@@ -372,7 +445,9 @@ export class MyAgent extends Think<Env> {
 
 	getTools() {
 		return {
-			execute: createExecuteTool(this),
+			execute: createExecuteTool(this, {
+				tools: createAITools({ workspace: this.workspace }),
+			}),
 		};
 	}
 }
@@ -421,41 +496,24 @@ Each missing piece fails with an error naming the step.
 Inside the sandbox the model sees typed namespaces plus the platform SDK:
 
 - `tools.*` — your AI SDK tools (object args, validated against their schemas). Only tools with an `execute` function are exposed — client-side tools cannot run in the sandbox.
-- `state.*` — the workspace filesystem ( `state.readFile({ path })`, `state.glob({ pattern })`, `state.planEdits(...)`, and so on).
 - `cdp.*` — the browser, when a Browser Run binding is configured. The execute tool defaults to `session: { mode: "dynamic" }`: sessions are per-execution unless the model promotes one with `cdp.startSession()`.
 - `codemode.search` / `codemode.describe` / `codemode.step` / `codemode.run` — discovery, side-effect boundaries, and saved snippets.
 
-Pass overrides for anything beyond the defaults — for example, custom `tools.*` alongside the agent-derived state:
+Or pass fully explicit options (no agent inference):
 
 ```js
-execute: createExecuteTool(this, { tools: myDomainTools });
-```
-
-```ts
-execute: createExecuteTool(this, { tools: myDomainTools });
-```
-
-Or fully explicit options (no agent inference):
-
-```js
-import { createWorkspaceStateBackend } from "@cloudflare/shell";
-
 createExecuteTool({
 	ctx: this.ctx,
 	tools: myDomainTools,
-	state: createWorkspaceStateBackend(this.workspace),
 	browser: this.env.BROWSER,
 	loader: this.env.LOADER,
 });
 ```
 
 ```ts
-import { createWorkspaceStateBackend } from "@cloudflare/shell";
-
 createExecuteTool({
 	ctx: this.ctx,
 	tools: myDomainTools,
-	state: createWorkspaceStateBackend(this.workspace),
 	browser: this.env.BROWSER,
 	loader: this.env.LOADER,
 });
@@ -583,7 +641,7 @@ By default each execution gets a fresh browser session (`one-shot`), torn down w
 
 Note
 
-The simplest setup is the unified execute tool in [Code execution tool](#code-execution-tool): `createExecuteTool(this)` already includes `cdp.*` alongside `state.*` and `tools.*` when `env.BROWSER` is bound — one tool, one durable history. Use `createBrowserTools` when you want a separate, browser-only tool.
+The simplest setup is the unified execute tool in [Code execution tool](#code-execution-tool): `createExecuteTool(this)` already includes `cdp.*` alongside `tools.*` when `env.BROWSER` is bound — one tool, one durable history. Use `createBrowserTools` when you want a separate, browser-only tool.
 
 For a custom Chrome endpoint, pass `cdpUrl` instead of `browser`:
 
@@ -772,78 +830,6 @@ getExtensions() {
 
 The context block is registered as `notes_scratchpad` (namespaced by extension name).
 
-## Custom workspace backends
-
-The individual tool factories are exported for use with custom storage backends:
-
-```js
-import {
-	createReadTool,
-	createWriteTool,
-	createEditTool,
-	createListTool,
-	createFindTool,
-	createGrepTool,
-	createDeleteTool,
-	createWorkspaceTools,
-} from "@cloudflare/think/tools/workspace";
-```
-
-```ts
-import {
-	createReadTool,
-	createWriteTool,
-	createEditTool,
-	createListTool,
-	createFindTool,
-	createGrepTool,
-	createDeleteTool,
-	createWorkspaceTools,
-} from "@cloudflare/think/tools/workspace";
-```
-
-Implement the operations interface for your storage backend:
-
-```js
-const myReadOps = {
-	readFile: async (path) => fetchFromMyStorage(path),
-	stat: async (path) => getFileInfo(path),
-};
-
-const readTool = createReadTool({ ops: myReadOps });
-```
-
-```ts
-import type { ReadOperations } from "@cloudflare/think/tools/workspace";
-
-const myReadOps: ReadOperations = {
-	readFile: async (path) => fetchFromMyStorage(path),
-	stat: async (path) => getFileInfo(path),
-};
-
-const readTool = createReadTool({ ops: myReadOps });
-```
-
-Or create the full set from a `Workspace`, optionally disabling the Bash tool:
-
-```js
-import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
-
-const tools = createWorkspaceTools(myCustomWorkspace);
-const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
-	bash: false,
-});
-```
-
-```ts
-import { createWorkspaceTools } from "@cloudflare/think/tools/workspace";
-
-const tools = createWorkspaceTools(myCustomWorkspace);
-const toolsWithoutBash = createWorkspaceTools(myCustomWorkspace, {
-	bash: false,
-});
-```
-
 Was this helpful?
 
 YesNo
@@ -853,5 +839,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools","description":"Built-in workspace tools, custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/tools/og.png?v=95e31e7f8e5f6bfc","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

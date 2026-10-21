@@ -1258,7 +1258,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-pro-preview",
+        model="gemini-4-argon",
         input="Search for all details for the latest Euro.",
         tools=[{"type": "google_search"}, {"type": "url_context"}],
         response_format={
@@ -1292,7 +1292,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.1-pro-preview",
+      model: "gemini-4-argon",
       input: "Search for all details for the latest Euro.",
       tools: [{type: "google_search"}, {type: "url_context"}],
       response_format: {
@@ -1359,7 +1359,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-pro-preview"))
+            .model(Model.of("gemini-4-argon"))
             .input(InteractionsInput.of("Search for all details for the latest Euro."))
             .tools(Arrays.asList(GoogleSearch.builder().build(), URLContext.builder().build()))
             .responseFormat(format)
@@ -1423,7 +1423,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
         resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(
                 interactions.CreateModelInteraction{
-                    Model: interactions.Model("gemini-3.1-pro-preview"),
+                    Model: interactions.Model("gemini-4-argon"),
                     Input: interactions.NewInteractionsInput("Search for all details for the latest Euro."),
                     Tools: []interactions.Tool{
                         interactions.NewTool(interactions.GoogleSearch{}),
@@ -1446,7 +1446,7 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.1-pro-preview",
+        "model": "gemini-4-argon",
         "input": "Search for all details for the latest Euro.",
         "tools": [{"type": "google_search"}, {"type": "url_context"}],
         "response_format": {
@@ -1493,11 +1493,13 @@ These descriptive properties help guide the model:
 - **`properties`**: An object where each key is a property name and each value is a schema for that property.
 - **`required`**: An array of strings, listing which properties are mandatory.
 - **`additionalProperties`** : Controls whether properties not listed in `properties` are allowed. Can be a boolean or a schema.
+- **Unsupported counting constraints** : `minProperties` and `maxProperties` are not enforced during constrained decoding and are ignored by the server. Validate property counts in your application code if needed.
 
 **For `string` values:**
 
 - **`enum`**: Lists a specific set of possible strings for classification tasks.
 - **`format`** : Specifies a syntax for the string, such as `date-time`, `date`, `time`.
+- **Unsupported length constraints** : `minLength` and `maxLength` are not enforced during constrained decoding and are ignored by the server. Validate string lengths in your application code if needed.
 
 **For `number` and `integer` values:**
 
@@ -1531,3 +1533,4 @@ These descriptive properties help guide the model:
 
 - **Schema subset:** Not all JSON Schema features are supported.
 - **Schema complexity:** Very large or deeply nested schemas may be rejected.
+- **Counting \& length constraints:** Counting constraints such as `minLength`, `maxLength`, `minProperties`, and `maxProperties` (and their snake_case variants) are not enforced by the constrained decoding grammar engine. If these keywords are present in your schema (e.g., emitted automatically by Pydantic's `Field(min_length=...)` or Zod's `.min()`), the API automatically strips and ignores them during request normalization rather than returning an error. To enforce strict string lengths or property counts, validate the parsed output on the client side (e.g., with Pydantic `model_validate_json()` or Zod `.parse()`).

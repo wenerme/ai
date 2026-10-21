@@ -58,7 +58,7 @@ chunk objects if the request is streamed.
 
           - `"text"`
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -67,6 +67,14 @@ chunk objects if the request is streamed.
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
     - `role: "developer"`
 
@@ -104,7 +112,7 @@ chunk objects if the request is streamed.
 
           The type of the content part.
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -147,7 +155,7 @@ chunk objects if the request is streamed.
 
             The type of the content part.
 
-          - `prompt_cache_breakpoint: optional object { mode }`
+          - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -179,7 +187,7 @@ chunk objects if the request is streamed.
 
             - `"image_url"`
 
-          - `prompt_cache_breakpoint: optional object { mode }`
+          - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -188,6 +196,14 @@ chunk objects if the request is streamed.
               The breakpoint mode. Always `explicit`.
 
               - `"explicit"`
+
+            - `ttl: optional "30m" or "12h"`
+
+              The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+              - `"30m"`
+
+              - `"12h"`
 
         - `ChatCompletionContentPartInputAudio object { input_audio, type, prompt_cache_breakpoint }`
 
@@ -213,7 +229,7 @@ chunk objects if the request is streamed.
 
             - `"input_audio"`
 
-          - `prompt_cache_breakpoint: optional object { mode }`
+          - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -222,6 +238,14 @@ chunk objects if the request is streamed.
               The breakpoint mode. Always `explicit`.
 
               - `"explicit"`
+
+            - `ttl: optional "30m" or "12h"`
+
+              The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+              - `"30m"`
+
+              - `"12h"`
 
         - `FileContentPart object { file, type, prompt_cache_breakpoint }`
 
@@ -249,7 +273,7 @@ chunk objects if the request is streamed.
 
             - `"file"`
 
-          - `prompt_cache_breakpoint: optional object { mode }`
+          - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -258,6 +282,14 @@ chunk objects if the request is streamed.
               The breakpoint mode. Always `explicit`.
 
               - `"explicit"`
+
+            - `ttl: optional "30m" or "12h"`
+
+              The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+              - `"30m"`
+
+              - `"12h"`
 
     - `role: "user"`
 
@@ -414,7 +446,7 @@ chunk objects if the request is streamed.
 
           The type of the content part.
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -887,7 +919,7 @@ chunk objects if the request is streamed.
 
         The type of the content part.
 
-      - `prompt_cache_breakpoint: optional object { mode }`
+      - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
         Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 

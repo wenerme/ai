@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/og.png?v=e3ee81d
 
 # Think
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
@@ -29,19 +29,19 @@ If this is your first agent, start with the [Getting started tutorial](https://d
 npmyarnpnpmbun
 
 ```
-npm i @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
+npm i @cloudflare/think @cloudflare/computer @cloudflare/ai-chat agents ai zod workers-ai-provider
 ```
 
 ```
-yarn add @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
+yarn add @cloudflare/think @cloudflare/computer @cloudflare/ai-chat agents ai zod workers-ai-provider
 ```
 
 ```
-pnpm add @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
+pnpm add @cloudflare/think @cloudflare/computer @cloudflare/ai-chat agents ai zod workers-ai-provider
 ```
 
 ```
-bun add @cloudflare/think @cloudflare/ai-chat agents ai @cloudflare/shell zod workers-ai-provider
+bun add @cloudflare/think @cloudflare/computer @cloudflare/ai-chat agents ai zod workers-ai-provider
 ```
 
 Think supports AI SDK v6 and v7. Use `ai@^6` with `@ai-sdk/react@^3`, or use `ai@^7` with `@ai-sdk/react@^4`. Keep the AI SDK packages on matching major versions throughout your project.
@@ -176,7 +176,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -204,7 +204,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-21"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -525,5 +525,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/og.png?v=e3ee81dca3f64261","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/og.png?v=e3ee81dca3f64261","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

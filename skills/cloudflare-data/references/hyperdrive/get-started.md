@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/get-started/og.png?v=94c405f
 
 # Getting started
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive accelerates access to your existing databases from Cloudflare Workers, making even single-region databases feel globally distributed.
 
@@ -28,7 +28,7 @@ This guide will instruct you through:
 
 Note
 
-Hyperdrive currently works with PostgreSQL, MySQL and many compatible databases. This includes CockroachDB and Materialize (which are PostgreSQL-compatible), and PlanetScale.
+Hyperdrive currently works with PostgreSQL, MySQL and many compatible databases. This includes CockroachDB and Materialize (which are PostgreSQL-compatible), Supabase, and PlanetScale.
 
 Learn more about the [databases that Hyperdrive supports](https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features).
 
@@ -251,22 +251,22 @@ To install `pg`, ensure you are in the `hyperdrive-tutorial` directory. Open you
 npmyarnpnpmbun
 
 ```
-# This should install v8.13.0 or later
+# This should install v8.16.3 or later
 npm i pg
 ```
 
 ```
-# This should install v8.13.0 or later
+# This should install v8.16.3 or later
 yarn add pg
 ```
 
 ```
-# This should install v8.13.0 or later
+# This should install v8.16.3 or later
 pnpm add pg
 ```
 
 ```
-# This should install v8.13.0 or later
+# This should install v8.16.3 or later
 bun add pg
 ```
 
@@ -335,7 +335,7 @@ The `index.ts` file is where you configure your Worker's interactions with Hyper
 Populate your `index.ts` file with the following code:
 
 ```typescript
-// pg 8.13.0 or later is recommended
+// pg 8.16.3 or later is recommended
 import { Client } from "pg";
 
 export interface Env {
@@ -529,5 +529,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/get-started/og.png?v=94c405fe5d773d8e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/get-started/#page","headline":"Getting started","description":"Create your first Hyperdrive configuration and connect a Cloudflare Worker to your database.","url":"https://developers.cloudflare.com/hyperdrive/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/get-started/og.png?v=94c405fe5d773d8e","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

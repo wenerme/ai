@@ -133,7 +133,7 @@ Learn more about the Messages API in our [user guide](https://platform.claude.co
 
 - `"anthropic-user-profile-id": optional string`
 
-  The user profile ID to attribute this request to. Use when acting on behalf of a party other than your organization. Requires the `user-profiles` beta header.
+  The user profile ID to attribute this request to. Use when acting on behalf of a party other than your organization.
 
 - `"anthropic-workspace-id": optional string`
 
@@ -8661,7 +8661,7 @@ Learn more about token counting in our [user guide](https://platform.claude.com/
 
 - `"anthropic-user-profile-id": optional string`
 
-  The user profile ID to attribute this request to. Use when acting on behalf of a party other than your organization. Requires the `user-profiles` beta header.
+  The user profile ID to attribute this request to. Use when acting on behalf of a party other than your organization.
 
 - `"anthropic-workspace-id": optional string`
 
@@ -77937,7 +77937,7 @@ Learn more about the Message Batches API in our [user guide](https://platform.cl
 
 - `"anthropic-user-profile-id": optional string`
 
-  The user profile ID to attribute the requests in this batch to. Use when acting on behalf of a party other than your organization. Requires the `user-profiles` beta header. Applies to every request in the batch; an individual request whose `user_profile_id` body field conflicts with this header is errored.
+  The user profile ID to attribute the requests in this batch to. Use when acting on behalf of a party other than your organization. Applies to every request in the batch; an individual request whose `user_profile_id` body field conflicts with this header is errored.
 
 - `"anthropic-workspace-id": optional string`
 

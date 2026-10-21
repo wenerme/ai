@@ -5,7 +5,7 @@ description: "Browse Eden AI model IDs, capabilities, context windows, and prici
 
 # [Eden AI logo]Eden AI
 
-Access 343 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 344 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -43,7 +43,7 @@ for await (const chunk of stream) {
     "model": "edenai/amazon/amazon.nova-lite-v1:0",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 300000,
@@ -55,7 +55,7 @@ for await (const chunk of stream) {
     "model": "edenai/amazon/amazon.nova-lite-v1:0@us",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 300000,
@@ -91,7 +91,7 @@ for await (const chunk of stream) {
     "model": "edenai/amazon/amazon.nova-pro-v1:0",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 300000,
@@ -103,7 +103,7 @@ for await (const chunk of stream) {
     "model": "edenai/amazon/amazon.nova-pro-v1:0@us",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 300000,
@@ -185,7 +185,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/amazon/mistral.pixtral-large-2502-v1:0",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -197,7 +197,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/amazon/mistral.pixtral-large-2502-v1:0@us",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -1064,7 +1064,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 4096,
     "maxOutput": 3200,
@@ -1148,7 +1148,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 32768,
     "maxOutput": 16384,
@@ -1596,8 +1596,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.1,
-    "outputCost": 0.66
+    "inputCost": 0.103,
+    "outputCost": 0.715
   },
   {
     "model": "edenai/flexai/gpt-oss-120b",
@@ -1915,7 +1915,7 @@ for await (const chunk of stream) {
     "model": "edenai/google/gemini-robotics-er-2-preview",
     "imageInput": true,
     "audioInput": true,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
@@ -1956,8 +1956,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.15715,
-    "outputCost": 0.392875
+    "inputCost": 0.15701,
+    "outputCost": 0.392525
   },
   {
     "model": "edenai/greenpt/deepseek-v4.1-flash",
@@ -1968,8 +1968,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.24695,
-    "outputCost": 1.234749
+    "inputCost": 0.24673,
+    "outputCost": 1.23365
   },
   {
     "model": "edenai/greenpt/gpt-oss-120b",
@@ -1980,8 +1980,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.2245,
-    "outputCost": 0.78575
+    "inputCost": 0.2243,
+    "outputCost": 0.78505
   },
   {
     "model": "edenai/greenpt/llama-3.3-70b-instruct",
@@ -1992,8 +1992,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.234749,
-    "outputCost": 1.234749
+    "inputCost": 1.23365,
+    "outputCost": 1.23365
   },
   {
     "model": "edenai/greenpt/qwen3-235b-a22b-instruct-2507",
@@ -2004,8 +2004,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 250000,
     "maxOutput": 16384,
-    "inputCost": 1.01025,
-    "outputCost": 3.030749
+    "inputCost": 1.00935,
+    "outputCost": 3.02805
   },
   {
     "model": "edenai/groq/openai/gpt-oss-120b",
@@ -2052,8 +2052,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 100000,
     "maxOutput": 262144,
-    "inputCost": 0.33675,
-    "outputCost": 0.449
+    "inputCost": 0.33645,
+    "outputCost": 0.4486
   },
   {
     "model": "edenai/ionos/meta-llama/Llama-3.3-70B-Instruct",
@@ -2064,8 +2064,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 0.729625,
-    "outputCost": 0.729625
+    "inputCost": 0.728975,
+    "outputCost": 0.728975
   },
   {
     "model": "edenai/ionos/openai/gpt-oss-120b",
@@ -2076,8 +2076,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.168375,
-    "outputCost": 0.729625
+    "inputCost": 0.168225,
+    "outputCost": 0.728975
   },
   {
     "model": "edenai/ionos/Qwen/Qwen3-Coder-Next",
@@ -2088,8 +2088,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 65536,
-    "inputCost": 0.168375,
-    "outputCost": 0.898
+    "inputCost": 0.168225,
+    "outputCost": 0.8972
   },
   {
     "model": "edenai/minimax/MiniMax-M2",
@@ -2395,7 +2395,7 @@ for await (const chunk of stream) {
     "model": "edenai/moonshot/kimi-k2.6",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
@@ -2407,7 +2407,7 @@ for await (const chunk of stream) {
     "model": "edenai/moonshot/kimi-k2.7-code",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
@@ -2417,9 +2417,9 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/moonshot/kimi-k2.7-code-highspeed",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": false,
     "reasoning": true,
     "contextWindow": 262144,
@@ -2477,7 +2477,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/nebius/google/gemma-3-27b-it",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -2490,8 +2490,8 @@ for await (const chunk of stream) {
   {
     "model": "edenai/nebius/meta-models/muse-spark-open",
     "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
+    "audioInput": false,
+    "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
@@ -3188,7 +3188,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 1000000,
     "maxOutput": 65536,
@@ -3276,8 +3276,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 384000,
-    "inputCost": 0.449,
-    "outputCost": 0.898
+    "inputCost": 0.4486,
+    "outputCost": 0.8972
   },
   {
     "model": "edenai/scaleway/deepseek-v4.1-flash",
@@ -3288,8 +3288,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 384000,
-    "inputCost": 0.6735,
-    "outputCost": 2.020499
+    "inputCost": 0.6729,
+    "outputCost": 2.0187
   },
   {
     "model": "edenai/scaleway/gemma-3-27b-it",
@@ -3312,8 +3312,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.168375,
-    "outputCost": 0.6735
+    "inputCost": 0.168225,
+    "outputCost": 0.6729
   },
   {
     "model": "edenai/scaleway/llama-3.3-70b-instruct",
@@ -3324,8 +3324,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.01025,
-    "outputCost": 1.01025
+    "inputCost": 1.00935,
+    "outputCost": 1.00935
   },
   {
     "model": "edenai/scaleway/qwen3-235b-a22b-instruct-2507",
@@ -3336,8 +3336,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 250000,
     "maxOutput": 16384,
-    "inputCost": 0.841875,
-    "outputCost": 2.525624
+    "inputCost": 0.841125,
+    "outputCost": 2.523375
   },
   {
     "model": "edenai/scaleway/qwen3-coder-30b-a3b-instruct",
@@ -3380,7 +3380,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 128000,
@@ -3392,12 +3392,24 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
     "inputCost": 0.834,
     "outputCost": 2.501
+  },
+  {
+    "model": "edenai/tencent/step-5-preview",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 1,
+    "outputCost": 2.7
   },
   {
     "model": "edenai/tensorx/deepseek/deepseek-r1-0528",

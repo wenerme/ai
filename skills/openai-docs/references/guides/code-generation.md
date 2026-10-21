@@ -17,7 +17,7 @@ Writing, reviewing, editing, and answering questions about code is one of the pr
 
 [**Codex**](https://developers.openai.com/codex) is OpenAI's coding agent for software development. It helps you write, review and debug code. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
 
-Codex works best with the latest general-purpose models, such as [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol). We offer a range of models specifically designed to work with coding agents like Codex, such as [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex), but we recommend using the latest general-purpose model for most code generation tasks.
+Codex works best with the latest general-purpose models, such as [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol). The older [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) model is [deprecated](https://developers.openai.com/api/docs/deprecations#2026-10-01-gpt-53-codex-gpt-51-gpt-54-nano) and will shut down on April 1, 2027.
 
 See the [ChatGPT docs](https://developers.openai.com/codex) for setup guides, reference material, pricing, and more information.
 
@@ -196,10 +196,10 @@ curl https://api.openai.com/v1/responses \
 
 Our models from the GPT-5 family are especially strong at frontend development, especially when combined with a coding agent harness such as Codex.
 
-The demo applications below were one shot generations, i.e. generated from a single prompt without hand-written code. Use them to evaluate frontend generation quality and prompt patterns for UI-heavy code generation workflows.
+The demo applications below were generated from a single prompt without hand-written code. Use them to evaluate frontend generation quality and prompt patterns for UI-heavy code generation workflows.
 
 ## Next steps
 
 - Visit the [ChatGPT docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
 - Read [Model guidance](https://developers.openai.com/api/docs/guides/latest-model) for model selection, features, migration guidance, and prompting patterns that work well on coding and agentic tasks.
-- Compare [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) and [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) on the model pages.
+- Compare [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) and [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol) on the model pages.

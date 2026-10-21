@@ -1270,7 +1270,7 @@ Retrieves a model response with the given ID.
 
                 - `"input_text"`
 
-              - `prompt_cache_breakpoint: optional object { mode }  or null`
+              - `prompt_cache_breakpoint: optional object { mode, ttl }  or null`
 
                 Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -1279,6 +1279,14 @@ Retrieves a model response with the given ID.
                   The breakpoint mode. Always `explicit`.
 
                   - `"explicit"`
+
+                - `ttl: optional "30m" or "12h"`
+
+                  The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+                  - `"30m"`
+
+                  - `"12h"`
 
             - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
 
@@ -1302,7 +1310,7 @@ Retrieves a model response with the given ID.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-              - `prompt_cache_breakpoint: optional object { mode }  or null`
+              - `prompt_cache_breakpoint: optional object { mode, ttl }  or null`
 
                 Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -1311,6 +1319,14 @@ Retrieves a model response with the given ID.
                   The breakpoint mode. Always `explicit`.
 
                   - `"explicit"`
+
+                - `ttl: optional "30m" or "12h"`
+
+                  The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+                  - `"30m"`
+
+                  - `"12h"`
 
             - `BetaResponseInputFileContent object { type, detail, file_data, 4 more }`
 
@@ -1348,7 +1364,7 @@ Retrieves a model response with the given ID.
 
                 The name of the file to be sent to the model.
 
-              - `prompt_cache_breakpoint: optional object { mode }  or null`
+              - `prompt_cache_breakpoint: optional object { mode, ttl }  or null`
 
                 Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
@@ -1357,6 +1373,14 @@ Retrieves a model response with the given ID.
                   The breakpoint mode. Always `explicit`.
 
                   - `"explicit"`
+
+                - `ttl: optional "30m" or "12h"`
+
+                  The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+                  - `"30m"`
+
+                  - `"12h"`
 
         - `type: "function_call_output"`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/notifications/reference/webhook-payload
 
 # Webhook payload schema
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [configure a generic webhook](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/#generic-webhooks), Cloudflare sends a JSON payload to your specified URL for each notification. This page documents the structure of that payload.
 
@@ -370,7 +370,7 @@ You can use the `cf-webhook-auth` header to verify that incoming webhooks are fr
 ## Related resources
 
 - [Configure webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/)
-- [Available notification types](https://developers.cloudflare.com/notifications/notification-available/)
+- [Platform Notifications](https://developers.cloudflare.com/notifications/notification-available/)
 
 Was this helpful?
 
@@ -381,5 +381,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/og.png?v=36e37c65f1119970","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/#page","headline":"Webhook payload schema","description":"Review the JSON payload structure for webhooks.","url":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/webhook-payload-schema/og.png?v=36e37c65f1119970","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

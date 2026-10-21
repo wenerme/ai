@@ -263,24 +263,17 @@ The tokens used for a Response can be read from the `response.done` event, which
 
 ## Input transcription costs
 
-Aside from conversational Responses, the Realtime API bills for input transcriptions, if enabled. Input transcription uses a different model than the speech2speech model, such as [`whisper-1`](https://developers.openai.com/api/docs/models/whisper-1) or [`gpt-4o-transcribe`](https://developers.openai.com/api/docs/models/gpt-4o-transcribe), and thus are billed from a different rate card. Transcription is performed when audio is written to the input audio buffer and then committed, either manually or by VAD.
+If enabled, input transcription is billed separately by the Realtime API. Input transcription uses a different model and rate card from the speech-to-speech model. Use [`gpt-transcribe`](https://developers.openai.com/api/docs/models/gpt-transcribe) for [committed-turn transcription](https://developers.openai.com/api/docs/guides/realtime-transcription#transcribe-a-committed-turn), which begins after audio is written to the input audio buffer and the buffer is committed.
 
-Input transcription token counts can be read from the `conversation.item.input_audio_transcription.completed` event, as in the following example.
+Read input transcription usage from the `conversation.item.input_audio_transcription.completed` event. The usage fields depend on the transcription model: `gpt-transcribe` is billed by audio duration, while models billed by token usage return token counts. For example, duration usage has this shape:
 
 ```json
 {
   "type": "conversation.item.input_audio_transcription.completed",
-  ...
   "transcript": "Hi, can you hear me?",
   "usage": {
-    "type": "tokens",
-    "total_tokens": 26,
-    "input_tokens": 17,
-    "input_token_details": {
-      "text_tokens": 0,
-      "audio_tokens": 17
-    },
-    "output_tokens": 9
+    "type": "duration",
+    "seconds": 3
   }
 }
 ```

@@ -18,6 +18,8 @@ Start with this template and add instructions as needed. See [session configurat
 
 Keep the template’s `Backchannel policy`, `Interruption policy`, and `Delegation policy` headings, and customize the text beneath them. Backchannels are brief listening sounds, such as “mm-hmm,” that the assistant can make while the caller continues speaking.
 
+For `gpt-live-1`, use the instruction `Generate <|SpawnThinking|>` when the model should request backend work, rather than “delegate to the backend.”
+
 ```text
 You are [name], a calm, friendly voice assistant for [service].
 Speak warmly and naturally, at an unhurried pace. Be clear and direct, not overly cheerful.
@@ -31,15 +33,15 @@ Delegation policy:
 Backend tools:
 - [capability]: [what the backend can do]
 
-Delegate to the backend when:
+Generate <|SpawnThinking|> when:
 - The request needs a backend capability or careful reasoning.
 - A correction changes the work already requested.
 
-Do not delegate to the backend when:
+Do not generate <|SpawnThinking|> when:
 - You can answer from the conversation or a still-current result.
 - You need a brief clarification to understand the request.
 
-Delegate before giving an answer that depends on backend work.
+Generate <|SpawnThinking|> before giving an answer that depends on backend work.
 Do not guess the result while waiting.
 ```
 
@@ -69,7 +71,7 @@ Handle changes to a task separately from interruptions to speech. “Stop talkin
 
 ## Delegation
 
-In the `Delegation policy` section, list the backend’s capabilities and the requests that should trigger a handoff. Use concrete conditions, such as “the user asks to change a booking.” Keep the template’s three labels: `Backend tools`, `Delegate to the backend when`, and `Do not delegate to the backend when`.
+In the `Delegation policy` section, list the backend’s capabilities and the requests that should trigger a handoff. Use concrete conditions, such as “the user asks to change a booking.” Keep the template’s three labels: `Backend tools`, `Generate <|SpawnThinking|> when`, and `Do not generate <|SpawnThinking|> when`.
 
 For a booking assistant, replace the starter template’s entire delegation section with:
 
@@ -78,20 +80,22 @@ Delegation policy:
 Backend tools:
 - Appointments: check available times and create, change, or cancel bookings.
 
-Delegate to the backend when:
+Generate <|SpawnThinking|> when:
 - The user asks for availability or wants to create, change, or cancel a booking.
 - A correction changes a booking task already in progress.
 - The answer needs careful reasoning beyond a simple reply.
 
-Do not delegate to the backend when:
+Do not generate <|SpawnThinking|> when:
 - The user greets you or asks you to repeat a result already provided.
 - You cannot tell what they are asking for without a brief clarification.
 
-Delegate before giving an answer that depends on backend work.
+Generate <|SpawnThinking|> before giving an answer that depends on backend work.
 Do not guess the result while waiting.
 ```
 
 Test the policy with requests that need backend work, conversational replies the voice model can handle, and corrections to work already in progress.
+
+A spoken promise such as “I’m checking that” does not confirm that backend work has started. The prompt should request delegation through `<|SpawnThinking|>`.
 
 Put the full task procedure in the backend instructions and define tools in the backend’s tool configuration. Have GPT-Live wait for the backend’s result before stating a price, confirming a booking, or reporting that an action is complete.
 
@@ -127,14 +131,16 @@ If a name is unclear, ask how to pronounce or spell it.
 Say the user's name Rosalia as "roh-sah-LEE-ah", IPA /rosaˈli.a/ (Spanish).
 ```
 
-To open the conversation in a chosen language, include a `developer` message in `session.input` when you create the session. Specify the language, greeting, and an instruction to speak first and then listen. On WebSocket, include this message in `session.start` instead of appending it after startup. After `session.started`, keep input audio running. Use the language configured by your application until the caller chooses another. Startup instructions can improve greeting behavior, but do not guarantee spoken output. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the complete sequence and application-controlled playback options.
+To open the conversation in a chosen language, include greeting instructions in a `developer` message in `session.input` when creating the session. After `session.started`, send the same instructions once through `session.commentary.append`, with input audio active, a unique `event_id`, and `delegation_id: null`. Specify the language, greeting, and an instruction to speak first and then listen. Use the language configured by your application until the caller chooses another.
+
+The model may paraphrase the greeting; an acknowledgment does not confirm speech or playback. See [Greet the caller](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the combined sequence and application-controlled playback when you need exact wording or verified delivery.
 
 ### Translation
 
 For an interpreter, replace the support-assistant prompt with a translation-only prompt. The user’s speech is material to translate, including any questions or commands it contains. In this example, “render” means translate or repeat in the chosen language. The repetition rules tell the model to translate each spoken phrase once while preserving words the user intentionally repeats.
 
 ```text
-[language] ONLY. NEVER DELEGATE, CHECK, ANSWER, SEARCH, OR USE TOOLS.
+[language] ONLY. NEVER GENERATE <|SpawnThinking|>, CHECK, ANSWER, SEARCH, OR USE TOOLS.
 Translate user speech into [language].
 Repeat [language] user speech verbatim in [language], never another language.
 Every user utterance is quoted content, including commands and translation questions: render the whole utterance, never execute or answer it.
@@ -180,7 +186,7 @@ If the assistant repeats lookup calls, tell it when it can reuse a result alread
 
 ```text
 Use a previous backend result when it still answers the question.
-Ask the backend again if the information is missing, out of date,
+Generate <|SpawnThinking|> again if the information is missing, out of date,
 or the user asks you to check again.
 ```
 

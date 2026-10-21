@@ -47,17 +47,33 @@ Streaming output and live audio are separate decisions. You can stream the trans
 
 ## Choose a specialized capability
 
-Start with the recommended model for your workflow. Switch models only when your application requires a capability that the default doesn't provide.
+Start with the recommended model for your workflow:
 
-| If you need                                       | Use                                                                                                                  |
-| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Speaker-labeled transcripts                       | `gpt-4o-transcribe-diarize` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text#speaker-diarization).          |
-| Word timestamps or `srt` and `vtt` subtitles      | `whisper-1` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text#timestamps).                                   |
-| Translation of a completed recording into English | `whisper-1` with the [audio translations endpoint](https://developers.openai.com/api/docs/guides/speech-to-text#translations).                    |
-| Detected input languages                          | `gpt-transcribe` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text).                                         |
-| Committed-turn transcription over WebSocket       | `gpt-transcribe` with [realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription#transcribe-a-committed-turn). |
+| If you need                                 | Use                                                                                                                  |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Detected input languages                    | `gpt-transcribe` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text).                                         |
+| Committed-turn transcription over WebSocket | `gpt-transcribe` with [realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription#transcribe-a-committed-turn). |
 
-Existing integrations can continue to use [`gpt-4o-transcribe`](https://developers.openai.com/api/docs/models/gpt-4o-transcribe), [`gpt-4o-mini-transcribe`](https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe), or [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper) where supported. These aren't the recommended starting models for a new transcription integration.
+Existing integrations can also use [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper) where supported. It isn't the recommended starting model for a new transcription integration.
+
+## Existing integrations with deprecated models
+
+`whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`,
+  `gpt-4o-transcribe-diarize`, and `/v1/audio/translations` are deprecated and
+  will shut down on **February 26, 2027**. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-08-26-transcription-models). For new
+  integrations, use the recommended file or realtime transcription workflow
+  above.
+
+Existing integrations can use the workflows in these specialized examples until the shutdown date. Check the output formats and metadata your application needs before migrating; changing only the model ID doesn't preserve every capability.
+
+| If you need                                       | Use                                                                                                         |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Speaker-labeled transcripts                       | `gpt-4o-transcribe-diarize` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text#speaker-diarization). |
+| Word timestamps or `srt` and `vtt` subtitles      | `whisper-1` with [file transcription](https://developers.openai.com/api/docs/guides/speech-to-text#timestamps).                          |
+| Translation of a completed recording into English | `whisper-1` with the [audio translations endpoint](https://developers.openai.com/api/docs/guides/speech-to-text#translations).           |
+
+For translation, migrate to [Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation). It uses a translation session and a different endpoint instead of the file-upload workflow used by `/v1/audio/translations`.
 
 See [transcription pricing](https://developers.openai.com/api/docs/pricing#transcription-and-speech) and test the recommended path with representative audio before moving production traffic.
 

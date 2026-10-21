@@ -18,12 +18,12 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 23 days ago | Intermediate |
-| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 24 days ago | Intermediate |
-| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 4 months ago | Beginner |
+| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 27 days ago | Intermediate |
+| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 28 days ago | Intermediate |
+| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 7 months ago | Intermediate |
-| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/) | 11 months ago | Advanced |
-| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | 12 months ago | Beginner |
+| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/) | 12 months ago | Advanced |
+| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/) | last year | Beginner |
 | [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/) | last year | Beginner |
 | [Connect to a MongoDB database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/) | last year | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |

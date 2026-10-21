@@ -28,7 +28,7 @@ Expand table
 | Cause                                          | Solution                                                                                                                                                                                                                                     |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Free-tier Grafana Cloud plan                   | The Oracle plugin requires a Pro or Advanced plan. Upgrade at [Grafana pricing](/pricing/).                                                                                                                                                  |
-| Enterprise license not activated               | For self-managed Grafana, activate your license token. Refer to [Activate a Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).                                                                          |
+| Enterprise license expired or not activated    | For self-managed Grafana, activate a current license token, and re-generate it if it has expired. Refer to [Activate a Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).                               |
 | License doesn’t include plugin entitlement     | Contact your Grafana account team to verify that `grafana-oracle-datasource` is included in your license.                                                                                                                                    |
 | License token file permissions (self-managed)  | The license file must be readable by the Grafana process but not world-readable. Set permissions to `640` with the Grafana user as owner: `chmod 640 /var/lib/grafana/license.jwt` and `chown grafana:grafana /var/lib/grafana/license.jwt`. |
 | Grafana Cloud subscription not provisioned yet | New Cloud subscriptions may take a few minutes to provision plugin access. Wait 5-10 minutes and refresh the page. If the issue persists, contact Grafana support.                                                                           |
@@ -38,6 +38,7 @@ Expand table
 **Symptoms:**
 
 - The Oracle plugin doesn’t appear when searching in **Plugins and data** &gt; **Plugins**.
+- The plugin page loads but the **Install** button is missing.
 - Other Enterprise plugins are visible but Oracle is missing.
 
 **Solutions:**
@@ -195,11 +196,11 @@ Expand table
 
 Expand table
 
-| Cause                               | Solution                                                                                                                                                                   |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Oracle Cloud ATP/ADB firewall rules | Add your Grafana server’s IP address to the Oracle Cloud access control list (ACL). For Grafana Cloud, use PDC instead.                                                    |
-| Idle connection terminated          | The database or a network appliance is closing idle connections. Reduce the **Connection Pool Size** or configure Oracle’s `SQLNET.EXPIRE_TIME` to send keep-alive probes. |
-| TLS/mTLS required                   | Some Oracle Cloud databases require mTLS (wallet-based). This is not supported in plugin v3.x. Use a non-mTLS connection or downgrade the database’s TLS requirements.     |
+| Cause                               | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Oracle Cloud ATP/ADB firewall rules | Add your Grafana server’s IP address to the Oracle Cloud access control list (ACL). For Grafana Cloud, use PDC instead.                                                                                                                                                                                                                                                                                                                                                    |
+| Idle connection terminated          | The database or a network appliance is closing idle connections. Reduce the **Connection Pool Size** or configure Oracle’s `SQLNET.EXPIRE_TIME` to send keep-alive probes.                                                                                                                                                                                                                                                                                                 |
+| TLS or mTLS required                | Some Oracle Cloud databases require TLS, or mutual TLS (mTLS) using an Oracle wallet. Wallet-based connections need the wallet files on the Grafana server’s filesystem, so they work on self-managed Grafana but not in Grafana Cloud. In Grafana Cloud, use an Easy Connect Plus connection string with a `tcps://` prefix, which enables TLS without a wallet. If the database mandates a client wallet for mTLS, connect from a self-managed Grafana instance instead. |
 
 ### HTTP proxy not supported
 
@@ -229,7 +230,7 @@ The Oracle plugin uses a raw TCP connection to communicate with the database (Or
 
 1. Verify the PDC agent is running and healthy. Check the agent logs for connection errors.
 2. Confirm the PDC agent can reach the Oracle database from its network: `nc -zv <oracle-host> 1521`.
-3. Ensure the PDC agent version is up to date.
+3. Ensure the PDC agent is up to date. PDC tunnels over SSH, so an outdated agent or SSH client can cause connection failures.
 4. In the Grafana Cloud data source settings, verify you’ve selected the correct PDC network from the drop-down.
 5. Check that the hostname and port in the data source configuration are correct from the PDC agent’s network perspective (use internal/private hostnames, not public ones).
 
@@ -344,6 +345,20 @@ Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/k
 
 These errors occur when credentials are invalid, missing, or lack the required permissions.
 
+### Unsupported authentication methods
+
+**Symptoms:**
+
+- You want to authenticate with a cloud-provider identity, such as AWS IAM for Amazon RDS for Oracle, and no such option appears in the data source configuration.
+
+**Cause:**
+
+The Oracle data source supports only Basic authentication (username and password) and Kerberos authentication. Cloud-provider identity authentication, such as AWS IAM, is not available.
+
+**Solution:**
+
+Use a database user with Basic authentication. For Amazon RDS for Oracle, create a local database user with `SELECT` permissions on the tables you want to query and connect using Basic authentication.
+
 ### Kerberos authentication issues
 
 **Symptoms:**
@@ -371,6 +386,49 @@ Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/k
 ## Query errors
 
 These errors occur when executing queries against the Oracle database.
+
+### “ORA-00942: table or view does not exist”
+
+**Symptoms:**
+
+- A query fails with “ORA-00942: table or view does not exist”.
+- The query works for a database administrator but fails for the Grafana database user.
+- Queries against `V$` or `DBA_` views fail while queries against your own tables succeed.
+
+**Cause:**
+
+The Grafana database user doesn’t have `SELECT` permission on the referenced object. Oracle returns ORA-00942 when the object doesn’t exist or isn’t visible to the connected user, so a missing grant surfaces as this error rather than an explicit permission error.
+
+**Solutions:**
+
+1. Grant `SELECT` on the specific tables or views to the Grafana user:
+
+   SQL [Copy code to clipboard] Copy
+
+   ```sql
+   GRANT SELECT ON schema_name.table_name TO grafana_reader;
+   ```
+2. For monitoring queries against data dictionary and dynamic performance views (`V$`, `DBA_`), grant the appropriate access. Refer to [Create a least-privilege database user](/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user).
+3. Qualify the object with its schema (for example, `schema_name.table_name`) if the user’s default schema differs from the object’s owner.
+4. Verify the object name and confirm you’re connected to the correct database or pluggable database (PDB) service, because an object that exists in one service isn’t visible from another.
+
+### “ORA-00922: missing or invalid option”
+
+**Symptoms:**
+
+- A query fails with “ORA-00922: missing or invalid option” or “ORA-00933: SQL command not properly ended”.
+- The query was copied from a SQL\*Plus script or a SQL Developer worksheet.
+
+**Cause:**
+
+The Oracle data source sends the query text directly to the database. It doesn’t run a SQL*Plus client, so SQL*Plus-specific commands and statement terminators aren’t valid.
+
+**Solutions:**
+
+1. Remove SQL\*Plus directives such as `SET`, `DEFINE`, `COLUMN`, `SPOOL`, `PROMPT`, and `EXIT`.
+2. Remove trailing statement terminators. Enter a single SQL statement without a trailing `;` or `/`.
+3. Replace SQL\*Plus substitution variables (`&var`) with [Grafana template variables](/docs/plugins/grafana-oracle-datasource/latest/template-variables/).
+4. Test the cleaned statement in Explore before adding it to a panel.
 
 ### “Query result too large”
 
@@ -425,6 +483,10 @@ The Oracle plugin enforces a maximum response size for gRPC messages. The defaul
    ```bash
    export GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE=32
    ```
+
+> Note
+>
+> In Grafana Cloud, you can’t change the maximum response size because it requires server configuration access that Cloud doesn’t expose. Reduce the data volume with aggregation, filtering, and row limits instead.
 
 ### Row limit exceeded
 
@@ -526,6 +588,8 @@ Refer to [Oracle query editor](/docs/plugins/grafana-oracle-datasource/latest/qu
 **Cause:**
 
 All time macros (`$__timeFrom()`, `$__timeTo()`, `$__timeFilter()`) output values in the timezone configured on the data source settings (default UTC). They do not use the dashboard or browser timezone. This is by design because the database connection operates in a fixed timezone.
+
+Timezone handling has also changed across plugin versions, so results can shift after an upgrade. To keep behavior consistent regardless of plugin version, convert time zones explicitly in your SQL as shown in the following solutions.
 
 **Solutions:**
 

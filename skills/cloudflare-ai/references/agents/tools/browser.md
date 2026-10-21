@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf
 
 # Browser
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Give your agent a browser it can return to on later turns. [Browser Run](https://developers.cloudflare.com/browser-run/) keeps the remote browser open, so your agent can continue from the same page with its tabs, cookies, and login session intact while the browser session remains alive.
 
@@ -175,7 +175,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 	"name": "persistent-browser-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"browser": { "binding": "BROWSER" },
@@ -191,7 +191,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 name = "persistent-browser-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -782,10 +782,6 @@ The browser agent example uses the legacy tools. It covers Browser Run setup, to
 
 Build an agent that can browse the web, inspect pages, capture screenshots, and debug frontend issues.
 
-### Think execute tool
-
-Think's unified execute tool, `createExecuteTool(this)`, includes `cdp.*` alongside `state.*` and `tools.*` when `env.BROWSER` is bound. It uses the legacy browser connector. Refer to [Think tools](https://developers.cloudflare.com/agents/harnesses/think/tools/).
-
 ## Related resources
 
 ### [Browser Run](https://developers.cloudflare.com/browser-run/)
@@ -805,5 +801,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

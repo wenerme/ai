@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/og
 
 # Add custom HTTP headers
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -85,8 +85,10 @@ To operate your Workers function alongside your Pages application, deploy it to 
 	"name": "custom-headers-example",
 	"account_id": "FILL-IN-YOUR-ACCOUNT-ID",
 	"workers_dev": false,
-	"route": "FILL-IN-YOUR-WEBSITE.com/*",
-	"zone_id": "FILL-IN-YOUR-ZONE-ID"
+	"route": {
+		"pattern": "FILL-IN-YOUR-WEBSITE.com/*",
+		"zone_id": "FILL-IN-YOUR-ZONE-ID"
+	}
 }
 ```
 
@@ -95,7 +97,9 @@ To operate your Workers function alongside your Pages application, deploy it to 
 name = "custom-headers-example"
 account_id = "FILL-IN-YOUR-ACCOUNT-ID"
 workers_dev = false
-route = "FILL-IN-YOUR-WEBSITE.com/*"
+
+[route]
+pattern = "FILL-IN-YOUR-WEBSITE.com/*"
 zone_id = "FILL-IN-YOUR-ZONE-ID"
 ```
 
@@ -118,5 +122,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/#page","headline":"Add custom HTTP headers","description":"Customize HTTP headers on Cloudflare Pages using a Workers function.","url":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/og.png?v=390b543bef2563c8","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/#page","headline":"Add custom HTTP headers","description":"Customize HTTP headers on Cloudflare Pages using a Workers function.","url":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/how-to/add-custom-http-headers/og.png?v=390b543bef2563c8","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

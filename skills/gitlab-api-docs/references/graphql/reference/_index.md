@@ -33746,6 +33746,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aicatalogmcptool-beta"></a>`beta` | [`Boolean!`](#boolean) | Whether the MCP tool is in beta. The AI Catalog shows a Beta badge for beta tools. |
 | <a id="aicatalogmcptool-description"></a>`description` | [`String`](#string) | Description of the MCP tool. |
 | <a id="aicatalogmcptool-icons"></a>`icons` | [`[AiCatalogMcpToolIcon!]!`](#aicatalogmcptoolicon) | Icons advertised for the MCP tool, per the MCP spec icons field. |
 | <a id="aicatalogmcptool-name"></a>`name` | [`ID!`](#id) | Machine-readable name of the MCP tool. |
@@ -54614,6 +54615,7 @@ Fields:
 | <a id="organization-path"></a>`path`  | [`String!`](#string) | Introduced in GitLab 16.4. Status: Experiment. Path of the organization. |
 | <a id="organization-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the organization. |
 | <a id="organization-rootpath"></a>`rootPath`  | [`String!`](#string) | Introduced in GitLab 18.5. Status: Experiment. Root path in the context of the organization. |
+| <a id="organization-securitytrackedcontextquota"></a>`securityTrackedContextQuota`  | [`SecurityTrackedContextQuota`](#securitytrackedcontextquota) | Introduced in GitLab 19.6. Status: Experiment. Quota information for tracked security contexts in the organization. |
 | <a id="organization-softdeletedat"></a>`softDeletedAt`  | [`Time`](#time) | Introduced in GitLab 19.1. Status: Experiment. Timestamp when the organization was soft-deleted.Visible to admins and organization owners only. |
 | <a id="organization-state"></a>`state`  | [`OrganizationState!`](#organizationstate) | Introduced in GitLab 19.0. Status: Experiment. State of the organization. |
 | <a id="organization-uuid"></a>`uuid`  | [`String!`](#string) | Introduced in GitLab 19.2. Status: Experiment. Globally unique identifier (UUID) of the organization. |
@@ -58268,7 +58270,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="project-jobs-kind"></a>`kind` | [`CiJobKind`](#cijobkind) | Filter jobs by kind. |
-| <a id="project-jobs-name"></a>`name`  | [`String`](#string) | Introduced in GitLab 17.11. Status: Experiment. Filter jobs by name. |
+| <a id="project-jobs-name"></a>`name`  | [`String`](#string) | Introduced in GitLab 17.11. Status: Experiment. Filter jobs by name. Only applies to build jobs. |
 | <a id="project-jobs-pipelineiid"></a>`pipelineIid` | [`String`](#string) | Filter jobs by the internal pipeline ID (iid). |
 | <a id="project-jobs-sources"></a>`sources`  | [`[CiJobSource!]`](#cijobsource) | Introduced in GitLab 17.7. Status: Experiment. Filter jobs by source. |
 | <a id="project-jobs-statuses"></a>`statuses` | [`[CiJobStatus!]`](#cijobstatus) | Filter jobs by status. |
@@ -61997,6 +61999,19 @@ Fields:
 | <a id="securityscanners-available"></a>`available` | [`[SecurityScannerType!]`](#securityscannertype) | List of analyzers which are available for the project. |
 | <a id="securityscanners-enabled"></a>`enabled` | [`[SecurityScannerType!]`](#securityscannertype) | List of analyzers which are enabled for the project. |
 | <a id="securityscanners-pipelinerun"></a>`pipelineRun` | [`[SecurityScannerType!]`](#securityscannertype) | List of analyzers which ran successfully in the latest pipeline. |
+
+### `SecurityTrackedContextQuota`
+
+Organization-level quota information for tracked security contexts.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securitytrackedcontextquota-explicitlyset"></a>`explicitlySet` | [`Boolean!`](#boolean) | Whether the quota was explicitly set for the organization rather than using the default. |
+| <a id="securitytrackedcontextquota-limit"></a>`limit` | [`Int`](#int) | Maximum number of tracked contexts allowed, or null when no limit applies to the organization. |
+| <a id="securitytrackedcontextquota-remaining"></a>`remaining` | [`Int`](#int) | Remaining quota available, or null when no limit applies to the organization. |
+| <a id="securitytrackedcontextquota-usage"></a>`usage` | [`Int!`](#int) | Current number of tracked contexts in use. |
 
 ### `SecurityTrackedRef`
 
@@ -67546,6 +67561,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | <a id="aifeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aifeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aifeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
+| <a id="aifeatures-review_merge_request_dap_deep"></a>`REVIEW_MERGE_REQUEST_DAP_DEEP` | Review merge request dap deep feature setting. |
 | <a id="aifeatures-risk_classification"></a>`RISK_CLASSIFICATION` | Risk classification feature setting. |
 | <a id="aifeatures-sast_vulnerability_fp_detection"></a>`SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | <a id="aifeatures-sast_vulnerability_resolution"></a>`SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -67702,6 +67718,7 @@ AI features that can be configured through the Model Selection feature settings.
 | <a id="aimodelselectionfeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request_dap"></a>`REVIEW_MERGE_REQUEST_DAP` | Review merge request dap feature setting. |
+| <a id="aimodelselectionfeatures-review_merge_request_dap_deep"></a>`REVIEW_MERGE_REQUEST_DAP_DEEP` | Review merge request dap deep feature setting. |
 | <a id="aimodelselectionfeatures-risk_classification"></a>`RISK_CLASSIFICATION` | Risk classification feature setting. |
 | <a id="aimodelselectionfeatures-sast_vulnerability_fp_detection"></a>`SAST_VULNERABILITY_FP_DETECTION` | Sast vulnerability fp detection feature setting. |
 | <a id="aimodelselectionfeatures-sast_vulnerability_resolution"></a>`SAST_VULNERABILITY_RESOLUTION` | Sast vulnerability resolution feature setting. |
@@ -68132,6 +68149,7 @@ Enum for types of analyzers.
 | <a id="analyzertypeenum-secret_detection"></a>`SECRET_DETECTION` | Any kind of secret detection. |
 | <a id="analyzertypeenum-secret_detection_pipeline_based"></a>`SECRET_DETECTION_PIPELINE_BASED` | Secret detection analyzer. |
 | <a id="analyzertypeenum-secret_detection_secret_push_protection"></a>`SECRET_DETECTION_SECRET_PUSH_PROTECTION` | Secret push protection. Managed via project security settings. |
+| <a id="analyzertypeenum-skillguard"></a>`SKILLGUARD` | Skillguard analyzer. |
 
 ### `AnalyzerTypeForStatus`
 
@@ -68155,6 +68173,7 @@ Analyzer types that can appear in project and group analyzer statuses.
 | <a id="analyzertypeforstatus-secret_detection"></a>`SECRET_DETECTION` | Any kind of secret detection. |
 | <a id="analyzertypeforstatus-secret_detection_pipeline_based"></a>`SECRET_DETECTION_PIPELINE_BASED` | Secret detection analyzer. |
 | <a id="analyzertypeforstatus-secret_detection_secret_push_protection"></a>`SECRET_DETECTION_SECRET_PUSH_PROTECTION` | Secret push protection. Managed via project security settings. |
+| <a id="analyzertypeforstatus-skillguard"></a>`SKILLGUARD` | Skillguard analyzer. |
 
 ### `ApiFuzzingScanMode`
 
@@ -70926,6 +70945,7 @@ Licensed features that can be checked for availability on a namespace or project
 | <a id="licensedfeature-self_hosted_models"></a>`SELF_HOSTED_MODELS` | Self hosted models feature. |
 | <a id="licensedfeature-semantic_code_search"></a>`SEMANTIC_CODE_SEARCH` | Semantic code search feature. |
 | <a id="licensedfeature-send_emails_from_admin_area"></a>`SEND_EMAILS_FROM_ADMIN_AREA` | Send emails from admin area feature. |
+| <a id="licensedfeature-skillguard"></a>`SKILLGUARD` | Skillguard feature. |
 | <a id="licensedfeature-smartcard_auth"></a>`SMARTCARD_AUTH` | Smartcard auth feature. |
 | <a id="licensedfeature-ssh_certificates"></a>`SSH_CERTIFICATES` | Ssh certificates feature. |
 | <a id="licensedfeature-ssh_key_expiration_policy"></a>`SSH_KEY_EXPIRATION_POLICY` | Ssh key expiration policy feature. |
@@ -72596,6 +72616,7 @@ Template type for predefined security categories.
 | <a id="securityreporttypeenum-sast_advanced"></a>`SAST_ADVANCED` | SAST ADVANCED scan report. |
 | <a id="securityreporttypeenum-sast_iac"></a>`SAST_IAC` | SAST IAC scan report. |
 | <a id="securityreporttypeenum-secret_detection"></a>`SECRET_DETECTION` | SECRET DETECTION scan report. |
+| <a id="securityreporttypeenum-skillguard"></a>`SKILLGUARD` | SKILLGUARD scan report. |
 
 ### `SecurityScanProfileAdvancedSastPartialScan`
 
@@ -72676,6 +72697,7 @@ Scan profile type.
 | <a id="securityscanprofiletype-dependency_scanning_post_processing"></a>`DEPENDENCY_SCANNING_POST_PROCESSING`  | Introduced in GitLab 19.2. Status: Experiment. Dependency scanning post processing. |
 | <a id="securityscanprofiletype-sast"></a>`SAST` | Sast. |
 | <a id="securityscanprofiletype-secret_detection"></a>`SECRET_DETECTION` | Secret detection. |
+| <a id="securityscanprofiletype-skillguard"></a>`SKILLGUARD`  | Introduced in GitLab 19.6. Status: Experiment. SkillGuard. |
 | <a id="securityscanprofiletype-triage_and_remediation"></a>`TRIAGE_AND_REMEDIATION`  | Introduced in GitLab 19.4. Status: Experiment. Triage and remediation. |
 
 ### `SecurityScanProfileUpgradePolicy`
@@ -72705,6 +72727,7 @@ The type of the security scanner.
 | <a id="securityscannertype-sast_advanced"></a>`SAST_ADVANCED` | SAST advanced scanner. |
 | <a id="securityscannertype-sast_iac"></a>`SAST_IAC` | SAST IaC scanner. |
 | <a id="securityscannertype-secret_detection"></a>`SECRET_DETECTION` | Secret detection scanner. |
+| <a id="securityscannertype-skillguard"></a>`SKILLGUARD` | Skillguard scanner. |
 
 ### `SecurityTrackedRefScope`
 
@@ -73093,6 +73116,7 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-branch_rules_tip_callout"></a>`BRANCH_RULES_TIP_CALLOUT` | Callout feature name for branch_rules_tip_callout. |
 | <a id="usercalloutfeaturenameenum-buy_pipeline_minutes_notification_dot"></a>`BUY_PIPELINE_MINUTES_NOTIFICATION_DOT` | Callout feature name for buy_pipeline_minutes_notification_dot. |
 | <a id="usercalloutfeaturenameenum-canary_deployment"></a>`CANARY_DEPLOYMENT` | Callout feature name for canary_deployment. |
+| <a id="usercalloutfeaturenameenum-ci_catalog_release_alert"></a>`CI_CATALOG_RELEASE_ALERT` | Callout feature name for ci_catalog_release_alert. |
 | <a id="usercalloutfeaturenameenum-ci_deprecation_warning_for_types_keyword"></a>`CI_DEPRECATION_WARNING_FOR_TYPES_KEYWORD` | Callout feature name for ci_deprecation_warning_for_types_keyword. |
 | <a id="usercalloutfeaturenameenum-ci_minutes_limit_alert_danger_stage"></a>`CI_MINUTES_LIMIT_ALERT_DANGER_STAGE` | Callout feature name for ci_minutes_limit_alert_danger_stage. |
 | <a id="usercalloutfeaturenameenum-ci_minutes_limit_alert_exceeded_stage"></a>`CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE` | Callout feature name for ci_minutes_limit_alert_exceeded_stage. |

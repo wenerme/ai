@@ -1553,7 +1553,7 @@ Coding (refactoring)
 
     
 
-OpenAI o-series models are able to implement complex algorithms and produce code. This prompt asks o1 to refactor a React component based on some specific criteria.
+Reasoning models can implement complex algorithms and produce code. This prompt asks the model to refactor a React component based on specific criteria.
 
 
 
@@ -1796,7 +1796,7 @@ Coding (planning)
 
     
 
-OpenAI o-series models are also adept in creating multi-step plans. This example prompt asks o1 to create a filesystem structure for a full solution, along with Python code that implements the desired use case.
+Reasoning models can also create multi-step plans. This example prompt asks the model to create a filesystem structure for a full solution, along with Python code that implements the desired use case.
 
 
 

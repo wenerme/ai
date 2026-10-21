@@ -16,7 +16,7 @@ Returns a list of voice consent recordings.
 
 ### Returns
 
-- `data: array of object { id, created_at, language, 2 more }`
+- `data: array of VoiceConsent`
 
   - `id: string`
 

@@ -92801,6 +92801,8 @@ components:
           type: string
         default_projects_limit:
           type: string
+        default_remove_source_branch_after_merge:
+          type: string
         default_snippet_visibility:
           type: string
         default_syntax_highlighting_theme:
@@ -110354,6 +110356,10 @@ components:
             `0` _(No one)_, `1` _(Maintainers)_, `2` _(Developers)_, `3` _(Administrators)_,
             or `4` _(Owners)_.'
           nullable: true
+        default_remove_source_branch_after_merge:
+          type: boolean
+          description: Enable the delete source branch option by default for new projects
+          nullable: true
         default_branch_protection:
           type: integer
           enum:
@@ -122596,6 +122602,7 @@ components:
           nullable: true
         merge_after:
           type: string
+          format: date-time
           description: Date after which the merge request can be merged. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/510992)
             in GitLab 17.8.
           nullable: true
@@ -122784,6 +122791,7 @@ components:
           nullable: true
         merge_after:
           type: string
+          format: date-time
           description: Date after which the merge request can be merged. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/510992)
             in GitLab 17.8. At least one of `assignee_id`, `assignee_ids`, `reviewer_ids`,
             `description`, `labels`, `add_labels`, `remove_labels`, `milestone_id`,

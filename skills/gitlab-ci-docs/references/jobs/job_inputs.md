@@ -158,9 +158,9 @@ When you run a manual job that has inputs defined, you can specify the input val
 To run a manual job with specific inputs:
 
 1. Go to the pipeline, job, or [environment](../environments/deployments.md#configure-manual-deployments) view.
-1. Select the name of the manual job, not **Run** ().
+1. Select the name of the manual job, not  ().
 1. In the form, specify the input values.
-1. Select **Run job**.
+1. Select .
 
 ### Retry a job with different input values
 
@@ -169,12 +169,12 @@ When you retry a job that has inputs defined, you can update the input values.
 To retry a job with different inputs:
 
 1. Go to the job details page.
-1. Select **Retry job with modified values** ().
+1. Select  ().
 1. In the form, the inputs are prefilled with the values from the previous run.
    Modify the input values as needed.
-1. Select **Run job again**.
+1. Select .
 
-To retry with the same input values, select **Retry** () instead.
+To retry with the same input values, select  () instead.
 
 ## Job input examples
 

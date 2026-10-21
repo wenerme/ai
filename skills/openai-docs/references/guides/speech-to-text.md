@@ -4,7 +4,15 @@
 
 Use file transcription when you have a completed recording or a bounded audio request. Upload the audio and receive a final transcript, or stream text while the model processes the file.
 
-Start with [`gpt-transcribe`](https://developers.openai.com/api/docs/models/gpt-transcribe). This is the recommended model for transcribing recorded speech in its original language. Use a specialized model only if you need speaker labels, word timestamps, subtitle formats, or translation into English.
+Start with [`gpt-transcribe`](https://developers.openai.com/api/docs/models/gpt-transcribe). This is the recommended model for transcribing recorded speech in its original language. The specialized examples for speaker labels, word timestamps, and subtitle formats below use deprecated models.
+
+`whisper-1`, `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`,
+  `gpt-4o-transcribe-diarize`, and `/v1/audio/translations` are deprecated and
+  will shut down on **February 26, 2027**. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-08-26-transcription-models) and [choose a
+  current transcription workflow](https://developers.openai.com/api/docs/guides/transcription). The
+  specialized examples below document compatibility for existing integrations
+  until shutdown.
 
 Files can be up to 25 MB. Supported input formats are `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`.
 
@@ -305,7 +313,7 @@ For `gpt-transcribe`, `languages` replaces the singular `language` field. Don't 
 
 ## Speaker diarization
 
-Use `gpt-4o-transcribe-diarize` only when you need to identify who speaks during different parts of a recording. This specialized speaker-labeling model isn't the recommended model for ordinary file transcription.
+Existing integrations can use the deprecated `gpt-4o-transcribe-diarize` model to identify who speaks during different parts of a recording until February 26, 2027. This specialized speaker-labeling model isn't the recommended model for ordinary file transcription.
 
 Request the `diarized_json` response format to receive segments with `speaker`, `start`, and `end` metadata. For audio longer than 30 seconds, set `chunking_strategy` to `"auto"` or a voice activity detection configuration.
 
@@ -527,131 +535,9 @@ Speaker labeling is available through `/v1/audio/transcriptions`. It isn't
 
 ## Translations
 
-To translate a completed audio recording into English, use `/v1/audio/translations` with `whisper-1`. Unlike transcription, which preserves the recording's original language, this endpoint returns English text.
+The deprecated `/v1/audio/translations` endpoint uses `whisper-1` to translate a completed audio recording into English. It remains available until February 26, 2027. Unlike transcription, which preserves the recording's original language, this endpoint returns English text only.
 
-Translate audio
-
-```javascript
-import fs from "fs";
-import OpenAI from "openai";
-
-const openai = new OpenAI();
-
-const translation = await openai.audio.translations.create({
-  file: fs.createReadStream("fixtures/german.wav"),
-  model: "whisper-1",
-});
-
-console.log(translation.text);
-```
-
-```python
-from openai import OpenAI
-
-client = OpenAI()
-audio_file = open("german.wav", "rb")
-
-translation = client.audio.translations.create(
-    model="whisper-1",
-    file=audio_file,
-)
-
-print(translation.text)
-```
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-
-	"github.com/openai/openai-go/v3"
-)
-
-func main() {
-	file, err := os.Open("fixtures/german.wav")
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	client := openai.NewClient()
-	translation, err := client.Audio.Translations.New(context.Background(), openai.AudioTranslationNewParams{
-		File:  file,
-		Model: openai.AudioModelWhisper1,
-	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(translation.Text)
-}
-```
-
-```java
-import com.openai.client.OpenAIClient;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
-import com.openai.models.audio.translations.TranslationCreateParams;
-import java.nio.file.Path;
-
-var result =
-    client
-        .audio()
-        .translations()
-        .create(
-            TranslationCreateParams.builder()
-                .file(Path.of(System.getenv("OPENAI_EXAMPLE_AUDIO_PATH")))
-                .model("whisper-1")
-                .build());
-
-System.out.println(result.asTranslation().text());
-```
-
-```csharp
-using OpenAI.Audio;
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-AudioClient client = new("whisper-1", key);
-
-await using FileStream audio = File.OpenRead("german.wav");
-AudioTranslation translation = await client.TranslateAudioAsync(
-    audio,
-    "german.wav"
-);
-
-Console.WriteLine(translation.Text);
-```
-
-```ruby
-require "openai"
-require "pathname"
-
-client = OpenAI::Client.new
-audio = Pathname("german.wav")
-translation = client.audio.translations.create(file: audio, model: "whisper-1")
-raise "Expected a JSON translation response" if translation.is_a?(StringIO)
-
-puts(translation.text)
-```
-
-```bash
-curl --request POST \
-  --url https://api.openai.com/v1/audio/translations \
-  --header "Authorization: Bearer $OPENAI_API_KEY" \
-  --header 'Content-Type: multipart/form-data' \
-  --form file=@/path/to/file/german.mp3 \
-  --form model=whisper-1 \
-```
-
-
-For an audio recording in another language, the response contains the English translation:
-
-```example-content
-Hello, my name is Wolfgang and I come from Germany. Where are you heading today?
-```
-
-This endpoint supports translation into English only.
+Migrate to [Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation) with `gpt-realtime-translate` at `/v1/realtime/translations`. This requires a translation session, streamed audio input, and translation events. Changing only the model ID in a `/v1/audio/translations` request doesn't migrate it.
 
 ## Supported languages
 
@@ -667,7 +553,7 @@ For `whisper-1`, consult the [Whisper language list](https://github.com/openai/w
 
 ## Timestamps
 
-Use `whisper-1` when you need word or segment timestamps. The [`timestamp_granularities[]` parameter](/api/docs/api-reference/audio/createTranscription#audio-createtranscription-timestamp_granularities) returns structured timestamp data for captioning and video editing.
+Existing integrations can use the deprecated `whisper-1` model for word or segment timestamps until February 26, 2027. The [`timestamp_granularities[]` parameter](/api/docs/api-reference/audio/createTranscription#audio-createtranscription-timestamp_granularities) returns structured timestamp data for captioning and video editing.
 
 Timestamp options
 

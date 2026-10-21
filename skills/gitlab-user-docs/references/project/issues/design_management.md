@@ -168,7 +168,6 @@ To add a design to an issue:
    - Select **click to upload** and then select images from your file browser. You can select up to
      10 files at once.
 
-
    - Drag a file from your file browser and drop it in the drop zone in the **Designs** section.
 
      [Uploading a new design by dragging and dropping it onto the issue page.]
