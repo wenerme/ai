@@ -5,11 +5,11 @@ group: Developer Clients
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Diagnose AI agent governance configuration, authentication, and hook setup. (EXPERIMENTAL)
+Diagnose AI governance configuration, authentication, and hook setup. (EXPERIMENTAL)
 
 ## Synopsis
 
-Check that AI agent governance is correctly configured on this machine.
+Check that AI governance is correctly configured on this machine.
 
 Verifies:
 

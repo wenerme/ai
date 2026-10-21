@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ssl/client-certificates/troubleshooting
 
 # Troubleshooting
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your query returns an error even after configuring and embedding a client SSL certificate, check the following settings.
 
@@ -62,20 +62,41 @@ To review mTLS rules, consider the steps below. For further guidance refer to [C
 
 You can use [Cloudflare Workers](https://developers.cloudflare.com/workers/) to debug client certificate validation failures.
 
-1. Create a Worker to debug print [cf.properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties):
+Caution
+
+Do not turn on `global_fetch_strictly_public` for this Worker. When turned on, `fetch(request)` can invoke the Worker again instead of reaching the origin.
+
+1. Create a Worker that logs [incoming request `cf` properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) and forwards each request to your origin:
+
+   *src/index.jsjs*
+
+
 
    ```js
    export default {
-     async fetch(request, env, ctx) {
-       console.info({ message: JSON.stringify(request.cf, null, 2) });
-       return new Response(JSON.stringify(request.cf, null, 2))
-     }
+   	async fetch(request) {
+   		console.info({ message: JSON.stringify(request.cf, null, 2) });
+   		return fetch(request);
+   	},
    };
    ```
 
-2. Associate the Worker with the hostname where mTLS is enabled using a [Worker route](https://developers.cloudflare.com/workers/configuration/routing/routes/) or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+   *src/index.tsts*
+
+
+
+   ```ts
+   export default {
+     async fetch(request): Promise<Response> {
+       console.info({ message: JSON.stringify(request.cf, null, 2) });
+       return fetch(request);
+     },
+   } satisfies ExportedHandler;
+   ```
+
+2. Associate the Worker with the hostname where mTLS is enabled using a [Worker route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 3. Make requests to the hostname and/or path configured, with and without sending the mTLS client certificate.
-4. View your logs on the [Observability](https://developers.cloudflare.com/workers/observability/) dashboard and compare the responses against the expected values listed below. [Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
+4. In the [Observability](https://developers.cloudflare.com/workers/observability/) dashboard, compare the logged `tlsClientAuth` values with the expected values. [Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 
 - Valid certificate
 
@@ -199,5 +220,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot issues with client certificates","url":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/#page","headline":"Troubleshooting","description":"Troubleshoot issues with client certificates","url":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ssl/client-certificates/troubleshooting/og.png?v=04b850695bb032e9","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

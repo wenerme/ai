@@ -255,16 +255,16 @@ The plugin supports standard Oracle data types and converts them to Grafana Data
 
 Expand table
 
-| Oracle type                     | Grafana type | Notes                                            |
-|---------------------------------|--------------|--------------------------------------------------|
-| `NUMBER`, `INTEGER`, `FLOAT`    | Numeric      | Standard numeric types.                          |
-| `BINARY_FLOAT` (`IBFloat`)      | Float32      | Oracle-specific binary floating point.           |
-| `BINARY_DOUBLE` (`IBDouble`)    | Float64      | Oracle-specific binary double.                   |
-| `VARCHAR2`, `CHAR`, `NVARCHAR2` | String       | Standard text types.                             |
-| `DATE`, `TIMESTAMP`             | Time         | Use as the `time` column in time-series queries. |
-| `TIMESTAMP WITH TIME ZONE`      | Time         | Timezone information is preserved.               |
-| `INTERVAL YEAR TO MONTH`        | Int64        | Converted to total months.                       |
-| `INTERVAL DAY TO SECOND`        | Int64        | Converted to total seconds.                      |
+| Oracle type                                                  | Grafana type | Notes                                            |
+|--------------------------------------------------------------|--------------|--------------------------------------------------|
+| `NUMBER`, `INTEGER`, `FLOAT`                                 | Numeric      | Standard numeric types.                          |
+| `BINARY_FLOAT` (`IBFloat`)                                   | Float32      | Oracle-specific binary floating point.           |
+| `BINARY_DOUBLE` (`IBDouble`)                                 | Float64      | Oracle-specific binary double.                   |
+| `VARCHAR2`, `VARCHAR`, `CHAR`, `NCHAR`, `NVARCHAR2`          | String       | Standard text types.                             |
+| `DATE`, `TIMESTAMP`                                          | Time         | Use as the `time` column in time-series queries. |
+| `TIMESTAMP WITH TIME ZONE`, `TIMESTAMP WITH LOCAL TIME ZONE` | Time         | Timezone information is preserved.               |
+| `INTERVAL YEAR TO MONTH`                                     | Int64        | Converted to total months.                       |
+| `INTERVAL DAY TO SECOND`                                     | Int64        | Converted to total nanoseconds.                  |
 
 The following types are **not directly supported** and require conversion in your SQL query:
 

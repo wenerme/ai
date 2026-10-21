@@ -6,9 +6,9 @@
 
 > Customize self-hosted environment sessions with wrapper scripts for per-session credentials, lifecycle hooks, and on-demand runner spawning.
 
-<Note>
-  Self-hosted environments are in public beta on Team and Enterprise plans; an [Owner](/docs/en/cloud-environments#organization-shared-environments) enables them by turning on **Allow self-hosted environments** on the [**Cloud environments** admin page](https://claude.ai/admin-settings/cloud-environments). This page assumes a working runner; see the [quickstart](/docs/en/self-hosted-environments-quickstart) for setup and [Deploy to production](/docs/en/self-hosted-environments-deploy) for the fleet recipes.
-</Note>
+> [!NOTE]
+>
+> Self-hosted environments are in public beta on Team and Enterprise plans; an [Owner](/docs/en/cloud-environments#organization-shared-environments) enables them by turning on **Allow self-hosted environments** on the [**Cloud environments** admin page](https://claude.ai/admin-settings/cloud-environments). This page assumes a working runner; see the [quickstart](/docs/en/self-hosted-environments-quickstart) for setup and [Deploy to production](/docs/en/self-hosted-environments-deploy) for the fleet recipes.
 
 A [self-hosted environment](/docs/en/self-hosted-environments) runs Claude Code [cloud sessions](/docs/en/claude-code-on-the-web) on your own infrastructure, executed by a runner process you deploy. With no configuration, that runner clones the session's repository, spawns Claude Code, and cleans up. This page is for the platform engineer operating the runners: it covers the extension points for when those defaults don't fit, from per-session credential provisioning to replacing checkout entirely. Wrappers and hooks run as executable files on the runner host, which is Linux or macOS, and the examples on this page assume a POSIX shell.
 
@@ -306,7 +306,7 @@ The contract has four rules, whichever platform your hook provisions on:
    * **Exit 1, or still running when `--hook-timeout` ends**: retryable failure. The session backs off and is re-offered.
    * **Exit 2 or higher**: non-retryable failure. The session is blocked from spawning again until a user sends it a new message or an [Owner](/docs/en/cloud-environments#organization-shared-environments) selects **Retry** on it in the environment's **Activity** tab.
 
-   On non-zero exit, the tail of the hook's stderr appears in the **Activity** tab as the failure reason, so write the actionable error to stderr and never write secrets there. In a shell hook, [keep transient failures retryable](#keep-transient-failures-retryable-in-a-shell-hook).
+   While a session backs off, it shows **Queued** in the **Activity** tab with no spawn error, so read the hook's output in the orchestrator's log. Once blocked, the session shows **Failed**. Expand it to read the spawn error, taken from the last 512 characters of the hook's stderr. Write an actionable error to stderr, and no secrets. In a shell hook, [keep transient failures retryable](#keep-transient-failures-retryable-in-a-shell-hook).
 
    A pre-warming request has no session to fail: the orchestrator logs a non-zero exit locally only, and the server re-requests the spawn after the `--expected-spawn-seconds` lease expires.
 4. **Set `--expected-spawn-seconds` to at least your p99 time from spawn request to runner registration.** Measure from when the orchestrator receives the spawn request, and include any wait for capacity on your platform as well as boot time. This value is the server-side lease, and the work order expires with it, so a runner whose workload takes longer can't register. All orchestrator replicas must use the same value.
@@ -326,6 +326,26 @@ By default, a runner your hook starts doesn't exit when its session's turn finis
 | `--exit-if-unused-min 60` | Standby runners, which your hook starts for pre-warming requests | A standby that never takes a session exits after that many minutes. If you set [`--min-idle`](/docs/en/self-hosted-environments-reference#orchestrator-cli-flags), you get a replacement unless the standby was surplus, so use a value well above your boot time. |
 
 Remove the workload when the runner exits, for example by setting `ttlSecondsAfterFinished` on a Kubernetes Job or by having the VM's start script delete the VM afterwards.
+
+#### Send a background process's output to a file
+
+If your `spawn-runner` hook leaves a process running in the background, send that process's output to a file that the hook's user can create. For example, append `>> "$HOME/claude-runner.log" 2>&1` to the command that starts the process, ahead of any `&`. This hook line shows where the redirect goes, with `your-background-command` standing in for the command your hook backgrounds:
+
+```bash theme={null}
+your-background-command >> "$HOME/claude-runner.log" 2>&1 &
+```
+
+Without the redirect, the process writes to the hook's stdout and stderr:
+
+* About a second after the hook exits, the orchestrator logs `exited, but a process it started still has the hook's stdout or stderr open`. From that line on, it logs up to 64 KB more of that output under `[runner:hook:spawn-runner:after-exit jti=<order id>]` and then drops the rest.
+* Once the orchestrator exits, the process's writes there fail.
+
+A runner your hook starts itself runs sessions on the orchestrator host, which holds the [environment secret](/docs/en/self-hosted-environments-deploy#harden-your-deployment).
+
+Before v2.1.305, a hook that had exited still reached [`--hook-timeout`](/docs/en/self-hosted-environments-reference#orchestrator-cli-flags) while a process it started had the hook's stdout or stderr open, shown as:
+
+* **Activity tab**, in a failed session's spawn error: `spawn-runner hook timed out after 60000ms`, or the last lines on the hook's stderr.
+* **Orchestrator log**: `timed out after 60000ms, sending SIGTERM to process tree`.
 
 #### Keep transient failures retryable in a shell hook
 
@@ -362,76 +382,72 @@ The runner still polls Anthropic for sessions, and each session still sends its 
 
 Sessions are routed to an environment, not to a runner, and a requeued or resumed session can run on a different runner. Configure every runner in the environment the same way. Before you start, read [what differs on these providers](#what-differs-from-sessions-on-the-anthropic-api).
 
-<Steps>
-  <Step title="Prepare the cloud account and your egress rules">
-    Set up model access, a narrowly scoped policy or role, and network access:
+**1. Prepare the cloud account and your egress rules**
 
-    * **Amazon Bedrock**: [submit use case details](/docs/en/amazon-bedrock#1-submit-use-case-details), then create the policy in [IAM configuration](/docs/en/amazon-bedrock#iam-configuration), limiting `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream` to the inference profiles your sessions use and the foundation models behind them
-    * **Agent Platform**: [enable the API](/docs/en/google-vertex-ai#1-enable-agent-platform-api) and [request model access](/docs/en/google-vertex-ai#2-request-model-access), then create the custom role that [IAM configuration](/docs/en/google-vertex-ai#iam-configuration) describes, with only `aiplatform.endpoints.predict`
-    * **Egress**: allow your provider's endpoints through your egress rules. See [Network requirements](/docs/en/self-hosted-environments-deploy#network-requirements). If sessions can't reach them, Claude Code can keep retrying for hours before the session shows an error.
-  </Step>
+Set up model access, a narrowly scoped policy or role, and network access:
 
-  <Step title="Give sessions narrowly scoped credentials">
-    Attach the policy or role from step 1 to an identity that can do nothing else. For the methods Claude Code accepts, see [Configure AWS credentials](/docs/en/amazon-bedrock#2-configure-aws-credentials) and [Configure GCP credentials](/docs/en/google-vertex-ai#3-configure-gcp-credentials).
+* **Amazon Bedrock**: [submit use case details](/docs/en/amazon-bedrock#1-submit-use-case-details), then create the policy in [IAM configuration](/docs/en/amazon-bedrock#iam-configuration), limiting `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream` to the inference profiles your sessions use and the foundation models behind them
+* **Agent Platform**: [enable the API](/docs/en/google-vertex-ai#1-enable-agent-platform-api) and [request model access](/docs/en/google-vertex-ai#2-request-model-access), then create the custom role that [IAM configuration](/docs/en/google-vertex-ai#iam-configuration) describes, with only `aiplatform.endpoints.predict`
+* **Egress**: allow your provider's endpoints through your egress rules. See [Network requirements](/docs/en/self-hosted-environments-deploy#network-requirements). If sessions can't reach them, Claude Code can keep retrying for hours before the session shows an error.
 
-    <Warning>
-      Anyone who can get code to run in a session, including through prompt injection, can use these credentials at your cost for as long as the credentials are valid. Claude Code runs inside the session, so the credential it calls the model with has to be readable there.
+**2. Give sessions narrowly scoped credentials**
 
-      The shell commands Claude runs, your [Claude Code hooks](/docs/en/hooks), and stdio MCP servers inherit the session's environment and run as the same user as Claude Code. As a result, they can read credential variables and credential files.
+Attach the policy or role from step 1 to an identity that can do nothing else. For the methods Claude Code accepts, see [Configure AWS credentials](/docs/en/amazon-bedrock#2-configure-aws-credentials) and [Configure GCP credentials](/docs/en/google-vertex-ai#3-configure-gcp-credentials).
 
-      When you [harden your deployment](/docs/en/self-hosted-environments-deploy#harden-your-deployment), you keep host credentials out of sessions, but you can't keep this credential out. Give the identity behind it nothing beyond the policy or role from step 1.
-    </Warning>
+> [!WARNING]
+>
+> Anyone who can get code to run in a session, including through prompt injection, can use these credentials at your cost for as long as the credentials are valid. Claude Code runs inside the session, so the credential it calls the model with has to be readable there.
+>
+> The shell commands Claude runs, your [Claude Code hooks](/docs/en/hooks), and stdio MCP servers inherit the session's environment and run as the same user as Claude Code. As a result, they can read credential variables and credential files.
+>
+> When you [harden your deployment](/docs/en/self-hosted-environments-deploy#harden-your-deployment), you keep host credentials out of sessions, but you can't keep this credential out. Give the identity behind it nothing beyond the policy or role from step 1.
 
-    Check the method you choose against these runner behaviors:
+Check the method you choose against these runner behaviors:
 
-    * **Metadata endpoint**: if you deny sessions the [cloud metadata endpoint](/docs/en/self-hosted-environments-deploy#harden-your-deployment) outright, credentials served from it, such as an instance profile, don't reach Claude Code either. A file-based web identity, such as IAM Roles for Service Accounts (IRSA) on Amazon EKS or a Workload Identity Federation credential file, doesn't depend on it.
-    * **Renewal**: a session can outlive a credential, so use a method that renews itself, such as a file-based web identity
-    * **Wrapper script**: the runner starts your [wrapper script](#provision-credentials-scoped-to-the-session-creator) once per session, so credentials it exports aren't renewed. Claude Code reads AWS credentials from its environment, so if your wrapper already exports AWS credentials for other work, Claude Code can sign model requests with them.
-  </Step>
+* **Metadata endpoint**: if you deny sessions the [cloud metadata endpoint](/docs/en/self-hosted-environments-deploy#harden-your-deployment) outright, credentials served from it, such as an instance profile, don't reach Claude Code either. A file-based web identity, such as IAM Roles for Service Accounts (IRSA) on Amazon EKS or a Workload Identity Federation credential file, doesn't depend on it.
+* **Renewal**: a session can outlive a credential, so use a method that renews itself, such as a file-based web identity
+* **Wrapper script**: the runner starts your [wrapper script](#provision-credentials-scoped-to-the-session-creator) once per session, so credentials it exports aren't renewed. Claude Code reads AWS credentials from its environment, so if your wrapper already exports AWS credentials for other work, Claude Code can sign model requests with them.
 
-  <Step title="Set one provider's variables in the runner's environment">
-    Set exactly one provider's variables where you set the runner's other environment variables, such as the container spec or service unit, then restart the runner. The examples show them as shell exports. With [on-demand runners](#on-demand-runners), set them on the workload your `spawn-runner` hook starts.
+**3. Set one provider's variables in the runner's environment**
 
-    Start these runners with [`--confine-repo-settings enforce`](/docs/en/self-hosted-environments-deploy#harden-your-deployment). It refuses sessions on repositories whose committed settings it flags, so run in the default `warn` mode first and clear what it logs.
+Set exactly one provider's variables where you set the runner's other environment variables, such as the container spec or service unit, then restart the runner. The examples show them as shell exports. With [on-demand runners](#on-demand-runners), set them on the workload your `spawn-runner` hook starts.
 
-    <Tabs>
-      <Tab title="Amazon Bedrock">
-        Replace the region with your own:
+Start these runners with [`--confine-repo-settings enforce`](/docs/en/self-hosted-environments-deploy#harden-your-deployment). It refuses sessions on repositories whose committed settings it flags, so run in the default `warn` mode first and clear what it logs.
 
-        ```bash theme={null}
-        export CLAUDE_CODE_USE_BEDROCK=1
-        export AWS_REGION=us-east-1
-        ```
+**Amazon Bedrock**
 
-        For how Claude Code resolves the region, see [Configure Claude Code](/docs/en/amazon-bedrock#3-configure-claude-code). For which inference profile prefix Claude Code uses for your region, see [Cross-region inference profile prefixes](/docs/en/amazon-bedrock#cross-region-inference-profile-prefixes).
-      </Tab>
+Replace the region with your own:
 
-      <Tab title="Google Cloud's Agent Platform">
-        Replace the region and project ID with your own:
+```bash theme={null}
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-east-1
+```
 
-        ```bash theme={null}
-        export CLAUDE_CODE_USE_VERTEX=1
-        export CLOUD_ML_REGION=global
-        export ANTHROPIC_VERTEX_PROJECT_ID=YOUR-PROJECT-ID
-        ```
+For how Claude Code resolves the region, see [Configure Claude Code](/docs/en/amazon-bedrock#3-configure-claude-code). For which inference profile prefix Claude Code uses for your region, see [Cross-region inference profile prefixes](/docs/en/amazon-bedrock#cross-region-inference-profile-prefixes).
 
-        To choose a region, see [Region configuration](/docs/en/google-vertex-ai#region-configuration).
-      </Tab>
-    </Tabs>
-  </Step>
+**Google Cloud's Agent Platform**
 
-  <Step title="Check that the variables reached a session">
-    Your own shell on the host is a different process, so check from inside a session. Start one in the environment and ask Claude to run this command:
+Replace the region and project ID with your own:
 
-    ```bash theme={null}
-    env | grep -E 'CLAUDE_CODE_USE_(BEDROCK|VERTEX)'
-    ```
+```bash theme={null}
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION=global
+export ANTHROPIC_VERTEX_PROJECT_ID=YOUR-PROJECT-ID
+```
 
-    A line that sets `CLAUDE_CODE_USE_BEDROCK` or `CLAUDE_CODE_USE_VERTEX` to `1` means the variable reached the session. If both appear, Claude Code uses Amazon Bedrock. No output means neither reached it.
+To choose a region, see [Region configuration](/docs/en/google-vertex-ai#region-configuration).
 
-    The command shows configuration, not traffic. To confirm the requests themselves, look for them in your cloud account's own metrics or request logs. If the first message fails instead, see troubleshooting for [Amazon Bedrock](/docs/en/amazon-bedrock#troubleshooting) or [Agent Platform](/docs/en/google-vertex-ai#troubleshooting).
-  </Step>
-</Steps>
+**4. Check that the variables reached a session**
+
+Your own shell on the host is a different process, so check from inside a session. Start one in the environment and ask Claude to run this command:
+
+```bash theme={null}
+env | grep -E 'CLAUDE_CODE_USE_(BEDROCK|VERTEX)'
+```
+
+A line that sets `CLAUDE_CODE_USE_BEDROCK` or `CLAUDE_CODE_USE_VERTEX` to `1` means the variable reached the session. If both appear, Claude Code uses Amazon Bedrock. No output means neither reached it.
+
+The command shows configuration, not traffic. To confirm the requests themselves, look for them in your cloud account's own metrics or request logs. If the first message fails instead, see troubleshooting for [Amazon Bedrock](/docs/en/amazon-bedrock#troubleshooting) or [Agent Platform](/docs/en/google-vertex-ai#troubleshooting).
 
 ### What differs from sessions on the Anthropic API
 
@@ -466,11 +482,13 @@ Claude Code also loads MCP servers from other sources:
 
 When connector delivery is enabled for your organization, Anthropic's control plane delivers the connectors you've configured on claude.ai to interactively-created sessions through server-provided MCP configuration, routed through `api.anthropic.com`. Sessions created programmatically, such as [CLI dispatches](/docs/en/self-hosted-environments-testing#run-the-test-loop), don't receive connector delivery; give them MCP servers through any of the other sources this section lists instead. The child's OAuth token doesn't carry a scope for fetching connectors directly, so the child doesn't attempt that fetch itself; delivery is server-driven.
 
+> [!NOTE]
+>
+> In a session that received a connector, a server of the same name from the host's `.claude.json` or a repository's `.mcp.json` isn't connected. To use both, give your server a different name.
+
 `settings.json` doesn't carry MCP server definitions, and there is no top-level `mcpServers` field in the settings schema. In managed settings, provide servers with the [`managedMcpServers`](/docs/en/settings-reference#managedmcpservers) key instead.
 
 Sessions inherit the runner's environment, so set [`ENABLE_TOOL_SEARCH`](/docs/en/mcp#scale-with-mcp-tool-search) there to control MCP tool search for every session a runner spawns; the MCP page covers the values.
-
-<a id="connection-timing" />
 
 ### Wait for MCP servers before the first turn
 
@@ -620,9 +638,9 @@ The hook prompts Claude to commit and push before the session ends, and stays si
 
 A self-hosted session has no terminal attached, so an unanswered permission prompt stalls the turn until the user responds in the UI. Anthropic's control plane sends each session's tool list and permission rules with the work payload; the default configuration pre-approves routine tool calls, including `Bash`, and cloud sessions [pre-approve file edits regardless of mode](/docs/en/permission-modes#switch-permission-modes). A call that nothing pre-approves prompts through the session UI.
 
-<Note>
-  Only pin auto mode on an environment whose session containers run with [default-deny network egress](/docs/en/self-hosted-environments-deploy#default-deny-egress) and the rest of the [hardening section](/docs/en/self-hosted-environments-deploy#harden-your-deployment) in place. Routine tool calls, including `Bash` network requests, run without a human in the loop on both the default pre-approved tool set and in auto mode, so the network boundary is what limits where those calls can reach.
-</Note>
+> [!NOTE]
+>
+> Only pin auto mode on an environment whose session containers run with [default-deny network egress](/docs/en/self-hosted-environments-deploy#default-deny-egress) and the rest of the [hardening section](/docs/en/self-hosted-environments-deploy#harden-your-deployment) in place. Routine tool calls, including `Bash` network requests, run without a human in the loop on both the default pre-approved tool set and in auto mode, so the network boundary is what limits where those calls can reach.
 
 To keep prompts to a minimum regardless of what the control plane sends, pin [auto mode](/docs/en/permission-modes#eliminate-prompts-with-auto-mode) from your wrapper script or [`command` hook](#command). Auto mode lets sessions run without routine permission prompts: a separate classifier model reviews actions before they run and blocks the ones it rejects, and explicit ask rules still force a prompt; the permission modes page covers what the classifier checks. The runner appends server-computed flags before invoking the wrapper, and for single-value flags such as `--permission-mode` the parser honors the last occurrence, so a flag you append after `"$@"` overrides the server-sent value:
 

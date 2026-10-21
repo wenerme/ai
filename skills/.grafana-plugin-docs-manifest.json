@@ -1526,8 +1526,8 @@
   },
   "grafana-oracle-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure.md",
-    "size": 21925,
-    "updatedAt": "2026-07-31T04:11:59.764Z"
+    "size": 22462,
+    "updatedAt": "2026-10-21T01:01:51.419Z"
   },
   "grafana-oracle-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",
@@ -1546,18 +1546,18 @@
   },
   "grafana-oracle-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor.md",
-    "size": 17557,
-    "updatedAt": "2026-07-09T04:41:53.759Z"
+    "size": 17847,
+    "updatedAt": "2026-10-21T01:01:52.516Z"
   },
   "grafana-oracle-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables.md",
-    "size": 3472,
-    "updatedAt": "2026-07-09T04:41:53.917Z"
+    "size": 4029,
+    "updatedAt": "2026-10-21T01:01:52.741Z"
   },
   "grafana-oracle-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting.md",
-    "size": 32885,
-    "updatedAt": "2026-07-21T06:50:26.830Z"
+    "size": 37829,
+    "updatedAt": "2026-10-21T01:01:52.952Z"
   },
   "grafana-pagerduty-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest.md",
@@ -1571,8 +1571,8 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 13053,
-    "updatedAt": "2026-10-10T16:03:51.457Z"
+    "size": 13158,
+    "updatedAt": "2026-10-21T01:01:53.608Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/source-maps/og.pn
 
 # Source maps and stack traces
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
@@ -22,7 +22,9 @@ Source maps translate compiled and minified code back to the original code that 
 
 ## Enable source maps
 
-Enable source maps for every JavaScript or TypeScript Worker to get stack traces with original file names and line numbers. Add the following to your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
+Source maps are uploaded by default from Wrangler 4.150.0. When you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy), [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload), or [`wrangler preview`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#preview), Wrangler generates and uploads source maps for your Worker, so stack traces show original file names and line numbers without any configuration.
+
+By default, Wrangler skips source maps it cannot resolve, such as inline `data:` source maps or a `sourceMappingURL` that points to a missing file, and continues the upload. To fail the upload instead, set `upload_source_maps` to `true` in your Worker's [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
 ```jsonc
 {
@@ -34,7 +36,9 @@ Enable source maps for every JavaScript or TypeScript Worker to get stack traces
 upload_source_maps = true
 ```
 
-When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload). ​​
+On earlier versions of Wrangler, source maps are only uploaded when `upload_source_maps` is set to `true`.
+
+[`cf deploy`](https://developers.cloudflare.com/cf/) also uploads source maps by default. It uploads every source map in the build output, and `cf build` generates them for Workers built with the Cloudflare Vite plugin 1.64.0 or later, or with Wrangler 4.151.0 or later. To opt out, [disable source maps](#disable-source-maps) in your build.
 
 Note
 
@@ -42,9 +46,11 @@ Miniflare can also [output source maps ↗︎](https://miniflare.dev/developing/
 
 ### Frameworks and custom builds
 
-When Vite or another build tool bundles your Worker, that tool must generate source maps. Setting `upload_source_maps` only enables uploading maps from an existing build.
+When Vite or another build tool bundles your Worker, that tool must generate source maps. Wrangler only uploads maps that already exist in the build output.
 
-With the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), enable external maps for your [Worker environment](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/). For a Worker environment named `my_worker`, use:
+The [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) generates external maps for your [Worker environment](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) by default from version 1.64.0, unless you set Vite's `build.sourcemap` or the Worker's `upload_source_maps`. Maps are not added to the client environment, so they do not end up in your public assets.
+
+On earlier versions, enable external maps for your Worker environment. For a Worker environment named `my_worker`, use:
 
 *vite.config.tsts*
 
@@ -66,7 +72,23 @@ Use `ssr` when your framework assigns the Worker to that environment. The plugin
 
 For other build tools, emit external map files and preserve their `sourceMappingURL` references in the generated JavaScript. Keep server maps out of your public assets directory.
 
-To disable uploads, set `upload_source_maps` to `false` or pass `--no-upload-source-maps` when deploying or uploading a version.
+### Disable source maps
+
+To disable uploads, set `upload_source_maps` to `false`:
+
+```jsonc
+{
+	"upload_source_maps": false
+}
+```
+
+```toml
+upload_source_maps = false
+```
+
+You can also pass `--no-upload-source-maps` to `wrangler deploy` or `wrangler versions upload`.
+
+With the Cloudflare Vite plugin, you can instead set `build.sourcemap` to `false` for the Worker environment. `cf deploy` uploads every source map in the build output, so with a `cf` project, turn off source map generation in your build to opt out.
 
 ## Stack traces
 
@@ -127,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

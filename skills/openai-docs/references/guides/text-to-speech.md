@@ -2,6 +2,14 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
+The `tts-1`, `tts-1-hd`, and `gpt-4o-mini-tts` models are deprecated and will
+  shut down on **January 6, 2027**. Migrate to `gpt-realtime-2.1-mini` using the
+  [Realtime API](https://developers.openai.com/api/docs/guides/realtime). This is a change of API workflow:
+  `gpt-realtime-2.1-mini` isn't a supported model for `/v1/audio/speech`.
+  Existing integrations can use the Speech API workflows shown below until
+  shutdown. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-10-01-text-to-speech-models).
+
 The Audio API provides a [`speech`](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create) endpoint based on our [GPT-4o mini TTS (text-to-speech) model](https://developers.openai.com/api/docs/models/gpt-4o-mini-tts). It comes with 11 built-in voices and can be used to:
 
 - Narrate a written blog post
@@ -22,7 +30,7 @@ The `speech` endpoint takes three key inputs:
 1. The [text](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create#audio-createspeech-input) to be turned into audio
 1. The [voice](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create#audio-createspeech-voice) that will speak the output
 
-Here's a simple request example:
+Here's an example request:
 
 Generate spoken audio from input text
 
@@ -183,7 +191,7 @@ By default, the endpoint outputs an MP3 of the spoken audio, but you can configu
 
 ### Text-to-speech models
 
-For intelligent realtime applications, use the `gpt-4o-mini-tts` model, our newest and most reliable text-to-speech model. You can prompt the model to control aspects of speech, including:
+For existing Speech API integrations, `gpt-4o-mini-tts` lets you use prompts to control these aspects of speech:
 
 - Accent
 - Emotional range

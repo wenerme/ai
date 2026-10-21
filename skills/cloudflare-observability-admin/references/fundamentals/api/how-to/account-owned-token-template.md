@@ -144,7 +144,7 @@ Use this table to find permission keys for your custom templates.
 | `page` | Cloudflare Pages | Page deployments |
 | `stream` | Stream | Video streaming |
 | `images` | Images | Image optimization |
-| `logs` | Logs | Log management |
+| `account_logs` | Logs | Log management |
 
 ### Zone permissions
 
@@ -158,6 +158,7 @@ Use this table to find permission keys for your custom templates.
 | `page_rules` | Page rules | Traffic control |
 | `cache` | Cache purging | Content updates |
 | `ssl_and_certificates` | SSL/TLS certificates | Certificate management |
+| `logs` | Logs | Log management |
 
 ### Access permissions
 

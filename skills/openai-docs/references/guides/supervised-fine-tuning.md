@@ -5,13 +5,19 @@
 Supervised fine-tuning (SFT) lets you train an OpenAI model with examples for your specific use case. The result is a customized model that more reliably produces your desired style and content.
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
-  accessible to new users, but existing users of the fine-tuning platform will
-  be able to create training jobs for the coming months.
+  accessible to new users. Eligible existing customers can create training jobs
+  until January 6, 2027, unless the base model shuts down earlier.
   
 
-  All fine-tuned models will remain available for inference until their base
-  models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
-  [here](https://developers.openai.com/api/docs/deprecations).
+  Fine-tuned models remain available for inference until their base model shuts
+  down. `gpt-4.1-nano-2025-04-14` and its fine-tuned versions shut down on
+  [October 23,
+  2026](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots).
+  `gpt-4.1-2025-04-14`, `gpt-4.1-mini-2025-04-14`, and their fine-tuned versions
+  shut down on [January 14,
+  2027](https://developers.openai.com/api/docs/deprecations#2026-10-14-gpt-4-series-model-deprecations). See
+  the [fine-tuning availability
+  timeline](https://developers.openai.com/api/docs/deprecations#update-to-openais-self-serve-fine-tuning).
 
 
 

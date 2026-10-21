@@ -110,8 +110,8 @@
   "google-ai-docs/structured-output.md": {
     "url": "https://ai.google.dev/gemini-api/docs/structured-output",
     "skill": "google-ai-docs",
-    "size": 58906,
-    "updatedAt": "2026-09-24T04:35:06.821Z"
+    "size": 59909,
+    "updatedAt": "2026-10-21T00:59:21.550Z"
   },
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",

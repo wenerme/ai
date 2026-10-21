@@ -70,6 +70,7 @@ This is not an exhaustive list of provider-specific instructions, but the follow
 - <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗︎</a>
 - <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗︎</a>
 - <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗︎</a>
+- <a href="https://monovm.com/blog/how-to-use-and-manage-the-domain-control-panel/">MonoVM ↗︎</a>
 - <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗︎</a>
 - <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗︎</a>
 - <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗︎</a>

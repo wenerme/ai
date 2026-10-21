@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/configuration/og
 
 # Configuration
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think is configured by overriding methods and properties on your `Think` subclass. Most agents only override `getModel()`.
 
@@ -31,7 +31,6 @@ Think is configured by overriding methods and properties on your `Think` subclas
 | `configureSession()` | identity | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) |
 | `getSkills()` | `[]` | Return Agent Skills sources for on-demand skill activation — refer to [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) |
 | `getSkillScriptRunner()` | `null` | Enable the optional `run_skill_script` tool |
-| `workspaceBash` | `true` | Include or configure the default workspace `bash` tool — refer to [Tools](https://developers.cloudflare.com/agents/harnesses/think/tools/) |
 | `messageConcurrency` | `"queue"` | How overlapping submits behave — refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/#message-concurrency) |
 | `includeMcpTools` | `true` | Convert connected MCP tools to AI SDK tools and add them to model turns. Refer to [MCP tools](https://developers.cloudflare.com/agents/harnesses/think/tools/#mcp-tools) |
 | `waitForMcpConnections` | `false` | Wait for MCP servers before inference |
@@ -166,12 +165,11 @@ For the full Session API — context blocks, compaction, search, skills, and mul
 
 | Export | Description |
 | --- | --- |
-| `@cloudflare/think` | `Think`, `Session`, `Workspace`, `skills` namespace |
+| `@cloudflare/think` | `Think`, `Session`, `skills` namespace |
 | `@cloudflare/think/messengers` | Messenger contracts, Chat SDK bridge, state agent, delivery |
 | `@cloudflare/think/messengers/telegram` | Telegram messenger provider and delivery helpers |
 | `@cloudflare/think/workflows` | `ThinkWorkflow`, `step.prompt()` — Workflow prompts |
-| `@cloudflare/think/tools/workspace` | `createWorkspaceTools()` — for custom storage backends |
-| `@cloudflare/think/tools/execute` | `createExecuteTool()` — sandboxed code execution via Code Mode |
+| `@cloudflare/think/tools/execute` | `createExecuteTool()` — deprecated Code Mode execution tool |
 | `@cloudflare/think/tools/browser` | `createBrowserTools()` — Chrome DevTools Protocol tools |
 | `@cloudflare/think/tools/extensions` | `createExtensionTools()` — LLM-driven extension loading |
 | `@cloudflare/think/extensions` | `ExtensionManager`, `HostBridgeLoopback` — extension runtime |
@@ -185,15 +183,14 @@ Peer dependencies you provide:
 | `agents` | yes | Cloudflare Agents SDK |
 | `ai` | yes | AI SDK v6 |
 | `zod` | yes | Schema validation (v4) |
+| `@cloudflare/computer` | yes | Workspace and workspace tools |
 | `@chat-adapter/telegram` | optional | Required for Telegram messengers |
 
 Bundled with `@cloudflare/think`:
 
 | Package | Notes |
 | --- | --- |
-| `@cloudflare/shell` | `Workspace` filesystem |
 | `@cloudflare/codemode` | Code execution for `createExecuteTool()` |
-| `just-bash` | Sandboxed shell for the default workspace `bash` tool |
 
 The Agent Skills engine and its script runner live in [`agents/skills`](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
 
@@ -206,5 +203,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/configuration/og.png?v=933c898d421435fa","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/configuration/og.png?v=933c898d421435fa","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

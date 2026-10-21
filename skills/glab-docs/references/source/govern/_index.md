@@ -5,11 +5,11 @@ group: Developer Clients
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Manage AI agent governance. (EXPERIMENTAL)
+Manage AI governance. (EXPERIMENTAL)
 
 ## Synopsis
 
-Manage AI agent governance for external agents running against GitLab projects. Configure hooks and diagnose setup issues.
+Manage AI governance for external agents running against GitLab projects. Configure hooks and diagnose setup issues.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

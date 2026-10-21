@@ -5,19 +5,27 @@
 [Agent trace preview on a dataset page in dark mode.]
 </div>
 
-Agent traces from Claude Code, Codex, and Pi Agent are natively supported on the Hugging Face Hub. Upload the raw JSONL sessions to a [Dataset](https://huggingface.co/datasets?format=format%3Aagent-traces) or a [Storage Bucket](./storage-buckets) to open them in a dedicated trace viewer. Datasets show traces in Data Studio; buckets let you open individual `.jsonl` files directly.
+Agent traces from Claude Code, Codex, Pi, Hermes Agent, and Factory Droid are natively supported on the Hugging Face Hub. Upload the raw JSONL sessions to a [Dataset](https://huggingface.co/datasets?format=format%3Aagent-traces) or a [Storage Bucket](./storage-buckets) to open them in a dedicated trace viewer. Datasets show traces in Data Studio; buckets let you open individual `.jsonl` files directly.
 
 ## Find your traces
 
-Each supported agent writes JSONL sessions to the following directories:
+Most supported agents write JSONL sessions to local directories:
 
-| Agent       | Local session directory |
-| ----------- | ----------------------- |
-| Claude Code | `~/.claude/projects`    |
-| Codex       | `~/.codex/sessions`     |
-| Pi          | `~/.pi/agent/sessions`  |
+| Agent         | Local session directory      |
+| ------------- | ---------------------------- |
+| Claude Code   | `~/.claude/projects`         |
+| Codex         | `~/.codex/sessions`          |
+| Codex archive | `~/.codex/archived_sessions` |
+| Factory/Droid | `~/.factory/sessions`        |
+| Pi            | `~/.pi/agent/sessions`       |
 
 These trace files are supported out of the box, so you can upload them without modifying or converting them first.
+
+Hermes Agent stores current sessions in its session database. Export the sessions you want to share as JSONL before uploading:
+
+```bash
+hermes sessions export session.jsonl --session-id <session_id>
+```
 
 Are you building your own harness? If your agent isn't listed above, you can make its sessions render in the trace viewer by emitting the [Session Traces Format](./session-traces-format).
 
@@ -25,7 +33,7 @@ Trace files can include prompts, tool inputs, command output, local paths, scree
 
 For Pi Agent sessions, [`pi-share-hf`](https://github.com/badlogic/pi-share-hf) can help collect project sessions, redact known secrets, run TruffleHog and LLM review, and upload only sessions that pass checks.
 
-The easiest way to upload is to ask your agent itself: point it at the directory above and tell it to upload the `.jsonl` files to a Hub dataset or bucket.
+The easiest way to upload is to ask your agent itself: point it at the directory or exported JSONL file above and tell it to upload the `.jsonl` files to a Hub dataset or bucket.
 
 Buckets are especially useful if you want to keep syncing traces as new sessions land.
 
@@ -41,11 +49,11 @@ hf upload <username>/<dataset-name> ~/.codex/sessions . --repo-type dataset
 hf buckets sync ~/.codex/sessions hf://buckets/<username>/<bucket-name>/codex
 ```
 
-Replace `~/.codex/sessions` with the matching session directory for your agent. Use `hf upload` for datasets and `hf buckets sync` for buckets you want to update as new traces are written. The shorter `hf sync` command is an alias for `hf buckets sync`.
+Replace `~/.codex/sessions` with the matching session directory for your agent, or with a directory containing JSONL files exported from Hermes Agent. Use `hf upload` for datasets and `hf buckets sync` for buckets you want to update as new traces are written. The shorter `hf sync` command is an alias for `hf buckets sync`.
 
 ## View your traces
 
-Once you have traces in a dataset, open Data Studio and click a row. For traces in a Storage Bucket, navigate to the `.jsonl` file you want to inspect and open it. The trace viewer shows the session timeline, prompts, assistant messages, tool calls, and results.
+Once you have traces in a dataset, open Data Studio and click a row. For traces in a Storage Bucket, navigate to the `.jsonl` file you want to inspect and open it. The trace viewer shows the session timeline, prompts, assistant messages, tool calls, shell output, reasoning blocks, and results.
 
 <div class="flex justify-center">
 [Agent trace session viewer showing user and assistant turns with expanded tool calls.]

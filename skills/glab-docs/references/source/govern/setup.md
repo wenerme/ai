@@ -9,7 +9,7 @@ Configure this machine to record AI agent sessions. (EXPERIMENTAL)
 
 ## Synopsis
 
-Configure the current machine for AI agent governance session capture.
+Configure the current machine for AI governance session capture.
 
 Installs the following:
 

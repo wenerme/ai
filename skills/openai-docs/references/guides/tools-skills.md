@@ -76,6 +76,10 @@ curl -X POST 'https://api.openai.com/v1/skills' \
 ```
 
 
+### Wait for an uploaded version
+
+A request for a newly uploaded version can briefly return `404` before it is available. Before attaching it to a container or Live session, retrieve it with `GET /v1/skills/{skill_id}/versions/{version}`. If the retrieval request returns `404` immediately after a successful upload, retry with a short backoff and a timeout. Once retrieval succeeds, use the returned version string in the Skill reference.
+
 ## Use skills with hosted shell
 
 To mount skills in a hosted shell environment, attach them via `tools[].environment.skills` when calling the shell tool.
@@ -95,7 +99,7 @@ curl -L 'https://api.openai.com/v1/responses' \
           "type": "container_auto",
           "skills": [
             { "type": "skill_reference", "skill_id": "<skill_id>" },
-            { "type": "skill_reference", "skill_id": "<skill_id>", "version": 2 }
+            { "type": "skill_reference", "skill_id": "<skill_id>", "version": "2" }
           ]
         }
       }
@@ -143,7 +147,7 @@ response = client.responses.create(
                     {
                         "type": "skill_reference",
                         "skill_id": "<skill_id>",
-                        "version": 2,
+                        "version": "2",
                     },
                 ],
             },
@@ -532,10 +536,9 @@ Skill instructions are user prompt input (not system prompt input), so they're h
 
 ## Safety with network access
 
-It is very important to inspect any Skill used with the Responses API. Skills
-  introduce security risks such as prompt injection-driven data exfiltration.
-  Carefully review the [Risks and safety](#risks-and-safety) section below
-  before using this tool.
+Inspect any Skill used with the Responses API. Skills introduce security risks
+  such as prompt injection-driven data exfiltration. Carefully review the [Risks
+  and safety](#risks-and-safety) section below before using this tool.
 
 ## Versioning and management
 
@@ -543,7 +546,8 @@ It is very important to inspect any Skill used with the Responses API. Skills
 
 - `default_version` is used when a version isn't provided.
 - `latest_version` tracks the newest upload.
-- `skill_reference.version` accepts an integer or `"latest"`.
+- `skill_reference.version` accepts a version string, such as `"2"` or `"latest"`.
+- `default_version` also requires a string when you update it.
 
 ### Create a new version
 
@@ -564,7 +568,7 @@ Set a skill's default version
 curl -X POST 'https://api.openai.com/v1/skills/<skill_id>' \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{"default_version": 2}'
+  -d '{"default_version": "2"}'
 ```
 
 

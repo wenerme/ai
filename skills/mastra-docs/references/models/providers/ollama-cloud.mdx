@@ -5,7 +5,7 @@ description: "Browse Ollama Cloud model IDs, capabilities, context windows, and 
 
 # [Ollama Cloud logo]Ollama Cloud
 
-Access 28 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
+Access 29 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
 
 Learn more in the [Ollama Cloud documentation](https://docs.ollama.com/cloud).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "ollama-cloud/deepseek-v4-flash"
+  model: "ollama-cloud/beam"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "ollama-cloud/beam",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
   {
     "model": "ollama-cloud/deepseek-v4-flash",
     "imageInput": false,
@@ -390,7 +402,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://ollama.com/v1",
-    id: "ollama-cloud/deepseek-v4-flash",
+    id: "ollama-cloud/beam",
     apiKey: process.env.OLLAMA_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -409,7 +421,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "ollama-cloud/qwen3.5:397b"
-      : "ollama-cloud/deepseek-v4-flash";
+      : "ollama-cloud/beam";
   }
 });
 ```

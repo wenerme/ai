@@ -241,37 +241,19 @@ If successful, the created voice will be listed under the [Audio tab](https://pl
 
 ## Using a voice from a recording during speech generation
 
-Speech generation will work as usual. Specify the ID of the voice in the `voice` parameter when [creating speech](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), or when initiating a [realtime session](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/create#realtime_create_call-session-audio-output-voice).
+Use `gpt-realtime-2.1-mini` with the [Realtime API](https://developers.openai.com/api/docs/guides/realtime) to generate speech in your custom voice. Set `session.audio.output.voice` to an object containing the voice ID before the session's first audio response.
 
-**Text to speech example**
+**Configure the Realtime session**
 
-```bash
-curl https://api.openai.com/v1/audio/speech \
-  -X POST \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-4o-mini-tts",
-    "voice": {
-      "id": "voice_123abc"
-    },
-    "input": "Maple est le meilleur golden retriever du monde entier.",
-    "language": "fr",
-    "format": "wav"
-  }' \
-  --output sample.wav
-```
-
-
-**Realtime API example**
-
-For Ruby, replace `voice_123` with your custom voice ID before running the example.
+Use the following request body when [creating a Realtime client secret](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create), then follow the [WebRTC connection guide](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime) to connect with that secret. Replace `voice_123abc` with the ID returned by your voice creation request:
 
 ```javascript
 const sessionConfig = JSON.stringify({
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
+    model: "gpt-realtime-2.1-mini",
+    instructions: "Read the user's text aloud without adding commentary.",
+    output_modalities: ["audio"],
     audio: {
       output: {
         voice: { id: "voice_123abc" },
@@ -288,13 +270,17 @@ require "json"
 session_config = JSON.generate(
   session: {
     type: "realtime",
-    model: "gpt-realtime-2",
-    audio: { output: { voice: { id: "voice_123" } } }
+    model: "gpt-realtime-2.1-mini",
+    instructions: "Read the user's text aloud without adding commentary.",
+    output_modalities: ["audio"],
+    audio: { output: { voice: { id: "voice_123abc" } } }
   }
 )
 puts(session_config)
 ```
 
+
+For text-to-speech generation, [add a user message containing the text](https://developers.openai.com/api/docs/guides/realtime-conversations#text-inputs-and-outputs), then send `response.create` with `output_modalities` set to `["audio"]`. The session instructions ask the model to read the supplied text aloud. Receive the generated audio through the WebRTC audio track, as described in [Handling audio with WebRTC](https://developers.openai.com/api/docs/guides/realtime-conversations#handling-audio-with-webrtc).
 
 
 

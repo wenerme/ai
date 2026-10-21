@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/wrangler/migrate/og.png?v=28973f624b
 
 # Migrate a Wrangler project
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cf migrate` converts a Wrangler configuration file to `cloudflare.config.ts` and adds `cf` to your project. It handles most of the conversion, then lists the items that you finish by hand. This page covers the whole migration: preview, run, resolve follow-up items, finish the project, validate, and deploy.
 
@@ -403,7 +403,9 @@ A custom `build` command does not carry over to the Vite bundler. `cf build` run
 
 ### Source maps
 
-With the Vite bundler, `cf migrate` lists `upload_source_maps` in its required item for build settings. To keep uploading Worker source maps, turn on `build.sourcemap` for the Worker's Vite environment, then delete the TODO comment. By default, the Cloudflare Vite plugin beta names the Worker's environment `ssr`:
+With the Vite bundler, `cf migrate` does not move `upload_source_maps` and reports it as a follow-up item. `cf deploy` uploads every source map in the build output, and the Cloudflare Vite plugin generates source maps for the Worker's Vite environment by default from version 1.64.0. You do not need to replace `upload_source_maps: true`.
+
+To stop uploading source maps, set `build.sourcemap` to `false` for the Worker's Vite environment. By default, the Cloudflare Vite plugin beta names the Worker's environment `ssr`:
 
 *vite.config.tsts*
 
@@ -416,12 +418,14 @@ export default defineConfig({
 	environments: {
 		ssr: {
 			build: {
-				sourcemap: true,
+				sourcemap: false,
 			},
 		},
 	},
 });
 ```
+
+On earlier versions of the Cloudflare Vite plugin, set `build.sourcemap` to `true` to generate source maps.
 
 How `cf migrate` reports source maps can change during the beta.
 
@@ -670,5 +674,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/migrate/#page","headline":"Migrate a Wrangler project","description":"Convert a Wrangler project to cf with cf migrate, resolve the follow-up items, and deploy it with cloudflare.config.ts.","url":"https://developers.cloudflare.com/cf/wrangler/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/migrate/og.png?v=28973f624b22bb97","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/migrate/#page","headline":"Migrate a Wrangler project","description":"Convert a Wrangler project to cf with cf migrate, resolve the follow-up items, and deploy it with cloudflare.config.ts.","url":"https://developers.cloudflare.com/cf/wrangler/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/migrate/og.png?v=28973f624b22bb97","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

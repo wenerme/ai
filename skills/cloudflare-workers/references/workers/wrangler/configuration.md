@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Oct 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -40,7 +40,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-17",
+	"compatibility_date": "2026-10-21",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -76,7 +76,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-17"
+compatibility_date = "2026-10-21"
 workers_dev = false
 
 [route]
@@ -2152,21 +2152,24 @@ In many cases, this allows you to work provide just enough of an API to make a d
 
 [Source maps](https://developers.cloudflare.com/workers/observability/source-maps/) translate compiled and minified code back to the original code that you wrote. Source maps are combined with the stack trace returned by the JavaScript runtime to present you with a stack trace.
 
-Enable source map uploads for JavaScript and TypeScript Workers. Frameworks and custom builds must also [generate maps](https://developers.cloudflare.com/workers/observability/source-maps/#frameworks-and-custom-builds).
+Source maps are uploaded by default for JavaScript and TypeScript Workers. Frameworks and custom builds must also [generate maps](https://developers.cloudflare.com/workers/observability/source-maps/#frameworks-and-custom-builds).
 
-- `upload_source_maps` `boolean`
-  - When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload).
+- `upload_source_maps` `boolean` optional
+  - Controls whether Wrangler generates and uploads source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy), [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload), or [`wrangler preview`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#preview).
+  - When unset, Wrangler uploads source maps and skips any it cannot resolve. This is the default from Wrangler 4.150.0. Earlier versions only upload source maps when this is set to `true`.
+  - When set to `true`, Wrangler fails the upload if a source map cannot be resolved.
+  - When set to `false`, Wrangler does not upload source maps.
 
 Example:
 
 ```jsonc
 {
-	"upload_source_maps": true,
+	"upload_source_maps": false,
 }
 ```
 
 ```toml
-upload_source_maps = true
+upload_source_maps = false
 ```
 
 ## Workers Sites
@@ -2351,5 +2354,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

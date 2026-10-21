@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/og.png?v=d
 
 # AI SDK integration
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `@cloudflare/codemode/ai` entry point converts AI SDK tools into one Code Mode tool. The model writes JavaScript that calls your tools, and an executor runs that code in an isolated sandbox.
 
@@ -51,7 +51,7 @@ Choose between two integration patterns:
    {
      "$schema": "./node_modules/wrangler/config-schema.json",
      // Set this to today's date
-     "compatibility_date": "2026-10-09",
+     "compatibility_date": "2026-10-21",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -65,7 +65,7 @@ Choose between two integration patterns:
 
    ```toml
    # Set this to today's date
-   compatibility_date = "2026-10-09"
+   compatibility_date = "2026-10-21"
    compatibility_flags = ["nodejs_compat"]
 
    [[worker_loaders]]
@@ -200,40 +200,46 @@ The default namespace is `codemode`. `createCodeTool()` also accepts a custom `d
 
 A tool provider groups tools under one sandbox namespace. Pass the tool set directly when every tool belongs under `codemode.*`.
 
-Use `aiTools()` when combining AI SDK tools with providers from other packages. The following optional workspace example also requires `@cloudflare/shell`:
+Use `aiTools()` when combining AI SDK tools with providers from other packages. The following optional workspace example also requires [`@cloudflare/computer` ↗︎](https://github.com/cloudflare/computer):
 
 npmyarnpnpmbun
 
 ```
-npm i @cloudflare/shell
+npm i @cloudflare/computer
 ```
 
 ```
-yarn add @cloudflare/shell
+yarn add @cloudflare/computer
 ```
 
 ```
-pnpm add @cloudflare/shell
+pnpm add @cloudflare/computer
 ```
 
 ```
-bun add @cloudflare/shell
+bun add @cloudflare/computer
 ```
 
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";
-import { Workspace } from "@cloudflare/shell";
-import { stateTools } from "@cloudflare/shell/workers";
+import { Workspace } from "@cloudflare/computer";
+import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { weatherTools } from "./tools";
 
 export class Chat extends AIChatAgent {
-	workspace = new Workspace({ sql: this.ctx.storage.sql });
+	workspace = new Workspace({ storage: this.ctx.storage });
 
 	codemodeTool() {
 		return createCodeTool({
-			tools: [aiTools(weatherTools), stateTools(this.workspace)],
+			tools: [
+				aiTools(weatherTools),
+				{
+					name: "workspace",
+					tools: createAITools({ workspace: this.workspace }),
+				},
+			],
 			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
 		});
 	}
@@ -244,23 +250,29 @@ export class Chat extends AIChatAgent {
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { aiTools, createCodeTool } from "@cloudflare/codemode/ai";
-import { Workspace } from "@cloudflare/shell";
-import { stateTools } from "@cloudflare/shell/workers";
+import { Workspace } from "@cloudflare/computer";
+import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { weatherTools } from "./tools";
 
 export class Chat extends AIChatAgent<Env> {
-	workspace = new Workspace({ sql: this.ctx.storage.sql });
+	workspace = new Workspace({ storage: this.ctx.storage });
 
 	codemodeTool() {
 		return createCodeTool({
-			tools: [aiTools(weatherTools), stateTools(this.workspace)],
+			tools: [
+				aiTools(weatherTools),
+				{
+					name: "workspace",
+					tools: createAITools({ workspace: this.workspace }),
+				},
+			],
 			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
 		});
 	}
 }
 ```
 
-This example exposes AI SDK tools as `codemode.*` and workspace tools as `state.*`.
+This example exposes AI SDK tools as `codemode.*` and workspace tools as `workspace.*`, for example `workspace.read({ path })`.
 
 To assign custom namespaces, pass provider objects instead:
 
@@ -411,5 +423,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/og.png?v=df066aee4ebe873f","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/og.png?v=df066aee4ebe873f","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

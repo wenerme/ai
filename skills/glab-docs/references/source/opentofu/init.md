@@ -13,6 +13,10 @@ Configures the GitLab HTTP backend for OpenTofu or Terraform state
 and runs `tofu init`. You must run this command from a GitLab
 project repository.
 
+If glab is installed as a snap, it cannot run OpenTofu or Terraform
+binaries installed on the host or by other snaps. Place the binary in
+your home directory and pass its path with `--binary`.
+
 ```plaintext
 glab opentofu init <state> [flags]
 ```

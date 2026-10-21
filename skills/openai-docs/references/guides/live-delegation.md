@@ -85,7 +85,7 @@ These settings use familiar Responses concepts, but Live supports a subset of th
 
 Add [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [Code Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), [hosted shell](https://developers.openai.com/api/docs/guides/tools-shell), or [image generation](https://developers.openai.com/api/docs/guides/tools-image-generation) to `delegation.responses.tools`. Follow the linked guides for configuration, model support, and required resources. Responses runs these tools and returns their results automatically.
 
-For shell, use a hosted container, optionally with [Skills](https://developers.openai.com/api/docs/guides/tools-skills). Local shell requires your application to run calls. Live does not support shell `domain_secrets`.
+For shell, use a hosted container, optionally with [Skills](https://developers.openai.com/api/docs/guides/tools-skills). For newly uploaded Skills, [wait until the referenced version is readable](https://developers.openai.com/api/docs/guides/tools-skills#wait-for-an-uploaded-version) before starting the Live session. Local shell requires your application to run calls. Live does not support shell `domain_secrets`.
 
 ### Add MCP and other tools
 
@@ -96,6 +96,8 @@ Live passes the MCP `authorization` and `headers` you provide to Responses, but 
 ### Handle configuration errors
 
 Live validates Responses settings asynchronously after startup and when the settings change. `session.started` and `session.updated` do not wait for this validation. Listen for an `error` with code `responses_validation_failed` and check its message for the unsupported setting or inaccessible resource. The session stays open and the settings are not rolled back; correct them with `session.update`.
+
+For example, a numeric Skill `version`, such as `1`, produces a nonfatal `responses_validation_failed` error for `session.start` or `session.update`. The error message identifies the invalid field and expected type without waiting for `response.create`. Match `error.client_event_id` to the settings event. To recover in the same session, remove the invalid tool configuration with `session.update`. Use string versions, such as `"1"`.
 
 Validation does not guarantee later tool execution. Resource access and tool availability can change, so continue handling backend errors during delegated work. Configuring hosted tools can initialize resources such as containers during validation.
 
@@ -355,7 +357,7 @@ Choose an event based on how GPT-Live should use the content:
 
 All three use a plain-string `content`, limited to 500 tokens per append. Include `delegation_id`: use the original client delegation ID for an update about that task, or `null` for general session context. A non-null ID must identify a known client delegation. Instructions still apply to the live session; an ID does not turn them into a separate backend prompt.
 
-For an opening greeting, include a `developer` message in `session.input` at startup instead. See [Greet before the caller speaks](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks).
+For an opening greeting, include greeting instructions in a `developer` message in `session.input` when creating the session. After `session.started`, send the same instructions once through `session.commentary.append`, with input audio active, a unique `event_id`, and `delegation_id: null`. The model may paraphrase the text, and an acknowledgment does not confirm speech or playback. See [Greet before the caller speaks](https://developers.openai.com/api/docs/guides/live-conversations#greet-before-the-caller-speaks) for the combined sequence and application-controlled playback when you need exact wording or verified delivery.
 
 An appended instruction can interrupt the model's current speech or behavior. Use it when the application needs to redirect the conversation; enforce any related tool or action block in application state.
 

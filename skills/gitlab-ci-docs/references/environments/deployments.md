@@ -39,10 +39,10 @@ deploy_prod:
 
 The `when: manual` action:
 
-- Exposes the **Run** () button for the job in the GitLab UI, with the text **Can be manually deployed to `<environment>`**.
+- Exposes the  () button for the job in the GitLab UI, with the text  `<environment>`.
 - Means the `deploy_prod` job must be triggered manually.
 
-You can find **Run** () in the pipelines, environments, deployments, and jobs views.
+You can find  () in the pipelines, environments, deployments, and jobs views.
 
 ## Track newly included merge requests per deployment
 
@@ -122,12 +122,12 @@ If there is a problem with a deployment, you can retry it or roll it back.
 
 To retry or roll back a deployment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment.
 1. To the right of the deployment name:
-   - To retry a deployment, select **Re-deploy to environment**.
-   - To roll back to a deployment, next to a previously successful deployment, select **Rollback environment**.
+   - To retry a deployment, select .
+   - To roll back to a deployment, next to a previously successful deployment, select .
 
 > [!note]
 > If you have [prevented outdated deployment jobs](deployment_safety.md#prevent-outdated-deployment-jobs) in your project,
