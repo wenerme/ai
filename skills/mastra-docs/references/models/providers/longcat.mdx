@@ -5,7 +5,7 @@ description: "Browse LongCat model IDs, capabilities, context windows, and prici
 
 # [LongCat logo]LongCat
 
-Access 1 LongCat model through Mastra's model router. Authentication is handled automatically using the `LONGCAT_API_KEY` environment variable.
+Access 2 LongCat models through Mastra's model router. Authentication is handled automatically using the `LONGCAT_API_KEY` environment variable.
 
 Learn more in the [LongCat documentation](https://longcat.chat/platform/docs/).
 
@@ -46,10 +46,22 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.75,
-    "outputCost": 2.95
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "longcat/LongCat-2.5-Preview",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 262144,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   }
 ]}
 />
@@ -84,7 +96,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "longcat/LongCat-2.0"
+      ? "longcat/LongCat-2.5-Preview"
       : "longcat/LongCat-2.0";
   }
 });

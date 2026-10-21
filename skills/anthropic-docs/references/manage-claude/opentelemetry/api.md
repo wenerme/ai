@@ -170,7 +170,7 @@ You can also add a destination with the [Admin API](https://platform.claude.com/
 
       var params = TelemetryDestinationCreateParams.builder()
           .endpointUrl("https://gateway.example.com/otlp")
-          .headers(TelemetryDestinationCreateParams.Headers.builder()
+          .headers(TelemetryDestinationCreateParams.DestinationHeaders.builder()
               .putAdditionalProperty("authorization", JsonValue.from("Bearer YOUR_OBSERVABILITY_API_KEY"))
               .build())
           .traces(BetaTelemetryDestinationTracesParams.builder()
@@ -288,8 +288,9 @@ The API reads each request's trace context from the W3C [`traceparent` header](h
 
       ```csharp C#
       using System.Diagnostics;
+      // ...
 
-      // Add this source to your tracer provider, next to com.anthropic.sdk.csharp.
+      // Add this source to your tracer provider, next to com.anthropic.sdk.csharp*.
       var source = new ActivitySource("MyService");
 
       using (source.StartActivity("summarize_issues"))

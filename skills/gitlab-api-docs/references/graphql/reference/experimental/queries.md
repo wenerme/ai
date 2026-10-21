@@ -21,7 +21,7 @@ Find an abuse report.
 
 **Returns:** [`AbuseReport`](objects.md#abusereport)
 
-### Arguments {.no_toc}
+### `abuseReport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -43,7 +43,7 @@ Retrieve all active add-on purchases. This query can be used in GitLab.com and s
 
 **Returns:** [`[AddOnPurchase!]`](objects.md#addonpurchase)
 
-### Arguments {.no_toc}
+### `addOnPurchases` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -59,7 +59,7 @@ List groups with their resolved GitLab Duo availability for admin overrides. Thi
 
 **Returns:** [`AdminDuoAvailabilityNamespaceConnection`](objects.md#adminduoavailabilitynamespaceconnection)
 
-### Arguments {.no_toc}
+### `adminDuoAvailabilityNamespaces` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -79,7 +79,7 @@ Find groups visible to the current admin. This field is a [connection](objects.m
 
 **Returns:** [`GroupInterfaceConnection`](objects.md#groupinterfaceconnection)
 
-### Arguments {.no_toc}
+### `adminGroups` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -107,7 +107,7 @@ Finds a single admin custom role for the instance. Available only for GitLab Sel
 
 **Returns:** [`AdminMemberRole`](objects.md#adminmemberrole)
 
-### Arguments {.no_toc}
+### `adminMemberRole` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -137,7 +137,7 @@ Admin custom roles available for the instance. Available only for GitLab Self-Ma
 
 **Returns:** [`AdminMemberRoleConnection`](objects.md#adminmemberroleconnection)
 
-### Arguments {.no_toc}
+### `adminMemberRoles` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -157,7 +157,7 @@ Find projects visible to the current admin. This field is a [connection](objects
 
 **Returns:** [`ProjectInterfaceConnection`](objects.md#projectinterfaceconnection)
 
-### Arguments {.no_toc}
+### `adminProjects` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -195,7 +195,7 @@ Get flow configuration for an AI Catalog agent.
 
 **Returns:** [`String`](scalars.md#string)
 
-### Arguments {.no_toc}
+### `aiCatalogAgentFlowConfig` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -222,7 +222,7 @@ AI Catalog items configured for use. This field is a [connection](objects.md#con
 
 **Returns:** [`AiCatalogItemConsumerConnection!`](objects.md#aicatalogitemconsumerconnection)
 
-### Arguments {.no_toc}
+### `aiCatalogConfiguredItems` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -247,7 +247,7 @@ List of AI Catalog items, including foundational items. This field is a [connect
 
 **Returns:** [`AiCatalogCustomAndFoundationalItemConnection!`](objects.md#aicatalogcustomandfoundationalitemconnection)
 
-### Arguments {.no_toc}
+### `aiCatalogCustomAndFoundationalItems` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -265,7 +265,7 @@ Find an AI Catalog item.
 
 **Returns:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
-### Arguments {.no_toc}
+### `aiCatalogItem` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -282,7 +282,7 @@ Find a single AI Catalog item consumer by ID.
 
 **Returns:** [`AiCatalogItemConsumer`](objects.md#aicatalogitemconsumer)
 
-### Arguments {.no_toc}
+### `aiCatalogItemConsumer` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -298,7 +298,7 @@ Public AI Catalog item versions. This field is a [connection](objects.md#connect
 
 **Returns:** [`AiCatalogItemVersionConnection!`](objects.md#aicatalogitemversionconnection)
 
-### Arguments {.no_toc}
+### `aiCatalogItemVersions` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -315,7 +315,7 @@ List of AI Catalog items. This field is a [connection](objects.md#connections-an
 
 **Returns:** [`AiCatalogItemConnection!`](objects.md#aicatalogitemconnection)
 
-### Arguments {.no_toc}
+### `aiCatalogItems` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -334,7 +334,7 @@ Find an AI Catalog MCP server by ID.
 
 **Returns:** [`AiCatalogMcpServer`](objects.md#aicatalogmcpserver)
 
-### Arguments {.no_toc}
+### `aiCatalogMcpServer` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -370,7 +370,7 @@ Get available models for Duo Agentic Chat.
 
 **Returns:** [`AvailableModels`](objects.md#availablemodels)
 
-### Arguments {.no_toc}
+### `aiChatAvailableModels` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -384,7 +384,7 @@ Get available GitLab Duo Chat context presets for the current user for a specifi
 
 **Returns:** [`ContextPreset`](objects.md#contextpreset)
 
-### Arguments {.no_toc}
+### `aiChatContextPresets` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -405,7 +405,7 @@ Get projects that can be included by the current user in a GitLab Duo Chat conte
 
 **Returns:** [`ProjectConnection`](objects.md#projectconnection)
 
-### Arguments {.no_toc}
+### `aiChatIncludedProjects` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -421,7 +421,7 @@ List conversation threads of AI features. This field is a [connection](objects.m
 
 **Returns:** [`AiConversationsThreadConnection!`](objects.md#aiconversationsthreadconnection)
 
-### Arguments {.no_toc}
+### `aiConversationThreads` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -438,7 +438,7 @@ List of allowed or denied domains for AI features. This field is a [connection](
 
 **Returns:** [`StringConnection`](objects.md#stringconnection)
 
-### Arguments {.no_toc}
+### `aiDomainSettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -455,7 +455,7 @@ List of configurable AI features. This field is a [connection](objects.md#connec
 
 **Returns:** [`AiFeatureSettingConnection`](objects.md#aifeaturesettingconnection)
 
-### Arguments {.no_toc}
+### `aiFeatureSettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -471,7 +471,7 @@ Metadata describing Duo Agent Platform flow capabilities available to the caller
 
 **Returns:** [`AiFlowsMetadata`](objects.md#aiflowsmetadata)
 
-### Arguments {.no_toc}
+### `aiFlowsMetadata` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -489,7 +489,7 @@ Core agent in GitLab.
 
 **Returns:** [`AiFoundationalChatAgent`](objects.md#aifoundationalchatagent)
 
-### Arguments {.no_toc}
+### `aiFoundationalChatAgent` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -505,7 +505,7 @@ Core agents in GitLab. This field is a [connection](objects.md#connections-and-p
 
 **Returns:** [`AiFoundationalChatAgentConnection!`](objects.md#aifoundationalchatagentconnection)
 
-### Arguments {.no_toc}
+### `aiFoundationalChatAgents` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -522,7 +522,7 @@ Find GitLab Duo Chat messages. This field is a [connection](objects.md#connectio
 
 **Returns:** [`AiMessageConnection!`](objects.md#aimessageconnection)
 
-### Arguments {.no_toc}
+### `aiMessages` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -541,7 +541,7 @@ List of configurable AI features for namespace Model Selection. This field is a 
 
 **Returns:** [`AiModelSelectionNamespaceFeatureSettingConnection`](objects.md#aimodelselectionnamespacefeaturesettingconnection)
 
-### Arguments {.no_toc}
+### `aiModelSelectionNamespaceSettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -557,7 +557,7 @@ Returns the self-hosted model if an ID is provided, otherwise returns all models
 
 **Returns:** [`AiSelfHostedModelConnection`](objects.md#aiselfhostedmodelconnection)
 
-### Arguments {.no_toc}
+### `aiSelfHostedModels` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -569,7 +569,7 @@ Get available GitLab Duo Chat slash commands for the current user for a specific
 
 **Returns:** [`[SlashCommand!]`](objects.md#slashcommand)
 
-### Arguments {.no_toc}
+### `aiSlashCommands` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -585,7 +585,7 @@ AI tool governance rules for a namespace. This field is a [connection](objects.m
 
 **Returns:** [`AiToolRuleConnection`](objects.md#aitoolruleconnection)
 
-### Arguments {.no_toc}
+### `aiToolRules` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -614,10 +614,11 @@ Direct Artifact Registry role assignments on the given resources. Returns only r
 
 **Returns:** [`ArtifactRegistryRoleAssignmentConnection`](objects.md#artifactregistryroleassignmentconnection)
 
-### Arguments {.no_toc}
+### `artifactRegistryRoleAssignments` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
+| `assigneeIds` | [`[UserID!]`](scalars.md#userid) | Global IDs of users to read direct role assignments on repositories for, at most 20. Cannot be combined with `resourceIds`. The organization owner and admins of the Artifact Registry namespace may use it. | `[]` |
 | `resourceIds` | [`[String!]`](scalars.md#string) | UUIDs of the Artifact Registry resources to read role assignments for. Empty reads the whole organization, which only the organization owner may do. | `[]` |
 | `roles` | [`[ArtifactRegistryRole!]`](enums.md#artifactregistryrole) | Only return assignments for these roles. | `[]` |
 
@@ -653,7 +654,7 @@ Find code visible to the current user.
 
 **Returns:** [`BlobSearch`](objects.md#blobsearch)
 
-### Arguments {.no_toc}
+### `blobSearch` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -675,7 +676,7 @@ Find an issue board list.
 
 **Returns:** [`BoardList`](objects.md#boardlist)
 
-### Arguments {.no_toc}
+### `boardList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -708,7 +709,7 @@ A single CI/CD Catalog resource visible to an authorized user.
 
 **Returns:** [`CiCatalogResource`](objects.md#cicatalogresource)
 
-### Arguments {.no_toc}
+### `ciCatalogResource` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -725,7 +726,7 @@ All CI/CD Catalog resources under a common namespace, visible to an authorized u
 
 **Returns:** [`CiCatalogResourceConnection`](objects.md#cicatalogresourceconnection)
 
-### Arguments {.no_toc}
+### `ciCatalogResources` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -743,7 +744,7 @@ Deprecated in GitLab 18.1. Use CiLint mutation: <https://docs.gitlab.com/api/gra
 
 **Returns:** [`CiConfig`](objects.md#ciconfig)
 
-### Arguments {.no_toc}
+### `ciConfig` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -765,7 +766,7 @@ Compute usage data for runners across namespaces on GitLab Dedicated. Defaults t
 
 **Returns:** [`CiDedicatedHostedRunnerUsageConnection`](objects.md#cidedicatedhostedrunnerusageconnection)
 
-### Arguments {.no_toc}
+### `ciDedicatedHostedRunnerUsage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -780,7 +781,7 @@ Compute usage data for projects in a namespace for a given month. Returns projec
 
 **Returns:** [`CiMinutesProjectMonthlyUsageConnection`](objects.md#ciminutesprojectmonthlyusageconnection)
 
-### Arguments {.no_toc}
+### `ciMinutesProjectMonthlyUsage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -793,7 +794,7 @@ Compute usage data for a namespace. This field is a [connection](objects.md#conn
 
 **Returns:** [`CiMinutesNamespaceMonthlyUsageConnection`](objects.md#ciminutesnamespacemonthlyusageconnection)
 
-### Arguments {.no_toc}
+### `ciMinutesUsage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -806,7 +807,7 @@ Stage belonging to a CI pipeline.
 
 **Returns:** [`CiStage`](objects.md#cistage)
 
-### Arguments {.no_toc}
+### `ciPipelineStage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -818,7 +819,7 @@ Time taken for CI jobs to be picked up by runner by percentile. Enable the Click
 
 **Returns:** [`QueueingDelayHistory`](objects.md#queueingdelayhistory)
 
-### Arguments {.no_toc}
+### `ciQueueingHistory` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -832,7 +833,7 @@ List of the instance's CI/CD variables. This field is a [connection](objects.md#
 
 **Returns:** [`CiInstanceVariableConnection`](objects.md#ciinstancevariableconnection)
 
-### Arguments {.no_toc}
+### `ciVariables` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -854,7 +855,7 @@ List of available compliance framework templates.
 
 **Returns:** [`[ComplianceFrameworkTemplate!]`](objects.md#complianceframeworktemplate)
 
-### Arguments {.no_toc}
+### `complianceFrameworkTemplates` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -872,7 +873,7 @@ Find a container repository.
 
 **Returns:** [`ContainerRepositoryDetails`](objects.md#containerrepositorydetails)
 
-### Arguments {.no_toc}
+### `containerRepository` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -896,7 +897,7 @@ Find a custom dashboard by ID.
 
 **Returns:** [`CustomDashboard`](objects.md#customdashboard)
 
-### Arguments {.no_toc}
+### `customDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -908,7 +909,7 @@ Find custom dashboards for an organization. This field is a [connection](objects
 
 **Returns:** [`CustomDashboardInterfaceConnection`](objects.md#customdashboardinterfaceconnection)
 
-### Arguments {.no_toc}
+### `customDashboards` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -928,7 +929,7 @@ Find a custom field by its ID.
 
 **Returns:** [`CustomField`](objects.md#customfield)
 
-### Arguments {.no_toc}
+### `customField` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -940,7 +941,7 @@ Find a GitLab-provided system dashboard by slug.
 
 **Returns:** [`CustomSystemDashboard`](objects.md#customsystemdashboard)
 
-### Arguments {.no_toc}
+### `customSystemDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -952,7 +953,7 @@ Find a dependency.
 
 **Returns:** [`Dependency`](objects.md#dependency)
 
-### Arguments {.no_toc}
+### `dependency` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -970,7 +971,7 @@ Get configured DevOps adoption namespaces. **Status**: Beta. This endpoint is su
 
 **Returns:** [`DevopsAdoptionEnabledNamespaceConnection`](objects.md#devopsadoptionenablednamespaceconnection)
 
-### Arguments {.no_toc}
+### `devopsAdoptionEnabledNamespaces` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1006,7 +1007,7 @@ The alternative branches to the provided user message. Multiple branches can be 
 
 **Returns:** [`[DuoWorkflowBranch!]`](objects.md#duoworkflowbranch)
 
-### Arguments {.no_toc}
+### `duoWorkflowBranches` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1023,7 +1024,7 @@ List the events for a Duo Agent Platform. Returns only the latest checkpoint by 
 
 **Returns:** [`DuoWorkflowEventConnection!`](objects.md#duoworkfloweventconnection)
 
-### Arguments {.no_toc}
+### `duoWorkflowEvents` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1045,7 +1046,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 
 **Returns:** [`DuoWorkflowConnection!`](objects.md#duoworkflowconnection)
 
-### Arguments {.no_toc}
+### `duoWorkflowWorkflows` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1069,7 +1070,7 @@ Testing endpoint to validate the API with.
 
 **Returns:** [`String!`](scalars.md#string)
 
-### Arguments {.no_toc}
+### `echo` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1079,7 +1080,7 @@ Testing endpoint to validate the API with.
 
 **Returns:** [`EpicList`](objects.md#epiclist)
 
-### Arguments {.no_toc}
+### `epicBoardList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1092,7 +1093,7 @@ Deprecated in GitLab 17.4. Replaced with metadata.featureFlags.
 
 **Returns:** [`Boolean!`](scalars.md#boolean)
 
-### Arguments {.no_toc}
+### `featureFlagEnabled` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1103,6 +1104,12 @@ Deprecated in GitLab 17.4. Replaced with metadata.featureFlags.
 A user's frecently visited groups.
 
 **Returns:** [`[Group!]`](objects.md#group)
+
+### `frecentGroups` arguments {.no_toc}
+
+| Name | Type | Description | Default |
+| ---- | ---- | ----------- | ------- |
+| `scopeToOrganization` | [`Boolean`](scalars.md#boolean) | Limits results to groups in the current organization. | `false` |
 
 ## `frecentProjects`
 
@@ -1120,7 +1127,7 @@ Status of a GitLab Duo Agent Platform functional verification check.
 
 **Returns:** [`FunctionalVerificationStatus`](objects.md#functionalverificationstatus)
 
-### Arguments {.no_toc}
+### `functionalVerificationStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1132,7 +1139,7 @@ Find a Geo node.
 
 **Returns:** [`GeoNode`](objects.md#geonode)
 
-### Arguments {.no_toc}
+### `geoNode` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1148,7 +1155,7 @@ Whether GitLab credits are available for the current user.
 
 **Returns:** [`Boolean!`](scalars.md#boolean)
 
-### Arguments {.no_toc}
+### `gitlabCreditsAvailable` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1164,7 +1171,7 @@ Reason GitLab credits are unavailable. Returns "usage_billing_forbidden" when us
 
 **Returns:** [`AiCreditsDenialReason`](enums.md#aicreditsdenialreason)
 
-### Arguments {.no_toc}
+### `gitlabCreditsUnavailableReason` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1186,7 +1193,7 @@ Details about an artifact in the Google Artifact Registry.
 
 **Returns:** [`GoogleCloudArtifactRegistryArtifactDetails`](unions.md#googlecloudartifactregistryartifactdetails)
 
-### Arguments {.no_toc}
+### `googleCloudArtifactRegistryRepositoryArtifact` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1202,7 +1209,7 @@ Find a group.
 
 **Returns:** [`Group`](objects.md#group)
 
-### Arguments {.no_toc}
+### `group` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1218,7 +1225,7 @@ View a specific group secret.
 
 **Returns:** [`GroupSecret`](objects.md#groupsecret)
 
-### Arguments {.no_toc}
+### `groupSecret` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1235,7 +1242,7 @@ List group secrets. This field is a [connection](objects.md#connections-and-pagi
 
 **Returns:** [`GroupSecretConnection`](objects.md#groupsecretconnection)
 
-### Arguments {.no_toc}
+### `groupSecrets` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1251,7 +1258,7 @@ Total number of secrets in a group.
 
 **Returns:** [`Int`](scalars.md#int)
 
-### Arguments {.no_toc}
+### `groupSecretsCount` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1267,7 +1274,7 @@ Find a group secrets manager.
 
 **Returns:** [`GroupSecretsManager`](objects.md#groupsecretsmanager)
 
-### Arguments {.no_toc}
+### `groupSecretsManager` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1283,7 +1290,7 @@ List group secrets that need to be rotated. This field is a [connection](objects
 
 **Returns:** [`GroupSecretConnection`](objects.md#groupsecretconnection)
 
-### Arguments {.no_toc}
+### `groupSecretsNeedingRotation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1299,7 +1306,7 @@ List group secrets permissions. This field is a [connection](objects.md#connecti
 
 **Returns:** [`GroupSecretsPermissionConnection`](objects.md#groupsecretspermissionconnection)
 
-### Arguments {.no_toc}
+### `groupSecretsPermissions` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1311,7 +1318,7 @@ Find groups. This field is a [connection](objects.md#connections-and-pagination)
 
 **Returns:** [`GroupConnection`](objects.md#groupconnection)
 
-### Arguments {.no_toc}
+### `groups` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1368,7 +1375,7 @@ This field is a [connection](objects.md#connections-and-pagination) and accepts 
 
 **Returns:** [`IntegrationExclusionConnection`](objects.md#integrationexclusionconnection)
 
-### Arguments {.no_toc}
+### `integrationExclusions` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1380,7 +1387,7 @@ Find an issue.
 
 **Returns:** [`Issue`](objects.md#issue)
 
-### Arguments {.no_toc}
+### `issue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1396,7 +1403,7 @@ Find issues visible to the current user. At least one filter must be provided. T
 
 **Returns:** [`IssueConnection`](objects.md#issueconnection)
 
-### Arguments {.no_toc}
+### `issues` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1451,7 +1458,7 @@ Find an iteration.
 
 **Returns:** [`Iteration`](objects.md#iteration)
 
-### Arguments {.no_toc}
+### `iteration` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1463,7 +1470,7 @@ All jobs on this GitLab instance. Returns an empty result for users without admi
 
 **Returns:** [`CiJobInterfaceConnection`](objects.md#cijobinterfaceconnection)
 
-### Arguments {.no_toc}
+### `jobs` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1508,7 +1515,7 @@ Finds a single custom role for the instance. Available only for GitLab Self-Mana
 
 **Returns:** [`MemberRole`](objects.md#memberrole)
 
-### Arguments {.no_toc}
+### `memberRole` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1538,7 +1545,7 @@ Custom roles available for the instance. Available only for GitLab Self-Managed.
 
 **Returns:** [`MemberRoleConnection`](objects.md#memberroleconnection)
 
-### Arguments {.no_toc}
+### `memberRoles` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1554,7 +1561,7 @@ Find a merge request.
 
 **Returns:** [`MergeRequest`](objects.md#mergerequest)
 
-### Arguments {.no_toc}
+### `mergeRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1570,7 +1577,7 @@ Find merge requests visible to the current user. At least one filter must be pro
 
 **Returns:** [`MergeRequestConnection`](objects.md#mergerequestconnection)
 
-### Arguments {.no_toc}
+### `mergeRequests` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1628,7 +1635,7 @@ Find a milestone.
 
 **Returns:** [`Milestone`](objects.md#milestone)
 
-### Arguments {.no_toc}
+### `milestone` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1640,7 +1647,7 @@ Find a machine learning experiment.
 
 **Returns:** [`MlExperiment`](objects.md#mlexperiment)
 
-### Arguments {.no_toc}
+### `mlExperiment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1656,7 +1663,7 @@ Find machine learning models.
 
 **Returns:** [`MlModel`](objects.md#mlmodel)
 
-### Arguments {.no_toc}
+### `mlModel` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1668,7 +1675,7 @@ Find a namespace.
 
 **Returns:** [`Namespace`](objects.md#namespace)
 
-### Arguments {.no_toc}
+### `namespace` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1684,7 +1691,7 @@ Check Secrets Manager enrollment for a namespace.
 
 **Returns:** [`SecretsManagerEnrollment`](objects.md#secretsmanagerenrollment)
 
-### Arguments {.no_toc}
+### `namespaceSecretsManagerEnrollment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1696,7 +1703,7 @@ Security-filtered projects for a namespace. This field is a [connection](objects
 
 **Returns:** [`ProjectConnection`](objects.md#projectconnection)
 
-### Arguments {.no_toc}
+### `namespaceSecurityProjects` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1722,7 +1729,7 @@ Find a note.
 
 **Returns:** [`Note`](objects.md#note)
 
-### Arguments {.no_toc}
+### `note` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1738,6 +1745,16 @@ Check if OpenBao instance is healthy and reachable.
 
 **Returns:** [`Boolean!`](scalars.md#boolean)
 
+## `orbit`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Orbit data of the instance and of the groups of the current user. Returns null when the user is not signed in.
+
+**Returns:** [`Orbit`](objects.md#orbit)
+
 ## `organization`
 
 - Status: Experiment
@@ -1748,7 +1765,7 @@ Find an organization.
 
 **Returns:** [`Organization`](objects.md#organization)
 
-### Arguments {.no_toc}
+### `organization` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1764,7 +1781,7 @@ List organizations. This field is a [connection](objects.md#connections-and-pagi
 
 **Returns:** [`OrganizationConnection`](objects.md#organizationconnection)
 
-### Arguments {.no_toc}
+### `organizations` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1778,7 +1795,7 @@ Find a package. This field can only be resolved for one query in any single requ
 
 **Returns:** [`PackageDetailsType`](objects.md#packagedetailstype)
 
-### Arguments {.no_toc}
+### `package` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1794,7 +1811,7 @@ Get multiple package metadata advisories. This field is a [connection](objects.m
 
 **Returns:** [`PackageMetadataAdvisoryConnection`](objects.md#packagemetadataadvisoryconnection)
 
-### Arguments {.no_toc}
+### `packageMetadataAdvisories` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1812,7 +1829,7 @@ Get a package metadata advisory.
 
 **Returns:** [`PackageMetadataAdvisory`](objects.md#packagemetadataadvisory)
 
-### Arguments {.no_toc}
+### `packageMetadataAdvisory` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1829,7 +1846,7 @@ Find a pipeline execution schedule policy test run by ID.
 
 **Returns:** [`PolicyScheduleTestRun`](objects.md#policyscheduletestrun)
 
-### Arguments {.no_toc}
+### `pipelineExecutionSchedulePolicyTestRun` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1841,7 +1858,7 @@ Find a project.
 
 **Returns:** [`Project`](objects.md#project)
 
-### Arguments {.no_toc}
+### `project` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1853,7 +1870,7 @@ Find a project compliance violation.
 
 **Returns:** [`ProjectComplianceViolation`](objects.md#projectcomplianceviolation)
 
-### Arguments {.no_toc}
+### `projectComplianceViolation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1869,7 +1886,7 @@ View a specific project secret.
 
 **Returns:** [`ProjectSecret`](objects.md#projectsecret)
 
-### Arguments {.no_toc}
+### `projectSecret` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1886,7 +1903,7 @@ List project secrets. This field is a [connection](objects.md#connections-and-pa
 
 **Returns:** [`ProjectSecretConnection`](objects.md#projectsecretconnection)
 
-### Arguments {.no_toc}
+### `projectSecrets` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1902,7 +1919,7 @@ Total number of secrets in a project.
 
 **Returns:** [`Int`](scalars.md#int)
 
-### Arguments {.no_toc}
+### `projectSecretsCount` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1918,7 +1935,7 @@ Find a project secrets manager.
 
 **Returns:** [`ProjectSecretsManager`](objects.md#projectsecretsmanager)
 
-### Arguments {.no_toc}
+### `projectSecretsManager` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1934,7 +1951,7 @@ List project secrets that need to be rotated. This field is a [connection](objec
 
 **Returns:** [`ProjectSecretConnection`](objects.md#projectsecretconnection)
 
-### Arguments {.no_toc}
+### `projectSecretsNeedingRotation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1950,7 +1967,7 @@ List project secrets permissions. This field is a [connection](objects.md#connec
 
 **Returns:** [`ProjectSecretsPermissionConnection`](objects.md#projectsecretspermissionconnection)
 
-### Arguments {.no_toc}
+### `projectSecretsPermissions` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1962,7 +1979,7 @@ Find projects visible to the current user. This field is a [connection](objects.
 
 **Returns:** [`ProjectConnection`](objects.md#projectconnection)
 
-### Arguments {.no_toc}
+### `projects` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2008,7 +2025,7 @@ Find a runner.
 
 **Returns:** [`CiRunner`](objects.md#cirunner)
 
-### Arguments {.no_toc}
+### `runner` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2026,7 +2043,7 @@ Deprecated in GitLab 15.9. No longer used, use gitlab-runner documentation to le
 
 **Returns:** [`RunnerSetup`](objects.md#runnersetup)
 
-### Arguments {.no_toc}
+### `runnerSetup` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2041,7 +2058,7 @@ Runner usage by runner. Enable the ClickHouse database backend to use this query
 
 **Returns:** [`[CiRunnerUsage!]`](objects.md#cirunnerusage)
 
-### Arguments {.no_toc}
+### `runnerUsage` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2057,7 +2074,7 @@ Runner usage by project. Enable the ClickHouse database backend to use this quer
 
 **Returns:** [`[CiRunnerUsageByProject!]`](objects.md#cirunnerusagebyproject)
 
-### Arguments {.no_toc}
+### `runnerUsageByProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2073,7 +2090,7 @@ Get all runners in the GitLab instance (project and shared). Access is restricte
 
 **Returns:** [`CiRunnerConnection`](objects.md#cirunnerconnection)
 
-### Arguments {.no_toc}
+### `runners` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2100,7 +2117,7 @@ List secret permissions. This field is a [connection](objects.md#connections-and
 
 **Returns:** [`SecretPermissionConnection`](objects.md#secretpermissionconnection)
 
-### Arguments {.no_toc}
+### `secretPermissions` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2122,7 +2139,7 @@ Security configuration for the project.
 
 **Returns:** [`SecurityConfiguration`](objects.md#securityconfiguration)
 
-### Arguments {.no_toc}
+### `securityConfiguration` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2138,7 +2155,7 @@ Get security scan profile by ID.
 
 **Returns:** [`ScanProfileType!`](objects.md#scanprofiletype)
 
-### Arguments {.no_toc}
+### `securityScanProfile` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2154,7 +2171,7 @@ Configuration variables a security scan profile of the given type can set.
 
 **Returns:** [`[SecurityScanProfileVariable!]`](objects.md#securityscanprofilevariable)
 
-### Arguments {.no_toc}
+### `securityScanProfileVariables` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2170,7 +2187,7 @@ Users within the self-managed instance who are eligible for add-ons. This field 
 
 **Returns:** [`AddOnUserConnection`](objects.md#addonuserconnection)
 
-### Arguments {.no_toc}
+### `selfManagedAddOnEligibleUsers` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2192,7 +2209,7 @@ Find Snippets visible to the current user. This field is a [connection](objects.
 
 **Returns:** [`SnippetConnection`](objects.md#snippetconnection)
 
-### Arguments {.no_toc}
+### `snippets` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2223,7 +2240,7 @@ Finds a single default role for the instance. Available only for GitLab Self-Man
 
 **Returns:** [`StandardRole`](objects.md#standardrole)
 
-### Arguments {.no_toc}
+### `standardRole` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2239,7 +2256,7 @@ Default roles available for the instance. Available only for GitLab Self-Managed
 
 **Returns:** [`StandardRoleConnection`](objects.md#standardroleconnection)
 
-### Arguments {.no_toc}
+### `standardRoles` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2261,7 +2278,7 @@ Usage data of consumables under the subscription.
 
 **Returns:** [`GitlabSubscriptionUsage`](objects.md#gitlabsubscriptionusage)
 
-### Arguments {.no_toc}
+### `subscriptionUsage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2280,7 +2297,7 @@ Find a synthetic note.
 
 **Returns:** [`Note`](objects.md#note)
 
-### Arguments {.no_toc}
+### `syntheticNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2293,7 +2310,7 @@ Find timelogs visible to the current user. This field is a [connection](objects.
 
 **Returns:** [`TimelogConnection`](objects.md#timelogconnection)
 
-### Arguments {.no_toc}
+### `timelogs` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2312,7 +2329,7 @@ Retrieve a single to-do item.
 
 **Returns:** [`Todo`](objects.md#todo)
 
-### Arguments {.no_toc}
+### `todo` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2324,7 +2341,7 @@ Find project topics. This field is a [connection](objects.md#connections-and-pag
 
 **Returns:** [`TopicConnection`](objects.md#topicconnection)
 
-### Arguments {.no_toc}
+### `topics` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2341,7 +2358,7 @@ Usage data for trial subscriptions.
 
 **Returns:** [`GitlabTrialUsage`](objects.md#gitlabtrialusage)
 
-### Arguments {.no_toc}
+### `trialUsage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2353,7 +2370,7 @@ Get statistics on the instance. This field is a [connection](objects.md#connecti
 
 **Returns:** [`UsageTrendsMeasurementConnection`](objects.md#usagetrendsmeasurementconnection)
 
-### Arguments {.no_toc}
+### `usageTrendsMeasurements` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2367,7 +2384,7 @@ Find a user.
 
 **Returns:** [`UserCore`](objects.md#usercore)
 
-### Arguments {.no_toc}
+### `user` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2380,7 +2397,7 @@ Find users. This field is a [connection](objects.md#connections-and-pagination) 
 
 **Returns:** [`UserCoreConnection`](objects.md#usercoreconnection)
 
-### Arguments {.no_toc}
+### `users` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2404,7 +2421,7 @@ Find a container virtual registry. Returns null if the `container_virtual_regist
 
 **Returns:** [`ContainerRegistryDetails`](objects.md#containerregistrydetails)
 
-### Arguments {.no_toc}
+### `virtualRegistriesContainerRegistry` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2420,7 +2437,7 @@ Finds a container upstream registry with details. Returns `null` if the `contain
 
 **Returns:** [`ContainerUpstreamDetails`](objects.md#containerupstreamdetails)
 
-### Arguments {.no_toc}
+### `virtualRegistriesContainerUpstream` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2436,7 +2453,7 @@ Find a Maven virtual registry. Returns null if the `maven_virtual_registry` feat
 
 **Returns:** [`MavenRegistryDetails`](objects.md#mavenregistrydetails)
 
-### Arguments {.no_toc}
+### `virtualRegistriesPackagesMavenRegistry` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2452,7 +2469,7 @@ Find a Maven upstream registry. Returns null if the `maven_virtual_registry` fea
 
 **Returns:** [`MavenUpstreamDetails`](objects.md#mavenupstreamdetails)
 
-### Arguments {.no_toc}
+### `virtualRegistriesPackagesMavenUpstream` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2464,7 +2481,7 @@ Vulnerabilities reported on projects on the current user's instance security das
 
 **Returns:** [`VulnerabilityConnection`](objects.md#vulnerabilityconnection)
 
-### Arguments {.no_toc}
+### `vulnerabilities` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2504,7 +2521,7 @@ The historical number of vulnerabilities per day for the projects on the current
 
 **Returns:** [`VulnerabilitiesCountByDayConnection`](objects.md#vulnerabilitiescountbydayconnection)
 
-### Arguments {.no_toc}
+### `vulnerabilitiesCountByDay` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2517,7 +2534,7 @@ Find a vulnerability.
 
 **Returns:** [`Vulnerability`](objects.md#vulnerability)
 
-### Arguments {.no_toc}
+### `vulnerability` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2533,7 +2550,7 @@ Find a wiki page.
 
 **Returns:** [`WikiPage`](objects.md#wikipage)
 
-### Arguments {.no_toc}
+### `wikiPage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2551,7 +2568,7 @@ Find a work item.
 
 **Returns:** [`WorkItem`](objects.md#workitem)
 
-### Arguments {.no_toc}
+### `workItem` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2567,7 +2584,7 @@ Allowed work item statuses from the root groups the current user belongs to. Thi
 
 **Returns:** [`WorkItemStatusConnection`](objects.md#workitemstatusconnection)
 
-### Arguments {.no_toc}
+### `workItemAllowedStatuses` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2583,7 +2600,7 @@ Find a work item description template.
 
 **Returns:** [`WorkItemDescriptionTemplate`](objects.md#workitemdescriptiontemplate)
 
-### Arguments {.no_toc}
+### `workItemDescriptionTemplateContent` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2609,7 +2626,7 @@ Find work items by their reference. This field is a [connection](objects.md#conn
 
 **Returns:** [`WorkItemConnection`](objects.md#workitemconnection)
 
-### Arguments {.no_toc}
+### `workItemsByReference` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2622,7 +2639,7 @@ Find a workspace.
 
 **Returns:** [`Workspace`](objects.md#workspace)
 
-### Arguments {.no_toc}
+### `workspace` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2634,7 +2651,7 @@ Find workspaces across the entire instance. This field is only available to inst
 
 **Returns:** [`WorkspaceConnection`](objects.md#workspaceconnection)
 
-### Arguments {.no_toc}
+### `workspaces` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |

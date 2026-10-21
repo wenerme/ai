@@ -1,6 +1,6 @@
 ---
-title: "Snowflake Cortex Models: IDs, Context & Usage"
-description: "Browse Snowflake Cortex model IDs, capabilities, and context windows. Learn how to use them in TypeScript with Mastra's model router."
+title: "Snowflake Cortex Models: IDs, Pricing & Usage"
+description: "Browse Snowflake Cortex model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [Snowflake Cortex logo]Snowflake Cortex
@@ -49,8 +49,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "snowflake-cortex/claude-haiku-4-5",
@@ -60,9 +60,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 64000,
+    "inputCost": 1,
+    "outputCost": 5
   },
   {
     "model": "snowflake-cortex/claude-opus-4-5",
@@ -73,8 +73,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 25
   },
   {
     "model": "snowflake-cortex/claude-opus-4-6",
@@ -85,8 +85,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 25
   },
   {
     "model": "snowflake-cortex/claude-opus-4-7",
@@ -97,8 +97,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 25
   },
   {
     "model": "snowflake-cortex/claude-opus-4-8",
@@ -109,8 +109,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 25
   },
   {
     "model": "snowflake-cortex/claude-opus-5",
@@ -121,8 +121,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 25
   },
   {
     "model": "snowflake-cortex/claude-sonnet-4-5",
@@ -132,9 +132,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 64000,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "snowflake-cortex/claude-sonnet-4-6",
@@ -144,9 +144,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 64000,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "snowflake-cortex/claude-sonnet-5",
@@ -156,16 +156,16 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 64000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "snowflake-cortex/deepseek-r1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
@@ -179,22 +179,22 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
+    "contextWindow": 1000000,
+    "maxOutput": 64000,
     "inputCost": null,
     "outputCost": null
   },
   {
     "model": "snowflake-cortex/mistral-large2",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "contextWindow": 128000,
+    "maxOutput": 8192,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "snowflake-cortex/openai-gpt-4.1",
@@ -205,8 +205,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 32000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2,
+    "outputCost": 8
   },
   {
     "model": "snowflake-cortex/openai-gpt-5",
@@ -217,8 +217,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 272000,
     "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.25,
+    "outputCost": 10
   },
   {
     "model": "snowflake-cortex/openai-gpt-5-mini",
@@ -229,8 +229,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 272000,
     "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.25,
+    "outputCost": 2
   },
   {
     "model": "snowflake-cortex/openai-gpt-5-nano",
@@ -241,8 +241,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 272000,
     "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.06,
+    "outputCost": 0.44
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.1",
@@ -253,8 +253,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 272000,
     "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.25,
+    "outputCost": 10
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.2",
@@ -265,8 +265,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.75,
+    "outputCost": 14
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.4",
@@ -277,8 +277,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.5,
+    "outputCost": 15
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.5",
@@ -289,8 +289,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5,
+    "outputCost": 30
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.6-luna",
@@ -301,8 +301,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.2,
+    "outputCost": 1.2
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.6-sol",
@@ -313,8 +313,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "snowflake-cortex/openai-gpt-5.6-terra",
@@ -325,15 +325,15 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "snowflake-cortex/snowflake-llama3.3-70b",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,

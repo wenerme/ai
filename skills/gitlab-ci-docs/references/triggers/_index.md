@@ -32,11 +32,11 @@ Prerequisites:
 
 To create a trigger token:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Pipeline trigger tokens**.
-1. Select **Add new token**
-1. Enter a description and select **Create pipeline trigger token**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select
+1. Enter a description and select .
    - You can view and copy the full token for all triggers you have created.
    - You can only see the first 4 characters for tokens created by other project members.
 
@@ -192,10 +192,10 @@ spec:
 
 To revoke a pipeline trigger token:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Pipeline triggers**.
-1. To the left of the trigger token you want to revoke, select **Revoke** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the left of the trigger token you want to revoke, select  ().
 
 A revoked trigger token cannot be added back.
 
@@ -218,10 +218,10 @@ in pipelines triggered with a pipeline trigger token.
 ## See which pipeline trigger token was used
 
 You can see which pipeline trigger token caused a job to run by visiting the single job page.
-A part of the trigger token displays in the right sidebar, under **Job details**.
+A part of the trigger token displays in the right sidebar, in the  section.
 
 In pipelines triggered with a trigger token, jobs are labeled as `triggered` in
-**Build** > **Jobs**.
+ > .
 
 ## Troubleshooting
 

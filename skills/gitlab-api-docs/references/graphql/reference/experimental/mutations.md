@@ -49,7 +49,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AchievementsAwardInput`
 
-### Arguments {.no_toc}
+### `achievementsAward` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -57,7 +57,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 | `awardMessage` | [`String`](scalars.md#string) | Message to associate with the awarded achievement. |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of the user being awarded the achievement. |
 
-### Fields {.no_toc}
+### `achievementsAward` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -68,7 +68,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AchievementsCreateInput`
 
-### Arguments {.no_toc}
+### `achievementsCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -77,7 +77,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 | `name` | [`String!`](scalars.md#string) | Name for the achievement. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Namespace for the achievement. |
 
-### Fields {.no_toc}
+### `achievementsCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -88,13 +88,13 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AchievementsDeleteInput`
 
-### Arguments {.no_toc}
+### `achievementsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `achievementId` | [`AchievementsAchievementID!`](scalars.md#achievementsachievementid) | Global ID of the achievement being deleted. |
 
-### Fields {.no_toc}
+### `achievementsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -105,13 +105,13 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AchievementsRevokeInput`
 
-### Arguments {.no_toc}
+### `achievementsRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `userAchievementId` | [`AchievementsUserAchievementID!`](scalars.md#achievementsuserachievementid) | Global ID of the user achievement being revoked. |
 
-### Fields {.no_toc}
+### `achievementsRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -122,7 +122,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AchievementsUpdateInput`
 
-### Arguments {.no_toc}
+### `achievementsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -131,7 +131,7 @@ for every mutation, so it is not listed with each mutation's arguments and field
 | `description` | [`String`](scalars.md#string) | Description of or notes for the achievement. |
 | `name` | [`String`](scalars.md#string) | Name for the achievement. |
 
-### Fields {.no_toc}
+### `achievementsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -142,13 +142,13 @@ for every mutation, so it is not listed with each mutation's arguments and field
 
 **Input type:** `AddProjectToSecurityDashboardInput`
 
-### Arguments {.no_toc}
+### `addProjectToSecurityDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectID!`](scalars.md#projectid) | ID of the project to be added to Instance Security Dashboard. |
 
-### Fields {.no_toc}
+### `addProjectToSecurityDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -165,13 +165,13 @@ Clears an admin-locked GitLab Duo availability override from a group.
 
 **Input type:** `AdminClearDuoAvailabilityInput`
 
-### Arguments {.no_toc}
+### `adminClearDuoAvailability` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group to clear the GitLab Duo availability override from. |
 
-### Fields {.no_toc}
+### `adminClearDuoAvailability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -187,7 +187,7 @@ Clears an admin-locked GitLab Duo availability override from a group.
 
 **Input type:** `AdminRolesLdapSyncInput`
 
-### Fields {.no_toc}
+### `adminRolesLdapSync` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -204,7 +204,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AdminSetDuoAvailabilityInput`
 
-### Arguments {.no_toc}
+### `adminSetDuoAvailability` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -212,7 +212,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `clearDescendants` | [`Boolean`](scalars.md#boolean) | Clear conflicting admin-locked overrides on descendant groups instead of rejecting. | `false` |
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group to set the GitLab Duo availability override on. |  |
 
-### Fields {.no_toc}
+### `adminSetDuoAvailability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -226,7 +226,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AdminSidekiqQueuesDeleteJobsInput`
 
-### Arguments {.no_toc}
+### `adminSidekiqQueuesDeleteJobs` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -264,7 +264,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `userId` | [`String`](scalars.md#string) | Delete jobs matching user_id in the context metadata. |
 | `workerClass` | [`String`](scalars.md#string) | Delete jobs with the given worker class. |
 
-### Fields {.no_toc}
+### `adminSidekiqQueuesDeleteJobs` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -279,7 +279,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiActionInput`
 
-### Arguments {.no_toc}
+### `aiAction` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -298,7 +298,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `summarizeReview` | [`AiSummarizeReviewInput`](input_objects.md#aisummarizereviewinput) | Input for summarize_review AI action. |
 | `threadId` | [`AiConversationThreadID`](scalars.md#aiconversationthreadid) | Global Id of the existing thread to continue the conversation. If it is not specified, a new thread will be created for the specified conversation_type. |
 
-### Fields {.no_toc}
+### `aiAction` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -314,7 +314,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogAgentCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogAgentCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -330,7 +330,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `userPrompt` | [`String`](scalars.md#string) | User prompt for the agent. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the agent in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogAgentCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -345,14 +345,14 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogAgentDeleteInput`
 
-### Arguments {.no_toc}
+### `aiCatalogAgentDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `forceHardDelete` | [`Boolean`](scalars.md#boolean) | When true, the flow will always be hard deleted and never soft deleted. Can only be used by instance admins. |
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog Agent to delete. |
 
-### Fields {.no_toc}
+### `aiCatalogAgentDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -367,7 +367,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogAgentUpdateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogAgentUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -384,7 +384,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `versionBump` | [`AiCatalogVersionBump`](enums.md#aicatalogversionbump) | Bump version, calculated from the last released version name. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the agent in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogAgentUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -399,7 +399,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogFlowCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogFlowCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -411,7 +411,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `release` | [`Boolean`](scalars.md#boolean) | Whether to release the latest version of the flow. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the flow in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogFlowCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -426,14 +426,14 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogFlowDeleteInput`
 
-### Arguments {.no_toc}
+### `aiCatalogFlowDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `forceHardDelete` | [`Boolean`](scalars.md#boolean) | When true, the flow will always be hard deleted and never soft deleted. Can only be used by instance admins. |
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog flow to delete. |
 
-### Fields {.no_toc}
+### `aiCatalogFlowDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -448,7 +448,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogFlowUpdateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogFlowUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -461,7 +461,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `versionBump` | [`AiCatalogVersionBump`](enums.md#aicatalogversionbump) | Bump version, calculated from the last released version name. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the flow in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogFlowUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -476,7 +476,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemConsumerBulkCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemConsumerBulkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -488,7 +488,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `triggerGoals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the auto-created AI Catalog triggers, keyed by event type. |
 | `triggerTypes` | [`[String!]`](scalars.md#string) | List of event types to create AI Catalog triggers for. |
 
-### Fields {.no_toc}
+### `aiCatalogItemConsumerBulkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -502,7 +502,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemConsumerCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemConsumerCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -517,7 +517,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `triggerGoals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the auto-created AI Catalog triggers, keyed by event type. |  |
 | `triggerTypes` | [`[String!]`](scalars.md#string) | List of event types to create AI Catalog triggers for (values can be mention, assign or assign_reviewer). |  |
 
-### Fields {.no_toc}
+### `aiCatalogItemConsumerCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -533,13 +533,13 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemConsumerDeleteInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemConsumerDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AiCatalogItemConsumerID!`](scalars.md#aicatalogitemconsumerid) | Global ID of the catalog item consumer to delete. |
 
-### Fields {.no_toc}
+### `aiCatalogItemConsumerDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -554,7 +554,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemConsumerUpdateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemConsumerUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -564,7 +564,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `serviceAccountId` | [`UserID`](scalars.md#userid) | Service account to associate with the item consumer. |
 | `triggerTypes` | [`[String!]`](scalars.md#string) | List of event types to create flow triggers for (values can be mention, assign or assign_reviewer). |
 
-### Fields {.no_toc}
+### `aiCatalogItemConsumerUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -579,7 +579,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemReportInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemReport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -587,7 +587,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog item to report. |
 | `reason` | [`AiCatalogItemReportReason!`](enums.md#aicatalogitemreportreason) | Reason for reporting the catalog item. |
 
-### Fields {.no_toc}
+### `aiCatalogItemReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -601,14 +601,14 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemStarInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemStar` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog item to star or unstar. |
 | `starred` | [`Boolean!`](scalars.md#boolean) | Indicates whether to star or unstar the catalog item. |
 
-### Fields {.no_toc}
+### `aiCatalogItemStar` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -623,14 +623,14 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogItemVersionRestoreInput`
 
-### Arguments {.no_toc}
+### `aiCatalogItemVersionRestore` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `deprecateCurrent` | [`Boolean`](scalars.md#boolean) | Whether to mark the current latest version as deprecated. | `false` |
 | `id` | [`AiCatalogItemVersionID!`](scalars.md#aicatalogitemversionid) | Global ID of the item version to restore from. |  |
 
-### Fields {.no_toc}
+### `aiCatalogItemVersionRestore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -645,7 +645,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 **Input type:** `AiCatalogMcpServerCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogMcpServerCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -658,7 +658,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | `transport` | [`AiCatalogMcpServerTransport!`](enums.md#aicatalogmcpservertransport) | Transport type for the MCP server. |
 | `url` | [`String!`](scalars.md#string) | URL for the MCP server. |
 
-### Fields {.no_toc}
+### `aiCatalogMcpServerCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -675,7 +675,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 **Input type:** `AiCatalogMcpServerSetBlockInput`
 
-### Arguments {.no_toc}
+### `aiCatalogMcpServerSetBlock` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -684,7 +684,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 | `id` | [`AiCatalogMcpServerID!`](scalars.md#aicatalogmcpserverid) | Global ID of the MCP server. |
 | `projectFullPath` | [`ID`](scalars.md#id) | Full path of the project to block or allow the MCP server for. Provide exactly one of `groupFullPath` or `projectFullPath`. |
 
-### Fields {.no_toc}
+### `aiCatalogMcpServerSetBlock` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -699,7 +699,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 **Input type:** `AiCatalogMcpServerUpdateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogMcpServerUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -713,7 +713,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 | `transport` | [`AiCatalogMcpServerTransport`](enums.md#aicatalogmcpservertransport) | Transport type for the MCP server. |
 | `url` | [`String`](scalars.md#string) | URL for the MCP server. |
 
-### Fields {.no_toc}
+### `aiCatalogMcpServerUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -728,7 +728,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 **Input type:** `AiCatalogThirdPartyFlowCreateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogThirdPartyFlowCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -740,7 +740,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 | `release` | [`Boolean`](scalars.md#boolean) | Whether to release the latest version of the Flow. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the Flow in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogThirdPartyFlowCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -755,14 +755,14 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 **Input type:** `AiCatalogThirdPartyFlowDeleteInput`
 
-### Arguments {.no_toc}
+### `aiCatalogThirdPartyFlowDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `forceHardDelete` | [`Boolean`](scalars.md#boolean) | When true, the Third Party Flow will always be hard deleted and never soft deleted. Can only be used by instance admins. |
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog Third Party Flow to delete. |
 
-### Fields {.no_toc}
+### `aiCatalogThirdPartyFlowDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -777,7 +777,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 
 **Input type:** `AiCatalogThirdPartyFlowUpdateInput`
 
-### Arguments {.no_toc}
+### `aiCatalogThirdPartyFlowUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -790,7 +790,7 @@ Blocks or allows an external MCP server for a group or project (kill-switch).
 | `versionBump` | [`AiCatalogVersionBump`](enums.md#aicatalogversionbump) | Bump version, calculated from the last released version name. |
 | `visibility` | [`AiCatalogItemVisibility`](enums.md#aicatalogitemvisibility) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Visibility of the Flow in the catalog. |
 
-### Fields {.no_toc}
+### `aiCatalogThirdPartyFlowUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -807,7 +807,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 
 **Input type:** `AiDomainSettingsInstanceUpdateInput`
 
-### Arguments {.no_toc}
+### `aiDomainSettingsInstanceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -815,7 +815,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 | `domainSettingType` | [`AiDomainSettingType!`](enums.md#aidomainsettingtype) | Type of domain setting to update. |
 | `domains` | [`[String!]!`](scalars.md#string) | List of domains to add or remove. |
 
-### Fields {.no_toc}
+### `aiDomainSettingsInstanceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -833,7 +833,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 
 **Input type:** `AiDomainSettingsNamespaceUpdateInput`
 
-### Arguments {.no_toc}
+### `aiDomainSettingsNamespaceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -842,7 +842,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 | `domains` | [`[String!]!`](scalars.md#string) | List of domains to add or remove. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the root namespace to update. |
 
-### Fields {.no_toc}
+### `aiDomainSettingsNamespaceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -858,7 +858,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 
 **Input type:** `AiDuoWorkflowCreateInput`
 
-### Arguments {.no_toc}
+### `aiDuoWorkflowCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -875,7 +875,7 @@ Adds or removes domains from the allowed or denied list for flows running in a s
 | `webSearchEnabled` | [`Boolean`](scalars.md#boolean) | Enable web search for the session. |
 | `workflowDefinition` | [`String`](scalars.md#string) | Workflow type based on its capability. |
 
-### Fields {.no_toc}
+### `aiDuoWorkflowCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -892,7 +892,7 @@ Updates the instance-level model selection allowlist for an AI feature.
 
 **Input type:** `AiFeatureSettingModelAllowlistUpdateInput`
 
-### Arguments {.no_toc}
+### `aiFeatureSettingModelAllowlistUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -900,7 +900,7 @@ Updates the instance-level model selection allowlist for an AI feature.
 | `allowlistModelRefs` | [`[String!]!`](scalars.md#string) | Identifiers of the GitLab-managed models allowed for the feature. Ignored when `allowlistEnabled` is false. |
 | `feature` | [`AiFeatures!`](enums.md#aifeatures) | AI feature whose model allowlist is being configured. |
 
-### Fields {.no_toc}
+### `aiFeatureSettingModelAllowlistUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -917,7 +917,7 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFeatureSettingUpdateInput`
 
-### Arguments {.no_toc}
+### `aiFeatureSettingUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -926,7 +926,7 @@ Updates or creates settings for AI features.
 | `offeredModelRef` | [`String`](scalars.md#string) | Identifier of the selected model for the feature. |
 | `provider` | [`AiFeatureProviders!`](enums.md#aifeatureproviders) | Provider for AI setting. |
 
-### Fields {.no_toc}
+### `aiFeatureSettingUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -941,7 +941,7 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowScheduleCreateInput`
 
-### Arguments {.no_toc}
+### `aiFlowScheduleCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -951,7 +951,7 @@ Updates or creates settings for AI features.
 | `description` | [`String!`](scalars.md#string) | Description of the schedule. |  |
 | `flowTriggerId` | [`AiFlowTriggerID!`](scalars.md#aiflowtriggerid) | Global ID of the flow trigger to schedule. |  |
 
-### Fields {.no_toc}
+### `aiFlowScheduleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -966,13 +966,13 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowScheduleDeleteInput`
 
-### Arguments {.no_toc}
+### `aiFlowScheduleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AiFlowScheduleID!`](scalars.md#aiflowscheduleid) | Global ID of the flow schedule to delete. |
 
-### Fields {.no_toc}
+### `aiFlowScheduleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -987,7 +987,7 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowScheduleUpdateInput`
 
-### Arguments {.no_toc}
+### `aiFlowScheduleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -997,7 +997,7 @@ Updates or creates settings for AI features.
 | `description` | [`String`](scalars.md#string) | Description of the schedule. |
 | `id` | [`AiFlowScheduleID!`](scalars.md#aiflowscheduleid) | Global ID of the flow schedule to update. |
 
-### Fields {.no_toc}
+### `aiFlowScheduleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1012,7 +1012,7 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowTriggerCreateInput`
 
-### Arguments {.no_toc}
+### `aiFlowTriggerCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1024,9 +1024,11 @@ Updates or creates settings for AI features.
 | `filter` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter conditions for the AI flow trigger. |
 | `goals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the AI flow trigger, keyed by event type. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the AI flow trigger is associated with. |
+| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | `userId` | [`UserID`](scalars.md#userid) | Service account for the AI flow trigger. |
 
-### Fields {.no_toc}
+### `aiFlowTriggerCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1041,13 +1043,13 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowTriggerDeleteInput`
 
-### Arguments {.no_toc}
+### `aiFlowTriggerDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AiFlowTriggerID!`](scalars.md#aiflowtriggerid) | ID of the flow trigger to delete. |
 
-### Fields {.no_toc}
+### `aiFlowTriggerDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1061,7 +1063,7 @@ Updates or creates settings for AI features.
 
 **Input type:** `AiFlowTriggerUpdateInput`
 
-### Arguments {.no_toc}
+### `aiFlowTriggerUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1073,9 +1075,11 @@ Updates or creates settings for AI features.
 | `filter` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Filter conditions for the AI flow trigger. |
 | `goals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the AI flow trigger, keyed by event type. |
 | `id` | [`AiFlowTriggerID!`](scalars.md#aiflowtriggerid) | ID of the flow trigger to update. |
+| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | `userId` | [`UserID`](scalars.md#userid) | Service account for the AI flow trigger. |
 
-### Fields {.no_toc}
+### `aiFlowTriggerUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1092,7 +1096,7 @@ Updates the namespace-level model selection allowlist for an AI feature.
 
 **Input type:** `AiModelSelectionNamespaceModelAllowlistUpdateInput`
 
-### Arguments {.no_toc}
+### `aiModelSelectionNamespaceModelAllowlistUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1101,7 +1105,7 @@ Updates the namespace-level model selection allowlist for an AI feature.
 | `feature` | [`AiFeatures!`](enums.md#aifeatures) | AI feature whose model allowlist is being configured. |
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group whose model allowlist is being configured. |
 
-### Fields {.no_toc}
+### `aiModelSelectionNamespaceModelAllowlistUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1118,7 +1122,7 @@ Updates or creates settings for AI features for a namespace.
 
 **Input type:** `AiModelSelectionNamespaceUpdateInput`
 
-### Arguments {.no_toc}
+### `aiModelSelectionNamespaceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1126,7 +1130,7 @@ Updates or creates settings for AI features for a namespace.
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group for the model selection. |
 | `offeredModelRef` | [`String!`](scalars.md#string) | Identifier of the selected model for the feature. |
 
-### Fields {.no_toc}
+### `aiModelSelectionNamespaceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1143,7 +1147,7 @@ Checks if the AI Gateway can establish a connection with the given model configu
 
 **Input type:** `AiSelfHostedModelConnectionCheckInput`
 
-### Arguments {.no_toc}
+### `aiSelfHostedModelConnectionCheck` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1155,7 +1159,7 @@ Checks if the AI Gateway can establish a connection with the given model configu
 | `name` | [`String!`](scalars.md#string) | Deployment name of the self-hosted model. |
 | `provider` | [`AiSelfHostedModelProvider!`](enums.md#aiselfhostedmodelprovider) | Provider for the self-hosted model. |
 
-### Fields {.no_toc}
+### `aiSelfHostedModelConnectionCheck` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1170,7 +1174,7 @@ Checks if the AI Gateway can establish a connection with the given model configu
 
 **Input type:** `AiSelfHostedModelCreateInput`
 
-### Arguments {.no_toc}
+### `aiSelfHostedModelCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1182,7 +1186,7 @@ Checks if the AI Gateway can establish a connection with the given model configu
 | `name` | [`String!`](scalars.md#string) | Deployment name of the self-hosted model. |
 | `provider` | [`AiSelfHostedModelProvider!`](enums.md#aiselfhostedmodelprovider) | Provider for the self-hosted model. |
 
-### Fields {.no_toc}
+### `aiSelfHostedModelCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1199,13 +1203,13 @@ Deletes a self-hosted model.
 
 **Input type:** `AiSelfHostedModelDeleteInput`
 
-### Arguments {.no_toc}
+### `aiSelfHostedModelDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AiSelfHostedModelID!`](scalars.md#aiselfhostedmodelid) | Global ID of the self-hosted model to delete. |
 
-### Fields {.no_toc}
+### `aiSelfHostedModelDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1221,7 +1225,7 @@ Updates a self-hosted model.
 
 **Input type:** `AiSelfHostedModelUpdateInput`
 
-### Arguments {.no_toc}
+### `aiSelfHostedModelUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1234,7 +1238,7 @@ Updates a self-hosted model.
 | `name` | [`String!`](scalars.md#string) | Deployment name of the self-hosted model. |
 | `provider` | [`AiSelfHostedModelProvider!`](enums.md#aiselfhostedmodelprovider) | Provider for the self-hosted model. |
 
-### Fields {.no_toc}
+### `aiSelfHostedModelUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1245,7 +1249,7 @@ Updates a self-hosted model.
 
 **Input type:** `AlertSetAssigneesInput`
 
-### Arguments {.no_toc}
+### `alertSetAssignees` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1254,7 +1258,7 @@ Updates a self-hosted model.
 | `operationMode` | [`MutationOperationMode`](enums.md#mutationoperationmode) | Operation to perform. Defaults to REPLACE. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the alert to mutate is in. |
 
-### Fields {.no_toc}
+### `alertSetAssignees` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1267,14 +1271,14 @@ Updates a self-hosted model.
 
 **Input type:** `AlertTodoCreateInput`
 
-### Arguments {.no_toc}
+### `alertTodoCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | IID of the alert to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the alert to mutate is in. |
 
-### Fields {.no_toc}
+### `alertTodoCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1291,13 +1295,13 @@ Updates a self-hosted model.
 
 **Input type:** `approvalProjectRuleDeleteInput`
 
-### Arguments {.no_toc}
+### `approvalProjectRuleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ApprovalProjectRuleID!`](scalars.md#approvalprojectruleid) | Global ID of the approval project rule to delete. |
 
-### Fields {.no_toc}
+### `approvalProjectRuleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1312,7 +1316,7 @@ Updates a self-hosted model.
 
 **Input type:** `approvalProjectRuleUpdateInput`
 
-### Arguments {.no_toc}
+### `approvalProjectRuleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1323,7 +1327,7 @@ Updates a self-hosted model.
 | `name` | [`String!`](scalars.md#string) | Name of the approval rule. |
 | `userIds` | [`[ID!]`](scalars.md#id) | List of IDs of Users that can approval rule. |
 
-### Fields {.no_toc}
+### `approvalProjectRuleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1334,7 +1338,7 @@ Updates a self-hosted model.
 
 **Input type:** `ApproveDeploymentInput`
 
-### Arguments {.no_toc}
+### `approveDeployment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1343,7 +1347,7 @@ Updates a self-hosted model.
 | `representedAs` | [`String`](scalars.md#string) | Name of the User/Group/Role to use for the approval, when the user belongs to multiple approval rules. |
 | `status` | [`DeploymentsApprovalStatus!`](enums.md#deploymentsapprovalstatus) | Status of the approval (either `APPROVED` or `REJECTED`). |
 
-### Fields {.no_toc}
+### `approveDeployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1354,13 +1358,13 @@ Updates a self-hosted model.
 
 **Input type:** `ArtifactDestroyInput`
 
-### Arguments {.no_toc}
+### `artifactDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiJobArtifactID!`](scalars.md#cijobartifactid) | ID of the artifact to delete. |
 
-### Fields {.no_toc}
+### `artifactDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1377,13 +1381,13 @@ Activates an Artifact Registry for an organization by claiming a slug.
 
 **Input type:** `ArtifactRegistryActivateInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryActivate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `slug` | [`String!`](scalars.md#string) | Slug to claim, Artifact Registry's immutable identifier for the namespace. |
 
-### Fields {.no_toc}
+### `artifactRegistryActivate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1400,14 +1404,14 @@ Deletes one artifact of an Artifact Registry repository. Permanently deletes a p
 
 **Input type:** `ArtifactRegistryArtifactDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryArtifactDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ID!`](scalars.md#id) | ID of the artifact in Artifact Registry, as returned by the `id` field on a package or image. Not a GitLab global ID. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the artifact, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryArtifactDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1424,7 +1428,7 @@ Deletes a container tag, identified by its name. Applies only to container repos
 
 **Input type:** `ArtifactRegistryContainerTagDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryContainerTagDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1432,7 +1436,7 @@ Deletes a container tag, identified by its name. Applies only to container repos
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the tag, unique within the organization. |
 | `tagName` | [`String!`](scalars.md#string) | Name of the tag to delete. Limited to 1024 characters. |
 
-### Fields {.no_toc}
+### `artifactRegistryContainerTagDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1449,7 +1453,7 @@ Disables Artifact Registry for the organization resolved from the request contex
 
 **Input type:** `ArtifactRegistryDisableInput`
 
-### Fields {.no_toc}
+### `artifactRegistryDisable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1466,7 +1470,7 @@ Enables Artifact Registry for the organization resolved from the request context
 
 **Input type:** `ArtifactRegistryEnableInput`
 
-### Fields {.no_toc}
+### `artifactRegistryEnable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1483,7 +1487,7 @@ Deletes a manifest, identified by its digest. Applies only to Docker or OCI cont
 
 **Input type:** `ArtifactRegistryManifestDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryManifestDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1491,7 +1495,7 @@ Deletes a manifest, identified by its digest. Applies only to Docker or OCI cont
 | `imageId` | [`ID!`](scalars.md#id) | ID of the image holding the manifest in Artifact Registry, as returned by the `id` field on an image. Not a GitLab global ID. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the manifest, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryManifestDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1508,14 +1512,14 @@ Deletes one dist-tag of an npm package in an Artifact Registry repository, addre
 
 **Input type:** `ArtifactRegistryNpmDistTagDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryNpmDistTagDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ID!`](scalars.md#id) | ID of the dist-tag in Artifact Registry. Not a GitLab global ID. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the dist-tag, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryNpmDistTagDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1532,13 +1536,13 @@ Deletes every artifact of an Artifact Registry repository. Permanently deletes p
 
 **Input type:** `ArtifactRegistryRepositoryArtifactsDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRepositoryArtifactsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the repository whose artifacts are deleted, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryRepositoryArtifactsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1555,7 +1559,7 @@ Creates a repository in Artifact Registry.
 
 **Input type:** `ArtifactRegistryRepositoryCreateInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRepositoryCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1567,7 +1571,7 @@ Creates a repository in Artifact Registry.
 | `upstreamRepositoryIds` | [`[ID!]`](scalars.md#id) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Upstream repositories of a virtual repository, as Artifact Registry repository IDs in resolution order. On update, replaces the whole upstream list, and an empty list removes every upstream. Rejected on any other kind. Maximum is 1000 IDs per request. Artifact Registry sets a lower limit on how many upstreams a repository can have. |
 | `visibility` | [`ArtifactRegistryRepositoryVisibility`](enums.md#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
-### Fields {.no_toc}
+### `artifactRegistryRepositoryCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1585,13 +1589,13 @@ Deletes a repository in Artifact Registry and removes every artifact it holds. D
 
 **Input type:** `ArtifactRegistryRepositoryDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRepositoryDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the repository to delete, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryRepositoryDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1607,13 +1611,13 @@ Tests the upstream connection of a remote repository in Artifact Registry.
 
 **Input type:** `ArtifactRegistryRepositoryTestConnectionInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRepositoryTestConnection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the repository to test, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryRepositoryTestConnection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1633,7 +1637,7 @@ Updates a repository in Artifact Registry. Artifact Registry writes the metadata
 
 **Input type:** `ArtifactRegistryRepositoryUpdateInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRepositoryUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1643,7 +1647,7 @@ Updates a repository in Artifact Registry. Artifact Registry writes the metadata
 | `upstreamRepositoryIds` | [`[ID!]`](scalars.md#id) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Upstream repositories of a virtual repository, as Artifact Registry repository IDs in resolution order. On update, replaces the whole upstream list, and an empty list removes every upstream. Rejected on any other kind. Maximum is 1000 IDs per request. Artifact Registry sets a lower limit on how many upstreams a repository can have. |
 | `visibility` | [`ArtifactRegistryRepositoryVisibility`](enums.md#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
-### Fields {.no_toc}
+### `artifactRegistryRepositoryUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1661,13 +1665,13 @@ Grants Artifact Registry roles to users on resources in a single all-or-nothing 
 
 **Input type:** `ArtifactRegistryRoleBulkGrantInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRoleBulkGrant` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `assignments` | [`[ArtifactRegistryRoleAssignmentInput!]!`](input_objects.md#artifactregistryroleassignmentinput) | Role assignments to grant. All succeed or none are written. A maximum of 1000 assignments is allowed per request. |
 
-### Fields {.no_toc}
+### `artifactRegistryRoleBulkGrant` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1684,13 +1688,13 @@ Revokes Artifact Registry roles from users on resources in a single all-or-nothi
 
 **Input type:** `ArtifactRegistryRoleBulkRevokeInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRoleBulkRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `revocations` | [`[ArtifactRegistryRoleRevocationInput!]!`](input_objects.md#artifactregistryrolerevocationinput) | Role revocations to apply. All succeed or none are applied. A maximum of 1000 revocations is allowed per request. |
 
-### Fields {.no_toc}
+### `artifactRegistryRoleBulkRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1707,7 +1711,7 @@ Grants an Artifact Registry role to a user on a resource. Replaces any role the 
 
 **Input type:** `ArtifactRegistryRoleGrantInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRoleGrant` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1715,7 +1719,7 @@ Grants an Artifact Registry role to a user on a resource. Replaces any role the 
 | `resourceId` | [`String!`](scalars.md#string) | UUID of the Artifact Registry resource (repository or namespace) the role applies to. |
 | `role` | [`ArtifactRegistryRole!`](enums.md#artifactregistryrole) | Artifact Registry role to grant. |
 
-### Fields {.no_toc}
+### `artifactRegistryRoleGrant` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1731,14 +1735,14 @@ Revokes a user's Artifact Registry role on a resource. Names no role: a user hol
 
 **Input type:** `ArtifactRegistryRoleRevokeInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryRoleRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `assigneeId` | [`UserID!`](scalars.md#userid) | Global ID of the user to revoke the role from. |
 | `resourceId` | [`String!`](scalars.md#string) | UUID of the Artifact Registry resource (repository or namespace) the role is assigned on. |
 
-### Fields {.no_toc}
+### `artifactRegistryRoleRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1754,7 +1758,7 @@ Removes an upstream repository association from a virtual repository in Artifact
 
 **Input type:** `ArtifactRegistryUpstreamRepositoryDissociateInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryUpstreamRepositoryDissociate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1762,7 +1766,7 @@ Removes an upstream repository association from a virtual repository in Artifact
 | `format` | [`ArtifactRegistryRepositoryFormat!`](enums.md#artifactregistryrepositoryformat) | Package format of the virtual repository. |
 | `name` | [`String!`](scalars.md#string) | Name of the virtual repository holding the upstream repository, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryUpstreamRepositoryDissociate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1778,7 +1782,7 @@ Tests a supplied upstream connection for the remote repository create form in Ar
 
 **Input type:** `ArtifactRegistryUpstreamTestConnectionInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryUpstreamTestConnection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1786,7 +1790,7 @@ Tests a supplied upstream connection for the remote repository create form in Ar
 | `format` | [`ArtifactRegistryRepositoryFormat!`](enums.md#artifactregistryrepositoryformat) | Package format of the upstream to probe. Decides the credential shape and the probe auth. |
 | `url` | [`String!`](scalars.md#string) | Base URL of the upstream to probe. |
 
-### Fields {.no_toc}
+### `artifactRegistryUpstreamTestConnection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1804,14 +1808,14 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 
 **Input type:** `ArtifactRegistryVersionDeleteInput`
 
-### Arguments {.no_toc}
+### `artifactRegistryVersionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ID!`](scalars.md#id) | ID of the version in Artifact Registry, as returned by the `id` field on a version. Not a GitLab global ID. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the version, unique within the organization. |
 
-### Fields {.no_toc}
+### `artifactRegistryVersionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1826,7 +1830,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 
 **Input type:** `AscpComponentCreateInput`
 
-### Arguments {.no_toc}
+### `ascpComponentCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1837,7 +1841,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 | `subDirectory` | [`String!`](scalars.md#string) | Sub-directory path containing the component. |
 | `title` | [`String!`](scalars.md#string) | Component title. |
 
-### Fields {.no_toc}
+### `ascpComponentCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1852,7 +1856,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 
 **Input type:** `AscpScanCreateInput`
 
-### Arguments {.no_toc}
+### `ascpScanCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -1862,7 +1866,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |  |
 | `scanType` | [`AscpScanType`](enums.md#ascpscantype) | Type of scan (default: full). | `FULL` |
 
-### Fields {.no_toc}
+### `ascpScanCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1877,7 +1881,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 
 **Input type:** `AscpSecurityContextCreateInput`
 
-### Arguments {.no_toc}
+### `ascpSecurityContextCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1891,7 +1895,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 | `securityBoundary` | [`[AscpSecurityBoundary!]`](enums.md#ascpsecurityboundary) | Security boundaries the component sits on. |
 | `summary` | [`String`](scalars.md#string) | High-level threat model summary. |
 
-### Fields {.no_toc}
+### `ascpSecurityContextCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1904,7 +1908,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` wit
 
 **Input type:** `AuditEventsAmazonS3ConfigurationCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsAmazonS3ConfigurationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1915,7 +1919,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` wit
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretAccessKey` | [`String!`](scalars.md#string) | Secret access key of the Amazon S3 account. |
 
-### Fields {.no_toc}
+### `auditEventsAmazonS3ConfigurationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1928,13 +1932,13 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsDelete` ins
 
 **Input type:** `AuditEventsAmazonS3ConfigurationDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsAmazonS3ConfigurationDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsAmazonS3ConfigurationID!`](scalars.md#auditeventsamazons3configurationid) | ID of the Amazon S3 configuration to destroy. |
 
-### Fields {.no_toc}
+### `auditEventsAmazonS3ConfigurationDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1946,7 +1950,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsAmazonS3ConfigurationUpdateInput`
 
-### Arguments {.no_toc}
+### `auditEventsAmazonS3ConfigurationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1958,7 +1962,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretAccessKey` | [`String`](scalars.md#string) | Secret access key of the Amazon S3 account. |
 
-### Fields {.no_toc}
+### `auditEventsAmazonS3ConfigurationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1973,14 +1977,14 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationDenylistEventsAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationDenylistEventsAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add to the denylist. |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationDenylistEventsAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1995,14 +1999,14 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationDenylistEventsDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationDenylistEventsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from the denylist. |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationDenylistEventsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2016,14 +2020,14 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationEventsAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationEventsAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add for streaming. |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationEventsAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2038,14 +2042,14 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationEventsDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationEventsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from streaming. |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationEventsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2059,14 +2063,14 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationNamespaceFilterCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationNamespaceFilterCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | Destination ID. |
 | `namespacePath` | [`String`](scalars.md#string) | Full path of the namespace(only project or group). |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationNamespaceFilterCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2081,13 +2085,13 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `AuditEventsGroupDestinationNamespaceFilterDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsGroupDestinationNamespaceFilterDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespaceFilterId` | [`AuditEventsGroupNamespaceFilterID!`](scalars.md#auditeventsgroupnamespacefilterid) | Namespace filter ID. |
 
-### Fields {.no_toc}
+### `auditEventsGroupDestinationNamespaceFilterDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2099,7 +2103,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsCreate` 
 
 **Input type:** `AuditEventsInstanceAmazonS3ConfigurationCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2109,7 +2113,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsCreate` 
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretAccessKey` | [`String!`](scalars.md#string) | Secret access key of the Amazon S3 account. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2122,13 +2126,13 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsDelete` 
 
 **Input type:** `AuditEventsInstanceAmazonS3ConfigurationDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsInstanceAmazonS3ConfigurationID!`](scalars.md#auditeventsinstanceamazons3configurationid) | ID of the instance-level Amazon S3 configuration to delete. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2140,7 +2144,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `AuditEventsInstanceAmazonS3ConfigurationUpdateInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2152,7 +2156,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretAccessKey` | [`String`](scalars.md#string) | Secret access key of the Amazon S3 account. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceAmazonS3ConfigurationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2167,14 +2171,14 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `AuditEventsInstanceDestinationEventsAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceDestinationEventsAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add for streaming. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceDestinationEventsAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2189,14 +2193,14 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `AuditEventsInstanceDestinationEventsDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceDestinationEventsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from streaming. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceDestinationEventsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2210,14 +2214,14 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `AuditEventsInstanceDestinationNamespaceFilterCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceDestinationNamespaceFilterCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | Destination ID. |
 | `namespacePath` | [`String`](scalars.md#string) | Full path of the namespace. Project or group namespaces only. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceDestinationNamespaceFilterCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2232,13 +2236,13 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `AuditEventsInstanceDestinationNamespaceFilterDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsInstanceDestinationNamespaceFilterDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespaceFilterId` | [`AuditEventsInstanceNamespaceFilterID!`](scalars.md#auditeventsinstancenamespacefilterid) | Namespace filter ID. |
 
-### Fields {.no_toc}
+### `auditEventsInstanceDestinationNamespaceFilterDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2250,14 +2254,14 @@ Deprecated in GitLab 18.10. Use `auditEventsGroupDestinationEventsAdd` instead.
 
 **Input type:** `AuditEventsStreamingDestinationEventsAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingDestinationEventsAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsExternalAuditEventDestinationID!`](scalars.md#auditeventsexternalauditeventdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add for streaming. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingDestinationEventsAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2270,14 +2274,14 @@ Deprecated in GitLab 18.10. Use `auditEventsGroupDestinationEventsRemove` instea
 
 **Input type:** `AuditEventsStreamingDestinationEventsRemoveInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingDestinationEventsRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsExternalAuditEventDestinationID!`](scalars.md#auditeventsexternalauditeventdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from streaming. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingDestinationEventsRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2289,14 +2293,14 @@ Deprecated in GitLab 18.10. Use `auditEventsInstanceDestinationEventsAdd` instea
 
 **Input type:** `AuditEventsStreamingDestinationInstanceEventsAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingDestinationInstanceEventsAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsInstanceExternalAuditEventDestinationID!`](scalars.md#auditeventsinstanceexternalauditeventdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add for streaming. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingDestinationInstanceEventsAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2309,14 +2313,14 @@ Deprecated in GitLab 18.10. Use `auditEventsInstanceDestinationEventsRemove` ins
 
 **Input type:** `AuditEventsStreamingDestinationInstanceEventsRemoveInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingDestinationInstanceEventsRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationId` | [`AuditEventsInstanceExternalAuditEventDestinationID!`](scalars.md#auditeventsinstanceexternalauditeventdestinationid) | Destination id. |
 | `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from streaming. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingDestinationInstanceEventsRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2328,7 +2332,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingHeadersCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingHeadersCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2337,7 +2341,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 | `key` | [`String!`](scalars.md#string) | Header key. |  |
 | `value` | [`String!`](scalars.md#string) | Header value. |  |
 
-### Fields {.no_toc}
+### `auditEventsStreamingHeadersCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2350,13 +2354,13 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingHeadersDestroyInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingHeadersDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `headerId` | [`AuditEventsStreamingHeaderID!`](scalars.md#auditeventsstreamingheaderid) | Header to delete. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingHeadersDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2368,7 +2372,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingHeadersUpdateInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingHeadersUpdate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2377,7 +2381,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 | `key` | [`String`](scalars.md#string) | Header key. | `null` |
 | `value` | [`String`](scalars.md#string) | Header value. | `null` |
 
-### Fields {.no_toc}
+### `auditEventsStreamingHeadersUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2390,7 +2394,7 @@ Deprecated in GitLab 18.10. Use `auditEventsGroupDestinationNamespaceFilterCreat
 
 **Input type:** `AuditEventsStreamingHTTPNamespaceFiltersAddInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingHttpNamespaceFiltersAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2398,7 +2402,7 @@ Deprecated in GitLab 18.10. Use `auditEventsGroupDestinationNamespaceFilterCreat
 | `groupPath` | [`ID`](scalars.md#id) | Full path of the group. |
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingHttpNamespaceFiltersAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2411,13 +2415,13 @@ Deprecated in GitLab 18.10. Use `auditEventsGroupDestinationNamespaceFilterDelet
 
 **Input type:** `AuditEventsStreamingHTTPNamespaceFiltersDeleteInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingHttpNamespaceFiltersDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespaceFilterId` | [`AuditEventsStreamingHTTPNamespaceFilterID!`](scalars.md#auditeventsstreaminghttpnamespacefilterid) | Namespace filter ID. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingHttpNamespaceFiltersDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2429,7 +2433,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingInstanceHeadersCreateInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingInstanceHeadersCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2438,7 +2442,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 | `key` | [`String!`](scalars.md#string) | Header key. |  |
 | `value` | [`String!`](scalars.md#string) | Header value. |  |
 
-### Fields {.no_toc}
+### `auditEventsStreamingInstanceHeadersCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2451,13 +2455,13 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingInstanceHeadersDestroyInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingInstanceHeadersDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `headerId` | [`AuditEventsStreamingInstanceHeaderID!`](scalars.md#auditeventsstreaminginstanceheaderid) | Header to delete. |
 
-### Fields {.no_toc}
+### `auditEventsStreamingInstanceHeadersDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2469,7 +2473,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AuditEventsStreamingInstanceHeadersUpdateInput`
 
-### Arguments {.no_toc}
+### `auditEventsStreamingInstanceHeadersUpdate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -2478,7 +2482,7 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 | `key` | [`String`](scalars.md#string) | Header key. | `null` |
 | `value` | [`String`](scalars.md#string) | Header value. | `null` |
 
-### Fields {.no_toc}
+### `auditEventsStreamingInstanceHeadersUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2489,14 +2493,14 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AwardEmojiAddInput`
 
-### Arguments {.no_toc}
+### `awardEmojiAdd` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `awardableId` | [`AwardableID!`](scalars.md#awardableid) | Global ID of the awardable resource. |
 | `name` | [`String!`](scalars.md#string) | Emoji name. |
 
-### Fields {.no_toc}
+### `awardEmojiAdd` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2507,14 +2511,14 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AwardEmojiRemoveInput`
 
-### Arguments {.no_toc}
+### `awardEmojiRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `awardableId` | [`AwardableID!`](scalars.md#awardableid) | Global ID of the awardable resource. |
 | `name` | [`String!`](scalars.md#string) | Emoji name. |
 
-### Fields {.no_toc}
+### `awardEmojiRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2525,14 +2529,14 @@ Deprecated in GitLab 18.10. Configure headers by using the streaming destination
 
 **Input type:** `AwardEmojiToggleInput`
 
-### Arguments {.no_toc}
+### `awardEmojiToggle` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `awardableId` | [`AwardableID!`](scalars.md#awardableid) | Global ID of the awardable resource. |
 | `name` | [`String!`](scalars.md#string) | Emoji name. |
 
-### Fields {.no_toc}
+### `awardEmojiToggle` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2546,7 +2550,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BoardEpicCreateInput`
 
-### Arguments {.no_toc}
+### `boardEpicCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2555,7 +2559,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `listId` | [`BoardsEpicListID!`](scalars.md#boardsepiclistid) | Global ID of the epic board list in which epic will be created. |
 | `title` | [`String!`](scalars.md#string) | Title of the epic. |
 
-### Fields {.no_toc}
+### `boardEpicCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2566,7 +2570,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BoardListCreateInput`
 
-### Arguments {.no_toc}
+### `boardListCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2579,7 +2583,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `position` | [`Int`](scalars.md#int) | Position of the list. |
 | `statusId` | [`WorkItemsStatusesStatusID`](scalars.md#workitemsstatusesstatusid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Global ID of an existing status. |
 
-### Fields {.no_toc}
+### `boardListCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2590,7 +2594,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BoardListUpdateLimitMetricsInput`
 
-### Arguments {.no_toc}
+### `boardListUpdateLimitMetrics` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2599,7 +2603,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `maxIssueCount` | [`Int`](scalars.md#int) | New maximum issue count limit. |
 | `maxIssueWeight` | [`Int`](scalars.md#int) | New maximum issue weight limit. |
 
-### Fields {.no_toc}
+### `boardListUpdateLimitMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2610,14 +2614,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BranchDeleteInput`
 
-### Arguments {.no_toc}
+### `branchDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the branch. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path the branch is associated with. |
 
-### Fields {.no_toc}
+### `branchDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2632,7 +2636,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `branchRuleApprovalProjectRuleCreateInput`
 
-### Arguments {.no_toc}
+### `branchRuleApprovalProjectRuleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2643,7 +2647,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `name` | [`String!`](scalars.md#string) | Name of the approval rule. |
 | `userIds` | [`[ID!]`](scalars.md#id) | List of IDs of Users that can approval rule. |
 
-### Fields {.no_toc}
+### `branchRuleApprovalProjectRuleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2658,14 +2662,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BranchRuleCreateInput`
 
-### Arguments {.no_toc}
+### `branchRuleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Branch name, with wildcards, for the branch rules. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path to the project that the branch is associated with. |
 
-### Fields {.no_toc}
+### `branchRuleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2680,13 +2684,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `BranchRuleDeleteInput`
 
-### Arguments {.no_toc}
+### `branchRuleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule to destroy. |
 
-### Fields {.no_toc}
+### `branchRuleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2703,7 +2707,7 @@ Create a new external status check from a branch rule.
 
 **Input type:** `BranchRuleExternalStatusCheckCreateInput`
 
-### Arguments {.no_toc}
+### `branchRuleExternalStatusCheckCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2712,7 +2716,7 @@ Create a new external status check from a branch rule.
 | `name` | [`String!`](scalars.md#string) | Name of the external status check. |
 | `sharedSecret` | [`String`](scalars.md#string) | HMAC shared secret for authenticating external status check requests. |
 
-### Fields {.no_toc}
+### `branchRuleExternalStatusCheckCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2729,14 +2733,14 @@ Destroy an external status check from a branch rule.
 
 **Input type:** `BranchRuleExternalStatusCheckDestroyInput`
 
-### Arguments {.no_toc}
+### `branchRuleExternalStatusCheckDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `branchRuleId` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule. |
 | `id` | [`MergeRequestsExternalStatusCheckID!`](scalars.md#mergerequestsexternalstatuscheckid) | Global ID of the external status check to destroy. |
 
-### Fields {.no_toc}
+### `branchRuleExternalStatusCheckDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2752,7 +2756,7 @@ Update an external status check from a branch rule.
 
 **Input type:** `BranchRuleExternalStatusCheckUpdateInput`
 
-### Arguments {.no_toc}
+### `branchRuleExternalStatusCheckUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2762,7 +2766,7 @@ Update an external status check from a branch rule.
 | `name` | [`String!`](scalars.md#string) | Name of the external status check. |
 | `sharedSecret` | [`String`](scalars.md#string) | HMAC shared secret for authenticating external status check requests. |
 
-### Fields {.no_toc}
+### `branchRuleExternalStatusCheckUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2779,14 +2783,14 @@ Create a squash option for a branch rule.
 
 **Input type:** `BranchRuleSquashOptionCreateInput`
 
-### Arguments {.no_toc}
+### `branchRuleSquashOptionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `branchRuleId` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule. |
 | `squashOption` | [`SquashOptionSetting!`](enums.md#squashoptionsetting) | Squash option to set for the branch rule. |
 
-### Fields {.no_toc}
+### `branchRuleSquashOptionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2803,13 +2807,13 @@ Delete a squash option for a branch rule.
 
 **Input type:** `BranchRuleSquashOptionDeleteInput`
 
-### Arguments {.no_toc}
+### `branchRuleSquashOptionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `branchRuleId` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule. |
 
-### Fields {.no_toc}
+### `branchRuleSquashOptionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2825,14 +2829,14 @@ Update a squash option for a branch rule.
 
 **Input type:** `BranchRuleSquashOptionUpdateInput`
 
-### Arguments {.no_toc}
+### `branchRuleSquashOptionUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `branchRuleId` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule. |
 | `squashOption` | [`SquashOptionSetting!`](enums.md#squashoptionsetting) | Squash option after mutation. |
 
-### Fields {.no_toc}
+### `branchRuleSquashOptionUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2847,7 +2851,7 @@ Update a squash option for a branch rule.
 
 **Input type:** `BranchRuleUpdateInput`
 
-### Arguments {.no_toc}
+### `branchRuleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2855,7 +2859,7 @@ Update a squash option for a branch rule.
 | `id` | [`ProjectsBranchRuleID!`](scalars.md#projectsbranchruleid) | Global ID of the branch rule to update. |
 | `name` | [`String!`](scalars.md#string) | Branch name, with wildcards, for the branch rules. |
 
-### Fields {.no_toc}
+### `branchRuleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2870,14 +2874,14 @@ Update a squash option for a branch rule.
 
 **Input type:** `BulkDestroyJobArtifactsInput`
 
-### Arguments {.no_toc}
+### `bulkDestroyJobArtifacts` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[CiJobArtifactID!]!`](scalars.md#cijobartifactid) | Global IDs of the job artifacts to destroy. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Global Project ID of the job artifacts to destroy. Incompatible with projectPath. |
 
-### Fields {.no_toc}
+### `bulkDestroyJobArtifacts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2891,14 +2895,14 @@ Update a squash option for a branch rule.
 
 **Input type:** `BulkEnableDevopsAdoptionNamespacesInput`
 
-### Arguments {.no_toc}
+### `bulkEnableDevopsAdoptionNamespaces` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `displayNamespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Display namespace ID. |
 | `namespaceIds` | [`[NamespaceID!]!`](scalars.md#namespaceid) | List of Namespace IDs. |
 
-### Fields {.no_toc}
+### `bulkEnableDevopsAdoptionNamespaces` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2913,13 +2917,13 @@ Update a squash option for a branch rule.
 
 **Input type:** `BulkRunnerDeleteInput`
 
-### Arguments {.no_toc}
+### `bulkRunnerDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[CiRunnerID!]`](scalars.md#cirunnerid) | IDs of the runners to delete. |
 
-### Fields {.no_toc}
+### `bulkRunnerDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2934,14 +2938,14 @@ This operation is best-effort: valid updates are applied even if some fail.
 
 **Input type:** `BulkSetVulnerabilityFindingsDueDatesInput`
 
-### Arguments {.no_toc}
+### `bulkSetVulnerabilityFindingsDueDates` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectFullPath` | [`String!`](scalars.md#string) | Full path of the project. |
 | `updates` | [`[FindingDueDatesSetInput!]!`](input_objects.md#findingduedatessetinput) | List of finding UUIDs with due dates. A maximum of 1000 updates is allowed per request. |
 
-### Fields {.no_toc}
+### `bulkSetVulnerabilityFindingsDueDates` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2960,7 +2964,7 @@ Bulk updates permission settings for multiple AI tool rules.
 
 **Input type:** `BulkUpdateAiToolRulesInput`
 
-### Arguments {.no_toc}
+### `bulkUpdateAiToolRules` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2968,7 +2972,7 @@ Bulk updates permission settings for multiple AI tool rules.
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project to update tool rules for. When provided, rules can only be stricter than the namespace rule. |
 | `toolRules` | [`[BulkToolRuleInput!]!`](input_objects.md#bulktoolruleinput) | Tool rules to update (maximum 100 entries). Each entry replaces the whole rule, so a partial entry clears the access types it omits. |
 
-### Fields {.no_toc}
+### `bulkUpdateAiToolRules` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2979,7 +2983,7 @@ Bulk updates permission settings for multiple AI tool rules.
 
 **Input type:** `BulkUpdateSecurityAttributesInput`
 
-### Arguments {.no_toc}
+### `bulkUpdateSecurityAttributes` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2987,7 +2991,7 @@ Bulk updates permission settings for multiple AI tool rules.
 | `items` | [`[ID!]!`](scalars.md#id) | Global IDs of groups and projects to update. |
 | `mode` | [`SecurityAttributeBulkUpdateMode!`](enums.md#securityattributebulkupdatemode) | Update mode: add, remove, or replace attributes. |
 
-### Fields {.no_toc}
+### `bulkUpdateSecurityAttributes` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3003,14 +3007,14 @@ Cancels a vulnerability workflow execution.
 
 **Input type:** `CancelVulnerabilityWorkflowInput`
 
-### Arguments {.no_toc}
+### `cancelVulnerabilityWorkflow` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Global ID of the project. |
 | `workflow` | [`VulnerabilityDuoWorkflow!`](enums.md#vulnerabilityduoworkflow) | Workflow to cancel. |
 
-### Fields {.no_toc}
+### `cancelVulnerabilityWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3026,13 +3030,13 @@ Cancels a vulnerability workflow execution.
 
 **Input type:** `CatalogResourcesCreateInput`
 
-### Arguments {.no_toc}
+### `catalogResourcesCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path belonging to the catalog resource. |
 
-### Fields {.no_toc}
+### `catalogResourcesCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3046,13 +3050,13 @@ Cancels a vulnerability workflow execution.
 
 **Input type:** `CatalogResourcesDestroyInput`
 
-### Arguments {.no_toc}
+### `catalogResourcesDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path belonging to the catalog resource. |
 
-### Fields {.no_toc}
+### `catalogResourcesDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3068,7 +3072,7 @@ Creates a continuous deployment application in an organization.
 
 **Input type:** `CdApplicationCreateInput`
 
-### Arguments {.no_toc}
+### `cdApplicationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3077,7 +3081,7 @@ Creates a continuous deployment application in an organization.
 | `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | Global ID of the organization to create the application in. |
 | `services` | [`[CdServiceInput!]`](input_objects.md#cdserviceinput) | Services to create in the application, up to 1000. |
 
-### Fields {.no_toc}
+### `cdApplicationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3094,14 +3098,14 @@ Creates a new pipeline version of a continuous deployment application flow defin
 
 **Input type:** `CdApplicationFlowDefinitionCreateInput`
 
-### Arguments {.no_toc}
+### `cdApplicationFlowDefinitionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `applicationId` | [`CdApplicationID!`](scalars.md#cdapplicationid) | Global ID of the application to create the flow definition for. |
 | `definition` | [`String!`](scalars.md#string) | Body of the flow definition. |
 
-### Fields {.no_toc}
+### `cdApplicationFlowDefinitionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3118,7 +3122,7 @@ Creates a link on a continuous deployment application.
 
 **Input type:** `CdApplicationLinkCreateInput`
 
-### Arguments {.no_toc}
+### `cdApplicationLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3127,7 +3131,7 @@ Creates a link on a continuous deployment application.
 | `name` | [`String!`](scalars.md#string) | Name of the link. |
 | `url` | [`String!`](scalars.md#string) | URL of the link. |
 
-### Fields {.no_toc}
+### `cdApplicationLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3144,13 +3148,13 @@ Deletes a link on a continuous deployment application.
 
 **Input type:** `CdApplicationLinkDeleteInput`
 
-### Arguments {.no_toc}
+### `cdApplicationLinkDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CdApplicationLinkID!`](scalars.md#cdapplicationlinkid) | Global ID of the link to delete. |
 
-### Fields {.no_toc}
+### `cdApplicationLinkDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3166,7 +3170,7 @@ Updates a link on a continuous deployment application.
 
 **Input type:** `CdApplicationLinkUpdateInput`
 
-### Arguments {.no_toc}
+### `cdApplicationLinkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3175,7 +3179,7 @@ Updates a link on a continuous deployment application.
 | `name` | [`String`](scalars.md#string) | Name of the link. |
 | `url` | [`String`](scalars.md#string) | URL of the link. |
 
-### Fields {.no_toc}
+### `cdApplicationLinkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3192,7 +3196,7 @@ Updates a continuous deployment application.
 
 **Input type:** `CdApplicationUpdateInput`
 
-### Arguments {.no_toc}
+### `cdApplicationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3200,7 +3204,7 @@ Updates a continuous deployment application.
 | `id` | [`CdApplicationID!`](scalars.md#cdapplicationid) | Global ID of the application to update. |
 | `name` | [`String`](scalars.md#string) | Name of the application. |
 
-### Fields {.no_toc}
+### `cdApplicationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3217,7 +3221,7 @@ Creates a continuous deployment artifact source for a service.
 
 **Input type:** `CdArtifactSourceCreateInput`
 
-### Arguments {.no_toc}
+### `cdArtifactSourceCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3226,7 +3230,7 @@ Creates a continuous deployment artifact source for a service.
 | `sourceConfig` | [`JSON`](scalars.md#json) | Configuration of the artifact source, defined by the consuming driver. |
 | `sourceRef` | [`String!`](scalars.md#string) | Reference of the artifact source. |
 
-### Fields {.no_toc}
+### `cdArtifactSourceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3243,7 +3247,7 @@ Creates a continuous deployment environment in an organization.
 
 **Input type:** `CdEnvironmentCreateInput`
 
-### Arguments {.no_toc}
+### `cdEnvironmentCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3253,7 +3257,7 @@ Creates a continuous deployment environment in an organization.
 | `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | Global ID of the organization to create the environment in. |
 | `tier` | [`CdEnvironmentTier!`](enums.md#cdenvironmenttier) | Tier of the environment. |
 
-### Fields {.no_toc}
+### `cdEnvironmentCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3270,14 +3274,14 @@ Creates a new versioned driver binding for a continuous deployment environment.
 
 **Input type:** `CdEnvironmentDriverBindingCreateInput`
 
-### Arguments {.no_toc}
+### `cdEnvironmentDriverBindingCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `environmentDriverBinding` | [`CdEnvironmentDriverBindingInput!`](input_objects.md#cdenvironmentdriverbindinginput) | Driver binding to create for the environment. |
 | `environmentId` | [`CdEnvironmentID!`](scalars.md#cdenvironmentid) | Global ID of the environment to bind the driver to. |
 
-### Fields {.no_toc}
+### `cdEnvironmentDriverBindingCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3294,7 +3298,7 @@ Updates a continuous deployment environment.
 
 **Input type:** `CdEnvironmentUpdateInput`
 
-### Arguments {.no_toc}
+### `cdEnvironmentUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3303,7 +3307,7 @@ Updates a continuous deployment environment.
 | `name` | [`String`](scalars.md#string) | Name of the environment. |
 | `tier` | [`CdEnvironmentTier`](enums.md#cdenvironmenttier) | Tier of the environment. |
 
-### Fields {.no_toc}
+### `cdEnvironmentUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3320,14 +3324,14 @@ Creates a continuous deployment rollout in an organization.
 
 **Input type:** `CdRolloutCreateInput`
 
-### Arguments {.no_toc}
+### `cdRolloutCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | Global ID of the organization to create the rollout in. |
 | `versionSetId` | [`CdVersionSetID!`](scalars.md#cdversionsetid) | Global ID of the version set the rollout deploys. |
 
-### Fields {.no_toc}
+### `cdRolloutCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3344,7 +3348,7 @@ Resolves an open approval gate on a continuous deployment rollout by recording t
 
 **Input type:** `CdRolloutGateResolveInput`
 
-### Arguments {.no_toc}
+### `cdRolloutGateResolve` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3352,7 +3356,7 @@ Resolves an open approval gate on a continuous deployment rollout by recording t
 | `resolutionReason` | [`String`](scalars.md#string) | Reason for the decision. |
 | `status` | [`CdRolloutGateStatus!`](enums.md#cdrolloutgatestatus) | Decision to record for the approval gate. |
 
-### Fields {.no_toc}
+### `cdRolloutGateResolve` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3369,7 +3373,7 @@ Creates a continuous deployment service in an application.
 
 **Input type:** `CdServiceCreateInput`
 
-### Arguments {.no_toc}
+### `cdServiceCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3377,7 +3381,7 @@ Creates a continuous deployment service in an application.
 | `description` | [`String`](scalars.md#string) | Description of the service. |
 | `name` | [`String!`](scalars.md#string) | Name of the service. |
 
-### Fields {.no_toc}
+### `cdServiceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3394,7 +3398,7 @@ Updates a continuous deployment service.
 
 **Input type:** `CdServiceUpdateInput`
 
-### Arguments {.no_toc}
+### `cdServiceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3402,7 +3406,7 @@ Updates a continuous deployment service.
 | `id` | [`CdServiceID!`](scalars.md#cdserviceid) | Global ID of the service to update. |
 | `name` | [`String`](scalars.md#string) | Name of the service. |
 
-### Fields {.no_toc}
+### `cdServiceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3419,14 +3423,14 @@ Creates a continuous deployment version from a free-text name, for artifacts Git
 
 **Input type:** `CdVersionCreateInput`
 
-### Arguments {.no_toc}
+### `cdVersionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `artifactSourceId` | [`CdArtifactSourceID!`](scalars.md#cdartifactsourceid) | Global ID of the artifact source to create the version for. |
 | `name` | [`String!`](scalars.md#string) | Name of the version. |
 
-### Fields {.no_toc}
+### `cdVersionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3443,7 +3447,7 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CdVersionSetCreateInput`
 
-### Arguments {.no_toc}
+### `cdVersionSetCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3452,7 +3456,7 @@ Creates a continuous deployment version set in an application.
 | `name` | [`String!`](scalars.md#string) | Name of the version set. |
 | `versionIds` | [`[CdVersionID!]!`](scalars.md#cdversionid) | Global IDs of the versions that make up the version set, one per service. A version set must contain at least one version. |
 
-### Fields {.no_toc}
+### `cdVersionSetCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3463,7 +3467,7 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CiJobTokenScopeAddGroupOrProjectInput`
 
-### Arguments {.no_toc}
+### `ciJobTokenScopeAddGroupOrProject` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -3472,7 +3476,7 @@ Creates a continuous deployment version set in an application.
 | `projectPath` | [`ID!`](scalars.md#id) | Project that the CI job token scope belongs to. |  |
 | `targetPath` | [`ID!`](scalars.md#id) | Group or project to be added to the CI job token scope. |  |
 
-### Fields {.no_toc}
+### `ciJobTokenScopeAddGroupOrProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3484,7 +3488,7 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CiJobTokenScopeAddProjectInput`
 
-### Arguments {.no_toc}
+### `ciJobTokenScopeAddProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3492,7 +3496,7 @@ Creates a continuous deployment version set in an application.
 | `projectPath` | [`ID!`](scalars.md#id) | Project that the CI job token scope belongs to. |
 | `targetProjectPath` | [`ID!`](scalars.md#id) | Project to be added to the CI job token scope. |
 
-### Fields {.no_toc}
+### `ciJobTokenScopeAddProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3504,14 +3508,14 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CiJobTokenScopeRemoveGroupInput`
 
-### Arguments {.no_toc}
+### `ciJobTokenScopeRemoveGroup` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project that the CI job token scope belongs to. |
 | `targetGroupPath` | [`ID!`](scalars.md#id) | Group to be removed from the CI job token scope. |
 
-### Fields {.no_toc}
+### `ciJobTokenScopeRemoveGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3523,7 +3527,7 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CiJobTokenScopeRemoveProjectInput`
 
-### Arguments {.no_toc}
+### `ciJobTokenScopeRemoveProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3531,7 +3535,7 @@ Creates a continuous deployment version set in an application.
 | `projectPath` | [`ID!`](scalars.md#id) | Project that the CI job token scope belongs to. |
 | `targetProjectPath` | [`ID!`](scalars.md#id) | Project to be removed from the CI job token scope. |
 
-### Fields {.no_toc}
+### `ciJobTokenScopeRemoveProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3547,7 +3551,7 @@ Creates a continuous deployment version set in an application.
 
 **Input type:** `CiJobTokenScopeUpdatePoliciesInput`
 
-### Arguments {.no_toc}
+### `ciJobTokenScopeUpdatePolicies` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3556,7 +3560,7 @@ Creates a continuous deployment version set in an application.
 | `projectPath` | [`ID!`](scalars.md#id) | Project that the CI job token scope belongs to. |
 | `targetPath` | [`ID!`](scalars.md#id) | Group or project that the CI job token targets. |
 
-### Fields {.no_toc}
+### `ciJobTokenScopeUpdatePolicies` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3570,7 +3574,7 @@ Should not be requested more than once per request.
 
 **Input type:** `CiLintInput`
 
-### Arguments {.no_toc}
+### `ciLint` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3579,7 +3583,7 @@ Should not be requested more than once per request.
 | `projectPath` | [`ID!`](scalars.md#id) | Project of the CI config. |
 | `ref` | [`String`](scalars.md#string) | Ref to use when linting. Default is the project default branch. |
 
-### Fields {.no_toc}
+### `ciLint` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3590,13 +3594,13 @@ Should not be requested more than once per request.
 
 **Input type:** `ClusterAgentDeleteInput`
 
-### Arguments {.no_toc}
+### `clusterAgentDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ClustersAgentID!`](scalars.md#clustersagentid) | Global ID of the cluster agent that will be deleted. |
 
-### Fields {.no_toc}
+### `clusterAgentDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3606,7 +3610,7 @@ Should not be requested more than once per request.
 
 **Input type:** `ClusterAgentTokenCreateInput`
 
-### Arguments {.no_toc}
+### `clusterAgentTokenCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3614,7 +3618,7 @@ Should not be requested more than once per request.
 | `description` | [`String`](scalars.md#string) | Description of the token. |
 | `name` | [`String!`](scalars.md#string) | Name of the token. |
 
-### Fields {.no_toc}
+### `clusterAgentTokenCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3626,13 +3630,13 @@ Should not be requested more than once per request.
 
 **Input type:** `ClusterAgentTokenRevokeInput`
 
-### Arguments {.no_toc}
+### `clusterAgentTokenRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ClustersAgentTokenID!`](scalars.md#clustersagenttokenid) | Global ID of the agent token that will be revoked. |
 
-### Fields {.no_toc}
+### `clusterAgentTokenRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3642,7 +3646,7 @@ Should not be requested more than once per request.
 
 **Input type:** `ClusterAgentUrlConfigurationCreateInput`
 
-### Arguments {.no_toc}
+### `clusterAgentUrlConfigurationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3653,7 +3657,7 @@ Should not be requested more than once per request.
 | `tlsHost` | [`String`](scalars.md#string) | TLS host name to verify the server name in agent endpoint certificate. |
 | `url` | [`String!`](scalars.md#string) | URL for the new URL configuration. |
 
-### Fields {.no_toc}
+### `clusterAgentUrlConfigurationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3664,13 +3668,13 @@ Should not be requested more than once per request.
 
 **Input type:** `ClusterAgentUrlConfigurationDeleteInput`
 
-### Arguments {.no_toc}
+### `clusterAgentUrlConfigurationDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ClustersAgentsUrlConfigurationID!`](scalars.md#clustersagentsurlconfigurationid) | Global ID of the agent URL configuration that will be deleted. |
 
-### Fields {.no_toc}
+### `clusterAgentUrlConfigurationDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3680,7 +3684,7 @@ Should not be requested more than once per request.
 
 **Input type:** `CommitCreateInput`
 
-### Arguments {.no_toc}
+### `commitCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -3693,7 +3697,7 @@ Should not be requested more than once per request.
 | `startProjectPath` | [`ID`](scalars.md#id) | Full path of the project to start the commit from. Must be the project itself or a project it was forked from. |  |
 | `startSha` | [`String`](scalars.md#string) | SHA of the commit to start the new branch from. Mutually exclusive with startBranch. |  |
 
-### Fields {.no_toc}
+### `commitCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3710,13 +3714,13 @@ create a merge request are part of the response.
 
 **Input type:** `ConfigureContainerScanningInput`
 
-### Arguments {.no_toc}
+### `configureContainerScanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `configureContainerScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3732,13 +3736,13 @@ the response.
 
 **Input type:** `ConfigureDependencyScanningInput`
 
-### Arguments {.no_toc}
+### `configureDependencyScanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `configureDependencyScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3754,14 +3758,14 @@ create a Merge Request are a part of the response.
 
 **Input type:** `ConfigureSastInput`
 
-### Arguments {.no_toc}
+### `configureSast` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `configuration` | [`SastCiConfigurationInput!`](input_objects.md#sastciconfigurationinput) | SAST CI configuration for the project. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `configureSast` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3778,13 +3782,13 @@ response.
 
 **Input type:** `ConfigureSastIacInput`
 
-### Arguments {.no_toc}
+### `configureSastIac` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `configureSastIac` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3801,13 +3805,13 @@ response.
 
 **Input type:** `ConfigureSecretDetectionInput`
 
-### Arguments {.no_toc}
+### `configureSecretDetection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `configureSecretDetection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3823,13 +3827,13 @@ response.
 
 **Input type:** `ContainerCacheEntryDeleteInput`
 
-### Arguments {.no_toc}
+### `containerCacheEntryDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`String!`](scalars.md#string) | ID of the cache entry. |
 
-### Fields {.no_toc}
+### `containerCacheEntryDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3844,13 +3848,13 @@ response.
 
 **Input type:** `ContainerUpstreamCacheDeleteInput`
 
-### Arguments {.no_toc}
+### `containerUpstreamCacheDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesContainerUpstreamID!`](scalars.md#virtualregistriescontainerupstreamid) | ID of the container virtual registry upstream. |
 
-### Fields {.no_toc}
+### `containerUpstreamCacheDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3865,7 +3869,7 @@ response.
 
 **Input type:** `ContainerUpstreamCreateInput`
 
-### Arguments {.no_toc}
+### `containerUpstreamCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -3877,7 +3881,7 @@ response.
 | `url` | [`String!`](scalars.md#string) | URL of the upstream registry. |  |
 | `username` | [`String`](scalars.md#string) | Username of the upstream registry. |  |
 
-### Fields {.no_toc}
+### `containerUpstreamCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3892,13 +3896,13 @@ response.
 
 **Input type:** `ContainerUpstreamDeleteInput`
 
-### Arguments {.no_toc}
+### `containerUpstreamDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesContainerUpstreamID!`](scalars.md#virtualregistriescontainerupstreamid) | ID of the upstream to be deleted. |
 
-### Fields {.no_toc}
+### `containerUpstreamDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3913,7 +3917,7 @@ response.
 
 **Input type:** `ContainerUpstreamTestInput`
 
-### Arguments {.no_toc}
+### `containerUpstreamTest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3923,7 +3927,7 @@ response.
 | `url` | [`String`](scalars.md#string) | URL of the upstream registry to test. Required when `GraphqlExplorerControllerid` is not provided. |
 | `username` | [`String`](scalars.md#string) | Username for authenticating with the upstream registry. Used when `id` is not provided. |
 
-### Fields {.no_toc}
+### `containerUpstreamTest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3938,7 +3942,7 @@ response.
 
 **Input type:** `ContainerUpstreamUpdateInput`
 
-### Arguments {.no_toc}
+### `containerUpstreamUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3950,7 +3954,7 @@ response.
 | `url` | [`String`](scalars.md#string) | URL of the upstream registry. |
 | `username` | [`String`](scalars.md#string) | Username of the upstream registry. |
 
-### Fields {.no_toc}
+### `containerUpstreamUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3965,13 +3969,13 @@ response.
 
 **Input type:** `ContainerVirtualRegistryCacheDeleteInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryCacheDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesContainerRegistryID!`](scalars.md#virtualregistriescontainerregistryid) | ID of the container virtual registry. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryCacheDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3986,7 +3990,7 @@ response.
 
 **Input type:** `ContainerVirtualRegistryCreateInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3994,7 +3998,7 @@ response.
 | `groupPath` | [`ID`](scalars.md#id) | Full path of the group with which the resource is associated. |
 | `name` | [`String!`](scalars.md#string) | Name of virtual registry. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4009,13 +4013,13 @@ response.
 
 **Input type:** `ContainerVirtualRegistryDeleteInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesContainerRegistryID!`](scalars.md#virtualregistriescontainerregistryid) | ID of the container virtual registry to be deleted. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4030,7 +4034,7 @@ response.
 
 **Input type:** `ContainerVirtualRegistryUpdateInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4038,7 +4042,7 @@ response.
 | `id` | [`VirtualRegistriesContainerRegistryID!`](scalars.md#virtualregistriescontainerregistryid) | ID of the container virtual registry to be updated. |
 | `name` | [`String`](scalars.md#string) | Name of virtual registry. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4053,14 +4057,14 @@ response.
 
 **Input type:** `ContainerVirtualRegistryUpstreamCreateInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryUpstreamCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `registryId` | [`VirtualRegistriesContainerRegistryID!`](scalars.md#virtualregistriescontainerregistryid) | ID of the container virtual registry. |
 | `upstreamId` | [`VirtualRegistriesContainerUpstreamID!`](scalars.md#virtualregistriescontainerupstreamid) | ID of the upstream. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryUpstreamCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4075,13 +4079,13 @@ response.
 
 **Input type:** `ContainerVirtualRegistryUpstreamDeleteInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryUpstreamDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `upstreamId` | [`VirtualRegistriesContainerRegistryUpstreamID!`](scalars.md#virtualregistriescontainerregistryupstreamid) | ID of the container virtual registry upstream. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryUpstreamDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4096,14 +4100,14 @@ response.
 
 **Input type:** `ContainerVirtualRegistryUpstreamUpdateInput`
 
-### Arguments {.no_toc}
+### `containerVirtualRegistryUpstreamUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesContainerRegistryUpstreamID!`](scalars.md#virtualregistriescontainerregistryupstreamid) | ID of the container virtual registry upstream. |
 | `position` | [`Int!`](scalars.md#int) | Priority order of an upstream within a virtual registry. |
 
-### Fields {.no_toc}
+### `containerVirtualRegistryUpstreamUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4114,14 +4118,14 @@ response.
 
 **Input type:** `CorpusCreateInput`
 
-### Arguments {.no_toc}
+### `corpusCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Project the corpus belongs to. |
 | `packageId` | [`PackagesPackageID!`](scalars.md#packagespackageid) | ID of the corpus package. |
 
-### Fields {.no_toc}
+### `corpusCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4131,14 +4135,14 @@ response.
 
 **Input type:** `CreateAlertIssueInput`
 
-### Arguments {.no_toc}
+### `createAlertIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | IID of the alert to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the alert to mutate is in. |
 
-### Fields {.no_toc}
+### `createAlertIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4153,7 +4157,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateAnnotationInput`
 
-### Arguments {.no_toc}
+### `createAnnotation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4164,7 +4168,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 | `environmentId` | [`EnvironmentID`](scalars.md#environmentid) | Global ID of the environment to add an annotation to. |
 | `startingAt` | [`Time!`](scalars.md#time) | Timestamp indicating starting moment to which the annotation relates. |
 
-### Fields {.no_toc}
+### `createAnnotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4175,7 +4179,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateBoardInput`
 
-### Arguments {.no_toc}
+### `createBoard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4192,7 +4196,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project with which the resource is associated. |
 | `weight` | [`Int`](scalars.md#int) | Weight value to be assigned to the board. |
 
-### Fields {.no_toc}
+### `createBoard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4203,7 +4207,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateBranchInput`
 
-### Arguments {.no_toc}
+### `createBranch` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4211,7 +4215,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path the branch is associated with. |
 | `ref` | [`String!`](scalars.md#string) | Branch name or commit SHA to create branch from. |
 
-### Fields {.no_toc}
+### `createBranch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4222,14 +4226,14 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateClusterAgentInput`
 
-### Arguments {.no_toc}
+### `createClusterAgent` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the cluster agent. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the associated project for the cluster agent. |
 
-### Fields {.no_toc}
+### `createClusterAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4240,14 +4244,14 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateComplianceFrameworkInput`
 
-### Arguments {.no_toc}
+### `createComplianceFramework` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace to add the compliance framework to. |
 | `params` | [`ComplianceFrameworkInput!`](input_objects.md#complianceframeworkinput) | Parameters to update the compliance framework with. |
 
-### Fields {.no_toc}
+### `createComplianceFramework` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4262,7 +4266,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateComplianceFrameworkFromTemplateInput`
 
-### Arguments {.no_toc}
+### `createComplianceFrameworkFromTemplate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4273,7 +4277,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace to add the compliance framework to. |
 | `templateId` | [`ComplianceManagementFrameworksTemplateRegistryTemplateID!`](scalars.md#compliancemanagementframeworkstemplateregistrytemplateid) | Unique identifier of the template to create the framework from. |
 
-### Fields {.no_toc}
+### `createComplianceFrameworkFromTemplate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4288,7 +4292,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateComplianceRequirementInput`
 
-### Arguments {.no_toc}
+### `createComplianceRequirement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4296,7 +4300,7 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 | `controls` | [`[ComplianceRequirementsControlInput!]`](input_objects.md#compliancerequirementscontrolinput) | Controls to add to the compliance requirement. |
 | `params` | [`ComplianceRequirementInput!`](input_objects.md#compliancerequirementinput) | Parameters to update the compliance requirement with. |
 
-### Fields {.no_toc}
+### `createComplianceRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4311,14 +4315,14 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `CreateComplianceRequirementsControlInput`
 
-### Arguments {.no_toc}
+### `createComplianceRequirementsControl` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `complianceRequirementId` | [`ComplianceManagementComplianceFrameworkComplianceRequirementID!`](scalars.md#compliancemanagementcomplianceframeworkcompliancerequirementid) | Global ID of the compliance requirement of the new control. |
 | `params` | [`ComplianceRequirementsControlInput!`](input_objects.md#compliancerequirementscontrolinput) | Parameters to create the compliance requirement control. |
 
-### Fields {.no_toc}
+### `createComplianceRequirementsControl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4331,7 +4335,7 @@ Creates a repository protection rule to restrict access to a project's container
 
 **Input type:** `CreateContainerProtectionRepositoryRuleInput`
 
-### Arguments {.no_toc}
+### `createContainerProtectionRepositoryRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4340,7 +4344,7 @@ Creates a repository protection rule to restrict access to a project's container
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project where a protection rule is located. |
 | `repositoryPathPattern` | [`String!`](scalars.md#string) | Container repository path pattern protected by the protection rule. Must start with the project's full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project's full path. |
 
-### Fields {.no_toc}
+### `createContainerProtectionRepositoryRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4357,7 +4361,7 @@ Creates a protection rule to control which user roles can modify container image
 
 **Input type:** `createContainerProtectionTagRuleInput`
 
-### Arguments {.no_toc}
+### `createContainerProtectionTagRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4366,7 +4370,7 @@ Creates a protection rule to control which user roles can modify container image
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project containing the container image tags. |
 | `tagNamePattern` | [`String!`](scalars.md#string) | The pattern that matches container image tags to protect. For example, `v1.*`. Wildcard character `*` allowed. |
 
-### Fields {.no_toc}
+### `createContainerProtectionTagRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4383,7 +4387,7 @@ Creates a custom dashboard in an organization.
 
 **Input type:** `CreateCustomDashboardInput`
 
-### Arguments {.no_toc}
+### `createCustomDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4393,7 +4397,7 @@ Creates a custom dashboard in an organization.
 | `namespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Namespace to scope the dashboard to. |
 | `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization the dashboard belongs to. Defaults to the current organization if not provided. |
 
-### Fields {.no_toc}
+### `createCustomDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4404,7 +4408,7 @@ Creates a custom dashboard in an organization.
 
 **Input type:** `CreateCustomEmojiInput`
 
-### Arguments {.no_toc}
+### `createCustomEmoji` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4412,7 +4416,7 @@ Creates a custom dashboard in an organization.
 | `name` | [`String!`](scalars.md#string) | Name of the emoji. |
 | `url` | [`String!`](scalars.md#string) | Location of the emoji file. |
 
-### Fields {.no_toc}
+### `createCustomEmoji` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4423,7 +4427,7 @@ Creates a custom dashboard in an organization.
 
 **Input type:** `CreateDiffNoteInput`
 
-### Arguments {.no_toc}
+### `createDiffNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4432,7 +4436,7 @@ Creates a custom dashboard in an organization.
 | `noteableId` | [`NoteableID!`](scalars.md#noteableid) | Global ID of the resource to add a note to. |
 | `position` | [`DiffPositionInput!`](input_objects.md#diffpositioninput) | Position of the note on a diff. |
 
-### Fields {.no_toc}
+### `createDiffNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4444,7 +4448,7 @@ Creates a custom dashboard in an organization.
 
 **Input type:** `CreateDiscussionInput`
 
-### Arguments {.no_toc}
+### `createDiscussion` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4452,7 +4456,7 @@ Creates a custom dashboard in an organization.
 | `internal` | [`Boolean`](scalars.md#boolean) | Internal flag for a note. Default is false. |
 | `noteableId` | [`NoteableID!`](scalars.md#noteableid) | Global ID of the resource to add a note to. |
 
-### Fields {.no_toc}
+### `createDiscussion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4466,7 +4470,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `CreateEpicInput`
 
-### Arguments {.no_toc}
+### `createEpic` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4483,7 +4487,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `startDateIsFixed` | [`Boolean`](scalars.md#boolean) | Indicates start date should be sourced from start_date_fixed field not the issue milestones. |
 | `title` | [`String`](scalars.md#string) | Title of the epic. |
 
-### Fields {.no_toc}
+### `createEpic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4498,14 +4502,14 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `CreateFunctionalVerificationWorkflowInput`
 
-### Arguments {.no_toc}
+### `createFunctionalVerificationWorkflow` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `checkType` | [`FunctionalVerificationCheckType!`](enums.md#functionalverificationchecktype) | Type of functional verification check to run. |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the namespace to run the verification check against. |
 
-### Fields {.no_toc}
+### `createFunctionalVerificationWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4516,7 +4520,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `CreateImageDiffNoteInput`
 
-### Arguments {.no_toc}
+### `createImageDiffNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4525,7 +4529,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `noteableId` | [`NoteableID!`](scalars.md#noteableid) | Global ID of the resource to add a note to. |
 | `position` | [`DiffImagePositionInput!`](input_objects.md#diffimagepositioninput) | Position of the note on a diff. |
 
-### Fields {.no_toc}
+### `createImageDiffNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4537,7 +4541,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `CreateIssueInput`
 
-### Arguments {.no_toc}
+### `createIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4566,7 +4570,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `type` | [`IssueType`](enums.md#issuetype) | Type of the issue. |
 | `weight` | [`Int`](scalars.md#int) | Weight of the issue. |
 
-### Fields {.no_toc}
+### `createIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4579,7 +4583,7 @@ Deprecated in GitLab 14.0. Use iterationCreate.
 
 **Input type:** `CreateIterationInput`
 
-### Arguments {.no_toc}
+### `createIteration` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4591,7 +4595,7 @@ Deprecated in GitLab 14.0. Use iterationCreate.
 | `startDate` | [`String`](scalars.md#string) | Start date of the iteration. |
 | `title` | [`String`](scalars.md#string) | Title of the iteration. |
 
-### Fields {.no_toc}
+### `createIteration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4608,7 +4612,7 @@ Creates a diff note on a merge request using minimal parameters. SHAs, file path
 
 **Input type:** `CreateLatestDiffNoteInput`
 
-### Arguments {.no_toc}
+### `createLatestDiffNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4622,7 +4626,7 @@ Creates a diff note on a merge request using minimal parameters. SHAs, file path
 | `noteableId` | [`MergeRequestID!`](scalars.md#mergerequestid) | Global ID of the merge request to add a diff note to. |
 | `oldLine` | [`Int`](scalars.md#int) | Line number on the old version of the file. Use alone for removed lines, with newLine for unchanged context lines. At least one of newLine or oldLine is required. |
 
-### Fields {.no_toc}
+### `createLatestDiffNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4639,7 +4643,7 @@ returned.
 
 **Input type:** `CreateNoteInput`
 
-### Arguments {.no_toc}
+### `createNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4649,7 +4653,7 @@ returned.
 | `mergeRequestDiffHeadSha` | [`String`](scalars.md#string) | SHA of the head commit which is used to ensure that the merge request has not been updated since the request was sent. |
 | `noteableId` | [`NoteableID!`](scalars.md#noteableid) | Global ID of the resource to add a note to. |
 
-### Fields {.no_toc}
+### `createNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4663,7 +4667,7 @@ Creates a protection rule to restrict access to project packages.
 
 **Input type:** `CreatePackagesProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `createPackagesProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4673,7 +4677,7 @@ Creates a protection rule to restrict access to project packages.
 | `packageType` | [`PackagesProtectionRulePackageType!`](enums.md#packagesprotectionrulepackagetype) | Package type protected by the protection rule. For example, `NPM`, `PYPI`. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project where a protection rule is located. |
 
-### Fields {.no_toc}
+### `createPackagesProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4684,7 +4688,7 @@ Creates a protection rule to restrict access to project packages.
 
 **Input type:** `CreateRequirementInput`
 
-### Arguments {.no_toc}
+### `createRequirement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4692,7 +4696,7 @@ Creates a protection rule to restrict access to project packages.
 | `projectPath` | [`ID!`](scalars.md#id) | Full project path the requirement is associated with. |
 | `title` | [`String`](scalars.md#string) | Title of the requirement. |
 
-### Fields {.no_toc}
+### `createRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4703,7 +4707,7 @@ Creates a protection rule to restrict access to project packages.
 
 **Input type:** `CreateSnippetInput`
 
-### Arguments {.no_toc}
+### `createSnippet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4714,7 +4718,7 @@ Creates a protection rule to restrict access to project packages.
 | `uploadedFiles` | [`[String!]`](scalars.md#string) | Paths to files uploaded in the snippet description. |
 | `visibilityLevel` | [`VisibilityLevelsEnum!`](enums.md#visibilitylevelsenum) | Visibility level of the snippet. |
 
-### Fields {.no_toc}
+### `createSnippet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4731,7 +4735,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CreateTerraformStateProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `createTerraformStateProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -4740,7 +4744,7 @@ Creates a protection rule for a Terraform state backend.
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project where the protection rule is located. |  |
 | `stateName` | [`String!`](scalars.md#string) | Terraform state name protected by the rule. |  |
 
-### Fields {.no_toc}
+### `createTerraformStateProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4751,7 +4755,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CreateTestCaseInput`
 
-### Arguments {.no_toc}
+### `createTestCase` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4761,7 +4765,7 @@ Creates a protection rule for a Terraform state backend.
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path to create the test case in. |
 | `title` | [`String!`](scalars.md#string) | Test case title. |
 
-### Fields {.no_toc}
+### `createTestCase` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4776,13 +4780,13 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomFieldArchiveInput`
 
-### Arguments {.no_toc}
+### `customFieldArchive` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IssuablesCustomFieldID!`](scalars.md#issuablescustomfieldid) | Global ID of the custom field. |
 
-### Fields {.no_toc}
+### `customFieldArchive` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4797,7 +4801,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomFieldCreateInput`
 
-### Arguments {.no_toc}
+### `customFieldCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4807,7 +4811,7 @@ Creates a protection rule for a Terraform state backend.
 | `selectOptions` | [`[CustomFieldSelectOptionInput!]`](input_objects.md#customfieldselectoptioninput) | Available options for a select field. |
 | `workItemTypeIds` | [`[WorkItemsTypeID!]`](scalars.md#workitemstypeid) | Work item type global IDs associated to the custom field. |
 
-### Fields {.no_toc}
+### `customFieldCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4822,13 +4826,13 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomFieldUnarchiveInput`
 
-### Arguments {.no_toc}
+### `customFieldUnarchive` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IssuablesCustomFieldID!`](scalars.md#issuablescustomfieldid) | Global ID of the custom field. |
 
-### Fields {.no_toc}
+### `customFieldUnarchive` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4843,7 +4847,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomFieldUpdateInput`
 
-### Arguments {.no_toc}
+### `customFieldUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4852,7 +4856,7 @@ Creates a protection rule for a Terraform state backend.
 | `selectOptions` | [`[CustomFieldSelectOptionInput!]`](input_objects.md#customfieldselectoptioninput) | Available options for a select field. |
 | `workItemTypeIds` | [`[WorkItemsTypeID!]`](scalars.md#workitemstypeid) | Work item type global IDs associated to the custom field. |
 
-### Fields {.no_toc}
+### `customFieldUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4863,7 +4867,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomerRelationsContactCreateInput`
 
-### Arguments {.no_toc}
+### `customerRelationsContactCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4875,7 +4879,7 @@ Creates a protection rule for a Terraform state backend.
 | `organizationId` | [`CustomerRelationsOrganizationID`](scalars.md#customerrelationsorganizationid) | Organization for the contact. |
 | `phone` | [`String`](scalars.md#string) | Phone number of the contact. |
 
-### Fields {.no_toc}
+### `customerRelationsContactCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4886,7 +4890,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomerRelationsContactUpdateInput`
 
-### Arguments {.no_toc}
+### `customerRelationsContactUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4899,7 +4903,7 @@ Creates a protection rule for a Terraform state backend.
 | `organizationId` | [`CustomerRelationsOrganizationID`](scalars.md#customerrelationsorganizationid) | Organization of the contact. |
 | `phone` | [`String`](scalars.md#string) | Phone number of the contact. |
 
-### Fields {.no_toc}
+### `customerRelationsContactUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4910,7 +4914,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomerRelationsOrganizationCreateInput`
 
-### Arguments {.no_toc}
+### `customerRelationsOrganizationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4919,7 +4923,7 @@ Creates a protection rule for a Terraform state backend.
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group for the organization. |
 | `name` | [`String!`](scalars.md#string) | Name of the organization. |
 
-### Fields {.no_toc}
+### `customerRelationsOrganizationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4930,7 +4934,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `CustomerRelationsOrganizationUpdateInput`
 
-### Arguments {.no_toc}
+### `customerRelationsOrganizationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4940,7 +4944,7 @@ Creates a protection rule for a Terraform state backend.
 | `id` | [`CustomerRelationsOrganizationID!`](scalars.md#customerrelationsorganizationid) | Global ID of the organization. |
 | `name` | [`String`](scalars.md#string) | Name of the organization. |
 
-### Fields {.no_toc}
+### `customerRelationsOrganizationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4951,7 +4955,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastOnDemandScanCreateInput`
 
-### Arguments {.no_toc}
+### `dastOnDemandScanCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4959,7 +4963,7 @@ Creates a protection rule for a Terraform state backend.
 | `dastSiteProfileId` | [`DastSiteProfileID!`](scalars.md#dastsiteprofileid) | ID of the site profile to be used for the scan. |
 | `fullPath` | [`ID!`](scalars.md#id) | Project the site profile belongs to. |
 
-### Fields {.no_toc}
+### `dastOnDemandScanCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4970,7 +4974,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastProfileCreateInput`
 
-### Arguments {.no_toc}
+### `dastProfileCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -4984,7 +4988,7 @@ Creates a protection rule for a Terraform state backend.
 | `runAfterCreate` | [`Boolean`](scalars.md#boolean) | Run scan using profile after creation. Defaults to false. | `false` |
 | `tagList` | [`[String!]`](scalars.md#string) | Indicates the runner tags associated with the profile. |  |
 
-### Fields {.no_toc}
+### `dastProfileCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4996,13 +5000,13 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastProfileDeleteInput`
 
-### Arguments {.no_toc}
+### `dastProfileDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`DastProfileID!`](scalars.md#dastprofileid) | ID of the profile to be deleted. |
 
-### Fields {.no_toc}
+### `dastProfileDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5012,14 +5016,14 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastProfileRunInput`
 
-### Arguments {.no_toc}
+### `dastProfileRun` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.5. Full path not required to qualify Global ID. |
 | `id` | [`DastProfileID!`](scalars.md#dastprofileid) | ID of the profile to be used for the scan. |
 
-### Fields {.no_toc}
+### `dastProfileRun` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5030,7 +5034,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastProfileUpdateInput`
 
-### Arguments {.no_toc}
+### `dastProfileUpdate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -5045,7 +5049,7 @@ Creates a protection rule for a Terraform state backend.
 | `runAfterUpdate` | [`Boolean`](scalars.md#boolean) | Run scan using profile after update. Defaults to false. | `false` |
 | `tagList` | [`[String!]`](scalars.md#string) | Indicates the runner tags associated with the profile. |  |
 
-### Fields {.no_toc}
+### `dastProfileUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5057,7 +5061,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastScannerProfileCreateInput`
 
-### Arguments {.no_toc}
+### `dastScannerProfileCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -5070,7 +5074,7 @@ Creates a protection rule for a Terraform state backend.
 | `targetTimeout` | [`Int`](scalars.md#int) | Maximum number of seconds allowed for the site under test to respond to a request. |  |
 | `useAjaxSpider` | [`Boolean`](scalars.md#boolean) | Indicates if the AJAX spider should be used to crawl the target site. True to run the AJAX spider in addition to the traditional spider, and false to run only the traditional spider. | `false` |
 
-### Fields {.no_toc}
+### `dastScannerProfileCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5082,14 +5086,14 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastScannerProfileDeleteInput`
 
-### Arguments {.no_toc}
+### `dastScannerProfileDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.5. Full path not required to qualify Global ID. |
 | `id` | [`DastScannerProfileID!`](scalars.md#dastscannerprofileid) | ID of the scanner profile to be deleted. |
 
-### Fields {.no_toc}
+### `dastScannerProfileDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5099,7 +5103,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastScannerProfileUpdateInput`
 
-### Arguments {.no_toc}
+### `dastScannerProfileUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5113,7 +5117,7 @@ Creates a protection rule for a Terraform state backend.
 | `targetTimeout` | [`Int!`](scalars.md#int) | Maximum number of seconds allowed for the site under test to respond to a request. |
 | `useAjaxSpider` | [`Boolean`](scalars.md#boolean) | Indicates if the AJAX spider should be used to crawl the target site. True to run the AJAX spider in addition to the traditional spider, and false to run only the traditional spider. |
 
-### Fields {.no_toc}
+### `dastScannerProfileUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5125,7 +5129,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteProfileCreateInput`
 
-### Arguments {.no_toc}
+### `dastSiteProfileCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -5140,7 +5144,7 @@ Creates a protection rule for a Terraform state backend.
 | `targetType` | [`DastTargetTypeEnum`](enums.md#dasttargettypeenum) | Type of target to be scanned. |  |
 | `targetUrl` | [`String`](scalars.md#string) | URL of the target to be scanned. |  |
 
-### Fields {.no_toc}
+### `dastSiteProfileCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5152,14 +5156,14 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteProfileDeleteInput`
 
-### Arguments {.no_toc}
+### `dastSiteProfileDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.5. Full path not required to qualify Global ID. |
 | `id` | [`DastSiteProfileID!`](scalars.md#dastsiteprofileid) | ID of the site profile to be deleted. |
 
-### Fields {.no_toc}
+### `dastSiteProfileDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5169,7 +5173,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteProfileUpdateInput`
 
-### Arguments {.no_toc}
+### `dastSiteProfileUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5185,7 +5189,7 @@ Creates a protection rule for a Terraform state backend.
 | `targetType` | [`DastTargetTypeEnum`](enums.md#dasttargettypeenum) | Type of target to be scanned. |
 | `targetUrl` | [`String`](scalars.md#string) | URL of the target to be scanned. |
 
-### Fields {.no_toc}
+### `dastSiteProfileUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5197,14 +5201,14 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteTokenCreateInput`
 
-### Arguments {.no_toc}
+### `dastSiteTokenCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Project the site token belongs to. |
 | `targetUrl` | [`String`](scalars.md#string) | URL of the target to be validated. |
 
-### Fields {.no_toc}
+### `dastSiteTokenCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5217,7 +5221,7 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteValidationCreateInput`
 
-### Arguments {.no_toc}
+### `dastSiteValidationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5226,7 +5230,7 @@ Creates a protection rule for a Terraform state backend.
 | `strategy` | [`DastSiteValidationStrategyEnum`](enums.md#dastsitevalidationstrategyenum) | Validation strategy to be used. |
 | `validationPath` | [`String!`](scalars.md#string) | Path to be requested during validation. |
 
-### Fields {.no_toc}
+### `dastSiteValidationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5238,14 +5242,14 @@ Creates a protection rule for a Terraform state backend.
 
 **Input type:** `DastSiteValidationRevokeInput`
 
-### Arguments {.no_toc}
+### `dastSiteValidationRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Project the site validation belongs to. |
 | `normalizedTargetUrl` | [`String!`](scalars.md#string) | Normalized URL of the target to be revoked. |
 
-### Fields {.no_toc}
+### `dastSiteValidationRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5257,13 +5261,13 @@ Deprecated in GitLab 16.0. Underlying feature was removed in 16.0.
 
 **Input type:** `DeleteAnnotationInput`
 
-### Arguments {.no_toc}
+### `deleteAnnotation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`String!`](scalars.md#string) | Global ID of the annotation to delete. |
 
-### Fields {.no_toc}
+### `deleteAnnotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5275,13 +5279,13 @@ Deletes a container repository protection rule.
 
 **Input type:** `DeleteContainerProtectionRepositoryRuleInput`
 
-### Arguments {.no_toc}
+### `deleteContainerProtectionRepositoryRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ContainerRegistryProtectionRuleID!`](scalars.md#containerregistryprotectionruleid) | Global ID of the container repository protection rule to delete. |
 
-### Fields {.no_toc}
+### `deleteContainerProtectionRepositoryRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5298,13 +5302,13 @@ Deletes a protection rule that controls which user roles can modify container im
 
 **Input type:** `DeleteContainerProtectionTagRuleInput`
 
-### Arguments {.no_toc}
+### `deleteContainerProtectionTagRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ContainerRegistryProtectionTagRuleID!`](scalars.md#containerregistryprotectiontagruleid) | Global ID of the tag protection rule to delete. |
 
-### Fields {.no_toc}
+### `deleteContainerProtectionTagRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5319,13 +5323,13 @@ Deletes a protection rule that controls which user roles can modify container im
 
 **Input type:** `DeleteConversationThreadInput`
 
-### Arguments {.no_toc}
+### `deleteConversationThread` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `threadId` | [`AiConversationThreadID!`](scalars.md#aiconversationthreadid) | Global ID of the thread to delete. |
 
-### Fields {.no_toc}
+### `deleteConversationThread` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5342,13 +5346,13 @@ Deletes a custom dashboard.
 
 **Input type:** `DeleteCustomDashboardInput`
 
-### Arguments {.no_toc}
+### `deleteCustomDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AnalyticsCustomDashboardsDashboardID!`](scalars.md#analyticscustomdashboardsdashboardid) | Global ID of the dashboard to delete. |
 
-### Fields {.no_toc}
+### `deleteCustomDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5363,13 +5367,13 @@ Deletes a custom dashboard.
 
 **Input type:** `DeleteDuoWorkflowsWorkflowInput`
 
-### Arguments {.no_toc}
+### `deleteDuoWorkflowsWorkflow` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the workflow to delete. |
 
-### Fields {.no_toc}
+### `deleteDuoWorkflowsWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5386,14 +5390,14 @@ Deletes a custom attribute from a group. Only available to admins.
 
 **Input type:** `DeleteGroupCustomAttributeInput`
 
-### Arguments {.no_toc}
+### `deleteGroupCustomAttribute` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the group. |
 | `key` | [`String!`](scalars.md#string) | Key of the custom attribute to delete. |
 
-### Fields {.no_toc}
+### `deleteGroupCustomAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5406,13 +5410,13 @@ Deletes a protection rule for packages.
 
 **Input type:** `DeletePackagesProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `deletePackagesProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PackagesProtectionRuleID!`](scalars.md#packagesprotectionruleid) | Global ID of the package protection rule to delete. |
 
-### Fields {.no_toc}
+### `deletePackagesProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5429,13 +5433,13 @@ Deletes a Pages deployment.
 
 **Input type:** `DeletePagesDeploymentInput`
 
-### Arguments {.no_toc}
+### `deletePagesDeployment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PagesDeploymentID!`](scalars.md#pagesdeploymentid) | ID of the Pages Deployment. |
 
-### Fields {.no_toc}
+### `deletePagesDeployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5452,14 +5456,14 @@ Deletes a custom attribute from a project. Only available to admins.
 
 **Input type:** `DeleteProjectCustomAttributeInput`
 
-### Arguments {.no_toc}
+### `deleteProjectCustomAttribute` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `key` | [`String!`](scalars.md#string) | Key of the custom attribute to delete. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `deleteProjectCustomAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5476,13 +5480,13 @@ Deletes a protection rule for a Terraform state backend.
 
 **Input type:** `DeleteTerraformStateProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `deleteTerraformStateProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TerraformStateProtectionRuleID!`](scalars.md#terraformstateprotectionruleid) | Global ID of the Terraform state protection rule to delete. |
 
-### Fields {.no_toc}
+### `deleteTerraformStateProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5499,14 +5503,14 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DeleteUserCustomAttributeInput`
 
-### Arguments {.no_toc}
+### `deleteUserCustomAttribute` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `key` | [`String!`](scalars.md#string) | Key of the custom attribute to delete. |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of the user. |
 
-### Fields {.no_toc}
+### `deleteUserCustomAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5517,7 +5521,7 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DesignManagementDeleteInput`
 
-### Arguments {.no_toc}
+### `designManagementDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5525,7 +5529,7 @@ Deletes a custom attribute from a user. Only available to admins.
 | `iid` | [`ID!`](scalars.md#id) | IID of the issue to modify designs for. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project where the issue is to upload designs for. |
 
-### Fields {.no_toc}
+### `designManagementDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5536,7 +5540,7 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DesignManagementMoveInput`
 
-### Arguments {.no_toc}
+### `designManagementMove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5544,7 +5548,7 @@ Deletes a custom attribute from a user. Only available to admins.
 | `next` | [`DesignManagementDesignID`](scalars.md#designmanagementdesignid) | ID of the immediately following design. |
 | `previous` | [`DesignManagementDesignID`](scalars.md#designmanagementdesignid) | ID of the immediately preceding design. |
 
-### Fields {.no_toc}
+### `designManagementMove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5555,14 +5559,14 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DesignManagementUpdateInput`
 
-### Arguments {.no_toc}
+### `designManagementUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Description of the design. |
 | `id` | [`DesignManagementDesignID!`](scalars.md#designmanagementdesignid) | ID of the design to update. |
 
-### Fields {.no_toc}
+### `designManagementUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5573,7 +5577,7 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DesignManagementUploadInput`
 
-### Arguments {.no_toc}
+### `designManagementUpload` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5581,7 +5585,7 @@ Deletes a custom attribute from a user. Only available to admins.
 | `iid` | [`ID!`](scalars.md#id) | IID of the issue to modify designs for. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project where the issue is to upload designs for. |
 
-### Fields {.no_toc}
+### `designManagementUpload` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5593,13 +5597,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyBoardInput`
 
-### Arguments {.no_toc}
+### `destroyBoard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`BoardID!`](scalars.md#boardid) | Global ID of the board to destroy. |
 
-### Fields {.no_toc}
+### `destroyBoard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5610,13 +5614,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyBoardListInput`
 
-### Arguments {.no_toc}
+### `destroyBoardList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `listId` | [`ListID!`](scalars.md#listid) | Global ID of the list to destroy. Only label lists are accepted. |
 
-### Fields {.no_toc}
+### `destroyBoardList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5627,13 +5631,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyComplianceFrameworkInput`
 
-### Arguments {.no_toc}
+### `destroyComplianceFramework` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementFrameworkID!`](scalars.md#compliancemanagementframeworkid) | Global ID of the compliance framework to destroy. |
 
-### Fields {.no_toc}
+### `destroyComplianceFramework` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5647,13 +5651,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyComplianceRequirementInput`
 
-### Arguments {.no_toc}
+### `destroyComplianceRequirement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementComplianceFrameworkComplianceRequirementID!`](scalars.md#compliancemanagementcomplianceframeworkcompliancerequirementid) | Global ID of the compliance requirement to destroy. |
 
-### Fields {.no_toc}
+### `destroyComplianceRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5667,13 +5671,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyComplianceRequirementsControlInput`
 
-### Arguments {.no_toc}
+### `destroyComplianceRequirementsControl` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementComplianceFrameworkComplianceRequirementsControlID!`](scalars.md#compliancemanagementcomplianceframeworkcompliancerequirementscontrolid) | Global ID of the compliance requirement control to destroy. |
 
-### Fields {.no_toc}
+### `destroyComplianceRequirementsControl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5683,13 +5687,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyContainerRepositoryInput`
 
-### Arguments {.no_toc}
+### `destroyContainerRepository` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ContainerRepositoryID!`](scalars.md#containerrepositoryid) | ID of the container repository. |
 
-### Fields {.no_toc}
+### `destroyContainerRepository` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5700,14 +5704,14 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyContainerRepositoryTagsInput`
 
-### Arguments {.no_toc}
+### `destroyContainerRepositoryTags` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ContainerRepositoryID!`](scalars.md#containerrepositoryid) | ID of the container repository. |
 | `tagNames` | [`[String!]!`](scalars.md#string) | Container repository tag(s) to delete. Total number can't be greater than 20. |
 
-### Fields {.no_toc}
+### `destroyContainerRepositoryTags` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5718,13 +5722,13 @@ Deletes a custom attribute from a user. Only available to admins.
 
 **Input type:** `DestroyCustomEmojiInput`
 
-### Arguments {.no_toc}
+### `destroyCustomEmoji` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CustomEmojiID!`](scalars.md#customemojiid) | Global ID of the custom emoji to destroy. |
 
-### Fields {.no_toc}
+### `destroyCustomEmoji` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5737,13 +5741,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyEpicBoardInput`
 
-### Arguments {.no_toc}
+### `destroyEpicBoard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`BoardsEpicBoardID!`](scalars.md#boardsepicboardid) | Global ID of the board to destroy. |
 
-### Fields {.no_toc}
+### `destroyEpicBoard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5754,13 +5758,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyNoteInput`
 
-### Arguments {.no_toc}
+### `destroyNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`NoteID!`](scalars.md#noteid) | Global ID of the note to destroy. |
 
-### Fields {.no_toc}
+### `destroyNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5772,13 +5776,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyPackageInput`
 
-### Arguments {.no_toc}
+### `destroyPackage` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PackagesPackageID!`](scalars.md#packagespackageid) | ID of the Package. |
 
-### Fields {.no_toc}
+### `destroyPackage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5788,13 +5792,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyPackageFileInput`
 
-### Arguments {.no_toc}
+### `destroyPackageFile` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PackagesPackageFileID!`](scalars.md#packagespackagefileid) | ID of the Package file. |
 
-### Fields {.no_toc}
+### `destroyPackageFile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5804,14 +5808,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyPackageFilesInput`
 
-### Arguments {.no_toc}
+### `destroyPackageFiles` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[PackagesPackageFileID!]!`](scalars.md#packagespackagefileid) | IDs of the Package file. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path where the packages cleanup policy is located. |
 
-### Fields {.no_toc}
+### `destroyPackageFiles` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5821,13 +5825,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroyPackagesInput`
 
-### Arguments {.no_toc}
+### `destroyPackages` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[PackagesPackageID!]!`](scalars.md#packagespackageid) | Global IDs of the Packages. Max 100. |
 
-### Fields {.no_toc}
+### `destroyPackages` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5837,13 +5841,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DestroySnippetInput`
 
-### Arguments {.no_toc}
+### `destroySnippet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SnippetID!`](scalars.md#snippetid) | Global ID of the snippet to destroy. |
 
-### Fields {.no_toc}
+### `destroySnippet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5858,13 +5862,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DevfileValidateInput`
 
-### Arguments {.no_toc}
+### `devfileValidate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `devfileYaml` | [`String!`](scalars.md#string) | Input devfile. |
 
-### Fields {.no_toc}
+### `devfileValidate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5877,13 +5881,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `DisableDevopsAdoptionNamespaceInput`
 
-### Arguments {.no_toc}
+### `disableDevopsAdoptionNamespace` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`[AnalyticsDevopsAdoptionEnabledNamespaceID!]!`](scalars.md#analyticsdevopsadoptionenablednamespaceid) | One or many IDs of the enabled namespaces to disable. |
 
-### Fields {.no_toc}
+### `disableDevopsAdoptionNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5895,14 +5899,14 @@ Toggles the resolved state of a discussion.
 
 **Input type:** `DiscussionToggleResolveInput`
 
-### Arguments {.no_toc}
+### `discussionToggleResolve` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`DiscussionID!`](scalars.md#discussionid) | Global ID of the discussion. |
 | `resolve` | [`Boolean!`](scalars.md#boolean) | Will resolve the discussion when true, and unresolve the discussion when false. |
 
-### Fields {.no_toc}
+### `discussionToggleResolve` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5919,7 +5923,7 @@ Dismisses policy violations linked to a merge request.
 
 **Input type:** `DismissPolicyViolationsInput`
 
-### Arguments {.no_toc}
+### `dismissPolicyViolations` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5929,7 +5933,7 @@ Dismisses policy violations linked to a merge request.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `securityPolicyIds` | [`[ID!]!`](scalars.md#id) | IDs of warn mode policies with violations to dismiss. |
 
-### Fields {.no_toc}
+### `dismissPolicyViolations` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5946,7 +5950,7 @@ Updates GitLab Duo settings.
 
 **Input type:** `DuoSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `duoSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5964,7 +5968,7 @@ Updates GitLab Duo settings.
 | `minimumAccessLevelManage` | [`AccessLevelEnum`](enums.md#accesslevelenum) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Minimum access level for manage on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | `selfHostedDuoAgentPlatformServiceSecure` | [`Boolean`](scalars.md#boolean) | Whether to use secure transport (TLS) for the local Duo Agent Platform service. |
 
-### Fields {.no_toc}
+### `duoSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5979,14 +5983,14 @@ Updates GitLab Duo settings.
 
 **Input type:** `DuoUserFeedbackInput`
 
-### Arguments {.no_toc}
+### `duoUserFeedback` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `aiMessageId` | [`String!`](scalars.md#string) | ID of the AI Message. |
 | `trackingEvent` | [`TrackingEventInput`](input_objects.md#trackingeventinput) | Tracking event data. |
 
-### Fields {.no_toc}
+### `duoUserFeedback` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6001,14 +6005,14 @@ that a user has mutation access.
 
 **Input type:** `EchoCreateInput`
 
-### Arguments {.no_toc}
+### `echoCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]`](scalars.md#string) | Errors to return to the user. |
 | `messages` | [`[String!]`](scalars.md#string) | Messages to return to the user. |
 
-### Fields {.no_toc}
+### `echoCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6021,14 +6025,14 @@ that a user has mutation access.
 
 **Input type:** `EnableDevopsAdoptionNamespaceInput`
 
-### Arguments {.no_toc}
+### `enableDevopsAdoptionNamespace` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `displayNamespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Display namespace ID. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Namespace ID. |
 
-### Fields {.no_toc}
+### `enableDevopsAdoptionNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6041,7 +6045,7 @@ Create an environment.
 
 **Input type:** `EnvironmentCreateInput`
 
-### Arguments {.no_toc}
+### `environmentCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6055,7 +6059,7 @@ Create an environment.
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 | `tier` | [`DeploymentTier`](enums.md#deploymenttier) | Tier of the environment. |
 
-### Fields {.no_toc}
+### `environmentCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6068,13 +6072,13 @@ Delete an environment.
 
 **Input type:** `EnvironmentDeleteInput`
 
-### Arguments {.no_toc}
+### `environmentDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`EnvironmentID!`](scalars.md#environmentid) | Global ID of the environment to Delete. |
 
-### Fields {.no_toc}
+### `environmentDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6086,14 +6090,14 @@ Stop an environment.
 
 **Input type:** `EnvironmentStopInput`
 
-### Arguments {.no_toc}
+### `environmentStop` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `force` | [`Boolean`](scalars.md#boolean) | Force environment to stop without executing on_stop actions. |
 | `id` | [`EnvironmentID!`](scalars.md#environmentid) | Global ID of the environment to stop. |
 
-### Fields {.no_toc}
+### `environmentStop` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6106,7 +6110,7 @@ Update an environment.
 
 **Input type:** `EnvironmentUpdateInput`
 
-### Arguments {.no_toc}
+### `environmentUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6119,7 +6123,7 @@ Update an environment.
 | `kubernetesNamespace` | [`String`](scalars.md#string) | Kubernetes namespace of the environment. |
 | `tier` | [`DeploymentTier`](enums.md#deploymenttier) | Tier of the environment. |
 
-### Fields {.no_toc}
+### `environmentUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6132,14 +6136,14 @@ Update an environment.
 
 **Input type:** `EnvironmentsCanaryIngressUpdateInput`
 
-### Arguments {.no_toc}
+### `environmentsCanaryIngressUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`EnvironmentID!`](scalars.md#environmentid) | Global ID of the environment to update. |
 | `weight` | [`Int!`](scalars.md#int) | Weight of the Canary Ingress. |
 
-### Fields {.no_toc}
+### `environmentsCanaryIngressUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6151,7 +6155,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `EpicAddIssueInput`
 
-### Arguments {.no_toc}
+### `epicAddIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6160,7 +6164,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `issueIid` | [`String!`](scalars.md#string) | IID of the issue to be added. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the issue belongs to. |
 
-### Fields {.no_toc}
+### `epicAddIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6174,7 +6178,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicBoardCreateInput`
 
-### Arguments {.no_toc}
+### `epicBoardCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6186,7 +6190,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `labels` | [`[String!]`](scalars.md#string) | Labels of the issue. |
 | `name` | [`String`](scalars.md#string) | Board name. |
 
-### Fields {.no_toc}
+### `epicBoardCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6199,7 +6203,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicBoardListCreateInput`
 
-### Arguments {.no_toc}
+### `epicBoardListCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6207,7 +6211,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `boardId` | [`BoardsEpicBoardID!`](scalars.md#boardsepicboardid) | Global ID of the issue board to mutate. |
 | `labelId` | [`LabelID`](scalars.md#labelid) | Global ID of an existing label. |
 
-### Fields {.no_toc}
+### `epicBoardListCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6220,13 +6224,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicBoardListDestroyInput`
 
-### Arguments {.no_toc}
+### `epicBoardListDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `listId` | [`BoardsEpicListID!`](scalars.md#boardsepiclistid) | Global ID of the epic board list to destroy. |
 
-### Fields {.no_toc}
+### `epicBoardListDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6239,7 +6243,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicBoardUpdateInput`
 
-### Arguments {.no_toc}
+### `epicBoardUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6251,7 +6255,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `labels` | [`[String!]`](scalars.md#string) | Labels of the issue. |
 | `name` | [`String`](scalars.md#string) | Board name. |
 
-### Fields {.no_toc}
+### `epicBoardUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6264,7 +6268,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicMoveListInput`
 
-### Arguments {.no_toc}
+### `epicMoveList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6276,7 +6280,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `positionInList` | [`Int`](scalars.md#int) | Position of epics within the board list. Positions start at 0. Use -1 to move to the end of the list. |
 | `toListId` | [`BoardsEpicListID!`](scalars.md#boardsepiclistid) | ID of the list the epic will be in after mutation. |
 
-### Fields {.no_toc}
+### `epicMoveList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6289,7 +6293,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `EpicSetSubscriptionInput`
 
-### Arguments {.no_toc}
+### `epicSetSubscription` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6297,7 +6301,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `iid` | [`ID!`](scalars.md#id) | IID of the epic to mutate. |
 | `subscribedState` | [`Boolean!`](scalars.md#boolean) | Desired state of the subscription. |
 
-### Fields {.no_toc}
+### `epicSetSubscription` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6310,14 +6314,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EpicTreeReorderInput`
 
-### Arguments {.no_toc}
+### `epicTreeReorder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `baseEpicId` | [`EpicID!`](scalars.md#epicid) | ID of the base epic of the tree. |
 | `moved` | [`EpicTreeNodeFieldsInputType!`](input_objects.md#epictreenodefieldsinputtype) | Parameters for updating the tree positions. |
 
-### Fields {.no_toc}
+### `epicTreeReorder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6327,7 +6331,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EscalationPolicyCreateInput`
 
-### Arguments {.no_toc}
+### `escalationPolicyCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6336,7 +6340,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to create the escalation policy for. |
 | `rules` | [`[EscalationRuleInput!]!`](input_objects.md#escalationruleinput) | Steps of the escalation policy. |
 
-### Fields {.no_toc}
+### `escalationPolicyCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6347,13 +6351,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EscalationPolicyDestroyInput`
 
-### Arguments {.no_toc}
+### `escalationPolicyDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IncidentManagementEscalationPolicyID!`](scalars.md#incidentmanagementescalationpolicyid) | Escalation policy internal ID to remove. |
 
-### Fields {.no_toc}
+### `escalationPolicyDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6364,7 +6368,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `EscalationPolicyUpdateInput`
 
-### Arguments {.no_toc}
+### `escalationPolicyUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6373,7 +6377,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `name` | [`String`](scalars.md#string) | Name of the escalation policy. |
 | `rules` | [`[EscalationRuleInput!]`](input_objects.md#escalationruleinput) | Steps of the escalation policy. |
 
-### Fields {.no_toc}
+### `escalationPolicyUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6384,7 +6388,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `ExportRequirementsInput`
 
-### Arguments {.no_toc}
+### `exportRequirements` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6395,7 +6399,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `sort` | [`Sort`](enums.md#sort) | List requirements by sort order. |
 | `state` | [`RequirementState`](enums.md#requirementstate) | Filter requirements by state. |
 
-### Fields {.no_toc}
+### `exportRequirements` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6407,7 +6411,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` ins
 
 **Input type:** `ExternalAuditEventDestinationCreateInput`
 
-### Arguments {.no_toc}
+### `externalAuditEventDestinationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6416,7 +6420,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` ins
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `verificationToken` | [`String`](scalars.md#string) | Verification token. |
 
-### Fields {.no_toc}
+### `externalAuditEventDestinationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6429,13 +6433,13 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsDelete` ins
 
 **Input type:** `ExternalAuditEventDestinationDestroyInput`
 
-### Arguments {.no_toc}
+### `externalAuditEventDestinationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsExternalAuditEventDestinationID!`](scalars.md#auditeventsexternalauditeventdestinationid) | ID of external audit event destination to destroy. |
 
-### Fields {.no_toc}
+### `externalAuditEventDestinationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6447,7 +6451,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `ExternalAuditEventDestinationUpdateInput`
 
-### Arguments {.no_toc}
+### `externalAuditEventDestinationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6456,7 +6460,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 | `id` | [`AuditEventsExternalAuditEventDestinationID!`](scalars.md#auditeventsexternalauditeventdestinationid) | ID of external audit event destination to update. |
 | `name` | [`String`](scalars.md#string) | Destination name. |
 
-### Fields {.no_toc}
+### `externalAuditEventDestinationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6473,7 +6477,7 @@ Mutates multiple Geo registries for a given registry class.
 
 **Input type:** `GeoRegistriesBulkUpdateInput`
 
-### Arguments {.no_toc}
+### `geoRegistriesBulkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6483,7 +6487,7 @@ Mutates multiple Geo registries for a given registry class.
 | `replicationState` | [`ReplicationStateEnum`](enums.md#replicationstateenum) | Execute the action on registries selected by their replication state. |
 | `verificationState` | [`VerificationStateEnum`](enums.md#verificationstateenum) | Execute the action on registries selected by their verification state. |
 
-### Fields {.no_toc}
+### `geoRegistriesBulkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6500,14 +6504,14 @@ Mutates a Geo registry.
 
 **Input type:** `GeoRegistriesUpdateInput`
 
-### Arguments {.no_toc}
+### `geoRegistriesUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `action` | [`GeoRegistryAction!`](enums.md#georegistryaction) | Action to be executed on a Geo registry. |
 | `registryId` | [`GeoBaseRegistryID!`](scalars.md#geobaseregistryid) | ID of the Geo registry entry to be updated. |
 
-### Fields {.no_toc}
+### `geoRegistriesUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6518,13 +6522,13 @@ Mutates a Geo registry.
 
 **Input type:** `GitlabSubscriptionActivateInput`
 
-### Arguments {.no_toc}
+### `gitlabSubscriptionActivate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `activationCode` | [`String!`](scalars.md#string) | Activation code received after purchasing a GitLab subscription. |
 
-### Fields {.no_toc}
+### `gitlabSubscriptionActivate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6538,7 +6542,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` wit
 
 **Input type:** `GoogleCloudLoggingConfigurationCreateInput`
 
-### Arguments {.no_toc}
+### `googleCloudLoggingConfigurationCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -6549,7 +6553,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsCreate` wit
 | `name` | [`String`](scalars.md#string) | Destination name. |  |
 | `privateKey` | [`String!`](scalars.md#string) | Private Key associated with the service account. This key is used to authenticate the service account and authorize it to interact with the Google Cloud Logging service. |  |
 
-### Fields {.no_toc}
+### `googleCloudLoggingConfigurationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6562,13 +6566,13 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsDelete` ins
 
 **Input type:** `GoogleCloudLoggingConfigurationDestroyInput`
 
-### Arguments {.no_toc}
+### `googleCloudLoggingConfigurationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsGoogleCloudLoggingConfigurationID!`](scalars.md#auditeventsgooglecloudloggingconfigurationid) | ID of the Google Cloud logging configuration to destroy. |
 
-### Fields {.no_toc}
+### `googleCloudLoggingConfigurationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6580,7 +6584,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 
 **Input type:** `GoogleCloudLoggingConfigurationUpdateInput`
 
-### Arguments {.no_toc}
+### `googleCloudLoggingConfigurationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6592,7 +6596,7 @@ Deprecated in GitLab 18.10. Use `groupAuditEventStreamingDestinationsUpdate` ins
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `privateKey` | [`String`](scalars.md#string) | Private Key associated with the service account. This key is used to authenticate the service account and authorize it to interact with the Google Cloud Logging service. |
 
-### Fields {.no_toc}
+### `googleCloudLoggingConfigurationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6609,13 +6613,13 @@ Creates a policy in the policy store for an organization or group.
 
 **Input type:** `GovernPolicyCreateInput`
 
-### Arguments {.no_toc}
+### `governPolicyCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[JSON!]`](scalars.md#json) | Actions the policy takes. No more than 1000 actions. |
 | `description` | [`String`](scalars.md#string) | Description of the policy. |
-| `groupPath` | [`ID`](scalars.md#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
+| `groupPath` | [`ID`](scalars.md#id) | Full path of the group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | `lifecycleState` | [`String`](scalars.md#string) | Lifecycle state of the policy. |
 | `mode` | [`String`](scalars.md#string) | Enforcement mode of the policy. |
 | `name` | [`String!`](scalars.md#string) | Name of the policy. |
@@ -6625,7 +6629,7 @@ Creates a policy in the policy store for an organization or group.
 | `scopeRego` | [`String`](scalars.md#string) | Rego expression scoping the policy. Mutually exclusive with policyScope. |
 | `triggerType` | [`String!`](scalars.md#string) | Trigger the policy responds to. |
 
-### Fields {.no_toc}
+### `governPolicyCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6642,15 +6646,15 @@ Deletes a policy from the policy store for an organization or group.
 
 **Input type:** `GovernPolicyDeleteInput`
 
-### Arguments {.no_toc}
+### `governPolicyDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `groupPath` | [`ID`](scalars.md#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
+| `groupPath` | [`ID`](scalars.md#id) | Full path of the group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | `id` | [`Int!`](scalars.md#int) | ID of the policy to delete. |
 | `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Global ID of the organization whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 
-### Fields {.no_toc}
+### `governPolicyDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6666,13 +6670,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GovernPolicyUpdateInput`
 
-### Arguments {.no_toc}
+### `governPolicyUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[JSON!]`](scalars.md#json) | Actions the policy takes. No more than 1000 actions. |
 | `description` | [`String`](scalars.md#string) | Description of the policy. |
-| `groupPath` | [`ID`](scalars.md#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
+| `groupPath` | [`ID`](scalars.md#id) | Full path of the group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | `lifecycleState` | [`String`](scalars.md#string) | Lifecycle state of the policy. |
 | `mode` | [`String`](scalars.md#string) | Enforcement mode of the policy. |
 | `name` | [`String`](scalars.md#string) | Name of the policy. |
@@ -6683,7 +6687,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `scopeRego` | [`String`](scalars.md#string) | Rego expression scoping the policy. Mutually exclusive with policyScope. |
 | `triggerType` | [`String`](scalars.md#string) | Trigger the policy responds to. |
 
-### Fields {.no_toc}
+### `governPolicyUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6698,7 +6702,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupAuditEventStreamingDestinationsCreateInput`
 
-### Arguments {.no_toc}
+### `groupAuditEventStreamingDestinationsCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6708,7 +6712,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretToken` | [`String`](scalars.md#string) | Secret token. |
 
-### Fields {.no_toc}
+### `groupAuditEventStreamingDestinationsCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6723,13 +6727,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupAuditEventStreamingDestinationsDeleteInput`
 
-### Arguments {.no_toc}
+### `groupAuditEventStreamingDestinationsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsGroupExternalStreamingDestinationID!`](scalars.md#auditeventsgroupexternalstreamingdestinationid) | ID of the audit events external streaming destination to delete. |
 
-### Fields {.no_toc}
+### `groupAuditEventStreamingDestinationsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6743,7 +6747,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupAuditEventStreamingDestinationsUpdateInput`
 
-### Arguments {.no_toc}
+### `groupAuditEventStreamingDestinationsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6754,7 +6758,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretToken` | [`String`](scalars.md#string) | Secret token. |
 
-### Fields {.no_toc}
+### `groupAuditEventStreamingDestinationsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6765,7 +6769,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupMemberBulkUpdateInput`
 
-### Arguments {.no_toc}
+### `groupMemberBulkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6774,7 +6778,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Global ID of the group. |
 | `userIds` | [`[UserID!]!`](scalars.md#userid) | Global IDs of the members. |
 
-### Fields {.no_toc}
+### `groupMemberBulkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6790,13 +6794,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupMembersExportInput`
 
-### Arguments {.no_toc}
+### `groupMembersExport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Global ID of the group. |
 
-### Fields {.no_toc}
+### `groupMembersExport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6811,7 +6815,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSavedReplyCreateInput`
 
-### Arguments {.no_toc}
+### `groupSavedReplyCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6819,7 +6823,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group for the save reply. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 
-### Fields {.no_toc}
+### `groupSavedReplyCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6834,13 +6838,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSavedReplyDestroyInput`
 
-### Arguments {.no_toc}
+### `groupSavedReplyDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`GroupsSavedReplyID!`](scalars.md#groupssavedreplyid) | Global ID of the group-level saved reply. |
 
-### Fields {.no_toc}
+### `groupSavedReplyDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6855,7 +6859,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSavedReplyUpdateInput`
 
-### Arguments {.no_toc}
+### `groupSavedReplyUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6863,7 +6867,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `id` | [`GroupsSavedReplyID!`](scalars.md#groupssavedreplyid) | Global ID of the group-level saved reply. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 
-### Fields {.no_toc}
+### `groupSavedReplyUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6874,7 +6878,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretCreateInput`
 
-### Arguments {.no_toc}
+### `groupSecretCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6886,7 +6890,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `rotationIntervalDays` | [`Int`](scalars.md#int) | Number of days between rotation reminders for the secret. |
 | `secret` | [`String!`](scalars.md#string) | Value of the group secret. |
 
-### Fields {.no_toc}
+### `groupSecretCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6898,14 +6902,14 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretDeleteInput`
 
-### Arguments {.no_toc}
+### `groupSecretDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Group of the secret. |
 | `name` | [`String!`](scalars.md#string) | Name of the group secret to delete. |
 
-### Fields {.no_toc}
+### `groupSecretDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6916,7 +6920,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretUpdateInput`
 
-### Arguments {.no_toc}
+### `groupSecretUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6929,7 +6933,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `rotationIntervalDays` | [`Int`](scalars.md#int) | Number of days between rotation reminders for the secret. |
 | `secret` | [`String`](scalars.md#string) | New value of the group secret. |
 
-### Fields {.no_toc}
+### `groupSecretUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6941,13 +6945,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretsManagerDeprovisionInput`
 
-### Arguments {.no_toc}
+### `groupSecretsManagerDeprovision` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Group of the secrets manager. |
 
-### Fields {.no_toc}
+### `groupSecretsManagerDeprovision` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6959,13 +6963,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretsManagerInitializeInput`
 
-### Arguments {.no_toc}
+### `groupSecretsManagerInitialize` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Group of the secrets manager. |
 
-### Fields {.no_toc}
+### `groupSecretsManagerInitialize` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6977,14 +6981,14 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretsPermissionDeleteInput`
 
-### Arguments {.no_toc}
+### `groupSecretsPermissionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Group permissions for the secret. |
 | `principal` | [`PrincipalInput!`](input_objects.md#principalinput) | Whose permission to be deleted. |
 
-### Fields {.no_toc}
+### `groupSecretsPermissionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6996,7 +7000,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupSecretsPermissionUpdateInput`
 
-### Arguments {.no_toc}
+### `groupSecretsPermissionUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7005,7 +7009,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `groupPath` | [`ID!`](scalars.md#id) | Group to which the permissions are added. |
 | `principal` | [`PrincipalInput!`](input_objects.md#principalinput) | User/MemberRole/Role that is provided access. |
 
-### Fields {.no_toc}
+### `groupSecretsPermissionUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7021,14 +7025,14 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupTransferInput`
 
-### Arguments {.no_toc}
+### `groupTransfer` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`GroupID!`](scalars.md#groupid) | Global ID of the group to transfer. |
 | `targetId` | [`GroupID`](scalars.md#groupid) | Global ID of the target parent group. Omit to make group top-level. |
 
-### Fields {.no_toc}
+### `groupTransfer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7039,7 +7043,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `GroupUpdateInput`
 
-### Arguments {.no_toc}
+### `groupUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7063,7 +7067,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `visibility` | [`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum) | Visibility of the namespace. |
 | `webBasedCommitSigningEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Indicates whether web-based commit signing is enabled for the group. |
 
-### Fields {.no_toc}
+### `groupUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7074,7 +7078,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `HttpIntegrationCreateInput`
 
-### Arguments {.no_toc}
+### `httpIntegrationCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -7085,7 +7089,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `projectPath` | [`ID!`](scalars.md#id) | Project to create the integration in. |  |
 | `type` | [`AlertManagementIntegrationType`](enums.md#alertmanagementintegrationtype) | Type of integration to create. Cannot be changed after creation. | `HTTP` |
 
-### Fields {.no_toc}
+### `httpIntegrationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7096,13 +7100,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `HttpIntegrationDestroyInput`
 
-### Arguments {.no_toc}
+### `httpIntegrationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AlertManagementHttpIntegrationID!`](scalars.md#alertmanagementhttpintegrationid) | ID of the integration to remove. |
 
-### Fields {.no_toc}
+### `httpIntegrationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7113,13 +7117,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `HttpIntegrationResetTokenInput`
 
-### Arguments {.no_toc}
+### `httpIntegrationResetToken` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AlertManagementHttpIntegrationID!`](scalars.md#alertmanagementhttpintegrationid) | ID of the integration to mutate. |
 
-### Fields {.no_toc}
+### `httpIntegrationResetToken` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7130,7 +7134,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `HttpIntegrationUpdateInput`
 
-### Arguments {.no_toc}
+### `httpIntegrationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7140,7 +7144,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `payloadAttributeMappings` | [`[AlertManagementPayloadAlertFieldInput!]`](input_objects.md#alertmanagementpayloadalertfieldinput) | Custom mapping of GitLab alert attributes to fields from the payload example. |
 | `payloadExample` | [`JsonString`](scalars.md#jsonstring) | Example of an alert payload. |
 
-### Fields {.no_toc}
+### `httpIntegrationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7155,13 +7159,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserCancelReassignmentInput`
 
-### Arguments {.no_toc}
+### `importSourceUserCancelReassignment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserCancelReassignment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7176,13 +7180,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserKeepAllAsPlaceholderInput`
 
-### Arguments {.no_toc}
+### `importSourceUserKeepAllAsPlaceholder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the namespace. |
 
-### Fields {.no_toc}
+### `importSourceUserKeepAllAsPlaceholder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7197,13 +7201,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserKeepAsPlaceholderInput`
 
-### Arguments {.no_toc}
+### `importSourceUserKeepAsPlaceholder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserKeepAsPlaceholder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7218,14 +7222,14 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserReassignInput`
 
-### Arguments {.no_toc}
+### `importSourceUserReassign` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `assigneeUserId` | [`UserID!`](scalars.md#userid) | Global ID of the assignee user. |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserReassign` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7240,13 +7244,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserResendNotificationInput`
 
-### Arguments {.no_toc}
+### `importSourceUserResendNotification` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserResendNotification` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7261,13 +7265,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserRetryFailedReassignmentInput`
 
-### Arguments {.no_toc}
+### `importSourceUserRetryFailedReassignment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserRetryFailedReassignment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7282,13 +7286,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserRevokeInput`
 
-### Arguments {.no_toc}
+### `importSourceUserRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7303,13 +7307,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `ImportSourceUserUndoKeepAsPlaceholderInput`
 
-### Arguments {.no_toc}
+### `importSourceUserUndoKeepAsPlaceholder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ImportSourceUserID!`](scalars.md#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 
-### Fields {.no_toc}
+### `importSourceUserUndoKeepAsPlaceholder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7324,7 +7328,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `InstanceAuditEventStreamingDestinationsCreateInput`
 
-### Arguments {.no_toc}
+### `instanceAuditEventStreamingDestinationsCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7333,7 +7337,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretToken` | [`String`](scalars.md#string) | Secret token. |
 
-### Fields {.no_toc}
+### `instanceAuditEventStreamingDestinationsCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7348,13 +7352,13 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `InstanceAuditEventStreamingDestinationsDeleteInput`
 
-### Arguments {.no_toc}
+### `instanceAuditEventStreamingDestinationsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | ID of the audit events external streaming destination to delete. |
 
-### Fields {.no_toc}
+### `instanceAuditEventStreamingDestinationsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7368,7 +7372,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 
 **Input type:** `InstanceAuditEventStreamingDestinationsUpdateInput`
 
-### Arguments {.no_toc}
+### `instanceAuditEventStreamingDestinationsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7379,7 +7383,7 @@ Updates a policy in the policy store for an organization or group. Only the supp
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `secretToken` | [`String`](scalars.md#string) | Secret token. |
 
-### Fields {.no_toc}
+### `instanceAuditEventStreamingDestinationsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7392,14 +7396,14 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsCreate` 
 
 **Input type:** `InstanceExternalAuditEventDestinationCreateInput`
 
-### Arguments {.no_toc}
+### `instanceExternalAuditEventDestinationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `destinationUrl` | [`String!`](scalars.md#string) | Destination URL. |
 | `name` | [`String`](scalars.md#string) | Destination name. |
 
-### Fields {.no_toc}
+### `instanceExternalAuditEventDestinationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7412,13 +7416,13 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsDelete` 
 
 **Input type:** `InstanceExternalAuditEventDestinationDestroyInput`
 
-### Arguments {.no_toc}
+### `instanceExternalAuditEventDestinationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsInstanceExternalAuditEventDestinationID!`](scalars.md#auditeventsinstanceexternalauditeventdestinationid) | ID of the external instance audit event destination to destroy. |
 
-### Fields {.no_toc}
+### `instanceExternalAuditEventDestinationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7430,7 +7434,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `InstanceExternalAuditEventDestinationUpdateInput`
 
-### Arguments {.no_toc}
+### `instanceExternalAuditEventDestinationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7439,7 +7443,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `id` | [`AuditEventsInstanceExternalAuditEventDestinationID!`](scalars.md#auditeventsinstanceexternalauditeventdestinationid) | ID of the external instance audit event destination to update. |
 | `name` | [`String`](scalars.md#string) | Destination name. |
 
-### Fields {.no_toc}
+### `instanceExternalAuditEventDestinationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7452,7 +7456,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsCreate` 
 
 **Input type:** `InstanceGoogleCloudLoggingConfigurationCreateInput`
 
-### Arguments {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -7462,7 +7466,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsCreate` 
 | `name` | [`String`](scalars.md#string) | Destination name. |  |
 | `privateKey` | [`String!`](scalars.md#string) | Private Key associated with the service account. This key is used to authenticate the service account and authorize it to interact with the Google Cloud Logging service. |  |
 
-### Fields {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7475,13 +7479,13 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsDelete` 
 
 **Input type:** `InstanceGoogleCloudLoggingConfigurationDestroyInput`
 
-### Arguments {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuditEventsInstanceGoogleCloudLoggingConfigurationID!`](scalars.md#auditeventsinstancegooglecloudloggingconfigurationid) | ID of the Google Cloud logging configuration to destroy. |
 
-### Fields {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7493,7 +7497,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `InstanceGoogleCloudLoggingConfigurationUpdateInput`
 
-### Arguments {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7505,7 +7509,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `name` | [`String`](scalars.md#string) | Destination name. |
 | `privateKey` | [`String`](scalars.md#string) | Private Key associated with the service account. This key is used to authenticate the service account and authorize it to interact with the Google Cloud Logging service. |
 
-### Fields {.no_toc}
+### `instanceGoogleCloudLoggingConfigurationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7516,7 +7520,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `InstanceSecretsManagerEnrollInput`
 
-### Fields {.no_toc}
+### `instanceSecretsManagerEnroll` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7526,7 +7530,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `InstanceSecretsManagerUnenrollInput`
 
-### Fields {.no_toc}
+### `instanceSecretsManagerUnenroll` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7540,7 +7544,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IntegrationExclusionCreateInput`
 
-### Arguments {.no_toc}
+### `integrationExclusionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7548,7 +7552,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `integrationName` | [`IntegrationType!`](enums.md#integrationtype) | Type of integration to exclude. |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | IDs of projects to exclude up to a maximum of 100. |
 
-### Fields {.no_toc}
+### `integrationExclusionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7563,7 +7567,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IntegrationExclusionDeleteInput`
 
-### Arguments {.no_toc}
+### `integrationExclusionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7571,7 +7575,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `integrationName` | [`IntegrationType!`](enums.md#integrationtype) | Type of integration. |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | IDs of excluded projects. |
 
-### Fields {.no_toc}
+### `integrationExclusionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7582,7 +7586,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssuableResourceLinkCreateInput`
 
-### Arguments {.no_toc}
+### `issuableResourceLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7591,7 +7595,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `linkText` | [`String`](scalars.md#string) | Link text of the resource. |
 | `linkType` | [`IssuableResourceLinkType`](enums.md#issuableresourcelinktype) | Link type of the resource. |
 
-### Fields {.no_toc}
+### `issuableResourceLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7602,13 +7606,13 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssuableResourceLinkDestroyInput`
 
-### Arguments {.no_toc}
+### `issuableResourceLinkDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IncidentManagementIssuableResourceLinkID!`](scalars.md#incidentmanagementissuableresourcelinkid) | Issuable resource link ID to remove. |
 
-### Fields {.no_toc}
+### `issuableResourceLinkDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7619,7 +7623,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueLinkAlertsInput`
 
-### Arguments {.no_toc}
+### `issueLinkAlerts` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7627,7 +7631,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueLinkAlerts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7638,7 +7642,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueMoveInput`
 
-### Arguments {.no_toc}
+### `issueMove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7647,7 +7651,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `targetProjectPath` | [`ID!`](scalars.md#id) | Project to move the issue to. |
 | `targetWorkItemTypeId` | [`WorkItemsTypeID`](scalars.md#workitemstypeid) | Work item type to use in the target project. When omitted, the source work item type is preserved. |
 
-### Fields {.no_toc}
+### `issueMove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7658,7 +7662,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueMoveListInput`
 
-### Arguments {.no_toc}
+### `issueMoveList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7672,7 +7676,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 | `toListId` | [`ID`](scalars.md#id) | ID of the board list that the issue will be moved to. |
 
-### Fields {.no_toc}
+### `issueMoveList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7683,7 +7687,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueSetAssigneesInput`
 
-### Arguments {.no_toc}
+### `issueSetAssignees` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -7692,7 +7696,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `operationMode` | [`MutationOperationMode`](enums.md#mutationoperationmode) | Operation to perform. Defaults to REPLACE. | `REPLACE` |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |  |
 
-### Fields {.no_toc}
+### `issueSetAssignees` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7703,7 +7707,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueSetConfidentialInput`
 
-### Arguments {.no_toc}
+### `issueSetConfidential` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7711,7 +7715,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetConfidential` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7722,7 +7726,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueSetCrmContactsInput`
 
-### Arguments {.no_toc}
+### `issueSetCrmContacts` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7731,7 +7735,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `operationMode` | [`MutationOperationMode`](enums.md#mutationoperationmode) | Changes the operation mode. Defaults to REPLACE. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetCrmContacts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7742,7 +7746,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 
 **Input type:** `IssueSetDueDateInput`
 
-### Arguments {.no_toc}
+### `issueSetDueDate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7750,7 +7754,7 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetDueDate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7763,7 +7767,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetEpicInput`
 
-### Arguments {.no_toc}
+### `issueSetEpic` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7771,7 +7775,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetEpic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7782,7 +7786,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetEscalationPolicyInput`
 
-### Arguments {.no_toc}
+### `issueSetEscalationPolicy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7790,7 +7794,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetEscalationPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7801,7 +7805,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetEscalationStatusInput`
 
-### Arguments {.no_toc}
+### `issueSetEscalationStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7809,7 +7813,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 | `status` | [`IssueEscalationStatus!`](enums.md#issueescalationstatus) | Set the escalation status. |
 
-### Fields {.no_toc}
+### `issueSetEscalationStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7820,7 +7824,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetIterationInput`
 
-### Arguments {.no_toc}
+### `issueSetIteration` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7828,7 +7832,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `iterationId` | [`IterationID`](scalars.md#iterationid) | Iteration to assign to the issue. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetIteration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7839,7 +7843,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetLockedInput`
 
-### Arguments {.no_toc}
+### `issueSetLocked` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7847,7 +7851,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `locked` | [`Boolean!`](scalars.md#boolean) | Whether or not to lock discussion on the issue. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueSetLocked` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7858,7 +7862,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetSeverityInput`
 
-### Arguments {.no_toc}
+### `issueSetSeverity` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7866,7 +7870,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 | `severity` | [`IssuableSeverity!`](enums.md#issuableseverity) | Set the incident severity level. |
 
-### Fields {.no_toc}
+### `issueSetSeverity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7877,7 +7881,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetSubscriptionInput`
 
-### Arguments {.no_toc}
+### `issueSetSubscription` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7885,7 +7889,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 | `subscribedState` | [`Boolean!`](scalars.md#boolean) | Desired state of the subscription. |
 
-### Fields {.no_toc}
+### `issueSetSubscription` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7896,7 +7900,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueSetWeightInput`
 
-### Arguments {.no_toc}
+### `issueSetWeight` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7904,7 +7908,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 | `weight` | [`Int`](scalars.md#int) | The desired weight for the issue. If set to null, weight is removed. |
 
-### Fields {.no_toc}
+### `issueSetWeight` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7915,7 +7919,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IssueUnlinkAlertInput`
 
-### Arguments {.no_toc}
+### `issueUnlinkAlert` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7923,7 +7927,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `issueUnlinkAlert` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7934,7 +7938,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IterationCadenceCreateInput`
 
-### Arguments {.no_toc}
+### `iterationCadenceCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7945,10 +7949,10 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `groupPath` | [`ID!`](scalars.md#id) | Group where the iteration cadence is created. |
 | `iterationsInAdvance` | [`Int`](scalars.md#int) | Number of future iterations to schedule in addition to the current one. |
 | `rollOver` | [`Boolean`](scalars.md#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| `startDate` | [`Time`](scalars.md#time) | Timestamp of the automation start date. |
+| `startDate` | [`Time`](scalars.md#time) | Automation start date. |
 | `title` | [`String`](scalars.md#string) | Title of the iteration cadence. |
 
-### Fields {.no_toc}
+### `iterationCadenceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7959,13 +7963,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IterationCadenceDestroyInput`
 
-### Arguments {.no_toc}
+### `iterationCadenceDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IterationsCadenceID!`](scalars.md#iterationscadenceid) | Global ID of the iteration cadence. |
 
-### Fields {.no_toc}
+### `iterationCadenceDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7976,7 +7980,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IterationCadenceUpdateInput`
 
-### Arguments {.no_toc}
+### `iterationCadenceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7987,10 +7991,10 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `id` | [`IterationsCadenceID!`](scalars.md#iterationscadenceid) | Global ID of the iteration cadence. |
 | `iterationsInAdvance` | [`Int`](scalars.md#int) | Number of future iterations to schedule in addition to the current one. |
 | `rollOver` | [`Boolean`](scalars.md#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| `startDate` | [`Time`](scalars.md#time) | Timestamp of the automation start date. |
+| `startDate` | [`Time`](scalars.md#time) | Automation start date. |
 | `title` | [`String`](scalars.md#string) | Title of the iteration cadence. |
 
-### Fields {.no_toc}
+### `iterationCadenceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8001,7 +8005,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `iterationCreateInput`
 
-### Arguments {.no_toc}
+### `iterationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8013,7 +8017,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `startDate` | [`String`](scalars.md#string) | Start date of the iteration. |
 | `title` | [`String`](scalars.md#string) | Title of the iteration. |
 
-### Fields {.no_toc}
+### `iterationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8024,13 +8028,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `IterationDeleteInput`
 
-### Arguments {.no_toc}
+### `iterationDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IterationID!`](scalars.md#iterationid) | ID of the iteration. |
 
-### Fields {.no_toc}
+### `iterationDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8041,7 +8045,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JiraImportStartInput`
 
-### Arguments {.no_toc}
+### `jiraImportStart` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8050,7 +8054,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to import the Jira project into. |
 | `usersMapping` | [`[JiraUsersMappingInputType!]`](input_objects.md#jirausersmappinginputtype) | Mapping of Jira to GitLab users. |
 
-### Fields {.no_toc}
+### `jiraImportStart` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8061,14 +8065,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JiraImportUsersInput`
 
-### Arguments {.no_toc}
+### `jiraImportUsers` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project to import the Jira users into. |
 | `startAt` | [`Int`](scalars.md#int) | Index of the record the import should started at, default 0 (50 records returned). |
 
-### Fields {.no_toc}
+### `jiraImportUsers` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8079,13 +8083,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JobArtifactsDestroyInput`
 
-### Arguments {.no_toc}
+### `jobArtifactsDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiBuildID!`](scalars.md#cibuildid) | ID of the job to mutate. |
 
-### Fields {.no_toc}
+### `jobArtifactsDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8097,13 +8101,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JobCancelInput`
 
-### Arguments {.no_toc}
+### `jobCancel` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiBuildID!`](scalars.md#cibuildid) | ID of the job to mutate. |
 
-### Fields {.no_toc}
+### `jobCancel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8114,7 +8118,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JobPlayInput`
 
-### Arguments {.no_toc}
+### `jobPlay` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8122,7 +8126,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `inputs` | [`[CiInputsInput!]`](input_objects.md#ciinputsinput) | Inputs to use when playing the job. | `[]` |
 | `variables` | [`[CiVariableInput!]`](input_objects.md#civariableinput) | Variables to use when playing a manual job. | `[]` |
 
-### Fields {.no_toc}
+### `jobPlay` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8133,7 +8137,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JobRetryInput`
 
-### Arguments {.no_toc}
+### `jobRetry` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8141,7 +8145,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `inputs` | [`[CiInputsInput!]`](input_objects.md#ciinputsinput) | Inputs to use when retrying the job. | `[]` |
 | `variables` | [`[CiVariableInput!]`](input_objects.md#civariableinput) | Variables to use when retrying a manual job. | `[]` |
 
-### Fields {.no_toc}
+### `jobRetry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8152,13 +8156,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `JobUnscheduleInput`
 
-### Arguments {.no_toc}
+### `jobUnschedule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiBuildID!`](scalars.md#cibuildid) | ID of the job to mutate. |
 
-### Fields {.no_toc}
+### `jobUnschedule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8173,13 +8177,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `KnowledgeGraphExcludedNamespaceCreateInput`
 
-### Arguments {.no_toc}
+### `knowledgeGraphExcludedNamespaceCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to exclude. |
 
-### Fields {.no_toc}
+### `knowledgeGraphExcludedNamespaceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8194,13 +8198,13 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `KnowledgeGraphExcludedNamespaceDestroyInput`
 
-### Arguments {.no_toc}
+### `knowledgeGraphExcludedNamespaceDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to remove from exclusions. |
 
-### Fields {.no_toc}
+### `knowledgeGraphExcludedNamespaceDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8211,7 +8215,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `LabelCreateInput`
 
-### Arguments {.no_toc}
+### `labelCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8221,7 +8225,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project with which the resource is associated. |  |
 | `title` | [`String!`](scalars.md#string) | Title of the label. |  |
 
-### Fields {.no_toc}
+### `labelCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8232,14 +8236,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `LabelUpdateInput`
 
-### Arguments {.no_toc}
+### `labelUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `archived` | [`Boolean`](scalars.md#boolean) | Whether to archive the label. Introduced in GitLab 18.10. |
 | `id` | [`LabelID!`](scalars.md#labelid) | Global ID of the label to update. |
 
-### Fields {.no_toc}
+### `labelUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8256,7 +8260,7 @@ Creates an instance-level custom admin role LDAP link.
 
 **Input type:** `LdapAdminRoleLinkCreateInput`
 
-### Arguments {.no_toc}
+### `ldapAdminRoleLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8265,7 +8269,7 @@ Creates an instance-level custom admin role LDAP link.
 | `filter` | [`String`](scalars.md#string) | Search filter for the LDAP group. |
 | `provider` | [`String!`](scalars.md#string) | LDAP provider for the LDAP link. |
 
-### Fields {.no_toc}
+### `ldapAdminRoleLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8282,13 +8286,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LdapAdminRoleLinkDestroyInput`
 
-### Arguments {.no_toc}
+### `ldapAdminRoleLinkDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AuthzLdapAdminRoleLinkID!`](scalars.md#authzldapadminrolelinkid) | Global ID of the instance-level LDAP link to delete. |
 
-### Fields {.no_toc}
+### `ldapAdminRoleLinkDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8303,7 +8307,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LifecycleAttachWorkItemTypeInput`
 
-### Arguments {.no_toc}
+### `lifecycleAttachWorkItemType` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8312,7 +8316,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `statusMappings` | [`[StatusMappingInput!]`](input_objects.md#statusmappinginput) | Status mappings from the old lifecycle to the new lifecycle. |
 | `workItemTypeId` | [`WorkItemsTypeID!`](scalars.md#workitemstypeid) | Global ID of the work item type to attach to the lifecycle. |
 
-### Fields {.no_toc}
+### `lifecycleAttachWorkItemType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8327,7 +8331,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LifecycleCreateInput`
 
-### Arguments {.no_toc}
+### `lifecycleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8338,7 +8342,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `namespacePath` | [`ID!`](scalars.md#id) | Namespace path where the lifecycle will be created. |
 | `statuses` | [`[WorkItemStatusInput!]!`](input_objects.md#workitemstatusinput) | Statuses of the lifecycle. Can be existing (with id) or new (without id). |
 
-### Fields {.no_toc}
+### `lifecycleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8353,14 +8357,14 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LifecycleDeleteInput`
 
-### Arguments {.no_toc}
+### `lifecycleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsStatusesLifecycleID!`](scalars.md#workitemsstatuseslifecycleid) | Global ID of the lifecycle to delete. |
 | `namespacePath` | [`ID!`](scalars.md#id) | Namespace path where the lifecycle exists. |
 
-### Fields {.no_toc}
+### `lifecycleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8375,7 +8379,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LifecycleUpdateInput`
 
-### Arguments {.no_toc}
+### `lifecycleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8388,7 +8392,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `statusMappings` | [`[StatusMappingInput!]`](input_objects.md#statusmappinginput) | Mappings for statuses being removed from the lifecycle. Maps old status to replacement status. |
 | `statuses` | [`[WorkItemStatusInput!]`](input_objects.md#workitemstatusinput) | Statuses of the lifecycle. Can be existing (with id) or new (without id). |
 
-### Fields {.no_toc}
+### `lifecycleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8403,7 +8407,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `LinkProjectComplianceViolationIssueInput`
 
-### Arguments {.no_toc}
+### `linkProjectComplianceViolationIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8411,7 +8415,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the issue belongs to. |
 | `violationId` | [`ComplianceManagementProjectsComplianceViolationID!`](scalars.md#compliancemanagementprojectscomplianceviolationid) | Global ID of the project compliance violation. |
 
-### Fields {.no_toc}
+### `linkProjectComplianceViolationIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8422,13 +8426,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MarkAsSpamSnippetInput`
 
-### Arguments {.no_toc}
+### `markAsSpamSnippet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SnippetID!`](scalars.md#snippetid) | Global ID of the snippet to update. |
 
-### Fields {.no_toc}
+### `markAsSpamSnippet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8443,13 +8447,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenCacheEntryDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenCacheEntryDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`String!`](scalars.md#string) | ID of the cache entry. |
 
-### Fields {.no_toc}
+### `mavenCacheEntryDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8464,13 +8468,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenUpstreamCacheDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenUpstreamCacheDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesPackagesMavenUpstreamID!`](scalars.md#virtualregistriespackagesmavenupstreamid) | ID of the Maven virtual registry upstream. |
 
-### Fields {.no_toc}
+### `mavenUpstreamCacheDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8485,7 +8489,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenUpstreamCreateInput`
 
-### Arguments {.no_toc}
+### `mavenUpstreamCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8498,7 +8502,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `url` | [`String!`](scalars.md#string) | URL of the upstream registry. |  |
 | `username` | [`String`](scalars.md#string) | Username of the upstream registry. |  |
 
-### Fields {.no_toc}
+### `mavenUpstreamCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8513,13 +8517,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenUpstreamDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenUpstreamDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesPackagesMavenUpstreamID!`](scalars.md#virtualregistriespackagesmavenupstreamid) | ID of the upstream to be deleted. |
 
-### Fields {.no_toc}
+### `mavenUpstreamDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8534,7 +8538,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenUpstreamUpdateInput`
 
-### Arguments {.no_toc}
+### `mavenUpstreamUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8547,7 +8551,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `url` | [`String`](scalars.md#string) | URL of the upstream registry. |
 | `username` | [`String`](scalars.md#string) | Username of the upstream registry. |
 
-### Fields {.no_toc}
+### `mavenUpstreamUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8562,13 +8566,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryCacheDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryCacheDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesPackagesMavenRegistryID!`](scalars.md#virtualregistriespackagesmavenregistryid) | ID of the Maven virtual registry. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryCacheDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8583,7 +8587,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryCreateInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8591,7 +8595,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `groupPath` | [`ID`](scalars.md#id) | Full path of the group with which the resource is associated. |
 | `name` | [`String!`](scalars.md#string) | Name of virtual registry. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8606,13 +8610,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesPackagesMavenRegistryID!`](scalars.md#virtualregistriespackagesmavenregistryid) | ID of the Maven virtual registry to be deleted. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8627,7 +8631,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryUpdateInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8635,7 +8639,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `id` | [`VirtualRegistriesPackagesMavenRegistryID!`](scalars.md#virtualregistriespackagesmavenregistryid) | ID of the Maven virtual registry to be updated. |
 | `name` | [`String`](scalars.md#string) | Name of virtual registry. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8650,13 +8654,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryUpstreamDeleteInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryUpstreamDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `upstreamId` | [`VirtualRegistriesPackagesMavenRegistryUpstreamID!`](scalars.md#virtualregistriespackagesmavenregistryupstreamid) | ID of the Maven virtual registry upstream. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryUpstreamDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8671,14 +8675,14 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MavenVirtualRegistryUpstreamUpdateInput`
 
-### Arguments {.no_toc}
+### `mavenVirtualRegistryUpstreamUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VirtualRegistriesPackagesMavenRegistryUpstreamID!`](scalars.md#virtualregistriespackagesmavenregistryupstreamid) | ID of the Maven virtual registry upstream. |
 | `position` | [`Int!`](scalars.md#int) | Priority order of an upstream within a virtual registry. |
 
-### Fields {.no_toc}
+### `mavenVirtualRegistryUpstreamUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8693,7 +8697,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleAdminCreateInput`
 
-### Arguments {.no_toc}
+### `memberRoleAdminCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8701,7 +8705,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `name` | [`String`](scalars.md#string) | Name of the member role. |
 | `permissions` | [`[MemberRoleAdminPermission!]`](enums.md#memberroleadminpermission) | List of all customizable admin permissions. |
 
-### Fields {.no_toc}
+### `memberRoleAdminCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8716,13 +8720,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleAdminDeleteInput`
 
-### Arguments {.no_toc}
+### `memberRoleAdminDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MemberRoleID!`](scalars.md#memberroleid) | ID of the admin member role to delete. |
 
-### Fields {.no_toc}
+### `memberRoleAdminDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8737,7 +8741,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleAdminUpdateInput`
 
-### Arguments {.no_toc}
+### `memberRoleAdminUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8746,7 +8750,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `name` | [`String`](scalars.md#string) | Name of the member role. |
 | `permissions` | [`[MemberRoleAdminPermission!]`](enums.md#memberroleadminpermission) | List of all customizable admin permissions. |
 
-### Fields {.no_toc}
+### `memberRoleAdminUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8761,7 +8765,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleCreateInput`
 
-### Arguments {.no_toc}
+### `memberRoleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8771,7 +8775,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `name` | [`String`](scalars.md#string) | Name of the member role. |
 | `permissions` | [`[MemberRolePermission!]`](enums.md#memberrolepermission) | List of all customizable permissions. |
 
-### Fields {.no_toc}
+### `memberRoleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8786,13 +8790,13 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleDeleteInput`
 
-### Arguments {.no_toc}
+### `memberRoleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MemberRoleID!`](scalars.md#memberroleid) | ID of the member role to delete. |
 
-### Fields {.no_toc}
+### `memberRoleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8807,14 +8811,14 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleToUserAssignInput`
 
-### Arguments {.no_toc}
+### `memberRoleToUserAssign` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `memberRoleId` | [`MemberRoleID`](scalars.md#memberroleid) | Global ID of the custom role to be assigned to a user. Admin roles will be unassigned from the user if omitted or set as NULL. |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of the user to be assigned to a custom role. |
 
-### Fields {.no_toc}
+### `memberRoleToUserAssign` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8825,7 +8829,7 @@ Destroys an instance-level custom admin role LDAP link.
 
 **Input type:** `MemberRoleUpdateInput`
 
-### Arguments {.no_toc}
+### `memberRoleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8834,7 +8838,7 @@ Destroys an instance-level custom admin role LDAP link.
 | `name` | [`String`](scalars.md#string) | Name of the member role. |
 | `permissions` | [`[MemberRolePermission!]`](enums.md#memberrolepermission) | List of all customizable permissions. |
 
-### Fields {.no_toc}
+### `memberRoleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8853,7 +8857,7 @@ because the merging may not have happened yet.
 
 **Input type:** `MergeRequestAcceptInput`
 
-### Arguments {.no_toc}
+### `mergeRequestAccept` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8866,7 +8870,7 @@ because the merging may not have happened yet.
 | `squashCommitMessage` | [`String`](scalars.md#string) | Custom squash commit message (if squash is true). |  |
 | `strategy` | [`MergeStrategyEnum`](enums.md#mergestrategyenum) | How to merge the merge request. |  |
 
-### Fields {.no_toc}
+### `mergeRequestAccept` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8883,7 +8887,7 @@ Bypasses security policies for a merge request.
 
 **Input type:** `MergeRequestBypassSecurityPolicyInput`
 
-### Arguments {.no_toc}
+### `mergeRequestBypassSecurityPolicy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8892,7 +8896,7 @@ Bypasses security policies for a merge request.
 | `reason` | [`String!`](scalars.md#string) | Reason for bypassing the security policy. |
 | `securityPolicyIds` | [`[ID!]!`](scalars.md#id) | ID of the security policy to bypass. |
 
-### Fields {.no_toc}
+### `mergeRequestBypassSecurityPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8903,20 +8907,21 @@ Bypasses security policies for a merge request.
 
 **Input type:** `MergeRequestCreateInput`
 
-### Arguments {.no_toc}
+### `mergeRequestCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Description of the merge request (Markdown rendered as HTML for caching). |
 | `labels` | [`[String!]`](scalars.md#string) | Labels of the merge request. |
-| `mergeAfter` | [`Time`](scalars.md#time) | Date after which the merge request can be merged. |
+| `mergeAfter` | [`Time`](scalars.md#time) | Date and time after which the merge request can be merged. |
+| `mergeBefore` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date and time before which the merge request can be merged. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path the merge request is associated with. |
 | `removeSourceBranch` | [`Boolean`](scalars.md#boolean) | Indicates if the source branch of the merge request will be deleted after merge. |
 | `sourceBranch` | [`String!`](scalars.md#string) | Source branch of the merge request. |
 | `targetBranch` | [`String!`](scalars.md#string) | Target branch of the merge request. |
 | `title` | [`String!`](scalars.md#string) | Title of the merge request. |
 
-### Fields {.no_toc}
+### `mergeRequestCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8929,7 +8934,7 @@ Links work items to a merge request.
 
 **Input type:** `MergeRequestCreateWorkItemRelationsInput`
 
-### Arguments {.no_toc}
+### `mergeRequestCreateWorkItemRelations` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -8938,7 +8943,7 @@ Links work items to a merge request.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |  |
 | `workItemIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of the work items to link. |  |
 
-### Fields {.no_toc}
+### `mergeRequestCreateWorkItemRelations` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8950,14 +8955,14 @@ Links work items to a merge request.
 
 **Input type:** `MergeRequestDestroyRequestedChangesInput`
 
-### Arguments {.no_toc}
+### `mergeRequestDestroyRequestedChanges` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestDestroyRequestedChanges` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8970,7 +8975,7 @@ Removes relations between a merge request and work items.
 
 **Input type:** `MergeRequestDestroyWorkItemRelationsInput`
 
-### Arguments {.no_toc}
+### `mergeRequestDestroyWorkItemRelations` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8978,7 +8983,7 @@ Removes relations between a merge request and work items.
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestDestroyWorkItemRelations` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8990,14 +8995,14 @@ Removes relations between a merge request and work items.
 
 **Input type:** `MergeRequestRequestChangesInput`
 
-### Arguments {.no_toc}
+### `mergeRequestRequestChanges` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestRequestChanges` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9014,14 +9019,14 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 
 **Input type:** `MergeRequestResyncSecurityPoliciesInput`
 
-### Arguments {.no_toc}
+### `mergeRequestResyncSecurityPolicies` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to re-evaluate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request belongs to. |
 
-### Fields {.no_toc}
+### `mergeRequestResyncSecurityPolicies` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9032,7 +9037,7 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 
 **Input type:** `MergeRequestReviewerRereviewInput`
 
-### Arguments {.no_toc}
+### `mergeRequestReviewerRereview` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9040,7 +9045,7 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `userId` | [`UserID!`](scalars.md#userid) | User ID for the user that has been requested for a new review. |
 
-### Fields {.no_toc}
+### `mergeRequestReviewerRereview` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9057,14 +9062,14 @@ Creates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSavedViewCreateInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSavedViewCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `filters` | [`MergeRequestSavedViewFilterInput`](input_objects.md#mergerequestsavedviewfilterinput) | Merge request filters stored in the saved view. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved view. |
 
-### Fields {.no_toc}
+### `mergeRequestSavedViewCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9081,13 +9086,13 @@ Deletes a saved view from the merge request dashboard. Available only when the `
 
 **Input type:** `MergeRequestSavedViewDeleteInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSavedViewDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MergeRequestsSavedViewID!`](scalars.md#mergerequestssavedviewid) | Global ID of the saved view. |
 
-### Fields {.no_toc}
+### `mergeRequestSavedViewDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9104,7 +9109,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSavedViewUpdateInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSavedViewUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9112,7 +9117,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `id` | [`MergeRequestsSavedViewID!`](scalars.md#mergerequestssavedviewid) | Global ID of the saved view. |
 | `name` | [`String`](scalars.md#string) | Name of the saved view. |
 
-### Fields {.no_toc}
+### `mergeRequestSavedViewUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9123,7 +9128,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetAssigneesInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetAssignees` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -9132,7 +9137,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `operationMode` | [`MutationOperationMode`](enums.md#mutationoperationmode) | Operation to perform. Defaults to REPLACE. | `REPLACE` |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |  |
 
-### Fields {.no_toc}
+### `mergeRequestSetAssignees` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9143,7 +9148,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetBlockingMergeRequestsInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetBlockingMergeRequests` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9151,7 +9156,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestSetBlockingMergeRequests` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9162,7 +9167,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetDraftInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetDraft` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9170,7 +9175,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestSetDraft` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9181,7 +9186,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetLabelsInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetLabels` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9190,7 +9195,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `operationMode` | [`MutationOperationMode`](enums.md#mutationoperationmode) | Changes the operation mode. Defaults to REPLACE. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestSetLabels` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9201,7 +9206,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetLockedInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetLocked` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9209,7 +9214,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `locked` | [`Boolean!`](scalars.md#boolean) | Whether or not to lock the merge request. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestSetLocked` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9220,7 +9225,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetMilestoneInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetMilestone` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9228,7 +9233,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `milestoneId` | [`MilestoneID`](scalars.md#milestoneid) | Milestone to assign to the merge request. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 
-### Fields {.no_toc}
+### `mergeRequestSetMilestone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9239,7 +9244,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetReviewersInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetReviewers` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -9248,7 +9253,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |  |
 | `reviewerUsernames` | [`[String!]!`](scalars.md#string) | Usernames of reviewers to assign. Replaces existing reviewers by default. Usernames that do not match a visible user are reported in `errors` and not assigned. |  |
 
-### Fields {.no_toc}
+### `mergeRequestSetReviewers` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9259,7 +9264,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 
 **Input type:** `MergeRequestSetSubscriptionInput`
 
-### Arguments {.no_toc}
+### `mergeRequestSetSubscription` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9267,7 +9272,7 @@ Updates a saved view on the merge request dashboard. Available only when the `mr
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `subscribedState` | [`Boolean!`](scalars.md#boolean) | Desired state of the subscription. |
 
-### Fields {.no_toc}
+### `mergeRequestSetSubscription` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9280,13 +9285,14 @@ Update attributes of a merge request.
 
 **Input type:** `MergeRequestUpdateInput`
 
-### Arguments {.no_toc}
+### `mergeRequestUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Description of the merge request (Markdown rendered as HTML for caching). |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
-| `mergeAfter` | [`Time`](scalars.md#time) | Date after which the merge request can be merged. |
+| `mergeAfter` | [`Time`](scalars.md#time) | Date and time after which the merge request can be merged. |
+| `mergeBefore` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date and time before which the merge request can be merged. |
 | `overrideRequestedChanges` | [`Boolean`](scalars.md#boolean) | Override all requested changes. Can only be set by users who have permissionto merge this merge request. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `removeSourceBranch` | [`Boolean`](scalars.md#boolean) | Indicates if the source branch of the merge request will be deleted after merge. |
@@ -9295,7 +9301,7 @@ Update attributes of a merge request.
 | `timeEstimate` | [`String`](scalars.md#string) | Estimated time to complete the merge request. Use `null` or `0` to remove the current estimate. |
 | `title` | [`String`](scalars.md#string) | Title of the merge request. |
 
-### Fields {.no_toc}
+### `mergeRequestUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9306,7 +9312,7 @@ Update attributes of a merge request.
 
 **Input type:** `MergeRequestUpdateApprovalRuleInput`
 
-### Arguments {.no_toc}
+### `mergeRequestUpdateApprovalRule` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -9319,7 +9325,7 @@ Update attributes of a merge request.
 | `removeHiddenGroups` | [`Boolean`](scalars.md#boolean) | Whether hidden groups should be removed. | `false` |
 | `userIds` | [`[String!]`](scalars.md#string) | IDs of users as approvers. | `[]` |
 
-### Fields {.no_toc}
+### `mergeRequestUpdateApprovalRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9334,13 +9340,13 @@ Update attributes of a merge request.
 
 **Input type:** `MergeTrainsDeleteCarInput`
 
-### Arguments {.no_toc}
+### `mergeTrainsDeleteCar` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `carId` | [`MergeTrainsCarID!`](scalars.md#mergetrainscarid) | Global ID of the car. |
 
-### Fields {.no_toc}
+### `mergeTrainsDeleteCar` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9354,7 +9360,7 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelCreateInput`
 
-### Arguments {.no_toc}
+### `mlModelCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9362,7 +9368,7 @@ Update attributes of a merge request.
 | `name` | [`String!`](scalars.md#string) | Name of the model. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 
-### Fields {.no_toc}
+### `mlModelCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9377,14 +9383,14 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelDeleteInput`
 
-### Arguments {.no_toc}
+### `mlModelDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MlModelID!`](scalars.md#mlmodelid) | Global ID of the model to be deleted. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 
-### Fields {.no_toc}
+### `mlModelDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9399,14 +9405,14 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelDestroyInput`
 
-### Arguments {.no_toc}
+### `mlModelDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MlModelID!`](scalars.md#mlmodelid) | Global ID of the model to be deleted. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 
-### Fields {.no_toc}
+### `mlModelDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9422,7 +9428,7 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelEditInput`
 
-### Arguments {.no_toc}
+### `mlModelEdit` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9431,7 +9437,7 @@ Update attributes of a merge request.
 | `name` | [`String!`](scalars.md#string) | Name of the model. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 
-### Fields {.no_toc}
+### `mlModelEdit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9446,7 +9452,7 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelVersionCreateInput`
 
-### Arguments {.no_toc}
+### `mlModelVersionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9456,7 +9462,7 @@ Update attributes of a merge request.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 | `version` | [`String`](scalars.md#string) | Model version. |
 
-### Fields {.no_toc}
+### `mlModelVersionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9471,13 +9477,13 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelVersionDeleteInput`
 
-### Arguments {.no_toc}
+### `mlModelVersionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`MlModelVersionID!`](scalars.md#mlmodelversionid) | Global ID of the model version to be deleted. |
 
-### Fields {.no_toc}
+### `mlModelVersionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9492,7 +9498,7 @@ Update attributes of a merge request.
 
 **Input type:** `MlModelVersionEditInput`
 
-### Arguments {.no_toc}
+### `mlModelVersionEdit` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9501,7 +9507,7 @@ Update attributes of a merge request.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the model to mutate is in. |
 | `version` | [`String!`](scalars.md#string) | Model version. |
 
-### Fields {.no_toc}
+### `mlModelVersionEdit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9512,13 +9518,13 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceBanDestroyInput`
 
-### Arguments {.no_toc}
+### `namespaceBanDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`NamespacesNamespaceBanID!`](scalars.md#namespacesnamespacebanid) | Global ID of the namespace ban to remove. |
 
-### Fields {.no_toc}
+### `namespaceBanDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9529,14 +9535,14 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceCiCdSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `namespaceCiCdSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `allowStaleRunnerPruning` | [`Boolean`](scalars.md#boolean) | Indicates if stale runners directly belonging to the namespace should be periodically pruned. |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the namespace the settings belong to. |
 
-### Fields {.no_toc}
+### `namespaceCiCdSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9547,14 +9553,14 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceCreateRemoteDevelopmentClusterAgentMappingInput`
 
-### Arguments {.no_toc}
+### `namespaceCreateRemoteDevelopmentClusterAgentMapping` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `clusterAgentId` | [`ClustersAgentID!`](scalars.md#clustersagentid) | GlobalID of the cluster agent to be associated with the namespace. |
 | `namespaceId` | [`GroupID!`](scalars.md#groupid) | GlobalID of the group to be associated with the cluster agent. |
 
-### Fields {.no_toc}
+### `namespaceCreateRemoteDevelopmentClusterAgentMapping` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9565,14 +9571,14 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceDeleteRemoteDevelopmentClusterAgentMappingInput`
 
-### Arguments {.no_toc}
+### `namespaceDeleteRemoteDevelopmentClusterAgentMapping` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `clusterAgentId` | [`ClustersAgentID!`](scalars.md#clustersagentid) | GlobalID of the cluster agent to be un-associated from the namespace. |
 | `namespaceId` | [`GroupID!`](scalars.md#groupid) | GlobalID of the group to be un-associated from the cluster agent. |
 
-### Fields {.no_toc}
+### `namespaceDeleteRemoteDevelopmentClusterAgentMapping` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9583,13 +9589,13 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceSecretsManagerEnrollInput`
 
-### Arguments {.no_toc}
+### `namespaceSecretsManagerEnroll` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace to enroll. |
 
-### Fields {.no_toc}
+### `namespaceSecretsManagerEnroll` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9600,13 +9606,13 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceSecretsManagerUnenrollInput`
 
-### Arguments {.no_toc}
+### `namespaceSecretsManagerUnenroll` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace to unenroll. |
 
-### Fields {.no_toc}
+### `namespaceSecretsManagerUnenroll` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9621,14 +9627,14 @@ Update attributes of a merge request.
 
 **Input type:** `NamespaceSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `namespaceSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the namespace the settings belong to. |
 | `pipelineVariablesDefaultRole` | [`PipelineVariablesDefaultRoleType`](enums.md#pipelinevariablesdefaultroletype) | Indicates the default minimum role required to override pipeline variables in the namespace. |
 
-### Fields {.no_toc}
+### `namespaceSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9643,13 +9649,13 @@ Update attributes of a merge request.
 
 **Input type:** `NamespacesRegenerateNewWorkItemEmailAddressInput`
 
-### Arguments {.no_toc}
+### `namespacesRegenerateNewWorkItemEmailAddress` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the namespace to regenerate the new work item email address for. |
 
-### Fields {.no_toc}
+### `namespacesRegenerateNewWorkItemEmailAddress` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9662,13 +9668,13 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `NoteConvertToThreadInput`
 
-### Arguments {.no_toc}
+### `noteConvertToThread` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`NoteID!`](scalars.md#noteid) | Global ID of the Note to convert. |
 
-### Fields {.no_toc}
+### `noteConvertToThread` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9680,7 +9686,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallRotationCreateInput`
 
-### Arguments {.no_toc}
+### `oncallRotationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9693,7 +9699,7 @@ Convert a standard comment to a resolvable thread.
 | `scheduleIid` | [`String!`](scalars.md#string) | IID of the on-call schedule to create the on-call rotation in. |
 | `startsAt` | [`OncallRotationDateInputType!`](input_objects.md#oncallrotationdateinputtype) | Start date and time of the on-call rotation, in the timezone of the on-call schedule. |
 
-### Fields {.no_toc}
+### `oncallRotationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9704,7 +9710,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallRotationDestroyInput`
 
-### Arguments {.no_toc}
+### `oncallRotationDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9712,7 +9718,7 @@ Convert a standard comment to a resolvable thread.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to remove the on-call schedule from. |
 | `scheduleIid` | [`String!`](scalars.md#string) | IID of the on-call schedule to the on-call rotation belongs to. |
 
-### Fields {.no_toc}
+### `oncallRotationDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9723,7 +9729,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallRotationUpdateInput`
 
-### Arguments {.no_toc}
+### `oncallRotationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9735,7 +9741,7 @@ Convert a standard comment to a resolvable thread.
 | `rotationLength` | [`OncallRotationLengthInputType`](input_objects.md#oncallrotationlengthinputtype) | Rotation length of the on-call rotation. |
 | `startsAt` | [`OncallRotationDateInputType`](input_objects.md#oncallrotationdateinputtype) | Start date and time of the on-call rotation, in the timezone of the on-call schedule. |
 
-### Fields {.no_toc}
+### `oncallRotationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9746,7 +9752,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallScheduleCreateInput`
 
-### Arguments {.no_toc}
+### `oncallScheduleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9755,7 +9761,7 @@ Convert a standard comment to a resolvable thread.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to create the on-call schedule in. |
 | `timezone` | [`String!`](scalars.md#string) | Timezone of the on-call schedule. |
 
-### Fields {.no_toc}
+### `oncallScheduleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9766,14 +9772,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallScheduleDestroyInput`
 
-### Arguments {.no_toc}
+### `oncallScheduleDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `iid` | [`String!`](scalars.md#string) | On-call schedule internal ID to remove. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project to remove the on-call schedule from. |
 
-### Fields {.no_toc}
+### `oncallScheduleDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9784,7 +9790,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OncallScheduleUpdateInput`
 
-### Arguments {.no_toc}
+### `oncallScheduleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9794,12 +9800,69 @@ Convert a standard comment to a resolvable thread.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to update the on-call schedule in. |
 | `timezone` | [`String`](scalars.md#string) | Timezone of the on-call schedule. |
 
-### Fields {.no_toc}
+### `oncallScheduleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `oncallSchedule` | [`IncidentManagementOncallSchedule`](objects.md#incidentmanagementoncallschedule) | On-call schedule. |
+
+## `orbitExcludedGroupCreate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `OrbitExcludedGroupCreateInput`
+
+### `orbitExcludedGroupCreate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to exclude. |
+
+### `orbitExcludedGroupCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `group` | [`Group`](objects.md#group) | Excluded group. |
+
+## `orbitExcludedGroupDestroy`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `OrbitExcludedGroupDestroyInput`
+
+### `orbitExcludedGroupDestroy` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to remove from exclusions. |
+
+### `orbitExcludedGroupDestroy` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `group` | [`Group`](objects.md#group) | Group removed from exclusions. |
+
+## `orbitInstanceStartTrial`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `OrbitInstanceStartTrialInput`
+
+### `orbitInstanceStartTrial` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `access` | [`OrbitAccess`](objects.md#orbitaccess) | Instance Orbit access state after starting the trial. |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `orbitStartTrial`
 
@@ -9809,18 +9872,18 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrbitStartTrialInput`
 
-### Arguments {.no_toc}
+### `orbitStartTrial` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group. |
 
-### Fields {.no_toc}
+### `orbitStartTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
-| `group` | [`Group`](objects.md#group) | Group the trial was requested for, also returned on error. Read `knowledgeGraphEnabled` and `orbitTrial` from it. |
+| `group` | [`Group`](objects.md#group) | Group the trial was requested for, also returned on error. Read `orbit { enabled access { trial } }` from it. |
 
 ## `orbitUpdate`
 
@@ -9830,14 +9893,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrbitUpdateInput`
 
-### Arguments {.no_toc}
+### `orbitUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enabled` | [`Boolean!`](scalars.md#boolean) | Whether to enable or disable the Knowledge Graph for the group. |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the group to update. |
 
-### Fields {.no_toc}
+### `orbitUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9852,14 +9915,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationConfirmInput`
 
-### Arguments {.no_toc}
+### `organizationConfirm` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groups` | [`[GroupID!]`](scalars.md#groupid) | Global IDs of top-level groups to transfer to the organization. |
 | `id` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | Global ID of the organization to confirm. |
 
-### Fields {.no_toc}
+### `organizationConfirm` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9874,7 +9937,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationCreateInput`
 
-### Arguments {.no_toc}
+### `organizationCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9884,7 +9947,7 @@ Convert a standard comment to a resolvable thread.
 | `path` | [`String!`](scalars.md#string) | Path for the organization. |
 | `visibility` | [`OrganizationVisibility`](enums.md#organizationvisibility) | Visibility for the organization. |
 
-### Fields {.no_toc}
+### `organizationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9899,14 +9962,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationCreateClusterAgentMappingInput`
 
-### Arguments {.no_toc}
+### `organizationCreateClusterAgentMapping` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `clusterAgentId` | [`ClustersAgentID!`](scalars.md#clustersagentid) | GlobalID of the cluster agent to be associated with the organization. |
 | `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | GlobalID of the organization to be associated with the cluster agent. |
 
-### Fields {.no_toc}
+### `organizationCreateClusterAgentMapping` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9920,7 +9983,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationDeleteInput`
 
-### Arguments {.no_toc}
+### `organizationDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9928,7 +9991,7 @@ Convert a standard comment to a resolvable thread.
 | `description` | [`String`](scalars.md#string) | Description of the organization. |
 | `id` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | ID of the organization to soft-delete. |
 
-### Fields {.no_toc}
+### `organizationDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9943,14 +10006,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationDeleteClusterAgentMappingInput`
 
-### Arguments {.no_toc}
+### `organizationDeleteClusterAgentMapping` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `clusterAgentId` | [`ClustersAgentID!`](scalars.md#clustersagentid) | GlobalID of the cluster agent to be dissociated with the organization. |
 | `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | GlobalID of the organization to be dissociated with the cluster agent. |
 
-### Fields {.no_toc}
+### `organizationDeleteClusterAgentMapping` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9964,13 +10027,13 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationRestoreInput`
 
-### Arguments {.no_toc}
+### `organizationRestore` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | ID of the organization to restore. |
 
-### Fields {.no_toc}
+### `organizationRestore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9985,7 +10048,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationUpdateInput`
 
-### Arguments {.no_toc}
+### `organizationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9997,7 +10060,7 @@ Convert a standard comment to a resolvable thread.
 | `policyStoreExperimentEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Opt the organization in to or out of the Policy Store experiment. Opting in returns an error when the experiment is not available to the organization; opting out is always accepted. |
 | `visibility` | [`OrganizationVisibility`](enums.md#organizationvisibility) | Visibility for the organization. |
 
-### Fields {.no_toc}
+### `organizationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10012,7 +10075,7 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationUserCreateInput`
 
-### Arguments {.no_toc}
+### `organizationUserCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10020,7 +10083,7 @@ Convert a standard comment to a resolvable thread.
 | `userType` | [`OrganizationUserType!`](enums.md#organizationusertype) | Type to add the organization user with. |
 | `username` | [`String!`](scalars.md#string) | Username of the user to add to the organization. |
 
-### Fields {.no_toc}
+### `organizationUserCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10035,13 +10098,13 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationUserDeleteInput`
 
-### Arguments {.no_toc}
+### `organizationUserDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`OrganizationsOrganizationUserID!`](scalars.md#organizationsorganizationuserid) | ID of the organization user to delete. |
 
-### Fields {.no_toc}
+### `organizationUserDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10056,14 +10119,14 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `OrganizationUserUpdateInput`
 
-### Arguments {.no_toc}
+### `organizationUserUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `accessLevel` | [`OrganizationUserAccessLevel!`](enums.md#organizationuseraccesslevel) | Access level to update the organization user to. |
 | `id` | [`OrganizationsOrganizationUserID!`](scalars.md#organizationsorganizationuserid) | ID of the organization user to mutate. |
 
-### Fields {.no_toc}
+### `organizationUserUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10074,13 +10137,13 @@ Convert a standard comment to a resolvable thread.
 
 **Input type:** `PagesMarkOnboardingCompleteInput`
 
-### Arguments {.no_toc}
+### `pagesMarkOnboardingComplete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `pagesMarkOnboardingComplete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10097,7 +10160,7 @@ Creates a personal access token for the current user.
 
 **Input type:** `PersonalAccessTokenCreateInput`
 
-### Arguments {.no_toc}
+### `personalAccessTokenCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -10107,7 +10170,7 @@ Creates a personal access token for the current user.
 | `name` | [`String!`](scalars.md#string) | Name of the token. |  |
 | `sudo` | [`Boolean`](scalars.md#boolean) | Whether the token can impersonate other users with sudo. Requires the token owner to be an administrator. | `false` |
 
-### Fields {.no_toc}
+### `personalAccessTokenCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10124,13 +10187,13 @@ Revokes a specified personal access token.
 
 **Input type:** `PersonalAccessTokenRevokeInput`
 
-### Arguments {.no_toc}
+### `personalAccessTokenRevoke` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PersonalAccessTokenID!`](scalars.md#personalaccesstokenid) | Global ID of the personal access token that will be revoked. |
 
-### Fields {.no_toc}
+### `personalAccessTokenRevoke` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10146,14 +10209,14 @@ Rotate a specified personal access token.
 
 **Input type:** `PersonalAccessTokenRotateInput`
 
-### Arguments {.no_toc}
+### `personalAccessTokenRotate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `expiresAt` | [`ISO8601Date`](scalars.md#iso8601date) | Expiration date of the token. |
 | `id` | [`PersonalAccessTokenID!`](scalars.md#personalaccesstokenid) | Global ID of the personal access token that will be rotated. |
 
-### Fields {.no_toc}
+### `personalAccessTokenRotate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10164,13 +10227,13 @@ Rotate a specified personal access token.
 
 **Input type:** `PipelineCancelInput`
 
-### Arguments {.no_toc}
+### `pipelineCancel` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineID!`](scalars.md#cipipelineid) | ID of the pipeline to mutate. |
 
-### Fields {.no_toc}
+### `pipelineCancel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10181,7 +10244,7 @@ Rotate a specified personal access token.
 
 **Input type:** `PipelineCreateInput`
 
-### Arguments {.no_toc}
+### `pipelineCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10192,7 +10255,7 @@ Rotate a specified personal access token.
 | `ref` | [`String!`](scalars.md#string) | Ref on which to run the pipeline. Ignored when `mergeRequestIid` is provided; the merge request ref path is used instead. |
 | `variables` | [`[CiVariableInput!]`](input_objects.md#civariableinput) | Variables for the pipeline. |
 
-### Fields {.no_toc}
+### `pipelineCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10204,13 +10267,13 @@ Rotate a specified personal access token.
 
 **Input type:** `PipelineDestroyInput`
 
-### Arguments {.no_toc}
+### `pipelineDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineID!`](scalars.md#cipipelineid) | ID of the pipeline to mutate. |
 
-### Fields {.no_toc}
+### `pipelineDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10226,14 +10289,14 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineExecutionSchedulePolicyTestRunInput`
 
-### Arguments {.no_toc}
+### `pipelineExecutionSchedulePolicyTestRun` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `policyId` | [`SecurityPolicyID!`](scalars.md#securitypolicyid) | Global ID of the pipeline execution schedule policy to test. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to run the test on. |
 
-### Fields {.no_toc}
+### `pipelineExecutionSchedulePolicyTestRun` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10244,13 +10307,13 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineRetryInput`
 
-### Arguments {.no_toc}
+### `pipelineRetry` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineID!`](scalars.md#cipipelineid) | ID of the pipeline to mutate. |
 
-### Fields {.no_toc}
+### `pipelineRetry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10261,7 +10324,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineScheduleCreateInput`
 
-### Arguments {.no_toc}
+### `pipelineScheduleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10274,7 +10337,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 | `ref` | [`String!`](scalars.md#string) | Ref of the pipeline schedule. |
 | `variables` | [`[PipelineScheduleVariableInput!]`](input_objects.md#pipelineschedulevariableinput) | Variables for the pipeline schedule. |
 
-### Fields {.no_toc}
+### `pipelineScheduleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10285,13 +10348,13 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineScheduleDeleteInput`
 
-### Arguments {.no_toc}
+### `pipelineScheduleDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineScheduleID!`](scalars.md#cipipelinescheduleid) | ID of the pipeline schedule to mutate. |
 
-### Fields {.no_toc}
+### `pipelineScheduleDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10301,13 +10364,13 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineSchedulePlayInput`
 
-### Arguments {.no_toc}
+### `pipelineSchedulePlay` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineScheduleID!`](scalars.md#cipipelinescheduleid) | ID of the pipeline schedule to mutate. |
 
-### Fields {.no_toc}
+### `pipelineSchedulePlay` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10318,13 +10381,13 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineScheduleTakeOwnershipInput`
 
-### Arguments {.no_toc}
+### `pipelineScheduleTakeOwnership` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiPipelineScheduleID!`](scalars.md#cipipelinescheduleid) | ID of the pipeline schedule to mutate. |
 
-### Fields {.no_toc}
+### `pipelineScheduleTakeOwnership` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10335,7 +10398,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineScheduleUpdateInput`
 
-### Arguments {.no_toc}
+### `pipelineScheduleUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10348,7 +10411,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 | `ref` | [`String`](scalars.md#string) | Ref of the pipeline schedule. |
 | `variables` | [`[PipelineScheduleVariableInput!]`](input_objects.md#pipelineschedulevariableinput) | Variables for the pipeline schedule. |
 
-### Fields {.no_toc}
+### `pipelineScheduleUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10363,7 +10426,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineTriggerCreateInput`
 
-### Arguments {.no_toc}
+### `pipelineTriggerCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10371,7 +10434,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 | `expiresAt` | [`Time`](scalars.md#time) | Timestamp of when the pipeline trigger token expires. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project that the pipeline trigger token to mutate is in. |
 
-### Fields {.no_toc}
+### `pipelineTriggerCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10386,13 +10449,13 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineTriggerDeleteInput`
 
-### Arguments {.no_toc}
+### `pipelineTriggerDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiTriggerID!`](scalars.md#citriggerid) | ID of the pipeline trigger token to delete. |
 
-### Fields {.no_toc}
+### `pipelineTriggerDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10406,14 +10469,14 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `PipelineTriggerUpdateInput`
 
-### Arguments {.no_toc}
+### `pipelineTriggerUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String!`](scalars.md#string) | Description of the pipeline trigger token. |
 | `id` | [`CiTriggerID!`](scalars.md#citriggerid) | ID of the pipeline trigger token to update. |
 
-### Fields {.no_toc}
+### `pipelineTriggerUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10428,14 +10491,14 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `ProcessUserBillablePromotionRequestInput`
 
-### Arguments {.no_toc}
+### `processUserBillablePromotionRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `status` | [`MemberApprovalStatusType!`](enums.md#memberapprovalstatustype) | Status for the member approval request (approved, denied, pending). |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of user to be promoted. |
 
-### Fields {.no_toc}
+### `processUserBillablePromotionRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10450,14 +10513,14 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `projectBlobsRemoveInput`
 
-### Arguments {.no_toc}
+### `projectBlobsRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `blobOids` | [`[String!]!`](scalars.md#string) | List of blob oids. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to replace. |
 
-### Fields {.no_toc}
+### `projectBlobsRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10467,7 +10530,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 
 **Input type:** `ProjectCiCdSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `projectCiCdSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10488,7 +10551,7 @@ Triggers a test-run for a Scheduled Pipeline Execution Policy on a specific proj
 | `resourceGroupDefaultProcessMode` | [`ResourceGroupsProcessMode`](enums.md#resourcegroupsprocessmode) | Default process mode for resource groups in the project. |
 | `skipBranchPipelinesForMrs` | [`Boolean`](scalars.md#boolean) | Indicates whether branch pipelines are skipped if a merge request is open. |
 
-### Fields {.no_toc}
+### `projectCiCdSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10505,7 +10568,7 @@ Sets (creates or updates) a custom attribute on a project. Only available to adm
 
 **Input type:** `ProjectCustomAttributeSetInput`
 
-### Arguments {.no_toc}
+### `projectCustomAttributeSet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10513,7 +10576,7 @@ Sets (creates or updates) a custom attribute on a project. Only available to adm
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 | `value` | [`String!`](scalars.md#string) | Value of the custom attribute. |
 
-### Fields {.no_toc}
+### `projectCustomAttributeSet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10526,7 +10589,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectMemberBulkUpdateInput`
 
-### Arguments {.no_toc}
+### `projectMemberBulkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10535,7 +10598,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Global ID of the project. |
 | `userIds` | [`[UserID!]!`](scalars.md#userid) | Global IDs of the members. |
 
-### Fields {.no_toc}
+### `projectMemberBulkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10551,7 +10614,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSavedReplyCreateInput`
 
-### Arguments {.no_toc}
+### `projectSavedReplyCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10559,7 +10622,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Project for the saved reply. |
 
-### Fields {.no_toc}
+### `projectSavedReplyCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10574,13 +10637,13 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSavedReplyDestroyInput`
 
-### Arguments {.no_toc}
+### `projectSavedReplyDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectsSavedReplyID!`](scalars.md#projectssavedreplyid) | Global ID of the project-level saved reply. |
 
-### Fields {.no_toc}
+### `projectSavedReplyDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10595,7 +10658,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSavedReplyUpdateInput`
 
-### Arguments {.no_toc}
+### `projectSavedReplyUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10603,7 +10666,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `id` | [`ProjectsSavedReplyID!`](scalars.md#projectssavedreplyid) | Global ID of the project-level saved reply. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 
-### Fields {.no_toc}
+### `projectSavedReplyUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10614,7 +10677,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretCreateInput`
 
-### Arguments {.no_toc}
+### `projectSecretCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10626,7 +10689,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `rotationIntervalDays` | [`Int`](scalars.md#int) | Number of days between rotation reminders for the secret. |
 | `secret` | [`String!`](scalars.md#string) | Value of the project secret. |
 
-### Fields {.no_toc}
+### `projectSecretCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10638,14 +10701,14 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretDeleteInput`
 
-### Arguments {.no_toc}
+### `projectSecretDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the project secret. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project of the secret. |
 
-### Fields {.no_toc}
+### `projectSecretDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10656,7 +10719,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretUpdateInput`
 
-### Arguments {.no_toc}
+### `projectSecretUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10669,7 +10732,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `rotationIntervalDays` | [`Int`](scalars.md#int) | Number of days between rotation reminders for the secret. |
 | `secret` | [`String`](scalars.md#string) | New value of the project secret. |
 
-### Fields {.no_toc}
+### `projectSecretUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10681,13 +10744,13 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretsManagerDeprovisionInput`
 
-### Arguments {.no_toc}
+### `projectSecretsManagerDeprovision` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project of the secrets manager. |
 
-### Fields {.no_toc}
+### `projectSecretsManagerDeprovision` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10699,13 +10762,13 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretsManagerInitializeInput`
 
-### Arguments {.no_toc}
+### `projectSecretsManagerInitialize` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Project of the secrets manager. |
 
-### Fields {.no_toc}
+### `projectSecretsManagerInitialize` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10717,14 +10780,14 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretsPermissionDeleteInput`
 
-### Arguments {.no_toc}
+### `projectSecretsPermissionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `principal` | [`PrincipalInput!`](input_objects.md#principalinput) | User/MemberRole/Role whose access is being removed. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project from which the permissions are removed. |
 
-### Fields {.no_toc}
+### `projectSecretsPermissionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10736,7 +10799,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecretsPermissionUpdateInput`
 
-### Arguments {.no_toc}
+### `projectSecretsPermissionUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10745,7 +10808,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `principal` | [`PrincipalInput!`](input_objects.md#principalinput) | User/MemberRole/Role that is provided access. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project to which the permissions are added. |
 
-### Fields {.no_toc}
+### `projectSecretsPermissionUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10757,7 +10820,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecurityExclusionCreateInput`
 
-### Arguments {.no_toc}
+### `projectSecurityExclusionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10768,7 +10831,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `type` | [`ExclusionTypeEnum!`](enums.md#exclusiontypeenum) | Type of the exclusion. |
 | `value` | [`String!`](scalars.md#string) | Value of the exclusion. |
 
-### Fields {.no_toc}
+### `projectSecurityExclusionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10779,13 +10842,13 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecurityExclusionDeleteInput`
 
-### Arguments {.no_toc}
+### `projectSecurityExclusionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SecurityProjectSecurityExclusionID!`](scalars.md#securityprojectsecurityexclusionid) | Global ID of the exclusion to be deleted. |
 
-### Fields {.no_toc}
+### `projectSecurityExclusionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10795,7 +10858,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 
 **Input type:** `ProjectSecurityExclusionUpdateInput`
 
-### Arguments {.no_toc}
+### `projectSecurityExclusionUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10806,7 +10869,7 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `type` | [`ExclusionTypeEnum`](enums.md#exclusiontypeenum) | Type of the exclusion. |
 | `value` | [`String`](scalars.md#string) | Value of the exclusion. |
 
-### Fields {.no_toc}
+### `projectSecurityExclusionUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10819,14 +10882,14 @@ Deprecated in GitLab 17.11. Use mutation ProjectUpdateComplianceFrameworks inste
 
 **Input type:** `ProjectSetComplianceFrameworkInput`
 
-### Arguments {.no_toc}
+### `projectSetComplianceFramework` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `complianceFrameworkId` | [`ComplianceManagementFrameworkID`](scalars.md#compliancemanagementframeworkid) | ID of the compliance framework to assign to the project. Set to `null` to unset. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | ID of the project to change the compliance framework of. |
 
-### Fields {.no_toc}
+### `projectSetComplianceFramework` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10839,14 +10902,14 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSetContinuousVulnerabilityScanningInput`
 
-### Arguments {.no_toc}
+### `projectSetContinuousVulnerabilityScanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for continuous vulnerability scanning feature. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `projectSetContinuousVulnerabilityScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10857,7 +10920,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSetLockedInput`
 
-### Arguments {.no_toc}
+### `projectSetLocked` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10865,7 +10928,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 | `lock` | [`Boolean!`](scalars.md#boolean) | Whether or not to lock the file path. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to mutate. |
 
-### Fields {.no_toc}
+### `projectSetLocked` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10880,7 +10943,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `projectSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10895,7 +10958,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 | `toolApprovalForSessionEnabled` | [`Boolean`](scalars.md#boolean) | Indicates whether tool approval for Duo Workflow sessions is enabled for the project. |
 | `webBasedCommitSigningEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Indicates whether web-based commit signing is enabled for the project. |
 
-### Fields {.no_toc}
+### `projectSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10906,14 +10969,14 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSubscriptionCreateInput`
 
-### Arguments {.no_toc}
+### `projectSubscriptionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`String!`](scalars.md#string) | Full path of the downstream project of the Project Subscription. |
 | `upstreamPath` | [`String!`](scalars.md#string) | Full path of the upstream project of the Project Subscription. |
 
-### Fields {.no_toc}
+### `projectSubscriptionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10924,13 +10987,13 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSubscriptionDeleteInput`
 
-### Arguments {.no_toc}
+### `projectSubscriptionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `subscriptionId` | [`CiSubscriptionsProjectID!`](scalars.md#cisubscriptionsprojectid) | ID of the subscription to delete. |
 
-### Fields {.no_toc}
+### `projectSubscriptionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10945,14 +11008,14 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectSyncForkInput`
 
-### Arguments {.no_toc}
+### `projectSyncFork` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to initialize. |
 | `targetBranch` | [`String!`](scalars.md#string) | Ref of the fork to fetch into. |
 
-### Fields {.no_toc}
+### `projectSyncFork` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10963,7 +11026,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectTargetBranchRuleCreateInput`
 
-### Arguments {.no_toc}
+### `projectTargetBranchRuleCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10971,7 +11034,7 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Project ID for the target branch rule. |
 | `targetBranch` | [`String!`](scalars.md#string) | Target branch for the target branch rule. |
 
-### Fields {.no_toc}
+### `projectTargetBranchRuleCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10982,13 +11045,13 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectTargetBranchRuleDestroyInput`
 
-### Arguments {.no_toc}
+### `projectTargetBranchRuleDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectsTargetBranchRuleID!`](scalars.md#projectstargetbranchruleid) | ID for the target branch rule. |
 
-### Fields {.no_toc}
+### `projectTargetBranchRuleDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11002,14 +11065,14 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `projectTextReplaceInput`
 
-### Arguments {.no_toc}
+### `projectTextReplace` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to replace. |
 | `replacements` | [`[String!]!`](scalars.md#string) | List of text patterns to replace project-wide. |
 
-### Fields {.no_toc}
+### `projectTextReplace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11023,14 +11086,14 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 **Input type:** `ProjectTransferInput`
 
-### Arguments {.no_toc}
+### `projectTransfer` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectID!`](scalars.md#projectid) | Global ID of the project to transfer. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the target namespace. |
 
-### Fields {.no_toc}
+### `projectTransfer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11043,14 +11106,14 @@ Update compliance frameworks for a project.
 
 **Input type:** `ProjectUpdateComplianceFrameworksInput`
 
-### Arguments {.no_toc}
+### `projectUpdateComplianceFrameworks` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `complianceFrameworkIds` | [`[ComplianceManagementFrameworkID!]!`](scalars.md#compliancemanagementframeworkid) | IDs of the compliance framework to update for the project. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | ID of the project to change the compliance framework of. |
 
-### Fields {.no_toc}
+### `projectUpdateComplianceFrameworks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11063,7 +11126,7 @@ Deprecated in GitLab 18.2. Use HttpIntegrationCreate.
 
 **Input type:** `PrometheusIntegrationCreateInput`
 
-### Arguments {.no_toc}
+### `prometheusIntegrationCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -11075,7 +11138,7 @@ Deprecated in GitLab 18.2. Use HttpIntegrationCreate.
 | `projectPath` | [`ID!`](scalars.md#id) | Project to create the integration in. |  |
 | `type` | [`AlertManagementIntegrationType`](enums.md#alertmanagementintegrationtype) | Type of integration to create. Cannot be changed after creation. | `HTTP` |
 
-### Fields {.no_toc}
+### `prometheusIntegrationCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11088,13 +11151,13 @@ Deprecated in GitLab 18.2. Use HttpIntegrationResetToken.
 
 **Input type:** `PrometheusIntegrationResetTokenInput`
 
-### Arguments {.no_toc}
+### `prometheusIntegrationResetToken` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IntegrationsPrometheusID!`](scalars.md#integrationsprometheusid) | ID of the integration to mutate. |
 
-### Fields {.no_toc}
+### `prometheusIntegrationResetToken` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11107,7 +11170,7 @@ Deprecated in GitLab 18.2. Use HttpIntegrationUpdate.
 
 **Input type:** `PrometheusIntegrationUpdateInput`
 
-### Arguments {.no_toc}
+### `prometheusIntegrationUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11118,7 +11181,7 @@ Deprecated in GitLab 18.2. Use HttpIntegrationUpdate.
 | `payloadAttributeMappings` | [`[AlertManagementPayloadAlertFieldInput!]`](input_objects.md#alertmanagementpayloadalertfieldinput) | Custom mapping of GitLab alert attributes to fields from the payload example. |
 | `payloadExample` | [`JsonString`](scalars.md#jsonstring) | Example of an alert payload. |
 
-### Fields {.no_toc}
+### `prometheusIntegrationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11131,7 +11194,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `PromoteToEpicInput`
 
-### Arguments {.no_toc}
+### `promoteToEpic` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11139,7 +11202,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `iid` | [`String!`](scalars.md#string) | IID of the issue to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the issue to mutate is in. |
 
-### Fields {.no_toc}
+### `promoteToEpic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11151,13 +11214,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `RefreshFindingTokenStatusInput`
 
-### Arguments {.no_toc}
+### `refreshFindingTokenStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | Global ID of the Vulnerability whose token status should be refreshed. |
 
-### Fields {.no_toc}
+### `refreshFindingTokenStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11168,13 +11231,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `RefreshSecurityFindingTokenStatusInput`
 
-### Arguments {.no_toc}
+### `refreshSecurityFindingTokenStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `securityFindingUuid` | [`String!`](scalars.md#string) | UUID of the Security::Finding whose token status should be refreshed (MR context). |
 
-### Fields {.no_toc}
+### `refreshSecurityFindingTokenStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11185,13 +11248,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `RefreshStandardsAdherenceChecksInput`
 
-### Arguments {.no_toc}
+### `refreshStandardsAdherenceChecks` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Group path. |
 
-### Fields {.no_toc}
+### `refreshStandardsAdherenceChecks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11202,13 +11265,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `RefreshVulnerabilityFindingTokenStatusInput`
 
-### Arguments {.no_toc}
+### `refreshVulnerabilityFindingTokenStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | Global ID of the Vulnerability whose token status should be refreshed. |
 
-### Fields {.no_toc}
+### `refreshVulnerabilityFindingTokenStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11219,7 +11282,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseAssetLinkCreateInput`
 
-### Arguments {.no_toc}
+### `releaseAssetLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -11230,7 +11293,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `tagName` | [`String!`](scalars.md#string) | Name of the associated release's tag. |  |
 | `url` | [`String!`](scalars.md#string) | URL of the asset link. |  |
 
-### Fields {.no_toc}
+### `releaseAssetLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11241,13 +11304,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseAssetLinkDeleteInput`
 
-### Arguments {.no_toc}
+### `releaseAssetLinkDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ReleasesLinkID!`](scalars.md#releaseslinkid) | ID of the release asset link to delete. |
 
-### Fields {.no_toc}
+### `releaseAssetLinkDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11258,7 +11321,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseAssetLinkUpdateInput`
 
-### Arguments {.no_toc}
+### `releaseAssetLinkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11268,7 +11331,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `name` | [`String`](scalars.md#string) | Name of the asset link. |
 | `url` | [`String`](scalars.md#string) | URL of the asset link. |
 
-### Fields {.no_toc}
+### `releaseAssetLinkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11279,7 +11342,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseCreateInput`
 
-### Arguments {.no_toc}
+### `releaseCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11293,7 +11356,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `tagMessage` | [`String`](scalars.md#string) | Message to use if creating a new annotated tag. |
 | `tagName` | [`String!`](scalars.md#string) | Name of the tag to associate with the release. |
 
-### Fields {.no_toc}
+### `releaseCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11304,14 +11367,14 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseDeleteInput`
 
-### Arguments {.no_toc}
+### `releaseDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the release is associated with. |
 | `tagName` | [`String!`](scalars.md#string) | Name of the tag associated with the release to delete. |
 
-### Fields {.no_toc}
+### `releaseDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11322,7 +11385,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `ReleaseUpdateInput`
 
-### Arguments {.no_toc}
+### `releaseUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11333,7 +11396,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `releasedAt` | [`Time`](scalars.md#time) | Release date. |
 | `tagName` | [`String!`](scalars.md#string) | Name of the tag associated with the release. |
 
-### Fields {.no_toc}
+### `releaseUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11344,13 +11407,13 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `RemoveProjectFromSecurityDashboardInput`
 
-### Arguments {.no_toc}
+### `removeProjectFromSecurityDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ProjectID!`](scalars.md#projectid) | ID of the project to remove from the Instance Security Dashboard. |
 
-### Fields {.no_toc}
+### `removeProjectFromSecurityDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11362,14 +11425,14 @@ Repositions a DiffNote on an image (a `Note` where the `position.positionType` i
 
 **Input type:** `RepositionImageDiffNoteInput`
 
-### Arguments {.no_toc}
+### `repositionImageDiffNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`DiffNoteID!`](scalars.md#diffnoteid) | Global ID of the DiffNote to update. |
 | `position` | [`UpdateDiffImagePositionInput!`](input_objects.md#updatediffimagepositioninput) | Position of the note on a diff. |
 
-### Fields {.no_toc}
+### `repositionImageDiffNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11387,13 +11450,13 @@ Restores a Pages deployment that has been scheduled for deletion.
 
 **Input type:** `RestorePagesDeploymentInput`
 
-### Arguments {.no_toc}
+### `restorePagesDeployment` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`PagesDeploymentID!`](scalars.md#pagesdeploymentid) | ID of the Pages Deployment. |
 
-### Fields {.no_toc}
+### `restorePagesDeployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11410,14 +11473,14 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `ResyncSecurityPoliciesInput`
 
-### Arguments {.no_toc}
+### `resyncSecurityPolicies` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `fullPath` | [`String!`](scalars.md#string) | Full path of the project or group. |  |
 | `relationship` | [`RelationshipType`](enums.md#relationshiptype) | Relationship of the policies to resync. | `DIRECT` |
 
-### Fields {.no_toc}
+### `resyncSecurityPolicies` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11431,14 +11494,14 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerAssignToProjectInput`
 
-### Arguments {.no_toc}
+### `runnerAssignToProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to which the runner will be assigned. |
 | `runnerId` | [`CiRunnerID!`](scalars.md#cirunnerid) | ID of the runner to assign to the project . |
 
-### Fields {.no_toc}
+### `runnerAssignToProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11452,14 +11515,14 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerBulkPauseInput`
 
-### Arguments {.no_toc}
+### `runnerBulkPause` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[CiRunnerID!]!`](scalars.md#cirunnerid) | IDs of the runners to pause or unpause. |
 | `paused` | [`Boolean!`](scalars.md#boolean) | Indicates the runner is not allowed to receive jobs. |
 
-### Fields {.no_toc}
+### `runnerBulkPause` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11471,13 +11534,13 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerCacheClearInput`
 
-### Arguments {.no_toc}
+### `runnerCacheClear` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Global ID of the project that will have its runner cache cleared. |
 
-### Fields {.no_toc}
+### `runnerCacheClear` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11491,7 +11554,7 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerCreateInput`
 
-### Arguments {.no_toc}
+### `runnerCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11511,7 +11574,7 @@ Triggers a resynchronization of security policies linked to the given project or
 | `tokenExpiresAt` | [`Time`](scalars.md#time) | Token expiration time (ISO 8601 format). Must be between 5 minutes and 21 days in the future, and cannot exceed instance/group/project limits. |
 | `tokenRotationDeadline` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Deadline for token rotation (ISO 8601 format). Requires tokenExpiresAt. Must be <= tokenExpiresAt. Setting both to the same value disables token rotation. |
 
-### Fields {.no_toc}
+### `runnerCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11522,13 +11585,13 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerDeleteInput`
 
-### Arguments {.no_toc}
+### `runnerDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`CiRunnerID!`](scalars.md#cirunnerid) | ID of the runner to delete. |
 
-### Fields {.no_toc}
+### `runnerDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11542,14 +11605,14 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerUnassignFromProjectInput`
 
-### Arguments {.no_toc}
+### `runnerUnassignFromProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project from which the runner will be unassigned. |
 | `runnerId` | [`CiRunnerID!`](scalars.md#cirunnerid) | ID of the runner to unassign from the project. |
 
-### Fields {.no_toc}
+### `runnerUnassignFromProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11559,7 +11622,7 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnerUpdateInput`
 
-### Arguments {.no_toc}
+### `runnerUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11577,7 +11640,7 @@ Triggers a resynchronization of security policies linked to the given project or
 | `runUntagged` | [`Boolean`](scalars.md#boolean) | Indicates the runner is able to run untagged jobs. |
 | `tagList` | [`[String!]`](scalars.md#string) | Tags associated with the runner. |
 
-### Fields {.no_toc}
+### `runnerUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11588,7 +11651,7 @@ Triggers a resynchronization of security policies linked to the given project or
 
 **Input type:** `RunnersExportUsageInput`
 
-### Arguments {.no_toc}
+### `runnersExportUsage` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -11598,7 +11661,7 @@ Triggers a resynchronization of security policies linked to the given project or
 | `runnerType` | [`CiRunnerType`](enums.md#cirunnertype) | Scope of the runners to include in the report. |  |
 | `toDate` | [`ISO8601Date`](scalars.md#iso8601date) | UTC end date of the period to report on. " \ "Defaults to the end of the month specified by `fromDate`. |  |
 
-### Fields {.no_toc}
+### `runnersExportUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11610,14 +11673,14 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 
 **Input type:** `RunnersRegistrationTokenResetInput`
 
-### Arguments {.no_toc}
+### `runnersRegistrationTokenReset` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ID`](scalars.md#id) | ID of the project or group to reset the token for. Omit if resetting instance runner token. |
 | `type` | [`CiRunnerType!`](enums.md#cirunnertype) | Scope of the object to reset the token for. |
 
-### Fields {.no_toc}
+### `runnersRegistrationTokenReset` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11628,13 +11691,13 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 
 **Input type:** `SafeDisablePipelineVariablesInput`
 
-### Arguments {.no_toc}
+### `safeDisablePipelineVariables` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`ID!`](scalars.md#id) | Full path of the group to disable pipeline variables for. |
 
-### Fields {.no_toc}
+### `safeDisablePipelineVariables` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11645,14 +11708,14 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 
 **Input type:** `SavedReplyCreateInput`
 
-### Arguments {.no_toc}
+### `savedReplyCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `content` | [`String!`](scalars.md#string) | Content of the saved reply. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 
-### Fields {.no_toc}
+### `savedReplyCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11663,13 +11726,13 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 
 **Input type:** `SavedReplyDestroyInput`
 
-### Arguments {.no_toc}
+### `savedReplyDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`UsersSavedReplyID!`](scalars.md#userssavedreplyid) | Global ID of the user saved reply. |
 
-### Fields {.no_toc}
+### `savedReplyDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11680,7 +11743,7 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 
 **Input type:** `SavedReplyUpdateInput`
 
-### Arguments {.no_toc}
+### `savedReplyUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11688,7 +11751,7 @@ Deprecated in GitLab 17.7. Underlying feature was deprecated in 15.6 and will be
 | `id` | [`UsersSavedReplyID!`](scalars.md#userssavedreplyid) | Global ID of the user saved reply. |
 | `name` | [`String!`](scalars.md#string) | Name of the saved reply. |
 
-### Fields {.no_toc}
+### `savedReplyUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11701,7 +11764,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `ScanExecutionPolicyCommitInput`
 
-### Arguments {.no_toc}
+### `scanExecutionPolicyCommit` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11711,7 +11774,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `policyYaml` | [`String!`](scalars.md#string) | YAML snippet of the policy. |
 | `projectPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.10. Use `fullPath`. |
 
-### Fields {.no_toc}
+### `scanExecutionPolicyCommit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11727,13 +11790,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerEnableAddOnInput`
 
-### Arguments {.no_toc}
+### `secretsManagerEnableAddOn` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to enable the Secrets Manager add-on for. |
 
-### Fields {.no_toc}
+### `secretsManagerEnableAddOn` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11748,7 +11811,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerInstanceEnableAddOnInput`
 
-### Fields {.no_toc}
+### `secretsManagerInstanceEnableAddOn` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11763,7 +11826,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerInstanceRefreshEntitlementInput`
 
-### Fields {.no_toc}
+### `secretsManagerInstanceRefreshEntitlement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11778,7 +11841,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerInstanceStartTrialInput`
 
-### Fields {.no_toc}
+### `secretsManagerInstanceStartTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11793,13 +11856,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerRefreshEntitlementInput`
 
-### Arguments {.no_toc}
+### `secretsManagerRefreshEntitlement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to refresh the Secrets Manager entitlement for. |
 
-### Fields {.no_toc}
+### `secretsManagerRefreshEntitlement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11814,13 +11877,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecretsManagerStartTrialInput`
 
-### Arguments {.no_toc}
+### `secretsManagerStartTrial` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to start a Secrets Manager trial for. |
 
-### Fields {.no_toc}
+### `secretsManagerStartTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11831,7 +11894,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityAttributeCreateInput`
 
-### Arguments {.no_toc}
+### `securityAttributeCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11839,7 +11902,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `categoryId` | [`SecurityCategoryID!`](scalars.md#securitycategoryid) | Global ID of the security category. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the namespace. |
 
-### Fields {.no_toc}
+### `securityAttributeCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11850,13 +11913,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityAttributeDestroyInput`
 
-### Arguments {.no_toc}
+### `securityAttributeDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SecurityAttributeID!`](scalars.md#securityattributeid) | Global ID of the security attribute to destroy. |
 
-### Fields {.no_toc}
+### `securityAttributeDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11867,7 +11930,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityAttributeProjectUpdateInput`
 
-### Arguments {.no_toc}
+### `securityAttributeProjectUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11875,7 +11938,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Global ID of the project. |
 | `removeAttributeIds` | [`[SecurityAttributeID!]`](scalars.md#securityattributeid) | Global IDs of the security attributes to remove from the project. |
 
-### Fields {.no_toc}
+### `securityAttributeProjectUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11888,7 +11951,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityAttributeUpdateInput`
 
-### Arguments {.no_toc}
+### `securityAttributeUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11897,7 +11960,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `id` | [`SecurityAttributeID!`](scalars.md#securityattributeid) | Global ID of the security attribute. |
 | `name` | [`String`](scalars.md#string) | Name of the security attribute. |
 
-### Fields {.no_toc}
+### `securityAttributeUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11908,7 +11971,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityCategoryCreateInput`
 
-### Arguments {.no_toc}
+### `securityCategoryCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11917,7 +11980,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `name` | [`String!`](scalars.md#string) | Name of the security category. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the category namespace. |
 
-### Fields {.no_toc}
+### `securityCategoryCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11928,13 +11991,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityCategoryDestroyInput`
 
-### Arguments {.no_toc}
+### `securityCategoryDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SecurityCategoryID!`](scalars.md#securitycategoryid) | Global ID of the security category to destroy. |
 
-### Fields {.no_toc}
+### `securityCategoryDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11946,7 +12009,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityCategoryUpdateInput`
 
-### Arguments {.no_toc}
+### `securityCategoryUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11955,7 +12018,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `name` | [`String`](scalars.md#string) | Name of the security category. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the category namespace. |
 
-### Fields {.no_toc}
+### `securityCategoryUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11966,14 +12029,14 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingCreateIssueInput`
 
-### Arguments {.no_toc}
+### `securityFindingCreateIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `project` | [`ProjectID!`](scalars.md#projectid) | ID of the project to attach the issue to. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the security finding to be used to create an issue. |
 
-### Fields {.no_toc}
+### `securityFindingCreateIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11984,13 +12047,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingCreateMergeRequestInput`
 
-### Arguments {.no_toc}
+### `securityFindingCreateMergeRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the security finding to be used to create a merge request. |
 
-### Fields {.no_toc}
+### `securityFindingCreateMergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12005,13 +12068,13 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingCreateVulnerabilityInput`
 
-### Arguments {.no_toc}
+### `securityFindingCreateVulnerability` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the security finding to be used to create a vulnerability. |
 
-### Fields {.no_toc}
+### `securityFindingCreateVulnerability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12022,7 +12085,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingDismissInput`
 
-### Arguments {.no_toc}
+### `securityFindingDismiss` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12030,7 +12093,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `dismissalReason` | [`VulnerabilityDismissalReason`](enums.md#vulnerabilitydismissalreason) | Reason why finding should be dismissed. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be dismissed. |
 
-### Fields {.no_toc}
+### `securityFindingDismiss` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12042,7 +12105,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingExternalIssueLinkCreateInput`
 
-### Arguments {.no_toc}
+### `securityFindingExternalIssueLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12051,7 +12114,7 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `project` | [`ProjectID!`](scalars.md#projectid) | ID of the project to attach the issue to. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the security finding to be used to create an issue. |
 
-### Fields {.no_toc}
+### `securityFindingExternalIssueLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12066,14 +12129,14 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingJiraIssueFormUrlCreateInput`
 
-### Arguments {.no_toc}
+### `securityFindingJiraIssueFormUrlCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `project` | [`ProjectID!`](scalars.md#projectid) | ID of the project to attach the issue to. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the security finding to be used to create an issue. |
 
-### Fields {.no_toc}
+### `securityFindingJiraIssueFormUrlCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12084,14 +12147,14 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingRevertToDetectedInput`
 
-### Arguments {.no_toc}
+### `securityFindingRevertToDetected` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `comment` | [`String`](scalars.md#string) | Comment that explains why finding was reverted to detected status. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be dismissed. |
 
-### Fields {.no_toc}
+### `securityFindingRevertToDetected` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12102,14 +12165,14 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 
 **Input type:** `SecurityFindingSeverityOverrideInput`
 
-### Arguments {.no_toc}
+### `securityFindingSeverityOverride` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `severity` | [`VulnerabilitySeverity!`](enums.md#vulnerabilityseverity) | New severity value for the finding. |
 | `uuid` | [`String!`](scalars.md#string) | UUID of the finding to modify. |
 
-### Fields {.no_toc}
+### `securityFindingSeverityOverride` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12122,7 +12185,7 @@ Assigns the specified project(`security_policy_project_id`) as security policy p
 
 **Input type:** `SecurityPolicyProjectAssignInput`
 
-### Arguments {.no_toc}
+### `securityPolicyProjectAssign` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12130,7 +12193,7 @@ Assigns the specified project(`security_policy_project_id`) as security policy p
 | `projectPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.10. Use `fullPath`. |
 | `securityPolicyProjectId` | [`ProjectID!`](scalars.md#projectid) | ID of the security policy project. |
 
-### Fields {.no_toc}
+### `securityPolicyProjectAssign` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12142,14 +12205,14 @@ Creates and assigns a security policy project for the given project or group (`f
 
 **Input type:** `SecurityPolicyProjectCreateInput`
 
-### Arguments {.no_toc}
+### `securityPolicyProjectCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`String`](scalars.md#string) | Full path of the project or group. |
 | `projectPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.10. Use `fullPath`. |
 
-### Fields {.no_toc}
+### `securityPolicyProjectCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12166,13 +12229,13 @@ Creates and assigns a security policy project for the given project or group (`f
 
 **Input type:** `SecurityPolicyProjectCreateAsyncInput`
 
-### Arguments {.no_toc}
+### `securityPolicyProjectCreateAsync` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`String!`](scalars.md#string) | Full path of the project or group. |
 
-### Fields {.no_toc}
+### `securityPolicyProjectCreateAsync` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12184,14 +12247,14 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityPolicyProjectUnassignInput`
 
-### Arguments {.no_toc}
+### `securityPolicyProjectUnassign` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `fullPath` | [`String`](scalars.md#string) | Full path of the project or group. |
 | `projectPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 14.10. Use `fullPath`. |
 
-### Fields {.no_toc}
+### `securityPolicyProjectUnassign` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12205,14 +12268,14 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityRefsTrackInput`
 
-### Arguments {.no_toc}
+### `securityRefsTrack` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 | `refs` | [`[SecurityRefInput!]!`](input_objects.md#securityrefinput) | Array of refs to be tracked. |
 
-### Fields {.no_toc}
+### `securityRefsTrack` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12227,13 +12290,13 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityRefsUntrackInput`
 
-### Arguments {.no_toc}
+### `securityRefsUntrack` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `refIds` | [`[SecurityProjectTrackedContextID!]!`](scalars.md#securityprojecttrackedcontextid) | Global IDs of the tracked refs to stop tracking. |
 
-### Fields {.no_toc}
+### `securityRefsUntrack` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12248,15 +12311,16 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityScanProfileAttachInput`
 
-### Arguments {.no_toc}
+### `securityScanProfileAttach` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to attach the profile to. | `[]` |
+| `mode` | [`SecurityScanProfileAttachMode`](enums.md#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. | `REPLACE` |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to attach the profile to. | `[]` |
 | `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to attach. |  |
 
-### Fields {.no_toc}
+### `securityScanProfileAttach` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12270,7 +12334,7 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityScanProfileCreateInput`
 
-### Arguments {.no_toc}
+### `securityScanProfileCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -12281,7 +12345,7 @@ Unassigns the security policy project for the given project (`full_path`).
 | `stripDefaults` | [`Boolean`](scalars.md#boolean) | When true, trigger configuration values equal to the defaults are removed before storage so only overrides are persisted. When false, the configuration is stored as provided, ignoring defaults. | `true` |
 | `triggers` | [`[SecurityScanProfileTriggerInput!]!`](input_objects.md#securityscanprofiletriggerinput) | Triggers with optional configuration for the scan profile. At least one is required. |  |
 
-### Fields {.no_toc}
+### `securityScanProfileCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12296,13 +12360,13 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityScanProfileDeleteInput`
 
-### Arguments {.no_toc}
+### `securityScanProfileDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Global ID of the scan profile to delete. |
 
-### Fields {.no_toc}
+### `securityScanProfileDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12317,7 +12381,7 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityScanProfileDetachInput`
 
-### Arguments {.no_toc}
+### `securityScanProfileDetach` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -12325,7 +12389,7 @@ Unassigns the security policy project for the given project (`full_path`).
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to detach the profile from. | `[]` |
 | `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to detach. |  |
 
-### Fields {.no_toc}
+### `securityScanProfileDetach` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12339,7 +12403,7 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityScanProfileUpdateInput`
 
-### Arguments {.no_toc}
+### `securityScanProfileUpdate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -12349,7 +12413,7 @@ Unassigns the security policy project for the given project (`full_path`).
 | `stripDefaults` | [`Boolean`](scalars.md#boolean) | When true, trigger configuration values equal to the defaults are removed before storage so only overrides are persisted. When false, the configuration is stored as provided, ignoring defaults. | `true` |
 | `triggers` | [`[SecurityScanProfileTriggerInput!]`](input_objects.md#securityscanprofiletriggerinput) | Complete set of triggers with optional configuration for the scan profile. When provided, triggers omitted from the list are removed, and a trigger sent without a configuration has its existing configuration removed. |  |
 
-### Fields {.no_toc}
+### `securityScanProfileUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12360,7 +12424,7 @@ Unassigns the security policy project for the given project (`full_path`).
 
 **Input type:** `SecurityTrainingUpdateInput`
 
-### Arguments {.no_toc}
+### `securityTrainingUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12369,7 +12433,7 @@ Unassigns the security policy project for the given project (`full_path`).
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 | `providerId` | [`SecurityTrainingProviderID!`](scalars.md#securitytrainingproviderid) | ID of the provider. |
 
-### Fields {.no_toc}
+### `securityTrainingUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12382,14 +12446,14 @@ Enable/disable container scanning for registry for the given project.
 
 **Input type:** `SetContainerScanningForRegistryInput`
 
-### Arguments {.no_toc}
+### `setContainerScanningForRegistry` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for container scanning for registry feature. |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace (project). |
 
-### Fields {.no_toc}
+### `setContainerScanningForRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12406,14 +12470,14 @@ Enable or disable continuous vulnerability scanning for container scanning for t
 
 **Input type:** `SetCvsForContainerScanningInput`
 
-### Arguments {.no_toc}
+### `setCvsForContainerScanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for CVS for container scanning. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `setCvsForContainerScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12430,14 +12494,14 @@ Enable or disable continuous vulnerability scanning for dependency scanning for 
 
 **Input type:** `SetCvsForDependencyScanningInput`
 
-### Arguments {.no_toc}
+### `setCvsForDependencyScanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for CVS for dependency scanning. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `setCvsForDependencyScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12454,7 +12518,7 @@ Creates or updates a custom attribute on a group. Only available to admins.
 
 **Input type:** `SetGroupCustomAttributeInput`
 
-### Arguments {.no_toc}
+### `setGroupCustomAttribute` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12462,7 +12526,7 @@ Creates or updates a custom attribute on a group. Only available to admins.
 | `key` | [`String!`](scalars.md#string) | Key of the custom attribute. |
 | `value` | [`String!`](scalars.md#string) | Value of the custom attribute. |
 
-### Fields {.no_toc}
+### `setGroupCustomAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12475,7 +12539,7 @@ Enable or disable secret push protection for a group.
 
 **Input type:** `SetGroupSecretPushProtectionInput`
 
-### Arguments {.no_toc}
+### `setGroupSecretPushProtection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12483,7 +12547,7 @@ Enable or disable secret push protection for a group.
 | `projectsToExclude` | [`[Int!]`](scalars.md#int) | IDs of projects to exclude from the feature. |
 | `secretPushProtectionEnabled` | [`Boolean!`](scalars.md#boolean) | Whether to enable the feature. |
 
-### Fields {.no_toc}
+### `setGroupSecretPushProtection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12495,7 +12559,7 @@ Enable or disable Validity Checks for a group.
 
 **Input type:** `SetGroupValidityChecksInput`
 
-### Arguments {.no_toc}
+### `setGroupValidityChecks` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12503,7 +12567,7 @@ Enable or disable Validity Checks for a group.
 | `projectsToExclude` | [`[Int!]`](scalars.md#int) | IDs of projects to exclude from validity checks configuration. |
 | `validityChecksEnabled` | [`Boolean!`](scalars.md#boolean) | Whether to enable validity checks for all projects in the group. |
 
-### Fields {.no_toc}
+### `setGroupValidityChecks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12516,14 +12580,14 @@ Set the license information source for a given project.
 
 **Input type:** `SetLicenseConfigurationSourceInput`
 
-### Arguments {.no_toc}
+### `setLicenseConfigurationSource` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 | `source` | [`SecurityPreferredLicenseSourceConfiguration!`](enums.md#securitypreferredlicensesourceconfiguration) | Preferred source of license information for dependencies. |
 
-### Fields {.no_toc}
+### `setLicenseConfigurationSource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12536,14 +12600,14 @@ Enable/disable license scanning for CycloneDX SBOM files for the given project.
 
 **Input type:** `SetLicenseScanningForCyclonedxInput`
 
-### Arguments {.no_toc}
+### `setLicenseScanningForCyclonedx` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for license scanning for CycloneDX files. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project. |
 
-### Fields {.no_toc}
+### `setLicenseScanningForCyclonedx` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12554,14 +12618,14 @@ Enable/disable license scanning for CycloneDX SBOM files for the given project.
 
 **Input type:** `SetPagesForceHttpsInput`
 
-### Arguments {.no_toc}
+### `setPagesForceHttps` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Path of the project to set the pages force HTTPS. |
 | `value` | [`Boolean!`](scalars.md#boolean) | Indicates user wants to enforce HTTPS on their pages. |
 
-### Fields {.no_toc}
+### `setPagesForceHttps` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12572,14 +12636,14 @@ Enable/disable license scanning for CycloneDX SBOM files for the given project.
 
 **Input type:** `SetPagesUseUniqueDomainInput`
 
-### Arguments {.no_toc}
+### `setPagesUseUniqueDomain` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectPath` | [`ID!`](scalars.md#id) | Path of the project to set the pages to use unique domains. |
 | `value` | [`Boolean!`](scalars.md#boolean) | Indicates user wants to use unique subdomains for their pages. |
 
-### Fields {.no_toc}
+### `setPagesUseUniqueDomain` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12592,14 +12656,14 @@ Enable/disable secret push protection for the given project.
 
 **Input type:** `SetPreReceiveSecretDetectionInput`
 
-### Arguments {.no_toc}
+### `setPreReceiveSecretDetection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for secret push protection feature. |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace (project). |
 
-### Fields {.no_toc}
+### `setPreReceiveSecretDetection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12613,14 +12677,14 @@ Enable/disable secret push protection for the given project.
 
 **Input type:** `SetSecretPushProtectionInput`
 
-### Arguments {.no_toc}
+### `setSecretPushProtection` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for secret push protection feature. |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace (project). |
 
-### Fields {.no_toc}
+### `setSecretPushProtection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12634,14 +12698,14 @@ Enable/disable secret detection validity checks for the given project.
 
 **Input type:** `SetValidityChecksInput`
 
-### Arguments {.no_toc}
+### `setValidityChecks` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enable` | [`Boolean!`](scalars.md#boolean) | Desired status for validity checks feature. |
 | `namespacePath` | [`ID!`](scalars.md#id) | Full path of the namespace (project). |
 
-### Fields {.no_toc}
+### `setValidityChecks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12656,14 +12720,14 @@ Enable/disable secret detection validity checks for the given project.
 
 **Input type:** `StarProjectInput`
 
-### Arguments {.no_toc}
+### `starProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Full path of the project to star or unstar. |
 | `starred` | [`Boolean!`](scalars.md#boolean) | Indicates whether to star or unstar the project. |
 
-### Fields {.no_toc}
+### `starProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12680,7 +12744,7 @@ Creates and starts a vulnerability workflow execution.
 
 **Input type:** `StartVulnerabilityWorkflowInput`
 
-### Arguments {.no_toc}
+### `startVulnerabilityWorkflow` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12689,7 +12753,7 @@ Creates and starts a vulnerability workflow execution.
 | `severities` | [`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity) | Severities to process. If omitted, all severities are processed. |
 | `workflow` | [`VulnerabilityDuoWorkflow!`](enums.md#vulnerabilityduoworkflow) | Workflow to execute. |
 
-### Fields {.no_toc}
+### `startVulnerabilityWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12704,7 +12768,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TagCreateInput`
 
-### Arguments {.no_toc}
+### `tagCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -12713,7 +12777,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path the branch is associated with. |  |
 | `ref` | [`String!`](scalars.md#string) | Tag name or commit SHA to create tag from. |  |
 
-### Fields {.no_toc}
+### `tagCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12724,14 +12788,14 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TagDeleteInput`
 
-### Arguments {.no_toc}
+### `tagDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the tag. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project full path the branch is associated with. |
 
-### Fields {.no_toc}
+### `tagDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12742,13 +12806,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TerraformStateDeleteInput`
 
-### Arguments {.no_toc}
+### `terraformStateDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
 
-### Fields {.no_toc}
+### `terraformStateDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12758,29 +12822,52 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TerraformStateLockInput`
 
-### Arguments {.no_toc}
+### `terraformStateLock` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
 
-### Fields {.no_toc}
+### `terraformStateLock` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
-## `terraformStateUnlock`
+## `terraformStateRestore`
 
-**Input type:** `TerraformStateUnlockInput`
+- Status: Experiment
 
-### Arguments {.no_toc}
+- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
+
+Restores a soft-deleted Terraform state. The state is not restored when terraform_state_delayed_deletion is disabled.
+
+**Input type:** `TerraformStateRestoreInput`
+
+### `terraformStateRestore` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
 
-### Fields {.no_toc}
+### `terraformStateRestore` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during restore. |
+| `terraformState` | [`TerraformState`](objects.md#terraformstate) | Terraform state after restore. |
+
+## `terraformStateUnlock`
+
+**Input type:** `TerraformStateUnlockInput`
+
+### `terraformStateUnlock` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
+
+### `terraformStateUnlock` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12794,7 +12881,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelineEventCreateInput`
 
-### Arguments {.no_toc}
+### `timelineEventCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12803,7 +12890,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `occurredAt` | [`Time!`](scalars.md#time) | Timestamp of when the event occurred. |
 | `timelineEventTagNames` | [`[String!]`](scalars.md#string) | Tags for the incident timeline event. |
 
-### Fields {.no_toc}
+### `timelineEventCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12814,13 +12901,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelineEventDestroyInput`
 
-### Arguments {.no_toc}
+### `timelineEventDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`IncidentManagementTimelineEventID!`](scalars.md#incidentmanagementtimelineeventid) | Timeline event ID to remove. |
 
-### Fields {.no_toc}
+### `timelineEventDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12831,13 +12918,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelineEventPromoteFromNoteInput`
 
-### Arguments {.no_toc}
+### `timelineEventPromoteFromNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `noteId` | [`NoteID!`](scalars.md#noteid) | Note ID from which the timeline event promoted. |
 
-### Fields {.no_toc}
+### `timelineEventPromoteFromNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12848,14 +12935,14 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelineEventTagCreateInput`
 
-### Arguments {.no_toc}
+### `timelineEventTagCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `name` | [`String!`](scalars.md#string) | Name of the tag. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project to create the timeline event tag in. |
 
-### Fields {.no_toc}
+### `timelineEventTagCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12866,7 +12953,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelineEventUpdateInput`
 
-### Arguments {.no_toc}
+### `timelineEventUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12875,7 +12962,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `occurredAt` | [`Time`](scalars.md#time) | Timestamp when the event occurred. |
 | `timelineEventTagNames` | [`[String!]`](scalars.md#string) | Tags for the incident timeline event. |
 
-### Fields {.no_toc}
+### `timelineEventUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12886,7 +12973,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelogCreateInput`
 
-### Arguments {.no_toc}
+### `timelogCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12895,7 +12982,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `summary` | [`String!`](scalars.md#string) | Summary of time spent. |
 | `timeSpent` | [`String!`](scalars.md#string) | Amount of time spent. |
 
-### Fields {.no_toc}
+### `timelogCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12906,13 +12993,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TimelogDeleteInput`
 
-### Arguments {.no_toc}
+### `timelogDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TimelogID!`](scalars.md#timelogid) | Global ID of the timelog. |
 
-### Fields {.no_toc}
+### `timelogDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12923,13 +13010,14 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoCreateInput`
 
-### Arguments {.no_toc}
+### `todoCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `noteId` | [`NoteID`](scalars.md#noteid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Global ID of a comment on the target to associate with the to-do item. Ignored when the `todo_for_comment` feature flag is disabled. |
 | `targetId` | [`TodoableID!`](scalars.md#todoableid) | Global ID of the to-do item's parent. Issues, merge requests, designs, and epics are supported. |
 
-### Fields {.no_toc}
+### `todoCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12944,13 +13032,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoDeleteAllDoneInput`
 
-### Arguments {.no_toc}
+### `todoDeleteAllDone` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `updatedBefore` | [`Time`](scalars.md#time) | To-do items marked as done before the timestamp will be deleted. |
 
-### Fields {.no_toc}
+### `todoDeleteAllDone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12964,13 +13052,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoDeleteManyInput`
 
-### Arguments {.no_toc}
+### `todoDeleteMany` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[TodoID!]!`](scalars.md#todoid) | Global IDs of the to-do items to process (a maximum of 100 is supported at once). |
 
-### Fields {.no_toc}
+### `todoDeleteMany` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12980,13 +13068,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoMarkDoneInput`
 
-### Arguments {.no_toc}
+### `todoMarkDone` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TodoID!`](scalars.md#todoid) | Global ID of the to-do item to mark as done. |
 
-### Fields {.no_toc}
+### `todoMarkDone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13001,13 +13089,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoResolveManyInput`
 
-### Arguments {.no_toc}
+### `todoResolveMany` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[TodoID!]!`](scalars.md#todoid) | Global IDs of the to-do items to process (a maximum of 100 is supported at once). |
 
-### Fields {.no_toc}
+### `todoResolveMany` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13018,13 +13106,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoRestoreInput`
 
-### Arguments {.no_toc}
+### `todoRestore` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TodoID!`](scalars.md#todoid) | Global ID of the to-do item to restore. |
 
-### Fields {.no_toc}
+### `todoRestore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13035,13 +13123,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoRestoreManyInput`
 
-### Arguments {.no_toc}
+### `todoRestoreMany` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[TodoID!]!`](scalars.md#todoid) | Global IDs of the to-do items to process (a maximum of 100 is supported at once). |
 
-### Fields {.no_toc}
+### `todoRestoreMany` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13056,14 +13144,14 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoSnoozeInput`
 
-### Arguments {.no_toc}
+### `todoSnooze` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TodoID!`](scalars.md#todoid) | Global ID of the to-do item to be snoozed. |
 | `snoozeUntil` | [`Time!`](scalars.md#time) | Time until which the todo should be snoozed. |
 
-### Fields {.no_toc}
+### `todoSnooze` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13078,14 +13166,14 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoSnoozeManyInput`
 
-### Arguments {.no_toc}
+### `todoSnoozeMany` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[TodoID!]!`](scalars.md#todoid) | Global IDs of the to-do items to process (a maximum of 100 is supported at once). |
 | `snoozeUntil` | [`Time!`](scalars.md#time) | Time until which the todos should be snoozed. |
 
-### Fields {.no_toc}
+### `todoSnoozeMany` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13100,13 +13188,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoUnSnoozeInput`
 
-### Arguments {.no_toc}
+### `todoUnSnooze` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`TodoID!`](scalars.md#todoid) | Global ID of the to-do item to be snoozed. |
 
-### Fields {.no_toc}
+### `todoUnSnooze` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13121,13 +13209,13 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodoUnsnoozeManyInput`
 
-### Arguments {.no_toc}
+### `todoUnsnoozeMany` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `ids` | [`[TodoID!]!`](scalars.md#todoid) | Global IDs of the to-do items to process (a maximum of 100 is supported at once). |
 
-### Fields {.no_toc}
+### `todoUnsnoozeMany` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13138,7 +13226,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `TodosMarkAllDoneInput`
 
-### Arguments {.no_toc}
+### `todosMarkAllDone` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13149,7 +13237,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `targetId` | [`TodoableID`](scalars.md#todoableid) | Global ID of the to-do item's parent. Issues, merge requests, designs, and epics are supported. If argument is omitted, all pending to-do items of the current user are marked as done. |
 | `type` | [`[TodoTargetEnum!]`](enums.md#todotargetenum) | Type of the todo. |
 
-### Fields {.no_toc}
+### `todosMarkAllDone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13164,7 +13252,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 
 **Input type:** `UnlinkProjectComplianceViolationIssueInput`
 
-### Arguments {.no_toc}
+### `unlinkProjectComplianceViolationIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13172,7 +13260,7 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the issue belongs to. |
 | `violationId` | [`ComplianceManagementProjectsComplianceViolationID!`](scalars.md#compliancemanagementprojectscomplianceviolationid) | Global ID of the project compliance violation. |
 
-### Fields {.no_toc}
+### `unlinkProjectComplianceViolationIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13189,7 +13277,7 @@ Updates the permission settings for an AI tool rule.
 
 **Input type:** `UpdateAiToolRuleInput`
 
-### Arguments {.no_toc}
+### `updateAiToolRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13201,7 +13289,7 @@ Updates the permission settings for an AI tool rule.
 | `unsetAccessTypes` | [`[AiToolAccessType!]`](enums.md#aitoolaccesstype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Access types to clear so they fall back to their defaults. The rule is deleted when every access type is unset. |
 | `webAccess` | [`AiToolPermission`](enums.md#aitoolpermission) | Permission mode for web surface. |
 
-### Fields {.no_toc}
+### `updateAiToolRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13212,7 +13300,7 @@ Updates the permission settings for an AI tool rule.
 
 **Input type:** `UpdateAlertStatusInput`
 
-### Arguments {.no_toc}
+### `updateAlertStatus` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13220,7 +13308,7 @@ Updates the permission settings for an AI tool rule.
 | `projectPath` | [`ID!`](scalars.md#id) | Project the alert to mutate is in. |
 | `status` | [`AlertManagementStatus!`](enums.md#alertmanagementstatus) | Status to set the alert. |
 
-### Fields {.no_toc}
+### `updateAlertStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13233,7 +13321,7 @@ Updates the permission settings for an AI tool rule.
 
 **Input type:** `UpdateBoardInput`
 
-### Arguments {.no_toc}
+### `updateBoard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13249,7 +13337,7 @@ Updates the permission settings for an AI tool rule.
 | `name` | [`String`](scalars.md#string) | Board name. |
 | `weight` | [`Int`](scalars.md#int) | Weight value to be assigned to the board. |
 
-### Fields {.no_toc}
+### `updateBoard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13262,7 +13350,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateBoardEpicUserPreferencesInput`
 
-### Arguments {.no_toc}
+### `updateBoardEpicUserPreferences` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13270,7 +13358,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `collapsed` | [`Boolean!`](scalars.md#boolean) | Whether the epic should be collapsed in the board. |
 | `epicId` | [`EpicID!`](scalars.md#epicid) | ID of an epic to set preferences for. |
 
-### Fields {.no_toc}
+### `updateBoardEpicUserPreferences` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13281,7 +13369,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateBoardListInput`
 
-### Arguments {.no_toc}
+### `updateBoardList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13289,7 +13377,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `listId` | [`ListID!`](scalars.md#listid) | Global ID of the list. |
 | `position` | [`Int`](scalars.md#int) | Position of list within the board. |
 
-### Fields {.no_toc}
+### `updateBoardList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13300,14 +13388,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateComplianceFrameworkInput`
 
-### Arguments {.no_toc}
+### `updateComplianceFramework` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementFrameworkID!`](scalars.md#compliancemanagementframeworkid) | Global ID of the compliance framework to update. |
 | `params` | [`ComplianceFrameworkInput!`](input_objects.md#complianceframeworkinput) | Parameters to update the compliance framework with. |
 
-### Fields {.no_toc}
+### `updateComplianceFramework` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13322,7 +13410,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateComplianceRequirementInput`
 
-### Arguments {.no_toc}
+### `updateComplianceRequirement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13330,7 +13418,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `id` | [`ComplianceManagementComplianceFrameworkComplianceRequirementID!`](scalars.md#compliancemanagementcomplianceframeworkcompliancerequirementid) | Global ID of the compliance requirement to update. |
 | `params` | [`ComplianceRequirementInput!`](input_objects.md#compliancerequirementinput) | Parameters to update the compliance requirement with. |
 
-### Fields {.no_toc}
+### `updateComplianceRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13345,14 +13433,14 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateComplianceRequirementsControlInput`
 
-### Arguments {.no_toc}
+### `updateComplianceRequirementsControl` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementComplianceFrameworkComplianceRequirementsControlID!`](scalars.md#compliancemanagementcomplianceframeworkcompliancerequirementscontrolid) | Global ID of the compliance requirement control to update. |
 | `params` | [`ComplianceRequirementsControlInput!`](input_objects.md#compliancerequirementscontrolinput) | Parameters to update the compliance requirement control with. |
 
-### Fields {.no_toc}
+### `updateComplianceRequirementsControl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13363,7 +13451,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateContainerExpirationPolicyInput`
 
-### Arguments {.no_toc}
+### `updateContainerExpirationPolicy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13375,7 +13463,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `olderThan` | [`ContainerExpirationPolicyOlderThanEnum`](enums.md#containerexpirationpolicyolderthanenum) | Tags older than the given age will expire. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path where the container expiration policy is located. |
 
-### Fields {.no_toc}
+### `updateContainerExpirationPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13389,7 +13477,7 @@ Updates a container repository protection rule that controls who can modify cont
 
 **Input type:** `UpdateContainerProtectionRepositoryRuleInput`
 
-### Arguments {.no_toc}
+### `updateContainerProtectionRepositoryRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13398,7 +13486,7 @@ Updates a container repository protection rule that controls who can modify cont
 | `minimumAccessLevelForPush` | [`ContainerProtectionRepositoryRuleAccessLevel`](enums.md#containerprotectionrepositoryruleaccesslevel) | Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. |
 | `repositoryPathPattern` | [`String`](scalars.md#string) | Container repository path pattern protected by the protection rule. Must start with the project's full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project's full path. |
 
-### Fields {.no_toc}
+### `updateContainerProtectionRepositoryRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13415,7 +13503,7 @@ Updates a protection rule that controls which user roles can modify container im
 
 **Input type:** `UpdateContainerProtectionTagRuleInput`
 
-### Arguments {.no_toc}
+### `updateContainerProtectionTagRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13424,7 +13512,7 @@ Updates a protection rule that controls which user roles can modify container im
 | `minimumAccessLevelForPush` | [`ContainerProtectionTagRuleAccessLevel`](enums.md#containerprotectiontagruleaccesslevel) | Minimum GitLab access level required to push container image tags to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, no access level can push tags. |
 | `tagNamePattern` | [`String`](scalars.md#string) | The pattern that matches container image tags to protect. For example, `v1.*`. Wildcard character `*` allowed. |
 
-### Fields {.no_toc}
+### `updateContainerProtectionTagRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13441,7 +13529,7 @@ Updates a custom dashboard.
 
 **Input type:** `UpdateCustomDashboardInput`
 
-### Arguments {.no_toc}
+### `updateCustomDashboard` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13450,7 +13538,7 @@ Updates a custom dashboard.
 | `id` | [`AnalyticsCustomDashboardsDashboardID!`](scalars.md#analyticscustomdashboardsdashboardid) | Global ID of the dashboard to update. |
 | `name` | [`String`](scalars.md#string) | Dashboard name. |
 
-### Fields {.no_toc}
+### `updateCustomDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13463,7 +13551,7 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateDependencyProxyImageTtlGroupPolicyInput`
 
-### Arguments {.no_toc}
+### `updateDependencyProxyImageTtlGroupPolicy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13471,7 +13559,7 @@ These settings can be adjusted only by the group Owner.
 | `groupPath` | [`ID!`](scalars.md#id) | Group path for the group dependency proxy image TTL policy. |
 | `ttl` | [`Int`](scalars.md#int) | Number of days to retain a cached image file. |
 
-### Fields {.no_toc}
+### `updateDependencyProxyImageTtlGroupPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13486,7 +13574,7 @@ Requires the packages feature to be enabled at the project level.
 
 **Input type:** `UpdateDependencyProxyPackagesSettingsInput`
 
-### Arguments {.no_toc}
+### `updateDependencyProxyPackagesSettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13496,7 +13584,7 @@ Requires the packages feature to be enabled at the project level.
 | `mavenExternalRegistryUsername` | [`String`](scalars.md#string) | Username for the external Maven packages registry. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path for the dependency proxy for packages settings. |
 
-### Fields {.no_toc}
+### `updateDependencyProxyPackagesSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13509,7 +13597,7 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateDependencyProxySettingsInput`
 
-### Arguments {.no_toc}
+### `updateDependencyProxySettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13518,7 +13606,7 @@ These settings can be adjusted only by the group Owner.
 | `identity` | [`String`](scalars.md#string) | Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)). |
 | `secret` | [`String`](scalars.md#string) | Secret credential used to authenticate with Docker Hub when pulling images. Can be a password, personal access token (PAT), or organization access token (OAT). |
 
-### Fields {.no_toc}
+### `updateDependencyProxySettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13533,7 +13621,7 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateDuoWorkflowAgentPrivilegesInput`
 
-### Arguments {.no_toc}
+### `updateDuoWorkflowAgentPrivileges` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13541,7 +13629,7 @@ These settings can be adjusted only by the group Owner.
 | `preApprovedAgentPrivileges` | [`[Int!]`](scalars.md#int) | Replaces the set of actions the agent can perform without asking for approval. |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the workflow to update. |
 
-### Fields {.no_toc}
+### `updateDuoWorkflowAgentPrivileges` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13556,7 +13644,7 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateDuoWorkflowToolCallApprovalsInput`
 
-### Arguments {.no_toc}
+### `updateDuoWorkflowToolCallApprovals` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13566,7 +13654,7 @@ These settings can be adjusted only by the group Owner.
 | `toolName` | [`String!`](scalars.md#string) | Name of the tool to approve. |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the workflow to update. |
 
-### Fields {.no_toc}
+### `updateDuoWorkflowToolCallApprovals` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13581,14 +13669,14 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateDuoWorkflowWebSearchInput`
 
-### Arguments {.no_toc}
+### `updateDuoWorkflowWebSearch` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `webSearchEnabled` | [`Boolean!`](scalars.md#boolean) | Whether web search should be enabled for the session. |
 | `workflowId` | [`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid) | Global ID of the workflow to update. |
 
-### Fields {.no_toc}
+### `updateDuoWorkflowWebSearch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13601,7 +13689,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 
 **Input type:** `UpdateEpicInput`
 
-### Arguments {.no_toc}
+### `updateEpic` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13621,7 +13709,7 @@ Deprecated in GitLab 17.5. Replaced by `WorkItem` type. For more information, se
 | `stateEvent` | [`EpicStateEvent`](enums.md#epicstateevent) | State event for the epic. |
 | `title` | [`String`](scalars.md#string) | Title of the epic. |
 
-### Fields {.no_toc}
+### `updateEpic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13634,7 +13722,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 
 **Input type:** `UpdateEpicBoardListInput`
 
-### Arguments {.no_toc}
+### `updateEpicBoardList` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13642,7 +13730,7 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `listId` | [`BoardsEpicListID!`](scalars.md#boardsepiclistid) | Global ID of the epic list. |
 | `position` | [`Int`](scalars.md#int) | Position of list within the board. |
 
-### Fields {.no_toc}
+### `updateEpicBoardList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13658,7 +13746,7 @@ returned.
 
 **Input type:** `UpdateImageDiffNoteInput`
 
-### Arguments {.no_toc}
+### `updateImageDiffNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13666,7 +13754,7 @@ returned.
 | `id` | [`NoteID!`](scalars.md#noteid) | Global ID of the note to update. |
 | `position` | [`UpdateDiffImagePositionInput`](input_objects.md#updatediffimagepositioninput) | Position of the note on a diff. |
 
-### Fields {.no_toc}
+### `updateImageDiffNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13678,7 +13766,7 @@ returned.
 
 **Input type:** `UpdateIssueInput`
 
-### Arguments {.no_toc}
+### `updateIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13700,7 +13788,7 @@ returned.
 | `type` | [`IssueType`](enums.md#issuetype) | Type of the issue. |
 | `weight` | [`Int`](scalars.md#int) | Weight of the issue. |
 
-### Fields {.no_toc}
+### `updateIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13711,7 +13799,7 @@ returned.
 
 **Input type:** `UpdateIterationInput`
 
-### Arguments {.no_toc}
+### `updateIteration` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13722,7 +13810,7 @@ returned.
 | `startDate` | [`String`](scalars.md#string) | Start date of the iteration. |
 | `title` | [`String`](scalars.md#string) | Title of the iteration. |
 
-### Fields {.no_toc}
+### `updateIteration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13735,7 +13823,7 @@ These settings can be adjusted only by the group Owner.
 
 **Input type:** `UpdateNamespacePackageSettingsInput`
 
-### Arguments {.no_toc}
+### `updateNamespacePackageSettings` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13759,7 +13847,7 @@ These settings can be adjusted only by the group Owner.
 | `terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](scalars.md#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. When terraform_module_duplicates_allowed is true, duplicate packages with names that match this regex are rejected. |
 | `terraformModuleDuplicatesAllowed` | [`Boolean`](scalars.md#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
 
-### Fields {.no_toc}
+### `updateNamespacePackageSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13775,14 +13863,14 @@ returned.
 
 **Input type:** `UpdateNoteInput`
 
-### Arguments {.no_toc}
+### `updateNote` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `body` | [`String`](scalars.md#string) | Content of the note. |
 | `id` | [`NoteID!`](scalars.md#noteid) | Global ID of the note to update. |
 
-### Fields {.no_toc}
+### `updateNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13794,14 +13882,14 @@ returned.
 
 **Input type:** `UpdatePackagesCleanupPolicyInput`
 
-### Arguments {.no_toc}
+### `updatePackagesCleanupPolicy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `keepNDuplicatedPackageFiles` | [`PackagesCleanupKeepDuplicatedPackageFilesEnum`](enums.md#packagescleanupkeepduplicatedpackagefilesenum) | Number of duplicated package files to retain. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path where the packages cleanup policy is located. |
 
-### Fields {.no_toc}
+### `updatePackagesCleanupPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13814,7 +13902,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 
 **Input type:** `UpdatePackagesProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `updatePackagesProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13824,7 +13912,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 | `packageNamePattern` | [`String`](scalars.md#string) | Package name protected by the protection rule. For example, `@my-scope/my-package-*`. Wildcard character `*` allowed. |
 | `packageType` | [`PackagesProtectionRulePackageType`](enums.md#packagesprotectionrulepackagetype) | Package type protected by the protection rule. For example, `NPM`, `PYPI`. |
 
-### Fields {.no_toc}
+### `updatePackagesProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13839,14 +13927,14 @@ Updates a package protection rule to restrict access to project packages. You ca
 
 **Input type:** `UpdateProjectComplianceViolationInput`
 
-### Arguments {.no_toc}
+### `updateProjectComplianceViolation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`ComplianceManagementProjectsComplianceViolationID!`](scalars.md#compliancemanagementprojectscomplianceviolationid) | Global ID of the project compliance violation to update. |
 | `status` | [`ComplianceViolationStatus!`](enums.md#complianceviolationstatus) | New status for the project compliance violation. |
 
-### Fields {.no_toc}
+### `updateProjectComplianceViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13857,7 +13945,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 
 **Input type:** `UpdateRequirementInput`
 
-### Arguments {.no_toc}
+### `updateRequirement` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13869,7 +13957,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 | `title` | [`String`](scalars.md#string) | Title of the requirement. |
 | `workItemIid` | [`String`](scalars.md#string) | IID of the requirement work item to update. |
 
-### Fields {.no_toc}
+### `updateRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13880,7 +13968,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 
 **Input type:** `UpdateSnippetInput`
 
-### Arguments {.no_toc}
+### `updateSnippet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13890,7 +13978,7 @@ Updates a package protection rule to restrict access to project packages. You ca
 | `title` | [`String`](scalars.md#string) | Title of the snippet. |
 | `visibilityLevel` | [`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum) | Visibility level of the snippet. |
 
-### Fields {.no_toc}
+### `updateSnippet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13907,7 +13995,7 @@ Updates a protection rule for a Terraform state backend.
 
 **Input type:** `UpdateTerraformStateProtectionRuleInput`
 
-### Arguments {.no_toc}
+### `updateTerraformStateProtectionRule` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13916,7 +14004,7 @@ Updates a protection rule for a Terraform state backend.
 | `minimumAccessLevelForWrite` | [`TerraformStateProtectionRuleAccessLevel`](enums.md#terraformstateprotectionruleaccesslevel) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Minimum GitLab access level required to perform write operations on the Terraform state. Valid values include `DEVELOPER`, `MAINTAINER`, `OWNER`, or `ADMIN`. |
 | `stateName` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Terraform state name protected by the rule. |
 
-### Fields {.no_toc}
+### `updateTerraformStateProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13933,14 +14021,14 @@ Updates or creates virtual registries settings for a root group.
 
 **Input type:** `UpdateVirtualRegistriesSettingInput`
 
-### Arguments {.no_toc}
+### `updateVirtualRegistriesSetting` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `enabled` | [`Boolean`](scalars.md#boolean) | Enable or disable the virtual registries. |
 | `fullPath` | [`ID!`](scalars.md#id) | Group path for the group virtual registries. |
 
-### Fields {.no_toc}
+### `updateVirtualRegistriesSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13957,7 +14045,7 @@ Creates an upload (uploads a file to a project or group for use in Markdown).
 
 **Input type:** `UploadCreateInput`
 
-### Arguments {.no_toc}
+### `uploadCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13965,7 +14053,7 @@ Creates an upload (uploads a file to a project or group for use in Markdown).
 | `groupPath` | [`ID`](scalars.md#id) | Full path of the group with which the resource is associated. |
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project with which the resource is associated. |
 
-### Fields {.no_toc}
+### `uploadCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13982,7 +14070,7 @@ Deletes an upload.
 
 **Input type:** `UploadDeleteInput`
 
-### Arguments {.no_toc}
+### `uploadDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13991,7 +14079,7 @@ Deletes an upload.
 | `projectPath` | [`ID`](scalars.md#id) | Full path of the project with which the resource is associated. |
 | `secret` | [`String!`](scalars.md#string) | Secret part of upload path. |
 
-### Fields {.no_toc}
+### `uploadDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14004,7 +14092,7 @@ Update the flat per-user budget cap for a subscription.
 
 **Input type:** `UpsertFlatUserCapInput`
 
-### Arguments {.no_toc}
+### `upsertFlatUserCap` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14012,7 +14100,7 @@ Update the flat per-user budget cap for a subscription.
 | `flatUserCapEnabled` | [`Boolean!`](scalars.md#boolean) | Whether the flat per-user budget cap is enabled. |
 | `namespacePath` | [`String`](scalars.md#string) | Path of the top-level group namespace. Omit for self-managed instance scope. |
 
-### Fields {.no_toc}
+### `upsertFlatUserCap` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14026,14 +14114,14 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UpsertUserBudgetCapOverridesInput`
 
-### Arguments {.no_toc}
+### `upsertUserBudgetCapOverrides` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`String`](scalars.md#string) | Path of the top-level group namespace. Omit for self-managed instance scope. |
 | `overrides` | [`[BudgetCapUserOverrideInput!]!`](input_objects.md#budgetcapuseroverrideinput) | List of per-user budget cap overrides to upsert. |
 
-### Fields {.no_toc}
+### `upsertUserBudgetCapOverrides` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14044,13 +14132,13 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAchievementPrioritiesUpdateInput`
 
-### Arguments {.no_toc}
+### `userAchievementPrioritiesUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `userAchievementIds` | [`[AchievementsUserAchievementID!]!`](scalars.md#achievementsuserachievementid) | Global IDs of the user achievements being prioritized, ordered from highest to lowest priority. |
 
-### Fields {.no_toc}
+### `userAchievementPrioritiesUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14061,13 +14149,13 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAchievementsDeleteInput`
 
-### Arguments {.no_toc}
+### `userAchievementsDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `userAchievementId` | [`AchievementsUserAchievementID!`](scalars.md#achievementsuserachievementid) | Global ID of the user achievement being deleted. |
 
-### Fields {.no_toc}
+### `userAchievementsDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14078,7 +14166,7 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAchievementsUpdateInput`
 
-### Arguments {.no_toc}
+### `userAchievementsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14086,7 +14174,7 @@ Bulk upsert per-user budget cap overrides.
 | `showOnProfile` | [`Boolean`](scalars.md#boolean) | Indicates whether or not the user achievement is visible on the profile. |
 | `userAchievementId` | [`AchievementsUserAchievementID!`](scalars.md#achievementsuserachievementid) | Global ID of the user achievement being updated. |
 
-### Fields {.no_toc}
+### `userAchievementsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14097,14 +14185,14 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAddOnAssignmentBulkCreateInput`
 
-### Arguments {.no_toc}
+### `userAddOnAssignmentBulkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `addOnPurchaseId` | [`GitlabSubscriptionsAddOnPurchaseID!`](scalars.md#gitlabsubscriptionsaddonpurchaseid) | Global ID of AddOnPurchase to be assigned to. |
 | `userIds` | [`[UserID!]!`](scalars.md#userid) | Global IDs of user to be assigned. |
 
-### Fields {.no_toc}
+### `userAddOnAssignmentBulkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14116,14 +14204,14 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAddOnAssignmentBulkRemoveInput`
 
-### Arguments {.no_toc}
+### `userAddOnAssignmentBulkRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `addOnPurchaseId` | [`GitlabSubscriptionsAddOnPurchaseID!`](scalars.md#gitlabsubscriptionsaddonpurchaseid) | Global ID of AddOnPurchase to be unassigned from. |
 | `userIds` | [`[UserID!]!`](scalars.md#userid) | Global IDs of user to be unassigned. |
 
-### Fields {.no_toc}
+### `userAddOnAssignmentBulkRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14135,14 +14223,14 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAddOnAssignmentCreateInput`
 
-### Arguments {.no_toc}
+### `userAddOnAssignmentCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `addOnPurchaseId` | [`GitlabSubscriptionsAddOnPurchaseID!`](scalars.md#gitlabsubscriptionsaddonpurchaseid) | Global ID of AddOnPurchase to be assigned to. |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of user to be assigned. |
 
-### Fields {.no_toc}
+### `userAddOnAssignmentCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14154,14 +14242,14 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserAddOnAssignmentRemoveInput`
 
-### Arguments {.no_toc}
+### `userAddOnAssignmentRemove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `addOnPurchaseId` | [`GitlabSubscriptionsAddOnPurchaseID!`](scalars.md#gitlabsubscriptionsaddonpurchaseid) | Global ID of AddOnPurchase assignment belongs to. |
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of user whose assignment will be removed. |
 
-### Fields {.no_toc}
+### `userAddOnAssignmentRemove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14173,13 +14261,13 @@ Bulk upsert per-user budget cap overrides.
 
 **Input type:** `UserCalloutCreateInput`
 
-### Arguments {.no_toc}
+### `userCalloutCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `featureName` | [`String!`](scalars.md#string) | Feature name you want to dismiss the callout for. |
 
-### Fields {.no_toc}
+### `userCalloutCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14196,7 +14284,7 @@ Creates or updates a custom attribute on a user. Only available to admins.
 
 **Input type:** `UserCustomAttributeSetInput`
 
-### Arguments {.no_toc}
+### `userCustomAttributeSet` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14204,7 +14292,7 @@ Creates or updates a custom attribute on a user. Only available to admins.
 | `userId` | [`UserID!`](scalars.md#userid) | Global ID of the user. |
 | `value` | [`String!`](scalars.md#string) | Value of the custom attribute. |
 
-### Fields {.no_toc}
+### `userCustomAttributeSet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14215,14 +14303,14 @@ Creates or updates a custom attribute on a user. Only available to admins.
 
 **Input type:** `UserGroupCalloutCreateInput`
 
-### Arguments {.no_toc}
+### `userGroupCalloutCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `featureName` | [`String!`](scalars.md#string) | Feature name you want to dismiss the callout for. |
 | `groupId` | [`GroupID!`](scalars.md#groupid) | Group for the callout. |
 
-### Fields {.no_toc}
+### `userGroupCalloutCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14233,12 +14321,14 @@ Creates or updates a custom attribute on a user. Only available to admins.
 
 **Input type:** `UserPreferencesUpdateInput`
 
-### Arguments {.no_toc}
+### `userPreferencesUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `duoDefaultNamespaceId` | [`Int`](scalars.md#int) | Default namespace context for Duo features when namespace can not be inferred. |
+| `emojiSkinTone` | [`EmojiSkinTone`](enums.md#emojiskintone) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Default skin tone for emoji that have skin tone variants. |
 | `extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus`](enums.md#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
+| `firstDayOfWeek` | [`UserFirstDayOfWeek`](enums.md#userfirstdayofweek) | First day of the week in calendars and date pickers. Set to `null` to use the instance default. |
 | `issuesSort` | [`IssueSort`](enums.md#issuesort) | Sort order for issue lists. |
 | `knowledgeGraphGoverningNamespaceId` | [`Int`](scalars.md#int) | Governing and billing namespace for Orbit. |
 | `mergeRequestDashboardListType` | [`MergeRequestsDashboardListType`](enums.md#mergerequestsdashboardlisttype) | Merge request dashboard list rendering type. |
@@ -14253,7 +14343,7 @@ Creates or updates a custom attribute on a user. Only available to admins.
 | `wikiUseAutoCommitMessage` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Whether to skip the commit message modal and use the auto-generated commit message when saving changes to a wiki document. |
 | `workItemsDisplaySettings` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Display settings for the work item lists, e.g.: "{ shouldOpenItemsInSidePanel: false }". |
 
-### Fields {.no_toc}
+### `userPreferencesUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14264,14 +14354,14 @@ Creates or updates a custom attribute on a user. Only available to admins.
 
 **Input type:** `UserSetNamespaceCommitEmailInput`
 
-### Arguments {.no_toc}
+### `userSetNamespaceCommitEmail` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `emailId` | [`EmailID`](scalars.md#emailid) | ID of the email to set. |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | ID of the namespace to set the namespace commit email for. |
 
-### Fields {.no_toc}
+### `userSetNamespaceCommitEmail` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14288,7 +14378,7 @@ Creates a value stream.
 
 **Input type:** `ValueStreamCreateInput`
 
-### Arguments {.no_toc}
+### `valueStreamCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14297,7 +14387,7 @@ Creates a value stream.
 | `setting` | [`ValueStreamSettingInput`](input_objects.md#valuestreamsettinginput) | Value stream configuration. |
 | `stages` | [`[CreateValueStreamStageInput!]`](input_objects.md#createvaluestreamstageinput) | Value stream stages. |
 
-### Fields {.no_toc}
+### `valueStreamCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14314,13 +14404,13 @@ Destroy a value stream.
 
 **Input type:** `ValueStreamDestroyInput`
 
-### Arguments {.no_toc}
+### `valueStreamDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`AnalyticsCycleAnalyticsValueStreamID!`](scalars.md#analyticscycleanalyticsvaluestreamid) | Global ID of the value stream to destroy. |
 
-### Fields {.no_toc}
+### `valueStreamDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14337,7 +14427,7 @@ Updates a value stream.
 
 **Input type:** `ValueStreamUpdateInput`
 
-### Arguments {.no_toc}
+### `valueStreamUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14346,7 +14436,7 @@ Updates a value stream.
 | `setting` | [`ValueStreamSettingInput`](input_objects.md#valuestreamsettinginput) | Value stream configuration. |
 | `stages` | [`[UpdateValueStreamStageInput!]`](input_objects.md#updatevaluestreamstageinput) | Value stream stages. |
 
-### Fields {.no_toc}
+### `valueStreamUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14359,14 +14449,14 @@ Create a verified namespace and mark all child catalog resources with the passed
 
 **Input type:** `VerifiedNamespaceCreateInput`
 
-### Arguments {.no_toc}
+### `verifiedNamespaceCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`ID!`](scalars.md#id) | Root namespace path. |
 | `verificationLevel` | [`CiCatalogResourceVerificationLevel!`](enums.md#cicatalogresourceverificationlevel) | Verification level for a root namespace. |
 
-### Fields {.no_toc}
+### `verifiedNamespaceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14382,7 +14472,7 @@ Create or update virtual registries cleanup policy for a root group.
 
 **Input type:** `VirtualRegistriesCleanupPolicyUpsertInput`
 
-### Arguments {.no_toc}
+### `virtualRegistriesCleanupPolicyUpsert` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14393,7 +14483,7 @@ Create or update virtual registries cleanup policy for a root group.
 | `notifyOnFailure` | [`Boolean`](scalars.md#boolean) | Whether to notify group owners when cleanup runs fail. Default is `false`. |
 | `notifyOnSuccess` | [`Boolean`](scalars.md#boolean) | Whether to notify group owners when cleanup runs succeed. Default is `false`. |
 
-### Fields {.no_toc}
+### `virtualRegistriesCleanupPolicyUpsert` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14408,14 +14498,14 @@ Create or update virtual registries cleanup policy for a root group.
 
 **Input type:** `VulnerabilitiesArchiveInput`
 
-### Arguments {.no_toc}
+### `vulnerabilitiesArchive` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `date` | [`Date!`](scalars.md#date) | Last update date of vulnerabilities being archived. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | ID of the project to attach the vulnerability to. |
 
-### Fields {.no_toc}
+### `vulnerabilitiesArchive` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14430,14 +14520,14 @@ Create or update virtual registries cleanup policy for a root group.
 
 **Input type:** `VulnerabilitiesCreateIssueInput`
 
-### Arguments {.no_toc}
+### `vulnerabilitiesCreateIssue` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `project` | [`ProjectID!`](scalars.md#projectid) | ID of the project to attach the issue to. |
 | `vulnerabilityIds` | [`[VulnerabilityID!]!`](scalars.md#vulnerabilityid) | IDs of vulnerabilities to link to the given issue. Up to 100 can be provided. |
 
-### Fields {.no_toc}
+### `vulnerabilitiesCreateIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14448,7 +14538,7 @@ Create or update virtual registries cleanup policy for a root group.
 
 **Input type:** `VulnerabilitiesDismissInput`
 
-### Arguments {.no_toc}
+### `vulnerabilitiesDismiss` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14456,7 +14546,7 @@ Create or update virtual registries cleanup policy for a root group.
 | `dismissalReason` | [`VulnerabilityDismissalReason`](enums.md#vulnerabilitydismissalreason) | Reason why vulnerability should be dismissed. |
 | `vulnerabilityIds` | [`[VulnerabilityID!]!`](scalars.md#vulnerabilityid) | IDs of the vulnerabilities to be dismissed (maximum 100 entries). |
 
-### Fields {.no_toc}
+### `vulnerabilitiesDismiss` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14469,14 +14559,14 @@ Remove all Vulnerabilities and related information from a given project. [Introd
 
 **Input type:** `VulnerabilitiesRemoveAllFromProjectInput`
 
-### Arguments {.no_toc}
+### `vulnerabilitiesRemoveAllFromProject` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `projectIds` | [`[ProjectID!]!`](scalars.md#projectid) | IDs of project for which all Vulnerabilities should be removed. The deletion will happen in the background so the changes will not be visible immediately. |
 | `resolvedOnDefaultBranch` | [`Boolean`](scalars.md#boolean) | When set as `true`, deletes only the vulnerabilities no longer detected. When set as `false`, deletes only the vulnerabilities still detected. |
 
-### Fields {.no_toc}
+### `vulnerabilitiesRemoveAllFromProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14487,7 +14577,7 @@ Remove all Vulnerabilities and related information from a given project. [Introd
 
 **Input type:** `vulnerabilitiesSeverityOverrideInput`
 
-### Arguments {.no_toc}
+### `vulnerabilitiesSeverityOverride` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14495,7 +14585,7 @@ Remove all Vulnerabilities and related information from a given project. [Introd
 | `severity` | [`VulnerabilitySeverity!`](enums.md#vulnerabilityseverity) | New severity value for the severities. |
 | `vulnerabilityIds` | [`[VulnerabilityID!]!`](scalars.md#vulnerabilityid) | IDs of the vulnerabilities for which severity needs to be changed (maximum 100 entries). |
 
-### Fields {.no_toc}
+### `vulnerabilitiesSeverityOverride` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14512,13 +14602,13 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 
 **Input type:** `VulnerabilityAutoRemediationInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityAutoRemediation` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to remediate. |
 
-### Fields {.no_toc}
+### `vulnerabilityAutoRemediation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14529,14 +14619,14 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 
 **Input type:** `VulnerabilityConfirmInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityConfirm` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `comment` | [`String`](scalars.md#string) | Comment why vulnerability was confirmed (maximum 50,000 characters). |
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to be confirmed. |
 
-### Fields {.no_toc}
+### `vulnerabilityConfirm` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14547,7 +14637,7 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 
 **Input type:** `VulnerabilityCreateInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -14565,7 +14655,7 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 | `solution` | [`String`](scalars.md#string) | Instructions for how to fix the vulnerability. |  |
 | `state` | [`VulnerabilityState`](enums.md#vulnerabilitystate) | State of the vulnerability (defaults to `detected`). | `DETECTED` |
 
-### Fields {.no_toc}
+### `vulnerabilityCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14576,7 +14666,7 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 
 **Input type:** `VulnerabilityDismissInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityDismiss` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14584,7 +14674,7 @@ Triggers automated remediation for a single vulnerability. Currently supports de
 | `dismissalReason` | [`VulnerabilityDismissalReason`](enums.md#vulnerabilitydismissalreason) | Reason why vulnerability should be dismissed. |
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to be dismissed. |
 
-### Fields {.no_toc}
+### `vulnerabilityDismiss` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14601,13 +14691,13 @@ Dismiss a vulnerability false positive flag.
 
 **Input type:** `VulnerabilityDismissFalsePositiveFlagInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityDismissFalsePositiveFlag` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to dismiss false positive flag for. |
 
-### Fields {.no_toc}
+### `vulnerabilityDismissFalsePositiveFlag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14618,7 +14708,7 @@ Dismiss a vulnerability false positive flag.
 
 **Input type:** `VulnerabilityExternalIssueLinkCreateInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityExternalIssueLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14626,7 +14716,7 @@ Dismiss a vulnerability false positive flag.
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability. |
 | `linkType` | [`VulnerabilityExternalIssueLinkType!`](enums.md#vulnerabilityexternalissuelinktype) | Type of the external issue link. |
 
-### Fields {.no_toc}
+### `vulnerabilityExternalIssueLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14637,13 +14727,13 @@ Dismiss a vulnerability false positive flag.
 
 **Input type:** `VulnerabilityExternalIssueLinkDestroyInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityExternalIssueLinkDestroy` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`VulnerabilitiesExternalIssueLinkID!`](scalars.md#vulnerabilitiesexternalissuelinkid) | Global ID of the vulnerability external issue link. |
 
-### Fields {.no_toc}
+### `vulnerabilityExternalIssueLinkDestroy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14653,14 +14743,14 @@ Dismiss a vulnerability false positive flag.
 
 **Input type:** `VulnerabilityIssueLinkCreateInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityIssueLinkCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `issueId` | [`IssueID!`](scalars.md#issueid) | ID of the issue to link to. |
 | `vulnerabilityIds` | [`[VulnerabilityID!]!`](scalars.md#vulnerabilityid) | IDs of vulnerabilities to link to the given issue. Up to 100 can be provided. |
 
-### Fields {.no_toc}
+### `vulnerabilityIssueLinkCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14677,7 +14767,7 @@ Link a merge request to a vulnerability.
 
 **Input type:** `VulnerabilityLinkMergeRequestInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityLinkMergeRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14685,7 +14775,7 @@ Link a merge request to a vulnerability.
 | `readinessScore` | [`Float`](scalars.md#float) | Confidence rating representing the estimated accuracy of the fix in the AI generated merge request. Decimal value between 0 and 1, with 1 being the highest. |
 | `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability. |
 
-### Fields {.no_toc}
+### `vulnerabilityLinkMergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14696,14 +14786,14 @@ Link a merge request to a vulnerability.
 
 **Input type:** `VulnerabilityResolveInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityResolve` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `comment` | [`String`](scalars.md#string) | Comment why vulnerability was resolved (maximum 50,000 characters). |
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to be resolved. |
 
-### Fields {.no_toc}
+### `vulnerabilityResolve` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14714,14 +14804,14 @@ Link a merge request to a vulnerability.
 
 **Input type:** `VulnerabilityRevertToDetectedInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityRevertToDetected` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `comment` | [`String`](scalars.md#string) | Comment why vulnerability was reverted to detected (maximum 50,000 characters). |
 | `id` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability to be reverted to detected. |
 
-### Fields {.no_toc}
+### `vulnerabilityRevertToDetected` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14738,14 +14828,14 @@ Unlink a merge request from a vulnerability.
 
 **Input type:** `VulnerabilityUnlinkMergeRequestInput`
 
-### Arguments {.no_toc}
+### `vulnerabilityUnlinkMergeRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `mergeRequestId` | [`MergeRequestID!`](scalars.md#mergerequestid) | ID of the merge request. |
 | `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | ID of the vulnerability. |
 
-### Fields {.no_toc}
+### `vulnerabilityUnlinkMergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14760,14 +14850,14 @@ Unlink a merge request from a vulnerability.
 
 **Input type:** `WikiPageSubscribeInput`
 
-### Arguments {.no_toc}
+### `wikiPageSubscribe` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WikiPageMetaID!`](scalars.md#wikipagemetaid) | Global ID of the wiki page meta record. |
 | `subscribed` | [`Boolean!`](scalars.md#boolean) | Desired state of the subscription. |
 
-### Fields {.no_toc}
+### `wikiPageSubscribe` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14784,7 +14874,7 @@ Adds a closing merge request to a work item.
 
 **Input type:** `WorkItemAddClosingMergeRequestInput`
 
-### Arguments {.no_toc}
+### `workItemAddClosingMergeRequest` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14792,7 +14882,7 @@ Adds a closing merge request to a work item.
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 | `mergeRequestReference` | [`String!`](scalars.md#string) | Merge request reference (short, full or URL). Example: `!1`, `project_full_path!1` or `https://gitlab.com/gitlab-org/gitlab/-/merge_requests/1`. |
 
-### Fields {.no_toc}
+### `workItemAddClosingMergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14810,7 +14900,7 @@ Add linked items to the work item.
 
 **Input type:** `WorkItemAddLinkedItemsInput`
 
-### Arguments {.no_toc}
+### `workItemAddLinkedItems` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14818,7 +14908,7 @@ Add linked items to the work item.
 | `linkType` | [`WorkItemRelatedLinkType`](enums.md#workitemrelatedlinktype) | Type of link. Defaults to `RELATED`. |
 | `workItemsIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of the items to link. Maximum number of IDs you can provide: 10. |
 
-### Fields {.no_toc}
+### `workItemAddLinkedItems` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14836,7 +14926,7 @@ Enables or disables a work item type for a namespace.
 
 **Input type:** `WorkItemAvailabilityToggleInput`
 
-### Arguments {.no_toc}
+### `workItemAvailabilityToggle` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14845,7 +14935,7 @@ Enables or disables a work item type for a namespace.
 | `scope` | [`WorkItemAvailabilityScope!`](enums.md#workitemavailabilityscope) | Whether to apply to the namespace or propagate to all existing children. |
 | `workItemTypeId` | [`WorkItemsTypeID!`](scalars.md#workitemstypeid) | Global ID of the work item type. |
 
-### Fields {.no_toc}
+### `workItemAvailabilityToggle` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14862,7 +14952,7 @@ Moves work items between projects or groups.
 
 **Input type:** `WorkItemBulkMoveInput`
 
-### Arguments {.no_toc}
+### `workItemBulkMove` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14870,7 +14960,7 @@ Moves work items between projects or groups.
 | `sourceFullPath` | [`String!`](scalars.md#string) | Full path of the source namespace. For example, `gitlab-org/gitlab-foss`. |
 | `targetFullPath` | [`String!`](scalars.md#string) | Full path of the target namespace. For example, `gitlab-org/gitlab-foss`. User paths are not supported. |
 
-### Fields {.no_toc}
+### `workItemBulkMove` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14887,7 +14977,7 @@ Allows updating several properties for a set of work items.
 
 **Input type:** `WorkItemBulkUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemBulkUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14904,7 +14994,7 @@ Allows updating several properties for a set of work items.
 | `statusWidget` | [`WorkItemWidgetStatusInput`](input_objects.md#workitemwidgetstatusinput) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.3.Input for status widget. |
 | `subscriptionEvent` | [`WorkItemSubscriptionEvent`](enums.md#workitemsubscriptionevent) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Subscribe or unsubscribe from the work items. |
 
-### Fields {.no_toc}
+### `workItemBulkUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14921,14 +15011,14 @@ Converts the work item to a new type.
 
 **Input type:** `WorkItemConvertInput`
 
-### Arguments {.no_toc}
+### `workItemConvert` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 | `workItemTypeId` | [`WorkItemsTypeID!`](scalars.md#workitemstypeid) | Global ID of the new work item type. |
 
-### Fields {.no_toc}
+### `workItemConvert` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14945,7 +15035,7 @@ Creates a work item.
 
 **Input type:** `WorkItemCreateInput`
 
-### Arguments {.no_toc}
+### `workItemCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14976,7 +15066,7 @@ Creates a work item.
 | `weightWidget` | [`WorkItemWidgetWeightInput`](input_objects.md#workitemwidgetweightinput) | Input for weight widget. |
 | `workItemTypeId` | [`WorkItemsTypeID!`](scalars.md#workitemstypeid) | Global ID of a work item type. |
 
-### Fields {.no_toc}
+### `workItemCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14993,14 +15083,14 @@ Creates a work item from a task in another work item's description.
 
 **Input type:** `WorkItemCreateFromTaskInput`
 
-### Arguments {.no_toc}
+### `workItemCreateFromTask` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 | `workItemData` | [`WorkItemConvertTaskInput!`](input_objects.md#workitemconverttaskinput) | Arguments necessary to convert a task into a work item. |
 
-### Fields {.no_toc}
+### `workItemCreateFromTask` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15018,13 +15108,13 @@ Archives a resolved decision in the decision log of a work item. The decision is
 
 **Input type:** `WorkItemDecisionArchiveInput`
 
-### Arguments {.no_toc}
+### `workItemDecisionArchive` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsDecisionID!`](scalars.md#workitemsdecisionid) | Global ID of the decision. |
 
-### Fields {.no_toc}
+### `workItemDecisionArchive` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15041,19 +15131,20 @@ Records a decision in the decision log of a work item.
 
 **Input type:** `WorkItemDecisionCreateInput`
 
-### Arguments {.no_toc}
+### `workItemDecisionCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Context of the decision. |
 | `discussionId` | [`DiscussionID`](scalars.md#discussionid) | Global ID of the originating discussion thread. |
 | `options` | [`[WorkItemDecisionOptionInput!]`](input_objects.md#workitemdecisionoptioninput) | Candidate options of the decision. Maximum of 5 options. Incompatible with resolution. |
+| `question` | [`String`](scalars.md#string) | Question being decided. Required unless resolution is provided. |
 | `resolution` | [`WorkItemDecisionResolutionInput`](input_objects.md#workitemdecisionresolutioninput) | When present, records the decision as resolved at creation. Incompatible with options. |
 | `sourceLink` | [`String`](scalars.md#string) | URL of the comment, discussion, or external resource that prompted the decision. |
-| `title` | [`String`](scalars.md#string) | Question being decided. Required unless resolution is provided. |
+| `title` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `question`. |
 | `workItemId` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 
-### Fields {.no_toc}
+### `workItemDecisionCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15070,13 +15161,13 @@ Deletes an open decision from the decision log of a work item. Resolved or archi
 
 **Input type:** `WorkItemDecisionDeleteInput`
 
-### Arguments {.no_toc}
+### `workItemDecisionDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsDecisionID!`](scalars.md#workitemsdecisionid) | Global ID of the decision. |
 
-### Fields {.no_toc}
+### `workItemDecisionDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15093,7 +15184,7 @@ Resolves a decision in the decision log of a work item.
 
 **Input type:** `WorkItemDecisionResolveInput`
 
-### Arguments {.no_toc}
+### `workItemDecisionResolve` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15103,7 +15194,7 @@ Resolves a decision in the decision log of a work item.
 | `selectedOptionContent` | [`String`](scalars.md#string) | Content of a custom option, added as the only selected option of the decision while every existing option is deselected. Incompatible with selectedOptionIds. |
 | `selectedOptionIds` | [`[WorkItemsDecisionOptionID!]`](scalars.md#workitemsdecisionoptionid) | Global IDs of the selected options. Maximum of 5 options. |
 
-### Fields {.no_toc}
+### `workItemDecisionResolve` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15120,7 +15211,7 @@ Updates a decision in the decision log of a work item.
 
 **Input type:** `WorkItemDecisionUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemDecisionUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15128,14 +15219,15 @@ Updates a decision in the decision log of a work item.
 | `discussionId` | [`DiscussionID`](scalars.md#discussionid) | Global ID of the originating discussion thread. |
 | `id` | [`WorkItemsDecisionID!`](scalars.md#workitemsdecisionid) | Global ID of the decision. |
 | `options` | [`[WorkItemDecisionOptionUpdateInput!]`](input_objects.md#workitemdecisionoptionupdateinput) | Existing options of the decision to update. Maximum of 6 options. |
+| `question` | [`String`](scalars.md#string) | Question being decided. |
 | `resolutionRationale` | [`String`](scalars.md#string) | Reasoning for the resolution. Can only be updated on resolved decisions. |
 | `resolvedById` | [`UserID`](scalars.md#userid) | Global ID of the user who resolved the decision. Can only be updated on resolved decisions. |
 | `resolvingNoteId` | [`NoteID`](scalars.md#noteid) | Global ID of the comment that resolved the decision. Can only be updated on resolved decisions. |
 | `selectedOptionContent` | [`String`](scalars.md#string) | Content of the selected option. Unless exactly one option is selected, a new selected option with this content is added and any selected options are deselected. Can only be updated on resolved decisions. |
 | `sourceLink` | [`String`](scalars.md#string) | URL of the comment, discussion, or external resource that prompted the decision. |
-| `title` | [`String`](scalars.md#string) | Question being decided. |
+| `title` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `question`. |
 
-### Fields {.no_toc}
+### `workItemDecisionUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15152,13 +15244,13 @@ Deletes a work item.
 
 **Input type:** `WorkItemDeleteInput`
 
-### Arguments {.no_toc}
+### `workItemDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 
-### Fields {.no_toc}
+### `workItemDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15176,13 +15268,13 @@ Enables AI planning for a work item. Once enabled, AI planning cannot be disable
 
 **Input type:** `WorkItemEnableAiPlanningInput`
 
-### Arguments {.no_toc}
+### `workItemEnableAiPlanning` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 
-### Fields {.no_toc}
+### `workItemEnableAiPlanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15195,7 +15287,7 @@ Deprecated in GitLab 18.0. Use WorkItemsCsvExport.
 
 **Input type:** `WorkItemExportInput`
 
-### Arguments {.no_toc}
+### `workItemExport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15243,7 +15335,7 @@ Deprecated in GitLab 18.0. Use WorkItemsCsvExport.
 | `weightWildcardId` | [`WeightWildcardId`](enums.md#weightwildcardid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Filter by weight ID wildcard. Incompatible with weight. |
 | `workItemTypeIds` | [`[WorkItemsTypeID!]`](scalars.md#workitemstypeid) | Filter work items by work item type global IDs. |
 
-### Fields {.no_toc}
+### `workItemExport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15260,13 +15352,13 @@ Scores the readiness of a work item asynchronously through a Duo Agent Platform 
 
 **Input type:** `WorkItemGenerateReadinessScoreInput`
 
-### Arguments {.no_toc}
+### `workItemGenerateReadinessScore` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item to score readiness for. |
 
-### Fields {.no_toc}
+### `workItemGenerateReadinessScore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15283,13 +15375,13 @@ Generates a workplan for a work item asynchronously through a Duo Agent Platform
 
 **Input type:** `WorkItemGenerateWorkplanInput`
 
-### Arguments {.no_toc}
+### `workItemGenerateWorkplan` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item to generate a workplan for. |
 
-### Fields {.no_toc}
+### `workItemGenerateWorkplan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15306,14 +15398,14 @@ Adds children to a given work item's hierarchy by Global ID.
 
 **Input type:** `WorkItemHierarchyAddChildrenItemsInput`
 
-### Arguments {.no_toc}
+### `workItemHierarchyAddChildrenItems` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `childrenIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of children work items. |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 
-### Fields {.no_toc}
+### `workItemHierarchyAddChildrenItems` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15330,14 +15422,14 @@ Remove items linked to the work item.
 
 **Input type:** `WorkItemRemoveLinkedItemsInput`
 
-### Arguments {.no_toc}
+### `workItemRemoveLinkedItems` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 | `workItemsIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of the items to unlink. Maximum number of IDs you can provide: 10. |
 
-### Fields {.no_toc}
+### `workItemRemoveLinkedItems` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15355,13 +15447,13 @@ Resumes a paused workplan generation flow that is awaiting input, sending the re
 
 **Input type:** `WorkItemResumeWorkplanInput`
 
-### Arguments {.no_toc}
+### `workItemResumeWorkplan` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item whose workplan generation to resume. |
 
-### Fields {.no_toc}
+### `workItemResumeWorkplan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15378,7 +15470,7 @@ Creates a saved view.
 
 **Input type:** `WorkItemSavedViewCreateInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15391,7 +15483,7 @@ Creates a saved view.
 | `private` | [`Boolean`](scalars.md#boolean) | Deprecated in GitLab 18.10. Replaced by `isPrivate` argument. |
 | `sort` | [`WorkItemSort!`](enums.md#workitemsort) | Sort option associated with the saved view. |
 
-### Fields {.no_toc}
+### `workItemSavedViewCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15408,13 +15500,13 @@ Deletes a saved view.
 
 **Input type:** `WorkItemSavedViewDeleteInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewDelete` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsSavedViewsSavedViewID!`](scalars.md#workitemssavedviewssavedviewid) | Global ID of the saved view. |
 
-### Fields {.no_toc}
+### `workItemSavedViewDelete` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15431,7 +15523,7 @@ Reorders a saved view for the current user.
 
 **Input type:** `WorkItemSavedViewReorderInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewReorder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15439,7 +15531,7 @@ Reorders a saved view for the current user.
 | `moveAfterId` | [`WorkItemsSavedViewsSavedViewID`](scalars.md#workitemssavedviewssavedviewid) | Global ID of a saved view that the reordered view should be placed after. |
 | `moveBeforeId` | [`WorkItemsSavedViewsSavedViewID`](scalars.md#workitemssavedviewssavedviewid) | Global ID of a saved view that the reordered view should be placed before. |
 
-### Fields {.no_toc}
+### `workItemSavedViewReorder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15456,13 +15548,13 @@ Subscribes the current user to a saved view.
 
 **Input type:** `WorkItemSavedViewSubscribeInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewSubscribe` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsSavedViewsSavedViewID!`](scalars.md#workitemssavedviewssavedviewid) | Global ID of the saved view to subscribe to. |
 
-### Fields {.no_toc}
+### `workItemSavedViewSubscribe` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15479,13 +15571,13 @@ Unsubscribes the current user from a saved view.
 
 **Input type:** `WorkItemSavedViewUnsubscribeInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewUnsubscribe` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemsSavedViewsSavedViewID!`](scalars.md#workitemssavedviewssavedviewid) | Global ID of the saved view to unsubscribe from. |
 
-### Fields {.no_toc}
+### `workItemSavedViewUnsubscribe` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15502,7 +15594,7 @@ Updates a saved view.
 
 **Input type:** `WorkItemSavedViewUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemSavedViewUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15515,7 +15607,7 @@ Updates a saved view.
 | `private` | [`Boolean`](scalars.md#boolean) | Deprecated in GitLab 18.10. Replaced by `isPrivate` argument. |
 | `sort` | [`WorkItemSort`](enums.md#workitemsort) | Sorting option associated with the saved view. |
 
-### Fields {.no_toc}
+### `workItemSavedViewUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15532,14 +15624,14 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 
 **Input type:** `WorkItemSettingsUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemSettingsUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `customizableTypeVisibility` | [`Boolean`](scalars.md#boolean) | Whether namespace admins can configure per-type work item visibility. |
 | `fullPath` | [`ID`](scalars.md#id) | Full path of the root group. Omit to use the current organization. |
 
-### Fields {.no_toc}
+### `workItemSettingsUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15554,14 +15646,14 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 
 **Input type:** `WorkItemSubscribeInput`
 
-### Arguments {.no_toc}
+### `workItemSubscribe` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 | `subscribed` | [`Boolean!`](scalars.md#boolean) | Desired state of the subscription. |
 
-### Fields {.no_toc}
+### `workItemSubscribe` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15576,7 +15668,7 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 
 **Input type:** `WorkItemTypeCreateInput`
 
-### Arguments {.no_toc}
+### `workItemTypeCreate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15585,7 +15677,7 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 | `iconName` | [`String!`](scalars.md#string) | Icon name for the work item type. Use the `workItemTypeIconDefinitions` query to retrieve the list of available icon names. |
 | `name` | [`String!`](scalars.md#string) | Name for the work item type. |
 
-### Fields {.no_toc}
+### `workItemTypeCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15600,7 +15692,7 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 
 **Input type:** `WorkItemTypeUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemTypeUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15611,7 +15703,7 @@ Updates work item settings for a root group or organization. Omit fullPath to up
 | `id` | [`WorkItemsTypeID!`](scalars.md#workitemstypeid) | Global ID of the work item type to update. |
 | `name` | [`String`](scalars.md#string) | New name for the work item type. |
 
-### Fields {.no_toc}
+### `workItemTypeUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15628,7 +15720,7 @@ Updates a work item by Global ID.
 
 **Input type:** `WorkItemUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15660,7 +15752,7 @@ Updates a work item by Global ID.
 | `verificationStatusWidget` | [`VerificationStatusInput`](input_objects.md#verificationstatusinput) | Input for verification status widget. |
 | `weightWidget` | [`WorkItemWidgetWeightInput`](input_objects.md#workitemwidgetweightinput) | Input for weight widget. |
 
-### Fields {.no_toc}
+### `workItemUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15677,7 +15769,7 @@ Create or Update user preferences for a work item type and namespace.
 
 **Input type:** `WorkItemUserPreferenceUpdateInput`
 
-### Arguments {.no_toc}
+### `workItemUserPreferenceUpdate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -15686,7 +15778,7 @@ Create or Update user preferences for a work item type and namespace.
 | `sort` | [`WorkItemSort`](enums.md#workitemsort) | Sort order for work item lists. | `CREATED_ASC` |
 | `workItemTypeId` | [`WorkItemsTypeID`](scalars.md#workitemstypeid) | Global ID of a work item type. |  |
 
-### Fields {.no_toc}
+### `workItemUserPreferenceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15701,7 +15793,7 @@ Create or Update user preferences for a work item type and namespace.
 
 **Input type:** `WorkItemsCsvExportInput`
 
-### Arguments {.no_toc}
+### `workItemsCsvExport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15749,7 +15841,7 @@ Create or Update user preferences for a work item type and namespace.
 | `weightWildcardId` | [`WeightWildcardId`](enums.md#weightwildcardid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Filter by weight ID wildcard. Incompatible with weight. |
 | `workItemTypeIds` | [`[WorkItemsTypeID!]`](scalars.md#workitemstypeid) | Filter work items by work item type global IDs. |
 
-### Fields {.no_toc}
+### `workItemsCsvExport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15764,14 +15856,14 @@ Create or Update user preferences for a work item type and namespace.
 
 **Input type:** `WorkItemsCsvImportInput`
 
-### Arguments {.no_toc}
+### `workItemsCsvImport` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `file` | [`Upload!`](scalars.md#upload) | CSV file to import work items from. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full project path. |
 
-### Fields {.no_toc}
+### `workItemsCsvImport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15788,7 +15880,7 @@ Reorder a work item in the hierarchy tree.
 
 **Input type:** `workItemsHierarchyReorderInput`
 
-### Arguments {.no_toc}
+### `workItemsHierarchyReorder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15797,7 +15889,7 @@ Reorder a work item in the hierarchy tree.
 | `parentId` | [`WorkItemID`](scalars.md#workitemid) | Global ID of the new parent work item. |
 | `relativePosition` | [`RelativePositionType`](enums.md#relativepositiontype) | Position relative to the adjacent work item. Valid values are `BEFORE` or `AFTER`. |
 
-### Fields {.no_toc}
+### `workItemsHierarchyReorder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15816,7 +15908,7 @@ Reorders a work item.
 
 **Input type:** `workItemsReorderInput`
 
-### Arguments {.no_toc}
+### `workItemsReorder` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15824,7 +15916,7 @@ Reorders a work item.
 | `moveAfterId` | [`WorkItemID`](scalars.md#workitemid) | Global ID of a work item that should be placed after the work item. |
 | `moveBeforeId` | [`WorkItemID`](scalars.md#workitemid) | Global ID of a work item that should be placed before the work item. |
 
-### Fields {.no_toc}
+### `workItemsReorder` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15835,7 +15927,7 @@ Reorders a work item.
 
 **Input type:** `WorkspaceCreateInput`
 
-### Arguments {.no_toc}
+### `workspaceCreate` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
@@ -15850,7 +15942,7 @@ Reorders a work item.
 | `variables` | [`[WorkspaceVariableInput!]`](input_objects.md#workspacevariableinput) | Deprecated in GitLab 18.0. Argument is renamed to workspace_variables. | `[]` |
 | `workspaceVariables` | [`[WorkspaceVariableInput!]`](input_objects.md#workspacevariableinput) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Variables to inject into the workspace. | `[]` |
 
-### Fields {.no_toc}
+### `workspaceCreate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15861,14 +15953,14 @@ Reorders a work item.
 
 **Input type:** `WorkspaceUpdateInput`
 
-### Arguments {.no_toc}
+### `workspaceUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `desiredState` | [`String!`](scalars.md#string) | Desired state of the created workspace. |
 | `id` | [`RemoteDevelopmentWorkspaceID!`](scalars.md#remotedevelopmentworkspaceid) | Global ID of the workspace. |
 
-### Fields {.no_toc}
+### `workspaceUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |

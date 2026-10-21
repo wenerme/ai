@@ -13,7 +13,7 @@ An object is a GraphQL type with fields.
 
 An abuse report.
 
-### Fields {.no_toc}
+### `AbuseReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23,7 +23,7 @@ An abuse report.
 
 Represents the Geo replication and verification state of a abuse_report_upload.
 
-### Fields {.no_toc}
+### `AbuseReportUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -53,7 +53,7 @@ Represents the Geo replication and verification state of a abuse_report_upload.
 
 Paginated collection of [`AbuseReportUploadRegistry`](#abusereportuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AbuseReportUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -65,7 +65,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the access level of a relationship between a User and object that it is related to.
 
-### Fields {.no_toc}
+### `AccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -77,7 +77,7 @@ Represents the access level of a relationship between a User and object that it 
 
 Representation of a GitLab deploy key.
 
-### Fields {.no_toc}
+### `AccessLevelDeployKey` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -94,7 +94,7 @@ Paginated collection of [`AccessLevelDeployKey`](#accessleveldeploykey). See [St
 
 Representation of a GitLab group.
 
-### Fields {.no_toc}
+### `AccessLevelGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -108,7 +108,7 @@ Representation of a GitLab group.
 
 Representation of a GitLab user.
 
-### Fields {.no_toc}
+### `AccessLevelUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -124,7 +124,7 @@ Representation of a GitLab user.
 
 Granular scope applied to an access token.
 
-### Fields {.no_toc}
+### `AccessTokenGranularScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -138,7 +138,7 @@ Granular scope applied to an access token.
 
 Legacy scope applied to an access token.
 
-### Fields {.no_toc}
+### `AccessTokenLegacyScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -148,7 +148,7 @@ Legacy scope applied to an access token.
 
 Permission that belongs to a granular scope.
 
-### Fields {.no_toc}
+### `AccessTokenPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -164,7 +164,7 @@ Permission that belongs to a granular scope.
 
 ## `Achievement`
 
-### Fields {.no_toc}
+### `Achievement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -182,7 +182,7 @@ Permission that belongs to a granular scope.
 
 Paginated collection of [`Achievement`](#achievement). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AchievementConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -194,7 +194,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of an `achievement_upload`.
 
-### Fields {.no_toc}
+### `AchievementUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -224,7 +224,7 @@ Represents the Geo replication and verification state of an `achievement_upload`
 
 Paginated collection of [`AchievementUploadRegistry`](#achievementuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AchievementUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -236,7 +236,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Active trial information.
 
-### Fields {.no_toc}
+### `ActiveTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -247,7 +247,7 @@ Active trial information.
 
 Represents AddOn purchase for Namespace.
 
-### Fields {.no_toc}
+### `AddOnPurchase` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -262,7 +262,7 @@ A user with add-on data.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `AddOnUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -335,7 +335,7 @@ A user with add-on data.
 
 Paginated collection of [`AddOnUser`](#addonuser). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AddOnUserConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -347,7 +347,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 The ancestor group that introduced an admin-locked GitLab Duo availability override.
 
-### Fields {.no_toc}
+### `AdminDuoAvailabilityLockedAncestor` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -362,7 +362,7 @@ Paginated collection of [`AdminDuoAvailabilityLockedAncestor`](#adminduoavailabi
 
 A group with its resolved GitLab Duo availability, for the admin override list.
 
-### Fields {.no_toc}
+### `AdminDuoAvailabilityNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -384,7 +384,7 @@ Represents an admin member role.
 
 **Implements:** [`CustomRoleInterface`](interfaces.md#customroleinterface), [`RoleInterface`](interfaces.md#roleinterface)
 
-### Fields {.no_toc}
+### `AdminMemberRole` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -406,7 +406,7 @@ Paginated collection of [`AdminMemberRole`](#adminmemberrole). See [Standard con
 
 Configuration details for an Agent.
 
-### Fields {.no_toc}
+### `AgentConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -420,7 +420,7 @@ Paginated collection of [`AgentConfiguration`](#agentconfiguration). See [Standa
 
 Information about a connected Agent.
 
-### Fields {.no_toc}
+### `AgentMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -433,7 +433,7 @@ Information about a connected Agent.
 
 Agent platform aggregated metrics by flow type.
 
-### Fields {.no_toc}
+### `AgentPlatformFlowMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -447,7 +447,7 @@ Agent platform aggregated metrics by flow type.
 
 Response for `AgentPlatformSessions` aggregation engine.
 
-### Fields {.no_toc}
+### `AgentPlatformSessionsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -465,7 +465,7 @@ Response for `AgentPlatformSessions` aggregation engine.
 
 Paginated collection of [`AgentPlatformSessionsAggregationResponse`](#agentplatformsessionsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AgentPlatformSessionsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -477,7 +477,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `AgentPlatformSessions` aggregation engine.
 
-### Fields {.no_toc}
+### `AgentPlatformSessionsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -490,7 +490,7 @@ Response dimensions for `AgentPlatformSessions` aggregation engine.
 
 Aggregated `duration` metrics for `AgentPlatformSessions` aggregation engine.
 
-### Fields {.no_toc}
+### `AgentPlatformSessionsAggregationResponseDurationMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -504,7 +504,7 @@ Aggregated `duration` metrics for `AgentPlatformSessions` aggregation engine.
 
 Aggregation scope for `AgentPlatformSessions`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `AgentPlatformSessionsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -514,7 +514,7 @@ Aggregation scope for `AgentPlatformSessions`. Apply ordering and pagination on 
 
 Agent platform flow counts aggergated per user.
 
-### Fields {.no_toc}
+### `AgentPlatformUserFlowCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -530,7 +530,7 @@ Paginated collection of [`AgentPlatformUserFlowCount`](#agentplatformuserflowcou
 
 Version-related warning for a connected Agent.
 
-### Fields {.no_toc}
+### `AgentVersionWarning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -541,7 +541,7 @@ Version-related warning for a connected Agent.
 
 Warning object for a connected Agent.
 
-### Fields {.no_toc}
+### `AgentWarning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -549,7 +549,7 @@ Warning object for a connected Agent.
 
 ## `AggregationStatus`
 
-### Fields {.no_toc}
+### `AggregationStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -561,7 +561,7 @@ Warning object for a connected Agent.
 
 Additional context for AI message.
 
-### Fields {.no_toc}
+### `AiAdditionalContext` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -574,7 +574,7 @@ Additional context for AI message.
 
 Audit event recorded for a GitLab Duo Agent Platform session.
 
-### Fields {.no_toc}
+### `AiAuditEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -598,7 +598,7 @@ An AI catalog agent.
 
 **Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
-### Fields {.no_toc}
+### `AiCatalogAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -611,6 +611,7 @@ An AI catalog agent.
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalAgentReference` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Foundational agent reference. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -636,7 +637,7 @@ An AI catalog agent version.
 
 **Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
-### Fields {.no_toc}
+### `AiCatalogAgentVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -660,7 +661,7 @@ An AI catalog agent version.
 
 An AI catalog built-in tool.
 
-### Fields {.no_toc}
+### `AiCatalogBuiltInTool` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -683,7 +684,7 @@ An AI catalog flow.
 
 **Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
-### Fields {.no_toc}
+### `AiCatalogFlow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -696,6 +697,7 @@ An AI catalog flow.
 | `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -721,7 +723,7 @@ An AI catalog flow version.
 
 **Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
-### Fields {.no_toc}
+### `AiCatalogFlowVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -741,7 +743,7 @@ An AI catalog flow version.
 
 Paginated collection of [`AiCatalogItem`](interfaces.md#aicatalogitem). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiCatalogItemConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -753,7 +755,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 An AI catalog item configuration.
 
-### Fields {.no_toc}
+### `AiCatalogItemConsumer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -777,7 +779,7 @@ An AI catalog item configuration.
 
 Paginated collection of [`AiCatalogItemConsumer`](#aicatalogitemconsumer). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiCatalogItemConsumerConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -789,7 +791,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Check permissions for the current user on an AI catalog item consumer.
 
-### Fields {.no_toc}
+### `AiCatalogItemConsumerPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -801,7 +803,7 @@ Check permissions for the current user on an AI catalog item consumer.
 
 Check permissions for the current user on an AI catalog item.
 
-### Fields {.no_toc}
+### `AiCatalogItemPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -814,7 +816,7 @@ Check permissions for the current user on an AI catalog item.
 
 Paginated collection of [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiCatalogItemVersionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -826,7 +828,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 An MCP (Model Context Protocol) server.
 
-### Fields {.no_toc}
+### `AiCatalogMcpServer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -852,7 +854,7 @@ Paginated collection of [`AiCatalogMcpServer`](#aicatalogmcpserver). See [Standa
 
 An MCP tool dynamically discovered from the GitLab MCP server.
 
-### Fields {.no_toc}
+### `AiCatalogMcpTool` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -869,7 +871,7 @@ Paginated collection of [`AiCatalogMcpTool`](#aicatalogmcptool). See [Standard c
 
 An icon advertised for an MCP tool, per the MCP spec icons field.
 
-### Fields {.no_toc}
+### `AiCatalogMcpToolIcon` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -883,7 +885,7 @@ An AI catalog skill. The repository pointer fields resolve against the latest it
 
 **Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
-### Fields {.no_toc}
+### `AiCatalogSkill` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -900,6 +902,7 @@ An AI catalog skill. The repository pointer fields resolve against the latest it
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
 | `gitRef` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Git reference the skill was published from. |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -926,7 +929,7 @@ An AI catalog skill version.
 
 **Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
-### Fields {.no_toc}
+### `AiCatalogSkillVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -952,7 +955,7 @@ An AI catalog third party flow.
 
 **Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
-### Fields {.no_toc}
+### `AiCatalogThirdPartyFlow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -965,6 +968,7 @@ An AI catalog third party flow.
 | `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
+| `hasDirectProjectConfigurationsInGroup` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether any project in the group has its own configuration of the item. Returns `null` when the user cannot enable items for the group, or the group is not a top-level group. This field can only be resolved for one AiCatalogItem in any single request.  <strong>Arguments for `hasDirectProjectConfigurationsInGroup`:</strong> <dl><dt>`groupId` ([`GroupID!`](scalars.md#groupid))</dt><dd>Global ID of the group.</dd></dl> |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
@@ -990,7 +994,7 @@ An AI catalog third party flow version.
 
 **Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
-### Fields {.no_toc}
+### `AiCatalogThirdPartyFlowVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1010,7 +1014,7 @@ An AI catalog third party flow version.
 
 Category of suggested questions for GitLab Duo Chat.
 
-### Fields {.no_toc}
+### `AiChatQuestionCategory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1023,7 +1027,7 @@ Category of suggested questions for GitLab Duo Chat.
 
 Conversation thread of the AI feature.
 
-### Fields {.no_toc}
+### `AiConversationsThread` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1041,7 +1045,7 @@ Paginated collection of [`AiConversationsThread`](#aiconversationsthread). See [
 
 Duo Chat feature setting.
 
-### Fields {.no_toc}
+### `AiFeatureSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1066,7 +1070,7 @@ Paginated collection of [`AiFeatureSetting`](#aifeaturesetting). See [Standard c
 
 A capability the instance advertises for Duo Agent Platform flows.
 
-### Fields {.no_toc}
+### `AiFlowCapability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1077,7 +1081,7 @@ A capability the instance advertises for Duo Agent Platform flows.
 
 Details of the most recent execution attempt of a flow schedule.
 
-### Fields {.no_toc}
+### `AiFlowScheduleLastRun` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1089,7 +1093,7 @@ Details of the most recent execution attempt of a flow schedule.
 
 Represents a cron-based schedule for an AI flow trigger.
 
-### Fields {.no_toc}
+### `AiFlowScheduleType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1110,11 +1114,50 @@ Represents a cron-based schedule for an AI flow trigger.
 
 Paginated collection of [`AiFlowScheduleType`](#aiflowscheduletype). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
+## `AiFlowTriggerDailyRunCount`
+
+Number of runs of a flow trigger created on one UTC day.
+
+### `AiFlowTriggerDailyRunCount` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `date` | [`Date!`](scalars.md#date) | UTC day the runs were created on. |
+| `runs` | [`Int!`](scalars.md#int) | Number of runs created on the day. |
+
+## `AiFlowTriggerLastRun`
+
+Details of the most recent run of a flow trigger.
+
+### `AiFlowTriggerLastRun` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `error` | [`String`](scalars.md#string) | Error message of a scheduled run that failed before a session started. |
+| `finishedAt` | [`Time`](scalars.md#time) | Timestamp of when the run finished, or null if the run is not finished. |
+| `startedAt` | [`Time!`](scalars.md#time) | Timestamp of when the run started. |
+| `status` | [`AiFlowTriggerRunStatus!`](enums.md#aiflowtriggerrunstatus) | Status of the run. |
+
+## `AiFlowTriggerRunStats`
+
+Statistics of the runs of a flow trigger created in the last 30 days.
+
+### `AiFlowTriggerRunStats` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `dailyVolume` | [`[AiFlowTriggerDailyRunCount!]!`](#aiflowtriggerdailyruncount) | Number of runs created on each UTC day. Days without runs are omitted. |
+| `failedRuns` | [`Int!`](scalars.md#int) | Number of runs that failed. |
+| `finishedRuns` | [`Int!`](scalars.md#int) | Number of runs that finished successfully. |
+| `medianDurationSeconds` | [`Float`](scalars.md#float) | Median time in seconds from creation to last update of runs that finished, failed, or were stopped. Null if no run has ended. |
+| `stoppedRuns` | [`Int!`](scalars.md#int) | Number of runs that were stopped. |
+| `totalRuns` | [`Int!`](scalars.md#int) | Number of runs. |
+
 ## `AiFlowTriggerType`
 
 Represents an AI flow trigger.
 
-### Fields {.no_toc}
+### `AiFlowTriggerType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1128,9 +1171,16 @@ Represents an AI flow trigger.
 | `filter` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Filter conditions for the AI flow trigger. |
 | `flowSchedules` | [`AiFlowScheduleTypeConnection`](#aiflowscheduletypeconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Cron-based schedules associated with the flow trigger. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `goals` | [`JSON!`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the AI flow trigger, keyed by event type. |
+| `group` | [`Group`](#group) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Group of the flow trigger. Null for project flow triggers. |
 | `id` | [`ID!`](scalars.md#id) | ID of the flow trigger. |
+| `lastRun` | [`AiFlowTriggerLastRun`](#aiflowtriggerlastrun) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Details of the most recent run, or null if the flow trigger has never run. |
 | `precondition` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Enforced filter conditions from the foundational flow definition. |
-| `project` | [`Project!`](#project) | Project of the flow trigger. |
+| `project` | [`Project`](#project) | Project of the flow trigger. Null for group flow triggers. |
+| `readyMergeRequestsOnFinish` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `runStats` | [`AiFlowTriggerRunStats`](#aiflowtriggerrunstats) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Statistics of the runs of the flow trigger created in the last 30 days. |
+| `runningCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of sessions of the flow trigger that are created or running. |
+| `sessions` | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Sessions started by the flow trigger, newest first. Returns sessions for only one flow trigger per request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | `updatedAt` | [`Time!`](scalars.md#time) | Timestamp of when the flow trigger was last updated. |
 | `user` | [`UserCore`](#usercore) | Service account of the flow trigger. |
 
@@ -1138,19 +1188,20 @@ Represents an AI flow trigger.
 
 Paginated collection of [`AiFlowTriggerType`](#aiflowtriggertype). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiFlowTriggerTypeConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `count` | [`Int!`](scalars.md#int) | Total count of collection. Returns limit + 1 for counts greater than the limit.  <strong>Arguments for `count`:</strong> <dl><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Limit applied to the count query, returns limit + 1. When not provided, returns the exact count.</dd></dl> |
+| `runStats` | [`AiFlowTriggerRunStats`](#aiflowtriggerrunstats) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Statistics of the runs created in the last 30 days by all flow triggers in the collection, not only the current page. |
 
 ## `AiFlowsMetadata`
 
 Metadata describing Duo Agent Platform flow capabilities available to the caller.
 
-### Fields {.no_toc}
+### `AiFlowsMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1160,7 +1211,7 @@ Metadata describing Duo Agent Platform flow capabilities available to the caller
 
 Core Agent available for GitLab features.
 
-### Fields {.no_toc}
+### `AiFoundationalChatAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1168,6 +1219,7 @@ Core Agent available for GitLab features.
 | `description` | [`String!`](scalars.md#string) | Description of the agent. |
 | `flowConfig` | [`AiFoundationalChatAgentFlowConfig`](#aifoundationalchatagentflowconfig) | Flow versioning parameters used when starting a workflow for this agent. Null for agents that resolve versioning elsewhere (e.g. AI Catalog-backed agents). |
 | `id` | [`AiFoundationalChatAgentID!`](scalars.md#aifoundationalchatagentid) | Global ID of the foundational chat agent. |
+| `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the agent. |
 | `name` | [`String!`](scalars.md#string) | Name of the agent. |
 | `reference` | [`String!`](scalars.md#string) | Reference ID of the agent. |
 | `referenceWithVersion` | [`String`](scalars.md#string) | Versioned reference of the agent. |
@@ -1185,7 +1237,7 @@ Paginated collection of [`AiFoundationalChatAgent`](#aifoundationalchatagent). S
 
 Flow versioning parameters for a foundational chat agent.
 
-### Fields {.no_toc}
+### `AiFoundationalChatAgentFlowConfig` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1197,7 +1249,7 @@ Flow versioning parameters for a foundational chat agent.
 
 Registered external agents of one type, with their session activity.
 
-### Fields {.no_toc}
+### `AiGovernanceConnectedAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1213,7 +1265,7 @@ Registered external agents of one type, with their session activity.
 
 Aggregated KPI for the AI governance dashboard.
 
-### Fields {.no_toc}
+### `AiGovernanceKpi` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1226,7 +1278,7 @@ Aggregated KPI for the AI governance dashboard.
 
 Single bucket of an AI governance KPI trend series.
 
-### Fields {.no_toc}
+### `AiGovernanceKpiTrendPoint` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1237,7 +1289,7 @@ Single bucket of an AI governance KPI trend series.
 
 Aggregated AI governance dashboard metrics.
 
-### Fields {.no_toc}
+### `AiGovernanceMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1253,7 +1305,7 @@ Aggregated AI governance dashboard metrics.
 
 AI session activity in a single project.
 
-### Fields {.no_toc}
+### `AiGovernanceProjectActivity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1264,14 +1316,14 @@ AI session activity in a single project.
 
 AI session recorded for AI governance, from GitLab Duo or an external agent.
 
-### Fields {.no_toc}
+### `AiGovernanceSession` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `agentType` | [`String`](scalars.md#string) | Type of the agent that ran the session, for example `claude-code`. Values differ between sources. |
 | `auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Returns no events for GitLab Duo sessions delivered through a private messaging integration. This field can only be resolved for one session in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `auditEventsCount` | [`Int`](scalars.md#int) | Number of audit events recorded for the session. |
-| `downloadPath` | [`String`](scalars.md#string) | Path to download the session artifact as a JSON file. Null for sessions from sources other than GitLab Duo. |
+| `downloadPath` | [`String`](scalars.md#string) | Path to download the session artifact as a JSON file. Null for GitLab Duo sessions without a workflow, and for sessions from other sources when ClickHouse is not enabled. |
 | `flowType` | [`String`](scalars.md#string) | Flow type of the session, for example `chat`. Values differ between sources. |
 | `id` | [`AiGovernanceSessionID!`](scalars.md#aigovernancesessionid) | Global ID of the session. |
 | `project` | [`Project`](#project) | Project the session belongs to. Null for namespace-scoped sessions, or when the current user cannot read the project. |
@@ -1285,7 +1337,7 @@ AI session recorded for AI governance, from GitLab Duo or an external agent.
 
 Paginated collection of [`AiGovernanceSession`](#aigovernancesession). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiGovernanceSessionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -1297,7 +1349,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 AI sessions and developers in the timeframe, split by agent or flow type.
 
-### Fields {.no_toc}
+### `AiGovernanceSessionDistribution` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1309,7 +1361,7 @@ AI sessions and developers in the timeframe, split by agent or flow type.
 
 AI sessions and developers for one agent or flow type.
 
-### Fields {.no_toc}
+### `AiGovernanceSessionDistributionSlice` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1321,18 +1373,20 @@ AI sessions and developers for one agent or flow type.
 
 AI agent tool usage aggregated for the AI governance dashboard.
 
-### Fields {.no_toc}
+### `AiGovernanceToolCall` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `actionType` | [`AiToolActionType`](enums.md#aitoolactiontype) | Action type of the tool. Null when it is not known. |
 | `count` | [`Int!`](scalars.md#int) | Number of tool invocations in the selected timeframe. |
-| `toolName` | [`String!`](scalars.md#string) | Name of the tool. |
+| `title` | [`String!`](scalars.md#string) | Display name of the tool, as shown on the Tool management tab. Same as `toolName` when no rule governs the tool. |
+| `toolName` | [`String!`](scalars.md#string) | Name of the tool rule that governs the tool, or the name recorded in the audit event when no rule governs it. |
 
 ## `AiGovernanceToolCallsByRisk`
 
 AI agent tool calls grouped by risk level.
 
-### Fields {.no_toc}
+### `AiGovernanceToolCallsByRisk` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1344,7 +1398,7 @@ AI agent tool calls grouped by risk level.
 
 Top tools invoked by AI agents, with a flag marking approximate counts.
 
-### Fields {.no_toc}
+### `AiGovernanceToolCallsReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1356,7 +1410,7 @@ Top tools invoked by AI agents, with a flag marking approximate counts.
 
 Number of AI agent tool calls at one risk level.
 
-### Fields {.no_toc}
+### `AiGovernanceToolCallsRiskSlice` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1367,7 +1421,7 @@ Number of AI agent tool calls at one risk level.
 
 AI session activity of a single user.
 
-### Fields {.no_toc}
+### `AiGovernanceUserActivity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1378,7 +1432,7 @@ AI session activity of a single user.
 
 Instance wide usage data for events stored in either PostgreSQL (default) or ClickHouse (when configured). Data retention: three months in PostgreSQL, indefinite in ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `AiInstanceUsageData` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1386,7 +1440,7 @@ Instance wide usage data for events stored in either PostgreSQL (default) or Cli
 
 ## `AiInstanceUsageEvent`
 
-### Fields {.no_toc}
+### `AiInstanceUsageEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1404,7 +1458,7 @@ Paginated collection of [`AiInstanceUsageEvent`](#aiinstanceusageevent). See [St
 
 AI features communication message.
 
-### Fields {.no_toc}
+### `AiMessage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1428,7 +1482,7 @@ Paginated collection of [`AiMessage`](#aimessage). See [Standard connection fiel
 
 Extra metadata for AI message.
 
-### Fields {.no_toc}
+### `AiMessageExtras` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1440,7 +1494,7 @@ Extra metadata for AI message.
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `AiMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1462,7 +1516,7 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Model selection allowlist for an AI feature.
 
-### Fields {.no_toc}
+### `AiModelSelectionAllowList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1473,7 +1527,7 @@ Model selection allowlist for an AI feature.
 
 GitLab-managed model row in the model selection allowlist for a feature.
 
-### Fields {.no_toc}
+### `AiModelSelectionAllowListModel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1493,7 +1547,7 @@ Paginated collection of [`AiModelSelectionAllowListModel`](#aimodelselectionallo
 
 Model Selection feature setting for namespaces.
 
-### Fields {.no_toc}
+### `AiModelSelectionNamespaceFeatureSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1514,7 +1568,7 @@ Paginated collection of [`AiModelSelectionNamespaceFeatureSetting`](#aimodelsele
 
 Model offered for Model Selection.
 
-### Fields {.no_toc}
+### `AiModelSelectionOfferedModel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1531,7 +1585,7 @@ Paginated collection of [`AiModelSelectionOfferedModel`](#aimodelselectionoffere
 
 ## `AiNamespaceSettings`
 
-### Fields {.no_toc}
+### `AiNamespaceSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1544,7 +1598,7 @@ Paginated collection of [`AiModelSelectionOfferedModel`](#aimodelselectionoffere
 
 Self-hosted LLM servers.
 
-### Fields {.no_toc}
+### `AiSelfHostedModel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1571,7 +1625,7 @@ Paginated collection of [`AiSelfHostedModel`](#aiselfhostedmodel). See [Standard
 
 AI-recommended reviewer for a merge request.
 
-### Fields {.no_toc}
+### `AiSuggestedReviewer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1589,7 +1643,7 @@ Paginated collection of [`AiSuggestedReviewer`](#aisuggestedreviewer). See [Stan
 
 A governance rule for an AI agent tool.
 
-### Fields {.no_toc}
+### `AiToolRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1608,7 +1662,7 @@ A governance rule for an AI agent tool.
 
 Permission modes of an AI tool rule for each surface.
 
-### Fields {.no_toc}
+### `AiToolRuleAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1624,7 +1678,7 @@ Paginated collection of [`AiToolRule`](#aitoolrule). See [Standard connection fi
 
 Usage data for events stored in either PostgreSQL (default) or ClickHouse (when configured). Data retention: three months in PostgreSQL, indefinite in ClickHouse. Requires a personal access token. Works only on top-level groups. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `AiUsageData` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1633,7 +1687,7 @@ Usage data for events stored in either PostgreSQL (default) or ClickHouse (when 
 
 ## `AiUsageEvent`
 
-### Fields {.no_toc}
+### `AiUsageEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1649,7 +1703,7 @@ Paginated collection of [`AiUsageEvent`](#aiusageevent). See [Standard connectio
 
 Pre-aggregated per-user metrics for GitLab Code Suggestions and GitLab Duo Chat. Requires ClickHouse to be enabled. Premium or Ultimate only.
 
-### Fields {.no_toc}
+### `AiUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1687,7 +1741,7 @@ Paginated collection of [`AiUserMetrics`](#aiusermetrics). See [Standard connect
 
 Represents the Geo replication and verification state of an `ai_vectorizable_file_upload`.
 
-### Fields {.no_toc}
+### `AiVectorizableFileUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1717,7 +1771,7 @@ Represents the Geo replication and verification state of an `ai_vectorizable_fil
 
 Paginated collection of [`AiVectorizableFileUploadRegistry`](#aivectorizablefileuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AiVectorizableFileUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -1727,7 +1781,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `AiXrayReport`
 
-### Fields {.no_toc}
+### `AiXrayReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1743,7 +1797,7 @@ Describes an alert from the project's Alert Management.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `AlertManagementAlert` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1785,7 +1839,7 @@ Paginated collection of [`AlertManagementAlert`](#alertmanagementalert). See [St
 
 Represents total number of alerts for the represented categories.
 
-### Fields {.no_toc}
+### `AlertManagementAlertStatusCountsType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1802,7 +1856,7 @@ An endpoint and credentials used to accept alerts for a project.
 
 **Implements:** [`AlertManagementIntegration`](interfaces.md#alertmanagementintegration)
 
-### Fields {.no_toc}
+### `AlertManagementHttpIntegration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1829,7 +1883,7 @@ Paginated collection of [`AlertManagementIntegration`](interfaces.md#alertmanage
 
 Represents the Geo replication and verification state of a alert_management_metric_image_upload.
 
-### Fields {.no_toc}
+### `AlertManagementMetricImageUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1859,7 +1913,7 @@ Represents the Geo replication and verification state of a alert_management_metr
 
 Paginated collection of [`AlertManagementMetricImageUploadRegistry`](#alertmanagementmetricimageuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AlertManagementMetricImageUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -1871,7 +1925,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Parsed field from an alert used for custom mappings.
 
-### Fields {.no_toc}
+### `AlertManagementPayloadAlertField` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1883,7 +1937,7 @@ Parsed field from an alert used for custom mappings.
 
 Parsed field (with its name) from an alert used for custom mappings.
 
-### Fields {.no_toc}
+### `AlertManagementPayloadAlertMappingField` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1898,7 +1952,7 @@ Parsed field (with its name) from an alert used for custom mappings.
 
 **Implements:** [`AlertManagementIntegration`](interfaces.md#alertmanagementintegration)
 
-### Fields {.no_toc}
+### `AlertManagementPrometheusIntegration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1916,7 +1970,7 @@ Stores Amazon S3 configurations for audit event streaming.
 
 **Implements:** [`AmazonS3ConfigurationInterface`](interfaces.md#amazons3configurationinterface)
 
-### Fields {.no_toc}
+### `AmazonS3ConfigurationType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1936,7 +1990,7 @@ Paginated collection of [`AmazonS3ConfigurationType`](#amazons3configurationtype
 
 ClickHouse-based analytics endpoints aggregating data across groups and projects. Data can be delayed by 10 minutes.
 
-### Fields {.no_toc}
+### `Analytics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1945,15 +1999,15 @@ ClickHouse-based analytics endpoints aggregating data across groups and projects
 | `deployments` | [`DeploymentsAggregationScope`](#deploymentsaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Aggregation engine for deployment analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `deployments`:</strong> <dl><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`environmentId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many environment Global IDs.</dd><dt>`environmentIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many environment Global IDs. Maximum is 100.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment refs.</dd><dt>`refNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment refs. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment statuses.</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment statuses. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Deployments with no triggering user are excluded as well. Maximum is 100.</dd></dl> |
 | `duoCodeSuggestions` | [`DuoCodeSuggestionsAggregationScope`](#duocodesuggestionsaggregationscope) | Aggregation engine for GitLab Duo Code Suggestions usage.  <strong>Arguments for `duoCodeSuggestions`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`ideName` ([`[String!]`](scalars.md#string))</dt><dd>Filter by IDE name.</dd><dt>`ideNameNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many IDE names. Maximum is 100.</dd><dt>`language` ([`[String!]`](scalars.md#string))</dt><dd>Filter by suggestion language.</dd><dt>`languageNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many suggestion languages. Maximum is 100.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
 | `duoUsageEvents` | [`DuoUsageEventsAggregationScope`](#duousageeventsaggregationscope) | Aggregation engine for GitLab Duo AI usage events.  <strong>Arguments for `duoUsageEvents`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many events.</dd><dt>`eventNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many events. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`feature` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many features.</dd><dt>`featureNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many features. Events with no recognized feature are excluded as well. Maximum is 100.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many Duo Agent Platform flow types.</dd><dt>`flowTypeNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many Duo Agent Platform flow types. Returns only Duo Agent Platform events, because events from elsewhere have no flow type. Maximum is 100.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including events from their descendants.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
-| `duoWorkflows` | [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `duoWorkflows`:</strong> <dl><dt>`activeDaysFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. Start of the range.</dd><dt>`activeDaysTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. End of the range.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`flowTypesUsedFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. Start of the range.</dd><dt>`flowTypesUsedTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. End of the range.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including flows from their descendants.</dd><dt>`modelUsed` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many models.</dd><dt>`modelUsedNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many models. Flows with no attributed model are stored as an empty string, so pass one to exclude them. Maximum is 100.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`projectIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow statuses (created, running, finished, failed, ...).</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow statuses (created, running, finished, failed, ...). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd><dt>`workflowDefinition` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`workflowDefinitionNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow types. Maximum is 100.</dd></dl> |
-| `mergeRequests` | [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. End of the range.</dd><dt>`createdByDuo` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request was created by a GitLab Duo Agent Platform session.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`metricMergedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. Start of the range.</dd><dt>`metricMergedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. End of the range.</dd><dt>`stateId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many states (opened, closed, merged, locked).</dd><dt>`stateIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many states (opened, closed, merged, locked). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`targetBranch` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many target branches.</dd><dt>`targetBranchNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many target branches. Maximum is 100.</dd></dl> |
+| `duoWorkflows` | [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `duoWorkflows`:</strong> <dl><dt>`activeDaysFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. Start of the range.</dd><dt>`activeDaysTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. End of the range.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`dropReason` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many drop reasons (job_failed, no_status_reported, no_activity, workload_not_created, api_reported, preconditions_not_met, start_failed). Unrecognized values match nothing.</dd><dt>`dropReasonNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many drop reasons. Flows with no recorded reason are excluded whenever at least one value is recognized. Unrecognized values are ignored. Maximum is 100.</dd><dt>`flowTypesUsedFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. Start of the range.</dd><dt>`flowTypesUsedTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. End of the range.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including flows from their descendants.</dd><dt>`modelUsed` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many models.</dd><dt>`modelUsedNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many models. Flows with no attributed model are stored as an empty string, so pass one to exclude them. Maximum is 100.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`projectIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow statuses (created, running, finished, failed, ...).</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow statuses (created, running, finished, failed, ...). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd><dt>`workflowDefinition` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`workflowDefinitionNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow types. Maximum is 100.</dd></dl> |
+| `mergeRequests` | [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`authorHuman` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request author is a human user. Bots, service accounts, and other non-human user types are not human. Merge requests with no author count as not authored by a human.</dd><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. End of the range.</dd><dt>`createdByDuo` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request was created by a GitLab Duo Agent Platform session.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`metricMergedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. Start of the range.</dd><dt>`metricMergedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. End of the range.</dd><dt>`stateId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many states (opened, closed, merged, locked).</dd><dt>`stateIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many states (opened, closed, merged, locked). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`targetBranch` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many target branches.</dd><dt>`targetBranchNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many target branches. Maximum is 100.</dd></dl> |
 | `pipelines` | [`PipelinesAggregationScope`](#pipelinesaggregationscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Aggregation engine for CI pipeline analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline refs.</dd><dt>`refNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline refs. Pipelines with no ref are excluded as well. Maximum is 100.</dd><dt>`source` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline sources.</dd><dt>`sourceNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline sources. Pipelines with no source are excluded as well. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`startedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. Start of the range.</dd><dt>`startedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. End of the range.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline statuses.</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline statuses. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Pipelines with no triggering user are excluded as well. Maximum is 100.</dd></dl> |
 
 ## `AnalyzerGroupStatusType`
 
 Counts for each analyzer status in the group and subgroups.
 
-### Fields {.no_toc}
+### `AnalyzerGroupStatusType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1970,7 +2024,7 @@ Counts for each analyzer status in the group and subgroups.
 
 Analyzer status (success/fail) for projects.
 
-### Fields {.no_toc}
+### `AnalyzerProjectStatusType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1984,7 +2038,7 @@ Analyzer status (success/fail) for projects.
 
 ## `AncestorType`
 
-### Fields {.no_toc}
+### `AncestorType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -1995,7 +2049,7 @@ Analyzer status (success/fail) for projects.
 
 Data associated with configuring API fuzzing scans in GitLab CI.
 
-### Fields {.no_toc}
+### `ApiFuzzingCiConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2006,7 +2060,7 @@ Data associated with configuring API fuzzing scans in GitLab CI.
 
 An API fuzzing scan profile.
 
-### Fields {.no_toc}
+### `ApiFuzzingScanProfile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2018,7 +2072,7 @@ An API fuzzing scan profile.
 
 Represents the Geo replication and verification state of an `appearance_upload`.
 
-### Fields {.no_toc}
+### `AppearanceUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2048,7 +2102,7 @@ Represents the Geo replication and verification state of an `appearance_upload`.
 
 Paginated collection of [`AppearanceUploadRegistry`](#appearanceuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `AppearanceUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -2062,7 +2116,7 @@ Represents the approval policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `ApprovalPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2089,7 +2143,7 @@ Represents the approval policy.
 
 Represents policy fields related to the approval policy.
 
-### Fields {.no_toc}
+### `ApprovalPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2110,7 +2164,7 @@ Paginated collection of [`ApprovalPolicy`](#approvalpolicy). See [Standard conne
 
 Describes a project approval rule regarding who can approve merge requests.
 
-### Fields {.no_toc}
+### `ApprovalProjectRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2129,7 +2183,7 @@ Paginated collection of [`ApprovalProjectRule`](#approvalprojectrule). See [Stan
 
 Describes a rule for who can approve merge requests.
 
-### Fields {.no_toc}
+### `ApprovalRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2156,7 +2210,7 @@ Describes a rule for who can approve merge requests.
 
 Represents the scan result policy.
 
-### Fields {.no_toc}
+### `ApprovalScanResultPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2168,7 +2222,7 @@ Represents the scan result policy.
 
 Artifact Registry an organization is activated for.
 
-### Fields {.no_toc}
+### `ArtifactRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2183,7 +2237,7 @@ Artifact Registry an organization is activated for.
 
 Image in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryImage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2200,7 +2254,7 @@ Paginated collection of [`ArtifactRegistryImage`](#artifactregistryimage). See [
 
 Manifest of a container image in an Artifact Registry repository (Docker and OCI).
 
-### Fields {.no_toc}
+### `ArtifactRegistryManifest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2225,7 +2279,7 @@ Manifest of a container image in an Artifact Registry repository (Docker and OCI
 
 OCI annotation of a container manifest in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryManifestAnnotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2240,7 +2294,7 @@ Paginated collection of [`ArtifactRegistryManifest`](#artifactregistrymanifest).
 
 Single container manifest in an Artifact Registry repository, reached by digest under the image it belongs to (Docker and OCI).
 
-### Fields {.no_toc}
+### `ArtifactRegistryManifestDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2268,7 +2322,7 @@ Single container manifest in an Artifact Registry repository, reached by digest 
 
 Platform child of a container manifest index in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryManifestPlatform` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2281,7 +2335,7 @@ Platform child of a container manifest index in an Artifact Registry repository.
 
 Maven package in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryMavenPackage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2295,7 +2349,7 @@ Maven package in an Artifact Registry repository.
 
 A single Maven package in an Artifact Registry repository, returned by the by-ID package read.
 
-### Fields {.no_toc}
+### `ArtifactRegistryMavenPackageDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2309,7 +2363,7 @@ A single Maven package in an Artifact Registry repository, returned by the by-ID
 
 File of a Maven version in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryMavenVersionFile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2326,7 +2380,7 @@ File of a Maven version in an Artifact Registry repository.
 
 Per-action permissions Artifact Registry reports for the current user on a namespace.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNamespacePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2342,7 +2396,7 @@ Per-action permissions Artifact Registry reports for the current user on a names
 
 Namespace-wide statistics for an Artifact Registry.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNamespaceStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2353,7 +2407,7 @@ Namespace-wide statistics for an Artifact Registry.
 
 npm dist-tag of a package in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNpmDistTag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2370,7 +2424,7 @@ Paginated collection of [`ArtifactRegistryNpmDistTag`](#artifactregistrynpmdistt
 
 npm package in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNpmPackage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2385,7 +2439,7 @@ npm package in an Artifact Registry repository.
 
 A single npm package in an Artifact Registry repository, returned by the by-ID package read; carries the npm dist-tags.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNpmPackageDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2401,7 +2455,7 @@ A single npm package in an Artifact Registry repository, returned by the by-ID p
 
 File of an npm version in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryNpmVersionFile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2419,7 +2473,7 @@ Paginated collection of [`ArtifactRegistryPackage`](unions.md#artifactregistrypa
 
 Upstream configuration of a remote Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRemoteSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2436,7 +2490,7 @@ Upstream configuration of a remote Artifact Registry repository.
 
 Repository in Artifact Registry.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRepository` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2460,7 +2514,7 @@ Repository in Artifact Registry.
 
 Paginated collection of [`ArtifactRegistryRepository`](#artifactregistryrepository). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ArtifactRegistryRepositoryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -2472,7 +2526,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Repository in Artifact Registry, with the packages or images it holds.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRepositoryDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2504,7 +2558,7 @@ Repository in Artifact Registry, with the packages or images it holds.
 
 Per-action permissions Artifact Registry reports for the current user on a repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRepositoryPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2522,7 +2576,7 @@ Per-action permissions Artifact Registry reports for the current user on a repos
 
 Read-time statistics for a hosted repository in Artifact Registry.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRepositoryStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2533,7 +2587,7 @@ Read-time statistics for a hosted repository in Artifact Registry.
 
 A direct role assignment. A user, the Artifact Registry role they hold, and the resource it is assigned on. Does not represent inherited access.
 
-### Fields {.no_toc}
+### `ArtifactRegistryRoleAssignment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2550,7 +2604,7 @@ Paginated collection of [`ArtifactRegistryRoleAssignment`](#artifactregistryrole
 
 One upstream of a virtual Artifact Registry repository: its position and a summary of the repository it points at.
 
-### Fields {.no_toc}
+### `ArtifactRegistryUpstreamRepositoryAssociation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2562,7 +2616,7 @@ One upstream of a virtual Artifact Registry repository: its position and a summa
 
 Summary of a repository that is an upstream of a virtual Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryUpstreamRepositorySummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2579,7 +2633,7 @@ Summary of a repository that is an upstream of a virtual Artifact Registry repos
 
 Settings a remote upstream repository shows in the upstream list of a virtual Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryUpstreamRepositorySummarySettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2590,7 +2644,7 @@ Settings a remote upstream repository shows in the upstream list of a virtual Ar
 
 Version of a package in an Artifact Registry repository (Maven and npm).
 
-### Fields {.no_toc}
+### `ArtifactRegistryVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2612,7 +2666,7 @@ Paginated collection of [`ArtifactRegistryVersion`](#artifactregistryversion). S
 
 Single version of a package in an Artifact Registry repository, reached by ID and the package it is displayed under.
 
-### Fields {.no_toc}
+### `ArtifactRegistryVersionDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2636,7 +2690,7 @@ Paginated collection of [`ArtifactRegistryVersionFile`](unions.md#artifactregist
 
 Read-time statistics for a version in an Artifact Registry repository.
 
-### Fields {.no_toc}
+### `ArtifactRegistryVersionStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2646,7 +2700,7 @@ Read-time statistics for a version in an Artifact Registry repository.
 
 A logical component of a project identified by ASCP security scanning.
 
-### Fields {.no_toc}
+### `AscpComponent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2669,7 +2723,7 @@ Paginated collection of [`AscpComponent`](#ascpcomponent). See [Standard connect
 
 An ASCP scan of a project.
 
-### Fields {.no_toc}
+### `AscpScan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2690,7 +2744,7 @@ Paginated collection of [`AscpScan`](#ascpscan). See [Standard connection fields
 
 Security context for an ASCP component.
 
-### Fields {.no_toc}
+### `AscpSecurityContext` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2707,7 +2761,7 @@ Security context for an ASCP component.
 
 A security guideline for an ASCP component.
 
-### Fields {.no_toc}
+### `AscpSecurityGuideline` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2727,7 +2781,7 @@ Paginated collection of [`AscpSecurityGuideline`](#ascpsecurityguideline). See [
 
 Represents a vulnerability asset type.
 
-### Fields {.no_toc}
+### `AssetType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2739,7 +2793,7 @@ Represents a vulnerability asset type.
 
 Audit event.
 
-### Fields {.no_toc}
+### `AuditEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2763,7 +2817,7 @@ Audit event.
 
 Represents the YAML definitions for audit events defined in `ee/config/audit_events/types/<event-type-name>.yml` and `config/audit_events/types/<event-type-name>.yml`.
 
-### Fields {.no_toc}
+### `AuditEventDefinition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2784,7 +2838,7 @@ Paginated collection of [`AuditEventDefinition`](#auditeventdefinition). See [St
 
 Represents a subgroup or project filter that belongs to an external audit event streaming destination.
 
-### Fields {.no_toc}
+### `AuditEventStreamingHTTPNamespaceFilter` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2798,7 +2852,7 @@ Represents a HTTP header key/value that belongs to an audit streaming destinatio
 
 **Implements:** [`BaseHeaderInterface`](interfaces.md#baseheaderinterface)
 
-### Fields {.no_toc}
+### `AuditEventStreamingHeader` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2817,7 +2871,7 @@ Represents a HTTP header key/value that belongs to an instance level audit strea
 
 **Implements:** [`BaseHeaderInterface`](interfaces.md#baseheaderinterface)
 
-### Fields {.no_toc}
+### `AuditEventsStreamingInstanceHeader` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2834,7 +2888,7 @@ Paginated collection of [`AuditEventsStreamingInstanceHeader`](#auditeventsstrea
 
 Auto-remediation configuration for a dependency scanning post-processing scan profile.
 
-### Fields {.no_toc}
+### `AutoRemediationConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2851,7 +2905,7 @@ Core representation of a GitLab user.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `AutocompletedUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2922,7 +2976,7 @@ Core representation of a GitLab user.
 
 Available models for Duo Agentic Chat.
 
-### Fields {.no_toc}
+### `AvailableModels` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2934,7 +2988,7 @@ Available models for Duo Agentic Chat.
 
 An emoji awarded by a user.
 
-### Fields {.no_toc}
+### `AwardEmoji` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2953,7 +3007,7 @@ Paginated collection of [`AwardEmoji`](#awardemoji). See [Standard connection fi
 
 **Implements:** [`Service`](interfaces.md#service)
 
-### Fields {.no_toc}
+### `BaseService` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2963,7 +3017,7 @@ Paginated collection of [`AwardEmoji`](#awardemoji). See [Standard connection fi
 
 ## `Blame`
 
-### Fields {.no_toc}
+### `Blame` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2974,7 +3028,7 @@ Paginated collection of [`AwardEmoji`](#awardemoji). See [Standard connection fi
 
 **Implements:** [`Entry`](interfaces.md#entry)
 
-### Fields {.no_toc}
+### `Blob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -2997,7 +3051,7 @@ Paginated collection of [`Blob`](#blob). See [Standard connection fields](#stand
 
 Full JSON structure of multi-match results in a single file.
 
-### Fields {.no_toc}
+### `BlobSearch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3013,7 +3067,7 @@ Full JSON structure of multi-match results in a single file.
 
 Represents how the blob content should be displayed.
 
-### Fields {.no_toc}
+### `BlobViewer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3029,7 +3083,7 @@ Represents how the blob content should be displayed.
 
 Information about the rules that must be satisfied to merge this merge request.
 
-### Fields {.no_toc}
+### `BlockingMergeRequests` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3041,7 +3095,7 @@ Information about the rules that must be satisfied to merge this merge request.
 
 Represents a project or group issue board.
 
-### Fields {.no_toc}
+### `Board` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3072,7 +3126,7 @@ Represents an epic on an issue board.
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`Eventable`](interfaces.md#eventable), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `BoardEpic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3145,7 +3199,7 @@ Represents an epic on an issue board.
 
 Paginated collection of [`BoardEpic`](#boardepic). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `BoardEpicConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3157,7 +3211,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents user preferences for a board epic.
 
-### Fields {.no_toc}
+### `BoardEpicUserPreferences` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3167,7 +3221,7 @@ Represents user preferences for a board epic.
 
 Represents a list for an issue board.
 
-### Fields {.no_toc}
+### `BoardList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3198,7 +3252,7 @@ an expression with a boolean value.
 
 **Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
-### Fields {.no_toc}
+### `BooleanExpression` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3208,7 +3262,7 @@ an expression with a boolean value.
 
 ## `Branch`
 
-### Fields {.no_toc}
+### `Branch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3219,7 +3273,7 @@ an expression with a boolean value.
 
 Branch protection details for a branch rule.
 
-### Fields {.no_toc}
+### `BranchProtection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3238,7 +3292,7 @@ Branch protection details for a branch rule.
 
 Branch rules configured for a rule target.
 
-### Fields {.no_toc}
+### `BranchRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3263,7 +3317,7 @@ Paginated collection of [`BranchRule`](#branchrule). See [Standard connection fi
 
 Represents the Geo replication and verification state of a `bulk_import_export_upload_upload`.
 
-### Fields {.no_toc}
+### `BulkImportExportUploadUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3293,7 +3347,7 @@ Represents the Geo replication and verification state of a `bulk_import_export_u
 
 Paginated collection of [`BulkImportExportUploadUploadRegistry`](#bulkimportexportuploaduploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `BulkImportExportUploadUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3305,7 +3359,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Result for a single tool rule update within a bulk operation.
 
-### Fields {.no_toc}
+### `BulkToolRuleResult` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3317,7 +3371,7 @@ Result for a single tool rule update within a bulk operation.
 
 Represents the total number of issues and their weights for a particular day.
 
-### Fields {.no_toc}
+### `BurnupChartDailyTotals` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3331,7 +3385,7 @@ Represents the total number of issues and their weights for a particular day.
 
 Check user's permission for the car.
 
-### Fields {.no_toc}
+### `CarPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3341,7 +3395,7 @@ Check user's permission for the car.
 
 Continuous deployment application.
 
-### Fields {.no_toc}
+### `CdApplication` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3367,7 +3421,7 @@ Continuous deployment application.
 
 Paginated collection of [`CdApplication`](#cdapplication). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdApplicationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3379,7 +3433,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment application flow definition.
 
-### Fields {.no_toc}
+### `CdApplicationFlowDefinition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3395,7 +3449,7 @@ Continuous deployment application flow definition.
 
 Paginated collection of [`CdApplicationFlowDefinition`](#cdapplicationflowdefinition). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdApplicationFlowDefinitionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3407,7 +3461,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment application link.
 
-### Fields {.no_toc}
+### `CdApplicationLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3423,7 +3477,7 @@ Continuous deployment application link.
 
 Paginated collection of [`CdApplicationLink`](#cdapplicationlink). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdApplicationLinkConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3435,7 +3489,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Check permissions for the current user on a continuous deployment application.
 
-### Fields {.no_toc}
+### `CdApplicationPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3453,7 +3507,7 @@ Check permissions for the current user on a continuous deployment application.
 
 Continuous deployment artifact source.
 
-### Fields {.no_toc}
+### `CdArtifactSource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3470,7 +3524,7 @@ Continuous deployment artifact source.
 
 Paginated collection of [`CdArtifactSource`](#cdartifactsource). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdArtifactSourceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3482,7 +3536,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Node in a continuous deployment flow definition step tree, computed from its YAML and not persisted.
 
-### Fields {.no_toc}
+### `CdDefinitionStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3498,7 +3552,7 @@ Node in a continuous deployment flow definition step tree, computed from its YAM
 
 Continuous deployment deployment.
 
-### Fields {.no_toc}
+### `CdDeployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3516,7 +3570,7 @@ Continuous deployment deployment.
 
 Paginated collection of [`CdDeployment`](#cddeployment). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdDeploymentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3528,7 +3582,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment deployment transition journal entry.
 
-### Fields {.no_toc}
+### `CdDeploymentTransition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3546,7 +3600,7 @@ Continuous deployment deployment transition journal entry.
 
 Paginated collection of [`CdDeploymentTransition`](#cddeploymenttransition). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdDeploymentTransitionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3558,7 +3612,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment environment.
 
-### Fields {.no_toc}
+### `CdEnvironment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3582,7 +3636,7 @@ Continuous deployment environment.
 
 An application with services in a continuous deployment environment.
 
-### Fields {.no_toc}
+### `CdEnvironmentApplication` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3594,7 +3648,7 @@ An application with services in a continuous deployment environment.
 
 Paginated collection of [`CdEnvironmentApplication`](#cdenvironmentapplication). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdEnvironmentApplicationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3606,7 +3660,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`CdEnvironment`](#cdenvironment). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdEnvironmentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3618,7 +3672,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment environment driver binding.
 
-### Fields {.no_toc}
+### `CdEnvironmentDriverBinding` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3634,7 +3688,7 @@ Continuous deployment environment driver binding.
 
 Paginated collection of [`CdEnvironmentDriverBinding`](#cdenvironmentdriverbinding). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdEnvironmentDriverBindingConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3646,7 +3700,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment rollout.
 
-### Fields {.no_toc}
+### `CdRollout` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3672,7 +3726,7 @@ Continuous deployment rollout.
 
 Paginated collection of [`CdRollout`](#cdrollout). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdRolloutConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3684,7 +3738,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment rollout environment.
 
-### Fields {.no_toc}
+### `CdRolloutEnvironment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3703,7 +3757,7 @@ Continuous deployment rollout environment.
 
 Paginated collection of [`CdRolloutEnvironment`](#cdrolloutenvironment). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdRolloutEnvironmentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3715,7 +3769,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment rollout approval gate, derived from its transition journal.
 
-### Fields {.no_toc}
+### `CdRolloutGate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3732,7 +3786,7 @@ Continuous deployment rollout approval gate, derived from its transition journal
 
 Node in a continuous deployment rollout flow definition tree.
 
-### Fields {.no_toc}
+### `CdRolloutStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3755,7 +3809,7 @@ Node in a continuous deployment rollout flow definition tree.
 
 Continuous deployment rollout transition journal entry.
 
-### Fields {.no_toc}
+### `CdRolloutTransition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3775,7 +3829,7 @@ Continuous deployment rollout transition journal entry.
 
 Paginated collection of [`CdRolloutTransition`](#cdrollouttransition). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdRolloutTransitionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3787,7 +3841,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Live rollout update pushed to the client: new deployment status, and a Duo session to open when one applies.
 
-### Fields {.no_toc}
+### `CdRolloutUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3800,7 +3854,7 @@ Live rollout update pushed to the client: new deployment status, and a Duo sessi
 
 Continuous deployment service.
 
-### Fields {.no_toc}
+### `CdService` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3818,7 +3872,7 @@ Continuous deployment service.
 
 Paginated collection of [`CdService`](#cdservice). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdServiceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3830,7 +3884,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Observed health of a continuous deployment service in an environment.
 
-### Fields {.no_toc}
+### `CdServiceEnvironmentHealth` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3846,7 +3900,7 @@ Observed health of a continuous deployment service in an environment.
 
 Paginated collection of [`CdServiceEnvironmentHealth`](#cdserviceenvironmenthealth). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdServiceEnvironmentHealthConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3858,7 +3912,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment artifact version.
 
-### Fields {.no_toc}
+### `CdVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3876,7 +3930,7 @@ Continuous deployment artifact version.
 
 Paginated collection of [`CdVersion`](#cdversion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdVersionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3888,7 +3942,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment version set.
 
-### Fields {.no_toc}
+### `CdVersionSet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3908,7 +3962,7 @@ Continuous deployment version set.
 
 Paginated collection of [`CdVersionSet`](#cdversionset). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdVersionSetConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3920,7 +3974,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Continuous deployment version set entry.
 
-### Fields {.no_toc}
+### `CdVersionSetEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3936,7 +3990,7 @@ Continuous deployment version set entry.
 
 Paginated collection of [`CdVersionSetEntry`](#cdversionsetentry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CdVersionSetEntryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3946,7 +4000,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiApplicationSettings`
 
-### Fields {.no_toc}
+### `CiApplicationSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3954,7 +4008,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiBuildNeed`
 
-### Fields {.no_toc}
+### `CiBuildNeed` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3969,7 +4023,7 @@ Paginated collection of [`CiBuildNeed`](#cibuildneed). See [Standard connection 
 
 A GitLab-maintained bundled CI/CD catalog resource on the current cell.
 
-### Fields {.no_toc}
+### `CiCatalogBundledResource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3985,7 +4039,7 @@ A GitLab-maintained bundled CI/CD catalog resource on the current cell.
 
 Paginated collection of [`CiCatalogBundledResource`](#cicatalogbundledresource). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiCatalogBundledResourceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -3995,7 +4049,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiCatalogResource`
 
-### Fields {.no_toc}
+### `CiCatalogResource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4018,7 +4072,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiCatalogResourceComponent`
 
-### Fields {.no_toc}
+### `CiCatalogResourceComponent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4037,7 +4091,7 @@ Paginated collection of [`CiCatalogResourceComponent`](#cicatalogresourcecompone
 
 Represents a component usage in a project.
 
-### Fields {.no_toc}
+### `CiCatalogResourceComponentUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4053,7 +4107,7 @@ Paginated collection of [`CiCatalogResourceComponentUsage`](#cicatalogresourceco
 
 Details of a project's usage of a component from a catalog resource.
 
-### Fields {.no_toc}
+### `CiCatalogResourceComponentUsageDetail` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4066,7 +4120,7 @@ Details of a project's usage of a component from a catalog resource.
 
 Paginated collection of [`CiCatalogResource`](#cicatalogresource). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiCatalogResourceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4078,7 +4132,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A project that uses components from a catalog resource.
 
-### Fields {.no_toc}
+### `CiCatalogResourceProjectUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4093,7 +4147,7 @@ Paginated collection of [`CiCatalogResourceProjectUsage`](#cicatalogresourceproj
 
 Semantic version information for a catalog resource version.
 
-### Fields {.no_toc}
+### `CiCatalogResourceSemver` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4103,7 +4157,7 @@ Semantic version information for a catalog resource version.
 
 ## `CiCatalogResourceVersion`
 
-### Fields {.no_toc}
+### `CiCatalogResourceVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4123,7 +4177,7 @@ Semantic version information for a catalog resource version.
 
 Paginated collection of [`CiCatalogResourceVersion`](#cicatalogresourceversion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiCatalogResourceVersionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4133,7 +4187,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiCdSettings`
 
-### Fields {.no_toc}
+### `CiCdSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4141,7 +4195,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiConfig`
 
-### Fields {.no_toc}
+### `CiConfig` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4154,7 +4208,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiConfigGroup`
 
-### Fields {.no_toc}
+### `CiConfigGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4168,7 +4222,7 @@ Paginated collection of [`CiConfigGroup`](#ciconfiggroup). See [Standard connect
 
 ## `CiConfigGroupV2`
 
-### Fields {.no_toc}
+### `CiConfigGroupV2` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4178,7 +4232,7 @@ Paginated collection of [`CiConfigGroup`](#ciconfiggroup). See [Standard connect
 
 ## `CiConfigInclude`
 
-### Fields {.no_toc}
+### `CiConfigInclude` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4192,7 +4246,7 @@ Paginated collection of [`CiConfigGroup`](#ciconfiggroup). See [Standard connect
 
 ## `CiConfigJob`
 
-### Fields {.no_toc}
+### `CiConfigJob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4216,7 +4270,7 @@ Paginated collection of [`CiConfigJob`](#ciconfigjob). See [Standard connection 
 
 ## `CiConfigJobRestriction`
 
-### Fields {.no_toc}
+### `CiConfigJobRestriction` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4224,7 +4278,7 @@ Paginated collection of [`CiConfigJob`](#ciconfigjob). See [Standard connection 
 
 ## `CiConfigJobV2`
 
-### Fields {.no_toc}
+### `CiConfigJobV2` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4244,7 +4298,7 @@ Paginated collection of [`CiConfigJob`](#ciconfigjob). See [Standard connection 
 
 ## `CiConfigNeed`
 
-### Fields {.no_toc}
+### `CiConfigNeed` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4256,7 +4310,7 @@ Paginated collection of [`CiConfigNeed`](#ciconfigneed). See [Standard connectio
 
 ## `CiConfigStage`
 
-### Fields {.no_toc}
+### `CiConfigStage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4269,7 +4323,7 @@ Paginated collection of [`CiConfigStage`](#ciconfigstage). See [Standard connect
 
 ## `CiConfigStageV2`
 
-### Fields {.no_toc}
+### `CiConfigStageV2` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4278,7 +4332,7 @@ Paginated collection of [`CiConfigStage`](#ciconfigstage). See [Standard connect
 
 ## `CiConfigV2`
 
-### Fields {.no_toc}
+### `CiConfigV2` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4293,7 +4347,7 @@ Paginated collection of [`CiConfigStage`](#ciconfigstage). See [Standard connect
 
 CI/CD config variables.
 
-### Fields {.no_toc}
+### `CiConfigVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4306,7 +4360,7 @@ CI/CD config variables.
 
 Filter options available for GitLab Dedicated runner usage data.
 
-### Fields {.no_toc}
+### `CiDedicatedHostedRunnerFilters` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4318,7 +4372,7 @@ Filter options available for GitLab Dedicated runner usage data.
 
 Compute usage data for hosted runners on GitLab Dedicated.
 
-### Fields {.no_toc}
+### `CiDedicatedHostedRunnerUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4338,7 +4392,7 @@ Paginated collection of [`CiDedicatedHostedRunnerUsage`](#cidedicatedhostedrunne
 
 Reference to a namespace that no longer exists.
 
-### Fields {.no_toc}
+### `CiDeletedNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4348,7 +4402,7 @@ Reference to a namespace that no longer exists.
 
 Reference to a deleted runner.
 
-### Fields {.no_toc}
+### `CiDeletedRunner` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4362,7 +4416,7 @@ Paginated collection of [`CiDeletedRunner`](#cideletedrunner). See [Standard con
 
 Histogram of durations for a group of CI/CD jobs or pipelines.
 
-### Fields {.no_toc}
+### `CiDurationStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4377,7 +4431,7 @@ Histogram of durations for a group of CI/CD jobs or pipelines.
 
 Represents a deployment freeze window of a project.
 
-### Fields {.no_toc}
+### `CiFreezePeriod` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4390,7 +4444,7 @@ Represents a deployment freeze window of a project.
 
 ## `CiGroup`
 
-### Fields {.no_toc}
+### `CiGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4408,7 +4462,7 @@ Paginated collection of [`CiGroup`](#cigroup). See [Standard connection fields](
 
 CI/CD environment scope for a group.
 
-### Fields {.no_toc}
+### `CiGroupEnvironmentScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4424,7 +4478,7 @@ CI/CD variables for a group.
 
 **Implements:** [`CiVariable`](interfaces.md#civariable)
 
-### Fields {.no_toc}
+### `CiGroupVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4443,7 +4497,7 @@ CI/CD variables for a group.
 
 Paginated collection of [`CiGroupVariable`](#cigroupvariable). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiGroupVariableConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4455,7 +4509,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Condition node in rule expression tree.
 
-### Fields {.no_toc}
+### `CiInputsCondition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4468,7 +4522,7 @@ Condition node in rule expression tree.
 
 CI input saved for a pipeline schedule.
 
-### Fields {.no_toc}
+### `CiInputsField` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4483,7 +4537,7 @@ Paginated collection of [`CiInputsField`](#ciinputsfield). See [Standard connect
 
 Conditional rule for dynamic input options.
 
-### Fields {.no_toc}
+### `CiInputsRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4496,7 +4550,7 @@ Conditional rule for dynamic input options.
 
 Input for pipeline creation.
 
-### Fields {.no_toc}
+### `CiInputsSpec` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4515,7 +4569,7 @@ CI/CD variables for a GitLab instance.
 
 **Implements:** [`CiVariable`](interfaces.md#civariable)
 
-### Fields {.no_toc}
+### `CiInstanceVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4538,7 +4592,7 @@ Paginated collection of [`CiInstanceVariable`](#ciinstancevariable). See [Standa
 
 **Implements:** [`CiJobInterface`](interfaces.md#cijobinterface)
 
-### Fields {.no_toc}
+### `CiJob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4602,7 +4656,7 @@ Paginated collection of [`CiInstanceVariable`](#ciinstancevariable). See [Standa
 
 CI/CD job analytics data.
 
-### Fields {.no_toc}
+### `CiJobAnalytics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4618,7 +4672,7 @@ Paginated collection of [`CiJobAnalytics`](#cijobanalytics). See [Standard conne
 
 Statistics for CI/CD job analytics.
 
-### Fields {.no_toc}
+### `CiJobAnalyticsStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4628,7 +4682,7 @@ Statistics for CI/CD job analytics.
 
 ## `CiJobArtifact`
 
-### Fields {.no_toc}
+### `CiJobArtifact` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4648,7 +4702,7 @@ Paginated collection of [`CiJobArtifact`](#cijobartifact). See [Standard connect
 
 Paginated collection of [`CiJob`](#cijob). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiJobConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4660,7 +4714,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`CiJobInterface`](interfaces.md#cijobinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiJobInterfaceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4672,7 +4726,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 **Implements:** [`CiJobInterface`](interfaces.md#cijobinterface)
 
-### Fields {.no_toc}
+### `CiJobMinimalAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4727,7 +4781,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Group that can access the current project by authenticating with a CI/CD job token.
 
-### Fields {.no_toc}
+### `CiJobTokenAccessibleGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4746,7 +4800,7 @@ Paginated collection of [`CiJobTokenAccessibleGroup`](#cijobtokenaccessiblegroup
 
 Project that can access the current project by authenticating with a CI/CD job token.
 
-### Fields {.no_toc}
+### `CiJobTokenAccessibleProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4763,7 +4817,7 @@ Paginated collection of [`CiJobTokenAccessibleProject`](#cijobtokenaccessiblepro
 
 ## `CiJobTokenAuthLog`
 
-### Fields {.no_toc}
+### `CiJobTokenAuthLog` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4774,7 +4828,7 @@ Paginated collection of [`CiJobTokenAccessibleProject`](#cijobtokenaccessiblepro
 
 Paginated collection of [`CiJobTokenAuthLog`](#cijobtokenauthlog). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiJobTokenAuthLogConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4784,7 +4838,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiJobTokenScopeAllowlist`
 
-### Fields {.no_toc}
+### `CiJobTokenScopeAllowlist` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4795,7 +4849,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an allowlist entry for the CI_JOB_TOKEN.
 
-### Fields {.no_toc}
+### `CiJobTokenScopeAllowlistEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4812,7 +4866,7 @@ Represents an allowlist entry for the CI_JOB_TOKEN.
 
 Paginated collection of [`CiJobTokenScopeAllowlistEntry`](#cijobtokenscopeallowlistentry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiJobTokenScopeAllowlistEntryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4822,7 +4876,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiJobTokenScopeType`
 
-### Fields {.no_toc}
+### `CiJobTokenScopeType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4837,7 +4891,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiJobTrace`
 
-### Fields {.no_toc}
+### `CiJobTrace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4847,7 +4901,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Statistics for a group of CI jobs.
 
-### Fields {.no_toc}
+### `CiJobsStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4859,7 +4913,7 @@ CI/CD variables given to a manual job.
 
 **Implements:** [`CiVariable`](interfaces.md#civariable)
 
-### Fields {.no_toc}
+### `CiManualVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4876,7 +4930,7 @@ Paginated collection of [`CiManualVariable`](#cimanualvariable). See [Standard c
 
 ## `CiMinutesNamespaceMonthlyUsage`
 
-### Fields {.no_toc}
+### `CiMinutesNamespaceMonthlyUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4892,7 +4946,7 @@ Paginated collection of [`CiMinutesNamespaceMonthlyUsage`](#ciminutesnamespacemo
 
 ## `CiMinutesProjectMonthlyUsage`
 
-### Fields {.no_toc}
+### `CiMinutesProjectMonthlyUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4908,7 +4962,7 @@ Paginated collection of [`CiMinutesProjectMonthlyUsage`](#ciminutesprojectmonthl
 
 Information about an asynchronous pipeline creation request.
 
-### Fields {.no_toc}
+### `CiPipelineCreationRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4921,7 +4975,7 @@ Information about an asynchronous pipeline creation request.
 
 ## `CiProjectSubscription`
 
-### Fields {.no_toc}
+### `CiProjectSubscription` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4934,7 +4988,7 @@ Information about an asynchronous pipeline creation request.
 
 Paginated collection of [`CiProjectSubscription`](#ciprojectsubscription). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiProjectSubscriptionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4948,7 +5002,7 @@ CI/CD variables for a project.
 
 **Implements:** [`CiVariable`](interfaces.md#civariable)
 
-### Fields {.no_toc}
+### `CiProjectVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -4967,7 +5021,7 @@ CI/CD variables for a project.
 
 Paginated collection of [`CiProjectVariable`](#ciprojectvariable). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiProjectVariableConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -4977,7 +5031,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiRunner`
 
-### Fields {.no_toc}
+### `CiRunner` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5024,7 +5078,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Step used to provision the runner to Google Cloud.
 
-### Fields {.no_toc}
+### `CiRunnerCloudProvisioningStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5036,7 +5090,7 @@ Step used to provision the runner to Google Cloud.
 
 Paginated collection of [`CiRunner`](#cirunner). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiRunnerConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5049,7 +5103,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 An edge in a connection.
 
-### Fields {.no_toc}
+### `CiRunnerEdge` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5062,7 +5116,7 @@ An edge in a connection.
 
 Information used for GKE runner provisioning.
 
-### Fields {.no_toc}
+### `CiRunnerGkeProvisioning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5073,7 +5127,7 @@ Information used for GKE runner provisioning.
 
 Step used to provision the runner to GKE.
 
-### Fields {.no_toc}
+### `CiRunnerGkeProvisioningStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5085,7 +5139,7 @@ Step used to provision the runner to GKE.
 
 Information used for runner Google Cloud provisioning.
 
-### Fields {.no_toc}
+### `CiRunnerGoogleCloudProvisioning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5094,7 +5148,7 @@ Information used for runner Google Cloud provisioning.
 
 ## `CiRunnerManager`
 
-### Fields {.no_toc}
+### `CiRunnerManager` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5117,7 +5171,7 @@ Information used for runner Google Cloud provisioning.
 
 Paginated collection of [`CiRunnerManager`](#cirunnermanager). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiRunnerManagerConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5129,7 +5183,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Runner usage in minutes.
 
-### Fields {.no_toc}
+### `CiRunnerUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5142,7 +5196,7 @@ Runner usage in minutes.
 
 Runner usage in minutes by project.
 
-### Fields {.no_toc}
+### `CiRunnerUsageByProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5155,7 +5209,7 @@ Runner usage in minutes by project.
 
 Represents the Geo replication and verification state of a ci_secure_file.
 
-### Fields {.no_toc}
+### `CiSecureFileRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5185,7 +5239,7 @@ Represents the Geo replication and verification state of a ci_secure_file.
 
 Paginated collection of [`CiSecureFileRegistry`](#cisecurefileregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiSecureFileRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5195,7 +5249,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiStage`
 
-### Fields {.no_toc}
+### `CiStage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5212,7 +5266,7 @@ Paginated collection of [`CiStage`](#cistage). See [Standard connection fields](
 
 ## `CiSubscriptionsProject`
 
-### Fields {.no_toc}
+### `CiSubscriptionsProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5225,7 +5279,7 @@ Paginated collection of [`CiStage`](#cistage). See [Standard connection fields](
 
 Paginated collection of [`CiSubscriptionsProject`](#cisubscriptionsproject). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CiSubscriptionsProjectConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5235,7 +5289,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiSubscriptionsProjectDetails`
 
-### Fields {.no_toc}
+### `CiSubscriptionsProjectDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5246,7 +5300,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiSubscriptionsProjectNamespaceDetails`
 
-### Fields {.no_toc}
+### `CiSubscriptionsProjectNamespaceDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5257,7 +5311,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 GitLab CI/CD configuration template.
 
-### Fields {.no_toc}
+### `CiTemplate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5268,7 +5322,7 @@ GitLab CI/CD configuration template.
 
 Represents the metrics of the last run virtual registry cleanup policy.
 
-### Fields {.no_toc}
+### `CleanupPolicyLastRunDetailedMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5279,7 +5333,7 @@ Represents the metrics of the last run virtual registry cleanup policy.
 
 Represents the metrics of the last run virtual registry cleanup policy of an upstream.
 
-### Fields {.no_toc}
+### `CleanupPolicyLastRunUpstreamMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5288,7 +5342,7 @@ Represents the metrics of the last run virtual registry cleanup policy of an ups
 
 ## `CloudConnectorProbeResult`
 
-### Fields {.no_toc}
+### `CloudConnectorProbeResult` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5300,7 +5354,7 @@ Represents the metrics of the last run virtual registry cleanup policy of an ups
 
 ## `CloudConnectorStatus`
 
-### Fields {.no_toc}
+### `CloudConnectorStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5309,7 +5363,7 @@ Represents the metrics of the last run virtual registry cleanup policy of an ups
 
 ## `ClusterAgent`
 
-### Fields {.no_toc}
+### `ClusterAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5332,7 +5386,7 @@ Represents the metrics of the last run virtual registry cleanup policy of an ups
 
 ## `ClusterAgentActivityEvent`
 
-### Fields {.no_toc}
+### `ClusterAgentActivityEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5346,7 +5400,7 @@ Represents the metrics of the last run virtual registry cleanup policy of an ups
 
 Paginated collection of [`ClusterAgentActivityEvent`](#clusteragentactivityevent). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ClusterAgentActivityEventConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5356,7 +5410,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ClusterAgentAuthorizationCiAccess`
 
-### Fields {.no_toc}
+### `ClusterAgentAuthorizationCiAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5369,7 +5423,7 @@ Paginated collection of [`ClusterAgentAuthorizationCiAccess`](#clusteragentautho
 
 ## `ClusterAgentAuthorizationUserAccess`
 
-### Fields {.no_toc}
+### `ClusterAgentAuthorizationUserAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5384,7 +5438,7 @@ Paginated collection of [`ClusterAgentAuthorizationUserAccess`](#clusteragentaut
 
 Paginated collection of [`ClusterAgent`](#clusteragent). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ClusterAgentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5394,7 +5448,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ClusterAgentToken`
 
-### Fields {.no_toc}
+### `ClusterAgentToken` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5411,7 +5465,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`ClusterAgentToken`](#clusteragenttoken). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ClusterAgentTokenConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5421,7 +5475,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ClusterAgentUrlConfiguration`
 
-### Fields {.no_toc}
+### `ClusterAgentUrlConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5437,7 +5491,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`ClusterAgentUrlConfiguration`](#clusteragenturlconfiguration). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ClusterAgentUrlConfigurationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5449,7 +5503,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the code coverage activity for a group.
 
-### Fields {.no_toc}
+### `CodeCoverageActivity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5466,7 +5520,7 @@ Paginated collection of [`CodeCoverageActivity`](#codecoverageactivity). See [St
 
 Represents the code coverage summary for a project.
 
-### Fields {.no_toc}
+### `CodeCoverageSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5478,7 +5532,7 @@ Represents the code coverage summary for a project.
 
 Represents a code quality degradation on the pipeline.
 
-### Fields {.no_toc}
+### `CodeQualityDegradation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5494,7 +5548,7 @@ Represents a code quality degradation on the pipeline.
 
 Paginated collection of [`CodeQualityDegradation`](#codequalitydegradation). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CodeQualityDegradationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5506,7 +5560,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Code Quality report for a pipeline.
 
-### Fields {.no_toc}
+### `CodeQualityReportSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5520,7 +5574,7 @@ Code Quality report for a pipeline.
 
 ## `CodeSuggestionEvent`
 
-### Fields {.no_toc}
+### `CodeSuggestionEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5539,7 +5593,7 @@ Paginated collection of [`CodeSuggestionEvent`](#codesuggestionevent). See [Stan
 
 Represents reports comparison for code quality.
 
-### Fields {.no_toc}
+### `CodequalityReportsComparer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5550,7 +5604,7 @@ Represents reports comparison for code quality.
 
 Represents compared code quality report.
 
-### Fields {.no_toc}
+### `CodequalityReportsComparerReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5564,7 +5618,7 @@ Represents compared code quality report.
 
 Represents a degradation on the compared codequality report.
 
-### Fields {.no_toc}
+### `CodequalityReportsComparerReportDegradation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5580,7 +5634,7 @@ Represents a degradation on the compared codequality report.
 
 Represents a summary of the compared codequality report.
 
-### Fields {.no_toc}
+### `CodequalityReportsComparerReportSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5590,7 +5644,7 @@ Represents a summary of the compared codequality report.
 
 ## `CommentTemplatePath`
 
-### Fields {.no_toc}
+### `CommentTemplatePath` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5599,7 +5653,7 @@ Represents a summary of the compared codequality report.
 
 ## `CommentTemplatePathType`
 
-### Fields {.no_toc}
+### `CommentTemplatePathType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5610,7 +5664,7 @@ Represents a summary of the compared codequality report.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Commit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5655,7 +5709,7 @@ Paginated collection of [`Commit`](#commit). See [Standard connection fields](#s
 
 ## `CommitData`
 
-### Fields {.no_toc}
+### `CommitData` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5669,7 +5723,7 @@ Paginated collection of [`Commit`](#commit). See [Standard connection fields](#s
 
 ## `CommitParentNames`
 
-### Fields {.no_toc}
+### `CommitParentNames` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5677,7 +5731,7 @@ Paginated collection of [`Commit`](#commit). See [Standard connection fields](#s
 
 ## `CommitReferences`
 
-### Fields {.no_toc}
+### `CommitReferences` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5690,7 +5744,7 @@ Paginated collection of [`Commit`](#commit). See [Standard connection fields](#s
 
 Represents compared security report.
 
-### Fields {.no_toc}
+### `ComparedSecurityReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5704,7 +5758,7 @@ Represents compared security report.
 
 Represents finding.
 
-### Fields {.no_toc}
+### `ComparedSecurityReportFinding` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5727,7 +5781,7 @@ Represents finding.
 
 Represents a compared report vulnerability scanner.
 
-### Fields {.no_toc}
+### `ComparedSecurityReportScanner` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5739,7 +5793,7 @@ Represents a compared report vulnerability scanner.
 
 Represents a ComplianceFramework associated with a Project.
 
-### Fields {.no_toc}
+### `ComplianceFramework` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5766,7 +5820,7 @@ Represents a ComplianceFramework associated with a Project.
 
 Paginated collection of [`ComplianceFramework`](#complianceframework). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ComplianceFrameworkConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -5778,7 +5832,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Framework coverage details for a specific compliance framework.
 
-### Fields {.no_toc}
+### `ComplianceFrameworkCoverageDetail` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5794,7 +5848,7 @@ Paginated collection of [`ComplianceFrameworkCoverageDetail`](#complianceframewo
 
 Compliance framework Coverage summary for a group.
 
-### Fields {.no_toc}
+### `ComplianceFrameworkCoverageSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5805,7 +5859,7 @@ Compliance framework Coverage summary for a group.
 
 A security policy scoped to a compliance framework.
 
-### Fields {.no_toc}
+### `ComplianceFrameworkPolicySummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5822,7 +5876,7 @@ Paginated collection of [`ComplianceFrameworkPolicySummary`](#complianceframewor
 
 Represents a compliance framework template that can be used to create a compliance framework.
 
-### Fields {.no_toc}
+### `ComplianceFrameworkTemplate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5837,7 +5891,7 @@ Represents a compliance framework template that can be used to create a complian
 
 Compliance framework requiring attention.
 
-### Fields {.no_toc}
+### `ComplianceFrameworksNeedingAttention` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5855,7 +5909,7 @@ Paginated collection of [`ComplianceFrameworksNeedingAttention`](#compliancefram
 
 Represents a ComplianceRequirement associated with a ComplianceFramework.
 
-### Fields {.no_toc}
+### `ComplianceRequirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5873,7 +5927,7 @@ Paginated collection of [`ComplianceRequirement`](#compliancerequirement). See [
 
 Lists down all the possible types of requirement controls.
 
-### Fields {.no_toc}
+### `ComplianceRequirementControl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5883,7 +5937,7 @@ Lists down all the possible types of requirement controls.
 
 Represents a ComplianceRequirementsControl associated with a ComplianceRequirement.
 
-### Fields {.no_toc}
+### `ComplianceRequirementsControl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5904,7 +5958,7 @@ Paginated collection of [`ComplianceRequirementsControl`](#compliancerequirement
 
 Compliance standards adherence for a project.
 
-### Fields {.no_toc}
+### `ComplianceStandardsAdherence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5923,7 +5977,7 @@ Paginated collection of [`ComplianceStandardsAdherence`](#compliancestandardsadh
 
 Compliance violation associated with a merged merge request.
 
-### Fields {.no_toc}
+### `ComplianceViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5941,7 +5995,7 @@ Paginated collection of [`ComplianceViolation`](#complianceviolation). See [Stan
 
 A software dependency used by a project.
 
-### Fields {.no_toc}
+### `Component` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5952,7 +6006,7 @@ A software dependency used by a project.
 
 A software dependency version used by a project.
 
-### Fields {.no_toc}
+### `ComponentVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5967,7 +6021,7 @@ Paginated collection of [`ComponentVersion`](#componentversion). See [Standard c
 
 Composer metadata.
 
-### Fields {.no_toc}
+### `ComposerMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5980,7 +6034,7 @@ Conan file metadata.
 
 **Implements:** [`PackageFileMetadata`](interfaces.md#packagefilemetadata)
 
-### Fields {.no_toc}
+### `ConanFileMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -5996,7 +6050,7 @@ Conan file metadata.
 
 Conan metadata.
 
-### Fields {.no_toc}
+### `ConanMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6012,7 +6066,7 @@ Conan metadata.
 
 Connection details for an Agent.
 
-### Fields {.no_toc}
+### `ConnectedAgent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6029,7 +6083,7 @@ Paginated collection of [`ConnectedAgent`](#connectedagent). See [Standard conne
 
 Represents the total number of contacts for the represented states.
 
-### Fields {.no_toc}
+### `ContactStateCounts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6041,7 +6095,7 @@ Represents the total number of contacts for the represented states.
 
 A tag expiration policy designed to keep only the images that matter most.
 
-### Fields {.no_toc}
+### `ContainerExpirationPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6061,7 +6115,7 @@ Represents the most restrictive permissions for a container image tag.
 
 **Implements:** [`AccessLevelInterface`](interfaces.md#accesslevelinterface)
 
-### Fields {.no_toc}
+### `ContainerProtectionAccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6073,7 +6127,7 @@ Represents the most restrictive permissions for a container image tag.
 
 A container repository protection rule designed to prevent users with a certain access level or lower from altering the container registry.
 
-### Fields {.no_toc}
+### `ContainerProtectionRepositoryRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6092,7 +6146,7 @@ A container repository tag protection rule designed to prevent users with a cert
 
 **Implements:** [`AccessLevelInterface`](interfaces.md#accesslevelinterface)
 
-### Fields {.no_toc}
+### `ContainerProtectionTagRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6113,7 +6167,7 @@ Represents a container virtual registry.
 
 **Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
-### Fields {.no_toc}
+### `ContainerRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6126,7 +6180,7 @@ Represents a container virtual registry.
 
 Paginated collection of [`ContainerRegistry`](#containerregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ContainerRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6140,7 +6194,7 @@ Represents container virtual registry details.
 
 **Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
-### Fields {.no_toc}
+### `ContainerRegistryDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6152,7 +6206,7 @@ Represents container virtual registry details.
 
 ## `ContainerRegistryProtectionTagRulePermissions`
 
-### Fields {.no_toc}
+### `ContainerRegistryProtectionTagRulePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6164,7 +6218,7 @@ Represents a container registry upstream and its registry.
 
 **Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
-### Fields {.no_toc}
+### `ContainerRegistryUpstreamWithRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6178,7 +6232,7 @@ Represents a container virtual registry upstream and its relationship to the ups
 
 **Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
-### Fields {.no_toc}
+### `ContainerRegistryUpstreamWithUpstream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6190,7 +6244,7 @@ Represents a container virtual registry upstream and its relationship to the ups
 
 A container repository.
 
-### Fields {.no_toc}
+### `ContainerRepository` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6218,7 +6272,7 @@ Paginated collection of [`ContainerRepository`](#containerrepository). See [Stan
 
 Details of a container repository.
 
-### Fields {.no_toc}
+### `ContainerRepositoryDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6247,7 +6301,7 @@ Details of a container repository.
 
 A manifest describing a reference to an image.
 
-### Fields {.no_toc}
+### `ContainerRepositoryImageManifest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6260,7 +6314,7 @@ A manifest describing a reference to an image.
 
 Description of the target platform for an image.
 
-### Fields {.no_toc}
+### `ContainerRepositoryImagePlatform` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6271,7 +6325,7 @@ Description of the target platform for an image.
 
 ## `ContainerRepositoryPermissions`
 
-### Fields {.no_toc}
+### `ContainerRepositoryPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6281,7 +6335,7 @@ Description of the target platform for an image.
 
 A referrer for a container repository tag.
 
-### Fields {.no_toc}
+### `ContainerRepositoryReferrer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6293,7 +6347,7 @@ A referrer for a container repository tag.
 
 Represents the Geo replication and verification state of an Container Repository.
 
-### Fields {.no_toc}
+### `ContainerRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6323,7 +6377,7 @@ Represents the Geo replication and verification state of an Container Repository
 
 Paginated collection of [`ContainerRepositoryRegistry`](#containerrepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ContainerRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6335,7 +6389,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A tag from a container repository.
 
-### Fields {.no_toc}
+### `ContainerRepositoryTag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6361,7 +6415,7 @@ Paginated collection of [`ContainerRepositoryTag`](#containerrepositorytag). See
 
 Details of a tag within a container repository.
 
-### Fields {.no_toc}
+### `ContainerRepositoryTagDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6378,7 +6432,7 @@ Details of a tag within a container repository.
 
 ## `ContainerRepositoryTagPermissions`
 
-### Fields {.no_toc}
+### `ContainerRepositoryTagPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6388,7 +6442,7 @@ Details of a tag within a container repository.
 
 A tag expiration policy using regex patterns to control which images to keep or expire.
 
-### Fields {.no_toc}
+### `ContainerTagsExpirationPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6408,7 +6462,7 @@ Represents a container upstream registry.
 
 **Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
-### Fields {.no_toc}
+### `ContainerUpstream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6426,7 +6480,7 @@ Represents a cache entry for an upstream container registry.
 
 **Implements:** [`EntryInterface`](interfaces.md#entryinterface)
 
-### Fields {.no_toc}
+### `ContainerUpstreamCacheEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6447,7 +6501,7 @@ Represents a cache entry for an upstream container registry.
 
 Paginated collection of [`ContainerUpstreamCacheEntry`](#containerupstreamcacheentry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ContainerUpstreamCacheEntryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6459,7 +6513,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`ContainerUpstream`](#containerupstream). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ContainerUpstreamConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6473,7 +6527,7 @@ Represents container upstream details.
 
 **Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
-### Fields {.no_toc}
+### `ContainerUpstreamDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6491,7 +6545,7 @@ Represents container upstream details.
 
 Presets for GitLab Duo Chat window based on current context.
 
-### Fields {.no_toc}
+### `ContextPreset` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6503,7 +6557,7 @@ Presets for GitLab Duo Chat window based on current context.
 
 Represents the contributions of a user.
 
-### Fields {.no_toc}
+### `ContributionAnalyticsContribution` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6525,7 +6579,7 @@ Paginated collection of [`ContributionAnalyticsContribution`](#contributionanaly
 
 Response for `Contributions` aggregation engine.
 
-### Fields {.no_toc}
+### `ContributionsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6537,7 +6591,7 @@ Response for `Contributions` aggregation engine.
 
 Paginated collection of [`ContributionsAggregationResponse`](#contributionsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ContributionsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6549,7 +6603,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `Contributions` aggregation engine.
 
-### Fields {.no_toc}
+### `ContributionsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6560,7 +6614,7 @@ Response dimensions for `Contributions` aggregation engine.
 
 Aggregation scope for `Contributions`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `ContributionsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6570,7 +6624,7 @@ Aggregation scope for `Contributions`. Apply ordering and pagination on the aggr
 
 Represents a control expression.
 
-### Fields {.no_toc}
+### `ControlExpression` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6584,7 +6638,7 @@ Represents a vulnerability. The connection type is countable.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `CountableVulnerability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6598,7 +6652,7 @@ Represents a vulnerability. The connection type is countable.
 | `confirmedBy` | [`UserCore`](#usercore) | User that confirmed the vulnerability. |
 | `cveEnrichment` | [`CveEnrichmentType`](#cveenrichmenttype) | Enrichment (EPSS score and KEV) for CVE vulnerabilities. |
 | `cvss` | [`[CvssType!]!`](#cvsstype) | CVSS information for the vulnerability. |
-| `dependencies` | [`DependencyConnection!`](#dependencyconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Dependencies for the vulnerability. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd></dl> |
+| `dependencies` | [`DependencyConnection!`](#dependencyconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Dependencies for the vulnerability. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd></dl> |
 | `description` | [`String`](scalars.md#string) | Description of the vulnerability. |
 | `descriptionHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `description`. |
 | `details` | [`[VulnerabilityDetail!]!`](unions.md#vulnerabilitydetail) | Details of the vulnerability. |
@@ -6663,7 +6717,7 @@ Represents a vulnerability. The connection type is countable.
 
 Paginated collection of [`CountableVulnerability`](#countablevulnerability). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CountableVulnerabilityConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6675,7 +6729,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Corpus for a coverage fuzzing job.
 
-### Fields {.no_toc}
+### `CoverageFuzzingCorpus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6690,7 +6744,7 @@ Paginated collection of [`CoverageFuzzingCorpus`](#coveragefuzzingcorpus). See [
 
 Represents the current license.
 
-### Fields {.no_toc}
+### `CurrentLicense` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6720,7 +6774,7 @@ The currently authenticated GitLab user.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `CurrentUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6806,7 +6860,7 @@ The currently authenticated GitLab user.
 
 A custom attribute key-value pair. Only available to admins.
 
-### Fields {.no_toc}
+### `CustomAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6819,7 +6873,7 @@ Customizable analytics dashboard.
 
 **Implements:** [`CustomDashboardInterface`](interfaces.md#customdashboardinterface)
 
-### Fields {.no_toc}
+### `CustomDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6846,7 +6900,7 @@ Paginated collection of [`CustomDashboardInterface`](interfaces.md#customdashboa
 
 A custom emoji uploaded by user.
 
-### Fields {.no_toc}
+### `CustomEmoji` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6861,7 +6915,7 @@ A custom emoji uploaded by user.
 
 Paginated collection of [`CustomEmoji`](#customemoji). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CustomEmojiConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6871,7 +6925,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CustomEmojiPermissions`
 
-### Fields {.no_toc}
+### `CustomEmojiPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6883,7 +6937,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a custom field.
 
-### Fields {.no_toc}
+### `CustomField` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6902,7 +6956,7 @@ Represents a custom field.
 
 Paginated collection of [`CustomField`](#customfield). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `CustomFieldConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -6914,7 +6968,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a custom field select option.
 
-### Fields {.no_toc}
+### `CustomFieldSelectOption` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6927,7 +6981,7 @@ GitLab built-in analytics dashboard (read-only).
 
 **Implements:** [`CustomDashboardInterface`](interfaces.md#customdashboardinterface)
 
-### Fields {.no_toc}
+### `CustomSystemDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6941,7 +6995,7 @@ GitLab built-in analytics dashboard (read-only).
 
 ## `CustomerRelationsContact`
 
-### Fields {.no_toc}
+### `CustomerRelationsContact` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6962,7 +7016,7 @@ Paginated collection of [`CustomerRelationsContact`](#customerrelationscontact).
 
 ## `CustomerRelationsOrganization`
 
-### Fields {.no_toc}
+### `CustomerRelationsOrganization` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6980,7 +7034,7 @@ Paginated collection of [`CustomerRelationsOrganization`](#customerrelationsorga
 
 ## `CustomizableAdminPermission`
 
-### Fields {.no_toc}
+### `CustomizableAdminPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -6997,7 +7051,7 @@ Paginated collection of [`CustomizableAdminPermission`](#customizableadminpermis
 
 Represents a customizable dashboard.
 
-### Fields {.no_toc}
+### `CustomizableDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7021,7 +7075,7 @@ Paginated collection of [`CustomizableDashboard`](#customizabledashboard). See [
 
 Represents a customizable dashboard panel.
 
-### Fields {.no_toc}
+### `CustomizableDashboardPanel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7041,7 +7095,7 @@ Paginated collection of [`CustomizableDashboardPanel`](#customizabledashboardpan
 
 Tooltip for a customizable dashboard panel.
 
-### Fields {.no_toc}
+### `CustomizableDashboardPanelTooltip` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7052,7 +7106,7 @@ Tooltip for a customizable dashboard panel.
 
 Represents a view that can be selected within a customizable dashboard panel.
 
-### Fields {.no_toc}
+### `CustomizableDashboardPanelView` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7063,7 +7117,7 @@ Represents a view that can be selected within a customizable dashboard panel.
 
 Represents a customizable dashboard visualization.
 
-### Fields {.no_toc}
+### `CustomizableDashboardVisualization` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7079,7 +7133,7 @@ Paginated collection of [`CustomizableDashboardVisualization`](#customizabledash
 
 ## `CustomizableStandardPermission`
 
-### Fields {.no_toc}
+### `CustomizableStandardPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7099,7 +7153,7 @@ Paginated collection of [`CustomizableStandardPermission`](#customizablestandard
 
 Represents a CVE's Enrichment (EPSS score).
 
-### Fields {.no_toc}
+### `CveEnrichmentType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7111,7 +7165,7 @@ Represents a CVE's Enrichment (EPSS score).
 
 Represents a vulnerability's CVSS score.
 
-### Fields {.no_toc}
+### `CvssType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7126,7 +7180,7 @@ Represents a vulnerability's CVSS score.
 
 Represents a DAST Pre Scan Verification.
 
-### Fields {.no_toc}
+### `DastPreScanVerification` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7138,7 +7192,7 @@ Represents a DAST Pre Scan Verification.
 
 Represents a DAST Pre Scan Verification Step.
 
-### Fields {.no_toc}
+### `DastPreScanVerificationStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7151,7 +7205,7 @@ Represents a DAST Pre Scan Verification Step.
 
 Represents a DAST Profile.
 
-### Fields {.no_toc}
+### `DastProfile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7170,7 +7224,7 @@ Represents a DAST Profile.
 
 Represents a DAST Profile Branch.
 
-### Fields {.no_toc}
+### `DastProfileBranch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7181,7 +7235,7 @@ Represents a DAST Profile Branch.
 
 Represents DAST Profile Cadence.
 
-### Fields {.no_toc}
+### `DastProfileCadence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7192,7 +7246,7 @@ Represents DAST Profile Cadence.
 
 Paginated collection of [`DastProfile`](#dastprofile). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DastProfileConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7204,7 +7258,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a DAST profile schedule.
 
-### Fields {.no_toc}
+### `DastProfileSchedule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7220,7 +7274,7 @@ Represents a DAST profile schedule.
 
 Represents a DAST scanner profile.
 
-### Fields {.no_toc}
+### `DastScannerProfile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7243,7 +7297,7 @@ Paginated collection of [`DastScannerProfile`](#dastscannerprofile). See [Standa
 
 Represents a DAST Site Profile.
 
-### Fields {.no_toc}
+### `DastSiteProfile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7268,7 +7322,7 @@ Represents a DAST Site Profile.
 
 DastSiteProfile authentication.
 
-### Fields {.no_toc}
+### `DastSiteProfileAuth` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7288,7 +7342,7 @@ Paginated collection of [`DastSiteProfile`](#dastsiteprofile). See [Standard con
 
 Check permissions for the current user on site profile.
 
-### Fields {.no_toc}
+### `DastSiteProfilePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7298,7 +7352,7 @@ Check permissions for the current user on site profile.
 
 Represents a DAST Site Validation.
 
-### Fields {.no_toc}
+### `DastSiteValidation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7315,7 +7369,7 @@ Paginated collection of [`DastSiteValidation`](#dastsitevalidation). See [Standa
 
 The response from the AdminSidekiqQueuesDeleteJobs mutation.
 
-### Fields {.no_toc}
+### `DeleteJobsResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7325,7 +7379,7 @@ The response from the AdminSidekiqQueuesDeleteJobs mutation.
 
 ## `DeletedNote`
 
-### Fields {.no_toc}
+### `DeletedNote` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7339,7 +7393,7 @@ A software dependency used by a project.
 
 **Implements:** [`DependencyInterface`](interfaces.md#dependencyinterface)
 
-### Fields {.no_toc}
+### `Dependency` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7364,7 +7418,7 @@ A software dependency aggregation used by a group.
 
 **Implements:** [`DependencyInterface`](interfaces.md#dependencyinterface)
 
-### Fields {.no_toc}
+### `DependencyAggregation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7395,7 +7449,7 @@ Paginated collection of [`Dependency`](#dependency). See [Standard connection fi
 
 Aggregate dependency firewall enforcement activity totals for a group or project.
 
-### Fields {.no_toc}
+### `DependencyFirewallActivitySummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7417,7 +7471,7 @@ Aggregate dependency firewall enforcement activity totals for a group or project
 
 Represents policy fields related to the dependency firewall policy.
 
-### Fields {.no_toc}
+### `DependencyFirewallPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7427,7 +7481,7 @@ Represents policy fields related to the dependency firewall policy.
 
 Block and warn enforcement activity for a single dependency firewall policy rule.
 
-### Fields {.no_toc}
+### `DependencyFirewallRuleActivity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7448,7 +7502,7 @@ Block and warn enforcement activity for a single dependency firewall policy rule
 
 When and by whom a dependency firewall policy was last modified.
 
-### Fields {.no_toc}
+### `DependencyFirewallRuleLastModified` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7459,7 +7513,7 @@ When and by whom a dependency firewall policy was last modified.
 
 Count of distinct prevented packages at one severity level.
 
-### Fields {.no_toc}
+### `DependencyFirewallSeverityCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7470,7 +7524,7 @@ Count of distinct prevented packages at one severity level.
 
 Represents the Geo replication and verification state of a `dependency_list_export_part_upload`.
 
-### Fields {.no_toc}
+### `DependencyListExportPartUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7500,7 +7554,7 @@ Represents the Geo replication and verification state of a `dependency_list_expo
 
 Paginated collection of [`DependencyListExportPartUploadRegistry`](#dependencylistexportpartuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DependencyListExportPartUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7512,7 +7566,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a `dependency_list_export_upload`.
 
-### Fields {.no_toc}
+### `DependencyListExportUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7542,7 +7596,7 @@ Represents the Geo replication and verification state of a `dependency_list_expo
 
 Paginated collection of [`DependencyListExportUploadRegistry`](#dependencylistexportuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DependencyListExportUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7554,7 +7608,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Location of a software dependency within a project.
 
-### Fields {.no_toc}
+### `DependencyLocation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7571,7 +7625,7 @@ Paginated collection of [`DependencyLocation`](#dependencylocation). See [Standa
 
 Ancestor path of a given dependency.
 
-### Fields {.no_toc}
+### `DependencyPath` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7582,7 +7636,7 @@ Ancestor path of a given dependency.
 
 Edge for a paginated dependency path for SBOM occurrences.
 
-### Fields {.no_toc}
+### `DependencyPathEdge` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7593,7 +7647,7 @@ Edge for a paginated dependency path for SBOM occurrences.
 
 Paginated dependency paths for SBOM occurrences.
 
-### Fields {.no_toc}
+### `DependencyPathPage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7603,7 +7657,7 @@ Paginated dependency paths for SBOM occurrences.
 
 ## `DependencyPathPageInfo`
 
-### Fields {.no_toc}
+### `DependencyPathPageInfo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7616,7 +7670,7 @@ Paginated dependency paths for SBOM occurrences.
 
 Ancestor path partial of a given dependency.
 
-### Fields {.no_toc}
+### `DependencyPathPartial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7627,7 +7681,7 @@ Ancestor path partial of a given dependency.
 
 Dependency proxy blob.
 
-### Fields {.no_toc}
+### `DependencyProxyBlob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7644,7 +7698,7 @@ Paginated collection of [`DependencyProxyBlob`](#dependencyproxyblob). See [Stan
 
 Represents the Geo replication and verification state of a dependency_proxy_blob.
 
-### Fields {.no_toc}
+### `DependencyProxyBlobRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7674,7 +7728,7 @@ Represents the Geo replication and verification state of a dependency_proxy_blob
 
 Paginated collection of [`DependencyProxyBlobRegistry`](#dependencyproxyblobregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DependencyProxyBlobRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7686,7 +7740,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Group-level Dependency Proxy TTL policy settings.
 
-### Fields {.no_toc}
+### `DependencyProxyImageTtlGroupPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7699,7 +7753,7 @@ Group-level Dependency Proxy TTL policy settings.
 
 Dependency proxy manifest.
 
-### Fields {.no_toc}
+### `DependencyProxyManifest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7720,7 +7774,7 @@ Paginated collection of [`DependencyProxyManifest`](#dependencyproxymanifest). S
 
 Represents the Geo replication and verification state of a dependency_proxy_manifest.
 
-### Fields {.no_toc}
+### `DependencyProxyManifestRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7750,7 +7804,7 @@ Represents the Geo replication and verification state of a dependency_proxy_mani
 
 Paginated collection of [`DependencyProxyManifestRegistry`](#dependencyproxymanifestregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DependencyProxyManifestRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7762,7 +7816,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Project-level Dependency Proxy for packages settings.
 
-### Fields {.no_toc}
+### `DependencyProxyPackagesSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7774,7 +7828,7 @@ Project-level Dependency Proxy for packages settings.
 
 Group-level Dependency Proxy settings.
 
-### Fields {.no_toc}
+### `DependencyProxySetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7785,7 +7839,7 @@ Group-level Dependency Proxy settings.
 
 Configuration for a dependency scanning scan profile.
 
-### Fields {.no_toc}
+### `DependencyScanningConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7818,7 +7872,7 @@ Configuration for a dependency scanning scan profile.
 
 Ref (branch or tag) where a software dependency appears.
 
-### Fields {.no_toc}
+### `DependencyTrackedRef` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7831,7 +7885,7 @@ Ref (branch or tag) where a software dependency appears.
 
 Paginated collection of [`DependencyTrackedRef`](#dependencytrackedref). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DependencyTrackedRefConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7843,7 +7897,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 The deployment of an environment.
 
-### Fields {.no_toc}
+### `Deployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7871,7 +7925,7 @@ The deployment of an environment.
 
 Approval of the deployment.
 
-### Fields {.no_toc}
+### `DeploymentApproval` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7885,7 +7939,7 @@ Approval of the deployment.
 
 Approval summary of the deployment.
 
-### Fields {.no_toc}
+### `DeploymentApprovalSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7900,7 +7954,7 @@ Paginated collection of [`Deployment`](#deployment). See [Standard connection fi
 
 ## `DeploymentPermissions`
 
-### Fields {.no_toc}
+### `DeploymentPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7912,7 +7966,7 @@ Paginated collection of [`Deployment`](#deployment). See [Standard connection fi
 
 Tags for a given deployment.
 
-### Fields {.no_toc}
+### `DeploymentTag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7924,7 +7978,7 @@ Tags for a given deployment.
 
 Response for `Deployments` aggregation engine.
 
-### Fields {.no_toc}
+### `DeploymentsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7940,7 +7994,7 @@ Response for `Deployments` aggregation engine.
 
 Paginated collection of [`DeploymentsAggregationResponse`](#deploymentsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DeploymentsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -7952,7 +8006,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `Deployments` aggregation engine.
 
-### Fields {.no_toc}
+### `DeploymentsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7967,7 +8021,7 @@ Response dimensions for `Deployments` aggregation engine.
 
 Aggregated `duration` metrics for `Deployments` aggregation engine.
 
-### Fields {.no_toc}
+### `DeploymentsAggregationResponseDurationMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7981,7 +8035,7 @@ Aggregated `duration` metrics for `Deployments` aggregation engine.
 
 Aggregation scope for `Deployments`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `DeploymentsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -7989,7 +8043,7 @@ Aggregation scope for `Deployments`. Apply ordering and pagination on the aggreg
 
 ## `DescriptionVersion`
 
-### Fields {.no_toc}
+### `DescriptionVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8007,7 +8061,7 @@ A single design.
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`DesignFields`](interfaces.md#designfields), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Design` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8039,7 +8093,7 @@ A design pinned to a specific version. The image field reflects the design as of
 
 **Implements:** [`DesignFields`](interfaces.md#designfields)
 
-### Fields {.no_toc}
+### `DesignAtVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8064,7 +8118,7 @@ Paginated collection of [`DesignAtVersion`](#designatversion). See [Standard con
 
 A collection of designs.
 
-### Fields {.no_toc}
+### `DesignCollection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8083,7 +8137,7 @@ Paginated collection of [`Design`](#design). See [Standard connection fields](#s
 
 ## `DesignManagement`
 
-### Fields {.no_toc}
+### `DesignManagement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8094,7 +8148,7 @@ Paginated collection of [`Design`](#design). See [Standard connection fields](#s
 
 Represents the Geo replication and verification state of a `design_management_action_upload`.
 
-### Fields {.no_toc}
+### `DesignManagementActionUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8124,7 +8178,7 @@ Represents the Geo replication and verification state of a `design_management_ac
 
 Paginated collection of [`DesignManagementActionUploadRegistry`](#designmanagementactionuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DesignManagementActionUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8136,7 +8190,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a Design Management Repository.
 
-### Fields {.no_toc}
+### `DesignManagementRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8166,7 +8220,7 @@ Represents the Geo replication and verification state of a Design Management Rep
 
 Paginated collection of [`DesignManagementRepositoryRegistry`](#designmanagementrepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DesignManagementRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8178,7 +8232,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A specific version in which designs were added, modified, or deleted.
 
-### Fields {.no_toc}
+### `DesignVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8198,7 +8252,7 @@ Paginated collection of [`DesignVersion`](#designversion). See [Standard connect
 
 Details of the import status of a project.
 
-### Fields {.no_toc}
+### `DetailedImportStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8212,7 +8266,7 @@ Details of the import status of a project.
 
 ## `DetailedStatus`
 
-### Fields {.no_toc}
+### `DetailedStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8233,7 +8287,7 @@ Details of the import status of a project.
 
 Enabled namespace for DevopsAdoption.
 
-### Fields {.no_toc}
+### `DevopsAdoptionEnabledNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8251,7 +8305,7 @@ Paginated collection of [`DevopsAdoptionEnabledNamespace`](#devopsadoptionenable
 
 Snapshot.
 
-### Fields {.no_toc}
+### `DevopsAdoptionSnapshot` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8278,7 +8332,7 @@ Paginated collection of [`DevopsAdoptionSnapshot`](#devopsadoptionsnapshot). See
 
 ## `Diff`
 
-### Fields {.no_toc}
+### `Diff` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8297,7 +8351,7 @@ Paginated collection of [`DevopsAdoptionSnapshot`](#devopsadoptionsnapshot). See
 
 Paginated collection of [`Diff`](#diff). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DiffConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8309,7 +8363,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A single line of a diff displayed above a diff note.
 
-### Fields {.no_toc}
+### `DiffLine` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8323,7 +8377,7 @@ A single line of a diff displayed above a diff note.
 
 ## `DiffPosition`
 
-### Fields {.no_toc}
+### `DiffPosition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8341,7 +8395,7 @@ A single line of a diff displayed above a diff note.
 
 ## `DiffRefs`
 
-### Fields {.no_toc}
+### `DiffRefs` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8353,7 +8407,7 @@ A single line of a diff displayed above a diff note.
 
 Changes to a single file.
 
-### Fields {.no_toc}
+### `DiffStats` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8365,7 +8419,7 @@ Changes to a single file.
 
 Aggregated summary of changes.
 
-### Fields {.no_toc}
+### `DiffStatsSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8378,7 +8432,7 @@ Aggregated summary of changes.
 
 **Implements:** [`BaseDiscussionInterface`](interfaces.md#basediscussioninterface), [`ResolvableInterface`](interfaces.md#resolvableinterface)
 
-### Fields {.no_toc}
+### `Discussion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8400,7 +8454,7 @@ Paginated collection of [`Discussion`](#discussion). See [Standard connection fi
 
 ## `DiscussionPermissions`
 
-### Fields {.no_toc}
+### `DiscussionPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8410,7 +8464,7 @@ Paginated collection of [`Discussion`](#discussion). See [Standard connection fi
 
 All information related to DORA metrics.
 
-### Fields {.no_toc}
+### `Dora` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8418,7 +8472,7 @@ All information related to DORA metrics.
 
 ## `DoraMetric`
 
-### Fields {.no_toc}
+### `DoraMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8432,7 +8486,7 @@ All information related to DORA metrics.
 
 Aggregated DORA score counts for projects for the last complete month.
 
-### Fields {.no_toc}
+### `DoraPerformanceScoreCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8446,7 +8500,7 @@ Aggregated DORA score counts for projects for the last complete month.
 
 Paginated collection of [`DoraPerformanceScoreCount`](#doraperformancescorecount). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DoraPerformanceScoreCountConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8459,7 +8513,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response for `DuoCodeSuggestions` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoCodeSuggestionsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8476,7 +8530,7 @@ Response for `DuoCodeSuggestions` aggregation engine.
 
 Paginated collection of [`DuoCodeSuggestionsAggregationResponse`](#duocodesuggestionsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DuoCodeSuggestionsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8488,7 +8542,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `DuoCodeSuggestions` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoCodeSuggestionsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8501,7 +8555,7 @@ Response dimensions for `DuoCodeSuggestions` aggregation engine.
 
 Aggregation scope for `DuoCodeSuggestions`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `DuoCodeSuggestionsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8511,7 +8565,7 @@ Aggregation scope for `DuoCodeSuggestions`. Apply ordering and pagination on the
 
 Settings for Duo context exclusion rules.
 
-### Fields {.no_toc}
+### `DuoContextExclusionSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8521,7 +8575,7 @@ Settings for Duo context exclusion rules.
 
 A message in a Duo Workflow chat log.
 
-### Fields {.no_toc}
+### `DuoMessage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8545,7 +8599,7 @@ A message in a Duo Workflow chat log.
 
 GitLab Duo settings.
 
-### Fields {.no_toc}
+### `DuoSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8568,7 +8622,7 @@ GitLab Duo settings.
 
 Response for `DuoUsageEvents` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoUsageEventsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8583,7 +8637,7 @@ Response for `DuoUsageEvents` aggregation engine.
 
 Paginated collection of [`DuoUsageEventsAggregationResponse`](#duousageeventsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DuoUsageEventsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8595,7 +8649,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `DuoUsageEvents` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoUsageEventsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8610,7 +8664,7 @@ Response dimensions for `DuoUsageEvents` aggregation engine.
 
 Aggregation scope for `DuoUsageEvents`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `DuoUsageEventsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8622,7 +8676,7 @@ GitLab Duo Agent Platform session.
 
 **Implements:** [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `DuoWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8678,6 +8732,7 @@ GitLab Duo Agent Platform session.
 | `user` | [`UserCore`](#usercore) | User who created the session. |
 | `userId` | [`UserID!`](scalars.md#userid) | ID of the user. |
 | `userPermissions` | [`DuoWorkflowPermissions`](#duoworkflowpermissions) | Permissions of the current user for the workflow. |
+| `webPath` | [`String`](scalars.md#string) | Web path of the session. |
 | `webSearchEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Whether web search is enabled for the session. |
 | `webUrl` | [`String`](scalars.md#string) | URL of the session. |
 | `workItem` | [`WorkItem`](#workitem) | Associated work item (issue or epic), if any. |
@@ -8689,7 +8744,7 @@ GitLab Duo Agent Platform session.
 
 Agent attribution for an object, such as a note, created by a GitLab Duo Agent Platform session.
 
-### Fields {.no_toc}
+### `DuoWorkflowAgentPresence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8706,7 +8761,7 @@ Agent attribution for an object, such as a note, created by a GitLab Duo Agent P
 
 Check permissions for the current user on the session that created the object.
 
-### Fields {.no_toc}
+### `DuoWorkflowAgentPresencePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8716,7 +8771,7 @@ Check permissions for the current user on the session that created the object.
 
 Alternative branch of a Duo Agent Platform session, created by retrying a message.
 
-### Fields {.no_toc}
+### `DuoWorkflowBranch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8727,7 +8782,7 @@ Alternative branch of a Duo Agent Platform session, created by retrying a messag
 
 A pending write associated with a Duo Workflow checkpoint.
 
-### Fields {.no_toc}
+### `DuoWorkflowCheckpointWrite` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8747,7 +8802,7 @@ Paginated collection of [`DuoWorkflow`](#duoworkflow). See [Standard connection 
 
 Duo Agent Platform enablement status checks.
 
-### Fields {.no_toc}
+### `DuoWorkflowEnablement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8762,7 +8817,7 @@ Duo Agent Platform enablement status checks.
 
 Represents single Duo Agent Platform enablement check.
 
-### Fields {.no_toc}
+### `DuoWorkflowEnablementCheck` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8774,7 +8829,7 @@ Represents single Duo Agent Platform enablement check.
 
 Events that describe the history and progress of a GitLab Duo Agent Platform session.
 
-### Fields {.no_toc}
+### `DuoWorkflowEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8802,7 +8857,7 @@ Paginated collection of [`DuoWorkflowEvent`](#duoworkflowevent). See [Standard c
 
 Link between a GitLab Duo Agent Platform session and a merge request.
 
-### Fields {.no_toc}
+### `DuoWorkflowMergeRequestLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8819,7 +8874,7 @@ Paginated collection of [`DuoWorkflowMergeRequestLink`](#duoworkflowmergerequest
 
 Link between a GitLab Duo Agent Platform session and a note.
 
-### Fields {.no_toc}
+### `DuoWorkflowNoteLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8836,7 +8891,7 @@ Paginated collection of [`DuoWorkflowNoteLink`](#duoworkflownotelink). See [Stan
 
 Check permissions for the current user on a Duo workflow.
 
-### Fields {.no_toc}
+### `DuoWorkflowPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8850,7 +8905,7 @@ Check permissions for the current user on a Duo workflow.
 
 Link between a GitLab Duo Agent Platform session and a pipeline.
 
-### Fields {.no_toc}
+### `DuoWorkflowPipelineLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8867,7 +8922,7 @@ Paginated collection of [`DuoWorkflowPipelineLink`](#duoworkflowpipelinelink). S
 
 A Duo Agent Platform session artifact.
 
-### Fields {.no_toc}
+### `DuoWorkflowSessionArtifact` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8887,7 +8942,7 @@ A Duo Agent Platform session artifact.
 
 Paginated collection of [`DuoWorkflowSessionArtifact`](#duoworkflowsessionartifact). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DuoWorkflowSessionArtifactConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8899,7 +8954,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Approval match details for a Duo Workflow tool call.
 
-### Fields {.no_toc}
+### `DuoWorkflowToolCallApprovalMatch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8911,7 +8966,7 @@ Approval match details for a Duo Workflow tool call.
 
 Link between a GitLab Duo Agent Platform session and a work item.
 
-### Fields {.no_toc}
+### `DuoWorkflowWorkItemLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8928,7 +8983,7 @@ Paginated collection of [`DuoWorkflowWorkItemLink`](#duoworkflowworkitemlink). S
 
 Link between a GitLab Duo Agent Platform session and another session.
 
-### Fields {.no_toc}
+### `DuoWorkflowWorkflowLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8945,7 +9000,7 @@ Paginated collection of [`DuoWorkflowWorkflowLink`](#duoworkflowworkflowlink). S
 
 Response for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8969,7 +9024,7 @@ Response for `DuoWorkflows` aggregation engine.
 
 Aggregated `closed_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseClosedMrCountMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -8983,7 +9038,7 @@ Aggregated `closed_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
 Paginated collection of [`DuoWorkflowsAggregationResponse`](#duoworkflowsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `DuoWorkflowsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -8995,7 +9050,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Aggregated `created_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseCreatedMrCountMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9009,7 +9064,7 @@ Aggregated `created_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
 Aggregated `credits_used` metrics for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseCreditsUsedMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9023,11 +9078,12 @@ Aggregated `credits_used` metrics for `DuoWorkflows` aggregation engine.
 
 Response dimensions for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `createdAt` | [`Date`](scalars.md#date) | Flow creation date.  <strong>Arguments for `createdAt`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
+| `dropReason` | [`String`](scalars.md#string) | Why a failed flow was dropped (job_failed, no_status_reported, no_activity, workload_not_created, api_reported, preconditions_not_met, start_failed). Returns `null` for flows that did not fail or whose drop recorded no reason. |
 | `group` | [`Group`](#group) | Group at the requested depth of the hierarchy. NULL for flows tracked above that depth. Flows tracked in a project at that depth bucket by project namespace ID, which also resolves to NULL.  <strong>Arguments for `group`:</strong> <dl><dt>`depth` ([`Int`](scalars.md#int))</dt><dd>Depth in the group hierarchy, counted from the top-level group. Defaults to 1.</dd></dl> |
 | `model` | [`DuoWorkflowsModelMetadata`](#duoworkflowsmodelmetadata) | Model used by the flow, resolved to catalog metadata. |
 | `modelUsed` | [`String`](scalars.md#string) | Model used by the flow. |
@@ -9041,7 +9097,7 @@ Response dimensions for `DuoWorkflows` aggregation engine.
 
 Aggregated `merged_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseMergedMrCountMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9055,7 +9111,7 @@ Aggregated `merged_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
 Aggregated `open_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationResponseOpenMrCountMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9069,7 +9125,7 @@ Aggregated `open_mr_count` metrics for `DuoWorkflows` aggregation engine.
 
 Aggregation scope for `DuoWorkflows`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `DuoWorkflowsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9079,7 +9135,7 @@ Aggregation scope for `DuoWorkflows`. Apply ordering and pagination on the aggre
 
 Catalog metadata for a model used by GitLab Duo Agent Platform flows.
 
-### Fields {.no_toc}
+### `DuoWorkflowsModelMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9090,7 +9146,7 @@ Catalog metadata for a model used by GitLab Duo Agent Platform flows.
 
 ## `EgressNode`
 
-### Fields {.no_toc}
+### `EgressNode` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9107,7 +9163,7 @@ Paginated collection of [`EgressNode`](#egressnode). See [Standard connection fi
 
 ## `Email`
 
-### Fields {.no_toc}
+### `Email` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9123,7 +9179,7 @@ Paginated collection of [`Email`](#email). See [Standard connection fields](#sta
 
 ## `EmailParticipantType`
 
-### Fields {.no_toc}
+### `EmailParticipantType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9137,7 +9193,7 @@ Paginated collection of [`EmailParticipantType`](#emailparticipanttype). See [St
 
 Types of scans enabled on a merge request.
 
-### Fields {.no_toc}
+### `EnabledSecurityScans` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9156,7 +9212,7 @@ Types of scans enabled on a merge request.
 
 Describes where code is deployed for a project.
 
-### Fields {.no_toc}
+### `Environment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9192,7 +9248,7 @@ Paginated collection of [`Environment`](#environment). See [Standard connection 
 
 ## `EnvironmentPermissions`
 
-### Fields {.no_toc}
+### `EnvironmentPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9206,7 +9262,7 @@ Represents an epic.
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`Eventable`](interfaces.md#eventable), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Epic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9278,7 +9334,7 @@ Represents an epic.
 
 Represents an epic board.
 
-### Fields {.no_toc}
+### `EpicBoard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9300,7 +9356,7 @@ Paginated collection of [`EpicBoard`](#epicboard). See [Standard connection fiel
 
 Paginated collection of [`Epic`](#epic). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `EpicConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -9312,7 +9368,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Counts of descendent epics.
 
-### Fields {.no_toc}
+### `EpicDescendantCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9325,7 +9381,7 @@ Counts of descendent epics.
 
 Total weight of open and closed descendant issues.
 
-### Fields {.no_toc}
+### `EpicDescendantWeights` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9338,7 +9394,7 @@ Total weight of open and closed descendant issues.
 
 Health status of child issues.
 
-### Fields {.no_toc}
+### `EpicHealthStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9352,7 +9408,7 @@ Relationship between an epic and an issue.
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `EpicIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9442,7 +9498,7 @@ Relationship between an epic and an issue.
 
 Paginated collection of [`EpicIssue`](#epicissue). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `EpicIssueConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -9455,7 +9511,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an epic board list.
 
-### Fields {.no_toc}
+### `EpicList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9476,7 +9532,7 @@ Paginated collection of [`EpicList`](#epiclist). See [Standard connection fields
 
 Represents epic board list metadata.
 
-### Fields {.no_toc}
+### `EpicListMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9487,7 +9543,7 @@ Represents epic board list metadata.
 
 Check permissions for the current user on an epic.
 
-### Fields {.no_toc}
+### `EpicPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9505,7 +9561,7 @@ Check permissions for the current user on an epic.
 
 Represents a stack trace.
 
-### Fields {.no_toc}
+### `ErrorTrackingStackTrace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9520,7 +9576,7 @@ Represents a stack trace.
 
 Paginated collection of [`ErrorTrackingStackTrace`](#errortrackingstacktrace). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ErrorTrackingStackTraceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -9532,7 +9588,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an escalation policy.
 
-### Fields {.no_toc}
+### `EscalationPolicyType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9549,7 +9605,7 @@ Paginated collection of [`EscalationPolicyType`](#escalationpolicytype). See [St
 
 Represents an escalation rule for an escalation policy.
 
-### Fields {.no_toc}
+### `EscalationRuleType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9563,7 +9619,7 @@ Represents an escalation rule for an escalation policy.
 
 Representing an event.
 
-### Fields {.no_toc}
+### `Event` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9586,7 +9642,7 @@ Represents an external resource to send audit events to.
 
 **Implements:** [`ExternalAuditEventDestinationInterface`](interfaces.md#externalauditeventdestinationinterface)
 
-### Fields {.no_toc}
+### `ExternalAuditEventDestination` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9608,7 +9664,7 @@ Paginated collection of [`ExternalAuditEventDestination`](#externalauditeventdes
 
 Represents an external issue.
 
-### Fields {.no_toc}
+### `ExternalIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9624,7 +9680,7 @@ Represents an external issue.
 
 Describes an external status check.
 
-### Fields {.no_toc}
+### `ExternalStatusCheck` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9639,7 +9695,7 @@ Paginated collection of [`ExternalStatusCheck`](#externalstatuscheck). See [Stan
 
 ## `FeatureFlag`
 
-### Fields {.no_toc}
+### `FeatureFlag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9655,7 +9711,7 @@ Paginated collection of [`FeatureFlag`](#featureflag). See [Standard connection 
 
 ## `FileUpload`
 
-### Fields {.no_toc}
+### `FileUpload` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9667,7 +9723,7 @@ Paginated collection of [`FeatureFlag`](#featureflag). See [Standard connection 
 
 Represents an error encountered while setting due dates for a vulnerability finding.
 
-### Fields {.no_toc}
+### `FindingDueDatesSetError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9679,7 +9735,7 @@ Represents an error encountered while setting due dates for a vulnerability find
 
 Represents security reports comparison for vulnerability findings.
 
-### Fields {.no_toc}
+### `FindingReportsComparer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9691,7 +9747,7 @@ Represents security reports comparison for vulnerability findings.
 
 Details of the fork project compared to its upstream project.
 
-### Fields {.no_toc}
+### `ForkDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9704,7 +9760,7 @@ Details of the fork project compared to its upstream project.
 
 Status of a GitLab Duo Agent Platform functional verification check.
 
-### Fields {.no_toc}
+### `FunctionalVerificationStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9714,7 +9770,7 @@ Status of a GitLab Duo Agent Platform functional verification check.
 
 ## `GeoNode`
 
-### Fields {.no_toc}
+### `GeoNode` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9783,7 +9839,7 @@ Status of a GitLab Duo Agent Platform functional verification check.
 
 A feature flag for the GitLab instance.
 
-### Fields {.no_toc}
+### `GitlabInstanceFeatureFlag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9794,7 +9850,7 @@ A feature flag for the GitLab instance.
 
 Per-user budget cap override.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionBudgetCapUserOverride` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9812,7 +9868,7 @@ Paginated collection of [`GitlabSubscriptionBudgetCapUserOverride`](#gitlabsubsc
 
 Budget cap controls for a subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionBudgetCaps` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9826,7 +9882,7 @@ Budget cap controls for a subscription.
 
 Describes daily the usage of GitLab Credits.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionDailyUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9837,7 +9893,7 @@ Describes daily the usage of GitLab Credits.
 
 Describes the subscription history of a given namespace.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionHistory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9857,7 +9913,7 @@ Paginated collection of [`GitlabSubscriptionHistory`](#gitlabsubscriptionhistory
 
 Describes the usage of GitLab Credits for the subscription's monthly commitment.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionMonthlyCommitment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9869,7 +9925,7 @@ Describes the usage of GitLab Credits for the subscription's monthly commitment.
 
 GitLab Credits used from the Monthly Waiver allocation.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionMonthlyWaiver` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9881,7 +9937,7 @@ GitLab Credits used from the Monthly Waiver allocation.
 
 Describes the overage of consumables for the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionOverage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9893,7 +9949,7 @@ Describes the overage of consumables for the subscription.
 
 Describes paid tier trial information for the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionPaidTierTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9904,7 +9960,7 @@ Describes paid tier trial information for the subscription.
 
 Describes the usage of consumables under the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9934,7 +9990,7 @@ Describes the usage of consumables under the subscription.
 
 Describes the blocked status of a user under the subscription budget cap.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageBlockedStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9945,7 +10001,7 @@ Describes the blocked status of a user under the subscription budget cap.
 
 Information about a GitLab Credits flow type.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageFlowTypeInfo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9956,7 +10012,7 @@ Information about a GitLab Credits flow type.
 
 GitLab Credits usage that was not billed, for one product and skip reason.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageNonBillableUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9969,7 +10025,7 @@ GitLab Credits usage that was not billed, for one product and skip reason.
 
 A product with GitLab Credits usage.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageProduct` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9982,7 +10038,7 @@ A product with GitLab Credits usage.
 
 A flow type within a product for GitLab Credits usage.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageProductFlowType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -9993,7 +10049,7 @@ A flow type within a product for GitLab Credits usage.
 
 Describes the user with their usage data.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10015,7 +10071,7 @@ Paginated collection of [`GitlabSubscriptionUsageUser`](#gitlabsubscriptionusage
 
 Describes a usage event for the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageUserEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10035,7 +10091,7 @@ Paginated collection of [`GitlabSubscriptionUsageUserEvent`](#gitlabsubscription
 
 Describes the usage of consumables for a user under the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageUserUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10051,7 +10107,7 @@ Describes the usage of consumables for a user under the subscription.
 
 Describes the usage of consumables by users under the subscription.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUsageUsersUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10067,7 +10123,7 @@ Describes the usage of consumables by users under the subscription.
 
 GitLab Credits usage for the current user.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUserCreditsUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10085,7 +10141,7 @@ GitLab Credits usage for the current user.
 
 Daily GitLab Credits usage for the current user.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUserCreditsUsageDailyUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10096,7 +10152,7 @@ Daily GitLab Credits usage for the current user.
 
 A product with its flow types.
 
-### Fields {.no_toc}
+### `GitlabSubscriptionUserCreditsUsageProduct` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10108,7 +10164,7 @@ A product with its flow types.
 
 Describes the usage and details of a trial subscription.
 
-### Fields {.no_toc}
+### `GitlabTrialUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10119,7 +10175,7 @@ Describes the usage and details of a trial subscription.
 
 Describes the user with their trial usage data.
 
-### Fields {.no_toc}
+### `GitlabTrialUsageUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10137,7 +10193,7 @@ Paginated collection of [`GitlabTrialUsageUser`](#gitlabtrialusageuser). See [St
 
 Describes any credit usage for a user during a trial.
 
-### Fields {.no_toc}
+### `GitlabTrialUsageUserUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10152,7 +10208,7 @@ Paginated collection of [`GoogleCloudArtifactRegistryArtifact`](unions.md#google
 
 Represents a docker artifact of Google Artifact Registry.
 
-### Fields {.no_toc}
+### `GoogleCloudArtifactRegistryDockerImage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10168,7 +10224,7 @@ Represents a docker artifact of Google Artifact Registry.
 
 Represents details about docker artifact of Google Artifact Registry.
 
-### Fields {.no_toc}
+### `GoogleCloudArtifactRegistryDockerImageDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10191,7 +10247,7 @@ Represents details about docker artifact of Google Artifact Registry.
 
 Represents a repository of Google Artifact Registry.
 
-### Fields {.no_toc}
+### `GoogleCloudArtifactRegistryRepository` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10206,7 +10262,7 @@ Stores Google Cloud Logging configurations associated with IAM service accounts,
 
 **Implements:** [`GoogleCloudLoggingConfigurationInterface`](interfaces.md#googlecloudloggingconfigurationinterface)
 
-### Fields {.no_toc}
+### `GoogleCloudLoggingConfigurationType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10226,18 +10282,20 @@ Paginated collection of [`GoogleCloudLoggingConfigurationType`](#googlecloudlogg
 
 Policy stored in the policy store.
 
-### Fields {.no_toc}
+### `GovernPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[JSON!]`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Actions of the policy. |
 | `createdAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp of when the policy was created. |
 | `description` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Description of the policy. |
+| `group` | [`Group`](#group) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Group the policy belongs to. Null for organization-wide policies, or when the current user cannot read the group. |
 | `id` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the policy. |
+| `inherited` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether the group whose policies are being listed inherits the policy, from its organization or an ancestor group. A descendant group's policy is not inherited. Either way, a policy can only be changed from the group that owns it. Always false outside a group policy list. |
 | `lifecycleState` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Lifecycle state of the policy. |
 | `mode` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Enforcement mode of the policy. |
 | `name` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Name of the policy. |
-| `namespaceId` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the namespace the policy is scoped to. Null for organization-wide policies. |
+| `namespaceId` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the namespace the policy is scoped to. Null for organization-wide policies, or when the current user cannot read the group. |
 | `organizationId` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.ID of the organization the policy belongs to. |
 | `policyRego` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Rego program merged from the compiled rules. Null when the rules cannot be merged. |
 | `policyScope` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Scope of the policy. |
@@ -10256,7 +10314,7 @@ Paginated collection of [`GovernPolicy`](#governpolicy). See [Standard connectio
 
 Recorded evaluation of a policy stored in the policy store.
 
-### Fields {.no_toc}
+### `GovernPolicyEvaluation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10276,7 +10334,7 @@ Recorded evaluation of a policy stored in the policy store.
 
 Paginated collection of [`GovernPolicyEvaluation`](#governpolicyevaluation). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GovernPolicyEvaluationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -10288,7 +10346,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Violation a policy evaluation produced.
 
-### Fields {.no_toc}
+### `GovernPolicyViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10302,7 +10360,7 @@ GPG signature for a signed commit.
 
 **Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
-### Fields {.no_toc}
+### `GpgSignature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10316,7 +10374,7 @@ GPG signature for a signed commit.
 
 ## `GrafanaIntegration`
 
-### Fields {.no_toc}
+### `GrafanaIntegration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10330,7 +10388,7 @@ GPG signature for a signed commit.
 
 **Implements:** [`GroupInterface`](interfaces.md#groupinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Group` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10343,6 +10401,7 @@ GPG signature for a signed commit.
 | `adminEditPath` | [`String`](scalars.md#string) | Admin path for editing group. Only available to admins. |
 | `adminShowPath` | [`String`](scalars.md#string) | Admin path of the group. Only available to admins. |
 | `aiAuditEventsStorageEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Indicates whether AI audit events are stored for the group. |
+| `aiCatalogItems` | [`AiCatalogItemConnection!`](#aicatalogitemconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.AI Catalog items that the group can enable. This field can be resolved for only one group in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiCatalogItems`:</strong> <dl><dt>`enabledBy` ([`[AiCatalogGroupItemEnabledBy!]`](enums.md#aicataloggroupitemenabledby))</dt><dd>Return only items enabled in any of these ways. Returns all items the group can enable when omitted or empty.</dd><dt>`itemTypes` ([`[AiCatalogItemType!]`](enums.md#aicatalogitemtype))</dt><dd>Types of items to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search items by name and description.</dd><dt>`sort` ([`AiCatalogItemsSort`](enums.md#aicatalogitemssort))</dt><dd>Sort order of items.</dd></dl> |
 | `aiDomainSettings` | [`StringConnection`](#stringconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.List of allowed or denied domains for AI features. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiDomainSettings`:</strong> <dl><dt>`domainSettingType` ([`AiDomainSettingType!`](enums.md#aidomainsettingtype))</dt><dd>Type of domain setting to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Filter domains by substring match.</dd></dl> |
 | `aiGovernanceMetrics` | [`AiGovernanceMetrics`](#aigovernancemetrics) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Aggregated AI governance dashboard metrics. Returns null when the `ai_governance_dashboard` feature flag is disabled.  <strong>Arguments for `aiGovernanceMetrics`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Agent class to segment the metrics by. Defaults to ALL.</dd><dt>`timeframe` ([`AiGovernanceMetricsTimeframe`](enums.md#aigovernancemetricstimeframe))</dt><dd>Time window for the metrics. Defaults to LAST_7_DAYS.</dd></dl> |
 | `aiGovernanceSessions` | [`AiGovernanceSessionConnection`](#aigovernancesessionconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.AI sessions for the group, from GitLab Duo and external agents. Returns no sessions when the `ai_governance_sessions_api` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiGovernanceSessions`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Filter sessions by agent class. Defaults to all agent classes.</dd><dt>`flowType` ([`String`](scalars.md#string))</dt><dd>Filter by flow type.</dd><dt>`id` ([`AiGovernanceSessionID`](scalars.md#aigovernancesessionid))</dt><dd>Global ID of the session.</dd><dt>`not` ([`AiGovernanceSessionNegatedFilterInput`](input_objects.md#aigovernancesessionnegatedfilterinput))</dt><dd>Negated filter conditions.</dd><dt>`projectPath` ([`String`](scalars.md#string))</dt><dd>Filter by project full path.</dd><dt>`sessionStartedAfter` ([`Time`](scalars.md#time))</dt><dd>Return sessions started at or after the timestamp.</dd><dt>`sessionStartedBefore` ([`Time`](scalars.md#time))</dt><dd>Return sessions started at or before the timestamp.</dd><dt>`triggeredByUserId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to sessions triggered by the user with the given global ID.</dd></dl> |
@@ -10395,8 +10454,8 @@ GPG signature for a signed commit.
 | `customizableDashboardVisualizations` | [`CustomizableDashboardVisualizationConnection`](#customizabledashboardvisualizationconnection) | Visualizations of the group or associated configuration project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `customizableDashboardVisualizations`:</strong> <dl><dt>`slug` ([`String`](scalars.md#string))</dt><dd>Slug of the visualization to return.</dd></dl> |
 | `customizableDashboards` | [`CustomizableDashboardConnection`](#customizabledashboardconnection) | Customizable dashboards for the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `customizableDashboards`:</strong> <dl><dt>`category` ([`CustomizableDashboardCategory`](enums.md#customizabledashboardcategory))</dt><dd>Find by dashboard type.</dd><dt>`slug` ([`String`](scalars.md#string))</dt><dd>Find by dashboard slug.</dd></dl> |
 | `dataTransfer` | [`GroupDataTransfer`](#groupdatatransfer) | Data transfer data point for a specific period. This is mocked data under a development feature flag.  <strong>Arguments for `dataTransfer`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Retain egress data for one year. Data for the current month will increase dynamically as egress occurs.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date for the data.</dd></dl> |
-| `dependencies` | [`DependencyConnection`](#dependencyconnection) | Software dependencies used by projects under this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd></dl> |
-| `dependencyAggregations` | [`DependencyAggregationConnection`](#dependencyaggregationconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Software dependencies used by projects under this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencyAggregations`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`projectCountMax` ([`Int`](scalars.md#int))</dt><dd>Filter dependencies by maximum project count.</dd><dt>`projectCountMin` ([`Int`](scalars.md#int))</dt><dd>Filter dependencies by minimum project count.</dd><dt>`projectIds` ([`[ProjectID!]`](scalars.md#projectid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by projects within the group.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd></dl> |
+| `dependencies` | [`DependencyConnection`](#dependencyconnection) | Software dependencies used by projects under this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd></dl> |
+| `dependencyAggregations` | [`DependencyAggregationConnection`](#dependencyaggregationconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Software dependencies used by projects under this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencyAggregations`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`projectCountMax` ([`Int`](scalars.md#int))</dt><dd>Filter dependencies by maximum project count.</dd><dt>`projectCountMin` ([`Int`](scalars.md#int))</dt><dd>Filter dependencies by minimum project count.</dd><dt>`projectIds` ([`[ProjectID!]`](scalars.md#projectid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by projects within the group.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd></dl> |
 | `dependencyFirewallActivitySummary` | [`DependencyFirewallActivitySummary`](#dependencyfirewallactivitysummary) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Aggregate dependency firewall activity totals for the group. Available behind the `dependency_firewall_phase1` feature flag.  <strong>Arguments for `dependencyFirewallActivitySummary`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Start date (inclusive) of the activity window. Defaults to 7 days ago.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date (inclusive) of the activity window. Defaults to the current date.</dd></dl> |
 | `dependencyFirewallRuleActivity` | [`[DependencyFirewallRuleActivity!]`](#dependencyfirewallruleactivity) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Dependency firewall per-rule block and warn activity for the group. Available behind the `dependency_firewall_phase1` feature flag.  <strong>Arguments for `dependencyFirewallRuleActivity`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Start date (inclusive) of the activity window. Defaults to 7 days ago.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date (inclusive) of the activity window. Defaults to the current date.</dd></dl> |
 | `dependencyLocations` | [`DependencyLocationConnection`](#dependencylocationconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Locations of a software dependency across projects under this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencyLocations`:</strong> <dl><dt>`componentVersionId` ([`SbomComponentVersionID!`](scalars.md#sbomcomponentversionid))</dt><dd>Global ID of the component version to find locations for.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Filter locations by file path.</dd></dl> |
@@ -10420,7 +10479,9 @@ GPG signature for a signed commit.
 | `duoAutoModeEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates whether Duo Agent Platform auto mode is enabled for the group. |
 | `duoFeaturesEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.10.Indicates whether GitLab Duo features are enabled for the group. |
 | `duoSettingsPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.9.Path of the group Duo settings page. |
+| `duoWorkflowRunnerAvailable` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether the group has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it scans the runners the group can use and their managers. |
 | `duoWorkflowSessionArtifacts` | [`DuoWorkflowSessionArtifactConnection`](#duoworkflowsessionartifactconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Duo Agent Platform session artifacts for the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `duoWorkflowSessionArtifacts`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Filter sessions by agent class. Defaults to all agent classes.</dd><dt>`not` ([`DuoWorkflowSessionArtifactNegatedFilterInput`](input_objects.md#duoworkflowsessionartifactnegatedfilterinput))</dt><dd>Negated filter conditions.</dd><dt>`projectPath` ([`String`](scalars.md#string))</dt><dd>Filter by project full path.</dd><dt>`triggeredByUserId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to sessions triggered by the user with the given global ID.</dd><dt>`workflowCreatedAfter` ([`Time`](scalars.md#time))</dt><dd>Return sessions created after the timestamp.</dd><dt>`workflowCreatedBefore` ([`Time`](scalars.md#time))</dt><dd>Return sessions created before the timestamp.</dd><dt>`workflowDefinition` ([`String`](scalars.md#string))</dt><dd>Filter by workflow definition.</dd><dt>`workflowId` ([`AiDuoWorkflowsWorkflowID`](scalars.md#aiduoworkflowsworkflowid))</dt><dd>Filter to a single session by its workflow (session) global ID.</dd></dl> |
+| `duoWorkflowUsableRunnerType` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Runner type (instance_type, group_type, or project_type) of the runner that can pick up GitLab Duo Agent Platform workloads, or null when none can. Shares its runner scan with duoWorkflowRunnerAvailable when both are requested. |
 | `editPath` | [`String!`](scalars.md#string) | Path for editing group. |
 | `emailsDisabled` | [`Boolean`](scalars.md#boolean) | Indicates if a group has email notifications disabled. |
 | `emailsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if a group has email notifications enabled. |
@@ -10479,9 +10540,9 @@ GPG signature for a signed commit.
 | `milestones` | [`MilestoneConnection`](#milestoneconnection) | Milestones of the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `milestones`:</strong> <dl><dt>`containingDate` ([`Time`](scalars.md#time))</dt><dd>Date the milestone contains.</dd><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Array of global milestone IDs, e.g., `"gid://gitlab/Milestone/1"`.</dd><dt>`includeAncestors` ([`Boolean`](scalars.md#boolean))</dt><dd>Include milestones from all parent groups.</dd><dt>`includeDescendants` ([`Boolean`](scalars.md#boolean))</dt><dd>Include milestones from all subgroups and subprojects.</dd><dt>`searchTitle` ([`String`](scalars.md#string))</dt><dd>Search string for the title.</dd><dt>`sort` ([`MilestoneSort`](enums.md#milestonesort))</dt><dd>Sort milestones by the criteria.</dd><dt>`state` ([`MilestoneStateEnum`](enums.md#milestonestateenum))</dt><dd>Filter milestones by state.</dd><dt>`timeframe` ([`Timeframe`](input_objects.md#timeframe))</dt><dd>List items overlapping the given timeframe.</dd><dt>`title` ([`String`](scalars.md#string))</dt><dd>Title of the milestone.</dd></dl> |
 | `name` | [`String`](scalars.md#string) | Name of the group. |
 | `namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
-| `orbit` | [`OrbitNamespace`](#orbitnamespace) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit data of the group. Returns null when Orbit is not available to the current user. |
-| `orbitAccess` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit access state of the top-level group. Returns null when the user cannot read the Orbit setting of the group. This field can only be resolved for one group in any single request. |
-| `orbitTrial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit trial state of the top-level group. Returns null when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+| `orbit` | [`OrbitNamespace`](#orbitnamespace) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit data of the group. |
+| `orbitAccess` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit access state of the top-level group. Returns null when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
+| `orbitTrial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit trial state of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Returns null when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
 | `organizationEditPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.1.Path for editing group at the organization level. |
 | `organizationStateCounts` | [`OrganizationStateCounts`](#organizationstatecounts) | Counts of organizations by status for the group.  <strong>Arguments for `organizationStateCounts`:</strong> <dl><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search term to find organizations with.</dd><dt>`state` ([`CustomerRelationsOrganizationState`](enums.md#customerrelationsorganizationstate))</dt><dd>State of the organizations to search for.</dd></dl> |
 | `organizations` | [`CustomerRelationsOrganizationConnection`](#customerrelationsorganizationconnection) | Find organizations of this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `organizations`:</strong> <dl><dt>`ids` ([`[CustomerRelationsOrganizationID!]`](scalars.md#customerrelationsorganizationid))</dt><dd>Filter organizations by IDs.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search term used to find organizations with.</dd><dt>`sort` ([`OrganizationSort`](enums.md#organizationsort))</dt><dd>Criteria to sort organizations by.</dd><dt>`state` ([`CustomerRelationsOrganizationState`](enums.md#customerrelationsorganizationstate))</dt><dd>State of the organization to search for.</dd></dl> |
@@ -10588,7 +10649,7 @@ GPG signature for a signed commit.
 
 Represents a subgroup or project filter that belongs to a group level external audit event streaming destination.
 
-### Fields {.no_toc}
+### `GroupAuditEventNamespaceFilter` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10602,7 +10663,7 @@ Represents an external destination to stream group level audit events.
 
 **Implements:** [`AuditEventStreamingDestinationInterface`](interfaces.md#auditeventstreamingdestinationinterface)
 
-### Fields {.no_toc}
+### `GroupAuditEventStreamingDestination` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10624,7 +10685,7 @@ Paginated collection of [`GroupAuditEventStreamingDestination`](#groupauditevent
 
 Paginated collection of [`Group`](#group). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GroupConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -10634,7 +10695,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `GroupDataTransfer`
 
-### Fields {.no_toc}
+### `GroupDataTransfer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10644,7 +10705,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 All information related to group DORA metrics.
 
-### Fields {.no_toc}
+### `GroupDora` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10653,7 +10714,7 @@ All information related to group DORA metrics.
 
 ## `GroupHook`
 
-### Fields {.no_toc}
+### `GroupHook` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10699,7 +10760,7 @@ All information related to group DORA metrics.
 
 Paginated collection of [`GroupInterface`](interfaces.md#groupinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GroupInterfaceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -10713,7 +10774,7 @@ Represents a Group Membership.
 
 **Implements:** [`MemberInterface`](interfaces.md#memberinterface)
 
-### Fields {.no_toc}
+### `GroupMember` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10735,7 +10796,7 @@ Paginated collection of [`GroupMember`](#groupmember). See [Standard connection 
 
 ## `GroupMemberPermissions`
 
-### Fields {.no_toc}
+### `GroupMemberPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10751,7 +10812,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 **Implements:** [`GroupInterface`](interfaces.md#groupinterface)
 
-### Fields {.no_toc}
+### `GroupMinimalAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10767,7 +10828,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 **Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
-### Fields {.no_toc}
+### `GroupNamespaceLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10801,7 +10862,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 **Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
-### Fields {.no_toc}
+### `GroupNamespaceMarkdownPaths` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10813,7 +10874,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 **Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
-### Fields {.no_toc}
+### `GroupNamespaceMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10827,7 +10888,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 ## `GroupPermissions`
 
-### Fields {.no_toc}
+### `GroupPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10849,6 +10910,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 | `readCycleAnalytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_cycle_analytics` on this resource. |
 | `readDora4Analytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_dora4_analytics` on this resource. |
 | `readGroup` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `read_group` on this resource. |
+| `readOrbitSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.If `true`, the user can perform `read_orbit_setting` on this resource. |
 | `readOrbitTrial` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_orbit_trial` on this resource. |
 | `readProAiAnalytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_pro_ai_analytics` on this resource. |
 | `readRunnerCloudProvisioningInfo` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.If `true`, the user can perform `read_runner_cloud_provisioning_info` on this resource. |
@@ -10856,6 +10918,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 | `readSecurityScanProfiles` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `read_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | `removeGroup` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `remove_group` on this resource. |
 | `startOrbitTrial` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `start_orbit_trial` on this resource. |
+| `updateKnowledgeGraphSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.If `true`, the user can perform `update_knowledge_graph_setting` on this resource. |
 | `updateSecurityScanProfiles` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `update_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | `viewEditPage` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `view_edit_page` on this resource. |
 
@@ -10863,7 +10926,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 Contains release-related statistics about a group.
 
-### Fields {.no_toc}
+### `GroupReleaseStats` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10872,7 +10935,7 @@ Contains release-related statistics about a group.
 
 ## `GroupSavedReply`
 
-### Fields {.no_toc}
+### `GroupSavedReply` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10884,7 +10947,7 @@ Contains release-related statistics about a group.
 
 Paginated collection of [`GroupSavedReply`](#groupsavedreply). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GroupSavedReplyConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -10896,7 +10959,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a group secret.
 
-### Fields {.no_toc}
+### `GroupSecret` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10918,7 +10981,7 @@ Paginated collection of [`GroupSecret`](#groupsecret). See [Standard connection 
 
 Representation of a group secrets manager.
 
-### Fields {.no_toc}
+### `GroupSecretsManager` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10932,7 +10995,7 @@ Representation of a group secrets manager.
 
 Permissions the current user has on a group secrets manager.
 
-### Fields {.no_toc}
+### `GroupSecretsManagerPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10945,7 +11008,7 @@ Permissions the current user has on a group secrets manager.
 
 Representation of a group secrets permission.
 
-### Fields {.no_toc}
+### `GroupSecretsPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10963,7 +11026,7 @@ Paginated collection of [`GroupSecretsPermission`](#groupsecretspermission). See
 
 Represents the source of a security policy belonging to a group.
 
-### Fields {.no_toc}
+### `GroupSecurityPolicySource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10974,7 +11037,7 @@ Represents the source of a security policy belonging to a group.
 
 Contains statistics about a group.
 
-### Fields {.no_toc}
+### `GroupStats` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -10984,7 +11047,7 @@ Contains statistics about a group.
 
 Represents the Geo replication and verification state of a group_upload.
 
-### Fields {.no_toc}
+### `GroupUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11014,7 +11077,7 @@ Represents the Geo replication and verification state of a group_upload.
 
 Paginated collection of [`GroupUploadRegistry`](#groupuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GroupUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11026,7 +11089,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Exposes aggregated value stream flow metrics.
 
-### Fields {.no_toc}
+### `GroupValueStreamAnalyticsFlowMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11041,7 +11104,7 @@ Exposes aggregated value stream flow metrics.
 
 Represents the Geo sync and verification state of a group wiki repository.
 
-### Fields {.no_toc}
+### `GroupWikiRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11071,7 +11134,7 @@ Represents the Geo sync and verification state of a group wiki repository.
 
 Paginated collection of [`GroupWikiRepositoryRegistry`](#groupwikirepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `GroupWikiRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11081,7 +11144,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `Groups`
 
-### Fields {.no_toc}
+### `Groups` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11098,7 +11161,7 @@ Helm file metadata.
 
 **Implements:** [`PackageFileMetadata`](interfaces.md#packagefilemetadata)
 
-### Fields {.no_toc}
+### `HelmFileMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11111,7 +11174,7 @@ Helm file metadata.
 
 IDE settings and feature flags.
 
-### Fields {.no_toc}
+### `Ide` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11119,7 +11182,7 @@ IDE settings and feature flags.
 
 ## `ImagePullSecrets`
 
-### Fields {.no_toc}
+### `ImagePullSecrets` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11130,7 +11193,7 @@ IDE settings and feature flags.
 
 Represents the Geo replication and verification state of an import/export archive upload.
 
-### Fields {.no_toc}
+### `ImportExportUploadUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11160,7 +11223,7 @@ Represents the Geo replication and verification state of an import/export archiv
 
 Paginated collection of [`ImportExportUploadUploadRegistry`](#importexportuploaduploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ImportExportUploadUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11170,7 +11233,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ImportSourceUser`
 
-### Fields {.no_toc}
+### `ImportSourceUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11196,7 +11259,7 @@ Paginated collection of [`ImportSourceUser`](#importsourceuser). See [Standard c
 
 Describes an incident management on-call rotation.
 
-### Fields {.no_toc}
+### `IncidentManagementOncallRotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11218,7 +11281,7 @@ Paginated collection of [`IncidentManagementOncallRotation`](#incidentmanagement
 
 Describes an incident management on-call schedule.
 
-### Fields {.no_toc}
+### `IncidentManagementOncallSchedule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11238,7 +11301,7 @@ Paginated collection of [`IncidentManagementOncallSchedule`](#incidentmanagement
 
 A block of time for which a participant is on-call.
 
-### Fields {.no_toc}
+### `IncidentManagementOncallShift` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11254,7 +11317,7 @@ Paginated collection of [`IncidentManagementOncallShift`](#incidentmanagementonc
 
 CI/CD variables a project inherits from its parent group and ancestors.
 
-### Fields {.no_toc}
+### `InheritedCiVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11280,7 +11343,7 @@ Stores instance level Amazon S3 configurations for audit event streaming.
 
 **Implements:** [`AmazonS3ConfigurationInterface`](interfaces.md#amazons3configurationinterface)
 
-### Fields {.no_toc}
+### `InstanceAmazonS3ConfigurationType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11299,7 +11362,7 @@ Paginated collection of [`InstanceAmazonS3ConfigurationType`](#instanceamazons3c
 
 Represents a subgroup or project filter that belongs to an instance level external audit event streaming destination.
 
-### Fields {.no_toc}
+### `InstanceAuditEventNamespaceFilter` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11313,7 +11376,7 @@ Represents an external destination to stream instance level audit events.
 
 **Implements:** [`AuditEventStreamingDestinationInterface`](interfaces.md#auditeventstreamingdestinationinterface)
 
-### Fields {.no_toc}
+### `InstanceAuditEventStreamingDestination` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11336,7 +11399,7 @@ Represents an external resource to send instance audit events to.
 
 **Implements:** [`ExternalAuditEventDestinationInterface`](interfaces.md#externalauditeventdestinationinterface)
 
-### Fields {.no_toc}
+### `InstanceExternalAuditEventDestination` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11358,7 +11421,7 @@ Stores instance level Google Cloud Logging configurations associated with IAM se
 
 **Implements:** [`GoogleCloudLoggingConfigurationInterface`](interfaces.md#googlecloudloggingconfigurationinterface)
 
-### Fields {.no_toc}
+### `InstanceGoogleCloudLoggingConfigurationType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11375,7 +11438,7 @@ Paginated collection of [`InstanceGoogleCloudLoggingConfigurationType`](#instanc
 
 ## `InstanceSecurityDashboard`
 
-### Fields {.no_toc}
+### `InstanceSecurityDashboard` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11391,7 +11454,7 @@ An expression with an integer value.
 
 **Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
-### Fields {.no_toc}
+### `IntegerExpression` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11403,7 +11466,7 @@ An expression with an integer value.
 
 An integration to override the level settings of instance specific integrations.
 
-### Fields {.no_toc}
+### `IntegrationExclusion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11418,7 +11481,7 @@ Paginated collection of [`IntegrationExclusion`](#integrationexclusion). See [St
 
 Represents the Geo replication and verification state of a `issuable_metric_image_upload`.
 
-### Fields {.no_toc}
+### `IssuableMetricImageUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11448,7 +11511,7 @@ Represents the Geo replication and verification state of a `issuable_metric_imag
 
 Paginated collection of [`IssuableMetricImageUploadRegistry`](#issuablemetricimageuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `IssuableMetricImageUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11460,7 +11523,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Describes an issuable resource link for incident issues.
 
-### Fields {.no_toc}
+### `IssuableResourceLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11478,7 +11541,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Issue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11566,7 +11629,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 
 Paginated collection of [`Issue`](#issue). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `IssueConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11579,7 +11642,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Check permissions for the current user on a issue.
 
-### Fields {.no_toc}
+### `IssuePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11601,7 +11664,7 @@ Check permissions for the current user on a issue.
 
 Represents total number of issues for the represented statuses.
 
-### Fields {.no_toc}
+### `IssueStatusCountsType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11615,7 +11678,7 @@ Represents an iteration object.
 
 **Implements:** [`TimeboxReportInterface`](interfaces.md#timeboxreportinterface)
 
-### Fields {.no_toc}
+### `Iteration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11642,7 +11705,7 @@ Represents an iteration object.
 
 Represents an iteration cadence.
 
-### Fields {.no_toc}
+### `IterationCadence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11653,7 +11716,7 @@ Represents an iteration cadence.
 | `id` | [`IterationsCadenceID!`](scalars.md#iterationscadenceid) | Global ID of the iteration cadence. |
 | `iterationsInAdvance` | [`Int`](scalars.md#int) | Number of future iterations to schedule in addition to the current one. |
 | `rollOver` | [`Boolean!`](scalars.md#boolean) | Whether the iteration cadence should roll over issues to the next iteration or not. |
-| `startDate` | [`Time`](scalars.md#time) | Timestamp of the automation start date. |
+| `startDate` | [`Date`](scalars.md#date) | Automation start date. |
 | `title` | [`String!`](scalars.md#string) | Title of the iteration cadence. |
 
 ## `IterationCadenceConnection`
@@ -11666,7 +11729,7 @@ Paginated collection of [`Iteration`](#iteration). See [Standard connection fiel
 
 ## `JiraImport`
 
-### Fields {.no_toc}
+### `JiraImport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11684,7 +11747,7 @@ Paginated collection of [`JiraImport`](#jiraimport). See [Standard connection fi
 
 ## `JiraProject`
 
-### Fields {.no_toc}
+### `JiraProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11700,7 +11763,7 @@ Paginated collection of [`JiraProject`](#jiraproject). See [Standard connection 
 
 **Implements:** [`Service`](interfaces.md#service)
 
-### Fields {.no_toc}
+### `JiraService` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11711,7 +11774,7 @@ Paginated collection of [`JiraProject`](#jiraproject). See [Standard connection 
 
 ## `JiraUser`
 
-### Fields {.no_toc}
+### `JiraUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11726,7 +11789,7 @@ Paginated collection of [`JiraProject`](#jiraproject). See [Standard connection 
 
 Represents the Geo replication and verification state of a job_artifact.
 
-### Fields {.no_toc}
+### `JobArtifactRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11756,7 +11819,7 @@ Represents the Geo replication and verification state of a job_artifact.
 
 Paginated collection of [`JobArtifactRegistry`](#jobartifactregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `JobArtifactRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11770,7 +11833,7 @@ Paginated collection of [`JobNeedUnion`](unions.md#jobneedunion). See [Standard 
 
 ## `JobPermissions`
 
-### Fields {.no_toc}
+### `JobPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11781,7 +11844,7 @@ Paginated collection of [`JobNeedUnion`](unions.md#jobneedunion). See [Standard 
 
 ## `Kas`
 
-### Fields {.no_toc}
+### `Kas` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11796,7 +11859,7 @@ Represents an SSH key.
 
 **Implements:** [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Key` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11812,7 +11875,7 @@ Represents an SSH key.
 
 Annotation to apply to associated Kubernetes objects of a workspace.
 
-### Fields {.no_toc}
+### `KubernetesAnnotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11823,7 +11886,7 @@ Annotation to apply to associated Kubernetes objects of a workspace.
 
 Label to apply to associated Kubernetes objects of a workspace.
 
-### Fields {.no_toc}
+### `KubernetesLabel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11834,7 +11897,7 @@ Label to apply to associated Kubernetes objects of a workspace.
 
 **Implements:** [`LabelInterface`](interfaces.md#labelinterface)
 
-### Fields {.no_toc}
+### `Label` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11853,7 +11916,7 @@ Label to apply to associated Kubernetes objects of a workspace.
 
 Paginated collection of [`Label`](#label). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `LabelConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11865,7 +11928,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an instance-level LDAP link.
 
-### Fields {.no_toc}
+### `LdapAdminRoleLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11889,7 +11952,7 @@ Paginated collection of [`LdapAdminRoleLink`](#ldapadminrolelink). See [Standard
 
 Represents a LDAP provider.
 
-### Fields {.no_toc}
+### `LdapProvider` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11900,7 +11963,7 @@ Represents a LDAP provider.
 
 Represents the Geo sync and verification state of an LFS object.
 
-### Fields {.no_toc}
+### `LfsObjectRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11930,7 +11993,7 @@ Represents the Geo sync and verification state of an LFS object.
 
 Paginated collection of [`LfsObjectRegistry`](#lfsobjectregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `LfsObjectRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -11940,7 +12003,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `License`
 
-### Fields {.no_toc}
+### `License` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11953,7 +12016,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an entry from the Cloud License history.
 
-### Fields {.no_toc}
+### `LicenseHistoryEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11978,7 +12041,7 @@ Paginated collection of [`LicenseHistoryEntry`](#licensehistoryentry). See [Stan
 
 Represents the availability of a licensed feature for a namespace or project.
 
-### Fields {.no_toc}
+### `LicensedFeatureAvailability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -11987,7 +12050,7 @@ Represents the availability of a licensed feature for a namespace or project.
 
 ## `LinkedWorkItemType`
 
-### Fields {.no_toc}
+### `LinkedWorkItemType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12004,7 +12067,7 @@ Paginated collection of [`LinkedWorkItemType`](#linkedworkitemtype). See [Standa
 
 ## `Location`
 
-### Fields {.no_toc}
+### `Location` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12017,7 +12080,7 @@ Paginated collection of [`LinkedWorkItemType`](#linkedworkitemtype). See [Standa
 
 Represents links to perform actions on the candidate.
 
-### Fields {.no_toc}
+### `MLCandidateLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12028,7 +12091,7 @@ Represents links to perform actions on the candidate.
 
 Represents links to perform actions on the model.
 
-### Fields {.no_toc}
+### `MLModelLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12038,7 +12101,7 @@ Represents links to perform actions on the model.
 
 Represents links to perform actions on the model version.
 
-### Fields {.no_toc}
+### `MLModelVersionLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12050,7 +12113,7 @@ Represents links to perform actions on the model version.
 
 Represents a Maven local upstream registry.
 
-### Fields {.no_toc}
+### `MavenLocalUpstream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12065,7 +12128,7 @@ Represents a Maven local upstream registry.
 
 Group a Maven local upstream registry serves packages from.
 
-### Fields {.no_toc}
+### `MavenLocalUpstreamTargetGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12077,7 +12140,7 @@ Group a Maven local upstream registry serves packages from.
 
 Project a Maven local upstream registry serves packages from.
 
-### Fields {.no_toc}
+### `MavenLocalUpstreamTargetProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12089,7 +12152,7 @@ Project a Maven local upstream registry serves packages from.
 
 Maven metadata.
 
-### Fields {.no_toc}
+### `MavenMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12107,7 +12170,7 @@ Represents a Maven virtual registry.
 
 **Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
-### Fields {.no_toc}
+### `MavenRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12120,7 +12183,7 @@ Represents a Maven virtual registry.
 
 Paginated collection of [`MavenRegistry`](#mavenregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MavenRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12134,7 +12197,7 @@ Represents Maven virtual registry details.
 
 **Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
-### Fields {.no_toc}
+### `MavenRegistryDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12150,7 +12213,7 @@ Represents a Maven virtual registry upstream and its relationship to the registr
 
 **Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
-### Fields {.no_toc}
+### `MavenRegistryUpstreamWithRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12164,7 +12227,7 @@ Represents a Maven virtual registry upstream and its relationship to the upstrea
 
 **Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
-### Fields {.no_toc}
+### `MavenRegistryUpstreamWithUpstream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12179,7 +12242,7 @@ Represents a Maven upstream registry.
 
 **Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
-### Fields {.no_toc}
+### `MavenUpstream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12199,7 +12262,7 @@ Represents a cache entry for a Maven upstream.
 
 **Implements:** [`EntryInterface`](interfaces.md#entryinterface)
 
-### Fields {.no_toc}
+### `MavenUpstreamCacheEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12220,7 +12283,7 @@ Represents a cache entry for a Maven upstream.
 
 Paginated collection of [`MavenUpstreamCacheEntry`](#mavenupstreamcacheentry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MavenUpstreamCacheEntryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12232,7 +12295,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`MavenUpstream`](#mavenupstream). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MavenUpstreamConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12246,7 +12309,7 @@ Represents Maven upstream registry details.
 
 **Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
-### Fields {.no_toc}
+### `MavenUpstreamDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12270,7 +12333,7 @@ Represents a Maven upstream rule.
 
 **Implements:** [`RuleInterface`](interfaces.md#ruleinterface)
 
-### Fields {.no_toc}
+### `MavenUpstreamRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12284,7 +12347,7 @@ Represents a Maven upstream rule.
 
 Represents a Member Approval queued for role promotion.
 
-### Fields {.no_toc}
+### `MemberApproval` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12303,7 +12366,7 @@ Represents a Member Approval queued for role promotion.
 
 Paginated collection of [`MemberApproval`](#memberapproval). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MemberApprovalConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12321,7 +12384,7 @@ Represents a member role.
 
 **Implements:** [`CustomRoleInterface`](interfaces.md#customroleinterface), [`RoleInterface`](interfaces.md#roleinterface)
 
-### Fields {.no_toc}
+### `MemberRole` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12345,7 +12408,7 @@ Paginated collection of [`MemberRole`](#memberrole). See [Standard connection fi
 
 Defines which user roles, users, or groups can merge into a protected branch.
 
-### Fields {.no_toc}
+### `MergeAccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12363,7 +12426,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `MergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12415,7 +12478,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `draft` | [`Boolean!`](scalars.md#boolean) | Indicates if the merge request is a draft. |
 | `duoDependencyBumpBreakingChangesAvailable` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the merge request. |
 | `duoWorkflowLinks` | [`DuoWorkflowMergeRequestLinkConnection`](#duoworkflowmergerequestlinkconnection) | GitLab Duo Agent Platform sessions linked to the merge request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `duoWorkflowLinks`:</strong> <dl><dt>`linkType` ([`DuoWorkflowMergeRequestLinkType`](enums.md#duoworkflowmergerequestlinktype))</dt><dd>Filter links by their link type.</dd></dl> |
-| `duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Duo Workflow sessions associated with the merge request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.GitLab Duo Agent Platform flow sessions associated with the merge request. Chat sessions are excluded. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `findingReportsComparer` | [`FindingReportsComparer`](#findingreportscomparer) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.1.Vulnerability finding reports comparison reported on the merge request.  <strong>Arguments for `findingReportsComparer`:</strong> <dl><dt>`reportType` ([`ComparableSecurityReportType!`](enums.md#comparablesecurityreporttype))</dt><dd>Filter vulnerability findings by report type.</dd><dt>`scanMode` ([`ScanModeEnum`](enums.md#scanmodeenum))</dt><dd>Filter results by scan mode.</dd></dl> |
 | `forceRemoveSourceBranch` | [`Boolean`](scalars.md#boolean) | Indicates if the project settings will lead to source branch deletion after merge. |
 | `groupedApprovalsLeft` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of approvals left, counting Code Owner rules that share a section and approvers as a single rule. |
@@ -12431,7 +12494,8 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `inProgressMergeCommitSha` | [`String`](scalars.md#string) | Commit SHA of the merge request if merge is in progress. |
 | `labels` | [`LabelConnection`](#labelconnection) | Labels of the merge request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `linkedWorkItems` | [`[MergeRequestLinkedWorkItem!]`](#mergerequestlinkedworkitem) | Deprecated in GitLab 19.2. Use `workItemRelations` instead.  <strong>Arguments for `linkedWorkItems`:</strong> <dl><dt>`types` ([`[MergeRequestWorkItemLinkType!]`](enums.md#mergerequestworkitemlinktype))</dt><dd>Filter by link types. Returns all types if not specified.</dd></dl> |
-| `mergeAfter` | [`Time`](scalars.md#time) | Date after which the merge request can be merged. |
+| `mergeAfter` | [`Time`](scalars.md#time) | Date and time after which the merge request can be merged. |
+| `mergeBefore` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date and time before which the merge request can be merged. |
 | `mergeCommitSha` | [`String`](scalars.md#string) | SHA of the merge request commit (set once merged). |
 | `mergeError` | [`String`](scalars.md#string) | Error message due to a merge error. |
 | `mergeOngoing` | [`Boolean!`](scalars.md#boolean) | Indicates if a merge is currently occurring. |
@@ -12509,7 +12573,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 
 Information relating to rules that must be satisfied to merge this merge request.
 
-### Fields {.no_toc}
+### `MergeRequestApprovalState` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12524,7 +12588,7 @@ A user assigned to a merge request.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `MergeRequestAssignee` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12595,7 +12659,7 @@ A user assigned to a merge request.
 
 Paginated collection of [`MergeRequestAssignee`](#mergerequestassignee). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestAssigneeConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12609,7 +12673,7 @@ The author of the merge request.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `MergeRequestAuthor` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12680,19 +12744,32 @@ The author of the merge request.
 
 File with conflicts in a merge request that cannot be merged.
 
-### Fields {.no_toc}
+### `MergeRequestConflict` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `content` | [`String`](scalars.md#string) | Raw content of the conflicting file, including Git conflict markers. Returns null for files with unsupported encodings (binary, non-UTF-8). |
 | `ourPath` | [`String`](scalars.md#string) | Path of the conflicting file on the source branch. |
+| `sections` | [`[MergeRequestConflictSection!]`](#mergerequestconflictsection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Conflicts in the file, in file order. Returns null when the file cannot be resolved section by section, for example when its conflict markers cannot be parsed. Resolve such files with new content instead. |
 | `theirPath` | [`String`](scalars.md#string) | Path of the conflicting file on the target branch. |
+
+## `MergeRequestConflictSection`
+
+Conflict in a file, with the lines each side of the conflict keeps.
+
+### `MergeRequestConflictSection` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `ourLines` | [`[String!]!`](scalars.md#string) | Lines of the source branch, kept when the conflict is resolved with the source branch. |
+| `sectionId` | [`String!`](scalars.md#string) | ID of the section. Pass it back unchanged to choose a side of the conflict. |
+| `theirLines` | [`[String!]!`](scalars.md#string) | Lines of the target branch, kept when the conflict is resolved with the target branch. |
 
 ## `MergeRequestConnection`
 
 Paginated collection of [`MergeRequest`](#mergerequest). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12705,7 +12782,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A diff version of a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestDiff` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12720,7 +12797,7 @@ Paginated collection of [`MergeRequestDiff`](#mergerequestdiff). See [Standard c
 
 Represents the Geo sync and verification state of a Merge Request diff.
 
-### Fields {.no_toc}
+### `MergeRequestDiffRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12750,7 +12827,7 @@ Represents the Geo sync and verification state of a Merge Request diff.
 
 Paginated collection of [`MergeRequestDiffRegistry`](#mergerequestdiffregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestDiffRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12762,7 +12839,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 An external issue referenced by a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestExternalIssue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12774,7 +12851,7 @@ An external issue referenced by a merge request.
 
 A work item linked to a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestLinkedWorkItem` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12786,7 +12863,7 @@ A work item linked to a merge request.
 
 Mergeability check of the merge request.
 
-### Fields {.no_toc}
+### `MergeRequestMergeabilityCheck` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12799,7 +12876,7 @@ A user participating in a merge request.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `MergeRequestParticipant` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12870,7 +12947,7 @@ A user participating in a merge request.
 
 Paginated collection of [`MergeRequestParticipant`](#mergerequestparticipant). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestParticipantConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -12882,7 +12959,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Check permissions for the current user on a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12901,7 +12978,7 @@ Check permissions for the current user on a merge request.
 
 Label event on a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestResourceLabelEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12921,7 +12998,7 @@ A user assigned to a merge request as a reviewer.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `MergeRequestReviewer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -12992,7 +13069,7 @@ A user assigned to a merge request as a reviewer.
 
 Paginated collection of [`MergeRequestReviewer`](#mergerequestreviewer). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestReviewerConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13004,7 +13081,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Risk assessment for a merge request.
 
-### Fields {.no_toc}
+### `MergeRequestRiskAssessment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13012,6 +13089,7 @@ Risk assessment for a merge request.
 | `confidence` | [`Int`](scalars.md#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
 | `confidenceTier` | [`MergeRequestRiskConfidenceTier`](enums.md#mergerequestriskconfidencetier) | Tier derived from the confidence score. |
 | `contributingSignals` | [`[MergeRequestRiskContributingSignal!]!`](#mergerequestriskcontributingsignal) | What each signal contributed to the score. |
+| `contributions` | [`[MergeRequestRiskContribution!]!`](#mergerequestriskcontribution) | What each signal and risk domain contributed to the score. |
 | `domainTags` | [`[String!]!`](scalars.md#string) | Risk domains the change touches, used to route specialist review. |
 | `duoWorkflowId` | [`Int`](scalars.md#int) | ID of the Duo workflow session that produced the assessment. |
 | `missingSignals` | [`[MergeRequestRiskMissingSignal!]!`](#mergerequestriskmissingsignal) | Signals that could not be measured, which is why confidence may be low. |
@@ -13025,7 +13103,7 @@ Risk assessment for a merge request.
 
 Contribution a single signal made to a merge request risk score.
 
-### Fields {.no_toc}
+### `MergeRequestRiskContributingSignal` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13034,11 +13112,25 @@ Contribution a single signal made to a merge request risk score.
 | `label` | [`String`](scalars.md#string) | Human-readable name of the signal or claim. Null when the key matches neither a registered signal nor a risk domain. |
 | `signal` | [`String!`](scalars.md#string) | Name of the signal or claim. |
 
+## `MergeRequestRiskContribution`
+
+Contribution a signal or a risk domain made to a merge request risk score.
+
+### `MergeRequestRiskContribution` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `contribution` | [`Float!`](scalars.md#float) | Points the signal or risk domain added to the overall score. |
+| `description` | [`String`](scalars.md#string) | Human-readable name of the signal or risk domain. |
+| `evidence` | [`String`](scalars.md#string) | Human-readable explanation of the contribution. |
+| `identifier` | [`String!`](scalars.md#string) | Name of the signal or risk domain. |
+| `kind` | [`MergeRequestRiskContributionKind!`](enums.md#mergerequestriskcontributionkind) | Whether the contribution came from a signal or a risk domain. |
+
 ## `MergeRequestRiskMissingSignal`
 
 A signal that could not be measured for a merge request risk assessment.
 
-### Fields {.no_toc}
+### `MergeRequestRiskMissingSignal` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13049,7 +13141,7 @@ A signal that could not be measured for a merge request risk assessment.
 
 Saved view on the merge request dashboard.
 
-### Fields {.no_toc}
+### `MergeRequestSavedView` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13066,7 +13158,7 @@ Paginated collection of [`MergeRequestSavedView`](#mergerequestsavedview). See [
 
 Check permissions for the current user on a merge request saved view.
 
-### Fields {.no_toc}
+### `MergeRequestSavedViewPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13077,7 +13169,7 @@ Check permissions for the current user on a merge request saved view.
 
 A relation between a merge request and a work item.
 
-### Fields {.no_toc}
+### `MergeRequestWorkItemRelation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13094,7 +13186,7 @@ Paginated collection of [`MergeRequestWorkItemRelation`](#mergerequestworkitemre
 
 Response for `MergeRequests` aggregation engine.
 
-### Fields {.no_toc}
+### `MergeRequestsAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13109,7 +13201,7 @@ Response for `MergeRequests` aggregation engine.
 
 Paginated collection of [`MergeRequestsAggregationResponse`](#mergerequestsaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeRequestsAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13121,7 +13213,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `MergeRequests` aggregation engine.
 
-### Fields {.no_toc}
+### `MergeRequestsAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13136,7 +13228,7 @@ Response dimensions for `MergeRequests` aggregation engine.
 
 Aggregated `time_to_merge` metrics for `MergeRequests` aggregation engine.
 
-### Fields {.no_toc}
+### `MergeRequestsAggregationResponseTimeToMergeMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13150,7 +13242,7 @@ Aggregated `time_to_merge` metrics for `MergeRequests` aggregation engine.
 
 Aggregation scope for `MergeRequests`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `MergeRequestsAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13160,7 +13252,7 @@ Aggregation scope for `MergeRequests`. Apply ordering and pagination on the aggr
 
 Represents a set of cars/merge_requests queued for merging.
 
-### Fields {.no_toc}
+### `MergeTrain` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13171,7 +13263,7 @@ Represents a set of cars/merge_requests queued for merging.
 
 MergeTrainCar represents an attempt to merge a merge requestusing merge trains.
 
-### Fields {.no_toc}
+### `MergeTrainCar` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13193,7 +13285,7 @@ MergeTrainCar represents an attempt to merge a merge requestusing merge trains.
 
 Paginated collection of [`MergeTrainCar`](#mergetraincar). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeTrainCarConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13205,7 +13297,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`MergeTrain`](#mergetrain). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MergeTrainConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13215,7 +13307,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `Metadata`
 
-### Fields {.no_toc}
+### `Metadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13229,7 +13321,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a metric image upload.
 
-### Fields {.no_toc}
+### `MetricImage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13241,7 +13333,7 @@ Represents a metric image upload.
 
 ## `MetricsDashboardAnnotation`
 
-### Fields {.no_toc}
+### `MetricsDashboardAnnotation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13257,7 +13349,7 @@ Represents a milestone.
 
 **Implements:** [`TimeboxReportInterface`](interfaces.md#timeboxreportinterface)
 
-### Fields {.no_toc}
+### `Milestone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13290,7 +13382,7 @@ Paginated collection of [`Milestone`](#milestone). See [Standard connection fiel
 
 Contains statistics about a milestone.
 
-### Fields {.no_toc}
+### `MilestoneStats` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13301,7 +13393,7 @@ Contains statistics about a milestone.
 
 Candidate for a model version in the model registry.
 
-### Fields {.no_toc}
+### `MlCandidate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13322,7 +13414,7 @@ Candidate for a model version in the model registry.
 
 Paginated collection of [`MlCandidate`](#mlcandidate). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlCandidateConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13334,7 +13426,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Metadata for a candidate in the model registry.
 
-### Fields {.no_toc}
+### `MlCandidateMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13346,7 +13438,7 @@ Metadata for a candidate in the model registry.
 
 Paginated collection of [`MlCandidateMetadata`](#mlcandidatemetadata). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlCandidateMetadataConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13358,7 +13450,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Metric for a candidate in the model registry.
 
-### Fields {.no_toc}
+### `MlCandidateMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13371,7 +13463,7 @@ Metric for a candidate in the model registry.
 
 Paginated collection of [`MlCandidateMetric`](#mlcandidatemetric). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlCandidateMetricConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13383,7 +13475,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Parameter for a candidate in the model registry.
 
-### Fields {.no_toc}
+### `MlCandidateParam` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13395,7 +13487,7 @@ Parameter for a candidate in the model registry.
 
 Paginated collection of [`MlCandidateParam`](#mlcandidateparam). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlCandidateParamConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13407,7 +13499,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Machine learning experiment in model experiments.
 
-### Fields {.no_toc}
+### `MlExperiment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13425,7 +13517,7 @@ Machine learning experiment in model experiments.
 
 Paginated collection of [`MlExperiment`](#mlexperiment). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlExperimentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13437,7 +13529,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Machine learning model in the model registry.
 
-### Fields {.no_toc}
+### `MlModel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13460,7 +13552,7 @@ Machine learning model in the model registry.
 
 Paginated collection of [`MlModel`](#mlmodel). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlModelConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13472,7 +13564,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Version of a machine learning model.
 
-### Fields {.no_toc}
+### `MlModelVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13491,7 +13583,7 @@ Version of a machine learning model.
 
 Paginated collection of [`MlModelVersion`](#mlmodelversion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `MlModelVersionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13503,7 +13595,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Mean time to remediation for a single weekly (Monday to Sunday) bucket, with optional breakdowns by severity and report type.
 
-### Fields {.no_toc}
+### `MttrOverTimeBucket` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13519,7 +13611,7 @@ Mean time to remediation for a single weekly (Monday to Sunday) bucket, with opt
 
 Mean time to remediation for a single report type within a weekly bucket.
 
-### Fields {.no_toc}
+### `MttrOverTimeByReportType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13532,7 +13624,7 @@ Mean time to remediation for a single report type within a weekly bucket.
 
 Mean time to remediation for a single severity within a weekly bucket.
 
-### Fields {.no_toc}
+### `MttrOverTimeBySeverity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13545,7 +13637,7 @@ Mean time to remediation for a single severity within a weekly bucket.
 
 **Implements:** [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Namespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13628,7 +13720,7 @@ Mean time to remediation for a single severity within a weekly bucket.
 
 ## `NamespaceAvailableFeatures`
 
-### Fields {.no_toc}
+### `NamespaceAvailableFeatures` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13650,7 +13742,7 @@ Mean time to remediation for a single severity within a weekly bucket.
 
 ## `NamespaceBan`
 
-### Fields {.no_toc}
+### `NamespaceBan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13660,7 +13752,7 @@ Mean time to remediation for a single severity within a weekly bucket.
 
 ## `NamespaceCiCdSetting`
 
-### Fields {.no_toc}
+### `NamespaceCiCdSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13671,7 +13763,7 @@ Mean time to remediation for a single severity within a weekly bucket.
 
 Represents a namespace-cluster-agent mapping.
 
-### Fields {.no_toc}
+### `NamespaceClusterAgentMapping` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13684,7 +13776,7 @@ Represents a namespace-cluster-agent mapping.
 
 ## `NamespaceCommitEmail`
 
-### Fields {.no_toc}
+### `NamespaceCommitEmail` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13704,7 +13796,7 @@ Paginated collection of [`Namespace`](#namespace). See [Standard connection fiel
 
 ## `NamespacePermissions`
 
-### Fields {.no_toc}
+### `NamespacePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13729,7 +13821,7 @@ Paginated collection of [`Namespace`](#namespace). See [Standard connection fiel
 
 Represents a subscription plan.
 
-### Fields {.no_toc}
+### `NamespacePlan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13739,7 +13831,7 @@ Represents a subscription plan.
 
 ## `NamespaceProjectStatistics`
 
-### Fields {.no_toc}
+### `NamespaceProjectStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13757,7 +13849,7 @@ Represents a subscription plan.
 
 Settings for the namespace.
 
-### Fields {.no_toc}
+### `NamespaceSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13765,7 +13857,7 @@ Settings for the namespace.
 
 ## `NamespaceSidebar`
 
-### Fields {.no_toc}
+### `NamespaceSidebar` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13776,7 +13868,7 @@ Settings for the namespace.
 
 ## `NamespaceWorkItemChangesPayload`
 
-### Fields {.no_toc}
+### `NamespaceWorkItemChangesPayload` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13787,7 +13879,7 @@ Settings for the namespace.
 
 Describes where code is deployed for a project organized by folder.
 
-### Fields {.no_toc}
+### `NestedEnvironment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13801,7 +13893,7 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 ## `NetworkPolicyEgress`
 
-### Fields {.no_toc}
+### `NetworkPolicyEgress` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13812,7 +13904,7 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 **Implements:** [`BaseNoteInterface`](interfaces.md#basenoteinterface), [`ResolvableInterface`](interfaces.md#resolvableinterface)
 
-### Fields {.no_toc}
+### `Note` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13855,7 +13947,7 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 Paginated collection of [`Note`](#note). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `NoteConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13865,7 +13957,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `NotePermissions`
 
-### Fields {.no_toc}
+### `NotePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13880,7 +13972,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Nuget dependency link metadata.
 
-### Fields {.no_toc}
+### `NugetDependencyLinkMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13891,7 +13983,7 @@ Nuget dependency link metadata.
 
 Nuget metadata.
 
-### Fields {.no_toc}
+### `NugetMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13904,7 +13996,7 @@ Nuget metadata.
 
 ObservabilityLog represents a connection between an issue and a log entry.
 
-### Fields {.no_toc}
+### `ObservabilityLog` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13919,7 +14011,7 @@ ObservabilityLog represents a connection between an issue and a log entry.
 
 Paginated collection of [`ObservabilityLog`](#observabilitylog). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ObservabilityLogConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13931,7 +14023,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ObservabilityMetric represents a connection between an issue and a metric.
 
-### Fields {.no_toc}
+### `ObservabilityMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13943,7 +14035,7 @@ ObservabilityMetric represents a connection between an issue and a metric.
 
 Paginated collection of [`ObservabilityMetric`](#observabilitymetric). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ObservabilityMetricConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13955,7 +14047,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ObservabilityTrace represents a connection between an issue and a trace.
 
-### Fields {.no_toc}
+### `ObservabilityTrace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13966,7 +14058,7 @@ ObservabilityTrace represents a connection between an issue and a trace.
 
 Paginated collection of [`ObservabilityTrace`](#observabilitytrace). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ObservabilityTraceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -13978,7 +14070,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 The rotation participant and color palette.
 
-### Fields {.no_toc}
+### `OncallParticipantType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -13995,31 +14087,68 @@ Paginated collection of [`OncallParticipantType`](#oncallparticipanttype). See [
 
 Active period time range for on-call rotation.
 
-### Fields {.no_toc}
+### `OncallRotationActivePeriodType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `endTime` | [`String`](scalars.md#string) | End of the rotation active period. |
 | `startTime` | [`String`](scalars.md#string) | Start of the rotation active period. |
 
+## `Orbit`
+
+Orbit data of the instance and of the groups of the current user.
+
+### `Orbit` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit access state of the instance on GitLab Self-Managed and GitLab Dedicated. Null on GitLab.com, where access is per top-level group, and for users who are not administrators. |
+| `excludedGroups` | [`GroupConnection`](#groupconnection) | Top-level groups excluded from automatic Orbit indexing. Administrators only. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `groups` | [`GroupConnection`](#groupconnection) | Groups visible to the current user. Same arguments as `Query.groups`, plus `enabled`. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `groups`:</strong> <dl><dt>`active` ([`Boolean`](scalars.md#boolean))</dt><dd>When `nil` (default value), returns all groups. When `true`, returns only groups that are not pending deletion. When `false`, only returns groups that are pending deletion.</dd><dt>`aimedForDeletion` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter groups that are marked for deletion.</dd><dt>`allAvailable` ([`Boolean`](scalars.md#boolean))</dt><dd>When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence.</dd><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Return only groups with Orbit turned on.</dd><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter groups by IDs.</dd><dt>`includeSubgroups` ([`Boolean`](scalars.md#boolean))</dt><dd>Include descendant groups of the group given in `parentPath`. Ignored unless `parentPath` is also provided.</dd><dt>`markedForDeletionOn` ([`Date`](scalars.md#date))</dt><dd>Date when the group was marked for deletion.</dd><dt>`not` ([`BaseGroupsResolverNegatedParams`](input_objects.md#basegroupsresolvernegatedparams))</dt><dd>List of negated arguments. Warning: this argument is experimental and a subject to change in future.</dd><dt>`ownedOnly` ([`Boolean`](scalars.md#boolean))</dt><dd>Only include groups where the current user has an owner role.</dd><dt>`parentPath` ([`ID`](scalars.md#id))</dt><dd>Full path of the parent group.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query for group name or group full path.</dd><dt>`sort` ([`String`](scalars.md#string))</dt><dd>Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply.</dd><dt>`topLevelOnly` ([`Boolean`](scalars.md#boolean))</dt><dd>Only include top-level groups.</dd><dt>`visibilityLevel` ([`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum))</dt><dd>Filter groups by visibility level.</dd></dl> |
+| `memberGroups` | [`GroupConnection`](#groupconnection) | The highest group of each group tree where the current user has at least the Reporter role. With `enabled: true`, only the groups that Orbit answers for. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `memberGroups`:</strong> <dl><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Return only groups with Orbit turned on.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query for the group name or full path.</dd></dl> |
+| `schema` | [`OrbitSchema`](#orbitschema) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Node kinds and edge kinds that the current user can query in Orbit. Returns null when the user cannot use Orbit or Orbit returns no schema. |
+
 ## `OrbitAccess`
 
-Orbit access state of a group.
+Orbit access state of a group, or of the instance on GitLab Self-Managed and GitLab Dedicated.
 
-### Fields {.no_toc}
+### `OrbitAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `reason` | [`OrbitAccessReason`](enums.md#orbitaccessreason) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Cause of the access state when it has more than one cause. Null when the state has a single cause. |
-| `state` | [`OrbitAccessState!`](enums.md#orbitaccessstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Access state of the group for Orbit. |
-| `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit trial of the group. Null when the group is not in the trial flow. |
+| `state` | [`OrbitAccessState!`](enums.md#orbitaccessstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Access state of the group or the instance for Orbit. |
+| `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit trial of the group or the instance. Null outside the trial flow. |
 | `turnOnDenialReason` | [`OrbitTurnOnDenialReason`](enums.md#orbitturnondenialreason) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Reason the user cannot turn Orbit on. Null when turning on is allowed or Orbit is already on. |
+
+## `OrbitIndexing`
+
+Indexing state of a group or project in Orbit.
+
+### `OrbitIndexing` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `areas` | [`[OrbitIndexingArea!]`](#orbitindexingarea) | Indexing state of each area. |
+| `projects` | [`OrbitIndexingProjects`](#orbitindexingprojects) | Indexing progress of the projects in the group or project. |
+| `state` | [`OrbitIndexingState`](enums.md#orbitindexingstate) | Indexing state of the group or project. |
+
+## `OrbitIndexingArea`
+
+Indexing state of one Orbit area.
+
+### `OrbitIndexingArea` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `name` | [`String!`](scalars.md#string) | Name of the area. |
+| `state` | [`OrbitIndexingState`](enums.md#orbitindexingstate) | Indexing state of the area. |
 
 ## `OrbitIndexingDomain`
 
 Indexing status of one Orbit domain.
 
-### Fields {.no_toc}
+### `OrbitIndexingDomain` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14030,19 +14159,21 @@ Indexing status of one Orbit domain.
 
 Indexing progress of the projects in a group or project.
 
-### Fields {.no_toc}
+### `OrbitIndexingProjects` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `gaps` | [`Int`](scalars.md#int) | Number of projects that are not indexed. |
 | `indexed` | [`Int`](scalars.md#int) | Number of indexed projects. |
+| `notIndexed` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of projects that are not indexed. |
+| `total` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of projects known to Orbit. |
 | `totalKnown` | [`Int`](scalars.md#int) | Number of projects known to Orbit. |
 
 ## `OrbitIndexingStatus`
 
 Indexing status of a group or project in Orbit.
 
-### Fields {.no_toc}
+### `OrbitIndexingStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14050,11 +14181,22 @@ Indexing status of a group or project in Orbit.
 | `phase` | [`OrbitIndexingPhase`](enums.md#orbitindexingphase) | Indexing phase of the group or project. |
 | `projects` | [`OrbitIndexingProjects`](#orbitindexingprojects) | Indexing progress of the projects in the group or project. |
 
+## `OrbitItemCountArea`
+
+Number of indexed items in one Orbit area.
+
+### `OrbitItemCountArea` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `itemTypes` | [`[OrbitItemTypeCount!]`](#orbititemtypecount) | Number of indexed items of each item type in the area. |
+| `name` | [`String!`](scalars.md#string) | Name of the area. |
+
 ## `OrbitItemCountDomain`
 
 Number of indexed items in one Orbit domain.
 
-### Fields {.no_toc}
+### `OrbitItemCountDomain` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14065,7 +14207,7 @@ Number of indexed items in one Orbit domain.
 
 Number of indexed items of one Orbit entity.
 
-### Fields {.no_toc}
+### `OrbitItemCountEntity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14076,42 +14218,158 @@ Number of indexed items of one Orbit entity.
 
 Number of indexed items of a group or project in Orbit.
 
-### Fields {.no_toc}
+### `OrbitItemCounts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `areas` | [`[OrbitItemCountArea!]`](#orbititemcountarea) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of indexed items in each area. |
 | `domains` | [`[OrbitItemCountDomain!]`](#orbititemcountdomain) | Number of indexed items in each domain. |
+
+## `OrbitItemTypeCount`
+
+Number of indexed items of one Orbit item type.
+
+### `OrbitItemTypeCount` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `count` | [`BigInt`](scalars.md#bigint) | Number of indexed items of the item type. |
+| `name` | [`String!`](scalars.md#string) | Name of the item type. |
 
 ## `OrbitNamespace`
 
 Orbit data of a group or project.
 
-### Fields {.no_toc}
+### `OrbitNamespace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `enabledAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.When Orbit was turned on for the top-level group. Null for subgroups, projects, and when Orbit is off. |
-| `indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. |
-| `itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. This field can be resolved for only one group or project in any single request. |
+| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit access state of the top-level group. Null for subgroups, projects, and when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
+| `enabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether Orbit is turned on for the top-level group of the group. Null for projects. |
+| `enabledAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Timestamp when Orbit was turned on for the top-level group of the group. Null for projects, when Orbit is off, and when Orbit is not available to the current user. |
+| `indexing` | [`OrbitIndexing`](#orbitindexing) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indexing state of the group or project. Null when Orbit is not available to the current user. |
+| `indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. Null when Orbit is not available to the current user. |
+| `itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for only one group or project in any single request. |
+| `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit trial of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+
+## `OrbitSchema`
+
+Node kinds and edge kinds that the current user can query in Orbit.
+
+### `OrbitSchema` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `edges` | [`OrbitSchemaEdgeConnection!`](#orbitschemaedgeconnection) | Edge kinds. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `nodes` | [`OrbitSchemaNodeConnection!`](#orbitschemanodeconnection) | Node kinds. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+
+## `OrbitSchemaDisplay`
+
+How to draw nodes of a kind in the Orbit schema.
+
+### `OrbitSchemaDisplay` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `color` | [`String`](scalars.md#string) | Hex color of the node kind. |
+| `size` | [`Int`](scalars.md#int) | Relative size of the node kind in a graph. |
+
+## `OrbitSchemaDomain`
+
+Domain that groups related node kinds in the Orbit schema.
+
+### `OrbitSchemaDomain` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `name` | [`String!`](scalars.md#string) | Name of the domain. |
+
+## `OrbitSchemaEdge`
+
+Edge kind in the Orbit schema.
+
+### `OrbitSchemaEdge` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Description of the edge kind. |
+| `endpoints` | [`OrbitSchemaEdgeEndpointConnection!`](#orbitschemaedgeendpointconnection) | Pairs of node kinds that the edge kind connects. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `name` | [`String!`](scalars.md#string) | Name of the edge kind. Queries use it as the relationship type. |
+
+## `OrbitSchemaEdgeConnection`
+
+Paginated collection of [`OrbitSchemaEdge`](#orbitschemaedge). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+## `OrbitSchemaEdgeEndpoint`
+
+Pair of node kinds that an edge kind connects.
+
+### `OrbitSchemaEdgeEndpoint` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `source` | [`OrbitSchemaNode!`](#orbitschemanode) | Node kind at the start of the edge. |
+| `target` | [`OrbitSchemaNode!`](#orbitschemanode) | Node kind at the end of the edge. |
+
+## `OrbitSchemaEdgeEndpointConnection`
+
+Paginated collection of [`OrbitSchemaEdgeEndpoint`](#orbitschemaedgeendpoint). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+## `OrbitSchemaNode`
+
+Node kind in the Orbit schema.
+
+### `OrbitSchemaNode` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Description of the node kind. |
+| `display` | [`OrbitSchemaDisplay`](#orbitschemadisplay) | How to draw nodes of the kind. |
+| `domain` | [`OrbitSchemaDomain!`](#orbitschemadomain) | Domain of the node kind. |
+| `labelProperty` | [`String`](scalars.md#string) | Property to show as the label of a node. |
+| `name` | [`String!`](scalars.md#string) | Name of the node kind. Queries use it as the node label. |
+| `primaryKey` | [`String`](scalars.md#string) | Property that identifies a node. |
+| `properties` | [`OrbitSchemaPropertyConnection!`](#orbitschemapropertyconnection) | Properties of the node kind. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+
+## `OrbitSchemaNodeConnection`
+
+Paginated collection of [`OrbitSchemaNode`](#orbitschemanode). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
+## `OrbitSchemaProperty`
+
+Property of a node kind in the Orbit schema.
+
+### `OrbitSchemaProperty` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `dataType` | [`String!`](scalars.md#string) | Data type of the property, for example `string` or `int64`. |
+| `enumValues` | [`[String!]!`](scalars.md#string) | Allowed values of an enum property. Empty for other properties. |
+| `name` | [`String!`](scalars.md#string) | Name of the property. |
+| `nullable` | [`Boolean!`](scalars.md#boolean) | Indicates whether the property can be empty. |
+
+## `OrbitSchemaPropertyConnection`
+
+Paginated collection of [`OrbitSchemaProperty`](#orbitschemaproperty). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `OrbitTrial`
 
-Orbit trial of a top-level group, as reported by CustomersDot.
+Orbit trial of a top-level group or of the instance, as reported by CustomersDot.
 
-### Fields {.no_toc}
+### `OrbitTrial` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `credits` | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Credits of the trial. |
+| `credits` | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Credits of the trial. On GitLab Self-Managed and GitLab Dedicated, null unless the current user is an administrator. |
 | `expiresOn` | [`Date`](scalars.md#date) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Last day of the trial, in UTC. Null before a trial starts. |
-| `offer` | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Terms of a new trial. Null unless the group can start one and CustomersDot sends valid terms. |
+| `offer` | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Terms of a new trial. Null unless the current user can start the trial and CustomersDot sends valid terms. |
 | `state` | [`OrbitTrialState!`](enums.md#orbittrialstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.State of the trial. |
 
 ## `OrbitTrialCredits`
 
 Credits of an Orbit trial.
 
-### Fields {.no_toc}
+### `OrbitTrialCredits` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14122,7 +14380,7 @@ Credits of an Orbit trial.
 
 Terms of a new Orbit trial, as offered by CustomersDot.
 
-### Fields {.no_toc}
+### `OrbitTrialOffer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14131,7 +14389,7 @@ Terms of a new Orbit trial, as offered by CustomersDot.
 
 ## `Organization`
 
-### Fields {.no_toc}
+### `Organization` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14175,7 +14433,7 @@ Terms of a new Orbit trial, as offered by CustomersDot.
 
 Paginated collection of [`Organization`](#organization). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `OrganizationConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14187,7 +14445,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of an `organization_detail_upload`.
 
-### Fields {.no_toc}
+### `OrganizationDetailUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14217,7 +14475,7 @@ Represents the Geo replication and verification state of an `organization_detail
 
 Paginated collection of [`OrganizationDetailUploadRegistry`](#organizationdetailuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `OrganizationDetailUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14229,7 +14487,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the total number of organizations for the represented states.
 
-### Fields {.no_toc}
+### `OrganizationStateCounts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14241,7 +14499,7 @@ Represents the total number of organizations for the represented states.
 
 A user with access to the organization.
 
-### Fields {.no_toc}
+### `OrganizationUser` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14256,7 +14514,7 @@ A user with access to the organization.
 
 Represents the access level of a relationship between a User and Organization that it is related to.
 
-### Fields {.no_toc}
+### `OrganizationUserAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14267,7 +14525,7 @@ Represents the access level of a relationship between a User and Organization th
 
 An organization user badge.
 
-### Fields {.no_toc}
+### `OrganizationUserBadge` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14280,7 +14538,7 @@ Paginated collection of [`OrganizationUser`](#organizationuser). See [Standard c
 
 ## `OrganizationUserPermissions`
 
-### Fields {.no_toc}
+### `OrganizationUserPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14291,7 +14549,7 @@ Paginated collection of [`OrganizationUser`](#organizationuser). See [Standard c
 
 Represents a package with pipelines in the package registry.
 
-### Fields {.no_toc}
+### `Package` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14315,7 +14573,7 @@ Represents a package with pipelines in the package registry.
 
 Represents a package in the package registry.
 
-### Fields {.no_toc}
+### `PackageBase` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14338,7 +14596,7 @@ Represents a package in the package registry.
 
 Paginated collection of [`PackageBase`](#packagebase). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackageBaseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14350,7 +14608,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a composer JSON file.
 
-### Fields {.no_toc}
+### `PackageComposerJsonType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14363,7 +14621,7 @@ Represents a composer JSON file.
 
 Paginated collection of [`Package`](#package). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackageConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14375,7 +14633,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a package dependency.
 
-### Fields {.no_toc}
+### `PackageDependency` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14387,7 +14645,7 @@ Represents a package dependency.
 
 Represents a package dependency link.
 
-### Fields {.no_toc}
+### `PackageDependencyLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14404,7 +14662,7 @@ Paginated collection of [`PackageDependencyLink`](#packagedependencylink). See [
 
 Represents a package details in the Package Registry.
 
-### Fields {.no_toc}
+### `PackageDetailsType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14441,7 +14699,7 @@ Represents a package details in the Package Registry.
 
 Represents a package file.
 
-### Fields {.no_toc}
+### `PackageFile` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14464,7 +14722,7 @@ Paginated collection of [`PackageFile`](#packagefile). See [Standard connection 
 
 Represents the Geo sync and verification state of a package file.
 
-### Fields {.no_toc}
+### `PackageFileRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14494,7 +14752,7 @@ Represents the Geo sync and verification state of a package file.
 
 Paginated collection of [`PackageFileRegistry`](#packagefileregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackageFileRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14506,7 +14764,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a Helm dependency.
 
-### Fields {.no_toc}
+### `PackageHelmDependencyType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14523,7 +14781,7 @@ Represents a Helm dependency.
 
 Represents a Helm maintainer.
 
-### Fields {.no_toc}
+### `PackageHelmMaintainerType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14535,7 +14793,7 @@ Represents a Helm maintainer.
 
 Represents the contents of a Helm Chart.yml file.
 
-### Fields {.no_toc}
+### `PackageHelmMetadataType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14561,7 +14819,7 @@ Represents the contents of a Helm Chart.yml file.
 
 Represents links to perform actions on the package.
 
-### Fields {.no_toc}
+### `PackageLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14571,7 +14829,7 @@ Represents links to perform actions on the package.
 
 Represents a security advisory from package metadata sources.
 
-### Fields {.no_toc}
+### `PackageMetadataAdvisory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14597,7 +14855,7 @@ Paginated collection of [`PackageMetadataAdvisory`](#packagemetadataadvisory). S
 
 Represents an identifier for a package metadata advisory.
 
-### Fields {.no_toc}
+### `PackageMetadataAdvisoryIdentifier` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14608,7 +14866,7 @@ Represents an identifier for a package metadata advisory.
 
 ## `PackagePermissions`
 
-### Fields {.no_toc}
+### `PackagePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14618,7 +14876,7 @@ Represents an identifier for a package metadata advisory.
 
 Namespace-level Package Registry settings.
 
-### Fields {.no_toc}
+### `PackageSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14649,7 +14907,7 @@ Namespace-level Package Registry settings.
 
 Represents a package tag.
 
-### Fields {.no_toc}
+### `PackageTag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14666,7 +14924,7 @@ Paginated collection of [`PackageTag`](#packagetag). See [Standard connection fi
 
 A packages cleanup policy designed to keep only packages and packages assets that matter most.
 
-### Fields {.no_toc}
+### `PackagesCleanupPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14677,7 +14935,7 @@ A packages cleanup policy designed to keep only packages and packages assets tha
 
 Represents the Geo replication and verification state of a packages_debian_project_component_file.
 
-### Fields {.no_toc}
+### `PackagesDebianProjectComponentFileRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14707,7 +14965,7 @@ Represents the Geo replication and verification state of a packages_debian_proje
 
 Paginated collection of [`PackagesDebianProjectComponentFileRegistry`](#packagesdebianprojectcomponentfileregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackagesDebianProjectComponentFileRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14719,7 +14977,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a packages_helm_metadata_cache.
 
-### Fields {.no_toc}
+### `PackagesHelmMetadataCacheRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14749,7 +15007,7 @@ Represents the Geo replication and verification state of a packages_helm_metadat
 
 Paginated collection of [`PackagesHelmMetadataCacheRegistry`](#packageshelmmetadatacacheregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackagesHelmMetadataCacheRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14761,7 +15019,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a packages_nuget_symbol.
 
-### Fields {.no_toc}
+### `PackagesNugetSymbolRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14791,7 +15049,7 @@ Represents the Geo replication and verification state of a packages_nuget_symbol
 
 Paginated collection of [`PackagesNugetSymbolRegistry`](#packagesnugetsymbolregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PackagesNugetSymbolRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14803,7 +15061,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A packages protection rule designed to protect packages from being pushed by users with a certain access level.
 
-### Fields {.no_toc}
+### `PackagesProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14821,7 +15079,7 @@ Paginated collection of [`PackagesProtectionRule`](#packagesprotectionrule). See
 
 Information about pagination in a connection.
 
-### Fields {.no_toc}
+### `PageInfo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14834,7 +15092,7 @@ Information about pagination in a connection.
 
 Represents a pages deployment.
 
-### Fields {.no_toc}
+### `PagesDeployment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14856,7 +15114,7 @@ Represents a pages deployment.
 
 Paginated collection of [`PagesDeployment`](#pagesdeployment). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PagesDeploymentConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14868,7 +15126,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a pages_deployment.
 
-### Fields {.no_toc}
+### `PagesDeploymentRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14898,7 +15156,7 @@ Represents the Geo replication and verification state of a pages_deployment.
 
 Paginated collection of [`PagesDeploymentRegistry`](#pagesdeploymentregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PagesDeploymentRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -14910,7 +15168,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a file or directory in the project repository that has been locked.
 
-### Fields {.no_toc}
+### `PathLock` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14926,7 +15184,7 @@ Paginated collection of [`PathLock`](#pathlock). See [Standard connection fields
 
 ## `PathLockPermissions`
 
-### Fields {.no_toc}
+### `PathLockPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14938,7 +15196,7 @@ Represents a Pending Group Membership.
 
 **Implements:** [`MemberInterface`](interfaces.md#memberinterface), [`PendingMemberInterface`](interfaces.md#pendingmemberinterface)
 
-### Fields {.no_toc}
+### `PendingGroupMember` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14968,7 +15226,7 @@ Represents a Pending Project Membership.
 
 **Implements:** [`MemberInterface`](interfaces.md#memberinterface), [`PendingMemberInterface`](interfaces.md#pendingmemberinterface)
 
-### Fields {.no_toc}
+### `PendingProjectMember` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -14992,7 +15250,7 @@ Represents a Pending Project Membership.
 
 Personal access token.
 
-### Fields {.no_toc}
+### `PersonalAccessToken` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15013,7 +15271,7 @@ Personal access token.
 
 Paginated collection of [`PersonalAccessToken`](#personalaccesstoken). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PersonalAccessTokenConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15025,7 +15283,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a personal_snippet_upload.
 
-### Fields {.no_toc}
+### `PersonalSnippetUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15055,7 +15313,7 @@ Represents the Geo replication and verification state of a personal_snippet_uplo
 
 Paginated collection of [`PersonalSnippetUploadRegistry`](#personalsnippetuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PersonalSnippetUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15067,7 +15325,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 **Implements:** [`PipelineInterface`](interfaces.md#pipelineinterface)
 
-### Fields {.no_toc}
+### `Pipeline` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15149,7 +15407,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `PipelineAnalytics`
 
-### Fields {.no_toc}
+### `PipelineAnalytics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15169,7 +15427,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `PipelineAnalyticsPeriod`
 
-### Fields {.no_toc}
+### `PipelineAnalyticsPeriod` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15181,7 +15439,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo sync and verification state of a pipeline artifact.
 
-### Fields {.no_toc}
+### `PipelineArtifactRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15211,7 +15469,7 @@ Represents the Geo sync and verification state of a pipeline artifact.
 
 Paginated collection of [`PipelineArtifactRegistry`](#pipelineartifactregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PipelineArtifactRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15223,7 +15481,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`Pipeline`](#pipeline). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PipelineConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15235,7 +15493,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents pipeline counts for the project.
 
-### Fields {.no_toc}
+### `PipelineCounts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15250,7 +15508,7 @@ Represents the pipeline execution policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `PipelineExecutionPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15272,7 +15530,7 @@ Represents the pipeline execution policy.
 
 Represents policy fields related to the pipeline execution policy.
 
-### Fields {.no_toc}
+### `PipelineExecutionPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15288,7 +15546,7 @@ Paginated collection of [`PipelineExecutionPolicy`](#pipelineexecutionpolicy). S
 
 Represents a project schedule for a pipeline execution policy.
 
-### Fields {.no_toc}
+### `PipelineExecutionProjectSchedule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15310,7 +15568,7 @@ Represents the pipeline execution schedule policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `PipelineExecutionSchedulePolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15339,7 +15597,7 @@ Paginated collection of [`PipelineExecutionSchedulePolicy`](#pipelineexecutionsc
 
 Represents policy fields related to the pipeline execution scheduled policy.
 
-### Fields {.no_toc}
+### `PipelineExecutionScheduledPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15352,7 +15610,7 @@ Represents policy fields related to the pipeline execution scheduled policy.
 
 CI/CD variables added to a manual pipeline.
 
-### Fields {.no_toc}
+### `PipelineManualVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15366,7 +15624,7 @@ Paginated collection of [`PipelineManualVariable`](#pipelinemanualvariable). See
 
 ## `PipelineMessage`
 
-### Fields {.no_toc}
+### `PipelineMessage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15381,7 +15639,7 @@ Paginated collection of [`PipelineMessage`](#pipelinemessage). See [Standard con
 
 **Implements:** [`PipelineInterface`](interfaces.md#pipelineinterface)
 
-### Fields {.no_toc}
+### `PipelineMinimalAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15394,7 +15652,7 @@ Paginated collection of [`PipelineMessage`](#pipelinemessage). See [Standard con
 
 ## `PipelinePermissions`
 
-### Fields {.no_toc}
+### `PipelinePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15407,7 +15665,7 @@ Paginated collection of [`PipelineMessage`](#pipelinemessage). See [Standard con
 
 Represents a pipeline schedule.
 
-### Fields {.no_toc}
+### `PipelineSchedule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15436,7 +15694,7 @@ Represents a pipeline schedule.
 
 Paginated collection of [`PipelineSchedule`](#pipelineschedule). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PipelineScheduleConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15446,7 +15704,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `PipelineSchedulePermissions`
 
-### Fields {.no_toc}
+### `PipelineSchedulePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15459,7 +15717,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Counts of pipeline schedules by status.
 
-### Fields {.no_toc}
+### `PipelineScheduleStatusCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15471,7 +15729,7 @@ Counts of pipeline schedules by status.
 
 **Implements:** [`CiVariable`](interfaces.md#civariable)
 
-### Fields {.no_toc}
+### `PipelineScheduleVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15489,7 +15747,7 @@ Paginated collection of [`PipelineScheduleVariable`](#pipelineschedulevariable).
 
 Represents vulnerability finding of a security report on the pipeline.
 
-### Fields {.no_toc}
+### `PipelineSecurityReportFinding` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15536,7 +15794,7 @@ Paginated collection of [`PipelineSecurityReportFinding`](#pipelinesecurityrepor
 
 Check permissions for the current user on a vulnerability finding.
 
-### Fields {.no_toc}
+### `PipelineSecurityReportFindingPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15545,7 +15803,7 @@ Check permissions for the current user on a vulnerability finding.
 
 ## `PipelineTrigger`
 
-### Fields {.no_toc}
+### `PipelineTrigger` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15562,7 +15820,7 @@ Check permissions for the current user on a vulnerability finding.
 
 Paginated collection of [`PipelineTrigger`](#pipelinetrigger). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PipelineTriggerConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15574,7 +15832,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response for `Pipelines` aggregation engine.
 
-### Fields {.no_toc}
+### `PipelinesAggregationResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15588,7 +15846,7 @@ Response for `Pipelines` aggregation engine.
 
 Paginated collection of [`PipelinesAggregationResponse`](#pipelinesaggregationresponse). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `PipelinesAggregationResponseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -15600,7 +15858,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Response dimensions for `Pipelines` aggregation engine.
 
-### Fields {.no_toc}
+### `PipelinesAggregationResponseDimensions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15616,7 +15874,7 @@ Response dimensions for `Pipelines` aggregation engine.
 
 Aggregated `duration` metrics for `Pipelines` aggregation engine.
 
-### Fields {.no_toc}
+### `PipelinesAggregationResponseDurationMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15630,7 +15888,7 @@ Aggregated `duration` metrics for `Pipelines` aggregation engine.
 
 Aggregation scope for `Pipelines`. Apply ordering and pagination on the aggregation.
 
-### Fields {.no_toc}
+### `PipelinesAggregationScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15640,7 +15898,7 @@ Aggregation scope for `Pipelines`. Apply ordering and pagination on the aggregat
 
 Represents policy violation for `any_merge_request` report_type.
 
-### Fields {.no_toc}
+### `PolicyAnyMergeRequestViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15649,7 +15907,7 @@ Represents policy violation for `any_merge_request` report_type.
 
 ## `PolicyApprovalGroup`
 
-### Fields {.no_toc}
+### `PolicyApprovalGroup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15662,7 +15920,7 @@ Represents policy violation for `any_merge_request` report_type.
 
 Represents the approval settings of merge request overridden by a policy.
 
-### Fields {.no_toc}
+### `PolicyApprovalSettingsOverride` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15674,7 +15932,7 @@ Represents the approval settings of merge request overridden by a policy.
 
 Multiple approvers action.
 
-### Fields {.no_toc}
+### `PolicyApproversType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15687,7 +15945,7 @@ Multiple approvers action.
 
 Represents bypass status of a merge request for a security policy.
 
-### Fields {.no_toc}
+### `PolicyBypassStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15700,7 +15958,7 @@ Represents bypass status of a merge request for a security policy.
 
 Represents the source and target pipelines used for comparison in the policy evaluation.
 
-### Fields {.no_toc}
+### `PolicyComparisonPipeline` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15712,7 +15970,7 @@ Represents the source and target pipelines used for comparison in the policy eva
 
 Represents a policy dismissal for a security finding or license occurrence.
 
-### Fields {.no_toc}
+### `PolicyDismissal` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15723,7 +15981,7 @@ Represents a policy dismissal for a security finding or license occurrence.
 
 Represents an error that can occur during policy evaluation.
 
-### Fields {.no_toc}
+### `PolicyError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15736,7 +15994,7 @@ Represents an error that can occur during policy evaluation.
 
 Represents policy violation for `license_scanning` report_type.
 
-### Fields {.no_toc}
+### `PolicyLicenseScanningViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15748,7 +16006,7 @@ Represents policy violation for `license_scanning` report_type.
 
 Response of security policy creation.
 
-### Fields {.no_toc}
+### `PolicyProjectCreated` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15761,7 +16019,7 @@ Response of security policy creation.
 
 Represents policy violation for `scan_finding` report_type.
 
-### Fields {.no_toc}
+### `PolicyScanFindingViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15775,7 +16033,7 @@ Represents policy violation for `scan_finding` report_type.
 
 Represents a pipeline created by a scheduled security policy.
 
-### Fields {.no_toc}
+### `PolicySchedulePipeline` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15792,7 +16050,7 @@ Paginated collection of [`PolicySchedulePipeline`](#policyschedulepipeline). See
 
 Represents a test run for a scheduled pipeline execution policy.
 
-### Fields {.no_toc}
+### `PolicyScheduleTestRun` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15813,7 +16071,7 @@ Paginated collection of [`PolicyScheduleTestRun`](#policyscheduletestrun). See [
 
 ## `PolicyScope`
 
-### Fields {.no_toc}
+### `PolicyScope` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15838,13 +16096,13 @@ Paginated collection of [`PolicyScheduleTestRun`](#policyscheduletestrun). See [
 
 Catalogs available when creating a policy in the policy store.
 
-### Fields {.no_toc}
+### `PolicyStore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[PolicyStoreAction!]!`](#policystoreaction) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Actions available when creating a policy in the policy store. |
 | `policies` | [`GovernPolicyConnection`](#governpolicyconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Policies stored in the policy store for the organization or group. For a group, organization-wide, ancestor, and descendant groups' policies are included. Only `first` and `after` are supported; page with `pageInfo.endCursor`. Cursor offsets are capped at 100000, so policies past that window cannot be paged. The `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policies`:</strong> <dl><dt>`ids` ([`[Int!]`](scalars.md#int))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs.</dd><dt>`triggerType` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog.</dd></dl> |
-| `policyEvaluations` | [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Recorded evaluations of the policies stored in the policy store for the organization or group, newest first. For a group, only evaluations of the group's own policies are returned. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policyEvaluations`:</strong> <dl><dt>`evaluatedAfter` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or after the given timestamp.</dd><dt>`evaluatedBefore` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or before the given timestamp.</dd><dt>`mode` ([`GovernPolicyEvaluationMode`](enums.md#governpolicyevaluationmode))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran in the given enforcement mode.</dd><dt>`policyId` ([`Int`](scalars.md#int))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations of the policy with the given ID.</dd><dt>`verdict` ([`GovernPolicyEvaluationVerdict`](enums.md#governpolicyevaluationverdict))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that produced the given verdict.</dd></dl> |
+| `policyEvaluations` | [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Recorded evaluations of the policies stored in the policy store for the organization or group, newest first. For a group, evaluations of its own and descendant groups' policies are returned, plus evaluations of inherited policies recorded against the group's projects. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policyEvaluations`:</strong> <dl><dt>`evaluatedAfter` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or after the given timestamp.</dd><dt>`evaluatedBefore` ([`Time`](scalars.md#time))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran at or before the given timestamp.</dd><dt>`mode` ([`GovernPolicyEvaluationMode`](enums.md#governpolicyevaluationmode))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that ran in the given enforcement mode.</dd><dt>`policyId` ([`Int`](scalars.md#int))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations of the policy with the given ID.</dd><dt>`verdict` ([`GovernPolicyEvaluationVerdict`](enums.md#governpolicyevaluationverdict))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Return only the evaluations that produced the given verdict.</dd></dl> |
 | `rules` | [`[PolicyStoreRule!]!`](#policystorerule) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Rule kinds available when creating a policy in the policy store. |
 | `triggers` | [`[PolicyStoreTrigger!]!`](#policystoretrigger) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Triggers available when creating a policy in the policy store. |
 
@@ -15852,7 +16110,7 @@ Catalogs available when creating a policy in the policy store.
 
 Action available when creating a policy in the policy store.
 
-### Fields {.no_toc}
+### `PolicyStoreAction` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15863,7 +16121,7 @@ Action available when creating a policy in the policy store.
 
 A role that can be assigned in a policy action.
 
-### Fields {.no_toc}
+### `PolicyStoreRole` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15874,7 +16132,7 @@ A role that can be assigned in a policy action.
 
 Rule kind available when creating a policy in the policy store.
 
-### Fields {.no_toc}
+### `PolicyStoreRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15885,7 +16143,7 @@ Rule kind available when creating a policy in the policy store.
 
 Trigger available when creating a policy in the policy store.
 
-### Fields {.no_toc}
+### `PolicyStoreTrigger` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15897,7 +16155,7 @@ Trigger available when creating a policy in the policy store.
 
 Represents the details of merge request approval policy violations.
 
-### Fields {.no_toc}
+### `PolicyViolationDetails` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15914,7 +16172,7 @@ Represents the details of merge request approval policy violations.
 
 Represents generic policy violation information.
 
-### Fields {.no_toc}
+### `PolicyViolationInfo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15927,7 +16185,7 @@ Represents generic policy violation information.
 
 ## `PreviewBillableUserChange`
 
-### Fields {.no_toc}
+### `PreviewBillableUserChange` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15939,7 +16197,7 @@ Represents generic policy violation information.
 
 Representation of who is provided access to. For eg: User/Role/MemberRole.
 
-### Fields {.no_toc}
+### `Principal` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15952,7 +16210,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 
 **Implements:** [`ProjectInterface`](interfaces.md#projectinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Project` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -15963,7 +16221,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `aiCatalogItem` | [`AiCatalogItem`](interfaces.md#aicatalogitem) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.5.AI Catalog item of the project.  <strong>Arguments for `aiCatalogItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to find.</dd><dt>`showSoftDeleted` ([`Boolean`](scalars.md#boolean))</dt><dd>Whether to show the item if it has been soft-deleted. Defaults to `false`.</dd></dl> |
 | `aiCatalogItemConsumerForItem` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.AI Catalog item configuration for the given item in the project.  <strong>Arguments for `aiCatalogItemConsumerForItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to return the configuration of.</dd></dl> |
 | `aiCatalogItems` | [`AiCatalogItemConnection!`](#aicatalogitemconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.AI Catalog items of the project. This field can be resolved for only one project in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiCatalogItems`:</strong> <dl><dt>`allAvailable` ([`Boolean`](scalars.md#boolean))</dt><dd>Include public items from the AI Catalog.</dd><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Include only items that are enabled or disabled in the project.</dd><dt>`itemTypes` ([`[AiCatalogItemType!]`](enums.md#aicatalogitemtype))</dt><dd>Types of items to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search items by name and description.</dd><dt>`sort` ([`AiCatalogItemsSort`](enums.md#aicatalogitemssort))</dt><dd>Sort order of items.</dd></dl> |
-| `aiFlowTriggers` | [`AiFlowTriggerTypeConnection`](#aiflowtriggertypeconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.3.AI flow triggers of the project. This field can only be resolved for one project per request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiFlowTriggers`:</strong> <dl><dt>`ids` ([`[AiFlowTriggerID!]`](scalars.md#aiflowtriggerid))</dt><dd>Filter AI flow triggers by IDs.</dd></dl> |
+| `aiFlowTriggers` | [`AiFlowTriggerTypeConnection`](#aiflowtriggertypeconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.3.AI flow triggers of the project. This field can only be resolved for one project per request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiFlowTriggers`:</strong> <dl><dt>`active` ([`Boolean`](scalars.md#boolean))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter AI flow triggers by whether they are active.</dd><dt>`eventType` ([`AiFlowTriggerEventType`](enums.md#aiflowtriggereventtype))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter AI flow triggers by event type. `MERGE_REQUEST` also matches `MERGE_REQUEST_READY` and `MERGE_REQUEST_CODE_CONFLICT`.</dd><dt>`ids` ([`[AiFlowTriggerID!]`](scalars.md#aiflowtriggerid))</dt><dd>Filter AI flow triggers by IDs.</dd><dt>`kind` ([`AiFlowTriggerKind`](enums.md#aiflowtriggerkind))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter AI flow triggers by kind.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Search AI flow triggers by name, config path, or catalog item name. Maximum 255 characters.</dd><dt>`sort` ([`AiFlowTriggerSort`](enums.md#aiflowtriggersort))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Sort AI flow triggers by the criteria.</dd></dl> |
 | `aiGovernanceMetrics` | [`AiGovernanceMetrics`](#aigovernancemetrics) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Aggregated AI governance dashboard metrics. Returns null when the `ai_governance_dashboard` feature flag is disabled.  <strong>Arguments for `aiGovernanceMetrics`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Agent class to segment the metrics by. Defaults to ALL.</dd><dt>`timeframe` ([`AiGovernanceMetricsTimeframe`](enums.md#aigovernancemetricstimeframe))</dt><dd>Time window for the metrics. Defaults to LAST_7_DAYS.</dd></dl> |
 | `aiGovernanceSessions` | [`AiGovernanceSessionConnection`](#aigovernancesessionconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.AI sessions for the project, from GitLab Duo and external agents. Returns no sessions when the `ai_governance_sessions_api` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiGovernanceSessions`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Filter sessions by agent class. Defaults to all agent classes.</dd><dt>`flowType` ([`String`](scalars.md#string))</dt><dd>Filter by flow type.</dd><dt>`id` ([`AiGovernanceSessionID`](scalars.md#aigovernancesessionid))</dt><dd>Global ID of the session.</dd><dt>`not` ([`AiGovernanceSessionNegatedFilterInput`](input_objects.md#aigovernancesessionnegatedfilterinput))</dt><dd>Negated filter conditions.</dd><dt>`sessionStartedAfter` ([`Time`](scalars.md#time))</dt><dd>Return sessions started at or after the timestamp.</dd><dt>`sessionStartedBefore` ([`Time`](scalars.md#time))</dt><dd>Return sessions started at or before the timestamp.</dd><dt>`triggeredByUserId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to sessions triggered by the user with the given global ID.</dd></dl> |
 | `aiGovernanceToolCalls` | [`AiGovernanceToolCallsReport`](#aigovernancetoolcallsreport) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Top tools invoked by AI agents, with invocation counts. Returns null when the `ai_governance_dashboard` or `ai_governance_tool_calls` feature flag is disabled or when ClickHouse is not enabled.  <strong>Arguments for `aiGovernanceToolCalls`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Agent class to segment the tool calls by. Defaults to ALL.</dd><dt>`timeframe` ([`AiGovernanceMetricsTimeframe`](enums.md#aigovernancemetricstimeframe))</dt><dd>Time window for the tool calls. Defaults to LAST_7_DAYS.</dd></dl> |
@@ -16041,7 +16299,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `dastSiteValidations` | [`DastSiteValidationConnection`](#dastsitevalidationconnection) | DAST Site Validations associated with the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dastSiteValidations`:</strong> <dl><dt>`normalizedTargetUrls` ([`[String!]`](scalars.md#string))</dt><dd>Normalized URL of the target to be scanned.</dd><dt>`status` ([`DastSiteValidationStatusEnum`](enums.md#dastsitevalidationstatusenum))</dt><dd>Status of the site validation.</dd></dl> |
 | `dataTransfer` | [`ProjectDataTransfer`](#projectdatatransfer) | Data transfer data point for a specific period. This is mocked data under a development feature flag.  <strong>Arguments for `dataTransfer`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Retain egress data for one year. Data for the current month will increase dynamically as egress occurs.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date for the data.</dd></dl> |
 | `defaultMergeRequestTarget` | [`Project`](#project) | Default target project of merge requests created from the project. For a fork, this is the upstream project when the fork can target it, and the fork itself otherwise. Returns `null` when the target project is not visible to the current user. |
-| `dependencies` | [`DependencyConnection`](#dependencyconnection) | Software dependencies used by the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd></dl> |
+| `dependencies` | [`DependencyConnection`](#dependencyconnection) | Software dependencies used by the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd></dl> |
 | `dependencyFirewallActivitySummary` | [`DependencyFirewallActivitySummary`](#dependencyfirewallactivitysummary) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Aggregate dependency firewall activity totals for the project. Available behind the `dependency_firewall_phase1` feature flag. This field can be resolved for only one project in any single request.  <strong>Arguments for `dependencyFirewallActivitySummary`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Start date (inclusive) of the activity window. Defaults to 7 days ago.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date (inclusive) of the activity window. Defaults to the current date.</dd></dl> |
 | `dependencyFirewallRuleActivity` | [`[DependencyFirewallRuleActivity!]`](#dependencyfirewallruleactivity) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Dependency firewall per-rule block and warn activity for the project. Available behind the `dependency_firewall_phase1` feature flag.  <strong>Arguments for `dependencyFirewallRuleActivity`:</strong> <dl><dt>`from` ([`Date`](scalars.md#date))</dt><dd>Start date (inclusive) of the activity window. Defaults to 7 days ago.</dd><dt>`to` ([`Date`](scalars.md#date))</dt><dd>End date (inclusive) of the activity window. Defaults to the current date.</dd></dl> |
 | `dependencyPaths` | [`DependencyPathPage`](#dependencypathpage) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.Ancestor dependency paths for a dependency used by the project. Returns `null` if `dependency_graph_graphql` feature flag is disabled.  <strong>Arguments for `dependencyPaths`:</strong> <dl><dt>`after` ([`String`](scalars.md#string))</dt><dd>Fetch paths after the cursor.</dd><dt>`before` ([`String`](scalars.md#string))</dt><dd>Fetch paths before the cursor.</dd><dt>`limit` ([`Int`](scalars.md#int))</dt><dd>Number of paths to fetch.</dd><dt>`occurrence` ([`SbomOccurrenceID!`](scalars.md#sbomoccurrenceid))</dt><dd>Dependency path for occurrence.</dd></dl> |
@@ -16056,7 +16314,8 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `duoContextExclusionSettings` | [`DuoContextExclusionSettings`](#duocontextexclusionsettings) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Settings for excluding files from Duo context. |
 | `duoDependencyBumpBreakingChangesAvailable` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the project. |
 | `duoFeaturesEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.9.Indicates whether GitLab Duo features are enabled for the project. |
-| `duoMcpServersCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of distinct MCP servers used by the project's configured agents. Resolved on request only, because it reads the configured agents and their versions. |
+| `duoMcpServerNames` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Names of the distinct MCP servers used by the project's configured agents, sorted alphabetically. Servers blocked for the project's namespace are not listed. Resolved on request only, because it reads the configured agents and their versions. Shares its lookup with duoMcpServersCount when both are requested. |
+| `duoMcpServersCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of distinct MCP servers used by the project's configured agents. Servers blocked for the project's namespace are not counted. Resolved on request only, because it reads the configured agents and their versions. |
 | `duoWorkflowEvents` | [`DuoWorkflowEventConnection`](#duoworkfloweventconnection) | Checkpoints for GitLab Duo Agent Platform flows, for all users (remote flows only). Returns only the latest checkpoint by default. Use `first` and `after` to page through history. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `duoWorkflowEvents`:</strong> <dl><dt>`workflowId` ([`AiDuoWorkflowsWorkflowID!`](scalars.md#aiduoworkflowsworkflowid))</dt><dd>Array of request IDs to fetch.</dd></dl> |
 | `duoWorkflowRunnerAvailable` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Indicates whether the project has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it queries the project's runners and their managers. |
 | `duoWorkflowSessionArtifacts` | [`DuoWorkflowSessionArtifactConnection`](#duoworkflowsessionartifactconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Duo Agent Platform session artifacts for the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `duoWorkflowSessionArtifacts`:</strong> <dl><dt>`agentClass` ([`AiGovernanceAgentClass`](enums.md#aigovernanceagentclass))</dt><dd>Filter sessions by agent class. Defaults to all agent classes.</dd><dt>`not` ([`DuoWorkflowSessionArtifactNegatedFilterInput`](input_objects.md#duoworkflowsessionartifactnegatedfilterinput))</dt><dd>Negated filter conditions.</dd><dt>`triggeredByUserId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to sessions triggered by the user with the given global ID.</dd><dt>`workflowCreatedAfter` ([`Time`](scalars.md#time))</dt><dd>Return sessions created after the timestamp.</dd><dt>`workflowCreatedBefore` ([`Time`](scalars.md#time))</dt><dd>Return sessions created before the timestamp.</dd><dt>`workflowDefinition` ([`String`](scalars.md#string))</dt><dd>Filter by workflow definition.</dd><dt>`workflowId` ([`AiDuoWorkflowsWorkflowID`](scalars.md#aiduoworkflowsworkflowid))</dt><dd>Filter to a single session by its workflow (session) global ID.</dd></dl> |
@@ -16145,7 +16404,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `onlyAllowMergeIfPipelineSucceeds` | [`Boolean`](scalars.md#boolean) | Indicates if merge requests of the project can only be merged with successful jobs. |
 | `openIssuesCount` | [`Int`](scalars.md#int) | Number of open issues for the project. |
 | `openMergeRequestsCount` | [`Int`](scalars.md#int) | Number of open merge requests for the project. |
-| `orbit` | [`OrbitNamespace`](#orbitnamespace) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit data of the project. Returns null when Orbit is not available to the current user. |
+| `orbit` | [`OrbitNamespace`](#orbitnamespace) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Orbit data of the project. |
 | `organizationEditPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.11.Path for editing project at the organization level. |
 | `packages` | [`PackageConnection`](#packageconnection) | Packages of the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `packages`:</strong> <dl><dt>`includeVersionless` ([`Boolean`](scalars.md#boolean))</dt><dd>Include versionless packages.</dd><dt>`packageName` ([`String`](scalars.md#string))</dt><dd>Search a package by name.</dd><dt>`packageType` ([`PackageTypeEnum`](enums.md#packagetypeenum))</dt><dd>Filter a package by type.</dd><dt>`packageVersion` ([`String`](scalars.md#string))</dt><dd>Filter a package by version. If used in combination with `include_versionless`, then no versionless packages are returned.</dd><dt>`sort` ([`PackageSort`](enums.md#packagesort))</dt><dd>Sort packages by the criteria.</dd><dt>`status` ([`PackageStatus`](enums.md#packagestatus))</dt><dd>Filter a package by status.</dd></dl> |
 | `packagesCleanupPolicy` | [`PackagesCleanupPolicy`](#packagescleanuppolicy) | Packages cleanup policy for the project. |
@@ -16271,7 +16530,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 
 ## `ProjectCiCdSetting`
 
-### Fields {.no_toc}
+### `ProjectCiCdSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16296,7 +16555,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 
 Compliance control status for a project.
 
-### Fields {.no_toc}
+### `ProjectComplianceControlStatusType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16313,7 +16572,7 @@ Paginated collection of [`ProjectComplianceControlStatusType`](#projectcomplianc
 
 Compliance requirement status for a project.
 
-### Fields {.no_toc}
+### `ProjectComplianceRequirementStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16336,7 +16595,7 @@ Compliance violation for a project.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `ProjectComplianceViolation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16361,7 +16620,7 @@ Paginated collection of [`ProjectComplianceViolation`](#projectcomplianceviolati
 
 Paginated collection of [`Project`](#project). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16371,7 +16630,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ProjectDataTransfer`
 
-### Fields {.no_toc}
+### `ProjectDataTransfer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16382,7 +16641,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the access level required by the user to access a project feature.
 
-### Fields {.no_toc}
+### `ProjectFeatureAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16391,7 +16650,7 @@ Represents the access level required by the user to access a project feature.
 
 ## `ProjectHook`
 
-### Fields {.no_toc}
+### `ProjectHook` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16434,7 +16693,7 @@ Represents the access level required by the user to access a project feature.
 
 Represents the Geo replication and verification state of a relation export file upload project_import_export_relation_export_upload_upload.
 
-### Fields {.no_toc}
+### `ProjectImportExportRelationExportUploadUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16464,7 +16723,7 @@ Represents the Geo replication and verification state of a relation export file 
 
 Paginated collection of [`ProjectImportExportRelationExportUploadUploadRegistry`](#projectimportexportrelationexportuploaduploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectImportExportRelationExportUploadUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16476,7 +16735,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`ProjectInterface`](interfaces.md#projectinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectInterfaceConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16490,7 +16749,7 @@ Represents a Project Membership.
 
 **Implements:** [`MemberInterface`](interfaces.md#memberinterface)
 
-### Fields {.no_toc}
+### `ProjectMember` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16513,7 +16772,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 **Implements:** [`ProjectInterface`](interfaces.md#projectinterface)
 
-### Fields {.no_toc}
+### `ProjectMinimalAccess` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16530,7 +16789,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 **Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
-### Fields {.no_toc}
+### `ProjectNamespaceLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16568,7 +16827,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 **Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
-### Fields {.no_toc}
+### `ProjectNamespaceMarkdownPaths` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16580,11 +16839,11 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 **Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
-### Fields {.no_toc}
+### `ProjectNamespaceMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `defaultBranch` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Default branch of the project. |
+| `defaultBranch` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Default branch of the project. Returns null if the user does not have permission to read the repository. |
 | `groupId` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.ID of the group. Returns null for user namespaces. |
 | `initialSort` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.User preference for initial sort order. |
 | `isIssueRepositioningDisabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Whether issue repositioning is disabled for the namespace. |
@@ -16594,7 +16853,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 ## `ProjectPermissions`
 
-### Fields {.no_toc}
+### `ProjectPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16672,7 +16931,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 Plan limits for the current project.
 
-### Fields {.no_toc}
+### `ProjectPlanLimits` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16682,7 +16941,7 @@ Plan limits for the current project.
 
 Represents the Geo replication and verification state of a project repository.
 
-### Fields {.no_toc}
+### `ProjectRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16712,7 +16971,7 @@ Represents the Geo replication and verification state of a project repository.
 
 Paginated collection of [`ProjectRepositoryRegistry`](#projectrepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16722,7 +16981,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ProjectSavedReply`
 
-### Fields {.no_toc}
+### `ProjectSavedReply` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16734,7 +16993,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`ProjectSavedReply`](#projectsavedreply). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectSavedReplyConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16746,7 +17005,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Representation of a project secret.
 
-### Fields {.no_toc}
+### `ProjectSecret` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16768,7 +17027,7 @@ Paginated collection of [`ProjectSecret`](#projectsecret). See [Standard connect
 
 Representation of a project secrets manager.
 
-### Fields {.no_toc}
+### `ProjectSecretsManager` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16782,7 +17041,7 @@ Representation of a project secrets manager.
 
 Permissions the current user has on a project secrets manager.
 
-### Fields {.no_toc}
+### `ProjectSecretsManagerPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16795,7 +17054,7 @@ Permissions the current user has on a project secrets manager.
 
 Representation of a project secrets permission.
 
-### Fields {.no_toc}
+### `ProjectSecretsPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16813,7 +17072,7 @@ Paginated collection of [`ProjectSecretsPermission`](#projectsecretspermission).
 
 Represents a project-level security scanner exclusion.
 
-### Fields {.no_toc}
+### `ProjectSecurityExclusion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16834,7 +17093,7 @@ Paginated collection of [`ProjectSecurityExclusion`](#projectsecurityexclusion).
 
 Represents the source of a security policy belonging to a project.
 
-### Fields {.no_toc}
+### `ProjectSecurityPolicySource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16842,7 +17101,7 @@ Represents the source of a security policy belonging to a project.
 
 ## `ProjectSecurityTraining`
 
-### Fields {.no_toc}
+### `ProjectSecurityTraining` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16856,7 +17115,7 @@ Represents the source of a security policy belonging to a project.
 
 ## `ProjectSetting`
 
-### Fields {.no_toc}
+### `ProjectSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16870,7 +17129,7 @@ Represents the source of a security policy belonging to a project.
 
 ## `ProjectStatistics`
 
-### Fields {.no_toc}
+### `ProjectStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16895,7 +17154,7 @@ Represents the source of a security policy belonging to a project.
 
 ## `ProjectStatisticsRedirect`
 
-### Fields {.no_toc}
+### `ProjectStatisticsRedirect` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16908,7 +17167,7 @@ Represents the source of a security policy belonging to a project.
 
 ## `ProjectTargetBranchRule`
 
-### Fields {.no_toc}
+### `ProjectTargetBranchRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16921,7 +17180,7 @@ Represents the source of a security policy belonging to a project.
 
 Paginated collection of [`ProjectTargetBranchRule`](#projecttargetbranchrule). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectTargetBranchRuleConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16933,7 +17192,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a `project_topic_upload`.
 
-### Fields {.no_toc}
+### `ProjectTopicUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -16963,7 +17222,7 @@ Represents the Geo replication and verification state of a `project_topic_upload
 
 Paginated collection of [`ProjectTopicUploadRegistry`](#projecttopicuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectTopicUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -16975,7 +17234,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a project_upload.
 
-### Fields {.no_toc}
+### `ProjectUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17005,7 +17264,7 @@ Represents the Geo replication and verification state of a project_upload.
 
 Paginated collection of [`ProjectUploadRegistry`](#projectuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -17017,7 +17276,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Exposes aggregated value stream flow metrics.
 
-### Fields {.no_toc}
+### `ProjectValueStreamAnalyticsFlowMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17032,7 +17291,7 @@ Exposes aggregated value stream flow metrics.
 
 Represents the Geo replication and verification state of a project_wiki_repository.
 
-### Fields {.no_toc}
+### `ProjectWikiRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17062,7 +17321,7 @@ Represents the Geo replication and verification state of a project_wiki_reposito
 
 Paginated collection of [`ProjectWikiRepositoryRegistry`](#projectwikirepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ProjectWikiRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -17074,7 +17333,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 The alert condition for Prometheus.
 
-### Fields {.no_toc}
+### `PrometheusAlert` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17085,7 +17344,7 @@ The alert condition for Prometheus.
 
 Protected Environments of the environment.
 
-### Fields {.no_toc}
+### `ProtectedEnvironment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17100,7 +17359,7 @@ Protected Environments of the environment.
 
 Which group, user, or role is allowed to approve deployments to the environment.
 
-### Fields {.no_toc}
+### `ProtectedEnvironmentApprovalRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17117,7 +17376,7 @@ Paginated collection of [`ProtectedEnvironmentApprovalRule`](#protectedenvironme
 
 Which group, user, or role is allowed to approve deployments to the environment.
 
-### Fields {.no_toc}
+### `ProtectedEnvironmentApprovalRuleForSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17139,7 +17398,7 @@ Paginated collection of [`ProtectedEnvironment`](#protectedenvironment). See [St
 
 Which group, user, or role is allowed to execute deployments to the environment.
 
-### Fields {.no_toc}
+### `ProtectedEnvironmentDeployAccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17155,7 +17414,7 @@ Paginated collection of [`ProtectedEnvironmentDeployAccessLevel`](#protectedenvi
 
 Defines which user roles, users, or groups can push to a protected branch.
 
-### Fields {.no_toc}
+### `PushAccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17174,7 +17433,7 @@ Paginated collection of [`PushAccessLevel`](#pushaccesslevel). See [Standard con
 
 Commit details associated with a push event.
 
-### Fields {.no_toc}
+### `PushEventCommit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17187,7 +17446,7 @@ Commit details associated with a push event.
 
 Represents the payload of a push event.
 
-### Fields {.no_toc}
+### `PushEventPayload` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17199,7 +17458,7 @@ Represents the payload of a push event.
 
 Ref (branch or tag) involved in a push event.
 
-### Fields {.no_toc}
+### `PushEventRef` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17211,7 +17470,7 @@ Ref (branch or tag) involved in a push event.
 
 Represents rules that commit pushes must follow.
 
-### Fields {.no_toc}
+### `PushRules` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17233,7 +17492,7 @@ Represents rules that commit pushes must follow.
 
 Pypi metadata.
 
-### Fields {.no_toc}
+### `PypiMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17248,7 +17507,7 @@ Pypi metadata.
 
 ## `QueryComplexity`
 
-### Fields {.no_toc}
+### `QueryComplexity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17259,7 +17518,7 @@ Pypi metadata.
 
 Aggregated statistics about queueing times for CI jobs.
 
-### Fields {.no_toc}
+### `QueueingDelayHistory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17269,7 +17528,7 @@ Aggregated statistics about queueing times for CI jobs.
 
 The amount of time for a job to be picked up by a runner, in percentiles.
 
-### Fields {.no_toc}
+### `QueueingHistoryTimeSeries` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17284,7 +17543,7 @@ The amount of time for a job to be picked up by a runner, in percentiles.
 
 A quick action available to the current user on a noteable.
 
-### Fields {.no_toc}
+### `QuickActionCommand` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17297,7 +17556,7 @@ A quick action available to the current user on a noteable.
 
 ## `QuickActionsStatus`
 
-### Fields {.no_toc}
+### `QuickActionsStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17310,7 +17569,7 @@ A quick action available to the current user on a noteable.
 
 Recent failure history of a test case.
 
-### Fields {.no_toc}
+### `RecentFailures` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17319,7 +17578,7 @@ Recent failure history of a test case.
 
 ## `RecentlyViewedItem`
 
-### Fields {.no_toc}
+### `RecentlyViewedItem` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17330,7 +17589,7 @@ Recent failure history of a test case.
 
 Represents a release.
 
-### Fields {.no_toc}
+### `Release` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17355,7 +17614,7 @@ Represents a release.
 
 Represents an asset link associated with a release.
 
-### Fields {.no_toc}
+### `ReleaseAssetLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17374,7 +17633,7 @@ Paginated collection of [`ReleaseAssetLink`](#releaseassetlink). See [Standard c
 
 A container for all assets associated with a release.
 
-### Fields {.no_toc}
+### `ReleaseAssets` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17386,7 +17645,7 @@ A container for all assets associated with a release.
 
 Paginated collection of [`Release`](#release). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `ReleaseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -17398,7 +17657,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Evidence for a release.
 
-### Fields {.no_toc}
+### `ReleaseEvidence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17413,7 +17672,7 @@ Paginated collection of [`ReleaseEvidence`](#releaseevidence). See [Standard con
 
 ## `ReleaseLinks`
 
-### Fields {.no_toc}
+### `ReleaseLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17429,7 +17688,7 @@ Paginated collection of [`ReleaseEvidence`](#releaseevidence). See [Standard con
 
 Represents the source code attached to a release in a particular format.
 
-### Fields {.no_toc}
+### `ReleaseSource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17442,7 +17701,7 @@ Paginated collection of [`ReleaseSource`](#releasesource). See [Standard connect
 
 ## `Repository`
 
-### Fields {.no_toc}
+### `Repository` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17466,7 +17725,7 @@ Paginated collection of [`ReleaseSource`](#releasesource). See [Standard connect
 
 ## `RepositoryBlob`
 
-### Fields {.no_toc}
+### `RepositoryBlob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17521,7 +17780,7 @@ Paginated collection of [`RepositoryBlob`](#repositoryblob). See [Standard conne
 
 ## `RepositoryCodeownerError`
 
-### Fields {.no_toc}
+### `RepositoryCodeownerError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17530,7 +17789,7 @@ Paginated collection of [`RepositoryBlob`](#repositoryblob). See [Standard conne
 
 ## `RepositoryCodeownerValidation`
 
-### Fields {.no_toc}
+### `RepositoryCodeownerValidation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17539,7 +17798,7 @@ Paginated collection of [`RepositoryBlob`](#repositoryblob). See [Standard conne
 
 ## `RepositoryLanguage`
 
-### Fields {.no_toc}
+### `RepositoryLanguage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17551,7 +17810,7 @@ Paginated collection of [`RepositoryBlob`](#repositoryblob). See [Standard conne
 
 Represents a requirement.
 
-### Fields {.no_toc}
+### `Requirement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17580,7 +17839,7 @@ Paginated collection of [`Requirement`](#requirement). See [Standard connection 
 
 Compliance control coverage statistics across all requirements.
 
-### Fields {.no_toc}
+### `RequirementControlCoverage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17592,7 +17851,7 @@ Compliance control coverage statistics across all requirements.
 
 Coverage statistics requirements.
 
-### Fields {.no_toc}
+### `RequirementCoverage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17604,7 +17863,7 @@ Coverage statistics requirements.
 
 Check permissions for the current user on a requirement.
 
-### Fields {.no_toc}
+### `RequirementPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17618,7 +17877,7 @@ Check permissions for the current user on a requirement.
 
 Counts of requirements by their state.
 
-### Fields {.no_toc}
+### `RequirementStatesCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17629,7 +17888,7 @@ Counts of requirements by their state.
 
 Resource quotas of a workspace.
 
-### Fields {.no_toc}
+### `ResourceQuotas` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17640,7 +17899,7 @@ Resource quotas of a workspace.
 
 Risk factors contributing to the total risk score.
 
-### Fields {.no_toc}
+### `RiskFactors` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17650,7 +17909,7 @@ Risk factors contributing to the total risk score.
 
 Total risk score information.
 
-### Fields {.no_toc}
+### `RiskScore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17664,7 +17923,7 @@ Total risk score information.
 
 Risk score information for a specific project.
 
-### Fields {.no_toc}
+### `RiskScoreByProject` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17678,7 +17937,7 @@ Paginated collection of [`RiskScoreByProject`](#riskscorebyproject). See [Standa
 
 ## `RootStorageStatistics`
 
-### Fields {.no_toc}
+### `RootStorageStatistics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17699,7 +17958,7 @@ Paginated collection of [`RiskScoreByProject`](#riskscorebyproject). See [Standa
 
 ## `RunnerArchitecture`
 
-### Fields {.no_toc}
+### `RunnerArchitecture` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17712,7 +17971,7 @@ Paginated collection of [`RunnerArchitecture`](#runnerarchitecture). See [Standa
 
 ## `RunnerPermissions`
 
-### Fields {.no_toc}
+### `RunnerPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17723,7 +17982,7 @@ Paginated collection of [`RunnerArchitecture`](#runnerarchitecture). See [Standa
 
 ## `RunnerPlatform`
 
-### Fields {.no_toc}
+### `RunnerPlatform` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17737,7 +17996,7 @@ Paginated collection of [`RunnerPlatform`](#runnerplatform). See [Standard conne
 
 ## `RunnerSetup`
 
-### Fields {.no_toc}
+### `RunnerSetup` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17748,7 +18007,7 @@ Paginated collection of [`RunnerPlatform`](#runnerplatform). See [Standard conne
 
 Represents a CI configuration of SAST.
 
-### Fields {.no_toc}
+### `SastCiConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17760,7 +18019,7 @@ Represents a CI configuration of SAST.
 
 Represents an analyzer entity in SAST CI configuration.
 
-### Fields {.no_toc}
+### `SastCiConfigurationAnalyzersEntity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17778,7 +18037,7 @@ Paginated collection of [`SastCiConfigurationAnalyzersEntity`](#sastciconfigurat
 
 Represents an entity in SAST CI configuration.
 
-### Fields {.no_toc}
+### `SastCiConfigurationEntity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17799,7 +18058,7 @@ Paginated collection of [`SastCiConfigurationEntity`](#sastciconfigurationentity
 
 Represents an entity for options in SAST CI configuration.
 
-### Fields {.no_toc}
+### `SastCiConfigurationOptionsEntity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17814,7 +18073,7 @@ Paginated collection of [`SastCiConfigurationOptionsEntity`](#sastciconfiguratio
 
 Configuration for a SAST scan profile.
 
-### Fields {.no_toc}
+### `SastConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17830,7 +18089,7 @@ Configuration for a SAST scan profile.
 
 Configuration for the SAST false positive detection trigger of a triage and remediation scan profile.
 
-### Fields {.no_toc}
+### `SastFalsePositiveConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17842,7 +18101,7 @@ Configuration for the SAST false positive detection trigger of a triage and reme
 
 Configuration for the SAST vulnerability resolution trigger of a triage and remediation scan profile.
 
-### Fields {.no_toc}
+### `SastVulnerabilityResolutionConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17854,7 +18113,7 @@ Configuration for the SAST vulnerability resolution trigger of a triage and reme
 
 ## `SavedReply`
 
-### Fields {.no_toc}
+### `SavedReply` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17866,7 +18125,7 @@ Configuration for the SAST vulnerability resolution trigger of a triage and reme
 
 Paginated collection of [`SavedReply`](#savedreply). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `SavedReplyConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -17878,7 +18137,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Check permissions for the current user on a saved view.
 
-### Fields {.no_toc}
+### `SavedViewPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17891,7 +18150,7 @@ Check permissions for the current user on a saved view.
 
 Represents the security scan information.
 
-### Fields {.no_toc}
+### `Scan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17910,7 +18169,7 @@ Represents the scan execution policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `ScanExecutionPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17931,7 +18190,7 @@ Represents the scan execution policy.
 
 Represents policy fields related to the scan execution policy.
 
-### Fields {.no_toc}
+### `ScanExecutionPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17946,7 +18205,7 @@ Paginated collection of [`ScanExecutionPolicy`](#scanexecutionpolicy). See [Stan
 
 Status of a scan profile for a project.
 
-### Fields {.no_toc}
+### `ScanProfileProjectStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17961,7 +18220,7 @@ Status of a scan profile for a project.
 
 A scan profile trigger and its effective configuration.
 
-### Fields {.no_toc}
+### `ScanProfileTriggerSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17972,7 +18231,7 @@ A scan profile trigger and its effective configuration.
 
 A scan profile.
 
-### Fields {.no_toc}
+### `ScanProfileType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -17994,7 +18253,7 @@ Represents the scan result policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `ScanResultPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18025,7 +18284,7 @@ Paginated collection of [`ScanResultPolicy`](#scanresultpolicy). See [Standard c
 
 Represents a resource scanned by a security scan.
 
-### Fields {.no_toc}
+### `ScannedResource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18040,7 +18299,7 @@ Paginated collection of [`ScannedResource`](#scannedresource). See [Standard con
 
 JSON structure of a matched chunk.
 
-### Fields {.no_toc}
+### `SearchBlobChunk` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18051,7 +18310,7 @@ JSON structure of a matched chunk.
 
 JSON structure of a file with matches.
 
-### Fields {.no_toc}
+### `SearchBlobFileType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18068,7 +18327,7 @@ JSON structure of a file with matches.
 
 JSON structure of each line in a matched chunk.
 
-### Fields {.no_toc}
+### `SearchBlobLine` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18080,7 +18339,7 @@ JSON structure of each line in a matched chunk.
 
 Secondary security feature information.
 
-### Fields {.no_toc}
+### `SecondarySecurityFeature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18093,7 +18352,7 @@ Secondary security feature information.
 
 Configuration for a secret detection scan profile.
 
-### Fields {.no_toc}
+### `SecretDetectionConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18108,7 +18367,7 @@ Configuration for a secret detection scan profile.
 
 Configuration for the secret detection false positive detection trigger of a triage and remediation scan profile.
 
-### Fields {.no_toc}
+### `SecretDetectionFalsePositiveConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18119,7 +18378,7 @@ Configuration for the secret detection false positive detection trigger of a tri
 
 Representation of a secret permission.
 
-### Fields {.no_toc}
+### `SecretPermission` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18138,7 +18397,7 @@ Paginated collection of [`SecretPermission`](#secretpermission). See [Standard c
 
 Rotation configuration and status for a secret.
 
-### Fields {.no_toc}
+### `SecretRotationInfo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18153,7 +18412,7 @@ Rotation configuration and status for a secret.
 
 Representation of a Secrets Manager namespace enrollment.
 
-### Fields {.no_toc}
+### `SecretsManagerEnrollment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18164,7 +18423,7 @@ Representation of a Secrets Manager namespace enrollment.
 
 Secrets Manager entitlement for a top-level group, or for the instance on GitLab Self-Managed.
 
-### Fields {.no_toc}
+### `SecretsManagerEntitlement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18185,7 +18444,7 @@ Secrets Manager entitlement for a top-level group, or for the instance on GitLab
 
 Representation of a Secrets Manager instance enrollment.
 
-### Fields {.no_toc}
+### `SecretsManagerInstanceEnrollment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18196,7 +18455,7 @@ Representation of a Secrets Manager instance enrollment.
 
 A security attribute.
 
-### Fields {.no_toc}
+### `SecurityAttribute` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18211,7 +18470,7 @@ A security attribute.
 
 Paginated collection of [`SecurityAttribute`](#securityattribute). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `SecurityAttributeConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -18223,7 +18482,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A security category.
 
-### Fields {.no_toc}
+### `SecurityCategory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18239,7 +18498,7 @@ A security category.
 
 Security configuration data for a project.
 
-### Fields {.no_toc}
+### `SecurityConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18281,7 +18540,7 @@ Security configuration data for a project.
 
 Security feature information for a scan type.
 
-### Fields {.no_toc}
+### `SecurityFeature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18298,7 +18557,7 @@ Security feature information for a scan type.
 
 Represents the status of a secret token found in a security finding.
 
-### Fields {.no_toc}
+### `SecurityFindingTokenStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18312,7 +18571,7 @@ Represents the status of a secret token found in a security finding.
 
 Represents security metrics.
 
-### Fields {.no_toc}
+### `SecurityMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18328,7 +18587,7 @@ Represents security metrics.
 
 Represents a security policy.
 
-### Fields {.no_toc}
+### `SecurityPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18341,7 +18600,7 @@ Represents the security policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `SecurityPolicyType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18368,7 +18627,7 @@ Paginated collection of [`SecurityPolicyType`](#securitypolicytype). See [Standa
 
 Security policy validation error.
 
-### Fields {.no_toc}
+### `SecurityPolicyValidationError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18382,7 +18641,7 @@ Security policy validation error.
 
 Aggregated security posture counters for a namespace.
 
-### Fields {.no_toc}
+### `SecurityPostureCounters` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18396,7 +18655,7 @@ Aggregated security posture counters for a namespace.
 
 Represents summary of a security report.
 
-### Fields {.no_toc}
+### `SecurityReportSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18416,7 +18675,7 @@ Represents summary of a security report.
 
 Represents a section of a summary of a security report.
 
-### Fields {.no_toc}
+### `SecurityReportSummarySection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18430,7 +18689,7 @@ Represents a section of a summary of a security report.
 
 Security scan feature configuration.
 
-### Fields {.no_toc}
+### `SecurityScanFeature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18448,7 +18707,7 @@ Security scan feature configuration.
 
 A configuration variable that a scan profile of a given type can set.
 
-### Fields {.no_toc}
+### `SecurityScanProfileVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18459,7 +18718,7 @@ A configuration variable that a scan profile of a given type can set.
 
 Represents a list of security scanners.
 
-### Fields {.no_toc}
+### `SecurityScanners` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18471,7 +18730,7 @@ Represents a list of security scanners.
 
 Represents a ref (branch or tag) tracked for security vulnerabilities.
 
-### Fields {.no_toc}
+### `SecurityTrackedRef` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18489,7 +18748,7 @@ Represents a ref (branch or tag) tracked for security vulnerabilities.
 
 Paginated collection of [`SecurityTrackedRef`](#securitytrackedref). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `SecurityTrackedRefConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -18501,7 +18760,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a URL related to a security training.
 
-### Fields {.no_toc}
+### `SecurityTrainingUrl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18514,7 +18773,7 @@ Represents a URL related to a security training.
 
 A Sentry error.
 
-### Fields {.no_toc}
+### `SentryDetailedError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18552,7 +18811,7 @@ A Sentry error.
 
 A Sentry error. A simplified version of SentryDetailedError.
 
-### Fields {.no_toc}
+### `SentryError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18578,7 +18837,7 @@ A Sentry error. A simplified version of SentryDetailedError.
 
 An object containing a collection of Sentry errors, and a detailed error.
 
-### Fields {.no_toc}
+### `SentryErrorCollection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18593,7 +18852,7 @@ Paginated collection of [`SentryError`](#sentryerror). See [Standard connection 
 
 ## `SentryErrorFrequency`
 
-### Fields {.no_toc}
+### `SentryErrorFrequency` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18604,7 +18863,7 @@ Paginated collection of [`SentryError`](#sentryerror). See [Standard connection 
 
 An object containing a stack trace entry for a Sentry error.
 
-### Fields {.no_toc}
+### `SentryErrorStackTrace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18616,7 +18875,7 @@ An object containing a stack trace entry for a Sentry error.
 
 An object context for a Sentry error stack trace.
 
-### Fields {.no_toc}
+### `SentryErrorStackTraceContext` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18627,7 +18886,7 @@ An object context for a Sentry error stack trace.
 
 An object containing a stack trace entry for a Sentry error.
 
-### Fields {.no_toc}
+### `SentryErrorStackTraceEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18641,7 +18900,7 @@ An object containing a stack trace entry for a Sentry error.
 
 State of a Sentry error.
 
-### Fields {.no_toc}
+### `SentryErrorTags` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18656,7 +18915,7 @@ Paginated collection of [`Service`](interfaces.md#service). See [Standard connec
 
 Represents a vulnerability severity override.
 
-### Fields {.no_toc}
+### `SeverityOverride` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18673,7 +18932,7 @@ Paginated collection of [`SeverityOverride`](#severityoverride). See [Standard c
 
 Duo Chat slash command.
 
-### Fields {.no_toc}
+### `SlashCommand` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18687,7 +18946,7 @@ Represents a snippet entry.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface)
 
-### Fields {.no_toc}
+### `Snippet` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18719,7 +18978,7 @@ Represents a snippet entry.
 
 Represents the snippet blob.
 
-### Fields {.no_toc}
+### `SnippetBlob` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18741,7 +19000,7 @@ Represents the snippet blob.
 
 Paginated collection of [`SnippetBlob`](#snippetblob). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `SnippetBlobConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -18753,7 +19012,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents how the blob content should be displayed.
 
-### Fields {.no_toc}
+### `SnippetBlobViewer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18771,7 +19030,7 @@ Paginated collection of [`Snippet`](#snippet). See [Standard connection fields](
 
 ## `SnippetPermissions`
 
-### Fields {.no_toc}
+### `SnippetPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18786,7 +19045,7 @@ Paginated collection of [`Snippet`](#snippet). See [Standard connection fields](
 
 Represents the Geo sync and verification state of a snippet repository.
 
-### Fields {.no_toc}
+### `SnippetRepositoryRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18816,7 +19075,7 @@ Represents the Geo sync and verification state of a snippet repository.
 
 Paginated collection of [`SnippetRepositoryRegistry`](#snippetrepositoryregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `SnippetRepositoryRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -18828,7 +19087,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 SPDX license entry from the SPDX licence catalogue.
 
-### Fields {.no_toc}
+### `SpdxLicense` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18840,7 +19099,7 @@ SPDX license entry from the SPDX licence catalogue.
 
 Squash option overrides for a protected branch.
 
-### Fields {.no_toc}
+### `SquashOption` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18853,7 +19112,7 @@ SSH signature for a signed commit.
 
 **Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
-### Fields {.no_toc}
+### `SshSignature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18870,7 +19129,7 @@ Represents a standard role.
 
 **Implements:** [`RoleInterface`](interfaces.md#roleinterface)
 
-### Fields {.no_toc}
+### `StandardRole` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18888,7 +19147,7 @@ Paginated collection of [`StandardRole`](#standardrole). See [Standard connectio
 
 Progress of standards adherence checks.
 
-### Fields {.no_toc}
+### `StandardsAdherenceChecksStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18898,7 +19157,7 @@ Progress of standards adherence checks.
 
 ## `StatusAction`
 
-### Fields {.no_toc}
+### `StatusAction` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18920,7 +19179,7 @@ an expression with a string value.
 
 **Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
-### Fields {.no_toc}
+### `StringExpression` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18932,7 +19191,7 @@ an expression with a string value.
 
 **Implements:** [`Entry`](interfaces.md#entry)
 
-### Fields {.no_toc}
+### `Submodule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18953,7 +19212,7 @@ Paginated collection of [`Submodule`](#submodule). See [Standard connection fiel
 
 Represents an entry from the future subscriptions.
 
-### Fields {.no_toc}
+### `SubscriptionFutureEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18974,7 +19233,7 @@ Paginated collection of [`SubscriptionFutureEntry`](#subscriptionfutureentry). S
 
 Represents a Suggested Reviewers result set.
 
-### Fields {.no_toc}
+### `SuggestedReviewersType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -18985,7 +19244,7 @@ Represents a Suggested Reviewers result set.
 
 ## `Suggestion`
 
-### Fields {.no_toc}
+### `Suggestion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19002,7 +19261,7 @@ Paginated collection of [`Suggestion`](#suggestion). See [Standard connection fi
 
 ## `SystemNoteMetadata`
 
-### Fields {.no_toc}
+### `SystemNoteMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19012,7 +19271,7 @@ Paginated collection of [`Suggestion`](#suggestion). See [Standard connection fi
 
 ## `Tag`
 
-### Fields {.no_toc}
+### `Tag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19028,7 +19287,7 @@ Paginated collection of [`Tag`](#tag). See [Standard connection fields](#standar
 
 Represents a targeted message.
 
-### Fields {.no_toc}
+### `TargetedMessage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19040,7 +19299,7 @@ Represents a targeted message.
 
 Completion status of tasks.
 
-### Fields {.no_toc}
+### `TaskCompletionStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19051,7 +19310,7 @@ Completion status of tasks.
 
 Terraform module metadata.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19064,7 +19323,7 @@ Terraform module metadata.
 
 Terraform module metadata dependencies.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataDependencies` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19075,7 +19334,7 @@ Terraform module metadata dependencies.
 
 Terraform module metadata dependency.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataDependency` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19089,7 +19348,7 @@ Terraform module metadata example.
 
 **Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataExample` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19103,7 +19362,7 @@ Terraform module metadata example.
 
 Terraform module metadata fields type.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataFields` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19115,7 +19374,7 @@ Terraform module metadata fields type.
 
 Terraform module metadata input type.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataInput` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19128,7 +19387,7 @@ Terraform module metadata input type.
 
 Terraform module metadata output.
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataOutput` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19141,7 +19400,7 @@ Metadata for Terraform root module.
 
 **Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataRoot` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19158,7 +19417,7 @@ Terraform module metadata submodule.
 
 **Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
-### Fields {.no_toc}
+### `TerraformModuleMetadataSubmodule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19172,7 +19431,7 @@ Terraform module metadata submodule.
 
 ## `TerraformState`
 
-### Fields {.no_toc}
+### `TerraformState` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19192,7 +19451,7 @@ Terraform module metadata submodule.
 
 Paginated collection of [`TerraformState`](#terraformstate). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TerraformStateConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19204,7 +19463,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 A protection rule for Terraform state backends, controlling who can write to a state based on project role and request source.
 
-### Fields {.no_toc}
+### `TerraformStateProtectionRule` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19219,7 +19478,7 @@ Paginated collection of [`TerraformStateProtectionRule`](#terraformstateprotecti
 
 ## `TerraformStateVersion`
 
-### Fields {.no_toc}
+### `TerraformStateVersion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19239,7 +19498,7 @@ Paginated collection of [`TerraformStateVersion`](#terraformstateversion). See [
 
 Represents the Geo sync and verification state of a terraform state version.
 
-### Fields {.no_toc}
+### `TerraformStateVersionRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19269,7 +19528,7 @@ Represents the Geo sync and verification state of a terraform state version.
 
 Paginated collection of [`TerraformStateVersionRegistry`](#terraformstateversionregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TerraformStateVersionRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19281,7 +19540,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Test case in pipeline test report.
 
-### Fields {.no_toc}
+### `TestCase` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19299,7 +19558,7 @@ Test case in pipeline test report.
 
 Paginated collection of [`TestCase`](#testcase). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TestCaseConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19311,7 +19570,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a requirement test report.
 
-### Fields {.no_toc}
+### `TestReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19329,7 +19588,7 @@ Paginated collection of [`TestReport`](#testreport). See [Standard connection fi
 
 Test report for a pipeline.
 
-### Fields {.no_toc}
+### `TestReportSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19340,7 +19599,7 @@ Test report for a pipeline.
 
 Total test report statistics.
 
-### Fields {.no_toc}
+### `TestReportTotal` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19356,7 +19615,7 @@ Total test report statistics.
 
 Test suite in a pipeline test report.
 
-### Fields {.no_toc}
+### `TestSuite` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19374,7 +19633,7 @@ Test suite in a pipeline test report.
 
 Test suite summary in a pipeline test report.
 
-### Fields {.no_toc}
+### `TestSuiteSummary` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19392,7 +19651,7 @@ Test suite summary in a pipeline test report.
 
 Paginated collection of [`TestSuiteSummary`](#testsuitesummary). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TestSuiteSummaryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19404,7 +19663,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the time report stats for timeboxes.
 
-### Fields {.no_toc}
+### `TimeReportStats` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19414,7 +19673,7 @@ Represents the time report stats for timeboxes.
 
 ## `TimeTrackingTimelogCategory`
 
-### Fields {.no_toc}
+### `TimeTrackingTimelogCategory` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19435,7 +19694,7 @@ Paginated collection of [`TimeTrackingTimelogCategory`](#timetrackingtimelogcate
 
 Represents measured stats metrics for timeboxes.
 
-### Fields {.no_toc}
+### `TimeboxMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19446,7 +19705,7 @@ Represents measured stats metrics for timeboxes.
 
 Represents a historically accurate report about the timebox.
 
-### Fields {.no_toc}
+### `TimeboxReport` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19458,7 +19717,7 @@ Represents a historically accurate report about the timebox.
 
 Explains why we could not generate a timebox report.
 
-### Fields {.no_toc}
+### `TimeboxReportError` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19469,7 +19728,7 @@ Explains why we could not generate a timebox report.
 
 Describes a tag on an incident management timeline event.
 
-### Fields {.no_toc}
+### `TimelineEventTagType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19484,7 +19743,7 @@ Paginated collection of [`TimelineEventTagType`](#timelineeventtagtype). See [St
 
 Describes an incident management timeline event.
 
-### Fields {.no_toc}
+### `TimelineEventType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19508,7 +19767,7 @@ Paginated collection of [`TimelineEventType`](#timelineeventtype). See [Standard
 
 ## `Timelog`
 
-### Fields {.no_toc}
+### `Timelog` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19527,7 +19786,7 @@ Paginated collection of [`TimelineEventType`](#timelineeventtype). See [Standard
 
 Paginated collection of [`Timelog`](#timelog). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TimelogConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19538,7 +19797,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `TimelogPermissions`
 
-### Fields {.no_toc}
+### `TimelogPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19548,7 +19807,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Representing a to-do entry.
 
-### Fields {.no_toc}
+### `Todo` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19574,7 +19833,7 @@ Representing a to-do entry.
 
 Paginated collection of [`Todo`](#todo). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `TodoConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19584,7 +19843,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `Topic`
 
-### Fields {.no_toc}
+### `Topic` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19601,7 +19860,7 @@ Paginated collection of [`Topic`](#topic). See [Standard connection fields](#sta
 
 ## `Tree`
 
-### Fields {.no_toc}
+### `Tree` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19621,7 +19880,7 @@ Represents a directory.
 
 **Implements:** [`Entry`](interfaces.md#entry)
 
-### Fields {.no_toc}
+### `TreeEntry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19642,7 +19901,7 @@ Paginated collection of [`TreeEntry`](#treeentry). See [Standard connection fiel
 
 A triage and remediation capability and its coverage state for a project.
 
-### Fields {.no_toc}
+### `TriageAndRemediationCapability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19654,7 +19913,7 @@ A triage and remediation capability and its coverage state for a project.
 
 Triage and remediation capability coverage for a project.
 
-### Fields {.no_toc}
+### `TriageAndRemediationCoverage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19664,7 +19923,7 @@ Triage and remediation capability coverage for a project.
 
 Triage and remediation coverage counters for a namespace, for a given trigger type.
 
-### Fields {.no_toc}
+### `TriageAndRemediationCoverageCounters` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19675,7 +19934,7 @@ Triage and remediation coverage counters for a namespace, for a given trigger ty
 
 Trial usage statistics.
 
-### Fields {.no_toc}
+### `TrialUsage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19687,7 +19946,7 @@ Trial usage statistics.
 
 Defines which user roles, users, or groups can unprotect a protected branch.
 
-### Fields {.no_toc}
+### `UnprotectAccessLevel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19705,7 +19964,7 @@ Paginated collection of [`UnprotectAccessLevel`](#unprotectaccesslevel). See [St
 
 Represents the Geo replication and verification state of an upload.
 
-### Fields {.no_toc}
+### `UploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19735,7 +19994,7 @@ Represents the Geo replication and verification state of an upload.
 
 Paginated collection of [`UploadRegistry`](#uploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19747,7 +20006,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a recorded measurement (object count) for the Admins.
 
-### Fields {.no_toc}
+### `UsageTrendsMeasurement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19761,7 +20020,7 @@ Paginated collection of [`UsageTrendsMeasurement`](#usagetrendsmeasurement). See
 
 ## `UserAchievement`
 
-### Fields {.no_toc}
+### `UserAchievement` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19782,7 +20041,7 @@ Paginated collection of [`UsageTrendsMeasurement`](#usagetrendsmeasurement). See
 
 Paginated collection of [`UserAchievement`](#userachievement). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UserAchievementConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19794,7 +20053,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 An assignment of an AddOnPurchase to a User.
 
-### Fields {.no_toc}
+### `UserAddOnAssignment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19806,7 +20065,7 @@ Paginated collection of [`UserAddOnAssignment`](#useraddonassignment). See [Stan
 
 ## `UserCallout`
 
-### Fields {.no_toc}
+### `UserCallout` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19821,7 +20080,7 @@ Paginated collection of [`UserCallout`](#usercallout). See [Standard connection 
 
 A user's contribution calendar: the profile page's activity heatmap for the past year.
 
-### Fields {.no_toc}
+### `UserContributionCalendar` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19834,7 +20093,7 @@ A user's contribution calendar: the profile page's activity heatmap for the past
 
 One day with at least one contribution on a user's contribution calendar.
 
-### Fields {.no_toc}
+### `UserContributionDay` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19847,7 +20106,7 @@ Core representation of a GitLab user.
 
 **Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
-### Fields {.no_toc}
+### `UserCore` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19917,7 +20176,7 @@ Core representation of a GitLab user.
 
 Paginated collection of [`UserCore`](#usercore). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UserCoreConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -19929,7 +20188,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Duo status for a user.
 
-### Fields {.no_toc}
+### `UserDuoStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19939,7 +20198,7 @@ Represents the Duo status for a user.
 
 ## `UserGroupCallout`
 
-### Fields {.no_toc}
+### `UserGroupCallout` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19953,7 +20212,7 @@ Paginated collection of [`UserGroupCallout`](#usergroupcallout). See [Standard c
 
 ## `UserMemberRole`
 
-### Fields {.no_toc}
+### `UserMemberRole` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19968,7 +20227,7 @@ Information about a merge request given a specific user.
 This object has two parts to its state: a `User` and a `MergeRequest`. All
 fields relate to interactions between the two entities.
 
-### Fields {.no_toc}
+### `UserMergeRequestInteraction` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -19985,7 +20244,7 @@ fields relate to interactions between the two entities.
 
 **Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
-### Fields {.no_toc}
+### `UserNamespaceLinks` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20019,7 +20278,7 @@ fields relate to interactions between the two entities.
 
 **Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
-### Fields {.no_toc}
+### `UserNamespaceMarkdownPaths` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20031,7 +20290,7 @@ fields relate to interactions between the two entities.
 
 **Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
-### Fields {.no_toc}
+### `UserNamespaceMetadata` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20046,7 +20305,7 @@ fields relate to interactions between the two entities.
 
 Represents the Geo replication and verification state of a `user_permission_export_upload_upload`.
 
-### Fields {.no_toc}
+### `UserPermissionExportUploadUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20076,7 +20335,7 @@ Represents the Geo replication and verification state of a `user_permission_expo
 
 Paginated collection of [`UserPermissionExportUploadUploadRegistry`](#userpermissionexportuploaduploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UserPermissionExportUploadUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20086,7 +20345,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `UserPermissions`
 
-### Fields {.no_toc}
+### `UserPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20094,12 +20353,14 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `UserPreferences`
 
-### Fields {.no_toc}
+### `UserPreferences` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `duoDefaultNamespace` | [`Namespace`](#namespace) | Default namespace context for Duo features when namespace cannot be inferred. |
+| `emojiSkinTone` | [`EmojiSkinTone!`](enums.md#emojiskintone) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Default skin tone for emoji that have skin tone variants. |
 | `extensionsMarketplaceOptInStatus` | [`ExtensionsMarketplaceOptInStatus!`](enums.md#extensionsmarketplaceoptinstatus) | Status of the Web IDE Extension Marketplace opt-in for the user. |
+| `firstDayOfWeek` | [`UserFirstDayOfWeek`](enums.md#userfirstdayofweek) | First day of the week in calendars and date pickers. Null when the user has not chosen one and the instance default applies. |
 | `issuesSort` | [`IssueSort`](enums.md#issuesort) | Sort order for issue lists. |
 | `knowledgeGraphGoverningNamespace` | [`Namespace`](#namespace) | Governing and billing namespace for Orbit. |
 | `mergeRequestDashboardListType` | [`MergeRequestsDashboardListType`](enums.md#mergerequestsdashboardlisttype) | Merge request dashboard list rendering type. |
@@ -20116,7 +20377,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `UserStatus`
 
-### Fields {.no_toc}
+### `UserStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20132,7 +20393,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a `user_upload`.
 
-### Fields {.no_toc}
+### `UserUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20162,7 +20423,7 @@ Represents the Geo replication and verification state of a `user_upload`.
 
 Paginated collection of [`UserUploadRegistry`](#useruploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UserUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20174,7 +20435,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a Pending Member Approval Queued for Role Promotion.
 
-### Fields {.no_toc}
+### `UsersQueuedForRolePromotion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20185,7 +20446,7 @@ Represents a Pending Member Approval Queued for Role Promotion.
 
 Paginated collection of [`UsersQueuedForRolePromotion`](#usersqueuedforrolepromotion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `UsersQueuedForRolePromotionConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20195,7 +20456,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ValueStream`
 
-### Fields {.no_toc}
+### `ValueStream` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20207,7 +20468,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ValueStreamAnalytics`
 
-### Fields {.no_toc}
+### `ValueStreamAnalytics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20217,7 +20478,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 .
 
-### Fields {.no_toc}
+### `ValueStreamAnalyticsDateMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20232,7 +20493,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 .
 
-### Fields {.no_toc}
+### `ValueStreamAnalyticsMetric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20250,7 +20511,7 @@ Paginated collection of [`ValueStream`](#valuestream). See [Standard connection 
 
 Represents a recorded measurement (object count) for the requested group.
 
-### Fields {.no_toc}
+### `ValueStreamDashboardCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20260,7 +20521,7 @@ Represents a recorded measurement (object count) for the requested group.
 
 ## `ValueStreamMetricLinkType`
 
-### Fields {.no_toc}
+### `ValueStreamMetricLinkType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20271,7 +20532,7 @@ Represents a recorded measurement (object count) for the requested group.
 
 ## `ValueStreamStage`
 
-### Fields {.no_toc}
+### `ValueStreamStage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20289,7 +20550,7 @@ Represents a recorded measurement (object count) for the requested group.
 
 ## `ValueStreamStageItems`
 
-### Fields {.no_toc}
+### `ValueStreamStageItems` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20304,7 +20565,7 @@ Paginated collection of [`ValueStreamStageItems`](#valuestreamstageitems). See [
 
 ## `ValueStreamStageMetrics`
 
-### Fields {.no_toc}
+### `ValueStreamStageMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20316,7 +20577,7 @@ Paginated collection of [`ValueStreamStageItems`](#valuestreamstageitems). See [
 
 ## `ValueStreamStageSeries`
 
-### Fields {.no_toc}
+### `ValueStreamStageSeries` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20326,7 +20587,7 @@ Paginated collection of [`ValueStreamStageItems`](#valuestreamstageitems). See [
 
 Root group level virtual registries settings.
 
-### Fields {.no_toc}
+### `VirtualRegistriesSetting` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20336,7 +20597,7 @@ Root group level virtual registries settings.
 
 Represents a virtual registry cleanup policy.
 
-### Fields {.no_toc}
+### `VirtualRegistryCleanupPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20359,7 +20620,7 @@ Represents a virtual registry cleanup policy.
 
 Represents vulnerability metrics by age with filtering and grouping capabilities.
 
-### Fields {.no_toc}
+### `VulnerabilitiesByAge` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20372,7 +20633,7 @@ Represents vulnerability metrics by age with filtering and grouping capabilities
 
 Represents vulnerability metrics by identifier with filtering.
 
-### Fields {.no_toc}
+### `VulnerabilitiesByIdentifier` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20385,7 +20646,7 @@ Represents vulnerability metrics by identifier with filtering.
 
 Represents the count of vulnerabilities by severity on a particular day. This data is retained for 365 days.
 
-### Fields {.no_toc}
+### `VulnerabilitiesCountByDay` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20406,7 +20667,7 @@ Paginated collection of [`VulnerabilitiesCountByDay`](#vulnerabilitiescountbyday
 
 Represents vulnerability metrics over time with filtering and grouping capabilities.
 
-### Fields {.no_toc}
+### `VulnerabilitiesOverTime` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20423,7 +20684,7 @@ Paginated collection of [`VulnerabilitiesOverTime`](#vulnerabilitiesovertime). S
 
 Represents vulnerability counts grouped by severity level.
 
-### Fields {.no_toc}
+### `VulnerabilitiesPerSeverity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20440,7 +20701,7 @@ Represents a vulnerability.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `Vulnerability` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20454,7 +20715,7 @@ Represents a vulnerability.
 | `confirmedBy` | [`UserCore`](#usercore) | User that confirmed the vulnerability. |
 | `cveEnrichment` | [`CveEnrichmentType`](#cveenrichmenttype) | Enrichment (EPSS score and KEV) for CVE vulnerabilities. |
 | `cvss` | [`[CvssType!]!`](#cvsstype) | CVSS information for the vulnerability. |
-| `dependencies` | [`DependencyConnection!`](#dependencyconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Dependencies for the vulnerability. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Only available when the vulnerabilities_across_contexts feature flag is enabled.</dd></dl> |
+| `dependencies` | [`DependencyConnection!`](#dependencyconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Dependencies for the vulnerability. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `dependencies`:</strong> <dl><dt>`componentIds` ([`[SbomComponentID!]`](scalars.md#sbomcomponentid))</dt><dd>Filter dependencies by component IDs.</dd><dt>`componentNames` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component names.</dd><dt>`componentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Filter dependencies by component versions.</dd><dt>`licenses` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Filter dependencies by SPDX license identifiers.</dd><dt>`malware` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref.</dd><dt>`notComponentVersions` ([`[String!]`](scalars.md#string))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter dependencies to exclude the specified component versions.</dd><dt>`packageManagers` ([`[PackageManager!]`](enums.md#packagemanager))</dt><dd>Filter dependencies by package managers.</dd><dt>`policyViolations` ([`[PolicyViolations!]`](enums.md#policyviolations))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Filter by security policy violations. Cannot be combined with the `malware` argument.</dd><dt>`sort` ([`DependencySort`](enums.md#dependencysort))</dt><dd>Sort dependencies by given criteria.</dd><dt>`sourceTypes` ([`[SbomSourceType!]`](enums.md#sbomsourcetype))</dt><dd>Filter dependencies by source type.</dd><dt>`trackedRefIds` ([`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref IDs. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd><dt>`trackedRefsScope` ([`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope))</dt><dd>Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter dependencies by tracked ref scope. Applied only on `Project.dependencies`, and ignored on other fields. Requires advanced search configured, advanced dependency management set up, and the `vulnerabilities_across_contexts` and `project_dependency_tracked_ref` feature flags enabled; the request is rejected otherwise.</dd></dl> |
 | `description` | [`String`](scalars.md#string) | Description of the vulnerability. |
 | `descriptionHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `description`. |
 | `details` | [`[VulnerabilityDetail!]!`](unions.md#vulnerabilitydetail) | Details of the vulnerability. |
@@ -20519,7 +20780,7 @@ Represents a vulnerability.
 
 Represents vulnerability archival information.
 
-### Fields {.no_toc}
+### `VulnerabilityArchivalInformation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20530,7 +20791,7 @@ Represents vulnerability archival information.
 
 Represents a vulnerability archive.
 
-### Fields {.no_toc}
+### `VulnerabilityArchive` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20542,7 +20803,7 @@ Represents a vulnerability archive.
 
 Represents the Geo replication and verification state of a vulnerability_archive_export_upload.
 
-### Fields {.no_toc}
+### `VulnerabilityArchiveExportUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20572,7 +20833,7 @@ Represents the Geo replication and verification state of a vulnerability_archive
 
 Paginated collection of [`VulnerabilityArchiveExportUploadRegistry`](#vulnerabilityarchiveexportuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `VulnerabilityArchiveExportUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20584,7 +20845,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Risk factor based on average vulnerability score.
 
-### Fields {.no_toc}
+### `VulnerabilityAverageScoreFactor` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20598,7 +20859,7 @@ Paginated collection of [`Vulnerability`](#vulnerability). See [Standard connect
 
 Represents a container image reported on the related vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityContainerImage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20612,7 +20873,7 @@ Paginated collection of [`VulnerabilityContainerImage`](#vulnerabilitycontaineri
 
 Represents the vulnerability details base.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailBase` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20624,7 +20885,7 @@ Represents the vulnerability details base.
 
 Represents the vulnerability details boolean value.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailBoolean` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20637,7 +20898,7 @@ Represents the vulnerability details boolean value.
 
 Represents the vulnerability details code field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailCode` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20651,7 +20912,7 @@ Represents the vulnerability details code field.
 
 Represents the vulnerability details code flow node item.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailCodeFlowNode` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20665,7 +20926,7 @@ Represents the vulnerability details code flow node item.
 
 Represents the vulnerability details code flows item.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailCodeFlows` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20678,7 +20939,7 @@ Represents the vulnerability details code flows item.
 
 Represents the vulnerability details commit field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailCommit` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20691,7 +20952,7 @@ Represents the vulnerability details commit field.
 
 Represents the vulnerability details diff field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailDiff` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20705,7 +20966,7 @@ Represents the vulnerability details diff field.
 
 Represents the vulnerability details location within a file in the project.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailFileLocation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20720,7 +20981,7 @@ Represents the vulnerability details location within a file in the project.
 
 Represents the vulnerability details integer value.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailInt` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20733,7 +20994,7 @@ Represents the vulnerability details integer value.
 
 Represents the vulnerability details list value.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20746,7 +21007,7 @@ Represents the vulnerability details list value.
 
 Represents the vulnerability details Markdown field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailMarkdown` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20759,7 +21020,7 @@ Represents the vulnerability details Markdown field.
 
 Represents the vulnerability details location within a file in the project.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailModuleLocation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20773,7 +21034,7 @@ Represents the vulnerability details location within a file in the project.
 
 Represents the vulnerability details named list.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailNamedList` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20786,7 +21047,7 @@ Represents the vulnerability details named list.
 
 Represents the vulnerability details named list item.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailNamedListItem` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20799,7 +21060,7 @@ Represents the vulnerability details named list item.
 
 Represents an individual row in a table.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailRow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20812,7 +21073,7 @@ Represents an individual row in a table.
 
 Represents the vulnerability details table value.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailTable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20826,7 +21087,7 @@ Represents the vulnerability details table value.
 
 Represents the vulnerability details text field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailText` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20839,7 +21100,7 @@ Represents the vulnerability details text field.
 
 Represents the vulnerability details URL field.
 
-### Fields {.no_toc}
+### `VulnerabilityDetailUrl` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20853,7 +21114,7 @@ Represents the vulnerability details URL field.
 
 Configuration for the vulnerability enrichment trigger of a triage and remediation scan profile.
 
-### Fields {.no_toc}
+### `VulnerabilityEnrichmentConfiguration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20864,7 +21125,7 @@ Configuration for the vulnerability enrichment trigger of a triage and remediati
 
 Represents a Vulnerability Evidence.
 
-### Fields {.no_toc}
+### `VulnerabilityEvidence` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20878,7 +21139,7 @@ Represents a Vulnerability Evidence.
 
 Represents a vulnerability evidence.
 
-### Fields {.no_toc}
+### `VulnerabilityEvidenceSource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20890,7 +21151,7 @@ Represents a vulnerability evidence.
 
 Represents a vulnerability evidence supporting message.
 
-### Fields {.no_toc}
+### `VulnerabilityEvidenceSupportingMessage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20902,7 +21163,7 @@ Represents a vulnerability evidence supporting message.
 
 Represents the Geo replication and verification state of a Vulnerability Export Part Upload.
 
-### Fields {.no_toc}
+### `VulnerabilityExportPartUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20932,7 +21193,7 @@ Represents the Geo replication and verification state of a Vulnerability Export 
 
 Paginated collection of [`VulnerabilityExportPartUploadRegistry`](#vulnerabilityexportpartuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `VulnerabilityExportPartUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20944,7 +21205,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the Geo replication and verification state of a Vulnerability Export Upload.
 
-### Fields {.no_toc}
+### `VulnerabilityExportUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -20974,7 +21235,7 @@ Represents the Geo replication and verification state of a Vulnerability Export 
 
 Paginated collection of [`VulnerabilityExportUploadRegistry`](#vulnerabilityexportuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `VulnerabilityExportUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -20986,7 +21247,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents an external issue link of a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityExternalIssueLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21002,7 +21263,7 @@ Paginated collection of [`VulnerabilityExternalIssueLink`](#vulnerabilityexterna
 
 Represents the status of a secret token found in a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityFindingTokenStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21016,7 +21277,7 @@ Represents the status of a secret token found in a vulnerability.
 
 Represents a flag result for a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityFlag` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21036,7 +21297,7 @@ Paginated collection of [`VulnerabilityFlag`](#vulnerabilityflag). See [Standard
 
 A step in the vulnerability resolution funnel.
 
-### Fields {.no_toc}
+### `VulnerabilityFunnelStep` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21048,7 +21309,7 @@ A step in the vulnerability resolution funnel.
 
 Represents a vulnerability identifier.
 
-### Fields {.no_toc}
+### `VulnerabilityIdentifier` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21061,7 +21322,7 @@ Represents a vulnerability identifier.
 
 Represents an issue link of a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityIssueLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21077,7 +21338,7 @@ Paginated collection of [`VulnerabilityIssueLink`](#vulnerabilityissuelink). See
 
 Represents a link related to a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityLink` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21088,7 +21349,7 @@ Represents a link related to a vulnerability.
 
 Represents the location of a vulnerability found by a cluster image scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationClusterImageScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21101,7 +21362,7 @@ Represents the location of a vulnerability found by a cluster image scan.
 
 Represents the location of a vulnerability found by a container security scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationContainerScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21114,7 +21375,7 @@ Represents the location of a vulnerability found by a container security scan.
 
 Represents the location of a vulnerability found by a Coverage Fuzzing scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationCoverageFuzzing` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21132,7 +21393,7 @@ Represents the location of a vulnerability found by a Coverage Fuzzing scan.
 
 Represents the location of a vulnerability found by a DAST scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationDast` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21145,7 +21406,7 @@ Represents the location of a vulnerability found by a DAST scan.
 
 Represents the location of a vulnerability found by a dependency security scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationDependencyScanning` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21157,7 +21418,7 @@ Represents the location of a vulnerability found by a dependency security scan.
 
 Represents the location of a vulnerability found by a generic scanner.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationGeneric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21167,7 +21428,7 @@ Represents the location of a vulnerability found by a generic scanner.
 
 Represents the location of a vulnerability found by a SAST scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationSast` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21182,7 +21443,7 @@ Represents the location of a vulnerability found by a SAST scan.
 
 Represents the location of a vulnerability found by a secret detection scan.
 
-### Fields {.no_toc}
+### `VulnerabilityLocationSecretDetection` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21199,7 +21460,7 @@ Represents the vulnerability management policy.
 
 **Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
-### Fields {.no_toc}
+### `VulnerabilityManagementPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21219,7 +21480,7 @@ Represents the vulnerability management policy.
 
 Represents policy fields related to the vulnerability management policy.
 
-### Fields {.no_toc}
+### `VulnerabilityManagementPolicyAttributesType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21235,7 +21496,7 @@ Counts for each vulnerability severity in the group and its subgroups.
 
 **Implements:** [`VulnerabilityStatisticInterface`](interfaces.md#vulnerabilitystatisticinterface)
 
-### Fields {.no_toc}
+### `VulnerabilityNamespaceStatisticType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21253,7 +21514,7 @@ Counts for each vulnerability severity in the group and its subgroups.
 
 Check permissions for the current user on a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21271,7 +21532,7 @@ Check permissions for the current user on a vulnerability.
 
 Represents a vulnerability remediation type.
 
-### Fields {.no_toc}
+### `VulnerabilityRemediationType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21282,7 +21543,7 @@ Represents a vulnerability remediation type.
 
 Represents the Geo replication and verification state of a `vulnerability_remediation_upload`.
 
-### Fields {.no_toc}
+### `VulnerabilityRemediationUploadRegistry` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21312,7 +21573,7 @@ Represents the Geo replication and verification state of a `vulnerability_remedi
 
 Paginated collection of [`VulnerabilityRemediationUploadRegistry`](#vulnerabilityremediationuploadregistry). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `VulnerabilityRemediationUploadRegistryConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -21324,7 +21585,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a count of vulnerabilities for a specific report type.
 
-### Fields {.no_toc}
+### `VulnerabilityReportTypeCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21335,7 +21596,7 @@ Represents a count of vulnerabilities for a specific report type.
 
 Represents vulnerability information.
 
-### Fields {.no_toc}
+### `VulnerabilityRepresentationInformation` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21345,7 +21606,7 @@ Represents vulnerability information.
 
 Represents a Vulnerability Request.
 
-### Fields {.no_toc}
+### `VulnerabilityRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21358,7 +21619,7 @@ Represents a Vulnerability Request.
 
 Represents a Vulnerability Request/Response Header.
 
-### Fields {.no_toc}
+### `VulnerabilityRequestResponseHeader` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21369,7 +21630,7 @@ Represents a Vulnerability Request/Response Header.
 
 Adoption funnel for AI-assisted vulnerability resolution (Critical and High SAST vulnerabilities).
 
-### Fields {.no_toc}
+### `VulnerabilityResolutionFunnel` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21382,7 +21643,7 @@ Adoption funnel for AI-assisted vulnerability resolution (Critical and High SAST
 
 Represents a Vulnerability Response.
 
-### Fields {.no_toc}
+### `VulnerabilityResponse` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21395,7 +21656,7 @@ Represents a Vulnerability Response.
 
 Represents a vulnerability scanner.
 
-### Fields {.no_toc}
+### `VulnerabilityScanner` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21414,7 +21675,7 @@ Paginated collection of [`VulnerabilityScanner`](#vulnerabilityscanner). See [St
 
 Represents vulnerability counts by severity.
 
-### Fields {.no_toc}
+### `VulnerabilitySeveritiesCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21429,7 +21690,7 @@ Represents vulnerability counts by severity.
 
 Represents a count of vulnerabilities for a specific severity level.
 
-### Fields {.no_toc}
+### `VulnerabilitySeverityCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21442,7 +21703,7 @@ Represents a count of vulnerabilities for a specific severity level.
 
 Represents a state transition of a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityStateTransitionType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21464,7 +21725,7 @@ Counts for each vulnerability severity in the project.
 
 **Implements:** [`VulnerabilityStatisticInterface`](interfaces.md#vulnerabilitystatisticinterface)
 
-### Fields {.no_toc}
+### `VulnerabilityStatisticType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21482,7 +21743,7 @@ Counts for each vulnerability severity in the project.
 
 Represents a triggered workflow for a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityTriggeredWorkflow` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21497,7 +21758,7 @@ Paginated collection of [`VulnerabilityTriggeredWorkflow`](#vulnerabilitytrigger
 
 Represents a bulk Duo workflow execution.
 
-### Fields {.no_toc}
+### `VulnerabilityWorkflowExecution` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21518,7 +21779,7 @@ Represents a bulk Duo workflow execution.
 
 Workflow state of a vulnerability.
 
-### Fields {.no_toc}
+### `VulnerabilityWorkflowItem` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21529,7 +21790,7 @@ Workflow state of a vulnerability.
 
 Progress information for a bulk Duo workflow execution.
 
-### Fields {.no_toc}
+### `VulnerabilityWorkflowProgress` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21545,7 +21806,7 @@ Progress information for a bulk Duo workflow execution.
 
 A stage within a bulk Duo workflow.
 
-### Fields {.no_toc}
+### `VulnerabilityWorkflowStage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21556,7 +21817,7 @@ A stage within a bulk Duo workflow.
 
 Represents a vulnerable dependency. Used in vulnerability location data.
 
-### Fields {.no_toc}
+### `VulnerableDependency` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21567,7 +21828,7 @@ Represents a vulnerable dependency. Used in vulnerability location data.
 
 Represents a vulnerable Kubernetes resource. Used in vulnerability location data.
 
-### Fields {.no_toc}
+### `VulnerableKubernetesResource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21582,7 +21843,7 @@ Represents a vulnerable Kubernetes resource. Used in vulnerability location data
 
 Represents a vulnerable package. Used in vulnerability dependency data.
 
-### Fields {.no_toc}
+### `VulnerablePackage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21593,7 +21854,7 @@ Represents a vulnerable package. Used in vulnerability dependency data.
 
 Represents vulnerability letter grades with associated projects.
 
-### Fields {.no_toc}
+### `VulnerableProjectsByGrade` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21603,7 +21864,7 @@ Represents vulnerability letter grades with associated projects.
 
 ## `WebhookCustomHeader`
 
-### Fields {.no_toc}
+### `WebhookCustomHeader` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21611,7 +21872,7 @@ Represents vulnerability letter grades with associated projects.
 
 ## `WebhookEvent`
 
-### Fields {.no_toc}
+### `WebhookEvent` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21634,7 +21895,7 @@ Paginated collection of [`WebhookEvent`](#webhookevent). See [Standard connectio
 
 ## `WebhookEventHeaderType`
 
-### Fields {.no_toc}
+### `WebhookEventHeaderType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21643,7 +21904,7 @@ Paginated collection of [`WebhookEvent`](#webhookevent). See [Standard connectio
 
 ## `WebhookUrlVariable`
 
-### Fields {.no_toc}
+### `WebhookUrlVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21655,7 +21916,7 @@ A wiki page.
 
 **Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `WikiPage` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21678,7 +21939,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 
 ## `WikiPagePermissions`
 
-### Fields {.no_toc}
+### `WikiPagePermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21691,7 +21952,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 
 **Implements:** [`Todoable`](interfaces.md#todoable)
 
-### Fields {.no_toc}
+### `WorkItem` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21699,6 +21960,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 | `author` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.9.User that created the work item. |
 | `availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the work item. |
 | `closedAt` | [`Time`](scalars.md#time) | Timestamp of when the work item was closed. |
+| `closedBy` | [`UserCore`](#usercore) | User that closed the work item. |
 | `commentTemplatesPaths` | [`[CommentTemplatePathType!]!`](#commenttemplatepathtype) | Paths of the comment templates. |
 | `confidential` | [`Boolean!`](scalars.md#boolean) | Indicates the work item is confidential. |
 | `createNoteEmail` | [`String`](scalars.md#string) | User specific email address for the work item. |
@@ -21736,7 +21998,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 
 Represents a question a workplan flow asked on a work item.
 
-### Fields {.no_toc}
+### `WorkItemAgentPlanQuestion` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21750,7 +22012,7 @@ Paginated collection of [`WorkItemAgentPlanQuestion`](#workitemagentplanquestion
 
 ## `WorkItemClosingMergeRequest`
 
-### Fields {.no_toc}
+### `WorkItemClosingMergeRequest` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21762,7 +22024,7 @@ Paginated collection of [`WorkItemAgentPlanQuestion`](#workitemagentplanquestion
 
 Paginated collection of [`WorkItemClosingMergeRequest`](#workitemclosingmergerequest). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `WorkItemClosingMergeRequestConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -21774,7 +22036,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Paginated collection of [`WorkItem`](#workitem). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `WorkItemConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -21786,7 +22048,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 **Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
-### Fields {.no_toc}
+### `WorkItemDateFieldValue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21797,7 +22059,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a decision recorded in the decision log of a work item.
 
-### Fields {.no_toc}
+### `WorkItemDecision` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21808,13 +22070,14 @@ Represents a decision recorded in the decision log of a work item.
 | `id` | [`WorkItemsDecisionID!`](scalars.md#workitemsdecisionid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Global ID of the decision. |
 | `noteUrl` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.URL of the comment that resolved the decision. |
 | `options` | [`WorkItemDecisionOptionConnection`](#workitemdecisionoptionconnection) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Candidate options of the decision. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `question` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Question being decided. May be absent for decisions recorded as already resolved at creation. |
 | `resolutionRationale` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Reasoning given when the decision was resolved. |
 | `resolvedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp when the decision was resolved. |
 | `resolvedBy` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.User who resolved the decision. |
 | `resolvingNoteId` | [`NoteID`](scalars.md#noteid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Global ID of the comment that resolved the decision. |
 | `sourceLink` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.URL of the comment, discussion, or external resource that prompted the decision. Present only on manually created decisions. |
 | `state` | [`WorkItemDecisionState!`](enums.md#workitemdecisionstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.State of the decision. |
-| `title` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Question being decided. May be absent for decisions recorded as already resolved at creation. |
+| `title` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Question being decided. Deprecated, use question instead. May be absent for decisions recorded as already resolved at creation. |
 
 ## `WorkItemDecisionConnection`
 
@@ -21824,7 +22087,7 @@ Paginated collection of [`WorkItemDecision`](#workitemdecision). See [Standard c
 
 Represents a candidate option of a work item decision.
 
-### Fields {.no_toc}
+### `WorkItemDecisionOption` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21840,7 +22103,7 @@ Paginated collection of [`WorkItemDecisionOption`](#workitemdecisionoption). See
 
 ## `WorkItemDescriptionTemplate`
 
-### Fields {.no_toc}
+### `WorkItemDescriptionTemplate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21855,7 +22118,7 @@ Paginated collection of [`WorkItemDescriptionTemplate`](#workitemdescriptiontemp
 
 ## `WorkItemFeatures`
 
-### Fields {.no_toc}
+### `WorkItemFeatures` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21886,6 +22149,7 @@ Paginated collection of [`WorkItemDescriptionTemplate`](#workitemdescriptiontemp
 | `notifications` | [`WorkItemWidgetNotifications`](#workitemwidgetnotifications) | Notifications widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `participants` | [`WorkItemWidgetParticipants`](#workitemwidgetparticipants) | Participants widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `progress` | [`WorkItemWidgetProgress`](#workitemwidgetprogress) | Progress widget of the work item. Returns `null` if the widget is not available for the work item. |
+| `requester` | [`WorkItemWidgetRequester`](#workitemwidgetrequester) | Requester widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `requirementLegacy` | [`WorkItemWidgetRequirementLegacy`](#workitemwidgetrequirementlegacy) | Requirement legacy widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `severity` | [`WorkItemWidgetSeverity`](#workitemwidgetseverity) | Severity widget of the work item. Returns `null` if the widget is not available for the work item. |
 | `startAndDueDate` | [`WorkItemWidgetStartAndDueDate`](#workitemwidgetstartandduedate) | Start and due date widget of the work item. Returns `null` if the widget is not available for the work item. |
@@ -21900,7 +22164,7 @@ Paginated collection of [`WorkItemDescriptionTemplate`](#workitemdescriptiontemp
 
 Represents a lifecycle for work items.
 
-### Fields {.no_toc}
+### `WorkItemLifecycle` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21919,7 +22183,7 @@ Paginated collection of [`WorkItemLifecycle`](#workitemlifecycle). See [Standard
 
 ## `WorkItemLinkedResource`
 
-### Fields {.no_toc}
+### `WorkItemLinkedResource` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21933,7 +22197,7 @@ Paginated collection of [`WorkItemLinkedResource`](#workitemlinkedresource). See
 
 Valid target work item types and a suggested target for moving work items of a given source type to a different namespace.
 
-### Fields {.no_toc}
+### `WorkItemMoveTarget` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21945,7 +22209,7 @@ Valid target work item types and a suggested target for moving work items of a g
 
 **Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
-### Fields {.no_toc}
+### `WorkItemNumberFieldValue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21956,7 +22220,7 @@ Valid target work item types and a suggested target for moving work items of a g
 
 Check permissions for the current user on a work item.
 
-### Fields {.no_toc}
+### `WorkItemPermissions` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21977,7 +22241,7 @@ Check permissions for the current user on a work item.
 
 ## `WorkItemRelatedBranch`
 
-### Fields {.no_toc}
+### `WorkItemRelatedBranch` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -21991,7 +22255,7 @@ Paginated collection of [`WorkItemRelatedBranch`](#workitemrelatedbranch). See [
 
 ## `WorkItemSavedViewFilterWarningType`
 
-### Fields {.no_toc}
+### `WorkItemSavedViewFilterWarningType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22000,7 +22264,7 @@ Paginated collection of [`WorkItemRelatedBranch`](#workitemrelatedbranch). See [
 
 ## `WorkItemSavedViewType`
 
-### Fields {.no_toc}
+### `WorkItemSavedViewType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22030,7 +22294,7 @@ Paginated collection of [`WorkItemSavedViewType`](#workitemsavedviewtype). See [
 
 **Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
-### Fields {.no_toc}
+### `WorkItemSelectFieldValue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22041,7 +22305,7 @@ Paginated collection of [`WorkItemSavedViewType`](#workitemsavedviewtype). See [
 
 Work item settings for a namespace.
 
-### Fields {.no_toc}
+### `WorkItemSettings` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22051,7 +22315,7 @@ Work item settings for a namespace.
 
 Represents total number of work items for the represented states.
 
-### Fields {.no_toc}
+### `WorkItemStateCountsType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22063,7 +22327,7 @@ Represents total number of work items for the represented states.
 
 Represents status.
 
-### Fields {.no_toc}
+### `WorkItemStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22083,7 +22347,7 @@ Paginated collection of [`WorkItemStatus`](#workitemstatus). See [Standard conne
 
 Represents a status with its work item count.
 
-### Fields {.no_toc}
+### `WorkItemStatusCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22094,7 +22358,7 @@ Represents a status with its work item count.
 
 **Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
-### Fields {.no_toc}
+### `WorkItemTextFieldValue` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22103,7 +22367,7 @@ Represents a status with its work item count.
 
 ## `WorkItemTimelog`
 
-### Fields {.no_toc}
+### `WorkItemTimelog` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22119,7 +22383,7 @@ Represents a status with its work item count.
 
 Paginated collection of [`WorkItemTimelog`](#workitemtimelog). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
-### Extra fields {.no_toc}
+### `WorkItemTimelogConnection` extra fields {.no_toc}
 
 This connection has additional fields beyond the [standard connection fields](#standard-connection-fields).
 
@@ -22130,7 +22394,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `WorkItemType`
 
-### Fields {.no_toc}
+### `WorkItemType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22164,7 +22428,7 @@ Paginated collection of [`WorkItemType`](#workitemtype). See [Standard connectio
 
 Represents work item counts for the work item type.
 
-### Fields {.no_toc}
+### `WorkItemTypeCountsByState` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22175,7 +22439,7 @@ Represents work item counts for the work item type.
 
 Represents Depth limit reached for the allowed work item type.
 
-### Fields {.no_toc}
+### `WorkItemTypeDepthLimitReachedByType` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22186,7 +22450,7 @@ Represents Depth limit reached for the allowed work item type.
 
 Represents an available icon for work item types.
 
-### Fields {.no_toc}
+### `WorkItemTypeIconDefinition` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22195,7 +22459,7 @@ Represents an available icon for work item types.
 
 ## `WorkItemTypesUserPreference`
 
-### Fields {.no_toc}
+### `WorkItemTypesUserPreference` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22210,7 +22474,7 @@ Represents an agent plan widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetAgentPlan` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22231,11 +22495,11 @@ Represents an AI session widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetAiSession` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | Duo Workflow sessions associated with the work item. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `duoWorkflows` | [`DuoWorkflowConnection`](#duoworkflowconnection) | GitLab Duo Agent Platform flow sessions associated with the work item. Chat sessions are excluded. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetAssignees`
@@ -22244,7 +22508,7 @@ Represents an assignees widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetAssignees` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22259,7 +22523,7 @@ Represents the emoji reactions widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetAwardEmoji` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22275,7 +22539,7 @@ Represents a color widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetColor` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22289,7 +22553,7 @@ Represents CRM contacts widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetCrmContacts` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22303,7 +22567,7 @@ Represents a todos widget.
 
 **Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetCurrentUserTodos` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22316,7 +22580,7 @@ Represents a custom fields widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetCustomFields` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22329,7 +22593,7 @@ Represents a decision log widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDecisionLog` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22342,7 +22606,7 @@ Represents an assignees widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionAssignees` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22356,7 +22620,7 @@ Represents a custom fields widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionCustomFields` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22369,7 +22633,7 @@ Represents a generic widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionGeneric` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22381,7 +22645,7 @@ Represents a hierarchy widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionHierarchy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22397,7 +22661,7 @@ Represents a labels widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionLabels` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22410,7 +22674,7 @@ Represents a progress widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionProgress` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22423,7 +22687,7 @@ Represents a start and due date widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionStartAndDueDate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22436,7 +22700,7 @@ Represents a Status widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22451,7 +22715,7 @@ Represents a weight widget definition.
 
 **Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDefinitionWeight` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22465,7 +22729,7 @@ Represents a description widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDescription` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22483,7 +22747,7 @@ Represents designs widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDesigns` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22496,7 +22760,7 @@ Represents a development widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetDevelopment` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22514,7 +22778,7 @@ Represents email participants widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetEmailParticipants` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22527,7 +22791,7 @@ Represents the error tracking widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetErrorTracking` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22540,7 +22804,7 @@ Represents the error tracking widget.
 
 Represents details about a line of code of the stack trace.
 
-### Fields {.no_toc}
+### `WorkItemWidgetErrorTrackingStackTraceContext` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22553,7 +22817,7 @@ Represents the escalation policy widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetEscalationPolicy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22566,7 +22830,7 @@ Represents the escalation status widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetEscalationStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22579,7 +22843,7 @@ Represents a health status widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetHealthStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22591,7 +22855,7 @@ Represents a health status widget.
 
 Represents work item counts for the health status.
 
-### Fields {.no_toc}
+### `WorkItemWidgetHealthStatusCount` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22604,7 +22868,7 @@ Represents a hierarchy widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetHierarchy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22623,7 +22887,7 @@ Represents an iteration widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetIteration` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22636,7 +22900,7 @@ Represents the labels widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetLabels` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22650,7 +22914,7 @@ Represents the linked items widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetLinkedItems` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22666,7 +22930,7 @@ Represents the linked resources widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetLinkedResources` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22679,7 +22943,7 @@ Represents a milestone widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetMilestone` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22692,7 +22956,7 @@ Represents a notes widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetNotes` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22707,7 +22971,7 @@ Represents the notifications widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetNotifications` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22720,7 +22984,7 @@ Represents a participants widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetParticipants` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22733,7 +22997,7 @@ Represents a progress widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetProgress` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22744,13 +23008,26 @@ Represents a progress widget.
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 | `updatedAt` | [`Time`](scalars.md#time) | Timestamp of last progress update. |
 
+## `WorkItemWidgetRequester`
+
+Represents the requester widget.
+
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
+
+### `WorkItemWidgetRequester` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `email` | [`String`](scalars.md#string) | Email address of the non-GitLab user who requested the work item. For guests, the email address is obfuscated. |
+| `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
+
 ## `WorkItemWidgetRequirementLegacy`
 
 Represents a legacy requirement widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetRequirementLegacy` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22763,7 +23040,7 @@ Represents the severity widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetSeverity` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22776,7 +23053,7 @@ Represents a start and due date widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetStartAndDueDate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22796,7 +23073,7 @@ Represents status widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22809,7 +23086,7 @@ Represents a test reports widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetTestReports` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22822,7 +23099,7 @@ Represents the time tracking widget on the work item.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetTimeTracking` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22836,7 +23113,7 @@ Represents the time tracking widget on the work item.
 
 Represents a time tracking human readable attributes.
 
-### Fields {.no_toc}
+### `WorkItemWidgetTimeTrackingHumanReadableAttributes` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22849,7 +23126,7 @@ Represents a verification status widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetVerificationStatus` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22862,7 +23139,7 @@ Represents a vulnerabilities widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetVulnerabilities` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22875,7 +23152,7 @@ Represents a weight widget.
 
 **Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
-### Fields {.no_toc}
+### `WorkItemWidgetWeight` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22889,7 +23166,7 @@ Represents a weight widget.
 
 Represents a remote development workspace.
 
-### Fields {.no_toc}
+### `Workspace` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22928,7 +23205,7 @@ Paginated collection of [`Workspace`](#workspace). See [Standard connection fiel
 
 Resource specifications of the workspace container.
 
-### Fields {.no_toc}
+### `WorkspaceResources` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22939,7 +23216,7 @@ Resource specifications of the workspace container.
 
 Represents a remote development workspace variable.
 
-### Fields {.no_toc}
+### `WorkspaceVariable` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22958,7 +23235,7 @@ Paginated collection of [`WorkspaceVariable`](#workspacevariable). See [Standard
 
 Represents a workspaces agent config.
 
-### Fields {.no_toc}
+### `WorkspacesAgentConfig` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -22987,7 +23264,7 @@ Represents a workspaces agent config.
 
 Represents an X.509 certificate.
 
-### Fields {.no_toc}
+### `X509Certificate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23005,7 +23282,7 @@ Represents an X.509 certificate.
 
 Issuer of an X.509 certificate.
 
-### Fields {.no_toc}
+### `X509Issuer` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23022,7 +23299,7 @@ X.509 signature for a signed commit.
 
 **Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
-### Fields {.no_toc}
+### `X509Signature` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23036,7 +23313,7 @@ X.509 signature for a signed commit.
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `agentPlatformMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23056,7 +23333,7 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Agent Platform user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `agentPlatformUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23076,7 +23353,7 @@ Agent Platform user metrics for a user. Requires ClickHouse. Premium and Ultimat
 
 Ai Catalog user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `aiCatalogUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23088,7 +23365,7 @@ Ai Catalog user metrics for a user. Requires ClickHouse. Premium and Ultimate wi
 
 Chat user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `chatUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23104,10 +23381,11 @@ Chat user metrics for a user. Requires ClickHouse. Premium and Ultimate with Git
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `codeReviewMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `approveMergeRequestDuoCodeReviewEventCount` | [`Int`](scalars.md#int) | Total count of `approve_merge_request_duo_code_review` event. |
 | `assignDuoSuggestedReviewerEventCount` | [`Int`](scalars.md#int) | Total count of `assign_duo_suggested_reviewer` event. |
 | `createDuoSuggestedReviewersEventCount` | [`Int`](scalars.md#int) | Total count of `create_duo_suggested_reviewers` event. |
 | `encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](scalars.md#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
@@ -23125,10 +23403,11 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Code Review user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `codeReviewUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `approveMergeRequestDuoCodeReviewEventCount` | [`Int`](scalars.md#int) | Total count of `approve_merge_request_duo_code_review` event. |
 | `assignDuoSuggestedReviewerEventCount` | [`Int`](scalars.md#int) | Total count of `assign_duo_suggested_reviewer` event. |
 | `createDuoSuggestedReviewersEventCount` | [`Int`](scalars.md#int) | Total count of `create_duo_suggested_reviewers` event. |
 | `encounterDuoCodeReviewErrorDuringReviewEventCount` | [`Int`](scalars.md#int) | Total count of `encounter_duo_code_review_error_during_review` event. |
@@ -23148,7 +23427,7 @@ Code Review user metrics for a user. Requires ClickHouse. Premium and Ultimate w
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `codeSuggestionMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23164,7 +23443,7 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Code Suggestions user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `codeSuggestionsUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23180,7 +23459,7 @@ Code Suggestions user metrics for a user. Requires ClickHouse. Premium and Ultim
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `duoChatMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23194,7 +23473,7 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Duo Messaging user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `duoMessagingUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23207,7 +23486,7 @@ Duo Messaging user metrics for a user. Requires ClickHouse. Premium and Ultimate
 
 Duo Workflow user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `duoWorkflowUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23219,7 +23498,7 @@ Duo Workflow user metrics for a user. Requires ClickHouse. Premium and Ultimate 
 
 Explain Code user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `explainCodeUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23231,7 +23510,7 @@ Explain Code user metrics for a user. Requires ClickHouse. Premium and Ultimate 
 
 Explain Vulnerability user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `explainVulnerabilityUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23243,7 +23522,7 @@ Explain Vulnerability user metrics for a user. Requires ClickHouse. Premium and 
 
 Feature Discovery user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `featureDiscoveryUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23255,7 +23534,7 @@ Feature Discovery user metrics for a user. Requires ClickHouse. Premium and Ulti
 
 Fix Code user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `fixCodeUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23267,7 +23546,7 @@ Fix Code user metrics for a user. Requires ClickHouse. Premium and Ultimate with
 
 Fix Pipeline user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `fixPipelineUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23280,7 +23559,7 @@ Fix Pipeline user metrics for a user. Requires ClickHouse. Premium and Ultimate 
 
 Generate Merge Commit Message user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `generateMergeCommitMessageUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23292,7 +23571,7 @@ Generate Merge Commit Message user metrics for a user. Requires ClickHouse. Prem
 
 Model Context Protocol metrics. Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `mcpMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23303,7 +23582,7 @@ Model Context Protocol metrics. Requires ClickHouse. Premium and Ultimate only.
 
 MCP user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `mcpUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23316,7 +23595,7 @@ MCP user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitL
 
 Refactor Code user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `refactorCodeUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23328,7 +23607,7 @@ Refactor Code user metrics for a user. Requires ClickHouse. Premium and Ultimate
 
 Request Duo Vulnerability Resolution user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `requestDuoVulnerabilityResolutionUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23340,7 +23619,7 @@ Request Duo Vulnerability Resolution user metrics for a user. Requires ClickHous
 
 Summarize New Merge Request user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `summarizeNewMergeRequestUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23352,7 +23631,7 @@ Summarize New Merge Request user metrics for a user. Requires ClickHouse. Premiu
 
 Summarize Review user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `summarizeReviewUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23364,7 +23643,7 @@ Summarize Review user metrics for a user. Requires ClickHouse. Premium and Ultim
 
 Requires ClickHouse. Premium and Ultimate only.
 
-### Fields {.no_toc}
+### `troubleshootJobMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23374,7 +23653,7 @@ Requires ClickHouse. Premium and Ultimate only.
 
 Troubleshoot Job user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `troubleshootJobUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -23386,7 +23665,7 @@ Troubleshoot Job user metrics for a user. Requires ClickHouse. Premium and Ultim
 
 Write Tests user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
 
-### Fields {.no_toc}
+### `writeTestsUserMetrics` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |

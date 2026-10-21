@@ -70723,7 +70723,7 @@ compliance activities that can be filtered by various criteria.
 
     - `new_otlp_endpoint: optional string or null`
 
-      The OpenTelemetry export endpoint after the change. Credentials in the URL userinfo or query string are removed; path segments are retained. Null if the endpoint is unset or was not itself modified by this update.
+      The OpenTelemetry export endpoint after the change, recorded as its scheme, host and port only (for example, `https://collector.example.com:4318`); the path, query string, user name and password are not recorded. An endpoint entered as only a host and port, without a scheme, is recorded as entered. An empty string means the endpoint was cleared. `<unparseable-url>` means the endpoint was entered in some other form, such as text that is not a URL or a URL whose port is not a number. The previous and new values can be the same even though the endpoint changed, for example when only its path changed. Null if the endpoint is unset or was not itself modified by this update.
 
     - `new_otlp_protocol: optional string or null`
 
@@ -70757,7 +70757,7 @@ compliance activities that can be filtered by various criteria.
 
     - `previous_otlp_endpoint: optional string or null`
 
-      The OpenTelemetry export endpoint before the change. Credentials in the URL userinfo or query string are removed; path segments are retained. Null if the endpoint was previously unset or was not itself modified by this update.
+      The OpenTelemetry export endpoint before the change, recorded as its scheme, host and port only (for example, `https://collector.example.com:4318`); the path, query string, user name and password are not recorded. An endpoint entered as only a host and port, without a scheme, is recorded as entered. An empty string means the endpoint had been cleared. `<unparseable-url>` means the endpoint was entered in some other form, such as text that is not a URL or a URL whose port is not a number. The previous and new values can be the same even though the endpoint changed, for example when only its path changed. Null if the endpoint was previously unset or was not itself modified by this update.
 
     - `previous_otlp_protocol: optional string or null`
 
@@ -207068,7 +207068,7 @@ curl https://api.anthropic.com/v1/compliance/activities \
 
     - `new_otlp_endpoint: optional string or null`
 
-      The OpenTelemetry export endpoint after the change. Credentials in the URL userinfo or query string are removed; path segments are retained. Null if the endpoint is unset or was not itself modified by this update.
+      The OpenTelemetry export endpoint after the change, recorded as its scheme, host and port only (for example, `https://collector.example.com:4318`); the path, query string, user name and password are not recorded. An endpoint entered as only a host and port, without a scheme, is recorded as entered. An empty string means the endpoint was cleared. `<unparseable-url>` means the endpoint was entered in some other form, such as text that is not a URL or a URL whose port is not a number. The previous and new values can be the same even though the endpoint changed, for example when only its path changed. Null if the endpoint is unset or was not itself modified by this update.
 
     - `new_otlp_protocol: optional string or null`
 
@@ -207102,7 +207102,7 @@ curl https://api.anthropic.com/v1/compliance/activities \
 
     - `previous_otlp_endpoint: optional string or null`
 
-      The OpenTelemetry export endpoint before the change. Credentials in the URL userinfo or query string are removed; path segments are retained. Null if the endpoint was previously unset or was not itself modified by this update.
+      The OpenTelemetry export endpoint before the change, recorded as its scheme, host and port only (for example, `https://collector.example.com:4318`); the path, query string, user name and password are not recorded. An endpoint entered as only a host and port, without a scheme, is recorded as entered. An empty string means the endpoint had been cleared. `<unparseable-url>` means the endpoint was entered in some other form, such as text that is not a URL or a URL whose port is not a number. The previous and new values can be the same even though the endpoint changed, for example when only its path changed. Null if the endpoint was previously unset or was not itself modified by this update.
 
     - `previous_otlp_protocol: optional string or null`
 
