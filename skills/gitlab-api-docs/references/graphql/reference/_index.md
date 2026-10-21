@@ -50389,6 +50389,7 @@ Fields:
 | <a id="mergerequest-mergeerror"></a>`mergeError` | [`String`](#string) | Error message due to a merge error. |
 | <a id="mergerequest-mergeongoing"></a>`mergeOngoing` | [`Boolean!`](#boolean) | Indicates if a merge is currently occurring. |
 | <a id="mergerequest-mergerequestdiffs"></a>`mergeRequestDiffs`  | [`MergeRequestDiffConnection`](#mergerequestdiffconnection) | Introduced in GitLab 16.2. Status: Experiment. Diff versions of a merge request. |
+| <a id="mergerequest-mergesource"></a>`mergeSource`  | [`MergeRequestMergeSource`](#mergerequestmergesource) | Introduced in GitLab 19.6. Status: Experiment. Merge request or pushed commit that caused the merge request to be marked as merged. Null when the merge request is not merged, was merged in GitLab, or has no recorded source. |
 | <a id="mergerequest-mergestatus"></a>`mergeStatus`  | [`String`](#string) | Deprecated in GitLab 14.0. Renamed. Use [`MergeRequest.mergeStatusEnum`](#mergerequest-mergestatusenum) instead. |
 | <a id="mergerequest-mergestatusenum"></a>`mergeStatusEnum` | [`MergeStatus`](#mergestatus) | Merge status of the merge request. |
 | <a id="mergerequest-mergetraincar"></a>`mergeTrainCar`  | [`MergeTrainCar`](#mergetraincar) | Introduced in GitLab 17.2. Status: Experiment. Represents the merge request in a merge train. |
@@ -51706,6 +51707,17 @@ Fields:
 | <a id="mergerequestlinkedworkitem-externalissue"></a>`externalIssue` | [`MergeRequestExternalIssue`](#mergerequestexternalissue) | Linked external issue. |
 | <a id="mergerequestlinkedworkitem-linktype"></a>`linkType` | [`MergeRequestWorkItemLinkType!`](#mergerequestworkitemlinktype) | Type of relationship between the merge request and work item. |
 | <a id="mergerequestlinkedworkitem-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Linked work item. |
+
+### `MergeRequestMergeSource`
+
+Merge request or pushed commit that caused a merge request to be marked as merged.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestmergesource-commitsha"></a>`commitSha` | [`String`](#string) | SHA of the pushed commit that included the changes. Null when merged through a merge request. |
+| <a id="mergerequestmergesource-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request whose merge included the changes. Null when merged by a pushed commit, or when the current user cannot read the merge request. |
 
 ### `MergeRequestMergeabilityCheck`
 
@@ -59931,7 +59943,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="projectnamespacemetadata-defaultbranch"></a>`defaultBranch`  | [`String`](#string) | Introduced in GitLab 18.6. Status: Experiment. Default branch of the project. |
+| <a id="projectnamespacemetadata-defaultbranch"></a>`defaultBranch`  | [`String`](#string) | Introduced in GitLab 18.6. Status: Experiment. Default branch of the project. Returns null if the user does not have permission to read the repository. |
 | <a id="projectnamespacemetadata-groupid"></a>`groupId`  | [`String`](#string) | Introduced in GitLab 18.6. Status: Experiment. ID of the group. Returns null for user namespaces. |
 | <a id="projectnamespacemetadata-initialsort"></a>`initialSort`  | [`String`](#string) | Introduced in GitLab 18.6. Status: Experiment. User preference for initial sort order. |
 | <a id="projectnamespacemetadata-isissuerepositioningdisabled"></a>`isIssueRepositioningDisabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.6. Status: Experiment. Whether issue repositioning is disabled for the namespace. |
@@ -67827,6 +67839,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-react_thumbs_down_on_duo_code_review_comment"></a>`REACT_THUMBS_DOWN_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-down reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-react_thumbs_up_on_duo_code_review_comment"></a>`REACT_THUMBS_UP_ON_DUO_CODE_REVIEW_COMMENT` | User gave thumbs-up reaction to Duo Code Review comment. |
 | <a id="aiusageeventtype-refactor_code"></a>`REFACTOR_CODE` | Code refactor was requested with the GitLab Duo Chat /refactor command. |
+| <a id="aiusageeventtype-report_agent_platform_token_usage"></a>`REPORT_AGENT_PLATFORM_TOKEN_USAGE` | Agent platform session checkpoint reported its token usage per model. |
 | <a id="aiusageeventtype-report_duo_chat_token_usage"></a>`REPORT_DUO_CHAT_TOKEN_USAGE` | Duo Chat agent turn reported its token usage per model. |
 | <a id="aiusageeventtype-request_duo_chat_response"></a>`REQUEST_DUO_CHAT_RESPONSE` | Duo Chat response was requested. |
 | <a id="aiusageeventtype-request_duo_vulnerability_resolution"></a>`REQUEST_DUO_VULNERABILITY_RESOLUTION` | An AI vulnerability resolution was requested with GitLab Duo. |
@@ -70321,6 +70334,10 @@ Trigger that started a policy evaluation.
 | <a id="governpolicyevaluationtriggertype-deployment_promoted"></a>`DEPLOYMENT_PROMOTED` | Evaluation was triggered by the `deployment_promoted` operation. |
 | <a id="governpolicyevaluationtriggertype-deployment_requested"></a>`DEPLOYMENT_REQUESTED` | Evaluation was triggered by the `deployment_requested` operation. |
 | <a id="governpolicyevaluationtriggertype-environment_advanced"></a>`ENVIRONMENT_ADVANCED` | Evaluation was triggered by the `environment_advanced` operation. |
+| <a id="governpolicyevaluationtriggertype-project_after_create"></a>`PROJECT_AFTER_CREATE` | Evaluation was triggered by the `project.after_create` operation. |
+| <a id="governpolicyevaluationtriggertype-project_after_transfer"></a>`PROJECT_AFTER_TRANSFER` | Evaluation was triggered by the `project.after_transfer` operation. |
+| <a id="governpolicyevaluationtriggertype-project_before_settings_update"></a>`PROJECT_BEFORE_SETTINGS_UPDATE` | Evaluation was triggered by the `project.before_settings_update` operation. |
+| <a id="governpolicyevaluationtriggertype-project_scheduled_settings_drift_check"></a>`PROJECT_SCHEDULED_SETTINGS_DRIFT_CHECK` | Evaluation was triggered by the `project.scheduled_settings_drift_check` operation. |
 
 ### `GovernPolicyEvaluationVerdict`
 

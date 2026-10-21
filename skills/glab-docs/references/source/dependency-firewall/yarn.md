@@ -13,6 +13,8 @@ Run the yarn binary through the GitLab Dependency Firewall. The command checks e
 
 The command uses your package manager's registry or index configuration, and does not modify it.
 
+This command requires Yarn 3.2 or later, or Yarn Classic (1.x). It refuses Yarn 2.x through 3.1, because those versions cannot stop a `.yarnrc.yml` file from routing registry traffic around the firewall. During the run, Yarn ignores per-host `networkSettings` from every `.yarnrc.yml` file, so every request goes through the firewall.
+
 All arguments are forwarded to `yarn` verbatim.
 
 This feature is an experiment and is not ready for production use.

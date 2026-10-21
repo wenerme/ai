@@ -126,14 +126,14 @@ Return any `2xx` status within 5 seconds, and do slow work afterward. Any other 
 
 With the Admin API, you can make these requests:
 
-| Task                                                                            | Request                                                                           |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| List your organization's endpoints                                              | `GET /v1/organizations/webhooks`                                                  |
-| Create an endpoint                                                              | `POST /v1/organizations/webhooks`                                                 |
-| Get one endpoint                                                                | `GET /v1/organizations/webhooks/{webhook_endpoint_id}`                            |
-| Update an endpoint's `url`, `name`, `description`, `enabled_events`, or `state` | `POST /v1/organizations/webhooks/{webhook_endpoint_id}`                           |
-| Delete an endpoint                                                              | `DELETE /v1/organizations/webhooks/{webhook_endpoint_id}`                         |
-| Replace the signing secret                                                      | `POST /v1/organizations/webhooks/{webhook_endpoint_id}/regenerate_signing_secret` |
+| Task                                                                            | Request                                                                                                                                                                           |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| List your organization's endpoints                                              | [`GET /v1/organizations/webhooks`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/list)                                                                       |
+| Create an endpoint                                                              | [`POST /v1/organizations/webhooks`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/create)                                                                    |
+| Get one endpoint                                                                | [`GET /v1/organizations/webhooks/{webhook_endpoint_id}`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/retrieve)                                             |
+| Update an endpoint's `url`, `name`, `description`, `enabled_events`, or `state` | [`POST /v1/organizations/webhooks/{webhook_endpoint_id}`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/update)                                              |
+| Delete an endpoint                                                              | [`DELETE /v1/organizations/webhooks/{webhook_endpoint_id}`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/delete)                                            |
+| Replace the signing secret                                                      | [`POST /v1/organizations/webhooks/{webhook_endpoint_id}/regenerate_signing_secret`](https://platform.claude.com/docs/en/api/beta/organization/webhooks/regenerate_signing_secret) |
 
 In an update, `enabled_events` replaces the endpoint's whole list of event types. An empty list doesn't clear the list: the endpoint keeps the event types it had. To stop deliveries, send `"state": "disabled"` or delete the endpoint.
 
@@ -299,6 +299,8 @@ This example creates an endpoint that receives both event types:
   ```
 
   ```csharp C#
+  using Anthropic.Models.Beta.Organization.Webhooks;
+
   AnthropicClient client = new();
 
   var endpoint = await client.Beta.Organization.Webhooks.Create(new WebhookCreateParams
@@ -334,18 +336,22 @@ This example creates an endpoint that receives both event types:
   ```
 
   ```java Java
-  AnthropicClient client = AnthropicOkHttpClient.fromEnv();
+  import com.anthropic.models.beta.organization.webhooks.WebhookCreateParams;
 
-  var params = WebhookCreateParams.builder()
-      .url("https://example.com/anthropic-webhooks")
-      .name("Enforcement actions")
-      .addEnabledEvent(WebhookCreateParams.EnabledEvent.USER_PROFILE_ENFORCEMENT_ACTION_OPENED)
-      .addEnabledEvent(WebhookCreateParams.EnabledEvent.USER_PROFILE_ENFORCEMENT_ACTION_RESOLVED)
-      .build();
+  void main() {
+      AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
-  var endpoint = client.beta().organization().webhooks().create(params);
+      var params = WebhookCreateParams.builder()
+          .url("https://example.com/anthropic-webhooks")
+          .name("Enforcement actions")
+          .addEnabledEvent(WebhookCreateParams.EnabledEvent.USER_PROFILE_ENFORCEMENT_ACTION_OPENED)
+          .addEnabledEvent(WebhookCreateParams.EnabledEvent.USER_PROFILE_ENFORCEMENT_ACTION_RESOLVED)
+          .build();
 
-  IO.println(endpoint.id());
+      var endpoint = client.beta().organization().webhooks().create(params);
+
+      IO.println(endpoint.id());
+  }
   ```
 
   ```php PHP

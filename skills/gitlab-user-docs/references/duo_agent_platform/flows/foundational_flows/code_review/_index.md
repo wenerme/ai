@@ -53,6 +53,9 @@ This flow:
 
 The Code Review Flow is available in the GitLab UI and through the REST API.
 
+Code Review Flow runs as a service account, which affects how its usage is billed.
+For more information, see [billing subjects for credit usage](../../../../../subscriptions/gitlab_credits.md#billing-subjects-for-credit-usage).
+
 ### Request a review in the GitLab UI
 
 - Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
@@ -332,9 +335,6 @@ To turn on automatic reviews for a group:
 Settings cascade from group to project. More specific settings override broader ones.
 
 After you enable automatic reviews, you can specify rules to exclude specific merge requests.
-
-For information on how credit usage is attributed for automatic reviews, see
-[determine which code review feature runs](../../../../project/merge_requests/duo_in_merge_requests.md#determine-which-review-feature-runs).
 
 ### Start a new review on push
 

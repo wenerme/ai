@@ -38,7 +38,7 @@ However, it is recommended to use Docker to run the jobs, because it is more sec
 Before running a runner, you should first register it to your Gitea instance using the following command:
 
 ```bash
-./runner register --no-interactive --instance <instance> --token <token>
+gitea-runner register --no-interactive --instance <instance> --token <token>
 ```
 
 There are two arguments required, `instance` and `token`.
@@ -67,7 +67,7 @@ If this file is missing or corrupted, you can simply remove it and register agai
 Finally, it's time to start the runner:
 
 ```bash
-./runner daemon
+gitea-runner daemon
 ```
 
 And you can see the new runner in the management page:

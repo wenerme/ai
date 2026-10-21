@@ -1,5 +1,5 @@
 ---
-description: This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks.
+description: This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,38 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-21
+
+
+**WAF Release - 2026-10-21 - Emergency - Cloudflare Managed Ruleset**
+
+This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...c438d5dd | N/A | Generic Rules - Anomalous Execution - 1 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | Generic Rules - Anomalous Execution - 2 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | Generic Rules - Anomalous Execution - 3 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...212afcc9 | N/A | Generic Rules - Anomalous Execution - 4 | N/A | Block | This is a new detection. |
+
+For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
+
+## 2026-10-21
+
+
+**WAF Release - 2026-10-21 - Emergency - Cloudflare Free Ruleset**
+
+This emergency release adds two rules to the Cloudflare Free Ruleset to block anomalous request patterns.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...b5ccf32f | N/A | Generic Rules - Anomalous Execution - 1 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...bcd95984 | N/A | Generic Rules - Anomalous Execution - 2 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | Generic Rules - Anomalous Execution - 3 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | Generic Rules - Anomalous Execution - 4 | N/A | Block | This is a new detection. |
+
+For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
 ## 2026-10-14
 
@@ -428,88 +460,8 @@ This release introduces new rules and updates Microsoft SharePoint RCE alongside
 | Cloudflare Managed Ruleset | ...25ba9d7c | N/A | SSRF - Cloud | Disabled | Block | We are changing the action for this rule from Disabled to BLOCK |
 | Cloudflare Managed Ruleset | ...01a076eb | N/A | SSRF - Local - Beta | Disabled | - | This detection has been removed. |
 
-## 2026-07-29
-
-
-**WAF Release - 2026-07-29**
-
-This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Nuxt Server Island components and Alibaba Fastjson deserialization routines, alongside enhanced protections for cloud metadata Server-Side Request Forgery (SSRF) and obfuscated command injection attempts.
-
-**Key Findings**
-
-- Nuxt Server Island - RCE(GHSA-9473-5f9j-94wq): An unauthenticated vulnerability in Nuxt Server Islands where remote attackers can supply arbitrary component names or props to endpoints. Manipulating these parameters allows unauthenticated component Remote Code Execution (RCE) on the server.
-- Alibaba Fastjson JSONType Remote Code Execution: A unauthenticated remote code execution vulnerability in Alibaba Fastjson (≤ 1.2.83) during JSON deserialization. Under default configurations, attackers can execute arbitrary system commands, bypassing traditional classpath and gadget-based defenses.
-- Generic Protections (SSRF & Command Injection): Added improved detection logic targeting Server-Side Request Forgery (SSRF) in cloud-hosted applications, alongside new rules targeting obfuscated command injection patterns across request parameters.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...c2e84e2d | N/A | SSRF - Cloud - Beta | Log | Block | This is an improved detection. |
-| Cloudflare Managed Ruleset | ...761e7a4c | N/A | Command Injection - Obfuscation | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...7347c892 | N/A | Alibaba Fastjson JSONType Remote Code Execution - Body | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...8ec012ea | N/A | Nuxt Server Island - RCE | N/A | Block | This is a new detection.This was labeled as Generic Rules - RCE. |
-| Cloudflare Managed Ruleset | ...3590a4ad | N/A | Generic Rules - RCE | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...9c6dff1c | N/A | Generic Rules - XSS | N/A | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...3a5b40d6 | N/A | File Upload - RCE | N/A | Block | This is a new detection. |
-| Cloudflare Free Ruleset | ...cfe1a93c | N/A | Generic Rules - RCE | N/A | Block | This is a new detection. |
-| Cloudflare Free Ruleset | ...9ab5ed95 | N/A | Generic Rules - XSS | N/A | Block | This is a new detection. |
-| Cloudflare Free Ruleset | ...1b7f9c67 | N/A | File Upload - RCE | N/A | Block | This is a new detection. |
-
-## 2026-07-21
-
-
-**WAF Release - 2026-07-21**
-
-This release introduces new rules for vulnerabilities in Adobe ColdFusion, Next.js, WordPress alongside updates to existing rules thereby providing enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS).
-
-**WAF and framework adapter mitigations for Next.js vulnerabilities**
-
-Multiple [security vulnerabilities ↗︎](https://nextjs.org/blog/july-2026-security-release) were disclosed and patched by the Next.js team through July 2026 security release. These include denial of service, middleware and proxy bypass, server-side request forgery, information disclosure, and cache poisoning across a range of severities.
-
-Several of the disclosed vulnerabilities are not possible to block at WAF layer,we strongly recommend updating your application and its dependencies immediately. Patched versions are available through v16.2.11 (Active LTS) and v15.5.21 (Maintenance LTS) to address these issues.
-
-| Advisory | CVE | Severity | Issue | WAF Coverage |
-| --- | --- | --- | --- | --- |
-| [Denial of Service in App Router using Server Actions](https://github.com/vercel/next.js/security/advisories/GHSA-m99w-x7hq-7vfj) | CVE-2026-64641 | High | Crafted requests targeting Next.js applications using App Router with at least one Server Action can lead to excessive CPU usage. The CPU usage blocks processing of further requests in the same process, leading to Denial of Service. | WAF rule Next.js - DoS - CVE-2026-64641 (...90dcdb0a) has been deployed to provide coverage. |
-| [Middleware / Proxy bypass in App Router applications using Turbopack and single locale](https://github.com/vercel/next.js/security/advisories/GHSA-6gpp-xcg3-4w24) | CVE-2026-64642 | High | Next.js applications using App Router built with Turbopack and a single entry in config.i18n.locales are vulnerable to a middleware/proxy bypass. Accordingly, any authentication or security checks that a middleware/proxy may perform are bypassed. | This is a middleware bypass that unfortunately cannot be covered through Cloudflare WAF signature engine. |
-| [Server-Side Request Forgery in rewrites via attacker-controlled destination hostname](https://github.com/vercel/next.js/security/advisories/GHSA-p9j2-gv94-2wf4) | CVE-2026-64645 | High | A rewrites() or redirects() rule that builds its external destination hostname from request-controlled input can be pointed at an arbitrary hostname, regardless of the rule's hostname suffix. For rewrites, this behavior enables Server-Side Request Forgery (SSRF); for redirects, Open Redirect can be achieved. | Existing SSRF rules provide adequate coverage for this vulnerability, no tailored WAF rule was developed. |
-| [Server-Side Request Forgery in Server Actions on custom servers](https://github.com/vercel/next.js/security/advisories/GHSA-89xv-2m56-2m9x) | CVE-2026-64649 | High | When a Server Action forwards or redirects a request, an attacker can cause the server to send that outbound request to a malicious host (Server-Side Request Forgery). This requires the attacker’s request to control Host-associated headers. | WAF rule Next.js - SSRF - CVE-2026-64649 (...930091a3) has been deployed to provide coverage. |
-| [Denial of Service in the Image Optimization API using SVGs](https://github.com/vercel/next.js/security/advisories/GHSA-q8wf-6r8g-63ch) | CVE-2026-64644 | Medium | When self-hosting Next.js with the default image loader, the Image Optimization API can optimize remotely hosted images if configured (not enabled by default). If those images contain malicious content, the images can cause CPU exhaustion in the /\_next/image endpoint. | Malicious request is unfortunately indistinguishable from a legitimate image optimization request, so no WAF rule has been created to address this vulnerability. |
-| [Unbounded Server Action payload in Edge runtime](https://github.com/vercel/next.js/security/advisories/GHSA-4c39-4ccg-62r3) | CVE-2026-64646 | Medium | A crafted request can lead to memory consumption on Server Actions in the Edge runtime. Next.js applications which use App Router and have at least one Server Action are affected. | Unfortunately there is no one size fits all rule that can be deployed through WAF in lieu of custom bodySizeLimit configurations, so no WAF rule has been created to address this vulnerability. |
-| [Unauthenticated disclosure of internal Server Function endpoints](https://github.com/vercel/next.js/security/advisories/GHSA-955p-x3mx-jcvp) | CVE-2026-64643 | Medium | In Next.js applications using App Router, Server Actions (use server) or use cache endpoint IDs can be globally disclosed. An attacker can use this for reconnaissance and as part of a broader attack chain. | WAF rule Next.js - Information Disclosure - CVE-2026-64643 (...72952826) has been deployed to provide coverage. |
-| [Cache confusion of response bodies for requests with bodies](https://github.com/vercel/next.js/security/advisories/GHSA-68g3-v927-f742) | CVE-2026-64648 | Medium | A server-side fetch with a request body may return a cached response body from a different request to the same URL but different body. This only applies for fetch calls of the shape fetch(new Request(init), aDifferentInit) | This is an application logic bug that unfortunately cannot be covered through Cloudflare WAF signature engine. |
-| [Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences](https://github.com/vercel/next.js/security/advisories/GHSA-4633-3j49-mh5q) | CVE-2026-64647 | Medium | A server-side fetch with a request body may return a cached response body from a different request to the same URL but different body. This only applies when receiving request bodies which contain invalid UTF-8 characters. | This is an application logic bug that unfortunately cannot be covered through Cloudflare WAF signature engine. |
-
-**Key Findings**
-
-- CVE-2026-48276: A path traversal vulnerability in Adobe ColdFusion file upload mechanisms allows unauthenticated attackers to write or upload files to arbitrary locations outside designated directories on the origin server.
-- CVE-2026-48282: A path traversal vulnerability in Adobe ColdFusion enables unauthenticated attackers to manipulate directory sequences and access restricted system files on the host filesystem.
-- CVE-2026-60137: An unauthenticated SQL injection vulnerability affecting WordPress. Threat actors exploit unsanitized input parameters to execute arbitrary SQL queries, leading to unauthorized database access, record manipulation, or data exfiltration.
-- CVE-2026-63030: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...215e7d31 | N/A | SSRF - Restricted Protocol | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a935ee5d | N/A | SSRF - Obfuscated Host | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...1b0230ac | N/A | LFI - Path Traversal | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...61349c8b | N/A | Adobe ColdFusion - File Upload Path Traversal - CVE:CVE-2026-48276 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...9cb61eac | N/A | Adobe ColdFusion - Path Traversal - CVE:CVE-2026-48282 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...4ac5e21f | N/A | XSS — JS Bracket Concat Obfuscation - Body | Log | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...f31f5559 | N/A | XSS — JS Bracket Concat Obfuscation - Headers | Log | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...987984fd | N/A | XSS — JS Bracket Concat Obfuscation - URI | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...ed933fcc | N/A | Wordpress - SQL Injection - CVE:CVE-2026-60137 | N/A | Block | This was labeled as Generic Rules - SQLi. |
-| Cloudflare Managed Ruleset | ...550664b6 | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-63030 | N/A | Block | This was labeled as Generic Rules - Unauthenticated RCE. |
-| Cloudflare Free Ruleset | ...33697a1a | N/A | Wordpress - SQL Injection - CVE:CVE-2026-60137 | N/A | Block | This was labeled as Generic Rules - SQLi. |
-| Cloudflare Free Ruleset | ...b5ec246a | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-63030 | N/A | Block | This was labeled as Generic Rules - Unauthenticated RCE. |
-| Cloudflare Managed Ruleset | ...72952826 | N/A | Next.js - Information Disclosure - CVE-2026-64643 | N/A | Block | This was labeled as Generic Rules - Information Disclosure. |
-| Cloudflare Managed Ruleset | ...930091a3 | N/A | Next.js - SSRF - CVE-2026-64649 | N/A | Block | This was labeled as Generic Rules - Auth Bypass - 2. |
-| Cloudflare Managed Ruleset | ...63167195 | N/A | Next.js - Remote Code Execution - Cache Components | N/A | Block | This was labeled as Generic Rules - RCE. |
-| Cloudflare Managed Ruleset | ...90dcdb0a | N/A | Next.js - DoS - CVE-2026-64641 | N/A | Block | This was labeled as Generic Rules - DoS. |
-| Cloudflare Managed Ruleset | ...2049a60c | N/A | Generic Rules - Command Execution - Body - Beta | Disabled | - | This detection has been removed. |
-| Cloudflare Managed Ruleset | ...836855a4 | N/A | Generic Rules - Command Execution - Header - Beta | Disabled | - | This detection has been removed. |
-| Cloudflare Managed Ruleset | ...6d060a0d | N/A | Generic Rules - Command Execution - URI - Beta | Disabled | - | This detection has been removed. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds a new managed rule to block active exploitation of a critical remote code execution (RCE)  vulnerability found in popular web frameworks.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

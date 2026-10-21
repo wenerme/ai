@@ -281,7 +281,7 @@ The orchestrator runs `${hooks-dir}/spawn-runner` once per spawn request. The ho
 | `CLAUDE_RUNNER_ATTEMPT` | A per-session counter to use for logging. It isn't a retry count or a request count. `0` for pre-warming requests, though a request for a session can carry `0` too. |
 | `CLAUDE_RUNNER_ORDER_SERVER_TIME` | Server time from the poll response's HTTP `Date` header. When the hook verifies the work-order JWT's `exp`, compare against this value instead of the local clock to tolerate skew. Empty when the gateway omitted the header. |
 | `CLAUDE_RUNNER_POOL_ID` | The ID of the environment the new runner should join, in `ccpool_...` form |
-| `CLAUDE_RUNNER_ACCOUNT_ID` | Tagged ID of the account that enqueued the session, for per-account routing, quota, or chargeback. Empty when unavailable, and always empty for Claude Tag channel sessions, which no account enqueues. |
+| `CLAUDE_RUNNER_ACCOUNT_ID` | Tagged ID of the account that enqueued the session. Use it for per-account routing, quota, or chargeback, not as a dedup key. Empty when unavailable, and always empty for Claude Tag channel sessions, which no account enqueues. |
 | `CLAUDE_RUNNER_ACCOUNT_EMAIL` | Email of the account that enqueued the session. Empty when unavailable. Treat the email as personally identifiable information and don't log it. |
 | `CLAUDE_RUNNER_PRIMARY_REPO_URL` | URL of the session's first git source, for routing to a runner with that repository pre-warmed. Empty when the session has no git sources. |
 | `CLAUDE_RUNNER_PRIMARY_REPO_REVISION` | Revision of the session's first git source: branch, SHA, tag, or full reference name. Empty when unspecified. |
@@ -370,7 +370,21 @@ These lines change how the rest of the hook behaves, so check it for each of the
   ```bash theme={null}
   trap 'rc=$?; your-cleanup-command || true; [ "$rc" -eq 0 ] || [ -n "${PERMANENT:-}" ] || exit 1' EXIT
   ```
-* **Commands that are allowed to fail**: if the hook didn't use `set -e` before, it now stops at the first command that returns non-zero, such as a lookup that finds nothing or a duplicate submit that your platform rejects. If the hook acts on the result, make that command the condition of an `if`. If it ignores the result, follow the command with `|| true`.
+* **Commands that are allowed to fail**: if the hook didn't use `set -e` before, it now stops at the first command that returns non-zero, such as a lookup that finds nothing. If the hook acts on the result, make that command the condition of an `if`. If it ignores the result, follow the command with `|| true`.
+* **The command that submits the workload**: don't follow it with `|| true`. With `|| true`, the hook exits 0 even when your platform refuses the submit, for example over quota, and the session waits for a runner that was never started.
+
+  Name the workload after `CLAUDE_RUNNER_ORDER_ID`, as [the hook's first rule](#the-spawn-runner-hook) says. An already-exists answer is then a redelivery of the same request, so treat that answer alone as success. For anything else, print the answer to stderr and exit 1, or call `permanent` if no retry can fix it. This example does that for `kubectl create`, with a `job.yaml` that holds only the workload:
+
+  ```bash theme={null}
+  if ! out=$(kubectl create -f job.yaml 2>&1); then
+    case "$out" in
+      *AlreadyExists*) ;;
+      *) printf '%s\n' "${out:-kubectl create failed}" >&2; exit 1 ;;
+    esac
+  fi
+  ```
+
+  The orchestrator's log then shows that message. If the hook creates other objects, name each after the order ID, give it its own command, and treat its already-exists answer as success in the same way. For an object that holds a secret, print a fixed message in place of the command's output.
 
 To confirm the trap works, add a line directly below the `trap` line that calls a command that doesn't exist, such as `no-such-command`. Run the hook file from your shell and check that `echo $?` prints `1`, then remove the line.
 
@@ -477,7 +491,7 @@ Claude Code also loads MCP servers from other sources:
 
 * The enterprise-scope [managed MCP file](/docs/en/managed-mcp) at its standard system path: `/etc/claude-code/managed-mcp.json` on Linux runner hosts, `/Library/Application Support/ClaudeCode/managed-mcp.json` on macOS hosts. Use it for locked-down fleets where only administrator-listed servers may load. See [exclusive control with managed-mcp.json](/docs/en/managed-mcp#exclusive-control-with-managed-mcp-json) for the precedence rules. When this file is on the runner host, Claude Code skips the MCP servers Anthropic's control plane delivers to a session, including claude.ai connectors, and names them in a warning on the session child's stderr, which the runner records at the `debug` log level. Before v2.1.229, those sessions exited at startup with `You cannot dynamically configure MCP servers when an enterprise MCP config is present`.
 * The [`managedMcpServers`](/docs/en/settings-reference#managedmcpservers) key in [managed settings](/docs/en/managed-settings) on the runner host: provides HTTP and SSE servers without taking exclusive control, so servers from the other sources still load. Requires Claude Code v2.1.259 or later.
-* `<repo>/.mcp.json`: project scope. Commit the file to the repository; its servers are auto-approved in cloud sessions. In a session with several repositories, [at most one repository's file loads](#repository-settings-in-sessions-with-several-repositories).
+* `<repo>/.mcp.json`: project scope. Outside a [project](/docs/en/claude-projects#what-threads-pick-up-from-your-repositories) thread, commit the file to the repository, and its servers are auto-approved in cloud sessions. In a session with several repositories, [at most one repository's file loads](#repository-settings-in-sessions-with-several-repositories).
 * A [`--mcp-config`](/docs/en/cli-reference#cli-flags) file from your wrapper script: append the flag after `"$@"`, as in `exec "$CLAUDE_RUNNER_CLAUDE_BIN" "$@" --mcp-config /etc/claude/mcp.json`. To keep that file's servers running when the session's delivered servers are updated mid-session, have your wrapper pass the [full environment](#wrapper-scripts) to the child, as `exec` does. Before v2.1.299, the stdio, HTTP, and SSE servers in that file shut down at the first such update that didn't name them.
 
 When connector delivery is enabled for your organization, Anthropic's control plane delivers the connectors you've configured on claude.ai to interactively-created sessions through server-provided MCP configuration, routed through `api.anthropic.com`. Sessions created programmatically, such as [CLI dispatches](/docs/en/self-hosted-environments-testing#run-the-test-loop), don't receive connector delivery; give them MCP servers through any of the other sources this section lists instead. The child's OAuth token doesn't carry a scope for fetching connectors directly, so the child doesn't attempt that fetch itself; delivery is server-driven.
@@ -659,7 +673,7 @@ Set `SELF_HOSTED_RUNNER_HOST_CONFIG_DIR` to seed from a different path, or point
 
 Sessions also read these settings files:
 
-* **Project settings**: a repository-committed `.claude/settings.json` layers on top of the user-level baseline. In a session with several repositories, [at most one repository's file takes effect](#repository-settings-in-sessions-with-several-repositories).
+* **Project settings**: outside a [project](/docs/en/claude-projects#what-threads-pick-up-from-your-repositories) thread, a repository-committed `.claude/settings.json` layers on top of the user-level baseline. In a session with several repositories, [at most one repository's file takes effect](#repository-settings-in-sessions-with-several-repositories).
 * **Managed settings**: sessions read [`managed-settings.json`](/docs/en/settings#where-settings-live) from the standard system path in your runner image. For whether its keys apply alongside [server-managed settings](/docs/en/server-managed-settings), see [how Claude Code combines managed sources](/docs/en/managed-settings#how-claude-code-combines-managed-sources).
 
 For the order these sources apply in, see [settings precedence](/docs/en/settings#settings-precedence).
@@ -670,7 +684,7 @@ When Anthropic's control plane supplies a session with [Claude Code hooks](/docs
 * **Who authors them**: the control plane populates the scripts from fixed constants in its own deployment, never from per-session or third-party input.
 * **What still governs them**: hooks delivered through `--settings` enter the ordinary merged hook configuration, not the managed tier, so your managed settings still apply. `disableAllHooks` disables them, and they are not among the categories [`allowManagedHooksOnly`](/docs/en/settings-reference#allowmanagedhooksonly) keeps loaded.
 
-When a person starts their own session, Claude Code also downloads the [skills enabled for their claude.ai account](/docs/en/skills#skills-in-cowork-and-cloud-sessions) into that session's config directory. A [cloud scheduled task](/docs/en/routines) run doesn't get its owner's skills, and a session that [sends model requests to Bedrock or Agent Platform](#send-model-requests-to-bedrock-or-agent-platform) doesn't download any. For a skill those sessions need, commit it to the repository's `.claude/skills/` or add it to your runner image.
+When a person starts their own session, Claude Code also downloads the [skills enabled for their claude.ai account](/docs/en/skills#skills-in-cowork-and-cloud-sessions) into that session's config directory. A [cloud scheduled task](/docs/en/routines) run doesn't get its owner's skills, and a session that [sends model requests to Bedrock or Agent Platform](#send-model-requests-to-bedrock-or-agent-platform) doesn't download any. For a skill those sessions need, add it to your runner image or, outside a [project](/docs/en/claude-projects#what-threads-pick-up-from-your-repositories), commit it to the repository's `.claude/skills/`.
 
 Outside [Claude Tag](https://claude.com/docs/claude-tag/overview) sessions, a session in a self-hosted environment runs with [auto memory](/docs/en/memory#auto-memory) off by default. For instructions that should carry across sessions, use the `CLAUDE.md` in your runner image or in the repository.
 
@@ -678,12 +692,14 @@ The runner's snapshot of the host's `~/.claude/` leaves out the `projects/` dire
 
 ### Repository settings in sessions with several repositories
 
-In a session with several repositories, Claude Code reads project settings from the directory the session starts in, so at most one repository's `.claude/settings.json` takes effect as project settings. A hook defined in another repository's file doesn't run, a deny rule in it doesn't apply, and its `env` isn't set.
+In a thread in a [project](/docs/en/claude-projects#what-threads-pick-up-from-your-repositories), no repository's `.claude/settings.json` takes effect as project settings and no repository's `.mcp.json` or skills load, wherever the thread starts. To give those threads a skill, add it to your runner image.
+
+In any other session with several repositories, Claude Code reads project settings from the directory the session starts in, so at most one repository's `.claude/settings.json` takes effect as project settings. A hook defined in another repository's file doesn't run, a deny rule in it doesn't apply, and its `env` isn't set.
 
 * **`--capacity 1`, the default, with the built-in checkout**: the session starts in the first repository in its list of repositories. That repository's `.claude/settings.json` takes effect as project settings and its `.mcp.json` loads, and the other repositories' don't.
 * **A `--capacity` above one, or a [`checkout` hook](#checkout)**: the session starts in a per-session directory that contains the checkouts. No repository's `.claude/settings.json` takes effect as project settings, no repository's `.mcp.json` loads, and [`$CLAUDE_PROJECT_DIR`](/docs/en/hooks#reference-scripts-by-path) in a hook command is that directory, not a checkout.
 
-Each repository's `CLAUDE.md` and skills load wherever the session starts. The runner passes every repository to Claude Code as an [additional directory](/docs/en/permissions#additional-directories-grant-file-access-not-configuration), so Claude Code also reads the `enabledPlugins` and `extraKnownMarketplaces` keys from each repository's `.claude/settings.json`.
+Each repository's `CLAUDE.md` loads wherever the session starts. Outside a project thread, its skills load too. The runner passes every repository to Claude Code as an [additional directory](/docs/en/permissions#additional-directories-grant-file-access-not-configuration), so Claude Code also reads the `enabledPlugins` and `extraKnownMarketplaces` keys from each repository's `.claude/settings.json`.
 
 To run a hook or apply a permission rule in every session, put it in `~/.claude/settings.json` on the runner host. The runner [seeds the host file into every session](#how-each-session’s-config-is-assembled), wherever the session starts. Write a path in a `Read` or `Edit` rule as a `//` absolute or `~/` home-relative [pattern](/docs/en/permissions#read-and-edit), because other patterns anchor at the settings source or the current directory.
 

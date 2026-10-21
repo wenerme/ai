@@ -5,7 +5,7 @@ description: "Browse Arcee model IDs, capabilities, context windows, and pricing
 
 # [Arcee logo]Arcee
 
-Access 7 Arcee models through Mastra's model router. Authentication is handled automatically using the `ARCEE_API_KEY` environment variable.
+Access 11 Arcee models through Mastra's model router. Authentication is handled automatically using the `ARCEE_API_KEY` environment variable.
 
 Learn more in the [Arcee documentation](https://docs.arcee.ai).
 
@@ -52,18 +52,6 @@ for await (const chunk of stream) {
     "outputCost": 0.28
   },
   {
-    "model": "arcee/deepseek/deepseek-v4-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 512000,
-    "maxOutput": 384000,
-    "inputCost": 1.74,
-    "outputCost": 3.48
-  },
-  {
     "model": "arcee/deepseek/deepseek-v4-pro-0813",
     "imageInput": false,
     "audioInput": false,
@@ -74,6 +62,30 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 1.32,
     "outputCost": 3.96
+  },
+  {
+    "model": "arcee/deepseek/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.22,
+    "outputCost": 0.66
+  },
+  {
+    "model": "arcee/deepseek/deepseek-v4.1-flash-1017",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "arcee/moonshotai/kimi-k3",
@@ -88,18 +100,6 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
-    "model": "arcee/thinkingmachines/inkling-small",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.5,
-    "outputCost": 1.2
-  },
-  {
     "model": "arcee/trinity-large-thinking",
     "imageInput": false,
     "audioInput": false,
@@ -107,7 +107,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262144,
+    "maxOutput": 80000,
     "inputCost": 0.25,
     "outputCost": 0.8
   },
@@ -122,6 +122,30 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "arcee/zai-org/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "arcee/zai-org/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   }
 ]}
 />
@@ -156,7 +180,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "arcee/zai-org/glm-5.2"
+      ? "arcee/zai-org/glm-5.3-flash"
       : "arcee/deepseek/deepseek-v4-flash-latest";
   }
 });

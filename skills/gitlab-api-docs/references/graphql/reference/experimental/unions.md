@@ -9,7 +9,7 @@ information, see the [GraphQL union documentation](https://graphql.org/learn/sch
 
 An AI catalog item, which is either a custom or foundational item.
 
-### Member types {.no_toc}
+### `AiCatalogCustomAndFoundationalItem` member types {.no_toc}
 
 - [`AiCatalogAgent`](objects.md#aicatalogagent)
 - [`AiCatalogFlow`](objects.md#aicatalogflow)
@@ -21,7 +21,7 @@ An AI catalog item, which is either a custom or foundational item.
 
 Package in an Artifact Registry repository, by package format.
 
-### Member types {.no_toc}
+### `ArtifactRegistryPackage` member types {.no_toc}
 
 - [`ArtifactRegistryMavenPackage`](objects.md#artifactregistrymavenpackage)
 - [`ArtifactRegistryNpmPackage`](objects.md#artifactregistrynpmpackage)
@@ -30,7 +30,7 @@ Package in an Artifact Registry repository, by package format.
 
 Single package in an Artifact Registry repository, by package format.
 
-### Member types {.no_toc}
+### `ArtifactRegistryPackageDetails` member types {.no_toc}
 
 - [`ArtifactRegistryMavenPackageDetails`](objects.md#artifactregistrymavenpackagedetails)
 - [`ArtifactRegistryNpmPackageDetails`](objects.md#artifactregistrynpmpackagedetails)
@@ -39,7 +39,7 @@ Single package in an Artifact Registry repository, by package format.
 
 File of a version in an Artifact Registry repository, by package format.
 
-### Member types {.no_toc}
+### `ArtifactRegistryVersionFile` member types {.no_toc}
 
 - [`ArtifactRegistryMavenVersionFile`](objects.md#artifactregistrymavenversionfile)
 - [`ArtifactRegistryNpmVersionFile`](objects.md#artifactregistrynpmversionfile)
@@ -48,7 +48,7 @@ File of a version in an Artifact Registry repository, by package format.
 
 Represents an object that is the target of a CI_JOB_TOKEN allowlist entry.
 
-### Member types {.no_toc}
+### `CiJobTokenScopeTarget` member types {.no_toc}
 
 - [`CiJobTokenAccessibleGroup`](objects.md#cijobtokenaccessiblegroup)
 - [`CiJobTokenAccessibleProject`](objects.md#cijobtokenaccessibleproject)
@@ -57,7 +57,7 @@ Represents an object that is the target of a CI_JOB_TOKEN allowlist entry.
 
 Information used in runner cloud provisioning.
 
-### Member types {.no_toc}
+### `CiRunnerCloudProvisioning` member types {.no_toc}
 
 - [`CiRunnerGkeProvisioning`](objects.md#cirunnergkeprovisioning)
 - [`CiRunnerGoogleCloudProvisioning`](objects.md#cirunnergooglecloudprovisioning)
@@ -66,7 +66,7 @@ Information used in runner cloud provisioning.
 
 Represents metadata associated with a dependency link.
 
-### Member types {.no_toc}
+### `DependencyLinkMetadata` member types {.no_toc}
 
 - [`NugetDependencyLinkMetadata`](objects.md#nugetdependencylinkmetadata)
 
@@ -74,7 +74,7 @@ Represents metadata associated with a dependency link.
 
 Represents an object that can be the subject of an event.
 
-### Member types {.no_toc}
+### `EventTargetType` member types {.no_toc}
 
 - [`Design`](objects.md#design)
 - [`Issue`](objects.md#issue)
@@ -90,7 +90,7 @@ Represents an object that can be the subject of an event.
 
 Represents possible value types for an expression.
 
-### Member types {.no_toc}
+### `ExpressionValue` member types {.no_toc}
 
 - [`BooleanExpression`](objects.md#booleanexpression)
 - [`IntegerExpression`](objects.md#integerexpression)
@@ -100,7 +100,7 @@ Represents possible value types for an expression.
 
 Describes the location of a subscription usage event.
 
-### Member types {.no_toc}
+### `GitlabSubscriptionUsageEventLocation` member types {.no_toc}
 
 - [`Group`](objects.md#group)
 - [`Project`](objects.md#project)
@@ -109,7 +109,7 @@ Describes the location of a subscription usage event.
 
 A base type of Google Artifact Registry artifacts.
 
-### Member types {.no_toc}
+### `GoogleCloudArtifactRegistryArtifact` member types {.no_toc}
 
 - [`GoogleCloudArtifactRegistryDockerImage`](objects.md#googlecloudartifactregistrydockerimage)
 
@@ -117,7 +117,7 @@ A base type of Google Artifact Registry artifacts.
 
 Details type of Google Artifact Registry artifacts.
 
-### Member types {.no_toc}
+### `GoogleCloudArtifactRegistryArtifactDetails` member types {.no_toc}
 
 - [`GoogleCloudArtifactRegistryDockerImageDetails`](objects.md#googlecloudartifactregistrydockerimagedetails)
 
@@ -125,7 +125,7 @@ Details type of Google Artifact Registry artifacts.
 
 Represents an issuable.
 
-### Member types {.no_toc}
+### `Issuable` member types {.no_toc}
 
 - [`Epic`](objects.md#epic)
 - [`Issue`](objects.md#issue)
@@ -134,7 +134,7 @@ Represents an issuable.
 
 ## `JobNeedUnion`
 
-### Member types {.no_toc}
+### `JobNeedUnion` member types {.no_toc}
 
 - [`CiBuildNeed`](objects.md#cibuildneed)
 - [`CiJob`](objects.md#cijob)
@@ -143,7 +143,7 @@ Represents an issuable.
 
 Maven remote or local upstream that a registry upstream points to.
 
-### Member types {.no_toc}
+### `MavenTargetUpstream` member types {.no_toc}
 
 - [`MavenLocalUpstream`](objects.md#mavenlocalupstream)
 - [`MavenUpstream`](objects.md#mavenupstream)
@@ -152,7 +152,7 @@ Maven remote or local upstream that a registry upstream points to.
 
 Represents either a namespace or a reference to a deleted namespace.
 
-### Member types {.no_toc}
+### `NamespaceUnion` member types {.no_toc}
 
 - [`CiDeletedNamespace`](objects.md#cideletednamespace)
 - [`Namespace`](objects.md#namespace)
@@ -161,7 +161,7 @@ Represents either a namespace or a reference to a deleted namespace.
 
 Represents an object that supports notes.
 
-### Member types {.no_toc}
+### `NoteableType` member types {.no_toc}
 
 - [`AlertManagementAlert`](objects.md#alertmanagementalert)
 - [`Commit`](objects.md#commit)
@@ -178,7 +178,7 @@ Represents an object that supports notes.
 
 Represents metadata associated with a Package.
 
-### Member types {.no_toc}
+### `PackageMetadata` member types {.no_toc}
 
 - [`ComposerMetadata`](objects.md#composermetadata)
 - [`ConanMetadata`](objects.md#conanmetadata)
@@ -191,7 +191,7 @@ Represents metadata associated with a Package.
 
 Scope applied to a personal access token.
 
-### Member types {.no_toc}
+### `PersonalAccessTokenScope` member types {.no_toc}
 
 - [`AccessTokenGranularScope`](objects.md#accesstokengranularscope)
 - [`AccessTokenLegacyScope`](objects.md#accesstokenlegacyscope)
@@ -200,7 +200,7 @@ Scope applied to a personal access token.
 
 Represents specific policy types. Its fields depend on the policy type.
 
-### Member types {.no_toc}
+### `PolicyAttributesUnion` member types {.no_toc}
 
 - [`ApprovalPolicyAttributesType`](objects.md#approvalpolicyattributestype)
 - [`DependencyFirewallPolicyAttributesType`](objects.md#dependencyfirewallpolicyattributestype)
@@ -211,7 +211,7 @@ Represents specific policy types. Its fields depend on the policy type.
 
 ## `RecentlyViewedItemUnion`
 
-### Member types {.no_toc}
+### `RecentlyViewedItemUnion` member types {.no_toc}
 
 - [`Epic`](objects.md#epic)
 - [`Issue`](objects.md#issue)
@@ -221,7 +221,7 @@ Represents specific policy types. Its fields depend on the policy type.
 
 ## `Registrable`
 
-### Member types {.no_toc}
+### `Registrable` member types {.no_toc}
 
 - [`AbuseReportUploadRegistry`](objects.md#abusereportuploadregistry)
 - [`AchievementUploadRegistry`](objects.md#achievementuploadregistry)
@@ -271,7 +271,7 @@ Represents specific policy types. Its fields depend on the policy type.
 
 Effective configuration for a scan profile trigger, resolved by scan type, and by trigger type for triage and remediation profiles.
 
-### Member types {.no_toc}
+### `ScanProfileConfiguration` member types {.no_toc}
 
 - [`AutoRemediationConfiguration`](objects.md#autoremediationconfiguration)
 - [`DependencyScanningConfiguration`](objects.md#dependencyscanningconfiguration)
@@ -286,7 +286,7 @@ Effective configuration for a scan profile trigger, resolved by scan type, and b
 
 Represents a policy source. Its fields depend on the source type.
 
-### Member types {.no_toc}
+### `SecurityPolicySource` member types {.no_toc}
 
 - [`GroupSecurityPolicySource`](objects.md#groupsecuritypolicysource)
 - [`ProjectSecurityPolicySource`](objects.md#projectsecuritypolicysource)
@@ -295,7 +295,7 @@ Represents a policy source. Its fields depend on the source type.
 
 Represents a vulnerability detail field. The fields with data will depend on the vulnerability detail type.
 
-### Member types {.no_toc}
+### `VulnerabilityDetail` member types {.no_toc}
 
 - [`VulnerabilityDetailBase`](objects.md#vulnerabilitydetailbase)
 - [`VulnerabilityDetailBoolean`](objects.md#vulnerabilitydetailboolean)
@@ -317,7 +317,7 @@ Represents a vulnerability detail field. The fields with data will depend on the
 
 Represents a vulnerability location. The fields with data will depend on the vulnerability report type.
 
-### Member types {.no_toc}
+### `VulnerabilityLocation` member types {.no_toc}
 
 - [`VulnerabilityLocationClusterImageScanning`](objects.md#vulnerabilitylocationclusterimagescanning)
 - [`VulnerabilityLocationContainerScanning`](objects.md#vulnerabilitylocationcontainerscanning)

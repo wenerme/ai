@@ -59,7 +59,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 163840,
-    "maxOutput": 163840,
+    "maxOutput": 32768,
     "inputCost": 3,
     "outputCost": 5
   },
@@ -503,7 +503,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 131072,
+    "maxOutput": 81920,
     "inputCost": 0.3,
     "outputCost": 3
   },
@@ -551,7 +551,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 66536,
+    "maxOutput": 65536,
     "inputCost": 2,
     "outputCost": 2
   },
@@ -574,8 +574,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 32000,
-    "maxOutput": 2048,
+    "contextWindow": 32768,
+    "maxOutput": null,
     "inputCost": 0.01,
     "outputCost": null
   },
@@ -586,8 +586,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 32000,
-    "maxOutput": 4096,
+    "contextWindow": 32768,
+    "maxOutput": null,
     "inputCost": 0.01,
     "outputCost": null
   },
@@ -599,21 +599,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 66536,
+    "maxOutput": 32768,
     "inputCost": 0.25,
     "outputCost": 1
-  },
-  {
-    "model": "huggingface/Qwen/Qwen3-Next-80B-A3B-Thinking",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 131072,
-    "inputCost": 0.3,
-    "outputCost": 2
   },
   {
     "model": "huggingface/Qwen/Qwen3-VL-235B-A22B-Instruct",
@@ -832,18 +820,6 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "huggingface/XiaomiMiMo/MiMo-V2-Flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 4096,
-    "inputCost": 0.1,
-    "outputCost": 0.3
-  },
-  {
     "model": "huggingface/XiaomiMiMo/MiMo-V2.5",
     "imageInput": false,
     "audioInput": false,
@@ -878,18 +854,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.035,
     "outputCost": 0.138
-  },
-  {
-    "model": "huggingface/zai-org/GLM-4.5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 98304,
-    "inputCost": 0.6,
-    "outputCost": 2.2
   },
   {
     "model": "huggingface/zai-org/GLM-4.5-Air",

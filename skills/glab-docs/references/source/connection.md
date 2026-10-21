@@ -27,6 +27,10 @@ of your instance:
 glab config set -g host gitlab.example.com
 ```
 
+When you sign in with `glab auth login`, `glab` sets `host` to that instance for you if `host`
+is still `gitlab.com` and you have no `gitlab.com` token. Otherwise, it asks first, or in a
+non-interactive run prints the command to run.
+
 Setting this configuration enables you to perform commands outside a Git repository while
 using your GitLab Self-Managed or GitLab Dedicated instance. For example:
 

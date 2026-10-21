@@ -39,6 +39,13 @@ To configure glab as the Git credential helper for the host without a prompt, fo
 In interactive mode, glab detects GitLab instances from your Git remotes
 and lists them as options, so you do not have to type the hostname manually.
 
+After you sign in, glab can make the instance your default `host`, which
+glab uses outside a Git repository. glab does this automatically when the
+default is still `gitlab.com` and you have no `gitlab.com` credentials.
+Otherwise, it asks first, or in a non-interactive run prints the
+`glab config set` command to run. glab leaves `host` unchanged in CI,
+or when `GITLAB_HOST`, `GITLAB_URI`, or `GL_HOST` is set.
+
 When you omit `--hostname` in a non-interactive run, glab authenticates
 with the first of these that applies:
 

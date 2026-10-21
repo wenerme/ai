@@ -1942,7 +1942,12 @@ values:
   The interaction was cancelled.
 - `incomplete`
 
-  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+  The interaction is completed, but contains incomplete results (e.g.
+  hitting max_tokens).
+- `queued`
+
+  The interaction is queued, waiting for processing (e.g. waiting for
+  off-peak capacity).
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
 updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.
@@ -2140,7 +2145,12 @@ values:
   The interaction was cancelled.
 - `incomplete`
 
-  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+  The interaction is completed, but contains incomplete results (e.g.
+  hitting max_tokens).
+- `queued`
+
+  The interaction is queued, waiting for processing (e.g. waiting for
+  off-peak capacity).
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
 updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.

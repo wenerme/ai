@@ -5,7 +5,7 @@ description: "Browse Modal model IDs, capabilities, context windows, and pricing
 
 # [Modal logo]Modal
 
-Access 4 Modal models through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
+Access 8 Modal models through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
 
 Learn more in the [Modal documentation](https://modal.com/docs/guide/endpoints).
 
@@ -40,6 +40,30 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "modal/deepseek-ai/DeepSeek-V4.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "modal/meta-models/Muse-Spark-Open-816B-A42B",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 1.25,
+    "outputCost": 4.25
+  },
+  {
     "model": "modal/moonshotai/Kimi-K3",
     "imageInput": true,
     "audioInput": false,
@@ -50,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "modal/nvidia/GLM-5.3-Flash-NVFP4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "modal/Qwen/Qwen3.8-2.4T-A95B",
@@ -74,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 1.2,
     "outputCost": 5
+  },
+  {
+    "model": "modal/zai-org/GLM-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   },
   {
     "model": "modal/zai-org/GLM-5.3-Flash",

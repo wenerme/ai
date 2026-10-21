@@ -34,13 +34,13 @@ Before adding the pipeline configuration, you must first set up a Docusaurus pro
 on GitLab.com:
 
 1. Create a new project under your username (not a group):
-   1. In the upper-right corner, select **Create new** () and **New project/repository**.
-   1. Select **Create blank project**.
+   1. In the upper-right corner, select  () and .
+   1. Select .
    1. Enter the project details:
-      - In the **Project name** field, enter the name of your project, for example `My Pipeline Tutorial Project`.
-      - Select **Initialize repository with a README**.
-   1. Select **Create project**.
-1. On the project's overview page, in the upper-right corner, select **Code**
+      - In the  field, enter the name of your project, for example `My Pipeline Tutorial Project`.
+      - Select .
+   1. Select .
+1. On the project's overview page, in the upper-right corner, select
    to find the clone paths for your project. Copy the SSH or HTTP path and use the path
    to clone the project locally.
 
@@ -108,7 +108,7 @@ test-job:
 
 Commit and push this change to GitLab, then:
 
-1. Go to **Build** > **Pipelines** and make sure a pipeline runs in GitLab with this single job.
+1. Go to  >  and make sure a pipeline runs in GitLab with this single job.
 1. Select the pipeline, then select the job to view the job's log and see the `This is my first job!` message
    followed by the date.
 
@@ -156,7 +156,7 @@ and check the job log. You can:
 
 - See the `npm` commands run and build the site.
 - Verify that the artifacts are saved at the end.
-- Browse the contents of the artifacts file by selecting **Browse** to the right of the job log
+- Browse the contents of the artifacts file by selecting  to the right of the job log
   after the job completes.
 
 ## Add a job to deploy the site
@@ -206,7 +206,7 @@ pages:
 ```
 
 Use the pipeline editor to commit this pipeline configuration to the default branch,
-and view the pipeline details from the **Pipelines** list. Verify that:
+and view the pipeline details from the  list. Verify that:
 
 - The two jobs run in different stages, `build` and `deploy`.
 - After the `pages` job completes a `pages:deploy` job appears, which is the GitLab process
@@ -215,9 +215,9 @@ and view the pipeline details from the **Pipelines** list. Verify that:
 
 To view your site:
 
-- In the left sidebar, select **Deploy** > **Pages**.
-- Make sure **Use unique domain** is off.
-- Under **Access pages**, select the link. The URL format should be similar to: `https://<my-username>.gitlab.io/<project-name>`. For more information, see [GitLab Pages default domain names](../../user/project/pages/getting_started_part_one.md#gitlab-pages-default-domain-names).
+- In the left sidebar, select  > .
+- Make sure  is off.
+- Under , select the link. The URL format should be similar to: `https://<my-username>.gitlab.io/<project-name>`. For more information, see [GitLab Pages default domain names](../../user/project/pages/getting_started_part_one.md#gitlab-pages-default-domain-names).
 
 > [!note]
 > If you need to [use unique domains](../../user/project/pages/_index.md#unique-domains), in `docusaurus.config.js`, set `baseUrl`: to `/`.

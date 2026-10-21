@@ -101,18 +101,6 @@ for await (const chunk of stream) {
     "outputCost": 25
   },
   {
-    "model": "databricks/databricks-claude-sonnet-4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 64000,
-    "inputCost": 3,
-    "outputCost": 15
-  },
-  {
     "model": "databricks/databricks-claude-sonnet-4-5",
     "imageInput": true,
     "audioInput": false,
@@ -135,30 +123,6 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
-  },
-  {
-    "model": "databricks/databricks-gemini-2-5-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 0.3,
-    "outputCost": 2.5
-  },
-  {
-    "model": "databricks/databricks-gemini-2-5-pro",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 1.25,
-    "outputCost": 10
   },
   {
     "model": "databricks/databricks-gemini-3-1-flash-lite",
@@ -207,18 +171,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
-  },
-  {
-    "model": "databricks/databricks-gemini-3-pro",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": 2,
-    "outputCost": 12
   },
   {
     "model": "databricks/databricks-glm-5-2",
@@ -323,10 +275,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 400000,
+    "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 1,
-    "outputCost": 6
+    "inputCost": 0.2,
+    "outputCost": 1.2
   },
   {
     "model": "databricks/databricks-gpt-5-6-sol",
@@ -337,8 +289,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 5,
-    "outputCost": 30
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "databricks/databricks-gpt-5-6-terra",
@@ -349,8 +301,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2.5,
-    "outputCost": 15
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "databricks/databricks-gpt-5-mini",
@@ -384,9 +336,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.072,
-    "outputCost": 0.28
+    "maxOutput": 25000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "databricks/databricks-gpt-oss-20b",
@@ -396,21 +348,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.05,
-    "outputCost": 0.2
-  },
-  {
-    "model": "databricks/databricks-kimi-k2-7-code",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.95,
-    "outputCost": 4
+    "maxOutput": 25000,
+    "inputCost": 0.07,
+    "outputCost": 0.3
   }
 ]}
 />

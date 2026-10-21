@@ -1836,18 +1836,18 @@
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",
     "skill": "openai-api",
-    "etag": "W/\"b30798c298e279cb34c72c11dde1ff45\"",
-    "lastModified": "Tue, 20 Oct 2026 10:28:23 GMT",
-    "size": 834053,
-    "updatedAt": "2026-10-20T10:28:23.382Z"
+    "etag": "W/\"220ef200e50fe2e1986d4f20c7a309f8\"",
+    "lastModified": "Wed, 21 Oct 2026 10:27:19 GMT",
+    "size": 834110,
+    "updatedAt": "2026-10-21T10:27:19.462Z"
   },
   "openai-api/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/index.md",
     "skill": "openai-api",
-    "etag": "W/\"a6f3f6300539d877dbc6a21361203e9f\"",
-    "lastModified": "Tue, 20 Oct 2026 10:28:23 GMT",
-    "size": 834044,
-    "updatedAt": "2026-10-20T10:28:23.792Z"
+    "etag": "W/\"e418c56e58f809d43ccedf620f5a7e1d\"",
+    "lastModified": "Wed, 21 Oct 2026 10:27:19 GMT",
+    "size": 834101,
+    "updatedAt": "2026-10-21T10:27:19.826Z"
   },
   "openai-api/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -2924,10 +2924,10 @@
   "openai-api/admin/organization/usage.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/index.md",
     "skill": "openai-api",
-    "etag": "W/\"d1c6797f8d56110ec5264a8ad6dc1207\"",
-    "lastModified": "Tue, 20 Oct 2026 00:57:06 GMT",
-    "size": 415492,
-    "updatedAt": "2026-10-20T00:57:06.255Z"
+    "etag": "W/\"b3f7c87101bcc6babcd88a480b779af9\"",
+    "lastModified": "Wed, 21 Oct 2026 08:39:11 GMT",
+    "size": 415549,
+    "updatedAt": "2026-10-21T10:27:49.715Z"
   },
   "openai-api/admin/organization/usage/audio_speeches.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/methods/audio_speeches/index.md",
@@ -2956,10 +2956,10 @@
   "openai-api/admin/organization/usage/completions.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/methods/completions/index.md",
     "skill": "openai-api",
-    "etag": "W/\"a251ef850c9503aafe4f2d7d7a1fee75\"",
-    "lastModified": "Tue, 20 Oct 2026 00:57:07 GMT",
-    "size": 20905,
-    "updatedAt": "2026-10-20T00:57:07.412Z"
+    "etag": "W/\"66b1f2bea2a219cf0a3469d54b228154\"",
+    "lastModified": "Wed, 21 Oct 2026 10:27:50 GMT",
+    "size": 20962,
+    "updatedAt": "2026-10-21T10:27:50.628Z"
   },
   "openai-api/admin/organization/usage/costs.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/methods/costs/index.md",
