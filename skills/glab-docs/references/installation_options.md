@@ -9,25 +9,18 @@ info: To determine the technical writer assigned to the Stage/Group associated w
 These installation instructions are either not officially supported by GitLab, or
 are maintained by the community.
 
-## Table of contents
+## mise-en-place
 
-- [macOS](#macos)
-- [Windows](#windows)
-- [Linux](#linux)
-  - [Homebrew](#homebrew)
-  - [mise-en-place](#mise-en-place)
-  - [ASDF](#asdf)
-  - [Snapcraft](#snapcraft)
-  - [Arch Linux](#arch-linux)
-  - [Alpine Linux](#alpine-linux)
-    - [Install a pinned version from edge](#install-a-pinned-version-from-edge)
-    - [Alpine Linux Docker-way](#alpine-linux-docker-way)
-  - [Fedora](#fedora)
-  - [Nix/NixOS](#nixnixos)
-  - [WakeMeOps (Debian/Ubuntu)](#wakemeops-debianubuntu)
-  - [Spack](#spack)
-- [Docker](#docker)
-  - [GitLab CICD](#gitlab-cicd)
+To manage a `glab` installation with `mise`:
+
+1. Add the following to the `[tools]` section of a `mise`
+   [configuration file](https://mise.jdx.dev/configuration.html):
+
+   ```toml
+   glab = "latest"
+   ```
+
+1. Run `mise install`.
 
 ## macOS
 
@@ -37,9 +30,6 @@ are maintained by the community.
 - [MacPorts](https://ports.macports.org/port/glab/details/):
   - Install with: `sudo port install glab`
   - Update with: `sudo port selfupdate && sudo port upgrade glab`
-- [mise-en-place](https://mise.jdx.dev/)
-  - Add to the `[tools]` section of one of mise's configuration files: `"ubi:gitlab-org/cli" = { version = "latest", exe = "glab", provider = "gitlab" }`.
-  - Install with `mise install`
 - [ASDF tool version manager](https://asdf-vm.com/guide/introduction.html):
   - Install with: `asdf plugin add glab; asdf install glab latest; asdf global glab latest`
 
@@ -57,9 +47,6 @@ are maintained by the community.
 - [scoop](https://scoop.sh)
   - Install with: `scoop install glab`
   - Update with: `scoop update glab`
-- [mise-en-place](https://mise.jdx.dev/)
-  - Add `"ubi:gitlab-org/cli" = { version = "latest", exe = "glab", provider = "gitlab" }` to one of mise's configuration files.
-  - Install with `mise install`
 - [ASDF tool version manager](https://asdf-vm.com/guide/introduction.html):
   - Requires [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
   - Install with: `asdf plugin add glab; asdf install glab latest; asdf global glab latest`
@@ -75,16 +62,6 @@ Installing from Homebrew is the officially supported installation method for Lin
 
 - Install with: `brew install glab`
 - Update with: `brew upgrade glab`
-
-### mise-en-place
-
-Add to the `[tools]` section of one of mise's configuration files:
-
-```toml
-"ubi:gitlab-org/cli" = { version = "latest", exe = "glab", provider = "gitlab" }
-```
-
-Then run `mise install` to install it.
 
 ### ASDF
 

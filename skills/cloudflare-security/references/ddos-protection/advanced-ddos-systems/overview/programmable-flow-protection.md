@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/o
 
 # Programmable Flow Protection (Beta)
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
 
@@ -697,7 +697,7 @@ This program demonstrates several key concepts:
 
 Each program has access to its own local state. State is local to each server and is not shared between datacenters.
 
-State is tied to a specific program. If you modify a rule's mode (disabled, monitoring, or enabled), the content of the state tables persists. However, if you modify a rule's program or the contents of the program itself, the state tables are cleared.
+State is tied to a specific program version. If you modify a rule's mode (disabled, monitoring, or enabled), the content of the state tables persists. However, if you move a rule to another program or program version, the state tables are cleared.
 
 There are two state tables available to your program.
 
@@ -1355,9 +1355,13 @@ During the development process, you may find it useful to update the same progra
 
 To update the program, select the three dots next to your program. Then, select **Overwrite**. This will prompt you to choose a file to upload as your `C` source code.
 
+Each update creates a new program version. The response's `version` field identifies the current version.
+
+Rules remain pinned to their existing `program_version` when you update a program. To use the updated program, update each rule with the new `program_version` through the API.
+
 Note
 
-It is possible to update and overwrite a program that is currently in use by one or more rules. When doing so, you will be warned that the program is currently active and will be overwritten. However, if an active program is being updated with a program that either does not compile or can not be verified, the update will fail and the old program will continue to be in use.
+It is possible to update a program that is currently in use by one or more rules. When doing so, you will be warned that the program is currently active. Existing rules continue to use their pinned program version. If the updated program does not compile or cannot be verified, existing rules continue to use the previous successful version.
 
 ### View all programs
 
@@ -1460,5 +1464,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Programmable Flow Protection (Beta)","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/og.png?v=507a10264f2d42b8","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Programmable Flow Protection (Beta)","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/og.png?v=507a10264f2d42b8","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 ```

@@ -41,7 +41,7 @@ In an interactive terminal, `ant apply` prints the plan and waits for your appro
 First apply  ./claude-lock.json does not exist yet and will be created
 
 Resources will be created with
-  credentials   API key (--api-key / ANTHROPIC_API_KEY)
+  credentials   API key (ANTHROPIC_API_KEY)
   host          api.anthropic.com
   organization  1b0c2a4d-6c1f-4f0e-9a57-2e8d1c3b4a5f
   workspace     wrkspc_01JwQvzr7rXLA5AGx3HKfFUJ
@@ -93,7 +93,7 @@ The first `ant apply` writes `claude-lock.json`, the lockfile, in the directory 
 }
 ```
 
-Commit it with your files. It's how the next run, on your machine or in CI, finds these resources instead of creating them again, and it's where you read an agent's ID to [start a session](https://platform.claude.com/docs/en/managed-agents/sessions). The two hashes fingerprint what was last sent and what the API returned. That's how a later run notices an edited file, or a resource changed outside these files.
+Commit it with your files. It's how the next run, on your machine or in CI, finds these resources instead of creating them again, and it's where you read an agent's ID to [start a session](https://platform.claude.com/docs/en/managed-agents/sessions). The two hashes fingerprint what was last sent and what the API returned. That's how a later run detects an edited file, or a resource changed outside these files.
 
 ## Grow it into a project
 

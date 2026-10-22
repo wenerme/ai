@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # Common API calls
 
-Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections contain example requests for common API calls. For a list of available API endpoints, refer to [Endpoints](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#endpoints).
 
@@ -36,6 +36,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
       "id": "<PROGRAM_ID>",
       "name": "rate-limiter",
       "status": "success",
+      "version": 1,
       "created_on": "<TIMESTAMP>",
       "modified_on": "<TIMESTAMP>"
     }
@@ -70,6 +71,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
     "id": "<PROGRAM_ID>",
     "name": "my-rate-limiter",
     "status": "success",
+    "version": 1,
     "created_on": "<TIMESTAMP>",
     "modified_on": "<TIMESTAMP>"
   },
@@ -99,7 +101,7 @@ If the program fails compilation or verification, the API returns a detailed err
 
 ## Update a program
 
-This example updates an existing program with new source code. You can update a program even if it is currently in use by one or more rules. If the new program fails compilation or verification, the update fails and the existing program remains active.
+This example updates an existing program with new source code. Each update creates a new version under the same program ID. Rules using the program remain pinned to their existing `program_version`. If the new program fails compilation or verification, the update fails and the existing version remains active.
 
 *Requestbash*
 
@@ -119,6 +121,7 @@ curl --request PATCH \
     "id": "<PROGRAM_ID>",
     "name": "program",
     "status": "success",
+    "version": 2,
     "created_on": "<TIMESTAMP>",
     "modified_on": "<TIMESTAMP>"
   },
@@ -170,6 +173,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
     {
       "id": "<RULE_ID>",
       "program_id": "<PROGRAM_ID>",
+      "program_version": 1,
       "scope": "global",
       "name": "global",
       "mode": "enabled",
@@ -209,6 +213,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "result": {
     "id": "<RULE_ID>",
     "program_id": "<PROGRAM_ID>",
+    "program_version": 1,
     "scope": "global",
     "name": "global",
     "mode": "monitoring",
@@ -250,6 +255,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/programma
   "result": {
     "id": "<RULE_ID>",
     "program_id": "<PROGRAM_ID>",
+    "program_version": 1,
     "scope": "region",
     "name": "WEUR",
     "mode": "enabled",
@@ -267,7 +273,7 @@ Refer to [JSON objects](https://developers.cloudflare.com/ddos-protection/advanc
 
 ## Update a rule
 
-This example updates an existing rule. You can update the mode, scope, and expression, but not the program. To change the program, delete the rule and create a new one.
+This example updates an existing rule's mode and pins it to version `2` of its program. If you omit `program_version`, the rule remains pinned to its existing version.
 
 *Requestbash*
 
@@ -277,7 +283,8 @@ curl --request PATCH \
 --header "Authorization: Bearer <API_TOKEN>" \
 --header "Content-Type: application/json" \
 --data '{
-  "mode": "enabled"
+  "mode": "enabled",
+  "program_version": 2
 }'
 ```
 
@@ -288,6 +295,7 @@ curl --request PATCH \
   "result": {
     "id": "<RULE_ID>",
     "program_id": "<PROGRAM_ID>",
+    "program_version": 2,
     "scope": "global",
     "name": "global",
     "mode": "enabled",
@@ -358,5 +366,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/og.png?v=ed25b9329656ba65","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/#page","headline":"Common API calls","description":"Example API requests for managing Programmable Flow Protection programs and rules.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/examples/og.png?v=ed25b9329656ba65","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

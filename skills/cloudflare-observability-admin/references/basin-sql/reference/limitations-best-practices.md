@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/basin-sql/reference/limitations-best-pr
 
 # Limitations and best practices
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page summarizes supported features, limitations, and best practices.
 
@@ -42,7 +42,7 @@ This page summarizes supported features, limitations, and best practices.
 | `func(DISTINCT ...)` | Yes | `COUNT`, `SUM`, `AVG`, and other aggregates |
 | Set operations (`UNION`, `UNION ALL`, `INTERSECT`, `EXCEPT`) | Yes | |
 | `GROUPING SETS` / `ROLLUP` / `CUBE` | Yes | |
-| `OFFSET` | No | |
+| `OFFSET` | Yes | Skip rows when used with `LIMIT` |
 | `INSERT` / `UPDATE` / `DELETE` | No | Read-only |
 | `CREATE` / `DROP` / `ALTER` | No | Read-only |
 
@@ -54,7 +54,6 @@ For the full SQL syntax, refer to the [SQL reference](https://developers.cloudfl
 
 | Feature | Error |
 | --- | --- |
-| `OFFSET` | `unsupported feature: OFFSET clause is not supported` |
 | Named `WINDOW` clause | `unsupported feature: WINDOW clause is not supported` |
 | `INSERT` / `UPDATE` / `DELETE` | `only read-only queries are allowed` |
 | `CREATE` / `DROP` / `ALTER` | `only read-only queries are allowed` |
@@ -122,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/#page","headline":"Limitations and best practices","description":"Supported features, known limitations, and best practices for Basin SQL queries.","url":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/og.png?v=ec5ce75f215b7f8d","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/#page","headline":"Limitations and best practices","description":"Supported features, known limitations, and best practices for Basin SQL queries.","url":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/reference/limitations-best-practices/og.png?v=ec5ce75f215b7f8d","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

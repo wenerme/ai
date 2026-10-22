@@ -5,7 +5,7 @@ description: "Browse Inceptron model IDs, capabilities, context windows, and pri
 
 # [Inceptron logo]Inceptron
 
-Access 4 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
+Access 6 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
 
 Learn more in the [Inceptron documentation](https://docs.inceptron.io).
 
@@ -48,8 +48,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 1048576,
-    "inputCost": 0.13,
-    "outputCost": 0.28
+    "inputCost": 0.11,
+    "outputCost": 0.3666
   },
   {
     "model": "inceptron/moonshotai/Kimi-K2.6",
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.53,
-    "outputCost": 3.39
+    "inputCost": 0.4946,
+    "outputCost": 3.2
   },
   {
     "model": "inceptron/moonshotai/Kimi-K2.7-Code",
@@ -72,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.66,
-    "outputCost": 3.4
+    "inputCost": 0.6712,
+    "outputCost": 3.35
   },
   {
     "model": "inceptron/zai-org/GLM-5.2",
@@ -84,8 +84,32 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 1048576,
-    "inputCost": 0.71,
-    "outputCost": 2.35
+    "inputCost": 0.69,
+    "outputCost": 2.52
+  },
+  {
+    "model": "inceptron/zai-org/GLM-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.55,
+    "outputCost": 1.96
+  },
+  {
+    "model": "inceptron/zai-org/GLM-5.3-Flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.15,
+    "outputCost": 0.69
   }
 ]}
 />
@@ -120,7 +144,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "inceptron/zai-org/GLM-5.2"
+      ? "inceptron/zai-org/GLM-5.3-Flash"
       : "inceptron/deepseek-ai/DeepSeek-V4-Flash-0731";
   }
 });

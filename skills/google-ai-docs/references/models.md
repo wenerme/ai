@@ -178,7 +178,6 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-previ
 | [Gemini Embedding 2](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2) | Our first multimodal embedding model, mapping text, images, video, audio, and PDFs into a unified embedding space for advanced semantic search and RAG systems. | ``` gemini-embedding-2-preview ``` |
 | [Gemini Embedding](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001) | High-dimensional vector representations for advanced semantic search, text classification, and RAG systems. | ``` gemini-embedding-001 ``` |
 | [Gemini Robotics ER 2](https://ai.google.dev/gemini-api/docs/robotics-overview) | Embodied reasoning model delivering advanced video understanding, spatial reasoning, multi-step tool orchestration, and multi-robot collaboration for robotics tasks. | ``` gemini-robotics-er-2-preview ``` |
-| [Gemini Robotics ER 1.6](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview) | Advanced embodied reasoning model that understands physical spaces and plans multi-step tasks for robotic agents with new capabilities like instrument reading, improved spatial and physical reasoning. | ``` gemini-robotics-er-1.6-preview ``` |
 
 ## Previous models
 
@@ -187,6 +186,7 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-previ
 
 | Model | Description | Endpoint |
 |---|---|---|
+| [Gemini Robotics ER 1.6](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview) (Shut down) | Advanced embodied reasoning model that understands physical spaces and plans multi-step tasks for robotic agents with new capabilities like instrument reading, improved spatial and physical reasoning. | ``` gemini-robotics-er-1.6-preview ``` |
 | [Computer Use](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) (Shut down) | A specialized model that can "see" a digital screen and perform UI actions like clicking, typing, and navigating to automate complex browser tasks. | ``` gemini-2.5-computer-use-preview-10-2025 ``` |
 | [Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash) (Shut down) | Our second generation workhorse model, with next-gen features and improved capabilities, including superior speed, native tool use, and a 1M token context window. | ``` gemini-2.0-flash ``` |
 | [Gemini 2.0 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-lite) (Shut down) | Our fastest second generation model, optimized for cost efficiency and low latency. | ``` gemini-2.0-flash-lite ``` |

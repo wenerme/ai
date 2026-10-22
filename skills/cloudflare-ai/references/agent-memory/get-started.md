@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agent-memory/get-started/og.png?v=2a514
 
 # Get started
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-memory/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add Agent Memory to an agent so it can recall durable context across conversations.
 
@@ -83,19 +83,19 @@ Install the dependencies used by this guide:
 npmyarnpnpmbun
 
 ```
-npm i agents ai workers-ai-provider
+npm i agents ai @ai-sdk/provider
 ```
 
 ```
-yarn add agents ai workers-ai-provider
+yarn add agents ai @ai-sdk/provider
 ```
 
 ```
-pnpm add agents ai workers-ai-provider
+pnpm add agents ai @ai-sdk/provider
 ```
 
 ```
-bun add agents ai workers-ai-provider
+bun add agents ai @ai-sdk/provider
 ```
 
 ## 2. Create a namespace
@@ -129,7 +129,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-10-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -166,7 +166,7 @@ name = "memory-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -336,7 +336,7 @@ Change the `agents` import and add the AI SDK imports. Keep the `Session` import
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
 import { convertToModelMessages, generateText, stepCountIs } from "ai";
 
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 ```
 
 *src/server.tsts*
@@ -345,7 +345,7 @@ import { createWorkersAI } from "workers-ai-provider";
 import { Agent, getAgentByName, routeAgentRequest } from "agents";
 import { convertToModelMessages, generateText, stepCountIs } from "ai";
 import type { UIMessage } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 ```
 
 Add the ingestion delay near the top of the file, below the imports:
@@ -382,9 +382,9 @@ export class ChatAgent extends Agent {
 
 		await this.scheduleIngest();
 
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const result = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: await this.session.freezeSystemPrompt(),
 			messages: await convertToModelMessages(await this.session.getHistory()),
 			tools: await this.session.tools(),
@@ -480,9 +480,9 @@ export class ChatAgent extends Agent<Env, ChatAgentState> {
 
 		await this.scheduleIngest();
 
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const result = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: await this.session.freezeSystemPrompt(),
 			messages: await convertToModelMessages(
 				(await this.session.getHistory()) as UIMessage[],
@@ -698,5 +698,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-memory/get-started/og.png?v=2a514aad211b708c","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-memory/get-started/#page","headline":"Get started","description":"Add durable memory recall and ingestion to an agent.","url":"https://developers.cloudflare.com/agent-memory/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-memory/get-started/og.png?v=2a514aad211b708c","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

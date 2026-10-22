@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/examples/chat-agent/og.png?v=a3b
 
 # Chat agent
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/chat-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/chat-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a chat agent that streams AI responses, calls server-side tools, executes client-side tools in the browser, and asks for user approval before sensitive actions.
 
@@ -37,7 +37,7 @@ Select **"Hello World" Worker** when prompted. Then install the dependencies:
 
 ```sh
 cd chat-agent
-npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
+npm install agents @cloudflare/ai-chat ai @ai-sdk/provider zod
 ```
 
 ## 2. Configure Wrangler
@@ -50,7 +50,7 @@ Replace your `wrangler.jsonc` with:
 	"main": "src/server.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"durable_objects": {
@@ -65,7 +65,7 @@ name = "chat-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -93,7 +93,7 @@ Create `src/server.ts`. This is where your agent lives:
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { routeAgentRequest } from "agents";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import {
 	streamText,
 	convertToModelMessages,
@@ -105,10 +105,10 @@ import { z } from "zod";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/meta/llama-4-scout-17b-16e-instruct"),
+			model: ai("@cf/meta/llama-4-scout-17b-16e-instruct"),
 			system:
 				"You are a helpful assistant. You can check the weather, " +
 				"get the user's timezone, and run calculations.",
@@ -194,7 +194,7 @@ export default {
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { routeAgentRequest } from "agents";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import {
 	streamText,
 	convertToModelMessages,
@@ -206,10 +206,10 @@ import { z } from "zod";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/meta/llama-4-scout-17b-16e-instruct"),
+			model: ai("@cf/meta/llama-4-scout-17b-16e-instruct"),
 			system:
 				"You are a helpful assistant. You can check the weather, " +
 				"get the user's timezone, and run calculations.",
@@ -598,5 +598,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/examples/chat-agent/og.png?v=a3b47f4c6a893abd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/chat-agent/#page","headline":"Chat agent","description":"Build a streaming AI chat agent with tools using Workers AI — no API keys required.","url":"https://developers.cloudflare.com/agents/examples/chat-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/examples/chat-agent/og.png?v=a3b47f4c6a893abd","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

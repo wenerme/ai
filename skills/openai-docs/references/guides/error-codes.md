@@ -39,13 +39,13 @@ If you are using [the Responses API WebSocket mode](https://developers.openai.co
 ### 400 - Invalid service_tier argument
 
 
-The API returns the message "Invalid service_tier argument: The requested service tier is not allowed for this project." as an `invalid_request_error` with `error.param` set to `service_tier` when a request selects or resolves to a service tier that is not allowed for the project.
+The API returns the message "Invalid `service_tier` argument: The requested service tier is not allowed for this project." as an `invalid_request_error` with `error.param` set to `service_tier` when a request selects or resolves to a service tier that is not allowed for the project.
 
 Project restrictions apply to the `default`, `flex`, and `priority` service tiers. The `fast` service tier is evaluated as `priority`. Requests that omit `service_tier` or set it to `auto` can also return this error if they resolve to a disallowed tier. Scale Tier remains outside this project policy.
 
 To resolve this error:
 
-- Check the allowed service tiers in [project settings](https://platform.openai.com/settings/).
+- Check the allowed service tiers in [project settings](https://platform.openai.com/settings/) and [organization settings](https://platform.openai.com/settings/organization/general#service-tiers). Projects cannot enable tiers blocked by the organization.
 - Set `service_tier` to a tier allowed for the project.
 - If the request uses `auto` or omits `service_tier`, update the project settings so the resolved tier is allowed.
 
@@ -80,7 +80,7 @@ To resolve this error, please follow these steps:
 
 This error message indicates that the API key you are using in your request is not correct. This could happen for several reasons, such as:
 
-- There is a typo or an extra space in your API key.
+- Your API key contains a typo or an extra space.
 - You are using an API key that belongs to a different organization or project.
 - You are using an API key that has been deleted or deactivated.
 - An old, revoked API key might be cached locally.

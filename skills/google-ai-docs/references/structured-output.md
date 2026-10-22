@@ -1513,6 +1513,7 @@ These descriptive properties help guide the model:
 - **`prefixItems`**: Defines a list of schemas for the first N items, allowing for tuple-like structures.
 - **`minItems`**: The minimum number of items in the array.
 - **`maxItems`**: The maximum number of items in the array.
+- **Unsupported array constraints** : `uniqueItems`, `contains`, `minContains`, and `maxContains` are not enforced during constrained decoding and are ignored by the server. Deduplicate items or check array contents in your application code if needed.
 
 ## Structured outputs versus function calling
 
@@ -1532,5 +1533,5 @@ These descriptive properties help guide the model:
 ## Limitations
 
 - **Schema subset:** Not all JSON Schema features are supported.
-- **Schema complexity:** Very large or deeply nested schemas may be rejected.
-- **Counting \& length constraints:** Counting constraints such as `minLength`, `maxLength`, `minProperties`, and `maxProperties` (and their snake_case variants) are not enforced by the constrained decoding grammar engine. If these keywords are present in your schema (e.g., emitted automatically by Pydantic's `Field(min_length=...)` or Zod's `.min()`), the API automatically strips and ignores them during request normalization rather than returning an error. To enforce strict string lengths or property counts, validate the parsed output on the client side (e.g., with Pydantic `model_validate_json()` or Zod `.parse()`).
+- **Schema complexity:** Very large or deeply nested schemas may be rejected with a `400 INVALID_ARGUMENT` error that says the schema produces a constraint with too many states or too much branching for serving. Common causes are large `maxItems` limits (especially on nested arrays), very long property or enum names, enums with many values, long runs of optional properties, `anyOf` with many alternatives, and numeric `minimum`/`maximum` bounds. To fix it, lower or remove nested array limits, shorten names, or intersperse required properties among optional ones.
+- **Unenforced constraints:** `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` (and their snake_case variants) are not enforced by the constrained decoding grammar engine. If these keywords are present in your schema (e.g., emitted automatically by Pydantic's `Field(min_length=...)` or Zod's `.min()`), the API automatically strips and ignores them during request normalization rather than returning an error. `minItems` and `maxItems` are enforced. To enforce the other constraints, validate the parsed output on the client side (e.g., with Pydantic `model_validate_json()` or Zod `.parse()`).

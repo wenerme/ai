@@ -9,9 +9,9 @@ Create, manage, and work with stacked diffs. (EXPERIMENTAL)
 
 ## Synopsis
 
-A stack is a series of small, dependent merge requests that together deliver a feature. Reviewers can review and merge earlier changes while you keep building on top of them.
+Use stacked diffs to split a feature into small, dependent changes. Reviewers can review and merge earlier changes while you keep building on top of them.
 
-Locally, each diff in the stack is one commit on its own branch, built on the branch of the previous diff. When you run `glab stack sync`, each diff becomes a merge request that targets the branch of the previous diff. The first diff targets the base branch.
+Each stack contains diffs. Each diff is one commit on its own branch, built on the branch of the previous diff. When you run `glab stack sync`, each diff becomes a merge request that targets the branch of the previous diff. The first diff targets the base branch.
 
 The `glab stack` commands act on the stack you last created or switched to, regardless of which branch you have checked out.
 

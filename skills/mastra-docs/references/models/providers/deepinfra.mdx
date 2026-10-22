@@ -5,7 +5,7 @@ description: "Browse Deep Infra model IDs, capabilities, context windows, and pr
 
 # [Deep Infra logo]Deep Infra
 
-Access 76 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 77 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -300,6 +300,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.1,
     "outputCost": 0.3
+  },
+  {
+    "model": "deepinfra/meta-llama/Llama-Guard-4-12B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 163840,
+    "maxOutput": 163840,
+    "inputCost": 0.18,
+    "outputCost": 0.18
   },
   {
     "model": "deepinfra/MiniMaxAI/MiniMax-M3",

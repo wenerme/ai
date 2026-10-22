@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/og.png?
 
 # Agents SDK
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/) lets you build stateful AI agents that run on Workers. This guide builds a chat agent that provisions its own AI Search instance, indexes a document, and then searches that content with a tool before it answers.
 
@@ -74,24 +74,24 @@ cd ai-search-agent
 
 ## 2. Install the Agents SDK packages
 
-Install the Agents SDK, the AI SDK, and the Workers AI provider:
+Install the Agents SDK and the AI SDK. The example calls Workers AI with [`createAI`](https://developers.cloudflare.com/agents/models/ai-sdk/) from `agents/models/ai-sdk`:
 
 npmyarnpnpmbun
 
 ```
-npm i agents @cloudflare/ai-chat ai workers-ai-provider zod
+npm i agents @cloudflare/ai-chat ai @ai-sdk/provider zod
 ```
 
 ```
-yarn add agents @cloudflare/ai-chat ai workers-ai-provider zod
+yarn add agents @cloudflare/ai-chat ai @ai-sdk/provider zod
 ```
 
 ```
-pnpm add agents @cloudflare/ai-chat ai workers-ai-provider zod
+pnpm add agents @cloudflare/ai-chat ai @ai-sdk/provider zod
 ```
 
 ```
-bun add agents @cloudflare/ai-chat ai workers-ai-provider zod
+bun add agents @cloudflare/ai-chat ai @ai-sdk/provider zod
 ```
 
 ## 3. Bind your Worker to AI Search
@@ -105,7 +105,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "main": "src/server.ts",
   "upload_source_maps": true,
   // Set this to today's date
-  "compatibility_date": "2026-10-13",
+  "compatibility_date": "2026-10-21",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -143,7 +143,7 @@ name = "ai-search-agent"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -174,7 +174,7 @@ Create `src/server.ts`. New AI Search instances use [hybrid search](https://deve
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { routeAgentRequest } from "agents";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 
@@ -223,10 +223,10 @@ export class SearchAgent extends AIChatAgent {
 		// The agent exposes AI Search's search() as a tool instead of using AI
 		// Search's own chat model, so this model must support function calling to
 		// decide when to search and drive the tool calls.
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-5.2"),
+			model: ai("@cf/zai-org/glm-5.2"),
 			system:
 				"You are a support assistant. Use search_knowledge_base to find " +
 				"relevant content before answering, and cite what you use.",
@@ -290,7 +290,7 @@ export default {
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { routeAgentRequest } from "agents";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 
@@ -339,10 +339,10 @@ export class SearchAgent extends AIChatAgent {
 		// The agent exposes AI Search's search() as a tool instead of using AI
 		// Search's own chat model, so this model must support function calling to
 		// decide when to search and drive the tool calls.
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-5.2"),
+			model: ai("@cf/zai-org/glm-5.2"),
 			system:
 				"You are a support assistant. Use search_knowledge_base to find " +
 				"relevant content before answering, and cite what you use.",
@@ -468,5 +468,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/og.png?v=f8d2dc1878ecde8b","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/og.png?v=f8d2dc1878ecde8b","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

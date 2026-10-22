@@ -1,7 +1,7 @@
 ---
-description: Use createAI from agents/models/pi-ai to run Workers AI and third-party models through AI Gateway with pi-ai, pi-durable, and the Pi harness.
-title: pi-ai
-image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=07b4fd2f711eb73a
+description: Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.
+title: Pi AI
+image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68
 ---
 
 [Skip to content](#main-content)
@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=07b4fd2f71
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# pi-ai
+# Pi AI
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`agents/models/pi-ai` is a [pi-ai ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai) provider for Workers AI and AI Gateway. It has the same `createAI` factory and options as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and returns pi-ai `Model` objects. Use it with pi-ai's `stream` and `complete`, with [pi-durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), or with any framework built on a pi-ai `Models` registry.
+`agents/models/pi-ai` is a [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai) provider for Workers AI and AI Gateway. It has the same `createAI` factory and options as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and returns Pi AI `Model` objects. Use it with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), or with any framework built on a Pi AI `Models` registry.
 
 Beta
 
@@ -22,7 +22,7 @@ This provider is in beta. Its API may change in a minor release.
 
 ## Install
 
-The provider needs `@earendil-works/pi-ai@^1.0.0`, an optional peer dependency of `agents`:
+The provider needs `@earendil-works/pi-ai@~1.3.0`, an optional peer dependency of `agents`:
 
 npmyarnpnpmbun
 
@@ -57,9 +57,21 @@ Add the `AI` binding to your Wrangler configuration:
 binding = "AI"
 ```
 
+To use a gateway in another account, or to call from outside a Worker, pass `accountId` and `apiToken` instead of `binding`. Everything else is the same, and the gateway still defaults to `default`:
+
+```ts
+const ai = createAI({
+	accountId: "<ACCOUNT_ID>",
+	apiToken: env.CLOUDFLARE_API_TOKEN,
+	gateway: "my-gateway",
+});
+```
+
+[Create the API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Workers AI Read** and **AI Gateway Run**. The token is sent to the AI Gateway REST API and to `gateway.ai.cloudflare.com` only.
+
 ## Call a model
 
-The provider carries pi-ai's entry points, so nothing is registered globally:
+The provider carries Pi AI's entry points, so nothing is registered globally:
 
 ```js
 import { createAI } from "agents/models/pi-ai";
@@ -105,10 +117,10 @@ export default {
 };
 ```
 
-`ai.stream()` returns pi-ai's `AssistantMessageEvent` stream. `ai.completeSimple()` and `ai.streamSimple()` take pi-ai's simple options, such as a `reasoning` level and `maxTokens`:
+`ai.stream()` returns Pi AI's `AssistantMessageEvent` stream. `ai.completeSimple()` and `ai.streamSimple()` take Pi AI's simple options, such as a `reasoning` level and `maxTokens`:
 
 ```ts
-const model = ai("anthropic/claude-opus-4.8");
+const model = ai("anthropic/claude-opus-5.5");
 const context = {
 	messages: [{ role: "user", content: "Hi", timestamp: Date.now() }],
 };
@@ -124,34 +136,41 @@ await ai.completeSimple(model, context, { reasoning: "low" });
 
 ## Name a model
 
-There are three ways to name a model:
+There are four ways to name a model:
 
 ```ts
 import { createAI } from "agents/models/pi-ai";
 import { getBuiltinModel } from "@earendil-works/pi-ai/providers/all";
 
-const ai = createAI({ binding: env.AI });
+const ai = createAI({ binding: env.AI, id: "my-gateway" });
 
 // 1. A Workers AI model, by its @cf/ id.
 ai("@cf/zai-org/glm-4.7-flash");
 
-// 2. A model from pi-ai's Cloudflare AI Gateway catalog, by <provider>/<id>.
-ai("anthropic/claude-opus-4.8");
+// 2. An AI Gateway dynamic route, by dynamic/<route>.
+ai("dynamic/support");
+
+// 3. A model from Pi AI's Cloudflare AI Gateway catalog, by <provider>/<id>.
+ai("anthropic/claude-opus-5.5");
 ai("openai/gpt-5.4");
 
-// 3. Any pi-ai model object, from any pi-ai registry.
-ai(getBuiltinModel("anthropic", "claude-opus-4-8"));
+// 4. Any Pi AI model object, from any Pi AI registry.
+ai(getBuiltinModel("anthropic", "claude-opus-5-5"));
 ```
 
 Any other string throws a `TypeError`. The provider does not guess what a prefix means.
 
-The second and third forms keep pi-ai's model metadata, including `api`, `compat`, `thinkingLevelMap`, cost, context window, and maximum tokens. That metadata decides how each vendor is asked to think. For example, Claude Opus gets `thinking: { type: "adaptive" }` and GPT-5 gets `reasoning.effort`. `ai(model)` does not change the object you pass.
+A [dynamic route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) runs on `env.AI.run()` under the gateway you created it on, so set that gateway's `id`. The route picks the model and answers in the chat completions format. It takes the same metadata defaults and overrides as a Workers AI id.
 
-Third-party models go through AI Gateway, which holds the credential through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) or a [key stored on the gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Your Worker holds no provider key.
+A catalog id uses the AI Gateway catalog's spelling, `anthropic/claude-opus-5.5`. Pi AI's own list spells Claude ids the way Anthropic does (`claude-opus-5-5`), so the provider lists them under the catalog spelling. A model object from a vendor registry keeps the vendor's spelling.
+
+The third and fourth forms keep Pi AI's model metadata, including `api`, `compat`, `thinkingLevelMap`, cost, context window, and maximum tokens. That metadata decides how each vendor is asked to think. For example, Claude Opus gets `thinking: { type: "adaptive" }` and GPT-5 gets `reasoning.effort`. `ai(model)` does not change the object you pass.
+
+Third-party models go through AI Gateway, which holds the credential through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) or a [key stored on the gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Your Worker holds no provider key. Unified Billing requires [authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) on the gateway.
 
 ## Use it with the Pi harness
 
-pi-durable's `Harness` takes a pi-ai `Models` registry. Register the provider on one, then pass models from `ai()` to the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/):
+Pi Durable's `Harness` takes a Pi AI `Models` registry. Register the provider on one, then pass models from `ai()` to the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/):
 
 ```ts
 import { createModels } from "@earendil-works/pi-ai/models";
@@ -165,12 +184,12 @@ models.setProvider(ai.provider);
 // defaults: { model: ai("@cf/moonshotai/kimi-k2.7-code") }
 
 // For one session:
-await session.setModel(ai("anthropic/claude-opus-4.8"));
+await session.setModel(ai("anthropic/claude-opus-5.5"));
 ```
 
-A Pi session stores only its model's provider and id, then looks the model up in the `Models` registry. Use the `@cf/` and `<provider>/<id>` forms there: both belong to the `cloudflare` provider (`CLOUDFLARE_PROVIDER_ID`) that you registered. A model object keeps its vendor's provider id, which this registry does not know. Options passed to `ai(model, options)` do not reach a session. Set them on `createAI` instead.
+A Pi session stores only its model's provider and id, then looks the model up in the `Models` registry. Use the `@cf/`, `dynamic/`, and `<provider>/<id>` forms there. They belong to the `cloudflare` provider (`CLOUDFLARE_PROVIDER_ID`) that you registered. A model object keeps its vendor's provider id, which this registry does not know. Options passed to `ai(model, options)` do not reach a session. Set them on `createAI` instead.
 
-The provider's model list is every Workers AI model pi-ai knows, plus every `<provider>/<id>` in pi-ai's AI Gateway catalog, so `models.getModel("cloudflare", "anthropic/claude-opus-4.8")` resolves.
+The provider's model list is every Workers AI model Pi AI knows, plus every `<provider>/<id>` in Pi AI's AI Gateway catalog, so `models.getModel("cloudflare", "anthropic/claude-opus-5.5")` resolves.
 
 ## Cache, tag, and time out requests
 
@@ -179,33 +198,36 @@ Gateway options go on `createAI`, on a model, or on a call. They can be flat or 
 ```ts
 const ai = createAI({ binding: env.AI, id: "prod", cacheTtl: 60 });
 
-const model = ai("anthropic/claude-opus-4.8", {
+const model = ai("anthropic/claude-opus-5.5", {
 	cacheTtl: 3600,
 	cacheKey: "greeting-v1",
 	metadata: { team: "growth" },
 	eventId: "turn-17",
 	requestTimeoutMs: 30_000,
 	retries: { maxAttempts: 3, backoff: "exponential", retryDelayMs: 500 },
+	byokAlias: "production",
 });
 ```
 
-The options are the same as the [AI SDK provider's options](https://developers.cloudflare.com/agents/models/ai-sdk/#set-options): `id`, `skipCache`, `cacheTtl`, `cacheKey`, `collectLog`, `metadata`, `eventId`, `requestTimeoutMs`, `retries`, `fallback`, `headers`, `sessionAffinity`, `reasoningEffort`, and `chatTemplateKwargs`.
+The options are the same as the [AI SDK provider's options](https://developers.cloudflare.com/agents/models/ai-sdk/#set-options): `id`, `skipCache`, `cacheTtl`, `cacheKey`, `collectLog`, `metadata`, `eventId`, `requestTimeoutMs`, `retries`, `byokAlias`, `zdr`, `fallback`, `headers`, `sessionAffinity`, `reasoningEffort`, and `chatTemplateKwargs`. `vendorKey` is AI SDK only.
 
-pi-ai's own call options map onto them. `headers` merge last, `metadata` joins the gateway metadata, `sessionId` sets session affinity, and `reasoning` maps through the model's own `thinkingLevelMap`. A call option wins over a model option, which wins over `createAI`.
+`byokAlias` picks a [stored key by alias](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) when the gateway holds several keys for one provider. The provider sends it as `cf-aig-byok-alias` for catalog models and model objects. `zdr` turns [Zero Data Retention](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#zero-data-retention-zdr) on or off for a Unified Billing request. It applies only to model objects outside Pi AI's gateway catalog, because catalog models do not read it.
 
-`@cf/` models also take pi-ai metadata overrides: `name`, `contextWindow`, `maxTokens`, `reasoning`, `input`, `cost`, and `streamIdleTimeoutMs`. A Workers AI id that pi-ai does not list resolves with a 128,000 token context window, 8,192 output tokens, and zero cost, so pass overrides when you know the real values.
+Pi AI's own call options map onto them. `headers` merge last, `metadata` joins the gateway metadata, `sessionId` sets session affinity, and `reasoning` maps through the model's own `thinkingLevelMap`. A call option wins over a model option, which wins over `createAI`.
 
-A pi-ai model is plain data. Per-model options are stored on it under symbol keys, which `JSON.stringify` and `structuredClone` drop. A model you store and read back still routes to its vendor, but loses its options. Pass them again with `ai(model, options)` after you load it.
+`@cf/` models also take Pi AI metadata overrides: `name`, `contextWindow`, `maxTokens`, `reasoning`, `input`, `cost`, and `streamIdleTimeoutMs`. A Workers AI id that Pi AI does not list resolves with a 128,000 token context window, 8,192 output tokens, and zero cost, so pass overrides when you know the real values.
+
+A Pi AI model is plain data. Per-model options are stored on it under symbol keys, which `JSON.stringify` and `structuredClone` drop. A model you store and read back still routes to its vendor, but loses its options. Pass them again with `ai(model, options)` after you load it.
 
 ## Fall back to another model
 
 ```ts
-ai(getBuiltinModel("anthropic", "claude-opus-4-8"), {
+ai(getBuiltinModel("anthropic", "claude-opus-5-5"), {
 	fallback: ["@cf/zai-org/glm-4.7-flash"],
 });
 ```
 
-Fallback models can be Workers AI ids, `<provider>/<id>` strings, or model objects. The provider tries them in order. It moves on when a stream ends with an `error` before producing any output. Once a model has produced output, its answer is final.
+Fallback models can be Workers AI ids, dynamic routes, `<provider>/<id>` strings, or model objects. The provider tries them in order. It moves on when a stream ends with an `error` before producing any output. Once a model has produced output, its answer is final.
 
 The message that answers has a `cloudflare-fallback` diagnostic listing the attempts that failed, and `message.model` names the model that answered.
 
@@ -228,24 +250,36 @@ A failed request ends the stream with an `error` event. Its message has a `cloud
 
 The gateway's own failures, such as a missing gateway or an unpaid account, become a `CloudflareAIError`. Errors from the vendor come back as the vendor sent them.
 
+## Resume a dropped stream
+
+Through the binding, a stream from a catalog model or a dynamic route resumes after a dropped connection. You do not need to configure anything.
+
+AI Gateway names each streamed run in the `cf-aig-run-id` header and keeps its events. If the connection drops, the provider reconnects through the binding and replays the run from the last complete event. The stream continues with nothing lost or repeated.
+
+The provider gives up after five drops in one stream, or once the gateway no longer holds the run. The gateway keeps a run for a few minutes after it ends. Aborting the call never resumes it. Workers AI `@cf/` streams and model objects outside the catalog have no run id, so they do not resume. The run id is on the `cloudflare` diagnostic as `runId`.
+
 ## How requests are routed
 
-The provider routes by the model's pi-ai `api`:
+The provider routes every request through the `AI` binding, or over HTTP with an account id and API token:
 
-| Model | `api` | Transport |
-| --- | --- | --- |
-| `@cf/` models | `cloudflare-ai` | `env.AI.run()`, with Cloudflare's compatibility layer |
-| Anthropic, from any registry | `anthropic-messages` | AI Gateway universal request to `v1/messages` |
-| OpenAI, from any registry | `openai-responses` | AI Gateway universal request to `v1/responses` |
-| Groq, DeepSeek, xAI, and more | `openai-completions` | AI Gateway universal request to `v1/chat/completions` |
+| Model | `api` | Through the binding | With an account id and token |
+| --- | --- | --- | --- |
+| `@cf/` models and dynamic routes | `cloudflare-ai` | `env.AI.run()`, with Cloudflare's compatibility layer | The AI Gateway REST API, with the same compatibility layer |
+| Anthropic models from Pi AI's gateway catalog | `anthropic-messages` | `env.AI.run()` to AI Gateway, in Anthropic Messages format | The REST API's `/ai/v1/messages`, in the same format |
+| OpenAI models from Pi AI's gateway catalog | `openai-responses` | `env.AI.run()` to AI Gateway, in OpenAI Responses format | The REST API's `/ai/v1/responses`, in the same format |
+| Any other model object, such as Anthropic, OpenAI, or Groq | its own `api` | The binding's `fetch` to AI Gateway's provider-native endpoint | `gateway.ai.cloudflare.com`, the provider-native endpoint |
 
-For a third-party model, pi-ai's own converter builds the vendor's request body. The provider sends it to AI Gateway, and pi-ai parses the vendor's response stream. The provider never rewrites the model's `api`, `provider`, or `id`, so thinking signatures and encrypted reasoning items work on the next turn.
+A model from Pi AI's Cloudflare AI Gateway catalog runs on `env.AI.run()` under its catalog id, in the model's native format. AI Gateway converts nothing, so Pi AI's own stream processors read the answer. The gateway picks the provider and bills through Unified Billing or a key stored on the gateway.
 
-These four `api` values are the only ones the provider routes. Models from several pi-ai registries use other values and cannot be routed yet, including `mistral-conversations`, `google-generative-ai`, `google-vertex`, `amazon-bedrock`, `azure-openai-responses`, and `openai-codex`. Such a model's stream ends with an `error` event that names its `api`.
+Any other model object goes to AI Gateway's [provider-native endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/) through the binding's `fetch`. The provider takes the gateway provider from the model's `baseUrl` host. Pi AI's own converter builds the vendor's request body, and Pi AI parses the vendor's response stream.
 
-On the `openai-completions` wire, the provider sends reasoning only as OpenAI's `reasoning_effort`. A model whose `compat.thinkingFormat` is anything else, such as `deepseek`, `qwen`, or `openrouter`, has its reasoning level dropped. A `cloudflare-compat` diagnostic on the message records the drop. Use pi-ai's own provider for that vendor if you need its thinking format.
+Either way, no vendor credential leaves your Worker. The provider never rewrites the model's `api`, `provider`, or `id`, so thinking signatures and encrypted reasoning items work on the next turn.
 
-`reasoningEffort` and `chatTemplateKwargs` are Workers AI options. On a third-party model they are dropped and recorded in a `cloudflare-compat` diagnostic. Use the pi-ai `reasoning` level instead.
+The provider routes four `api` values: `cloudflare-ai`, `anthropic-messages`, `openai-responses`, and `openai-completions`. Models from several Pi AI registries use other values and cannot be routed yet, including `mistral-conversations`, `google-generative-ai`, `google-vertex`, `amazon-bedrock`, `azure-openai-responses`, and `openai-codex`. Such a model's stream ends with an `error` event that names its `api`. So does a model whose `baseUrl` host AI Gateway has no provider for.
+
+On the `openai-completions` wire, the provider sends reasoning only as OpenAI's `reasoning_effort`. A model whose `compat.thinkingFormat` is anything else, such as `deepseek`, `qwen`, or `openrouter`, has its reasoning level dropped. A `cloudflare-compat` diagnostic on the message records the drop. Use Pi AI's own provider for that vendor if you need its thinking format.
+
+`reasoningEffort` and `chatTemplateKwargs` are Workers AI options. On a third-party model they are dropped and recorded in a `cloudflare-compat` diagnostic. Use the Pi AI `reasoning` level instead.
 
 ## Generate images
 
@@ -265,7 +299,8 @@ const result = await ai.generateImages(images, {
 - [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/)
 - [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/)
 - [Model catalog](https://developers.cloudflare.com/ai/models/)
-- [pi-ai ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai)
+- [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai)
 
 Was this helpful?
 
@@ -276,5 +311,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"pi-ai","description":"Use createAI from agents/models/pi-ai to run Workers AI and third-party models through AI Gateway with pi-ai, pi-durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=07b4fd2f711eb73a","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

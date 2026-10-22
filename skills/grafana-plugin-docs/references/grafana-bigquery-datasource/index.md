@@ -9,6 +9,12 @@ description: "The Google BigQuery data source allows you to query and visualize 
 
 The Google BigQuery data source allows you to query and visualize data from [Google BigQuery](https://cloud.google.com/bigquery), Google’s fully managed, serverless data warehouse.
 
+Give it a try using Grafana Play
+
+With Grafana Play, you can explore and see how it works, learning from practical examples to accelerate your development. This feature can be seen on [Google BigQuery data source](https://play.grafana.org/d/play-bigquery-1/).
+
+[Try it](https://play.grafana.org/d/play-bigquery-1/)
+
 ## Supported features
 
 Expand table

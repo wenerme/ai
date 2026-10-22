@@ -8,7 +8,9 @@ Start with [`gpt-live-transcribe`](https://developers.openai.com/api/docs/models
 
 ## Create a transcription session
 
-Create a session with `type: "transcription"` and select `gpt-live-transcribe`. Connect with [WebSocket](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime) for server-side audio pipelines or [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime) for browser audio.
+For server-side WebSocket transcription with a standard API key, connect to `wss://api.openai.com/v1/realtime?intent=transcription`. Use the authentication header shown in the [WebSocket guide](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime), but omit `model` from the URL. That guide's model-based URL creates a conversation session and doesn't accept the transcription update below.
+
+After the connection opens, send `session.update` with `type: "transcription"` and select `gpt-live-transcribe` in the session configuration. For browser audio, see [WebRTC](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime).
 
 ```json
 {

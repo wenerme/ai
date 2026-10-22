@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/communication-channels/chat/chat
 
 # Chat agents
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -43,35 +43,35 @@ Built on the [AI SDK ↗︎](https://ai-sdk.dev) and Cloudflare Durable Objects,
 npmyarnpnpmbun
 
 ```
-npm i @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+npm i @cloudflare/ai-chat agents ai @ai-sdk/react @ai-sdk/provider
 ```
 
 ```
-yarn add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+yarn add @cloudflare/ai-chat agents ai @ai-sdk/react @ai-sdk/provider
 ```
 
 ```
-pnpm add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+pnpm add @cloudflare/ai-chat agents ai @ai-sdk/react @ai-sdk/provider
 ```
 
 ```
-bun add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+bun add @cloudflare/ai-chat agents ai @ai-sdk/react @ai-sdk/provider
 ```
 
 ### Server
 
 ```js
 import { AIChatAgent } from "@cloudflare/ai-chat";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { streamText, convertToModelMessages } from "ai";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		// Use any provider such as workers-ai-provider, openai, anthropic, google, etc.
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		// Use any AI SDK provider, such as createAI from agents/models/ai-sdk, openai, anthropic, or google.
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 		});
 
@@ -82,16 +82,16 @@ export class ChatAgent extends AIChatAgent {
 
 ```ts
 import { AIChatAgent } from "@cloudflare/ai-chat";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { streamText, convertToModelMessages } from "ai";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		// Use any provider such as workers-ai-provider, openai, anthropic, google, etc.
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		// Use any AI SDK provider, such as createAI from agents/models/ai-sdk, openai, anthropic, or google.
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 		});
 
@@ -274,10 +274,10 @@ This is the main method you override. It receives the conversation context and s
 ```js
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: "You are a helpful assistant.",
 			messages: await convertToModelMessages(this.messages),
 		});
@@ -290,10 +290,10 @@ export class ChatAgent extends AIChatAgent {
 ```ts
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: "You are a helpful assistant.",
 			messages: await convertToModelMessages(this.messages),
 		});
@@ -364,10 +364,10 @@ import { streamText, convertToModelMessages, pruneMessages } from "ai";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: pruneMessages({
 				messages: await convertToModelMessages(this.messages),
 				reasoning: "before-last-message",
@@ -385,10 +385,10 @@ import { streamText, convertToModelMessages, pruneMessages } from "ai";
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: pruneMessages({
 				messages: await convertToModelMessages(this.messages),
 				reasoning: "before-last-message",
@@ -736,7 +736,7 @@ When a user clicks "stop" in the chat UI, the client sends a `CF_AGENT_CHAT_REQU
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage(_onFinish, options) {
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 			abortSignal: options?.abortSignal, // Pass through for cancellation
 		});
@@ -750,7 +750,7 @@ export class ChatAgent extends AIChatAgent {
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage(_onFinish, options) {
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 			abortSignal: options?.abortSignal, // Pass through for cancellation
 		});
@@ -1235,10 +1235,10 @@ import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 			tools: {
 				getWeather: tool({
@@ -1263,10 +1263,10 @@ import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { z } from "zod";
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: await convertToModelMessages(this.messages),
 			tools: {
 				getWeather: tool({
@@ -1557,12 +1557,12 @@ import {
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const stream = createUIMessageStream({
 			execute: async ({ writer }) => {
 				const result = streamText({
-					model: workersai("@cf/zai-org/glm-4.7-flash"),
+					model: ai("@cf/zai-org/glm-4.7-flash"),
 					messages: await convertToModelMessages(this.messages),
 				});
 
@@ -1604,12 +1604,12 @@ import {
 
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const stream = createUIMessageStream({
 			execute: async ({ writer }) => {
 				const result = streamText({
-					model: workersai("@cf/zai-org/glm-4.7-flash"),
+					model: ai("@cf/zai-org/glm-4.7-flash"),
 					messages: await convertToModelMessages(this.messages),
 				});
 
@@ -1805,7 +1805,7 @@ Storage (`maxPersistedMessages`) and LLM context are independent:
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: pruneMessages({
 				// LLM context limit
 				messages: await convertToModelMessages(this.messages),
@@ -1823,7 +1823,7 @@ export class ChatAgent extends AIChatAgent {
 export class ChatAgent extends AIChatAgent {
 	async onChatMessage() {
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			messages: pruneMessages({
 				// LLM context limit
 				messages: await convertToModelMessages(this.messages),
@@ -1844,21 +1844,21 @@ export class ChatAgent extends AIChatAgent {
 ### Workers AI (Cloudflare)
 
 ```js
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
-const workersai = createWorkersAI({ binding: this.env.AI });
+const ai = createAI({ binding: this.env.AI });
 const result = streamText({
-	model: workersai("@cf/zai-org/glm-4.7-flash"),
+	model: ai("@cf/zai-org/glm-4.7-flash"),
 	messages: await convertToModelMessages(this.messages),
 });
 ```
 
 ```ts
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
-const workersai = createWorkersAI({ binding: this.env.AI });
+const ai = createAI({ binding: this.env.AI });
 const result = streamText({
-	model: workersai("@cf/zai-org/glm-4.7-flash"),
+	model: ai("@cf/zai-org/glm-4.7-flash"),
 	messages: await convertToModelMessages(this.messages),
 });
 ```
@@ -2415,5 +2415,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/og.png?v=7e7ad14729f7160e","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/og.png?v=7e7ad14729f7160e","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

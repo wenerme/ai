@@ -1,6 +1,6 @@
 ---
-title: "Kenari Models: IDs, Context & Usage"
-description: "Browse Kenari model IDs, capabilities, and context windows. Learn how to use them in TypeScript with Mastra's model router."
+title: "Kenari Models: IDs, Pricing & Usage"
+description: "Browse Kenari model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [Kenari logo]Kenari
@@ -48,8 +48,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 12,
+    "outputCost": 57.14285714
   },
   {
     "model": "kenari/claude-opus-4-7",
@@ -60,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5.71428571,
+    "outputCost": 29.71428571
   },
   {
     "model": "kenari/claude-opus-4-8",
@@ -72,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5.71428571,
+    "outputCost": 29.71428571
   },
   {
     "model": "kenari/claude-opus-5",
@@ -84,8 +84,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5.71428571,
+    "outputCost": 28.57142857
   },
   {
     "model": "kenari/claude-sonnet-4-6",
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 3.6,
+    "outputCost": 17.71428571
   },
   {
     "model": "kenari/claude-sonnet-5",
@@ -108,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.42857143,
+    "outputCost": 7.14285714
   },
   {
     "model": "kenari/deepseek-v4-1-flash",
@@ -120,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.15714286,
+    "outputCost": 0.31428571
   },
   {
     "model": "kenari/deepseek-v4-flash",
@@ -132,20 +132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/deepseek-v4-flash:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.15714286,
+    "outputCost": 0.31428571
   },
   {
     "model": "kenari/deepseek-v4-pro",
@@ -156,32 +144,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gemini-2-5-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gemini-2-5-flash-lite",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.57142857,
+    "outputCost": 1.14285714
   },
   {
     "model": "kenari/gemini-3-1-flash-lite",
@@ -192,8 +156,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.28571429,
+    "outputCost": 1.71428571
   },
   {
     "model": "kenari/gemini-3-1-flash-tts",
@@ -216,44 +180,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gemini-3-5-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gemini-3-6-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gemini-3-7-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 1.2,
+    "outputCost": 7.14285714
   },
   {
     "model": "kenari/gemma-4-31b-it",
@@ -264,23 +192,11 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.10285714,
+    "outputCost": 0.40571429
   },
   {
     "model": "kenari/glm-4-7-flash:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/glm-5-1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -300,8 +216,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.28571429,
+    "outputCost": 3.42857143
   },
   {
     "model": "kenari/glm-5-3",
@@ -312,8 +228,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.28571429,
+    "outputCost": 3.42857143
   },
   {
     "model": "kenari/glm-5-3-flash",
@@ -324,20 +240,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gpt-5-4-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.11428571,
+    "outputCost": 0.34285714
   },
   {
     "model": "kenari/gpt-5-5",
@@ -348,8 +252,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 5.71428571,
+    "outputCost": 36
   },
   {
     "model": "kenari/gpt-5-6-luna",
@@ -360,8 +264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.2,
+    "outputCost": 1.14285714
   },
   {
     "model": "kenari/gpt-5-6-sol",
@@ -372,20 +276,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/gpt-5-6-terra",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.97142857,
+    "outputCost": 17.71428571
   },
   {
     "model": "kenari/gpt-image-2",
@@ -408,8 +300,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.036,
+    "outputCost": 0.2
   },
   {
     "model": "kenari/gpt-oss-20b",
@@ -420,8 +312,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.036,
+    "outputCost": 0.15428571
   },
   {
     "model": "kenari/grok-4-5",
@@ -432,8 +324,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 500000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.28571429,
+    "outputCost": 6.85714286
   },
   {
     "model": "kenari/grok-4-6",
@@ -444,20 +336,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 500000,
     "maxOutput": 500000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/grok-build-0-1",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 256000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.28571429,
+    "outputCost": 6.85714286
   },
   {
     "model": "kenari/grok-imagine-image",
@@ -492,8 +372,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.15428571,
+    "outputCost": 0.62857143
   },
   {
     "model": "kenari/hy3:free",
@@ -516,20 +396,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/kimi-k2-6:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.57142857,
+    "outputCost": 2.85714286
   },
   {
     "model": "kenari/kimi-k2-7-code",
@@ -540,20 +408,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/kimi-k2-7-code:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.57142857,
+    "outputCost": 2.85714286
   },
   {
     "model": "kenari/kimi-k3",
@@ -564,44 +420,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/mimo-v2-5",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/mimo-v2-5-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/mimo-v2-5:free",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.85714286,
+    "outputCost": 8.57142857
   },
   {
     "model": "kenari/minimax-m2-7",
@@ -612,8 +432,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.36,
+    "outputCost": 1.42857143
   },
   {
     "model": "kenari/minimax-m2-7-highspeed",
@@ -624,8 +444,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.59428571,
+    "outputCost": 2.4
   },
   {
     "model": "kenari/minimax-m3",
@@ -636,32 +456,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 512000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/mistral-large:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/mistral-medium-3-5:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.36,
+    "outputCost": 1.42857143
   },
   {
     "model": "kenari/nano-banana-2",
@@ -700,18 +496,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "kenari/nemotron-3-nano-30b-a3b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kenari/nemotron-3-super-120b-a12b",
     "imageInput": false,
     "audioInput": false,
@@ -720,8 +504,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.09714286,
+    "outputCost": 0.48
   },
   {
     "model": "kenari/nemotron-3-super-120b-a12b:free",
@@ -744,8 +528,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.68571429,
+    "outputCost": 4.28571429
   },
   {
     "model": "kenari/qwen3-7-plus",
@@ -756,8 +540,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.38285714,
+    "outputCost": 1.48571429
   },
   {
     "model": "kenari/qwen3-8-max",
@@ -768,8 +552,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.4,
+    "outputCost": 6.85714286
   },
   {
     "model": "kenari/step-3-7-flash",
@@ -780,20 +564,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 256000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kenari/step-3-7-flash:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 256000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.24,
+    "outputCost": 1.37142857
   },
   {
     "model": "kenari/whisper-large-v3-turbo",

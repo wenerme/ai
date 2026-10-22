@@ -48,7 +48,7 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 ## Footnotes
 
-1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository ( `sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. For the RHEL commands, refer to [Getting started with EPEL ↗︎](https://docs.fedoraproject.org/en-US/epel/getting-started/). [↩](#user-content-fnref-1)
 2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
 [Download for Linux ↗︎](https://pkg.cloudflareclient.com/)

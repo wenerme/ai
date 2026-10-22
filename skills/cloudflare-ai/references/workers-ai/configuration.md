@@ -16,6 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 - [Workers Bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/)
 - [OpenAI compatible API endpoints](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/)
+- [Pi AI](https://developers.cloudflare.com/workers-ai/configuration/pi-ai/)
 - [Vercel AI SDK](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/)
 - [Hugging Face Chat UI](https://developers.cloudflare.com/workers-ai/configuration/hugging-face-chat-ui/)
 

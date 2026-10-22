@@ -60,7 +60,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (14)
+Previous version history (15)
 
 </summary>
 
@@ -133,6 +133,24 @@ This release includes the following highlights:
 - A Windows DNS client regression may cause connectivity check failures on systems containing large hosts files. While this release includes a fix to mitigate this issue, users may still experience reduced DNS performance and connectivity check failures.
 
 </details>
+
+<details>
+
+<summary>
+
+Windows 2026.7.1384.0
+
+</summary>
+
+**Version:** Windows 2026.7.1384.0**Date:** 2026-10-21**Size:** 59.4 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1384.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 
@@ -580,7 +598,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (12)
+Previous version history (13)
 
 </summary>
 
@@ -649,6 +667,24 @@ This release includes the following highlights:
 - None
 
 </details>
+
+<details>
+
+<summary>
+
+macOS 2026.7.1384.0
+
+</summary>
+
+**Version:** macOS 2026.7.1384.0**Date:** 2026-10-21**Size:** 153 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.7.1384.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 
@@ -958,7 +994,7 @@ This release contains minor fixes, improvements, and new features including <a h
 
 ## Footnotes
 
-1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository ( `sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. For the RHEL commands, refer to [Getting started with EPEL ↗︎](https://docs.fedoraproject.org/en-US/epel/getting-started/). [↩](#user-content-fnref-1)
 2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
 <details>

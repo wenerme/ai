@@ -14,6 +14,7 @@ This document describes the query types and response fields available in the Git
 Select a query type from the **Query Type** drop-down in the query editor:
 
 - [**Branches**](#branches): List branches for a repository, with optional name filtering.
+- [**Check runs**](#check-runs): List check runs for a commit, branch, or tag, including status, conclusion, and duration.
 - [**Code scanning**](#code-scanning): Query code scanning alerts for a repository or organization.
 - [**Commit files**](#commit-files): List files changed in a specific commit.
 - [**Commits**](#commits): Retrieve a list of commits for a branch or ref within a repository, including commit message, author, and timestamp.
@@ -198,6 +199,52 @@ Expand table
 | changes            | Total number of line changes                      |
 | status             | Change type: `added`, `modified`, `renamed`, etc. |
 | previous\_filename | Original path for renamed files                   |
+
+### Check runs
+
+List check runs for a git reference. Check runs are the individual checks reported against a commit by GitHub Apps, such as GitHub Actions jobs, and include the status, conclusion, and how long each check took.
+
+> Note
+>
+> The reference can be a commit SHA, a branch formatted as `heads/<branch name>`, or a tag formatted as `tags/<tag name>`.
+
+#### Query options
+
+Expand table
+
+| Name       | Description                                                                                                   | Required |
+|------------|---------------------------------------------------------------------------------------------------------------|----------|
+| Owner      | The GitHub user or organization that owns the repository                                                      | Yes      |
+| Repository | The name of the repository                                                                                    | Yes      |
+| Ref        | The commit SHA, branch, or tag to list check runs for                                                         | Yes      |
+| Check name | Only return check runs with this exact name                                                                   | No       |
+| Status     | Only return check runs with the given status: `queued`, `in_progress`, or `completed`                         | No       |
+| Filter     | `latest` returns the most recent check run for each name, `all` returns every check run. Defaults to `latest` | No       |
+
+#### Response
+
+The response includes one row per check run:
+
+Expand table
+
+| Name               | Description                                                                                                                         |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| id                 | Unique identifier of the check run                                                                                                  |
+| name               | Name of the check run                                                                                                               |
+| head\_sha          | SHA of the commit the check run is associated with                                                                                  |
+| status             | Current status: `queued`, `in_progress`, or `completed`                                                                             |
+| conclusion         | Result of a completed check run, such as `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required` |
+| started\_at        | Time the check run started                                                                                                          |
+| completed\_at      | Time the check run completed, empty while it is still running                                                                       |
+| duration\_seconds  | How long the check run took in seconds, empty while it is still running                                                             |
+| html\_url          | URL of the check run on GitHub                                                                                                      |
+| details\_url       | URL of the external site with the full check run details                                                                            |
+| app\_name          | Name of the GitHub App that created the check run                                                                                   |
+| app\_slug          | Slug of the GitHub App that created the check run                                                                                   |
+| check\_suite\_id   | Identifier of the check suite the check run belongs to                                                                              |
+| output\_title      | Title of the check run output                                                                                                       |
+| output\_summary    | Summary of the check run output                                                                                                     |
+| annotations\_count | Number of annotations attached to the check run                                                                                     |
 
 ### Contributors
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/communication-channels/voice/og.
 
 # Voice
 
-Last updated Sep 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/voice/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/voice/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence. Audio streams over WebSocket — no SFU or meeting infrastructure required. Beta
 
@@ -279,17 +279,17 @@ export class MyAgent extends VoiceAgent<Env> {
 
 ```js
 import { streamText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends VoiceAgent {
 	transcriber = new WorkersAIFluxSTT(this.env.AI);
 	tts = new WorkersAITTS(this.env.AI);
 
 	async onTurn(transcript, context) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/moonshotai/kimi-k2.6"),
+			model: ai("@cf/moonshotai/kimi-k2.6"),
 			system: "You are a helpful voice assistant. Keep responses concise.",
 			messages: [
 				...context.messages.map((m) => ({
@@ -308,17 +308,17 @@ export class MyAgent extends VoiceAgent {
 
 ```ts
 import { streamText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends VoiceAgent<Env> {
 	transcriber = new WorkersAIFluxSTT(this.env.AI);
 	tts = new WorkersAITTS(this.env.AI);
 
 	async onTurn(transcript: string, context: VoiceTurnContext) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = streamText({
-			model: workersai("@cf/moonshotai/kimi-k2.6"),
+			model: ai("@cf/moonshotai/kimi-k2.6"),
 			system: "You are a helpful voice assistant. Keep responses concise.",
 			messages: [
 				...context.messages.map((m) => ({
@@ -1115,5 +1115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/voice/og.png?v=def5f75be26dd0bb","dateModified":"2026-09-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/voice/#page","headline":"Voice","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/voice/og.png?v=def5f75be26dd0bb","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

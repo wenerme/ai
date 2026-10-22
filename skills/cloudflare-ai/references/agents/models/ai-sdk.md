@@ -1,5 +1,5 @@
 ---
-description: Use createAI from agents/models/ai-sdk to call Workers AI models and route third-party AI SDK models through AI Gateway.
+description: Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.
 title: AI SDK
 image: https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e
 ---
@@ -12,9 +12,25 @@ image: https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce1
 
 # AI SDK
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `agents/models/ai-sdk` is an [AI SDK ↗︎](https://ai-sdk.dev/) provider for Workers AI and AI Gateway. `createAI` returns a full `ProviderV4`, so its models work anywhere the AI SDK takes a model: `generateText`, `streamText`, tools, structured output, and [Think](https://developers.cloudflare.com/agents/harnesses/think/).
+
+The provider takes two kinds of model. Both go through the `AI` binding, or over HTTP with an [account id and API token](#use-an-account-id-and-api-token):
+
+```ts
+// A string runs on env.AI.run.
+ai("@cf/zai-org/glm-4.7-flash"); // Workers AI
+ai("anthropic/claude-opus-5.5"); // AI Gateway catalog
+ai("dynamic/support"); // AI Gateway dynamic route
+
+// A vendor's own model object goes to AI Gateway's provider-native endpoint.
+ai(anthropic("claude-opus-5-5"));
+```
+
+A string needs no vendor package and no vendor key. A model object keeps the vendor's own request builder and parser.
+
+`createAI` replaces `workers-ai-provider` and `ai-gateway-provider`. For AI Search, use `ai-search-provider`.
 
 Beta
 
@@ -42,7 +58,7 @@ pnpm add agents ai @ai-sdk/provider
 bun add agents ai @ai-sdk/provider
 ```
 
-Add a vendor's AI SDK provider only if you call that vendor's models, for example `@ai-sdk/anthropic` or `@ai-sdk/openai`.
+Add a vendor's AI SDK provider only if you pass that vendor's model objects, for example `@ai-sdk/anthropic` or `@ai-sdk/openai`. Catalog ids do not need one.
 
 Add the `AI` binding to your Wrangler configuration:
 
@@ -58,6 +74,22 @@ Add the `AI` binding to your Wrangler configuration:
 [ai]
 binding = "AI"
 ```
+
+## Use an account id and API token
+
+To use a gateway in another account, or to call from outside a Worker, pass `accountId` and `apiToken` instead of `binding`:
+
+```ts
+const ai = createAI({
+	accountId: "<ACCOUNT_ID>",
+	apiToken: env.CLOUDFLARE_API_TOKEN,
+	gateway: "my-gateway",
+});
+```
+
+The call forms and options are the same, and the gateway still defaults to `default`. A string goes to AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), which runs it as `env.AI.run()` does. A model object goes to the [provider-native endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, with the token in the `cf-aig-authorization` header. The token is sent to those two hosts only.
+
+[Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Workers AI Read** permission for strings and **AI Gateway Run** for model objects.
 
 ## Call a Workers AI model
 
@@ -99,11 +131,75 @@ export default {
 };
 ```
 
-Any string that is not a `@cf/` id throws a `TypeError` that names the provider package to install.
+A string that is not a Workers AI id, a catalog id, or a dynamic route throws a `TypeError` that names the three forms.
 
-## Call a third-party model
+## Call an AI Gateway catalog model
 
-Build the model with the vendor's own AI SDK provider, then pass it to `ai()`. The request goes through AI Gateway, which holds the credential, so the vendor's `apiKey` is a placeholder:
+Pass an `<author>/<model>` id from the [model catalog](https://developers.cloudflare.com/ai/models/). No vendor package or key is needed:
+
+```js
+import { createAI } from "agents/models/ai-sdk";
+import { generateText } from "ai";
+
+export default {
+	async fetch(request, env) {
+		const ai = createAI({ binding: env.AI, id: "my-gateway" });
+
+		const { text } = await generateText({
+			model: ai("anthropic/claude-opus-5.5"),
+			prompt: "Say hello in three words",
+		});
+
+		return Response.json({ text });
+	},
+};
+```
+
+```ts
+import { createAI } from "agents/models/ai-sdk";
+import { generateText } from "ai";
+
+export default {
+	async fetch(request: Request, env: Env) {
+		const ai = createAI({ binding: env.AI, id: "my-gateway" });
+
+		const { text } = await generateText({
+			model: ai("anthropic/claude-opus-5.5"),
+			prompt: "Say hello in three words",
+		});
+
+		return Response.json({ text });
+	},
+};
+```
+
+Use the catalog's spelling of the id, not the vendor's. AI Gateway looks the model up by its exact catalog name, so `anthropic/claude-opus-5.5` works and `anthropic/claude-opus-5-5` does not. Other examples are `openai/gpt-5.5` and `cloudflare/auto`.
+
+The request goes through `env.AI.run()` to AI Gateway. The provider sends it in the OpenAI chat completions format, and AI Gateway converts it to and from the format of the provider that serves the model. The gateway also handles:
+
+- **Credentials.** [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) bills the model to your Cloudflare account. A key you [store on the gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) is used instead when one is configured.
+- **Providers.** A catalog model can have several providers. AI Gateway picks one and retries across them.
+- **Errors.** An unknown model, an unpaid account, or an upstream failure throws a `CloudflareAIError`, the same type as a Workers AI failure.
+
+Unified Billing requires [authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) on the gateway. Without it, the request fails with error `2049`.
+
+`reasoningEffort` is sent as `reasoning_effort`. `chatTemplateKwargs` is a Workers AI option, so the provider drops it with a warning.
+
+## Call a dynamic route
+
+An [AI Gateway dynamic route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) is named `dynamic/<route>`. The route you configured on the gateway picks the model, and can apply conditions, percentages, rate and budget limits, and its own fallbacks:
+
+```ts
+const ai = createAI({ binding: env.AI, id: "my-gateway" });
+
+await generateText({ model: ai("dynamic/support"), prompt: "Hi" });
+```
+
+A route belongs to one gateway, so set the `id` of the gateway you created it on. The route answers in the chat completions format whatever model it picks. Like a catalog model, it drops `chatTemplateKwargs` with a warning. A dynamic route is a language model only. The embedding, image, speech, transcription, and reranking methods reject it.
+
+## Call a vendor's model object
+
+Build the model with the vendor's own AI SDK provider, then pass it to `ai()`. AI Gateway holds the credential, so the vendor's `apiKey` is a placeholder:
 
 ```js
 import { createAnthropic } from "@ai-sdk/anthropic";
@@ -118,7 +214,7 @@ export default {
 		const openai = createOpenAI({ apiKey: "cloudflare" });
 
 		const claude = await generateText({
-			model: ai(anthropic("claude-opus-4-8")),
+			model: ai(anthropic("claude-opus-5-5")),
 			prompt: "Say hello in three words",
 		});
 
@@ -145,7 +241,7 @@ export default {
 		const openai = createOpenAI({ apiKey: "cloudflare" });
 
 		const claude = await generateText({
-			model: ai(anthropic("claude-opus-4-8")),
+			model: ai(anthropic("claude-opus-5-5")),
 			prompt: "Say hello in three words",
 		});
 
@@ -159,21 +255,51 @@ export default {
 };
 ```
 
-Use the vendor's own model id. The provider does not rewrite ids, so `claude-opus-4.8` reaches Anthropic as written and Anthropic rejects it.
+The vendor's package builds the request and parses the response. The provider replaces the model's `fetch`, and sends the same request, with the same method, headers, and body, through the binding to AI Gateway's [provider-native endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/) for that vendor:
+
+```txt
+https://workers-binding.ai/ai-gateway/gateways/{gateway}/{provider}/{endpoint}
+```
+
+The provider takes the gateway provider from the request host. For example, `api.anthropic.com` is `anthropic` and `api.openai.com` is `openai`. A host that AI Gateway has no provider for throws a `TypeError`. Gateway options travel as `cf-aig-*` headers. Multipart bodies, such as file uploads for transcription, work.
+
+Use the vendor's own model id, such as `claude-opus-5-5`. The vendor's package reads model capabilities from it.
 
 Providers on [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) answer with no key of yours. For any other provider, [store a key on the gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Until you do, the vendor's own error comes back unchanged.
 
 `ai()` clones the model for each call and never changes the object you passed. If you add middleware, wrap the model with `ai()` first:
 
 ```ts
-wrapLanguageModel({ model: ai(anthropic("claude-opus-4-8")), middleware });
+wrapLanguageModel({ model: ai(anthropic("claude-opus-5-5")), middleware });
 ```
 
 A model that is already wrapped in middleware hides the settings the provider needs, so `ai()` rejects it.
 
+### Unified billing and BYOK
+
+By default, the provider removes the vendor's credential header (`authorization`, `x-api-key`, `x-goog-api-key`, or `api-key`) so AI Gateway supplies the key. To use a key you hold, give it to the vendor's provider and set `vendorKey: "request"` on the model:
+
+```ts
+const anthropic = createAnthropic({ apiKey: env.ANTHROPIC_API_KEY });
+const model = ai(anthropic("claude-opus-5-5"), { vendorKey: "request" });
+```
+
+`vendorKey` belongs to the model you set it on. A fallback model does not inherit it, so one chain can mix a model on your key with a model on Unified Billing.
+
+`byokAlias` picks a [stored key by alias](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) when the gateway holds several keys for one provider. The provider sends it as `cf-aig-byok-alias` for catalog models and model objects.
+
+`zdr` turns [Zero Data Retention](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#zero-data-retention-zdr) on (`true`) or off (`false`) for one Unified Billing request, whatever the gateway's own setting. The provider sends it as `cf-aig-zdr`. It applies to model objects only, because catalog models and dynamic routes do not read it.
+
+```ts
+const model = ai(anthropic("claude-opus-5-5"), {
+	byokAlias: "production",
+	zdr: true,
+});
+```
+
 ## Stream, call tools, and return structured output
 
-Both kinds of model work with every AI SDK call:
+Every kind of model works with every AI SDK call:
 
 ```js
 import { createAI } from "agents/models/ai-sdk";
@@ -264,6 +390,24 @@ export default {
 	},
 };
 ```
+
+## Resume a dropped stream
+
+Through the binding, a stream from a catalog model or a dynamic route resumes after a dropped connection. You do not need to configure anything:
+
+```ts
+const result = streamText({
+	model: ai("anthropic/claude-opus-5.5"),
+	prompt: "Write a haiku about Durable Objects",
+});
+// If the connection drops, result.textStream keeps going.
+```
+
+AI Gateway names each streamed run in the `cf-aig-run-id` header and keeps its events. If the connection drops mid-stream, the provider reconnects through the binding and replays the run from the last complete event. Your stream continues with nothing lost or repeated. The run keeps going on the gateway while the connection is down, so the resumed stream continues the same answer.
+
+The provider gives up and throws a `CloudflareAIError` after five drops in one stream, or once the gateway no longer holds the run. The gateway keeps a run for a few minutes after it ends. Aborting the call never resumes it.
+
+Workers AI `@cf/` streams and model objects have no run id, so they do not resume. The run id is in `providerMetadata.cloudflare.runId`.
 
 ## Use it in Think
 
@@ -320,7 +464,7 @@ Attach `metadata` to the gateway log entry. Set it once on the provider and add 
 const ai = createAI({ binding: env.AI, metadata: { app: "support-bot" } });
 
 await generateText({
-	model: ai(anthropic("claude-opus-4-8")),
+	model: ai(anthropic("claude-opus-5-5")),
 	prompt: "Summarize this ticket",
 	providerOptions: {
 		cloudflare: { metadata: { userId: "u_123" }, eventId: "ticket-42" },
@@ -332,19 +476,21 @@ await generateText({
 
 ## Fall back to another model
 
-`fallback` lists models to try in order if the primary model fails before it produces any output. Mix Workers AI ids and model objects:
+`fallback` lists models to try in order if the primary model fails before it produces any output. A fallback model can be a Workers AI id, a catalog id, a dynamic route, or a model object:
 
 ```ts
-const model = ai(anthropic("claude-opus-4-8"), {
-	fallback: [ai(openai.responses("gpt-5-mini")), "@cf/zai-org/glm-4.7-flash"],
+const model = ai(anthropic("claude-opus-5-5"), {
+	fallback: ["openai/gpt-5.5", "dynamic/support", "@cf/zai-org/glm-4.7-flash"],
 });
 ```
 
+A model object in the list goes to the provider-native endpoint, like `ai(model)`.
+
 A request that the vendor rejects falls back. So does a stream that fails before its first output part. Once a model has produced output, its answer is final, errors included. `providerMetadata.cloudflare.model` names the model that answered.
 
-Each fallback model uses the chain's gateway options. The chain's `id`, `cacheTtl`, and the other gateway options win over a fallback model's own, and `metadata` merges. Headers and Workers AI options a fallback model was built with stay its own.
+Each fallback model uses the chain's gateway options. The chain's `id`, `cacheTtl`, and the other gateway options win over a fallback model's own, and `metadata` merges. The `headers`, Workers AI options, and `vendorKey` a fallback model was built with stay its own.
 
-Fallback runs in your Worker today.
+Fallback runs in your Worker and moves across models. Within one catalog model, AI Gateway already retries across that model's providers, and a dynamic route runs its own fallback on the gateway.
 
 ## Set options
 
@@ -355,7 +501,7 @@ Set gateway options on the provider, on a model, or per call under `providerOpti
 const ai = createAI({ binding: env.AI, id: "prod", metadata: { app: "demo" } });
 
 // Model
-const model = ai(anthropic("claude-opus-4-8"), { cacheTtl: 3600 });
+const model = ai("anthropic/claude-opus-5.5", { cacheTtl: 3600 });
 
 // Call
 await generateText({
@@ -373,6 +519,9 @@ Gateway options can be given flat or nested: `{ cacheTtl: 60 }` and `{ gateway: 
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `binding` | `Ai` | The `AI` binding. Provider only. |
+| `accountId` | `string` | The account for an [account id and API token](#use-an-account-id-and-api-token). Provider only. |
+| `apiToken` | `string` | A Cloudflare API token for that account. Provider only. |
 | `id` | `string` | Gateway id. Defaults to `"default"`, which is created the first time you use it. |
 | `gateway` | `string \| GatewayOptions` | The gateway id, or the gateway options nested. |
 | `skipCache` | `boolean` | Bypass the gateway cache. |
@@ -383,13 +532,16 @@ Gateway options can be given flat or nested: `{ cacheTtl: 60 }` and `{ gateway: 
 | `eventId` | `string` | Groups several requests into one gateway event. |
 | `requestTimeoutMs` | `number` | Timeout for the upstream request. |
 | `retries` | `{ maxAttempts, retryDelayMs, backoff }` | Gateway retry policy for the upstream call. `maxAttempts` is 1 to 5. |
-| `fallback` | `(WorkersAIModelId \| LanguageModelV4)[]` | Models to try in order. Model and call only. |
+| `byokAlias` | `string` | A stored BYOK key, by alias. Catalog models and model objects. |
+| `zdr` | `boolean` | Zero Data Retention on or off for a Unified Billing request. Model objects only. |
+| `vendorKey` | `"gateway" \| "request"` | `"request"` forwards the vendor key on the request. Model objects only, per model. |
+| `fallback` | `(CloudflareLanguageModelId \| LanguageModelV4)[]` | Models to try in order. Model and call only. |
 | `headers` | `Record<string, string>` | Extra request headers, merged last. Model and call only. |
 | `sessionAffinity` | `string` | Workers AI only. Sends requests with the same key to one replica for prefix caching. |
-| `reasoningEffort` | `"low" \| "medium" \| "high" \| null` | Workers AI only. `null` turns reasoning off on models that allow it. |
+| `reasoningEffort` | `"low" \| "medium" \| "high" \| null` | Sent as `reasoning_effort`. `null` turns reasoning off on models that allow it. |
 | `chatTemplateKwargs` | `Record<string, unknown>` | Workers AI only. Sent as `chat_template_kwargs`, for example `{ enable_thinking: false }`. |
 
-For a vendor's model, ask for reasoning with the AI SDK's `reasoning` call option or the vendor's own `providerOptions`.
+`reasoningEffort` applies to Workers AI models, catalog models, and dynamic routes. When it is not set, the AI SDK's `reasoning` call option maps onto it. For a model object, ask for reasoning with the AI SDK's `reasoning` call option or the vendor's own `providerOptions`. The provider ignores `reasoningEffort` and `chatTemplateKwargs` on a model object and adds a warning.
 
 ## Read gateway metadata
 
@@ -397,13 +549,13 @@ Every result, and every stream's `finish` part, carries `providerMetadata.cloudf
 
 ```ts
 const { providerMetadata } = await generateText({
-	model: ai(anthropic("claude-opus-4-8")),
+	model: ai(anthropic("claude-opus-5-5")),
 	prompt: "hi",
 });
 
 providerMetadata?.cloudflare;
 // {
-//   model: "claude-opus-4-8",
+//   model: "claude-opus-5-5",
 //   provider: "anthropic",
 //   gateway: "default",
 //   logId: "01M1KZWN069WWNPC18V05NKHSS",
@@ -415,21 +567,21 @@ providerMetadata?.cloudflare;
 | Field | Description |
 | --- | --- |
 | `model` | The model that answered, after any fallback. |
-| `gateway` | The gateway id the request went through. |
-| `provider` | The gateway provider, for a vendor's model. |
+| `gateway` | The gateway id, when a gateway handled the request. |
+| `provider` | The gateway provider, for a model object. |
 | `logId` | The gateway log entry, from `cf-aig-log-id`. |
 | `eventId` | The gateway event, from `cf-aig-event-id`. |
 | `requestId` | The gateway request id, from `cf-aig-request-id`. |
 | `traceId` | The trace this request belongs to, from `cf-aig-trace-id`. |
-| `runId` | From `cf-aig-run-id`, when the gateway sends one. |
+| `runId` | The streamed run, from `cf-aig-run-id`, for a catalog model or a dynamic route. |
 | `cacheStatus` | `HIT` or `MISS`, from `cf-aig-cache-status`. |
 | `step` | The step of a gateway route that answered, from `cf-aig-step`. |
 
-Only `model` and `gateway` are always present. Check for the other fields before you use them.
+Only `model` is always present. Check for the other fields before you use them.
 
 ## Handle errors
 
-The provider throws `CloudflareAIError`, which extends the AI SDK's `APICallError`. The AI SDK's retry loop reads its `isRetryable` flag:
+The provider throws `CloudflareAIError`, which extends the AI SDK's `APICallError`, for Workers AI failures, AI Gateway failures, failed stream resumes, and a fallback chain where every model failed. The AI SDK's retry loop reads its `isRetryable` flag:
 
 ```ts
 import { CloudflareAIError } from "agents/models/ai-sdk";
@@ -446,7 +598,7 @@ try {
 
 `code` is one of `"auth"`, `"rate-limit"`, `"not-found"`, `"bad-request"`, `"provider-error"`, `"gateway-error"`, or `"unknown"`.
 
-For a vendor's model, `CloudflareAIError` covers the gateway's own failures, such as a missing gateway or an unpaid account. The vendor's own errors, such as an unknown model id or a rate limit, come from the vendor's provider in its own error type.
+For a model object, `CloudflareAIError` covers the gateway's own failures, such as a missing gateway or an unpaid account. The vendor's own errors, such as an unknown model id or a rate limit, come from the vendor's provider in its own error type.
 
 ## Use other modalities
 
@@ -497,9 +649,9 @@ Model-specific settings go under `providerOptions.cloudflare`:
 | Transcription | `audio`, `mediaType` | `language`, `task`, `initialPrompt`, `prefix`, `vadFilter` |
 | Reranking | `query`, `documents`, `topN` (as `top_k`) | None |
 
-An option a model does not take is listed in the result's `warnings` instead of being sent. For example, `flux-1-schnell` takes only a prompt and `steps`. Image generation makes one image per request, so `generateImage` with a larger `n` sends parallel requests.
+An option a model does not take is listed in the result's `warnings` instead of being sent. For example, `flux-1-schnell` takes only a prompt and `steps`, and `@cf/deepgram/nova-3` takes `language` but not the Whisper-only transcription options. Image generation makes one image per request, so `generateImage` with a larger `n` sends parallel requests.
 
-To route a vendor's own embedding, image, speech, or transcription model through AI Gateway, pass it to `ai.routed(model)`. `ai.routed()` takes the gateway options, `headers`, and `sessionAffinity`.
+These methods take Workers AI `@cf/` ids only, including in `fallback`. To route a vendor's own embedding, image, speech, or transcription model through AI Gateway, pass it to `ai.routed(model)`. It goes to the provider-native endpoint, like `ai(model)`. `ai.routed()` takes the gateway options, `headers`, `sessionAffinity`, and `vendorKey`.
 
 ## Use a provider registry
 
@@ -510,7 +662,7 @@ import { createProviderRegistry, generateText } from "ai";
 
 const registry = createProviderRegistry({ cloudflare: ai });
 await generateText({
-	model: registry.languageModel("cloudflare:@cf/zai-org/glm-4.7-flash"),
+	model: registry.languageModel("cloudflare:anthropic/claude-opus-5.5"),
 	prompt: "Hi",
 });
 
@@ -519,18 +671,21 @@ globalThis.AI_SDK_DEFAULT_PROVIDER = createAI({ binding: env.AI });
 await generateText({ model: "@cf/zai-org/glm-4.7-flash", prompt: "Hi" });
 ```
 
-A string still has to be a `@cf/` id. Reach a vendor's model with a model object.
+A string can be a Workers AI id, a catalog id, or a dynamic route.
 
 ## Limitations
 
-- AI Gateway's universal request carries JSON only. A multipart body, such as a file upload sent as `FormData`, throws a `TypeError`.
-- `@cf/deepgram/nova-3` and `@cf/deepgram/flux` are not supported. They throw a `CloudflareAIError` before any request is sent. Use `@cf/openai/whisper-large-v3-turbo` for transcription.
-- `reasoningEffort`, `chatTemplateKwargs`, and `sessionAffinity` apply to Workers AI models only.
+- `@cf/deepgram/flux` takes websocket connections only, so it throws a `CloudflareAIError` before any request is sent. Use `@cf/deepgram/nova-3` or `@cf/openai/whisper-large-v3-turbo` for transcription.
+- `chatTemplateKwargs` and `sessionAffinity` apply to Workers AI models only.
+- `zdr` applies to model objects only.
+- Workers AI streams and model object streams do not resume after a dropped connection.
 
 ## Related resources
 
 - [pi-ai provider](https://developers.cloudflare.com/agents/models/pi-ai/)
 - [Model catalog](https://developers.cloudflare.com/ai/models/)
+- [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- [AI Gateway provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 - [AI Gateway Worker binding methods](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/)
 - [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
 
@@ -543,5 +698,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models and route third-party AI SDK models through AI Gateway.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

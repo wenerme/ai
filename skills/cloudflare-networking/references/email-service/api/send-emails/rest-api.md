@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/api/send-emails/rest-api/
 
 # REST API
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API allows you to send emails from any application using a standard HTTP request to `POST /accounts/{account_id}/email/sending/send`. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
 
@@ -148,6 +148,7 @@ The REST API returns the following error codes:
 | 403 | 10102 | `email.sending.error.authentication.forbidden` | Token lacks permission to send |
 | 403 | 10105 | `email.sending.error.authentication.not_entitled` | Account not entitled to use Email Sending |
 | 403 | 10203 | `email.sending.error.email.sending_disabled` | Sending disabled for this zone or account |
+| 403 | 10207 | `email.sending.error.email.account_suspended` | Email Sending is paused for the account |
 | 404 | 10000 | `email.sending.error.not_found` | Resource not found |
 | 429 | 10004 | `email.sending.error.throttled` | Rate limit exceeded |
 | 500 | 10002 | `email.sending.error.internal_server` | Internal server error |
@@ -174,5 +175,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Email Sending REST API requests, responses, authentication, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/#page","headline":"REST API","description":"Email Sending REST API requests, responses, authentication, and errors.","url":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/send-emails/rest-api/og.png?v=a3dd3c9e3f6f70ef","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

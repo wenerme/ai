@@ -16,6 +16,77 @@ Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-10-21
+
+
+**createAI replaces workers-ai-provider and ai-gateway-provider**
+
+The Agents SDK has a new [`createAI`](https://developers.cloudflare.com/agents/models/) function for the [AI SDK](https://developers.cloudflare.com/agents/models/ai-sdk/) and [Pi AI](https://developers.cloudflare.com/agents/models/pi-ai/). It unifies what `workers-ai-provider` and `ai-gateway-provider` did: Workers AI models, AI Gateway catalog models, dynamic routes, and vendor models, through the `AI` binding or an account id and API token.
+
+`workers-ai-provider` and `ai-gateway-provider` are now feature frozen and marked as deprecated. Please migrate at your convenience.
+
+```sh
+npm i agents
+```
+
+```js
+import { createAI } from "agents/models/ai-sdk";
+import { streamText } from "ai";
+
+export default {
+	async fetch(request, env) {
+		const ai = createAI({ binding: env.AI, id: "my-gateway" });
+
+		const result = streamText({
+			model: ai("anthropic/claude-opus-5.5", {
+				fallback: ["@cf/zai-org/glm-4.7-flash"],
+			}),
+			prompt: "Write a haiku about Durable Objects",
+		});
+
+		return result.toTextStreamResponse();
+	},
+};
+```
+
+```ts
+import { createAI } from "agents/models/ai-sdk";
+import { streamText } from "ai";
+
+export default {
+	async fetch(request: Request, env: Env) {
+		const ai = createAI({ binding: env.AI, id: "my-gateway" });
+
+		const result = streamText({
+			model: ai("anthropic/claude-opus-5.5", {
+				fallback: ["@cf/zai-org/glm-4.7-flash"],
+			}),
+			prompt: "Write a haiku about Durable Objects",
+		});
+
+		return result.toTextStreamResponse();
+	},
+};
+```
+
+With `createAI` you get:
+
+- **Every model by id.** Workers AI `@cf/` ids, any model in the [AI Gateway catalog](https://developers.cloudflare.com/ai/models/), and [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) as `dynamic/<route>`.
+- **Vendor model objects.** Pass a model from the vendor's own package, such as `ai(anthropic("claude-opus-5-5"))`. It goes unchanged to AI Gateway's [provider-native endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/).
+- **The binding, or an account id and API token.** Use a gateway in another account, or call from outside a Worker.
+- **Gateway options, fallback, and BYOK.** Caching, logging, metadata, retries, `byokAlias`, `zdr`, and `vendorKey`.
+- **Stream resume.** Through the binding, a catalog or dynamic route stream that drops mid-answer resumes.
+- **Other model types.** Embeddings, images, speech, transcription, and reranking in the AI SDK provider, and images in Pi AI.
+
+| Before | After |
+| --- | --- |
+| `createWorkersAI({ binding })` | `createAI({ binding })` |
+| `createWorkersAI({ accountId, apiKey })` | `createAI({ accountId, apiToken })` |
+| `createAiGateway(...)` | `createAI(...)`, with `fallback` for a list of models |
+| `createAISearch` from `workers-ai-provider` | `createAISearchNamespace` from `ai-search-provider` |
+
+For AI Search, use [`ai-search-provider`](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/). For more information, refer to [Models](https://developers.cloudflare.com/agents/models/).
+
 ## 2026-10-06
 
 

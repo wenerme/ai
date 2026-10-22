@@ -1,5 +1,5 @@
 ---
-description: This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.
+description: This emergency release adds seven rules to the Cloudflare Managed Ruleset to detect anomalous request patterns.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -17,7 +17,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/chang
 
 **WAF Release - 2026-10-21 - Emergency - Cloudflare Managed Ruleset**
 
-This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.
+This emergency release adds seven rules to the Cloudflare Managed Ruleset to detect anomalous request patterns.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -25,6 +25,9 @@ This emergency release adds four rules to the Cloudflare Managed Ruleset to dete
 | Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | Generic Rules - Anomalous Execution - 2 | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...545d163c | N/A | Generic Rules - Anomalous Execution - 3 | N/A | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...212afcc9 | N/A | Generic Rules - Anomalous Execution - 4 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...1867b12e | N/A | Generic Rules - Anomalous Execution - 5 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | Generic Rules - Anomalous Execution - 6 | N/A | Block | This is a new detection. |
+| Cloudflare Managed Ruleset | ...48143645 | N/A | Generic Rules - Anomalous Execution - 7 | N/A | Block | This is a new detection. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -33,7 +36,7 @@ For more information, refer to [WAF Managed Rules](https://developers.cloudflare
 
 **WAF Release - 2026-10-21 - Emergency - Cloudflare Free Ruleset**
 
-This emergency release adds two rules to the Cloudflare Free Ruleset to block anomalous request patterns.
+This emergency release adds seven rules to the Cloudflare Free Ruleset to block anomalous request patterns.
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -41,6 +44,9 @@ This emergency release adds two rules to the Cloudflare Free Ruleset to block an
 | Cloudflare Free Ruleset | ...bcd95984 | N/A | Generic Rules - Anomalous Execution - 2 | N/A | Block | This is a new detection. |
 | Cloudflare Free Ruleset | ...82dab691 | N/A | Generic Rules - Anomalous Execution - 3 | N/A | Block | This is a new detection. |
 | Cloudflare Free Ruleset | ...24b1a4c6 | N/A | Generic Rules - Anomalous Execution - 4 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...302ede46 | N/A | Generic Rules - Anomalous Execution - 5 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | Generic Rules - Anomalous Execution - 6 | N/A | Block | This is a new detection. |
+| Cloudflare Free Ruleset | ...e8d613fa | N/A | Generic Rules - Anomalous Execution - 7 | N/A | Block | This is a new detection. |
 
 For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -463,5 +469,5 @@ This release introduces new rules and updates Microsoft SharePoint RCE alongside
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds four rules to the Cloudflare Managed Ruleset to detect anomalous request patterns. Two rules block matching requests, and two log matches without blocking.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds seven rules to the Cloudflare Managed Ruleset to detect anomalous request patterns.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

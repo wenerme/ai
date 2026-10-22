@@ -22,9 +22,9 @@ To learn how to structure a project's configuration, refer to [Programmatic conf
 
 Select a highlighted line to show its type and description below it.
 
-Generated from `@cloudflare/config`0.25.0
+Generated from `@cloudflare/config`0.27.0
 
-defineConfig6 optionsWorker18 optionsBindings37 optionsTriggers5 optionsExports7 options
+defineConfig6 optionsWorker19 optionsBindings37 optionsTriggers5 optionsExports7 options
 
 Expand allCopy
 
@@ -286,9 +286,9 @@ How to handle HTML requests.
 
 <code>domains</code>Optional<a href="#config-reference-worker-workerconfig-domains">Link to domains</a>
 
-<code>domains?: string[]</code>
+<code>domains?: Array&lt;string | CustomDomain&gt;</code>
 
-Custom domains that your Worker should be published to. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes">https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes</a>
+Custom domains that your Worker should be published to. Strings serve production traffic only. Objects select production, Preview traffic, or both; at least one must be enabled. Domain settings are applied when deploying the parent Worker. Preview uploads use the parent's existing hosting without applying domains. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes">https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes</a>
 
 </details>
 
@@ -628,6 +628,20 @@ Default: <code>true</code>
 },
 
 },
+
+<details>
+
+<summary>access: undefined, (access reference)</summary>
+
+
+
+<code>access</code>Optional<a href="#config-reference-worker-workerconfig-access">Link to access</a>
+
+<code>access?: { /** Local development simulation of Cloudflare Access authentication. */ dev?: { /** The Access application audience tag (`aud`). */ aud: string; /** Mock identity returned by `ctx.access.getIdentity()`. */ identity?: Record&lt;string, unknown&gt;; }; }</code>
+
+Cloudflare Access configuration for this Worker.
+
+</details>
 
 <details>
 

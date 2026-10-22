@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a4
 
 # Debug D1
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
@@ -122,6 +122,28 @@ You should include as much of the following in any bug report:
 - Understand how to [access logs](https://developers.cloudflare.com/workers/observability/logs/) generated from your Worker and D1.
 - Use [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to run your Worker and D1 locally and [debug issues before deploying](https://developers.cloudflare.com/workers/local-development/).
 
+## D1 binding timeout behavior
+
+D1 binding methods — `run()`, `all()`, `first()`, and `batch()` — do not accept a timeout option or an `AbortSignal`. There is no per-call timeout built into the D1 binding client.
+
+Workers have no wall-time limit on incoming HTTP requests while the client connection is open — see [Workers limits](https://developers.cloudflare.com/workers/platform/limits/). If the D1 database is temporarily unreachable, a D1 binding call blocks until the operation completes, an internal limit is reached, or the Worker is terminated by an external event such as the client disconnecting.
+
+To limit how long your Worker waits on a D1 call, use `Promise.race` with a timer:
+
+```js
+const timeout = new Promise((_, reject) =>
+  setTimeout(() => reject(new Error('D1 call timed out')), 5000)
+);
+const result = await Promise.race([
+  db.prepare('SELECT 1').first(),
+  timeout,
+]);
+```
+
+Write operations and Promise.race
+
+`Promise.race` bounds how long your Worker waits — it does not cancel the D1 query. A write that loses the race may still commit in the background. Always confirm the outcome of a write before retrying to avoid duplicate writes.
+
 Was this helpful?
 
 YesNo
@@ -131,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a486104ffa018f","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a486104ffa018f","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

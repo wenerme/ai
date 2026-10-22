@@ -534,7 +534,7 @@ async function runMultiAgent(ws) {
     });
 
     const nextInput = [];
-    let completedResponseId;
+    let completedResponse;
     let responseId;
     let pendingInjections = 0;
 
@@ -573,7 +573,7 @@ async function runMultiAgent(ws) {
         }
         nextInput.push(...event.input);
       } else if (event.type === "response.completed") {
-        completedResponseId = event.response.id;
+        completedResponse = event.response;
       } else if (
         event.type === "error" ||
         event.type === "response.failed" ||
@@ -582,15 +582,18 @@ async function runMultiAgent(ws) {
         throw new Error(JSON.stringify(event));
       }
 
-      if (completedResponseId && pendingInjections === 0) break;
+      if (completedResponse && pendingInjections === 0) break;
     }
 
-    if (!completedResponseId) {
+    if (!completedResponse) {
       throw new Error("Connection ended before response.completed");
     }
-    if (nextInput.length === 0) return;
+    if (pendingInjections !== 0) {
+      throw new Error("Connection ended with unacknowledged tool results");
+    }
+    if (nextInput.length === 0) return completedResponse;
 
-    previousResponseId = completedResponseId;
+    previousResponseId = completedResponse.id;
     pendingInput = nextInput;
   }
 }
@@ -600,7 +603,19 @@ const ws = new ResponsesWS(client, {
 });
 
 try {
-  await runMultiAgent(ws);
+  const response = await runMultiAgent(ws);
+  const text = response.output
+    .flatMap((item) =>
+      item.type === "message" &&
+      item.agent?.agent_name === "/root" &&
+      item.phase === "final_answer"
+        ? item.content
+        : []
+    )
+    .filter((part) => part.type === "output_text")
+    .map((part) => part.text)
+    .join("");
+  console.log(text);
 } finally {
   ws.close();
 }
@@ -725,6 +740,8 @@ def run_multi_agent(connection):
 
         if completed_response is None:
             raise RuntimeError("Connection ended before response.completed")
+        if pending_injections:
+            raise RuntimeError("Connection ended with unacknowledged tool results")
 
         if not next_input:
             return completed_response
@@ -736,7 +753,21 @@ def run_multi_agent(connection):
 with client.beta.responses.connect(
     extra_headers={"OpenAI-Beta": "responses_multi_agent=v1"},
 ) as connection:
-    run_multi_agent(connection)
+    response = run_multi_agent(connection)
+    print(
+        "".join(
+            part.text
+            for item in response.output
+            if (
+                item.type == "message"
+                and item.agent is not None
+                and item.agent.agent_name == "/root"
+                and item.phase == "final_answer"
+            )
+            for part in item.content
+            if part.type == "output_text"
+        )
+    )
 ```
 
 

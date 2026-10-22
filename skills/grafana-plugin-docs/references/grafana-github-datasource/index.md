@@ -11,6 +11,12 @@ The GitHub data source plugin lets you query the GitHub API so you can visualize
 
 Watch the following video to learn more about setting up the GitHub data source plugin:
 
+Give it a try using Grafana Play
+
+With Grafana Play, you can explore and see how it works, learning from practical examples to accelerate your development. This feature can be seen on [GitHub data source](https://play.grafana.org/d/d5b56357-1a57-4821-ab27-16fdf79cab57/).
+
+[Try it](https://play.grafana.org/d/d5b56357-1a57-4821-ab27-16fdf79cab57/)
+
 ## Requirements
 
 To use the GitHub data source plugin, you need:

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf
 
 # Browser
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Give your agent a browser it can return to on later turns. [Browser Run](https://developers.cloudflare.com/browser-run/) keeps the remote browser open, so your agent can continue from the same page with its tabs, cookies, and login session intact while the browser session remains alive.
 
@@ -478,11 +478,11 @@ Create browser tools with the Browser Run and Worker Loader bindings, then pass 
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { createBrowserTools } from "agents/browser/ai";
 import { streamText, convertToModelMessages, stepCountIs } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class BrowserAgent extends AIChatAgent {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const browserTools = createBrowserTools({
 			ctx: this.ctx,
 			browser: this.env.BROWSER,
@@ -490,7 +490,7 @@ export class BrowserAgent extends AIChatAgent {
 		});
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: "You can inspect web pages with browser tools.",
 			messages: await convertToModelMessages(this.messages),
 			tools: browserTools,
@@ -506,11 +506,11 @@ export class BrowserAgent extends AIChatAgent {
 import { AIChatAgent } from "@cloudflare/ai-chat";
 import { createBrowserTools } from "agents/browser/ai";
 import { streamText, convertToModelMessages, stepCountIs } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class BrowserAgent extends AIChatAgent<Env> {
 	async onChatMessage() {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const browserTools = createBrowserTools({
 			ctx: this.ctx,
 			browser: this.env.BROWSER,
@@ -518,7 +518,7 @@ export class BrowserAgent extends AIChatAgent<Env> {
 		});
 
 		const result = streamText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			system: "You can inspect web pages with browser tools.",
 			messages: await convertToModelMessages(this.messages),
 			tools: browserTools,
@@ -801,5 +801,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
