@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limi
 
 # Rate Limiting
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Rate Limiting API lets you define rate limits and write code around them in your Worker.
+
+Rate limits are approximate and apply separately in each Cloudflare location. Requests can exceed your configured limit while counts update in the background. For a strict limit across locations, refer to [Strict limits](#strict-limits).
 
 You can use it to enforce:
 
@@ -43,8 +45,8 @@ First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bi
 			// An identifier you define, that is unique to your Cloudflare account.
 			// Must be an integer.
 			"namespace_id": "1001",
-			// Limit: the number of tokens allowed within a given period in a single
-			// Cloudflare location
+			// Limit: the request threshold within a given period in a single
+			// Cloudflare location. Requests can exceed this threshold.
 			// Period: the duration of the period, in seconds. Must be either 10 or 60
 			"simple": {
 				"limit": 100,
@@ -169,12 +171,12 @@ A rate limiting binding has the following settings:
 | --- | --- | --- |
 | `namespace_id` | `string` | A string containing a positive integer that uniquely defines this rate limiting namespace within your Cloudflare account (for example, `"1001"`). Although the value must be a valid integer, it is specified as a string. This is intentional. |
 | `simple` | `object` | The rate limit configuration. `simple` is the only supported type. |
-| `simple.limit` | `number` | The number of allowed requests (or calls to `limit()`) within the given `period`. |
+| `simple.limit` | `number` | The request threshold for calls to `limit()` within the given `period`, per Cloudflare location. Requests can exceed this threshold; refer to [Accuracy](#accuracy). |
 | `simple.period` | `number` | The duration of the rate limit window, in seconds. Must be either `10` or `60`. |
 
 Note
 
-Two rate limiting bindings that share the same `namespace_id` — even across different Workers on the same account — share the same rate limit counters for a given key. This is intentional and allows you to enforce a single rate limit across multiple Workers.
+Two rate limiting bindings that share the same `namespace_id` on the same account share counters for a given key within each Cloudflare location, including across different Workers. Updates reach other running instances in the background, so sharing a namespace does not guarantee a strict combined limit. Refer to [Accuracy](#accuracy).
 
 If you do not want to share rate limit state between bindings, use a unique `namespace_id` for each binding.
 
@@ -215,41 +217,72 @@ The `key` passed to the `limit` function, that determines what to rate limit on,
 
 ```ts
 // Recommended: use a key that represents a specific user or class of user
-const url = new URL(req.url)
-const userId = url.searchParams.get("userId") || ""
-const { success } = await env.MY_RATE_LIMITER.limit({ key: userId })
+const url = new URL(req.url);
+const userId = url.searchParams.get("userId") || "";
+const { success } = await env.MY_RATE_LIMITER.limit({ key: userId });
 
 // Not recommended:  many users may share a single IP, especially on mobile networks
 // or when using privacy-enabling proxies
-const ipAddress = req.headers.get("cf-connecting-ip") || ""
-const { success } = await env.MY_RATE_LIMITER.limit({ key: ipAddress })
+const ipAddress = req.headers.get("cf-connecting-ip") || "";
+const { success } = await env.MY_RATE_LIMITER.limit({ key: ipAddress });
 ```
 
 ## Locality
 
 Rate limits that you define and enforce in your Worker are local to the [Cloudflare location ↗︎](https://www.cloudflare.com/network/) that your Worker runs in.
 
-For example, if a request comes in from Sydney, Australia, to the Worker shown above, after 100 requests in a 60 second window, any further requests for a particular path would be rejected, and a 429 HTTP status code returned. But this would only apply to requests served in Sydney. For each unique key you pass to your rate limiting binding, there is a unique limit per Cloudflare location.
+For example, if you configure 100 requests per 60 seconds for a particular path, requests served in Sydney count toward the limit in Sydney. Requests served in another Cloudflare location count toward a separate limit, even with the same namespace and key. These counts do not combine into one worldwide limit.
+
+Each location applies an approximate limit. Requests can exceed the configured threshold within a location, as described in [Accuracy](#accuracy).
 
 ## Performance
 
 The Rate Limiting API in Workers is designed to be fast.
 
-The underlying counters are cached on the same machine that your Worker runs in, and updated asynchronously in the background by communicating with a backing store that is within the same Cloudflare location.
+Each check uses a locally cached count. Cloudflare updates shared counts in the background within the same Cloudflare location.
 
 This means that while in your code you `await` a call to the `limit()` method:
 
 ```javascript
-const { success } = await env.MY_RATE_LIMITER.limit({ key: customerId })
+const { success } = await env.MY_RATE_LIMITER.limit({ key: customerId });
 ```
 
-You are not waiting on a network request. You can use the Rate Limiting API without introducing any meaningful latency to your Worker.
+The promise resolves with the rate limit decision. It does not wait for counts to synchronize across every running instance. This lets you check the limit without waiting for that synchronization.
 
 ## Accuracy
 
-The above also means that the Rate Limiting API is permissive, eventually consistent, and intentionally designed to not be used as an accurate accounting system.
+The Rate Limiting API provides an approximate limit. Counts are eventually consistent: each check uses a local count, and updates reach other running instances in the background.
 
-For example, if many requests come in to your Worker in a single Cloudflare location, all rate limited on the same key, the [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works) that serves each request will check against its locally cached value of the rate limit. Very quickly, but not immediately, these requests will count towards the rate limit within that Cloudflare location.
+Requests can exceed your configured limit before those updates arrive. This can happen with one Worker or multiple Workers, even when every request uses the same namespace and key within one Cloudflare location.
+
+The following diagram shows two local checks for the same namespace and key. Both can allow requests before their counts synchronize:
+
+```
+flowchart TD
+    accTitle: Local rate limit checks and background updates
+    accDescr: Within one Cloudflare location, requests to one or more Workers check local counts for the same namespace and key. Both local counts can remain below the limit while background updates synchronize them with the shared count, allowing requests to exceed the configured limit.
+    subgraph location["One Cloudflare location"]
+        direction TB
+        requests["Requests to one<br/>or more Workers"]
+        requests --> a["Check local count A<br/>Below limit: allow request"]
+        requests --> b["Check local count B<br/>Below limit: allow request"]
+        a <-. "Background updates" .-> shared["Shared count<br/>for this location"]
+        b <-. "Background updates" .-> shared
+    end
+
+```
+
+Other Cloudflare locations maintain separate counts. Local counts do not correspond to an independent allowance per Worker.
+
+For example, if you configure 30 requests per 10 seconds, a burst of requests can result in more than 30 calls to `limit()` returning `success: true`. Sharing a namespace across Workers or awaiting each call does not make the combined limit strict. The number of Workers does not determine how many requests can exceed the limit.
+
+### Strict limits
+
+If you need one strict limit across all locations, implement a rate limiter with [Durable Objects](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/).
+
+For an upstream API quota per credential, route requests for that credential through the same Durable Object. Check and update its counter together before allowing a request, and persist the counter in durable storage. Use a separate object for each credential.
+
+Match your limiter to the upstream API's rate limit rules, and handle HTTP 429 responses from that API.
 
 ## Monitoring
 
@@ -273,5 +306,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#page","headline":"Rate Limiting","description":"Define rate limits and interact with them directly from your Cloudflare Worker","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/og.png?v=7e91c4cab8750517","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#page","headline":"Rate Limiting","description":"Define rate limits and interact with them directly from your Cloudflare Worker","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/og.png?v=7e91c4cab8750517","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

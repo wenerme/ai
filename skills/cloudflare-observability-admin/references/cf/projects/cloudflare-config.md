@@ -816,7 +816,7 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 
 <details>
 
-<summary>Options (18)</summary>
+<summary>Options (19)</summary>
 
 
 
@@ -837,8 +837,8 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 <dt><code>assets?: { /** How to handle HTML requests. */ htmlHandling?: "auto-trailing-slash" | "drop-trailing-slash" | "force-trailing-slash" | "none"; /** How to handle requests that do not match an asset. */ notFoundHandling?: "single-page-application" | "404-page" | "none"; /** * The public URL prefix under which the application is served. */ basePath?: string; /** * Matches will be routed to the User Worker, and matches to negative rules will go to the Asset Worker. * * Can also be `true`, indicating that every request should be routed to the User Worker. */ runWorkerFirst?: string[] | boolean; }</code></dt>
 <dd>Specify the directory of static assets to deploy/serve. More details at <a href="https://developers.cloudflare.com/workers/frameworks/">https://developers.cloudflare.com/workers/frameworks/</a> For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#assets">https://developers.cloudflare.com/workers/wrangler/configuration/#assets</a></dd>
 
-<dt><code>domains?: string[]</code></dt>
-<dd>Custom domains that your Worker should be published to. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes">https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes</a></dd>
+<dt><code>domains?: Array&lt;string | CustomDomain&gt;</code></dt>
+<dd>Custom domains that your Worker should be published to. Strings serve production traffic only. Objects select production, Preview traffic, or both; at least one must be enabled. Domain settings are applied when deploying the parent Worker. Preview uploads use the parent's existing hosting without applying domains. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes">https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes</a></dd>
 
 <dt><code>triggers?: Trigger[]</code></dt>
 <dd>Event triggers — fetch routes, queue consumers, cron schedules, Email Routing addresses, and raw sockets — that invoke this Worker. Construct entries with <code>triggers.fetch(...)</code>, <code>triggers.queue(...)</code>, <code>triggers.scheduled(...)</code>, <code>triggers.email(...)</code>, or <code>triggers.connect(...)</code>. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#triggers">https://developers.cloudflare.com/workers/wrangler/configuration/#triggers</a></dd>
@@ -860,6 +860,9 @@ Defines a Worker configuration that you can pass to <code>worker</code> in <code
 
 <dt><code>observability?: { /** If observability is enabled for this Worker. */ enabled?: boolean; /** The sampling rate. */ headSamplingRate?: number; /** * Whether query strings are removed from request URLs in logs and traces. * * @default false */ redactQueryString?: boolean; /** Real-time Issues settings for this Worker. */ issues?: { /** Whether real-time Issues are enabled. */ enabled?: boolean; }; logs?: { enabled?: boolean; /** The sampling rate. */ headSamplingRate?: number; /** Set to false to disable invocation logs. */ invocationLogs?: boolean; /** * If logs should be persisted to the Cloudflare observability platform where they can be queried in the dashboard. * * @default true */ persist?: boolean; /** * What destinations logs emitted from the Worker should be sent to. * * @default [] */ destinations?: string[]; }; traces?: { enabled?: boolean; /** The sampling rate. */ headSamplingRate?: number; /** * If traces should be persisted to the Cloudflare observability platform where they can be queried in the dashboard. * * @default true */ persist?: boolean; /** * What destinations traces emitted from the Worker should be sent to. * * @default [] */ destinations?: string[]; }; }</code></dt>
 <dd>Specify the observability behavior of the Worker. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#observability">https://developers.cloudflare.com/workers/wrangler/configuration/#observability</a></dd>
+
+<dt><code>access?: { /** Local development simulation of Cloudflare Access authentication. */ dev?: { /** The Access application audience tag (`aud`). */ aud: string; /** Mock identity returned by `ctx.access.getIdentity()`. */ identity?: Record&lt;string, unknown&gt;; }; }</code></dt>
+<dd>Cloudflare Access configuration for this Worker.</dd>
 
 <dt><code>workersDev?: boolean</code></dt>
 <dd>Whether we use <code>&lt;name&gt;.&lt;subdomain&gt;.workers.dev</code> to test and deploy your Worker. For reference, see <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#workersdev">https://developers.cloudflare.com/workers/wrangler/configuration/#workersdev</a></dd>

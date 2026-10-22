@@ -107,17 +107,20 @@ sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
 sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
-On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the Cloudflare One Client UI:
+On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the Cloudflare One Client UI. Turn on CodeReady Builder, then install the EPEL release package for your RHEL version:
 
 ```sh
-sudo dnf install -y epel-release
+sudo subscription-manager repos --enable codeready-builder-for-rhel-$(rpm -E %rhel)-$(arch)-rpms &&
+sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
 ```
+
+On Rocky Linux, AlmaLinux, and other RHEL-compatible distributions, run <code>sudo dnf config-manager --set-enabled crb &amp;&amp; sudo dnf install -y epel-release</code> instead. For details, refer to <a href="https://developers.cloudflare.com/mesh/guides/run-mesh-on-linux/#rhel">Run Mesh on Linux</a>.
 
 Then install the package:
 
 ```sh
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-sudo yum install -y cloudflare-warp
+curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
+sudo dnf install -y cloudflare-warp
 ```
 
 ```sh
@@ -153,17 +156,20 @@ sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos c
    sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
    ```
 
-   On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
+   On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI. Turn on CodeReady Builder, then install the EPEL release package for your RHEL version:
 
    ```sh
-   sudo dnf install -y epel-release
+   sudo subscription-manager repos --enable codeready-builder-for-rhel-$(rpm -E %rhel)-$(arch)-rpms &&
+   sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
    ```
+
+   On Rocky Linux, AlmaLinux, and other RHEL-compatible distributions, run `sudo dnf config-manager --set-enabled crb && sudo dnf install -y epel-release` instead. For details, refer to [Run Mesh on Linux](https://developers.cloudflare.com/mesh/guides/run-mesh-on-linux/#rhel).
 
    Then install the package:
 
    ```sh
-   curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-   sudo yum install -y cloudflare-warp
+   curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
+   sudo dnf install -y cloudflare-warp
    ```
 
    ```sh

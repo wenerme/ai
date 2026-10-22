@@ -102,10 +102,7 @@ Claude infers the response language from the conversation, but for production ap
       Model = Model.ClaudeOpus5_5,
       MaxTokens = 1024,
       System = "Always respond in French, regardless of the language the user writes in.",
-      Messages =
-      [
-          new() { Role = Role.User, Content = "How do I reset my password?" }
-      ]
+      Messages = [new UserMessageParam { Content = "How do I reset my password?" }]
   };
 
   var message = await client.Messages.Create(parameters);
@@ -164,7 +161,7 @@ Claude infers the response language from the conversation, but for production ap
   client = Anthropic::Client.new
 
   message = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     system: "Always respond in French, regardless of the language the user writes in.",
     messages: [
@@ -184,7 +181,7 @@ If your application lets users pick a language at runtime, interpolate that choi
 
 When working with multilingual content:
 
-1. **Provide clear language context:** Although Claude can detect the target language automatically, explicitly stating the desired input and output languages improves reliability. For enhanced fluency, you can prompt Claude to use "idiomatic speech as if it were a native speaker."
+1. **Provide clear language context:** Although Claude can detect the target language automatically, explicitly stating the input and output languages you want improves reliability. For enhanced fluency, you can prompt Claude to use "idiomatic speech as if it were a native speaker."
 2. **Use native scripts:** Submit text in its native script rather than transliteration for optimal results.
 3. **Consider cultural context:** Effective communication often requires cultural and regional awareness beyond pure translation.
 

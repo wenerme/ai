@@ -43,6 +43,17 @@ The first-place team will receive $25,000 in Cloudflare credits. The top three t
 
 Get started with the [Artifacts documentation](https://developers.cloudflare.com/artifacts/).
 
+## 2026-09-29
+
+
+**1 GB storage limit for new Artifacts repos**
+
+Starting September 29, 2026, [Artifacts](https://developers.cloudflare.com/artifacts/) will enforce a **1 GB storage limit per repo** for repos created on or after that date.
+
+Repos created before September 29, 2026, will retain their 10 GB storage limit.
+
+For more information, refer to [Artifacts limits](https://developers.cloudflare.com/artifacts/platform/limits/).
+
 ## 2026-08-13
 
 

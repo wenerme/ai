@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/filesystem/og.png?v=d015b7
 
 # File system
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/filesystem/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/filesystem/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Computer ↗︎](https://github.com/cloudflare/computer) gives an agent a persistent working directory backed by SQLite, along with the standard set of tools for working with the file system, including `read`, `write`, `edit`, and `grep`. An optional `exec` tool lets the agent manipulate the file system and run tools programmatically.
 
@@ -132,7 +132,7 @@ Configure the Durable Object binding and a SQLite migration in your Wrangler con
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [
@@ -153,7 +153,7 @@ Configure the Durable Object binding and a SQLite migration in your Wrangler con
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -243,16 +243,14 @@ import { Workspace } from "@cloudflare/computer";
 import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { generateText, stepCountIs } from "ai";
 import { DurableObject } from "cloudflare:workers";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class WriterAgent extends DurableObject {
 	workspace = new Workspace({ storage: this.ctx.storage });
 
 	async write(prompt) {
 		const { text } = await generateText({
-			model: createWorkersAI({ binding: this.env.AI })(
-				"@cf/moonshotai/kimi-k2.6",
-			),
+			model: createAI({ binding: this.env.AI })("@cf/moonshotai/kimi-k2.6"),
 			system:
 				"You are a writing assistant. Keep drafts and notes as files under /workspace.",
 			prompt,
@@ -272,14 +270,14 @@ import { Workspace } from "@cloudflare/computer";
 import { createAITools } from "@cloudflare/computer/tools/ai-sdk";
 import { generateText, stepCountIs } from "ai";
 import { DurableObject } from "cloudflare:workers";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class WriterAgent extends DurableObject<Env> {
 	workspace = new Workspace({ storage: this.ctx.storage });
 
 	async write(prompt: string) {
 		const { text } = await generateText({
-			model: createWorkersAI({ binding: this.env.AI })(
+			model: createAI({ binding: this.env.AI })(
 				"@cf/moonshotai/kimi-k2.6",
 			),
 			system:
@@ -536,7 +534,7 @@ The backend needs a [Worker Loader binding](https://developers.cloudflare.com/dy
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-10-16",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"worker_loaders": [
 		{
@@ -548,7 +546,7 @@ The backend needs a [Worker Loader binding](https://developers.cloudflare.com/dy
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-10-16"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[worker_loaders]]
@@ -794,5 +792,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/filesystem/#page","headline":"File system","description":"Give an agent a virtual file system stored in its Durable Object, with file tools for the model and an optional JavaScript runtime.","url":"https://developers.cloudflare.com/agents/tools/filesystem/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/filesystem/og.png?v=d015b763134c08dd","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/filesystem/#page","headline":"File system","description":"Give an agent a virtual file system stored in its Durable Object, with file tools for the model and an optional JavaScript runtime.","url":"https://developers.cloudflare.com/agents/tools/filesystem/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/filesystem/og.png?v=d015b763134c08dd","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

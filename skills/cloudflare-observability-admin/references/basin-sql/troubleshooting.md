@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/basin-sql/troubleshooting/og.png?v=30db
 
 # Troubleshooting guide
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers potential errors and limitations you may encounter when using Basin SQL.
 
@@ -176,34 +176,6 @@ SELECT * FROM my_namespace.events LIMIT 10000
 
 **Solution**: Use LIMIT values between 1 and 10,000.
 
-### Pagination attempts
-
-**Error**: `unsupported feature: OFFSET clause is not supported`
-
-**Problem**: OFFSET is not supported.
-
-```sql
--- Invalid - Pagination not supported
-SELECT * FROM my_namespace.events LIMIT 100 OFFSET 200
-
--- Valid - Use cursor-based pagination with ORDER BY and WHERE
--- Page 1
-SELECT * FROM my_namespace.events
-WHERE timestamp >= '2024-01-01'
-ORDER BY timestamp
-LIMIT 100
-
--- Page 2 - Use the last timestamp from the previous page
-SELECT * FROM my_namespace.events
-WHERE timestamp > '2024-01-01T10:30:00Z'
-ORDER BY timestamp
-LIMIT 100
-```
-
-**Solution**: Implement cursor-based pagination using `ORDER BY` and `WHERE` conditions.
-
----
-
 ## Schema issues
 
 ### DDL and DML operations
@@ -277,5 +249,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-sql/troubleshooting/#page","headline":"Troubleshooting guide","description":"Troubleshoot common Basin SQL errors including query structure, type, and timeout issues.","url":"https://developers.cloudflare.com/basin-sql/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/troubleshooting/og.png?v=30db96d89482c7e7","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-sql/troubleshooting/#page","headline":"Troubleshooting guide","description":"Troubleshoot common Basin SQL errors including query structure, type, and timeout issues.","url":"https://developers.cloudflare.com/basin-sql/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/troubleshooting/og.png?v=30db96d89482c7e7","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

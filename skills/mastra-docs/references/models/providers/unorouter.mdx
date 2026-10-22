@@ -52,18 +52,6 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
-    "model": "unorouter/claude-opus-4-8",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 128000,
-    "inputCost": 0.425,
-    "outputCost": 2.125
-  },
-  {
     "model": "unorouter/claude-sonnet-5",
     "imageInput": true,
     "audioInput": false,
@@ -76,30 +64,6 @@ for await (const chunk of stream) {
     "outputCost": 7.2
   },
   {
-    "model": "unorouter/deepseek-v4-flash",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": 0.0625,
-    "outputCost": 0.125
-  },
-  {
-    "model": "unorouter/deepseek-v4-flash:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "unorouter/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -110,18 +74,6 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.8999,
     "outputCost": 1.7999
-  },
-  {
-    "model": "unorouter/deepseek-v4-pro:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "unorouter/gemini-3.5-flash",
@@ -160,66 +112,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "unorouter/glm-5.2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": 1.6001,
-    "outputCost": 5.0288
-  },
-  {
-    "model": "unorouter/glm-5.2:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "unorouter/gpt-5.2",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 1.05,
-    "outputCost": 8.4
-  },
-  {
-    "model": "unorouter/gpt-5.4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": 1.8,
-    "outputCost": 10.8
-  },
-  {
-    "model": "unorouter/gpt-5.4:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "unorouter/gpt-5.5",
     "imageInput": true,
     "audioInput": false,
@@ -232,18 +124,6 @@ for await (const chunk of stream) {
     "outputCost": 1.125
   },
   {
-    "model": "unorouter/gpt-5.5:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "unorouter/kimi-k2.6",
     "imageInput": true,
     "audioInput": false,
@@ -254,18 +134,6 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 1.2675,
     "outputCost": 5.3368
-  },
-  {
-    "model": "unorouter/minimax-m2.7",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 204800,
-    "maxOutput": 131072,
-    "inputCost": 0.819,
-    "outputCost": 3.276
   },
   {
     "model": "unorouter/minimax-m2.7:free",
@@ -288,30 +156,6 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "unorouter/qwen3.5-397b-a17b:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 65536,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "unorouter/step-3.7-flash:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 256000,
     "inputCost": null,
     "outputCost": null
   }

@@ -1,7 +1,7 @@
 ---
 title: Search results
 url: https://platform.claude.com/docs/en/build-with-claude/search-results
-description: Enable natural citations for RAG applications by providing search results with source attribution
+description: Get natural citations for RAG applications by providing search results with source attribution
 ---
 
 <Note>
@@ -16,8 +16,8 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
 
 Search results can be provided in two ways:
 
-1. **From tool calls:** Your custom tools return search results, enabling dynamic RAG applications
-2. **As top-level content:** You provide search results directly in user messages for pre-fetched or cached content
+1. **From tool calls:** Your custom tools return search results, which lets you build dynamic RAG applications.
+2. **As top-level content:** You provide search results directly in user messages for pre-fetched or cached content.
 
 In both cases, Claude cites the search results automatically when citations are enabled. No special prompting is needed: ask your question, and citations appear on the text blocks that draw on your content.
 
@@ -69,17 +69,17 @@ Search results hold text only. Images and other media are not supported inside t
 
 ## Method 1: Search results from tool calls
 
-Returning search results from your custom tools enables dynamic RAG applications: tools fetch content at runtime, and Claude cites it in the response. The following example forces the tool call with [`tool_choice`](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools#forcing-tool-use), so the retrieval step runs every time.
+Returning search results from your custom tools lets you build dynamic RAG applications: tools fetch content at runtime, and Claude cites it in the response. The following example forces the tool call with [`tool_choice`](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools#forcing-tool-use), so the retrieval step runs every time.
 
 ### Example: Knowledge base tool
 
 <CodeGroup exclude="shell">
   <CodeGroupItem language="cURL">
-    The tool-calling flow needs search logic in your application, which needs more than a single shell command. Use the Claude SDK for the full flow. For the raw request shape of a tool conversation with search results, see [Combining both methods](https://platform.claude.com/docs/en/build-with-claude/search-results#combining-both-methods). For search results as top-level content, see [Method 2](https://platform.claude.com/docs/en/build-with-claude/search-results#method-2-search-results-as-top-level-content).
+    The tool-calling flow needs search logic in your application, which needs more than a single shell command. Use the Claude SDK for the full flow. For the raw request shape of a tool conversation with search results, see [Combining both methods](https://platform.claude.com/docs/en/build-with-claude/search-results#combining-both-methods). To provide search results directly in user messages, see [Method 2: Search results as top-level content](https://platform.claude.com/docs/en/build-with-claude/search-results#method-2-search-results-as-top-level-content).
   </CodeGroupItem>
 
   <CodeGroupItem language="CLI">
-    The tool-calling flow needs search logic in your application, which needs more than a single shell command. Use the Claude SDK for the full flow. For the raw request shape of a tool conversation with search results, see [Combining both methods](https://platform.claude.com/docs/en/build-with-claude/search-results#combining-both-methods). For search results as top-level content, see [Method 2](https://platform.claude.com/docs/en/build-with-claude/search-results#method-2-search-results-as-top-level-content).
+    The tool-calling flow needs search logic in your application, which needs more than a single shell command. Use the Claude SDK for the full flow. For the raw request shape of a tool conversation with search results, see [Combining both methods](https://platform.claude.com/docs/en/build-with-claude/search-results#combining-both-methods). To provide search results directly in user messages, see [Method 2: Search results as top-level content](https://platform.claude.com/docs/en/build-with-claude/search-results#method-2-search-results-as-top-level-content).
   </CodeGroupItem>
 
   ```python Python
@@ -137,8 +137,8 @@ Returning search results from your custom tools enables dynamic RAG applications
 
 
   # Build up the conversation in a list, starting with the user's question
-  messages = [
-      MessageParam(role="user", content="How do I configure the timeout settings?")
+  messages: list[MessageParam] = [
+      {"role": "user", "content": "How do I configure the timeout settings?"}
   ]
 
   # Create a message with the tool
@@ -157,18 +157,18 @@ Returning search results from your custom tools enables dynamic RAG applications
       tool_result = search_knowledge_base(tool_use.input["query"])
 
       # Append Claude's turn, then the tool result, to the running conversation
-      messages.append(MessageParam(role="assistant", content=response.content))
+      messages.append({"role": "assistant", "content": response.content})
       messages.append(
-          MessageParam(
-              role="user",
-              content=[
+          {
+              "role": "user",
+              "content": [
                   ToolResultBlockParam(
                       type="tool_result",
                       tool_use_id=tool_use.id,
                       content=tool_result,  # Search results go here
                   )
               ],
-          )
+          }
       )
 
       # Send the tool result back
@@ -320,7 +320,7 @@ Returning search results from your custom tools enables dynamic RAG applications
   }
 
   // Build up the conversation in a list, starting with the user's question
-  List<MessageParam> messages = [new() { Role = Role.User, Content = "How do I configure the timeout settings?" }];
+  List<MessageParam> messages = [new UserMessageParam { Content = "How do I configure the timeout settings?" }];
 
   // Create a message with the tool
   var response = await client.Messages.Create(new()
@@ -342,11 +342,10 @@ Returning search results from your custom tools enables dynamic RAG applications
           var toolResults = SearchKnowledgeBase(query);
 
           // Append Claude's turn, then the tool result, to the running conversation
-          messages.Add(new() { Role = Role.Assistant, Content = response.Content.Select(contentBlock => new ContentBlockParam(contentBlock.Json)).ToList() });
-          messages.Add(new()
+          messages.Add(new AssistantMessageParam { Content = response.Content.Select(contentBlock => new ContentBlockParam(contentBlock.Json)).ToList() });
+          messages.Add(new UserMessageParam
           {
-              Role = Role.User,
-              Content = new MessageParamContent(
+              Content = new MessageContentParam(
                   [new ContentBlockParam(new ToolResultBlockParam() { ToolUseID = toolUse.ID, Content = new ToolResultBlockParamContent(toolResults) })]
               ),
           });
@@ -494,10 +493,7 @@ Returning search results from your custom tools enables dynamic RAG applications
 
       // Build up the conversation in a list, starting with the user's question
       List<MessageParam> messages = new ArrayList<>();
-      messages.add(MessageParam.builder()
-          .role(MessageParam.Role.USER)
-          .content("How do I configure the timeout settings?")
-          .build());
+      messages.add(MessageParam.ofUser("How do I configure the timeout settings?"));
 
       MessageCreateParams params = MessageCreateParams.builder()
           .model(Model.CLAUDE_OPUS_5)
@@ -526,25 +522,15 @@ Returning search results from your custom tools enables dynamic RAG applications
               // Rebuilding only the tool_use block would drop any other content blocks Claude
               // returned (e.g. leading text when the tool call is not forced) — append the
               // full turn, as the other language tabs do.
-              messages.add(MessageParam.builder()
-                  .role(MessageParam.Role.ASSISTANT)
-                  .contentOfBlockParams(
-                      response.content().stream()
-                          .map(block -> block.toParam())
-                          .toList()
+              messages.add(response.toParam());
+              messages.add(MessageParam.ofUserOfContentBlockParams(List.of(
+                  ContentBlockParam.ofToolResult(
+                      ToolResultBlockParam.builder()
+                          .toolUseId(toolUse.id())
+                          .contentOfBlocks(toolResult)
+                          .build()
                   )
-                  .build());
-              messages.add(MessageParam.builder()
-                  .role(MessageParam.Role.USER)
-                  .contentOfBlockParams(List.of(
-                      ContentBlockParam.ofToolResult(
-                          ToolResultBlockParam.builder()
-                              .toolUseId(toolUse.id())
-                              .contentOfBlocks(toolResult)
-                              .build()
-                      )
-                  ))
-                  .build());
+              )));
 
               // Send the tool result back
               MessageCreateParams finalParams = MessageCreateParams.builder()
@@ -870,7 +856,7 @@ You can also provide search results directly in user messages. This is useful fo
   ```
 
   ```python Python
-  from anthropic.types import MessageParam, TextBlockParam, SearchResultBlockParam
+  from anthropic.types import TextBlockParam, SearchResultBlockParam
 
   client = Anthropic()
 
@@ -879,9 +865,9 @@ You can also provide search results directly in user messages. This is useful fo
       model="claude-opus-5-5",
       max_tokens=1024,
       messages=[
-          MessageParam(
-              role="user",
-              content=[
+          {
+              "role": "user",
+              "content": [
                   SearchResultBlockParam(
                       type="search_result",
                       source="https://docs.company.com/api-reference",
@@ -911,7 +897,7 @@ You can also provide search results directly in user messages. This is useful fo
                       text="Based on these search results, how do I authenticate API requests and what are the rate limits?",
                   ),
               ],
-          )
+          }
       ],
   )
 
@@ -975,10 +961,9 @@ You can also provide search results directly in user messages. This is useful fo
       MaxTokens = 1024,
       Messages =
       [
-          new()
+          new UserMessageParam
           {
-              Role = Role.User,
-              Content = new MessageParamContent(
+              Content = new MessageContentParam(
               [
                   new ContentBlockParam(new SearchResultBlockParam
                   {
@@ -1051,7 +1036,7 @@ You can also provide search results directly in user messages. This is useful fo
       MessageCreateParams params = MessageCreateParams.builder()
           .model(Model.CLAUDE_OPUS_5_5)
           .maxTokens(1024L)
-          .addUserMessageOfBlockParams(List.of(
+          .addUserMessageOfContentBlockParams(List.of(
               ContentBlockParam.ofSearchResult(
                   SearchResultBlockParam.builder()
                       .source("https://docs.company.com/api-reference")
@@ -1139,7 +1124,7 @@ You can also provide search results directly in user messages. This is useful fo
   client = Anthropic::Client.new
 
   message = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     messages: [
       {
@@ -1439,7 +1424,6 @@ The following example replays a complete conversation. The first user message ca
 
   ```python Python
   from anthropic.types import (
-      MessageParam,
       SearchResultBlockParam,
       TextBlockParam,
       ToolResultBlockParam,
@@ -1465,9 +1449,9 @@ The following example replays a complete conversation. The first user message ca
       max_tokens=1024,
       tools=[knowledge_base_tool],
       messages=[
-          MessageParam(
-              role="user",
-              content=[
+          {
+              "role": "user",
+              "content": [
                   SearchResultBlockParam(
                       type="search_result",
                       source="https://docs.company.com/overview",
@@ -1485,10 +1469,10 @@ The following example replays a complete conversation. The first user message ca
                       text="What does Acme Dashboard do, and what plans is it available on?",
                   ),
               ],
-          ),
-          MessageParam(
-              role="assistant",
-              content=[
+          },
+          {
+              "role": "assistant",
+              "content": [
                   TextBlockParam(
                       type="text", text="Let me check the pricing information."
                   ),
@@ -1499,10 +1483,10 @@ The following example replays a complete conversation. The first user message ca
                       input={"query": "Acme Dashboard pricing plans"},
                   ),
               ],
-          ),
-          MessageParam(
-              role="user",
-              content=[
+          },
+          {
+              "role": "user",
+              "content": [
                   ToolResultBlockParam(
                       type="tool_result",
                       tool_use_id="toolu_01A09q90qw90lq917835lq9",
@@ -1522,7 +1506,7 @@ The following example replays a complete conversation. The first user message ca
                       ],
                   )
               ],
-          ),
+          },
       ],
   )
 
@@ -1640,10 +1624,9 @@ The following example replays a complete conversation. The first user message ca
       ],
       Messages =
       [
-          new()
+          new UserMessageParam
           {
-              Role = Role.User,
-              Content = new MessageParamContent(
+              Content = new MessageContentParam(
               [
                   new ContentBlockParam(new SearchResultBlockParam
                   {
@@ -1655,10 +1638,9 @@ The following example replays a complete conversation. The first user message ca
                   new ContentBlockParam(new TextBlockParam { Text = "What does Acme Dashboard do, and what plans is it available on?" }),
               ]),
           },
-          new()
+          new AssistantMessageParam
           {
-              Role = Role.Assistant,
-              Content = new MessageParamContent(
+              Content = new MessageContentParam(
               [
                   new ContentBlockParam(new TextBlockParam { Text = "Let me check the pricing information." }),
                   new ContentBlockParam(new ToolUseBlockParam
@@ -1672,10 +1654,9 @@ The following example replays a complete conversation. The first user message ca
                   }),
               ]),
           },
-          new()
+          new UserMessageParam
           {
-              Role = Role.User,
-              Content = new MessageParamContent(
+              Content = new MessageContentParam(
               [
                   new ContentBlockParam(new ToolResultBlockParam()
                   {
@@ -1796,7 +1777,7 @@ The following example replays a complete conversation. The first user message ca
           .model(Model.CLAUDE_OPUS_5_5)
           .maxTokens(1024L)
           .addTool(knowledgeBaseTool)
-          .addUserMessageOfBlockParams(List.of(
+          .addUserMessageOfContentBlockParams(List.of(
               ContentBlockParam.ofSearchResult(SearchResultBlockParam.builder()
                   .source("https://docs.company.com/overview")
                   .title("Product Overview")
@@ -1809,7 +1790,7 @@ The following example replays a complete conversation. The first user message ca
                   .text("What does Acme Dashboard do, and what plans is it available on?")
                   .build())
           ))
-          .addAssistantMessageOfBlockParams(List.of(
+          .addAssistantMessageOfContentBlockParams(List.of(
               ContentBlockParam.ofText(TextBlockParam.builder()
                   .text("Let me check the pricing information.")
                   .build()),
@@ -1819,7 +1800,7 @@ The following example replays a complete conversation. The first user message ca
                   .input(JsonValue.from(Map.of("query", "Acme Dashboard pricing plans")))
                   .build())
           ))
-          .addUserMessageOfBlockParams(List.of(
+          .addUserMessageOfContentBlockParams(List.of(
               ContentBlockParam.ofToolResult(ToolResultBlockParam.builder()
                   .toolUseId("toolu_01A09q90qw90lq917835lq9")
                   .contentOfBlocks(List.of(
@@ -1943,7 +1924,7 @@ The following example replays a complete conversation. The first user message ca
   # Replay a conversation that provides search results both ways: the first
   # user message carries a pre-fetched result, the tool result returns another
   response = client.messages.create(
-    model: "claude-opus-5-5",
+    model: Anthropic::Model::CLAUDE_OPUS_5_5,
     max_tokens: 1024,
     tools: [knowledge_base_tool],
     messages: [
@@ -2114,8 +2095,8 @@ When `citations.enabled` is set to `true`, Claude attaches citation references t
 ### For top-level search (Method 2)
 
 * **Pre-fetched content:** Use when you already have search results
-* **Batch processing:** Ideal for processing multiple search results at once
-* **Testing:** Great for testing citation behavior with known content
+* **Batch processing:** Use for processing multiple search results at once
+* **Testing:** Use for testing citation behavior with known content
 
 ### General best practices
 

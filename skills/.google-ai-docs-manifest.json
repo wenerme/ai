@@ -110,8 +110,8 @@
   "google-ai-docs/structured-output.md": {
     "url": "https://ai.google.dev/gemini-api/docs/structured-output",
     "skill": "google-ai-docs",
-    "size": 59909,
-    "updatedAt": "2026-10-21T00:59:21.550Z"
+    "size": 60692,
+    "updatedAt": "2026-10-22T00:59:00.666Z"
   },
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
@@ -386,8 +386,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 21393,
-    "updatedAt": "2026-10-20T00:59:04.953Z"
+    "size": 21405,
+    "updatedAt": "2026-10-22T00:59:32.136Z"
   },
   "google-ai-docs/agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/agents",
@@ -518,14 +518,14 @@
   "google-ai-docs/models/gemini-robotics-er-2-preview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-2-preview",
     "skill": "google-ai-docs",
-    "size": 6682,
-    "updatedAt": "2026-08-27T09:07:13.027Z"
+    "size": 6684,
+    "updatedAt": "2026-10-22T00:59:44.278Z"
   },
   "google-ai-docs/models/gemini-robotics-er-2-streaming-preview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-2-streaming-preview",
     "skill": "google-ai-docs",
-    "size": 6705,
-    "updatedAt": "2026-08-27T09:07:13.471Z"
+    "size": 6707,
+    "updatedAt": "2026-10-22T00:59:45.134Z"
   },
   "google-ai-docs/available-regions.md": {
     "url": "https://ai.google.dev/gemini-api/docs/available-regions",

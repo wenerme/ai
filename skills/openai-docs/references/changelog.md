@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## October, 2026
 
+### Oct 21
+
+Feature
+
+You can now choose which service tiers projects can use in Platform settings. Organization settings can restrict service tiers for all projects. See [service tier errors](https://developers.openai.com/api/docs/guides/error-codes).
+
 ### Oct 20
 
 Feature · API: v1/responses

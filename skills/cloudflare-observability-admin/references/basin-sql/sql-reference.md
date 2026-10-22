@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/basin-sql/sql-reference/og.png?v=ac7618
 
 # SQL reference
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-sql/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Basin SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [Basin Catalog](https://developers.cloudflare.com/basin-catalog/). This page documents the supported SQL syntax.
 
@@ -29,7 +29,7 @@ FROM namespace_name.table_name
 [HAVING conditions]
 [QUALIFY window_condition]
 [ORDER BY expression [ASC | DESC]]
-[LIMIT number]
+[LIMIT number [OFFSET number]]
 ```
 
 Two or more queries can be combined with [set operations](#set-operations) (`UNION`, `UNION ALL`, `INTERSECT`, `EXCEPT`).
@@ -623,6 +623,29 @@ SELECT * FROM my_namespace.sales_data LIMIT 100
 
 ---
 
+## OFFSET clause
+
+`OFFSET` skips a specified number of rows before returning results. Use it with `LIMIT` to retrieve a page of results. Order by a unique column to keep the row order consistent across pages.
+
+### Syntax
+
+```sql
+LIMIT number OFFSET number
+```
+
+### Example
+
+This query skips the first 100 rows and returns the next 100 rows:
+
+```sql
+SELECT sale_id, total_amount
+FROM my_namespace.sales_data
+ORDER BY sale_id
+LIMIT 100 OFFSET 100
+```
+
+---
+
 ## Window functions
 
 Window functions compute a value across a set of rows related to the current row without collapsing them into a single output row. The window is defined inline with an `OVER (...)` clause containing an optional `PARTITION BY`, `ORDER BY`, and frame specification.
@@ -931,5 +954,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/basin-sql/sql-reference/#page","headline":"SQL reference","description":"Comprehensive reference for SQL syntax, functions, and data types supported in Basin SQL.","url":"https://developers.cloudflare.com/basin-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/sql-reference/og.png?v=ac761896d6b1b401","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/basin-sql/sql-reference/#page","headline":"SQL reference","description":"Comprehensive reference for SQL syntax, functions, and data types supported in Basin SQL.","url":"https://developers.cloudflare.com/basin-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-sql/sql-reference/og.png?v=ac761896d6b1b401","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/og.png?v=70
 
 # Move tunnels
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, `tunnels.get()` runs `cloudflared` in the container and returns a public URL. A quick tunnel gets a random `trycloudflare.com` URL, and a named tunnel gets a hostname in your account, such as `ada.example.com`. In 1.0, your Durable Object starts `cloudflared` with `exec()`. Named tunnels that 0.12 created stay in your account, and keep their hostnames once `cloudflared` runs again.
 
@@ -35,11 +35,11 @@ This page replaces `tunnels.get()`, `tunnels.list()`, and `tunnels.destroy()`. R
 
 
    ```dockerfile
-   COPY --from=docker.io/cloudflare/cloudflared:2026.3.0 \
+   COPY --from=docker.io/cloudflare/cloudflared:2026.10.2 \
    	/usr/local/bin/cloudflared /usr/local/bin/cloudflared
    ```
 
-   0.12 also ran version 2026.3.0. `cloudflared` needs the `ca-certificates` package, which the `Dockerfile` from Replace the Sandbox class installs.
+   0.12.13 also runs version 2026.10.2. `cloudflared` needs the `ca-certificates` package, which the `Dockerfile` from Replace the Sandbox class installs.
 2. Add the scripts that check tunnels to the top level of `src/index.ts`:
 
    *src/index.tsts*
@@ -380,5 +380,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/#page","headline":"Move tunnels","description":"Replace @cloudflare/sandbox 0.12 tunnels with cloudflared processes that your Durable Object starts, and keep the named tunnels that 0.12 created.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/og.png?v=7090dedac7c21422","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/#page","headline":"Move tunnels","description":"Replace @cloudflare/sandbox 0.12 tunnels with cloudflared processes that your Durable Object starts, and keep the named tunnels that 0.12 created.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/tunnels/og.png?v=7090dedac7c21422","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

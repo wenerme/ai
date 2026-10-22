@@ -5,7 +5,7 @@ description: "Browse Scaleway model IDs, capabilities, context windows, and pric
 
 # [Scaleway logo]Scaleway
 
-Access 16 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 17 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -47,8 +47,8 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 8191,
-    "maxOutput": 3072,
-    "inputCost": 0.1,
+    "maxOutput": null,
+    "inputCost": 0.11215,
     "outputCost": null
   },
   {
@@ -84,8 +84,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 16384,
-    "inputCost": 0.25,
-    "outputCost": 0.5
+    "inputCost": 0.280375,
+    "outputCost": 0.56075
   },
   {
     "model": "scaleway/glm-5.2",
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 16384,
-    "inputCost": 1.8,
-    "outputCost": 5.5
+    "inputCost": 2.0187,
+    "outputCost": 6.16825
   },
   {
     "model": "scaleway/glm-5.3",
@@ -120,8 +120,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.15,
-    "outputCost": 0.6
+    "inputCost": 0.168225,
+    "outputCost": 0.6729
+  },
+  {
+    "model": "scaleway/lightonocr-3-0.8b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
+    "inputCost": 2.464,
+    "outputCost": null
   },
   {
     "model": "scaleway/llama-3.3-70b-instruct",
@@ -132,8 +144,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 100000,
     "maxOutput": 16384,
-    "inputCost": 0.9,
-    "outputCost": 0.9
+    "inputCost": 1.00935,
+    "outputCost": 1.00935
   },
   {
     "model": "scaleway/mistral-medium-3.5-128b",
@@ -144,8 +156,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 16384,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 1.68225,
+    "outputCost": 8.41125
   },
   {
     "model": "scaleway/mistral-small-3.2-24b-instruct-2506",
@@ -156,8 +168,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.15,
-    "outputCost": 0.35
+    "inputCost": 0.168225,
+    "outputCost": 0.392525
   },
   {
     "model": "scaleway/qwen3-235b-a22b-instruct-2507",
@@ -165,11 +177,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 260000,
     "maxOutput": 16384,
-    "inputCost": 0.75,
-    "outputCost": 2.25
+    "inputCost": 0.841125,
+    "outputCost": 2.523375
   },
   {
     "model": "scaleway/qwen3-embedding-8b",
@@ -179,8 +191,8 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 32768,
-    "maxOutput": 4096,
-    "inputCost": 0.1,
+    "maxOutput": null,
+    "inputCost": 0.11215,
     "outputCost": null
   },
   {
@@ -192,8 +204,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 16384,
-    "inputCost": 0.6,
-    "outputCost": 3.6
+    "inputCost": 0.6729,
+    "outputCost": 4.0374
   },
   {
     "model": "scaleway/qwen3.6-35b-a3b",
@@ -204,8 +216,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 16384,
-    "inputCost": 0.25,
-    "outputCost": 1.5
+    "inputCost": 0.280375,
+    "outputCost": 1.68225
   },
   {
     "model": "scaleway/qwen3.8-27b",
@@ -228,7 +240,7 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": null,
     "maxOutput": 8192,
-    "inputCost": 0.003,
+    "inputCost": null,
     "outputCost": null
   }
 ]}

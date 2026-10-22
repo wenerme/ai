@@ -74,10 +74,10 @@
   "openai-docs/changelog.md": {
     "url": "https://developers.openai.com/api/docs/changelog.md",
     "skill": "openai-docs",
-    "etag": "W/\"8eba3540b91d930a03b05106a15909f9\"",
-    "lastModified": "Tue, 20 Oct 2026 23:50:50 GMT",
-    "size": 76839,
-    "updatedAt": "2026-10-21T00:56:16.074Z"
+    "etag": "W/\"8b84246c675d52d6956a8dd899b9671d\"",
+    "lastModified": "Wed, 21 Oct 2026 23:41:29 GMT",
+    "size": 77092,
+    "updatedAt": "2026-10-22T00:56:02.180Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",
@@ -738,10 +738,10 @@
   "openai-docs/guides/error-codes.md": {
     "url": "https://developers.openai.com/api/docs/guides/error-codes.md",
     "skill": "openai-docs",
-    "etag": "W/\"41b498c906f556bab1fbd766e95ddcbd\"",
-    "lastModified": "Sun, 06 Sep 2026 03:26:18 GMT",
-    "size": 32170,
-    "updatedAt": "2026-09-06T04:22:03.878Z"
+    "etag": "W/\"ae7dfcaff59c7efd2aa057e575e6b589\"",
+    "lastModified": "Wed, 21 Oct 2026 23:44:43 GMT",
+    "size": 32328,
+    "updatedAt": "2026-10-22T00:56:20.803Z"
   },
   "openai-docs/guides/evals.md": {
     "url": "https://developers.openai.com/api/docs/guides/evals.md",
@@ -1154,10 +1154,10 @@
   "openai-docs/guides/realtime-transcription.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-transcription.md",
     "skill": "openai-docs",
-    "etag": "W/\"bb65728b57ece6fc8bee0f6252ae7666\"",
-    "lastModified": "Wed, 23 Sep 2026 02:49:57 GMT",
-    "size": 8998,
-    "updatedAt": "2026-09-23T04:36:04.758Z"
+    "etag": "W/\"f0828f499c1c16eac456fe2c2194658d\"",
+    "lastModified": "Wed, 21 Oct 2026 23:48:34 GMT",
+    "size": 9343,
+    "updatedAt": "2026-10-22T00:56:32.708Z"
   },
   "openai-docs/guides/realtime-translation.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-translation.md",
@@ -1226,10 +1226,10 @@
   "openai-docs/guides/responses-multi-agent.md": {
     "url": "https://developers.openai.com/api/docs/guides/responses-multi-agent.md",
     "skill": "openai-docs",
-    "etag": "W/\"dab668974df46009297c6ccb6c280edf\"",
-    "lastModified": "Wed, 30 Sep 2026 03:55:11 GMT",
-    "size": 33744,
-    "updatedAt": "2026-09-30T05:22:22.517Z"
+    "etag": "W/\"4462aa7a56fe80545287df124cfe799f\"",
+    "lastModified": "Thu, 22 Oct 2026 00:36:40 GMT",
+    "size": 34738,
+    "updatedAt": "2026-10-22T00:56:34.830Z"
   },
   "openai-docs/guides/retrieval.md": {
     "url": "https://developers.openai.com/api/docs/guides/retrieval.md",
@@ -3108,10 +3108,10 @@
   "openai-api/audio.md": {
     "url": "https://developers.openai.com/api/reference/resources/audio/index.md",
     "skill": "openai-api",
-    "etag": "W/\"42b7bca995ffb1823a9e8f91f80786e2\"",
-    "lastModified": "Wed, 21 Oct 2026 00:57:44 GMT",
-    "size": 67489,
-    "updatedAt": "2026-10-21T00:57:44.987Z"
+    "etag": "W/\"53034a6081323bf6921365aa616e3024\"",
+    "lastModified": "Thu, 22 Oct 2026 00:57:30 GMT",
+    "size": 69098,
+    "updatedAt": "2026-10-22T00:57:30.503Z"
   },
   "openai-api/audio/speech.md": {
     "url": "https://developers.openai.com/api/reference/resources/audio/subresources/speech/index.md",
@@ -3212,10 +3212,10 @@
   "openai-api/audio/voices.md": {
     "url": "https://developers.openai.com/api/reference/resources/audio/subresources/voices/index.md",
     "skill": "openai-api",
-    "etag": "W/\"5871f2b97909ad3f599bc1c08a795271\"",
-    "lastModified": "Sat, 17 Oct 2026 00:55:53 GMT",
-    "size": 3812,
-    "updatedAt": "2026-10-17T00:55:53.009Z"
+    "etag": "W/\"70a64a8f77f2e37e34b5f7a9f7b46114\"",
+    "lastModified": "Thu, 22 Oct 2026 00:57:33 GMT",
+    "size": 5421,
+    "updatedAt": "2026-10-22T00:57:33.862Z"
   },
   "openai-api/audio/voices/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/audio/subresources/voices/methods/create/index.md",
@@ -3224,6 +3224,14 @@
     "lastModified": "Sat, 17 Oct 2026 00:55:53 GMT",
     "size": 2941,
     "updatedAt": "2026-10-17T00:55:53.253Z"
+  },
+  "openai-api/audio/voices/delete.md": {
+    "url": "https://developers.openai.com/api/reference/resources/audio/subresources/voices/methods/delete/index.md",
+    "skill": "openai-api",
+    "etag": "W/\"fbceecc27080a25263a1f0285241bdb1\"",
+    "lastModified": "Thu, 22 Oct 2026 00:57:34 GMT",
+    "size": 1306,
+    "updatedAt": "2026-10-22T00:57:34.411Z"
   },
   "openai-api/batches.md": {
     "url": "https://developers.openai.com/api/reference/resources/batches/index.md",

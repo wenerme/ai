@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/notifications/notification-available/og
 
 # Platform Notifications
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/notification-available/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/notification-available/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Platform Notifications are pre-configured alert types tied to specific Cloudflare products. You enable the ones you care about and choose where they are delivered. Cloudflare evaluates the trigger conditions, covering events like DDoS attacks, certificate expirations, origin health changes, and billing thresholds. The notification types available to you depend on your Cloudflare plan and the products you use.
 
@@ -25,6 +25,8 @@ To define your own alerting conditions using SQL API queries, refer to [Monitors
 3. Choose the notification type from the categorized list and select **Select**.
 4. Follow the wizard steps to configure the notification, name it, and add delivery destinations.
 5. Select **Create**.
+
+![Platform Notification creation wizard showing notification types organized by product category.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1028,height=796,format=webp/_astro/create-platform-notification.rFEXsW03.png)
 
 ## Available notification types
 
@@ -1891,5 +1893,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/notification-available/#page","headline":"Platform Notifications","description":"Browse built-in notification types that Cloudflare triggers automatically, organized by product.","url":"https://developers.cloudflare.com/notifications/notification-available/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/notification-available/og.png?v=58e69af0568e4980","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/notification-available/#page","headline":"Platform Notifications","description":"Browse built-in notification types that Cloudflare triggers automatically, organized by product.","url":"https://developers.cloudflare.com/notifications/notification-available/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/notification-available/og.png?v=58e69af0568e4980","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

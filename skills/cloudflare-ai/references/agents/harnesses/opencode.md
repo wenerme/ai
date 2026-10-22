@@ -1,5 +1,5 @@
 ---
-description: Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI models, bundled plugins, and durable sessions.
+description: Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.
 title: OpenCode
 image: https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995
 ---
@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290
 
 # OpenCode
 
-Last updated Oct 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenCode ↗︎](https://opencode.ai/v2/docs/build/sdk/) is an extensible agent harness. The Agents SDK's `OpenCodeHarness` runs its Workerd SDK inside a plain Durable Object. Refer to [OpenCode's Cloudflare SDK documentation ↗︎](https://opencode.ai/v2/docs/build/sdk/cloudflare/) for the embedded host API.
 
-OpenCode owns the agent loop, transcript, tools, and session recovery. `OpenCodeHarness` supplies SQLite storage and wakes the object after an interrupted run. The `agents/models/opencode` provider connects OpenCode to Workers AI through your `AI` binding.
+OpenCode owns the agent loop, transcript, tools, and session recovery. `OpenCodeHarness` supplies SQLite storage and wakes the object after an interrupted run. The `agents/models/opencode` provider connects OpenCode to Workers AI models, [AI Gateway](https://developers.cloudflare.com/ai-gateway/) catalog models, and dynamic routes through your `AI` binding.
 
 ![](https://developers.cloudflare.com/icons/agents/claude/light.svg)![](https://developers.cloudflare.com/icons/agents/claude/dark.svg)![](https://developers.cloudflare.com/icons/agents/codex/light.svg)![](https://developers.cloudflare.com/icons/agents/codex/dark.svg)![](https://developers.cloudflare.com/icons/agents/cursor/light.svg)![](https://developers.cloudflare.com/icons/agents/cursor/dark.svg)![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg)Copy promptPrompt copied!
 
@@ -35,7 +35,7 @@ flowchart LR
         host <--> sqlite[("SQLite: opencode_ tables")]
         host <--> plugins["Bundled plugins"]
     end
-    host --> ai["Workers AI binding"]
+    host --> ai["AI binding"]
     plugins --> mcp["Remote MCP server"]
     plugins --> workspace["External execution environment"]
 
@@ -48,7 +48,7 @@ flowchart LR
 | Capability | Support |
 | --- | --- |
 | Durable sessions and interrupted-turn recovery | OpenCode persists state; Lifecycle jobs wake the object. |
-| Workers AI models | Register the `agents/models/opencode` plugin. |
+| Workers AI and AI Gateway models | Register the `agents/models/opencode` plugin. |
 | Custom tools, agents, and skills | Bundle OpenCode plugins with your Worker. |
 | Remote Model Context Protocol (MCP) servers | Register remote servers through a plugin. |
 | Live events and durable event replay | Use `session.events()` and `session.log()`. |
@@ -75,16 +75,16 @@ pnpm add agents@latest @opencode/sdk@2 @opencode/plugin@2
 bun add agents@latest @opencode/sdk@2 @opencode/plugin@2
 ```
 
-Use `agents` version 0.28.1 or later. The OpenCode packages are optional peer dependencies, required by this integration, with a supported range of `^2.0.24`.
+Use the latest `agents` release. The OpenCode packages are optional peer dependencies, required by this integration, with a supported range of `^2.0.24`.
 
-Add the Workers AI binding, a SQLite-backed Durable Object, and `nodejs_compat` to your Wrangler configuration:
+Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to your Wrangler configuration:
 
 ```jsonc
 {
 	"name": "opencode-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI", "remote": true },
 	"durable_objects": {
@@ -98,7 +98,7 @@ Add the Workers AI binding, a SQLite-backed Durable Object, and `nodejs_compat` 
 name = "opencode-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -274,11 +274,25 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-Pass the factory's `storage` to `OpenCodeWorkerd.create()` so OpenCode uses the prefixed database. Register `this.ai.plugin` to make the Workers AI models available. `models: { fetch: false }` skips OpenCode's external model catalog refresh; the provider registers models you name with `this.ai()`.
+Pass the factory's `storage` to `OpenCodeWorkerd.create()` so OpenCode uses the prefixed database. Register `this.ai.plugin` to add a provider named "Cloudflare" (id `cloudflare`) to OpenCode. `models: { fetch: false }` skips OpenCode's external model catalog refresh. The provider registers the models you name with `this.ai()`.
 
 The Lifecycle manages host startup. The factory runs again when the harness reopens an idle host, so it must support repeated calls.
 
 The `"demo"` object name is for this example. In an application, choose an object name based on an authenticated user or conversation.
+
+## Choose a model
+
+`this.ai()` takes the same model ids as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and accepts its model options:
+
+```ts
+this.ai("@cf/moonshotai/kimi-k2.7-code"); // Workers AI
+this.ai("anthropic/claude-opus-5.5"); // AI Gateway catalog
+this.ai("dynamic/support"); // AI Gateway dynamic route
+```
+
+A catalog id uses the [model catalog](https://developers.cloudflare.com/ai/models/)'s spelling, such as `anthropic/claude-opus-5.5`. A dynamic route belongs to one gateway, so pass that gateway's `id` to `createAI`. An id that is not one of these three forms throws a `TypeError` on the line that names it. Streams from catalog models and dynamic routes [resume after a dropped connection](https://developers.cloudflare.com/agents/models/ai-sdk/#resume-a-dropped-stream).
+
+Each call returns OpenCode's model reference, `{ providerID, id }`. Pass it to `defaults.model` or `session.setModel()`. To set how OpenCode budgets a model's context, pass `limit: { context, output }`. The default is 128,000 context tokens and 8,192 output tokens.
 
 ## Send prompts
 
@@ -496,5 +510,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

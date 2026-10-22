@@ -5,7 +5,7 @@ description: "Browse Umans AI Coding Plan model IDs, capabilities, and context w
 
 # [Umans AI Coding Plan logo]Umans AI Coding Plan
 
-Access 8 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
+Access 9 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Umans AI Coding Plan documentation](https://app.umans.ai/offers/code/docs).
 
@@ -65,6 +65,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "umans-ai-coding-plan/umans-deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393215,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "umans-ai-coding-plan/umans-deepseek-v4.1-flash-1017",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

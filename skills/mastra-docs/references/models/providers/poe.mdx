@@ -40,30 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "poe/anthropic/claude-haiku-3",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 189096,
-    "maxOutput": 8192,
-    "inputCost": 0.21,
-    "outputCost": 1.1
-  },
-  {
-    "model": "poe/anthropic/claude-haiku-3.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 189096,
-    "maxOutput": 8192,
-    "inputCost": 0.68,
-    "outputCost": 3.4
-  },
-  {
     "model": "poe/anthropic/claude-haiku-4.5",
     "imageInput": true,
     "audioInput": false,
@@ -72,32 +48,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 192000,
     "maxOutput": 64000,
-    "inputCost": 0.85,
-    "outputCost": 4.3
-  },
-  {
-    "model": "poe/anthropic/claude-opus-4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 192512,
-    "maxOutput": 28672,
-    "inputCost": 13,
-    "outputCost": 64
-  },
-  {
-    "model": "poe/anthropic/claude-opus-4.1",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 32000,
-    "inputCost": 13,
-    "outputCost": 64
+    "inputCost": 0.8586,
+    "outputCost": 4.2929
   },
   {
     "model": "poe/anthropic/claude-opus-4.5",
@@ -108,8 +60,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 196608,
     "maxOutput": 64000,
-    "inputCost": 4.3,
-    "outputCost": 21
+    "inputCost": 4.2929,
+    "outputCost": 21.4646
   },
   {
     "model": "poe/anthropic/claude-opus-4.6",
@@ -120,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 983040,
     "maxOutput": 128000,
-    "inputCost": 4.3,
-    "outputCost": 21
+    "inputCost": 4.2929,
+    "outputCost": 21.4646
   },
   {
     "model": "poe/anthropic/claude-opus-4.7",
@@ -132,8 +84,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 128000,
-    "inputCost": 4.3,
-    "outputCost": 21
+    "inputCost": 4.2929,
+    "outputCost": 21.4646
   },
   {
     "model": "poe/anthropic/claude-opus-4.8",
@@ -148,30 +100,6 @@ for await (const chunk of stream) {
     "outputCost": 21.4646
   },
   {
-    "model": "poe/anthropic/claude-sonnet-3.7",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 128000,
-    "inputCost": 2.6,
-    "outputCost": 13
-  },
-  {
-    "model": "poe/anthropic/claude-sonnet-4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 983040,
-    "maxOutput": 64000,
-    "inputCost": 2.6,
-    "outputCost": 13
-  },
-  {
     "model": "poe/anthropic/claude-sonnet-4.5",
     "imageInput": true,
     "audioInput": false,
@@ -180,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 983040,
     "maxOutput": 32768,
-    "inputCost": 2.6,
-    "outputCost": 13
+    "inputCost": 2.5758,
+    "outputCost": 12.8788
   },
   {
     "model": "poe/anthropic/claude-sonnet-4.6",
@@ -192,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 983040,
     "maxOutput": 128000,
-    "inputCost": 2.6,
-    "outputCost": 13
+    "inputCost": 2.5758,
+    "outputCost": 12.8788
   },
   {
     "model": "poe/cerebras/gpt-oss-120b-cs",
@@ -204,8 +132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": null,
-    "inputCost": 0.35,
-    "outputCost": 0.75
+    "inputCost": 0.3535,
+    "outputCost": 0.7576
   },
   {
     "model": "poe/cerebras/llama-3.1-8b-cs",
@@ -278,78 +206,6 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 1.67,
     "outputCost": 3.33
-  },
-  {
-    "model": "poe/fireworks-ai/kimi-k2.5-fw",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 16384,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/google/gemini-2.0-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 990000,
-    "maxOutput": 8192,
-    "inputCost": 0.1,
-    "outputCost": 0.42
-  },
-  {
-    "model": "poe/google/gemini-2.0-flash-lite",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 990000,
-    "maxOutput": 8192,
-    "inputCost": 0.052,
-    "outputCost": 0.21
-  },
-  {
-    "model": "poe/google/gemini-2.5-flash",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1065535,
-    "maxOutput": 65535,
-    "inputCost": 0.21,
-    "outputCost": 1.8
-  },
-  {
-    "model": "poe/google/gemini-2.5-flash-lite",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1024000,
-    "maxOutput": 64000,
-    "inputCost": 0.07,
-    "outputCost": 0.28
-  },
-  {
-    "model": "poe/google/gemini-2.5-pro",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1065535,
-    "maxOutput": 65535,
-    "inputCost": 0.87,
-    "outputCost": 7
   },
   {
     "model": "poe/google/gemini-3-flash",
@@ -472,30 +328,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "poe/google/imagen-3",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/google/imagen-3-fast",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "poe/google/imagen-4",
     "imageInput": false,
     "audioInput": false,
@@ -520,18 +352,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "poe/google/imagen-4-ultra",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "poe/google/lyria",
     "imageInput": false,
     "audioInput": false,
@@ -544,18 +364,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "poe/google/nano-banana",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 65536,
-    "maxOutput": null,
-    "inputCost": 0.21,
-    "outputCost": 1.8
-  },
-  {
     "model": "poe/google/nano-banana-pro",
     "imageInput": true,
     "audioInput": false,
@@ -564,44 +372,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 65536,
     "maxOutput": null,
-    "inputCost": 2,
-    "outputCost": 12
-  },
-  {
-    "model": "poe/google/veo-2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/google/veo-3",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/google/veo-3-fast",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 480,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 2.0202,
+    "outputCost": 12.1212
   },
   {
     "model": "poe/google/veo-3.1",
@@ -696,8 +468,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": null,
-    "inputCost": 0.27,
-    "outputCost": 0.4
+    "inputCost": 0.2626,
+    "outputCost": 0.3838
   },
   {
     "model": "poe/novita/glm-4.6",
@@ -705,11 +477,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": null,
     "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.6061,
+    "outputCost": 2.2222
   },
   {
     "model": "poe/novita/glm-4.6v",
@@ -732,8 +504,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 65500,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.0707,
+    "outputCost": 0.404
   },
   {
     "model": "poe/novita/glm-4.7-n",
@@ -760,30 +532,6 @@ for await (const chunk of stream) {
     "outputCost": 3.2
   },
   {
-    "model": "poe/novita/kimi-k2-thinking",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/novita/kimi-k2.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 262144,
-    "inputCost": 0.6,
-    "outputCost": 3
-  },
-  {
     "model": "poe/novita/kimi-k2.6",
     "imageInput": true,
     "audioInput": false,
@@ -792,8 +540,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.96,
-    "outputCost": 4.04
+    "inputCost": 0.9596,
+    "outputCost": 4.0404
   },
   {
     "model": "poe/novita/minimax-m2.1",
@@ -804,68 +552,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 205000,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/openai/dall-e-3",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 800,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/openai/gpt-3.5-turbo",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 16384,
-    "maxOutput": 2048,
-    "inputCost": 0.45,
-    "outputCost": 1.4
-  },
-  {
-    "model": "poe/openai/gpt-3.5-turbo-instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 3500,
-    "maxOutput": 1024,
-    "inputCost": 1.4,
-    "outputCost": 1.8
-  },
-  {
-    "model": "poe/openai/gpt-3.5-turbo-raw",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 4524,
-    "maxOutput": 2048,
-    "inputCost": 0.45,
-    "outputCost": 1.4
-  },
-  {
-    "model": "poe/openai/gpt-4-turbo",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 4096,
-    "inputCost": 9,
-    "outputCost": 27
+    "inputCost": 0.303,
+    "outputCost": 1.2121
   },
   {
     "model": "poe/openai/gpt-4.1",
@@ -876,8 +564,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1047576,
     "maxOutput": 32768,
-    "inputCost": 1.8,
-    "outputCost": 7.2
+    "inputCost": 1.8182,
+    "outputCost": 7.2727
   },
   {
     "model": "poe/openai/gpt-4.1-mini",
@@ -888,20 +576,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1047576,
     "maxOutput": 32768,
-    "inputCost": 0.36,
-    "outputCost": 1.4
-  },
-  {
-    "model": "poe/openai/gpt-4.1-nano",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 1047576,
-    "maxOutput": 32768,
-    "inputCost": 0.09,
-    "outputCost": 0.36
+    "inputCost": 0.3636,
+    "outputCost": 1.4545
   },
   {
     "model": "poe/openai/gpt-4o",
@@ -924,8 +600,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 8192,
-    "inputCost": 2.2,
-    "outputCost": 9
+    "inputCost": 2.2727,
+    "outputCost": 9.0909
   },
   {
     "model": "poe/openai/gpt-4o-mini",
@@ -936,20 +612,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 124096,
     "maxOutput": 4096,
-    "inputCost": 0.14,
-    "outputCost": 0.54
-  },
-  {
-    "model": "poe/openai/gpt-4o-mini-search",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 8192,
-    "inputCost": 0.14,
-    "outputCost": 0.54
+    "inputCost": 0.1364,
+    "outputCost": 0.5455
   },
   {
     "model": "poe/openai/gpt-4o-search",
@@ -960,8 +624,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 8192,
-    "inputCost": 2.2,
-    "outputCost": 9
+    "inputCost": 2.2727,
+    "outputCost": 9.0909
   },
   {
     "model": "poe/openai/gpt-5",
@@ -972,32 +636,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 9
-  },
-  {
-    "model": "poe/openai/gpt-5-chat",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.1,
-    "outputCost": 9
-  },
-  {
-    "model": "poe/openai/gpt-5-codex",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 9
+    "inputCost": 1.1364,
+    "outputCost": 9.0909
   },
   {
     "model": "poe/openai/gpt-5-mini",
@@ -1008,8 +648,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.22,
-    "outputCost": 1.8
+    "inputCost": 0.2273,
+    "outputCost": 1.8182
   },
   {
     "model": "poe/openai/gpt-5-nano",
@@ -1020,8 +660,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.045,
-    "outputCost": 0.36
+    "inputCost": 0.0455,
+    "outputCost": 0.3636
   },
   {
     "model": "poe/openai/gpt-5-pro",
@@ -1032,8 +672,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 14,
-    "outputCost": 110
+    "inputCost": 13.6364,
+    "outputCost": 109.0909
   },
   {
     "model": "poe/openai/gpt-5.1",
@@ -1044,56 +684,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 9
-  },
-  {
-    "model": "poe/openai/gpt-5.1-codex",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 9
-  },
-  {
-    "model": "poe/openai/gpt-5.1-codex-max",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 9
-  },
-  {
-    "model": "poe/openai/gpt-5.1-codex-mini",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 0.22,
-    "outputCost": 1.8
-  },
-  {
-    "model": "poe/openai/gpt-5.1-instant",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.1,
-    "outputCost": 9
+    "inputCost": 1.1364,
+    "outputCost": 9.0909
   },
   {
     "model": "poe/openai/gpt-5.2",
@@ -1104,32 +696,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.6,
-    "outputCost": 13
-  },
-  {
-    "model": "poe/openai/gpt-5.2-codex",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 400000,
-    "maxOutput": 128000,
-    "inputCost": 1.6,
-    "outputCost": 13
-  },
-  {
-    "model": "poe/openai/gpt-5.2-instant",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.6,
-    "outputCost": 13
+    "inputCost": 1.5909,
+    "outputCost": 12.7273
   },
   {
     "model": "poe/openai/gpt-5.2-pro",
@@ -1140,8 +708,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 19,
-    "outputCost": 150
+    "inputCost": 19.0909,
+    "outputCost": 152.7273
   },
   {
     "model": "poe/openai/gpt-5.3-codex",
@@ -1152,8 +720,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 1.6,
-    "outputCost": 13
+    "inputCost": 1.5909,
+    "outputCost": 12.7273
   },
   {
     "model": "poe/openai/gpt-5.3-codex-spark",
@@ -1168,18 +736,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "poe/openai/gpt-5.3-instant",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.6,
-    "outputCost": 13
-  },
-  {
     "model": "poe/openai/gpt-5.4",
     "imageInput": true,
     "audioInput": false,
@@ -1188,8 +744,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2.2,
-    "outputCost": 14
+    "inputCost": 2.2727,
+    "outputCost": 13.6364
   },
   {
     "model": "poe/openai/gpt-5.4-mini",
@@ -1200,8 +756,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.68,
-    "outputCost": 4
+    "inputCost": 0.6818,
+    "outputCost": 4.0909
   },
   {
     "model": "poe/openai/gpt-5.4-nano",
@@ -1212,8 +768,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
-    "inputCost": 0.18,
-    "outputCost": 1.1
+    "inputCost": 0.1818,
+    "outputCost": 1.1364
   },
   {
     "model": "poe/openai/gpt-5.4-pro",
@@ -1224,8 +780,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 27,
-    "outputCost": 160
+    "inputCost": 27.2727,
+    "outputCost": 163.6364
   },
   {
     "model": "poe/openai/gpt-5.5",
@@ -1250,18 +806,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 27.2727,
     "outputCost": 163.6364
-  },
-  {
-    "model": "poe/openai/gpt-image-1",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "poe/openai/gpt-image-1-mini",
@@ -1297,31 +841,7 @@ for await (const chunk of stream) {
     "contextWindow": null,
     "maxOutput": null,
     "inputCost": 5.0505,
-    "outputCost": 32.3232
-  },
-  {
-    "model": "poe/openai/o1",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 14,
-    "outputCost": 54
-  },
-  {
-    "model": "poe/openai/o1-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 140,
-    "outputCost": 540
+    "outputCost": 30.303
   },
   {
     "model": "poe/openai/o3",
@@ -1332,44 +852,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 100000,
-    "inputCost": 1.8,
-    "outputCost": 7.2
-  },
-  {
-    "model": "poe/openai/o3-deep-research",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 9,
-    "outputCost": 36
-  },
-  {
-    "model": "poe/openai/o3-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 0.99,
-    "outputCost": 4
-  },
-  {
-    "model": "poe/openai/o3-mini-high",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 0.99,
-    "outputCost": 4
+    "inputCost": 1.8182,
+    "outputCost": 7.2727
   },
   {
     "model": "poe/openai/o3-pro",
@@ -1380,56 +864,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 100000,
-    "inputCost": 18,
-    "outputCost": 72
-  },
-  {
-    "model": "poe/openai/o4-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 0.99,
-    "outputCost": 4
-  },
-  {
-    "model": "poe/openai/o4-mini-deep-research",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 1.8,
-    "outputCost": 7.2
-  },
-  {
-    "model": "poe/openai/sora-2",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/openai/sora-2-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 18.1818,
+    "outputCost": 72.7273
   },
   {
     "model": "poe/poetools/claude-code",
@@ -1439,30 +875,6 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/runwayml/runway",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/runwayml/runway-gen-4-turbo",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256,
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
@@ -1481,7 +893,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "poe/topazlabs-co/topazlabs",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -1528,76 +940,16 @@ for await (const chunk of stream) {
     "outputCost": 0.5
   },
   {
-    "model": "poe/xai/grok-4",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 128000,
-    "inputCost": 3,
-    "outputCost": 15
-  },
-  {
-    "model": "poe/xai/grok-4-fast-non-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 2000000,
-    "maxOutput": 128000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
-  },
-  {
-    "model": "poe/xai/grok-4-fast-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 2000000,
-    "maxOutput": 128000,
-    "inputCost": 0.2,
-    "outputCost": 0.5
-  },
-  {
-    "model": "poe/xai/grok-4.1-fast-non-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "poe/xai/grok-4.1-fast-reasoning",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "poe/xai/grok-4.20-multi-agent",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": null,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.2626,
+    "outputCost": 2.5253
   },
   {
     "model": "poe/xai/grok-code-fast-1",

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/notifications/monitors/og.png?v=9bd3fad
 
 # Monitors
 
-Last updated Oct 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/monitors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/monitors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Monitors evaluate a [SQL API](https://developers.cloudflare.com/analytics/sql-api/) query on a schedule. Cloudflare sends a notification when the query result meets your detection criteria. You can create monitors from the Cloudflare dashboard under **Alerts** > **Monitors**.
+
+![Monitor creation showing the detection method choice: Threshold, Anomaly detection, or SLO.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=567,format=webp/_astro/monitors-detection-choice.DEk3poNv.png)
 
 The datasets available to monitors depend on your plan and permissions. The dashboard only lists datasets available to the selected account or zone. For more information about dataset scopes and sampling, refer to [SQL API datasets](https://developers.cloudflare.com/analytics/sql-api/datasets/).
 
@@ -104,6 +106,8 @@ A threshold monitor compares the query result with a fixed value. It supports th
 | Comparison operator | Compares the result with the threshold. Supported operators are `<`, `>`, `<=`, `>=`, `==`, and `!=`. |
 | Threshold | Sets the numeric value used by the comparison. |
 
+![Threshold monitor query builder with dataset selection, metric, filters, and query preview.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1361,height=806,format=webp/_astro/monitors-threshold.B-_Bh9Ns.png)
+
 ### Anomaly detection
 
 Anomaly detection calculates the number of standard deviations between the current result and its historical baseline. It supports these options:
@@ -119,6 +123,8 @@ Anomaly detection calculates the number of standard deviations between the curre
 
 New anomaly detection monitors require at least 30 minutes of historical data before they can trigger.
 
+![Anomaly detection monitor showing baseline bounds and sensitivity configuration.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1356,height=802,format=webp/_astro/monitors-anomaly.BdIYyzO-.png)
+
 ### Service-level objective
 
 An SLO monitor calculates the successful-event percentage from bad and total event counts. Both queries must return a numeric column named `value`. It supports these options:
@@ -133,6 +139,8 @@ An SLO monitor calculates the successful-event percentage from bad and total eve
 | Minimum event count | Optionally suppresses alerts for low-volume evaluation windows. |
 
 Use equivalent filters in both queries. The bad events query should represent a subset of the total events query.
+
+![SLO monitor showing bad events query, total events query, and SLO target percentage.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1364,height=798,format=webp/_astro/monitors-slo.BQUtHPwg.png)
 
 ## Evaluation and notification frequency
 
@@ -160,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/monitors/#page","headline":"Monitors","description":"Define threshold, anomaly detection, and SLO monitors that evaluate SQL API queries on a schedule.","url":"https://developers.cloudflare.com/notifications/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/monitors/og.png?v=9bd3fadc12d5b5b7","dateModified":"2026-10-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/monitors/#page","headline":"Monitors","description":"Define threshold, anomaly detection, and SLO monitors that evaluate SQL API queries on a schedule.","url":"https://developers.cloudflare.com/notifications/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/monitors/og.png?v=9bd3fadc12d5b5b7","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

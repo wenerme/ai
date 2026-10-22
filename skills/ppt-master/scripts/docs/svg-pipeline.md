@@ -93,10 +93,49 @@ vector edit units from `icons/imported/`, and retains edits/deletions/new
 content without rewriting the bundle. Unchanged slides and resources pass
 through byte-for-byte. Object comparison includes effective ancestor transforms,
 opacity, inherited styles, and enclosing links; changing a proxy's context also
-fails. When an edited shape's text and text context still match the baseline,
-the materializer restores its relationship-free source `txBody` through the
-existing fingerprint/relationship checks, preserving fields, numbering,
-autofit, language, and text effects. Edited text follows normal conversion.
+fails. When an edited shape's text and effective text style still match the
+baseline, unchanged geometry or a pure translation retains its relationship-free
+source `txBody` through the existing fingerprint/relationship checks. This
+preserves the complete text body, including native Office Math, fields,
+numbering, autofit, language, and text effects. Translation may change frame
+x/y without changing width/height, or move the object or its ancestors with
+unchanged effective rotation, flip, and scale. Moving frame, geometry, and
+text coordinates together is also supported: when absolute text positions
+differ, the materializer compares every numeric `text`/`tspan` x/y coordinate
+relative to the frame origin. Relative text positions, text-local transforms,
+and styles remain part of the fingerprint; moving only one line or editing
+text/style never restores stale text over the edit.
+
+Width/height or non-translation transform changes continue to rebuild from
+SVG. Whenever a source `txBody` is not restored and its `a14:m` count exceeds
+the remaining formula marker count, including after text or style edits, the
+materializer emits a non-blocking `[ROUNDTRIP][WARNING]` to stderr with the
+output page, SVG filename, object id, and source ref, stating that native
+formulas will become plain text. Its reason is `size/transform-changed` or
+`text-edited`. An unreadable payload has an unknown formula count, produces
+no formula-loss warning, and remains subject to the converter's existing
+payload validation when consumed. The same `native-formula-to-text` diagnostic
+is recorded under each document's `warnings` in the postflight report's
+`source.authoring_roundtrip`; ordinary text and formulas rebuilt from native
+markers do not receive this warning. This does not expand the formula reverse
+import boundary, certify resized text layout/autofit, or change the existing
+POSTFLIGHT quality-gate status.
+
+Native charts rebuilt from edited JSON retain the marker's scoped source shape
+id on the chart `graphicFrame`, just like restored source chart packages.
+For a rebuilt imported frame, `data-pptx-shape-name` takes precedence over the
+payload name. Source animation targets and forced-Morph `!!` names survive.
+Synthesized companion text receives fresh ids and follows the frame as sibling
+shapes without a new wrapper or inherited source name. The frame retains its
+original hierarchy level and `graphicFrame` type. Markers without a source id
+keep generated chart grouping, id allocation, and naming unchanged. Rebuilt
+chart relationships point to the newly generated chart/workbook parts;
+restored packages keep their source parts.
+New chart part families reserve unused names across the complete export
+(including source/template parts, workbooks, relationships, and ChartEx
+styles/colors); conflicting writes or content types fail with the part path
+and both owners, while identical immutable source dependencies may be reused.
+
 A page edit rebuilds that output page; a changed
 materialized or derived resource rebuilds every output page that references it.
 Changed materialized bytes must still match the source package part's extension
@@ -820,9 +859,14 @@ python3 -c "import sys; sys.path.insert(0, 'skills/ppt-master/scripts'); from sv
 Matrices, multiline derivations, and other high-structure expressions remain
 blocks. Formula replacement is always active, independent of
 `--native-charts-and-tables`: export replaces only the registered SVG preview
-and writes editable PowerPoint 2010+ Office Math. It emits no formula PNG, media
-relationship, or compatibility fallback, and makes no rendering/editability
-promise for Keynote, WPS, LibreOffice, or another non-PowerPoint client.
+and writes editable PowerPoint 2010+ Office Math in `mc:Choice Requires="a14"`.
+The same `mc:AlternateContent` carries an `mc:Fallback` built from the SVG
+preview as ordinary native shapes (block) or the same text box with the preview
+run in place of the math (inline), with fresh shape ids; no formula PNG or media
+relationship is created. A round-trip shape that restores source Office Math
+from its unchanged txBody gets the same branch from its visible SVG text. Clients without a14 math, such as LibreOffice, show
+that fallback; no rendering/editability promise is made for Keynote, WPS,
+LibreOffice, or another non-PowerPoint client.
 
 ```bash
 python3 scripts/svg_to_pptx.py <project_path>
@@ -1033,9 +1077,16 @@ Behind [`native-formula.md`](../../references/native-formula.md) §3. The compil
 
 **Normalization**: `\dfrac` / `\tfrac`, `\dbinom` / `\tbinom`, and continued-fraction alignment normalize to the corresponding OMML structure; explicit big-delimiter grades become auto-sizing delimiters; `\mathscr` → `\mathcal`; `smallmatrix` → `matrix`; array columns become centered; style/size commands and equation tags are accepted but not stored. Color is stored in generated formula runs and structural control properties; `\boldsymbol` / `\bm` applies bold-italic to structural control glyphs.
 
+The compiler validates its output against the closed OMML grammar before
+marker-level defaults are applied.
+The block and inline builders then merge marker-level run/control styles;
+the inline exporter can emit theme colors and alpha in that styled OMML.
+The import-only normalization and transparency boundary are owned by
+[`conversion.md`, Native formula reverse import](conversion.md#native-formula-reverse-import).
+
 **Fail-closed**: unknown commands or environments, Microsoft's explicitly unsupported commands, unsupported mhchem arrows, unescaped `%` comments, invalid macros, and resource-limit overflow block conversion — stricter than Microsoft 365's literal-text passthrough and macro-limit behavior.
 
-**Compatibility**: the package uses standard editable Office Math and keeps the PowerPoint 2010+ target; the executable profile is pinned to the documentation versions above. Repository verification covers compilation, OMML structure, and PPTX packaging, not a Microsoft 365 UI rendering/editability certification. Earlier PowerPoint versions are not the source-profile baseline; WPS, Keynote, LibreOffice, and other clients receive no embedded fallback. Reverse import is described in [`conversion.md`](conversion.md#native-formula-reverse-import).
+**Compatibility**: the package uses standard editable Office Math and keeps the PowerPoint 2010+ target; the executable profile is pinned to the documentation versions above. Repository verification covers compilation, OMML structure, and PPTX packaging, not a Microsoft 365 UI rendering/editability certification. Earlier PowerPoint versions are not the source-profile baseline; WPS, Keynote, LibreOffice, and other clients receive only the native-shape preview fallback. Reverse import is described in [`conversion.md`](conversion.md#native-formula-reverse-import).
 
 ## `visual_review.py`
 

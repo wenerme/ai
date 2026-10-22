@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-in
 
 # Build an AI code interpreter
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a Worker that answers questions by running code. A [Workers AI](https://developers.cloudflare.com/workers-ai/) model writes JavaScript, a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/) runs it without network access, and the model uses the result in its answer.
 
@@ -77,22 +77,22 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    cd sandbox-code-interpreter
    ```
 
-3. Install the [AI SDK ↗︎](https://ai-sdk.dev/), the [Workers AI provider](https://developers.cloudflare.com/workers-ai/configuration/ai-sdk/), and [Zod ↗︎](https://zod.dev/):npmyarnpnpmbun
+3. Install the [Agents SDK](https://developers.cloudflare.com/agents/), the [AI SDK ↗︎](https://ai-sdk.dev/), and [Zod ↗︎](https://zod.dev/). The Worker calls Workers AI with [`createAI`](https://developers.cloudflare.com/agents/models/ai-sdk/) from `agents/models/ai-sdk`:npmyarnpnpmbun
 
    ```
-   npm i ai workers-ai-provider zod
-   ```
-
-   ```
-   yarn add ai workers-ai-provider zod
+   npm i agents ai @ai-sdk/provider zod
    ```
 
    ```
-   pnpm add ai workers-ai-provider zod
+   yarn add agents ai @ai-sdk/provider zod
    ```
 
    ```
-   bun add ai workers-ai-provider zod
+   pnpm add agents ai @ai-sdk/provider zod
+   ```
+
+   ```
+   bun add agents ai @ai-sdk/provider zod
    ```
 
 4. Replace `wrangler.jsonc` to add a Workers AI binding and a Worker Loader binding:
@@ -103,7 +103,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-code-interpreter",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-12",
+   	"compatibility_date": "2026-10-21",
    	"observability": {
    		"enabled": true,
    	},
@@ -124,7 +124,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-code-interpreter"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-12"
+   compatibility_date = "2026-10-21"
    upload_source_maps = true
 
    [observability]
@@ -163,7 +163,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env, code) {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-10-12",
+		compatibilityDate: "2026-10-21",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -224,7 +224,7 @@ const timeoutMs = 5_000;
 
 export async function runJavaScript(env: Env, code: string): Promise<Output> {
 	const sandbox = env.LOADER.load({
-		compatibilityDate: "2026-10-12",
+		compatibilityDate: "2026-10-21",
 		mainModule: "code.js",
 		modules: {
 			"code.js": `
@@ -288,7 +288,7 @@ Replace `src/index.ts`. The Worker gives the model a `runJavaScript` tool and re
 
 ```js
 import { generateText, isStepCount, tool } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
 import { runJavaScript } from "./sandbox";
 
@@ -317,12 +317,12 @@ export default {
 			);
 		}
 
-		const workersai = createWorkersAI({ binding: env.AI });
+		const ai = createAI({ binding: env.AI });
 		const runs = [];
 
 		try {
 			const result = await generateText({
-				model: workersai(model),
+				model: ai(model),
 				instructions,
 				prompt: body.data.question,
 				tools: {
@@ -367,7 +367,7 @@ export default {
 
 ```ts
 import { generateText, isStepCount, tool } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
 import { runJavaScript, type Output } from "./sandbox";
 
@@ -398,12 +398,12 @@ export default {
 			);
 		}
 
-		const workersai = createWorkersAI({ binding: env.AI });
+		const ai = createAI({ binding: env.AI });
 		const runs: Run[] = [];
 
 		try {
 			const result = await generateText({
-				model: workersai(model),
+				model: ai(model),
 				instructions,
 				prompt: body.data.question,
 				tools: {
@@ -540,5 +540,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/#page","headline":"Build an AI code interpreter","description":"Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.","url":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/og.png?v=7b150c445b3ba3bc","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/#page","headline":"Build an AI code interpreter","description":"Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.","url":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/og.png?v=7b150c445b3ba3bc","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

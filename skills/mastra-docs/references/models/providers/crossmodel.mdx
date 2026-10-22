@@ -5,7 +5,7 @@ description: "Browse CrossModel model IDs, capabilities, context windows, and pr
 
 # [CrossModel logo]CrossModel
 
-Access 70 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 68 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -722,30 +722,6 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 1,
     "outputCost": 2
-  },
-  {
-    "model": "crossmodel/xiaomi/mimo-v2.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 128000,
-    "inputCost": 0.16,
-    "outputCost": 0.32
-  },
-  {
-    "model": "crossmodel/xiaomi/mimo-v2.5-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 128000,
-    "inputCost": 0.47,
-    "outputCost": 0.94
   },
   {
     "model": "crossmodel/xiaomi/mimo-v2.6-flash",

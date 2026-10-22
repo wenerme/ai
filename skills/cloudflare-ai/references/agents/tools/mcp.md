@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/mcp/og.png?v=45c87f178d287
 
 # MCP
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) as clients. Connect an agent to external MCP servers, discover the tools those servers expose, and pass those tools into model calls.
 
@@ -32,7 +32,7 @@ Call `addMcpServer()` to connect to a remote MCP server, then pass `this.mcp.get
 ```js
 import { Agent } from "agents";
 import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class ToolAgent extends Agent {
 	async onStart() {
@@ -40,10 +40,10 @@ export class ToolAgent extends Agent {
 	}
 
 	async onRequest(request) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const response = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			prompt: "Use available tools to summarize the latest issue activity.",
 			tools: this.mcp.getAITools(),
 		});
@@ -56,7 +56,7 @@ export class ToolAgent extends Agent {
 ```ts
 import { Agent } from "agents";
 import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class ToolAgent extends Agent<Env> {
 	async onStart() {
@@ -64,10 +64,10 @@ export class ToolAgent extends Agent<Env> {
 	}
 
 	async onRequest(request: Request) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const response = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			prompt: "Use available tools to summarize the latest issue activity.",
 			tools: this.mcp.getAITools(),
 		});
@@ -136,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/mcp/og.png?v=45c87f178d28710a","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/mcp/og.png?v=45c87f178d28710a","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge
 
 # Talk to your knowledge base
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses the [Cloudflare Agents](https://developers.cloudflare.com/agents/) [`@cloudflare/voice`](https://developers.cloudflare.com/agents/communication-channels/voice/) package for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
 
@@ -102,7 +102,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 	"main": "src/server.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-21",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -137,7 +137,7 @@ name = "voice-knowledge-base"
 main = "src/server.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-21"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -190,7 +190,7 @@ The model is given a `searchKnowledgeBase` tool that calls AI Search's `search()
 import { Agent, routeAgentRequest } from "agents";
 import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
 import { generateText, tool, stepCountIs } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
 
 const VoiceAgent = withVoice(Agent);
@@ -204,11 +204,11 @@ export class TalkToDocs extends VoiceAgent {
 	// the reply, calling AI Search as a retrieval tool when it needs facts from
 	// your knowledge base.
 	async onTurn(transcript, context) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = await generateText({
 			// Use a Workers AI model that supports function calling.
-			model: workersai("@cf/zai-org/glm-5.2"),
+			model: ai("@cf/zai-org/glm-5.2"),
 			system:
 				"You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
 				"For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
@@ -267,7 +267,7 @@ import {
 	type VoiceTurnContext,
 } from "@cloudflare/voice";
 import { generateText, tool, stepCountIs } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
 
 const VoiceAgent = withVoice(Agent);
@@ -281,11 +281,11 @@ export class TalkToDocs extends VoiceAgent<Env> {
 	// the reply, calling AI Search as a retrieval tool when it needs facts from
 	// your knowledge base.
 	async onTurn(transcript: string, context: VoiceTurnContext) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 
 		const result = await generateText({
 			// Use a Workers AI model that supports function calling.
-			model: workersai("@cf/zai-org/glm-5.2"),
+			model: ai("@cf/zai-org/glm-5.2"),
 			system:
 				"You are a helpful voice assistant that answers from a Cloudflare AI Search knowledge base. " +
 				"For questions about the product, call the searchKnowledgeBase tool first and answer using the results. " +
@@ -483,5 +483,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/og.png?v=14abd7712498fb20","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/og.png?v=14abd7712498fb20","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

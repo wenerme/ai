@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/runtime/operations/using-ai-mode
 
 # Using AI Models
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗︎](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗︎](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗︎](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
 
@@ -33,7 +33,7 @@ Modern reasoning models can take some time to both generate a response *and* str
 ```js
 import { Agent } from "agents";
 import { streamText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Agent {
 	async onConnect(connection, ctx) {
@@ -47,9 +47,9 @@ export class MyAgent extends Agent {
 
 	async queryReasoningModel(connection, userPrompt) {
 		try {
-			const workersai = createWorkersAI({ binding: this.env.AI });
+			const ai = createAI({ binding: this.env.AI });
 			const result = streamText({
-				model: workersai("@cf/zai-org/glm-4.7-flash"),
+				model: ai("@cf/zai-org/glm-4.7-flash"),
 				prompt: userPrompt,
 			});
 
@@ -72,7 +72,7 @@ export class MyAgent extends Agent {
 ```ts
 import { Agent } from "agents";
 import { streamText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 interface Env {
 	AI: Ai;
@@ -90,9 +90,9 @@ export class MyAgent extends Agent<Env> {
 
 	async queryReasoningModel(connection: Connection, userPrompt: string) {
 		try {
-			const workersai = createWorkersAI({ binding: this.env.AI });
+			const ai = createAI({ binding: this.env.AI });
 			const result = streamText({
-				model: workersai("@cf/zai-org/glm-4.7-flash"),
+				model: ai("@cf/zai-org/glm-4.7-flash"),
 				prompt: userPrompt,
 			});
 
@@ -260,24 +260,24 @@ Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gatewa
 
 ## AI SDK
 
-The [AI SDK ↗︎](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [`workers-ai-provider` ↗︎](https://www.npmjs.com/package/workers-ai-provider).
+The [AI SDK ↗︎](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI and AI Gateway through [`createAI`](https://developers.cloudflare.com/agents/models/ai-sdk/) from `agents/models/ai-sdk`.
 
 npmyarnpnpmbun
 
 ```
-npm i ai workers-ai-provider
+npm i agents ai @ai-sdk/provider
 ```
 
 ```
-yarn add ai workers-ai-provider
+yarn add agents ai @ai-sdk/provider
 ```
 
 ```
-pnpm add ai workers-ai-provider
+pnpm add agents ai @ai-sdk/provider
 ```
 
 ```
-bun add ai workers-ai-provider
+bun add agents ai @ai-sdk/provider
 ```
 
 *src/index.jsjs*
@@ -285,13 +285,13 @@ bun add ai workers-ai-provider
 ```js
 import { Agent } from "agents";
 import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 export class MyAgent extends Agent {
 	async onRequest(request) {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const { text } = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			prompt: "Build me an AI agent on Cloudflare Workers",
 		});
 
@@ -305,7 +305,7 @@ export class MyAgent extends Agent {
 ```ts
 import { Agent } from "agents";
 import { generateText } from "ai";
-import { createWorkersAI } from "workers-ai-provider";
+import { createAI } from "agents/models/ai-sdk";
 
 interface Env {
 	AI: Ai;
@@ -313,9 +313,9 @@ interface Env {
 
 export class MyAgent extends Agent<Env> {
 	async onRequest(request: Request): Promise<Response> {
-		const workersai = createWorkersAI({ binding: this.env.AI });
+		const ai = createAI({ binding: this.env.AI });
 		const { text } = await generateText({
-			model: workersai("@cf/zai-org/glm-4.7-flash"),
+			model: ai("@cf/zai-org/glm-4.7-flash"),
 			prompt: "Build me an AI agent on Cloudflare Workers",
 		});
 
@@ -479,5 +479,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/og.png?v=78adca12f3829932","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/#page","headline":"Using AI Models","description":"Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.","url":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/og.png?v=78adca12f3829932","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```
