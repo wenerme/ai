@@ -3305,12 +3305,12 @@ These categories cover various kinds of harms that developers may wish to adjust
 | Enums ||
 |---|---|
 | `HARM_CATEGORY_UNSPECIFIED` | Category is unspecified. |
-| `HARM_CATEGORY_DEROGATORY` | **PaLM** - Negative or harmful comments targeting identity and/or protected attribute. |
-| `HARM_CATEGORY_TOXICITY` | **PaLM** - Content that is rude, disrespectful, or profane. |
-| `HARM_CATEGORY_VIOLENCE` | **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore. |
-| `HARM_CATEGORY_SEXUAL` | **PaLM** - Contains references to sexual acts or other lewd content. |
-| `HARM_CATEGORY_MEDICAL` | **PaLM** - Promotes unchecked medical advice. |
-| `HARM_CATEGORY_DANGEROUS` | **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts. |
+| `HARM_CATEGORY_DEROGATORY` | **PaLM** - Negative or harmful comments targeting identity and/or protected attribute. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_TOXICITY` | **PaLM** - Content that is rude, disrespectful, or profane. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_VIOLENCE` | **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_SEXUAL` | **PaLM** - Contains references to sexual acts or other lewd content. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_MEDICAL` | **PaLM** - Promotes unchecked medical advice. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_DANGEROUS` | **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts. DEPRECATED: PaLM-only category, not supported by Gemini models. > [!WARNING] > This item is deprecated! |
 | `HARM_CATEGORY_HARASSMENT` | **Gemini** - Harassment content. |
 | `HARM_CATEGORY_HATE_SPEECH` | **Gemini** - Hate speech and content. |
 | `HARM_CATEGORY_SEXUALLY_EXPLICIT` | **Gemini** - Sexually explicit content. |
@@ -3492,7 +3492,7 @@ A base64-encoded string.
 `codeExecutionResult` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`)`` Result of executing the `ExecutableCode`.
 `toolCall` ``object (`https://ai.google.dev/api/generate-content#ToolCall`)`` Server-side tool call. This field is populated when the model predicts a tool invocation that should be executed on the server. The client is expected to echo this message back to the API.
 `toolResponse` ``object (`https://ai.google.dev/api/generate-content#ToolResponse`)`` The output from a server-side `ToolCall` execution. This field is populated by the client with the results of executing the corresponding `ToolCall`.
-End of mutually exclusive fields. `metadata` `Union type` Controls extra preprocessing of data. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `videoMetadata` ``object (`https://ai.google.dev/api/generate-content#VideoMetadata`)`` Optional. Video metadata. The metadata should only be specified while the video data is presented in inlineData or fileData.
+End of mutually exclusive fields. `metadata` `Union type` Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `videoMetadata` ``object (`https://ai.google.dev/api/generate-content#VideoMetadata`)`` Optional. Video metadata. The metadata should only be specified while the video data is presented in inlineData or fileData.
 End of mutually exclusive fields.
 
 | JSON representation |
@@ -3675,10 +3675,7 @@ Fields `id` `string` Optional. The identifier of the tool call this response is 
 
 ## VideoMetadata
 
-> [!WARNING]
-> This item is deprecated!
-
-Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
+Metadata describes the input video content. Set this in `Part.video_metadata` or `FunctionResponsePart.video_metadata` when `inlineData` or `fileData` contains video to configure static video preprocessing (such as time clipping, frame rate, maximum frame count, or extracted content layers).
 Fields `startOffset` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Optional. The start offset of the video.
 
 A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.

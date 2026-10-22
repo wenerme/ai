@@ -97,6 +97,10 @@ You can configure defaults and maximums at:
 
 Note: Repository-level token permission settings are only shown once **Repository Actions** are enabled.
 
+## Protected branches
+
+Actions job tokens must have code write permission and satisfy [branch protection rules](../access-control/protected-branches.md), including any **Gitea Actions** allowlist requirements.
+
 ## Fork pull requests
 
 For security reasons, workflows triggered by pull requests from forks are always restricted to read-only permissions for repository contents, regardless of workflow `permissions:` or settings. They also get no OpenID Connect tokens.

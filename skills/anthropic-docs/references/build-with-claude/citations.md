@@ -374,7 +374,7 @@ Integrate citations with Claude in these steps:
 ### Token costs
 
 * Enabling citations incurs a slight increase in input tokens because of system prompt additions and document chunking.
-* However, the citations feature is very efficient with output tokens. Internally, the model outputs citations in a standardized format that are then parsed into cited text and document location indices. The `cited_text` field is provided for convenience and does not count toward output tokens.
+* However, the citations feature is very efficient with output tokens. Internally, the model outputs citations in a standardized format, and those citations are then parsed into cited text and document location indices. The `cited_text` field is provided for convenience and does not count toward output tokens.
 * When passed back in subsequent conversation turns, `cited_text` is also not counted toward input tokens.
 
 ### Feature compatibility
@@ -974,7 +974,7 @@ Plain text documents are automatically chunked into sentences. You can provide t
 </Tabs>
 
 <Accordion title="Example plain text citation">
-  ```json
+  ```text
   {
     "type": "char_location",
     "cited_text": "The exact text being cited", // not counted toward output tokens
@@ -1790,7 +1790,7 @@ PDF documents can be provided as base64-encoded data, as a URL, or by `file_id`.
 </Tabs>
 
 <Accordion title="Example PDF citation">
-  ```json
+  ```text
   {
     "type": "page_location",
     "cited_text": "The exact text being cited", // not counted toward output tokens
@@ -2109,7 +2109,7 @@ Custom content documents give you control over citation granularity. No addition
 </CodeGroup>
 
 <Accordion title="Example citation">
-  ```json
+  ```text
   {
     "type": "content_block_location",
     "cited_text": "The exact text being cited", // not counted toward output tokens
@@ -2127,7 +2127,7 @@ Custom content documents give you control over citation granularity. No addition
 
 When citations are enabled, responses include multiple text blocks with citations:
 
-```json
+```text wrap
 {
   "content": [
     { "type": "text", "text": "According to the document, " },
@@ -2206,7 +2206,7 @@ For streaming responses, citations arrive as a `citations_delta` delta type insi
 
 <AccordionGroup>
   <Accordion title="Example streaming events">
-    ```sse
+    ```text
     event: message_start
     data: {"type": "message_start", ...}
 

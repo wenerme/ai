@@ -77,7 +77,7 @@ Coverage collection is performed during runtime by instructing V8 using [`node:i
 
 ## Istanbul Provider
 
-[Istanbul code coverage tooling](https://istanbul.js.org/) has existed since 2012 and is very well battle-tested. This provider works on any JavaScript runtime as coverage tracking works by transforming your source code to add instrumentation logic. In practice, the code Vitest will end up running looks something like this:
+[Istanbul code coverage tooling](https://istanbul.js.org/) has existed since 2012 and is very well battle-tested. Vitest uses its own [`@vitest/istanbuljs`](https://github.com/vitest-dev/istanbuljs) that is a fork of the original [`istanbuljs/istanbuljs`](https://github.com/istanbuljs/istanbuljs) project. This provider works on any JavaScript runtime as coverage tracking works by transforming your source code to add instrumentation logic. In practice, the code Vitest will end up running looks something like this:
 
 ```js
 // Simplified example of branch and function coverage counters
@@ -116,7 +116,7 @@ globalThis.__VITEST_COVERAGE__[filename] = coverage // [!code ++]
 <div style="display: flex; flex-direction: column; align-items: center; padding: 2rem 0; max-width: 20rem;">
   <Box>Test file</Box>
   <ArrowDown />
-  <Box>Pre‑instrumentation with Babel</Box>
+  <Box>Pre‑instrumentation on Javascript side</Box>
   <ArrowDown />
   <Box>Run file</Box>
   <ArrowDown />

@@ -181,6 +181,27 @@ Turn on **Allow flow execution**, **Allow foundational flows**, and the **Busine
 For more information about prerequisites and what the scan finds, see
 [business logic scanning](../business_logic_scanning/_index.md).
 
+### SkillGuard profile
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/634364) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `skillguard_analyzer`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the
+> history.
+
+The SkillGuard profile uses an AI agent to find security risks in the AI agent skill files in your
+repository, such as `SKILL.md`, `CLAUDE.md`, and `AGENTS.md`. It reports risks like prompt injection,
+credential exfiltration, and unsafe command execution. When you attach the profile to a project, the
+scan turns on for that project.
+
+The scan runs when a merge request's head pipeline succeeds. It does not run on default branch
+pipelines. If the project has no CI/CD pipelines, no merge request scans run.
+
+SkillGuard publishes its findings as a SAST report, so they appear in the vulnerability report
+alongside other scanners' findings.
+
 ### View details about a profile
 
 To view technical details about the secret detection profile:
@@ -233,7 +254,7 @@ To apply a security configuration profile:
    For example: `gid://gitlab/Security::ScanProfile/dependency_scanning_post_processing`.
 
    For more information, see the
-   [`Group.availableSecurityScanProfiles` field](../../../api/graphql/reference/_index.md#groupavailablesecurityscanprofiles).
+   [`Group.availableSecurityScanProfiles` field](../../../api/graphql/reference/objects.md#group).
 
 1. Apply the profile with the `securityScanProfileAttach` mutation, using the virtual ID or
    the real ID of the profile you want:
@@ -250,7 +271,7 @@ To apply a security configuration profile:
 ```
 
    For more information, see the
-   [`securityScanProfileAttach` mutation](../../../api/graphql/reference/_index.md#mutationsecurityscanprofileattach).
+   [`securityScanProfileAttach` mutation](../../../api/graphql/reference/mutations.md#securityscanprofileattach).
 
 1. To choose where the profile applies, set one or both of these arguments:
    - `projectIds`: Applies the profile to specific projects.
@@ -339,7 +360,7 @@ By default, the `stripDefaults` argument removes trigger configuration values th
 defaults before storing the profile, so only your overrides persist.
 
 For the full list of arguments, see the
-[`securityScanProfileCreate` mutation](../../../api/graphql/reference/_index.md#mutationsecurityscanprofilecreate).
+[`securityScanProfileCreate` mutation](../../../api/graphql/reference/mutations.md#securityscanprofilecreate).
 
 ## Customize a SAST profile
 
@@ -423,7 +444,7 @@ By default, the `stripDefaults` argument removes trigger configuration values th
 defaults before storing the profile, so only your overrides are persisted.
 
 For the full list of arguments, see the
-[`securityScanProfileCreate` mutation](../../../api/graphql/reference/_index.md#mutationsecurityscanprofilecreate).
+[`securityScanProfileCreate` mutation](../../../api/graphql/reference/mutations.md#securityscanprofilecreate).
 
 ## Customize a dependency scanning profile
 
@@ -507,7 +528,7 @@ You can set only one configuration member per trigger, and it must match the pro
 For a dependency scanning profile, that member is `dependencyScanning`.
 
 For the full list of arguments, see the
-[`securityScanProfileCreate` mutation](../../../api/graphql/reference/_index.md#mutationsecurityscanprofilecreate).
+[`securityScanProfileCreate` mutation](../../../api/graphql/reference/mutations.md#securityscanprofilecreate).
 
 ## Coverage status indicators
 

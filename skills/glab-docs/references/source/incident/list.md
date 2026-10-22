@@ -28,7 +28,7 @@ ls
 glab incident list --all
 glab incident ls --all
 glab incident list --assignee=@me
-glab incident list --milestone release-2.0.0 --opened
+glab incident list --milestone release-2.0.0
 glab incident list --updated-after 2026-10-01T00:00:00Z
 ```
 

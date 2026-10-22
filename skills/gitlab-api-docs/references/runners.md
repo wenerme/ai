@@ -86,7 +86,7 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 >   In GitLab 17.0, this attribute returns an empty string.
 >   The `ipAddress` attribute can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -170,7 +170,7 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 >   In GitLab 17.0, this attribute returns an empty string.
 >   The `ipAddress` attribute can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -272,13 +272,13 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 >   In GitLab 17.0, this attribute returns an empty string.
 >   The `ipAddress` attribute can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 > - The `version`, `revision`, `platform`, and `architecture` attributes in the response are deprecated
 >   [in GitLab 17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/457128) and are scheduled for removal in
 >   [a future version of the REST API](https://gitlab.com/gitlab-org/gitlab/-/issues/351109).
 >   The same attributes can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -372,7 +372,7 @@ curl --request PUT \
 >   In GitLab 17.0, this attribute returns an empty string.
 >   The `ipAddress` attribute can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -661,7 +661,7 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 >   In GitLab 17.0, this attribute returns an empty string in GitLab 17.0.
 >   The `ipAddress` attribute can be found inside the respective runner manager.
 >   It is only available through the GraphQL
->   [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+>   [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -729,7 +729,7 @@ curl --request POST \
 > [a future version of the REST API](https://gitlab.com/gitlab-org/gitlab/-/issues/351109).
 > In GitLab 17.0, this attribute returns an empty string.
 > The `ipAddress` attribute can be found inside the respective runner manager. It is only available through the GraphQL
-> [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+> [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 
@@ -827,7 +827,7 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 > [a future version of the REST API](https://gitlab.com/gitlab-org/gitlab/-/issues/351109).
 > In GitLab, the attribute returns an empty string.
 > The `ipAddress` attribute can be found inside the respective runner manager. It is only available through the GraphQL
-> [`CiRunnerManager` type](graphql/reference/_index.md#cirunnermanager).
+> [`CiRunnerManager` type](graphql/reference/objects.md#cirunnermanager).
 
 Example response:
 

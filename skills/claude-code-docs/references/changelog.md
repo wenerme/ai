@@ -6,6 +6,10 @@
 
 # Changelog
 
+## 2.1.308
+
+- Bug fixes and reliability improvements
+
 ## 2.1.307
 
 - Added `/claude-api api-version` to move Claude API code to API version `2026-10-21`

@@ -92,16 +92,16 @@ Most web and API requests pick up the signed-in user automatically.
 
 Other entry points record a system actor:
 
-- `(gitea-cli)` for `gitea admin` commands and the `system:startup` and
+- `gitea:cli` for `gitea admin` commands and the `system:startup` and
   `system:shutdown` events
-- `(gitea-auth-source)` for authentication-source syncs and for users an
+- `gitea:auth-source` for authentication-source syncs and for users an
   authentication source creates or updates at sign-in
 - `gitea-actions` for Gitea Actions tasks
-- `(deploy-key)` for pushes with a deploy key
+- `gitea:deploy-key` for pushes with a deploy key
 - `(Cron)` for scheduled cron tasks
 - `Unknown` when no actor can be resolved
 
-Events of the `(gitea-cli)` actor use origin `cli`. Cron tasks, git hooks and
+Events of the `gitea:cli` actor use origin `cli`. Cron tasks, git hooks and
 other background work use origin `system`.
 
 ## What is recorded

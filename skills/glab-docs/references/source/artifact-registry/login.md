@@ -33,10 +33,21 @@ Use the flag for your package manager:
   an `npmRegistryServer` that matches `--registry`. Rewriting the
   file can change its formatting, like indentation, blank lines, and line endings.
 - `--sbt`: writes a `credentials +=` line in
-  `~/.sbt/1.0/credentials.sbt`, which assumes a stock sbt 1.x.
-  An sbt that moved its global base, with
-  `-Dsbt.global.base` or a newer default, does not read that
-  file.
+  `~/.sbt/1.0/credentials.sbt`, which sbt 1.x reads, and the
+  same line in `2/credentials.sbt` in the sbt 2.x global base,
+  which sbt 2.x reads. That base is `~/.config/sbt`, or
+  `%LOCALAPPDATA%\sbt` on Windows, unless
+  `SBT_CONFIG_HOME` or `XDG_CONFIG_HOME` moves it.
+  On Windows it also writes
+  `%LOCALAPPDATA%\sbt\credentials.sbt`. The `sbt.bat`
+  of sbt 2.x points every build it starts, on either version, at
+  that file only, even when `SBT_CONFIG_HOME` is set.
+  The `sbt.version` in a project's
+  `project/build.properties` decides which file its build
+  reads. An sbt started with any other `-Dsbt.global.base`
+  reads none of them. An sbt shell or sbt 2.x server that is
+  already running keeps the credentials it loaded, so run
+  `reload` in it, or `sbt shutdown`, after you log in.
 
 Token lifetime:
 
@@ -114,7 +125,7 @@ glab artifact-registry login --sbt --registry https://ar.example.com --duration 
       --npm                     Configure npm to authenticate against the registry. Writes to ~/.npmrc.
       --registry string         Registry to authenticate against. For --docker, a bare hostname; for others, typically a URL.
       --registry-alias string   Alias/ID to register the registry under (Maven/Gradle only). Defaults to a name derived from --registry.
-      --sbt                     Configure sbt to authenticate against the registry. Writes to ~/.sbt/1.0/credentials.sbt.
+      --sbt                     Configure sbt to authenticate against the registry. Writes credentials.sbt to the sbt 1.x and 2.x global bases.
       --yarn                    Configure Yarn 2 or later to authenticate against the registry. Writes to ~/.yarnrc.yml. For Yarn 1, use --npm.
 ```
 

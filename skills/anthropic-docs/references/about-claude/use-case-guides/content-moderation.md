@@ -37,7 +37,7 @@ Here are some key indicators that you should use an LLM such as Claude instead o
     Once a traditional ML approach has been established, changing it is a laborious and data-intensive undertaking. On the other hand, as your product or customer needs evolve, Claude can easily adapt to changes or additions to moderation policies without extensive relabeling of training data.
   </Accordion>
 
-  <Accordion title="You require interpretable reasoning for your moderation decisions">
+  <Accordion title="You need interpretable reasoning for your moderation decisions">
     If you want to provide users or regulators with clear explanations behind moderation decisions, Claude can generate detailed and coherent justifications. This transparency is important for building trust and ensuring accountability in content moderation practices.
   </Accordion>
 
@@ -45,7 +45,7 @@ Here are some key indicators that you should use an LLM such as Claude instead o
     Traditional ML approaches typically require separate models or extensive translation processes for each supported language. Human moderation requires hiring a workforce fluent in each supported language. Claude’s multilingual capabilities allow it to classify content in various languages without the need for separate models or extensive translation processes, streamlining moderation for global customer bases.
   </Accordion>
 
-  <Accordion title="You require multimodal support">
+  <Accordion title="You need multimodal support">
     Claude's multimodal capabilities allow it to analyze and interpret content across both text and images. This makes it a versatile tool for comprehensive content moderation in environments where different media types need to be evaluated together.
   </Accordion>
 </AccordionGroup>
@@ -879,7 +879,7 @@ The model's assessment is then parsed to determine if there is a violation. If t
 
 Content moderation is a classification problem. Thus, you can use the same techniques outlined in the Claude Cookbook's [classification recipe](https://platform.claude.com/cookbook/capabilities-classification-guide) to determine the accuracy of your content moderation system.
 
-One additional consideration is that instead of treating content moderation as a binary classification problem, you can instead create multiple categories to represent various risk levels. Creating multiple risk levels allows you to adjust the aggressiveness of your moderation. For example, you might want to automatically block user queries that are deemed high risk, whereas users with many medium risk queries are flagged for human review.
+One additional consideration is that instead of treating content moderation as a binary classification problem, you can create multiple categories to represent various risk levels. Creating multiple risk levels allows you to adjust the aggressiveness of your moderation. For example, you might want to automatically block user queries that are deemed high risk, whereas users with many medium risk queries are flagged for human review.
 
 <CodeGroup exclude="shell">
   ```python Python

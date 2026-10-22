@@ -3,7 +3,7 @@
 Code Suggestions helps you write code in GitLab more efficiently by using AI to suggest code as you type.
 
 - Tier: [Free](../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 ### Model information
 

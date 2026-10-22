@@ -475,7 +475,7 @@ Lock the rule's `match` block to the narrowest scope that fits your use case:
 * **Pin to one workload:** Set `subject_prefix` to the full SPIFFE ID with no trailing `*`.
 * **Always set an audience:** Require `audience` on the rule and configure spiffe-helper (or the Workload API call) with the same value so SVIDs minted for other relying parties are rejected.
 * **Scope by path segment:** Use `spiffe://prod.example.com/ns/inference/*` to grant every workload registered under a namespace, and create a separate rule and Anthropic service account for each namespace rather than widening one rule.
-* **One issuer for each trust domain:** Each SPIRE trust domain has its own signing keys and OIDC Discovery Provider. Register each as a separate federation issuer and bind rules to the issuer that owns the SPIFFE IDs they match.
+* **Register one issuer for each trust domain:** Each SPIRE trust domain has its own signing keys and OIDC Discovery Provider. Register each as a separate federation issuer and bind rules to the issuer that owns the SPIFFE IDs they match.
 
 ## Next steps
 

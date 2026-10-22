@@ -8,8 +8,8 @@
   "google-ai-api/generate-content.md": {
     "url": "https://ai.google.dev/api/generate-content",
     "skill": "google-ai-api",
-    "size": 233617,
-    "updatedAt": "2026-10-14T00:58:53.226Z"
+    "size": 234484,
+    "updatedAt": "2026-10-22T10:28:22.438Z"
   },
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",

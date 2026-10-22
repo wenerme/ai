@@ -9495,10 +9495,12 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
 **delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
 
-Deletes an API key from the project.
+Deletes an API key from the project, including keys owned by service accounts.
 
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
+Requires permission to write project API keys. Deleting a service-account key
+does not delete the service account or its other keys.
+
+Returns confirmation of the key deletion.
 
 ### Path Parameters
 

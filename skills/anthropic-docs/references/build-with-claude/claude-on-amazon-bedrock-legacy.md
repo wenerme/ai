@@ -796,9 +796,9 @@ Regional endpoints include a 10 percent pricing premium over global endpoints.
 **Regional endpoints (CRIS):**
 
 * Route traffic through specific geographic regions
-* Required for data residency and compliance requirements
-* Available for US, EU, Japan, and Asia-Pacific
-* 10 percent pricing premium reflects infrastructure costs for dedicated regional capacity
+* Are required for data residency and compliance requirements
+* Are available for US, EU, Japan, and Asia-Pacific
+* Carry a 10 percent pricing premium that reflects infrastructure costs for dedicated regional capacity
 
 ### Implementation
 

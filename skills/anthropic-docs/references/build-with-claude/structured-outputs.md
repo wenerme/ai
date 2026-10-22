@@ -110,7 +110,7 @@ Structured outputs guarantee schema-compliant responses through constrained deco
 
     Claude returns JSON like this in the response's text content block:
 
-    ```json Output
+    ```text Output wrap
     {
       "name": "John Smith",
       "email": "john@example.com",
@@ -148,7 +148,7 @@ Structured outputs guarantee schema-compliant responses through constrained deco
 
     Claude returns JSON like this in the response's text content block:
 
-    ```json Output
+    ```text Output wrap
     {
       "name": "John Smith",
       "email": "john@example.com",
@@ -788,7 +788,7 @@ To use a JSON schema from a file, an OpenAPI spec, or code that builds it at run
 
     Claude returns JSON like this in the response's text content block:
 
-    ```json Output
+    ```text Output wrap
     {
       "name": "John Smith",
       "email": "john@example.com",
@@ -826,7 +826,7 @@ To use a JSON schema from a file, an OpenAPI spec, or code that builds it at run
 
     Claude returns JSON like this in the response's text content block:
 
-    ```json Output
+    ```text Output wrap
     {
       "name": "John Smith",
       "email": "john@example.com",
@@ -2594,14 +2594,8 @@ When combined, Claude can call tools with guaranteed-valid parameters AND return
 Structured outputs use constrained sampling with compiled grammar artifacts. This introduces some performance characteristics to be aware of:
 
 * **First request latency:** The first time you use a specific schema, there is additional latency while the grammar compiles.
-
 * **Automatic caching:** Compiled grammars are cached for 24 hours from last use, making subsequent requests much faster.
-
-* **Cache invalidation:** The cache is invalidated if you change:
-
-  * The JSON schema structure
-  * The set of tools in your request (when using both structured outputs and tool use)
-  * Changing only `name` or `description` fields does not invalidate the cache
+* **Cache invalidation:** The cache is invalidated if you change the JSON schema structure or, when using both structured outputs and tool use, the set of tools in your request. Changing only `name` or `description` fields does not invalidate the cache.
 
 ### Prompt modification and token costs
 
@@ -2709,10 +2703,10 @@ Although structured outputs guarantee schema compliance in most cases, there are
 
 Claude maintains its safety and helpfulness properties even when using structured outputs. If Claude refuses a request for safety reasons:
 
-* The response has `stop_reason: "refusal"`
-* You'll receive a 200 status code
-* You'll be billed for the tokens generated
-* The output might not match your schema because the refusal message takes precedence over schema constraints
+* The response has `stop_reason: "refusal"`.
+* You'll receive a 200 status code.
+* You'll be billed for the tokens generated.
+* The output might not match your schema because the refusal message takes precedence over schema constraints.
 
 A property that asks for the model's thinking or step-by-step reasoning might lead to a `reasoning_extraction` refusal. Ask for a short explanation instead. See [Keep reasoning in thinking blocks](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#keep-reasoning-in-thinking-blocks).
 
@@ -2720,9 +2714,9 @@ A property that asks for the model's thinking or step-by-step reasoning might le
 
 If the response is cut off because it reached the `max_tokens` limit:
 
-* The response has `stop_reason: "max_tokens"`
-* The output might be incomplete and not match your schema
-* Retry with a higher `max_tokens` value to get the complete structured output
+* The response has `stop_reason: "max_tokens"`.
+* The output might be incomplete and not match your schema.
+* Retry with a higher `max_tokens` value to get the complete structured output.
 
 **Enum value casing**
 
@@ -2800,8 +2794,8 @@ For ZDR and HIPAA eligibility across all features, see [API and data retention](
 
 **Incompatible with:**
 
-* **[Citations](https://platform.claude.com/docs/en/build-with-claude/citations):** Citations require interleaving citation blocks with text, which conflicts with strict JSON schema constraints. Returns 400 error if citations enabled with `output_config.format`.
-* **Message prefilling:** Incompatible with JSON outputs
+* **[Citations](https://platform.claude.com/docs/en/build-with-claude/citations):** Citations require interleaving citation blocks with text, which conflicts with strict JSON schema constraints. The API returns a 400 error if citations are enabled with `output_config.format`.
+* **Message prefilling:** Prefilling is incompatible with JSON outputs.
 
 <Tip>
   **Grammar scope:** Grammars apply only to Claude's direct output, not to tool use calls, tool results, or thinking tags (when using [thinking](https://platform.claude.com/docs/en/build-with-claude/thinking)). Grammar state resets between sections, allowing Claude to think freely while still producing structured output in the final response.

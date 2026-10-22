@@ -25,7 +25,7 @@ export const agent = new Agent({
   id: 'my-agent',
   name: 'my-agent',
   instructions: 'You are a helpful assistant.',
-  model: '__GATEWAY_OPENAI_MODEL_MINI__',
+  model: '__GATEWAY_OPENAI_MODEL_LUNA__',
   memory: new Memory({
     options: {
       // highlight-next-line
@@ -52,7 +52,7 @@ export const agent = new Agent({
     }),
     options: {
       observationalMemory: {
-        model: '__GATEWAY_OPENAI_MODEL_MINI__',
+        model: '__GATEWAY_OPENAI_MODEL_LUNA__',
       },
     },
   })
@@ -61,7 +61,7 @@ export const agent = new Agent({
     id: 'memory-agent',
     name: 'Memory Agent',
     instructions: 'You are a helpful assistant.',
-    model: '__GATEWAY_OPENAI_MODEL_MINI__',
+    model: '__GATEWAY_OPENAI_MODEL_LUNA__',
     memory,
   })
 
@@ -133,7 +133,7 @@ export const agent = new Agent({
   id: 'my-agent',
   name: 'my-agent',
   instructions: 'You are a helpful assistant.',
-  model: '__GATEWAY_OPENAI_MODEL_MINI__',
+  model: '__GATEWAY_OPENAI_MODEL_LUNA__',
   memory: new Memory({
     options: {
       observationalMemory: {
@@ -199,7 +199,7 @@ Set `observation.bufferOnIdle` to `true` to run background observation buffering
 const memory = new Memory({
   options: {
     observationalMemory: {
-      model: '__GATEWAY_OPENAI_MODEL_MINI__',
+      model: '__GATEWAY_OPENAI_MODEL_LUNA__',
       observation: {
         bufferOnIdle: true,
       },
@@ -290,7 +290,7 @@ import { z } from 'zod'
 const memory = new Memory({
   options: {
     observationalMemory: {
-      model: '__GATEWAY_OPENAI_MODEL_MINI__',
+      model: '__GATEWAY_OPENAI_MODEL_LUNA__',
       observation: {
         extract: [
           new Extractor({
@@ -312,7 +312,7 @@ export const agent = new Agent({
   id: 'assistant',
   name: 'assistant',
   instructions: 'You are a helpful assistant.',
-  model: '__GATEWAY_OPENAI_MODEL_MINI__',
+  model: '__GATEWAY_OPENAI_MODEL_LUNA__',
   memory,
 })
 ```
@@ -426,7 +426,7 @@ new Agent({
   id: 'assistant',
   name: 'assistant',
   instructions: 'You are a helpful assistant.',
-  model: '__GATEWAY_OPENAI_MODEL_MINI__',
+  model: '__GATEWAY_OPENAI_MODEL_LUNA__',
   memory: new Memory({
     options: {
       observationalMemory: {
@@ -603,7 +603,7 @@ Use `autoModels` to change the model picked for a provider, and `resolveModel` t
 const memory = new Memory({
   options: {
     observationalMemory: {
-      autoModels: { openai: '__GATEWAY_OPENAI_MODEL_NANO__' },
+      autoModels: { openai: '__GATEWAY_OPENAI_MODEL_LUNA__' },
       resolveModel: (modelId, { requestContext }) => createRoutedModel(modelId, requestContext),
     },
   },
@@ -614,7 +614,7 @@ const memory = new Memory({
 
 Mastra recommends using a model that has a large context window (128K+ tokens) and is fast enough to run in the background without slowing down your actions.
 
-To pin a model instead, set a concrete model ID. We've also successfully tested `__GATEWAY_OPENAI_MODEL_MINI__`, `__GATEWAY_ANTHROPIC_MODEL_HAIKU__`, `deepseek/deepseek-reasoner`, `deepseek/deepseek-v4-pro`, `deepseek/deepseek-v4-flash`, `xai/grok-4-1-fast`, `qwen3`, and `glm-4.7`.
+To pin a model instead, set a concrete model ID. We've also successfully tested `__GATEWAY_OPENAI_MODEL_LUNA__`, `__GATEWAY_ANTHROPIC_MODEL_HAIKU__`, `deepseek/deepseek-reasoner`, `deepseek/deepseek-v4-pro`, `deepseek/deepseek-v4-flash`, `xai/grok-4-1-fast`, `qwen3`, and `glm-4.7`.
 
 ```typescript
 const memory = new Memory({
@@ -650,7 +650,7 @@ const memory = new Memory({
             // Faster, cheaper models for smaller inputs; stronger models for larger contexts
             5_000: 'openrouter/mistralai/ministral-8b-2512',
             20_000: 'openrouter/mistralai/mistral-small-2603',
-            40_000: '__GATEWAY_OPENAI_MODEL_MINI__',
+            40_000: '__GATEWAY_OPENAI_MODEL_LUNA__',
             1_000_000: 'google/gemini-3.1-flash-lite-preview',
           },
         }),
@@ -658,7 +658,7 @@ const memory = new Memory({
       reflection: {
         model: new ModelByInputTokens({
           upTo: {
-            20_000: '__GATEWAY_OPENAI_MODEL_MINI__',
+            20_000: '__GATEWAY_OPENAI_MODEL_LUNA__',
             100_000: 'google/gemini-2.5-flash',
           },
         }),

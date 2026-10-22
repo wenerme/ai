@@ -498,7 +498,7 @@ When Claude uses MCP tools, the response includes two new content block types:
 
 ### MCP tool use block
 
-```json
+```text wrap
 {
   "type": "mcp_tool_use",
   "id": "mcptoolu_014Q35RayjACSWkSj4X2yov1",
@@ -510,7 +510,7 @@ When Claude uses MCP tools, the response includes two new content block types:
 
 ### MCP tool result block
 
-```json
+```text wrap
 {
   "type": "mcp_tool_result",
   "tool_use_id": "mcptoolu_014Q35RayjACSWkSj4X2yov1",
@@ -530,7 +530,7 @@ An MCP server can change its tools at any time. The `mcp-client-2026-09-15` beta
 
 When the API asks an MCP server for its tools while producing a response, the response starts with an `mcp_tool_listing` block for that server, one block for each server it asked:
 
-```json
+```text wrap
 {
   "type": "mcp_tool_listing",
   "mcp_server_name": "example-mcp",
@@ -1996,7 +1996,7 @@ If you're using the deprecated `mcp-client-2025-04-04` beta header, follow this 
 
 1. **New beta header:** Change from `mcp-client-2025-04-04` to `mcp-client-2025-11-20`.
 2. **Tool configuration moved:** Tool configuration now lives in the `tools` array as MCPToolset objects, not in the MCP server definition.
-3. **More flexible configuration:** New pattern supports allowlisting, denylisting, and per-tool configuration.
+3. **More flexible configuration:** The new pattern supports allowlisting, denylisting, and per-tool configuration.
 
 ### Migration steps
 

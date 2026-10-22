@@ -164,6 +164,8 @@ glab opentofu init <old_state_name>
 
 ### Manually with OpenTofu CLI
 
+If you use a fine-grained personal access token, it must have the **Read**, **Create**, and **Lock** permissions for the **Terraform State** resource.
+
 To initialize a backend with OpenTofu CLI, run the following command:
 
 ```shell
@@ -217,6 +219,8 @@ glab opentofu init <new-state-name> -- -migrate-state
 ```
 
 ### Manually with OpenTofu CLI
+
+If you use a fine-grained personal access token, it must have the **Read**, **Create**, and **Lock** permissions for the **Terraform State** resource.
 
 ```shell
 TF_ADDRESS="https://gitlab.com/api/v4/projects/${PROJECT_ID}/terraform/state/<new-state-name>"
@@ -321,7 +325,9 @@ You can use a GitLab-managed OpenTofu state backend as an
      a [personal access token](../../profile/personal_access_tokens.md) for
      authentication, this value is your GitLab username. If you are using GitLab CI/CD, this value is `'gitlab-ci-token'`.
    - **password**: The password to authenticate with the data source. If you are using a personal access token for
-     authentication, this value is the token value (the token must have the **API** scope).
+     authentication, this value is the token value. A legacy token must have the **API** scope. A
+     [fine-grained token](../../../auth/tokens/fine_grained_access_tokens.md) must have the **Read**
+     permission for the **Terraform State** resource.
      If you are using GitLab CI/CD, this value is the contents of the `${CI_JOB_TOKEN}` CI/CD variable.
 
 Outputs from the data source can now be referenced in your Terraform resources
@@ -347,6 +353,7 @@ Prerequisites:
 
 - To get state versions using their serial number, you must have the Developer, Maintainer, or Owner role.
 - To remove state versions using their serial number, you must have the Maintainer or Owner role.
+- If you use a fine-grained personal access token, it must have the **Read** permission for the **Terraform State** resource to get state versions, and the **Delete** permission to remove them.
 
 To get state versions using their serial number:
 
@@ -383,6 +390,7 @@ curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
 Prerequisites:
 
 - To remove a state file, you must have the Maintainer or Owner role.
+- If you use a fine-grained personal access token, it must have the **Delete** permission for the **Terraform State** resource.
 
 ### Using the GitLab CLI (glab)
 
@@ -404,7 +412,7 @@ curl --request DELETE --user "gitlab-ci-token:$CI_JOB_TOKEN" \
      --url "https://gitlab.example.com/api/v4/projects/<your_project_id>/terraform/state/<your_state_name>"
 ```
 
-You can also use [the GraphQL API](../../../api/graphql/reference/_index.md#mutationterraformstatedelete).
+You can also use [the GraphQL API](../../../api/graphql/reference/mutations.md#terraformstatedelete).
 
 ### Using the UI
 
@@ -418,6 +426,8 @@ To remove a state file using the UI:
 Prerequisites:
 
 - To lock a state file, you must have the Maintainer or Owner role.
+- If you use a fine-grained personal access token, it must have the **Lock** permission for the **Terraform State** resource. This permission also allows unlocking.
+  For more information, see [fine-grained permissions for the REST API](../../../auth/tokens/fine_grained_access_tokens_rest.md).
 
 ### Using the GitLab CLI (glab)
 
@@ -453,6 +463,7 @@ To lock or unlock a state file using the UI:
 Prerequisites:
 
 - To download a state file, you must have the Developer, Maintainer, or Owner role.
+- If you use a fine-grained personal access token, it must have the **Read** permission for the **Terraform State** resource.
 
 ### Using the GitLab CLI (glab)
 

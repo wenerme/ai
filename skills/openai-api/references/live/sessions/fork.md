@@ -64,7 +64,7 @@ Fork a stored Live session onto a new WebRTC connection.
 
             The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
 
-  - `delegation: optional object { type, responses }`
+  - `delegation: optional object { type, acknowledgement_delay_ms, responses }`
 
     Update the Responses backend for an existing Live session without changing delegation ownership.
 
@@ -73,6 +73,10 @@ Fork a stored Live session onto a new WebRTC connection.
       The delegation owner. Always `responses` for tasks handled by the Responses API.
 
       - `"responses"`
+
+    - `acknowledgement_delay_ms: optional number`
+
+      Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
     - `responses: optional ResponsesDelegationUpdateConfig`
 

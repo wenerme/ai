@@ -9,8 +9,7 @@ Manage comments and discussions on a merge request.
 
 ## Synopsis
 
-Creates a comment by default. Use `--resolve` or
-`--unresolve` to manage existing discussion threads.
+Creates a comment by default. Use `glab mr note resolve` to resolve a discussion or `glab mr note reopen` to reopen one.
 
 ```plaintext
 glab mr note [<id> | <branch>] [flags]

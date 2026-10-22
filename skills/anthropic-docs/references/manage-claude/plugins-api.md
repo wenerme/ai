@@ -37,7 +37,7 @@ This release does not include standalone skills (skills a member writes in the s
 ## Prerequisites
 
 * Your organization must be on a Claude Enterprise plan.
-* Your primary owner creates an Admin API key with the `read:plugins` scope, the `write:plugins` scope, or both in [claude.ai > Organization settings > API](https://claude.ai/admin-settings/api-access). See [Create an Admin API key](https://platform.claude.com/docs/en/manage-claude/admin-api-keys#create-a-key-for-a-claude-enterprise-organization).
+* Your primary owner creates an Admin API key with the `read:plugins` scope, the `write:plugins` scope, or both in [claude.ai > Organization settings > API](https://claude.ai/admin-settings/api-access). See [Create a key for a Claude Enterprise organization](https://platform.claude.com/docs/en/manage-claude/admin-api-keys#create-a-key-for-a-claude-enterprise-organization).
 * Every request carries three headers: `x-api-key`, `anthropic-version: 2023-06-01`, and `anthropic-beta: ce-plugins-2026-09-01`.
 
 The SDK exposes these endpoints under `client.beta.organization` (csharp, go: `client.Beta.Organization`; java: `client.beta().organization()`; php: `$client->beta->organization`), and the [`ant` CLI](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/quickstart) under `ant beta:organization`; they send the `anthropic-version` and `anthropic-beta` headers for you. The examples on this page use the SDK's default client, which, like the CLI, reads the Admin API key from the `ANTHROPIC_API_KEY` environment variable; the curl examples read the key from the same variable and pass it in the `x-api-key` header. Where an SDK or the CLI fetches more pages for you, `limit` sets the page size, not the total (see [Pagination](https://platform.claude.com/docs/en/manage-claude/plugins-api#pagination)).
@@ -161,7 +161,7 @@ List the plugins in your organization's own marketplaces, newest first:
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "data": [
     {
@@ -216,7 +216,7 @@ Each of these read scopes (`read:plugins`, `read:org_audit`, and `read:complianc
 
 ### Reading another organization under the same parent
 
-`read:plugins` and `write:plugins` keys read and write only the organization they were created in. If your company has several Claude organizations linked under one parent organization, a `read:org_audit` or `read:compliance_org_data` key that the parent's primary owner created for all linked organizations (see [Create an Admin API key](https://platform.claude.com/docs/en/manage-claude/admin-api-keys#create-a-key-for-a-claude-enterprise-organization)) can also read any of them that has access to this API: pass that organization's ID in the `organization_id` query parameter on any `GET` endpoint on this page. The ID is the organization UUID shown in claude.ai's settings (its `org_`-prefixed form is accepted too). Without the parameter, the key reads the organization it was created in. A `404` means the named organization is not under the key's parent or the API is not available to it; a value that is not a UUID or `org_` ID returns `400`. Any other key that names an organization other than its own gets `404`. Writes do not accept `organization_id`.
+`read:plugins` and `write:plugins` keys read and write only the organization they were created in. If your company has several Claude organizations linked under one parent organization, a `read:org_audit` or `read:compliance_org_data` key that the parent's primary owner created for all linked organizations (see [Create a key for a Claude Enterprise organization](https://platform.claude.com/docs/en/manage-claude/admin-api-keys#create-a-key-for-a-claude-enterprise-organization)) can also read any of them that has access to this API: pass that organization's ID in the `organization_id` query parameter on any `GET` endpoint on this page. The ID is the organization UUID shown in claude.ai's settings (its `org_`-prefixed form is accepted too). Without the parameter, the key reads the organization it was created in. A `404` means the named organization is not under the key's parent or the API is not available to it; a value that is not a UUID or `org_` ID returns `400`. Any other key that names an organization other than its own gets `404`. Writes do not accept `organization_id`.
 
 ## Key concepts
 
@@ -281,7 +281,7 @@ These rules describe organization-owned plugins. A member-owned plugin's served 
 | `available`     | The plugin can be installed on request.        |
 | `not_available` | The plugin is hidden.                          |
 
-A plugin can hold an organization-wide setting and one setting for each group (the role-based access control groups managed in [User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). A member gets a value by these rules:
+A plugin can hold an organization-wide setting and one setting for each group (the role-based access control [groups managed in User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). A member gets a value by these rules:
 
 1. The organization-wide value is the plugin's own organization-wide setting if it has one, otherwise its marketplace's default, otherwise `not_available`. The plugin reports this value in `organization_installation_preference`, with `organization_installation_preference_inherited: true` while it comes from the marketplace default.
 2. A member who belongs to no group holding a setting for the plugin gets the organization-wide value.
@@ -356,7 +356,7 @@ Upload every tagged build from CI, and let the pipeline determine when a build i
 
 ### Roll a plugin out to a pilot group, then to everyone
 
-1. Look up the pilot group's ID with `GET /v1/organizations/rbac_groups`. That call needs the `read:rbac_groups` scope, which requires a key created for all linked organizations (see [User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). The next steps need `write:plugins`, which acts only on the organization its key was created in, so in an enterprise with several linked organizations, create this key in the organization that holds the plugin and give it both scopes, or use a second key created there for those steps.
+1. Look up the pilot group's ID with `GET /v1/organizations/rbac_groups`. That call needs the `read:rbac_groups` scope, which requires a key created for all linked organizations (see [Groups in User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). The next steps need `write:plugins`, which acts only on the organization its key was created in, so in an enterprise with several linked organizations, create this key in the organization that holds the plugin and give it both scopes, or use a second key created there for those steps.
 
 2. [Give the group its own setting](https://platform.claude.com/docs/en/manage-claude/plugins-api#set-an-installation-setting), for example `auto_install`, with `POST /v1/organizations/plugins/{plugin_id}/installation_settings/{target}`, where `{target}` is the group's `rbac_group_` ID, while the organization-wide value stays `not_available`. Only the group's members get the plugin.
 
@@ -809,7 +809,7 @@ Upload an archive:
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "type": "plugin",
   "id": "plugin_01Hq3vX8kZcN2mB7pR4tY9wL",
@@ -1256,7 +1256,7 @@ Besides a `400` for an upload that breaks the [upload requirements](https://plat
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "type": "plugin",
   "id": "plugin_01Hq3vX8kZcN2mB7pR4tY9wL",
@@ -1393,7 +1393,7 @@ Deletion cannot be undone, and there is no per-version delete. To withhold an or
   ```
 </CodeGroup>
 
-```json
+```text wrap
 { "type": "plugin_deleted", "id": "plugin_01Hq3vX8kZcN2mB7pR4tY9wL" }
 ```
 
@@ -1675,7 +1675,7 @@ A `{version}` that lacks the `pluginver_` prefix returns `400` (except the liter
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "type": "plugin_version",
   "id": "pluginver_01Jd5sK2nQ8wE4rT6yU1iO3p",
@@ -1970,7 +1970,7 @@ Downloading a **member-owned** plugin's archive records a `claude_plugin_archive
 
 ## Plugin installation settings
 
-These endpoints apply to organization-owned plugins. They return `404` for a member-owned plugin, which has [shares](https://platform.claude.com/docs/en/manage-claude/plugins-api#plugin-shares) instead. `{target}` is the literal `organization` for the plugin's organization-wide setting, or a group's `rbac_group_` ID for that group's setting; any other value returns `400`. Group IDs come from `GET /v1/organizations/rbac_groups` (scope `read:rbac_groups`; see [User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). A setting has no `id` of its own: it is addressed by `(plugin_id, target)`, and no actor is recorded on it (the actor is on its `plugin_installation_preference_updated` activity event).
+These endpoints apply to organization-owned plugins. They return `404` for a member-owned plugin, which has shares instead (see [Plugin shares](https://platform.claude.com/docs/en/manage-claude/plugins-api#plugin-shares)). `{target}` is the literal `organization` for the plugin's organization-wide setting, or a group's `rbac_group_` ID for that group's setting; any other value returns `400`. Group IDs come from `GET /v1/organizations/rbac_groups` (scope `read:rbac_groups`; see [Groups in User management](https://platform.claude.com/docs/en/manage-claude/user-management#groups)). A setting has no `id` of its own: it is addressed by `(plugin_id, target)`, and no actor is recorded on it (the actor is on its `plugin_installation_preference_updated` activity event).
 
 ### List a plugin's installation settings
 
@@ -2218,7 +2218,7 @@ Send a plugin's installation-setting writes one at a time. If several writes for
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "type": "plugin_installation_setting",
   "plugin_id": "plugin_01Hq3vX8kZcN2mB7pR4tY9wL",
@@ -2338,7 +2338,7 @@ Send a plugin's installation-setting writes one at a time. If several writes for
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "type": "plugin_installation_setting_deleted",
   "plugin_id": "plugin_01Hq3vX8kZcN2mB7pR4tY9wL",
@@ -2454,7 +2454,7 @@ Shares exist only on member-owned plugins and are read-only in this API (see [Sh
   ```
 </CodeGroup>
 
-```json
+```text
 {
   "data": [
     {
@@ -2472,7 +2472,7 @@ Shares exist only on member-owned plugins and are read-only in this API (see [Sh
 
 This API reads [marketplaces](https://platform.claude.com/docs/en/manage-claude/plugins-api#marketplaces) and sets an organization marketplace's default installation setting; marketplaces themselves are created, connected to a repository, and deleted in claude.ai.
 
-```json
+```text wrap
 {
   "type": "plugin_marketplace",
   "id": "marketplace_01VbNcMxZaSdFgHjKlQwErTy",
@@ -2846,7 +2846,7 @@ Two endpoints report what a synchronization of the given marketplace content wou
 
 The repository, and any plugin source outside it on GitHub, are read anonymously, so a private repository or private plugin source is reported as not found. Plugin sources on hosts other than GitHub are not fetched; such a plugin normally gets a `marketplace_validate_source_not_checked` warning and is checked when the marketplace actually synchronizes. If the repository is, or the archive names, a marketplace that Anthropic synchronizes into every organization, stricter rules apply: every plugin source outside the marketplace must be pinned to a full commit SHA, unpinned or unsupported-host sources are reported as plugin errors, and the branch read defaults to the one that marketplace synchronizes from.
 
-`validate_repository` takes a JSON body with two fields: `repository_url`, the `https://` URL of a public repository on github.com (required), and `ref`, a branch name or a full 40-character commit SHA (optional; when it is omitted or `null`, the branch a synchronization would read, usually the repository's default branch). `validate_archive` takes `multipart/form-data` with exactly one part, `archive`, sent as a file part with a file name: a `.zip` of the marketplace directory, at most 32 MB, with its contents at the root or wrapped in one folder (as a Git host's download produces), DEFLATE or STORE compression only. No other form field is accepted.
+`validate_repository` takes a JSON body with two fields: `repository_url`, the `https://` URL of a public repository on github.com (required), and `ref`, a branch name or a full 40-character commit SHA (optional). When `ref` is omitted or `null`, it defaults to the branch a synchronization would read, usually the repository's default branch. `validate_archive` takes `multipart/form-data` with exactly one part, `archive`, sent as a file part with a file name: a `.zip` of the marketplace directory, at most 32 MB, with its contents at the root or wrapped in one folder (as a Git host's download produces), DEFLATE or STORE compression only. No other form field is accepted.
 
 Validate a public repository at a branch:
 
@@ -2965,7 +2965,7 @@ Validate a public repository at a branch:
   ```
 </CodeGroup>
 
-```json
+```text wrap
 {
   "type": "plugin_marketplace_validation_report",
   "valid": false,
@@ -3167,7 +3167,7 @@ Error responses follow the standard shape documented in [Claude API errors](http
 
 When one status has several causes that you would handle differently, the error also carries `error.details.error_code`, and `error.details.plugin_id` or `error.details.plugin_version_id` when the cause involves one:
 
-```json
+```text wrap
 {
   "type": "error",
   "error": {

@@ -274,7 +274,7 @@ Parameters:
 <Accordion title="Example view commands">
   Example for viewing a file:
 
-  ```json
+  ```text wrap
   {
     "type": "tool_use",
     "id": "toolu_01A09q90qw90lq917835lq9",
@@ -288,7 +288,7 @@ Parameters:
 
   Example for viewing a directory:
 
-  ```json
+  ```text wrap
   {
     "type": "tool_use",
     "id": "toolu_02B19r91rw91mr917835mr9",
@@ -313,7 +313,7 @@ Parameters:
 * `new_str`: The new text to insert in place of the old text
 
 <Accordion title="Example str_replace command">
-  ```json
+  ```text wrap
   {
     "type": "tool_use",
     "id": "toolu_01A09q90qw90lq917835lq9",
@@ -339,7 +339,7 @@ Parameters:
 * `file_text`: The content to write to the new file
 
 <Accordion title="Example create command">
-  ```json
+  ```text
   {
     "type": "tool_use",
     "id": "toolu_01A09q90qw90lq917835lq9",
@@ -365,7 +365,7 @@ Parameters:
 * `insert_text`: The text to insert
 
 <Accordion title="Example insert command">
-  ```json
+  ```text
   {
     "type": "tool_use",
     "id": "toolu_01A09q90qw90lq917835lq9",
@@ -560,7 +560,7 @@ First, your application provides Claude with the text editor tool and a prompt t
 
 Claude uses the text editor tool first to view the file:
 
-```json Output
+```text Output
 {
   "id": "msg_01XAbCDeFgHiJkLmNoPQrStU",
   "model": "claude-opus-5-5",
@@ -1021,7 +1021,7 @@ Your application should then read the file and return its contents to Claude:
 
 Claude identifies the syntax error and uses the `str_replace` command to fix it:
 
-```json Output
+```text Output
 {
   "id": "msg_01VwXyZAbCdEfGhIjKlMnO",
   "model": "claude-opus-5-5",
@@ -1461,7 +1461,7 @@ Your application should then make the edit and return the result:
 
 Finally, Claude provides a complete explanation of the fix:
 
-````json Output
+````text Output
 {
   "id": "msg_01IjKlMnOpQrStUvWxYzAb",
   "model": "claude-opus-5-5",
@@ -2258,11 +2258,11 @@ You can use the text editor tool alongside other Claude tools. When combining to
 
 Here are some ideas for how to use the text editor tool in more convenient and powerful ways:
 
-* **Integrate with your development workflow:** Build the text editor tool into your development tools or IDE
-* **Create a code review system:** Have Claude review your code and make improvements
-* **Build a debugging assistant:** Create a system where Claude can help you diagnose and fix issues in your code
-* **Implement file format conversion:** Let Claude help you convert files from one format to another
-* **Automate documentation:** Set up workflows for Claude to automatically document your code
+* **Integrate with your development workflow:** Build the text editor tool into your development tools or IDE.
+* **Create a code review system:** Have Claude review your code and make improvements.
+* **Build a debugging assistant:** Create a system where Claude can help you diagnose and fix issues in your code.
+* **Implement file format conversion:** Let Claude help you convert files from one format to another.
+* **Automate documentation:** Set up workflows for Claude to automatically document your code.
 
 The text editor tool allows Claude to work directly with your code base, supporting workflows from debugging to automated documentation.
 

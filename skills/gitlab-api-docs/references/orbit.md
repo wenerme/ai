@@ -15,6 +15,317 @@ REST API to run queries, retrieve schemas, and check cluster health for Orbit.
 Use this API to run queries, retrieve schemas, and check cluster health for
 [Orbit](https://gitlab.com/gitlab-org/orbit/knowledge-graph).
 
+## Search for graph entities
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256404) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Searches for readable entities in a project or group and returns Orbit entity tokens.
+Results use GitLab search, and might be available before the graph indexes the entities.
+The endpoint selects Zoekt, Advanced Search, or Basic search independently for each scope.
+Every selected scope appears in `scopes` with a `status`, so you can tell an empty scope from one that was skipped, unavailable, or failed.
+
+You need at least the Reporter role in a group under the target's top-level group, and Orbit must be turned on for that top-level group.
+Without a Reporter membership in any Orbit-enabled top-level group, such as a project-only member, the endpoint returns `403 Forbidden`.
+Otherwise, a target outside your Orbit-enabled top-level groups returns `404 Not Found`.
+Where the instance license covers Orbit, administrators in Admin Mode and auditors only need Orbit turned on for the target's top-level group.
+On GitLab.com, they still need the usual Orbit entitlement, like the other Orbit endpoints: a Reporter membership in an entitled top-level group.
+A search that GitLab search treats as abusive, such as a stop word or a term that is too short or too long, returns `400 Bad Request`.
+The endpoint counts toward the Orbit query rate limit. It also counts once toward the [search rate limit](../administration/instance_limits.md#search-rate-limit), plus once for each further scope it searches. Once you hit that limit, the remaining scopes return `rate_limited` without searching.
+
+```plaintext
+GET /api/v4/orbit/grep
+```
+
+Supported attributes:
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `search` | string | Yes | Search terms. Must contain between 2 and 256 bytes after leading and trailing whitespace is removed. |
+| `full_path` | string | Conditional | Full path of a project or group. Required if `namespace_id` and `project_id` are omitted. |
+| `namespace_id` | integer | Conditional | ID of a group. Required if `full_path` and `project_id` are omitted. |
+| `project_id` | integer | Conditional | ID of a project. Required if `full_path` and `namespace_id` are omitted. |
+| `limit` | integer | No | Maximum total results. From 1 to 50. Default is 20. |
+| `per_scope` | integer | No | Maximum results per scope. From 1 to 10 and no greater than `limit`. Default is 5. |
+| `response_format` | string | No | Response format. One of `raw` or `llm`. Default is `raw`. |
+| `scopes` | string array | No | Scopes to search, as a comma-separated list or repeated `scopes[]` parameters. Valid values: `work_items`, `merge_requests`, `blobs`, `commits`, `notes`, `milestones`, `users`, `projects`, and `groups`. Defaults to all scopes. |
+
+Provide exactly one of `full_path`, `namespace_id`, or `project_id`.
+Scopes are searched in a fixed order: work items, merge requests, blobs, commits, notes,
+milestones, users, projects, and groups. The total `limit` applies only to the selected scopes.
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
+response attributes for `response_format=raw`:
+
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| `request` | object | Effective request values: `search`, `limit`, and `per_scope`. |
+| `result_count` | integer | Number of returned results. |
+| `results` | object array | Results from all scopes, in scope order. |
+| `results[].id` | integer or string | Entity ID. The commit SHA for commits, and `null` for files. |
+| `results[].matches` | object array | Matched lines for a file, when the search type returns them. Each entry has `start_line`, `end_line`, and `text`. Basic search keeps the first match for each file. |
+| `results[].reference` | object | Structured entity reference. |
+| `results[].scope` | string | Scope that returned the result. |
+| `results[].text` | string | One-line result text, truncated to 200 characters. |
+| `results[].token` | string | Entity token in the form `Type[id]`. `null` for files and commits. |
+| `results[].type` | string | Orbit entity type. |
+| `scopes` | object array | One entry for every selected scope. |
+| `scopes[].backend` | string | Search type used for the scope: `basic`, `advanced`, or `zoekt`. Present when `status` is `ok`. |
+| `scopes[].name` | string | Search scope name. |
+| `scopes[].pagination` | object | Present when `status` is `ok`. `has_more` is `true` when the scope has more results than were returned. |
+| `scopes[].reason` | object | Present when `status` is not `ok`. `code` is one of `not_available_for_search_type`, `search_type_error`, `invalid_search`, `search_failed`, `timeout`, `rate_limited`, or `limit_reached`. |
+| `scopes[].result_count` | integer | Number of results from the scope. Present when `status` is `ok`. |
+| `scopes[].status` | string | One of `ok`, `unavailable`, `skipped`, or `error`. `unavailable` means the search type or target doesn't support the scope, the search backend rejected the request (for example, a Zoekt project limit), or you don't have access to it. `skipped` means the total `limit` was reached first. `error` means the search failed or hit the search rate limit, and other scopes keep their results. |
+| `target` | object | Search target. |
+| `target.full_path` | string | Full path of the target. |
+| `target.id` | integer | Target ID. |
+| `target.token` | string | Entity token of the target. |
+| `target.type` | string | `Project` or `Group`. |
+| `truncated` | boolean | Whether the total limit was reached before all scopes were exhausted, or a scope has more results than `per_scope`. |
+| `version` | string | Grep response contract version. |
+
+Files use a `reference` with `project_id`, `path`, `branch`, and `commit_sha`.
+`branch` is the default branch for Advanced Search and Zoekt results.
+`commit_sha` is the indexed commit for Advanced Search results, and `null` otherwise.
+Commits use a `reference` with `project_id` and `sha`.
+Other entities use a reference with the global database `id`.
+
+Example request:
+
+```shell
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/orbit/grep?search=search%20term&project_id=1&scopes=merge_requests,blobs,notes&limit=2&per_scope=2"
+```
+
+Example response:
+
+```json
+{
+  "version": "1.0.0",
+  "request": {"search": "search term", "limit": 2, "per_scope": 2},
+  "target": {"type": "Project", "id": 1, "token": "Project[1]", "full_path": "example-group/example-project"},
+  "scopes": [
+    {"name": "merge_requests", "status": "ok", "backend": "advanced", "result_count": 1, "pagination": {"has_more": false}},
+    {"name": "blobs", "status": "ok", "backend": "advanced", "result_count": 1, "pagination": {"has_more": true}},
+    {"name": "notes", "status": "skipped", "reason": {"code": "limit_reached"}}
+  ],
+  "results": [
+    {
+      "scope": "merge_requests",
+      "type": "MergeRequest",
+      "id": 42,
+      "token": "MergeRequest[42]",
+      "reference": {"id": 42},
+      "text": "Add scoped search"
+    },
+    {
+      "scope": "blobs",
+      "type": "File",
+      "id": null,
+      "token": null,
+      "reference": {"project_id": 1, "path": "README.md", "branch": "main", "commit_sha": "e79b2dc8c2cca1ed93c8c760dfa89b8e47ed1720"},
+      "text": "README.md",
+      "matches": [{"start_line": 3, "end_line": 5, "text": "A search term in context"}]
+    }
+  ],
+  "result_count": 2,
+  "truncated": true
+}
+```
+
+For `response_format=llm`, the endpoint returns compact `text/plain` output:
+
+```plaintext
+orbit_grep version=1.0.0 target=Project[1] search="search term" scopes="merge_requests,blobs,notes" results=2 truncated=true
+- MergeRequest[42] type=MergeRequest text="Add scoped search"
+- File project_id="1" path="README.md" branch="main" commit_sha="e79b2dc8c2cca1ed93c8c760dfa89b8e47ed1720" type=File text="README.md"
+! skipped scope=notes reason=limit_reached
+```
+
+## Entity context
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262223) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+> [!warning]
+> This endpoint is an experiment. The request and response shape can change without notice.
+
+Resolves one token to a PostgreSQL summary of a merge request or work item.
+Optionally, it attaches the graph neighborhood of the entity.
+
+Every request that reaches token resolution counts once against the `orbit_query` rate limit.
+This includes summary-only requests, `not_found` results, expansion errors, and `403` responses for users
+without an Orbit-enabled group. Requests rejected with `400` do not count.
+
+With a [fine-grained personal access token](../auth/tokens/fine_grained_access_tokens_rest.md), the
+`read_orbit` permission is not enough. The token also needs `read_merge_request` or `read_work_item` on the
+project or group of the entity, and `read_pipeline` on the project for the pipeline status. Without them,
+the entity is returned as `not_found`. The pipeline status is `null`, and linked items you cannot read are left out of the summary.
+The token's project scope applies to the entity summary only. The graph expansion is filtered by your own access, the same as for named queries.
+
+```plaintext
+POST /api/v4/orbit/context
+```
+
+Supported attributes:
+
+| Attribute         | Type         | Required | Description |
+|-------------------|--------------|----------|-------------|
+| `tokens`          | string array | Yes      | Exactly one token. See [token forms](#token-forms). |
+| `expand`          | boolean      | No       | If `true`, attaches the graph neighborhood of the entity. Default is `false`. |
+| `response_format` | string       | No       | One of `raw` or `llm`. Default is `raw`. |
+
+A `tokens` array that does not hold exactly one string, or a value for `expand` that is not the JSON
+boolean `true` or `false`, returns `400 Bad Request`.
+The endpoint requires a JSON request body.
+
+Other failures:
+
+- `403 Forbidden`: Orbit is not licensed for you, or you have no Orbit-enabled group.
+- `404 Not Found`: Orbit is not available for you.
+- `429 Too Many Requests`: You exceeded the `orbit_query` rate limit.
+
+### Token forms
+
+- `Type[id]`, for example `MergeRequest[123]`. `id` is the global database ID.
+- `gid://gitlab/<Type>/<id>`.
+- A merge request, issue, or work item URL on this instance, including group work item URLs under `/groups/`.
+- `path!iid` for a merge request, for example `gitlab-org/gitlab!42`.
+- `path#iid` for a work item, for example `gitlab-org/gitlab#7`. The path can also be a group.
+- `Epic[id]`, `gid://gitlab/Epic/<id>`, an epic URL such as `/groups/gitlab-org/-/epics/5`,
+  or `group&iid`, for example `gitlab-org&5`. `id` is the epic ID.
+
+The supported types are `MergeRequest` and `WorkItem`. `Issue` is an alias for `WorkItem`,
+and the response reports `WorkItem`. An epic resolves to its work item in the same way:
+the response reports `WorkItem`, the ID of the work item, and `work_item_type` `epic`,
+and the expansion runs for the work item. Other types return `unsupported_type`.
+
+### Response
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
+response attributes for `response_format=raw`:
+
+| Attribute                           | Type         | Description |
+|-------------------------------------|--------------|-------------|
+| `version`                           | string       | Response contract version, `1.1.0`. |
+| `entities`                          | object array | One entry for the one token. |
+| `entities[].token`                  | string       | Token as sent. |
+| `entities[].resolved_token`         | string       | Token in `Type[id]` form. Only present when `found` is `true`. |
+| `entities[].type`                   | string       | `MergeRequest` or `WorkItem`. `null` when `found` is `false`. |
+| `entities[].id`                     | string       | Global database ID, in the same form as the node IDs in the graph result. For `iid` forms, `null` when `found` is `false`. For `Type[id]` and GID tokens, the ID that was sent. |
+| `entities[].found`                  | boolean      | Whether the entity exists and you can read it. |
+| `entities[].summary`                | object       | Summary of a found entity. Contains `namespace_path` and `project_path`. `project_path` is `null` for group work items. Other fields can be added. |
+| `entities[].error.code`             | string       | `invalid_token`, `unsupported_type`, or `not_found`. Present when `found` is `false`. |
+| `entities[].expansion`              | object       | `null` when `expand` is `false` or the token was not found. Otherwise, `{"result": ...}` or `{"error": {"code": ...}}`, plus `query`. |
+| `entities[].expansion.query`        | object       | The named query that ran or would have run: `name` and `parameters` (`node_ids` and `limit`). Absent for `expansion_unsupported_type`. |
+
+Summaries include these fields:
+
+- For a merge request: title, state, author, branches, head pipeline status, reviewers, and linked issues.
+- For a work item: title, state, labels, assignees, milestone, and linked merge requests.
+
+Lists are limited and contain only records you can read. `summary.truncated` is an array with the names of
+the lists that were cut, for example `["reviewers"]`. It is empty when no list was cut.
+Entries in `linked_issues` and `linked_merge_requests` are ordered by ID and have `type`, `id`
+(a string), `token`, `relation` (`CLOSES`), `iid`, `project_path`, and `title`.
+Every failure after a lookup starts returns the same `not_found` error,
+whether the record is missing or you cannot read it.
+
+### Expansion
+
+With `expand`, the request runs at most one graph query, using the `expand_merge_request` or
+`expand_work_item` named query. A request that runs one query is billed as one query.
+A failure of the expansion never fails the summary.
+
+`expansion.query` has the `name` and `parameters` of the query. It is present on a result and on every error
+except `expansion_unsupported_type`, including when no query ran. After `outside_graph_scope`,
+a rerun is billed and returns nothing.
+
+`expansion.error.code` is one of:
+
+- `expansion_unsupported_type`: The type has no expansion query.
+- `outside_graph_scope`: The entity is outside the part of the graph you can query. This is a group where
+  you are not at least a Reporter, or a group where Orbit is not turned on. No query runs and nothing is billed.
+- `billing_namespace_required`: The error also has `message`, `deep_link` to your preferences,
+  and `candidates`, the groups you can select. This matches the `422` response of `POST /api/v4/orbit/query/:name`.
+- `quota_exhausted`, `timeout`, or `execution_error`.
+
+If `pagination.truncated` in the graph result is `false`, a missing center node means the entity
+has no readable neighbors. Otherwise, treat it as unknown.
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --header "Content-Type: application/json" \
+  --data '{"tokens": ["gitlab-org/gitlab#609451"], "expand": true}' \
+  --url "https://gitlab.example.com/api/v4/orbit/context"
+```
+
+Example response:
+
+```json
+{
+  "version": "1.1.0",
+  "entities": [
+    {
+      "token": "gitlab-org/gitlab#609451",
+      "resolved_token": "WorkItem[196910643]",
+      "type": "WorkItem",
+      "id": "196910643",
+      "found": true,
+      "summary": {
+        "namespace_path": "gitlab-org",
+        "project_path": "gitlab-org/gitlab",
+        "title": "Describe graph entities",
+        "state": "opened",
+        "iid": 609451,
+        "work_item_type": "issue",
+        "web_url": "https://gitlab.example.com/gitlab-org/gitlab/-/work_items/609451",
+        "labels": ["knowledge graph"],
+        "assignees": [{"id": 7, "username": "alex_smith", "name": "Alex Smith"}],
+        "milestone": null,
+        "linked_merge_requests": [
+          {
+            "type": "MergeRequest",
+            "id": "412345",
+            "token": "MergeRequest[412345]",
+            "relation": "CLOSES",
+            "iid": 1201,
+            "project_path": "gitlab-org/gitlab",
+            "title": "Add entity context"
+          }
+        ],
+        "truncated": []
+      },
+      "expansion": {
+        "query": {
+          "name": "expand_work_item",
+          "parameters": {"node_ids": [196910643], "limit": 100}
+        },
+        "result": {
+          "format_version": "5.0.4",
+          "query_type": "neighbors",
+          "nodes": [
+            {"type": "WorkItem", "id": "196910643", "title": "Describe graph entities"},
+            {"type": "MergeRequest", "id": "412345", "iid": 1201}
+          ],
+          "edges": [
+            {"from": "MergeRequest", "from_id": "412345", "to": "WorkItem", "to_id": "196910643", "type": "CLOSES"}
+          ],
+          "pagination": {"has_more": false, "truncated": false}
+        }
+      }
+    }
+  ]
+}
+```
+
+With `response_format=llm`, the response is `text/plain`. It contains the summary text,
+then the graph in TOON format under a `graph:` label, or a single `error <code>` line.
+
 ## Endpoint reference
 
 For the full reference of Orbit endpoints, including paths, parameters, and

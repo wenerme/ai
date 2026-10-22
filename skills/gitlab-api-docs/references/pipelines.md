@@ -578,9 +578,7 @@ Example of response
 ## Retry jobs in a pipeline
 
 - `409 Conflict` response for concurrent retries of the same pipeline [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627233) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `lock_concurrent_pipeline_retries`. Disabled by default.
-
-> [!flag]
-> The availability of the `409 Conflict` response is controlled by a feature flag. For more information, see the history.
+- `409 Conflict` response for concurrent retries [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/632226) in GitLab 19.6. Feature flag `lock_concurrent_pipeline_retries` removed.
 
 Retries failed or canceled jobs in a pipeline. If there are no failed or canceled jobs in the pipeline, calling this endpoint has no effect.
 

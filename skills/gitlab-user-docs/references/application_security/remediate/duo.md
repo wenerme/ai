@@ -2,7 +2,7 @@
 
 - Tier: Ultimate
 - Add-on: GitLab Duo Enterprise, GitLab Duo with Amazon Q
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated, GitLab Dedicated for Government
 
 ### Model information
 
