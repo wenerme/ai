@@ -419,16 +419,16 @@ Regional and multi-region endpoints include a 10 percent pricing premium over gl
 **Multi-region endpoints:**
 
 * Dynamically route requests across regions within a geographic area (currently `us` and `eu`)
-* Useful when you need data residency within a broad geography but want higher availability than a single region
-* 10 percent pricing premium over global endpoints
-* Only supports pay-as-you-go traffic (provisioned throughput requires regional endpoints)
+* Are useful when you need data residency within a broad geography but want higher availability than a single region
+* Carry a 10 percent pricing premium over global endpoints
+* Only support pay-as-you-go traffic (provisioned throughput requires regional endpoints)
 
 **Regional endpoints:**
 
 * Route traffic through specific geographic regions
-* Required for single-region data residency, strict compliance mandates, or provisioned throughput
+* Are required for single-region data residency, strict compliance mandates, or provisioned throughput
 * Support both pay-as-you-go and provisioned throughput
-* 10 percent pricing premium reflects infrastructure costs for dedicated regional capacity
+* Carry a 10 percent pricing premium that reflects infrastructure costs for dedicated regional capacity
 
 ### Implementation
 

@@ -92,7 +92,7 @@ tags:
   description: |-
     Use this API to interact with metric images for [alerts](https://docs.gitlab.com/operations/incident_management/alerts/).
 
-    Additional endpoints are available with the [GraphQL API](https://docs.gitlab.com/api/graphql/reference/#alertmanagementalert).
+    Additional endpoints are available with the [GraphQL API](https://docs.gitlab.com/api/graphql/reference/objects/#alertmanagementalert).
   x-displayName: Alert management
   externalDocs:
     url: https://docs.gitlab.com/api/alert_management_alerts/
@@ -956,10 +956,10 @@ tags:
     than grouped by train:
 
     - For an exact queue position, sort by `id` in ascending order, or use the GraphQL API
-      [`MergeTrainCar.index`](https://docs.gitlab.com/api/graphql/reference/#mergetraincar-index) field.
+      [`MergeTrainCar.index`](https://docs.gitlab.com/api/graphql/reference/objects/#mergetraincar) field.
     - To group merge requests by train, use the `target_branch` attribute, or query the GraphQL API
-      [`Project.mergeTrains`](https://docs.gitlab.com/api/graphql/reference/#projectmergetrains) and
-      [`MergeTrain.cars`](https://docs.gitlab.com/api/graphql/reference/#mergetraincars) fields.
+      [`Project.mergeTrains`](https://docs.gitlab.com/api/graphql/reference/objects/#project) and
+      [`MergeTrain.cars`](https://docs.gitlab.com/api/graphql/reference/objects/#mergetrain) fields.
   x-displayName: Merge trains
   externalDocs:
     url: https://docs.gitlab.com/api/merge_trains/
@@ -1737,7 +1737,7 @@ tags:
     > [!warning]
     > These endpoints are in the process of being deprecated and are considered unstable.
     > The response payload may be subject to change or breakage across GitLab releases. Use the
-    > [GraphQL API](https://docs.gitlab.com/api/graphql/reference/#queryvulnerabilities) instead.
+    > [GraphQL API](https://docs.gitlab.com/api/graphql/reference/queries/#vulnerabilities) instead.
     > For more information, see [replace vulnerability REST API with GraphQL](https://docs.gitlab.com/api/vulnerabilities/#replace-vulnerability-rest-api-with-graphql).
 
     Use this API to manage [vulnerabilities](https://docs.gitlab.com/user/application_security/vulnerabilities/),
@@ -1781,6 +1781,14 @@ tags:
 
     Alongside the work items themselves, you can retrieve their children, linked items, linked resources,
     notes, discussions, emoji reactions, email participants, and the current user's to-do items.
+
+    By default, responses include only the `id`, `iid`, `global_id`, and `title` of each work item.
+    Use the `fields` and `features` parameters to request more attributes.
+
+    > [!note]
+    > The availability of these endpoints is controlled by the `work_item_rest_api` feature flag.
+    > They are available for testing, but not ready for production use. While the flag is disabled,
+    > every endpoint except the list endpoints returns `404 Not Found`.
   x-displayName: Work items
   externalDocs:
     url: https://docs.gitlab.com/user/work_items/
@@ -2207,6 +2215,41 @@ paths:
               "$ref": "#/components/schemas/postApiV4OrbitQueryNameRequest"
       x-gitlab-tier: premium
       x-gitlab-lifecycle: beta
+  "/api/v4/orbit/context":
+    post:
+      operationId: postApiV4OrbitContext
+      summary: Get entity context
+      description: Resolves one Orbit token to a PostgreSQL summary and, optionally,
+        its graph neighborhood. Requests that reach token resolution count against
+        the orbit_query rate limit; with expand, they run at most one billable graph
+        query. Requires a JSON request body.
+      tags:
+      - Orbit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesOrbitContext"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/postApiV4OrbitContextRequest"
+      x-gitlab-tier: premium
+      x-gitlab-lifecycle: experiment
   "/api/v4/orbit/query/templates":
     get:
       operationId: getApiV4OrbitQueryTemplates
@@ -21995,6 +22038,13 @@ paths:
           type: string
           nullable: true
         in: query
+      - name: search_title
+        required: false
+        description: The search criteria for the title of the milestone
+        schema:
+          type: string
+          nullable: true
+        in: query
       - name: include_parent_milestones
         required: false
         description: If `true`, includes milestones from all parent groups. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/433298).
@@ -22028,6 +22078,51 @@ paths:
           type: string
           format: date-time
           nullable: true
+        in: query
+      - name: containing_date
+        required: false
+        description: 'Return milestones where start_date <= containing_date <= due_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: start_date
+        required: false
+        description: 'Return milestones where due_date >= start_date. Requires end_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: end_date
+        required: false
+        description: 'Return milestones where start_date <= end_date. Requires start_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: sort
+        required: false
+        description: Return milestones sorted in the given order
+        schema:
+          type: string
+          enum:
+          - due_date_asc
+          - due_date_desc
+          - start_date_asc
+          - start_date_desc
+          - name_asc
+          - name_desc
+          - created_asc
+          - created_desc
+          - updated_asc
+          - updated_desc
+          default: due_date_asc
         in: query
       - name: page
         required: false
@@ -24714,6 +24809,13 @@ paths:
           type: string
           nullable: true
         in: query
+      - name: search_title
+        required: false
+        description: The search criteria for the title of the milestone
+        schema:
+          type: string
+          nullable: true
+        in: query
       - name: include_parent_milestones
         required: false
         description: If `true`, includes milestones from all parent groups. [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/433298).
@@ -24747,6 +24849,51 @@ paths:
           type: string
           format: date-time
           nullable: true
+        in: query
+      - name: containing_date
+        required: false
+        description: 'Return milestones where start_date <= containing_date <= due_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: start_date
+        required: false
+        description: 'Return milestones where due_date >= start_date. Requires end_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: end_date
+        required: false
+        description: 'Return milestones where start_date <= end_date. Requires start_date.
+          Format: ISO 8601 YYYY-MM-DDTHH:MM:SSZ'
+        schema:
+          type: string
+          format: date-time
+          nullable: true
+        in: query
+      - name: sort
+        required: false
+        description: Return milestones sorted in the given order
+        schema:
+          type: string
+          enum:
+          - due_date_asc
+          - due_date_desc
+          - start_date_asc
+          - start_date_desc
+          - name_asc
+          - name_desc
+          - created_asc
+          - created_desc
+          - updated_asc
+          - updated_desc
+          default: due_date_asc
         in: query
       - name: page
         required: false
@@ -39892,7 +40039,10 @@ paths:
     post:
       operationId: postApiV4ProjectsIdHooks
       summary: Add a webhook to a project
-      description: Adds a webhook to a specified project.
+      description: Adds a webhook to a specified project. This endpoint has a rate
+        limit of five requests per minute for each authenticated user for a given
+        project. On GitLab Self-Managed and GitLab Dedicated, an administrator can
+        change this limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -39908,6 +40058,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -40389,6 +40541,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
       parameters:
@@ -40433,6 +40587,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '500':
           description: Internal Server Error
         '503':
@@ -61495,6 +61651,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
         '400':
@@ -61533,6 +61691,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
         '400':
@@ -84335,6 +84495,39 @@ components:
           type: string
           format: date-time
           example: '2026-07-22T11:42:00Z'
+    APIEntitiesOrbitContextEntity:
+      type: object
+      properties:
+        token:
+          type: string
+          example: MergeRequest[123]
+        resolved_token:
+          type: string
+          example: MergeRequest[123]
+        type:
+          type: string
+          example: MergeRequest
+        id:
+          type: string
+          example: '123'
+        found:
+          type: boolean
+        summary:
+          type: object
+        error:
+          type: object
+        expansion:
+          type: object
+    APIEntitiesOrbitContext:
+      type: object
+      properties:
+        version:
+          type: string
+          example: 1.1.0
+        entities:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesOrbitContextEntity"
     APIEntitiesOrbitSkillSummary:
       type: object
       properties:
@@ -84470,6 +84663,12 @@ components:
         flow_type:
           type: string
           example: external_agent
+        glab_version:
+          type: string
+          example: glab 1.121.0 (abc1234)
+        agent_version:
+          type: string
+          example: 2.1.295
         external_xid:
           type: string
           example: uuid
@@ -91382,6 +91581,36 @@ components:
         name:
           type: string
           example: Administrator
+    APIEntitiesWorkItemsStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the status.
+          example: 1
+        name:
+          type: string
+          description: Name of the status.
+          example: To do
+        icon_name:
+          type: string
+          description: Icon name of the status.
+          example: status-waiting
+        color:
+          type: string
+          description: Color of the status.
+          example: "#737278"
+        position:
+          type: integer
+          description: Position of the status within its category.
+          example: 0
+        description:
+          type: string
+          description: Description of the status.
+        category:
+          type: string
+          description: Category of the status.
+          example: to_do
     APIEntitiesList:
       type: object
       properties:
@@ -91400,6 +91629,8 @@ components:
           "$ref": "#/components/schemas/APIEntitiesIteration"
         assignee:
           "$ref": "#/components/schemas/APIEntitiesUserSafe"
+        status:
+          "$ref": "#/components/schemas/APIEntitiesWorkItemsStatus"
         max_issue_count:
           type: integer
           example: 0
@@ -93492,6 +93723,8 @@ components:
         users_api_limit_gpg_key:
           type: string
         tags_create_limit:
+          type: string
+        project_hooks_create_limit:
           type: string
         web_hook_event_resend_limit:
           type: string
@@ -98514,6 +98747,9 @@ components:
               example: 15.0.0
         enterprise:
           type: boolean
+        plan:
+          type: string
+          example: ultimate
     APIEntitiesMergeRequestDiff:
       type: object
       properties:
@@ -103189,6 +103425,30 @@ components:
           type: string
           description: Optional frontend source subtype (e.g. code_intelligence)
           nullable: true
+    postApiV4OrbitContextRequest:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            type: string
+          description: 'Exactly one token: Type[id], a GID, an instance URL, path!iid,
+            path#iid, or path&iid (epic)'
+          nullable: true
+        expand:
+          oneOf:
+          - type: boolean
+            default: false
+          description: Attach the graph neighborhood of the entity
+        response_format:
+          type: string
+          enum:
+          - raw
+          - llm
+          description: 'Response format: raw or llm'
+          default: raw
+      required:
+      - tokens
     postApiV4JobsIdSbomScansAuthorizeRequest:
       type: object
       properties:
@@ -103557,6 +103817,16 @@ components:
           type: string
           description: Workflow definition identifier for the session.
           nullable: true
+        glab_version:
+          type: string
+          description: Version of the glab binary that created the session.
+          nullable: true
+          maxLength: 255
+        agent_version:
+          type: string
+          description: Version of the agent that ran the session.
+          nullable: true
+          maxLength: 255
       required:
       - agent_type
       - agent_identity_id
@@ -104266,6 +104536,7 @@ components:
           - duo_cli_acp
           - ide_extension
           - work_item_plan_to_merge_request
+          - web_chat
           description: Where the session was triggered from in the UI.
           nullable: true
     postApiV4AiDuoWorkflowsWorkflowsWorkflowIdExecuteRequest:
@@ -111889,6 +112160,12 @@ components:
           type: string
           description: Enable PlantUML diagram proxy. Default is `false`.
           nullable: true
+        project_hooks_create_limit:
+          type: string
+          description: 'Maximum number of project webhooks a user can create per minute
+            for a given project. Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597)
+            in GitLab 19.6.'
+          nullable: true
         projects_api_rate_limit_unauthenticated:
           type: string
           description: 'Maximum number of requests per 10 minutes per IP address for
@@ -114781,22 +115058,29 @@ components:
         label_id:
           type: integer
           description: ID of the label. Exactly one of `label_id`, `milestone_id`,
-            `iteration_id`, `assignee_id` must be provided.
+            `iteration_id`, `assignee_id`, `status_id` must be provided.
           nullable: true
         milestone_id:
           type: integer
           description: The ID of an existing milestone. Exactly one of `label_id`,
-            `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            `milestone_id`, `iteration_id`, `assignee_id`, `status_id` must be provided.
           nullable: true
         iteration_id:
           type: integer
           description: ID of the iteration. Premium and Ultimate only. Exactly one
-            of `label_id`, `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            of `label_id`, `milestone_id`, `iteration_id`, `assignee_id`, `status_id`
+            must be provided.
           nullable: true
         assignee_id:
           type: integer
           description: ID of the user. Premium and Ultimate only. Exactly one of `label_id`,
-            `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            `milestone_id`, `iteration_id`, `assignee_id`, `status_id` must be provided.
+          nullable: true
+        status_id:
+          type: integer
+          description: ID of the status. Premium and Ultimate only. Exactly one of
+            `label_id`, `milestone_id`, `iteration_id`, `assignee_id`, `status_id`
+            must be provided.
           nullable: true
     putApiV4GroupsIdBoardsBoardIdListsListIdRequest:
       type: object
@@ -115270,22 +115554,29 @@ components:
         label_id:
           type: integer
           description: ID of the label. Exactly one of `label_id`, `milestone_id`,
-            `iteration_id`, `assignee_id` must be provided.
+            `iteration_id`, `assignee_id`, `status_id` must be provided.
           nullable: true
         milestone_id:
           type: integer
           description: The ID of an existing milestone. Exactly one of `label_id`,
-            `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            `milestone_id`, `iteration_id`, `assignee_id`, `status_id` must be provided.
           nullable: true
         iteration_id:
           type: integer
           description: ID of the iteration. Premium and Ultimate only. Exactly one
-            of `label_id`, `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            of `label_id`, `milestone_id`, `iteration_id`, `assignee_id`, `status_id`
+            must be provided.
           nullable: true
         assignee_id:
           type: integer
           description: ID of the user. Premium and Ultimate only. Exactly one of `label_id`,
-            `milestone_id`, `iteration_id`, `assignee_id` must be provided.
+            `milestone_id`, `iteration_id`, `assignee_id`, `status_id` must be provided.
+          nullable: true
+        status_id:
+          type: integer
+          description: ID of the status. Premium and Ultimate only. Exactly one of
+            `label_id`, `milestone_id`, `iteration_id`, `assignee_id`, `status_id`
+            must be provided.
           nullable: true
     putApiV4ProjectsIdBoardsBoardIdListsListIdRequest:
       type: object

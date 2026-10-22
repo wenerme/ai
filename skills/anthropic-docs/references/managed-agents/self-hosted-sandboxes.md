@@ -551,7 +551,7 @@ These pages describe how to build a worker on any sandboxing platform. Platform-
     Run the SDK worker, trigger workers from webhooks, or give each session its own sandbox.
   </Card>
 
-  <Card title="Memory stores" icon="brain" href="https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-memory">
+  <Card title="Memory stores in self-hosted sandboxes" icon="brain" href="https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-memory">
     Prepare the host, configure sync, and handle read-only stores and conflicts.
   </Card>
 

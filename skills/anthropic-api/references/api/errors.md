@@ -57,7 +57,7 @@ If you exceed these limits, you'll receive a 413 `request_too_large` error. On t
 
 The API always returns errors as JSON, with a top-level `error` object that always includes a `type` and `message` value. The response also includes a `request_id` field for easier tracking and debugging. For example:
 
-```json JSON
+```text JSON wrap
 {
   "type": "error",
   "error": {
@@ -422,7 +422,7 @@ If you don't need to process events incrementally, the SDK can consume the strea
   ```
 </CodeGroup>
 
-See [Streaming messages](https://platform.claude.com/docs/en/build-with-claude/streaming#get-the-final-message-without-handling-events) for more details.
+See [Get the final message without handling events](https://platform.claude.com/docs/en/build-with-claude/streaming#get-the-final-message-without-handling-events) for more details.
 
 ## Common validation errors
 
@@ -430,7 +430,7 @@ See [Streaming messages](https://platform.claude.com/docs/en/build-with-claude/s
 
 Claude 4.6 and later models and [Claude Mythos Preview](https://anthropic.com/glasswing) do not support prefilling assistant messages. Sending a request with a prefilled last assistant message to any of these models returns a 400 `invalid_request_error`:
 
-```json
+```text
 {
   "type": "error",
   "error": {

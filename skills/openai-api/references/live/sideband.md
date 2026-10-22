@@ -44,11 +44,11 @@ Use Bearer Auth (header Authorization).
 
       Sparse delegation and trigger updates. Omitted settings retain their values. The delegation type cannot change. Model, frontend instructions, audio, and startup input are immutable.
 
-      - `delegation: optional ClientDelegation or Responses { type, responses }  or Decisions { type, decisions }  or null`
+      - `delegation: optional ClientDelegation or Responses { type, acknowledgement_delay_ms, responses }  or Decisions { type, acknowledgement_delay_ms, decisions }  or null`
 
         Delegation settings to update. The delegation type must match the current session; omitted settings retain their values.
 
-        - `ClientDelegation object { type }`
+        - `ClientDelegation object { type, acknowledgement_delay_ms }`
 
           Delegate tasks to your application. The Live session emits delegation events that your backend handles.
 
@@ -58,7 +58,11 @@ Use Bearer Auth (header Authorization).
 
             - `"client"`
 
-        - `Responses object { type, responses }`
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+        - `Responses object { type, acknowledgement_delay_ms, responses }`
 
           Update the Responses backend for an existing Live session without changing delegation ownership.
 
@@ -67,6 +71,10 @@ Use Bearer Auth (header Authorization).
             The delegation owner. Always `responses` for tasks handled by the Responses API.
 
             - `"responses"`
+
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
           - `responses: optional ResponsesDelegationUpdateConfig`
 
@@ -664,11 +672,15 @@ Use Bearer Auth (header Authorization).
 
                   - `"apply_patch"`
 
-        - `Decisions object { type, decisions }`
+        - `Decisions object { type, acknowledgement_delay_ms, decisions }`
 
           - `type: "decisions"`
 
             - `"decisions"`
+
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
           - `decisions: optional DecisionsDelegationUpdateConfig`
 
@@ -5726,11 +5738,11 @@ Use Bearer Auth (header Authorization).
 
                 The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
 
-      - `delegation: optional ClientDelegation or Responses { responses, type }  or Decisions { decisions, type }  or null`
+      - `delegation: optional ClientDelegation or Responses { responses, type, acknowledgement_delay_ms }  or Decisions { decisions, type, acknowledgement_delay_ms }  or null`
 
         Who handles tasks delegated by the Live model. Omitted or null selects your application; use `responses` or `decisions` to delegate to the corresponding API.
 
-        - `ClientDelegation object { type }`
+        - `ClientDelegation object { type, acknowledgement_delay_ms }`
 
           Delegate tasks to your application. The Live session emits delegation events that your backend handles.
 
@@ -5740,7 +5752,11 @@ Use Bearer Auth (header Authorization).
 
             - `"client"`
 
-        - `Responses object { responses, type }`
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+        - `Responses object { responses, type, acknowledgement_delay_ms }`
 
           Delegate tasks to a Responses model managed by the Live session.
 
@@ -6346,7 +6362,11 @@ Use Bearer Auth (header Authorization).
 
             - `"responses"`
 
-        - `Decisions object { decisions, type }`
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+        - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
           - `decisions: object { model, questions }`
 
@@ -6421,6 +6441,10 @@ Use Bearer Auth (header Authorization).
           - `type: "decisions"`
 
             - `"decisions"`
+
+          - `acknowledgement_delay_ms: optional number`
+
+            Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
       - `input: optional array of InitialItem`
 

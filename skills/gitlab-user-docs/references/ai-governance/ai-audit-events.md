@@ -76,10 +76,12 @@ like status, timing, model, and tool names, but no prompts, responses, or tool c
 ## Enable AI audit event storage
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/603892) in GitLab 19.2.
+- Writing AI audit events to `audit_json.log` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263210) to respect this setting in GitLab 19.6.
 
 AI audit event storage is disabled by default.
 You must explicitly enable storage
-before agent session data is written to the database or ClickHouse.
+before agent session data is written to the database or ClickHouse,
+or to the [`audit_json.log`](../../administration/logs/_index.md#audit_jsonlog) file.
 Disabling storage does not affect real-time streaming of AI audit events.
 
 The setting cascades from instance to group to project:

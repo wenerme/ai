@@ -1735,7 +1735,7 @@ You can use both thinking block clearing and tool result clearing together:
 
 You can see which context edits were applied to your request using the `context_management` response field, along with helpful statistics about the content and input tokens cleared.
 
-```json Output
+```text Output wrap
 {
   "id": "msg_013Zva2CMHLNnXjNJJKqJ2EF",
   "type": "message",
@@ -1767,7 +1767,7 @@ You can see which context edits were applied to your request using the `context_
 
 For streaming responses, the context edits are included in the final `message_delta` event:
 
-```json Streaming Response
+```text Streaming Response wrap
 {
   "type": "message_delta",
   "delta": {
@@ -2069,7 +2069,7 @@ The [token counting](https://platform.claude.com/docs/en/build-with-claude/token
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 {
   "input_tokens": 25000,
   "context_management": {
@@ -2798,7 +2798,7 @@ When using server-side tools, the SDK might incorrectly calculate token usage, c
 
 For example, after a web search operation, the API response might show:
 
-```json Output
+```text Output wrap
 {
   "usage": {
     "input_tokens": 63000,

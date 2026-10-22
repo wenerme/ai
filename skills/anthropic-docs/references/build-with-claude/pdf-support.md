@@ -349,7 +349,7 @@ The simplest approach is to reference a PDF directly from a URL:
 
 The response returns Claude's analysis as text blocks in `content`, with token consumption in `usage`:
 
-```json Output
+```text Output
 {
   "id": "msg_01Hfp8YuFjQ55VgWbpdHDehB",
   "type": "message",
@@ -1012,7 +1012,7 @@ When you send a PDF to Claude, the following steps occur:
     * The text from each page is extracted and provided alongside each page's image.
   </Step>
 
-  <Step title="Claude analyzes both the text and images to better understand the document.">
+  <Step title="Claude analyzes both the text and images.">
     * Documents are provided as a combination of text and images for analysis.
     * This allows users to ask for insights on visual elements of a PDF, such as charts, diagrams, and other non-textual content.
   </Step>

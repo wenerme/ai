@@ -19,7 +19,7 @@ Building reliable agentic systems requires guaranteed schema conformance. Withou
 
 Strict tool use guarantees type-safe parameters:
 
-* Functions receive correctly typed arguments every time
+* Correctly typed function arguments every time
 * No need to validate and retry tool calls
 * Production-ready agents that work consistently at scale
 
@@ -349,7 +349,7 @@ For example, suppose a booking system needs `passengers: int`. Without strict mo
 
 **Response format:** Tool use blocks with validated inputs in `response.content[x].input`
 
-```json Output
+```text Output wrap
 {
   "type": "tool_use",
   "name": "get_weather",

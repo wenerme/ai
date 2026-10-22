@@ -28,7 +28,7 @@ ls
 glab issue list --all
 glab issue ls --all
 glab issue list --assignee=@me
-glab issue list --milestone release-2.0.0 --opened
+glab issue list --milestone release-2.0.0
 glab issue list --updated-after 2026-10-01T00:00:00Z
 ```
 

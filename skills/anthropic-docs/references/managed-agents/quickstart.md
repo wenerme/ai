@@ -33,7 +33,7 @@ This guide walks you through creating an agent, setting up an environment, start
 
 ## Prerequisites
 
-* A [Claude Console account](https://platform.claude.com)
+* A [Claude Console account](https://platform.claude.com/)
 * An [API key](https://platform.claude.com/settings/keys) from the Console
 
 ## Install the CLI

@@ -378,6 +378,7 @@ Example response:
   "users_api_limit_ssh_key": 120,
   "users_api_limit_gpg_keys": 120,
   "users_api_limit_gpg_key": 120,
+  "project_hooks_create_limit": 5,
   "web_hook_event_resend_limit": 5,
   "web_hook_test_limit": 5,
   "silent_mode_enabled": false,
@@ -800,6 +801,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `project_download_export_limit`          | integer          | no                                   | Maximum number of project export downloads per minute per user for each project. Default: `1`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
 | `project_export_enabled`                 | boolean          | no                                   | Enable project export. |
 | `project_export_limit`                   | integer          | no                                   | Maximum number of project exports per minute per user. Default: `6`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
+| `project_hooks_create_limit`             | integer          | no                                   | Maximum number of project webhooks a user can create per minute for a given project. Default: 5. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597) in GitLab 19.6. |
 | `project_import_limit`                   | integer          | no                                   | Maximum number of project imports per minute per user. Default: `6`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
 | `project_invited_groups_api_limit`       | integer          | no                                   | Maximum number of requests per minute per user or IP address to `GET /projects/:id/invited_groups`. Default: `60`. Set to `0` to disable the rate limit. See [Projects API rate limits](../rate_limits/api/projects.md). |
 | `project_jobs_api_rate_limit`            | integer          | no                                   | Maximum authenticated requests to `/project/:id/jobs` per minute. Default: 600. |

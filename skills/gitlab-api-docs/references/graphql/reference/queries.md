@@ -3,19 +3,19 @@
 Entry points for reading data from the GitLab GraphQL API.
 
 Queries are the top-level entry points for reading data from the
-[GitLab GraphQL API](../../_index.md). You can explore queries interactively
-using the [GraphiQL explorer](../../getting_started.md#graphiql).
+[GitLab GraphQL API](../_index.md). You can explore queries interactively
+using the [GraphiQL explorer](../getting_started.md#graphiql).
 
 > [!warning]
 > Deprecated items are planned to be removed in a
 > future release. For more information, see the GitLab
-> [deprecation process](../../_index.md#deprecation-and-removal-process).
+> [deprecation process](../_index.md#deprecation-and-removal-process).
 
 ## `abuseReport`
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.3.
 
 Find an abuse report.
 
@@ -31,7 +31,7 @@ Find an abuse report.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
 
 List of permissions for fine-grained access tokens.
 
@@ -53,7 +53,7 @@ Retrieve all active add-on purchases. This query can be used in GitLab.com and s
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
 
 List groups with their resolved GitLab Duo availability for admin overrides. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -73,7 +73,7 @@ List groups with their resolved GitLab Duo availability for admin overrides. Thi
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
 Find groups visible to the current admin. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -101,7 +101,7 @@ Find groups visible to the current admin. This field is a [connection](objects.m
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
 
 Finds a single admin custom role for the instance. Available only for GitLab Self-Managed.
 
@@ -121,7 +121,7 @@ Finds a single admin custom role for the instance. Available only for GitLab Sel
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
 
 List of all admin customizable permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -131,7 +131,7 @@ List of all admin customizable permissions. This field is a [connection](objects
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
 
 Admin custom roles available for the instance. Available only for GitLab Self-Managed. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -151,7 +151,7 @@ Admin custom roles available for the instance. Available only for GitLab Self-Ma
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
 Find projects visible to the current admin. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -164,7 +164,7 @@ Find projects visible to the current admin. This field is a [connection](objects
 | `active` | [`Boolean`](scalars.md#boolean) | Filters by projects that are not archived and not marked for deletion. |  |
 | `aimedForDeletion` | [`Boolean`](scalars.md#boolean) | Return only projects marked for deletion. |  |
 | `archived` | [`ProjectArchived`](enums.md#projectarchived) | Filter projects by archived status. |  |
-| `duoLicensedFeature` | [`DuoLicensedFeature`](enums.md#duolicensedfeature) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Include only projects eligible for the specified GitLab Duo licensed feature. Results are automatically filtered to projects where the user has the Maintainer or Owner role. |  |
+| `duoLicensedFeature` | [`DuoLicensedFeature`](enums.md#duolicensedfeature) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Include only projects eligible for the specified GitLab Duo licensed feature. Results are automatically filtered to projects where the user has the Maintainer or Owner role. |  |
 | `fullPaths` | [`[String!]`](scalars.md#string) | Filter projects by full paths. You cannot provide more than 50 full paths. |  |
 | `ids` | [`[ID!]`](scalars.md#id) | Filter projects by IDs. |  |
 | `includeHidden` | [`Boolean`](scalars.md#boolean) | Include hidden projects. |  |
@@ -189,7 +189,7 @@ Find projects visible to the current admin. This field is a [connection](objects
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
 Get flow configuration for an AI Catalog agent.
 
@@ -206,7 +206,7 @@ Get flow configuration for an AI Catalog agent.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
 
 List of AI Catalog built-in tools. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -216,7 +216,7 @@ List of AI Catalog built-in tools. This field is a [connection](objects.md#conne
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
 
 AI Catalog items configured for use. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -229,7 +229,7 @@ AI Catalog items configured for use. This field is a [connection](objects.md#con
 | `configurableForProjectId` | [`ProjectID`](scalars.md#projectid) | Project ID to filter AI Catalog item consumers. When provided with group_id, returns only consumers whose associated items are configurable within the project (i.e., group-enabled items that are public or owned by the project). Excludes consumers for items that are private to other projects. |  |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Filter by foundational flow reference. |  |
 | `groupId` | [`GroupID`](scalars.md#groupid) | Group ID to retrieve configured AI Catalog items for. |  |
-| `includeFoundationalConsumers` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Include configured foundational AI Catalog items. | `false` |
+| `includeFoundationalConsumers` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Include configured foundational AI Catalog items. | `false` |
 | `includeInherited` | [`Boolean`](scalars.md#boolean) | Include configured AI Catalog items inherited from the project's top-level group. Can only be used with `projectId`. |  |
 | `itemId` | [`AiCatalogItemID`](scalars.md#aicatalogitemid) | Item ID to retrieve configured AI Catalog items for. |  |
 | `itemType` | [`AiCatalogItemType`](enums.md#aicatalogitemtype) | Type of items to retrieve. |  |
@@ -241,7 +241,7 @@ AI Catalog items configured for use. This field is a [connection](objects.md#con
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
 List of AI Catalog items, including foundational items. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -259,7 +259,7 @@ List of AI Catalog items, including foundational items. This field is a [connect
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
 
 Find an AI Catalog item.
 
@@ -276,7 +276,7 @@ Find an AI Catalog item.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
 
 Find a single AI Catalog item consumer by ID.
 
@@ -292,7 +292,7 @@ Find a single AI Catalog item consumer by ID.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.8.
 
 Public AI Catalog item versions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -309,7 +309,7 @@ Public AI Catalog item versions. This field is a [connection](objects.md#connect
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
 
 List of AI Catalog items. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -328,7 +328,7 @@ List of AI Catalog items. This field is a [connection](objects.md#connections-an
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
 Find an AI Catalog MCP server by ID.
 
@@ -344,7 +344,7 @@ Find an AI Catalog MCP server by ID.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
 List of AI Catalog MCP servers. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -354,7 +354,7 @@ List of AI Catalog MCP servers. This field is a [connection](objects.md#connecti
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 List of MCP tools dynamically discovered from the GitLab MCP server. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -364,7 +364,7 @@ List of MCP tools dynamically discovered from the GitLab MCP server. This field 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
 Get available models for Duo Agentic Chat.
 
@@ -399,7 +399,7 @@ Get available GitLab Duo Chat context presets for the current user for a specifi
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Get projects that can be included by the current user in a GitLab Duo Chat context. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -415,7 +415,7 @@ Get projects that can be included by the current user in a GitLab Duo Chat conte
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
 
 List conversation threads of AI features. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -432,7 +432,7 @@ List conversation threads of AI features. This field is a [connection](objects.m
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
 List of allowed or denied domains for AI features. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -449,7 +449,7 @@ List of allowed or denied domains for AI features. This field is a [connection](
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.4.
 
 List of configurable AI features. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -465,7 +465,7 @@ List of configurable AI features. This field is a [connection](objects.md#connec
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
 
 Metadata describing Duo Agent Platform flow capabilities available to the caller.
 
@@ -483,7 +483,7 @@ Metadata describing Duo Agent Platform flow capabilities available to the caller
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
 Core agent in GitLab.
 
@@ -499,7 +499,7 @@ Core agent in GitLab.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
 
 Core agents in GitLab. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -516,7 +516,7 @@ Core agents in GitLab. This field is a [connection](objects.md#connections-and-p
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.1.
 
 Find GitLab Duo Chat messages. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -535,7 +535,7 @@ Find GitLab Duo Chat messages. This field is a [connection](objects.md#connectio
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.
 
 List of configurable AI features for namespace Model Selection. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -551,7 +551,7 @@ List of configurable AI features for namespace Model Selection. This field is a 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.1.
 
 Returns the self-hosted model if an ID is provided, otherwise returns all models. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -579,7 +579,7 @@ Get available GitLab Duo Chat slash commands for the current user for a specific
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.1.
 
 AI tool governance rules for a namespace. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -598,7 +598,7 @@ AI tool governance rules for a namespace. This field is a [connection](objects.m
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Instance level AI-related data. Admins only.
 
@@ -608,7 +608,7 @@ Instance level AI-related data. Admins only.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
 Direct Artifact Registry role assignments on the given resources. Returns only roles assigned on a resource itself, not members who inherit access from a membership on an ancestor namespace, so it is not a complete list of everyone who can access the resource. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -638,7 +638,7 @@ Deprecated in GitLab 18.10. Use `auditEventsInstanceStreamingDestinations` with 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.11.
 
 Instance-level external audit event streaming destinations. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -648,7 +648,7 @@ Instance-level external audit event streaming destinations. This field is a [con
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
 
 Find code visible to the current user.
 
@@ -658,16 +658,16 @@ Find code visible to the current user.
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
-| `chunkCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Maximum chunks per file. | `3` |
-| `excludeForks` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.11.Excludes forked projects in the search. Always false for project search. Default is true. | `true` |
-| `groupId` | [`GroupID`](scalars.md#groupid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Group to search in. |  |
-| `includeArchived` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Includes archived projects in the search. Always true for project search. Default is false. | `false` |
-| `language` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Filter results to the given detected languages (for example, `["Ruby", "Go"]`). |  |
-| `page` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Page number to fetch the results. | `1` |
-| `perPage` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Number of results per page. | `20` |
-| `projectId` | [`ProjectID`](scalars.md#projectid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Project to search in. |  |
-| `regex` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.3.Uses the regular expression search mode. Default is false. | `false` |
-| `repositoryRef` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Repository reference to search in. |  |
+| `chunkCount` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Maximum chunks per file. | `3` |
+| `excludeForks` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.11.Excludes forked projects in the search. Always false for project search. Default is true. | `true` |
+| `groupId` | [`GroupID`](scalars.md#groupid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Group to search in. |  |
+| `includeArchived` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Includes archived projects in the search. Always true for project search. Default is false. | `false` |
+| `language` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Filter results to the given detected languages (for example, `["Ruby", "Go"]`). |  |
+| `page` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Page number to fetch the results. | `1` |
+| `perPage` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Number of results per page. | `20` |
+| `projectId` | [`ProjectID`](scalars.md#projectid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Project to search in. |  |
+| `regex` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.3.Uses the regular expression search mode. Default is false. | `false` |
+| `repositoryRef` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.Repository reference to search in. |  |
 | `search` | [`String!`](scalars.md#string) | Searched term. |  |
 
 ## `boardList`
@@ -693,7 +693,7 @@ CI related settings that apply to the entire instance.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
 GitLab-maintained bundled CI/CD Catalog resources available on the current cell. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -703,7 +703,7 @@ GitLab-maintained bundled CI/CD Catalog resources available on the current cell.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.1.
 
 A single CI/CD Catalog resource visible to an authorized user.
 
@@ -720,7 +720,7 @@ A single CI/CD Catalog resource visible to an authorized user.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.11.
 
 All CI/CD Catalog resources under a common namespace, visible to an authorized user. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -740,7 +740,7 @@ All CI/CD Catalog resources under a common namespace, visible to an authorized u
 
 ## `ciConfig`
 
-Deprecated in GitLab 18.1. Use CiLint mutation: <https://docs.gitlab.com/api/graphql/reference/#mutationcilint>.
+Deprecated in GitLab 18.1. Use CiLint mutation: <https://docs.gitlab.com/api/graphql/reference/mutations/#cilint>.
 
 **Returns:** [`CiConfig`](objects.md#ciconfig)
 
@@ -752,7 +752,7 @@ Deprecated in GitLab 18.1. Use CiLint mutation: <https://docs.gitlab.com/api/gra
 | `dryRun` | [`Boolean`](scalars.md#boolean) | Run pipeline creation simulation, or only do static check. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project of the CI config. |
 | `sha` | [`String`](scalars.md#string) | Sha for the pipeline. |
-| `skipVerifyProjectSha` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.5.If the provided `sha` is found in the project's repository but is not associated with a Git reference (a detached commit), the verification fails and a validation error is returned. Otherwise, verification passes, even if the `sha` is invalid. Set to `true` to skip this verification process. |
+| `skipVerifyProjectSha` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.5.If the provided `sha` is found in the project's repository but is not associated with a Git reference (a detached commit), the verification fails and a validation error is returned. Otherwise, verification passes, even if the `sha` is invalid. Set to `true` to skip this verification process. |
 
 ## `ciDedicatedHostedRunnerFilters`
 
@@ -843,7 +843,7 @@ List of the instance's CI/CD variables. This field is a [connection](objects.md#
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.3.
 
 Run a series of status checks for Cloud Connector features.
 
@@ -923,7 +923,7 @@ Find custom dashboards for an organization. This field is a [connection](objects
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
 
 Find a custom field by its ID.
 
@@ -981,7 +981,7 @@ Get configured DevOps adoption namespaces. **Status**: Beta. This endpoint is su
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 List namespaces suitable to be set as default namespace. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -991,7 +991,7 @@ List namespaces suitable to be set as default namespace. This field is a [connec
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
 
 Get GitLab Duo settings.
 
@@ -1001,7 +1001,7 @@ Get GitLab Duo settings.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
 The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an error unless the message is on the current branch of the session. Returns an empty list if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints.
 
@@ -1018,7 +1018,7 @@ The alternative branches to the provided user message. Multiple branches can be 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
 
 List the events for a Duo Agent Platform. Returns only the latest checkpoint by default. Use `first` and `after` to page through history. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1034,7 +1034,7 @@ List the events for a Duo Agent Platform. Returns only the latest checkpoint by 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
 
 Projects the current user has Duo Agent Platform sessions in, ordered by most recent session activity. Not a complete list: limited to the 50 most recent projects.
 
@@ -1051,7 +1051,7 @@ List the workflows owned by the current user. This field is a [connection](objec
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `environment` | [`WorkflowEnvironment`](enums.md#workflowenvironment) | Environment, for example, IDE or web. |  |
-| `excludeSourceTypes` | [`[DuoWorkflowSourceType!]`](enums.md#duoworkflowsourcetype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Source types to exclude. Sessions with no recorded source type are never excluded. |  |
+| `excludeSourceTypes` | [`[DuoWorkflowSourceType!]`](enums.md#duoworkflowsourcetype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Source types to exclude. Sessions with no recorded source type are never excluded. |  |
 | `excludeTypes` | [`[String!]`](scalars.md#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |  |
 | `ids` | [`[AiDuoWorkflowsWorkflowID!]`](scalars.md#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |  |
 | `projectId` | [`ProjectID`](scalars.md#projectid) | Global ID of the project that contains the flows. |  |
@@ -1121,7 +1121,7 @@ A user's frecently visited projects.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
 
 Status of a GitLab Duo Agent Platform functional verification check.
 
@@ -1149,7 +1149,7 @@ Find a Geo node.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Whether GitLab credits are available for the current user.
 
@@ -1165,7 +1165,7 @@ Whether GitLab credits are available for the current user.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.
 
 Reason GitLab credits are unavailable. Returns "usage_billing_forbidden" when usage billing is not available for the account. Returns null when credits are available or the unavailability reason is not recognized.
 
@@ -1187,7 +1187,7 @@ Whether Ona is enabled in application settings.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.10.
 
 Details about an artifact in the Google Artifact Registry.
 
@@ -1219,7 +1219,7 @@ Find a group.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
 
 View a specific group secret.
 
@@ -1236,7 +1236,7 @@ View a specific group secret.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
 
 List group secrets. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1252,7 +1252,7 @@ List group secrets. This field is a [connection](objects.md#connections-and-pagi
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Total number of secrets in a group.
 
@@ -1268,7 +1268,7 @@ Total number of secrets in a group.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
 
 Find a group secrets manager.
 
@@ -1284,7 +1284,7 @@ Find a group secrets manager.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
 List group secrets that need to be rotated. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1300,7 +1300,7 @@ List group secrets that need to be rotated. This field is a [connection](objects
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 List group secrets permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1335,7 +1335,7 @@ Find groups. This field is a [connection](objects.md#connections-and-pagination)
 | `sort` | [`String`](scalars.md#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply. | `"name_asc"` |
 | `topLevelOnly` | [`Boolean`](scalars.md#boolean) | Only include top-level groups. | `false` |
 | `visibilityLevel` | [`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum) | Filter groups by visibility level. |  |
-| `withKnowledgeGraphEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Return only groups with Knowledge Graph enabled. | `false` |
+| `withKnowledgeGraphEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Return only groups with Knowledge Graph enabled. | `false` |
 
 ## `instanceExternalAuditEventDestinations`
 
@@ -1353,7 +1353,7 @@ Deprecated in GitLab 18.10. Use `auditEventsInstanceStreamingDestinations` with 
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
 Check if Secrets Manager is enrolled at the instance level.
 
@@ -1369,7 +1369,7 @@ Fields related to Instance Security Dashboard.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.0.
 
 This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1397,7 +1397,7 @@ Find an issue.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.6.
 
 Find issues visible to the current user. At least one filter must be provided. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1419,7 +1419,7 @@ Find issues visible to the current user. At least one filter must be provided. T
 | `createdBefore` | [`Time`](scalars.md#time) | Issues created before the date. |  |
 | `crmContactId` | [`String`](scalars.md#string) | ID of a contact assigned to the issues. |  |
 | `crmOrganizationId` | [`String`](scalars.md#string) | ID of an organization assigned to the issues. |  |
-| `customField` | [`[WorkItemWidgetCustomFieldFilterInputType!]`](input_objects.md#workitemwidgetcustomfieldfilterinputtype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.Filter by custom fields. |  |
+| `customField` | [`[WorkItemWidgetCustomFieldFilterInputType!]`](input_objects.md#workitemwidgetcustomfieldfilterinputtype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.Filter by custom fields. |  |
 | `dueAfter` | [`Time`](scalars.md#time) | Return issues due on or after the given time. |  |
 | `dueBefore` | [`Time`](scalars.md#time) | Return issues due on or before the given time. |  |
 | `epicId` | [`String`](scalars.md#string) | ID of an epic associated with the issues, "none" and "any" values are supported. |  |
@@ -1443,7 +1443,7 @@ Find issues visible to the current user. At least one filter must be provided. T
 | `search` | [`String`](scalars.md#string) | Search query for title or description. |  |
 | `sort` | [`IssueSort`](enums.md#issuesort) | Sort issues by the criteria. | `created_desc` |
 | `state` | [`IssuableState`](enums.md#issuablestate) | Current state of the issue. |  |
-| `status` | [`WorkItemWidgetStatusFilterInput`](input_objects.md#workitemwidgetstatusfilterinput) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Filter by status. |  |
+| `status` | [`WorkItemWidgetStatusFilterInput`](input_objects.md#workitemwidgetstatusfilterinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Filter by status. |  |
 | `subscribed` | [`SubscriptionStatus`](enums.md#subscriptionstatus) | Issues the current user is subscribed to. |  |
 | `types` | [`[IssueType!]`](enums.md#issuetype) | Filter issues by the given issue types. |  |
 | `updatedAfter` | [`Time`](scalars.md#time) | Issues updated after the date. |  |
@@ -1474,16 +1474,16 @@ All jobs on this GitLab instance. Returns an empty result for users without admi
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `compatibleRunnerId` | [`CiRunnerID`](scalars.md#cirunnerid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.ID of a runner that matches the requirements of the jobs returned (normally used when filtering pending jobs). |
-| `failureReason` | [`CiJobFailureReason`](enums.md#cijobfailurereason) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by failure reason. Currently only `RUNNER_SYSTEM_FAILURE` together with `runnerTypes: INSTANCE_TYPE` is supported. |
-| `runnerTypes` | [`[CiRunnerType!]`](enums.md#cirunnertype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by runner type if feature flag `:admin_jobs_filter_runner_type` is enabled. |
+| `compatibleRunnerId` | [`CiRunnerID`](scalars.md#cirunnerid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.ID of a runner that matches the requirements of the jobs returned (normally used when filtering pending jobs). |
+| `failureReason` | [`CiJobFailureReason`](enums.md#cijobfailurereason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by failure reason. Currently only `RUNNER_SYSTEM_FAILURE` together with `runnerTypes: INSTANCE_TYPE` is supported. |
+| `runnerTypes` | [`[CiRunnerType!]`](enums.md#cirunnertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by runner type if feature flag `:admin_jobs_filter_runner_type` is enabled. |
 | `statuses` | [`[CiJobStatus!]`](enums.md#cijobstatus) | Filter jobs by status. |
 
 ## `knowledgeGraphExcludedNamespaces`
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
 
 Top-level groups excluded from automatic Knowledge Graph indexing. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1493,7 +1493,7 @@ Top-level groups excluded from automatic Knowledge Graph indexing. This field is
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.11.
 
 LDAP admin links. Available only for GitLab Self-Managed. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1509,7 +1509,7 @@ Fields related to entries in the license history. This field is a [connection](o
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.6.
 
 Finds a single custom role for the instance. Available only for GitLab Self-Managed.
 
@@ -1529,7 +1529,7 @@ Finds a single custom role for the instance. Available only for GitLab Self-Mana
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.
 
 List of all standard customizable permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1539,7 +1539,7 @@ List of all standard customizable permissions. This field is a [connection](obje
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
 
 Custom roles available for the instance. Available only for GitLab Self-Managed. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1571,7 +1571,7 @@ Find a merge request.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
 Find merge requests visible to the current user. At least one filter must be provided. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1587,7 +1587,7 @@ Find merge requests visible to the current user. At least one filter must be pro
 | `assigneeUsernames` | [`[String!]`](scalars.md#string) | Usernames of users assigned to the merge request. |  |
 | `assigneeWildcardId` | [`AssigneeWildcardId`](enums.md#assigneewildcardid) | Filter by assignee presence. Incompatible with assigneeUsernames and assigneeUsername. |  |
 | `authorUsername` | [`String`](scalars.md#string) | Username of the author. |  |
-| `blobPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Path of the blob changed in merge request. Requires state, targetBranches, and createdAfter arguments. |  |
+| `blobPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Path of the blob changed in merge request. Requires state, targetBranches, and createdAfter arguments. |  |
 | `closedAfter` | [`Time`](scalars.md#time) | Merge requests closed after the date. |  |
 | `closedBefore` | [`Time`](scalars.md#time) | Merge requests closed before the date. |  |
 | `createdAfter` | [`Time`](scalars.md#time) | Merge requests created after the timestamp. |  |
@@ -1597,7 +1597,7 @@ Find merge requests visible to the current user. At least one filter must be pro
 | `deploymentId` | [`String`](scalars.md#string) | ID of the deployment. |  |
 | `draft` | [`Boolean`](scalars.md#boolean) | Limit result to draft merge requests. |  |
 | `environmentName` | [`String`](scalars.md#string) | Environment merge requests have been deployed to. |  |
-| `ignoredReviewerUsername` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Username of the reviewer to ignore when searching by reviewer state. |  |
+| `ignoredReviewerUsername` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.0.Username of the reviewer to ignore when searching by reviewer state. |  |
 | `iids` | [`[String!]`](scalars.md#string) | Array of IIDs of merge requests, for example `[1, 2]`. |  |
 | `includeArchived` | [`Boolean`](scalars.md#boolean) | Whether to include merge requests from archived projects. Defaults to `false`. | `false` |
 | `labelName` | [`[String]`](scalars.md#string) | Labels applied to the merge request. |  |
@@ -1657,7 +1657,7 @@ Find a machine learning experiment.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
 
 Find machine learning models.
 
@@ -1685,7 +1685,7 @@ Find a namespace.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.
 
 Check Secrets Manager enrollment for a namespace.
 
@@ -1708,22 +1708,22 @@ Security-filtered projects for a namespace. This field is a [connection](objects
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `attributeFilters` | [`[AttributeFilterInput!]`](input_objects.md#attributefilterinput) | Filter projects by security attributes. Up to 20 items. |  |
-| `hasFailedOrWarning` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. Warnings have no effect on this filter. |  |
-| `hasScanners` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any configured security scans. |  |
-| `hasStale` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. |  |
+| `hasFailedOrWarning` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. Warnings have no effect on this filter. |  |
+| `hasScanners` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any configured security scans. |  |
+| `hasStale` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter projects by whether they have any failed security scans. |  |
 | `includeSubgroups` | [`Boolean`](scalars.md#boolean) | Include also subgroup projects. | `false` |
 | `namespaceId` | [`NamespaceID!`](scalars.md#namespaceid) | Global ID of the namespace. |  |
 | `search` | [`String`](scalars.md#string) | Search projects by name. |  |
 | `securityAnalyzerFilters` | [`[AnalyzerFilterInput!]`](input_objects.md#analyzerfilterinput) | Filter projects by analyzer type and status. |  |
-| `sortBy` | [`SortableAnalyzerType`](enums.md#sortableanalyzertype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Sort projects by analyzer status. |  |
-| `triggerType` | [`ScanProfileTriggerType`](enums.md#scanprofiletriggertype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Filter projects by attached triage and remediation trigger type. |  |
+| `sortBy` | [`SortableAnalyzerType`](enums.md#sortableanalyzertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Sort projects by analyzer status. |  |
+| `triggerType` | [`ScanProfileTriggerType`](enums.md#scanprofiletriggertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Filter projects by attached triage and remediation trigger type. |  |
 | `vulnerabilityCountFilters` | [`[VulnerabilityCountFilterInput!]`](input_objects.md#vulnerabilitycountfilterinput) | Filter projects by vulnerability counts using comparison operators. |  |
 
 ## `note`
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.9.
 
 Find a note.
 
@@ -1739,7 +1739,7 @@ Find a note.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Check if OpenBao instance is healthy and reachable.
 
@@ -1749,7 +1749,7 @@ Check if OpenBao instance is healthy and reachable.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
 
 Orbit data of the instance and of the groups of the current user. Returns null when the user is not signed in.
 
@@ -1759,7 +1759,7 @@ Orbit data of the instance and of the groups of the current user. Returns null w
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.
 
 Find an organization.
 
@@ -1775,7 +1775,7 @@ Find an organization.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.8.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.8.
 
 List organizations. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1785,9 +1785,9 @@ List organizations. This field is a [connection](objects.md#connections-and-pagi
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
-| `excludeDefault` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Excludes the Default organization from results. | `false` |
+| `excludeDefault` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Excludes the Default organization from results. | `false` |
 | `search` | [`String`](scalars.md#string) | Search query, which can be for the organization name or a path. |  |
-| `state` | [`OrganizationState`](enums.md#organizationstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Filter organizations by state. |  |
+| `state` | [`OrganizationState`](enums.md#organizationstate) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.1.Filter organizations by state. |  |
 
 ## `package`
 
@@ -1805,7 +1805,7 @@ Find a package. This field can only be resolved for one query in any single requ
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Get multiple package metadata advisories. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1823,7 +1823,7 @@ Get multiple package metadata advisories. This field is a [connection](objects.m
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Get a package metadata advisory.
 
@@ -1840,7 +1840,7 @@ Get a package metadata advisory.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
 Find a pipeline execution schedule policy test run by ID.
 
@@ -1880,7 +1880,7 @@ Find a project compliance violation.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
 
 View a specific project secret.
 
@@ -1897,7 +1897,7 @@ View a specific project secret.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.8.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.8.
 
 List project secrets. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1913,7 +1913,7 @@ List project secrets. This field is a [connection](objects.md#connections-and-pa
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.
 
 Total number of secrets in a project.
 
@@ -1929,7 +1929,7 @@ Total number of secrets in a project.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.4.
 
 Find a project secrets manager.
 
@@ -1945,7 +1945,7 @@ Find a project secrets manager.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
 
 List project secrets that need to be rotated. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1961,7 +1961,7 @@ List project secrets that need to be rotated. This field is a [connection](objec
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 List project secrets permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -1986,7 +1986,7 @@ Find projects visible to the current user. This field is a [connection](objects.
 | `active` | [`Boolean`](scalars.md#boolean) | Filters by projects that are not archived and not marked for deletion. |  |
 | `aimedForDeletion` | [`Boolean`](scalars.md#boolean) | Return only projects marked for deletion. |  |
 | `archived` | [`ProjectArchived`](enums.md#projectarchived) | Filter projects by archived status. |  |
-| `duoLicensedFeature` | [`DuoLicensedFeature`](enums.md#duolicensedfeature) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Include only projects eligible for the specified GitLab Duo licensed feature. Results are automatically filtered to projects where the user has the Maintainer or Owner role. |  |
+| `duoLicensedFeature` | [`DuoLicensedFeature`](enums.md#duolicensedfeature) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Include only projects eligible for the specified GitLab Duo licensed feature. Results are automatically filtered to projects where the user has the Maintainer or Owner role. |  |
 | `fullPaths` | [`[String!]`](scalars.md#string) | Filter projects by full paths. You cannot provide more than 50 full paths. |  |
 | `ids` | [`[ID!]`](scalars.md#id) | Filter projects by IDs. |  |
 | `includeHidden` | [`Boolean`](scalars.md#boolean) | Include hidden projects. |  |
@@ -2097,7 +2097,7 @@ Get all runners in the GitLab instance (project and shared). Access is restricte
 | `active` | [`Boolean`](scalars.md#boolean) | Deprecated in GitLab 14.8. Renamed. Use `paused` instead. |
 | `creatorId` | [`UserID`](scalars.md#userid) | Filter runners by creator ID. |
 | `creatorUsername` | [`String`](scalars.md#string) | Filter runners by creator username. |
-| `ownerFullPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.8.Filter runners by owning project or group. |
+| `ownerFullPath` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.8.Filter runners by owning project or group. |
 | `paused` | [`Boolean`](scalars.md#boolean) | Filter runners by `paused` (true) or `active` (false) status. |
 | `search` | [`String`](scalars.md#string) | Filter by full token or partial text in description field. |
 | `sort` | [`CiRunnerSort`](enums.md#cirunnersort) | Sort order of results. |
@@ -2111,7 +2111,7 @@ Get all runners in the GitLab instance (project and shared). Access is restricte
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.
 
 List secret permissions. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -2127,7 +2127,7 @@ List secret permissions. This field is a [connection](objects.md#connections-and
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
 Instance-wide Secrets Manager entitlement on GitLab Self-Managed. Not available on GitLab.com, where entitlement is per top-level group.
 
@@ -2149,7 +2149,7 @@ Security configuration for the project.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Get security scan profile by ID.
 
@@ -2165,7 +2165,7 @@ Get security scan profile by ID.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
 
 Configuration variables a security scan profile of the given type can set.
 
@@ -2181,7 +2181,7 @@ Configuration variables a security scan profile of the given type can set.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
 
 Users within the self-managed instance who are eligible for add-ons. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -2224,7 +2224,7 @@ Find Snippets visible to the current user. This field is a [connection](objects.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.1.
 
 List of SPDX licenses from the SPDX licence catalogue.
 
@@ -2234,7 +2234,7 @@ List of SPDX licenses from the SPDX licence catalogue.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.6.
 
 Finds a single default role for the instance. Available only for GitLab Self-Managed.
 
@@ -2250,7 +2250,7 @@ Finds a single default role for the instance. Available only for GitLab Self-Man
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.3.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.3.
 
 Default roles available for the instance. Available only for GitLab Self-Managed. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -2272,7 +2272,7 @@ Fields related to entries in future subscriptions. This field is a [connection](
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.
 
 Usage data of consumables under the subscription.
 
@@ -2291,7 +2291,7 @@ Usage data of consumables under the subscription.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.9.
 
 Find a synthetic note.
 
@@ -2345,14 +2345,14 @@ Find project topics. This field is a [connection](objects.md#connections-and-pag
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Global ID of the organization. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.7.Global ID of the organization. |
 | `search` | [`String`](scalars.md#string) | Search query for topic name. |
 
 ## `trialUsage`
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
 
 Usage data for trial subscriptions.
 
@@ -2408,14 +2408,14 @@ Find users. This field is a [connection](objects.md#connections-and-pagination) 
 | `ids` | [`[ID!]`](scalars.md#id) | List of user Global IDs. |  |
 | `search` | [`String`](scalars.md#string) | Query to search users by name, username, or primary email. |  |
 | `sort` | [`Sort`](enums.md#sort) | Sort users by the criteria. | `created_desc` |
-| `userTypes` | [`[UserType!]`](enums.md#usertype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.3.Filter by user type. |  |
+| `userTypes` | [`[UserType!]`](enums.md#usertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.Filter by user type. |  |
 | `usernames` | [`[String!]`](scalars.md#string) | List of usernames. |  |
 
 ## `virtualRegistriesContainerRegistry`
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Find a container virtual registry. Returns null if the `container_virtual_registries` feature flag is disabled.
 
@@ -2431,7 +2431,7 @@ Find a container virtual registry. Returns null if the `container_virtual_regist
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.
 
 Finds a container upstream registry with details. Returns `null` if the `container_virtual_registries` feature flag is disabled.
 
@@ -2447,7 +2447,7 @@ Finds a container upstream registry with details. Returns `null` if the `contain
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
 
 Find a Maven virtual registry. Returns null if the `maven_virtual_registry` feature flag is disabled.
 
@@ -2463,7 +2463,7 @@ Find a Maven virtual registry. Returns null if the `maven_virtual_registry` feat
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.
 
 Find a Maven upstream registry. Returns null if the `maven_virtual_registry` feature flag is disabled.
 
@@ -2488,7 +2488,7 @@ Vulnerabilities reported on projects on the current user's instance security das
 | `clusterAgentId` | [`[ClustersAgentID!]`](scalars.md#clustersagentid) | Filter vulnerabilities by `cluster_agent_id`. Vulnerabilities with a `reportType` of `cluster_image_scanning` are only included with this filter. |  |
 | `clusterId` | [`[ClustersClusterID!]`](scalars.md#clustersclusterid) | Filter vulnerabilities by `cluster_id`. Vulnerabilities with a `reportType` of `cluster_image_scanning` are only included with this filter. |  |
 | `dismissalReason` | [`[VulnerabilityDismissalReason!]`](enums.md#vulnerabilitydismissalreason) | Filter by dismissal reason. Only dismissed Vulnerabilities will be included with the filter. |  |
-| `falsePositive` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Returns only the vulnerabilities with false positive flag. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
+| `falsePositive` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Returns only the vulnerabilities with false positive flag. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
 | `hasAiResolution` | [`Boolean`](scalars.md#boolean) | Returns only the vulnerabilities which can likely be resolved by GitLab Duo Vulnerability Resolution. |  |
 | `hasIssues` | [`Boolean`](scalars.md#boolean) | Returns only the vulnerabilities which have linked issues. |  |
 | `hasMergeRequest` | [`Boolean`](scalars.md#boolean) | Returns only the vulnerabilities which have linked merge requests. |  |
@@ -2498,22 +2498,22 @@ Vulnerabilities reported on projects on the current user's instance security das
 | `image` | [`[String!]`](scalars.md#string) | Filter vulnerabilities by location image. When this filter is present, the response only matches entries for a `reportType` that includes `container_scanning`, `cluster_image_scanning`. |  |
 | `malware` | [`Boolean`](scalars.md#boolean) | Filter vulnerabilities by malware status. When true, returns only malware vulnerabilities (identified by GLAM-* identifiers). When false, returns only non-malware vulnerabilities. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |  |
 | `owaspTopTen` | [`[VulnerabilityOwaspTop10!]`](enums.md#vulnerabilityowasptop10) | Filter vulnerabilities by OWASP Top 10 2017 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 values. |  |
-| `owaspTopTen2021` | [`[VulnerabilityOwasp2021Top10!]`](enums.md#vulnerabilityowasp2021top10) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
-| `owaspTopTen2025` | [`[VulnerabilityOwasp2025Top10!]`](enums.md#vulnerabilityowasp2025top10) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
-| `policyAutoDismissed` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Returns only the vulnerabilities which have been auto dismissed by security policies. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
-| `policyViolations` | [`[PolicyViolations!]`](enums.md#policyviolations) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Filter by security policy violations. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
+| `owaspTopTen2021` | [`[VulnerabilityOwasp2021Top10!]`](enums.md#vulnerabilityowasp2021top10) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Filter vulnerabilities by OWASP Top 10 2021 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2021 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
+| `owaspTopTen2025` | [`[VulnerabilityOwasp2025Top10!]`](enums.md#vulnerabilityowasp2025top10) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter vulnerabilities by OWASP Top 10 2025 category. Wildcard value `NONE` is also supported but it cannot be combined with other OWASP top 10 2025 values. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
+| `policyAutoDismissed` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.8.Returns only the vulnerabilities which have been auto dismissed by security policies. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
+| `policyViolations` | [`[PolicyViolations!]`](enums.md#policyviolations) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.Filter by security policy violations. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Not supported on Instance Security Dashboard queries. |  |
 | `projectId` | [`[ID!]`](scalars.md#id) | Filter vulnerabilities by project. |  |
-| `reachability` | [`ReachabilityType`](enums.md#reachabilitytype) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Filter vulnerabilities by reachability. |  |
+| `reachability` | [`ReachabilityType`](enums.md#reachabilitytype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Filter vulnerabilities by reachability. |  |
 | `reportType` | [`[VulnerabilityReportType!]`](enums.md#vulnerabilityreporttype) | Filter vulnerabilities by report type. |  |
 | `scanner` | [`[String!]`](scalars.md#string) | Filter vulnerabilities by VulnerabilityScanner.externalId. |  |
 | `scannerId` | [`[VulnerabilitiesScannerID!]`](scalars.md#vulnerabilitiesscannerid) | Filter vulnerabilities by scanner ID. |  |
-| `securityAttributesFilters` | [`[AttributeFilterInput!]`](input_objects.md#attributefilterinput) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |  |
+| `securityAttributesFilters` | [`[AttributeFilterInput!]`](input_objects.md#attributefilterinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Filter vulnerabilities by the security attributes of their projects. Up to 20 filters. To use this argument, you must have advanced search configured and advanced vulnerability management set up. Available on group queries only, when the `vulnerability_report_security_attributes_filter` feature flag is enabled. |  |
 | `severity` | [`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity) | Filter vulnerabilities by severity. |  |
 | `sort` | [`VulnerabilitySort`](enums.md#vulnerabilitysort) | List vulnerabilities by sort order. | `severity_desc` |
 | `state` | [`[VulnerabilityState!]`](enums.md#vulnerabilitystate) | Filter vulnerabilities by state. |  |
-| `trackedRefIds` | [`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured and advanced vulnerability management set up. |  |
-| `trackedRefsScope` | [`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.9.Filter by tracked ref scope. To use this argument, you must have advanced search configured and advanced vulnerability management set up and the `vulnerabilities_across_contexts` feature flag enabled. |  |
-| `validityCheck` | [`[VulnerabilityFindingTokenStatusState!]`](enums.md#vulnerabilityfindingtokenstatusstate) | Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.5.Filter vulnerabilities by validity check. |  |
+| `trackedRefIds` | [`[SecurityProjectTrackedContextID!]`](scalars.md#securityprojecttrackedcontextid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured and advanced vulnerability management set up. |  |
+| `trackedRefsScope` | [`SecurityTrackedRefScope`](enums.md#securitytrackedrefscope) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.Filter by tracked ref scope. To use this argument, you must have advanced search configured and advanced vulnerability management set up and the `vulnerabilities_across_contexts` feature flag enabled. |  |
+| `validityCheck` | [`[VulnerabilityFindingTokenStatusState!]`](enums.md#vulnerabilityfindingtokenstatusstate) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.Filter vulnerabilities by validity check. |  |
 
 ## `vulnerabilitiesCountByDay`
 
@@ -2544,7 +2544,7 @@ Find a vulnerability.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.6.
 
 Find a wiki page.
 
@@ -2562,7 +2562,7 @@ Find a wiki page.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 15.1.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.1.
 
 Find a work item.
 
@@ -2578,7 +2578,7 @@ Find a work item.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
 Allowed work item statuses from the root groups the current user belongs to. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
@@ -2594,7 +2594,7 @@ Allowed work item statuses from the root groups the current user belongs to. Thi
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.9.
 
 Find a work item description template.
 
@@ -2610,7 +2610,7 @@ Find a work item description template.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
 Available icon definitions for work item types.
 
@@ -2620,7 +2620,7 @@ Available icon definitions for work item types.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.7.
 
 Find work items by their reference. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 

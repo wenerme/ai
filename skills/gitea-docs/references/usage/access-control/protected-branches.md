@@ -8,13 +8,13 @@ aliases:
 
 # Protected branches
 
-Protected branches prevent unwanted changes by enforcing push and merge policies on selected branches. The rules are enforced for every Git protocol (HTTP(S), SSH), the web editor, the API, and background jobs such as auto-merge. Only repository owners and administrators can manage the rules, and the Branches page is read-only while a repository is archived.
+Protected branches prevent unwanted changes by enforcing push, deletion, and merge policies on selected branches. The rules are enforced for every Git protocol (HTTP(S), SSH), the web editor, the API, and background jobs such as auto-merge. Only repository owners and administrators can manage the rules, and the Branches page is read-only while a repository is archived.
 
 ## Creating or editing a rule
 
 1. Open the repository and select **Settings → Branches** (repository admin permission required).
 2. Select **Add new rule** or **Edit** next to an existing rule.
-3. Fill in the **Protected branch name pattern** and optional file patterns, then configure the push, merge, and review options described below.
+3. Fill in the **Protected branch name pattern** and optional file patterns, then configure the push, deletion, merge, and review options described below.
 4. Select **Save rule**.
 
 The rule immediately applies to all matching branches, even if the branches are created in the future.
@@ -46,7 +46,9 @@ The **Push** section controls direct pushes (including the web editor and API).
 
 - **Disable push** makes the branch read-only. Any attempt to push directly fails, and changes must be merged through pull requests.
 - **Enable push** allows anyone with [write access](./permissions.md) to push (force pushes are still blocked unless explicitly allowed).
-- **Allowlist restricted push** requires being on the allowlist. Choose users and, for organization-owned repositories, teams. Deploy keys that already have write access can also be allowlisted.
+- **Allowlist restricted push** requires being on the allowlist. Choose users and, for organization-owned repositories, teams.
+
+The user allowlists for push, force-push and deletion can include the **Gitea Actions** and **Deploy Key** system users. They still require write access; **Deploy Key** also covers deploy tokens.
 
 When a push is blocked, the server-side hook rejects the update with an explanation.
 
@@ -56,7 +58,17 @@ Force pushes have their own set of options:
 
 - **Disable force push** completely forbids rewriting history on the branch.
 - **Enable force push** allows anyone who can push to also force push.
-- **Allowlist restricted force push** limits force pushes to a separate allowlist (users, teams, and optionally deploy keys) **and** requires the person to already have regular push access.
+- **Allowlist restricted force push** limits force pushes to a separate allowlist of users or teams **and** requires regular push access.
+
+## Branch deletion
+
+The **Branch Deletion** section controls whether matching protected branches can be deleted:
+
+- **Disable branch deletion** prevents deletion. This is the default.
+- **Enable branch deletion** allows anyone who can push to delete the branch.
+- **Allowlist restricted branch deletion** limits deletion to a separate allowlist of users or teams **and** requires regular push access.
+
+These rules apply to Git (`git push --delete`), the API, the web interface and post-merge cleanup. The default branch and configured default pull request target branch cannot be deleted.
 
 ## Pull request merges and approvals
 

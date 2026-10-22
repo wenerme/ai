@@ -231,7 +231,7 @@ Example request:
 
 ```shell
 curl --request DELETE \
-  --header "PRIVATE-TOKEN: <your_access_token>"
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/1/variables/VARIABLE_1"
 ```
 
@@ -239,7 +239,7 @@ Example request with `filter`:
 
 ```shell
 curl --request DELETE \
-  --header "PRIVATE-TOKEN: <your_access_token>"
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/1/variables/SCOPED_VARIABLE_1" \
   --form "filter[environment_scope]=production"
 ```

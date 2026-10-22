@@ -24,7 +24,7 @@ For the full response schema, see the [Messages API reference](https://platform.
 
 The `stop_reason` field is part of every successful Messages API response. Unlike errors, which indicate failures in processing your request, `stop_reason` tells you why Claude completed its response generation.
 
-```json Example response
+```text Example response wrap
 {
   "id": "msg_01234",
   "type": "message",
@@ -1476,7 +1476,7 @@ A `tool_use` response can also contain a `server_tool_use` block whose `id` has 
   With [programmatic tool calling](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling), the same response shape means something different. The client `tool_use` block comes from code that is running in the `code_execution` tool rather than from Claude directly, and its `caller` field names the `code_execution` block that called it. That code has already started: it is paused waiting for your `tool_result` blocks, and sending them resumes the execution instead of starting a deferred tool. The `code_execution` block's own result block arrives once the code completes, which can take more than one round of tool results. The follow-up user message itself is the same in both cases; with programmatic tool calling, also pass back the `id` from the response's `container` field, as that page shows.
 </Note>
 
-```json A mixed tool_use response
+```text A mixed tool_use response wrap
 {
   "stop_reason": "tool_use",
   "content": [
@@ -2318,7 +2318,7 @@ When a response is truncated because of token limits or the context window, appe
 
 ### Implement retry logic for pause\_turn
 
-When using [server tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools), the API might return `pause_turn` if the server-side sampling loop reaches its iteration limit (default 10). Handle this by continuing the conversation:
+When you use [server tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools), the API might return `pause_turn` if the server-side sampling loop reaches its iteration limit (default 10). Handle this by continuing the conversation:
 
 <CodeGroup exclude="shell">
   ```python Python

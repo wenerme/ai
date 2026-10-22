@@ -186,7 +186,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 { "input_tokens": 14 }
 ```
 
@@ -469,7 +469,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 { "input_tokens": 403 }
 ```
 
@@ -774,7 +774,7 @@ All [active models](https://platform.claude.com/docs/en/models/overview) support
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 { "input_tokens": 1028 }
 ```
 
@@ -1099,7 +1099,7 @@ An embedded image block that sets [`"oversized_image": "error"`](https://platfor
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 { "input_tokens": 88 }
 ```
 
@@ -1381,7 +1381,7 @@ An embedded image block that sets [`"oversized_image": "error"`](https://platfor
   ```
 </CodeGroup>
 
-```json Output
+```text Output wrap
 { "input_tokens": 2188 }
 ```
 

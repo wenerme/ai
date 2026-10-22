@@ -25,7 +25,7 @@ Once an agent and environment exist, you can drive a session from the shell:
       --title "Summarization task"
     ```
 
-    ```json Output
+    ```text Output wrap
     {
       "id": "session_01JZCh78XvmxJjiXVy3oSi7K",
       "status": "running"

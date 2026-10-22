@@ -159,11 +159,11 @@ retry can place another call.
 
             The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
 
-  - `delegation: optional ClientDelegation or Responses { responses, type }  or Decisions { decisions, type }  or null`
+  - `delegation: optional ClientDelegation or Responses { responses, type, acknowledgement_delay_ms }  or Decisions { decisions, type, acknowledgement_delay_ms }  or null`
 
     Who handles tasks delegated by the Live model. Omitted or null selects your application; use `responses` or `decisions` to delegate to the corresponding API.
 
-    - `ClientDelegation object { type }`
+    - `ClientDelegation object { type, acknowledgement_delay_ms }`
 
       Delegate tasks to your application. The Live session emits delegation events that your backend handles.
 
@@ -173,7 +173,11 @@ retry can place another call.
 
         - `"client"`
 
-    - `Responses object { responses, type }`
+      - `acknowledgement_delay_ms: optional number`
+
+        Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+    - `Responses object { responses, type, acknowledgement_delay_ms }`
 
       Delegate tasks to a Responses model managed by the Live session.
 
@@ -779,7 +783,11 @@ retry can place another call.
 
         - `"responses"`
 
-    - `Decisions object { decisions, type }`
+      - `acknowledgement_delay_ms: optional number`
+
+        Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+    - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
       - `decisions: DecisionsDelegationConfig`
 
@@ -838,6 +846,10 @@ retry can place another call.
       - `type: "decisions"`
 
         - `"decisions"`
+
+      - `acknowledgement_delay_ms: optional number`
+
+        Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
   - `input: optional array of InitialItem`
 
