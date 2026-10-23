@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/backups/og.png?v=96
 
 # Move backups
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Replace 0.12 `createBackup()` and `restoreBackup()` with Durable Object methods of the same names, built on `DirectoryBackup`. Your Worker calls them with the same options, and backups keep the 0.12 time to live. `DirectoryBackup` saves the directory to the same `BACKUP_BUCKET` binding as a compressed archive, and restores it as ordinary files. 0.12 saved a SquashFS image and mounted it over the directory. Backups that 0.12 created convert to 1.0 backups the first time you restore them.
 
@@ -51,7 +51,7 @@ This page replaces `createBackup()`, `restoreBackup()`, their options, and the b
 
 
    ```dockerfile
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
    ```
 
    Use the `cloudflare/sandbox` tag that matches the installed package version.
@@ -162,8 +162,8 @@ This page replaces `createBackup()`, `restoreBackup()`, their options, and the b
    		const { excludes, ttl = DEFAULT_TTL_SECONDS, ...rest } = options;
    		const backup = await this.backups.backup({
    			...rest,
-   			// 0.12 matched each pattern from the top of the directory.
-   			exclude: excludes?.map((pattern) => `/${pattern}`),
+   			// 0.12 matched each pattern at any depth in the directory.
+   			exclude: excludes?.map((pattern) => `**/${pattern}`),
    		});
    		const expiresAt = Date.now() + ttl * 1000;
    		await this.env.BACKUP_BUCKET.put(
@@ -238,10 +238,10 @@ Each 0.12 name has one of these replacements:
 | `dir` | `dir`. 0.12 accepted only directories under `/workspace`, `/home`, `/tmp`, `/var/tmp`, and `/app`. `DirectoryBackup` accepts any absolute path, so check the directory in your code when a request chooses it. |
 | `name` | `name`, stored in the record and in the custom metadata of the object |
 | `ttl` | The expiry time in `backups/<ID>.meta.json`. As in 0.12, an expired backup stays in the bucket until you delete it with `this.backups.delete(backup)`. Delete its `.meta.json` object at the same time. |
-| `excludes` | `exclude`, in `.gitignore` syntax. `createBackup()` starts each pattern with `/`, because a `.gitignore` pattern without a `/` matches at any depth. |
+| `excludes` | `exclude`, in `.gitignore` syntax. `createBackup()` starts each pattern with `**/`, because a `.gitignore` pattern with a `/` in the middle, such as `dist/cache`, matches only from the top of the directory. |
 | `gitignore` | `gitignore`. It applies the `.gitignore` files inside the directory and `.git/info/exclude`, and the image does not need `git`. |
 | `localBucket`, `multipart`, `compression` | Remove them. Every backup goes through the R2 binding in parts. |
-| `BackupNotFoundError` | `SandboxBackupError` with the code `BACKUP_NOT_FOUND` |
+| `BackupNotFoundError` | The error that your `restoreBackup()` throws when the `.meta.json` object is missing, or `SandboxBackupError` with the code `BACKUP_NOT_FOUND` when the backup object is missing |
 | `BackupExpiredError` | The error that your `restoreBackup()` throws |
 | `InvalidBackupConfigError` | `TypeError` |
 | `BackupCreateError`, `BackupRestoreError` | `SandboxFileError` for a Linux error, such as a directory that does not exist, or `SandboxBackupError` with the code `BACKUP_TRANSFER` or `BACKUP_INTEGRITY` |
@@ -269,10 +269,33 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
 
 
    ```ts
+   // 0.12 restored only backups with a UUID, into one of these directories.
+   const BACKUP_ID =
+   	/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+   const BACKUP_ROOTS = ["/workspace", "/home", "/tmp", "/var/tmp", "/app"];
+
+   function checkOldBackup(old: { id: string; dir: string }) {
+   	const segments = old.dir.split("/").slice(1);
+   	const inRoot = BACKUP_ROOTS.some(
+   		(root) => old.dir === root || old.dir.startsWith(`${root}/`),
+   	);
+
+   	if (
+   		!BACKUP_ID.test(old.id) ||
+   		!inRoot ||
+   		segments.some((part) => part === "" || part === "." || part === "..") ||
+   		old.dir.includes("\0")
+   	) {
+   		throw new TypeError(`Invalid 0.12 backup ${old.id} for ${old.dir}`);
+   	}
+   }
+
    export class MySandbox extends DurableObject<Env> {
    	// ...
 
    	async convert(old: { id: string; dir: string }): Promise<Backup> {
+   		checkOldBackup(old);
+
    		const meta = await this.env.BACKUP_BUCKET.get(`backups/${old.id}/meta.json`);
    		const image = await this.env.BACKUP_BUCKET.get(`backups/${old.id}/data.sqsh`);
 
@@ -290,11 +313,15 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
 
    		await this.ensureRunning();
 
-   		// unsquashfs needs the whole image on disk, so it goes to /var/tmp first.
+   		// Refuses a path through a symbolic link. unsquashfs needs the whole
+   		// image on disk, so it goes to /var/tmp first. The files replace the
+   		// directory only after they are all extracted.
    		const script =
-   			'cat > "$1" && rm -rf -- "$2" &&' +
-   			' unsquashfs -no-progress -d "$2" "$1" > /dev/null;' +
-   			' code=$?; rm -f -- "$1"; exit $code';
+   			'[ "$(realpath -m -- "$2")" = "$2" ] || exit 2;' +
+   			' mkdir -p -- "$(dirname -- "$2")" && rm -rf -- "$2.convert" &&' +
+   			' cat > "$1" && unsquashfs -no-progress -d "$2.convert" "$1" > /dev/null &&' +
+   			' rm -rf -- "$2" && mv -- "$2.convert" "$2";' +
+   			' code=$?; rm -rf -- "$1" "$2.convert"; exit $code';
    		const process = await this.container.exec(
    			["sh", "-c", script, "sh", `/var/tmp/${old.id}.sqsh`, old.dir],
    			{ stdin: image.body },
@@ -315,7 +342,9 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
    }
    ```
 
-   The converted backup keeps the expiry time that 0.12 gave the original, in its own `.meta.json` object. The container needs free disk space for the image and the extracted files together. On a `lite` instance, `squashfs-tools` 4.7 and later, as in Alpine 3.23, fail with `FATAL ERROR: Requested memory size too large`. For those versions, add `-mem 64M` to the `unsquashfs` command. Debian 13 installs version 4.6.1, which extracts on `lite` with its default settings.
+   `convert()` deletes and replaces `old.dir`, so it checks the backup first, as 0.12 did before a restore. The ID must be a UUID, and the directory must be an absolute path under one of the directories that 0.12 accepted, with no empty, `.`, or `..` segments. Code in the sandbox can replace a directory with a symbolic link, and `rm -rf` follows a link in the path, so the script exits with code `2` when the path resolves somewhere else. Take `old` from the 0.12 backup object that your code stored, not from a request.
+
+   The converted backup keeps the expiry time that 0.12 gave the original, in its own `.meta.json` object. The container needs free disk space for the image, the extracted files, and the files already in the directory, all at once. On a `lite` instance, `squashfs-tools` 4.7 and later, as in Alpine 3.23, fail with `FATAL ERROR: Requested memory size too large`. For those versions, add `-mem 64M` to the `unsquashfs` command. Debian 13 installs version 4.6.1, which extracts on `lite` with its default settings.
 3. Where your code calls `restoreBackup()` with an object that 0.12 created, call `convert()` instead. A 0.12 object has no `format` field. `convert()` leaves the files in the directory, so it also does the restore. Store the record that it returns in place of the 0.12 object.
 4. After you store the new record, delete the two 0.12 objects:
 
@@ -330,7 +359,7 @@ For every error, refer to [DirectoryBackup errors](https://developers.cloudflare
    ]);
    ```
 
-A converted directory keeps its files, empty directories, symbolic links, hard links, and permissions. Modification times keep whole seconds only, because SquashFS does not store fractions of a second. If `unsquashfs` fails, the directory is incomplete, and calling `convert()` again replaces it.
+A converted directory keeps its files, empty directories, symbolic links, hard links, and permissions. Modification times keep whole seconds only, because SquashFS does not store fractions of a second. If `unsquashfs` fails, the directory keeps its files, and calling `convert()` again retries the conversion.
 
 ## Related resources
 
@@ -347,5 +376,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/#page","headline":"Move backups","description":"Replace @cloudflare/sandbox 0.12 createBackup() and restoreBackup() with DirectoryBackup, and convert the backups that 0.12 created.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/og.png?v=96498efa0ea2a459","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/#page","headline":"Move backups","description":"Replace @cloudflare/sandbox 0.12 createBackup() and restoreBackup() with DirectoryBackup, and convert the backups that 0.12 created.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/backups/og.png?v=96498efa0ea2a459","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -5,7 +5,7 @@ description: "Browse StepFun (Global) model IDs, capabilities, context windows, 
 
 # [StepFun (Global) logo]StepFun (Global)
 
-Access 9 StepFun (Global) models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
+Access 7 StepFun (Global) models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
 
 Learn more in the [StepFun (Global) documentation](https://platform.stepfun.ai/docs/en/overview/concept).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "stepfun-ai/step-1-32k"
+  model: "stepfun-ai/step-3.5-flash"
 });
 
 // Generate a response
@@ -138,7 +138,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.stepfun.ai/v1",
-    id: "stepfun-ai/step-1-32k",
+    id: "stepfun-ai/step-3.5-flash",
     apiKey: process.env.STEPFUN_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -157,7 +157,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "stepfun-ai/stepaudio-2.5-tts"
-      : "stepfun-ai/step-1-32k";
+      : "stepfun-ai/step-3.5-flash";
   }
 });
 ```

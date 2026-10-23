@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a
 
 # Sandbox SDK 0.x API map
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page maps each public API of `@cloudflare/sandbox` 0.12 to its replacement: a 1.0 class, a platform API, another Cloudflare product, or code that you write. Some APIs are no longer needed. For the migration steps, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
 
@@ -106,11 +106,11 @@ For the steps, refer to [Change file calls](https://developers.cloudflare.com/sa
 
 | 0.12 | Kind | Replacement | Notes |
 | --- | --- | --- | --- |
-| `readFile()`, `readFileStream()` | Package | [`files.readFile()`](https://developers.cloudflare.com/sandbox/reference/files/#readfile) | Returns a `Response`. Use `.text()`, `.arrayBuffer()`, or the body. |
+| `readFile()`, `readFileStream()` | Package | [`files.readFile()`](https://developers.cloudflare.com/sandbox/reference/files/#readfile) | Returns a `Response`. Use `.text()`, `.arrayBuffer()`, or the body, which holds file bytes, not server-sent events. |
 | `writeFile()` | Package | [`files.writeFile()`](https://developers.cloudflare.com/sandbox/reference/files/#writefile) | Create missing parent directories with `mkdir()` first. Pass bytes instead of base64. |
 | `mkdir()` | Package | [`files.mkdir()`](https://developers.cloudflare.com/sandbox/reference/files/#mkdir) | |
 | `deleteFile()` | Package | [`files.remove()`](https://developers.cloudflare.com/sandbox/reference/files/#remove) | Also removes directories with `recursive: true`. |
-| `renameFile()`, `moveFile()` | Package | [`files.rename()`](https://developers.cloudflare.com/sandbox/reference/files/#rename) | Fails with `EXDEV` across filesystems. |
+| `renameFile()`, `moveFile()` | Package | [`files.rename()`](https://developers.cloudflare.com/sandbox/reference/files/#rename) | Fails with `EXDEV` across filesystems. Does not move a source into an existing directory, as `mv` did. |
 | `listFiles()` | Package | [`files.readDirectory()`](https://developers.cloudflare.com/sandbox/reference/files/#readdirectory) | One level. Includes hidden entries. |
 | `listFiles({ recursive: true })` | Pattern | Walk `readDirectory()` | Refer to [List files](https://developers.cloudflare.com/sandbox/sdk/migrate/files/#list-files). |
 | `exists()` | Package | [`files.stat()`](https://developers.cloudflare.com/sandbox/reference/files/#stat) | Catch `SandboxFileError` with `ENOENT`. |
@@ -185,7 +185,7 @@ For the steps, refer to [Move backups](https://developers.cloudflare.com/sandbox
 | --- | --- | --- | --- |
 | `createBackup()`, `restoreBackup()` | Package | [`DirectoryBackup`](https://developers.cloudflare.com/sandbox/reference/directory-backups/) `backup()` and `restore()` | Your Durable Object stores the record. For the whole filesystem, use `container.snapshotContainer()`. |
 | `name`, `gitignore` | Package | The `DirectoryBackup` options with the same names | `gitignore` does not need `git` in the image. |
-| `excludes` | Package | `exclude` | `.gitignore` syntax. A pattern that starts with `/` matches only at the top, as 0.12 patterns did. |
+| `excludes` | Package | `exclude` | `.gitignore` syntax. A pattern that starts with `**/` matches at any depth, as 0.12 patterns did. |
 | `ttl` | Pattern | An expiry time stored in the bucket next to the backup | 0.12 refused expired restores and kept the objects. |
 | `multipart`, `localBucket`, `compression` | Removed | Not needed | Every backup goes through the R2 binding in parts. |
 | `BACKUP_BUCKET` | Native | An R2 binding | Pass its name as the `binding` of `DirectoryBackup`. |
@@ -262,5 +262,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/#page","headline":"Sandbox SDK 0.x API map","description":"Every public API of @cloudflare/sandbox 0.12, and what replaces it in @cloudflare/sandbox 1.0, on this.ctx.container, or in your own code.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a061fea855c758c","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/#page","headline":"Sandbox SDK 0.x API map","description":"Every public API of @cloudflare/sandbox 0.12, and what replaces it in @cloudflare/sandbox 1.0, on this.ctx.container, or in your own code.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a061fea855c758c","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

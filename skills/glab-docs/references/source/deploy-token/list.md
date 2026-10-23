@@ -1,0 +1,61 @@
+---
+title: '`glab deploy-token list`'
+stage: AI Clients
+group: Developer Clients
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+List deploy tokens.
+
+## Synopsis
+
+List the deploy tokens of a project or a group.
+
+The output never contains the token value. A token value is shown only once, when the token is created.
+
+Tokens are listed with their expiry, and whether they have been revoked or have expired. Pass `--active` to list only the tokens that are still usable.
+
+```plaintext
+glab deploy-token list [flags]
+```
+
+## Aliases
+
+```plaintext
+ls
+```
+
+## Examples
+
+```console
+# List the current project's deploy tokens
+glab deploy-token list
+
+# List the deploy tokens of a specific project
+glab deploy-token list --repo user/my-repo
+
+# List only the tokens that are neither revoked nor expired
+glab deploy-token list --active
+
+# List a group's deploy tokens
+glab deploy-token list --group group/sub-group
+
+# List the current project's deploy tokens as JSON
+glab deploy-token list --output json
+```
+
+## Options
+
+```plaintext
+  -a, --active          List only the tokens that are neither revoked nor expired.
+  -g, --group string    List the deploy tokens of the group <group> instead of a project.
+      --jq string       Filter JSON output with a jq expression.
+  -F, --output string   Format output as: text, json. (default "text")
+  -R, --repo string     Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

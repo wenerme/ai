@@ -108,6 +108,20 @@ The **Synthetic checks** section displays the results of the synthetic monitorin
 
 Synthetic monitoring helps validate service availability and user-facing performance from an external perspective.
 
+## Review a service with Grafana Assistant
+
+If [Grafana Assistant](/docs/grafana-cloud/platform/grafana-assistant/) is available in your stack, you can ask it for an operational review of the service. The review is useful to prepare for an operational review meeting, or to get a quick summary of how a service is doing.
+
+To review a service, select a time range for the service page, then click **More** &gt; **Review with Assistant**.
+
+Assistant reviews the service over the selected time range and looks for:
+
+- SLOs with a low error budget or a high burn rate
+- Alerts that are firing or that fire frequently
+- Recent incidents and frequently firing on-call alert groups, if Grafana IRM is enabled
+
+The review includes a one-sentence summary of the service’s operational status and up to three recommendations to improve its reliability or reduce the number of alerts and pages that engineers receive.
+
 ## Respond to service issues
 
 If a service requires attention, you can take action directly from the header section:

@@ -587,7 +587,7 @@ Depending on the SDK's tool signature, a tool returns its result as a string or 
 
 The tool runner is an iterable that yields messages from Claude. On each iteration, the runner checks whether Claude requested a tool use. If so, it runs the tool and sends the result back to Claude automatically, then yields the next message from Claude to continue your loop.
 
-You can end the loop at any iteration with a `break` statement. The runner loops until Claude returns a message without a tool use, or until it reaches `max_iterations` (csharp, java, php: `maxIterations`; go: `MaxIterations`) if you set it.
+You can end the loop at any iteration with a `break` statement. The runner loops until Claude returns a message without a tool use, or until it reaches `max_iterations` (csharp, php: `maxIterations`; java: `.maxIterations()`; go: `MaxIterations`) if you set it.
 
 If you don't need intermediate messages, you can get the final message directly:
 
@@ -814,7 +814,7 @@ By default, the runner manages conversation state for you: after each tool-call 
 
 You take over by modifying the runner's messages from inside the loop body. The exact method depends on the SDK. See the per-language tabs that follow.
 
-When you take over for an iteration, the runner does not append the assistant message or tool results from that turn. You become responsible for keeping the conversation valid: append the assistant message and a tool result yourself (if you want the turn to count), modify state conditionally so the loop can still exit when there are no tool calls, and pass `max_iterations` (csharp, java, php: `maxIterations`; go: `MaxIterations`) to bound the loop. The SDK supports `max_iterations` (csharp, java, php: `maxIterations`; go: `MaxIterations`) in all seven languages.
+When you take over for an iteration, the runner does not append the assistant message or tool results from that turn. You become responsible for keeping the conversation valid: append the assistant message and a tool result yourself (if you want the turn to count), modify state conditionally so the loop can still exit when there are no tool calls, and pass `max_iterations` (csharp, php: `maxIterations`; java: `.maxIterations()`; go: `MaxIterations`) to bound the loop. The SDK supports `max_iterations` (csharp, php: `maxIterations`; java: `.maxIterations()`; go: `MaxIterations`) in all seven languages.
 
 <Tabs exclude="shell">
   <Tab title="Python">

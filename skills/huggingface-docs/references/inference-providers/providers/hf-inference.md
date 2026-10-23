@@ -68,7 +68,7 @@ Find out more about Image Segmentation [here](../tasks/image-segmentation).
 
 <InferenceSnippet
     pipeline=image-segmentation
-    providersMapping={ {"hf-inference":{"modelId":"nvidia/segformer-b2-finetuned-ade-512-512","providerModelId":"nvidia/segformer-b2-finetuned-ade-512-512"} } }
+    providersMapping={ {"hf-inference":{"modelId":"facebook/mask2former-swin-base-ade-semantic","providerModelId":"facebook/mask2former-swin-base-ade-semantic"} } }
 />
 
 ### Object Detection
@@ -77,7 +77,7 @@ Find out more about Object Detection [here](../tasks/object-detection).
 
 <InferenceSnippet
     pipeline=object-detection
-    providersMapping={ {"hf-inference":{"modelId":"facebook/detr-resnet-50","providerModelId":"facebook/detr-resnet-50"} } }
+    providersMapping={ {"hf-inference":{"modelId":"facebook/detr-resnet-101","providerModelId":"facebook/detr-resnet-101"} } }
 />
 
 ### Question Answering
@@ -131,7 +131,7 @@ Find out more about Token Classification [here](../tasks/token-classification).
 
 <InferenceSnippet
     pipeline=token-classification
-    providersMapping={ {"hf-inference":{"modelId":"NYTK/named-entity-recognition-nerkor-hubert-hungarian","providerModelId":"NYTK/named-entity-recognition-nerkor-hubert-hungarian"} } }
+    providersMapping={ {"hf-inference":{"modelId":"w11wo/indonesian-roberta-base-posp-tagger","providerModelId":"w11wo/indonesian-roberta-base-posp-tagger"} } }
 />
 
 ### Translation

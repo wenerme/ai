@@ -1,0 +1,32 @@
+---
+title: '`glab deploy-token`'
+stage: AI Clients
+group: Developer Clients
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Manage deploy tokens.
+
+## Synopsis
+
+Manage the deploy tokens of a project or a group.
+
+Deploy tokens grant access to a repository, its container registry, and its package registry over HTTPS without being tied to a user account. They are commonly used by CI/CD jobs and external systems.
+
+These commands act on the current project. Use `--repo` to target a different project, or `--group` to act on a group instead.
+
+## Options
+
+```plaintext
+  -R, --repo string   Select another repository. You can use either OWNER/REPO or GROUP/NAMESPACE/REPO. The full URL or Git URL is also accepted.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```
+
+## Subcommands
+
+- [`list`](list.md)

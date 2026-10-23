@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 433 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 423 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -3268,30 +3268,6 @@ for await (const chunk of stream) {
     "outputCost": 0.59
   },
   {
-    "model": "llmgateway-providers/novita/mimo-v2.5",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.168,
-    "outputCost": 0.336
-  },
-  {
-    "model": "llmgateway-providers/novita/mimo-v2.5-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.522,
-    "outputCost": 1.044
-  },
-  {
     "model": "llmgateway-providers/novita/minimax-m2.1",
     "imageInput": false,
     "audioInput": false,
@@ -4190,18 +4166,6 @@ for await (const chunk of stream) {
     "maxOutput": 1000000,
     "inputCost": 5,
     "outputCost": 30
-  },
-  {
-    "model": "llmgateway-providers/sciforium/deepseek-v4.1-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.246,
-    "outputCost": 0.944
   },
   {
     "model": "llmgateway-providers/scx-ai-gp/deepseek-v4.1-flash",

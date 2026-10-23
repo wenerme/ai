@@ -202,6 +202,15 @@ Each time you apply a configuration, Terraform writes the full service definitio
 - Manage the services you provision with Terraform in Terraform. Changes made in the Service Center UI are overwritten the next time you apply the configuration.
 - Services [imported from Backstage](/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#import-services-from-backstage) should be managed in Backstage. Managing them in Terraform as well causes the two systems to repeatedly overwrite each other.
 
+### Identify services that Terraform manages
+
+Service Center marks each service that Terraform manages with a purple badge next to its name, in the service list and on the service page. Hover over the badge to display **Managed by: Terraform**. If you set `manager_identity` in the resource’s `options` block, the tooltip also shows that identity, which helps you tell apart Terraform workspaces that target the same stack.
+
+Service Center also warns you before you change a service that Terraform manages:
+
+- When you edit the service, the form shows that the service is managed by Terraform, and you must confirm before you save. The next `terraform apply` overwrites changes that you don’t also make in your Terraform configuration.
+- When you delete the service, the confirmation dialog box reminds you to remove the service from your Terraform configuration. Otherwise, the next `terraform apply` recreates it.
+
 ## More examples
 
 For more examples on the concepts in this guide:

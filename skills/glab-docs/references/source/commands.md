@@ -29,6 +29,7 @@ subcommands, options, and examples.
 - [`glab container-registry`](container-registry/_index.md)
 - [`glab dependency-firewall`](dependency-firewall/_index.md)
 - [`glab deploy-key`](deploy-key/_index.md)
+- [`glab deploy-token`](deploy-token/_index.md)
 - [`glab duo`](duo/_index.md)
 - [`glab govern`](govern/_index.md)
 - [`glab gpg-key`](gpg-key/_index.md)

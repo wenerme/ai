@@ -5,7 +5,7 @@ description: "Browse Fireworks AI model IDs, capabilities, context windows, and 
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 27 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 29 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -124,6 +124,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "fireworks-ai/accounts/fireworks/models/minimax-m3p1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 512000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
+  },
+  {
     "model": "fireworks-ai/accounts/fireworks/models/muse-spark-open",
     "imageInput": true,
     "audioInput": false,
@@ -170,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/routers/deepseek-v4p1-flash-1017-spot",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.21,
+    "outputCost": 0.84
   },
   {
     "model": "fireworks-ai/accounts/fireworks/routers/deepseek-v4p1-flash-spot",

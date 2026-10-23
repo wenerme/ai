@@ -2031,28 +2031,38 @@
   },
   "grafana-servicecenter-app/create-a-service.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service.md",
-    "size": 3653,
-    "updatedAt": "2026-09-30T16:35:49.622Z"
+    "size": 6702,
+    "updatedAt": "2026-10-23T10:35:50.264Z"
+  },
+  "grafana-servicecenter-app/discover-services.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/discover-services.md",
+    "size": 10295,
+    "updatedAt": "2026-10-23T10:35:50.409Z"
   },
   "grafana-servicecenter-app/escalate-to-irm.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/escalate-to-irm.md",
     "size": 4486,
     "updatedAt": "2026-09-30T16:35:49.770Z"
   },
+  "grafana-servicecenter-app/find-and-organize-services.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/find-and-organize-services.md",
+    "size": 4024,
+    "updatedAt": "2026-10-23T10:35:50.694Z"
+  },
   "grafana-servicecenter-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest.md",
-    "size": 2373,
-    "updatedAt": "2026-09-30T16:35:49.919Z"
+    "size": 2802,
+    "updatedAt": "2026-10-23T10:35:50.840Z"
   },
   "grafana-servicecenter-app/overview.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/overview.md",
-    "size": 4552,
-    "updatedAt": "2026-09-30T16:35:50.075Z"
+    "size": 5459,
+    "updatedAt": "2026-10-23T10:35:50.994Z"
   },
   "grafana-servicecenter-app/provision-with-terraform.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/provision-with-terraform.md",
-    "size": 7948,
-    "updatedAt": "2026-09-30T16:35:50.223Z"
+    "size": 8865,
+    "updatedAt": "2026-10-23T10:35:51.150Z"
   },
   "grafana-servicenow-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/alerting.md",

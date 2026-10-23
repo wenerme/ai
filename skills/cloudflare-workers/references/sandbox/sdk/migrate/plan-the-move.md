@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/og.pn
 
 # Plan the move to Sandbox SDK 1.0
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page compares the two ways to move sandboxes from Sandbox SDK 0.12 to 1.0, and then moves every sandbox in one deploy. You cannot undo the deploy that switches your sandboxes to 1.0.
 
 ## Before you start
 
-- Your application runs `@cloudflare/sandbox` 0.12.10.
+- Your application runs `@cloudflare/sandbox` 0.12.13.
 - Your 1.0 class is written. For the class, refer to [Replace the Sandbox class](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/).
 - You have a staging copy of the Worker with its own Wrangler configuration file. Set a different Worker `name` and a different `name` for each container in that file, because the `--name` option of `wrangler deploy` does not rename container applications.
 
@@ -51,7 +51,7 @@ The switch happens when the deploy that moves your class to `scheduling_policy: 
 | WebSockets | Stop delivering data. Clients receive no close frame. |
 | Pending alarms | Call your 1.0 `alarm()` handler once for each sandbox that was active. |
 | `schedule()` callbacks | Never run. |
-| 0.12 storage keys | Stay in Durable Object storage, unused. |
+| 0.12 storage keys | Stay in Durable Object storage. The pages that move preview URLs, tunnels, and outbound rules read `portTokens`, `tunnels`, `tunnels:meta`, and `OUTBOUND_CONFIGURATION`. |
 
 ## Move every sandbox in one deploy
 
@@ -81,7 +81,7 @@ The switch happens when the deploy that moves your class to `scheduling_policy: 
    If your class has no `alarm()` handler, each pending alarm fails once with an internal error in your logs and then clears.
 2. Replace `schedule()` calls. 0.12 stores scheduled callbacks in a table that 1.0 does not read. Set the next run with `this.ctx.storage.setAlarm()` from your class, and do the work in `alarm()`. A Durable Object has one alarm, so this is the handler from step 1. To replace several schedules, store the time of each, set the alarm to the earliest, and run every task that is due in `alarm()`. For more information, refer to [Alarms](https://developers.cloudflare.com/durable-objects/api/alarms/).
 3. Prepare clients for sockets that go silent. Open terminals and preview WebSockets stop receiving data at the switch, and the browser does not see them close. Have your client reconnect when a socket receives nothing for a set time, or tell users to reload after the deploy.
-4. Save the files that users need. No 1.0 sandbox can read the files in a 0.12 container. Before you deploy, save the files with 0.12 `createBackup()`. After the switch, restore them as [Move backups](https://developers.cloudflare.com/sandbox/sdk/migrate/backups/#convert-backups-that-012-created) describes.
+4. Save the files that users need. Once a 0.12 container stops, its files are gone, and the short time after the deploy when 1.0 code still reaches it is no way to copy them. Before you deploy, save the files with 0.12 `createBackup()`. After the switch, restore them as [Move backups](https://developers.cloudflare.com/sandbox/sdk/migrate/backups/#convert-backups-that-012-created) describes.
 5. Rehearse on the staging Worker first. With sandboxes running there and a client connected, upload and deploy the 1.0 version to the staging Worker as steps 6 and 7 describe. Check that requests from your application work after the switch.
 6. Upload the 1.0 version:npmyarnpnpm
 
@@ -120,7 +120,7 @@ The switch happens when the deploy that moves your class to `scheduling_policy: 
 
 ## Check the move
 
-Send requests from your application to a sandbox, such as a command and a file read. Each Durable Object starts a 1.0 container on its first request. List the container applications in your account:
+Send requests from your application to a sandbox, such as a command and a file read. Each Durable Object starts a 1.0 container on its first request once `running` is `false`. For a short time after the deploy, a request can still reach the 0.12 container, where a command runs in the 0.12 image. Wait a few minutes after the deploy before you check. List the container applications in your account:
 
 npmyarnpnpm
 
@@ -158,7 +158,7 @@ pnpm wrangler containers delete <OLD_APPLICATION_ID>
 
 The old application runs its containers, and bills for them, until you delete it. Deleting it stops the containers that 0.12 started and deletes their files. Durable Objects and their storage stay.
 
-The keys that 0.12 wrote stay in the storage of each Durable Object and do nothing. If you delete them, name each key in a `delete()` call. Do not call `deleteAll()`, which also deletes your own keys and any 0.12 backup handles that you still need to convert.
+The keys that 0.12 wrote stay in the storage of each Durable Object. Keep `portTokens`, `tunnels`, `tunnels:meta`, and `OUTBOUND_CONFIGURATION` while your class reads them, as the pages that move preview URLs, tunnels, and outbound rules do. If you delete other keys, name each key in a `delete()` call. Do not call `deleteAll()`, which also deletes your own keys and any 0.12 backup handles that you still need to convert.
 
 ## Related resources
 
@@ -176,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/#page","headline":"Plan the move to Sandbox SDK 1.0","description":"Choose how to switch live Sandbox SDK 0.12 sandboxes to 1.0, prepare your code for the deploy that cannot be undone, and remove what 0.12 leaves behind.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/og.png?v=3758c9f5660c5104","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/#page","headline":"Plan the move to Sandbox SDK 1.0","description":"Choose how to switch live Sandbox SDK 0.12 sandboxes to 1.0, prepare your code for the deploy that cannot be undone, and remove what 0.12 leaves behind.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/og.png?v=3758c9f5660c5104","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

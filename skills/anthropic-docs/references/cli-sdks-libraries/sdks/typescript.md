@@ -775,7 +775,7 @@ const response = await client.beta.messages.create({
 
 The TypeScript SDK supports the following platforms:
 
-* **Agent Platform:** `npm install @anthropic-ai/vertex-sdk`: Provides `AnthropicVertex` client
+* **Claude Models on Google Cloud (Google managed):** `npm install @anthropic-ai/vertex-sdk`: Provides `AnthropicVertex` client
 * **Bedrock:** `npm install @anthropic-ai/bedrock-sdk`: Provides `AnthropicBedrockMantle` client, and `AnthropicBedrock` for the `bedrock-runtime` path
 * **Claude Platform on AWS:** `npm install @anthropic-ai/aws-sdk`: Provides `AnthropicAws` client. Pass `workspaceId` to the constructor or set the `ANTHROPIC_AWS_WORKSPACE_ID` environment variable. Available in beta.
 * **Foundry:** `npm install @anthropic-ai/foundry-sdk`: Provides `AnthropicFoundry` client

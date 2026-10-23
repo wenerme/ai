@@ -1929,7 +1929,7 @@ Find the card's title, or the code that ends the error message, in this table, t
 | `SFTP doesn't start on <host>` | `[SFTP_NOT_STARTED]` | Connect to the same host with `sftp` in a terminal on your computer to see what stops it, then check the settings and files that Desktop's message names |
 | `<host> allows too few SSH sessions per connection` | `[SESSION_LIMIT]` | Raise `MaxSessions` in the server's `sshd_config`, for example to OpenSSH's default of 10 |
 | `<host> is out of disk space` | `[ENOSPC]` or `[EDQUOT]` | Free space or quota on the remote machine, in your home directory or `/tmp` |
-| `This computer is out of disk space` | `[ENOSPC]` or `[EDQUOT]`, in a message that starts with `Couldn't prepare the deploy locally` | Free space on your computer |
+| `Free up disk space on this computer` | `[ENOSPC]` or `[EDQUOT]`, in a message that starts with `Couldn't prepare the deploy locally` | Free space on your computer |
 | `Claude Code won't start on <host>` | `[CLI_UNRESPONSIVE]` | Wait a minute, then try again. If it keeps failing, run the command that the message names on the remote machine to see whether Claude Code answers there. |
 
 For any other message, check the [remote machine requirements](#remote-machine-requirements-for-ssh-sessions).

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/og.png?v=
 
 # Move browser terminals
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, `terminal()` attaches a WebSocket to a shell that the container keeps for each session, and `SandboxAddon` reconnects the browser to it. In 1.0, your Durable Object attaches each WebSocket to a [tmux ↗︎](https://github.com/tmux/tmux/wiki) session with `exec(argv, { pty })`. tmux keeps the shell running between connections.
 
@@ -165,8 +165,10 @@ In 1.0, the Worker forwards the request to the Durable Object, and the `session`
 *src/index.ts (1.0)ts*
 
 ```ts
-return env.MY_SANDBOX.getByName(id.toLowerCase()).fetch(request);
+return env.MY_SANDBOX.getByName(id).fetch(request);
 ```
+
+Pass the name that 0.12 used. 0.12 kept the case of the name unless you passed `normalizeId: true`. In that case, call `id.toLowerCase()`, as [Replace the Sandbox class](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/) shows.
 
 Replace `proxyTerminal(stub, sessionId, request)` with the same `fetch()` call, and put the session in the `session` query parameter. The handler reads the size from the `cols` and `rows` query parameters, and uses 80 by 24 without them. A request without a WebSocket upgrade gets HTTP `426`, where 0.12 threw an error.
 
@@ -178,7 +180,7 @@ If your class also forwards preview URLs, remove the `X-Sandbox-Port` header bef
 const headers = new Headers(request.headers);
 headers.delete("X-Sandbox-Port");
 
-const sandbox = env.MY_SANDBOX.getByName(id.toLowerCase());
+const sandbox = env.MY_SANDBOX.getByName(id);
 return sandbox.fetch(new Request(request, { headers }));
 ```
 
@@ -304,5 +306,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/#page","headline":"Move browser terminals","description":"Replace @cloudflare/sandbox 0.12 terminal(), session.terminal(), proxyTerminal(), and SandboxAddon with tmux sessions that your Durable Object runs.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/og.png?v=ede3fefcaf00d10b","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/#page","headline":"Move browser terminals","description":"Replace @cloudflare/sandbox 0.12 terminal(), session.terminal(), proxyTerminal(), and SandboxAddon with tmux sessions that your Durable Object runs.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/terminals/og.png?v=ede3fefcaf00d10b","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -109,6 +109,7 @@ The following table lists the actions available to each user type:
 | Access the **Organization Admin** area | Yes | No |
 | View organization users | Yes | No |
 | Manage organization membership | Yes | No |
+| Manage integration defaults | Yes | No |
 | Transfer a top-level group into the organization | Yes | No |
 | Leave the organization | Yes | Yes |
 | Purchase organization-scoped products | Yes | No |
@@ -216,6 +217,10 @@ To remove a user from an organization:
 1. Select **Organization overview** > **Users**.
 1. Next to the user, select the vertical ellipsis () > **Remove from organization**.
 1. In the confirmation dialog, select **Remove**.
+
+## Manage integration defaults
+
+To manage integration defaults for your organization, see [configure default settings for an integration](../../administration/settings/project_integration_management.md#in-the-organization-admin-area).
 
 ## Organization visibility
 

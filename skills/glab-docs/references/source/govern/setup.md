@@ -15,15 +15,16 @@ Installs the following:
 
 - Stop hook in `~/.claude/settings.json`, which syncs the session after every agent turn.
 - SessionEnd hook in `~/.claude/settings.json`, which syncs the session and marks it completed.
+- With `--agents opencode`, a plugin for OpenCode 1.4 or later in `~/.config/opencode/plugins/glab-govern.js` (under `$XDG_CONFIG_HOME` when it is set), which syncs the OpenCode session every time it goes idle. OpenCode loads it for all your sessions, in every project. Later setups keep it up to date, and only `--uninstall` removes it.
 - Fallback periodic sync: a launchd agent (`~/Library/LaunchAgents/com.gitlab.glab-govern-audit-sync.plist`) on macOS, or a systemd user timer (`~/.config/systemd/user/glab-govern-audit-sync.timer`) on Linux.
 
-The fallback periodic sync runs `glab govern audit sync --all` every 30 minutes, and on Linux also 5 minutes after boot, until you remove it. It uploads anything the hooks missed for sessions they have already recorded (see `glab govern audit sync --help` for what is uploaded), using your stored glab credentials and the glab configuration directory in use when you run setup. Each session goes to the project and host of the Git repository the agent ran in. It also marks sessions completed once they have been idle for 24 hours. It pauses sessions from agents that use hooks while those hooks are not installed. Pass `--no-fallback-sync` to install only the hooks. The fallback periodic sync is not available on Windows.
+The fallback periodic sync runs `glab govern audit sync --all` every 30 minutes, and on Linux also 5 minutes after boot, until you remove it. It uploads anything the hooks missed for sessions they have already recorded (see `glab govern audit sync --help` for what is uploaded), using your stored glab credentials and the glab configuration directory in use when you run setup. Each session goes to the project and host of the Git repository the agent ran in. It also marks sessions completed once they have been idle for 24 hours. It pauses sessions from agents that use hooks while those hooks are not installed. Pass `--no-fallback-sync` to install only the hooks and plugin. The fallback periodic sync is not available on Windows.
 
 Pass `--agents codex,cursor` to also sync Codex and Cursor sessions. glab installs no hooks for those agents: the fallback periodic sync finds their sessions by scanning their transcripts in `~/.codex/sessions` and `~/.cursor/projects`, including sessions from before you enabled them, and uploads those from repositories on GitLab hosts you are logged in to with glab. Their sessions are marked completed once they have been idle for 24 hours. Run setup again with a different `--agents` list to change which agents are synced, or with `--agents ""` to stop. Every setup prompt names the agents that are synced, and `--uninstall` also stops syncing them.
 
 Safe to run multiple times: existing hooks are not duplicated, and an existing fallback periodic sync job is replaced. Run `glab govern doctor` afterwards to verify the setup.
 
-Run `glab govern setup --uninstall` to remove everything setup installed: the hooks, the fallback periodic sync job, and Codex and Cursor session syncing. Other hooks and settings in `~/.claude/settings.json` are left unchanged.
+Run `glab govern setup --uninstall` to remove everything setup installed: the hooks, the OpenCode plugin, the fallback periodic sync job, and Codex and Cursor session syncing. Other hooks and settings in `~/.claude/settings.json`, and other OpenCode plugins, are left unchanged.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -43,6 +44,9 @@ $ glab govern setup
 # Configure only the hooks
 $ glab govern setup --no-fallback-sync
 
+# Also sync OpenCode sessions
+$ glab govern setup --agents opencode
+
 # Also sync Codex and Cursor sessions through the fallback periodic sync
 $ glab govern setup --agents codex,cursor
 
@@ -54,7 +58,7 @@ $ glab govern setup --uninstall
 ## Options
 
 ```plaintext
-      --agents strings     Also sync sessions from these agents, found by the fallback periodic sync without hooks: codex, cursor. Replaces the agents enabled by an earlier run. Multiple agents can be comma-separated or specified by repeating the flag.
+      --agents strings     Also sync sessions from these agents: opencode, codex, cursor. opencode installs a plugin that runs for all your OpenCode sessions, and stays installed until --uninstall. The others are found by the fallback periodic sync without hooks, and replace those enabled by an earlier run. Multiple agents can be comma-separated or specified by repeating the flag.
       --no-fallback-sync   Install only the hooks, without the fallback periodic sync job.
       --uninstall          Remove the hooks and the fallback periodic sync job, and stop syncing Codex and Cursor sessions.
   -y, --yes                Skip confirmation prompt.
