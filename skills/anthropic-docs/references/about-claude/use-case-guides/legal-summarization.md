@@ -831,7 +831,7 @@ Here’s an example of how to create a prompt that ensures the generated summari
   ```
 </CodeGroup>
 
-This code implements a `summarize_document` (typescript, go, java: `summarizeDocument`; php: `$summarizeDocument`; csharp: `SummarizeDocument`) function that uses Claude to summarize the contents of a sublease agreement. The function accepts a text string and a list of details to extract as inputs. In this example, the code calls the function with the `document_text` (typescript, go, java, csharp: `documentText`; php: `$documentText`) and `details_to_extract` (typescript, go, java, csharp: `detailsToExtract`; php: `$detailsToExtract`) variables that were defined in the previous code snippets.
+This code implements a `summarize_document()` (typescript, go, java: `summarizeDocument()`; php: `$summarizeDocument()`; csharp: `SummarizeDocument()`) function that uses Claude to summarize the contents of a sublease agreement. The function accepts a text string and a list of details to extract as inputs. In this example, the code calls the function with the `document_text` (typescript, go, java, csharp: `documentText`; php: `$documentText`) and `details_to_extract` (typescript, go, java, csharp: `detailsToExtract`; php: `$detailsToExtract`) variables that were defined in the previous code snippets.
 
 Within the function, a prompt is generated for Claude, including the document to be summarized, the details to extract, and specific instructions for summarizing the document. The prompt instructs Claude to respond with a summary of each detail to extract nested within XML headers.
 
@@ -1323,11 +1323,11 @@ Here's an example of how to perform meta-summarization:
   ```
 </CodeGroup>
 
-The `summarize_long_document` (typescript, go, java: `summarizeLongDocument`; php: `$summarizeLongDocument`; csharp: `SummarizeLongDocument`) function builds upon the earlier `summarize_document` (typescript, go, java: `summarizeDocument`; php: `$summarizeDocument`; csharp: `SummarizeDocument`) function by splitting the document into smaller chunks and summarizing each chunk individually.
+The `summarize_long_document()` (typescript, go, java: `summarizeLongDocument()`; php: `$summarizeLongDocument()`; csharp: `SummarizeLongDocument()`) function builds upon the earlier `summarize_document()` (typescript, go, java: `summarizeDocument()`; php: `$summarizeDocument()`; csharp: `SummarizeDocument()`) function by splitting the document into smaller chunks and summarizing each chunk individually.
 
-The code achieves this by applying the `summarize_document` (typescript, go, java: `summarizeDocument`; php: `$summarizeDocument`; csharp: `SummarizeDocument`) function to each chunk of 20,000 characters within the original document. The individual summaries are then combined, and a final summary is created from these chunk summaries.
+The code achieves this by applying the `summarize_document()` (typescript, go, java: `summarizeDocument()`; php: `$summarizeDocument()`; csharp: `SummarizeDocument()`) function to each chunk of 20,000 characters within the original document. The individual summaries are then combined, and a final summary is created from these chunk summaries.
 
-Note that the `summarize_long_document` (typescript, go, java: `summarizeLongDocument`; php: `$summarizeLongDocument`; csharp: `SummarizeLongDocument`) function isn't strictly necessary for the example PDF, as the entire document fits within Claude's context window. However, it becomes essential for documents exceeding Claude's context window or when summarizing multiple related documents together. Regardless, this meta-summarization technique often captures additional important details in the final summary that were missed in the earlier single-summary approach.
+Note that the `summarize_long_document()` (typescript, go, java: `summarizeLongDocument()`; php: `$summarizeLongDocument()`; csharp: `SummarizeLongDocument()`) function isn't strictly necessary for the example PDF, as the entire document fits within Claude's context window. However, it becomes essential for documents exceeding Claude's context window or when summarizing multiple related documents together. Regardless, this meta-summarization technique often captures additional important details in the final summary that were missed in the earlier single-summary approach.
 
 ### Use summary indexed documents to explore a large collection of documents
 

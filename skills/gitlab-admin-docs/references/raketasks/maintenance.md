@@ -521,6 +521,61 @@ You should not use the task for routine checks as database inconsistencies might
 gitlab-rake gitlab:db:schema_checker:run
 ```
 
+## Validate the database schema
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/604830) in GitLab 19.2.
+
+This Rake task compares the `main` database with the `db/structure.sql` file of your GitLab version
+and reports the result in its exit code. Use it in scripts and before an upgrade, because database
+migrations can fail when the schema does not match what they expect.
+
+The task checks only for missing tables, indexes, foreign keys, and sequences, and for wrong
+sequence owners. The checks are the same as the
+[schema health check](../admin_area.md#schema-health-check) on the Database diagnostics page.
+Unlike `gitlab:db:schema_checker:run`, which prints every difference it finds for diagnosis,
+this task runs only these checks and signals the result with its exit code.
+
+```shell
+sudo gitlab-rake gitlab:db:validate_schema
+```
+
+The task exits with one of the following codes:
+
+| Exit code | Meaning |
+|-----------|---------|
+| `0`       | The schema matches `db/structure.sql`. The task prints nothing. |
+| `1`       | The task found inconsistencies and printed them. |
+| `2`       | The task could not check the schema, for example because the database is unreachable. The task prints the error, prefixed with `Schema validation failed:`. |
+
+No automated schema repair tool is available. If the task finds inconsistencies, contact
+GitLab Support before you upgrade.
+
+### Example output
+
+When the task finds inconsistencies, it prints each one with the statement from `db/structure.sql`
+that has no match in the database:
+
+```plaintext
+------------------------------------------------------
+The index i_ai_governance_sessions_on_namespace_source_external_xid is missing from the database
+Diff:
+-CREATE UNIQUE INDEX i_ai_governance_sessions_on_namespace_source_external_xid ON public.ai_governance_sessions USING btree (namespace_id, source, external_xid) WHERE external_xid IS NOT NULL
+
+------------------------------------------------------
+------------------------------------------------------
+The foreign key public.fk_024fc4aa00 is missing from the database
+Diff:
+-FOREIGN KEY (granular_scope_id) REFERENCES granular_scopes(id) ON DELETE CASCADE
+
+------------------------------------------------------
+```
+
+When the task cannot check the schema:
+
+```plaintext
+Schema validation failed: There is an issue connecting with your hostname: 127.0.0.1.
+```
+
 ## Collect information and statistics about the database
 
 - [Introduced](https://gitlab.com/groups/gitlab-com/-/work_items/2456) in GitLab 17.11.

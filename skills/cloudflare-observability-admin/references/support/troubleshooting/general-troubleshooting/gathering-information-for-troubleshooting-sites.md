@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/support/troubleshooting/general-trouble
 
 # Gathering information for troubleshooting sites
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About this guide
 
@@ -438,6 +438,20 @@ log_format cf_custom '$remote_addr - $remote_user [$time_local] '
 '$http_cf_ray';
 ```
 
+#### Correlate a Ray ID with a packet capture
+
+A packet capture records the connection at the packet level. The Ray ID identifies one request within that connection. Provide both so that Support can match the frames in your capture to the request that was slow or failed.
+
+1. Start the [packet capture](#run-packet-captures) before you reproduce the issue. Leave it running.
+2. Reproduce the request that is slow or failing. Record its Ray ID from the `cf-ray` response header. On a Cloudflare error page, the Ray ID also appears at the bottom. If you [log the CF-RAY header](#for-nginx-web-servers-add-http_cf_ray-to-log_format) at your origin, you can take it from your logs instead.
+3. Record the time of the request in UTC. Read it from the same host that runs the capture, so that both share a clock.
+4. Stop the capture and save the file.
+5. Attach the capture to your support ticket with the Ray ID and the UTC time.
+
+Note
+
+Ray IDs are not guaranteed to be unique. Two different requests can share one. Always send the UTC time window with the Ray ID so that Support can tell the requests apart. For more information, refer to [Cloudflare Ray ID](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/).
+
 ### Perform a MTR
 
 When to use
@@ -504,6 +518,10 @@ Cloudflare suggests [Wireshark ↗︎](https://www.wireshark.org/download.html) 
 6. Click the red square icon in the top left-hand corner to stop your packet capture.
 7. Save as a `.pcap` file and attach it to your support ticket.
 
+Note
+
+To match a capture to a specific request rather than to the connection as a whole, also record the request's Ray ID and the UTC time. Refer to [Correlate a Ray ID with a packet capture](#correlate-a-ray-id-with-a-packet-capture).
+
 ---
 
 ## Related resources
@@ -522,5 +540,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/og.png?v=9365c8130b724b70","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/og.png?v=9365c8130b724b70","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -125,7 +125,8 @@ GET /groups/:id/export_relations/download
 curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --remote-header-name \
-  --remote-name "https://gitlab.example.com/api/v4/groups/1/export_relations/download?relation=labels"
+  --remote-name \
+  --url "https://gitlab.example.com/api/v4/groups/1/export_relations/download?relation=labels"
 ```
 
 ```shell

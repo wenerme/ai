@@ -16,6 +16,7 @@ Verifies:
 - Authentication: glab is authenticated with a valid token
 - glab in PATH: the binary is findable so hooks will work
 - Agent session hooks: the Stop and SessionEnd hooks are installed
+- OpenCode plugin: whether the glab plugin is installed and up to date
 - API connectivity: can reach the GitLab API
 - Fallback periodic sync: whether the scheduled job is installed and loaded, whether the glab binary it runs still exists and is the same build as this glab, and the result of its last run
 

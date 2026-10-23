@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-ba
 
 # Run a server in the background
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Start a server that runs until the container stops, such as a development server, a tunnel, or a code kernel. Unlike a job, nothing waits for the server to exit. Your Durable Object starts it on first use, waits until it answers, and starts it again in each new container.
 
@@ -111,7 +111,11 @@ For a process that runs until it finishes, such as a build or an agent task, ref
 
    async function stopServer(container, dir) {
    	const stop = await container.exec(["sh", "-c", STOP, "sh", dir]);
-   	await stop.exitCode;
+   	const exitCode = await stop.exitCode;
+
+   	if (exitCode !== 0) {
+   		throw new Error(`Stopping the server failed with exit code ${exitCode}`);
+   	}
    }
    ```
 
@@ -215,7 +219,11 @@ For a process that runs until it finishes, such as a build or an agent task, ref
 
    async function stopServer(container: Container, dir: string): Promise<void> {
    	const stop = await container.exec(["sh", "-c", STOP, "sh", dir]);
-   	await stop.exitCode;
+   	const exitCode = await stop.exitCode;
+
+   	if (exitCode !== 0) {
+   		throw new Error(`Stopping the server failed with exit code ${exitCode}`);
+   	}
    }
    ```
 
@@ -416,5 +424,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#page","headline":"Run a server in the background","description":"Start a server in a Linux sandbox once for each container, wait until it answers, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/og.png?v=4e85cc5d09cf583f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#page","headline":"Run a server in the background","description":"Start a server in a Linux sandbox once for each container, wait until it answers, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/og.png?v=4e85cc5d09cf583f","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

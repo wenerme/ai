@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/files/og.png?v=202a
 
 # Change file calls
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, the SDK server in the container handled file calls. It created missing directories, returned binary files as base64, and hid dotfiles. In 1.0, [`Files`](https://developers.cloudflare.com/sandbox/reference/files/) runs a small helper in the container for each call, and does only what the call asks.
 
@@ -42,7 +42,7 @@ These calls keep their meaning, under a new name or with a different result:
 | 0.12 | 1.0 |
 | --- | --- |
 | `readFile(path)`, then `.content` of a text file | `await (await this.files.readFile(path)).text()` |
-| `readFileStream(path)` | `(await this.files.readFile(path)).body` |
+| `readFileStream(path)`, then `streamFile()` or `collectFile()` | `(await this.files.readFile(path)).body`, which carries the bytes of the file. 0.12 returned server-sent events, which those helpers decoded. |
 | `exists(path)` | `this.files.stat(path)`, catching `SandboxFileError` with code `ENOENT` |
 | `mkdir(path, { recursive })` | `this.files.mkdir(path, { recursive })` |
 | `deleteFile(path)` | `this.files.remove(path)` |
@@ -162,7 +162,23 @@ try {
 Two calls behave differently from 0.12:
 
 - `deleteFile()` refused a directory. `remove()` removes one with `recursive: true`, and rejects with `EISDIR` without it.
-- `renameFile()` and `moveFile()` ran `mv`, which copies across filesystems. `rename()` rejects with `EXDEV`, so copy with `container.exec(["cp", "-a", source, destination])`, then call `remove()`.
+- `renameFile()` and `moveFile()` ran `mv`. When the destination was an existing directory, `mv` moved the source into it. `rename()` follows Linux `rename` rules instead: it replaces the destination, and rejects with `ENOTEMPTY` when the destination is a directory that holds files. Pass the full new path, such as `/workspace/archive/report.txt`.
+- `mv` also copied across filesystems. `rename()` rejects with `EXDEV`, so copy the source, check the result, and then remove the source:
+
+  *src/index.tsts*
+
+
+
+  ```ts
+  const copy = await this.container.exec(["cp", "-a", "--", source, destination]);
+  const { exitCode, stderr } = await copy.output();
+
+  if (exitCode !== 0) {
+  	throw new Error(new TextDecoder().decode(stderr));
+  }
+
+  await this.files.remove(source, { recursive: true });
+  ```
 
 ## Replace file watching
 
@@ -227,5 +243,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/#page","headline":"Change file calls","description":"Replace @cloudflare/sandbox 0.12 file methods and watch() with Files from @cloudflare/sandbox 1.0 and inotifywait.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/og.png?v=202aa6ad0a908aef","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/#page","headline":"Change file calls","description":"Replace @cloudflare/sandbox 0.12 file methods and watch() with Files from @cloudflare/sandbox 1.0 and inotifywait.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/files/og.png?v=202aa6ad0a908aef","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

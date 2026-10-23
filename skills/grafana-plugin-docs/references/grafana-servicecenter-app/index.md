@@ -41,6 +41,14 @@ Learn how the Service Center view connects service health, SLOs, incidents, aler
 \
 Configure a service and connect teams and operational resources to enable the Service Center view.](/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/)
 
+[Discover services
+\
+Find services in the labels on your existing SLOs, alerts, dashboards, incidents, and synthetic checks, and create them in bulk.](/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/)
+
 [Provision services using Terraform
 \
 Manage services as code with the Grafana Terraform provider, including ownership, dependencies, and links.](/docs/grafana-cloud/alerting-and-irm/service-center/provision-with-terraform/)
+
+[Find and organize services
+\
+Search and filter the service list, star services, and share filtered views with your team.](/docs/grafana-cloud/alerting-and-irm/service-center/find-and-organize-services/)

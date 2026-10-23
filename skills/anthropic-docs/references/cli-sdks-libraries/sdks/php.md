@@ -228,7 +228,7 @@ $response = $client->request(
 
 The PHP SDK supports the following platforms:
 
-* **Agent Platform:** `Anthropic\Vertex\Client`. Use `::fromEnvironment()`.
+* **Claude Models on Google Cloud (Google managed):** `Anthropic\Vertex\Client`. Use `::fromEnvironment()`.
 * **Bedrock:** `Anthropic\Bedrock\MantleClient`. Use `new MantleClient(awsRegion: ...)`.
 * **Bedrock (legacy):** `Anthropic\Bedrock\Client`. Use `::fromEnvironment()` or `::withCredentials()`.
 * **Claude Platform on AWS:** `Anthropic\Aws\Client` (requires `aws/aws-sdk-php` as a soft dependency). Use `new Anthropic\Aws\Client(workspaceId: ...)` or set `ANTHROPIC_AWS_WORKSPACE_ID`. Available in beta.

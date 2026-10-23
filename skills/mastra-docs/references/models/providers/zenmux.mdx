@@ -5,7 +5,7 @@ description: "Browse ZenMux model IDs, capabilities, context windows, and pricin
 
 # [ZenMux logo]ZenMux
 
-Access 137 ZenMux models through Mastra's model router. Authentication is handled automatically using the `ZENMUX_API_KEY` environment variable.
+Access 110 ZenMux models through Mastra's model router. Authentication is handled automatically using the `ZENMUX_API_KEY` environment variable.
 
 Learn more in the [ZenMux documentation](https://docs.zenmux.ai).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "zenmux/anthropic/claude-3.5-haiku"
+  model: "zenmux/anthropic/claude-fable-5"
 });
 
 // Generate a response
@@ -1242,7 +1242,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://zenmux.ai/api/v1",
-    id: "zenmux/anthropic/claude-3.5-haiku",
+    id: "zenmux/anthropic/claude-fable-5",
     apiKey: process.env.ZENMUX_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -1261,7 +1261,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "zenmux/z-ai/glm-image"
-      : "zenmux/anthropic/claude-3.5-haiku";
+      : "zenmux/anthropic/claude-fable-5";
   }
 });
 ```

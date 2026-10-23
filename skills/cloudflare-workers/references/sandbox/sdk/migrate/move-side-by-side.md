@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/o
 
 # Move sandboxes side by side
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run a Sandbox SDK 1.0 class next to your 0.12 class in the same Worker, and move each sandbox the first time a request reaches it. Commands and connections in sandboxes that have not moved keep running. When no sandbox needs the 0.12 class, delete it.
 
@@ -86,7 +86,7 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
    ```dockerfile
    FROM node:24-trixie-slim
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    WORKDIR /workspace
    CMD ["sleep", "infinity"]
@@ -209,8 +209,16 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
 
    		if (await stub0x.isRunning()) {
    			const legacy = getSandbox(this.env.Sandbox, name);
+   			// Stop the background processes, so no file changes during the copy.
+   			await legacy.killAllProcesses();
+
    			const path = "/tmp/workspace.tar.gz";
-   			await legacy.exec(`tar -czf ${path} -C /workspace .`);
+   			const packed = await legacy.exec(`tar -czf ${path} -C /workspace .`);
+
+   			if (!packed.success) {
+   				throw new Error(packed.stderr);
+   			}
+
    			const archive = await legacy.readFile(path, {
    				encoding: "base64",
    			});
@@ -227,9 +235,9 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
    				throw new Error(stderr);
    			}
 
-   			await this.ctx.storage.put("moved", true);
    			// destroy() would delete named tunnels and DNS records.
    			await legacy.stop();
+   			await this.ctx.storage.put("moved", true);
    			return;
    		}
 
@@ -238,9 +246,11 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
    }
    ```
 
-   `ensureRunning()` and `container` are the helpers from your 1.0 class that start the container and return `this.ctx.container`. The method copies the 0.12 storage first, so preview URLs, named tunnels, and outbound rules move even when the 0.12 container has stopped. If the copy fails, the method throws before it stores `moved` or stops the 0.12 container, and the next request runs the copy again.
+   `ensureRunning()` and `container` are the helpers from your 1.0 class that start the container and return `this.ctx.container`. The method copies the 0.12 storage first, so preview URLs, named tunnels, and outbound rules move even when the 0.12 container has stopped. If the copy or `stop()` fails, the method throws before it stores `moved`, and the next request runs the move again.
 
-   0.12 `stop()` keeps the storage of the 0.12 class, and the tunnels and DNS records in your account. 0.12 `destroy()` deletes the preview tokens, the tunnel entries, and each named tunnel with its DNS record. Processes end with the 0.12 container, so start the ones your application needs in the 1.0 container, as [Move background processes](https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/#start-processes-again-after-the-switch) describes. To start the same commands, read them from `legacy.listProcesses()` before `stop()`.
+   The copy holds the files as they are when `tar` runs. `killAllProcesses()` stops the processes that 0.12 `startProcess()` started. A command that another request runs through 0.12 can still write files, so send no other requests to the 0.12 class for the sandbox while it moves. Requests that go through `sandboxFor()` in the next step wait for the move.
+
+   0.12 `stop()` keeps the storage of the 0.12 class, and the tunnels and DNS records in your account. 0.12 `destroy()` deletes the preview tokens, the tunnel entries, and each named tunnel with its DNS record. Processes end with the 0.12 container, so start the ones your application needs in the 1.0 container, as [Move background processes](https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/#start-processes-again-after-the-switch) describes. To start the same commands, read them from `legacy.listProcesses()` before `killAllProcesses()`.
 6. Send every request through the move. Add this function to your Worker, and replace each `getSandbox(env.Sandbox, name)` call with `await sandboxFor(env, name)`:
 
    *src/index.tsts*
@@ -256,6 +266,8 @@ Keep the 0.12 exports, variables, and secrets that other migration pages tell yo
    ```
 
    New sandboxes start on the 1.0 class, because no 0.12 container runs for their names.
+
+   Pass the name that 0.12 used. If your Worker passed `normalizeId: true` to `getSandbox()`, lowercase the name before you call `sandboxFor()`, so that both classes use the 0.12 Durable Object of the sandbox.
 7. Generate types, and deploy:npmyarnpnpm
 
    ```
@@ -437,5 +449,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/#page","headline":"Move sandboxes side by side","description":"Run a Sandbox SDK 1.0 class next to the 0.12 class in one Worker, move each sandbox with its files, and delete the 0.12 class when none remain.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/og.png?v=3df9cb914e5d6b93","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/#page","headline":"Move sandboxes side by side","description":"Run a Sandbox SDK 1.0 class next to the 0.12 class in one Worker, move each sandbox with its files, and delete the 0.12 class when none remain.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/move-side-by-side/og.png?v=3df9cb914e5d6b93","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

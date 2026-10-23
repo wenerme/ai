@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/og
 
 # Replace the code interpreter
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, `runCode()` ran Python, JavaScript, and TypeScript in an interpreter process for each code context, and variables stayed defined between calls. 1.0 has no interpreter. This page runs Python in an IPython kernel that your Durable Object starts, with the results that 0.12 returned, and runs JavaScript in a Dynamic Worker.
 
@@ -57,7 +57,7 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    		python3-numpy python3-pandas \
    	&& rm -rf /var/lib/apt/lists/*
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    WORKDIR /workspace
    COPY kernel.py /opt/kernel.py
@@ -215,7 +215,7 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    TCPServer(("0.0.0.0", PORT), Kernel).serve_forever()
    ```
 
-   The kernel runs the body of each `POST` request as an IPython cell, and returns what 0.12 returned: standard output and standard error, one result for each value that the cell displays, a PNG for each open matplotlib figure, the value of the last expression, and the error. It handles one request at a time, so calls to one context wait for each other, as they did in 0.12.
+   The kernel runs the body of each `POST` request as an IPython cell, and returns what 0.12 returned: standard output and standard error, one result for each value that the cell displays, a PNG for each open matplotlib figure, the value of the last expression, and the error. It handles one request at a time.
 3. Add the result and context types before your class:
 
    *src/index.tsts*
@@ -303,7 +303,7 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    ```
 
    Call `this.kernels.clear()` in `startContainer()`, inside `if (newContainer)`, because a new container has no kernels. If your Durable Object restarts while the container runs, `startServer()` finds the kernel that already runs, and the kernel keeps its variables. If a kernel exits, `waitForServer()` throws with the end of its log.
-5. Add a `runCode()` method:
+5. Add a method that runs the calls to one context one at a time, and a `runCode()` method:
 
    *src/index.tsts*
 
@@ -313,36 +313,50 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    export class MySandbox extends DurableObject<Env> {
    	// ...
 
+   	// The last call queued for each context.
+   	private queues = new Map<string, Promise<unknown>>();
+
+   	private inContext<T>(id: string, operation: () => Promise<T>): Promise<T> {
+   		const previous = this.queues.get(id) ?? Promise.resolve();
+   		const result = previous.then(operation);
+   		this.queues.set(id, result.catch(() => {}));
+   		return result;
+   	}
+
    	async runCode(
    		code: string,
    		options: { context?: string; timeout?: number } = {},
    	): Promise<Execution> {
-   		await this.ensureRunning();
-   		const context = await this.getContext(
-   			options.context ?? DEFAULT_CONTEXT.id,
-   		);
-   		const kernel = await this.startKernel(context);
+   		const id = options.context ?? DEFAULT_CONTEXT.id;
 
-   		try {
-   			const response = await kernel.fetch("http://kernel/", {
-   				method: "POST",
-   				body: code,
-   				signal: AbortSignal.timeout(options.timeout ?? 60_000),
-   			});
-   			return await response.json<Execution>();
-   		} catch (error) {
-   			if ((error as Error).name === "TimeoutError") {
-   				// Stop the cell, and keep the kernel variables.
-   				await this.interruptKernel(context);
-   			} else {
-   				// The kernel exited. The next call starts a new one.
-   				this.kernels.delete(context.port);
+   		return this.inContext(id, async () => {
+   			await this.ensureRunning();
+   			const context = await this.getContext(id);
+   			const kernel = await this.startKernel(context);
+
+   			try {
+   				const response = await kernel.fetch("http://kernel/", {
+   					method: "POST",
+   					body: code,
+   					signal: AbortSignal.timeout(options.timeout ?? 60_000),
+   				});
+   				return await response.json<Execution>();
+   			} catch (error) {
+   				if ((error as Error).name === "TimeoutError") {
+   					// Stop the cell, and keep the kernel variables.
+   					await this.interruptKernel(context);
+   				} else {
+   					// The kernel exited. The next call starts a new one.
+   					this.kernels.delete(context.port);
+   				}
+   				throw error;
    			}
-   			throw error;
-   		}
+   		});
    	}
    }
    ```
+
+   Calls to one context wait for each other, as they did in 0.12. Calls to different contexts run at the same time. Because only one call to a context runs at a time, the time limit starts when the call reaches the kernel, not while it waits for an earlier call, and the interrupt reaches the cell of the call that timed out. The queue also keeps two first calls from starting the same kernel twice.
 
    0.12 had no default timeout, and a cell that timed out kept running. Here, a call that runs longer than `timeout` throws a `TimeoutError`, and the kernel stops the cell with `KeyboardInterrupt`. Variables that earlier calls defined stay. If the kernel exits, for example because the code runs out of memory, the call throws and the next call starts a kernel without variables.
 6. Add methods that replace `createCodeContext()`, `listCodeContexts()`, and `deleteCodeContext()`:
@@ -404,14 +418,17 @@ A kernel is a Python process that runs the code of each call with IPython, and k
    	}
 
    	async deleteCodeContext(id: string): Promise<void> {
-   		const context = await this.getContext(id);
+   		// Wait for the calls already queued for the context.
+   		return this.inContext(id, async () => {
+   			const context = await this.getContext(id);
 
-   		if (this.container.running) {
-   			await stopServer(this.container, kernelDir(context));
-   			this.kernels.delete(context.port);
-   		}
+   			if (this.container.running) {
+   				await stopServer(this.container, kernelDir(context));
+   				this.kernels.delete(context.port);
+   			}
 
-   		await this.ctx.storage.delete(`context:${id}`);
+   			await this.ctx.storage.delete(`context:${id}`);
+   		});
    	}
    }
    ```
@@ -570,5 +587,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/#page","headline":"Replace the code interpreter","description":"Replace @cloudflare/sandbox 0.12 runCode(), code contexts, and runCodeStream() with an IPython kernel for Python and a Dynamic Worker for JavaScript.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/og.png?v=93bda7a31bc337fe","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/#page","headline":"Replace the code interpreter","description":"Replace @cloudflare/sandbox 0.12 runCode(), code contexts, and runCodeStream() with an IPython kernel for Python and a Dynamic Worker for JavaScript.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/code-interpreter/og.png?v=93bda7a31bc337fe","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
