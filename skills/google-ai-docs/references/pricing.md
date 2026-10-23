@@ -467,28 +467,6 @@ to developers on the paid tier of the Gemini API.
 a rate of 5,792 tokens per second of 720p video. Under Standard pricing, this
 equates to an effective price of approximately $0.10 per second.
 
-## Gemini Omni Flash Preview
-
-*[`gemini-omni-flash-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-omni-flash-preview)
-
-> [!WARNING]
-> **Warning:** Gemini Omni Flash Preview (`gemini-omni-flash-preview`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on October 22, 2026; migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) (`gemini-omni-1.1-flash`) to avoid service disruption.
-
-Our next-generation video generation and editing model.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $1.50 (text / image / video / audio) |
-| Output price (including thinking tokens) | Not available | $9.00 (text) $17.50 (video)^\*^ |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-^\*^ Billing is based on total output token consumption, calculated at a rate of 5,792 tokens per second of 720p video. Under Standard pricing, this equates to an effective price of approximately $0.10 per second.
-
 ## Gemini 3.1 Pro Preview
 
 *[`gemini-3.1-pro-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) and [`gemini-3.1-pro-preview-customtools`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview#gemini-31-pro-preview-customtools)*
@@ -1180,28 +1158,6 @@ speech generation for more natural outputs and easier to steer prompts.
 | Input price | Not available | $0.50 (text) |
 | Output price | Not available | $10.00 (audio) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Veo 3.1
-
-*[`veo-3.1-generate-preview`](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview), [`veo-3.1-fast-generate-preview`](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview), [`veo-3.1-lite-generate-preview`](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview)*
-
-
-[Try Veo 3.1](https://deepmind.google/models/veo/)
-
-> [!WARNING]
-> **Warning:** Veo 3.1 Preview (`veo-3.1-generate-preview`, `veo-3.1-fast-generate-preview`, and `veo-3.1-lite-generate-preview`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on October 22, 2026; migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) (`gemini-omni-1.1-flash`) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
-
-A fast video generation model.
-
-|   | Free Tier | Paid Tier, per second in USD |
-|---|---|---|
-| Veo 3.1 Standard video with audio price (default) | Not available | $0.40 (720p and 1080p) $0.60 (4k) |
-| Veo 3.1 Fast video with audio price (default) | Not available | $0.10 (720p) $0.12 (1080p) $0.30 (4k) |
-| Veo 3.1 Lite video with audio price (default) | Not available | $0.05 (720p) $0.08 (1080p) (4k output not supported) |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-> [!NOTE]
-> **Note:** In some cases, an audio processing issue may prevent a video from being generated. You will only be charged if your video is successfully generated.
 
 ## Lyria 3.5
 

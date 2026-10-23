@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatica
 
 # Save a sandbox automatically
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An alarm in the Durable Object saves a Container snapshot of an idle sandbox and stops it. While the sandbox is in use, the alarm also saves checkpoints. The next request starts the sandbox from the last snapshot.
 
@@ -40,7 +40,25 @@ Container snapshots are in public beta. Features and behavior may change.
    ```
 
    The inactivity timeout is longer than the check interval, so the instance keeps running between checks. If the checks stop, the timeout still stops the instance, and the sandbox keeps the files from its last save.
-2. In `MyContainer`, replace `exec()`. It starts a new instance from the stored snapshot when there is one, schedules the first check, and records activity:
+2. In `MyContainer`, add a constructor. It sets the inactivity timeout again when a restarted Durable Object finds the container running, so the instance does not stop before the next check:
+
+   *src/index.tsts*
+
+
+
+   ```ts
+   constructor(ctx: DurableObjectState, env: Env) {
+   	super(ctx, env);
+   	const container = ctx.container;
+   	if (container?.running) {
+   		void ctx.blockConcurrencyWhile(() =>
+   			container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS),
+   		);
+   	}
+   }
+   ```
+
+   Then replace `exec()`. It starts a new instance from the stored snapshot when there is one, schedules the first check, and records activity:
 
    *src/index.tsts*
 
@@ -52,7 +70,7 @@ Container snapshots are in public beta. Features and behavior may change.
    async exec(argv: string[]) {
    	const container = this.ctx.container;
    	if (!container) {
-   		throw new Error("The container binding is not configured");
+   		throw new Error("No container is configured");
    	}
 
    	if (!container.running) {
@@ -118,7 +136,15 @@ Container snapshots are in public beta. Features and behavior may change.
    		Date.now() - savedAt > CHECKPOINT_INTERVAL_MS;
 
    	if (idle || checkpoint) {
-   		await this.save();
+   		try {
+   			await this.save();
+   		} catch (error) {
+   			// Keep the instance and try again at the next check.
+   			console.error("Saving the sandbox failed", error);
+   			await container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS);
+   			await this.ctx.storage.setAlarm(Date.now() + CHECK_INTERVAL_MS);
+   			return;
+   		}
    	}
 
    	const activeDuringSave =
@@ -134,7 +160,7 @@ Container snapshots are in public beta. Features and behavior may change.
    }
    ```
 
-   A save takes a few seconds, and the instance keeps running commands during it. If a request arrives during the save, the alarm does not stop the instance. A later snapshot saves the files written during the save. If a save fails or a deploy interrupts it, the runtime [runs the alarm again](https://developers.cloudflare.com/durable-objects/api/alarms/), and the instance keeps running.
+   A save takes a few seconds, and the instance keeps running commands during it. If a request arrives during the save, the alarm does not stop the instance. A later snapshot saves the files written during the save. If a save fails, the handler keeps the instance running and schedules the next check, which tries again. If a deploy interrupts a save, the runtime [runs the alarm again](https://developers.cloudflare.com/durable-objects/api/alarms/).
 
    Checkpoints limit what a sandbox loses when something other than the alarm stops it, such as the inactivity timeout after the checks stop. The sandbox restores the last checkpoint, without the changes made after it.
 
@@ -247,5 +273,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/#page","headline":"Save a sandbox automatically","description":"Save the filesystem of a Linux sandbox in a Container snapshot before it stops for inactivity, and restore the files on the next request.","url":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/og.png?v=ba8daeb134e1d9cc","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/#page","headline":"Save a sandbox automatically","description":"Save the filesystem of a Linux sandbox in a Container snapshot before it stops for inactivity, and restore the files on the next request.","url":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/save-a-sandbox-automatically/og.png?v=ba8daeb134e1d9cc","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

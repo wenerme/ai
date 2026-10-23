@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/og.png?v=aa4f59a094
 
 # Migrate from Sandbox SDK 0.x
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To move an application from Sandbox SDK 0.x to 1.0, replace the `Sandbox` class with a Durable Object class that you write. Then replace each 0.x feature that your application uses. Your class starts a container that uses the [Durable Object scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), which is in public beta. For the reasons behind these changes, refer to [Changes in Sandbox SDK 1.0](https://developers.cloudflare.com/sandbox/sdk/migrate/changes-in-1-0/).
 
-Sandboxes on 1.0 start faster. On a prepared image, the median time from `start()` to the first command is under 600 ms, compared with about 4 s on 0.x. Each `start()` call also chooses its own image, and a deploy does not restart running sandboxes.
+Containers that use the Durable Object scheduling policy start faster. In an independent benchmark that starts 100 sandboxes at once, the median time from creating a sandbox to running a command in it fell from 4.0 seconds to 648 milliseconds. For the measurements, refer to [Cloudflare Containers, rebuilt to scale agent sandboxes ↗︎](https://blog.cloudflare.com/faster-agent-sandboxes/). Each `start()` call also chooses its own image, and a deploy does not restart running sandboxes.
 
 ## Support for Sandbox SDK 0.x
 
 Sandbox SDK 0.x receives bug and security fixes until 2026-12-31, and no new features. After that date, deployed 0.x applications keep running, and `@cloudflare/sandbox` 0.x stays on npm.
 
-The migration pages compare 1.0 with 0.12, the last 0.x release. If your application uses an earlier release, upgrade to `@cloudflare/sandbox` 0.12.10 and the `docker.io/cloudflare/sandbox:0.12.10` image first.
+The migration pages compare 1.0 with 0.12, the last 0.x release. If your application uses an earlier release, upgrade to `@cloudflare/sandbox` 0.12.13 and the `docker.io/cloudflare/sandbox:0.12.13` image first.
 
 ## Plan for a one-way switch
 
@@ -92,7 +92,7 @@ Work through the pages on your staging Worker, test it with your own checks, and
 
 ## Stay on 0.x until you move
 
-Until you move, pin `@cloudflare/sandbox` to `0.12.10` and your image to `docker.io/cloudflare/sandbox:0.12.10`. The [deprecation changelog entry](https://developers.cloudflare.com/changelog/post/2026-06-09-deprecating-sandbox-sdk-features/) lists 0.x features to avoid in new work: the HTTP and WebSocket transports, `exposePort()`, default sessions, and separate streaming methods.
+Until you move, pin `@cloudflare/sandbox` to `0.12.13` and your image to `docker.io/cloudflare/sandbox:0.12.13`. The [deprecation changelog entry](https://developers.cloudflare.com/changelog/post/2026-06-09-deprecating-sandbox-sdk-features/) lists 0.x features to avoid in new work: the HTTP and WebSocket transports, `exposePort()`, default sessions, and separate streaming methods.
 
 ## Related resources
 
@@ -110,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/#page","headline":"Migrate from Sandbox SDK 0.x","description":"Move a Sandbox SDK 0.x application to a Durable Object class that you write, which starts its own container, and find the page for each 0.x feature that you use.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/og.png?v=aa4f59a0942cdaab","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/#page","headline":"Migrate from Sandbox SDK 0.x","description":"Move a Sandbox SDK 0.x application to a Durable Object class that you write, which starts its own container, and find the page for each 0.x feature that you use.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/og.png?v=aa4f59a0942cdaab","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

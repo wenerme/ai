@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/network/call-an-authenticated-a
 
 # Call an authenticated API from a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Let code in a sandbox call an API that needs a token, while the token stays in your Worker. Requests from the sandbox reach an entrypoint in your Worker, which allows only the requests you choose and adds the token. In this example, the code reads your profile from the GitHub API.
 
@@ -151,7 +151,7 @@ The container sends its request to `api.github.com` as usual. The Durable Object
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		await container.interceptOutboundHttps(
@@ -204,11 +204,12 @@ The container sends its request to `api.github.com` as usual. The Durable Object
 
    ```ts
    if (url.pathname === "/username") {
-   	const sandbox = env.MY_CONTAINER.getByName("sandbox");
+   	const sandbox = env.MY_CONTAINER.getByName("github");
    	return Response.json({ username: await sandbox.getUsername() });
    }
    ```
 
+   The route uses a sandbox name of its own. An instance that is already running keeps the Internet access it started with, so `enableInternet: false` applies only to an instance that this method starts.
 4. Deploy your Worker, then send a request to `/username` on the `workers.dev` URL that Wrangler prints:npmyarnpnpm
 
    ```
@@ -301,7 +302,7 @@ A Dynamic Worker gets a method that calls one fixed GitHub endpoint, instead of 
 
    ```ts
    const sandbox = env.LOADER.load({
-   	compatibilityDate: "$today",
+   	compatibilityDate: "2026-10-01",
    	mainModule: "code.js",
    	modules: {
    		"code.js": `
@@ -370,5 +371,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/#page","headline":"Call an authenticated API from a sandbox","description":"Let code in a Container or Dynamic Worker call an authenticated API without giving it the access token.","url":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/og.png?v=2fc5c18d991062dc","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/#page","headline":"Call an authenticated API from a sandbox","description":"Let code in a Container or Dynamic Worker call an authenticated API without giving it the access token.","url":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/network/call-an-authenticated-api/og.png?v=2fc5c18d991062dc","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

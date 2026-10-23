@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/og.png
 
 # Move preview URLs
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, `exposePort()` stores a token for each port in Durable Object storage. `proxyToSandbox()` routes hostnames such as `8080-ada-<TOKEN>.example.com` to the server on that port. In 1.0, your Worker routes those hostnames, and your Durable Object checks the token and forwards the request with `getTcpPort()`. The code on this page reads the tokens where 0.12 stored them, so the preview URLs that your users already have keep working.
 
@@ -273,7 +273,7 @@ This page does not cover the server that a preview reaches. To start it, refer t
    			const response = await tcpPort.fetch(forwarded);
 
    			if (response.webSocket) {
-   				return bridge(response.webSocket);
+   				return bridge(response);
    			}
 
    			return response;
@@ -362,5 +362,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/#page","headline":"Move preview URLs","description":"Keep @cloudflare/sandbox 0.12 preview URLs working on 1.0 by replacing exposePort(), proxyToSandbox(), and wsConnect() with code that reads the stored tokens.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/og.png?v=f4b14ee66de35e77","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/#page","headline":"Move preview URLs","description":"Keep @cloudflare/sandbox 0.12 preview URLs working on 1.0 by replacing exposePort(), proxyToSandbox(), and wsConnect() with code that reads the stored tokens.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/preview-urls/og.png?v=f4b14ee66de35e77","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

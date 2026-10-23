@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/secrets-store/manage-secrets/og.png?v=5
 
 # Manage account secrets
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secrets can be API tokens, public/private keys, authorization keys, passwords, or even code variables. The only limitation is that a secret must be a string that does not exceed 65,536 bytes.
 
@@ -25,6 +25,10 @@ Customers who create a secrets store in the open beta can have up to 100 secrets
 Production secrets
 
 If you use [Wrangler](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#manage-via-wrangler), there is a difference between production secrets and secrets that are only created locally (without the `--remote` flag). The limit of 100 secrets per account only considers production secrets.
+
+Local secrets are not encrypted
+
+Secrets that you create locally (without the `--remote` flag) are stored unencrypted in your project's [local data directory](https://developers.cloudflare.com/workers/local-development/local-data/#where-local-data-gets-stored), which is `.wrangler/state` by default. Use test values for local development, and do not commit the local data directory to version control.
 
 ## Resources
 
@@ -43,5 +47,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/#page","headline":"Manage account secrets","description":"Learn about different operations to manage your secrets in Cloudflare Secrets Store.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/secrets-store/manage-secrets/og.png?v=5f48f27ba27a0ce2","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/#page","headline":"Manage account secrets","description":"Learn about different operations to manage your secrets in Cloudflare Secrets Store.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/secrets-store/manage-secrets/og.png?v=5f48f27ba27a0ce2","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

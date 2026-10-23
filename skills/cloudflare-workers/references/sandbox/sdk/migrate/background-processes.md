@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/background-processe
 
 # Move background processes
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Sandbox SDK 0.12, `startProcess()` returns a `Process` object, and the container keeps a table of processes that later requests query. In 1.0, your Durable Object keeps a directory in the container for each process. Each `Process` method becomes a Durable Object method that takes the process ID.
 
@@ -58,6 +58,13 @@ This page replaces `startProcess()`, the `Process` methods, `listProcesses()`, `
    			stderr: "ignore",
    		});
 
+   		// exec() returns before the process records its ID. Wait for it, so
+   		// a request that follows the output right away finds it running.
+   		for (let i = 0; i < 50; i++) {
+   			if ((await this.status(id))?.state !== "starting") break;
+   			await scheduler.wait(100);
+   		}
+
    		await this.ctx.storage.put(`process:${id}`, argv);
    		await this.ctx.storage.setAlarm(Date.now() + 60_000);
    		return true;
@@ -66,7 +73,7 @@ This page replaces `startProcess()`, the `Process` methods, `listProcesses()`, `
    ```
 
    0.12 ran each process in `/workspace`, with the variables from `envVars`. `exec()` starts in `/`, even when the image sets `WORKDIR`. It does not inherit the variables that `start()` sets, except `PATH`.
-3. In `status()`, replace `10 * 60 * 1000` with `INACTIVITY_TIMEOUT_MS`, so that each check keeps your inactivity timeout.
+3. Remove `INACTIVITY_TIMEOUT_MS` from the scripts that you added in step 1. Your class file already defines it, so the constructor and the alarm handler keep the inactivity timeout of your class.
 
 On this page, `sandbox` is the stub that `getByName()` returns.
 
@@ -98,7 +105,7 @@ Each process needs an ID. Where 0.12 generated one, such as `proc_1790379992394_
 
 `python3 -m http.server`, which 0.12 ran as a preview server, exits on startup in a 1.0 container. For the cause and a replacement, refer to [The hostname is longer than a DNS label](https://developers.cloudflare.com/containers/guides/local-dev/#the-hostname-is-longer-than-a-dns-label).
 
-Remove the `timeout` option, which did not stop a background process in 0.12. To limit how long a process runs, start it with the `timeout` command, such as `["timeout", "300", "npm", "test"]`. The command exits with code `124` when the time passes.
+Remove the `timeout` option, which did not stop a background process in 0.12. To limit how long a process runs, start it with the `timeout` command, such as `["timeout", "300", "npm", "test"]`. The command exits with code `124` when the time passes, or `137` with `--kill-after` when the process ignores `SIGTERM`.
 
 For the `sessionId` option, refer to [Replace sessions](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#replace-sessions).
 
@@ -301,5 +308,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/#page","headline":"Move background processes","description":"Replace @cloudflare/sandbox 0.12 startProcess(), Process objects, process logs, waits, and kills with Durable Object methods that take a process ID.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/og.png?v=05e666288fe97895","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/#page","headline":"Move background processes","description":"Replace @cloudflare/sandbox 0.12 startProcess(), Process objects, process logs, waits, and kills with Durable Object methods that take a process ID.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/background-processes/og.png?v=05e666288fe97895","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox
 
 # Replace the Sandbox class
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Replace the 0.12 `Sandbox` class with a Durable Object class that you write. In 0.12, your Worker calls package methods through `getSandbox()`. In 1.0, your class starts the container through `this.ctx.container`, and your Worker calls the methods that your class defines.
 
 ## Before you start
 
-Your application runs `@cloudflare/sandbox` 0.12.10. This page replaces the `Sandbox` class, whether you export it from the package or extend it. It also replaces `getSandbox()` and its options, class fields such as `sleepAfter` and `envVars`, and the hooks `onStart()`, `onStop()`, `onError()`, and `onActivityExpired()`.
+Your application runs `@cloudflare/sandbox` 0.12.13. This page replaces the `Sandbox` class, whether you export it from the package or extend it. It also replaces `getSandbox()` and its options, class fields such as `sleepAfter` and `envVars`, and the hooks `onStart()`, `onStop()`, `onError()`, and `onActivityExpired()`.
 
 The page ends with the Worker running under `wrangler dev`. You cannot undo the deploy that switches your sandboxes to 1.0. Before you deploy, follow [Plan the move to Sandbox SDK 1.0](https://developers.cloudflare.com/sandbox/sdk/migrate/plan-the-move/).
 
@@ -58,13 +58,13 @@ The steps keep your class name, which moves every sandbox in place. To move sand
    		ca-certificates git python3 \
    	&& rm -rf /var/lib/apt/lists/*
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    WORKDIR /workspace
    CMD ["sleep", "infinity"]
    ```
 
-   The 0.12 image included Python, Node.js, and Git. Keep the ones your commands use. `Files` and `S3Mount` need `sandbox-shim`. Match its tag to the `@cloudflare/sandbox` version that you installed. Remove `EXPOSE` lines, which 1.0 does not use. Commands that `exec()` runs do not see `ENV` lines, so pass those values in the `env` option instead.
+   The 0.12 image included Python, Node.js, and Git. Keep the ones your commands use. `Files`, `S3Mount`, and `DirectoryBackup` need `sandbox-shim`. Match its tag to the `@cloudflare/sandbox` version that you installed. Remove `EXPOSE` lines, which 1.0 does not use. Commands that `exec()` runs do not see `ENV` lines, so pass those values in the `env` option instead.
 3. Change the `containers` entry for your class in the Wrangler configuration. Keep your class name and its binding, so each name reaches the Durable Object and storage it reached in 0.12. Replace `my-worker-mysandbox-v2` with a name that your account does not use yet:
 
    ```jsonc
@@ -169,9 +169,7 @@ The steps keep your class name, which moves every sandbox in place. To move sand
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error(
-   				"The container binding is not configured",
-   			);
+   			throw new Error("No container is configured");
    		}
 
    		return container;
@@ -264,7 +262,7 @@ The steps keep your class name, which moves every sandbox in place. To move sand
    }
    ```
 
-   `monitor()` resolves when the main process exits with code `0` or `destroy()` stops the container without a reason. It rejects when the process fails or `destroy()` passes a reason. The call ends when the Durable Object restarts, so it misses a stop that happens before the next request. While the call waits, the inactivity timeout does not start, so a watched container keeps running past the timeout. For more information, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#activity-keeps-an-instance-running). For a record of every stop, refer to [Run code when a sandbox stops](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/).
+   `monitor()` resolves when the main process exits with code `0` or `destroy()` stops the container without a reason. It rejects when the process fails or `destroy()` passes a reason. The call ends when the Durable Object restarts, so it misses a stop that happens before the next request. While the call waits, the inactivity timeout does not start, so a watched container keeps running past the timeout. For more information, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#what-stops-an-instance). For a record of every stop, refer to [Run code when a sandbox stops](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/).
 9. Move the calls your Worker makes into methods on the class. In 0.12, the Worker calls package methods on the stub that `getSandbox()` returns:
 
    *src/index.ts (0.12)ts*
@@ -371,5 +369,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/#page","headline":"Replace the Sandbox class","description":"Replace the Sandbox class from @cloudflare/sandbox 0.12, or your subclass of it, with a Durable Object class that starts its own container.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/og.png?v=5defa52ddfaf0224","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/#page","headline":"Replace the Sandbox class","description":"Replace the Sandbox class from @cloudflare/sandbox 0.12, or your subclass of it, with a Durable Object class that starts its own container.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/replace-the-sandbox-class/og.png?v=5defa52ddfaf0224","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

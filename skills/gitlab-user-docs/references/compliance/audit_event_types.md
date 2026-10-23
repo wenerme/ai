@@ -91,6 +91,12 @@ Audit event types belong to the following product categories.
 | [`enabled_foundational_flows_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228497) | Enabled foundational flows selection on group changed | Yes | GitLab [18.11](https://gitlab.com/gitlab-org/gitlab/-/work_items/593019) | Group |
 | [`q_onbarding_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175501) | Amazon Q instance settings changed | Yes | GitLab [17.8](https://gitlab.com/gitlab-org/gitlab/-/issues/508250) | Instance |
 
+### AI governance
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`ai_governance_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262303) | The umbrella setting for AI Governance features is changed on a group or project | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/632724) | Group, Project |
+
 ### Audit events
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
@@ -749,6 +755,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`govern_policy_violation_detected`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263547) | A settings enforcement policy detected a violation on a governed project | No | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/630148) | Group, Instance |
 | [`policy_project_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/102154) | The security policy project is updated for a project | Yes | GitLab [15.6](https://gitlab.com/gitlab-org/gitlab/-/issues/377877) | Group, Project |
 | [`policy_warn_mode_group_protected_branch_modification_override`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/213392) | A group is affected by a warn mode policy that prevents modification of the group's protected branches if the policy changes from warn mode to strictly enforced. | No | GitLab [18.7](https://gitlab.com/gitlab-org/gitlab/-/issues/580966) | Group |
 | [`policy_warn_mode_merge_request_approval`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/210351) | A merge request approval would have been prevented by a security policy in warn mode. | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/563867) | Project |

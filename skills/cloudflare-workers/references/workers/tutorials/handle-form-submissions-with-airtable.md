@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/tutorials/handle-form-submissio
 
 # Handle form submissions with Airtable
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗︎](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗︎](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
@@ -174,7 +174,7 @@ export default {
 	async fetch(request, env) {
 		const url = new URL(request.url);
 		if (url.pathname === "/submit") {
-			await submitHandler(request, env);
+			return submitHandler(request, env);
 		}
 		return new Response("Not found", { status: 404 });
 	},
@@ -188,6 +188,7 @@ async function submitHandler(request, env) {
 	if (request.method !== "POST") {
 		return new Response("Method Not Allowed", {
 			status: 405,
+			headers: { Allow: "POST" },
 		});
 	}
 	const body = await request.formData();
@@ -209,6 +210,7 @@ async function submitHandler(request, env) {
 		},
 	};
 	await createAirtableRecord(env, reqBody);
+	return new Response("Thanks for your submission", { status: 200 });
 }
 
 // Existing code
@@ -221,7 +223,7 @@ The body of a [Request ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/
 
 To avoid errors, create a clone of the Request object with `request.clone()` for each subsequent attempt to access a Request's body. Keep in mind that Workers have a [memory limit of 128 MB per Worker](https://developers.cloudflare.com/workers/platform/limits/#memory) and loading particularly large files into a Worker's memory multiple times may reach this limit. To ensure memory usage does not reach this limit, consider using [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/).
 
-While the majority of this function is concerned with parsing the request body (the data being sent as part of the request), there are two important things to note. First, if the HTTP method sent to this function is not `POST`, you will return a new response with the status code of [`405 Method Not Allowed` ↗︎](https://httpstatuses.com/405).
+While the majority of this function is concerned with parsing the request body (the data being sent as part of the request), there are two important things to note. First, if the HTTP method sent to this function is not `POST`, you will return a new response with the status code of [`405 Method Not Allowed` ↗︎](https://httpstatuses.net/405/) and an `Allow: POST` header listing the method this route accepts.
 
 The variable `reqBody` represents a collection of fields, which are key-value pairs for each column in your Airtable table. By formatting `reqBody` as an object with a collection of fields, you are creating a new record in your table with a value for each field.
 
@@ -263,7 +265,7 @@ Add a `vars` table at the end of your Wrangler file:
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-23",
 	"vars": {
 		"AIRTABLE_BASE_ID": "exampleBaseId",
 		"AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -277,7 +279,7 @@ name = "workers-airtable-form"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-23"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"
@@ -328,5 +330,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/og.png?v=f11c1b154d2a03d7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/og.png?v=f11c1b154d2a03d7","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 ```

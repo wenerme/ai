@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -814,12 +814,7 @@ For MCP clients with server configuration files, use the portal URL with the que
 {
 	"mcpServers": {
 		"example-portal": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://<subdomain>.<domain>/mcp?codemode=search_and_execute"
-			]
+			"url": "https://<subdomain>.<domain>/mcp?codemode=search_and_execute"
 		}
 	}
 }
@@ -831,13 +826,13 @@ For more information on building with Code Mode, refer to the [Code Mode SDK ref
 
 ## Route portal traffic through Gateway
 
-When Gateway routing is turned on, calls to MCP servers protected by your MCP server portal are routed through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). This makes portal traffic appear in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) alongside the rest of your organization's HTTP traffic. You can then create [Data Loss Prevention (DLP) policies](#example-gateway-policy) to detect and block sensitive data from being sent to your upstream MCP servers.
+When Gateway routing is turned on, calls to MCP servers protected by your MCP server portal are routed through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/). This makes portal traffic appear in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) alongside the rest of your organization's HTTP traffic. You can then create [Data Loss Prevention (DLP) policies](#example-gateway-policy) to detect and block sensitive data from being sent to your upstream MCP servers.
 
 ### How Gateway routing works
 
 When a user calls a tool through the portal, the portal proxies the request to the upstream MCP server. With Gateway routing turned on, this outbound request passes through Cloudflare Gateway before reaching the upstream server. Gateway inspects the traffic and applies any matching HTTP policies, including DLP scanning.
 
-Because portal traffic routes through Gateway, it also respects [Gateway egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/). This means outbound requests to upstream MCP servers will originate from your dedicated egress IPs or Gateway IP ranges rather than generic Cloudflare IPs. If your upstream MCP servers restrict inbound traffic by source IP (for example, to a VPN or corporate IP range), you can use egress policies to ensure portal traffic comes from a predictable set of IPs.
+Because portal traffic routes through Gateway, it also respects [Gateway egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/). This means outbound requests to upstream MCP servers will originate from your dedicated egress IPs or Gateway IP ranges rather than generic Cloudflare IPs. If your upstream MCP servers restrict inbound traffic by source IP (for example, to a VPN or corporate IP range), you can use egress policies to ensure portal traffic comes from a predictable set of IPs.
 
 Note
 
@@ -845,13 +840,13 @@ Server-level Gateway routing also applies to DCR and [admin credential synchroni
 
 ### TLS decryption
 
-DLP inspection requires Gateway to decrypt TLS traffic. For portal traffic, Gateway decrypts and inspects the payload automatically — you do not need to turn on the account-level [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) setting. Because the portal terminates the connection from the MCP client and re-originates the request through Gateway, Gateway decrypts portal traffic regardless of whether the global TLS decryption setting is on.
+DLP inspection requires Gateway to decrypt TLS traffic. For portal traffic, Gateway decrypts and inspects the payload automatically — you do not need to turn on the account-level [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) setting. Because the portal terminates the connection from the MCP client and re-originates the request through Gateway, Gateway decrypts portal traffic regardless of whether the global TLS decryption setting is on.
 
-This automatic decryption applies only to traffic that flows through the portal. To inspect MCP traffic that does not pass through the portal — for example, an agent on a [device running the WARP client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) connecting directly to an upstream MCP server — you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) as you would for any other [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+This automatic decryption applies only to traffic that flows through the portal. To inspect MCP traffic that does not pass through the portal — for example, an agent on a [device running the WARP client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) connecting directly to an upstream MCP server — you must turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/) as you would for any other [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/).
 
 Note
 
-Portal traffic ignores the global TLS decryption setting, but it still respects [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) HTTP policies. If a Do Not Inspect policy matches portal traffic, Gateway does not decrypt it and DLP cannot scan it. Check that your Do Not Inspect policies do not unintentionally exempt your upstream MCP servers from inspection.
+Portal traffic ignores the global TLS decryption setting, but it still respects [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) HTTP policies. If a Do Not Inspect policy matches portal traffic, Gateway does not decrypt it and DLP cannot scan it. Check that your Do Not Inspect policies do not unintentionally exempt your upstream MCP servers from inspection.
 
 ### Supported transports
 
@@ -914,7 +909,7 @@ The agent can retry the request, but it will continue to be blocked until the co
 
 ## Connect to a portal
 
-Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), [MCP inspector ↗︎](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), [MCP inspector ↗︎](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-from-an-mcp-client) that support remote MCP servers.
 
 To test in Workers AI Playground:
 
@@ -927,24 +922,19 @@ To test in Workers AI Playground:
 
 Workers AI Playground will show a **Connected** status and list the available tools. You can now ask the AI model to complete a task using an available tool. Requests made to an MCP server will appear in your [portal logs](#view-portal-logs).
 
-For MCP clients with server configuration files, we recommend using the `npx` command with the `mcp-remote@latest` argument:
+For MCP clients with server configuration files, add the portal as a remote HTTP server. The exact URL field depends on your client. For example:
+
+*MCP client configuration for MCP portalsjson*
 
 ```json
 {
 	"mcpServers": {
 		"example-mcp-server": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://<subdomain>.<domain>.com/mcp"
-			]
+			"url": "https://<subdomain>.<domain>/mcp"
 		}
 	}
 }
 ```
-
-We do not recommend using the `serverURL` parameter since it may cause issues with portal session creation and management.
 
 ### Portal homepage
 
@@ -1009,7 +999,7 @@ curl https://<subdomain>.<domain>/mcp \
   -H "CF-Access-Client-Secret: <CLIENT_SECRET>"
 ```
 
-For `mcp-remote`, pass the headers with `--header`:
+For clients that support custom headers, configure the service token directly:
 
 *MCP client configuration for service token connectionsjson*
 
@@ -1017,16 +1007,11 @@ For `mcp-remote`, pass the headers with `--header`:
 {
 	"mcpServers": {
 		"example-portal": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://<subdomain>.<domain>/mcp",
-				"--header",
-				"CF-Access-Client-Id: <CLIENT_ID>",
-				"--header",
-				"CF-Access-Client-Secret: <CLIENT_SECRET>"
-			]
+			"url": "https://<subdomain>.<domain>/mcp",
+			"headers": {
+				"CF-Access-Client-Id": "<CLIENT_ID>",
+				"CF-Access-Client-Secret": "<CLIENT_SECRET>"
+			}
 		}
 	}
 }
@@ -1066,12 +1051,7 @@ For MCP clients with server configuration files:
 {
 	"mcpServers": {
 		"example-portal": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools"
-			]
+			"url": "https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools"
 		}
 	}
 }
@@ -1097,12 +1077,7 @@ For MCP clients with server configuration files:
 {
 	"mcpServers": {
 		"example-portal": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"mcp-remote@latest",
-				"https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute"
-			]
+			"url": "https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute"
 		}
 	}
 }
@@ -1145,17 +1120,7 @@ The portal toggles the server and refreshes the active tool list immediately. Th
 
 When an upstream MCP server token expires, the portal prompts you to reauthenticate from within your MCP client. Open the provided URL in your browser and complete the login to restore the session.
 
-If your MCP client does not display the reauthentication prompt, you can manually clear cached credentials:
-
-Note
-
-This command clears credentials for all MCP servers using `mcp-remote@latest`, not just MCP portals.
-
-```sh
-rm -rf ~/.mcp-auth
-```
-
-After clearing credentials, reconnect to the portal from your MCP client.
+If your MCP client does not display the reauthentication prompt, use its authentication controls to remove the saved portal credentials. Then reconnect to the portal.
 
 ### Authorize new servers
 
@@ -1270,11 +1235,11 @@ Contact the upstream MCP server vendor if you do not control the allowlist.
 2. If the upstream server URL ends in `/sse`, the portal automatically attempts to connect using Streamable HTTP on a `/mcp` path instead. If the server does not support this, the connection will fail.
 3. Check [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) for DLP block events. If a DLP policy is blocking the traffic, the portal returns an error to the MCP client with the DLP rule ID.
 
-### Users cannot connect with `mcp-remote` or similar tools.
+### Users cannot connect from an MCP client
 
-1. Ensure you are using the latest version of `mcp-remote`. Run `npx -y mcp-remote@latest` to update.
-2. Use the `command` and `args` format in your MCP client configuration, not the `serverURL` parameter. The `serverURL` parameter may cause issues with portal session creation.
-3. If authentication fails repeatedly, clear cached credentials by running `rm -rf ~/.mcp-auth` and reconnecting.
+1. Verify that the client supports Streamable HTTP and OAuth discovery.
+2. Configure the portal URL as a remote HTTP server.
+3. If authentication fails repeatedly, use the client authentication controls to remove the saved portal credentials and reconnect.
 
 ### The portal homepage shows the wrong name or domain.
 
@@ -1292,5 +1257,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

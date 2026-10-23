@@ -155,6 +155,20 @@ For locally-managed tunnels only.
 
 Specifies the path to a [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) in YAML format.
 
+### `disable-path-normalization`
+
+Note
+
+Requires `cloudflared` version `2026.10.0` or later.
+
+| Syntax | Default | Environment Variable |
+| --- | --- | --- |
+| `cloudflared tunnel --disable-path-normalization=<BOOLEAN> run <UUID or NAME>` | `true` | `TUNNEL_DISABLE_PATH_NORMALIZATION` |
+
+When `false`, normalizes URLs before matching ingress rules for tunnels requiring [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) validation. The URL path sent to your origin stays the same. Set `--disable-path-normalization=false` to turn on normalization.
+
+The default is `true` in version `2026.10.0`. For the planned default change, refer to the [URL normalization changelog](https://developers.cloudflare.com/changelog/post/2026-10-22-cloudflared-path-normalization/).
+
 ### `dns-resolver-addrs`
 
 Note

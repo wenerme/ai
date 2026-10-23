@@ -16,6 +16,22 @@ Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/index.xml)
 
+## 2026-10-22
+
+**RealtimeKit iOS Core 3.3.0**
+
+**Enhancements**
+
+- The SDK now enforces the documented [SDK rate limits](https://developers.cloudflare.com/realtime/realtimekit/platform/limits/#sdk-rate-limits).
+- `RtkStore` and broadcast messages now preserve non-primitive JSON types when sharing data.
+- When objects are converted to JSON for persistence, dates are encoded as ISO 8601 UTC strings. Numeric timestamps remain numbers.
+- Added `RtkStoreManager.refresh(storeName)` to refresh a store by name.
+
+**Fixes**
+
+- Fixed an API mismatch that caused the SDK to reject null meeting titles. This affected `cf realtime kit meetings create` when `--title` was omitted.
+- Plugins active in a meeting are now automatically enabled for mobile participants who join later.
+
 ## 2026-09-16
 
 **RealtimeKit iOS Core 3.2.0**

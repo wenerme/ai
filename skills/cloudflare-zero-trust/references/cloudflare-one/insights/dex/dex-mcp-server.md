@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-ser
 
 # DEX MCP server
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The MCP server [(Model Context Protocol) ↗︎](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
 
@@ -45,33 +45,20 @@ You can get a more flexible and robust experience by configuring the DEX MCP ser
 
 If you have any issues during the configuration process, you can ask your AI assistant for help with configuring an MCP server via URL.
 
-### Claude
+### Claude Code
 
-You need a Claude Pro account (or higher subscription) to configure an MCP server.
+You need a Claude Pro account or higher subscription to configure an MCP server.
 
-1. Download the [Claude desktop client ↗︎](https://claude.ai/download).
-2. Open the Claude desktop client, and log in or set up an account.
-3. Expand the left sidebar menu, and select **Claude Code**.
-4. Under **Desktop app**, select **Developer** to show the **Local MCP servers** page.
-5. Select **Edit Config** and open the `claude_desktop_config.json` file in a text editor of your choice.
-6. Copy the JSON configuration for the DEX MCP server and paste it into `claude_desktop_config.json`. Save the file.
+1. Install [Claude Code ↗︎](https://docs.anthropic.com/en/docs/claude-code/setup).
+2. Add the DEX MCP server:
 
-   ```json
-   {
-   	"globalShortcut": "",
-   	"mcpServers": {
-   		"cloudflare-dex-analysis": {
-   			"command": "npx",
-   			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-   		}
-   	}
-   }
+   ```sh
+   claude mcp add --transport http cloudflare-dex-analysis https://dex.mcp.cloudflare.com/mcp
    ```
 
-7. Fully close Claude by using the task manager to stop any background processes related to Claude.
-8. Open Claude, and your DEX MCP server configuration should appear on the **Local MCP servers** page.
-9. Authenticate your Cloudflare account and allow the DEX MCP server.
-10. You can start asking Claude questions about DEX. As a simple test, you can ask "Are you connected to the DEX MCP server".
+3. Run `claude mcp list` to verify the connection.
+4. Authenticate your Cloudflare account and authorize the DEX MCP server.
+5. Ask Claude "Are you connected to the DEX MCP server?" to test the connection.
 
 ### Gemini CLI
 
@@ -89,13 +76,11 @@ You will need to use a CLI of your choice and npm or homebrew to install and acc
 
    ```json
    {
-   	"globalShortcut": "",
-   	"mcpServers": {
-   		"cloudflare-dex-analysis": {
-   			"command": "npx",
-   			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-   		}
-   	}
+     "mcpServers": {
+       "cloudflare-dex-analysis": {
+         "httpUrl": "https://dex.mcp.cloudflare.com/mcp"
+       }
+     }
    }
    ```
 
@@ -128,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/#page","headline":"DEX MCP server","description":"Reference information for DEX MCP server in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/og.png?v=c9ced5afe997a7e5","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/#page","headline":"DEX MCP server","description":"Reference information for DEX MCP server in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/og.png?v=c9ced5afe997a7e5","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

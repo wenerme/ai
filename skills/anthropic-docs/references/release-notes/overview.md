@@ -12,6 +12,12 @@ The Claude Platform release notes list changes to the Claude API, the client SDK
   For updates to Claude Code, see the [complete CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md) in the `claude-code` repository.
 </Tip>
 
+### October 22, 2026
+
+* We've launched [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed), the Claude API operated by Anthropic and reached through your Google Cloud project. Google Cloud IAM controls access. Google Cloud Marketplace handles billing.
+
+- [Fast mode](https://platform.claude.com/docs/en/build-with-claude/fast-mode) is available for Claude Opus 5.5 on Claude Models on Google Cloud (Anthropic managed).
+
 ### October 21, 2026
 
 * We've released API version `2026-10-21`. [Migrating to API version 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21) shows how to upgrade.

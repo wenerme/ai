@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a
 
 # Sandbox SDK 0.x API map
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page maps each public API of `@cloudflare/sandbox` 0.12 to its replacement: a 1.0 class, a platform API, another Cloudflare product, or code that you write. Some APIs are no longer needed. For the migration steps, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
 
@@ -40,12 +40,12 @@ For the steps, refer to [Replace the Sandbox class](https://developers.cloudflar
 | `renewActivityTimeout()` | Native | Any request to the Durable Object | The timeout counts from when the Durable Object becomes inactive. |
 | `containerTimeouts`, `setContainerTimeouts()` | Removed | `AbortSignal` | |
 | `transport`, `setTransport()`, `SANDBOX_TRANSPORT` | Removed | Not needed | `container.exec()` and `Files` reach the container directly. Remove the setting. |
-| `labels`, `setLabels()` | Native | [`container.start({ labels })`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) | |
+| `labels`, `setLabels()` | Native | [`container.start({ image, enableInternet, labels })`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) | |
 | `configure()` | Removed | Options on each call | |
 | `setEnvVars()`, class `envVars` | Native | `container.start({ env })` or `container.exec(argv, { env })` | `exec()` does not inherit `start()` variables, except `PATH`. |
 | Class `entrypoint`, `enableInternet` | Native | `container.start({ entrypoint, enableInternet })` | `enableInternet` defaults to `false`. It defaulted to `true` in 0.12. |
 | Class `defaultPort`, `requiredPorts` | Native | [`container.getTcpPort(port)`](https://developers.cloudflare.com/containers/api/durable-object-container/#gettcpport) | |
-| `start()` | Native | [`container.start({ image })`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) | Does not wait for the container. |
+| `start()` | Native | [`container.start({ image, enableInternet })`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) | Does not wait for the container. |
 | `startAndWaitForPorts()`, `waitForPort()` | Pattern | Retry `getTcpPort(port).fetch()` | [Preview a web application](https://developers.cloudflare.com/sandbox/previews/) shows a readiness check. |
 | `stop()`, `destroy()` | Native | [`container.signal()`](https://developers.cloudflare.com/containers/api/durable-object-container/#signal), [`container.destroy()`](https://developers.cloudflare.com/containers/api/durable-object-container/#destroy) | |
 | `getState()` | Native | [`container.running`](https://developers.cloudflare.com/containers/api/durable-object-container/#running), [`container.monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor) | |
@@ -63,7 +63,7 @@ For the steps, refer to [Change command calls](https://developers.cloudflare.com
 | `exec(command, options)` | Native | [`container.exec(argv, options)`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) | `output()` returns bytes and `exitCode`. `success` is `exitCode === 0`. |
 | `stream`, `onOutput`, `onComplete`, `onError` | Native | Read `stdout` and `stderr`, and await `exitCode` | |
 | `execStream()` | Native | The `stdout` stream from `container.exec(argv)` | Set `Content-Type: text/event-stream` on the response. Refer to [Stream output](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#stream-output). |
-| `timeout`, `signal` | Native | Run the command under `timeout`, or pass `signal` from a timer you clear | Exit code `124` means the time passed. Refer to [Replace timeouts](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#replace-timeouts). |
+| `timeout`, `signal` | Native | Run the command under `timeout`, or pass `signal` from a timer you clear | Exit code `124` or `137` means the time passed. Refer to [Replace timeouts](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#replace-timeouts). |
 | `cwd`, `env` | Native | The same options | Pass `cwd: "/workspace"` and `env`, which 0.12 set by default. |
 | `encoding` | Removed | Decode bytes yourself | |
 | `isExecResult()`, `isProcess()`, `isProcessStatus()` | Removed | Not needed | `exec()` returns an `ExecProcess`. TypeScript types replace the guards. |
@@ -216,7 +216,7 @@ These APIs came from the code interpreter and the subpath exports of the package
 
 | 0.12 | Kind | Replacement | Notes |
 | --- | --- | --- | --- |
-| `cloudflare/sandbox`, `-python`, `-opencode`, and `-musl` images | Removed | Your own `linux/amd64` image | Copy `sandbox-shim` into it if you use `Files` or `S3Mount`. Refer to [Requirements](https://developers.cloudflare.com/sandbox/reference/#requirements). |
+| `cloudflare/sandbox`, `-python`, `-opencode`, and `-musl` images | Removed | Your own `linux/amd64` image | Copy `sandbox-shim` into it if you use `Files`, `S3Mount`, or `DirectoryBackup`. Refer to [Requirements](https://developers.cloudflare.com/sandbox/reference/#requirements). |
 | `docker:dind-rootless` with `USER root` | Pattern | `docker:dind` with `--ip-forward=false` | Refer to [Run Docker inside the sandbox](https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/#run-docker-inside-the-sandbox). |
 
 ## Errors and clients
@@ -262,5 +262,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/#page","headline":"Sandbox SDK 0.x API map","description":"Every public API of @cloudflare/sandbox 0.12, and what replaces it in @cloudflare/sandbox 1.0, on this.ctx.container, or in your own code.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a061fea855c758c","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/#page","headline":"Sandbox SDK 0.x API map","description":"Every public API of @cloudflare/sandbox 0.12, and what replaces it in @cloudflare/sandbox 1.0, on this.ctx.container, or in your own code.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/api-map/og.png?v=3a061fea855c758c","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

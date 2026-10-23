@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53
 
 # Run a Linux command
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You will POST `uname -a` to a Worker and read stdout that contains `Linux`.
 
@@ -65,7 +65,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	"name": "sandbox-linux",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-12",
+   	"compatibility_date": "2026-10-23",
    	"observability": {
    		"enabled": true,
    	},
@@ -98,7 +98,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    name = "sandbox-linux"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-12"
+   compatibility_date = "2026-10-23"
    upload_source_maps = true
 
    [observability]
@@ -130,7 +130,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	async exec(argv) {
    		const container = this.ctx.container;
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -173,7 +173,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    	async exec(argv: string[]) {
    		const container = this.ctx.container;
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -240,7 +240,7 @@ For supported Node.js versions, refer to the <a href="https://developers.cloudfl
    curl http://localhost:8787 --request POST --json '{"argv":["uname","-a"]}'
    ```
 
-The JSON body includes `"exitCode":0`. `stdout` contains `Linux`. The Worker started a Linux VM and ran the command you sent.
+The JSON body includes `"exitCode":0`. `stdout` contains `Linux`. The Worker started a Linux container and ran the command you sent. When you deploy, each instance runs in its own virtual machine instead of in Docker.
 
 ## Next steps
 
@@ -259,5 +259,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Run a Linux command","description":"POST a command to your Worker and read stdout from Linux.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53ac49c7","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Run a Linux command","description":"POST a command to your Worker and read stdout from Linux.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53ac49c7","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

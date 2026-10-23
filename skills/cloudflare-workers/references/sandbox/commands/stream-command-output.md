@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/sandbox/commands/stream-command-output/
 
 # Stream command output
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/stream-command-output/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/stream-command-output/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Show the output of a command in a browser while the command runs. The Durable Object sends standard output and standard error as [server-sent events ↗︎](https://html.spec.whatwg.org/multipage/server-sent-events.html), reports the exit code, and stops the command when the client disconnects.
+Show the output of a command in a browser while the command runs. The Durable Object sends standard output and standard error as [server-sent events ↗︎](https://html.spec.whatwg.org/multipage/server-sent-events.html), reports the exit code, and signals the command to stop when the client disconnects.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ Show the output of a command in a browser while the command runs. The Durable Ob
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -77,7 +77,7 @@ Show the output of a command in a browser while the command runs. The Durable Ob
    			if (!exited) process.kill();
    		};
 
-   		// Stop the process when the client disconnects.
+   		// Signal the process when the client disconnects.
    		writer.closed.catch(stop);
 
    		// Detect a disconnected client while the process writes nothing.
@@ -93,8 +93,10 @@ Show the output of a command in a browser while the command runs. The Durable Ob
    				]);
    				await send("exit", { exitCode: await process.exitCode });
    				await writer.close();
-   			} catch {
+   			} catch (error) {
    				stop();
+   				// End the response, so a connected client does not wait forever.
+   				await writer.abort(error).catch(() => {});
    			} finally {
    				clearInterval(heartbeat);
    			}
@@ -115,7 +117,7 @@ Show the output of a command in a browser while the command runs. The Durable Ob
 
    The method returns the response before the command finishes. `pump()` then writes each chunk as the process produces it. `pump()` reads standard output and standard error at the same time, because a stream that nobody reads can block a process that keeps writing to it. `TextDecoderStream` keeps characters that span two chunks intact.
 
-   When the client disconnects, the next write fails and the method calls `kill()`, which sends `SIGTERM` to the command. The keep-alive comment every five seconds makes that write happen while the command is silent.
+   When the client disconnects, the next write fails and the method calls `kill()`, which sends `SIGTERM` to the command. A command can ignore `SIGTERM`; to enforce a limit, refer to [Stop a command after a time limit](#stop-a-command-after-a-time-limit). The keep-alive comment every five seconds makes that write happen while the command is silent.
 2. Add a route to your Worker that streams a command your application chooses:
 
    *src/index.jsjs*
@@ -239,13 +241,13 @@ events.addEventListener("exit", (event) => {
 
 ## Stop a command after a time limit
 
-A disconnect stops only the process that `exec()` started. Processes that the command starts, such as the commands in an `sh -c` script, keep the output streams open until they exit. To stop a command and every process it starts after a time limit, run it under GNU coreutils `timeout`:
+A disconnect signals only the process that `exec()` started. Processes that the command starts, such as the commands in an `sh -c` script, keep the output streams open until they exit. To stop a command and the processes it starts after a time limit, run it under GNU coreutils `timeout`:
 
 ```ts
 const build = ["timeout", "--kill-after=5", "60", "sh", "-c", "npm test"];
 ```
 
-The command exits with code `124` when it runs longer than 60 seconds. For more information, refer to [Stop the processes a command starts](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts).
+The command exits with code `124` when it runs longer than 60 seconds, or `137` if `timeout` also sends `SIGKILL`. A process that moves to its own process group, for example with `setsid`, keeps running. For more information, refer to [Stop the processes a command starts](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts).
 
 ## Related resources
 
@@ -262,5 +264,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/#page","headline":"Stream command output","description":"Send stdout and stderr from a command in a Linux sandbox to a browser as server-sent events while the command runs.","url":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/og.png?v=fe20e7beac184376","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/#page","headline":"Stream command output","description":"Send stdout and stderr from a command in a Linux sandbox to a browser as server-sent events while the command runs.","url":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/stream-command-output/og.png?v=fe20e7beac184376","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/reference/s3-mounts/og.png?v=fe
 
 # S3Mount API
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/s3-mounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/s3-mounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `S3Mount` mounts an S3-compatible bucket, or a prefix in one, at a path in a running container. The container runs `s3fs`, which sends storage requests to `S3Gateway` in your Worker. `S3Gateway` checks each request and signs it with credentials that the container never receives. `S3Mount` does not start or stop the container.
 
@@ -28,7 +28,7 @@ export class MyContainer extends DurableObject {
 	constructor(ctx, env) {
 		super(ctx, env);
 		if (!ctx.container) {
-			throw new Error("The container binding is not configured");
+			throw new Error("No container is configured");
 		}
 		// ctx.container stays the same object while the Durable Object runs.
 		this.mounts = new S3Mount(ctx.container, ctx.exports.S3Gateway);
@@ -68,7 +68,7 @@ export class MyContainer extends DurableObject<Env> {
 	constructor(ctx: DurableObjectState, env: Env) {
 		super(ctx, env);
 		if (!ctx.container) {
-			throw new Error("The container binding is not configured");
+			throw new Error("No container is configured");
 		}
 		// ctx.container stays the same object while the Durable Object runs.
 		this.mounts = new S3Mount(ctx.container, ctx.exports.S3Gateway);
@@ -135,7 +135,7 @@ Mounts the source at `request.mountPath`. The result depends on what the path ho
 - Leftover state from a failed or canceled `mount()` with the same settings: `mount()` repairs it.
 - Another filesystem, or a mount with different settings: `mount()` throws `SandboxS3MountError` with code `S3_MOUNT_CONFLICT`. To change the settings, call `unmount()` first.
 
-Each new mount adds one outbound intercept target to the container. Reusing a mount does not add one. `unmount()` does not remove one. A container accepts up to [64 intercept targets](https://developers.cloudflare.com/containers/api/durable-object-container/#interceptoutboundhttp), including the targets your own code registers. Once the container reaches the limit, a mount with new settings fails.
+Each new mount adds one outbound intercept target to the container. Reusing a mount does not add one. `unmount()` does not remove one. Mounts share the container [intercept limit](https://developers.cloudflare.com/containers/api/durable-object-container/#intercept-limit) with the intercepts your own code registers. Once the container reaches the limit, a mount with new settings fails.
 
 If the Durable Object also calls [`interceptAllOutboundHttp()`](https://developers.cloudflare.com/containers/api/durable-object-container/#interceptalloutboundhttp), call `mount()` before it, right after you start the container. Otherwise the catch-all receives the storage requests from the container, and `mount()` fails with `cannot verify the new FUSE connection`. A container that registered the catch-all first keeps sending storage requests to it. Restart the container to mount.
 
@@ -318,5 +318,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/#page","headline":"S3Mount API","description":"Reference for the S3Mount class in @cloudflare/sandbox, which mounts an S3-compatible bucket or prefix in a running container.","url":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/og.png?v=fedc54e102484047","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/#page","headline":"S3Mount API","description":"Reference for the S3Mount class in @cloudflare/sandbox, which mounts an S3-compatible bucket or prefix in a running container.","url":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/reference/s3-mounts/og.png?v=fedc54e102484047","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

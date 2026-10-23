@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/protocol/
 
 # Transport
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Model Context Protocol (MCP) specification defines two standard [transport mechanisms ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) for communication between clients and servers:
 
@@ -460,9 +460,9 @@ Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-
 
 ### Testing with MCP clients
 
-You can test your MCP server using an MCP client that supports remote connections, or use [`mcp-remote` ↗︎](https://www.npmjs.com/package/mcp-remote), an adapter that lets MCP clients that only support local connections work with remote MCP servers.
+Test your MCP server with a client that supports Streamable HTTP connections.
 
-Follow [this guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/) for instructions on how to connect to your remote MCP server to Claude Desktop, Cursor, Windsurf, and other MCP clients.
+Follow [Test a Remote MCP Server](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/) for instructions for Claude Code, Cursor, Windsurf, and other MCP clients.
 
 Was this helpful?
 
@@ -473,5 +473,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/og.png?v=711c26a3dccb5280","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/og.png?v=711c26a3dccb5280","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

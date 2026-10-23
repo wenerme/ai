@@ -733,8 +733,8 @@ And the following unique queues:
    If you set it to false, maybe it also needs to set `ENABLE_BASIC_AUTHENTICATION` to false to
    completely disable password-based authentication.
 - `ENABLE_PASSKEY_AUTHENTICATION`: **true**: Allow users to sign-in with a passkey
-- `ENABLE_REVERSE_PROXY_AUTHENTICATION`: **false**: Enable this to allow reverse proxy authentication for web requests
-- `ENABLE_REVERSE_PROXY_AUTHENTICATION_API`: **false**: Enable this to allow reverse proxy authentication for API requests, the reverse proxy is responsible for ensuring that no CSRF is possible.
+- `ENABLE_REVERSE_PROXY_AUTHENTICATION`: **false**: Enable reverse proxy authentication for the web interface, Git over HTTP, Git LFS and the package registry. Gitea must only be reachable through the proxy, see [Reverse Proxy](authentication.md#reverse-proxy).
+- `ENABLE_REVERSE_PROXY_AUTHENTICATION_API`: **false**: Enable reverse proxy authentication for the REST API under `/api/v1`.
 - `ENABLE_REVERSE_PROXY_AUTO_REGISTRATION`: **false**: Enable this to allow auto-registration
    for reverse authentication.
 - `ENABLE_REVERSE_PROXY_EMAIL`: **false**: Enable this to allow to auto-registration with a
@@ -1696,7 +1696,7 @@ PROXY_HOSTS = *.github.com
   But it will save storage space and network bandwidth, so it's still recommended to use compression.
 - `ARTIFACT_RETENTION_DAYS`: **90**: Days to keep artifacts. Old artifacts will be deleted after this period. 0 means keep forever.
   Changes only apply to newly uploaded artifacts, existing ones keep the expiry stored when they were uploaded.
-  Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+  Workflows can request a shorter retention period, down to 1 day.
 - `ARTIFACT_PREVIEW_MAX_SIZE`: **10485760**: Maximum total artifact size in bytes that can be browsed or previewed in the web UI. Set to `0` to disable artifact previews or `-1` for no limit. Individual files are also limited by [`MAX_DISPLAY_FILE_SIZE`](#ui-ui).
 - `RUN_RETENTION_DAYS`: **400**: Days to keep completed runs. Old runs and everything under them will be deleted after this period. 0 means keep forever.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time

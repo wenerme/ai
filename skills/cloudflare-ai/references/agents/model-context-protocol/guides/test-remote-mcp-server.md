@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/te
 
 # Test a Remote MCP Server
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Remote, authorized connections are an evolving part of the [Model Context Protocol (MCP) specification ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). Not all MCP clients support remote connections yet.
 
@@ -50,27 +50,15 @@ You should see the **List tools** button, which will list the tools that your MC
 
 Visit the [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), enter your MCP server URL, and click "Connect". Once authenticated (if required), you should see your tools listed and they will be available to the AI model in the chat.
 
-## Connect your remote MCP server to Claude Desktop via a local proxy
+## Connect your remote MCP server to Claude Code
 
-You can use the [`mcp-remote` local proxy ↗︎](https://www.npmjs.com/package/mcp-remote) to connect Claude Desktop to your remote MCP server. This lets you test what an interaction with your remote MCP server will be like with a real-world MCP client.
+Add the remote server directly to Claude Code using Streamable HTTP:
 
-1. Open Claude Desktop and navigate to Settings -> Developer -> Edit Config. This opens the configuration file that controls which MCP servers Claude can access.
-2. Replace the content with a configuration like this:
-
-```json
-{
-	"mcpServers": {
-		"my-server": {
-			"command": "npx",
-			"args": ["mcp-remote", "http://my-mcp-server.my-account.workers.dev/mcp"]
-		}
-	}
-}
+```sh
+claude mcp add --transport http my-server https://my-mcp-server.my-account.workers.dev/mcp
 ```
 
-3. Save the file and restart Claude Desktop (command/ctrl + R). When Claude restarts, a browser window will open showing your OAuth login page. Complete the authorization flow to grant Claude access to your MCP server.
-
-Once authenticated, you'll be able to see your tools by clicking the tools icon in the bottom right corner of Claude's interface.
+Run `claude mcp list` to verify the connection. If the server requires authentication, complete the authorization flow in your browser.
 
 ## Connect your remote MCP server to Cursor
 
@@ -109,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/#page","headline":"Test a Remote MCP Server","description":"Test your remote MCP server using the MCP Inspector and compatible MCP clients.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/og.png?v=0712eb0acb969200","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/#page","headline":"Test a Remote MCP Server","description":"Test your remote MCP server using the MCP Inspector and compatible MCP clients.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/og.png?v=0712eb0acb969200","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/concepts/og.png?v=c938c077dd21d
 
 # Choose a sandbox environment
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A sandbox runs code that you did not write and do not trust, such as code that a model generates or the test suite of a repository. Cloudflare runs it in one of two environments: a [Container](https://developers.cloudflare.com/containers/), which runs a Linux image, or a [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/), which runs JavaScript against methods that your [Worker](https://developers.cloudflare.com/workers/) provides. Your Worker starts either one, and one Worker can use both.
 
@@ -20,7 +20,7 @@ A sandbox runs code that you did not write and do not trust, such as code that a
 
 Code in a Container can use everything in its Linux image: runtimes, packages, files, and the processes it starts.
 
-Code in a Dynamic Worker can use only the modules, methods, and values that your Worker passes to it. It does not inherit the bindings, credentials, or data of your Worker. Set `globalOutbound` to `null` to block its direct access to the Internet.
+Code in a Dynamic Worker can use the Workers runtime APIs, plus the modules, methods, and values that your Worker passes to it. It does not inherit the bindings, credentials, or data of your Worker. It can reach the Internet unless you set `globalOutbound` to `null`.
 
 Your Workerkeepscredentials, policy
 
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Choose a sandbox environment","description":"Compare Containers and Dynamic Workers for code that needs Linux or only calls methods that your Worker provides.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/concepts/og.png?v=c938c077dd21d345","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/#page","headline":"Choose a sandbox environment","description":"Compare Containers and Dynamic Workers for code that needs Linux or only calls methods that your Worker provides.","url":"https://developers.cloudflare.com/sandbox/concepts/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/concepts/og.png?v=c938c077dd21d345","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

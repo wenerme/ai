@@ -28,21 +28,37 @@ You can also use RPC to communicate between Workers and [Durable Objects](https:
 
 For example, the following Worker implements the public method `add(a, b)`:
 
-For example, if Worker B implements the public method `add(a, b)`:
+The TypeScript example below uses a separate directory for each Worker:
+
+```txt
+rpc-example/
+├── worker-a/
+│   ├── src/index.ts
+│   └── wrangler.jsonc
+└── worker-b/
+    ├── src/index.ts
+    └── wrangler.jsonc
+```
+
+Worker B implements the public method `add(a, b)`:
 
 ```jsonc
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "worker_b",
-	"main": "./src/workerB.js",
+	"name": "worker-b",
+	"main": "./src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-10-23",
 	"upload_source_maps": true
 }
 ```
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
-name = "worker_b"
-main = "./src/workerB.js"
+name = "worker-b"
+main = "./src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-10-23"
 upload_source_maps = true
 ```
 
@@ -50,10 +66,6 @@ upload_source_maps = true
 import { WorkerEntrypoint } from "cloudflare:workers";
 
 export default class extends WorkerEntrypoint {
-	async fetch() {
-		return new Response("Hello from Worker B");
-	}
-
 	add(a, b) {
 		return a + b;
 	}
@@ -64,10 +76,6 @@ export default class extends WorkerEntrypoint {
 import { WorkerEntrypoint } from "cloudflare:workers";
 
 export default class extends WorkerEntrypoint {
-	async fetch() {
-		return new Response("Hello from Worker B");
-	}
-
 	add(a: number, b: number) {
 		return a + b;
 	}
@@ -75,12 +83,9 @@ export default class extends WorkerEntrypoint {
 ```
 
 ```python
-from workers import WorkerEntrypoint, Response
+from workers import WorkerEntrypoint
 
 class Default(WorkerEntrypoint):
-    async def fetch(self, request):
-        return Response("Hello from Worker B")
-
     def add(self, a: int, b: int) -> int:
         return a + b
 ```
@@ -90,13 +95,15 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 ```jsonc
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "worker_a",
-	"main": "./src/workerA.js",
+	"name": "worker-a",
+	"main": "./src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-10-23",
 	"upload_source_maps": true,
 	"services": [
 		{
 			"binding": "WORKER_B",
-			"service": "worker_b"
+			"service": "worker-b"
 		}
 	]
 }
@@ -104,33 +111,53 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 
 ```toml
 "$schema" = "./node_modules/wrangler/config-schema.json"
-name = "worker_a"
-main = "./src/workerA.js"
+name = "worker-a"
+main = "./src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-10-23"
 upload_source_maps = true
 
 [[services]]
 binding = "WORKER_B"
-service = "worker_b"
+service = "worker-b"
 ```
 
-Making it possible for Worker A to call the `add()` method from Worker B:
+For TypeScript, generate Worker A's binding types from both configuration files. Run the following command from the `worker-a` directory:
+
+npmyarnpnpm
+
+```
+npx wrangler types -c ./wrangler.jsonc -c ../worker-b/wrangler.jsonc
+```
+
+```
+yarn wrangler types -c ./wrangler.jsonc -c ../worker-b/wrangler.jsonc
+```
+
+```
+pnpm wrangler types -c ./wrangler.jsonc -c ../worker-b/wrangler.jsonc
+```
+
+Passing both files lets Wrangler resolve Worker B's default export. The generated `Env` interface types `WORKER_B` as a `Service` with the `add()` method. Do not set `entrypoint` to `default`; omitting `entrypoint` selects the default export.
+
+Worker A can then call `add()`:
 
 ```js
 export default {
-	async fetch(request, env) {
+	async fetch(_request, env) {
 		const result = await env.WORKER_B.add(1, 2);
-		return new Response(result);
+		return new Response(result.toString());
 	},
 };
 ```
 
 ```ts
 export default {
-	async fetch(request, env) {
+	async fetch(_request, env): Promise<Response> {
 		const result = await env.WORKER_B.add(1, 2);
-		return new Response(result);
+		return new Response(result.toString());
 	},
-};
+} satisfies ExportedHandler<Env>;
 ```
 
 ```python
@@ -140,6 +167,22 @@ class Default(WorkerEntrypoint):
     async def fetch(self, request):
         result = await self.env.WORKER_B.add(1, 2)
         return Response(f"Result: {result}")
+```
+
+To run both TypeScript Workers locally, run the following command from the `rpc-example` directory. The first configuration is the primary Worker and is available at `http://localhost:8787`.
+
+npmyarnpnpm
+
+```
+npx wrangler dev -c ./worker-a/wrangler.jsonc -c ./worker-b/wrangler.jsonc
+```
+
+```
+yarn wrangler dev -c ./worker-a/wrangler.jsonc -c ./worker-b/wrangler.jsonc
+```
+
+```
+pnpm wrangler dev -c ./worker-a/wrangler.jsonc -c ./worker-b/wrangler.jsonc
 ```
 
 You do not need to learn, implement, or think about special protocols to use the RPC system. The client, in this case Worker A, calls Worker B and tells it to execute a specific procedure using specific arguments that the client provides. This is accomplished with standard JavaScript classes.

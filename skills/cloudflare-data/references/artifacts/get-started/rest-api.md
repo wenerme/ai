@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/artifacts/get-started/rest-api/og.png?v
 
 # REST API
 
-Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
 
@@ -24,7 +24,7 @@ Start by reading [Namespaces](https://developers.cloudflare.com/artifacts/concep
 
 You need:
 
-- Access to Artifacts.
+- Access to Artifacts on the [Workers Paid plan](https://developers.cloudflare.com/artifacts/platform/pricing/).
 - A namespace name, for example `default`.
 - A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** > **Read** and **Artifacts** > **Edit**.
 - A local `git` client.
@@ -202,5 +202,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"REST API","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/get-started/rest-api/og.png?v=203efb725994f626","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"REST API","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/get-started/rest-api/og.png?v=203efb725994f626","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

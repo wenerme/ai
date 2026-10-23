@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=
 
 # Account Abuse Protection (Early Access)
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Identify and mitigate attacks on your customer and user accounts.
 
@@ -112,18 +112,18 @@ Fraud detections focus on account abuse attacks such as account takeover, bulk a
 
 Disposable Email Checks detect when users sign up with throwaway email addresses commonly used for promotion abuse and fake account creation. These disposable email services allow attackers to create thousands of unique accounts without maintaining real infrastructure.
 
-You can use the following binary field as you build rules to enforce security preferences, choosing to block all disposable emails outright, or issue a [challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/) to anyone attempting to create an account with a disposable email.
+You can use `cf.fraud_detection.disposable_email` to block disposable emails or issue a [challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/) to anyone attempting to create an account with a disposable email.
 
 #### Suspicious emails
 
-Cloudflare analyzes the components of an email used during sign up to help identify suspicious patterns. Refer to [prerequisites](#prerequisites) to ensure your traffic is eligible for detections.
+Cloudflare checks email domains used during sign up against lists of known temporary or disposable email services. Cloudflare runs the same check on login requests when the extracted username is an email address.
 
-Cloudflare does not store email addresses during this analysis. All detections processed without any storage or caching.
+This check also determines the value of `cf.fraud.email_risk` in Security Rules and Security Analytics. Refer to [prerequisites](#prerequisites) to ensure your traffic is eligible for detections.
 
 | Detection tag | Description |
 | --- | --- |
 | `cf.fraud_detection.disposable_email` | Identifies emails with domains that are commonly found in lists of temporary or disposable email services. |
-| `cf.fraud.email_risk` | Analyzes the randomness (entropy) of characters in an email username and top level domain. For example, `a8xk2m9p@example.com` has high entropy (very random characters), while `john.smith@example.com` has low entropy (recognizable pattern). <br>High risk emails indicate high entropy, while medium and low risk emails indicate less randomness in the string of characters. |
+| `cf.fraud.email_risk` | Returns `high` when Cloudflare identifies the email domain as temporary or disposable. Returns `unknown` otherwise. |
 
 ---
 
@@ -138,7 +138,7 @@ The following fields can be used in new and existing Security Rules.
 | Field | Description | Values |
 | --- | --- | --- |
 | `cf.fraud_detection.disposable_email` | Flags whether a domain for a given email is included in a known list of temporary email providers. | `True` or `False` |
-| `cf.fraud.email_risk` | Measures risk of email based on randomness of characters in the username and domain. | `Low` represents low risk due to reduced randomness and simple emails. <br>`Medium` represents medium risk based on larger strings with slightly more randomness. <br>`High` represents high risk based on larger and random character strings. <br>`Unknown` |
+| `cf.fraud.email_risk` | Indicates whether Cloudflare identifies an email domain as temporary or disposable. | `high` when Cloudflare identifies the domain as temporary or disposable. <br>`unknown` otherwise. |
 
 #### Other rules
 
@@ -171,5 +171,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access)","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=9d30dd9cfa06989c","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access)","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/account-abuse-protection/og.png?v=9d30dd9cfa06989c","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 ```

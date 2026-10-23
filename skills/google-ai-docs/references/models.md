@@ -147,8 +147,6 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-previ
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | Designed as the efficiency specialist of the image generation family, offering ultra-low latency and cost-effective image generation and editing. | ``` gemini-3.1-flash-lite-image ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering. | ``` gemini-3-pro-image ``` |
 | [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | Fast video generation, editing, keyframe interpolation, and extension with native audio. | ``` gemini-omni-1.1-flash ``` |
-| [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview) | Legacy video generation preview model (shutting down October 22, 2026). We recommend updating to Gemini Omni Flash. | ``` veo-3.1-generate-preview ``` |
-| [Veo 3.1 Lite](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview) | Legacy low-cost video generation preview model (shutting down October 22, 2026). We recommend updating to Gemini Omni Flash. | ``` veo-3.1-lite-generate-preview ``` |
 | [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) | State-of-the-art native image generation and editing designed for fast, creative workflows. | ``` gemini-2.5-flash-image ``` |
 | Imagen 4 (Shut down) | Text-to-image model featuring fast and ultra-fast generation (shut down). | ``` imagen-4.0-generate ``` |
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destina
 
 # Enable Amazon S3
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflare dashboard or via API. Customers that use AWS GovCloud locations should use our **S3-compatible endpoint** and not the **Amazon S3 endpoint**.
+Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflare dashboard or via API. Customers that use AWS GovCloud locations should use our **S3-compatible endpoint** and not the **Amazon S3 endpoint**. AWS does not let a commercial AWS identity assume a role in GovCloud, so GovCloud buckets require access keys.
 
 ## Manage via the Cloudflare dashboard
 
@@ -32,7 +32,7 @@ Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflar
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)
    - **Bucket region**
-   - If your policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html).
+   - If your bucket policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html), select the encryption option. Do not select it for a bucket that uses SSE-KMS. Refer to [Encrypt logs with server-side encryption](#encrypt-logs-with-server-side-encryption).
    - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has a [policy ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html#iam-policy-ex0) (if you did not add it already):
      - Copy the JSON policy, then go to your bucket in the Amazon S3 console and paste the policy in **Permissions** > **Bucket Policy** and select **Save**.
 
@@ -93,6 +93,82 @@ Note
 
 Logpush uploads each log file, including the ownership challenge file, with a single `PutObject` request. It does not use multipart upload, so failed uploads do not leave incomplete multipart uploads in your bucket.
 
+## Use an IAM role in your AWS account
+
+Instead of granting the Cloudflare IAM user access in your bucket policy, you can have Logpush assume an IAM role in your AWS account. Logpush then writes to your bucket as that role. Use this option if your bucket policy cannot name a third-party principal, or if your bucket uses SSE-KMS encryption.
+
+This option is available through the API and Terraform. It is not available in the dashboard or for AWS GovCloud buckets.
+
+1. Create an IAM role with the following trust policy. Replace `<EXTERNAL_ID>` with a unique value that you choose. The external ID prevents another Cloudflare account from using your role. For more information, refer to [Access to AWS accounts owned by third parties ↗︎](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html).
+
+   ```json
+   {
+   	"Version": "2012-10-17",
+   	"Statement": [
+   		{
+   			"Effect": "Allow",
+   			"Principal": {
+   				"AWS": "arn:aws:iam::391854517948:user/cloudflare-logpush"
+   			},
+   			"Action": "sts:AssumeRole",
+   			"Condition": {
+   				"StringEquals": { "sts:ExternalId": "<EXTERNAL_ID>" }
+   			}
+   		}
+   	]
+   }
+   ```
+
+2. Attach a permission policy that allows the role to write to your bucket path. Replace `<BUCKET_NAME>` and `<PATH>` with your own values.
+
+   ```json
+   {
+   	"Version": "2012-10-17",
+   	"Statement": [
+   		{
+   			"Effect": "Allow",
+   			"Action": "s3:PutObject",
+   			"Resource": "arn:aws:s3:::<BUCKET_NAME>/<PATH>/*"
+   		}
+   	]
+   }
+   ```
+
+   If the bucket uses SSE-KMS, also grant the role `kms:GenerateDataKey` on the key. Refer to [Encrypt logs with server-side encryption](#encrypt-logs-with-server-side-encryption).
+3. Use the following format for the `destination_conf` field when you request the ownership challenge and when you create the job:
+
+   ```txt
+   s3://<BUCKET_NAME>/<PATH>/{DATE}?region=<REGION>&sts-assume-role-arn=arn:aws:iam::<AWS_ACCOUNT_ID>:role/<ROLE_NAME>&sts-external-id=<EXTERNAL_ID>
+   ```
+
+4. Request an ownership challenge, then create the job with the token. Logpush writes the ownership challenge file as the role. For the API calls, refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/).
+
+You cannot combine `sts-assume-role-arn` with `access-key-id` and `secret-access-key` in the same job.
+
+## Encrypt logs with server-side encryption
+
+Logpush supports two kinds of server-side encryption for Amazon S3.
+
+### SSE-S3
+
+To request SSE-S3 encryption on each object, add `sse=AES256` to the `destination_conf`. In the dashboard, select the encryption option. `AES256` is the only accepted value.
+
+You only need this option if your bucket policy denies uploads without the `x-amz-server-side-encryption` header. Amazon S3 encrypts new objects with SSE-S3 by default.
+
+### SSE-KMS
+
+Logpush does not send SSE-KMS headers or a KMS key ID. Instead, Amazon S3 applies your bucket's default encryption to each object that Logpush writes. To store logs encrypted with your AWS Key Management Service (AWS KMS) key:
+
+1. Set the bucket's [default encryption ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/default-bucket-encryption.html) to SSE-KMS with your customer managed key.
+2. Configure the job to [use an IAM role in your AWS account](#use-an-iam-role-in-your-aws-account). The Cloudflare IAM user cannot use KMS keys in your account.
+3. Grant the role `kms:GenerateDataKey` on the key. If the key is in a different AWS account from the role, the key policy must also allow the role.
+4. Leave `sse` out of the `destination_conf`. If you set `sse=AES256`, Amazon S3 uses SSE-S3 instead of your KMS key.
+5. Remove bucket policy statements that deny `PutObject` requests without the `x-amz-server-side-encryption` header, including statements that use `StringNotEqualsIfExists`. Logpush does not send this header.
+
+To confirm that logs use your key, run `aws s3api head-object` on a delivered object. The response shows `ServerSideEncryption` as `aws:kms` and your key in `SSEKMSKeyId`. Any identity that reads the logs or the ownership challenge file needs `kms:Decrypt` on the key.
+
+If the ownership challenge fails with an `AccessDenied` error for `kms:GenerateDataKey` that names `user/cloudflare-logpush`, the job uses the Cloudflare IAM user. Switch the job to an IAM role in your AWS account.
+
 Was this helpful?
 
 YesNo
@@ -102,5 +178,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/#page","headline":"Enable Amazon S3","description":"Push Cloudflare logs to Amazon S3.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/og.png?v=919663589b56b43b","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/#page","headline":"Enable Amazon S3","description":"Push Cloudflare logs to Amazon S3.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/og.png?v=919663589b56b43b","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

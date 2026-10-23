@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/previews/og.png?v=a671b00fd45ff
 
 # Preview a web application
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/previews/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use a browser to open a web server that runs in a sandbox. The server has no public port, so your Worker forwards requests to it. In this example, the Worker forwards each request under `/previews/<NAME>/` to the sandbox named `<NAME>`.
 
@@ -110,7 +110,7 @@ Use a browser to open a web server that runs in a sandbox. The server has no pub
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -296,7 +296,8 @@ To keep the sandbox running while a page has a connection open, accept both ends
 
 
    ```js
-   function bridge(upstream) {
+   function bridge(response) {
+   	const upstream = response.webSocket;
    	const [client, server] = Object.values(new WebSocketPair());
 
    	// Receive binary messages as `ArrayBuffer` instead of `Blob`
@@ -327,7 +328,15 @@ To keep the sandbox running while a page has a connection open, accept both ends
    	relay(server, upstream);
    	relay(upstream, server);
 
-   	return new Response(null, { status: 101, webSocket: client });
+   	// Pass on the subprotocol that the server chose. A browser closes a
+   	// connection that requested one and receives none.
+   	const headers = new Headers();
+   	const protocol = response.headers.get("Sec-WebSocket-Protocol");
+   	if (protocol) {
+   		headers.set("Sec-WebSocket-Protocol", protocol);
+   	}
+
+   	return new Response(null, { status: 101, webSocket: client, headers });
    }
    ```
 
@@ -336,7 +345,8 @@ To keep the sandbox running while a page has a connection open, accept both ends
 
 
    ```ts
-   function bridge(upstream: WebSocket): Response {
+   function bridge(response: Response): Response {
+   	const upstream = response.webSocket!;
    	const [client, server] = Object.values(new WebSocketPair());
 
    	// Receive binary messages as `ArrayBuffer` instead of `Blob`
@@ -367,7 +377,15 @@ To keep the sandbox running while a page has a connection open, accept both ends
    	relay(server, upstream);
    	relay(upstream, server);
 
-   	return new Response(null, { status: 101, webSocket: client });
+   	// Pass on the subprotocol that the server chose. A browser closes a
+   	// connection that requested one and receives none.
+   	const headers = new Headers();
+   	const protocol = response.headers.get("Sec-WebSocket-Protocol");
+   	if (protocol) {
+   		headers.set("Sec-WebSocket-Protocol", protocol);
+   	}
+
+   	return new Response(null, { status: 101, webSocket: client, headers });
    }
    ```
 
@@ -380,7 +398,7 @@ To keep the sandbox running while a page has a connection open, accept both ends
    ```ts
    try {
    	const response = await container.getTcpPort(port).fetch(request);
-   	return response.webSocket ? bridge(response.webSocket) : response;
+   	return response.webSocket ? bridge(response) : response;
    } catch {
    ```
 
@@ -551,5 +569,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/previews/#page","headline":"Preview a web application","description":"Open a web server that runs in a Linux sandbox through your Worker, keep its WebSocket connections open, and share it with a link.","url":"https://developers.cloudflare.com/sandbox/previews/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/previews/og.png?v=a671b00fd45ffa2b","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/previews/#page","headline":"Preview a web application","description":"Open a web server that runs in a Linux sandbox through your Worker, keep its WebSocket connections open, and share it with a link.","url":"https://developers.cloudflare.com/sandbox/previews/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/previews/og.png?v=a671b00fd45ffa2b","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

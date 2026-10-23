@@ -37,7 +37,7 @@ These environment variables are set automatically in every workflow run and can 
 | `GITHUB_REF_TYPE` | The type of ref: `branch` or `tag`. | `branch` |
 | `GITHUB_REPOSITORY` | The owner and repository name. | `gitea/docs` |
 | `GITHUB_REPOSITORY_OWNER` | The repository owner's username. | `gitea` |
-| `GITHUB_RETENTION_DAYS` | The number of days that workflow run logs and artifacts are kept. | `90` |
+| `GITHUB_RETENTION_DAYS` | The number of days that artifacts are kept, empty when kept forever. | `90` |
 | `GITHUB_RUN_ATTEMPT` | The attempt number of the workflow run. | `1` |
 | `GITHUB_RUN_ID` | A unique number for each workflow run. | `1234` |
 | `GITHUB_RUN_NUMBER` | A unique number for each run of a particular workflow. | `42` |
@@ -96,7 +96,7 @@ These variables are available in workflow expressions via `${{ gitea.<name> }}`.
 | `gitea.repository``github.repository` | The owner and repository name. | `gitea/docs` |
 | `gitea.repository_owner``github.repository_owner` | The repository owner's username. | `gitea` |
 | `gitea.repositoryUrl``github.repositoryUrl` | The HTML URL to the repository. | `https://gitea.com/gitea/docs` |
-| `gitea.retention_days``github.retention_days` | The number of days that workflow run logs and artifacts are kept. | `90` |
+| `gitea.retention_days``github.retention_days` | The number of days that artifacts are kept, empty when kept forever. | `90` |
 | `gitea.run_id``github.run_id` | A unique number for each workflow run within a repository. Does not change on re-run. | `1234` |
 | `gitea.run_number``github.run_number` | A unique number for each run of a particular workflow. Starts at 1 and increments with each new run. | `42` |
 | `gitea.run_attempt``github.run_attempt` | A unique number for each re-run attempt. Starts at 1 and increments with each re-run. | `1` |

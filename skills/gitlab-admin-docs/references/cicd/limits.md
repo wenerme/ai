@@ -391,9 +391,7 @@ To configure the per user and project limit:
 ## Pipeline retry rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627233) in GitLab 19.5 [with a feature flag](../feature_flags/_index.md) named `rate_limit_pipeline_retry`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- Generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_retry` removed.
 
 Retrying a pipeline clones every retryable job, so the cost of retrying scales with the size of the pipeline.
 Repeated retries, whether on one large pipeline or spread across many pipelines in a project, can add up to

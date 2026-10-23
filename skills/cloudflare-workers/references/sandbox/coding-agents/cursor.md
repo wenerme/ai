@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/cursor/og.png?v=d
 
 # Run Cursor Cloud Agents in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/cursor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/cursor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run Cursor Cloud Agents on Cloudflare through [self-hosted machines ↗︎](https://cursor.com/docs/cloud-agent/self-hosted). Each Cursor session assigned to the deployment runs in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
@@ -201,10 +201,11 @@ To stream controller and container logs, run:
 npx wrangler tail
 ```
 
-To list container instances, run:
+To list container instances, find the ID of the container application, then list its instances:
 
 ```sh
 npx wrangler containers list
+npx wrangler containers instances <APPLICATION_ID>
 ```
 
 To test one scheduled controller run during local development, start `wrangler` with scheduled-event testing:
@@ -249,5 +250,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/#page","headline":"Run Cursor Cloud Agents in a sandbox","description":"Deploy Cursor self-hosted machines that run each assigned session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/og.png?v=d5367f1d93a4980d","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/#page","headline":"Run Cursor Cloud Agents in a sandbox","description":"Deploy Cursor self-hosted machines that run each assigned session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/cursor/og.png?v=d5367f1d93a4980d","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
