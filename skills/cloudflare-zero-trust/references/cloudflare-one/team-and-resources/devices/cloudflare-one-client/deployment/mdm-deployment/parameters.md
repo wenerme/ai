@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Parameters
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each Cloudflare One Client (formerly WARP) supports the following set of parameters as part of their deployment, regardless of the deployment mechanism.
 
@@ -388,6 +388,147 @@ Enables [Local Emergency Disconnect](https://developers.cloudflare.com/cloudflar
 - `false` — (default) Local signal file monitoring is disabled.
 - `true` — The client monitors the local signal file for emergency disconnect.
 
+### `managed_network_probe_count`
+
+<details>
+
+<summary>
+
+Feature availability
+
+</summary>
+
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.9.1555.1 |
+| macOS | ✅ | 2026.9.1555.1 |
+| Linux | ✅ | 2026.9.1555.1 |
+| iOS | ❌ | — |
+| Android | ❌ | — |
+| ChromeOS | ❌ | — |
+
+</details>
+
+Sets how many extra times the Cloudflare One Client checks for [managed networks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) after a check finds none. The client checks for managed networks when the device registers and when the network changes. A temporary connection failure during that check can apply the wrong [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) until the next network change. Extra probes let the client correct the device profile without a network change. Each probe checks every managed network.
+
+To set the wait between probes, use [`managed_network_probe_interval_secs`](#managed_network_probe_interval_secs).
+
+**Value Type:** `integer`
+
+**Value:**
+
+- `0` — Turns off extra probes. The client only checks for managed networks on registration and network changes, as in versions before 2026.9.1555.1.
+- `1` — (default) Runs one extra probe.
+- `2` to `10` — Runs up to this number of extra probes. The client treats values above `10` as `10`.
+- `-1` — Probes until the client finds a managed network.
+
+### `managed_network_probe_interval_secs`
+
+<details>
+
+<summary>
+
+Feature availability
+
+</summary>
+
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.9.1555.1 |
+| macOS | ✅ | 2026.9.1555.1 |
+| Linux | ✅ | 2026.9.1555.1 |
+| iOS | ❌ | — |
+| Android | ❌ | — |
+| ChromeOS | ❌ | — |
+
+</details>
+
+How long the Cloudflare One Client waits after a [managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) check finds no managed network before it probes again. A network change that does not start a new check restarts a pending wait.
+
+To set the number of probes, use [`managed_network_probe_count`](#managed_network_probe_count).
+
+**Value Type:** `integer`
+
+**Value:** Wait time in seconds (minimum `30`, maximum `300`, default `30`)
+
+The client replaces values outside this range with the nearest limit.
+
+### `mdm_file_debounce_secs`
+
+<details>
+
+<summary>
+
+Feature availability
+
+</summary>
+
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.9.1555.1 |
+| macOS | ✅ | 2026.9.1555.1 |
+| Linux | ✅ | 2026.9.1555.1 |
+| iOS | ❌ | — |
+| Android | ❌ | — |
+| ChromeOS | ❌ | — |
+
+</details>
+
+How long the Cloudflare One Client waits after the MDM file (`mdm.xml` or `com.cloudflare.warp.plist`) changes before it applies the new configuration. Each new change restarts the wait, so the client applies several quick changes together.
+
+**Value Type:** `integer`
+
+**Value:** Wait time in seconds (minimum `1`, maximum `60`, default `10`)
+
+The client replaces values outside this range with the nearest limit.
+
+### `mdm_file_unavailable_debounce_secs`
+
+<details>
+
+<summary>
+
+Feature availability
+
+</summary>
+
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.9.1555.1 |
+| macOS | ✅ | 2026.9.1555.1 |
+| Linux | ✅ | 2026.9.1555.1 |
+| iOS | ❌ | — |
+| Android | ❌ | — |
+| ChromeOS | ❌ | — |
+
+</details>
+
+How long the Cloudflare One Client keeps the last applied MDM configuration after the MDM file goes missing or becomes unreadable. The wait starts at the first file change that leaves the file unavailable. If the file is still unavailable when the wait ends, the client removes the MDM configuration, including any managed registration.
+
+Some MDM tools replace the file by deleting it and creating it again. A wait longer than that gap keeps the client from removing the registration.
+
+**Value Type:** `integer`
+
+**Value:** Wait time in seconds (minimum `0`, maximum `300`)
+
+The client replaces values outside this range with the nearest limit. If you do not set this parameter, the client waits 20 seconds on macOS. On Windows and Linux, the client removes the MDM configuration as soon as it fails to read the file.
+
 ### `onboarding`
 
 Controls the visibility of the onboarding screens that ask the user to review the privacy policy during an application's first launch.
@@ -657,5 +798,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/og.png?v=42e8eaf40dcd5fbe","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#page","headline":"Parameters","description":"Explore parameters for deploying the Cloudflare One Client via MDM, including organization setup and device registration for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/og.png?v=42e8eaf40dcd5fbe","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML","Post-quantum"]}
 ```

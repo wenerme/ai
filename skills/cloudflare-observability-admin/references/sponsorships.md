@@ -17,6 +17,30 @@ A fast development server and build tool for modern web projects.
 
 [Visit site](https://vite.dev/) [GITHUB](https://github.com/vitejs/vite)
 
+[Visit EmDash](https://emdashcms.com/) [<h3>EmDash</h3>](https://emdashcms.com/)
+
+An open-source, Astro-native CMS built for humans and agents.
+
+[Visit site](https://emdashcms.com/) [GITHUB](https://github.com/emdash-cms/emdash)
+
+[Visit Vinext](https://vinext.dev/) [<h3>Vinext</h3>](https://vinext.dev/)
+
+A Vite plugin that reimplements the Next.js API surface.
+
+[Visit site](https://vinext.dev/) [GITHUB](https://github.com/cloudflare/vinext)
+
+[Visit Flue](https://flueframework.com/) [<h3>Flue</h3>](https://flueframework.com/)
+
+A TypeScript framework for building durable AI agents.
+
+[Visit site](https://flueframework.com/) [GITHUB](https://github.com/withastro/flue)
+
+[Visit Nimbus](https://nimbus-docs.com/) [<h3>Nimbus</h3>](https://nimbus-docs.com/)
+
+An Astro-based documentation framework for humans and AI agents.
+
+[Visit site](https://nimbus-docs.com/) [GITHUB](https://github.com/cloudflare/nimbus)
+
 [<h3>Yarn</h3>](https://yarnpkg.com/en/)
 
 A package manager for Node that creates a lockfile for dependencies and cache’s packages for future projects.

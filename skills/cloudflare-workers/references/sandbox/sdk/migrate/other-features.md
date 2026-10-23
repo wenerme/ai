@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.p
 
 # Move other 0.x features
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page replaces or removes the Sandbox SDK 0.12 features that have no class in 1.0. Each section stands alone. Follow only the sections for the features that your application uses.
 
@@ -44,12 +44,12 @@ The 0.x Docker setup starts from `docker:dind-rootless`, switches to `USER root`
    ```dockerfile
    FROM docker:dind
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false --ip-forward=false > /var/log/dockerd.log 2>&1 & exec sleep infinity"]
    ```
 
-   The Docker daemon runs as `root`, with iptables and IP forwarding turned off. It logs to `/var/log`, because the `docker:dind` entrypoint mounts an empty `/tmp`. `sleep infinity` keeps the container running. Keep the `COPY` line only if your class uses `Files` or `S3Mount`. `sandbox-shim` is statically linked, so it runs on the Alpine-based `docker:dind` image.
+   The Docker daemon runs as `root`, with iptables and IP forwarding turned off. It logs to `/var/log`, because the `docker:dind` entrypoint mounts an empty `/tmp`. `sleep infinity` keeps the container running. Keep the `COPY` line only if your class uses `Files`, `S3Mount`, or `DirectoryBackup`. `sandbox-shim` is statically linked, so it runs on the Alpine-based `docker:dind` image.
 2. Keep `enableInternet: true` in `start()`, so that Docker can pull images. 0.12 allowed Internet access by default.
 3. Wait for Docker, and run containers with `--network=host`:
 
@@ -228,7 +228,7 @@ In 0.12, `createOpencode()` started `opencode serve` in the sandbox, and returne
 
 
    ```dockerfile
-   RUN npm install --global --ignore-scripts opencode-linux-x64-baseline@1.18.32 \
+   RUN npm install --global --ignore-scripts opencode-linux-x64-baseline@1.19.4 \
    	&& ln -s /usr/local/lib/node_modules/opencode-linux-x64-baseline/bin/opencode /usr/local/bin/opencode
    ```
 
@@ -236,19 +236,19 @@ In 0.12, `createOpencode()` started `opencode serve` in the sandbox, and returne
 2. Install the OpenCode SDK in your Worker project:npmyarnpnpmbun
 
    ```
-   npm i @opencode-ai/sdk@1.18.32
+   npm i @opencode-ai/sdk@1.19.4
    ```
 
    ```
-   yarn add @opencode-ai/sdk@1.18.32
+   yarn add @opencode-ai/sdk@1.19.4
    ```
 
    ```
-   pnpm add @opencode-ai/sdk@1.18.32
+   pnpm add @opencode-ai/sdk@1.19.4
    ```
 
    ```
-   bun add @opencode-ai/sdk@1.18.32
+   bun add @opencode-ai/sdk@1.19.4
    ```
 
 3. Replace `createOpencode()` with a method that starts the server once for each container. It uses the scripts and functions from step 1 of [Run a server in the background](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#run-a-server):
@@ -428,7 +428,7 @@ In 0.12, `Shell` and `Editor` from `@cloudflare/sandbox/openai` ran the commands
    				{ cwd: "/workspace", env: ENV },
    			);
    			const result = await process.output();
-   			const timedOut = result.exitCode === 124;
+   			const timedOut = result.exitCode === 124 || result.exitCode === 137;
 
    			output.push({
    				stdout: decoder.decode(result.stdout),
@@ -452,7 +452,7 @@ In 0.12, `Shell` and `Editor` from `@cloudflare/sandbox/openai` ran the commands
    }
    ```
 
-   `timeout` [stops the command and every process it started](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts), and the command exits with code `124`. 0.12 set no time limit when the action had no `timeoutMs`, and this class sets 60 seconds.
+   `timeout` [stops the command and the processes it started](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts) that stay in its process group. The command exits with code `124`, or `137` if `timeout` also sends `SIGKILL`. 0.12 set no time limit when the action had no `timeoutMs`, and this class sets 60 seconds.
 2. Add an `Editor` that applies the patches from the agent with `Files`:
 
    *src/index.tsts*
@@ -609,7 +609,7 @@ Clients written for the bridge API, such as `CloudflareSandboxClient` in the Ope
 
 ## Remove WarmPool
 
-Start each sandbox when a request needs it, and remove `WarmPool`. The pool kept 0.x sandboxes started ahead of time, because a 0.x start took seconds. On 1.0, a sandbox on a prepared image runs its first command in under 600 ms at the median.
+Start each sandbox when a request needs it, and remove `WarmPool`. The pool kept 0.x sandboxes started ahead of time, because a 0.x start took seconds. With the Durable Object scheduling policy, the median time from creating a sandbox to running a command in it was 648 milliseconds in an independent benchmark, so a pool saves little time.
 
 1. Remove the `WarmPool` export from the main module of your Worker, and its binding from `durable_objects` in the Wrangler configuration.
 2. Delete the class in the same way your Worker added it. If your Worker uses `migrations`, add a migration:
@@ -680,5 +680,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/#page","headline":"Move other 0.x features","description":"Move @cloudflare/sandbox 0.12 Docker-in-Docker images, binding handlers, and the opencode, openai, and bridge subpaths to 1.0, and remove WarmPool.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.png?v=f9210298c4783c03","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/#page","headline":"Move other 0.x features","description":"Move @cloudflare/sandbox 0.12 Docker-in-Docker images, binding handlers, and the opencode, openai, and bridge subpaths to 1.0, and remove WarmPool.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/other-features/og.png?v=f9210298c4783c03","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

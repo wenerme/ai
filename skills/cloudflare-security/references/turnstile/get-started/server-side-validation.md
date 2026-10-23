@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/turnstile/get-started/server-side-valid
 
 # Validate the token
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
 
@@ -166,18 +166,21 @@ function validateTurnstile($token, $secret, $remoteip = null) {
         $data['remoteip'] = $remoteip;
     }
 
-    $options = [
-        'http' => [
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        ]
-    ];
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query($data),
+        CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 5,
+        CURLOPT_TIMEOUT => 10,
+    ]);
 
-    $context = stream_context_create($options);
-    $response = file_get_contents($url, false, $context);
+    $response = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
 
-    if ($response === FALSE) {
+    if ($response === false || $error !== '') {
         return ['success' => false, 'error-codes' => ['internal-error']];
     }
 
@@ -724,5 +727,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#page","headline":"Validate the token","description":"Validate Turnstile tokens on your server with the siteverify API.","url":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/og.png?v=58220cfac6c19059","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/#page","headline":"Validate the token","description":"Validate Turnstile tokens on your server with the siteverify API.","url":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/turnstile/get-started/server-side-validation/og.png?v=58220cfac6c19059","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

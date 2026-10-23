@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/reference/connection-limit
 
 # Connection limits
 
-Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/connection-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), there are often two established [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/): the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
 
@@ -25,14 +25,22 @@ When HTTP/HTTPS traffic is [proxied through Cloudflare](https://developers.cloud
 
 ## Between Cloudflare and origin server
 
+### What connection means here
+
+A **TCP connection** is established when its TCP handshake completes. For a new **TCP-based HTTPS connection**, setup also requires SSL/TLS negotiation. TCP can therefore be established while HTTPS setup remains unfinished.
+
+Requests can reuse established connections, and a proxied request may traverse multiple connections. A connection timeout does not, by itself, identify which operation timed out or what caused it. Reused connections and QUIC do not have the same per-request TCP/TLS setup sequence as a new TCP-based HTTPS connection.
+
+The TCP establishment and request-acknowledgment rows describe specific TCP timeout conditions. They are not an exhaustive list of every operation that can produce [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/). Neither value is a universal TCP-plus-TLS setup budget. A timeout while TLS remains pending can be reported as `522` rather than [525](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-525/).
+
 Note
 
 If you are using [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), refer to [Origin configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/) to view or modify your connection settings.
 
 | Type | Limit (seconds) | HTTP status code at limit | [Configurable](https://developers.cloudflare.com/fundamentals/reference/connection-limits/#configurable-limits) |
 | --- | --- | --- | --- |
-| Complete TCP Connection | 19 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
-| TCP ACK Timeout | 90 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
+| TCP connection establishment | 19 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
+| TCP request acknowledgment timeout | 90 | [522](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | No |
 | TCP Keep-Alive Interval | 30 | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No |
 | Proxy Idle Timeout | 900 | [520](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | No |
 | Proxy Read Timeout | 125 | [524](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | [Yes, for Enterprise zones](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) |
@@ -71,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/og.png?v=1342db86bc378fe9","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/#page","headline":"Connection limits","description":"Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.","url":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/connection-limits/og.png?v=1342db86bc378fe9","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

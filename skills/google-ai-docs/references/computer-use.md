@@ -7,7 +7,8 @@ and keyboard inputs. Similar to function calling, you will need to implement the
 client-side execution environment to receive and execute the Computer Use
 actions.
 
-For the list of supported models, see [Model versions](https://ai.google.dev/gemini-api/docs/computer-use#model-versions). The Gemini 3.x models support several advanced capabilities:
+For the list of supported models, see [Model versions](https://ai.google.dev/gemini-api/docs/computer-use#model-versions). Gemini
+4 and Gemini 3.x models support several advanced capabilities:
 
 - **Multi-environment support:** build agents for [browser, mobile, and desktop](https://ai.google.dev/gemini-api/docs/computer-use#supported-environments) environments.
 - **Streamlined actions with intents:** actions include an `intent` field that explains the model's reasoning behind each step.
@@ -133,7 +134,7 @@ will do at each step:
    - Your application sends an API request containing the Computer Use tool, your configuration settings (like the target environment), the user's prompt, and a screenshot of the current screen.
 2. [**Receive the model response**](https://ai.google.dev/gemini-api/docs/computer-use#model-response)
    - The model analyzes the screen and the prompt, returning a response which includes a suggested `function_call` representing a UI action (such as a click, scroll, or keystroke).
-   - For **Gemini 3.x models** , the response also includes a reasoning `intent` explaining why the model chose that action.
+   - For **Gemini 4 and Gemini 3.x models** , the response also includes a reasoning `intent` explaining why the model chose that action.
    - The response may also include a `safety_decision` from an internal safety system that classifies the action as regular/allowed, `require_confirmation` (requiring user approval), or blocked.
 3. [**Execute the received action**](https://ai.google.dev/gemini-api/docs/computer-use#execute-actions)
    - If the action is allowed (or the user confirms it), your client-side code parses the `function_call`, scales the normalized coordinates to match your viewport, and executes the action in your target environment using automation tools (such as Playwright). If the action is blocked, your client should halt the execution or handle the interruption.
@@ -1188,8 +1189,8 @@ model responses and your function responses to the history at each step.
 
 ## Supported environments
 
-Gemini 3.x models support three environments specified in the `computer_use`
-configurations:
+Gemini 4 and Gemini 3.x models support three environments specified in the
+`computer_use` configurations:
 
 ### Browser environment (`ENVIRONMENT_BROWSER`)
 
@@ -1453,8 +1454,8 @@ For computer use agents, you can configure different thinking levels to balance 
 
 ### Configuring safety policies
 
-Gemini 3.x models include built-in safety service categories that help to
-determine if user confirmation is required.
+Gemini 4 and Gemini 3.x models include built-in safety service categories that
+help to determine if user confirmation is required.
 
 | Safety policy category | Description |
 |---|---|
@@ -2060,6 +2061,7 @@ data and systems:
 
 You can use Computer Use with the following models:
 
+- [**Gemini 4 Argon**](https://ai.google.dev/gemini-api/docs/models/gemini-4-argon) (`gemini-4-argon`): Our most capable model, supporting computer use for complex reasoning and agentic UI workflows.
 - [**Gemini 3.8 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) (`gemini-3.8-flash`): The recommended model for computer use, featuring high-accuracy UI interaction and reliable tool calling.
 - [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) (`gemini-3.5-flash-lite`): A low-latency, cost-effective model supporting computer use.
 - [**Gemini 3 Flash Preview**](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) (`gemini-3-flash-preview`): Preview model supporting computer use.

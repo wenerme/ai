@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## October, 2026
 
+### Oct 22
+
+Update · Model: gpt-6-luna · API: v1/decisions
+
+The [Decisions API](https://developers.openai.com/api/docs/guides/decisions) is now generally available with `gpt-6-luna`. Cache shared input across requests for prompt-cache discounts, include images in individual question instructions, and pass structured data directly with `input_json`. Each request now supports up to 400 questions, increased from 200 in public beta. Review the [changes since public beta](https://developers.openai.com/api/docs/guides/decisions#whats-new).
+
 ### Oct 21
 
 Feature

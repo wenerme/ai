@@ -6,7 +6,7 @@ The Gemini Interactions API allows developers to build generative AI application
 
 API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
 
-## CreateInteraction
+## Creating an interaction
 
 post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new interaction.
 - [Request body](https://ai.google.dev/api/interactions-api#CreateInteraction.request_body)
@@ -93,9 +93,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.8-flash`
 
   Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-- `gemini-4-argon`
-
-  Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
 - `gemini-3.8-flash-tts`
 
   Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
@@ -141,14 +138,7 @@ The agent to interact with.
 - `antigravity-preview-05-2026`
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The inputs for the interaction (common to both Model and Agent).
-system_instruction string (optional) System instruction for the interaction.
-tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
-stream boolean (optional) Input only. Whether the interaction will be streamed.
-store boolean (optional) Input only. Whether to store the response and request for later retrieval.
-background boolean (optional) Input only. Whether to run the model interaction in the background.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (required) The inputs for the interaction (common to both Model and Agent).
 generation_config GenerationConfig (optional) **Model Configuration**   
 Configuration parameters for the model interaction.   
 *Alternative to \`agent_config\`. Only applicable when \`model\` is set.*
@@ -156,21 +146,24 @@ Configuration parameters for model interactions.
 
 #### Fields
 
-max_output_tokens integer (optional) The maximum number of tokens to include in the response.
+tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or enum (string) (optional) The tool choice configuration.
+
+Possible
+values:
+
+- `auto`
+
+  Auto tool choice.
+- `any`
+
+  Any tool choice.
+- `none`
+
+  No tool choice.
+- `validated`
+
+  Validated tool choice.
 seed integer (optional) Seed used in decoding for reproducibility.
-speech_config SpeakerConfig or array (SpeechConfig) (optional) Optional. Speech and multi-speaker configuration.
-Configuration for multi-speaker and speech generation.
-
-#### Fields
-
-speakers array (SpeechConfig) (optional) Individual speaker configurations.
-The configuration for speech interaction.
-
-#### Fields
-
-language string (optional) The language of the speech.
-speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
-voice string (optional) The voice of the speaker.
 stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
 thinking_level ThinkingLevel (optional) The level of thought tokens that the model should generate.
 <br />
@@ -200,49 +193,7 @@ thinking_summaries ThinkingSummaries (optional) Whether to include thought summa
 - `none`
 
   No thinking summaries.
-tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or enum (string) (optional) The tool choice configuration.
-
-Possible
-values:
-
-- `auto`
-
-  Auto tool choice.
-- `any`
-
-  Any tool choice.
-- `none`
-
-  No tool choice.
-- `validated`
-
-  Validated tool choice.
-transcription_config TranscriptionConfig (optional) Optional. Configuration for speech recognition (transcription). If present, ASR is
-enabled.
-Configuration for speech recognition (transcription).
-
-#### Fields
-
-custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
-toward recognizing specific terms.
-language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
-audio. If omitted or empty, defaults to automatic language detection.
-mode TranscriptionMode or enum (string) (optional) Discriminated transcription mode options or enum.
-Configuration for transcription mode.
-
-#### Possible Types
-
-SmartTranscriptionMode Configuration for smart transcription mode.
-type object (required) No description provided.
-
-Always set to `"smart"`.
-VerbatimTranscriptionMode Configuration for verbatim transcription mode.
-diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
-timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
-Supported values: "word". If empty, no timestamps are generated.
-type object (required) No description provided.
-
-Always set to `"verbatim"`.
+max_output_tokens integer (optional) The maximum number of tokens to include in the response.
 video_config VideoConfig (optional) Configuration for video generation.
 Configuration options for video generation.
 
@@ -272,19 +223,80 @@ values:
 - `extend`
 
   Extends an existing input video.
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
+transcription_config TranscriptionConfig (optional) Optional. Configuration for speech recognition (transcription). If present, ASR is
+enabled.
+Configuration for speech recognition (transcription).
+
+#### Fields
+
+mode TranscriptionMode or enum (string) (optional) Discriminated transcription mode options or enum.
+Configuration for transcription mode.
+
+#### Possible Types
+
+SmartTranscriptionMode Configuration for smart transcription mode.
+type object (required) No description provided.
+
+Always set to `"smart"`.
+VerbatimTranscriptionMode Configuration for verbatim transcription mode.
+type object (required) No description provided.
+
+Always set to `"verbatim"`.
+timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
+Supported values: "word". If empty, no timestamps are generated.
+diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
+language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
+audio. If omitted or empty, defaults to automatic language detection.
+custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
+toward recognizing specific terms.
+structured_speech_config SpeakerConfig or array (SpeechConfig) (optional) Speech and multi-speaker configuration.
+Configuration for multi-speaker and speech generation.
+
+#### Fields
+
+speakers array (SpeechConfig) (optional) Individual speaker configurations.
+The configuration for speech interaction.
+
+#### Fields
+
+voice string (optional) The voice of the speaker.
+language string (optional) The language of the speech.
+speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
 Configuration for the agent.   
 *Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
+response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
 specifying remote environment sources or a string referencing an existing
 environment ID.
-labels object (optional) The labels with user-defined metadata for the request.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
+system_instruction string (optional) System instruction for the interaction.
+tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
+interaction completes.
+Message for configuring webhook events for a request.
+
+#### Fields
+
+uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
+registered webhooks.
+user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
+webhooks.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 
@@ -295,40 +307,7 @@ category.
 
 #### Fields
 
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-type HarmCategory (optional) Required. The type of harm category to be blocked.
+type HarmCategory (required) Required. The type of harm category to be blocked.
 <br />
 
 #### Possible values
@@ -346,48 +325,48 @@ type HarmCategory (optional) Required. The type of harm category to be blocked.
 - `sexually_explicit`
 
   Content that contains sexually explicit material.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
 - `jailbreak`
 
   Prompts designed to bypass safety filters.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
+threshold enum (string) (required) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
 
-#### Possible values
+Possible
+values:
 
-- `flex`
+- `block_low_and_above`
 
-  Flex service tier.
-- `standard`
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
 
-  Standard service tier.
-- `priority`
+  Block content with a medium harm probability or higher.
+- `block_only_high`
 
-  Priority service tier.
-- `deferred`
+  Block content with a high harm probability.
+- `off`
 
-  Deferred service tier.
-webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
-interaction completes.
-Message for configuring webhook events for a request.
+  Turn off the safety filter entirely.
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
 
-#### Fields
+Possible
+values:
 
-uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
-registered webhooks.
-user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
-webhooks.
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+stream boolean (optional) Input only. Whether the interaction will be streamed.
+store boolean (optional) Input only. Whether to store the response and request for later retrieval.
+background boolean (optional) Input only. Whether to run the model interaction in the background.
 
 ### Response
 
@@ -700,16 +679,16 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 <iframe src="https:///frame/api/interactions-api_a19caebcec70e58c6bf8fe3d0e37413ecbb7bdbdcd4e436b87ecef278d5a989d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
-## cancelInteractionById
+## Canceling an interaction
 
-post https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId}/cancel Cancels an interaction by id. This only applies to background interactions
-that are still running.
+post https://generativelanguage.googleapis.com/v1beta/interactions/{id}/cancel Cancels an interaction by id. This only applies to background interactions that are still running.
 - [Path / Query parameters](https://ai.google.dev/api/interactions-api#cancelInteractionById.PATH_PARAMETERS)
 - [Response](https://ai.google.dev/api/interactions-api#cancelInteractionById.response)
 
 ### Path / Query Parameters
 
-interactionsId string (required) Required. The name of the interaction to cancel.
+api_version string (required) API version for request routing.
+id string (required) The unique identifier of the interaction to cancel.
 
 ### Response
 
@@ -723,40 +702,29 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ```json
 {
-  "agent": "deep-research-pro-preview-12-2025",
-  "created": "2026-06-22T04:55:47Z",
-  "id": "v1_ChdVc0E0YXJTYk1zYlV6N0lQcXRXVG1BYxIXVXNBNGFyU2JNc2JVejdJUHF0V1RtQWM",
+  "created": "2025-11-26T12:25:15Z",
+  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
+  "model": "gemini-3.6-flash",
   "object": "interaction",
   "status": "cancelled",
-  "steps": [
-    {
-      "type": "user_input",
-      "content": [
-        {
-          "type": "text",
-          "text": "Research the history of the Google TPUs with a focus on 2025 specs."
-        }
-      ]
-    }
-  ],
-  "updated": "2026-06-22T04:55:47Z"
+  "updated": "2025-11-26T12:25:15Z"
 }
 ```
 
-## getInteractionById
+## Retrieving an interaction
 
-get https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId} Retrieves the full details of a single interaction based on its
-\`Interaction.id\`.
+get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves the full details of a single interaction based on its \`Interaction.id\`.
 - [Path / Query parameters](https://ai.google.dev/api/interactions-api#getInteractionById.PATH_PARAMETERS)
 - [Response](https://ai.google.dev/api/interactions-api#getInteractionById.response)
 
 ### Path / Query Parameters
 
-include_input boolean (optional) If true, includes the input in the response.
-interactionsId string (required) Required. The name of the interaction to retrieve.
-last_event_id string (optional) If set, resumes the interaction stream from the chunk after the event
-marked by the event id. Can only be used if \`stream\` is true.
-stream boolean (optional) If true, streams the interaction events as Server-Sent Events.
+api_version string (required) API version for request routing.
+id string (required) The unique identifier of the interaction to retrieve.
+last_event_id string (optional) Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if \`stream\` is true.
+stream boolean (optional) If set to true, the generated content will be streamed incrementally.
+
+*Defaults to: `False`*
 
 ### Response
 
@@ -790,14 +758,16 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 }
 ```
 
-## deleteInteraction
+## Deleting an interaction
 
-delete https://generativelanguage.googleapis.com/v1beta/interactions/{interactionsId} Deletes the interaction by id.
+delete https://generativelanguage.googleapis.com/v1beta/interactions/{id} Deletes the interaction by id.
 - [Path / Query parameters](https://ai.google.dev/api/interactions-api#deleteInteraction.PATH_PARAMETERS)
 - [Response](https://ai.google.dev/api/interactions-api#deleteInteraction.response)
 
 ### Path / Query Parameters
 
+api_version string (required) API version for request routing.
+id string (required) The unique identifier of the interaction to delete.
 interactionsId string (required) Required. The name of the interaction to delete.
 
 ### Response
@@ -816,48 +786,36 @@ The Interaction resource.
 
 #### Fields
 
-agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
-The agent to interact with.
+id string (required) Required. Output only. A unique identifier for the interaction completion.
+status enum (string) (required) Required. Output only. The status of the interaction.
 
-#### Possible values
+Possible
+values:
 
-- `deep-research-pro-preview-12-2025`
+- `in_progress`
 
-  Gemini Deep Research Agent
-- `deep-research-preview-04-2026`
+  The interaction is in progress.
+- `requires_action`
 
-  Gemini Deep Research Agent
-- `deep-research-max-preview-04-2026`
+  The interaction requires action/input from the user.
+- `completed`
 
-  Gemini Deep Research Max Agent
-- `antigravity-preview-05-2026`
+  The interaction is completed.
+- `failed`
 
-  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
-created string (optional) Required. Output only. The time at which the response was created in ISO 8601 format
+  The interaction failed.
+- `cancelled`
+
+  The interaction was cancelled.
+- `incomplete`
+
+  The interaction is completed, but contains incomplete results (e.g.
+  hitting max_tokens).
+created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
-environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
-config is set in the request.
-errors array (Error) (optional) Output only. Diagnostic faults / platform errors recorded on the interaction.
-Error message from an interaction.
-
-#### Fields
-
-code string (optional) A URI that identifies the error type.
-message string (optional) A human-readable error message.
-id string (optional) Required. Output only. A unique identifier for the interaction completion.
-
-*Defaults to:*
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
-labels object (optional) The labels with user-defined metadata for the request.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
+updated string (required) Required. Output only. The time at which the response was last updated in ISO 8601 format
+(YYYY-MM-DDThh:mm:ssZ).
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (required) Required. Output only. The steps that make up the interaction, when included in the response.
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
 
@@ -935,9 +893,6 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.8-flash`
 
   Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-- `gemini-4-argon`
-
-  Gemini 4 Argon - Our new frontier model, built to solve the hardest problems with depth and precision across real-world software engineering and knowledge work.
 - `gemini-3.8-flash-tts`
 
   Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
@@ -965,187 +920,20 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-omni-flash-preview`
 
   Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
-previous_interaction_id string (optional) The ID of the previous interaction, if any.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
 the JSON schema specified in this field.
-safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-type HarmCategory (optional) Required. The type of harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-- `deferred`
-
-  Deferred service tier.
-status enum (string) (optional) Required. Output only. The status of the interaction.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Required. Output only. The steps that make up the interaction, when included in the response.
+environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-updated string (optional) Required. Output only. The time at which the response was last updated in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.
 Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -1172,6 +960,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -1198,6 +1014,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -1224,13 +1041,44 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
+environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
+config is set in the request.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
 webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
 interaction completes.
 Message for configuring webhook events for a request.
@@ -1241,6 +1089,99 @@ uris array (string) (optional) Optional. If set, these webhook URIs will be used
 registered webhooks.
 user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
 webhooks.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
+A safety setting that affects the safety-blocking behavior.
+
+A SafetySetting consists of a
+harm category and a
+threshold for that
+category.
+
+#### Fields
+
+type HarmCategory (required) Required. The type of harm category to be blocked.
+<br />
+
+#### Possible values
+
+- `hate_speech`
+
+  Content that promotes violence or incites hatred against individuals or
+  groups based on certain attributes.
+- `dangerous_content`
+
+  Content that promotes, facilitates, or enables dangerous activities.
+- `harassment`
+
+  Abusive, threatening, or content intended to bully, torment, or ridicule.
+- `sexually_explicit`
+
+  Content that contains sexually explicit material.
+- `jailbreak`
+
+  Prompts designed to bypass safety filters.
+threshold enum (string) (required) Required. The threshold for blocking content. If the harm probability
+exceeds this threshold, the content will be blocked.
+
+Possible
+values:
+
+- `block_low_and_above`
+
+  Block content with a low harm probability or higher.
+- `block_medium_and_above`
+
+  Block content with a medium harm probability or higher.
+- `block_only_high`
+
+  Block content with a high harm probability.
+- `off`
+
+  Turn off the safety filter entirely.
+method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
+behavior is to use the probability score.
+
+Possible
+values:
+
+- `severity`
+
+  The harm block method uses both probability and severity scores.
+- `probability`
+
+  The harm block method uses the probability score.
+labels object (optional) The labels with user-defined metadata for the request.
+
+Label keys and values can be no longer than 63 characters
+(Unicode codepoints) and can only contain lowercase letters, numeric
+characters, underscores, and dashes. International characters are allowed.
+Label values are optional. Label keys must start with a letter.
+errors array (Error) (optional) Output only. Diagnostic faults / platform errors recorded on the interaction.
+Error message from an interaction.
+
+#### Fields
+
+code string (optional) A URI that identifies the error type.
+message string (optional) A human-readable error message.
+agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
+The agent to interact with.
+
+#### Possible values
+
+- `deep-research-pro-preview-12-2025`
+
+  Gemini Deep Research Agent
+- `deep-research-preview-04-2026`
+
+  Gemini Deep Research Agent
+- `deep-research-max-preview-04-2026`
+
+  Gemini Deep Research Max Agent
+- `antigravity-preview-05-2026`
+
+  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+max_total_tokens string (optional) Max total tokens for the agent run.
 
 ### Examples
 
@@ -1291,8 +1232,13 @@ The content of the response.
 ### Possible Types
 
 AudioContent An audio content block.
-channels integer (optional) The number of audio channels.
+type object (required) No description provided.
+
+Always set to `"audio"`.
 data string (optional) The audio content.
+uri string (optional) The URI of the audio.
+channels integer (optional) The number of audio channels.
+sample_rate integer (optional) The sample rate of the audio.
 mime_type enum (string) (optional) The mime type of the audio.
 
 Possible
@@ -1336,14 +1282,13 @@ values:
   MULAW audio format
 - `audio/webm`
 
-  WebM audio format
-sample_rate integer (optional) The sample rate of the audio.
+  WEBM audio format
+DocumentContent A document content block.
 type object (required) No description provided.
 
-Always set to `"audio"`.
-uri string (optional) The URI of the audio.
-DocumentContent A document content block.
+Always set to `"document"`.
 data string (optional) The document content.
+uri string (optional) The URI of the document.
 mime_type enum (string) (optional) The mime type of the document.
 
 Possible
@@ -1355,12 +1300,29 @@ values:
 - `text/csv`
 
   CSV document format
+ImageContent An image content block.
 type object (required) No description provided.
 
-Always set to `"document"`.
-uri string (optional) The URI of the document.
-ImageContent An image content block.
+Always set to `"image"`.
 data string (optional) The image content.
+uri string (optional) The URI of the image.
+resolution MediaResolution (optional) The resolution of the media.
+<br />
+
+#### Possible values
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
 mime_type enum (string) (optional) The mime type of the image.
 
 Possible
@@ -1390,6 +1352,107 @@ values:
 - `image/tiff`
 
   TIFF image format
+TextContent A text content block.
+text string (required) Required. The text content.
+type object (required) No description provided.
+
+Always set to `"text"`.
+annotations array (Annotation) (optional) Citation information for model-generated content.
+Citation information for model-generated content.
+
+#### Possible Types
+
+FileCitation A file citation annotation.
+type object (required) No description provided.
+
+Always set to `"file_citation"`.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
+
+Always set to `"place_citation"`.
+place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
+features of a given place in Google Maps.
+Encapsulates a snippet of a user review that answers a question about
+the features of a specific place in Google Maps.
+
+#### Fields
+
+title string (optional) Title of the review.
+url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+SpeechAnnotation Speech annotation for text content.
+type object (required) No description provided.
+
+Always set to `"speech_metadata"`.
+speaker string (optional) The speaker to associate with this turn.
+style string (optional) Style instruction for the speech synthesis.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+UrlCitation A URL citation annotation.
+type object (required) No description provided.
+
+Always set to `"url_citation"`.
+url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+WordInfo Word-level ASR annotation for transcription output.
+Carries the word text, optional timing, and optional speaker attribution.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
+text string (optional) The transcribed word.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+end_offset string (optional) End offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
+speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
+Present when diarization_mode is set in TranscriptionConfig.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
+VideoContent A video content block.
+type object (required) No description provided.
+
+Always set to `"video"`.
+data string (optional) The video content.
+uri string (optional) The URI of the video.
+processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
+
+Can be a string (`"static"` \| `"agentic"`) or a `StaticMediaProcessing` object:
+
+- `agentic`: Model-driven dynamic navigation.
+- `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields: type string (required) No description provided.
+
+  Always set to `"static"`.
+  start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
+  by an 's' suffix, e.g., "10.5s". Must be non-negative.
+  end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
+  by an 's' suffix, e.g., "30s". Must be non-negative and greater than
+  \`start_offset\` if \`start_offset\` is set.
+  fps number (optional) Optional. Video frame-rate sampling density.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -1407,93 +1470,8 @@ resolution MediaResolution (optional) The resolution of the media.
 - `ultra_high`
 
   Ultra high resolution.
-type object (required) No description provided.
-
-Always set to `"image"`.
-uri string (optional) The URI of the image.
-TextContent A text content block.
-annotations array (Annotation) (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-FileCitation A file citation annotation.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-document_uri string (optional) The URI of the file.
-end_index integer (optional) End of the attributed segment, exclusive.
-file_name string (optional) The name of the file.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-page_number integer (optional) Page number of the cited document, if applicable.
-source string (optional) Source attributed for a portion of the text.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"file_citation"`.
-PlaceCitation A place citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
-name string (optional) Title of the place.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-review_id string (optional) The ID of the review snippet.
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-url string (optional) URI reference of the place.
-SpeechAnnotation Speech annotation for text content.
-end_index integer (optional) End of the attributed segment, exclusive.
-speaker string (optional) The speaker to associate with this turn.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-style string (optional) Style instruction for the speech synthesis.
-type object (required) No description provided.
-
-Always set to `"speech_metadata"`.
-UrlCitation A URL citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-title string (optional) The title of the URL.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-WordInfo Word-level ASR annotation for transcription output.
-Carries the word text, optional timing, and optional speaker attribution.
-end_index integer (optional) End of the attributed segment, exclusive.
-end_offset string (optional) End offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
-Present when diarization_mode is set in TranscriptionConfig.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-text string (optional) The transcribed word.
-type object (required) No description provided.
-
-Always set to `"word_info"`.
-text string (required) Required. The text content.
-type object (required) No description provided.
-
-Always set to `"text"`.
-VideoContent A video content block.
-data string (optional) The video content.
+name string (optional) A user-defined name for this content block. Can be referenced by the model
+in the final response.
 mime_type enum (string) (optional) The mime type of the video.
 
 Possible
@@ -1526,43 +1504,6 @@ values:
 - `video/3gpp`
 
   3GPP video format
-name string (optional) A user-defined name for this content block. Can be referenced by the model
-in the final response.
-processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
-
-Can be a string (`"static"` \| `"agentic"`) or a `StaticMediaProcessing` object:
-
-- `agentic`: Model-driven dynamic navigation.
-- `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields: end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
-  by an 's' suffix, e.g., "30s". Must be non-negative and greater than
-  \`start_offset\` if \`start_offset\` is set.
-  fps number (optional) Optional. Video frame-rate sampling density.
-  start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
-  by an 's' suffix, e.g., "10.5s". Must be non-negative.
-  type string (required) No description provided.
-
-  Always set to `"static"`.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-type object (required) No description provided.
-
-Always set to `"video"`.
-uri string (optional) The URI of the video.
 
 ### Examples
 
@@ -1625,6 +1566,26 @@ type object (required) No description provided.
 
 Always set to `"code_execution"`.
 ComputerUse A tool that can be used by the model to interact with the computer.
+type object (required) No description provided.
+
+Always set to `"computer_use"`.
+environment enum (string) (optional) The environment being operated.
+
+Possible
+values:
+
+- `browser`
+
+  Operates in a web browser.
+- `mobile`
+
+  Operates in a mobile environment.
+- `desktop`
+
+  Operates in a desktop environment.
+excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
+enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
+request.
 disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
 
 Possible
@@ -1651,49 +1612,36 @@ values:
 - `legal_terms_and_agreements`
 
   Safety policy for legal terms and agreements.
-enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
-request.
-environment enum (string) (optional) The environment being operated.
-
-Possible
-values:
-
-- `browser`
-
-  Operates in a web browser.
-- `mobile`
-
-  Operates in a mobile environment.
-- `desktop`
-
-  Operates in a desktop environment.
-excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
-type object (required) No description provided.
-
-Always set to `"computer_use"`.
 FileSearch A tool that can be used by the model to search files.
-file_search_store_names array (string) (optional) The file search store names to search.
-metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
-top_k integer (optional) The number of semantic retrieval chunks to retrieve.
 type object (required) No description provided.
 
 Always set to `"file_search"`.
+file_search_store_names array (string) (optional) The file search store names to search.
+top_k integer (optional) The number of semantic retrieval chunks to retrieve.
+metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
 Function A tool that can be used by the model.
-description string (optional) A description of the function.
-name string (optional) The name of the function.
-parameters object (optional) The JSON Schema for the function's parameters.
 type object (required) No description provided.
 
 Always set to `"function"`.
+name string (optional) The name of the function.
+description string (optional) A description of the function.
+parameters object (optional) The JSON Schema for the function's parameters.
+
+Supports a subset of JSON Schema. \`minLength\`, \`maxLength\`,
+\`minProperties\`, \`maxProperties\`, \`uniqueItems\`, \`contains\`,
+\`minContains\`, and \`maxContains\` are ignored and not enforced.
 GoogleMaps A tool that can be used by the model to call Google Maps.
+type object (required) No description provided.
+
+Always set to `"google_maps"`.
 enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
 response.
 latitude number (optional) The latitude of the user's location.
 longitude number (optional) The longitude of the user's location.
+GoogleSearch A tool that can be used by the model to search Google.
 type object (required) No description provided.
 
-Always set to `"google_maps"`.
-GoogleSearch A tool that can be used by the model to search Google.
+Always set to `"google_search"`.
 search_types array (enum (string)) (optional) The types of search grounding to enable.
 
 Possible
@@ -1705,13 +1653,14 @@ values:
 - `image_search`
 
   Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
+McpServer A MCPServer is a server that can be called by the model to perform actions.
 type object (required) No description provided.
 
-Always set to `"google_search"`.
-McpServer A MCPServer is a server that can be called by the model to perform actions.
+Always set to `"mcp_server"`.
+url string (optional) The full URL for the MCPServer endpoint.
+Example: "https://api.example.com/mcp"
+name string (optional) The name of the MCPServer.
+headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
 allowed_tools array (AllowedTools) (optional) The allowed tools.
 The configuration for allowed tools.
 
@@ -1735,90 +1684,6 @@ values:
 
   Validated tool choice.
 tools array (string) (optional) The names of the allowed tools.
-headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
-name string (optional) The name of the MCPServer.
-type object (required) No description provided.
-
-Always set to `"mcp_server"`.
-url string (optional) The full URL for the MCPServer endpoint.
-Example: "https://api.example.com/mcp"
-Retrieval A tool that can be used by the model to retrieve files.
-exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional) Required. The API key for ExaAiSearch.
-custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional) Optional. The API key for ParallelAiSearch.
-custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
-rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional) Optional. RagCorpora resource name.
-rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
-rag_corpus field.
-rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional) Optional. Config for filters.
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional) Optional. String for metadata filtering.
-vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
-threshold.
-vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
-threshold.
-hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
-results.
-ranking Ranking (optional) Optional. Config for ranking and reranking.
-Config for ranking and reranking.
-
-#### Fields
-
-model_name string (optional) Optional. The model name of the rank service.
-rank_service RankService (optional) Config for Rank Service.
-Config for Rank Service.
-
-#### Fields
-
-model_name string (optional) Optional. The model name of the rank service.
-ranking_config object (optional) No description provided.
-
-Always set to `"rank_service"`.
-top_k integer (optional) Optional. The number of contexts to retrieve.
-retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
-
-Possible
-values:
-
-- `rag_store`
-- `exa_ai_search`
-- `parallel_ai_search`
-type object (required) No description provided.
-
-Always set to `"retrieval"`.
 UrlContext A tool that can be used by the model to fetch URL context.
 type object (required) No description provided.
 
@@ -1854,15 +1719,11 @@ Always set to `"url_context"`.
 
 <iframe src="https:///frame/api/interactions-api_65dc705fddb9a5f31ba54693c9a93b6db291660a7fb0fb42bb8626922ec5a090.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
-### Retrieval
-
-No examples available for this type.
-
 ### UrlContext
 
 <iframe src="https:///frame/api/interactions-api_19c2a1da47f3acdb82a24eb77bc427dbc264c90cb8a6d074db206e1222722481.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
-### InteractionSseStreamEvent
+### InteractionSseEvent
 
 <br />
 
@@ -1870,6 +1731,9 @@ No examples available for this type.
 
 ErrorEvent <br />
 
+event_type object (required) No description provided.
+
+Always set to `"error"`.
 error Error (optional) No description provided.
 Error message from an interaction.
 
@@ -1879,17 +1743,9 @@ code string (optional) A URI that identifies the error type.
 message string (optional) A human-readable error message.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
-event_type object (required) No description provided.
-
-Always set to `"error"`.
 InteractionCompletedEvent Signals that the Interaction completed. Sent when the Interaction receives
 Complete/Cancel or naturally terminates. No more input can be sent to the
 Interaction after this.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-event_type object (required) No description provided.
-
-Always set to `"interaction.completed"`.
 interaction InteractionSseEventInteraction (required) Required. Partial completed interaction resource emitted at the end of the stream.
 Partial interaction resource emitted by interaction lifecycle SSE events.
 Streaming lifecycle payloads may omit fields that are only available on
@@ -1897,30 +1753,8 @@ full non-streaming Interaction responses.
 
 #### Fields
 
-agent string (optional) The agent to interact with.
-continuation_token string (optional) Output only. Opaque token to resume a long decode when status is incomplete.
-created string (optional) Output only. The time at which the response was created in ISO 8601 format.
-id string (optional) Required. Output only. A unique identifier for the interaction completion.
-model string (optional) The model that will complete your prompt.
-object string (optional) Output only. The resource type.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-- `deferred`
-
-  Deferred service tier.
-status enum (string) (optional) Required. Output only. The status of the interaction.
+id string (required) Required. Output only. A unique identifier for the interaction completion.
+status enum (string) (required) Required. Output only. The status of the interaction.
 
 Possible
 values:
@@ -1942,66 +1776,16 @@ values:
   The interaction was cancelled.
 - `incomplete`
 
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
+  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+model string (optional) The model that will complete your prompt.
+created string (optional) Output only. The time at which the response was created in ISO 8601 format.
 updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.
 Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2028,6 +1812,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -2054,6 +1866,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -2080,19 +1893,54 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-InteractionCreatedEvent Server response confirming that a new interaction was created.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
+agent string (optional) The agent to interact with.
+continuation_token string (optional) Opaque token to resume a long decode.
+Output: set when status is INCOMPLETE and decoding can be resumed.
+Input: pass the latest token back unchanged in CreateInteraction to
+continue decoding.
+object string (optional) Output only. The resource type.
 event_type object (required) No description provided.
 
-Always set to `"interaction.created"`.
+Always set to `"interaction.completed"`.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
+InteractionCreatedEvent Server response confirming that a new interaction was created.
 interaction InteractionSseEventInteraction (required) Required. Partial interaction resource emitted when the stream is created.
 Partial interaction resource emitted by interaction lifecycle SSE events.
 Streaming lifecycle payloads may omit fields that are only available on
@@ -2100,30 +1948,8 @@ full non-streaming Interaction responses.
 
 #### Fields
 
-agent string (optional) The agent to interact with.
-continuation_token string (optional) Output only. Opaque token to resume a long decode when status is incomplete.
-created string (optional) Output only. The time at which the response was created in ISO 8601 format.
-id string (optional) Required. Output only. A unique identifier for the interaction completion.
-model string (optional) The model that will complete your prompt.
-object string (optional) Output only. The resource type.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-- `deferred`
-
-  Deferred service tier.
-status enum (string) (optional) Required. Output only. The status of the interaction.
+id string (required) Required. Output only. A unique identifier for the interaction completion.
+status enum (string) (required) Required. Output only. The status of the interaction.
 
 Possible
 values:
@@ -2145,66 +1971,16 @@ values:
   The interaction was cancelled.
 - `incomplete`
 
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
+  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+model string (optional) The model that will complete your prompt.
+created string (optional) Output only. The time at which the response was created in ISO 8601 format.
 updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.
 Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2231,6 +2007,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -2257,6 +2061,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -2283,22 +2088,55 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-InteractionStatusUpdate <br />
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
 
-continuation_token string (optional) An optional opaque continuation token used to resume decoding from the
-latest checkpoint after a disconnected stream.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+service_tier ServiceTier (optional) The service tier for the interaction.
+<br />
+
+#### Possible values
+
+- `flex`
+
+  Flex service tier.
+- `standard`
+
+  Standard service tier.
+- `priority`
+
+  Priority service tier.
+steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
+agent string (optional) The agent to interact with.
+continuation_token string (optional) Opaque token to resume a long decode.
+Output: set when status is INCOMPLETE and decoding can be resumed.
+Input: pass the latest token back unchanged in CreateInteraction to
+continue decoding.
+object string (optional) Output only. The resource type.
 event_type object (required) No description provided.
 
-Always set to `"interaction.status_update"`.
+Always set to `"interaction.created"`.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
+InteractionStatusUpdate <br />
+
 interaction_id string (required) No description provided.
 status enum (string) (required) No description provided.
 
@@ -2324,62 +2162,17 @@ values:
 
   The interaction is completed, but contains incomplete results (e.g.
   hitting max_tokens).
-- `queued`
+event_type object (required) No description provided.
 
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
+Always set to `"interaction.status_update"`.
+continuation_token string (optional) An optional opaque continuation token used to resume decoding from the
+latest checkpoint after a disconnected stream.
 usage Usage (optional) Model usage statistics up to this checkpoint.
 Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2406,6 +2199,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -2432,6 +2253,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -2458,15 +2280,32 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
 StepDelta <br />
 
+index integer (required) No description provided.
 delta StepDeltaData (required) No description provided.
 <br />
 
@@ -2474,14 +2313,17 @@ delta StepDeltaData (required) No description provided.
 
 ArgumentsDelta <br />
 
-arguments string (optional) No description provided.
 type object (required) No description provided.
 
 Always set to `"arguments_delta"`.
+arguments string (optional) No description provided.
 AudioDelta <br />
 
-channels integer (optional) The number of audio channels.
+type object (required) No description provided.
+
+Always set to `"audio"`.
 data string (optional) No description provided.
+uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2527,10 +2369,7 @@ values:
 
   WEBM audio format
 sample_rate integer (optional) The sample rate of the audio.
-type object (required) No description provided.
-
-Always set to `"audio"`.
-uri string (optional) No description provided.
+channels integer (optional) The number of audio channels.
 CodeExecutionCallDelta <br />
 
 arguments CodeExecutionCallArguments (required) No description provided.
@@ -2538,7 +2377,6 @@ The arguments to pass to the code execution.
 
 #### Fields
 
-code string (optional) The code to be executed.
 language enum (string) (optional) Programming language of the \`code\`.
 
 Possible
@@ -2547,21 +2385,29 @@ values:
 - `python`
 
   Python \>= 3.10, with numpy and simpy available.
-signature string (optional) A signature hash for backend validation.
+- `bash`
+
+  Bash. Only available for Gemini 3.0 model or above.
+code string (optional) The code to be executed.
 type object (required) No description provided.
 
 Always set to `"code_execution_call"`.
+signature string (optional) A signature hash for backend validation.
 CodeExecutionResultDelta <br />
 
-is_error boolean (optional) No description provided.
 result string (required) No description provided.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"code_execution_result"`.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
 DocumentDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"document"`.
 data string (optional) No description provided.
+uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2573,34 +2419,33 @@ values:
 - `text/csv`
 
   CSV document format
-type object (required) No description provided.
-
-Always set to `"document"`.
-uri string (optional) No description provided.
 FileSearchCallDelta <br />
 
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"file_search_call"`.
+signature string (optional) A signature hash for backend validation.
 FileSearchResultDelta <br />
 
 result array (FileSearchResult) (required) No description provided.
 The result of the File Search.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"file_search_result"`.
+signature string (optional) A signature hash for backend validation.
 FunctionResultDelta <br />
 
-is_error boolean (optional) No description provided.
-name string (optional) No description provided.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
+name string (optional) No description provided.
+is_error boolean (optional) No description provided.
 GoogleMapsCallDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"google_maps_call"`.
 arguments GoogleMapsCallArguments (optional) The arguments to pass to the Google Maps tool.
 The arguments to pass to the Google Maps tool.
 
@@ -2608,11 +2453,11 @@ The arguments to pass to the Google Maps tool.
 
 queries array (string) (optional) The queries to be executed.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"google_maps_call"`.
 GoogleMapsResultDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"google_maps_result"`.
 result array (GoogleMapsResult) (optional) The results of the Google Maps.
 The result of the Google Maps.
 
@@ -2623,8 +2468,9 @@ places array (Places) (optional) The places that were found.
 
 #### Fields
 
-name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
 review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
@@ -2632,15 +2478,11 @@ the features of a specific place in Google Maps.
 
 #### Fields
 
-review_id string (optional) The ID of the review snippet.
 title string (optional) Title of the review.
 url string (optional) A link that corresponds to the user review on Google Maps.
-url string (optional) URI reference of the place.
+review_id string (optional) The ID of the review snippet.
 widget_context_token string (optional) Resource name of the Google Maps widget context token.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"google_maps_result"`.
 GoogleSearchCallDelta <br />
 
 arguments GoogleSearchCallArguments (required) No description provided.
@@ -2649,26 +2491,30 @@ The arguments to pass to Google Search.
 #### Fields
 
 queries array (string) (optional) Web search queries for the following-up web search.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"google_search_call"`.
+signature string (optional) A signature hash for backend validation.
 GoogleSearchResultDelta <br />
 
-is_error boolean (optional) No description provided.
 result array (GoogleSearchResult) (required) No description provided.
 The result of the Google Search.
 
 #### Fields
 
 search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"google_search_result"`.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
 ImageDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"image"`.
 data string (optional) No description provided.
+uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2715,95 +2561,63 @@ resolution MediaResolution (optional) The resolution of the media.
 - `ultra_high`
 
   Ultra high resolution.
-type object (required) No description provided.
-
-Always set to `"image"`.
-uri string (optional) No description provided.
 McpServerToolCallDelta <br />
 
-arguments object (required) No description provided.
 name string (required) No description provided.
 server_name string (required) No description provided.
+arguments object (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_call"`.
 McpServerToolResultDelta <br />
 
-name string (optional) No description provided.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
-server_name string (optional) No description provided.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_result"`.
+name string (optional) No description provided.
+server_name string (optional) No description provided.
 ProcessingCallDelta Streaming delta for a server-initiated media processing step.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"processing_call"`.
-ProcessingResultDelta Streaming delta for the result of a server-initiated media processing step.
 signature string (optional) A signature hash for backend validation.
+ProcessingResultDelta Streaming delta for the result of a server-initiated media processing step.
 type object (required) No description provided.
 
 Always set to `"processing_result"`.
-RetrievalCallDelta Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc. RetrievalType decides which tool is used.
-arguments RetrievalStepArguments (required) Required. The arguments to pass to the Retrieval tool.
-The arguments to pass to Retrieval tools.
-
-#### Fields
-
-queries array (string) (optional) Queries for Retrieval information.
-retrieval_type enum (string) (optional) The type of retrieval tools.
-
-Possible
-values:
-
-- `rag_store`
-
-  The type of retrieval tools.
-- `exa_ai_search`
-
-  The type of retrieval tools.
-- `parallel_ai_search`
-
-  The type of retrieval tools.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"retrieval_call"`.
-RetrievalResultDelta Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc.
-ToolResultDelta.type
-is_error boolean (optional) Whether the retrieval resulted in an error.
-signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"retrieval_result"`.
 TextAnnotationDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"text_annotation_delta"`.
 annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
 
 FileCitation A file citation annotation.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-document_uri string (optional) The URI of the file.
-end_index integer (optional) End of the attributed segment, exclusive.
-file_name string (optional) The name of the file.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-page_number integer (optional) Page number of the cited document, if applicable.
-source string (optional) Source attributed for a portion of the text.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
 type object (required) No description provided.
 
 Always set to `"file_citation"`.
-PlaceCitation A place citation annotation.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
 end_index integer (optional) End of the attributed segment, exclusive.
-name string (optional) Title of the place.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
+
+Always set to `"place_citation"`.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
 review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
@@ -2811,39 +2625,41 @@ the features of a specific place in Google Maps.
 
 #### Fields
 
-review_id string (optional) The ID of the review snippet.
 title string (optional) Title of the review.
 url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-url string (optional) URI reference of the place.
-SpeechAnnotation Speech annotation for text content.
 end_index integer (optional) End of the attributed segment, exclusive.
-speaker string (optional) The speaker to associate with this turn.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-style string (optional) Style instruction for the speech synthesis.
+SpeechAnnotation Speech annotation for text content.
 type object (required) No description provided.
 
 Always set to `"speech_metadata"`.
-UrlCitation A URL citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+style string (optional) Style instruction for the speech synthesis.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-title string (optional) The title of the URL.
+end_index integer (optional) End of the attributed segment, exclusive.
+UrlCitation A URL citation annotation.
 type object (required) No description provided.
 
 Always set to `"url_citation"`.
 url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
 WordInfo Word-level ASR annotation for transcription output.
 Carries the word text, optional timing, and optional speaker attribution.
-end_index integer (optional) End of the attributed segment, exclusive.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
+text string (optional) The transcribed word.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
 end_offset string (optional) End offset in time of the word relative to the start of the audio.
 Present when timestamp_granularities contains "word".
 speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
@@ -2851,15 +2667,7 @@ Present when diarization_mode is set in TranscriptionConfig.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-text string (optional) The transcribed word.
-type object (required) No description provided.
-
-Always set to `"word_info"`.
-type object (required) No description provided.
-
-Always set to `"text_annotation_delta"`.
+end_index integer (optional) End of the attributed segment, exclusive.
 TextDelta <br />
 
 text string (required) No description provided.
@@ -2868,16 +2676,16 @@ type object (required) No description provided.
 Always set to `"text"`.
 ThoughtSignatureDelta <br />
 
-signature string (optional) Signature to match the backend source to be part of the generation.
 type object (required) No description provided.
 
 Always set to `"thought_signature"`.
+signature string (optional) Signature to match the backend source to be part of the generation.
 ThoughtSummaryDelta <br />
 
-content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
 type object (required) No description provided.
 
 Always set to `"thought_summary"`.
+content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
 UrlContextCallDelta <br />
 
 arguments UrlContextCallArguments (required) No description provided.
@@ -2886,18 +2694,18 @@ The arguments to pass to the URL context.
 #### Fields
 
 urls array (string) (optional) The URLs to fetch.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"url_context_call"`.
+signature string (optional) A signature hash for backend validation.
 UrlContextResultDelta <br />
 
-is_error boolean (optional) No description provided.
 result array (UrlContextResult) (required) No description provided.
 The result of the URL context.
 
 #### Fields
 
+url string (optional) The URL that was fetched.
 status enum (string) (optional) The status of the URL retrieval.
 
 Possible
@@ -2915,14 +2723,18 @@ values:
 - `unsafe`
 
   Url retrieval is failed because the content is unsafe.
-url string (optional) The URL that was fetched.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"url_context_result"`.
+is_error boolean (optional) No description provided.
+signature string (optional) A signature hash for backend validation.
 VideoDelta <br />
 
+type object (required) No description provided.
+
+Always set to `"video"`.
 data string (optional) No description provided.
+uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2975,16 +2787,11 @@ resolution MediaResolution (optional) The resolution of the media.
 - `ultra_high`
 
   Ultra high resolution.
-type object (required) No description provided.
-
-Always set to `"video"`.
-uri string (optional) No description provided.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
 event_type object (required) No description provided.
 
 Always set to `"step.delta"`.
-index integer (required) No description provided.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
 metadata StepDeltaMetadata (optional) No description provided.
 Optional metadata accompanying ANY streamed event.
 
@@ -2995,53 +2802,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3068,6 +2829,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -3094,6 +2883,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -3120,219 +2910,48 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
 StepStart <br />
 
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
+index integer (required) No description provided.
+step [Step](https://ai.google.dev/api/interactions-api#Resource:Step) (required) No description provided.
 event_type object (required) No description provided.
 
 Always set to `"step.start"`.
-index integer (required) No description provided.
-step [Step](https://ai.google.dev/api/interactions-api#Resource:Step) (required) No description provided.
-StepStop <br />
-
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
+StepStop <br />
+
+index integer (required) No description provided.
 event_type object (required) No description provided.
 
 Always set to `"step.stop"`.
-index integer (required) No description provided.
-step_usage Usage (optional) Model usage stats for this specific step.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 usage Usage (optional) Cumulative model usage stats from the start of the session.
 Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-count integer (optional) The number of grounding tool counts.
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3359,6 +2978,34 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
@@ -3385,6 +3032,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
+total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
 tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
@@ -3411,13 +3059,163 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
 total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
 total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
 internal tokens).
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+step_usage Usage (optional) Model usage stats for this specific step.
+Statistics on the interaction request's token usage.
+
+#### Fields
+
+total_input_tokens integer (optional) Number of tokens in the prompt (context).
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_output_tokens integer (optional) Total number of tokens across all the generated responses.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
 total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
+The token count for a single response modality.
+
+#### Fields
+
+modality ResponseModality (optional) The modality associated with the token count.
+<br />
+
+#### Possible values
+
+- `text`
+
+  Indicates the model should return text.
+- `image`
+
+  Indicates the model should return images.
+- `audio`
+
+  Indicates the model should return audio.
+- `video`
+
+  Indicates the model should return video.
+- `document`
+
+  Indicates the model should return documents.
+tokens integer (optional) Number of tokens for the modality.
+total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
+total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
+internal tokens).
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
+The number of grounding tool counts.
+
+#### Fields
+
+type enum (string) (optional) The grounding tool type associated with the count.
+
+Possible
+values:
+
+- `google_search`
+
+  Grounding with Google Web Search and Image Search, \& Web Grounding
+  for Enterprise.
+- `google_maps`
+
+  Grounding with Google Maps.
+count integer (optional) The number of grounding tool counts.
+event_id string (optional) The event_id token to be used to resume the interaction stream, from
+this event.
 
 ### Examples
 
@@ -3449,6 +3247,23 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
 }
 ```
 
+### Interaction Completed
+
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.completed",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z"
+  }
+}
+```
+
 ### Interaction Created
 
 ```json
@@ -3461,6 +3276,21 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
     "model": "gemini-3.6-flash",
     "status": "in_progress",
     "updated": "2025-12-04T15:01:45Z"
+  }
+}
+```
+
+### Interaction Created
+
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.created",
+  "interaction": {
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3-flash-preview",
+    "object": "interaction",
+    "status": "in_progress"
   }
 }
 ```
@@ -3516,19 +3346,9 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
 ### Possible Types
 
 AudioResponseFormat Configuration for audio output format.
-bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
-(MP3, Opus).
-delivery enum (string) (optional) The delivery mode for the audio output.
+type object (required) No description provided.
 
-Possible
-values:
-
-- `inline`
-
-  Audio data is returned inline in the response.
-- `uri`
-
-  Audio data is returned as a URI.
+Always set to `"audio"`.
 mime_type enum (string) (optional) The MIME type of the audio output.
 
 Possible
@@ -3552,11 +3372,43 @@ values:
 - `audio/mulaw`
 
   Mu-law audio format.
+delivery enum (string) (optional) The delivery mode for the audio output.
+
+Possible
+values:
+
+- `inline`
+
+  Audio data is returned inline in the response.
+- `uri`
+
+  Audio data is returned as a URI.
 sample_rate integer (optional) Sample rate in Hz.
+bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
+(MP3, Opus).
+ImageResponseFormat Configuration for image output format.
 type object (required) No description provided.
 
-Always set to `"audio"`.
-ImageResponseFormat Configuration for image output format.
+Always set to `"image"`.
+mime_type enum (string) (optional) The MIME type of the image output.
+
+Possible
+values:
+
+- `image/jpeg`
+
+  JPEG image format.
+delivery enum (string) (optional) The delivery mode for the image output.
+
+Possible
+values:
+
+- `inline`
+
+  Image data is returned inline in the response.
+- `uri`
+
+  Image data is returned as a URI.
 aspect_ratio enum (string) (optional) The aspect ratio for the image output.
 
 Possible
@@ -3604,17 +3456,6 @@ values:
 - `4:1`
 
   4:1 aspect ratio.
-delivery enum (string) (optional) The delivery mode for the image output.
-
-Possible
-values:
-
-- `inline`
-
-  Image data is returned inline in the response.
-- `uri`
-
-  Image data is returned as a URI.
 image_size enum (string) (optional) The size of the image output.
 
 Possible
@@ -3632,18 +3473,10 @@ values:
 - `4K`
 
   4K image size.
-mime_type enum (string) (optional) The MIME type of the image output.
-
-Possible
-values:
-
-- `image/jpeg`
-
-  JPEG image format.
+TextResponseFormat Configuration for text output format.
 type object (required) No description provided.
 
-Always set to `"image"`.
-TextResponseFormat Configuration for text output format.
+Always set to `"text"`.
 mime_type enum (string) (optional) The MIME type of the text output.
 
 Possible
@@ -3657,21 +3490,17 @@ values:
   Plain text output format.
 schema object (optional) The JSON schema that the output should conform to. Only applicable when
 mime_type is application/json.
+
+Supports a subset of JSON Schema. \`minLength\`, \`maxLength\`,
+\`minProperties\`, \`maxProperties\`, \`uniqueItems\`, \`contains\`,
+\`minContains\`, and \`maxContains\` are ignored and not enforced; validate
+these in your application. \`minItems\` and \`maxItems\` are enforced. Schemas
+that are too complex to enforce (for example, large \`maxItems\` on nested
+arrays) return a 400 INVALID_ARGUMENT error.
+VideoResponseFormat Configuration for video output format.
 type object (required) No description provided.
 
-Always set to `"text"`.
-VideoResponseFormat Configuration for video output format.
-aspect_ratio enum (string) (optional) The aspect ratio for the video output.
-
-Possible
-values:
-
-- `16:9`
-
-  16:9 aspect ratio.
-- `9:16`
-
-  9:16 aspect ratio.
+Always set to `"video"`.
 delivery enum (string) (optional) The delivery mode for the video output.
 
 Possible
@@ -3683,9 +3512,18 @@ values:
 - `uri`
 
   Video data is returned as a URI.
+aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+
+Possible
+values:
+
+- `16:9`
+
+  16:9 aspect ratio.
+- `9:16`
+
+  9:16 aspect ratio.
 duration string (optional) The duration for the video output.
-gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
-delivery mode is URI.
 resolution enum (string) (optional) The video output resolution. Defaults to 720p.
 
 Possible
@@ -3703,9 +3541,6 @@ values:
 - `4k`
 
   4K resolution.
-type object (required) No description provided.
-
-Always set to `"video"`.
 
 ### Examples
 
@@ -3778,7 +3613,6 @@ The arguments to pass to the code execution.
 
 #### Fields
 
-code string (optional) The code to be executed.
 language enum (string) (optional) Programming language of the \`code\`.
 
 Possible
@@ -3787,60 +3621,63 @@ values:
 - `python`
 
   Python \>= 3.10, with numpy and simpy available.
+- `bash`
+
+  Bash. Only available for Gemini 3.0 model or above.
+code string (optional) The code to be executed.
 id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"code_execution_call"`.
-CodeExecutionResultStep Code execution result step.
-call_id string (required) Required. ID to match the ID from the function call block.
-is_error boolean (optional) Whether the code execution resulted in an error.
-result string (required) Required. The output of the code execution.
 signature string (optional) A signature hash for backend validation.
+CodeExecutionResultStep Code execution result step.
+result string (required) Required. The output of the code execution.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"code_execution_result"`.
+is_error boolean (optional) Whether the code execution resulted in an error.
+signature string (optional) A signature hash for backend validation.
 FileSearchCallStep File Search call step.
 id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"file_search_call"`.
+signature string (optional) A signature hash for backend validation.
 FileSearchResultStep File Search result step.
 call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"file_search_result"`.
+signature string (optional) A signature hash for backend validation.
 FunctionCallStep A function tool call step.
+name string (required) Required. The name of the tool to call.
 arguments object (required) Required. The arguments to pass to the function.
 id string (required) Required. A unique ID for this specific tool call.
-name string (required) Required. The name of the tool to call.
 type object (required) No description provided.
 
 Always set to `"function_call"`.
 FunctionResultStep Result of a function tool call.
-call_id string (required) Required. ID to match the ID from the function call block.
-is_error boolean (optional) Whether the tool call resulted in an error.
-name string (optional) The name of the tool that was called.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The result of the tool call.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
+name string (optional) The name of the tool that was called.
+is_error boolean (optional) Whether the tool call resulted in an error.
 GoogleMapsCallStep Google Maps call step.
+id string (required) Required. A unique ID for this specific tool call.
+type object (required) No description provided.
+
+Always set to `"google_maps_call"`.
 arguments GoogleMapsCallStepArguments (optional) The arguments to pass to the Google Maps tool.
 The arguments to pass to the Google Maps tool.
 
 #### Fields
 
 queries array (string) (optional) The queries to be executed.
-id string (required) Required. A unique ID for this specific tool call.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"google_maps_call"`.
 GoogleMapsResultStep Google Maps result step.
-call_id string (required) Required. ID to match the ID from the function call block.
 result array (GoogleMapsResultItem) (required) No description provided.
 The result of the Google Maps.
 
@@ -3851,23 +3688,24 @@ places array (GoogleMapsResultPlaces) (optional) No description provided.
 
 #### Fields
 
-name string (optional) No description provided.
 place_id string (optional) No description provided.
+name string (optional) No description provided.
+url string (optional) No description provided.
 review_snippets array (ReviewSnippet) (optional) No description provided.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
 
 #### Fields
 
-review_id string (optional) The ID of the review snippet.
 title string (optional) Title of the review.
 url string (optional) A link that corresponds to the user review on Google Maps.
-url string (optional) No description provided.
+review_id string (optional) The ID of the review snippet.
 widget_context_token string (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"google_maps_result"`.
+signature string (optional) A signature hash for backend validation.
 GoogleSearchCallStep Google Search call step.
 arguments GoogleSearchCallStepArguments (required) Required. The arguments to pass to Google Search.
 The arguments to pass to Google Search.
@@ -3876,6 +3714,9 @@ The arguments to pass to Google Search.
 
 queries array (string) (optional) Web search queries for the following-up web search.
 id string (required) Required. A unique ID for this specific tool call.
+type object (required) No description provided.
+
+Always set to `"google_search_call"`.
 search_type enum (string) (optional) The type of search grounding enabled.
 
 Possible
@@ -3887,240 +3728,60 @@ values:
 - `image_search`
 
   Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"google_search_call"`.
 GoogleSearchResultStep Google Search result step.
-call_id string (required) Required. ID to match the ID from the function call block.
-is_error boolean (optional) Whether the Google Search resulted in an error.
 result array (GoogleSearchResultItem) (required) Required. The results of the Google Search.
 The result of the Google Search.
 
 #### Fields
 
 search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-signature string (optional) A signature hash for backend validation.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"google_search_result"`.
+is_error boolean (optional) Whether the Google Search resulted in an error.
+signature string (optional) A signature hash for backend validation.
 McpServerToolCallStep MCPServer tool call step.
-arguments object (required) Required. The JSON object of arguments for the function.
-id string (required) Required. A unique ID for this specific tool call.
 name string (required) Required. The name of the tool which was called.
 server_name string (required) Required. The name of the used MCP server.
+arguments object (required) Required. The JSON object of arguments for the function.
+id string (required) Required. A unique ID for this specific tool call.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_call"`.
 McpServerToolResultStep MCPServer tool result step.
-call_id string (required) Required. ID to match the ID from the function call block.
-name string (optional) Name of the tool which is called for this specific tool call.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
-server_name string (optional) The name of the used MCP server.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_result"`.
+name string (optional) Name of the tool which is called for this specific tool call.
+server_name string (optional) The name of the used MCP server.
 ModelOutputStep Output generated by the model.
-content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
 type object (required) No description provided.
 
 Always set to `"model_output"`.
+content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
 ProcessingCallStep A server-initiated processing step for media analysis (e.g. video
 understanding).
 id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"processing_call"`.
+signature string (optional) A signature hash for backend validation.
 ProcessingResultStep The result of a server-initiated media processing step.
 call_id string (required) Required. ID to match the ID from the function call block.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"processing_result"`.
-RetrievalCallStep Retrieval call step.
-Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc. RetrievalType decides which tool is used.
-arguments RetrievalStepArguments (required) Required. The arguments to pass to the retrieval tool.
-The arguments to pass to Retrieval tools.
-
-#### Fields
-
-queries array (string) (optional) Queries for Retrieval information.
-id string (required) Required. A unique ID for this specific tool call.
-retrieval_type enum (string) (optional) The type of retrieval tools.
-
-Possible
-values:
-
-- `rag_store`
-
-  The type of retrieval tools.
-- `exa_ai_search`
-
-  The type of retrieval tools.
-- `parallel_ai_search`
-
-  The type of retrieval tools.
 signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"retrieval_call"`.
-RetrievalResultStep Vertex Retrieval result step.
-Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc.
-call_id string (required) Required. ID to match the ID from the function call block.
-is_error boolean (optional) Whether the retrieval resulted in an error.
-signature string (optional) A signature hash for backend validation.
-type object (required) No description provided.
-
-Always set to `"retrieval_result"`.
 ThoughtStep A thought step.
-signature string (optional) A signature hash for backend validation.
-summary array (ThoughtContent) (optional) A summary of the thought.
-<br />
-
-#### Possible Types
-
-ImageContent An image content block.
-data string (optional) The image content.
-mime_type enum (string) (optional) The mime type of the image.
-
-Possible
-values:
-
-- `image/png`
-
-  PNG image format
-- `image/jpeg`
-
-  JPEG image format
-- `image/webp`
-
-  WebP image format
-- `image/heic`
-
-  HEIC image format
-- `image/heif`
-
-  HEIF image format
-- `image/gif`
-
-  GIF image format
-- `image/bmp`
-
-  BMP image format
-- `image/tiff`
-
-  TIFF image format
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-type object (required) No description provided.
-
-Always set to `"image"`.
-uri string (optional) The URI of the image.
-TextContent A text content block.
-annotations array (Annotation) (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-FileCitation A file citation annotation.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-document_uri string (optional) The URI of the file.
-end_index integer (optional) End of the attributed segment, exclusive.
-file_name string (optional) The name of the file.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-page_number integer (optional) Page number of the cited document, if applicable.
-source string (optional) Source attributed for a portion of the text.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"file_citation"`.
-PlaceCitation A place citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
-name string (optional) Title of the place.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-review_id string (optional) The ID of the review snippet.
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-url string (optional) URI reference of the place.
-SpeechAnnotation Speech annotation for text content.
-end_index integer (optional) End of the attributed segment, exclusive.
-speaker string (optional) The speaker to associate with this turn.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-style string (optional) Style instruction for the speech synthesis.
-type object (required) No description provided.
-
-Always set to `"speech_metadata"`.
-UrlCitation A URL citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-title string (optional) The title of the URL.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-WordInfo Word-level ASR annotation for transcription output.
-Carries the word text, optional timing, and optional speaker attribution.
-end_index integer (optional) End of the attributed segment, exclusive.
-end_offset string (optional) End offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
-Present when diarization_mode is set in TranscriptionConfig.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-text string (optional) The transcribed word.
-type object (required) No description provided.
-
-Always set to `"word_info"`.
-text string (required) Required. The text content.
-type object (required) No description provided.
-
-Always set to `"text"`.
 type object (required) No description provided.
 
 Always set to `"thought"`.
+signature string (optional) A signature hash for backend validation.
+summary array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) A summary of the thought.
 UrlContextCallStep URL context call step.
 arguments UrlContextCallArguments (required) Required. The arguments to pass to the URL context.
 The arguments to pass to the URL context.
@@ -4129,18 +3790,17 @@ The arguments to pass to the URL context.
 
 urls array (string) (optional) The URLs to fetch.
 id string (required) Required. A unique ID for this specific tool call.
-signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
 Always set to `"url_context_call"`.
+signature string (optional) A signature hash for backend validation.
 UrlContextResultStep URL context result step.
-call_id string (required) Required. ID to match the ID from the function call block.
-is_error boolean (optional) Whether the URL context resulted in an error.
 result array (UrlContextResult) (required) Required. The results of the URL context.
 The result of the URL context.
 
 #### Fields
 
+url string (optional) The URL that was fetched.
 status enum (string) (optional) The status of the URL retrieval.
 
 Possible
@@ -4158,16 +3818,17 @@ values:
 - `unsafe`
 
   Url retrieval is failed because the content is unsafe.
-url string (optional) The URL that was fetched.
-signature string (optional) A signature hash for backend validation.
+call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
 Always set to `"url_context_result"`.
+is_error boolean (optional) Whether the URL context resulted in an error.
+signature string (optional) A signature hash for backend validation.
 UserInputStep Input provided by the user.
-content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
 type object (required) No description provided.
 
 Always set to `"user_input"`.
+content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
 
 ### Examples
 
@@ -4177,8 +3838,7 @@ Always set to `"user_input"`.
 {
   "type": "code_execution_call",
   "arguments": {
-    "code": "print(sum(range(1, 11)))",
-    "language": "python"
+    "code": "print(sum(range(1, 11)))"
   },
   "id": "code_call_71021"
 }
@@ -4247,9 +3907,8 @@ Always set to `"user_input"`.
 {
   "type": "google_maps_call",
   "arguments": {
-    "queries": [
-      "parks near San Francisco"
-    ]
+    "latitude": 37.7749,
+    "longitude": -122.4194
   },
   "id": "maps_call_39201"
 }
@@ -4263,13 +3922,9 @@ Always set to `"user_input"`.
   "call_id": "maps_call_39201",
   "result": [
     {
-      "places": [
-        {
-          "url": "https://maps.google.com/?cid=12345",
-          "name": "Golden Gate Park",
-          "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M"
-        }
-      ]
+      "name": "Golden Gate Park",
+      "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
+      "rating": 4.8
     }
   ]
 }
@@ -4281,9 +3936,7 @@ Always set to `"user_input"`.
 {
   "type": "google_search_call",
   "arguments": {
-    "queries": [
-      "Who won the men's 100m in Paris 2024?"
-    ]
+    "query": "Who won the men's 100m in Paris 2024?"
   },
   "id": "search_call_19201"
 }
@@ -4297,7 +3950,9 @@ Always set to `"user_input"`.
   "call_id": "search_call_19201",
   "result": [
     {
-      "search_suggestions": "..."
+      "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
+      "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
+      "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
     }
   ]
 }
@@ -4354,14 +4009,6 @@ No examples available for this type.
 
 No examples available for this type.
 
-### RetrievalCallStep
-
-No examples available for this type.
-
-### RetrievalResultStep
-
-No examples available for this type.
-
 ### ThoughtStep
 
 ```json
@@ -4399,8 +4046,9 @@ No examples available for this type.
   "call_id": "url_call_10219",
   "result": [
     {
+      "title": "Example Domain",
       "url": "https://www.example.com",
-      "status": "success"
+      "snippet": "This domain is for use in illustrative examples in documents."
     }
   ]
 }
@@ -4426,9 +4074,9 @@ Configuration for a custom environment.
 
 #### Fields
 
-env object (optional) Environment variables to set in the sandbox environment.
-environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
-update the existing environment instead of creating a new one.
+type object (required) No description provided.
+
+Always set to `"remote"`.
 network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
 
 Possible
@@ -4442,12 +4090,6 @@ A source to be mounted into the environment.
 
 #### Fields
 
-content string (optional) The inline content if \`type\` is \`INLINE\`.
-encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
-source string (optional) The source of the environment.
-For Cloud Storage, this is the Cloud Storage path.
-For GitHub, this is the GitHub path.
-target string (optional) Where the source should appear in the environment.
 type enum (string) (optional) No description provided.
 
 Possible
@@ -4463,17 +4105,21 @@ values:
 
   A generic repository. The protocol prefix in the source URL
   identifies the provider (e.g., github://, gcs://).
-- `skill_registry`
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+env object or string (optional) Environment variables to set in the sandbox environment.
 
-  A skill resource from the Skill Registry Service.
-  Skill: projects/{project}/locations/{location}/skills/{skill}
-  SkillRevision:
-  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-  Support mounting all skills under a project:
-  projects/{project}/locations/{location}/skills.
-type object (optional) No description provided.
+#### Possible Types
 
-Always set to `"remote"`.
+object <br />
+
+string A direct string value.
 
 ### Examples
 
@@ -4623,7 +4269,7 @@ tools array (string) (optional) The names of the allowed tools.
 
 ### Examples
 
-### Allowed Tools
+### Example
 
 ```bash
 {
@@ -4642,7 +4288,28 @@ An image content block.
 
 #### Fields
 
+type object (required) No description provided.
+
+Always set to `"image"`.
 data string (optional) The image content.
+uri string (optional) The URI of the image.
+resolution MediaResolution (optional) The resolution of the media.
+<br />
+
+#### Possible values
+
+- `low`
+
+  Low resolution.
+- `medium`
+
+  Medium resolution.
+- `high`
+
+  High resolution.
+- `ultra_high`
+
+  Ultra high resolution.
 mime_type enum (string) (optional) The mime type of the image.
 
 Possible
@@ -4672,27 +4339,6 @@ values:
 - `image/tiff`
 
   TIFF image format
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-type object (optional) No description provided.
-
-Always set to `"image"`.
-uri string (optional) The URI of the image.
 
 ### Examples
 
@@ -4712,29 +4358,36 @@ A text content block.
 
 #### Fields
 
+text string (required) Required. The text content.
+type object (required) No description provided.
+
+Always set to `"text"`.
 annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
 
 FileCitation A file citation annotation.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-document_uri string (optional) The URI of the file.
-end_index integer (optional) End of the attributed segment, exclusive.
-file_name string (optional) The name of the file.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-page_number integer (optional) Page number of the cited document, if applicable.
-source string (optional) Source attributed for a portion of the text.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
 type object (required) No description provided.
 
 Always set to `"file_citation"`.
-PlaceCitation A place citation annotation.
+document_uri string (optional) The URI of the file.
+file_name string (optional) The name of the file.
+source string (optional) Source attributed for a portion of the text.
+custom_metadata object (optional) User provided metadata about the retrieved context.
+page_number integer (optional) Page number of the cited document, if applicable.
+media_id string (optional) Media ID in-case of image citations, if applicable.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
 end_index integer (optional) End of the attributed segment, exclusive.
-name string (optional) Title of the place.
+PlaceCitation A place citation annotation.
+type object (required) No description provided.
+
+Always set to `"place_citation"`.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
+name string (optional) Title of the place.
+url string (optional) URI reference of the place.
 review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
@@ -4742,39 +4395,41 @@ the features of a specific place in Google Maps.
 
 #### Fields
 
-review_id string (optional) The ID of the review snippet.
 title string (optional) Title of the review.
 url string (optional) A link that corresponds to the user review on Google Maps.
+review_id string (optional) The ID of the review snippet.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-url string (optional) URI reference of the place.
-SpeechAnnotation Speech annotation for text content.
 end_index integer (optional) End of the attributed segment, exclusive.
-speaker string (optional) The speaker to associate with this turn.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-style string (optional) Style instruction for the speech synthesis.
+SpeechAnnotation Speech annotation for text content.
 type object (required) No description provided.
 
 Always set to `"speech_metadata"`.
-UrlCitation A URL citation annotation.
-end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+style string (optional) Style instruction for the speech synthesis.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-title string (optional) The title of the URL.
+end_index integer (optional) End of the attributed segment, exclusive.
+UrlCitation A URL citation annotation.
 type object (required) No description provided.
 
 Always set to `"url_citation"`.
 url string (optional) The URL.
+title string (optional) The title of the URL.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+end_index integer (optional) End of the attributed segment, exclusive.
 WordInfo Word-level ASR annotation for transcription output.
 Carries the word text, optional timing, and optional speaker attribution.
-end_index integer (optional) End of the attributed segment, exclusive.
+type object (required) No description provided.
+
+Always set to `"word_info"`.
+text string (optional) The transcribed word.
+start_offset string (optional) Start offset in time of the word relative to the start of the audio.
+Present when timestamp_granularities contains "word".
 end_offset string (optional) End offset in time of the word relative to the start of the audio.
 Present when timestamp_granularities contains "word".
 speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
@@ -4782,16 +4437,7 @@ Present when diarization_mode is set in TranscriptionConfig.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
 
 Index indicates the start of the segment, measured in bytes.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-text string (optional) The transcribed word.
-type object (required) No description provided.
-
-Always set to `"word_info"`.
-text string (optional) Required. The text content.
-type object (optional) No description provided.
-
-Always set to `"text"`.
+end_index integer (optional) End of the attributed segment, exclusive.
 
 ### Examples
 

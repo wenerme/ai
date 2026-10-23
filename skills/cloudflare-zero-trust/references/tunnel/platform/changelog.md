@@ -16,6 +16,36 @@ Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/tunnel.xml)
 
+## 2026-10-22
+
+
+**Cloudflare Tunnel supports URL normalization**
+
+Starting from version `2026.10.0`, [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) can normalize URLs before matching ingress rules. This improves security for tunnels with rules that require Cloudflare Access validation. The URL path sent to your origin stays the same.
+
+In three months, starting 2027-01-25, new `cloudflared` releases will turn on URL normalization by default. Test your path-based routing before that date, as this change may affect which ingress rule matches a request. Configurations without rules requiring Access validation are unaffected.
+
+This setting is currently off by default. To turn it on, run:
+
+```sh
+cloudflared tunnel --disable-path-normalization=false run <TUNNEL_NAME_OR_UUID>
+```
+
+Alternatively, set `TUNNEL_DISABLE_PATH_NORMALIZATION=false` on each `cloudflared` replica and restart it.
+
+For more information, refer to [ingress matching](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/#how-traffic-is-matched) and [Access validation at the origin](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#access).
+
+## 2026-10-22
+
+
+**Granular Tunnel Read And Monitor role is generally available**
+
+The **Cloudflare Tunnel - Granular Connector cloudflared Read And Monitor** role is now generally available. You can grant a member read access and log streaming for specific [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances without granting write access or access to every Tunnel in your account.
+
+This role includes the same access as **Cloudflare Tunnel - Granular Connector cloudflared Read**: viewing selected Tunnels, their IP and hostname routes, and connector host details. It also grants [remote log streaming](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming), so support operators can troubleshoot a Tunnel without changing its configuration. The existing **Read** role does not grant log streaming access.
+
+To assign the role, follow [Grant a granular permission](https://developers.cloudflare.com/tunnel/guides/granular-permissions/#grant-a-granular-permission). For the available roles, refer to the [resource-scoped roles reference](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles).
+
 ## 2026-10-16
 
 

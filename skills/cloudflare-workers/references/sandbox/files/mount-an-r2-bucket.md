@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/og.png
 
 # Mount an R2 bucket
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `S3Mount` class from `@cloudflare/sandbox` mounts one prefix of a bucket as a directory with `s3fs`. Your Worker keeps the R2 credentials and signs each storage request. In this example, a command reads an input file from the mount and writes a digest next to it.
 
@@ -58,7 +58,7 @@ You can check that Docker is running properly by running the `docker info` comma
    	&& apt-get install -y --no-install-recommends ca-certificates fuse3 s3fs \
    	&& rm -rf /var/lib/apt/lists/*
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    CMD ["sleep", "infinity"]
    ```
@@ -194,7 +194,7 @@ You can check that Docker is running properly by running the `docker info` comma
    		const container = ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		this.container = container;
@@ -299,7 +299,7 @@ You can check that Docker is running properly by running the `docker info` comma
    }
    ```
 
-   If a process still uses the directory, `unmount()` throws `SandboxS3MountError` with code `S3_MOUNT_BUSY`. Stop the process, then call `unmount()` again.
+   Call `finish()` only after every job that writes to the mount has ended. `unmount()` denies storage requests before it unmounts, so a process that still writes loses those writes. If a process still uses the directory, `unmount()` throws `SandboxS3MountError` with code `S3_MOUNT_BUSY` and requests stay denied. Stop the process, then call `unmount()` again.
 9. Add routes to your Worker that run a job and finish it:
 
    *src/index.jsjs*
@@ -464,5 +464,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/#page","headline":"Mount an R2 bucket","description":"Mount a prefix of an R2 bucket in a Linux sandbox without giving the sandbox your credentials.","url":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/og.png?v=b6b9fbc310367588","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/#page","headline":"Mount an R2 bucket","description":"Mount a prefix of an R2 bucket in a Linux sandbox without giving the sandbox your credentials.","url":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/og.png?v=b6b9fbc310367588","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

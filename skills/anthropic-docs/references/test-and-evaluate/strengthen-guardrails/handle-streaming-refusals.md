@@ -14,7 +14,7 @@ Starting with Claude 4 models, streaming responses from Claude's API return **`s
 
 When streaming classifiers detect content that violates Anthropic's policies, the API returns this response:
 
-```json
+```text
 {
   "role": "assistant",
   "content": [
@@ -236,7 +236,8 @@ Here's how to detect and handle streaming refusals in your application:
   $client = new Client();
   $messages = [];
 
-  function resetConversation(&$messages) {
+  function resetConversation(&$messages)
+  {
       $messages = [];
       echo "Conversation reset due to refusal\n";
   }
@@ -257,7 +258,7 @@ Here's how to detect and handle streaming refusals in your application:
           }
       }
   } catch (\Exception $e) {
-      echo "Error: " . $e->getMessage() . "\n";
+      echo 'Error: ' . $e->getMessage() . "\n";
   }
   ```
 

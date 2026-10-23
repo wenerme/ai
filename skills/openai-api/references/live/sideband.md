@@ -694,7 +694,57 @@ Use Bearer Auth (header Authorization).
 
                 Estimate how likely it is that a statement about the input is true.
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                      - `text: string`
+
+                      - `type: "input_text"`
+
+                        - `"input_text"`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                      - `image_url: string`
+
+                        A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The image detail level, using the selected model's image profile. Defaults to auto.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
 
                 - `type: "predicate"`
 
@@ -722,7 +772,21 @@ Use Bearer Auth (header Authorization).
 
                   - `description: optional string`
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
                 - `type: "choice"`
 
@@ -736,7 +800,21 @@ Use Bearer Auth (header Authorization).
 
                 Rate the input against the supplied ordered levels.
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
                 - `levels: array of object { label, description }`
 
@@ -768,7 +846,21 @@ Use Bearer Auth (header Authorization).
 
               Estimate how likely it is that a statement about the input is true.
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `type: "predicate"`
 
@@ -796,7 +888,21 @@ Use Bearer Auth (header Authorization).
 
                 - `description: optional string`
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `type: "choice"`
 
@@ -810,7 +916,21 @@ Use Bearer Auth (header Authorization).
 
               Rate the input against the supplied ordered levels.
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `levels: array of object { label, description }`
 
@@ -6380,7 +6500,57 @@ Use Bearer Auth (header Authorization).
 
                 Estimate how likely it is that a statement about the input is true.
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                      - `text: string`
+
+                      - `type: "input_text"`
+
+                        - `"input_text"`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                      - `image_url: string`
+
+                        A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The image detail level, using the selected model's image profile. Defaults to auto.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
 
                 - `type: "predicate"`
 
@@ -6408,7 +6578,21 @@ Use Bearer Auth (header Authorization).
 
                   - `description: optional string`
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
                 - `type: "choice"`
 
@@ -6422,7 +6606,21 @@ Use Bearer Auth (header Authorization).
 
                 Rate the input against the supplied ordered levels.
 
-                - `instructions: string`
+                - `instructions: string or array of DecisionQuestionInputPart`
+
+                  - `string`
+
+                  - `array of DecisionQuestionInputPart`
+
+                    - `DecisionQuestionInputText object { text, type }`
+
+                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                    - `DecisionInputJSON object { data, type }`
+
+                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
                 - `levels: array of object { label, description }`
 
@@ -6618,7 +6816,21 @@ Use Bearer Auth (header Authorization).
 
               Estimate how likely it is that a statement about the input is true.
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `type: "predicate"`
 
@@ -6646,7 +6858,21 @@ Use Bearer Auth (header Authorization).
 
                 - `description: optional string`
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `type: "choice"`
 
@@ -6660,7 +6886,21 @@ Use Bearer Auth (header Authorization).
 
               Rate the input against the supplied ordered levels.
 
-              - `instructions: string`
+              - `instructions: string or array of DecisionQuestionInputPart`
+
+                - `string`
+
+                - `array of DecisionQuestionInputPart`
+
+                  - `DecisionQuestionInputText object { text, type }`
+
+                  - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+                  - `DecisionInputJSON object { data, type }`
+
+                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
               - `levels: array of object { label, description }`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api
 
 # Run Codex with the OpenAI Agents API in a sandbox
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [OpenAI Agents API ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview) runs the Codex agent loop at OpenAI. With a self-hosted environment, Codex runs commands and edits files in your Cloudflare account instead. The Cloudflare template runs the Codex executor of each session in its own Linux sandbox: a [Container](https://developers.cloudflare.com/containers/) that one Durable Object starts for that session.
 
@@ -114,17 +114,11 @@ export OPENAI_AGENT_ID="agent_..."
 4. Create a self-hosted session:
 
 ```bash
-curl "https://api.openai.com/v1/agents/sessions" \
-	--request POST \
-	--header "OpenAI-Beta: agents=v1" \
-	--header "Authorization: Bearer $OPENAI_API_KEY" \
-	--json '{
-		"agent_id": "$OPENAI_AGENT_ID",
-		"environment": {
-				"type": "self_hosted",
-				"workspace_directory": "/workspace"
-		}
-	}'
+curl https://api.openai.com/v1/agents/sessions \
+  --request POST \
+  --header "OpenAI-Beta: agents=v1" \
+  --header "Authorization: Bearer $OPENAI_API_KEY" \
+  --json '{"agent_id": "'"$OPENAI_AGENT_ID"'", "environment": {"type": "self_hosted", "workspace_directory": "/workspace"}}'
 ```
 
 Copy the `id` field from the response and save it as the session ID:
@@ -143,7 +137,7 @@ curl --no-buffer \
   --header "Accept: text/event-stream"
 ```
 
-While the stream is open, submit a task from another terminal:
+While the stream is open, submit a task from another terminal. Export `OPENAI_API_KEY` and `SESSION_ID` in that terminal first:
 
 ```bash
 curl "https://api.openai.com/v1/agents/sessions/$SESSION_ID/events" \
@@ -355,5 +349,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/#page","headline":"Run Codex with the OpenAI Agents API in a sandbox","description":"Deploy a self-hosted OpenAI Agents API environment that runs each Codex session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/og.png?v=ade466bed145a5e4","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/#page","headline":"Run Codex with the OpenAI Agents API in a sandbox","description":"Deploy a self-hosted OpenAI Agents API environment that runs each Codex session in its own Linux sandbox on Containers.","url":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/openai-agents-api/og.png?v=ade466bed145a5e4","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

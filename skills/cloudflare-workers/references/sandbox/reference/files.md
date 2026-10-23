@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/sandbox/reference/files/og.png?v=41b41c
 
 # Files API
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/reference/files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `Files` reads and changes files and directories in a running container. It does not start or stop the container.
 
-Each method runs the `sandbox-shim` helper binary in the container through [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) and waits for it to finish. Paths follow Linux rules, and `Files` does not restrict which paths a caller can open.
+Each method runs the `sandbox-shim` helper binary in the container through [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec). Every method except `readFile()` waits for the helper to finish; `readFile()` returns once the file is open and streams its contents. Paths follow Linux rules, and `Files` does not restrict which paths a caller can open.
 
 ```js
 import { Files } from "@cloudflare/sandbox";
@@ -28,7 +28,7 @@ export class MyContainer extends DurableObject {
 	constructor(ctx, env) {
 		super(ctx, env);
 		if (!ctx.container) {
-			throw new Error("The container binding is not configured");
+			throw new Error("No container is configured");
 		}
 		// ctx.container stays the same object while the Durable Object runs.
 		this.files = new Files(ctx.container);
@@ -53,7 +53,7 @@ export class MyContainer extends DurableObject<Env> {
 	constructor(ctx: DurableObjectState, env: Env) {
 		super(ctx, env);
 		if (!ctx.container) {
-			throw new Error("The container binding is not configured");
+			throw new Error("No container is configured");
 		}
 		// ctx.container stays the same object while the Durable Object runs.
 		this.files = new Files(ctx.container);
@@ -365,5 +365,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/reference/files/#page","headline":"Files API","description":"Reference for the Files class in @cloudflare/sandbox, which reads and writes files in a running container.","url":"https://developers.cloudflare.com/sandbox/reference/files/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/reference/files/og.png?v=41b41c52787424c4","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/reference/files/#page","headline":"Files API","description":"Reference for the Files class in @cloudflare/sandbox, which reads and writes files in a running container.","url":"https://developers.cloudflare.com/sandbox/reference/files/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/reference/files/og.png?v=41b41c52787424c4","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

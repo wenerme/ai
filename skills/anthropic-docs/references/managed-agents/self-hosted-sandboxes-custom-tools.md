@@ -123,11 +123,11 @@ The environment key authorizes posting custom tool results, so your Claude API k
       	"os/signal"
       	"syscall"
 
-      	"github.com/anthropics/anthropic-sdk-go"
-      	"github.com/anthropics/anthropic-sdk-go/lib/environments"
-      	"github.com/anthropics/anthropic-sdk-go/option"
-      	"github.com/anthropics/anthropic-sdk-go/toolrunner"
-      	"github.com/anthropics/anthropic-sdk-go/tools/agenttoolset"
+      	"github.com/anthropics/anthropic-sdk-go/v2"
+      	"github.com/anthropics/anthropic-sdk-go/v2/lib/environments"
+      	"github.com/anthropics/anthropic-sdk-go/v2/option"
+      	"github.com/anthropics/anthropic-sdk-go/v2/toolrunner"
+      	"github.com/anthropics/anthropic-sdk-go/v2/tools/agenttoolset"
       )
 
       type orderStatusInput struct {
@@ -356,7 +356,7 @@ The examples connect without authentication. To send credentials, configure the 
       	"fmt"
       	"log"
 
-      	"github.com/anthropics/anthropic-sdk-go"
+      	"github.com/anthropics/anthropic-sdk-go/v2"
       	mcpsdk "github.com/modelcontextprotocol/go-sdk/mcp"
       )
 
@@ -402,7 +402,6 @@ The examples connect without authentication. To send credentials, configure the 
       	}
       	return anthropic.BetaAgentNewParamsToolUnion{
       		OfCustom: &anthropic.BetaManagedAgentsCustomToolParams{
-      			Type:        anthropic.BetaManagedAgentsCustomToolParamsTypeCustom,
       			Name:        tool.Name,
       			Description: description,
       			InputSchema: inputSchema,
@@ -430,9 +429,7 @@ The examples connect without authentication. To send credentials, configure the 
       	}
 
       	tools := []anthropic.BetaAgentNewParamsToolUnion{
-      		{OfAgentToolset20260401: &anthropic.BetaManagedAgentsAgentToolset20260401Params{
-      			Type: anthropic.BetaManagedAgentsAgentToolset20260401ParamsTypeAgentToolset20260401,
-      		}},
+      		{OfAgentToolset20260401: &anthropic.BetaManagedAgentsAgentToolset20260401Params{}},
       	}
       	for _, tool := range listed.Tools {
       		custom, err := toCustomTool(tool)
@@ -468,7 +465,7 @@ The examples connect without authentication. To send credentials, configure the 
 
       // The MCP fields map one to one onto a custom tool declaration. The MCP Java
       // SDK keeps only these top-level keywords of a tool's input schema: type,
-      // properties, required, additionalProperties, $defs and definitions.
+      // properties, required, additionalProperties, $defs, and definitions.
       BetaManagedAgentsCustomToolParams toCustomTool(McpSchema.Tool tool) {
           var description = tool.description();
           if (description == null || description.isEmpty()) {
@@ -692,11 +689,11 @@ The examples connect without authentication. To send credentials, configure the 
       	"os/signal"
       	"syscall"
 
-      	"github.com/anthropics/anthropic-sdk-go"
-      	"github.com/anthropics/anthropic-sdk-go/lib/environments"
-      	"github.com/anthropics/anthropic-sdk-go/mcp"
-      	"github.com/anthropics/anthropic-sdk-go/option"
-      	"github.com/anthropics/anthropic-sdk-go/tools/agenttoolset"
+      	"github.com/anthropics/anthropic-sdk-go/v2"
+      	"github.com/anthropics/anthropic-sdk-go/v2/lib/environments"
+      	"github.com/anthropics/anthropic-sdk-go/v2/mcp"
+      	"github.com/anthropics/anthropic-sdk-go/v2/option"
+      	"github.com/anthropics/anthropic-sdk-go/v2/tools/agenttoolset"
       	mcpsdk "github.com/modelcontextprotocol/go-sdk/mcp"
       )
 

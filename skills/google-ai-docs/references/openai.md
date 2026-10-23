@@ -645,120 +645,9 @@ Generate an image using `gemini-2.5-flash-image` or `gemini-3-pro-image-preview`
 
 ## Generate a video
 
-Generate a video using `veo-3.1-generate-preview` via the Sora-compatible
-`/v1/videos` endpoint. Supported top-level parameters are `prompt` and `model`. Additional parameters like `duration_seconds`, `image`, and `aspect_ratio` must be passed with `extra_body`. See the [`extra_body`](https://ai.google.dev/gemini-api/docs/openai#extra-body) section
-for all available parameters.
-
-Video generation is a long-running operation that returns
-an operation ID you can poll for completion.
-
-### Python
-
-    from openai import OpenAI
-
-    client = OpenAI(
-        api_key="GEMINI_API_KEY",
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-    )
-
-    # Returns a Long Running Operation (status: processing)
-    response = client.videos.create(
-        model="veo-3.1-generate-preview",
-        prompt="A cinematic drone shot of a waterfall",
-    )
-
-    print(f"Operation ID: {response.id}")
-    print(f"Status: {response.status}")
-
-### JavaScript
-
-    import OpenAI from "openai";
-
-    const openai = new OpenAI({
-        apiKey: "GEMINI_API_KEY",
-        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
-    });
-
-    async function main() {
-        // Returns a Long Running Operation (status: processing)
-        const response = await openai.videos.create({
-            model: "veo-3.1-generate-preview",
-            prompt: "A cinematic drone shot of a waterfall",
-        });
-
-        console.log(`Operation ID: ${response.id}`);
-        console.log(`Status: ${response.status}`);
-    }
-
-    main();
-
-### REST
-
-    curl "https://generativelanguage.googleapis.com/v1beta/openai/videos" \
-      -H "Authorization: Bearer $GEMINI_API_KEY" \
-      -F "model=veo-3.1-generate-preview" \
-      -F "prompt=A cinematic drone shot of a waterfall"
-
-### Check video status
-
-Video generation is asynchronous. Use `GET /v1/videos/{id}` to poll the status
-and retrieve the final video URL when complete:
-
-### Python
-
-    import time
-    from openai import OpenAI
-
-    client = OpenAI(
-        api_key="GEMINI_API_KEY",
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-    )
-
-    # Poll until video is ready
-    video_id = response.id  # From the create call
-    while True:
-        video = client.videos.retrieve(video_id)
-        if video.status == "completed":
-            print(f"Video URL: {video.url}")
-            break
-        elif video.status == "failed":
-            print(f"Generation failed: {video.error}")
-            break
-        print(f"Status: {video.status}. Waiting...")
-        time.sleep(10)
-
-### JavaScript
-
-    import OpenAI from "openai";
-
-    const openai = new OpenAI({
-        apiKey: "GEMINI_API_KEY",
-        baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
-    });
-
-    async function main() {
-        // Poll until video is ready
-        const videoId = response.id;  // From the create call
-        while (true) {
-            const video = await openai.videos.retrieve(videoId);
-            if (video.status === "completed") {
-                console.log(`Video URL: ${video.url}`);
-                break;
-            } else if (video.status === "failed") {
-                console.log(`Generation failed: ${video.error}`);
-                break;
-            }
-            console.log(`Status: ${video.status}. Waiting...`);
-            await new Promise(resolve => setTimeout(resolve, 10000));
-        }
-    }
-
-    main();
-
-### REST
-
-    curl "https://generativelanguage.googleapis.com/v1beta/openai/videos/VIDEO_ID" \
-      -H "Authorization: Bearer $GEMINI_API_KEY"
+> [!WARNING]
+> **Warning:** Veo 3.1 Preview (`veo-3.1-generate-preview`, `veo-3.1-fast-generate-preview`, and `veo-3.1-lite-generate-preview`) in the Gemini API was [shut down](https://ai.google.dev/gemini-api/docs/deprecations) on **October 22,
+> 2026** . Migrate to [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/omni) (`gemini-omni-1.1-flash`) using the native Google GenAI SDK ([Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview)) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service interruptions. Video generation with `gemini-omni-1.1-flash` is not supported on the OpenAI-compatible `/v1/videos` endpoint.
 
 ## Audio understanding
 
@@ -1106,19 +995,6 @@ models but can be enabled using the `extra_body` field.
 | **`generation_config`** | Object | Images | Gemini generation config object (e.g., `{"responseModalities": ["IMAGE"], "candidateCount": 2}`). |
 | **`safety_settings`** | List | Images | Custom safety threshold filters (e.g., `[{"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"}]`). |
 | **`tools`** | List | Images | Enables grounding (e.g., `[{"google_search": {}}]`). Only for `gemini-3-pro-image-preview`. |
-| **`aspect_ratio`** | Text | Video | Dimensions of the output video (`16:9` for landscape, `9:16` for portrait). Maps from `size` if not specified. |
-| **`resolution`** | Text | Video | Output resolution (`720p`, `1080p`, `4K`). Note: `1080p` and `4K` trigger upsampler pipeline. |
-| **`duration_seconds`** | Integer | Video | Generation length (values: `4`, `6`, `8`). Must be `8` when using `reference_images`, interpolation, or extension. |
-| **`frame_rate`** | Text | Video | Frame rate for video output (e.g., `"24"`). |
-| **`input_reference`** | Text | Video | Reference input for video generation. |
-| **`extend_video_id`** | Text | Video | ID of an existing video to extend. |
-| **`negative_prompt`** | Text | Video | Items to exclude (e.g., `"shaky camera"`). |
-| **`seed`** | Integer | Video | Integer for deterministic generation. |
-| **`style`** | Text | Video | Visual styling (`cinematic` default, `creative` for social-media optimized). |
-| **`person_generation`** | Text | Video | Controls generation of people (`allow_adult`, `allow_all`, `dont_allow`). |
-| **`reference_images`** | List | Video | Up to 3 images for style/character reference (base64 assets). |
-| **`image`** | Text | Video | Base64-encoded initial input image to condition the video generation. |
-| **`last_frame`** | Object | Video | Final image for interpolation (requires `image` as first frame). |
 
 ### Example using `extra_body`
 

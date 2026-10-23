@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/migrate/commands/og.png?v=9
 
 # Change command calls
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/migrate/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Replace 0.12 command calls with [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec) on the container. In Sandbox SDK 0.12, `exec()` runs each command string in a long-lived `bash` session that starts in `/workspace`. In 1.0, each call starts one process, and nothing carries over from one call to the next.
 
@@ -133,7 +133,7 @@ In 0.12, a `cd` or `export` in one `exec()` call carried into the next call, inc
 
 ## Replace timeouts
 
-Start the command with GNU coreutils `timeout`, which [stops the command and every process it started](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts):
+Start the command with GNU coreutils `timeout`, which [stops the command and the processes it started](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts) that stay in its process group:
 
 *src/index.ts (0.12)ts*
 
@@ -149,8 +149,8 @@ const process = await this.container.exec(
 	{ cwd: "/workspace", env: ENV },
 );
 const result = await process.output();
-// Exit code 124 means the command ran longer than 60 seconds
-const timedOut = result.exitCode === 124;
+// 124 or 137 means the command ran longer than 60 seconds
+const timedOut = result.exitCode === 124 || result.exitCode === 137;
 ```
 
 0.12 threw `CommandError` with the message `Command timeout after 60000ms`, and the command kept running. In 1.0, a command that times out stops, so it cannot change files after the error.
@@ -200,5 +200,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#page","headline":"Change command calls","description":"Replace @cloudflare/sandbox 0.12 exec(), execStream(), sessions, and command timeouts with container.exec() in your Durable Object.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/og.png?v=90c2757a3d000943","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/#page","headline":"Change command calls","description":"Replace @cloudflare/sandbox 0.12 exec(), execStream(), sessions, and command timeouts with container.exec() in your Durable Object.","url":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/migrate/commands/og.png?v=90c2757a3d000943","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

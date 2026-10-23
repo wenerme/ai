@@ -22,6 +22,7 @@ If you select a specific model for a feature, the feature uses that model until 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/208017) to GitLab Dedicated in GitLab 18.5.
 - Feature flag `instance_level_model_selection` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209698) in GitLab 18.6.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/210969) to include GitLab Duo Core and Pro in GitLab 18.6.
+- **Managed by** column [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261119) in GitLab 19.6.
 
 You can select a default model for a feature and that default applies to the
 entire instance. If you do not select a specific model, all GitLab Duo features
@@ -57,6 +58,9 @@ To select a model for a feature:
    > [!note]
    > When you reset to default, each feature uses its own GitLab
    > default model, which might vary between features.
+
+If your GitLab instance has both GitLab-managed and self-hosted models,
+the **Managed by** column shows the model each feature uses.
 
 ### Select a model for Agentic Chat
 

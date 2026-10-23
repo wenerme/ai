@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/sandbox/concepts/lifetime/og.png?v=cd31
 
 # Sandbox lifetime
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/lifetime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/lifetime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A Linux sandbox has three parts: a name, a [Durable Object](https://developers.cloudflare.com/durable-objects/), and an instance in [Containers](https://developers.cloudflare.com/containers/). Your Worker reaches the sandbox by name, the name reaches the Durable Object, and the Durable Object starts the instance. The name and the Durable Object last as long as your application uses them. The instance runs only while something keeps it running.
+A Linux sandbox is a [Durable Object](https://developers.cloudflare.com/durable-objects/) that starts and stops a [container](https://developers.cloudflare.com/containers/). Your Worker reaches the Durable Object by name, for example a session ID, and the same name always reaches the same Durable Object. When work arrives, the Durable Object calls [`this.ctx.container.start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start), which starts a container instance: a Linux virtual machine that runs your image, with its own processes and its own disk.
+
+The Durable Object and the instance last for different lengths of time. The Durable Object keeps its storage, such as session details or a snapshot ID, until your code deletes it. An instance runs only until something stops it, and its processes and the files on its disk end with it. The next `start()` creates a new instance.
 
 This page follows a coding agent. The agent clones a repository, installs its dependencies, edits files, and starts a development server. Then it waits an hour for its next instruction and reaches the same sandbox by name. The files are still there if the instance kept running or the application saved a snapshot. The development server is still there only if the instance kept running.
 
@@ -34,25 +36,23 @@ R2 bucket
 
 The Linux instance runs a development server and holds the repository and edits on its disk.
 
-## The name and the Durable Object remain
-
-Your Worker calls `getByName()` with the sandbox name. The same name always reaches the same Durable Object. Durable Object storage keeps data such as session details or a snapshot ID, whether or not an instance is running.
-
-When work arrives and no instance is running, the Durable Object starts one with [`this.ctx.container.start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start).
-
 ## Activity keeps an instance running
 
-An instance keeps running while its Durable Object is active. The Durable Object is active while it handles a request, runs an alarm, streams a response, or keeps an accepted WebSocket open. An open terminal keeps a sandbox running this way, even when nobody types.
+An instance keeps running while its Durable Object is active. The Durable Object is active while it handles a request, runs an alarm, streams a response, or holds open a WebSocket that it accepted with `accept()`. The [browser terminal](https://developers.cloudflare.com/sandbox/commands/open-a-terminal-in-the-browser/) keeps a sandbox running this way, even when nobody types.
 
-After the Durable Object becomes inactive, the instance keeps running for the time set with [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout), up to 6 hours. A request that arrives within that time reaches the same instance, with its files and processes. When the time ends, Cloudflare stops the instance. Without a timeout, Cloudflare stops the instance shortly after the Durable Object becomes inactive.
+After the Durable Object becomes inactive, the instance keeps running for the time set with [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout), up to 6 hours. A request that arrives within that time reaches the same instance, with its files and processes. Without a timeout, Cloudflare stops the instance shortly after the Durable Object becomes inactive.
 
-A pending [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor) call keeps the Durable Object in memory, so the inactivity timeout starts only after the Durable Object leaves memory. When it leaves, the call ends, so `monitor()` does not report the stop that follows.
+Code that runs inside the instance does not count as activity. If no requests arrive, the instance stops when the inactivity timeout ends, even while a build, a test suite, or an agent task still runs inside it. A Durable Object [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/) that runs more often than the timeout and checks the work keeps the instance running until the work ends. For an alarm that runs every minute, refer to [Run background processes](https://developers.cloudflare.com/sandbox/commands/run-background-processes/).
 
-Code that runs inside the instance does not count as activity. If no requests arrive, the instance stops when the inactivity timeout ends, even while a build, a test suite, or an agent task still runs inside it. A Durable Object [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/) that runs more often than the timeout and checks the work keeps the instance running until the work ends. [Run background processes](https://developers.cloudflare.com/sandbox/commands/run-background-processes/) uses an alarm that runs every minute.
+## An idle instance is still billed
+
+While an instance runs, Containers bill its memory and disk, whether or not anything inside it does work. After the instance stops, it is not billed. For the rates, refer to [Containers pricing](https://developers.cloudflare.com/containers/platform/pricing/).
+
+An inactivity timeout longer than the wait between requests keeps processes running through the wait, and you pay for the instance until the next request. A shorter timeout lets the instance stop. A [snapshot](#snapshots-carry-files-to-the-next-instance) then carries its files to the next instance, which starts its processes again. To keep its development server running through the hour, the coding agent needs a timeout longer than an hour, and pays for the instance for that hour.
 
 ## The timeout does not survive a restart
 
-A Durable Object can restart while its instance keeps running, for example after a deploy or between two alarms. The restarted Durable Object starts without an inactivity timeout, so the instance stops shortly after the Durable Object becomes inactive.
+A Durable Object restarts when it leaves memory and later runs its constructor again, for example after a deploy or between two alarms. Its instance can keep running through the restart. The restarted Durable Object starts without an inactivity timeout, so the instance stops shortly after the Durable Object becomes inactive.
 
 The sandbox examples set the timeout after `start()`, and set it again in the constructor of the Durable Object when the instance is already running. For an example, refer to [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout).
 
@@ -63,14 +63,15 @@ An instance stops when one of these happens:
 - The inactivity timeout ends.
 - Your Worker calls [`destroy()`](https://developers.cloudflare.com/containers/api/durable-object-container/#destroy).
 - The main process exits.
+- A platform event stops it, for example a server restart. Cloudflare does not guarantee that an instance runs for a set time.
 
 The main process is the entrypoint passed to `start()`, or the default command of the image. When it exits, the instance stops, and every command started with `exec()` ends with it. The default command of `cloudflare/debian-trixie` exits right away, so the sandbox examples start that image with `sleep infinity` as the entrypoint, or run a web server as the main process.
 
-When the inactivity timeout ends, every process in the instance receives `SIGTERM`, and Cloudflare stops the instance shortly after, whether or not the processes exit. `destroy()` stops the instance at once, with no time for processes to clean up. Use `SIGTERM` only for cleanup that can fail, and save the files you need before the instance stops, for example in a [snapshot](#snapshots-carry-files-to-the-next-instance).
+When the inactivity timeout ends, every process in the instance receives `SIGTERM`, and Cloudflare stops the instance shortly after, whether or not the processes exit. `destroy()` stops the instance at once, with no time for processes to clean up. Do not rely on a `SIGTERM` handler to finish work. Save the files you need before the instance stops, for example in a [snapshot](#snapshots-carry-files-to-the-next-instance).
 
-After an instance stops, the next request that calls `start()` starts a new instance.
+Cloudflare does not wake the Durable Object when its instance stops. A pending [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor) call reports a stop only while the Durable Object is in memory. The call keeps the Durable Object in memory for up to 15 minutes from when the call starts. On compatibility dates before `2026-10-01`, the Durable Object leaves memory after its usual idle period instead, unless the Worker sets the [`durable_object_io_tasks_prevent_eviction`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-io-tasks-prevent-eviction) flag. The inactivity timeout starts only after the Durable Object leaves memory, so the instance keeps running past the timeout and the Durable Object incurs duration charges until then. When the Durable Object leaves memory, the call ends without reporting the stop that follows.
 
-Cloudflare does not wake the Durable Object when its instance stops. To record each stop and its reason, refer to [Run code when a sandbox stops](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/).
+To record each stop and its reason, refer to [Run code when a sandbox stops](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/).
 
 ## Deploys keep instances running
 
@@ -78,17 +79,15 @@ Deploying a new version of your Worker restarts every Durable Object. A running 
 
 A running instance keeps the image, entrypoint, and environment variables that it started with. `start()` throws while an instance runs, so a new image or new startup options apply only to instances that start after the deploy. To move a sandbox to a new image, stop its instance, for example with `destroy()`, and start a new one. The files and processes of the old instance end with it.
 
-Requests, streamed responses, and WebSockets that the previous version was handling end during the deploy. A browser terminal disconnects and must connect again.
+Requests, streamed responses, and WebSockets that a sandbox is handling during a deploy can keep running on the previous version. Until that work ends, the previous version can also handle new requests for the sandbox, so new code reaches a busy sandbox late. A deploy is therefore not a way to cancel work. The runtime can still shut down a Durable Object, so make clients such as a browser terminal connect again when their connection closes. For more information, refer to [Shutdown behavior](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#shutdown-behavior).
 
-After the deploy, the instance keeps running for the inactivity timeout that the previous version set. If no request arrives within that time, the instance stops. The new version starts without the timeout, so set it again in the constructor, as the sandbox examples do.
+After the deploy, the instance keeps running for the inactivity timeout that the previous version set. The new version must set the timeout again, as described in [The timeout does not survive a restart](#the-timeout-does-not-survive-a-restart).
 
 Container [rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/) replace instances only in Container applications that use the [default scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/), so no rollout replaces a sandbox.
 
-## Files and processes end with the instance
-
-The disk of an instance holds the repository, installed packages, configuration files, and output written by commands. Its memory holds running processes, open terminals, and network connections. All of it ends when the instance stops. The next instance starts from its image, or from a snapshot.
-
 ## Snapshots carry files to the next instance
+
+The disk of an instance holds the repository, installed packages, configuration files, and output written by commands. Its memory holds running processes, open terminals, and network connections. All of it ends when the instance stops, and the next instance starts from its image or from a snapshot.
 
 Public beta
 
@@ -96,7 +95,7 @@ Container snapshots are in public beta. The API and behavior may change.
 
 [`snapshotContainer()`](https://developers.cloudflare.com/containers/api/durable-object-container/#snapshotcontainer) saves the writable root filesystem of a running instance. It does not save separately mounted filesystems, memory, or processes. Starting with a snapshot creates a new instance with the saved files, and the new instance runs its entrypoint. The processes that were running do not continue. The new instance reuses the same process IDs, so a process ID saved in a file can belong to another process after a restore. Files in `/run` are in memory, and a snapshot does not save them.
 
-Cloudflare does not restore a snapshot on its own. Your application decides when to save a snapshot. It stores the snapshot, for example in Durable Object storage, and passes it to the next `start()`. Changes made after the last snapshot exist only in the current instance, so save another snapshot before the instance stops.
+Your application decides when to save a snapshot. It stores the snapshot, for example in Durable Object storage, and passes it to the next `start()`. Cloudflare does not restore a snapshot on its own. Changes made after the last snapshot exist only in the current instance, and an instance can stop without warning, so save a snapshot after work that you need to keep.
 
 A snapshot expires 30 days after it is created or last restored. To keep files longer, copy them to a bucket.
 
@@ -123,5 +122,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/lifetime/#page","headline":"Sandbox lifetime","description":"Understand what keeps a sandbox running, what stops it, and which files the next instance starts with.","url":"https://developers.cloudflare.com/sandbox/concepts/lifetime/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/concepts/lifetime/og.png?v=cd31f8e1a3824d5a","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/lifetime/#page","headline":"Sandbox lifetime","description":"Understand what keeps a sandbox running, what stops it, and which files the next instance starts with.","url":"https://developers.cloudflare.com/sandbox/concepts/lifetime/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/concepts/lifetime/og.png?v=cd31f8e1a3824d5a","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

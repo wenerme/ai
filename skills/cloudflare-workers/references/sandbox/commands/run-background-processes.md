@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/commands/run-background-process
 
 # Run background processes
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Start a process that keeps running after the request ends, such as a build, a test suite, or an agent task. The process object that `exec()` returns belongs to the request that started it, so later requests manage the process through files in the sandbox. The process writes its process ID, output, and exit code to those files.
 
@@ -119,7 +119,7 @@ For a process that runs until the container stops, such as a development server 
    }
    ```
 
-   `setsid` starts the command in a new process group. Stopping the group also stops the processes the command starts, such as the `node` process behind `npm run dev`. The script writes the exit code to a temporary file and then renames it, so a reader never sees a partial file. Do not start the command with `&` instead: a shell starts background jobs with `SIGINT` ignored.
+   `setsid` starts the command in a new process group. Stopping the group also stops the processes the command starts, such as the `node` process behind `npm run dev`, unless a process moves to its own group. The script writes the exit code to a temporary file and then renames it, so a reader never sees a partial file. Do not start the command with `&` instead: a shell starts background jobs with `SIGINT` ignored.
 
    Each process keeps its files in its own directory under `/var/lib/processes` on the instance disk. The logs grow until the process ends. When the disk fills, writes from the process fail, so delete old process directories, or send output that you want to keep to a [mounted bucket](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/).
 2. Add a constructor to your Durable Object. It sets the inactivity timeout again when a restarted Durable Object finds the container running:
@@ -156,7 +156,7 @@ For a process that runs until the container stops, such as a development server 
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -182,6 +182,13 @@ For a process that runs until the container stops, such as a development server 
    			stdout: "ignore",
    			stderr: "ignore",
    		});
+
+   		// exec() returns before the process records its ID. Wait for it, so
+   		// a request that follows the output right away finds it running.
+   		for (let i = 0; i < 50; i++) {
+   			if ((await this.status(id))?.state !== "starting") break;
+   			await scheduler.wait(100);
+   		}
 
    		await this.ctx.storage.put(`process:${id}`, argv);
    		await this.ctx.storage.setAlarm(Date.now() + 60_000);
@@ -307,8 +314,10 @@ For a process that runs until the container stops, such as a development server 
    				const exitCode = ended?.state === "exited" ? ended.exitCode : null;
    				await send("exit", { exitCode });
    				await writer.close();
-   			} catch {
+   			} catch (error) {
    				stop();
+   				// End the response, so a connected client does not wait forever.
+   				await writer.abort(error).catch(() => {});
    			} finally {
    				clearInterval(heartbeat);
    			}
@@ -601,11 +610,17 @@ A development server prints a line, such as `ready`, when it accepts requests. T
 
 
    ```js
-   // Prints the first matching line and exits with 0, or exits with 3 when
-   // the process ends without printing one.
-   const WAIT = `dir=$1; pattern=$2
+   // Prints the first matching line and exits with 0. Exits with 3 when the
+   // process ends without printing one, 4 when there is no such process, and
+   // 5 when the process was lost, for example in an earlier instance.
+   const WAIT = `${CURRENT}
+   dir=$1; pattern=$2
+   [ -d "$dir" ] || exit 4
    while :; do
      exited=false; [ -e "$dir/exit-code" ] && exited=true
+     if ! $exited && [ -e "$dir/pid" ] && ! { current "$dir" && kill -0 "$pid" 2>/dev/null; }; then
+       sleep 0.1; [ -e "$dir/exit-code" ] || exit 5; exited=true
+     fi
      line=$(grep -h -m 1 -E -e "$pattern" "$dir/stdout.log" "$dir/stderr.log" 2>/dev/null | head -n 1)
      [ -n "$line" ] && { printf '%s\\n' "$line"; exit 0; }
      $exited && exit 3
@@ -618,11 +633,17 @@ A development server prints a line, such as `ready`, when it accepts requests. T
 
 
    ```ts
-   // Prints the first matching line and exits with 0, or exits with 3 when
-   // the process ends without printing one.
-   const WAIT = `dir=$1; pattern=$2
+   // Prints the first matching line and exits with 0. Exits with 3 when the
+   // process ends without printing one, 4 when there is no such process, and
+   // 5 when the process was lost, for example in an earlier instance.
+   const WAIT = `${CURRENT}
+   dir=$1; pattern=$2
+   [ -d "$dir" ] || exit 4
    while :; do
      exited=false; [ -e "$dir/exit-code" ] && exited=true
+     if ! $exited && [ -e "$dir/pid" ] && ! { current "$dir" && kill -0 "$pid" 2>/dev/null; }; then
+       sleep 0.1; [ -e "$dir/exit-code" ] || exit 5; exited=true
+     fi
      line=$(grep -h -m 1 -E -e "$pattern" "$dir/stdout.log" "$dir/stderr.log" 2>/dev/null | head -n 1)
      [ -n "$line" ] && { printf '%s\\n' "$line"; exit 0; }
      $exited && exit 3
@@ -668,6 +689,14 @@ A development server prints a line, such as `ready`, when it accepts requests. T
    			return { state: "exited" };
    		}
 
+   		if (result.exitCode === 4) {
+   			return undefined;
+   		}
+
+   		if (result.exitCode === 5) {
+   			return { state: "lost" };
+   		}
+
    		// 124 when the time limit passes, or 137 if timeout also sends SIGKILL.
    		if (result.exitCode === 124 || result.exitCode === 137) {
    			return { state: "timed-out" };
@@ -693,14 +722,14 @@ A development server prints a line, such as `ready`, when it accepts requests. T
    { "state": "matched", "line": "ready" }
    ```
 
-   The pattern is an extended regular expression. The state is `exited` when the process ends without printing a matching line, and `timed-out` when the time limit passes first.
+   The pattern is an extended regular expression. The state is `exited` when the process ends without printing a matching line, `lost` when it ended without recording an exit code, and `timed-out` when the time limit passes first. The method returns `undefined` when no process uses the ID. A process that was still running when an earlier instance stopped is `lost`, even when its log matches, because `current()` checks the boot ID.
 
 ## Related resources
 
 - [Stream command output](https://developers.cloudflare.com/sandbox/commands/stream-command-output/): commands that finish while the request is open.
 - [Run a server in the background](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/): processes that run until the container stops.
 - [Preview a web application](https://developers.cloudflare.com/sandbox/previews/): a web server as the main process.
-- [Process workspace example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/examples/process-workspace): a deployable Worker with these scripts, plus routes that list processes and wait for one to exit.
+- [Process workspace example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/examples/process-workspace): a deployable Worker that runs processes with the same approach, plus routes that list processes and wait for one to exit. Its scripts do not record the boot ID.
 - [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/)
 - [Durable Object alarms](https://developers.cloudflare.com/durable-objects/api/alarms/)
 
@@ -713,5 +742,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/#page","headline":"Run background processes","description":"Start a background process in a Linux sandbox, then check it, read its output, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/og.png?v=e231bc0f3fb59dce","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/#page","headline":"Run background processes","description":"Start a background process in a Linux sandbox, then check it, read its output, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-background-processes/og.png?v=e231bc0f3fb59dce","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

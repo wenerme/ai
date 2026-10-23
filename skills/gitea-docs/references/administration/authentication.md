@@ -335,9 +335,11 @@ The default login user email is `X-WEBAUTH-EMAIL`, you can change it via changin
 
 If set `ENABLE_REVERSE_PROXY_FULL_NAME=true`, a user full name expected in `X-WEBAUTH-FULLNAME` will be assigned to the user when auto creating the user. You can also change the header name with `REVERSE_PROXY_AUTHENTICATION_FULL_NAME`.
 
-You can also limit the reverse proxy's IP address range with `REVERSE_PROXY_TRUSTED_PROXIES` which default value is `127.0.0.0/8,::1/128`. By `REVERSE_PROXY_LIMIT`, you can limit trusted proxies level.
+It applies to the web interface, Git over HTTP, Git LFS and the package registry.
 
-You can enable the this authentication method for the API with
+> **warning**: Gitea trusts these headers on every request it receives. Make sure Gitea is only reachable through your authenticating proxy, and that the proxy sets or removes these headers on every request, including on paths you exempt from authentication, for example for Git or package clients. `REVERSE_PROXY_TRUSTED_PROXIES` does not restrict them.
+
+To also accept them on the REST API under `/api/v1`, enable:
 
 ```ini
 [service]

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-r
 
 # Run tests from a Git repository
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run the tests of a repository in a fresh sandbox. In this example, the Durable Object clones the repository, installs its dependencies, runs its test script, returns the result, and stops the instance.
 
@@ -84,7 +84,7 @@ You can check that Docker is running properly by running the `docker info` comma
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		container.start({
@@ -95,7 +95,7 @@ You can check that Docker is running properly by running the `docker info` comma
 
    		const decoder = new TextDecoder();
    		const run = async (step: string, argv: string[], cwd?: string) => {
-   			// `timeout` stops the command and every process it started.
+   			// Limit each step to 10 minutes.
    			const process = await container.exec(
    				["timeout", "--kill-after=5", "600", ...argv],
    				{ cwd },
@@ -147,7 +147,7 @@ You can check that Docker is running properly by running the `docker info` comma
 
    `--` stops `git` from reading a repository value that starts with `-` as an option.
 
-   A step that runs longer than 10 minutes returns exit code `124`. `timeout` stops the step [together with every process the step started](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts). The `finally` block stops the instance after the run.
+   A step that runs longer than 10 minutes returns exit code `124`, or `137` if `timeout` also sends `SIGKILL`. `timeout` stops the step together with the processes it starts that stay in its process group. For more information, refer to [Stop the processes a command starts](https://developers.cloudflare.com/containers/guides/execute-commands/#stop-the-processes-a-command-starts). The `finally` block stops the instance after the run.
 
    `output()` holds the whole output of a step in the memory of the Durable Object. For test suites that print a lot, [stream the output](https://developers.cloudflare.com/sandbox/commands/stream-command-output/) instead.
 
@@ -254,5 +254,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/#page","headline":"Run tests from a Git repository","description":"Clone a public Git repository into a fresh Linux sandbox, install its dependencies, and return the test results from your Worker.","url":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/og.png?v=c2631c87a50f61b3","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/#page","headline":"Run tests from a Git repository","description":"Clone a public Git repository into a fresh Linux sandbox, install its dependencies, and return the test results from your Worker.","url":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-tests-from-a-git-repository/og.png?v=c2631c87a50f61b3","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

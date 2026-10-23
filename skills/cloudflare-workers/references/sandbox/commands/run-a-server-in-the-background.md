@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-ba
 
 # Run a server in the background
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Start a server that runs until the container stops, such as a development server, a tunnel, or a code kernel. The server has no exit code to wait for. Your Durable Object starts it on first use, waits until it answers, and starts it again in each new container.
+Start a server that runs until the container stops, such as a development server, a tunnel, or a code kernel. Unlike a job, nothing waits for the server to exit. Your Durable Object starts it on first use, waits until it answers, and starts it again in each new container.
 
 For a process that runs until it finishes, such as a build or an agent task, refer to [Run background processes](https://developers.cloudflare.com/sandbox/commands/run-background-processes/). If the sandbox runs one server and keeps no files that you need, you can make the server the main process instead, as in [Preview a web application](https://developers.cloudflare.com/sandbox/previews/). When the main process exits, the instance stops, and its files end with it.
 
@@ -56,13 +56,15 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    kill -0 "$pid" 2>/dev/null && exit 1
    tail -n 20 "$1/log"`;
 
-   // Stops the process group. Once the server exits, within 10 seconds,
-   // removes its process ID.
+   // Stops the process group, with SIGKILL if the server still runs after
+   // 10 seconds. Once the server exits, removes its process ID.
    const STOP = `${CURRENT}
    current "$1" || exit 0
    kill -s TERM -- "-$pid" 2>/dev/null
-   timeout 10 sh -c 'while kill -0 "$0" 2>/dev/null; do sleep 0.1; done' "$pid" &&
-   	rm -f "$1/pid"`;
+   timeout 10 sh -c 'while kill -0 "$0" 2>/dev/null; do sleep 0.1; done' "$pid" ||
+   	kill -s KILL -- "-$pid" 2>/dev/null
+   while kill -0 "$pid" 2>/dev/null; do sleep 0.1; done
+   rm -f "$1/pid"`;
 
    async function startServer(container, dir, argv, options = {}) {
    	// Ignoring the output lets the server outlive this request.
@@ -143,13 +145,15 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    kill -0 "$pid" 2>/dev/null && exit 1
    tail -n 20 "$1/log"`;
 
-   // Stops the process group. Once the server exits, within 10 seconds,
-   // removes its process ID.
+   // Stops the process group, with SIGKILL if the server still runs after
+   // 10 seconds. Once the server exits, removes its process ID.
    const STOP = `${CURRENT}
    current "$1" || exit 0
    kill -s TERM -- "-$pid" 2>/dev/null
-   timeout 10 sh -c 'while kill -0 "$0" 2>/dev/null; do sleep 0.1; done' "$pid" &&
-   	rm -f "$1/pid"`;
+   timeout 10 sh -c 'while kill -0 "$0" 2>/dev/null; do sleep 0.1; done' "$pid" ||
+   	kill -s KILL -- "-$pid" 2>/dev/null
+   while kill -0 "$pid" 2>/dev/null; do sleep 0.1; done
+   rm -f "$1/pid"`;
 
    type ServerOptions = { cwd?: string; env?: Record<string, string> };
 
@@ -215,13 +219,13 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    }
    ```
 
-   `SERVE` starts nothing when the server in the directory already runs. Every request can call `startServer()`, and a new container, which has no server, gets one. This also covers a Durable Object that restarts while its container keeps running.
+   `SERVE` starts nothing when the server in the directory already runs, and a new container, which has no server, gets one. This also covers a Durable Object that restarts while its container keeps running.
 
    The process ID file also records the boot ID, which changes in every instance. A [snapshot](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/) restores the file, and a new instance reuses the same process IDs, so a restored process ID can belong to an unrelated process. `current()` ignores a process ID from another instance.
 
    `setsid` starts the server in a new process group, so `STOP` also stops the processes that the server starts. The shell that runs `SERVE` stays in the container until the server exits. Do not start the server with `&` instead: a shell starts background jobs with `SIGINT` ignored.
 
-   `STOP` removes the process ID once the server exits, so a server started in the same directory right after it never reads as exited. A server that ignores `SIGTERM` keeps running, and `STOP` exits with `124` after 10 seconds.
+   `STOP` removes the process ID once the server exits, so a server started in the same directory right after it never reads as exited. A server that ignores `SIGTERM` receives `SIGKILL` after 10 seconds.
 
    `waitForServer()` treats any HTTP response as ready. If the server exits first, it throws with the end of the log. The log grows until the server stops, so keep the output of a busy server small, or send it to a [mounted bucket](https://developers.cloudflare.com/sandbox/files/mount-an-r2-bucket/).
 2. Add a constructor to your Durable Object. It sets the inactivity timeout again when a restarted Durable Object finds the container running:
@@ -264,11 +268,14 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    export class MyContainer extends DurableObject<Env> {
    	// ...
 
+   	// The server start that requests in progress share
+   	private starting?: Promise<Fetcher>;
+
    	async fetchServer(request: Request): Promise<Response> {
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -280,8 +287,12 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    			await container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS);
    		}
 
-   		await startServer(container, WEB, WEB_SERVER);
-   		const server = await waitForServer(container, WEB, WEB_PORT, 30_000);
+   		this.starting ??= startServer(container, WEB, WEB_SERVER)
+   			.then(() => waitForServer(container, WEB, WEB_PORT, 30_000))
+   			.finally(() => {
+   				this.starting = undefined;
+   			});
+   		const server = await this.starting;
    		return server.fetch(request);
    	}
 
@@ -295,7 +306,7 @@ For a process that runs until it finishes, such as a build or an agent task, ref
    }
    ```
 
-   `fetchServer()` runs `SERVE` on every request. To skip it once the server answers, keep a flag in memory, and clear it when you start a new container.
+   Requests that arrive together share one start. `startServer()` returns before the server records its process ID, so a second `SERVE` in that window would start a second server. The second server fails on the port, overwrites the process ID file, and leaves `STOP` unable to stop the first one. After the server answers, each request runs `SERVE` again, which starts nothing while the server runs and restarts it if it exited.
 
    A running server does not keep the container running. Requests that reach the server through your Durable Object keep it running, as other requests do. When the inactivity timeout ends, the container stops, and the server stops with it. For more information, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#activity-keeps-an-instance-running).
 3. Add routes to your Worker that call these methods:
@@ -405,5 +416,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#page","headline":"Run a server in the background","description":"Start a server in a Linux sandbox once for each container, wait until it answers, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/og.png?v=4e85cc5d09cf583f","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/#page","headline":"Run a server in the background","description":"Start a server in a Linux sandbox once for each container, wait until it answers, and stop it from later requests.","url":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/commands/run-a-server-in-the-background/og.png?v=4e85cc5d09cf583f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

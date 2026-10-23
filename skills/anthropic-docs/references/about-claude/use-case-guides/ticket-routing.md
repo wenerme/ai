@@ -905,7 +905,9 @@ Build the deployment structure. Start by defining the function signature for wra
       Message message = client.messages().create(MessageCreateParams.builder()
           .model(DEFAULT_MODEL)
           .maxTokens(2048L)
-          .outputConfig(OutputConfig.builder().effort(OutputConfig.Effort.LOW).build())
+          .outputConfig(OutputConfig.builder()
+              .effort(OutputConfig.Effort.LOW)
+              .build())
           .addUserMessage(classificationPrompt)
           .build());
       String reasoningAndIntent = message.content().stream()
@@ -1273,7 +1275,9 @@ To assess this, first modify the script so that it compares the predicted intent
       Message message = client.messages().create(MessageCreateParams.builder()
           .model(DEFAULT_MODEL)
           .maxTokens(2048L)
-          .outputConfig(OutputConfig.builder().effort(OutputConfig.Effort.LOW).build())
+          .outputConfig(OutputConfig.builder()
+              .effort(OutputConfig.Effort.LOW)
+              .build())
           .addUserMessage(classificationPrompt)
           .build());
       // Get the usage statistics for the API call for how many input and output tokens were used.

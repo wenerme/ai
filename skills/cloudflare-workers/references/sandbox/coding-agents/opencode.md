@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/coding-agents/opencode/og.png?v
 
 # Run OpenCode in a sandbox
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/coding-agents/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run [OpenCode ↗︎](https://opencode.ai) in a Linux sandbox to edit a GitHub repository from a prompt, then read its changes as a diff. OpenCode calls models through [AI Gateway](https://developers.cloudflare.com/ai-gateway/). Your Worker adds the gateway token to those requests, and the sandbox can reach only your gateway and `github.com`.
 
@@ -36,10 +36,10 @@ Run [OpenCode ↗︎](https://opencode.ai) in a Linux sandbox to edit a GitHub r
    	&& apt-get install -y --no-install-recommends bash ca-certificates git ripgrep \
    	&& rm -rf /var/lib/apt/lists/*
 
-   RUN npm install --global --ignore-scripts opencode-linux-x64-baseline@1.18.32 \
+   RUN npm install --global --ignore-scripts opencode-linux-x64-baseline@1.19.4 \
    	&& ln -s /usr/local/lib/node_modules/opencode-linux-x64-baseline/bin/opencode /usr/local/bin/opencode
 
-   COPY --from=docker.io/cloudflare/sandbox:1.0.0 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
+   COPY --from=docker.io/cloudflare/sandbox:1.0.1 /usr/local/bin/sandbox-shim /usr/local/bin/sandbox-shim
 
    WORKDIR /workspace
    CMD ["sleep", "infinity"]
@@ -243,5 +243,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/#page","headline":"Run OpenCode in a sandbox","description":"Run the OpenCode coding agent on a GitHub repository in a Linux sandbox and read its changes as a diff.","url":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/og.png?v=3b97c1f136b8dfe8","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/#page","headline":"Run OpenCode in a sandbox","description":"Run the OpenCode coding agent on a GitHub repository in a Linux sandbox and read its changes as a diff.","url":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/coding-agents/opencode/og.png?v=3b97c1f136b8dfe8","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

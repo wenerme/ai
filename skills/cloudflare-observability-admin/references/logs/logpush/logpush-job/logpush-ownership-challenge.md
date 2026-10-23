@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-owners
 
 # Ownership challenge FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The ownership challenge is a one-time verification that proves you have read access to a destination bucket before Cloudflare pushes logs to it. This mechanism prevents you from accidentally configuring a Logpush job that pushes data to a bucket you do not control.
 
@@ -21,7 +21,7 @@ The ownership challenge is a one-time verification that proves you have read acc
 When you create a Logpush job to a storage destination, Cloudflare requires you to prove ownership of that destination:
 
 1. You request an ownership challenge for your `destination_conf`.
-2. Cloudflare writes a JWT to an `ownership-challenge.txt` file in your bucket.
+2. Cloudflare writes an encrypted JWT to an `ownership-challenge-<RANDOM>.txt` file in your bucket.
 3. You read the token from your bucket and submit it with your job creation request.
 4. Cloudflare validates the token and creates the job.
 
@@ -43,12 +43,11 @@ You may find the ownership challenge cumbersome because it is unusual and diffic
 
 ## Challenge token structure
 
-The ownership challenge is a JSON Web Token (JWT) containing claims that bind it to a specific context. The token includes:
+The ownership challenge is an encrypted JSON Web Token (JWT) containing claims that bind it to a specific context. The token includes:
 
 - **Object type** - Whether the job is zone-scoped, account-scoped, or tenant-scoped
 - **Object ID** - The specific zone or account identifier
-- **Destination configuration** - The full destination configuration string
-- **Destination fingerprint** - A hash of the bucket name and paths/prefixes
+- **Destination fingerprint** - A hash of the bucket name and path, plus the endpoint for S3-compatible destinations
 - **Expiration** - The token expires after 7 days
 
 When you submit the challenge token, Cloudflare validates that all claims match your job creation request. This prevents the token from being reused for a different account, zone, or destination.
@@ -67,8 +66,8 @@ Your bucket's IAM/access controls and Cloudflare account security are the primar
 
 ### Best practices
 
-- **Delete the challenge file after job creation** - Once your Logpush job is created, you can safely delete the `ownership-challenge.txt` file from your bucket.
-- **Restrict bucket permissions** - Grant write access only to Cloudflare's service accounts. For AWS S3, grant `PutObject` permission to `arn:aws:iam::391854517948:user/cloudflare-logpush`. For GCS, grant `Storage Object Admin` to `logpush@cloudflare-data.iam.gserviceaccount.com`.
+- **Delete the challenge file after job creation** - Once your Logpush job is created, you can safely delete the `ownership-challenge-<RANDOM>.txt` file from your bucket.
+- **Restrict bucket permissions** - Grant write access only to Cloudflare's service accounts. For AWS S3, grant `PutObject` permission to `arn:aws:iam::391854517948:user/cloudflare-logpush`, or [use an IAM role in your AWS account](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/#use-an-iam-role-in-your-aws-account). For GCS, grant `Storage Object Admin` to `logpush@cloudflare-data.iam.gserviceaccount.com`.
 - **Monitor your Logpush jobs** - Use the [Logpush health dashboards](https://developers.cloudflare.com/logs/logpush/logpush-health/) to monitor job status and detect anomalies.
 
 ## Which destinations require an ownership challenge?
@@ -104,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/#page","headline":"Ownership challenge FAQ","description":"Understand the Logpush destination ownership challenge.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/og.png?v=ce91f91db9eb5a6b","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/#page","headline":"Ownership challenge FAQ","description":"Understand the Logpush destination ownership challenge.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/og.png?v=ce91f91db9eb5a6b","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

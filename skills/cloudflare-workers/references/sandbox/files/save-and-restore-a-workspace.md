@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/files/save-and-restore-a-worksp
 
 # Save and restore a sandbox with snapshots
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Durable Object saves the filesystem of a sandbox as a Container snapshot, stores the snapshot ID, and starts the next instance from the snapshot. In this example, the sandbox keeps a notes file in `/workspace`.
 
@@ -62,7 +62,7 @@ Container snapshots are in public beta. Features and behavior may change.
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		if (!container.running) {
@@ -84,7 +84,7 @@ Container snapshots are in public beta. Features and behavior may change.
    ```
 
    If the stored snapshot cannot be restored, the request fails with an error such as `Snapshot "<SNAPSHOT_ID>" was not found.` Later requests fail the same way until the stored ID changes. The method does not fall back to the image, because the sandbox would then start with an empty workspace.
-2. Add a method that saves the filesystem and stops the instance:
+2. Add a method that runs one operation at a time, and a method that saves the filesystem and stops the instance:
 
    *src/index.tsts*
 
@@ -94,17 +94,30 @@ Container snapshots are in public beta. Features and behavior may change.
    export class MyContainer extends DurableObject<Env> {
    	// ...
 
+   	private queue: Promise<unknown> = Promise.resolve();
+
+   	// Runs each operation after the previous one finishes.
+   	private exclusive<T>(operation: () => Promise<T>): Promise<T> {
+   		const result = this.queue.then(operation);
+   		this.queue = result.catch(() => {});
+   		return result;
+   	}
+
    	async save() {
-   		const container = await this.startSandbox();
-   		const snapshot = await container.snapshotContainer({ name: "workspace" });
+   		return this.exclusive(async () => {
+   			const container = await this.startSandbox();
+   			const snapshot = await container.snapshotContainer({ name: "workspace" });
 
-   		await this.ctx.storage.put("snapshotId", snapshot.id);
-   		await container.destroy();
+   			await this.ctx.storage.put("snapshotId", snapshot.id);
+   			await container.destroy();
 
-   		return { snapshotId: snapshot.id, size: snapshot.size };
+   			return { snapshotId: snapshot.id, size: snapshot.size };
+   		});
    	}
    }
    ```
+
+   A command that writes a file while the snapshot runs can succeed and then disappear when `destroy()` stops the instance. `exclusive()` makes every operation that touches the disk wait for the save, and the save wait for them. Run each such method through it.
 
    A snapshot saves the writable root filesystem. It does not include mounted directories, memory, or running processes. Finish writing files before you save. For more information about what a restored instance starts with, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#snapshots-carry-files-to-the-next-instance).
 3. Add a method that adds a line to a file and returns the file, so you can check what a restore brings back:
@@ -118,14 +131,16 @@ Container snapshots are in public beta. Features and behavior may change.
    	// ...
 
    	async note(line?: string) {
-   		const container = await this.startSandbox();
-   		const script = line
-   			? 'mkdir -p /workspace && printf "%s\n" "$1" >> /workspace/notes.txt && cat /workspace/notes.txt'
-   			: "cat /workspace/notes.txt";
-   		const process = await container.exec(["sh", "-c", script, "sh", line ?? ""]);
-   		const output = await process.output();
+   		return this.exclusive(async () => {
+   			const container = await this.startSandbox();
+   			const script = line
+   				? 'mkdir -p /workspace && printf "%s\n" "$1" >> /workspace/notes.txt && cat /workspace/notes.txt'
+   				: "cat /workspace/notes.txt";
+   			const process = await container.exec(["sh", "-c", script, "sh", line ?? ""]);
+   			const output = await process.output();
 
-   		return new TextDecoder().decode(output.stdout);
+   			return new TextDecoder().decode(output.stdout);
+   		});
    	}
    }
    ```
@@ -253,13 +268,15 @@ A snapshot ID restores in any Durable Object of the same class. To copy the file
    	}
 
    	async useSnapshot(snapshotId: string) {
-   		// Replacing a running instance would discard files it has not saved.
-   		if (this.ctx.container?.running) {
-   			return false;
-   		}
+   		return this.exclusive(async () => {
+   			// Replacing a running instance would discard files it has not saved.
+   			if (this.ctx.container?.running) {
+   				return false;
+   			}
 
-   		await this.ctx.storage.put("snapshotId", snapshotId);
-   		return true;
+   			await this.ctx.storage.put("snapshotId", snapshotId);
+   			return true;
+   		});
    	}
    }
    ```
@@ -308,11 +325,13 @@ export class MyContainer extends DurableObject<Env> {
 	// ...
 
 	async reset() {
-		if (this.ctx.container?.running) {
-			await this.ctx.container.destroy();
-		}
+		return this.exclusive(async () => {
+			if (this.ctx.container?.running) {
+				await this.ctx.container.destroy();
+			}
 
-		await this.ctx.storage.delete("snapshotId");
+			await this.ctx.storage.delete("snapshotId");
+		});
 	}
 }
 ```
@@ -336,5 +355,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/#page","headline":"Save and restore a sandbox with snapshots","description":"Save the filesystem of a sandbox as a Container snapshot, stop its Linux instance, and restore the files in a new instance.","url":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/og.png?v=18cbde6e5d6299aa","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/#page","headline":"Save and restore a sandbox with snapshots","description":"Save the filesystem of a sandbox as a Container snapshot, stop its Linux instance, and restore the files in a new instance.","url":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/files/save-and-restore-a-workspace/og.png?v=18cbde6e5d6299aa","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

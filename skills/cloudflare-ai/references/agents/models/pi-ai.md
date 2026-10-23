@@ -12,17 +12,13 @@ image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab6
 
 # Pi AI
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `agents/models/pi-ai` is a [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai) provider for Workers AI and AI Gateway. It has the same `createAI` factory and options as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and returns Pi AI `Model` objects. Use it with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), or with any framework built on a Pi AI `Models` registry.
 
-Beta
-
-This provider is in beta. Its API may change in a minor release.
-
 ## Install
 
-The provider needs `@earendil-works/pi-ai@~1.3.0`, an optional peer dependency of `agents`:
+The provider needs `@earendil-works/pi-ai@~1.4.0`, an optional peer dependency of `agents`:
 
 npmyarnpnpmbun
 
@@ -80,7 +76,7 @@ export default {
 	async fetch(request, env) {
 		const ai = createAI({ binding: env.AI });
 
-		const reply = await ai.complete(ai("@cf/zai-org/glm-4.7-flash"), {
+		const reply = await ai.complete(ai("@cf/zai-org/glm-5.3-flash"), {
 			messages: [{ role: "user", content: "Hello", timestamp: Date.now() }],
 		});
 
@@ -102,7 +98,7 @@ export default {
 	async fetch(request: Request, env: Env) {
 		const ai = createAI({ binding: env.AI });
 
-		const reply = await ai.complete(ai("@cf/zai-org/glm-4.7-flash"), {
+		const reply = await ai.complete(ai("@cf/zai-org/glm-5.3-flash"), {
 			messages: [{ role: "user", content: "Hello", timestamp: Date.now() }],
 		});
 
@@ -145,7 +141,7 @@ import { getBuiltinModel } from "@earendil-works/pi-ai/providers/all";
 const ai = createAI({ binding: env.AI, id: "my-gateway" });
 
 // 1. A Workers AI model, by its @cf/ id.
-ai("@cf/zai-org/glm-4.7-flash");
+ai("@cf/zai-org/glm-5.3-flash");
 
 // 2. An AI Gateway dynamic route, by dynamic/<route>.
 ai("dynamic/support");
@@ -181,13 +177,15 @@ const models = createModels();
 models.setProvider(ai.provider);
 
 // In PiHarness options:
-// defaults: { model: ai("@cf/moonshotai/kimi-k2.7-code") }
+// defaults: { model: ai("@cf/zai-org/glm-5.3-flash") }
 
 // For one session:
 await session.setModel(ai("anthropic/claude-opus-5.5"));
 ```
 
 A Pi session stores only its model's provider and id, then looks the model up in the `Models` registry. Use the `@cf/`, `dynamic/`, and `<provider>/<id>` forms there. They belong to the `cloudflare` provider (`CLOUDFLARE_PROVIDER_ID`) that you registered. A model object keeps its vendor's provider id, which this registry does not know. Options passed to `ai(model, options)` do not reach a session. Set them on `createAI` instead.
+
+A model stream that is cut off, or that sends nothing for `streamIdleTimeoutMs`, ends in an error that Pi AI's `isRetryableAssistantError()` treats as transient. The Pi harness retries the turn under its retry settings instead of failing it.
 
 The provider's model list is every Workers AI model Pi AI knows, plus every `<provider>/<id>` in Pi AI's AI Gateway catalog, so `models.getModel("cloudflare", "anthropic/claude-opus-5.5")` resolves.
 
@@ -223,7 +221,7 @@ A Pi AI model is plain data. Per-model options are stored on it under symbol key
 
 ```ts
 ai(getBuiltinModel("anthropic", "claude-opus-5-5"), {
-	fallback: ["@cf/zai-org/glm-4.7-flash"],
+	fallback: ["@cf/zai-org/glm-5.3-flash"],
 });
 ```
 
@@ -311,5 +309,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

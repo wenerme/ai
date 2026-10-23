@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/protocol/
 
 # Authorization
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When building a [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io) server, you need both a way to allow users to login (authentication) and allow them to grant the MCP client access to resources on their account (authorization).
 
@@ -126,7 +126,11 @@ Get started with a remote MCP server that uses WorkOS's AuthKit to authenticate 
 
 #### Descope
 
-Get started with a remote MCP server that uses [Descope ↗︎](https://www.descope.com/) Inbound Apps to authenticate and authorize users (for example, email, social login, SSO) to interact with their data through AI agents. Leverage Descope custom scopes to define and manage permissions for more fine-grained control.
+Get started with a remote MCP server that uses [Descope ↗︎](https://www.descope.com/)'s Agentic Identity Hub to authenticate and authorize users (for example, email, social login, SSO) to interact with their data through AI agents. Define scopes on the MCP Server resource in Descope to manage fine-grained, per-tool permissions.
+
+Caution
+
+If you enable Dynamic Client Registration on a Descope MCP Server resource, also configure an approval step. Without one, any client can self-register and immediately request permissions with no human review.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-server-descope-auth)
 
@@ -307,5 +311,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/og.png?v=e8544827107a947e","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/og.png?v=e8544827107a947e","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

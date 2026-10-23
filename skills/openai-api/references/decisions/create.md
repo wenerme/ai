@@ -6,21 +6,21 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
 ### Body Parameters
 
-- `input: string or array of DecisionInputMessage or FunctionCall { arguments, call_id, name, 4 more }  or FunctionCallOutput { call_id, output, type, 2 more }  or 2 more`
+- `input: string or array of DecisionInputMessage or object { content, role, type }  or object { content, role, type }  or 2 more`
 
-  The input to evaluate for every question. Provide a text string or an ordered array of messages, function calls and outputs, or custom tool calls and outputs. Each tool output must identify a matching call by call ID. User messages and tool outputs can contain text and images; developer and system messages can contain only input text, and assistant messages can contain output text or refusals. Images can be base64 data URLs or publicly accessible HTTP(S) URLs; at most 128 images are allowed per request. Files, audio, and item references are not supported.
+  The input to evaluate for every question. Provide a text string or an ordered array of messages, function calls and outputs, or custom tool calls and outputs. Each tool output must identify a matching call by call ID.
 
   - `string`
 
-  - `array of DecisionInputMessage or FunctionCall { arguments, call_id, name, 4 more }  or FunctionCallOutput { call_id, output, type, 2 more }  or 2 more`
+  - `array of DecisionInputUserMessage { content, role, type }  or DecisionInputDeveloperMessage { content, role, type }  or DecisionInputSystemMessage { content, role, type }  or 5 more`
 
-    - `DecisionInputMessage object { content, role, phase, type }`
+    - `DecisionInputUserMessage object { content, role, type }`
 
-      A user message containing input text or images, a developer or system message containing input text, or an assistant message containing output text or refusals. System messages are rendered as developer messages.
+      A user message containing input text, images, or JSON.
 
       - `content: string or array of DecisionInputPart`
 
-        Text evidence or an ordered list of text and image parts.
+        A text string or an ordered list of text, image, and JSON parts.
 
         - `string`
 
@@ -78,6 +78,96 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
                 - `"explicit"`
 
+          - `DecisionInputJSON object { data, type }`
+
+            A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+
+            - `data: map[unknown] or array of map[unknown]`
+
+              - `map[unknown]`
+
+              - `array of map[unknown]`
+
+            - `type: "input_json"`
+
+              - `"input_json"`
+
+      - `role: "user"`
+
+        - `"user"`
+
+      - `type: optional "message"`
+
+        - `"message"`
+
+    - `DecisionInputDeveloperMessage object { content, role, type }`
+
+      A developer message containing input text.
+
+      - `content: string or array of DecisionInputText`
+
+        A text string or an ordered list of input text parts.
+
+        - `string`
+
+        - `Parts = array of DecisionInputText`
+
+          - `text: string`
+
+          - `type: "input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `role: "developer"`
+
+        - `"developer"`
+
+      - `type: optional "message"`
+
+        - `"message"`
+
+    - `DecisionInputSystemMessage object { content, role, type }`
+
+      A system message containing input text.
+
+      - `content: string or array of DecisionInputText`
+
+        A text string or an ordered list of input text parts.
+
+        - `string`
+
+        - `Parts = array of DecisionInputText`
+
+          - `text: string`
+
+          - `type: "input_text"`
+
+          - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+      - `role: "system"`
+
+        - `"system"`
+
+      - `type: optional "message"`
+
+        - `"message"`
+
+    - `DecisionInputAssistantMessage object { content, role, phase, type }`
+
+      An assistant message containing output text or refusals.
+
+      - `content: string or array of OutputText { text, type }  or Refusal { refusal, type }`
+
+        A text string or an ordered list of output text and refusal parts.
+
+        - `string`
+
+        - `Parts = array of OutputText { text, type }  or Refusal { refusal, type }`
+
           - `OutputText object { text, type }`
 
             - `text: string`
@@ -94,13 +184,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               - `"refusal"`
 
-      - `role: "user" or "developer" or "system" or "assistant"`
-
-        - `"user"`
-
-        - `"developer"`
-
-        - `"system"`
+      - `role: "assistant"`
 
         - `"assistant"`
 
@@ -234,13 +318,53 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
 - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
 
-  Ask 1–200 questions about the input. Each question can be a predicate, choice, or score. Answers come back in the same order.
+  Ask 1–400 questions about the input. Each question can be a predicate, choice, or score. Answers come back in the same order.
 
   - `Predicate object { instructions, type, name }`
 
     Estimate how likely it is that a statement about the input is true.
 
-    - `instructions: string`
+    - `instructions: string or array of DecisionQuestionInputPart`
+
+      - `string`
+
+      - `array of DecisionQuestionInputPart`
+
+        - `DecisionQuestionInputText object { text, type }`
+
+          - `text: string`
+
+          - `type: "input_text"`
+
+            - `"input_text"`
+
+        - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+          An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+          - `image_url: string`
+
+            A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+          - `type: "input_image"`
+
+            - `"input_image"`
+
+          - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+            The image detail level, using the selected model's image profile. Defaults to auto.
+
+            - `"low"`
+
+            - `"high"`
+
+            - `"auto"`
+
+            - `"original"`
+
+        - `DecisionInputJSON object { data, type }`
+
+          A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
     - `type: "predicate"`
 
@@ -268,7 +392,21 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `description: optional string`
 
-    - `instructions: string`
+    - `instructions: string or array of DecisionQuestionInputPart`
+
+      - `string`
+
+      - `array of DecisionQuestionInputPart`
+
+        - `DecisionQuestionInputText object { text, type }`
+
+        - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+          An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+        - `DecisionInputJSON object { data, type }`
+
+          A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
     - `type: "choice"`
 
@@ -282,7 +420,21 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     Rate the input against the supplied ordered levels.
 
-    - `instructions: string`
+    - `instructions: string or array of DecisionQuestionInputPart`
+
+      - `string`
+
+      - `array of DecisionQuestionInputPart`
+
+        - `DecisionQuestionInputText object { text, type }`
+
+        - `DecisionQuestionInputImage object { image_url, type, detail }`
+
+          An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+
+        - `DecisionInputJSON object { data, type }`
+
+          A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
     - `levels: array of object { label, description }`
 
@@ -445,7 +597,7 @@ curl https://api.openai.com/v1/decisions \
           "model": "model",
           "questions": [
             {
-              "instructions": "instructions",
+              "instructions": "string",
               "type": "predicate"
             }
           ]

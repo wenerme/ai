@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/communication-channels/chat/chat
 
 # Chat agents
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -792,9 +792,13 @@ export class ChatAgent extends AIChatAgent {
 		// Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
 		// turn that keeps producing content survives unbounded interruption.
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		// Runaway-loop guard. Defaults to 1,000. Set a higher value for a long
+		// Runaway-loop guard. Defaults to 10,000. Set a higher value for a long
 		// agentic turn, or Infinity to remove the cap.
-		maxRecoveryWork: 200,
+		maxRecoveryWork: 2000,
+		// How many of one turn's attempts may die before recovery gives up, for
+		// example to a memory-limit reset on every run. Defaults to 5, counting
+		// the original turn.
+		maxInterruptedAttempts: 5,
 		// Caller policy consulted from the second recovery attempt onward. Return
 		// false to stop recovery. This is where you enforce a token/cost budget.
 		// Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not
@@ -819,9 +823,13 @@ export class ChatAgent extends AIChatAgent {
 		// Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
 		// turn that keeps producing content survives unbounded interruption.
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		// Runaway-loop guard. Defaults to 1,000. Set a higher value for a long
+		// Runaway-loop guard. Defaults to 10,000. Set a higher value for a long
 		// agentic turn, or Infinity to remove the cap.
-		maxRecoveryWork: 200,
+		maxRecoveryWork: 2000,
+		// How many of one turn's attempts may die before recovery gives up, for
+		// example to a memory-limit reset on every run. Defaults to 5, counting
+		// the original turn.
+		maxInterruptedAttempts: 5,
 		// Caller policy consulted from the second recovery attempt onward. Return
 		// false to stop recovery. This is where you enforce a token/cost budget.
 		// Note: this is called as `config.shouldKeepRecovering(ctx)`, so it is not
@@ -845,8 +853,8 @@ The `chatRecovery` object accepts the following configuration options:
 | `stableTimeoutMs` | `10_000` | How long a recovery attempt waits for the isolate to reach stable state before rescheduling. |
 | `terminalMessage` | generic message | The message shown to the user when recovery is given up on. |
 | `noProgressTimeoutMs` | `300_000` (5 min) | Primary stuck-turn bound: how long an incident may go without forward progress before it is sealed (`no_progress_timeout`). **Resets on every progress-bearing attempt**, so a turn that keeps producing content survives unbounded interruption. |
-| `maxRecoveryWork` | `1,000` | Runaway-loop guard. Maximum produced content/tool units since the incident began before a still-progressing turn is sealed. Set a higher value or `Infinity` for a long agentic turn. |
-| `maxOomRetries` | `3` | Retry budget for Durable Object memory-limit resets. Set `0` to stop after the first memory-limit reset. |
+| `maxRecoveryWork` | `10,000` | Runaway-loop guard. Maximum produced content/tool units since the incident began before a still-progressing turn is sealed. Set a higher value or `Infinity` for a long agentic turn. |
+| `maxInterruptedAttempts` | `5` | How many of one turn's attempts may be interrupted before recovery gives up (`interrupted_attempts_exceeded`). An attempt is interrupted when its isolate dies before it finishes, for example in a Durable Object memory-limit reset or a deploy. The original turn counts, and progress never resets the count. Replaces `maxOomRetries`, which is still read as `maxInterruptedAttempts: maxOomRetries + 1`. |
 | `shouldKeepRecovering` | — | Caller policy consulted from the second recovery attempt onward. Return `false` to stop recovery. Use it to enforce a token or cost budget. `ctx.work` is a coarse segment count, not tokens, so track real spend yourself. |
 | `onExhausted` | — | Called once when recovery is given up on, before the terminal message is delivered. Inspect `ctx.reason` for why. |
 
@@ -863,13 +871,14 @@ The `chatRecovery` object accepts the following configuration options:
 | `work` | `number` | Coarse, monotonic count of content/tool segments produced since the incident opened (not tokens). |
 | `ageMs` | `number` | Wall-clock ms since the incident's first interruption. |
 
-A progressing turn survives repeated interruptions as long as it stays within the `maxRecoveryWork` limit. Recovery is sealed by one of these `ctx.reason` values:
+A progressing turn survives repeated interruptions as long as it stays within the `maxRecoveryWork` limit and fewer than `maxInterruptedAttempts` of its attempts die. Recovery is sealed by one of these `ctx.reason` values:
 
 - `no_progress_timeout` — no forward progress within the no-progress window (a stuck turn).
 - `max_attempts_exceeded` — the attempt cap was spent on a tight no-progress alarm loop.
 - `work_budget_exceeded` — the turn kept producing content but exceeded `maxRecoveryWork` (a runaway loop).
+- `interrupted_attempts_exceeded` — the turn's attempts kept dying before they finished, for example in a memory-limit reset on every run, until `maxInterruptedAttempts` of them had been interrupted.
+- `out_of_memory` — the alarm memory-limit circuit breaker sealed the recovery after repeated memory-limit resets.
 - `recovery_aborted` — your `shouldKeepRecovering` hook returned `false`.
-- `out_of_memory` — recovery exceeded the memory-limit retry budget.
 - `stable_timeout` — recovery attempts kept timing out waiting for stable state until the budget drained (extreme churn).
 
 Tip
@@ -2415,5 +2424,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/og.png?v=7e7ad14729f7160e","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/og.png?v=7e7ad14729f7160e","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

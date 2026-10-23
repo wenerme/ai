@@ -12,13 +12,9 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v
 
 # Extensions
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Both tools and system prompt sections are provided to the Pi `Harness` via extensions. An extension is Pi Durable's own: a plain object with a `name`, `tools`, and `sections`, installed on the registry you pass to `Harness.open()`. [`PiHarness`](https://developers.cloudflare.com/agents/harnesses/pi/) does not wrap them, so every Pi Durable extension feature works.
-
-Beta
-
-`PiHarness` is in beta and will likely change as [Pi Durable ↗︎](https://earendil.com/posts/pi-durable/) matures.
 
 ## Install an extension
 
@@ -27,11 +23,12 @@ Create the registry with `createRegistry()` and install extensions in the `harne
 *src/index.jsjs*
 
 ```js
-import { Agent } from "agents";
+import { DurableObject } from "cloudflare:workers";
 import { Type } from "@earendil-works/pi-ai";
 import { createModels } from "@earendil-works/pi-ai/models";
 import { createRegistry, Harness } from "@earendil-works/pi-durable";
 import { PiHarness } from "agents/harness/pi";
+import { Lifecycle } from "agents/lifecycle";
 import { createAI } from "agents/models/pi-ai";
 
 const WordCount = Type.Object({ text: Type.String() });
@@ -44,16 +41,16 @@ const wordCount = {
 	// `text` is typed from `parameters`, which Pi validates first.
 	async execute({ text }) {
 		const words = text.split(/\s+/).filter(Boolean).length;
-		return { content: [{ type: "text", text: String(words) }] };
+		return { output: [{ type: "text", text: String(words) }] };
 	},
 };
 
-export class Editor extends Agent {
+export class Editor extends DurableObject {
 	ai = createAI({ binding: this.env.AI });
 	registry = createRegistry();
 
 	harness = new PiHarness({
-		harness: ({ storage, context }) => {
+		harness: ({ storage, context, onWake }) => {
 			this.registry.install({
 				name: "editor",
 				sections: [
@@ -65,24 +62,21 @@ export class Editor extends Agent {
 			models.setProvider(this.ai.provider);
 			return Harness.open(
 				storage,
-				{ models, registry: this.registry },
+				{ models, registry: this.registry, onWake },
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/moonshotai/kimi-k2.7-code") },
+		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
 	});
 
-	constructor(ctx, env) {
-		super(ctx, env);
-		this.lifecycle.use(this.harness);
-	}
+	lifecycle = Lifecycle.install(this).use(this.harness);
 }
 ```
 
 *src/index.tsts*
 
 ```ts
-import { Agent } from "agents";
+import { DurableObject } from "cloudflare:workers";
 import { Type } from "@earendil-works/pi-ai";
 import { createModels } from "@earendil-works/pi-ai/models";
 import {
@@ -91,6 +85,7 @@ import {
 	type ToolRegistration,
 } from "@earendil-works/pi-durable";
 import { PiHarness } from "agents/harness/pi";
+import { Lifecycle } from "agents/lifecycle";
 import { createAI } from "agents/models/pi-ai";
 
 const WordCount = Type.Object({ text: Type.String() });
@@ -103,16 +98,16 @@ const wordCount: ToolRegistration<typeof WordCount> = {
 	// `text` is typed from `parameters`, which Pi validates first.
 	async execute({ text }) {
 		const words = text.split(/\s+/).filter(Boolean).length;
-		return { content: [{ type: "text", text: String(words) }] };
+		return { output: [{ type: "text", text: String(words) }] };
 	},
 };
 
-export class Editor extends Agent<Env> {
+export class Editor extends DurableObject<Env> {
 	ai = createAI({ binding: this.env.AI });
 	registry = createRegistry();
 
 	harness = new PiHarness({
-		harness: ({ storage, context }) => {
+		harness: ({ storage, context, onWake }) => {
 			this.registry.install({
 				name: "editor",
 				sections: [
@@ -124,21 +119,20 @@ export class Editor extends Agent<Env> {
 			models.setProvider(this.ai.provider);
 			return Harness.open(
 				storage,
-				{ models, registry: this.registry },
+				{ models, registry: this.registry, onWake },
 				context,
 			);
 		},
-		defaults: { model: this.ai("@cf/moonshotai/kimi-k2.7-code") },
+		defaults: { model: this.ai("@cf/zai-org/glm-5.3-flash") },
 	});
 
-	constructor(ctx: DurableObjectState, env: Env) {
-		super(ctx, env);
-		this.lifecycle.use(this.harness);
-	}
+	lifecycle = Lifecycle.install(this).use(this.harness);
 }
 ```
 
-The factory runs once per isolate, inside the object's startup, so each extension is installed once. `registry.install()` replaces an installed extension with the same name.
+The factory runs inside the object's startup, and again if the harness reopens Pi after a storage error. `registry.install()` replaces an installed extension with the same name, so installing extensions in the factory is safe to repeat.
+
+Create the registry per object, as a class field, not at module scope. Pi keeps every `Harness` subscribed to its registry until the `Harness` closes, and an evicted object never closes it.
 
 ## Write a tool
 
@@ -160,7 +154,7 @@ const fetchPage: ToolRegistration<typeof FetchPage> = {
 	async execute({ url }, api, context) {
 		api.output(`fetching ${url}\n`);
 		const response = await fetch(url, { signal: context.abortSignal });
-		return { content: [{ type: "text", text: await response.text() }] };
+		return { output: [{ type: "text", text: await response.text() }] };
 	},
 };
 ```
@@ -209,9 +203,9 @@ const handbook = fromManifest({
 });
 
 harness = new PiHarness({
-	harness: async ({ storage, context }) => {
+	harness: async ({ storage, context, onWake }) => {
 		this.registry.install(await skills([handbook]));
-		// ...models, then Harness.open()
+		// ...models, then Harness.open() with onWake
 	},
 });
 ```
@@ -239,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

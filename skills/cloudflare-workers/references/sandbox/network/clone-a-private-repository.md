@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/network/clone-a-private-reposit
 
 # Clone a private repository
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Clone a private repository into a sandbox while the access token stays in your Worker. If the clone URL contains the token, every command in the sandbox can read it. Instead, the Durable Object intercepts HTTPS requests from Git to `github.com`. An entrypoint in your Worker receives each request, checks it, and adds the token.
 
@@ -189,7 +189,7 @@ You can check that Docker is running properly by running the `docker info` comma
    		const container = this.ctx.container;
 
    		if (!container) {
-   			throw new Error("The container binding is not configured");
+   			throw new Error("No container is configured");
    		}
 
    		await container.interceptOutboundHttps(
@@ -203,6 +203,8 @@ You can check that Docker is running properly by running the `docker info` comma
    				// The container can reach only the hostnames you intercept
    				enableInternet: false,
    			});
+   			// Keep the clone for later requests
+   			await container.setInactivityTimeout(10 * 60 * 1000);
    		}
 
    		const process = await container.exec(
@@ -240,11 +242,13 @@ You can check that Docker is running properly by running the `docker info` comma
 
    ```ts
    if (url.pathname === "/clone" && request.method === "POST") {
-   	const sandbox = env.MY_CONTAINER.getByName("sandbox");
+   	const sandbox = env.MY_CONTAINER.getByName("repo");
    	const { exitCode, stderr } = await sandbox.clone();
    	return new Response(stderr, { status: exitCode === 0 ? 200 : 500 });
    }
    ```
+
+   The route uses a sandbox name of its own. An instance that is already running keeps the image and Internet access it started with, so it would have no Git.
 
    When Git fails, the route responds with `500` and the error from Git. While the sandbox keeps running, a second request fails this way, because `/workspace` already holds the clone.
 
@@ -273,7 +277,7 @@ You can check that Docker is running properly by running the `docker info` comma
    Cloning into '/workspace'...
    ```
 
-   The repository is in `/workspace`, and `git remote get-url origin` prints the URL without a token. A `git push` from the sandbox fails with `403`.
+   The repository is in `/workspace`, and `git remote get-url origin` prints the URL without a token. A `git push` from the sandbox fails with `403`. The clone lasts until the instance stops. For more information, refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#what-stops-an-instance).
 
 ## Related resources
 
@@ -290,5 +294,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/#page","headline":"Clone a private repository","description":"Clone a private GitHub repository into a Linux sandbox without giving the sandbox the access token.","url":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/og.png?v=7057e6542fb559ab","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/#page","headline":"Clone a private repository","description":"Clone a private GitHub repository into a Linux sandbox without giving the sandbox the access token.","url":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/network/clone-a-private-repository/og.png?v=7057e6542fb559ab","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

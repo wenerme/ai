@@ -16,6 +16,126 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-22
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Windows (version 2026.9.1555.1)**
+
+A new Beta release for the Windows Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release includes the following highlights:
+
+- Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them without requiring action from the user. The Connectivity page shows which tunnel and API endpoints are in use, and users who are allowed to override the selection can choose endpoints in Settings.
+- Added protection against unauthorized modification or uninstallation of the Cloudflare One Client. When enabled, the user will be asked to provide an administrator-generated code when trying to uninstall the client, which will otherwise be blocked.
+- The client now shows a banner when the network limits the tunnel MTU to a degraded or critically low value. The banner clears when the MTU recovers or the client disconnects.
+
+**Additional Changes and improvements**
+
+- The client now applies tunnel MTUs between 1147 and 1199 bytes measured by Path MTU Discovery. Previously the client ignored these values and kept a larger MTU, which could drop larger packets on networks such as mobile hotspots while the client showed as connected.
+- When Path MTU Discovery is enabled, the client now accepts larger packets from Cloudflare instead of limiting them to the size it uses for its own outbound packets.
+- Access reauthentication requests now trust certificates in the operating system's certificate store, so reauthentication works on networks that perform TLS inspection.
+- For Zero Trust deployments, the client now records a traceroute of the network path outside the tunnel when the tunnel degrades or fails to connect. warp-diag includes the same trace.
+- warp-diag now includes redacted copies of the deployed MDM files and the names, but not the values, of stored registration secrets. It reports a QUIC path MTU only when one was measured.
+- Added the MDM parameters mdm\_file\_debounce\_secs (1–60) and mdm\_file\_unavailable\_debounce\_secs (0–300), which set how long the client waits before applying a changed MDM file and before acting on a missing or unreadable one.
+- The consumer client home screen now shows when the connection is post-quantum encrypted.
+- The client UI no longer starts WMIC or PowerShell processes to collect memory information for crash reports.
+- Fixed a hostname-based split tunnel entry not taking effect until the next reconnect after its firewall rule failed to apply.
+- Fixed the client window appearing blank or white after an upgrade, at sign-in, after waking from sleep, or after a display change.
+- Fixed the client service restarting when a firewall update for captive portal detection stalled while the device was asleep.
+- Fixed the client getting stuck in a disconnected state on Windows on Arm devices because leftover tunnel adapters were not removed.
+- Fixed the client being unable to connect after an upgrade, downgrade, and upgrade that switched between consumer and Zero Trust registrations. The client now clears the mismatched registration so the user can register again.
+- Fixed the client UI looking for one of its libraries in a directory that standard users can create before looking in the installation directory.
+- Fixed warp-cli registration license reporting an error on slow networks even though the license was applied, which left the client registered to a WARP+ account it did not recognize.
+- Fixed Digital Experience Monitoring (DEX) results being reported with timestamps offset from the actual time after the system clock was corrected.
+- Added the MDM parameters managed\_network\_probe\_interval\_secs (30–300, default 30) and managed\_network\_probe\_count (0 disables probing, 1–10, or -1 to keep probing until a managed network is found; default 1). After a registration or network change finds no managed network, the client now rechecks, so a device doesn't stay on the default profile because of a transient connection failure. Set the count to 0 to keep the previous behavior.
+- In proxy mode for Zero Trust, the client now sends hostnames from HTTP/HTTPS and SOCKS5 requests to Cloudflare for resolution instead of resolving them on the device.
+- When the app cannot reach the client service, the home screen now says why (service not running, not accepting connections, not responding, or connection dropped and reconnecting). It shows an error code and a Learn more link instead of "IPC error".
+- Fixed Windows resetting the Wi-Fi adapter after sign-in or a Wi-Fi restart when the client's firewall rules in Exclude split tunnel mode blocked Windows network connectivity checks. The client now allows those checks.
+- Fixed the installer asking the user to close running applications during an upgrade, downgrade or uninstall because other programs loaded the client's Visual C++ runtime libraries through the system PATH. The client now loads these libraries from a private folder so that closing other applications is unnecessary.
+
+**Known issues**
+
+A Windows DNS client regression may cause connectivity check failures on systems containing large hosts files. While our client includes a mitigation for this issue, users may still experience reduced DNS performance and connectivity check failures.
+
+For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/ For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
+
+## 2026-10-22
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for macOS (version 2026.9.1555.1)**
+
+A new Beta release for the macOS Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This release includes the following highlights:
+
+- macOS 15.0 is now the minimum supported version. This release does not run on macOS 14.
+- Added automatic endpoint selection for Global Acceleration. When Global Acceleration is enabled for an organization, the client connects to the Global Acceleration endpoints while the device is in the acceleration region and to the standard anycast endpoints otherwise, and reconnects when a network change moves the device between them without requiring action from the user.. The Connectivity page shows which tunnel and API endpoints are in use, and users who are allowed to override the selection can choose endpoints in Settings.
+- The client now shows a banner when the network limits the tunnel MTU to a degraded or critically low value. The banner clears when the MTU recovers or the client disconnects.
+
+**Additional Changes and improvements**
+
+- The client now applies tunnel MTUs between 1147 and 1199 bytes measured by Path MTU Discovery. Previously the client ignored these values and kept a larger MTU, which could drop larger packets on networks such as mobile hotspots while the client showed as connected.
+- When Path MTU Discovery is enabled, the client now accepts larger packets from Cloudflare instead of limiting them to the size it uses for its own outbound packets.
+- Access reauthentication requests now trust certificates in the operating system's certificate store, so reauthentication works on networks that perform TLS inspection.
+- For Zero Trust deployments, the client now records a traceroute of the network path outside the tunnel when the tunnel degrades or fails to connect. warp-diag includes the same trace.
+- warp-diag now includes redacted copies of the deployed MDM files and reports a QUIC path MTU only when one was measured.
+- The consumer client home screen now shows when the connection is post-quantum encrypted.
+- Fixed a managed registration being removed when the MDM configuration file was briefly missing or unreadable. The client now keeps the last applied policy for 20 seconds after the file becomes unavailable. The new MDM parameters mdm\_file\_debounce\_secs (1–60) and mdm\_file\_unavailable\_debounce\_secs (0–300) change how long the client waits before applying a changed file and before acting on a missing one.
+- Fixed a hostname-based split tunnel entry not taking effect until the next reconnect after its firewall rule failed to apply.
+- Fixed split tunnel updates for hostname-based entries failing when the client tried to remove a route that macOS had not installed.
+- Fixed the client UI not showing onboarding on first launch while a notification permission request was pending.
+- Fixed warp-cli registration license reporting an error on slow networks even though the license was applied, which left the client registered to a WARP+ account it did not recognize.
+- Fixed Digital Experience Monitoring (DEX) results being reported with timestamps offset from the actual time after the system clock was corrected.
+- Fixed an upgrade sometimes leaving the client without a running service when the previous service was slow to stop. The installer now waits up to 10 seconds for the old service to be removed before starting the new one.
+- Fixed the OS version detail stored for a device keeping an outdated value, including the text "Usage: sw\_vers…" reported by client versions 2023.5.587.1 through 2024.12.760.0. The client now clears the value the next time it connects.
+- Added the MDM parameters managed\_network\_probe\_interval\_secs (30–300, default 30) and managed\_network\_probe\_count (0 disables probing, 1–10, or -1 to keep probing until a managed network is found; default 1). After a registration or network change finds no managed network, the client now rechecks, so a device doesn't stay on the default profile because of a transient connection failure. Set the count to 0 to keep the previous behavior.
+- In proxy mode for Zero Trust, the client now sends hostnames from HTTP/HTTPS and SOCKS5 requests to Cloudflare for resolution, instead of resolving them on the device.
+- When the app cannot reach the client service, the home screen now says why (service not running, not accepting connections, not responding, or connection dropped and reconnecting). It shows an error code and a Learn more link instead of "IPC error".
+
+**Known issues**
+
+None.
+
+For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/ For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
+
+## 2026-10-22
+
+[Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+
+
+**Cloudflare Tunnel supports URL normalization**
+
+Starting from version `2026.10.0`, [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) can normalize URLs before matching ingress rules. This improves security for tunnels with rules that require Cloudflare Access validation. The URL path sent to your origin stays the same.
+
+In three months, starting 2027-01-25, new `cloudflared` releases will turn on URL normalization by default. Test your path-based routing before that date, as this change may affect which ingress rule matches a request. Configurations without rules requiring Access validation are unaffected.
+
+This setting is currently off by default. To turn it on, run:
+
+```sh
+cloudflared tunnel --disable-path-normalization=false run <TUNNEL_NAME_OR_UUID>
+```
+
+Alternatively, set `TUNNEL_DISABLE_PATH_NORMALIZATION=false` on each `cloudflared` replica and restart it.
+
+For more information, refer to [ingress matching](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/#how-traffic-is-matched) and [Access validation at the origin](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#access).
+
+## 2026-10-22
+
+[Cloudflare Fundamentals](https://developers.cloudflare.com/fundamentals/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)
+
+
+**Granular Tunnel Read And Monitor role is generally available**
+
+The **Cloudflare Tunnel - Granular Connector cloudflared Read And Monitor** role is now generally available. You can grant a member read access and log streaming for specific [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances without granting write access or access to every Tunnel in your account.
+
+This role includes the same access as **Cloudflare Tunnel - Granular Connector cloudflared Read**: viewing selected Tunnels, their IP and hostname routes, and connector host details. It also grants [remote log streaming](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming), so support operators can troubleshoot a Tunnel without changing its configuration. The existing **Read** role does not grant log streaming access.
+
+To assign the role, follow [Grant a granular permission](https://developers.cloudflare.com/tunnel/guides/granular-permissions/#grant-a-granular-permission). For the available roles, refer to the [resource-scoped roles reference](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles).
+
 ## 2026-10-21
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?
 
 # Durable recovery
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think always wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks. It persists partial output and schedules a continuation or retry.
 
@@ -147,14 +147,15 @@ Durable bookkeeping remains active when automatic continuation is not appropriat
 
 ### Recovery budgets and limits
 
-Assign a `chatRecovery` object to tune recovery limits and terminal behavior. A progressing turn survives repeated interruptions while it stays within the `maxRecoveryWork` limit. The following options control when recovery stops:
+Assign a `chatRecovery` object to tune recovery limits and terminal behavior. A progressing turn survives repeated interruptions while it stays within the `maxRecoveryWork` limit and fewer than `maxInterruptedAttempts` of its attempts die. The following options control when recovery stops:
 
 ```js
 export class MyAgent extends Think {
 	chatRecovery = {
 		maxAttempts: 10,
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		maxRecoveryWork: 1_000,
+		maxRecoveryWork: 10_000,
+		maxInterruptedAttempts: 5,
 		terminalMessage: "The assistant was interrupted and could not recover.",
 		// Consulted from the second recovery attempt onward. Return false to stop.
 		// Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
@@ -175,7 +176,8 @@ export class MyAgent extends Think<Env> {
 	override chatRecovery = {
 		maxAttempts: 10,
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		maxRecoveryWork: 1_000,
+		maxRecoveryWork: 10_000,
+		maxInterruptedAttempts: 5,
 		terminalMessage: "The assistant was interrupted and could not recover.",
 		// Consulted from the second recovery attempt onward. Return false to stop.
 		// Called as `config.shouldKeepRecovering(ctx)`, so it is NOT bound to the
@@ -196,13 +198,13 @@ export class MyAgent extends Think<Env> {
 | `maxAttempts` | `10` | Attempt cap. Resets on forward progress, so it catches a tight no-progress alarm loop, not a healthy long turn. |
 | `stableTimeoutMs` | `10_000` | How long an attempt waits for the isolate to reach stable state before rescheduling. |
 | `noProgressTimeoutMs` | `300_000` (5 min) | Primary stuck-turn bound: max time without forward progress before sealing. **Resets on every progress-bearing attempt.** |
-| `maxRecoveryWork` | `1,000` | Runaway-loop guard: maximum produced content/tool units before a still-progressing turn is sealed. Set a higher value or `Infinity` for a long agentic turn. |
-| `maxOomRetries` | `3` | Retry budget for Durable Object memory-limit resets. Set `0` to stop after the first memory-limit reset. |
+| `maxRecoveryWork` | `10,000` | Runaway-loop guard: maximum produced content/tool units before a still-progressing turn is sealed. Set a higher value or `Infinity` for a long agentic turn. |
+| `maxInterruptedAttempts` | `5` | How many of one turn's attempts may be interrupted before recovery gives up (`interrupted_attempts_exceeded`). An attempt is interrupted when its isolate dies before it finishes, for example in a Durable Object memory-limit reset or a deploy. The original turn counts, and progress never resets the count. Replaces `maxOomRetries`, which is still read as `maxInterruptedAttempts: maxOomRetries + 1`. |
 | `shouldKeepRecovering` | — | Caller policy consulted from the second attempt onward. Return `false` to stop recovery. The hook point for a token/cost budget (`ctx.work` is a coarse segment count, not tokens). |
 | `terminalMessage` | generic message | Message shown to the user when recovery is given up on. |
 | `onExhausted` | — | Called once when recovery is given up on. Inspect `ctx.reason`. |
 
-`ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), `out_of_memory` (memory-limit retry budget), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference. Think and `@cloudflare/ai-chat` use the same recovery configuration.
+`ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `interrupted_attempts_exceeded` (the turn's attempts kept dying, for example in memory-limit resets), `out_of_memory` (sealed by the alarm memory-limit circuit breaker), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference. Think and `@cloudflare/ai-chat` use the same recovery configuration.
 
 ## Repairing interrupted tool calls
 
@@ -367,5 +369,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?v=3f08719de29187b8","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?v=3f08719de29187b8","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
