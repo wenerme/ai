@@ -20,13 +20,13 @@ Prerequisites:
 
 Executes a GLQL query to search and filter GitLab resources.
 
-```plaintext
-POST /glql
-```
-
 > [!note]
 > This endpoint rate-limits queries based on the query SHA. Identical queries that time out are
 > tracked and might be temporarily blocked if executed too frequently.
+
+```plaintext
+POST /glql
+```
 
 Supported attributes:
 

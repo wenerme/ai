@@ -429,6 +429,7 @@ Audit event types belong to the following product categories.
 | [`foundational_agent_status_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235225) | A foundational agent status was updated for a namespace or organization | Yes | GitLab [19.1](https://gitlab.com/gitlab-org/gitlab/-/work_items/593030) | Group, Instance |
 | [`mcp_server_oauth_token_stored`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234028) | A user connected to an MCP server and an OAuth token was stored | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/593029) | User |
 | [`prompt_injection_protection_level_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/232180) | Prompt injection protection level setting on group changed | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/593025) | Group |
+| [`require_sandbox_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262117) | In a group, the setting that stops flows from running when the execution environment sandbox is unavailable is changed | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/607753) | Group |
 | [`third_party_agent_token_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227761) | A third-party agent access token was generated | Yes | GitLab [18.11](https://gitlab.com/gitlab-org/gitlab/-/issues/593031) | User |
 | [`api_request_access_with_scope`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/172548) | A subset of API requests authenticated by a token with an audited scope | Yes | GitLab [17.7](https://gitlab.com/gitlab-org/gitlab/-/issues/499461) | User |
 | [`duo_cli_session_blocked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242484) | A Duo CLI session was blocked because the administrator disabled Duo CLI | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/work_items/597833) | User |
@@ -553,6 +554,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`terraform_state_permanently_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262900) | Terraform state permanently deleted before the end of the grace period | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/621470) | Project |
 | [`terraform_state_restored`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259091) | Terraform state restored from soft deletion | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/621469) | Project |
 
 ### Knowledge graph

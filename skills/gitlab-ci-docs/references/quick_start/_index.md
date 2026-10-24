@@ -41,9 +41,9 @@ If you're using GitLab.com, you can skip this step. GitLab.com provides instance
 
 To view available runners:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Runners**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
 
 As long as you have at least one runner that's active, with a green circle next to it,
 you have a runner available to process your jobs.
@@ -72,15 +72,15 @@ In this file, you define:
 
 To create a `.gitlab-ci.yml` file in your project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Repository**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Above the file list, select the branch you want to commit to.
    If you're not sure, leave the default branch selected.
-   Then, in the upper-right corner, select the plus icon () and **New file**:
+   Then, in the upper-right corner, select the plus icon () and :
 
    [The new file button to create a file in the current folder.]
 
-1. For the **Filename**, type `.gitlab-ci.yml` and in the larger window,
+1. Name the file `.gitlab-ci.yml` and in the larger window,
    paste this sample code:
 
    ```yaml
@@ -114,7 +114,7 @@ To create a `.gitlab-ci.yml` file in your project:
    The values for the [predefined variables](../variables/predefined_variables.md)
    `$GITLAB_USER_LOGIN` and `$CI_COMMIT_BRANCH` are populated when the jobs run.
 
-1. Select **Commit changes**.
+1. Select .
 
 The pipeline starts and runs the jobs you defined in the `.gitlab-ci.yml` file.
 
@@ -122,7 +122,7 @@ The pipeline starts and runs the jobs you defined in the `.gitlab-ci.yml` file.
 
 Now take a look at your pipeline and its jobs.
 
-1. Go to **Build** > **Pipelines**. A pipeline with three stages should be displayed:
+1. Go to  > . A pipeline with three stages should be displayed:
 
    [The pipeline list shows a running pipeline with 3 stages]
 

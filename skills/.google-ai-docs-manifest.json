@@ -14,8 +14,8 @@
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",
     "skill": "google-ai-api",
-    "size": 41251,
-    "updatedAt": "2026-10-11T05:35:41.663Z"
+    "size": 41185,
+    "updatedAt": "2026-10-24T01:03:57.709Z"
   },
   "google-ai-api/embeddings.md": {
     "url": "https://ai.google.dev/api/embeddings",
@@ -128,8 +128,8 @@
   "google-ai-docs/caching.md": {
     "url": "https://ai.google.dev/gemini-api/docs/caching",
     "skill": "google-ai-docs",
-    "size": 1646,
-    "updatedAt": "2026-10-14T00:59:04.373Z"
+    "size": 2053,
+    "updatedAt": "2026-10-24T01:04:07.599Z"
   },
   "google-ai-docs/long-context.md": {
     "url": "https://ai.google.dev/gemini-api/docs/long-context",
@@ -446,8 +446,8 @@
   "google-ai-docs/generate-content/caching.md": {
     "url": "https://ai.google.dev/gemini-api/docs/generate-content/caching",
     "skill": "google-ai-docs",
-    "size": 19488,
-    "updatedAt": "2026-10-10T05:40:35.608Z"
+    "size": 20163,
+    "updatedAt": "2026-10-24T01:04:40.936Z"
   },
   "google-ai-docs/batch-api.md": {
     "url": "https://ai.google.dev/gemini-api/docs/batch-api",

@@ -3574,6 +3574,10 @@ GPT Image 1, and GPT Image 1 Mini, the legacy per-image output pricing table is
 also listed below. You should still account for text and image input tokens when
 estimating the total cost of a request.
 
+`gpt-image-1` was shut down on October 23, 2026. Its prices below are retained
+for historical comparisons. See the [deprecation notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots)
+for replacement models.
+
 A larger non-square resolution can sometimes produce fewer output tokens than
   a smaller or square resolution at the same quality setting.
 

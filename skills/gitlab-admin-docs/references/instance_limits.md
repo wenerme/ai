@@ -71,7 +71,7 @@ Read more about [protected path rate limits](settings/protected_paths.md).
 
 ### Import and export
 
-These settings limit file imports and exports for groups and projects.
+These settings limit file imports and exports for groups and projects, and imports from other sources.
 
 | Limit                   | Default (per minute per user) |
 |:------------------------|:------------------------------|
@@ -81,6 +81,7 @@ These settings limit file imports and exports for groups and projects.
 | Group import            | 6 import requests             |
 | Group export            | 6 export requests             |
 | Group export download   | 1 download request            |
+| GitHub gists import     | 6 import requests             |
 
 These settings [can be configured](settings/import_export_rate_limits.md).
 
@@ -803,7 +804,7 @@ More information can be found in the [Push event activities limit and bulk push 
 
 The default maximum file size for a package that's uploaded to the [GitLab package registry](../user/packages/package_registry/_index.md) varies by format:
 
-- Cargo: 5 GB
+- Cargo: 5 GB. Each crate is also limited to 10 MB. You can't change this limit.
 - Conan: 3 GB
 - Generic: 5 GB
 - Helm: 5 MB

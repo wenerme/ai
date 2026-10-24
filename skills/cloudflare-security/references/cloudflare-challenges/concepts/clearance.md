@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-challenges/concepts/clearanc
 
 # Clearance
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## `cf_clearance` cookies
 
@@ -20,12 +20,14 @@ A `cf_clearance` cookie proves to Cloudflare that the visitor is a verified huma
 
 The cookie contains **two types of clearance** that work together:
 
-- **Challenge clearance**: Granted when a visitor solves a Challenge (for example, an interstitial Challenge or Turnstile with pre-clearance enabled).
-- **Precursor clearance**: Updated based on session behavior when Precursor is Armed.
+- **Challenge clearance**: Granted when a visitor solves a Challenge (for example, Interstitial Challenge Pages or Turnstile with pre-clearance enabled).
+- **Precursor clearance**: Continuously updated based on session behavior.
 
 The cookie is securely tied to the specific visitor and device it was issued to, preventing reuse across machines.
 
-As an additional layer of security, Cloudflare recommends that customers [add a rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) based on the `cf_clearance` cookie value. This helps ensure that a single, valid cookie cannot be abused by one machine to send an excessive volume of requests.
+As an additional layer of security, customers with Advanced Rate Limiting can [add a rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) using the **Clearance UUID** (`http.request.clearance.uuid`) characteristic. This stable identifier lets the rule keep using the same counter when Cloudflare refreshes the encrypted `cf_clearance` cookie value, including updates from JavaScript Detections or Precursor.
+
+Use the counting expression `http.request.clearance.uuid ne ""` so that requests without a valid clearance cookie do not share an empty-value counter. If those requests also require rate limiting, create a separate rule with an appropriate characteristic, such as the source IP address.
 
 ### Challenge clearance
 
@@ -56,7 +58,7 @@ If Precursor determines that a session is suspicious:
 - The visitor’s effective Challenge clearance may be **reduced or invalidated**.
 - The visitor may be **re-challenged**, even if the cookie has not expired.
 
-This creates a model where clearance is both **time-bound (interstitial Challenge)** and **behavior-bound (Precursor)**.
+This creates a model where clearance is both **time-bound (Interstitial)** and **behavior-bound (Precursor)**.
 
 ## Pre-clearance support in Turnstile
 
@@ -151,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#page","headline":"Clearance","description":"How cf_clearance cookies prove a visitor passed a Cloudflare Challenge.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/og.png?v=cf5fe1a7dd960f75","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/#page","headline":"Clearance","description":"How cf_clearance cookies prove a visitor passed a Cloudflare Challenge.","url":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-challenges/concepts/clearance/og.png?v=cf5fe1a7dd960f75","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 ```

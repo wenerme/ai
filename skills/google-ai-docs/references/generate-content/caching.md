@@ -2,7 +2,7 @@ In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers two different caching mechanisms:
 
 - Implicit caching (automatically enabled on Gemini 2.5 and newer models, no cost saving guarantee)
-- Explicit caching (can be manually enabled on most models, cost saving guarantee)
+- Explicit caching (can be manually enabled on Gemini 3 and 2.5 models, cost saving guarantee; not supported for Gemini 4 Argon and onward)
 
 Explicit caching is useful in cases where you want to guarantee cost savings,
 but with some added developer work.
@@ -10,12 +10,11 @@ but with some added developer work.
 ## Implicit caching
 
 Implicit caching is enabled by default for all Gemini 2.5 and newer models. We automatically
-pass on cost savings if your request hits caches. There is nothing you need to do
-in order to enable this. The minimum input
-token count for context caching is listed in the following table for each model:
+pass on cost savings if your request hits caches. You don't need to configure anything to turn it on. The following table lists the minimum input token count for each model:
 
 | Model | Min token limit |
 |---|---|
+| Gemini 4 Argon | 4,096 |
 | Gemini 3.8 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
 | Gemini 3.1 Pro Preview | 4,096 |
@@ -27,13 +26,16 @@ To increase the chance of an implicit cache hit:
 - Try putting large and common contents at the beginning of your prompt
 - Try to send requests with similar prefix in a short amount of time
 
+> [!NOTE]
+> **Note:** **Multi-turn and agent loops on Gemini 4 (Argon and newer):** Gemini caches the full previous request only if the new request adds at least 2,050 tokens. Model output, thought, and function results all count toward this total. For smaller additions, Gemini re-processes the last 2,050 tokens of the previous request at the standard input rate. Most agent turns exceed this threshold.
+
 You can see the number of tokens which were cache hits in the response object's
 `usage_metadata` field.
 
 ## Explicit caching
 
 > [!WARNING]
-> **Beta:** Explicit context caching is currently in Beta. Endpoints and SDK methods are available under `v1beta`.
+> **Beta:** Explicit context caching is currently in Beta. Endpoints and SDK methods are available under `v1beta`. Explicit caching is not supported for Gemini 4 Argon (`gemini-4-argon`) and onward; Gemini 4 models use [implicit caching](https://ai.google.dev/gemini-api/docs/generate-content/caching#implicit-caching) by default.
 
 Using the Gemini API explicit caching feature, you can pass some content
 to the model once, cache the input tokens, and then refer to the cached tokens

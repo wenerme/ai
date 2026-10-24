@@ -33,6 +33,19 @@ Foundational flows can start in the following ways:
 For details about how to start each flow, see the individual
 [foundational flow documentation](../flows/foundational_flows/_index.md).
 
+## View triggers
+
+- [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/23940) in GitLab 19.6 to allow the Developer role to view triggers.
+
+Prerequisites:
+
+- You must have at least the Developer role for the project.
+
+To view the triggers for a project:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **AI** > **Triggers**.
+
 ## Create a trigger
 
 - **Assign** and **Assign reviewer** event types [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567787) in GitLab 18.5.
@@ -316,6 +329,10 @@ human action between the stages.
 
 ## Edit a trigger
 
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
 1. For the trigger you want to change, select **More actions** () > **Edit trigger**.
@@ -330,6 +347,10 @@ You can also edit a custom flow's trigger on its configuration page, under **Tri
 Turn off a trigger to disable it and retain its configuration. After you turn a trigger off,
 it stops running automatically after its configured actions, and remains in the list of triggers.
 
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
 1. For the trigger you want to turn on or off, on the right side, select the toggle.
@@ -337,6 +358,10 @@ it stops running automatically after its configured actions, and remains in the 
 You can also turn a custom flow's trigger on or off on its configuration page, under **Trigger conditions**.
 
 ## Delete a trigger
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.

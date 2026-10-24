@@ -378,9 +378,12 @@ Example response:
   "users_api_limit_ssh_key": 120,
   "users_api_limit_gpg_keys": 120,
   "users_api_limit_gpg_key": 120,
+  "group_hooks_create_limit": 10,
   "project_hooks_create_limit": 5,
+  "system_hooks_create_limit": 5,
   "web_hook_event_resend_limit": 5,
   "web_hook_test_limit": 5,
+  "github_gists_import_limit": 6,
   "silent_mode_enabled": false,
   "security_policy_global_group_approvers_enabled": true,
   "security_approval_policies_limit": 5,
@@ -484,6 +487,7 @@ Example responses:
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../administration/feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` generally available in GitLab 19.6. Feature flags `rate_limit_job_retry` and `rate_limit_job_play` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261718).
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
+- `pipeline_delete_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179).
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
 - `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_cancel`. Disabled by default.
 - `duo_token_usage_tracking_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259436) in GitLab 19.6.
@@ -678,6 +682,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `gitaly_timeout_default`                 | integer          | no                                   | Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to `0` to disable timeouts. |
 | `gitaly_timeout_fast`                    | integer          | no                                   | Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and 'failing fast' can help maintain the stability of the GitLab instance. Set to `0` to disable timeouts. |
 | `gitaly_timeout_medium`                  | integer          | no                                   | Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to `0` to disable timeouts. |
+| `github_gists_import_limit`              | integer          | no                                   | Maximum number of GitHub gists import requests per minute per user. Default: `6`. Set to `0` to disable the rate limit. See [Change the GitHub gists import rate limit](../administration/settings/import_export_rate_limits.md#change-the-github-gists-import-rate-limit). |
 | `gitlab_dedicated_instance`              | boolean          | no                                   | Indicates whether the instance was provisioned for GitLab Dedicated. |
 | `gitlab_environment_toolkit_instance`    | boolean          | no                                   | Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting. |
 | `gitlab_shell_operation_limit`           | integer          | no                                   | Maximum number of Git operations per minute a user can perform. Default: `600`. |
@@ -690,6 +695,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `group_create_limit`                     | integer          | no                                   | Maximum number of requests per day per user to `POST /groups`. Default: `200`. Set to `0` to disable the rate limit. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245318) in GitLab 19.3 with a feature flag named `namespace_create_rate_limit`. Disabled by default. |
 | `group_download_export_limit`            | integer          | no                                   | Maximum number of group export downloads per minute per user for each group. Default: `1`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
 | `group_export_limit`                     | integer          | no                                   | Maximum number of group exports per minute per user. Default: `6`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
+| `group_hooks_create_limit`               | integer          | no                                   | Maximum number of group webhooks a user can create per minute for a given group. Default: 10. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6. |
 | `group_import_limit`                     | integer          | no                                   | Maximum number of group imports per minute per user. Default: `6`. Set to `0` to disable the rate limit. See [Import and export rate limits](../administration/settings/import_export_rate_limits.md). |
 | `group_invited_groups_api_limit`         | integer          | no                                   | Maximum number of requests per minute per user or IP address to `GET /groups/:id/invited_groups`. Default: `60`. Set to `0` to disable the rate limit. See [Groups API rate limits](../rate_limits/api/groups.md). |
 | `group_owners_can_manage_default_branch_protection` | boolean | no                                 | Prevent overrides of default branch protection. GitLab Self-Managed, Premium and Ultimate only. |
@@ -910,6 +916,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `spam_check_endpoint_url`                | string           | no                                   | URL of the external Spamcheck service endpoint. Valid URI schemes are `grpc` or `tls`. Specifying `tls` forces communication to be encrypted. |
 | `spam_check_api_key`                     | string           | no                                   | API key used by GitLab for accessing the Spam Check service endpoint. |
 | `enable_artifact_external_redirect_warning_page` | boolean  | no                                   | Show the external redirect page that warns you about user-generated content in GitLab Pages. |
+| `system_hooks_create_limit`              | integer          | no                                   | Maximum number of system hooks a user can create per minute. Default: 5. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6. |
 | `tags_create_limit`                      | integer          | no                                   | Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL `tagCreate` mutation, tag creation in the UI, and the `/tag` quick action. Default: `100`. Set to `0` to disable the rate limit. |
 | `terminal_max_session_time`              | integer          | no                                   | Maximum time for web terminal websocket connection (in seconds). Set to `0` for unlimited time. |
 | `terms`                                  | text             | required by: `enforce_terms`         | (**Required by**: `enforce_terms`) Markdown content for the ToS. |

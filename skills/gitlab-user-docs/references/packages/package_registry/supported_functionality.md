@@ -15,6 +15,7 @@ The package registry supports the following package manager types:
 
 | Package type                                      | Status |
 |---------------------------------------------------|--------|
+| [Cargo](../cargo_registry/_index.md)              | [Experiment](https://gitlab.com/gitlab-org/gitlab/-/issues/33060) |
 | [Composer](../composer_repository/_index.md)      | [Beta](https://gitlab.com/groups/gitlab-org/-/work_items/6817) |
 | [Conan 1](../conan_1_repository/_index.md)            | [Beta](https://gitlab.com/groups/gitlab-org/-/work_items/6816) |
 | [Conan 2](../conan_2_repository/_index.md)            | [Beta](https://gitlab.com/groups/gitlab-org/-/work_items/8258) |
@@ -49,6 +50,7 @@ Packages can be published to your project, group, or instance.
 | [PyPI](../pypi_repository/_index.md)                   | Yes       | No     | No        |
 | [Generic packages](../generic_packages/_index.md)      | Yes       | No     | No        |
 | [Terraform](../terraform_module_registry/_index.md)    | Yes       | No     | No        |
+| [Cargo](../cargo_registry/_index.md)                   | Yes       | No     | No        |
 | [Composer](../composer_repository/_index.md)           | No        | Yes    | No        |
 | [Conan 1](../conan_1_repository/_index.md)             | Yes       | No     | Yes       |
 | [Conan 2](../conan_2_repository/_index.md)             | Yes       | No     | No        |
@@ -74,6 +76,7 @@ Packages can be pulled from your project, group, or instance.
 | [PyPI](../pypi_repository/_index.md)                   | Yes       | Yes     | No        |
 | [Generic packages](../generic_packages/_index.md)      | Yes       | No      | No        |
 | [Terraform](../terraform_module_registry/_index.md)    | No        | Yes     | No        |
+| [Cargo](../cargo_registry/_index.md)                   | Yes       | No      | No        |
 | [Composer](../composer_repository/_index.md)           | Yes       | Yes     | No        |
 | [Conan 1](../conan_1_repository/_index.md)             | Yes       | No      | Yes       |
 | [Conan 2](../conan_2_repository/_index.md)             | Yes       | No      | No        |
@@ -123,6 +126,7 @@ To turn off request forwarding for a group:
 | [NuGet](../nuget_repository/_index.md)                 | No                           | No |
 | [Generic packages](../generic_packages/_index.md)      | No                           | No |
 | [Terraform](../terraform_module_registry/_index.md)    | No                           | No |
+| [Cargo](../cargo_registry/_index.md)                   | No                           | No |
 | [Composer](../composer_repository/_index.md)           | No                           | No |
 | [Conan 1](../conan_1_repository/_index.md)               | No                           | No |
 | [Conan 2](../conan_2_repository/_index.md)               | No                           | No |
@@ -165,6 +169,7 @@ You can use GitLab pipelines to import packages from other repositories, such as
 | [PyPI](../pypi_repository/_index.md)                   | Yes                  |
 | [Generic packages](../generic_packages/_index.md)      | No                   |
 | [Terraform](../terraform_module_registry/_index.md)    | No                   |
+| [Cargo](../cargo_registry/_index.md)                   | No                   |
 | [Composer](../composer_repository/_index.md)           | No                   |
 | [Conan 1](../conan_1_repository/_index.md)             | No                   |
 | [Conan 2](../conan_2_repository/_index.md)             | No                   |
@@ -190,6 +195,7 @@ By default, the GitLab package registry either allows or prevents duplicates bas
 | [PyPI](../pypi_repository/_index.md)                   | No                   |
 | [Generic packages](../generic_packages/_index.md)      | Yes (configurable)   |
 | [Terraform](../terraform_module_registry/_index.md)    | No                   |
+| [Cargo](../cargo_registry/_index.md)                   | No                   |
 | [Composer](../composer_repository/_index.md)           | No                   |
 | [Conan 1](../conan_1_repository/_index.md)             | No                   |
 | [Conan 2](../conan_2_repository/_index.md)             | No                   |
@@ -225,6 +231,7 @@ for a given package manager:
 | [PyPI](../pypi_repository/_index.md)                   | Personal access, job tokens, deploy (project or group), project access |
 | [Generic packages](../generic_packages/_index.md)      | Personal access, job tokens, deploy (project or group), project access |
 | [Terraform](../terraform_module_registry/_index.md)    | Personal access, job tokens, deploy (project or group), project access |
+| [Cargo](../cargo_registry/_index.md)                   | Personal access, job tokens, deploy (project or group), project access |
 | [Composer](../composer_repository/_index.md)           | Personal access, job tokens, deploy (project or group), project access |
 | [Conan 1](../conan_1_repository/_index.md)                 | Personal access, job tokens, project access                            |
 | [Conan 2](../conan_2_repository/_index.md)                 | Personal access, job tokens, project access                            |
@@ -258,6 +265,7 @@ The following authentication protocols are supported:
 | [PyPI](../pypi_repository/_index.md)                   | Basic auth                                                  |
 | [Generic packages](../generic_packages/_index.md)      | Basic auth                                                  |
 | [Terraform](../terraform_module_registry/_index.md)    | Token                                                       |
+| [Cargo](../cargo_registry/_index.md)                   | OAuth                                                       |
 | [Composer](../composer_repository/_index.md)           | OAuth                                                       |
 | [Conan 1](../conan_1_repository/_index.md)                 | OAuth, Basic auth                                           |
 | [Conan 2](../conan_2_repository/_index.md)                 | OAuth, Basic auth                                           |
@@ -284,6 +292,7 @@ The package registry supports the following hash types:
 | [NuGet](../nuget_repository/_index.md)                 | not applicable                   |
 | [PyPI](../pypi_repository/_index.md)                   | MD5, SHA256                      |
 | [Generic packages](../generic_packages/_index.md)      | SHA256                           |
+| [Cargo](../cargo_registry/_index.md)                   | SHA256                           |
 | [Composer](../composer_repository/_index.md)           | not applicable                   |
 | [Conan 1](../conan_1_repository/_index.md)             | MD5, SHA1                        |
 | [Conan 2](../conan_2_repository/_index.md)             | MD5, SHA1                        |

@@ -501,7 +501,7 @@ deploy:
 ```
 
 In this example, when `deployment_type` is `custom`, the `custom_config` input appears on
-the **Run new pipeline** page and users must enter a value for it.
+the  page and users must enter a value for it.
 
 ### Use boolean inputs with `spec:inputs:rules`
 

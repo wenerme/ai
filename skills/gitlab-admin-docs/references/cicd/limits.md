@@ -454,9 +454,7 @@ To configure the per user and project limits:
 ## Pipeline deletion rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- Generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179).
 
 Deleting a pipeline cancels every job in the pipeline tree before the records are removed, so the
 work involved scales with the size of the pipeline. You can limit how often a user can delete a

@@ -48499,7 +48499,9 @@ paths:
       operationId: getApiV4Hooks
     post:
       summary: Create a system hook
-      description: Creates a system hook.
+      description: Creates a system hook. This endpoint has a rate limit of five requests
+        per minute for each authenticated user. On GitLab Self-Managed and GitLab Dedicated,
+        an administrator can change this limit in the application settings.
       produces:
       - application/json
       consumes:
@@ -48521,6 +48523,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
       tags:
       - hooks
       operationId: postApiV4Hooks
@@ -51073,6 +51077,10 @@ definitions:
             type: boolean
             description: Whether to allow projects to extend the network access domain
               allowlist
+          require_sandbox:
+            type: boolean
+            description: Whether flows that run on GitLab Runner fail when the execution
+              environment sandbox is unavailable
           minimum_access_level_execute:
             type: integer
             format: int32
@@ -51395,6 +51403,10 @@ definitions:
             type: boolean
             description: Whether to allow projects to extend the network access domain
               allowlist
+          require_sandbox:
+            type: boolean
+            description: Whether flows that run on GitLab Runner fail when the execution
+              environment sandbox is unavailable
           minimum_access_level_execute:
             type: integer
             format: int32
@@ -52652,6 +52664,9 @@ definitions:
       allow_project_extension:
         type: boolean
         example: true
+      require_sandbox:
+        type: boolean
+        example: false
       minimum_access_level_execute:
         type: string
         example: developer
@@ -52675,6 +52690,7 @@ definitions:
     - include_recommended_allowed
     - allow_all_unix_sockets
     - allow_project_extension
+    - require_sandbox
   postApiV4GroupsIdTransfer:
     type: object
     properties:

@@ -388,8 +388,6 @@ Standard
 | gpt-image-1.5 | Text | $5.00 | $10.00 | $1.25 |
 | gpt-image-1-mini | Image | $2.50 | $8.00 | $0.25 |
 | gpt-image-1-mini | Text | $2.00 | - | $0.20 |
-| gpt-image-1 | Image | $10.00 | $40.00 | $2.50 |
-| gpt-image-1 | Text | $5.00 | - | $1.25 |
 | chatgpt-image-latest | Image | $8.00 | $32.00 | $2.00 |
 | chatgpt-image-latest | Text | $5.00 | $10.00 | $1.25 |
 
@@ -419,8 +417,6 @@ Batch
 | gpt-image-1.5 | Text | $2.50 | $5.00 | $0.63 |
 | gpt-image-1-mini | Image | $1.25 | $4.00 | $0.13 |
 | gpt-image-1-mini | Text | $1.00 | - | $0.10 |
-| gpt-image-1 | Image | $5.00 | $20.00 | $1.25 |
-| gpt-image-1 | Text | $2.50 | - | $0.63 |
 | chatgpt-image-latest | Image | $4.00 | $16.00 | $1.00 |
 | chatgpt-image-latest | Text | $2.50 | $5.00 | $0.63 |
 

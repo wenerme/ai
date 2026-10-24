@@ -1227,7 +1227,9 @@ GPT Image models use separate image-token pricing for generation and editing. Th
 
 #### GPT Image 1
 
-The following input-token rules apply to `gpt-image-1`. Use tile-based image sizing, but scale the shortest side down to 512px instead of 768px. Token use depends on the image dimensions and the `input_fidelity` parameter in the [Images API](https://developers.openai.com/api/reference/resources/images/methods/edit).
+`gpt-image-1` was shut down on October 23, 2026. The following input-token rules are retained for historical cost comparisons. See the [deprecation notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) for replacement models.
+
+For legacy requests, use tile-based image sizing, but scale the shortest side down to 512px instead of 768px. Token use depends on the image dimensions and the `input_fidelity` parameter in the [Images API](https://developers.openai.com/api/reference/resources/images/methods/edit).
 
 When input fidelity is set to low, the base cost is 65 image tokens, and each tile costs 129 image tokens.
 When using high input fidelity, we add a set number of tokens based on the image's aspect ratio in addition to the image tokens described above.
@@ -1235,7 +1237,7 @@ When using high input fidelity, we add a set number of tokens based on the image
 - If your image is square, we add 4160 extra input image tokens.
 - If it is closer to portrait or landscape, we add 6240 extra tokens.
 
-To see pricing for image input tokens, refer to the [image pricing section](https://developers.openai.com/api/docs/pricing#multimodal-image-pricing).
+For historical image input-token prices, see the [GPT Image 1 model page](https://developers.openai.com/api/docs/models/gpt-image-1).
 
 ## Limitations
 

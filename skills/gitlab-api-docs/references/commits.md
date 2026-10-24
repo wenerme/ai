@@ -133,12 +133,12 @@ Example response:
 
 Create a commit by posting a JSON payload
 
+> [!note]
+> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
+
 ```plaintext
 POST /projects/:id/repository/commits
 ```
-
-> [!note]
-> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
 
 | Attribute        | Type              | Required | Description |
 |------------------|-------------------|----------|-------------|

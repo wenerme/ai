@@ -7,22 +7,28 @@
 - Rate limit for webhook event resends [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/151130) in GitLab 17.1 with a [flag](../feature_flags/_index.md) named `web_hook_event_resend_api_endpoint_rate_limit`. Enabled by default.
 - Customizable rate limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587887) in GitLab 19.3. Feature flags `web_hook_test_api_endpoint_rate_limit` and `web_hook_event_resend_api_endpoint_rate_limit` removed.
 - Rate limit for project webhook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597) in GitLab 19.6.
+- Rate limits for group webhook and system hook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6.
 
 Configure the per-minute rate limit for requests that:
 
 - [Add a project webhook](../../api/project_webhooks.md#add-a-webhook-to-a-project) with the API.
+- [Create a group webhook](../../api/group_webhooks.md#create-a-group-hook) with the API.
+- [Add a system hook](../../api/system_hooks.md#add-new-system-hook) with the API.
 - [Test a webhook](../../user/project/integrations/webhooks.md#test-a-webhook).
 - [Resend a webhook event](../../user/project/integrations/webhooks.md#inspect-request-and-response-details).
 
 | Limit | Default |
 |-------|---------|
 | Project webhook creation requests | 5 each minute |
+| Group webhook creation requests | 10 each minute |
+| System hook creation requests | 5 each minute |
 | Webhook test requests | 5 each minute |
 | Webhook event resend requests | 5 each minute |
 
-Each rate limit applies per user, for a given project or group. The test and event resend limits cover
-both the UI and the API. The project webhook creation limit covers the API only. All webhooks in the same
-project or group share the limit.
+The project and group limits apply per user, for a given project or group. All webhooks in the same
+project or group share the limit. The system hook creation limit applies per user across the instance.
+The test and event resend limits cover both the UI and the API. The webhook creation limits cover the
+API only.
 
 These limits are separate from the [webhook delivery rate limit](../instance_limits.md#webhook-rate-limit),
 which limits how often webhooks can be triggered. Configuring webhook delivery rate limits depends on the
@@ -35,7 +41,7 @@ For example, if you set the webhook test rate limit to 5 and try to test a webho
 times in a minute, the final request is blocked. After a minute, you can test the
 webhook again.
 
-The project webhook creation limit counts each request to create a webhook that passes authentication and
+The webhook creation limits count each request to create a webhook that passes authentication and
 authorization, including requests that fail validation. Requests that exceed the limit return `429 Too Many Requests`.
 
 ## Change the rate limit

@@ -404,6 +404,16 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
           - `"computer_use"`
 
+      - `Automations object { type }`
+
+        Lets the agent manage its own scheduled wakeups.
+
+        - `type: "automations"`
+
+          The type of the object. Always `automations`.
+
+          - `"automations"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.

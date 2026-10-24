@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/og
 
 # Dockerfile reference
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -33,21 +33,21 @@ The Sandbox SDK provides multiple image variants. All except `-musl` are based o
 
 ```dockerfile
 # Default - lean, no Python
-FROM docker.io/cloudflare/sandbox:0.12.13
+FROM docker.io/cloudflare/sandbox:0.12.14
 
 # Python - includes Python 3.11 + data science packages
-FROM docker.io/cloudflare/sandbox:0.12.13-python
+FROM docker.io/cloudflare/sandbox:0.12.14-python
 
 # OpenCode - includes OpenCode CLI for AI coding
-FROM docker.io/cloudflare/sandbox:0.12.13-opencode
+FROM docker.io/cloudflare/sandbox:0.12.14-opencode
 
 # musl - minimal Alpine image, no Node.js, Bun, or Python
-FROM docker.io/cloudflare/sandbox:0.12.13-musl
+FROM docker.io/cloudflare/sandbox:0.12.14-musl
 ```
 
 Version synchronization required
 
-Always match the Docker image version to your npm package version. If you're using `@cloudflare/sandbox@0.12.13`, use `docker.io/cloudflare/sandbox:0.12.13` (or variant) as your base image.
+Always match the Docker image version to your npm package version. If you are using `@cloudflare/sandbox@0.12.14`, use `docker.io/cloudflare/sandbox:0.12.14` (or variant) as your base image.
 
 **Why this matters**: The SDK automatically checks version compatibility on startup. Mismatched versions can cause features to break or behave unexpectedly. If versions don't match, you'll see warnings in your logs.
 
@@ -92,7 +92,7 @@ Create a `Dockerfile` in your project root:
 *Dockerfiledockerfile*
 
 ```dockerfile
-FROM docker.io/cloudflare/sandbox:0.12.13-python
+FROM docker.io/cloudflare/sandbox:0.12.14-python
 
 # Install additional Python packages
 RUN pip install --no-cache-dir \
@@ -137,7 +137,7 @@ You can add sandbox capabilities to any Docker image using the standalone binary
 FROM your-custom-image:tag
 
 # Copy the sandbox binary from the official image
-COPY --from=docker.io/cloudflare/sandbox:0.12.13 /container-server/sandbox /sandbox
+COPY --from=docker.io/cloudflare/sandbox:0.12.14 /container-server/sandbox /sandbox
 
 ENTRYPOINT ["/sandbox"]
 ```
@@ -149,7 +149,7 @@ The `/sandbox` binary starts the HTTP API server that enables SDK communication.
 ```dockerfile
 FROM node:22-slim
 
-COPY --from=docker.io/cloudflare/sandbox:0.12.13 /container-server/sandbox /sandbox
+COPY --from=docker.io/cloudflare/sandbox:0.12.14 /container-server/sandbox /sandbox
 
 # Copy your application
 COPY . /app
@@ -168,7 +168,7 @@ For more complex startup sequences, create a custom startup script:
 *Dockerfiledockerfile*
 
 ```dockerfile
-FROM docker.io/cloudflare/sandbox:0.12.13-python
+FROM docker.io/cloudflare/sandbox:0.12.14-python
 
 COPY my-app.js /workspace/my-app.js
 COPY startup.sh /workspace/startup.sh
@@ -215,5 +215,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/#page","headline":"Dockerfile reference","description":"Customize the Sandbox SDK 0.x container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/og.png?v=b9a687a555db7761","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/#page","headline":"Dockerfile reference","description":"Customize the Sandbox SDK 0.x container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/configuration/dockerfile/og.png?v=b9a687a555db7761","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

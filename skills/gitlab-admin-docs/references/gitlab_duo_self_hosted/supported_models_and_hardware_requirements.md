@@ -116,6 +116,38 @@ This feature is in beta and is therefore subject to change as we gather feedback
 | Gemma 4        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
 | Qwen 3.6       | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
 
+#### Context window requirements
+
+With the general model family, GitLab Duo Agent Platform trims conversation history to fit a 200,000-token context window.
+Other model families set their own context window.
+[Code Review Flow](../../user/duo_agent_platform/flows/foundational_flows/code_review/_index.md) does not trim merge request context to fit that window.
+It sends up to 1 MiB of merge request context plus its instructions in one prompt.
+To review large merge requests, serve the model with a larger context window, if the model supports one.
+
+When you serve a model with vLLM, set `--max-model-len` to match the context window you want to support.
+vLLM returns an error, and the session fails, if the prompt or the requested output tokens are more than `--max-model-len`.
+For sizing guidance, see [Example model deployment with vLLM](vllm_gpt_oss_120b.md).
+
+#### Tool calling requirements
+
+GitLab Duo Agent Platform flows and GitLab Duo Agentic Chat send tool definitions to the model.
+Your model endpoint must support OpenAI-compatible tool calling.
+GitLab Duo Non-Agentic Chat does not send tools and works without tool calling.
+
+When you serve a model with vLLM, start the server with `--enable-auto-tool-choice`.
+Set `--tool-call-parser` to the [parser that matches your model](https://docs.vllm.ai/en/latest/features/tool_calling/).
+If you start vLLM without these flags, it rejects each GitLab Duo request that carries tools with an HTTP 400 error:
+
+```plaintext
+"auto" tool choice requires --enable-auto-tool-choice and --tool-call-parser to be set
+```
+
+GitLab Duo then shows a generic error, such as `Error: ModelError` in a flow.
+To find the cause, check the [AI Gateway logs](logging.md#logs-in-your-ai-gateway-container), which include the vLLM error.
+
+A parser that does not match the model can fail without an error.
+The model returns its tool call as plain text, and the flow finishes without running a tool.
+
 ## GitLab-managed models
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17192) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta) feature, with a [feature flag](../feature_flags/_index.md) named `ai_self_hosted_vendored_features`. Disabled by default.

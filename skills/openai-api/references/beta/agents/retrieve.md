@@ -360,6 +360,16 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         - `"computer_use"`
 
+    - `Automations object { type }`
+
+      Lets the agent manage its own scheduled wakeups.
+
+      - `type: "automations"`
+
+        The type of the object. Always `automations`.
+
+        - `"automations"`
+
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.

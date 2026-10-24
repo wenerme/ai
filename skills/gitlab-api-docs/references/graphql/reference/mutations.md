@@ -5967,6 +5967,7 @@ Updates GitLab Duo settings.
 | `minimumAccessLevelExecute` | [`AccessLevelEnum`](enums.md#accesslevelenum) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Minimum access level for execute on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | `minimumAccessLevelExecuteAsync` | [`AccessLevelEnum`](enums.md#accesslevelenum) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Minimum access level to execute Duo Agent Platform features in CI/CD. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
 | `minimumAccessLevelManage` | [`AccessLevelEnum`](enums.md#accesslevelenum) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.7.Minimum access level for manage on Duo Agent Platform. Ignored if dap_instance_customizable_permissions feature flag is disabled. |
+| `requireSandbox` | [`Boolean`](scalars.md#boolean) | Indicates whether flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. |
 | `selfHostedDuoAgentPlatformServiceSecure` | [`Boolean`](scalars.md#boolean) | Whether to use secure transport (TLS) for the local Duo Agent Platform service. |
 
 ### `duoSettingsUpdate` fields {.no_toc}
@@ -12877,6 +12878,28 @@ Rate limited per project by the `tags_create_limit` application setting.
 | `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
 
 ### `terraformStateDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
+## `terraformStateDeletePermanently`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Permanently deletes a Terraform state that is already marked for deletion.
+
+**Input type:** `TerraformStateDeletePermanentlyInput`
+
+### `terraformStateDeletePermanently` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | [`TerraformStateID!`](scalars.md#terraformstateid) | Global ID of the Terraform state. |
+
+### `terraformStateDeletePermanently` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |

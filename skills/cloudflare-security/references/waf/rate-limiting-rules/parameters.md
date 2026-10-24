@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.p
 
 # Rate limiting parameters
 
-Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The available rate limiting rule parameters are described in the following sections.
 
@@ -52,6 +52,7 @@ Use one or more of the following characteristics:
 | N/A (implicitly included) | `cf.colo.id`(mandatory) | [Do not use in expressions](#do-not-use-cfcoloid-as-a-field-in-expressions) |
 | IP | `ip.src` | [Incompatible with **IP with NAT support**](#incompatible-characteristics) |
 | IP with NAT support | `cf.unique_visitor_id` | [Incompatible with **IP**](#incompatible-characteristics) |
+| **Clearance UUID** | `http.request.clearance.uuid` | Available with Advanced Rate Limiting. Use `http.request.clearance.uuid ne ""` in the counting expression to exclude requests without a valid clearance cookie. |
 | **Header value of** (enter header name) | `http.request.headers["<header_name>"]` | [Use lowercased header name in API](#use-a-lowercased-header-name-for-api-users) and [Missing field versus empty value](#missing-field-versus-empty-value) |
 | **Cookie value of** (enter cookie name) | `http.request.cookies["<cookie_name>"]` | [Recommended configurations](#recommended-configurations-when-using-cookie-value-of) and [Missing field versus empty value](#missing-field-versus-empty-value) |
 | **Query value of** (enter parameter name) | `http.request.uri.args["<query_param_name>"]` | [Missing field versus empty value](#missing-field-versus-empty-value) |
@@ -69,7 +70,7 @@ Use one or more of the following characteristics:
 | **Body size** (select operator, enter size) | `http.request.body.size` | |
 | **Custom** (enter expression) | Enter a custom expression. You can use a function such as `substring()` or `lower()`, or enter a more complex expression. | [Functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) |
 
-The available characteristics depend on your Cloudflare plan. Refer to [Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for more information.
+The available characteristics depend on your Cloudflare plan. **Clearance UUID** is available with Advanced Rate Limiting. Refer to [Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability) for more information.
 
 Caution
 
@@ -238,7 +239,7 @@ If you use the **Header value of** characteristic in an API request (with `http.
 
 ### Missing field versus empty value
 
-If you use the **Header value of**, **Cookie value of**, **Query value of**, **JSON string value of**, `lookup_json_integer(...)`, or **Form input value of** characteristic and the specific header/cookie/parameter/JSON key/form field name is not present in the request, the rate limiting rule may still apply to the request, depending on your counting expression.
+If you use the **Header value of**, **Cookie value of**, **Query value of**, **Clearance UUID**, **JSON string value of**, `lookup_json_integer(...)`, or **Form input value of** characteristic and the specific value is not present in the request, the rate limiting rule may still apply to the request, depending on your counting expression.
 
 If you do not filter out such requests, there will be a specific [request counter](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/) for requests where the field is not present, which will be different from the request counter where the field is present with an empty value.
 
@@ -247,6 +248,8 @@ For example, to consider only requests where a specific HTTP header is present i
 `and len(http.request.headers["<header_name>"]) > 0`
 
 Where `<header_name>` is the same header name used as a rate limiting characteristic.
+
+For **Clearance UUID**, use `http.request.clearance.uuid ne ""`. This excludes requests without a valid `cf_clearance` cookie from the clearance counter. Use a separate rule if you also need to rate limit those requests.
 
 ### Recommended configurations when using Cookie value of
 
@@ -275,5 +278,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.png?v=523c0070a2d11d0d","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.png?v=523c0070a2d11d0d","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

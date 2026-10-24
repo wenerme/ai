@@ -5,7 +5,7 @@ description: "Browse OpenCode Go model IDs, capabilities, context windows, and p
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 34 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 35 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/v2/docs/console/go/).
 
@@ -218,6 +218,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "opencode-go/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "opencode-go/longcat-2.0",

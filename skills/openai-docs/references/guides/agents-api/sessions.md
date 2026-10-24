@@ -13,6 +13,8 @@ A turn is one cycle of work within a session. A message sent to an idle session 
 
 Turns run asynchronously. Your application can follow progress through streaming or receive session state changes through [webhooks](https://developers.openai.com/api/docs/guides/agents-api/sessions/webhooks).
 
+Use [scheduled automations](https://developers.openai.com/api/docs/guides/agents-api/sessions/automations) to start work at a future time or on a recurring schedule. An automation can create a new session for each run or continue an existing conversation.
+
 
 
 

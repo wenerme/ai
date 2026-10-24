@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/fundamentals/api/get-started/token-form
 
 # Token formats
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare API credentials use a prefixed, scannable format that makes them identifiable by credential scanning tools. Each credential type has a distinct prefix followed by 40 characters and a checksum.
+Cloudflare API keys and API tokens use a prefixed, scannable format that makes them identifiable by credential scanning tools. Each credential type in the following table has a distinct prefix followed by 40 characters and a checksum.
 
 | Credential type | Description | Format |
 | --- | --- | --- |
@@ -45,6 +45,24 @@ Tokens created before the scannable format was introduced use unprefixed strings
 | User API Token | 40-character alphanumeric string |
 | Account API Token | 40-character alphanumeric string |
 
+## Wrangler OAuth access tokens
+
+When you authenticate with [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login), Wrangler receives a user OAuth access token that starts with `cfoat_`. Run [`wrangler auth token`](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth-token) to retrieve the current token for use with another tool or script. The command automatically refreshes the token if it has expired.
+
+Treat the returned value as a secret. Do not commit it to source control or share it.
+
+## Verify a token
+
+To check that a user API token is valid, send it to the [Verify Token](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/verify/) endpoint:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+If the token is valid, the response includes the token's `id` and a `status` of `active`.
+
 Was this helpful?
 
 YesNo
@@ -54,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/#page","headline":"Token formats","description":"Scannable API credential formats and leaked token detection.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/og.png?v=e87695f5d7a06bab","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/#page","headline":"Token formats","description":"Scannable API credential formats and leaked token detection.","url":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/og.png?v=e87695f5d7a06bab","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

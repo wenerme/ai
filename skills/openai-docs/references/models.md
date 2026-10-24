@@ -83,7 +83,7 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-Audio](/api/docs/models/gpt-audio.md): For audio inputs and outputs with Chat Completions API
 - [GPT-Audio Mini](/api/docs/models/gpt-audio-mini.md): A cost-efficient version of GPT Audio
 - [GPT-Audio-1.5](/api/docs/models/gpt-audio-1.5.md): The best voice model for audio in, audio out with Chat Completions.
-- [GPT-Image-1](/api/docs/models/gpt-image-1.md): Our previous image generation model
+- [GPT-Image-1](/api/docs/models/gpt-image-1.md): Retired image generation model
 - [GPT-Image-1 Mini](/api/docs/models/gpt-image-1-mini.md): A cost-efficient version of GPT Image 1
 - [GPT-Image-1.5](/api/docs/models/gpt-image-1.5.md): Our previous image generation model
 - [GPT-Image-2](/api/docs/models/gpt-image-2.md): State-of-the-art image generation model

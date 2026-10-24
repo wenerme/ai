@@ -360,7 +360,7 @@ The goal preview might be truncated.
 | `url`          | string  | No       | GitLab URL of the project to filter sessions by. Do not use with `project_id`. |
 | `project_id`   | string  | No       | Numeric ID or full path of the project to filter sessions by. Do not use with `url`. |
 | `status_group` | string  | No       | Session status group. One of `active`, `paused`, `awaiting_input`, `completed`, `failed`, or `canceled`. |
-| `statuses`     | array   | No       | Session statuses. One or more of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, or `tool_call_approval_required`. Do not use with `status_group`. |
+| `statuses`     | array   | No       | Session statuses. One or more of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, `tool_call_approval_required`, or `idle`. Do not use with `status_group`. |
 | `after`        | string  | No       | Cursor for forward pagination. |
 | `first`        | integer | No       | Number of sessions to return for forward pagination. Default is 20, maximum is 100. |
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Google Workspace
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -69,8 +69,9 @@ You do not need to be a Google Cloud Platform user to integrate Google Workspace
 3. Input the Client ID (**App ID** in the Cloudflare dashboard) and Client Secret fields generated previously. Additionally, enter the domain of your Google Workspace account.
 4. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 5. (Optional) Under **Optional configurations**, enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your user's identity.
-6. Select **Save**. To complete setup, you must visit the generated link. If you are not the Google Workspace administrator, share the link with the administrator.
-7. The generated link will prompt you to log in to your Google admin account and to authorize Cloudflare Access to view group information. After allowing permissions, you will see a success page from Cloudflare Access.
+6. (Optional) Under **Authentication options**, choose a **Google prompt** and turn on **Use previous email as a login hint**.
+7. Select **Save**. To complete setup, you must visit the generated link. If you are not the Google Workspace administrator, share the link with the administrator.
+8. The generated link will prompt you to log in to your Google admin account and to authorize Cloudflare Access to view group information. After allowing permissions, you will see a success page from Cloudflare Access.
 
 To test that your connection is working, go to **Integrations** > **Identity providers** and select **Test** next to Google Workspace. Your user identity and group membership should return.
 
@@ -82,17 +83,42 @@ The SCIM provisioning integration with Google Workspace is not currently support
 
 To test successfully, you must [finish setup ↗︎](https://community.cloudflare.com/t/google-workspace-failed-to-fetch-group-information-from-the-identity-provider/313361/2). Testing before finishing setup will result in a [`Failed to fetch user/group information from the identity provider` error](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#identity-provider-usergroup-info-error).
 
-## Example API Configuration
+## Authentication options
+
+You can control how Google handles each authentication request. Configure these options in the dashboard or through the API.
+
+The **Google prompt** setting supports these options:
+
+| Dashboard option | API `prompt` value | Behavior |
+| --- | --- | --- |
+| *Google default* | Omit `prompt` | Google chooses whether to display a prompt based on the current browser session. |
+| *No prompt* | `none` | Google attempts authentication without displaying a prompt. If Google cannot complete silent authentication, Access retries once with the Google default behavior. |
+| *Consent* | `consent` | Google asks the user to consent. |
+| *Select account* | `select_account` | Google displays the account chooser. Access does not send a login hint. |
+
+To reuse a previous email, turn on **Use previous email as a login hint**. Access checks emails from previous Access logins on the same device. It sends `login_hint` when exactly one email matches the configured Google Workspace domain.
+
+Access does not send a hint when multiple emails match. It also skips the hint for account selection and security reprompts. A login hint does not force Google to display the account chooser.
+
+For more information about these values, refer to [Google's authentication request parameters ↗︎](https://developers.google.com/identity/openid-connect/openid-connect#authenticationuriparameters).
+
+### API configuration
+
+First, retrieve the current identity provider configuration from the [Access identity provider endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/get/). Then, send the complete configuration to the [update identity provider endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/update/).
+
+Add `prompt` and `use_login_hint` to the `config` object:
 
 ```json
 {
 	"config": {
-		"client_id": "<your client id>",
-		"client_secret": "<your client secret>",
-		"apps_domain": "mycompany.com"
+		"client_id": "<YOUR_CLIENT_ID>",
+		"client_secret": "<YOUR_CLIENT_SECRET>",
+		"apps_domain": "example.com",
+		"prompt": "select_account",
+		"use_login_hint": true
 	},
 	"type": "google-apps",
-	"name": "my example idp"
+	"name": "Google Workspace"
 }
 ```
 
@@ -135,5 +161,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/#page","headline":"Google Workspace","description":"Google Workspace in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/og.png?v=ab050920c01ce9cb","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/#page","headline":"Google Workspace","description":"Google Workspace in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/og.png?v=ab050920c01ce9cb","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 ```

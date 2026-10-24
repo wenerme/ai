@@ -793,13 +793,13 @@ retry can place another call.
 
         - `model: string`
 
-        - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+        - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
           - `Choice object { choices, instructions, type, name }`
 
-            - `choices: array of object { value, description }`
+            - `choices: array of DecisionChoiceOption`
 
               - `value: string or boolean`
 
@@ -1015,55 +1015,15 @@ retry can place another call.
 
       Questions evaluated using the current transcript and the session's shared Decision items.
 
-      - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+      - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
 
         - `Choice object { choices, instructions, type, name }`
 
-          - `choices: array of object { value, description }`
-
-            - `value: string or boolean`
-
-              - `string`
-
-              - `boolean`
-
-            - `description: optional string`
-
-          - `instructions: string`
-
-          - `type: "choice"`
-
-            - `"choice"`
-
-          - `name: optional string`
-
         - `Predicate object { instructions, type, name }`
 
-          - `instructions: string`
-
-          - `type: "predicate"`
-
-            - `"predicate"`
-
-          - `name: optional string`
-
         - `Score object { instructions, levels, type, name }`
-
-          - `instructions: string`
-
-          - `levels: array of object { label, description }`
-
-            - `label: string`
-
-            - `description: optional string`
-
-          - `type: "score"`
-
-            - `"score"`
-
-          - `name: optional string`
 
     - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 

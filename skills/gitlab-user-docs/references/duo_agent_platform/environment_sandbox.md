@@ -89,7 +89,7 @@ The following error might occur during runtime, which may indicate that dependen
 not available:
 
 ```shell
-Warning: SRT found but can't create sandbox (insufficient privileges), running command directly
+Warning: SRT found but can't create sandbox (insufficient privileges), running command directly without sandbox
 ```
 
 To resolve this:

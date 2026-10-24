@@ -479,6 +479,7 @@ Example response:
 - `signing_token` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231325) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 - `duo_flow_callback_enabled` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249149) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `duo_flow_callback_hooks`. Disabled by default.
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6.
 
 > [!flag]
 > The availability of the `duo_flow_callback_enabled` attribute is controlled by a feature flag.
@@ -487,6 +488,10 @@ Example response:
 > Disabling it is always accepted.
 
 Creates a group hook for a specified group.
+
+This endpoint has a rate limit of 10 requests per minute for each authenticated user for a given group.
+On GitLab Self-Managed and GitLab Dedicated, administrators can
+[change this limit](../administration/settings/rate-limit-on-webhook-operations.md).
 
 ```plaintext
 POST /groups/:id/hooks

@@ -780,12 +780,12 @@ Possible response status codes:
 
 Cancel a single job of a project.
 
+If you exceed the [job cancellation rate limits](../administration/cicd/limits.md#job-cancellation-rate-limits),
+this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
+
 ```plaintext
 POST /projects/:id/jobs/:job_id/cancel
 ```
-
-If you exceed the [job cancellation rate limits](../administration/cicd/limits.md#job-cancellation-rate-limits),
-this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
 
 | Attribute | Type           | Required | Description |
 |-----------|----------------|----------|-------------|
@@ -845,12 +845,12 @@ Example of response:
 
 Retry a single job of a project
 
+If you exceed the [job retry rate limits](../administration/cicd/limits.md#job-retry-and-manual-job-run-rate-limits),
+this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
+
 ```plaintext
 POST /projects/:id/jobs/:job_id/retry
 ```
-
-If you exceed the [job retry rate limits](../administration/cicd/limits.md#job-retry-and-manual-job-run-rate-limits),
-this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
 
 | Attribute    | Type              | Required | Description |
 |--------------|-------------------|----------|-------------|
@@ -911,12 +911,12 @@ Example of response:
 
 Erase a single job of a project (remove job artifacts and a job log)
 
+If you exceed the [job erasure rate limits](../administration/cicd/limits.md#job-erasure-rate-limits),
+this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
+
 ```plaintext
 POST /projects/:id/jobs/:job_id/erase
 ```
-
-If you exceed the [job erasure rate limits](../administration/cicd/limits.md#job-erasure-rate-limits),
-this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
 
 Parameters
 
@@ -984,12 +984,12 @@ Example of response:
 
 For a job in manual status, trigger an action to start the job.
 
+If you exceed the [manual job run rate limits](../administration/cicd/limits.md#job-retry-and-manual-job-run-rate-limits),
+this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
+
 ```plaintext
 POST /projects/:id/jobs/:job_id/play
 ```
-
-If you exceed the [manual job run rate limits](../administration/cicd/limits.md#job-retry-and-manual-job-run-rate-limits),
-this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
 
 | Attribute                  | Type              | Required | Description |
 |----------------------------|-------------------|----------|-------------|

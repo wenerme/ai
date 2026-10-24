@@ -813,13 +813,13 @@ retry can place another call.
 
         - `model: string`
 
-        - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+        - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
           - `Choice object { choices, instructions, type, name }`
 
-            - `choices: array of object { value, description }`
+            - `choices: array of DecisionChoiceOption`
 
               - `value: string or boolean`
 
@@ -1035,55 +1035,15 @@ retry can place another call.
 
       Questions evaluated using the current transcript and the session's shared Decision items.
 
-      - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+      - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
 
         - `Choice object { choices, instructions, type, name }`
 
-          - `choices: array of object { value, description }`
-
-            - `value: string or boolean`
-
-              - `string`
-
-              - `boolean`
-
-            - `description: optional string`
-
-          - `instructions: string`
-
-          - `type: "choice"`
-
-            - `"choice"`
-
-          - `name: optional string`
-
         - `Predicate object { instructions, type, name }`
 
-          - `instructions: string`
-
-          - `type: "predicate"`
-
-            - `"predicate"`
-
-          - `name: optional string`
-
         - `Score object { instructions, levels, type, name }`
-
-          - `instructions: string`
-
-          - `levels: array of object { label, description }`
-
-            - `label: string`
-
-            - `description: optional string`
-
-          - `type: "score"`
-
-            - `"score"`
-
-          - `name: optional string`
 
     - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 
@@ -3665,7 +3625,7 @@ jq -n '{
 
     - `item: object { content, role, id, type }`
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -3673,9 +3633,9 @@ jq -n '{
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -5561,23 +5521,29 @@ jq -n '{
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -6623,23 +6589,29 @@ jq -n '{
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -8251,6 +8223,18 @@ jq -n '{
 
         The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
 
+### Decision Choice Option
+
+- `DecisionChoiceOption object { value, description }`
+
+  - `value: string or boolean`
+
+    - `string`
+
+    - `boolean`
+
+  - `description: optional string`
+
 ### Decision Create Event
 
 - `DecisionCreateEvent object { event_id, type }`
@@ -8413,6 +8397,20 @@ jq -n '{
 
     - `"decision.event"`
 
+### Decision Input Text
+
+- `DecisionInputText object { text, type }`
+
+  - `text: string`
+
+    The text input to the model.
+
+  - `type: "input_text"`
+
+    The type of the input item. Always `input_text`.
+
+    - `"input_text"`
+
 ### Decision Item Create Event
 
 - `DecisionItemCreateEvent object { item, type, event_id }`
@@ -8421,7 +8419,7 @@ jq -n '{
 
   - `item: object { content, role, id, type }`
 
-    - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+    - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
       The text input to the model.
 
@@ -8429,9 +8427,9 @@ jq -n '{
 
         The text input to the model.
 
-      - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-        - `InputText object { text, type }`
+        - `DecisionInputText object { text, type }`
 
           - `text: string`
 
@@ -8505,7 +8503,7 @@ jq -n '{
 
       The ID of the stored Decision input item.
 
-    - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+    - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
       The text input to the model.
 
@@ -8513,9 +8511,9 @@ jq -n '{
 
         The text input to the model.
 
-      - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-        - `InputText object { text, type }`
+        - `DecisionInputText object { text, type }`
 
           - `text: string`
 
@@ -8605,6 +8603,56 @@ jq -n '{
 
     The event_id of the client command associated with this server event, when supplied.
 
+### Decision Question
+
+- `DecisionQuestion = Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+
+  - `Choice object { choices, instructions, type, name }`
+
+    - `choices: array of DecisionChoiceOption`
+
+      - `value: string or boolean`
+
+        - `string`
+
+        - `boolean`
+
+      - `description: optional string`
+
+    - `instructions: string`
+
+    - `type: "choice"`
+
+      - `"choice"`
+
+    - `name: optional string`
+
+  - `Predicate object { instructions, type, name }`
+
+    - `instructions: string`
+
+    - `type: "predicate"`
+
+      - `"predicate"`
+
+    - `name: optional string`
+
+  - `Score object { instructions, levels, type, name }`
+
+    - `instructions: string`
+
+    - `levels: array of object { label, description }`
+
+      - `label: string`
+
+      - `description: optional string`
+
+    - `type: "score"`
+
+      - `"score"`
+
+    - `name: optional string`
+
 ### Decision Trigger
 
 - `DecisionTrigger object { decisions, event_type, type }`
@@ -8613,13 +8661,13 @@ jq -n '{
 
     Questions evaluated using the current transcript and the session's shared Decision items.
 
-    - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+    - `questions: array of DecisionQuestion`
 
       Native Decision API questions evaluated together, in order.
 
       - `Choice object { choices, instructions, type, name }`
 
-        - `choices: array of object { value, description }`
+        - `choices: array of DecisionChoiceOption`
 
           - `value: string or boolean`
 
@@ -8679,13 +8727,13 @@ jq -n '{
 
   - `model: string`
 
-  - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+  - `questions: array of DecisionQuestion`
 
     Native Decision API questions evaluated together, in order.
 
     - `Choice object { choices, instructions, type, name }`
 
-      - `choices: array of object { value, description }`
+      - `choices: array of DecisionChoiceOption`
 
         - `value: string or boolean`
 
@@ -11635,13 +11683,13 @@ jq -n '{
 
         - `model: string`
 
-        - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+        - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
           - `Choice object { choices, instructions, type, name }`
 
-            - `choices: array of object { value, description }`
+            - `choices: array of DecisionChoiceOption`
 
               - `value: string or boolean`
 
@@ -11857,55 +11905,15 @@ jq -n '{
 
       Questions evaluated using the current transcript and the session's shared Decision items.
 
-      - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+      - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
 
         - `Choice object { choices, instructions, type, name }`
 
-          - `choices: array of object { value, description }`
-
-            - `value: string or boolean`
-
-              - `string`
-
-              - `boolean`
-
-            - `description: optional string`
-
-          - `instructions: string`
-
-          - `type: "choice"`
-
-            - `"choice"`
-
-          - `name: optional string`
-
         - `Predicate object { instructions, type, name }`
 
-          - `instructions: string`
-
-          - `type: "predicate"`
-
-            - `"predicate"`
-
-          - `name: optional string`
-
         - `Score object { instructions, levels, type, name }`
-
-          - `instructions: string`
-
-          - `levels: array of object { label, description }`
-
-            - `label: string`
-
-            - `description: optional string`
-
-          - `type: "score"`
-
-            - `"score"`
-
-          - `name: optional string`
 
     - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 
@@ -14543,23 +14551,29 @@ jq -n '{
 
           - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-            The image generation model to use. One of `gpt-image-1`,
-            `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+            The image generation model to use. One of `gpt-image-1-mini`,
+            `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-            `gpt-image-1`.
+            `gpt-image-2`.
+
+            `gpt-image-1` was shut down on October 23, 2026. Use
+            `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
             - `string`
 
             - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `"gpt-image-1"`
 
@@ -15605,23 +15619,29 @@ jq -n '{
 
           - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-            The image generation model to use. One of `gpt-image-1`,
-            `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+            The image generation model to use. One of `gpt-image-1-mini`,
+            `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
             `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-            `gpt-image-1`.
+            `gpt-image-2`.
+
+            `gpt-image-1` was shut down on October 23, 2026. Use
+            `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
             - `string`
 
             - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `"gpt-image-1"`
 
@@ -20081,7 +20101,7 @@ jq -n '{
 
         The ID of the stored Decision input item.
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -20089,9 +20109,9 @@ jq -n '{
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -31323,7 +31343,7 @@ Use Bearer Auth (header Authorization).
 
     - `item: object { content, role, id, type }`
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -31331,9 +31351,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -33219,23 +33239,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -34281,23 +34307,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -37589,7 +37621,7 @@ Use Bearer Auth (header Authorization).
 
         The ID of the stored Decision input item.
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -37597,9 +37629,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -38683,13 +38715,13 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
         - `model: string`
 
-        - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+        - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
           - `Choice object { choices, instructions, type, name }`
 
-            - `choices: array of object { value, description }`
+            - `choices: array of DecisionChoiceOption`
 
               - `value: string or boolean`
 
@@ -38905,55 +38937,15 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
       Questions evaluated using the current transcript and the session's shared Decision items.
 
-      - `questions: array of Choice { choices, instructions, type, name }  or Predicate { instructions, type, name }  or Score { instructions, levels, type, name }`
+      - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
 
         - `Choice object { choices, instructions, type, name }`
 
-          - `choices: array of object { value, description }`
-
-            - `value: string or boolean`
-
-              - `string`
-
-              - `boolean`
-
-            - `description: optional string`
-
-          - `instructions: string`
-
-          - `type: "choice"`
-
-            - `"choice"`
-
-          - `name: optional string`
-
         - `Predicate object { instructions, type, name }`
 
-          - `instructions: string`
-
-          - `type: "predicate"`
-
-            - `"predicate"`
-
-          - `name: optional string`
-
         - `Score object { instructions, levels, type, name }`
-
-          - `instructions: string`
-
-          - `levels: array of object { label, description }`
-
-            - `label: string`
-
-            - `description: optional string`
-
-          - `type: "score"`
-
-            - `"score"`
-
-          - `name: optional string`
 
     - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 
@@ -40935,7 +40927,7 @@ Use Bearer Auth (header Authorization).
 
     - `item: object { content, role, id, type }`
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -40943,9 +40935,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -42831,23 +42823,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -43893,23 +43891,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -47223,7 +47227,7 @@ Use Bearer Auth (header Authorization).
 
         The ID of the stored Decision input item.
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -47231,9 +47235,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 

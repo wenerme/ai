@@ -2696,6 +2696,7 @@ The status of the workflow.
 | `CREATED` | The workflow is created. |
 | `FAILED` | The workflow is failed. |
 | `FINISHED` | The workflow is finished. |
+| `IDLE` | The workflow is idle. |
 | `INPUT_REQUIRED` | The workflow is input_required. |
 | `PAUSED` | The workflow is paused. |
 | `PLAN_APPROVAL_REQUIRED` | The workflow is plan_approval_required. |
