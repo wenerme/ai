@@ -14,6 +14,7 @@ aliases:
 4. Make sure `Host` and `X-Forwarded-Proto` headers are correctly passed to Gitea to make Gitea see the real URL being visited.
 5. Make sure your webserver has a certificate, including all intermediate and RootCA certificates, for `git clone` and `git pull` to work.
 6. Gitea uses a WebSocket connection at `/-/ws` for real-time updates like the notification counter. Make sure the reverse-proxy talks HTTP/1.1 and forwards the `Upgrade` and `Connection` headers, see the examples below. Without it, Gitea falls back to periodic polling.
+7. Make sure the reverse-proxy sets the `X-Real-IP` header, otherwise Gitea uses a client-sent value. For example `header_up X-Real-IP {remote_host}` in Caddy's `reverse_proxy`, `RequestHeader set X-Real-IP "expr=%{REMOTE_ADDR}"` in Apache or `http-request set-header X-Real-IP %[src]` in HAProxy. To log the client port, also set `X-Real-Port`, for example `proxy_set_header X-Real-Port $remote_port;` in nginx.
 
 ### Use a sub-path
 

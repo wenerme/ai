@@ -76,7 +76,7 @@ attributes:
 | `pre_approved_agent_privileges` | integer array | Privilege IDs the agent can use without asking for approval. |
 | `pre_approved_agent_privileges_names` | string array | Names corresponding to `pre_approved_agent_privileges`. |
 | `project_id` | integer | ID of the associated project. `null` if not set. |
-| `status` | string | Current flow status. One of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, or `tool_call_approval_required`. GitLab might add new values. |
+| `status` | string | Current flow status. One of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, `tool_call_approval_required`, or `idle`. GitLab might add new values. |
 | `summary` | string | Short text summary of the workflow. |
 | `title` | string | Title of the session. |
 | `web_url` | string | URL of the session in the GitLab UI. `null` if the session is not for a project. |

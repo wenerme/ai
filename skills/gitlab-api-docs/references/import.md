@@ -23,6 +23,8 @@ Use this API to [import repositories from external sources](../user/import/_inde
 
 Imports a repository from GitHub to GitLab.
 
+This endpoint shares a rate limit with starting imports from the UI and with file-based project imports. By default, the limit is six requests per minute for each user. Administrators can [change this limit](../administration/settings/import_export_rate_limits.md).
+
 Prerequisites:
 
 - [Prerequisites for GitHub importer](../user/project/import/github.md#prerequisites).
@@ -144,10 +146,14 @@ Returns the following status codes:
 
 ### Import GitHub gists into GitLab snippets
 
+- Rate limit introduced in GitLab 19.6.
+
 Imports personal GitHub gists into GitLab snippets.
 You can import gists with up to 10 files. GitHub gists with more than 10 files are skipped. You should manually migrate these GitHub gists.
 
 If any gists couldn't be imported, an email is sent with a list of gists that were not imported.
+
+By default, this endpoint has a rate limit of six requests per minute for each user. Administrators can [change this limit](../administration/settings/import_export_rate_limits.md#change-the-github-gists-import-rate-limit) with the application settings API or the Rails console.
 
 ```plaintext
 POST /import/github/gists
@@ -172,17 +178,20 @@ Returns the following status codes:
 - `202 Accepted`: the gists import is being started.
 - `401 Unauthorized`: user's GitHub personal access token is invalid.
 - `422 Unprocessable Entity`: the gists import is already in progress.
-- `429 Too Many Requests`: the user has exceeded GitHub's rate limit.
+- `429 Too Many Requests`: the user has exceeded GitHub's rate limit or the rate limit of this endpoint.
 
 ## Import repository from Bitbucket Server
 
 - Validation of `bitbucket_server_project` and `bitbucket_server_repo` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/429234) in GitLab 19.1.
+- Rate limit introduced in GitLab 19.6.
 
 Imports a repository from Bitbucket Server to GitLab.
 
 The Bitbucket Project Key is only used for finding the repository in Bitbucket.
 You must specify a `target_namespace` if you want to import the repository to a GitLab group.
 If you do not specify `target_namespace`, the project imports to your personal user namespace.
+
+This endpoint shares a rate limit with starting imports from the UI and with file-based project imports. By default, the limit is six requests per minute for each user. Administrators can [change this limit](../administration/settings/import_export_rate_limits.md).
 
 Prerequisites:
 
@@ -223,8 +232,11 @@ curl --request POST \
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/215036) in GitLab 17.0.
 - Support for Bitbucket Cloud API tokens [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/575583) in GitLab 18.9.
 - Support for Bitbucket Cloud app passwords [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/588961) in GitLab 19.0.
+- Rate limit introduced in GitLab 19.6.
 
 Imports a repository from Bitbucket Cloud to GitLab.
+
+This endpoint shares a rate limit with starting imports from the UI and with file-based project imports. By default, the limit is six requests per minute for each user. Administrators can [change this limit](../administration/settings/import_export_rate_limits.md).
 
 Prerequisites:
 

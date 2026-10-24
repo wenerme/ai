@@ -151,7 +151,7 @@ orbit_grep version=1.0.0 target=Project[1] search="search term" scopes="merge_re
 > [!warning]
 > This endpoint is an experiment. The request and response shape can change without notice.
 
-Resolves one token to a PostgreSQL summary of a merge request or work item.
+Resolves one token to a PostgreSQL summary of a merge request, work item, or CI/CD job.
 Optionally, it attaches the graph neighborhood of the entity.
 
 Every request that reaches token resolution counts once against the `orbit_query` rate limit.
@@ -160,7 +160,8 @@ without an Orbit-enabled group. Requests rejected with `400` do not count.
 
 With a [fine-grained personal access token](../auth/tokens/fine_grained_access_tokens_rest.md), the
 `read_orbit` permission is not enough. The token also needs `read_merge_request` or `read_work_item` on the
-project or group of the entity, and `read_pipeline` on the project for the pipeline status. Without them,
+project or group of the entity, `read_job` on the project for a job and for job logs, `read_pipeline` for the pipeline
+status and failed jobs of a merge request and for failed tests, and `download_code` for the changed files of a merge request. Without them,
 the entity is returned as `not_found`. The pipeline status is `null`, and linked items you cannot read are left out of the summary.
 The token's project scope applies to the entity summary only. The graph expansion is filtered by your own access, the same as for named queries.
 
@@ -190,13 +191,13 @@ Other failures:
 
 - `Type[id]`, for example `MergeRequest[123]`. `id` is the global database ID.
 - `gid://gitlab/<Type>/<id>`.
-- A merge request, issue, or work item URL on this instance, including group work item URLs under `/groups/`.
+- A merge request, issue, work item, or job URL on this instance, including group work item URLs under `/groups/`.
 - `path!iid` for a merge request, for example `gitlab-org/gitlab!42`.
 - `path#iid` for a work item, for example `gitlab-org/gitlab#7`. The path can also be a group.
 - `Epic[id]`, `gid://gitlab/Epic/<id>`, an epic URL such as `/groups/gitlab-org/-/epics/5`,
   or `group&iid`, for example `gitlab-org&5`. `id` is the epic ID.
 
-The supported types are `MergeRequest` and `WorkItem`. `Issue` is an alias for `WorkItem`,
+The supported types are `MergeRequest`, `WorkItem`, and `Job`. `Issue` is an alias for `WorkItem`,
 and the response reports `WorkItem`. An epic resolves to its work item in the same way:
 the response reports `WorkItem`, the ID of the work item, and `work_item_type` `epic`,
 and the expansion runs for the work item. Other types return `unsupported_type`.
@@ -208,11 +209,11 @@ response attributes for `response_format=raw`:
 
 | Attribute                           | Type         | Description |
 |-------------------------------------|--------------|-------------|
-| `version`                           | string       | Response contract version, `1.1.0`. |
+| `version`                           | string       | Response contract version, `1.2.0`. |
 | `entities`                          | object array | One entry for the one token. |
 | `entities[].token`                  | string       | Token as sent. |
 | `entities[].resolved_token`         | string       | Token in `Type[id]` form. Only present when `found` is `true`. |
-| `entities[].type`                   | string       | `MergeRequest` or `WorkItem`. `null` when `found` is `false`. |
+| `entities[].type`                   | string       | `MergeRequest`, `WorkItem`, or `Job`. `null` when `found` is `false`. |
 | `entities[].id`                     | string       | Global database ID, in the same form as the node IDs in the graph result. For `iid` forms, `null` when `found` is `false`. For `Type[id]` and GID tokens, the ID that was sent. |
 | `entities[].found`                  | boolean      | Whether the entity exists and you can read it. |
 | `entities[].summary`                | object       | Summary of a found entity. Contains `namespace_path` and `project_path`. `project_path` is `null` for group work items. Other fields can be added. |
@@ -222,11 +223,20 @@ response attributes for `response_format=raw`:
 
 Summaries include these fields:
 
-- For a merge request: title, state, author, branches, head pipeline status, reviewers, and linked issues.
-- For a work item: title, state, labels, assignees, milestone, and linked merge requests.
+- For a merge request: title, state, author, branches, head pipeline status, merge commit, reviewers,
+  linked issues, description, changed files, failed jobs, and discussions.
+- For a work item: title, state, labels, assignees, milestone, linked merge requests, description, and discussions.
+- For a job: name, status, stage, failure reason, ref, commit, pipeline, merge request, failed tests, and log tail.
+
+Failed tests come from the job's [unit test report](../ci/testing/unit_test_reports.md). The log tail is the last
+60 lines of the job script output, or of the whole log when a job failed before its script started.
+Changed line ranges use new-file line numbers, so a deletion is reported at the line after it, which can be
+one past the end of the file. A changed file has no `lines` when it was deleted or its diff could not be read,
+and empty `lines` when its diff has no text lines, such as for a binary or very large file.
 
 Lists are limited and contain only records you can read. `summary.truncated` is an array with the names of
 the lists that were cut, for example `["reviewers"]`. It is empty when no list was cut.
+A failed job of a merge request whose failed tests were cut has `truncated: ["failed_tests"]`.
 Entries in `linked_issues` and `linked_merge_requests` are ordered by ID and have `type`, `id`
 (a string), `token`, `relation` (`CLOSES`), `iid`, `project_path`, and `title`.
 Every failure after a lookup starts returns the same `not_found` error,
@@ -234,8 +244,8 @@ whether the record is missing or you cannot read it.
 
 ### Expansion
 
-With `expand`, the request runs at most one graph query, using the `expand_merge_request` or
-`expand_work_item` named query. A request that runs one query is billed as one query.
+With `expand`, the request runs at most one graph query, using the `context_for_review`,
+`context_for_issue`, or `context_for_job` named query. A request that runs one query is billed as one query.
 A failure of the expansion never fails the summary.
 
 `expansion.query` has the `name` and `parameters` of the query. It is present on a result and on every error
@@ -268,7 +278,7 @@ Example response:
 
 ```json
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "entities": [
     {
       "token": "gitlab-org/gitlab#609451",
@@ -302,7 +312,7 @@ Example response:
       },
       "expansion": {
         "query": {
-          "name": "expand_work_item",
+          "name": "context_for_issue",
           "parameters": {"node_ids": [196910643], "limit": 100}
         },
         "result": {

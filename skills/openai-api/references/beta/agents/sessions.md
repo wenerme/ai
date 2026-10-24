@@ -628,6 +628,16 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Whether computer tool outputs include screenshots. Defaults to `false`.
 
+    - `Automations object { type }`
+
+      Lets the agent manage its own scheduled wakeups.
+
+      - `type: "automations"`
+
+        The type of the object. Always `automations`.
+
+        - `"automations"`
+
 - `agent_id: optional string`
 
   The ID of a saved reusable agent. Omit `agent` to use its configuration unchanged.
@@ -1027,6 +1037,16 @@ Creates a managed agent session, optionally submits initial input, and returns t
           The type of the object. Always `computer_use`.
 
           - `"computer_use"`
+
+      - `Automations object { type }`
+
+        Lets the agent manage its own scheduled wakeups.
+
+        - `type: "automations"`
+
+          The type of the object. Always `automations`.
+
+          - `"automations"`
 
   - `created_at: number`
 
@@ -1999,6 +2019,16 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           - `"computer_use"`
 
+      - `Automations object { type }`
+
+        Lets the agent manage its own scheduled wakeups.
+
+        - `type: "automations"`
+
+          The type of the object. Always `automations`.
+
+          - `"automations"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -2918,6 +2948,16 @@ Retrieves the current state of a managed agent session. See [managing sessions](
           The type of the object. Always `computer_use`.
 
           - `"computer_use"`
+
+      - `Automations object { type }`
+
+        Lets the agent manage its own scheduled wakeups.
+
+        - `type: "automations"`
+
+          The type of the object. Always `automations`.
+
+          - `"automations"`
 
   - `created_at: number`
 
@@ -3876,6 +3916,16 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
           The type of the object. Always `computer_use`.
 
           - `"computer_use"`
+
+      - `Automations object { type }`
+
+        Lets the agent manage its own scheduled wakeups.
+
+        - `type: "automations"`
+
+          The type of the object. Always `automations`.
+
+          - `"automations"`
 
   - `created_at: number`
 
@@ -5589,6 +5639,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
               The type of the object. Always `computer_use`.
 
               - `"computer_use"`
+
+          - `Automations object { type }`
+
+            Lets the agent manage its own scheduled wakeups.
+
+            - `type: "automations"`
+
+              The type of the object. Always `automations`.
+
+              - `"automations"`
 
       - `created_at: number`
 

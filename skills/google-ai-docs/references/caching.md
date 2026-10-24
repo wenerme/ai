@@ -25,5 +25,8 @@ To increase the chance of an implicit cache hit:
 - Try putting large and common contents at the beginning of your prompt
 - Try to send requests with similar prefix in a short amount of time
 
+> [!NOTE]
+> **Note:** **Multi-turn and agent loops on Gemini 4 (Argon and newer):** Gemini caches the full previous request only if the new request adds at least 2,050 tokens. Model output, thought, and function results all count toward this total. For smaller additions, Gemini re-processes the last 2,050 tokens of the previous request at the standard input rate. Most agent turns exceed this threshold.
+
 You can see the number of tokens which were cache hits in the response object's
 `usage.total_cached_tokens` (Python and JavaScript) field.

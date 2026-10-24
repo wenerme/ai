@@ -852,6 +852,21 @@ To create a portal and connect an MCP client, refer to [MCP server portals](http
 
 ## 2026-09-23
 
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Authentication options for Google Workspace identity providers**
+
+Google Workspace identity provider integrations now include prompt controls and device-scoped login hints in the Cloudflare dashboard and API.
+
+Choose Google's default behavior, silent authentication, consent, or account selection. If silent authentication cannot use an active Google session, Access retries once with Google's default interactive flow.
+
+Access can also send a domain-matched login hint. It sends the hint when one email from a previous Access login on the same device matches the Google Workspace domain.
+
+For configuration details, refer to [Google Workspace authentication options](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/#authentication-options).
+
+## 2026-09-23
+
 [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 

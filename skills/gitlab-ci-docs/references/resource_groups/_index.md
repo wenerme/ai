@@ -235,14 +235,14 @@ Sometimes, a job hangs with the message `Waiting for resource: <resource_group>`
 first check that the resource group is working correctly:
 
 1. Go to the job details page.
-1. If the resource is assigned to a job, select **View job currently using resource** and check the job status.
+1. If the resource is assigned to a job, select  and check the job status.
 
    - If the status is `running` or `pending`, the feature is working correctly. Wait until the job finishes and releases the resource.
    - If the status is `created` and the [process mode](#process-modes) is either **Oldest first** or **Newest first**, the feature is working correctly.
      Visit the pipeline page of the job and check which upstream stage or job is blocking the execution.
    - If none of the previous conditions are met, the feature might not be working correctly. [Report the issue to GitLab](#report-an-issue).
 
-1. If **View job currently using resource** is not available, the resource is not assigned to a job. Instead, check the resource's upcoming jobs.
+1. If  is not available, the resource is not assigned to a job. Instead, check the resource's upcoming jobs.
 
    1. Get the resource's upcoming jobs with the [REST API](../../api/resource_groups.md#list-upcoming-jobs-for-a-specific-resource-group).
    1. Verify that the resource group's [process mode](#process-modes) is **Oldest first**.
@@ -279,7 +279,7 @@ You can get job information from the GraphQL API. You should use the GraphQL API
 To get job information from the GraphQL API:
 
 1. Go to the pipeline details page.
-1. Select the **Jobs** tab and find the ID of the stuck job.
+1. Select the  tab and find the ID of the stuck job.
 1. Go to the [interactive GraphQL explorer](../../api/graphql/_index.md#interactive-graphql-explorer).
 1. Run the following query:
 

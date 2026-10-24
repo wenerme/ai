@@ -197,7 +197,8 @@ DELETE /virtual_registries/container/registries/:id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/registries/1"
 ```
@@ -223,7 +224,8 @@ DELETE /virtual_registries/container/registries/:id/cache
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/registries/1/cache"
 ```
@@ -412,7 +414,8 @@ You cannot add two upstreams with the same URL and credentials (`username` and `
 Example request:
 
 ```shell
-curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request POST \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"url": "https://registry-1.docker.io", "name": "Docker Hub", "description": "Docker Hub registry", "username": "<your_username>", "password": "<your_password>", "cache_validity_hours": 48}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/registries/1/upstreams"
@@ -510,7 +513,8 @@ PATCH /virtual_registries/container/upstreams/:id
 Example request:
 
 ```shell
-curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PATCH \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"cache_validity_hours": 72}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/upstreams/1"
@@ -534,7 +538,8 @@ PATCH /virtual_registries/container/registry_upstreams/:id
 Example request:
 
 ```shell
-curl --request PATCH --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request PATCH \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Content-Type: application/json" \
      --data '{"position": 5}' \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/registry_upstreams/1"
@@ -557,7 +562,8 @@ DELETE /virtual_registries/container/upstreams/:id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/upstreams/1"
 ```
@@ -645,7 +651,8 @@ DELETE /virtual_registries/container/upstreams/:id/cache
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/upstreams/1/cache"
 ```
@@ -813,7 +820,8 @@ DELETE /virtual_registries/container/cache_entries/*id
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request DELETE \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
      --url "https://gitlab.example.com/api/v4/virtual_registries/container/cache_entries/bGlicmFyeS9uZ2lueC9tYW5pZmVzdHMvbGF0ZXN0"
 ```

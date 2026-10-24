@@ -302,6 +302,8 @@ Example response:
 
 Lists all Geo site statuses.
 
+From GitLab 19.6, when the legacy `geo_upload_replication` and `geo_upload_force_primary_checksumming` feature flags are disabled, the `uploads_*` fields are the sum of the values for each upload type.
+
 ```plaintext
 GET /geo_sites/status
 ```
@@ -1404,6 +1406,8 @@ Example response:
 ## Retrieve a Geo site status
 
 Retrieves a specified Geo site status.
+
+From GitLab 19.6, when the legacy `geo_upload_replication` and `geo_upload_force_primary_checksumming` feature flags are disabled, the `uploads_*` fields are the sum of the values for each upload type.
 
 ```plaintext
 GET /geo_sites/:id/status

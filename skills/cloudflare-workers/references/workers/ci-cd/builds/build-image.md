@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png
 
 # Build image
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
@@ -37,18 +37,20 @@ The build image preinstalls Node.js 22.23.2 and 24.18.0.
 
 ### Tools and languages
 
-| Tool | Default version | Environment variable |
-| --- | --- | --- |
-| **Bun** | 1.2.15 | `BUN_VERSION` |
-| **Hugo** | extended\_0.147.7 | `HUGO_VERSION` |
-| **npm** | 10.9.2 | |
-| **yarn** | 4.9.1 | `YARN_VERSION` |
-| **pnpm** | 10.11.1 | `PNPM_VERSION` |
-| **pip** | 25.1.1 | |
-| **gem** | 3.6.9 | |
-| **poetry** | 2.1.3 | |
-| **pipx** | 1.7.1 | |
-| **bundler** | 2.6.9 | |
+| Tool | Default version | Environment variable | File |
+| --- | --- | --- | --- |
+| **Bun** | 1.2.15 | `BUN_VERSION` | `packageManager` field in `package.json` |
+| **Hugo** | extended\_0.147.7 | `HUGO_VERSION` | |
+| **npm** | 10.9.2 |  | `packageManager` field in `package.json` |
+| **yarn** | 4.9.1 | `YARN_VERSION` | `packageManager` field in `package.json` |
+| **pnpm** | 10.11.1 | `PNPM_VERSION` | `packageManager` field in `package.json` |
+| **pip** | 25.1.1 |  | |
+| **gem** | 3.6.9 |  | |
+| **poetry** | 2.1.3 |  | |
+| **pipx** | 1.7.1 |  | |
+| **bundler** | 2.6.9 |  | |
+
+For details on the `packageManager` field, refer to [Package manager versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#package-manager-versions).
 
 ## Advanced Settings
 
@@ -65,6 +67,23 @@ Or, to set the version by adding a file to your project, you can:
 
 1. Find the filename for the language or tool (e.g. `.nvmrc`)
 2. Add the specified file name to the root directory and set the desired version number as the file's content. For example, if the version number is 22, the file should contain '22'.
+
+#### Package manager versions
+
+To set the version of npm, yarn, pnpm, or Bun, add the [`packageManager` ↗︎](https://nodejs.org/api/packages.html#packagemanager) field to your `package.json`. This is the only way to change the npm version.
+
+*package.jsonjson*
+
+```json
+{
+	"packageManager": "npm@11.19.1"
+}
+```
+
+- Workers Builds reads `packageManager` from the `package.json` in your project's [root directory](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings). If the root directory is not the top level of your repository, Workers Builds also reads the `package.json` at the top level of the repository. If both files set `packageManager`, use the same value in each.
+- Use an exact version, such as `npm@11.19.1`. Do not use ranges such as `npm@^11`. If Workers Builds cannot parse the version, it uses the default version.
+- The `engines.npm` field in `package.json` does **not** set the npm version. If you only set `engines.npm`, Workers Builds uses the default npm version, and npm prints an `EBADENGINE` warning instead of failing.
+- `packageManager` sets the version of the package manager. The lockfile in your repository still determines which package manager installs your dependencies.
 
 ### Skip dependency install
 
@@ -130,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png?v=2dd0e4b778488d98","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png?v=2dd0e4b778488d98","dateModified":"2026-10-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

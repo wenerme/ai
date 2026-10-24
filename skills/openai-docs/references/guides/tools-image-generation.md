@@ -2,12 +2,15 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-The image generation tool allows you to generate images using a text prompt, and optionally image inputs. It uses GPT Image models, including `gpt-image-2.5-sunburst`, `gpt-image-2.5-flare`, `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, and automatically optimizes text inputs for improved performance.
+The image generation tool allows you to generate images using a text prompt, and optionally image inputs. It uses GPT Image models, including `gpt-image-2.5-sunburst`, `gpt-image-2.5-flare`, `gpt-image-2`, `gpt-image-1.5`, and `gpt-image-1-mini`, and automatically optimizes text inputs for improved performance.
 
 Set the `image_generation` tool's `model` to `gpt-image-2.5-sunburst` for precise editing, or `gpt-image-2.5-flare` for fast, high-quality image generation. Use a supported mainline model in the top-level Responses `model` field.
 
+`gpt-image-1` was shut down on October 23, 2026. See the [deprecation
+  notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots) for migration details.
+
 To learn more about image generation, refer to our dedicated [image generation
-  guide](https://developers.openai.com/api/docs/guides/image-generation?api=responses).
+guide](https://developers.openai.com/api/docs/guides/image-generation?api=responses).
 
 ## Usage
 

@@ -304,12 +304,12 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 Creates a file in a specified repository. To create multiple files with a single request,
 see the [commits API](commits.md#create-a-commit).
 
+> [!note]
+> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
+
 ```plaintext
 POST /projects/:id/repository/files/:file_path
 ```
-
-> [!note]
-> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
 
 Supported attributes:
 
@@ -359,12 +359,12 @@ Example response:
 Updates a specified file in a repository. To update multiple files with a single request,
 see the [commits API](commits.md#create-a-commit).
 
+> [!note]
+> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
+
 ```plaintext
 PUT /projects/:id/repository/files/:file_path
 ```
-
-> [!note]
-> This endpoint is subject to [request size and rate limits](../administration/instance_limits.md#commits-and-files-api-limits). Requests larger than a default 300 MB limit are rejected. Requests greater than 20 MB are rate limited to 3 requests every 30 seconds.
 
 Supported attributes:
 

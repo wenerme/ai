@@ -35,7 +35,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
 - `input_fidelity: optional "high" or "low" or null`
 
-  Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1` and `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
+  Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
 
   - `"high"`
 
@@ -56,13 +56,25 @@ Creates an edited or extended image given one or more source images and a prompt
 
 - `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more or null`
 
-  The GPT image model to use for image editing, including `gpt-image-2`, its dated snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+  The GPT image model to use for image editing, including `gpt-image-2`, its dated
+  snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+  `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and
+  `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+
+  `gpt-image-1` was shut down on October 23, 2026. Use
+  `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
   - `string`
 
   - `"gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more`
 
-    The GPT image model to use for image editing, including `gpt-image-2`, its dated snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+    The GPT image model to use for image editing, including `gpt-image-2`, its dated
+    snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+    `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and
+    `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+
+    `gpt-image-1` was shut down on October 23, 2026. Use
+    `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
     - `"gpt-image-1.5"`
 

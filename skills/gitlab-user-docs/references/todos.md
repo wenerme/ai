@@ -44,17 +44,15 @@ To sort the To-Do List:
 ## Actions that create to-do items
 
 - Multiple to-do items [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/28355) in GitLab 17.8. Feature flag `multiple_todos` enabled by default.
+- Multiple to-do items [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/178897) in GitLab 17.9. Feature flag `multiple_todos` removed.
 - Review to-do items [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260625) to one per reviewer in GitLab 19.5.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- To-do items [no longer created](https://gitlab.com/gitlab-org/gitlab/-/work_items/340655) when you assign yourself or request your own review in GitLab 19.6.
 
 Many to-do items are created automatically.
 Some of the actions that add a to-do item to your To-Do List:
 
-- An issue or merge request is assigned to you.
-- A merge request review is requested.
+- Someone else assigns an issue or merge request to you.
+- Someone else requests your review on a merge request.
 - You're mentioned in the description or
   comment of an issue, merge request, or epic.
 - You're mentioned in a comment on a commit or design.
@@ -66,6 +64,8 @@ Some of the actions that add a to-do item to your To-Do List:
     pipeline succeeds.
 - A merge request is removed from a [merge train](../ci/pipelines/merge_trains.md), and you're the user that added it.
 - A member access request is raised for a group or project you're an owner of.
+
+If a flow or external agent assigns you or requests your review, you still get a to-do item, even if you triggered it.
 
 In GitLab 17.8 and later, you receive a new to-do notification every time someone mentions you, even in the same issue or merge request.
 

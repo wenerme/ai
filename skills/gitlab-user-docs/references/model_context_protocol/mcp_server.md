@@ -766,6 +766,7 @@ GitLab accepts PKCE parameters for pre-registered applications, but does not req
 - Offering: GitLab.com
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/629883) in GitLab 19.5 [with feature flags](../../administration/feature_flags/_index.md) named `rate_limiter_mcp_limits_free_info`, `rate_limiter_mcp_limits_free_enforce`, `rate_limiter_mcp_limits_premium_info`, `rate_limiter_mcp_limits_premium_enforce`, `rate_limiter_mcp_limits_ultimate_info`, and `rate_limiter_mcp_limits_ultimate_enforce`. Disabled by default.
+- Hourly limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264022) in GitLab 19.6 [with feature flags](../../administration/feature_flags/_index.md) named `rate_limiter_mcp_sustained_limits_free_info`, `rate_limiter_mcp_sustained_limits_free_enforce`, `rate_limiter_mcp_sustained_limits_premium_info`, `rate_limiter_mcp_sustained_limits_premium_enforce`, `rate_limiter_mcp_sustained_limits_ultimate_info`, and `rate_limiter_mcp_sustained_limits_ultimate_enforce`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history.
@@ -773,11 +774,11 @@ GitLab accepts PKCE parameters for pre-registered applications, but does not req
 Requests to the MCP server endpoint, `POST /api/v4/mcp`, are limited for each user by the plan of
 their namespace:
 
-| Plan     | Limit            |
-| -------- | ---------------- |
-| Free     | 60 each minute   |
-| Premium  | 600 each minute  |
-| Ultimate | 600 each minute  |
+| Plan     | Limit each minute | Limit each hour |
+| -------- | ----------------- | --------------- |
+| Free     | 60                | 3,600           |
+| Premium  | 600               | 5,000           |
+| Ultimate | 600               | 5,000           |
 
 These limits apply for each user, not for each client or token. A user who connects several MCP
 clients shares one allowance across all of them.
@@ -789,6 +790,10 @@ reach either limit. The MCP server limit is the lower of the two for every plan.
 When you exceed the limit, GitLab returns `429 Too Many Requests` with the
 [standard rate limit headers](../../administration/settings/user_and_ip_rate_limits.md#response-headers),
 including `Retry-After` and `RateLimit-Reset`. `RateLimit-Name` identifies which limit you reached.
+
+A request rejected by the limit each minute still counts toward the limit each hour.
+If a client retries without waiting after a `429` response, the client can reach the limit each
+hour, and GitLab rejects its requests until that limit resets.
 
 A rate limit on the GitLab API endpoint behind a tool is reported differently. For that case, see
 [the `rate_limited` tool result](mcp_server_troubleshooting.md#error-rate_limited-tool-result).

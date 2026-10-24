@@ -2147,14 +2147,14 @@ If your HTTP repository isn't publicly accessible, add authentication informatio
 `https://username:password@gitlab.company.com/group/project.git`, where `password` is a public access key with the `api`
 scope enabled.
 
-```plaintext
-POST /projects
-```
-
 > [!note]
 > When you create a project with `package_registry_access_level` set to `disabled`, the package registry might remain enabled.
 > As a workaround, also set `packages_enabled` to `false` in the same request.
 > For more information, see [issue 572010](https://gitlab.com/gitlab-org/gitlab/-/work_items/572010).
+
+```plaintext
+POST /projects
+```
 
 Supported general project attributes:
 

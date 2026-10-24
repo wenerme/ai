@@ -45,15 +45,15 @@ GET /projects/:id/external_status_checks
 
 ## Create external status check service
 
-Creates a new external status check service for a project using the following endpoint:
-
-```plaintext
-POST /projects/:id/external_status_checks
-```
+Creates a new external status check service for a project.
 
 > [!warning]
 > External status checks send information about all applicable merge requests to the
 > defined external service. This includes confidential merge requests.
+
+```plaintext
+POST /projects/:id/external_status_checks
+```
 
 | Attribute              | Type             | Required | Description                                    |
 |------------------------|------------------|----------|------------------------------------------------|

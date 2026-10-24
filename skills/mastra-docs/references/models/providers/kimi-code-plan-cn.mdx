@@ -5,7 +5,7 @@ description: "Browse Kimi For Coding (kimi.com) model IDs, capabilities, and con
 
 # [Kimi For Coding (kimi.com) logo]Kimi For Coding (kimi.com)
 
-Access 4 Kimi For Coding (kimi.com) models through Mastra's model router. Authentication is handled automatically using the `KIMI_API_KEY` environment variable.
+Access 6 Kimi For Coding (kimi.com) models through Mastra's model router. Authentication is handled automatically using the `KIMI_API_KEY` environment variable.
 
 Learn more in the [Kimi For Coding (kimi.com) documentation](https://www.kimi.com/code/docs/en/kimi-code/models.html).
 
@@ -59,6 +59,30 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kimi-code-plan-cn/k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kimi-code-plan-cn/k3.1-pro-highspeed",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
     "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null

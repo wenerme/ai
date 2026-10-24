@@ -115,6 +115,10 @@ Most base images include these commands by default. However, minimal images (lik
 might require you to install them explicitly. If needed, you can install missing commands in the
 [setup script configuration](_index.md#configure-setup-scripts).
 
+Flows with [`coding_environment: none`](../custom_flows_schema.md#coding_environment), like the
+Recommend Reviewers Flow, skip setup scripts. For these flows, the image itself must include `curl`
+or the GitLab Duo CLI.
+
 > [!note]
 > In GitLab 18.9 and earlier, there is [a known issue (587996)](https://gitlab.com/gitlab-org/gitlab/-/work_items/587996) where flows might fail with newer versions of `git` in custom images. This issue is resolved in `@gitlab/duo-cli` version 8.71.0.
 >

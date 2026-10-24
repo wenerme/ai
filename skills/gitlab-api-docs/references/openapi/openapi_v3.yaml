@@ -1789,6 +1789,26 @@ tags:
     > The availability of these endpoints is controlled by the `work_item_rest_api` feature flag.
     > They are available for testing, but not ready for production use. While the flag is disabled,
     > every endpoint except the list endpoints returns `404 Not Found`.
+
+    ## History
+
+    - Endpoints to list and get work items introduced in GitLab 18.10
+      [with a feature flag](https://docs.gitlab.com/administration/feature_flags/) named `work_item_rest_api`.
+      Disabled by default.
+    - Endpoints to create and delete work items added in GitLab 18.11.
+    - Endpoint to update work items added in GitLab 19.0.
+    - Endpoint to list work items can also be enabled with the `work_item_rest_api_index` feature flag
+      in GitLab 19.1. Disabled by default.
+    - Endpoints to list emoji reactions, children, email participants, linked items, linked resources,
+      and notes added in GitLab 19.1.
+    - Endpoint to list work items no longer behind a feature flag in GitLab 19.2.
+      Feature flag `work_item_rest_api_index` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243015).
+    - Endpoints to list the current user's to-do items and discussions added in GitLab 19.2.
+    - Endpoints to add a child, and to list closing and related merge requests, added in GitLab 19.3.
+    - Endpoints to remove and reorder children, get a discussion, get and create notes, and list related
+      branches added in GitLab 19.4.
+    - Endpoints to create and resolve discussions, and to manage the notes in a discussion, added in GitLab 19.5.
+    - Endpoints to update and delete notes added in GitLab 19.6.
   x-displayName: Work items
   externalDocs:
     url: https://docs.gitlab.com/user/work_items/
@@ -8509,7 +8529,10 @@ paths:
     post:
       operationId: postApiV4GroupsIdHooks
       summary: Create a group hook
-      description: Creates a hook for a specified group.
+      description: Creates a hook for a specified group. This endpoint has a rate
+        limit of 10 requests per minute for each authenticated user for a given group.
+        On GitLab Self-Managed and GitLab Dedicated, an administrator can change this
+        limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -8525,6 +8548,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -10275,8 +10300,7 @@ paths:
     post:
       operationId: postApiV4GroupsIdLdapGroupLinks
       summary: Add an LDAP group link with CN or filter
-      description: Adds an LDAP group link using a CN or filter.Adding a group link
-        by filter is only supported in the Premium tier and above.
+      description: Adds an LDAP group link using a CN or filter.
       tags:
       - LDAP
       responses:
@@ -10311,8 +10335,7 @@ paths:
     delete:
       operationId: deleteApiV4GroupsIdLdapGroupLinks
       summary: Delete an LDAP group link with CN or filter
-      description: Deletes an LDAP group link using a CN or filter.Deleting by filter
-        is only supported in the Premium tier and above.
+      description: Deletes an LDAP group link using a CN or filter.
       tags:
       - LDAP
       responses:
@@ -30833,7 +30856,9 @@ paths:
     post:
       operationId: postApiV4Hooks
       summary: Create a system hook
-      description: Creates a system hook.
+      description: Creates a system hook. This endpoint has a rate limit of five requests
+        per minute for each authenticated user. On GitLab Self-Managed and GitLab
+        Dedicated, an administrator can change this limit in the application settings.
       tags:
       - Hooks
       responses:
@@ -30849,6 +30874,8 @@ paths:
           description: Not found
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
       requestBody:
         required: true
         content:
@@ -60945,6 +60972,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
       requestBody:
@@ -61035,6 +61064,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
       requestBody:
@@ -61067,6 +61098,8 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable entity
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
       requestBody:
@@ -84823,6 +84856,9 @@ components:
         agent_version:
           type: string
           example: 2.1.295
+        sync_type:
+          type: string
+          example: hook
         external_xid:
           type: string
           example: uuid
@@ -93994,11 +94030,17 @@ components:
           type: string
         tags_create_limit:
           type: string
+        group_hooks_create_limit:
+          type: string
         project_hooks_create_limit:
+          type: string
+        system_hooks_create_limit:
           type: string
         web_hook_event_resend_limit:
           type: string
         web_hook_test_limit:
+          type: string
+        github_gists_import_limit:
           type: string
         gitlab_dedicated_instance:
           type: string
@@ -102595,6 +102637,9 @@ components:
         allow_project_extension:
           type: boolean
           example: true
+        require_sandbox:
+          type: boolean
+          example: false
         minimum_access_level_execute:
           type: string
           example: developer
@@ -110402,6 +110447,8 @@ components:
             - granular
             - read_repository
             - write_repository
+            - read_registry
+            - write_registry
             - read_virtual_registry
             - write_virtual_registry
             - read_observability
@@ -112285,6 +112332,11 @@ components:
             Valid values are `0` (default) for Sunday, `1` for Monday, and `6` for
             Saturday.
           nullable: true
+        github_gists_import_limit:
+          type: string
+          description: 'Maximum number of GitHub gists import requests per minute,
+            per user. Default: `6`. Set to `0` to disable the rate limit.'
+          nullable: true
         gitlab_dedicated_instance:
           type: string
           description: If `true`, the instance was provisioned for GitLab Dedicated.
@@ -112304,6 +112356,12 @@ components:
           type: string
           description: 'Maximum number of Git operations per minute a user can perform.
             Default: `600`.'
+          nullable: true
+        group_hooks_create_limit:
+          type: string
+          description: 'Maximum number of group webhooks a user can create per minute
+            for a given group. Default: `10`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281)
+            in GitLab 19.6.'
           nullable: true
         hashed_storage_enabled:
           type: string
@@ -112609,6 +112667,12 @@ components:
         static_objects_external_storage_url:
           type: string
           description: URL to an external storage for repository static objects.
+          nullable: true
+        system_hooks_create_limit:
+          type: string
+          description: 'Maximum number of system hooks a user can create per minute.
+            Default: `5`. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281)
+            in GitLab 19.6.'
           nullable: true
         terms:
           type: string
@@ -114271,6 +114335,8 @@ components:
             - granular
             - read_repository
             - write_repository
+            - read_registry
+            - write_registry
             - read_virtual_registry
             - write_virtual_registry
             - read_observability
@@ -115087,6 +115153,8 @@ components:
             - granular
             - read_repository
             - write_repository
+            - read_registry
+            - write_registry
             - read_virtual_registry
             - write_virtual_registry
             - read_observability
@@ -116848,6 +116916,8 @@ components:
             - granular
             - read_repository
             - write_repository
+            - read_registry
+            - write_registry
             - read_virtual_registry
             - write_virtual_registry
             - read_observability
@@ -116917,6 +116987,8 @@ components:
             - granular
             - read_repository
             - write_repository
+            - read_registry
+            - write_registry
             - read_virtual_registry
             - write_virtual_registry
             - read_observability
@@ -135410,6 +135482,11 @@ components:
               description: Whether to allow projects to extend the network access
                 domain allowlist
               nullable: true
+            require_sandbox:
+              type: boolean
+              description: Whether flows that run on GitLab Runner fail when the execution
+                environment sandbox is unavailable
+              nullable: true
             minimum_access_level_execute:
               type: integer
               enum:
@@ -135797,6 +135874,11 @@ components:
               type: boolean
               description: Whether to allow projects to extend the network access
                 domain allowlist
+              nullable: true
+            require_sandbox:
+              type: boolean
+              description: Whether flows that run on GitLab Runner fail when the execution
+                environment sandbox is unavailable
               nullable: true
             minimum_access_level_execute:
               type: integer

@@ -34,11 +34,11 @@ To complete this tutorial:
 
 [Create a new Google Cloud workload identity pool](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds#create_the_workload_identity_pool_and_provider) with the following options:
 
-- **Name**: Human-friendly name for the workload identity pool, such as `GitLab`.
-- **Pool ID**: Unique ID in the Google Cloud project for the workload identity pool,
+- : Human-friendly name for the workload identity pool, such as `GitLab`.
+- : Unique ID in the Google Cloud project for the workload identity pool,
   such as `gitlab`. This value is used to refer to the pool and appears in URLs.
-- **Description**: Optional. A description of the pool.
-- **Enabled Pool**: Ensure this option is `true`.
+- : Optional. A description of the pool.
+- : Ensure this option is `true`.
 
 Create a single pool per GitLab installation per Google Cloud project. If you have multiple repositories and CI/CD jobs on the same GitLab instance, they can authenticate using different providers against the same pool.
 
@@ -47,20 +47,20 @@ Create a single pool per GitLab installation per Google Cloud project. If you ha
 [Create a new Google Cloud workload identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-clouds#create_the_workload_identity_pool_and_provider)
 inside the workload identity pool created in the previous step, using the following options:
 
-- **Provider type**: OpenID Connect (OIDC).
-- **Provider name**: Human-friendly name for the workload identity provider,
+- : OpenID Connect (OIDC).
+- : Human-friendly name for the workload identity provider,
   such as `gitlab/gitlab`.
-- **Provider ID**: Unique ID in the pool for the workload identity provider,
+- : Unique ID in the pool for the workload identity provider,
   such as `gitlab-gitlab`. This value is used to refer to the provider, and appears in URLs.
-- **Issuer (URL)**: The address of your GitLab instance, such as `https://gitlab.com/` or
+- : The address of your GitLab instance, such as `https://gitlab.com/` or
   `https://gitlab.example.com/`.
   - The address must use the `https://` protocol.
   - The address must end in a trailing slash.
-- **Audiences**: Manually set the allowed audiences list to the address of your
+- : Manually set the allowed audiences list to the address of your
   GitLab instance, such as `https://gitlab.com` or `https://gitlab.example.com`.
   - The address must use the `https://` protocol.
   - The address must not end in a trailing slash.
-- **Provider attributes mapping**: Create the following mappings, where `attribute.X` is the
+- : Create the following mappings, where `attribute.X` is the
   name of the attribute to be included as a claim in the Google token, and `assertion.X`
   is the value to extract from the [GitLab claim](../_index.md#id-token-authentication-for-cloud-services):
 

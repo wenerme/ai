@@ -823,6 +823,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               - `"computer_use"`
 
+          - `Automations object { type }`
+
+            Lets the agent manage its own scheduled wakeups.
+
+            - `type: "automations"`
+
+              The type of the object. Always `automations`.
+
+              - `"automations"`
+
       - `created_at: number`
 
         The Unix timestamp, in seconds, when the session was created.

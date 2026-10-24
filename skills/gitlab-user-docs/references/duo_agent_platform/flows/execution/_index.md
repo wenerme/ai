@@ -385,5 +385,5 @@ If no namespace mode is available, the flow runs without the sandbox and the job
 the following warning:
 
 ```plaintext
-Warning: SRT found but can't create sandbox (insufficient privileges), running command directly
+Warning: SRT found but can't create sandbox (insufficient privileges), running command directly without sandbox
 ```

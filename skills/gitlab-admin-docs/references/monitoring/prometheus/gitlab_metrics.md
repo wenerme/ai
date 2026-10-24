@@ -280,6 +280,7 @@ The `reason` label of `gitlab_ci_pipeline_failure_reasons` records the failure r
 | `pipeline_ref_creation_failure` | GitLab could not create the pipeline ref. |
 | `filtered_by_no_pipeline`       | The commit was pushed with the `ci.no_pipeline` option, so the pipeline did not run. This value is expected behavior. |
 | `gitaly_unavailable`            | Gitaly was temporarily unavailable when the pipeline was created. |
+| `seed_timeout`                  | Pipeline creation timed out while evaluating rules. Introduced in GitLab 19.6. |
 
 The `filtered_by_rules`, `filtered_by_workflow_rules`, `filtered_by_no_pipeline`, and
 `gitaly_unavailable` reasons are counted by the metric, but GitLab does not persist a failed pipeline
@@ -835,12 +836,13 @@ configuration option in `gitlab.yml`. These metrics are served from the
 | `geo_uploads_checksum_total`                             | Gauge     | 14.6  | `url`                                                                                     | Number of uploads to checksum on primary |
 | `geo_uploads_checksummed`                                | Gauge     | 14.6  | `url`                                                                                     | Number of uploads that successfully calculated the checksum on primary |
 | `geo_uploads_failed`                                     | Gauge     | 14.1  | `url`                                                                                     | Number of syncable uploads failed to sync on secondary |
+| `geo_uploads_oldest_unsynced_time`                       | Gauge     | 19.0  | `url`                                                                                     | Timestamp of the oldest unsynced uploads on secondary |
 | `geo_uploads_registry`                                   | Gauge     | 14.1  | `url`                                                                                     | Number of uploads in the registry |
 | `geo_uploads_synced`                                     | Gauge     | 14.1  | `url`                                                                                     | Number of uploads synced on secondary |
 | `geo_uploads_verification_failed`                        | Gauge     | 14.6  | `url`                                                                                     | Number of uploads that failed verification on secondary |
 | `geo_uploads_verification_total`                         | Gauge     | 14.6  | `url`                                                                                     | Number of uploads to attempt to verify on secondary |
 | `geo_uploads_verified`                                   | Gauge     | 14.6  | `url`                                                                                     | Number of uploads successfully verified on secondary |
-| `geo_uploads`                                            | Gauge     | 14.1  | `url`                                                                                     | Number of uploads on primary |
+| `geo_uploads`                                            | Gauge     | 14.1  | `url`                                                                                     | Number of uploads on primary. In GitLab 19.6 and later, when the legacy `geo_upload_replication` and `geo_upload_force_primary_checksumming` feature flags are disabled, this metric and the other `geo_uploads_*` metrics are the sums of the per-upload-type metrics, such as `geo_project_uploads`. |
 | `gitlab_audit_event_streaming_worker_total`              | Counter   | 18.9  | `should_stream`, `should_persist`, `streamable`                                           | Audit events processed by streaming worker |
 | `gitlab_ci_job_failure_reasons`                          | Counter   | 13.11 | `reason`, `runner_type`                                                                   | Counter of job failure reasons. Also exported by the Rails process. For `reason` label values, see [CI/CD failure reason metrics](#cicd-failure-reason-metrics) |
 | `gitlab_ci_pipeline_failure_reasons`                     | Counter   | 13.11 | `reason`                                                                                  | Counter of pipeline failure reasons. Also exported by the Rails process. For `reason` label values, see [CI/CD failure reason metrics](#cicd-failure-reason-metrics) |

@@ -1092,7 +1092,7 @@ Use Bearer Auth (header Authorization).
 
     - `item: object { content, role, id, type }`
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -1100,9 +1100,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 
@@ -2988,23 +2988,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -4050,23 +4056,29 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-              The image generation model to use. One of `gpt-image-1`,
-              `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+              The image generation model to use. One of `gpt-image-1-mini`,
+              `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
               `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-              `gpt-image-1`.
+              `gpt-image-2`.
+
+              `gpt-image-1` was shut down on October 23, 2026. Use
+              `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
               - `string`
 
               - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
-                The image generation model to use. One of `gpt-image-1`,
-                `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
+                The image generation model to use. One of `gpt-image-1-mini`,
+                `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
                 `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
-                `gpt-image-1`.
+                `gpt-image-2`.
+
+                `gpt-image-1` was shut down on October 23, 2026. Use
+                `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
                 - `"gpt-image-1"`
 
@@ -7380,7 +7392,7 @@ Use Bearer Auth (header Authorization).
 
         The ID of the stored Decision input item.
 
-      - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }`
+      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
         The text input to the model.
 
@@ -7388,9 +7400,9 @@ Use Bearer Auth (header Authorization).
 
           The text input to the model.
 
-        - `array of InputText { text, type }  or InputImage { image_url, type, detail }`
+        - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
-          - `InputText object { text, type }`
+          - `DecisionInputText object { text, type }`
 
             - `text: string`
 

@@ -588,7 +588,8 @@ And the following unique queues:
    authentication provided email.
 - `REVERSE_PROXY_AUTHENTICATION_FULL_NAME`: **X-WEBAUTH-FULLNAME**: Header name for reverse proxy
    authentication provided full name.
-- `REVERSE_PROXY_LIMIT`: **1**: Interpret X-Forwarded-For header or the X-Real-IP header and set this as the remote IP for the request.
+- `REVERSE_PROXY_LIMIT`: **1**: Interpret the X-Real-IP, X-Forwarded-For or Forwarded header, in that order, and set this as the remote IP for the request.
+   The client port is taken from the header value or, with X-Real-IP, from X-Real-Port.
    Number of trusted proxy count. Set to zero to not use these headers.
 - `REVERSE_PROXY_TRUSTED_PROXIES`: **127.0.0.0/8,::1/128**: List of IP addresses and networks separated by comma of trusted proxy servers. Use `*` to trust all.
 - `X_FRAME_OPTIONS`: **SAMEORIGIN**: Set the `X-Frame-Options` header value for all HTTP responses. Set to `unset` to not send the header. Previously located in `[cors]`.

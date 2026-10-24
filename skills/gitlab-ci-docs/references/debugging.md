@@ -350,6 +350,24 @@ which pipelines can run.
 
 ## Pipeline errors
 
+### Error: `Pipeline creation timed out while evaluating rules`
+
+When a pipeline is created, GitLab evaluates the [`rules`](yaml/_index.md#rules) of every job
+defined in the configuration, including jobs that `rules` exclude from the pipeline.
+If this evaluation takes too long, the pipeline fails with a `seed_timeout` error and this message:
+
+```plaintext
+Pipeline creation timed out while evaluating rules.
+Pipelines with many jobs defined in the configuration can take longer to evaluate.
+```
+
+To resolve this error, reduce the number of jobs defined in the configuration.
+For example, remove jobs that `rules` always exclude, or use fewer
+[`parallel:matrix`](yaml/_index.md#parallelmatrix) combinations.
+
+On GitLab Self-Managed, administrators can change the timeout with the
+`GITLAB_CI_PIPELINE_SEED_TIMEOUT_SECONDS` [environment variable](../administration/environment_variables.md).
+
 ### Error: `Identity verification is required in order to run CI jobs`
 
 - Tier: Free
@@ -365,7 +383,7 @@ For more information, see [identity verification](../security/identity_verificat
 
 To complete validation:
 
-1. In the alert banner, select **Verify my account**.
+1. In the alert banner, select .
 1. When prompted, follow the identity verification steps.
    You might be required to verify your phone number or add a payment method.
 1. Create a new commit or manually trigger a new pipeline.
@@ -379,12 +397,12 @@ Alternatively, you can:
 
 ### `A CI/CD pipeline must run and be successful before merge` message
 
-This message is shown if the [**Pipelines must succeed**](../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
+This message is shown if the [](../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
 setting is enabled in the project and a pipeline has not yet run successfully.
 This also applies if the pipeline has not been created yet, or if you are waiting
 for an external CI service.
 
-If you don't use pipelines for your project, then you should disable **Pipelines must succeed**
+If you don't use pipelines for your project, then you should disable
 so you can accept merge requests.
 
 ### `Checking ability to merge automatically` message
@@ -413,7 +431,7 @@ does not yet have a pipeline associated with the latest commit. This might be be
 After the pipeline is created, the message updates with the pipeline status.
 
 In some of these cases, the message might get stuck with the icon spinning endlessly
-if the [**Pipelines must succeed**](../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
+if the [](../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge)
 setting is enabled. See [issue 334281](https://gitlab.com/gitlab-org/gitlab/-/issues/334281)
 for more details.
 
@@ -481,8 +499,8 @@ For example:
 
 These errors can happen if the following are both true:
 
-- The [**Limit access to this project**](jobs/ci_job_token.md#limit-job-token-scope-for-public-or-internal-projects)
-  option is enabled in the private project hosting the image.
+- The [](jobs/ci_job_token.md#control-job-token-access-to-your-project)
+  is enabled in the private project hosting the image.
 - The job attempting to fetch the image is running in a project that is not listed in
   the private project's allowlist.
 

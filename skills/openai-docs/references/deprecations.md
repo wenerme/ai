@@ -53,22 +53,22 @@ Fine-tuned versions of these models follow the same shutdown schedule as their u
 
 The following models are deprecated and will be removed from the API on April 1, 2027, with six months' notice. Migrate to the recommended replacements before the shutdown date.
 
-| Shutdown date | Model / system  | Recommended replacement |
-| ------------- | --------------- | ----------------------- |
-| Apr 1, 2027   | `gpt-5.3-codex` | `gpt-6-sol`             |
-| Apr 1, 2027   | `gpt-5.4-nano`  | `gpt-6-luna`            |
-| Apr 1, 2027   | `gpt-5.1`       | `gpt-6-sol`             |
+| Shutdown date | Model / system                              | Recommended replacement |
+| ------------- | ------------------------------------------- | ----------------------- |
+| Apr 1, 2027   | `gpt-5.3-codex`                             | `gpt-6-sol`             |
+| Apr 1, 2027   | `gpt-5.4-nano` \| `gpt-5.4-nano-2026-03-17` | `gpt-6-luna`            |
+| Apr 1, 2027   | `gpt-5.1` \| `gpt-5.1-2025-11-13`           | `gpt-6-sol`             |
 
 ### 2026-10-01: Text-to-speech models
 
 The following text-to-speech models are deprecated and will be removed from the API on January 6, 2027, with at least three months' notice. Migrate to `gpt-realtime-2.1-mini` before the shutdown date. See the [Realtime API guide](https://developers.openai.com/api/docs/guides/realtime) to plan your migration.
 
-| Shutdown date | Model / system               | Recommended replacement |
-| ------------- | ---------------------------- | ----------------------- |
-| Jan 6, 2027   | `tts-1`                      | `gpt-realtime-2.1-mini` |
-| Jan 6, 2027   | `tts-1-hd`                   | `gpt-realtime-2.1-mini` |
-| Jan 6, 2027   | `gpt-4o-mini-tts-2025-03-20` | `gpt-realtime-2.1-mini` |
-| Jan 6, 2027   | `gpt-4o-mini-tts-2025-12-15` | `gpt-realtime-2.1-mini` |
+| Shutdown date | Model / system                                    | Recommended replacement |
+| ------------- | ------------------------------------------------- | ----------------------- |
+| Jan 6, 2027   | `tts-1`                                           | `gpt-realtime-2.1-mini` |
+| Jan 6, 2027   | `tts-1-hd`                                        | `gpt-realtime-2.1-mini` |
+| Jan 6, 2027   | `gpt-4o-mini-tts` \| `gpt-4o-mini-tts-2025-03-20` | `gpt-realtime-2.1-mini` |
+| Jan 6, 2027   | `gpt-4o-mini-tts` \| `gpt-4o-mini-tts-2025-12-15` | `gpt-realtime-2.1-mini` |
 
 ### 2026-08-26: Transcription models
 
@@ -76,42 +76,42 @@ On August 26, 2026, we notified developers using `whisper-1`, `gpt-4o-transcribe
 
 For information about the recommended replacements, see the [transcription guide](https://developers.openai.com/api/docs/guides/transcription).
 
-| Shutdown date | Model / system              | Recommended replacement                   |
-| ------------- | --------------------------- | ----------------------------------------- |
-| Feb 26, 2027  | `whisper-1`                 | `gpt-live-transcribe` or `gpt-transcribe` |
-| Feb 26, 2027  | `gpt-4o-transcribe`         | `gpt-live-transcribe` or `gpt-transcribe` |
-| Feb 26, 2027  | `gpt-4o-mini-transcribe`    | `gpt-live-transcribe` or `gpt-transcribe` |
-| Feb 26, 2027  | `gpt-4o-transcribe-diarize` | `gpt-live-transcribe` or `gpt-transcribe` |
-| Feb 26, 2027  | `/v1/audio/translations`    | `v1/realtime/translations`                |
+| Shutdown date | Model / system                                                  | Recommended replacement                   |
+| ------------- | --------------------------------------------------------------- | ----------------------------------------- |
+| Feb 26, 2027  | `whisper-1`                                                     | `gpt-live-transcribe` or `gpt-transcribe` |
+| Feb 26, 2027  | `gpt-4o-transcribe`                                             | `gpt-live-transcribe` or `gpt-transcribe` |
+| Feb 26, 2027  | `gpt-4o-mini-transcribe` \| `gpt-4o-mini-transcribe-2025-12-15` | `gpt-live-transcribe` or `gpt-transcribe` |
+| Feb 26, 2027  | `gpt-4o-transcribe-diarize`                                     | `gpt-live-transcribe` or `gpt-transcribe` |
+| Feb 26, 2027  | `/v1/audio/translations`                                        | `v1/realtime/translations`                |
 
 ### 2026-07-20: Legacy audio, realtime, and transcription models
 
 On July 20, 2026, we notified developers using legacy audio, realtime, and transcription model families and snapshots of their deprecation and removal from the API on January 20, 2027.
 
-| Shutdown date | Model family / snapshot             | Recommended replacement             |
-| ------------- | ----------------------------------- | ----------------------------------- |
-| Jan 20, 2027  | `gpt-realtime`                      | `gpt-realtime-2.1`                  |
-| Jan 20, 2027  | `gpt-audio`                         | `gpt-audio-1.5`                     |
-| Jan 20, 2027  | `gpt-4o-audio`                      | `gpt-audio-1.5`                     |
-| Jan 20, 2027  | `gpt-4o-realtime`                   | `gpt-realtime-2.1`                  |
-| Jan 20, 2027  | `gpt-realtime-mini`                 | `gpt-realtime-2.1-mini`             |
-| Jan 20, 2027  | `gpt-audio-mini`                    | `gpt-audio-1.5`                     |
-| Jan 20, 2027  | `gpt-4o-mini-realtime`              | `gpt-realtime-2.1-mini`             |
-| Jan 20, 2027  | `gpt-4o-mini-audio`                 | `gpt-audio-1.5`                     |
-| Jan 20, 2027  | `gpt-4o-mini-transcribe-2025-03-20` | `gpt-4o-mini-transcribe-2025-12-15` |
+| Shutdown date | Model family / snapshot                               | Recommended replacement             |
+| ------------- | ----------------------------------------------------- | ----------------------------------- |
+| Jan 20, 2027  | `gpt-realtime` \| `gpt-realtime-2025-08-28`           | `gpt-realtime-2.1`                  |
+| Jan 20, 2027  | `gpt-audio` \| `gpt-audio-2025-08-28`                 | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-audio`                                        | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-realtime`                                     | `gpt-realtime-2.1`                  |
+| Jan 20, 2027  | `gpt-realtime-mini` \| `gpt-realtime-mini-2025-12-15` | `gpt-realtime-2.1-mini`             |
+| Jan 20, 2027  | `gpt-audio-mini` \| `gpt-audio-mini-2025-12-15`       | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-mini-realtime`                                | `gpt-realtime-2.1-mini`             |
+| Jan 20, 2027  | `gpt-4o-mini-audio`                                   | `gpt-audio-1.5`                     |
+| Jan 20, 2027  | `gpt-4o-mini-transcribe-2025-03-20`                   | `gpt-4o-mini-transcribe-2025-12-15` |
 
 ### 2026-06-11: GPT-5 and o3 model deprecations
 
 On June 11, 2026, we notified developers using older GPT-5 and o3 model snapshots of their deprecation and removal from the API on December 11, 2026.
 
-| Shutdown date | Model / system          | Recommended replacement               |
-| ------------- | ----------------------- | ------------------------------------- |
-| Dec 11, 2026  | `gpt-5-2025-08-07`      | `gpt-5.6-sol`                         |
-| Dec 11, 2026  | `gpt-5-mini-2025-08-07` | `gpt-5.6-terra`                       |
-| Dec 11, 2026  | `gpt-5-nano-2025-08-07` | `gpt-5.6-luna`                        |
-| Dec 11, 2026  | `gpt-5-pro-2025-10-06`  | `gpt-5.6-sol` (`reasoning.mode: pro`) |
-| Dec 11, 2026  | `o3-2025-04-16`         | `gpt-5.6-sol`                         |
-| Dec 11, 2026  | `o3-pro-2025-06-10`     | `gpt-5.6-sol` (`reasoning.mode: pro`) |
+| Shutdown date | Model / system                          | Recommended replacement               |
+| ------------- | --------------------------------------- | ------------------------------------- |
+| Dec 11, 2026  | `gpt-5` \| `gpt-5-2025-08-07`           | `gpt-5.6-sol`                         |
+| Dec 11, 2026  | `gpt-5-mini` \| `gpt-5-mini-2025-08-07` | `gpt-5.6-terra`                       |
+| Dec 11, 2026  | `gpt-5-nano` \| `gpt-5-nano-2025-08-07` | `gpt-5.6-luna`                        |
+| Dec 11, 2026  | `gpt-5-pro` \| `gpt-5-pro-2025-10-06`   | `gpt-5.6-sol` (`reasoning.mode: pro`) |
+| Dec 11, 2026  | `o3` \| `o3-2025-04-16`                 | `gpt-5.6-sol`                         |
+| Dec 11, 2026  | `o3-pro` \| `o3-pro-2025-06-10`         | `gpt-5.6-sol` (`reasoning.mode: pro`) |
 
 ### 2026-06-03: Reusable prompts
 
@@ -153,11 +153,11 @@ See [Migrate from Agent Builder](https://developers.openai.com/api/docs/guides/a
 
 On June 2, 2026, we notified developers using older GPT Image models of their deprecation and removal from the API on December 1, 2026.
 
-| Shutdown date | Model / system         | Recommended replacement                           |
-| ------------- | ---------------------- | ------------------------------------------------- |
-| Dec 1, 2026   | `gpt-image-1-mini`     | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
-| Dec 1, 2026   | `gpt-image-1.5`        | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
-| Dec 1, 2026   | `chatgpt-image-latest` | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
+| Shutdown date | Model / system                                | Recommended replacement                           |
+| ------------- | --------------------------------------------- | ------------------------------------------------- |
+| Dec 1, 2026   | `gpt-image-1-mini`                            | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
+| Dec 1, 2026   | `gpt-image-1.5` \| `gpt-image-1.5-2025-12-16` | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
+| Dec 1, 2026   | `chatgpt-image-latest`                        | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
 
 ### Update to OpenAI’s self-serve fine-tuning
 
@@ -170,35 +170,6 @@ Inference on fine-tuned models will continue to be available until the base mode
 | May 7, 2026  | Creating fine-tuning jobs or training is not available to organizations that have not previously run fine-tuning.                                                                                |
 | July 2, 2026 | Creating fine-tuning jobs is no longer available to organizations that have not run inference on a fine-tuned model in the past 60 days.                                                         |
 | Jan 6, 2027  | Active existing customers will no longer be able to create new fine-tuning jobs on this date. Inference on fine-tuned models will be disabled only when the underlying base model is deprecated. |
-
-### 2026-04-22: Legacy GPT model snapshots
-
-To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models. Access to these models will be shut down on the dates below.
-
-| Shutdown date    | Model snapshot                                                         | Substitute model                                  |
-| ---------------- | ---------------------------------------------------------------------- | ------------------------------------------------- |
-| October 23, 2026 | `gpt-3.5-turbo-0125` \| `gpt-3.5-turbo`, `gpt-3.5-turbo-completions`   | `gpt-5.6-terra`                                   |
-| October 23, 2026 | `gpt-4-0613` \| `gpt-4`, `gpt-4-0613-completions`, `gpt-4-completions` | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `gpt-4-1106-preview`                                                   | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `gpt-4-turbo` \| `gpt-4-turbo-2024-04-09`, `gpt-4-turbo-completions`   | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `gpt-4.1-nano` \| `gpt-4.1-nano-2025-04-14`                            | `gpt-5.6-luna`                                    |
-| October 23, 2026 | `gpt-4o-2024-05-13`                                                    | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `gpt-image-1`                                                          | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
-| October 23, 2026 | `o1-2024-12-17` \| `o1`                                                | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `o1-pro-2025-03-19` \| `o1-pro`                                        | `gpt-5.6-sol` (`reasoning.mode: pro`)             |
-| October 23, 2026 | `o3-mini-2025-01-31` \| `o3-mini`                                      | `gpt-5.6-sol`                                     |
-| October 23, 2026 | `ft-o4-mini-2025-04-16`                                                | `gpt-5.6-terra`                                   |
-| October 23, 2026 | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5.6-terra`                                   |
-
-We are also removing fine-tuned versions as below:
-
-| Shutdown date    | Model snapshot               | Recommended replacement base model |
-| ---------------- | ---------------------------- | ---------------------------------- |
-| October 23, 2026 | `ft-gpt-3.5-turbo`           | `gpt-5.6-terra`                    |
-| October 23, 2026 | `ft-gpt-4`                   | `gpt-5.6-sol`                      |
-| October 23, 2026 | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5.6-luna`                     |
-| October 23, 2026 | `ft-babbage-002`             | `gpt-5.6-terra`                    |
-| October 23, 2026 | `ft-davinci-002`             | `gpt-5.6-terra`                    |
 
 ## Past deprecations
 
@@ -220,6 +191,35 @@ On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.
 | ------------- | --------------------- | ----------------------- |
 | Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
 | Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
+
+### 2026-04-22: Legacy GPT model snapshots
+
+On April 22, 2026, we announced the deprecation of the following older OpenAI models. Access to these models was shut down on October 23, 2026.
+
+| Shutdown date    | Model snapshot                                                         | Substitute model                                  |
+| ---------------- | ---------------------------------------------------------------------- | ------------------------------------------------- |
+| October 23, 2026 | `gpt-3.5-turbo-0125` \| `gpt-3.5-turbo`, `gpt-3.5-turbo-completions`   | `gpt-5.6-terra`                                   |
+| October 23, 2026 | `gpt-4-0613` \| `gpt-4`, `gpt-4-0613-completions`, `gpt-4-completions` | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `gpt-4-1106-preview`                                                   | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `gpt-4-turbo` \| `gpt-4-turbo-2024-04-09`, `gpt-4-turbo-completions`   | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `gpt-4.1-nano` \| `gpt-4.1-nano-2025-04-14`                            | `gpt-5.6-luna`                                    |
+| October 23, 2026 | `gpt-4o-2024-05-13`                                                    | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `gpt-image-1`                                                          | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
+| October 23, 2026 | `o1-2024-12-17` \| `o1`                                                | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `o1-pro-2025-03-19` \| `o1-pro`                                        | `gpt-5.6-sol` (`reasoning.mode: pro`)             |
+| October 23, 2026 | `o3-mini-2025-01-31` \| `o3-mini`                                      | `gpt-5.6-sol`                                     |
+| October 23, 2026 | `ft-o4-mini-2025-04-16`                                                | `gpt-5.6-terra`                                   |
+| October 23, 2026 | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5.6-terra`                                   |
+
+The following fine-tuned versions were also shut down on October 23, 2026:
+
+| Shutdown date    | Model snapshot               | Recommended replacement base model |
+| ---------------- | ---------------------------- | ---------------------------------- |
+| October 23, 2026 | `ft-gpt-3.5-turbo`           | `gpt-5.6-terra`                    |
+| October 23, 2026 | `ft-gpt-4`                   | `gpt-5.6-sol`                      |
+| October 23, 2026 | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5.6-luna`                     |
+| October 23, 2026 | `ft-babbage-002`             | `gpt-5.6-terra`                    |
+| October 23, 2026 | `ft-davinci-002`             | `gpt-5.6-terra`                    |
 
 ### 2026-04-22: Legacy GPT model snapshots (July 2026 shutdown)
 
@@ -534,6 +534,22 @@ On June 13, 2023, we announced new chat model versions in the [Function calling 
 
 ### Plain-text aliases
 
+- gpt-5.4-nano | gpt-5.4-nano-2026-03-17
+- gpt-5.1 | gpt-5.1-2025-11-13
+- gpt-4o-mini-tts | gpt-4o-mini-tts-2025-03-20
+- gpt-4o-mini-tts | gpt-4o-mini-tts-2025-12-15
+- gpt-4o-mini-transcribe | gpt-4o-mini-transcribe-2025-12-15
+- gpt-realtime | gpt-realtime-2025-08-28
+- gpt-audio | gpt-audio-2025-08-28
+- gpt-realtime-mini | gpt-realtime-mini-2025-12-15
+- gpt-audio-mini | gpt-audio-mini-2025-12-15
+- gpt-5 | gpt-5-2025-08-07
+- gpt-5-mini | gpt-5-mini-2025-08-07
+- gpt-5-nano | gpt-5-nano-2025-08-07
+- gpt-5-pro | gpt-5-pro-2025-10-06
+- o3 | o3-2025-04-16
+- o3-pro | o3-pro-2025-06-10
+- gpt-image-1.5 | gpt-image-1.5-2025-12-16
 - gpt-3.5-turbo-0125 | gpt-3.5-turbo, gpt-3.5-turbo-completions
 - gpt-4-0613 | gpt-4, gpt-4-0613-completions, gpt-4-completions
 - gpt-4-turbo | gpt-4-turbo-2024-04-09, gpt-4-turbo-completions

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/
 
 # Rate limiting best practices
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
 
@@ -44,17 +44,20 @@ A common use case is to limit the rate of requests performed by individual user 
 
 ### Limit reuse of a single `cf_clearance` cookie
 
-After a visitor successfully passes a Managed Challenge, Cloudflare issues a `cf_clearance` cookie to identify them as verified. However, malicious actors may attempt to reuse or share a single valid `cf_clearance` value across multiple requests or devices to bypass additional challenges.
+After a visitor successfully passes a Managed Challenge, Cloudflare issues a `cf_clearance` cookie to identify them as verified. However, malicious actors may attempt to reuse or share a single valid clearance identity across multiple requests or devices to bypass additional challenges.
 
-This rate limiting rule helps mitigate such abuse by restricting how many requests can be made with the same `cf_clearance` value within a defined period. Legitimate human users will remain unaffected, while automated or replayed requests using a single clearance token will be blocked once the threshold is exceeded.
+This rate limiting rule helps mitigate such abuse by restricting how many requests can be made with the same **Clearance UUID** within a defined period. The UUID remains stable when Cloudflare refreshes the encrypted cookie value, so JavaScript Detections and Precursor updates do not reset the request counter.
 
 | Setting | Value |
 | --- | --- |
 | Matching criteria | URI Path equals `/checkout` |
 | Expression | `http.request.uri.path eq "/checkout"` |
-| Counting characteristics | Cookie (`cf_clearance`) |
+| Counting characteristics | Clearance UUID |
+| Counting expression | `http.request.clearance.uuid ne ""` |
 | Rate (Requests / Period) | 100 requests / 10 minutes |
 | Action | Block |
+
+Requests without a valid clearance cookie are excluded from this counter. To rate limit those requests, create a separate rule using another characteristic, such as **IP**.
 
 ### Allow specific IP addresses or ASNs
 
@@ -487,5 +490,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/og.png?v=f868180d3560b699","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/og.png?v=f868180d3560b699","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}
 ```

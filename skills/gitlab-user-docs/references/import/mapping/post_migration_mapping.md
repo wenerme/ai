@@ -95,6 +95,7 @@ its subgroups, or its projects who has at least the Guest role.
 Members of groups invited to any of these groups or projects also qualify.
 Pending invitations, access requests, and Minimal Access members do not qualify.
 Members of a group invited with Minimal Access do not qualify either.
+In the **Reassign to** dropdown list, enterprise users have an **Enterprise** badge.
 This setting does not expose GitLab.com users outside your group's membership as reassignment targets.
 
 ## Deleted users

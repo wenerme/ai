@@ -366,6 +366,16 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Whether computer tool outputs include screenshots. Defaults to `false`.
 
+  - `Automations object { type }`
+
+    Lets the agent manage its own scheduled wakeups.
+
+    - `type: "automations"`
+
+      The type of the object. Always `automations`.
+
+      - `"automations"`
+
 ### Returns
 
 - `Agent object { id, created_at, instructions, 10 more }`
@@ -717,6 +727,16 @@ Creates a reusable agent without storing credentials. See [agent configuration](
         The type of the object. Always `computer_use`.
 
         - `"computer_use"`
+
+    - `Automations object { type }`
+
+      Lets the agent manage its own scheduled wakeups.
+
+      - `type: "automations"`
+
+        The type of the object. Always `automations`.
+
+        - `"automations"`
 
   - `updated_at: number`
 

@@ -1,8 +1,5 @@
 Context caching allows you to save and reuse precomputed input tokens that you wish to use repeatedly, for example when asking different questions about the same media file. This can lead to cost and speed savings, depending on the usage. For a detailed introduction, see the [Context caching](https://ai.google.dev/gemini-api/docs/caching) guide.
 
-> [!NOTE]
-> This API is in Beta. Endpoints are under `/v1beta/`.
-
 ## Method: cachedContents.create
 
 - [Endpoint](https://ai.google.dev/api/caching#body.HTTP_TEMPLATE)
