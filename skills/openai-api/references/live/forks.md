@@ -812,35 +812,43 @@ Use Bearer Auth (header Authorization).
 
             - `model: optional string`
 
-            - `questions: optional array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
+            - `questions: optional array of DecisionQuestion`
 
               Native Decision API questions evaluated together, in order.
 
-              - `Predicate object { instructions, type, name }`
+              - `Choice object { choices, instructions, type, name }`
 
-                Estimate how likely it is that a statement about the input is true.
+                - `choices: array of DecisionChoiceOption`
 
-                - `instructions: string or array of DecisionQuestionInputPart`
+                  - `value: string or boolean`
+
+                    - `string`
+
+                    - `boolean`
+
+                  - `description: optional string`
+
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
                   - `string`
 
-                  - `array of DecisionQuestionInputPart`
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
-                    - `DecisionQuestionInputText object { text, type }`
+                    - `DecisionInputText object { text, type }`
 
                       - `text: string`
+
+                        The text input to the model.
 
                       - `type: "input_text"`
 
                         - `"input_text"`
 
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+                    - `InputImage object { image_url, type, detail }`
 
                       - `image_url: string`
 
-                        A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
                       - `type: "input_image"`
 
@@ -848,7 +856,7 @@ Use Bearer Auth (header Authorization).
 
                       - `detail: optional "low" or "high" or "auto" or "original" or null`
 
-                        The image detail level, using the selected model's image profile. Defaults to auto.
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                         - `"low"`
 
@@ -858,13 +866,61 @@ Use Bearer Auth (header Authorization).
 
                         - `"original"`
 
-                    - `DecisionInputJSON object { data, type }`
-
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+                    - `InputJSON object { data, type }`
 
                       - `data: map[unknown] or array of map[unknown]`
 
-                        - `map[unknown]`
+                        - `LiveDecisionJSONObject = map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
+
+                - `type: "choice"`
+
+                  - `"choice"`
+
+                - `name: optional string`
+
+              - `Predicate object { instructions, type, name }`
+
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                  - `string`
+
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                    - `DecisionInputText object { text, type }`
+
+                    - `InputImage object { image_url, type, detail }`
+
+                      - `image_url: string`
+
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `InputJSON object { data, type }`
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `LiveDecisionJSONObject = map[unknown]`
 
                         - `array of map[unknown]`
 
@@ -874,73 +930,53 @@ Use Bearer Auth (header Authorization).
 
                 - `type: "predicate"`
 
-                  The type of the object. Always `predicate`.
-
                   - `"predicate"`
-
-                - `name: optional string`
-
-              - `Choice object { choices, instructions, type, name }`
-
-                Choose from the supplied options based on the input.
-
-                - `choices: array of object { value, description }`
-
-                  Provide between 2 and 255 choices. Each choice must be unique.
-
-                  - `value: string or boolean`
-
-                    Choice values are typed: a string and a boolean with the same text are distinct.
-
-                    - `string`
-
-                    - `boolean`
-
-                  - `description: optional string`
-
-                - `instructions: string or array of DecisionQuestionInputPart`
-
-                  - `string`
-
-                  - `array of DecisionQuestionInputPart`
-
-                    - `DecisionQuestionInputText object { text, type }`
-
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                    - `DecisionInputJSON object { data, type }`
-
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-                - `type: "choice"`
-
-                  The type of the object. Always `choice`.
-
-                  - `"choice"`
 
                 - `name: optional string`
 
               - `Score object { instructions, levels, type, name }`
 
-                Rate the input against the supplied ordered levels.
-
-                - `instructions: string or array of DecisionQuestionInputPart`
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
                   - `string`
 
-                  - `array of DecisionQuestionInputPart`
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
-                    - `DecisionQuestionInputText object { text, type }`
+                    - `DecisionInputText object { text, type }`
 
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+                    - `InputImage object { image_url, type, detail }`
 
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+                      - `image_url: string`
 
-                    - `DecisionInputJSON object { data, type }`
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `InputJSON object { data, type }`
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `LiveDecisionJSONObject = map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
 
                 - `levels: array of object { label, description }`
 
@@ -950,13 +986,11 @@ Use Bearer Auth (header Authorization).
 
                 - `type: "score"`
 
-                  The type of the object. Always `score`.
-
                   - `"score"`
 
                 - `name: optional string`
 
-      - `triggers: optional array of object { decisions, event_type, type }`
+      - `triggers: optional array of DecisionTrigger`
 
         At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
@@ -964,113 +998,15 @@ Use Bearer Auth (header Authorization).
 
           Questions evaluated using the current transcript and the session's shared Decision items.
 
-          - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
+          - `questions: array of DecisionQuestion`
 
             Native Decision API questions evaluated together, in order.
 
-            - `Predicate object { instructions, type, name }`
-
-              Estimate how likely it is that a statement about the input is true.
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `type: "predicate"`
-
-                The type of the object. Always `predicate`.
-
-                - `"predicate"`
-
-              - `name: optional string`
-
             - `Choice object { choices, instructions, type, name }`
 
-              Choose from the supplied options based on the input.
-
-              - `choices: array of object { value, description }`
-
-                Provide between 2 and 255 choices. Each choice must be unique.
-
-                - `value: string or boolean`
-
-                  Choice values are typed: a string and a boolean with the same text are distinct.
-
-                  - `string`
-
-                  - `boolean`
-
-                - `description: optional string`
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `type: "choice"`
-
-                The type of the object. Always `choice`.
-
-                - `"choice"`
-
-              - `name: optional string`
+            - `Predicate object { instructions, type, name }`
 
             - `Score object { instructions, levels, type, name }`
-
-              Rate the input against the supplied ordered levels.
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `levels: array of object { label, description }`
-
-                - `label: string`
-
-                - `description: optional string`
-
-              - `type: "score"`
-
-                The type of the object. Always `score`.
-
-                - `"score"`
-
-              - `name: optional string`
 
         - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 
@@ -1234,19 +1170,89 @@ Use Bearer Auth (header Authorization).
 
     Append an input item for future decisions without starting an evaluation or changing Live voice context.
 
-    - `item: object { content, role, id, type }`
+    - `item: Message { content, role, id, type }  or Message { content, role, id, type }  or Message { content, role, id, type }  or 5 more`
 
-      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
+      - `Message object { content, role, id, type }`
 
-        The text input to the model.
-
-        - `string`
+        - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
           The text input to the model.
 
-        - `array of DecisionInputText or InputImage { image_url, type, detail }`
+          - `string`
 
-          - `DecisionInputText object { text, type }`
+            The text input to the model.
+
+          - `array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+            - `InputText object { text, type }`
+
+              - `text: string`
+
+                The text input to the model.
+
+              - `type: "input_text"`
+
+                - `"input_text"`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+            - `InputJSON object { data, type }`
+
+              - `data: map[unknown] or array of map[unknown]`
+
+                - `LiveDecisionJSONObject = map[unknown]`
+
+                - `array of map[unknown]`
+
+              - `type: "input_json"`
+
+                - `"input_json"`
+
+        - `role: "user"`
+
+          The message role. Always `user`.
+
+          - `"user"`
+
+        - `id: optional string or null`
+
+          The unique ID of this message item.
+
+        - `type: optional "message"`
+
+          - `"message"`
+
+      - `Message object { content, role, id, type }`
+
+        - `content: string or array of DecisionInputText`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText`
 
             - `text: string`
 
@@ -1254,47 +1260,283 @@ Use Bearer Auth (header Authorization).
 
             - `type: "input_text"`
 
-              The type of the input item. Always `input_text`.
+        - `role: "developer"`
 
-              - `"input_text"`
+          - `"developer"`
 
-          - `InputImage object { image_url, type, detail }`
+        - `id: optional string or null`
 
-            - `image_url: string`
+          The unique ID of this message item.
 
-              An inline image encoded as a data URL.
+        - `type: optional "message"`
 
-            - `type: "input_image"`
+          - `"message"`
 
-              The type of the input item. Always `input_image`.
+      - `Message object { content, role, id, type }`
 
-              - `"input_image"`
+        - `content: string or array of DecisionInputText`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+          The text input to the model.
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+          - `string`
 
-              - `"low"`
+            The text input to the model.
 
-              - `"high"`
+          - `array of DecisionInputText`
 
-              - `"auto"`
+            - `text: string`
 
-              - `"original"`
+              The text input to the model.
 
-      - `role: "user"`
+            - `type: "input_text"`
 
-        The message role. Always `user`.
+        - `role: "system"`
 
-        - `"user"`
+          - `"system"`
 
-      - `id: optional string or null`
+        - `id: optional string or null`
 
-        The unique ID of this message item.
+          The unique ID of this message item.
 
-      - `type: optional "message"`
+        - `type: optional "message"`
 
-        - `"message"`
+          - `"message"`
+
+      - `Message object { content, role, id, 2 more }`
+
+        - `content: string or array of OutputText { text, type }  or Refusal { refusal, type }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of OutputText { text, type }  or Refusal { refusal, type }`
+
+            - `OutputText object { text, type }`
+
+              - `text: string`
+
+                The text content.
+
+              - `type: "output_text"`
+
+                - `"output_text"`
+
+            - `Refusal object { refusal, type }`
+
+              - `refusal: string`
+
+                The refusal text.
+
+              - `type: "refusal"`
+
+                - `"refusal"`
+
+        - `role: "assistant"`
+
+          - `"assistant"`
+
+        - `id: optional string or null`
+
+          The unique ID of this message item.
+
+        - `phase: optional "commentary" or "final_answer" or null`
+
+          Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+          - `"commentary"`
+
+          - `"final_answer"`
+
+        - `type: optional "message"`
+
+          - `"message"`
+
+      - `FunctionCall object { arguments, call_id, name, 4 more }`
+
+        - `arguments: string`
+
+          The function arguments as a JSON string.
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `name: string`
+
+        - `type: "function_call"`
+
+          The item type. Always `function_call`.
+
+          - `"function_call"`
+
+        - `id: optional string or null`
+
+          The local Decision item ID.
+
+        - `namespace: optional string or null`
+
+          The namespace of the function to call.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `FunctionCallOutput object { call_id, output, type, 2 more }`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText or InputImage { image_url, type, detail }`
+
+            - `DecisionInputText object { text, type }`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+        - `type: "function_call_output"`
+
+          The type of the function tool call output. Always `function_call_output`.
+
+          - `"function_call_output"`
+
+        - `id: optional string or null`
+
+          The local Decision item ID.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `CustomToolCall object { call_id, input, name, 4 more }`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `input: string`
+
+          The input to the custom tool call.
+
+        - `name: string`
+
+          The name of the custom tool to call.
+
+        - `type: "custom_tool_call"`
+
+          The item type. Always `custom_tool_call`.
+
+          - `"custom_tool_call"`
+
+        - `id: optional string or null`
+
+          The local Decision item ID.
+
+        - `namespace: optional string or null`
+
+          The namespace of the function to call.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `CustomToolCallOutput object { call_id, output, type, 2 more }`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText or InputImage { image_url, type, detail }`
+
+            - `DecisionInputText object { text, type }`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+        - `type: "custom_tool_call_output"`
+
+          - `"custom_tool_call_output"`
+
+        - `id: optional string or null`
+
+          The local Decision item ID.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
 
     - `type: "decision.item.create"`
 
@@ -6586,39 +6828,47 @@ Use Bearer Auth (header Authorization).
 
         - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
-          - `decisions: object { model, questions }`
+          - `decisions: DecisionsDelegationConfig`
 
             - `model: string`
 
-            - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
+            - `questions: array of DecisionQuestion`
 
               Native Decision API questions evaluated together, in order.
 
-              - `Predicate object { instructions, type, name }`
+              - `Choice object { choices, instructions, type, name }`
 
-                Estimate how likely it is that a statement about the input is true.
+                - `choices: array of DecisionChoiceOption`
 
-                - `instructions: string or array of DecisionQuestionInputPart`
+                  - `value: string or boolean`
+
+                    - `string`
+
+                    - `boolean`
+
+                  - `description: optional string`
+
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
                   - `string`
 
-                  - `array of DecisionQuestionInputPart`
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
-                    - `DecisionQuestionInputText object { text, type }`
+                    - `DecisionInputText object { text, type }`
 
                       - `text: string`
+
+                        The text input to the model.
 
                       - `type: "input_text"`
 
                         - `"input_text"`
 
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+                    - `InputImage object { image_url, type, detail }`
 
                       - `image_url: string`
 
-                        A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
                       - `type: "input_image"`
 
@@ -6626,7 +6876,7 @@ Use Bearer Auth (header Authorization).
 
                       - `detail: optional "low" or "high" or "auto" or "original" or null`
 
-                        The image detail level, using the selected model's image profile. Defaults to auto.
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
                         - `"low"`
 
@@ -6636,13 +6886,61 @@ Use Bearer Auth (header Authorization).
 
                         - `"original"`
 
-                    - `DecisionInputJSON object { data, type }`
-
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+                    - `InputJSON object { data, type }`
 
                       - `data: map[unknown] or array of map[unknown]`
 
-                        - `map[unknown]`
+                        - `LiveDecisionJSONObject = map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
+
+                - `type: "choice"`
+
+                  - `"choice"`
+
+                - `name: optional string`
+
+              - `Predicate object { instructions, type, name }`
+
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                  - `string`
+
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                    - `DecisionInputText object { text, type }`
+
+                    - `InputImage object { image_url, type, detail }`
+
+                      - `image_url: string`
+
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `InputJSON object { data, type }`
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `LiveDecisionJSONObject = map[unknown]`
 
                         - `array of map[unknown]`
 
@@ -6652,73 +6950,53 @@ Use Bearer Auth (header Authorization).
 
                 - `type: "predicate"`
 
-                  The type of the object. Always `predicate`.
-
                   - `"predicate"`
-
-                - `name: optional string`
-
-              - `Choice object { choices, instructions, type, name }`
-
-                Choose from the supplied options based on the input.
-
-                - `choices: array of object { value, description }`
-
-                  Provide between 2 and 255 choices. Each choice must be unique.
-
-                  - `value: string or boolean`
-
-                    Choice values are typed: a string and a boolean with the same text are distinct.
-
-                    - `string`
-
-                    - `boolean`
-
-                  - `description: optional string`
-
-                - `instructions: string or array of DecisionQuestionInputPart`
-
-                  - `string`
-
-                  - `array of DecisionQuestionInputPart`
-
-                    - `DecisionQuestionInputText object { text, type }`
-
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                    - `DecisionInputJSON object { data, type }`
-
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-                - `type: "choice"`
-
-                  The type of the object. Always `choice`.
-
-                  - `"choice"`
 
                 - `name: optional string`
 
               - `Score object { instructions, levels, type, name }`
 
-                Rate the input against the supplied ordered levels.
-
-                - `instructions: string or array of DecisionQuestionInputPart`
+                - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
                   - `string`
 
-                  - `array of DecisionQuestionInputPart`
+                  - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
-                    - `DecisionQuestionInputText object { text, type }`
+                    - `DecisionInputText object { text, type }`
 
-                    - `DecisionQuestionInputImage object { image_url, type, detail }`
+                    - `InputImage object { image_url, type, detail }`
 
-                      An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
+                      - `image_url: string`
 
-                    - `DecisionInputJSON object { data, type }`
+                        A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                      A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
+                      - `type: "input_image"`
+
+                        - `"input_image"`
+
+                      - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                        - `"low"`
+
+                        - `"high"`
+
+                        - `"auto"`
+
+                        - `"original"`
+
+                    - `InputJSON object { data, type }`
+
+                      - `data: map[unknown] or array of map[unknown]`
+
+                        - `LiveDecisionJSONObject = map[unknown]`
+
+                        - `array of map[unknown]`
+
+                      - `type: "input_json"`
+
+                        - `"input_json"`
 
                 - `levels: array of object { label, description }`
 
@@ -6727,8 +7005,6 @@ Use Bearer Auth (header Authorization).
                   - `description: optional string`
 
                 - `type: "score"`
-
-                  The type of the object. Always `score`.
 
                   - `"score"`
 
@@ -6898,7 +7174,7 @@ Use Bearer Auth (header Authorization).
 
         Whether to store the session for later forking and recording download. Defaults to false for new sessions.
 
-      - `triggers: optional array of object { decisions, event_type, type }`
+      - `triggers: optional array of DecisionTrigger`
 
         At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
@@ -6906,113 +7182,15 @@ Use Bearer Auth (header Authorization).
 
           Questions evaluated using the current transcript and the session's shared Decision items.
 
-          - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
+          - `questions: array of DecisionQuestion`
 
             Native Decision API questions evaluated together, in order.
 
-            - `Predicate object { instructions, type, name }`
-
-              Estimate how likely it is that a statement about the input is true.
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `type: "predicate"`
-
-                The type of the object. Always `predicate`.
-
-                - `"predicate"`
-
-              - `name: optional string`
-
             - `Choice object { choices, instructions, type, name }`
 
-              Choose from the supplied options based on the input.
-
-              - `choices: array of object { value, description }`
-
-                Provide between 2 and 255 choices. Each choice must be unique.
-
-                - `value: string or boolean`
-
-                  Choice values are typed: a string and a boolean with the same text are distinct.
-
-                  - `string`
-
-                  - `boolean`
-
-                - `description: optional string`
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `type: "choice"`
-
-                The type of the object. Always `choice`.
-
-                - `"choice"`
-
-              - `name: optional string`
+            - `Predicate object { instructions, type, name }`
 
             - `Score object { instructions, levels, type, name }`
-
-              Rate the input against the supplied ordered levels.
-
-              - `instructions: string or array of DecisionQuestionInputPart`
-
-                - `string`
-
-                - `array of DecisionQuestionInputPart`
-
-                  - `DecisionQuestionInputText object { text, type }`
-
-                  - `DecisionQuestionInputImage object { image_url, type, detail }`
-
-                    An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
-
-                  - `DecisionInputJSON object { data, type }`
-
-                    A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
-
-              - `levels: array of object { label, description }`
-
-                - `label: string`
-
-                - `description: optional string`
-
-              - `type: "score"`
-
-                The type of the object. Always `score`.
-
-                - `"score"`
-
-              - `name: optional string`
 
         - `event_type: "session.input_transcript.delta" or "session.output_transcript.delta"`
 
@@ -7508,23 +7686,89 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `item: object { id, content, role, type }`
+    - `item: Message { id, content, role, type }  or Message { id, content, role, type }  or Message { id, content, role, type }  or 5 more`
 
-      - `id: string`
+      - `Message object { id, content, role, type }`
 
-        The ID of the stored Decision input item.
+        - `id: string`
 
-      - `content: string or array of DecisionInputText or InputImage { image_url, type, detail }`
-
-        The text input to the model.
-
-        - `string`
+        - `content: string or array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
           The text input to the model.
 
-        - `array of DecisionInputText or InputImage { image_url, type, detail }`
+          - `string`
 
-          - `DecisionInputText object { text, type }`
+            The text input to the model.
+
+          - `array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+            - `InputText object { text, type }`
+
+              - `text: string`
+
+                The text input to the model.
+
+              - `type: "input_text"`
+
+                - `"input_text"`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+            - `InputJSON object { data, type }`
+
+              - `data: map[unknown] or array of map[unknown]`
+
+                - `LiveDecisionJSONObject = map[unknown]`
+
+                - `array of map[unknown]`
+
+              - `type: "input_json"`
+
+                - `"input_json"`
+
+        - `role: "user"`
+
+          The message role. Always `user`.
+
+          - `"user"`
+
+        - `type: optional "message"`
+
+          - `"message"`
+
+      - `Message object { id, content, role, type }`
+
+        - `id: string`
+
+        - `content: string or array of DecisionInputText`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText`
 
             - `text: string`
 
@@ -7532,43 +7776,267 @@ Use Bearer Auth (header Authorization).
 
             - `type: "input_text"`
 
-              The type of the input item. Always `input_text`.
+        - `role: "developer"`
 
-              - `"input_text"`
+          - `"developer"`
 
-          - `InputImage object { image_url, type, detail }`
+        - `type: optional "message"`
 
-            - `image_url: string`
+          - `"message"`
 
-              An inline image encoded as a data URL.
+      - `Message object { id, content, role, type }`
 
-            - `type: "input_image"`
+        - `id: string`
 
-              The type of the input item. Always `input_image`.
+        - `content: string or array of DecisionInputText`
 
-              - `"input_image"`
+          The text input to the model.
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+          - `string`
 
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+            The text input to the model.
 
-              - `"low"`
+          - `array of DecisionInputText`
 
-              - `"high"`
+            - `text: string`
 
-              - `"auto"`
+              The text input to the model.
 
-              - `"original"`
+            - `type: "input_text"`
 
-      - `role: "user"`
+        - `role: "system"`
 
-        The message role. Always `user`.
+          - `"system"`
 
-        - `"user"`
+        - `type: optional "message"`
 
-      - `type: optional "message"`
+          - `"message"`
 
-        - `"message"`
+      - `Message object { id, content, role, 2 more }`
+
+        - `id: string`
+
+        - `content: string or array of OutputText { text, type }  or Refusal { refusal, type }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of OutputText { text, type }  or Refusal { refusal, type }`
+
+            - `OutputText object { text, type }`
+
+              - `text: string`
+
+                The text content.
+
+              - `type: "output_text"`
+
+                - `"output_text"`
+
+            - `Refusal object { refusal, type }`
+
+              - `refusal: string`
+
+                The refusal text.
+
+              - `type: "refusal"`
+
+                - `"refusal"`
+
+        - `role: "assistant"`
+
+          - `"assistant"`
+
+        - `phase: optional "commentary" or "final_answer" or null`
+
+          Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`). For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+          - `"commentary"`
+
+          - `"final_answer"`
+
+        - `type: optional "message"`
+
+          - `"message"`
+
+      - `FunctionCall object { id, arguments, call_id, 4 more }`
+
+        - `id: string`
+
+        - `arguments: string`
+
+          The function arguments as a JSON string.
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `name: string`
+
+        - `type: "function_call"`
+
+          The item type. Always `function_call`.
+
+          - `"function_call"`
+
+        - `namespace: optional string or null`
+
+          The namespace of the function to call.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `FunctionCallOutput object { id, call_id, output, 2 more }`
+
+        - `id: string`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText or InputImage { image_url, type, detail }`
+
+            - `DecisionInputText object { text, type }`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+        - `type: "function_call_output"`
+
+          The type of the function tool call output. Always `function_call_output`.
+
+          - `"function_call_output"`
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `CustomToolCall object { id, call_id, input, 4 more }`
+
+        - `id: string`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `input: string`
+
+          The input to the custom tool call.
+
+        - `name: string`
+
+          The name of the custom tool to call.
+
+        - `type: "custom_tool_call"`
+
+          The item type. Always `custom_tool_call`.
+
+          - `"custom_tool_call"`
+
+        - `namespace: optional string or null`
+
+          The namespace of the function to call.
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `CustomToolCallOutput object { id, call_id, output, 2 more }`
+
+        - `id: string`
+
+        - `call_id: string`
+
+          The unique ID of the function tool call generated by the model.
+
+        - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
+
+          The text input to the model.
+
+          - `string`
+
+            The text input to the model.
+
+          - `array of DecisionInputText or InputImage { image_url, type, detail }`
+
+            - `DecisionInputText object { text, type }`
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+        - `type: "custom_tool_call_output"`
+
+          - `"custom_tool_call_output"`
+
+        - `status: optional "in_progress" or "completed" or "incomplete" or null`
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
 
     - `type: "decision.item.created"`
 

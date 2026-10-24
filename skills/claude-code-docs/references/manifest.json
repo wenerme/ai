@@ -349,9 +349,9 @@
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
-    "lastModified": "Sat, 24 Oct 2026 00:51:09 GMT",
-    "size": 578970,
-    "updatedAt": "2026-10-24T00:51:09.570Z"
+    "lastModified": "Sat, 24 Oct 2026 10:21:22 GMT",
+    "size": 580669,
+    "updatedAt": "2026-10-24T10:21:23.009Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
@@ -463,9 +463,9 @@
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
-    "lastModified": "Sat, 24 Oct 2026 00:51:21 GMT",
-    "size": 12641,
-    "updatedAt": "2026-10-24T00:51:21.498Z"
+    "lastModified": "Sat, 24 Oct 2026 10:21:30 GMT",
+    "size": 12506,
+    "updatedAt": "2026-10-24T10:21:30.603Z"
   },
   "keybindings.md": {
     "url": "https://code.claude.com/docs/en/keybindings",
@@ -559,9 +559,9 @@
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
-    "lastModified": "Sat, 24 Oct 2026 00:51:31 GMT",
-    "size": 170539,
-    "updatedAt": "2026-10-24T00:51:31.738Z"
+    "lastModified": "Sat, 24 Oct 2026 10:21:37 GMT",
+    "size": 172246,
+    "updatedAt": "2026-10-24T10:21:37.148Z"
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",

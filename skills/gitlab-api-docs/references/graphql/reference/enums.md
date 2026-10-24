@@ -6665,6 +6665,17 @@ Values for work item link types.
 | `BLOCKS` | Blocks type. |
 | `RELATED` | Related type. |
 
+## `WorkItemRelativeDateUnit`
+
+Unit of a relative date.
+
+| Value | Description |
+| ----- | ----------- |
+| `DAY` | Days. |
+| `MONTH` | Months. |
+| `WEEK` | Weeks. |
+| `YEAR` | Years. |
+
 ## `WorkItemSort`
 
 Values for sorting work items.

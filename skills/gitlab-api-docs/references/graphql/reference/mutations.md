@@ -15409,6 +15409,7 @@ Deprecated in GitLab 18.0. Use WorkItemsCsvExport.
 | `parentIds` | [`[WorkItemID!]`](scalars.md#workitemid) | Filter work items by global IDs of their parent items (maximum is 100 IDs). |
 | `parentWildcardId` | [`WorkItemParentWildcardId`](enums.md#workitemparentwildcardid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.Filter by parent ID wildcard. Incompatible with parentIds. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full project path. |
+| `relativeDateFilters` | [`WorkItemRelativeDateFiltersInput`](input_objects.md#workitemrelativedatefiltersinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date filters relative to today, in the instance time zone. Cannot be combined with the matching absolute argument, such as `createdAfter`. |
 | `releaseTag` | [`[String!]`](scalars.md#string) | Release tag associated with the work item's milestone (maximum is 100 tags). Ignored when parent is a group. |
 | `releaseTagWildcardId` | [`ReleaseTagWildcardId`](enums.md#releasetagwildcardid) | Filter by release tag wildcard. |
 | `search` | [`String`](scalars.md#string) | Search query for title or description. |
@@ -15915,6 +15916,7 @@ Create or Update user preferences for a work item type and namespace.
 | `parentIds` | [`[WorkItemID!]`](scalars.md#workitemid) | Filter work items by global IDs of their parent items (maximum is 100 IDs). |
 | `parentWildcardId` | [`WorkItemParentWildcardId`](enums.md#workitemparentwildcardid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.Filter by parent ID wildcard. Incompatible with parentIds. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full project path. |
+| `relativeDateFilters` | [`WorkItemRelativeDateFiltersInput`](input_objects.md#workitemrelativedatefiltersinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Date filters relative to today, in the instance time zone. Cannot be combined with the matching absolute argument, such as `createdAfter`. |
 | `releaseTag` | [`[String!]`](scalars.md#string) | Release tag associated with the work item's milestone (maximum is 100 tags). Ignored when parent is a group. |
 | `releaseTagWildcardId` | [`ReleaseTagWildcardId`](enums.md#releasetagwildcardid) | Filter by release tag wildcard. |
 | `search` | [`String`](scalars.md#string) | Search query for title or description. |

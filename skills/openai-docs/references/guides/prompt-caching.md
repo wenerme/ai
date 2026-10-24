@@ -1115,3 +1115,15 @@ No. Manual cache clearing is not currently available. Cache entries expire accor
 
 
 Yes. Cached input tokens still count toward tokens-per-minute limits. Prompt caching does not change how [rate limits](https://developers.openai.com/api/docs/guides/rate-limits) are calculated.
+
+
+
+
+
+## Data retention
+
+All prompt caching features are compatible with [Zero Data Retention (ZDR)](https://developers.openai.com/api/docs/guides/your-data#zero-data-retention).
+
+The prompt cache stores key-value (KV) tensors rather than the original prompt text. These tensors may be stored as encrypted application state in GPU-local storage, with a maximum retention period of 24 hours. See [Cache lifetime](#cache-lifetime) for model-specific cache lifetimes and refresh behavior.
+
+Caches are not shared across organizations and cannot be reused across [regional processing boundaries](https://developers.openai.com/api/docs/guides/your-data#data-residency-controls). For details about data handling and ZDR eligibility across API features, see [Your data](https://developers.openai.com/api/docs/guides/your-data).

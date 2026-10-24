@@ -5,7 +5,7 @@ description: "Browse Friendli model IDs, capabilities, context windows, and pric
 
 # [Friendli logo]Friendli
 
-Access 6 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
+Access 5 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
 
 Learn more in the [Friendli documentation](https://friendli.ai/docs/guides/serverless_endpoints/introduction).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "friendli/deepseek-ai/DeepSeek-V3.2"
+  model: "friendli/google/gemma-4-31B-it"
 });
 
 // Generate a response
@@ -39,18 +39,6 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
-  {
-    "model": "friendli/deepseek-ai/DeepSeek-V3.2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 163840,
-    "maxOutput": 64000,
-    "inputCost": 0.5,
-    "outputCost": 1.5
-  },
   {
     "model": "friendli/google/gemma-4-31B-it",
     "imageInput": true,
@@ -126,7 +114,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.friendli.ai/serverless/v1",
-    id: "friendli/deepseek-ai/DeepSeek-V3.2",
+    id: "friendli/google/gemma-4-31B-it",
     apiKey: process.env.FRIENDLI_TOKEN,
     headers: {
       "X-Custom-Header": "value"
@@ -145,7 +133,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "friendli/zai-org/GLM-5.3-Flash"
-      : "friendli/deepseek-ai/DeepSeek-V3.2";
+      : "friendli/google/gemma-4-31B-it";
   }
 });
 ```
