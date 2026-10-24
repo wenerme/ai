@@ -809,7 +809,55 @@ retry can place another call.
 
               - `description: optional string`
 
-            - `instructions: string`
+            - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+              - `string`
+
+              - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                - `DecisionInputText object { text, type }`
+
+                  - `text: string`
+
+                    The text input to the model.
+
+                  - `type: "input_text"`
+
+                    - `"input_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  - `image_url: string`
+
+                    A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                  - `type: "input_image"`
+
+                    - `"input_image"`
+
+                  - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                    - `"low"`
+
+                    - `"high"`
+
+                    - `"auto"`
+
+                    - `"original"`
+
+                - `InputJSON object { data, type }`
+
+                  - `data: map[unknown] or array of map[unknown]`
+
+                    - `LiveDecisionJSONObject = map[unknown]`
+
+                    - `array of map[unknown]`
+
+                  - `type: "input_json"`
+
+                    - `"input_json"`
 
             - `type: "choice"`
 
@@ -819,7 +867,47 @@ retry can place another call.
 
           - `Predicate object { instructions, type, name }`
 
-            - `instructions: string`
+            - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+              - `string`
+
+              - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                - `DecisionInputText object { text, type }`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  - `image_url: string`
+
+                    A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                  - `type: "input_image"`
+
+                    - `"input_image"`
+
+                  - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                    - `"low"`
+
+                    - `"high"`
+
+                    - `"auto"`
+
+                    - `"original"`
+
+                - `InputJSON object { data, type }`
+
+                  - `data: map[unknown] or array of map[unknown]`
+
+                    - `LiveDecisionJSONObject = map[unknown]`
+
+                    - `array of map[unknown]`
+
+                  - `type: "input_json"`
+
+                    - `"input_json"`
 
             - `type: "predicate"`
 
@@ -829,7 +917,47 @@ retry can place another call.
 
           - `Score object { instructions, levels, type, name }`
 
-            - `instructions: string`
+            - `instructions: string or array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+              - `string`
+
+              - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
+
+                - `DecisionInputText object { text, type }`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  - `image_url: string`
+
+                    A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                  - `type: "input_image"`
+
+                    - `"input_image"`
+
+                  - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                    - `"low"`
+
+                    - `"high"`
+
+                    - `"auto"`
+
+                    - `"original"`
+
+                - `InputJSON object { data, type }`
+
+                  - `data: map[unknown] or array of map[unknown]`
+
+                    - `LiveDecisionJSONObject = map[unknown]`
+
+                    - `array of map[unknown]`
+
+                  - `type: "input_json"`
+
+                    - `"input_json"`
 
             - `levels: array of object { label, description }`
 

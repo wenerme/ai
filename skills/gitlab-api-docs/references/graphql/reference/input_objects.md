@@ -1825,6 +1825,34 @@ Attributes for recording a work item decision as resolved at creation.
 | `name` | [`String!`](scalars.md#string) | Name of the description template. |
 | `projectId` | [`Int!`](scalars.md#int) | ID of the project the template belongs to. |
 
+## `WorkItemRelativeDateFiltersInput`
+
+Date filters relative to today. Each date resolves to the start of that day in the instance time zone.
+
+### `WorkItemRelativeDateFiltersInput` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `closedAfter` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items closed on or after the date. |
+| `closedBefore` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items closed before the date. |
+| `createdAfter` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items created on or after the date. |
+| `createdBefore` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items created before the date. |
+| `dueAfter` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items due on or after the date. |
+| `dueBefore` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items due before the date. |
+| `updatedAfter` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items updated on or after the date. |
+| `updatedBefore` | [`WorkItemRelativeDateInput`](#workitemrelativedateinput) | Work items updated before the date. |
+
+## `WorkItemRelativeDateInput`
+
+Date relative to today, in the instance time zone.
+
+### `WorkItemRelativeDateInput` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `amount` | [`Int!`](scalars.md#int) | Number of units, from -9999 to 9999. Negative values are in the past, positive values are in the future, and 0 is today. |
+| `unit` | [`WorkItemRelativeDateUnit!`](enums.md#workitemrelativedateunit) | Unit of `amount`. |
+
 ## `WorkItemResolveDiscussionsInput`
 
 ### `WorkItemResolveDiscussionsInput` arguments {.no_toc}
@@ -1871,6 +1899,7 @@ Attributes for recording a work item decision as resolved at creation.
 | `myReactionEmoji` | [`String`](scalars.md#string) | Filter value for my reaction emoji filter. |
 | `not` | [`WorkItemSavedViewNegatedFilterInput`](#workitemsavedviewnegatedfilterinput) | Filter value for not filter. |
 | `or` | [`WorkItemSavedViewUnionedFilterInput`](#workitemsavedviewunionedfilterinput) | Filter values for or filter. |
+| `relativeDateFilters` | [`WorkItemRelativeDateFiltersInput`](#workitemrelativedatefiltersinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Filter values for date filters relative to today. The saved view stores them unchanged, so its dates move forward each day. Cannot be combined with the matching absolute filter, such as `createdAfter`. |
 | `releaseTag` | [`[String!]`](scalars.md#string) | Filter value for release tag filter (maximum is 100 tags). |
 | `releaseTagWildcardId` | [`ReleaseTagWildcardId`](enums.md#releasetagwildcardid) | Filter value for release tag wildcard id filter. |
 | `search` | [`String`](scalars.md#string) | Filter value for search filter. |
