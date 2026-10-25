@@ -34,6 +34,10 @@ keywords: Ultralytics, file utilities, Python, WorkingDirectory, increment_path,
 
 <hr>
 
+## ::: ultralytics.utils.files.import_execstack
+
+<hr>
+
 ## ::: ultralytics.utils.files.get_latest_run
 
 <hr>

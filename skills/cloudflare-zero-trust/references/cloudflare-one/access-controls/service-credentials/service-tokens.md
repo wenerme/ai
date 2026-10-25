@@ -495,7 +495,7 @@ Expiring Access Service Token Alert
 
 **Other options / filters**
 
-None.
+You can monitor all current and future Access service tokens. You can also select one or more specific service tokens.
 
 **Included with**
 
