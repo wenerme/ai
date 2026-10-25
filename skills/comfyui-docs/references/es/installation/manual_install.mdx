@@ -1,0 +1,82 @@
+---
+title: "Instalar ComfyUI manualmente (Windows, macOS, Linux)"
+description: "Instala ComfyUI manualmente en Windows, macOS o Linux: crea un entorno virtual, clona el repositorio, instala las dependencias de la GPU e inicia la aplicación."
+translationSourceHash: 062a9112
+translationFrom: installation/manual_install.mdx
+translationBlockHashes:
+  "_intro": 61faae8e
+  "Create a virtual environment": 5eb1c645
+  "Clone the ComfyUI code repository": 9cf6c41a
+  "Install GPU and ComfyUI dependencies": 43c8b909
+  "How to update ComfyUI": 8f0d9365
+  "FAQ": 71de4f2d
+---
+
+La instalación de ComfyUI se divide principalmente en varios pasos:
+1. Crear un entorno virtual (para evitar contaminar el entorno de Python del sistema)
+2. Clonar el repositorio de código de ComfyUI
+3. Instalar las dependencias
+4. Iniciar ComfyUI
+
+También puedes consultar [ComfyUI CLI](/comfy-cli/getting-started) para instalar ComfyUI. Es una herramienta de línea de comandos que permite instalar ComfyUI y administrar sus dependencias fácilmente.
+
+## Crear un entorno virtual
+
+    Los entornos virtuales independientes son necesarios porque las dependencias de ComfyUI pueden entrar en conflicto con otras dependencias del sistema, y también permiten evitar contaminar el entorno de Python a nivel de sistema.
+
+<Conda />
+
+## Clona el repositorio de código de ComfyUI
+
+Asegúrate de tener [Git](https://git-scm.com/downloads) instalado en tu sistema. Primero abre la terminal (línea de comandos) y luego clona el repositorio.
+
+Si no has instalado Microsoft Visual C++ Redistributable, instálalo [aquí.](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+
+Abre la aplicación Terminal.
+
+Abre la [aplicación Terminal](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac).
+
+```bash
+git clone https://github.com/Comfy-Org/ComfyUI.git
+```
+
+## Instala las dependencias de GPU y de ComfyUI
+
+    
+   <InstallGpuDependencies />
+    
+    
+    <PipInstall />
+    
+    
+    <RunComfy />
+    
+
+Para la configuración avanzada del servidor (puerto personalizado, acceso a la LAN, modos de VRAM y más), consulta la [referencia de indicadores de inicio](/development/comfyui-server/startup-flags).
+
+## Cómo actualizar ComfyUI
+
+    
+    Usa la línea de comandos para entrar a la ruta de instalación de ComfyUI y luego obtén el último código.
+    ```bash
+    cd <installation path>/ComfyUI
+    git pull
+    ```
+    
+    
+    Usa la línea de comandos para entrar a la ruta de instalación de ComfyUI y luego instala las dependencias.
+    
+    Debes asegurarte de que el entorno de Python actual sea el entorno virtual de ComfyUI; de lo contrario, las dependencias se instalarán en el entorno de Python del sistema, contaminándolo.
+    
+    ```bash
+        pip install -r requirements.txt
+    ```
+    
+
+## Preguntas frecuentes
+
+<DockerNotice />
+
+### Cómo detener o salir de ComfyUI
+
+Presiona **Ctrl+C** en la ventana de terminal donde se está ejecutando ComfyUI, o simplemente cierra la ventana de terminal.
