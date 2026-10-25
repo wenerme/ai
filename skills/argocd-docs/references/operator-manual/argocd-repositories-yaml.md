@@ -101,4 +101,5 @@ stringData:
   project: myproject
   type: oci
   url: oci://my.registry.com/namespace/service
+  insecureOCIForceHttp: "true" # Connect over plain HTTP, without TLS. Defaults to "false"
 ```

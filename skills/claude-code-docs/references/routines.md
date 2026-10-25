@@ -25,7 +25,7 @@ A scheduled task doesn't need a schedule:
 * A task with only an API trigger runs when you call its endpoint.
 * A task with only a GitHub trigger runs when a matching repository event occurs.
 
-Scheduled tasks are available on Pro, Max, Team, and Enterprise plans. Create and manage them at [claude.ai/code/routines](https://claude.ai/code/routines), or from the CLI with `/schedule`. The earlier name, routines, [still appears](#where-the-name-routines-still-appears) in the web address, the CLI, and the API.
+Scheduled tasks are available on Pro, Max, Team, and Enterprise plans. Create and manage them at [claude.ai/code/routines](https://claude.ai/code/routines), or from the CLI with `/schedule`. The earlier name, routines, [still appears](#where-the-name-routines-still-appears).
 
 > [!NOTE]
 >
@@ -66,7 +66,12 @@ Scheduled tasks belong to your individual claude.ai account. They are not shared
 
 **1. Open the creation dialog**
 
-Go to [claude.ai/code/routines](https://claude.ai/code/routines) and click **New task**. If a menu opens first, select **Set up manually**. The **New scheduled task** dialog opens. The menu's other option, **Create with Claude**, lets you describe the task in a chat and have Claude create it instead.
+Go to [claude.ai/code/routines](https://claude.ai/code/routines) and click **New task** to open the **New scheduled task** dialog. Check for these screens before you continue:
+
+* If the button reads **New routine** instead of **New task**, click **New routine** and continue with [Full-page form](#full-page-form).
+* In the Desktop app, if a menu with **Local** and **Cloud** opens, go to [Full-page form](#full-page-form).
+* If a menu opens with **Create with Claude** and **Set up manually**, select **Set up manually** to open the dialog. **Create with Claude** lets you describe the task in a chat and have Claude create it instead.
+* If a full page opens in place of the dialog, go to [Full-page form](#full-page-form).
 
 If **Repositories** and **Environment** are already showing when the dialog opens, see [how that dialog differs](#dialog-with-repositories-and-environment-in-the-main-view). Otherwise, this dialog also creates scheduled tasks for claude.ai chat. To make yours what the dialog calls a Claude Code task, select a repository or add a GitHub event or API trigger in the steps that follow. That kind of task runs Claude Code in a cloud session.
 
@@ -126,6 +131,17 @@ Follow the [steps to create from the web](#create-from-the-web), and fill in eac
 
 Select the repository before you add a GitHub event trigger, because that trigger is unavailable until a repository is selected.
 
+#### Full-page form
+
+In the Desktop app, if a menu with **Local** and **Cloud** opens, select **Cloud**. A page titled **New routine** or **New scheduled task** opens. Fill in its fields:
+
+* **Name**: enter one.
+* **Instructions**: enter the prompt. In the same box, select the model, the repositories, and the environment. For what each one controls, see the steps under [Create from the web](#create-from-the-web).
+* **Select a trigger**: select **Schedule**, **GitHub event**, or **API**. For a schedule, see [Add a schedule trigger](#add-a-schedule-trigger). For a [GitHub event](#add-a-github-trigger), select a repository. For an [API trigger](#add-an-api-trigger), copy the token from the **API token** dialog that opens after you click **Create**, because it is shown once. To combine several triggers, click **Add another trigger**.
+* **Connectors**: all of your connected connectors are included by default, so remove the ones the task doesn't need.
+
+If **Create** is unavailable, hover over it to see what the form still needs. Click **Create**, and the task's detail page opens.
+
 ### Create from the CLI
 
 Run `/schedule` in any session to create a scheduled task conversationally. You can also pass a description directly, for a recurring task like `/schedule daily PR review at 9am` or a one-off like `/schedule clean up feature flag in one week`. Claude walks through the same information the web dialog collects, then saves the task to your account. The command is also available under the alias `/routines`.
@@ -152,6 +168,7 @@ A schedule trigger runs the task on a recurring cadence, or once at a specific f
 * **Runs on the hour**: if you schedule a run exactly on the hour, such as 9:00, it can start several minutes late. To start close to the scheduled time, pick a few minutes past the hour, for example 9:07.
 * **Custom intervals**: for a cadence the presets lack, create the task and select **Custom** in its [edit dialog](#edit-and-control-scheduled-tasks). Then enter a cron expression, such as `0 */2 * * *` for every two hours. To set one from the CLI, run [`/schedule update`](#manage-scheduled-tasks-from-the-cli). Expressions that run more often than once per hour are rejected.
 * **Time zone**: when you pick a preset frequency, enter the time in your local time zone.
+* **Cron expression time zone**: when the expression is five fields alone, write the hours in UTC, so `0 9 * * 1-5` runs at 9:00 AM UTC on weekdays. If the field opens with a `CRON_TZ=` prefix, keep it and write the hours in its zone, or delete it and write them in UTC.
 
 #### Schedule a one-off run
 
@@ -276,12 +293,13 @@ Change the repository if needed, choose an event from the [supported events](#su
 
 #### Supported events
 
-GitHub triggers can subscribe to either of the following event categories. Within each category you can pick a specific action, such as `pull_request.opened`, or react to all actions in the category.
+Choose an event from any of the following categories. Within each category you can pick a specific action, such as `pull_request.opened`, or react to all actions in the category.
 
 | Event | Triggers when |
 | :- | :- |
 | Pull request | A PR is opened, closed, assigned, labeled, synchronized, or otherwise updated |
 | Release | A release is created, published, edited, or deleted |
+| Issue | An issue is opened, edited, closed, reopened, labeled, assigned, or otherwise updated |
 
 #### Filter pull requests
 
@@ -316,9 +334,13 @@ Click a scheduled task in the list to open its detail page. The detail page show
 
 Click any run to open it as a full session. From there you can see what Claude did, review changes, create a pull request, or continue the conversation. Each run session works like any other session: use the dropdown menu next to the session title to rename, archive, or delete it.
 
-> [!NOTE]
->
-> A green status in the run list means the session started and exited without an infrastructure error. It does not mean the work your prompt describes succeeded. Open the run to read the transcript and confirm what Claude actually did. Blocked network requests, missing connector tools, and failures in the work itself all surface there rather than in the status indicator.
+Under **History** on the task's detail page, each finished run's row ends with **Error** if the run failed, **Cancelled** if it was cancelled, and neither word if it succeeded. The **Status** filter names the same three outcomes **Failed**, **Cancelled**, and **Succeeded**. These outcomes say how the session ended, not whether Claude completed the work your prompt describes, so open the run and read its transcript to see what happened.
+
+* **Succeeded**: the session ended without Claude Code reporting a failure. Blocked network requests, missing connector tools, and work Claude couldn't complete appear in the transcript rather than on the row
+* **Failed**: the session didn't finish normally. For example, it stopped unexpectedly, ended on an error, or was archived before the run started
+* **Cancelled**: the run didn't fail, and its session was archived. If you archive the session of a run that succeeded, the run changes to **Cancelled**. Nothing in the task needs to change
+
+If a warning appears under **History**, see ["The last run" warnings](#the-last-run-didnt-start).
 
 ### Edit and control scheduled tasks
 
@@ -455,6 +477,7 @@ While your subscription is paused, your scheduled tasks are put on hold and don'
 
 Scheduled tasks were previously called routines, and these places keep the earlier name. Each one refers to the same feature:
 
+* **App**: in some accounts the sidebar entry and page title read **Routines**, the button reads **New routine**, and other labels say routine. To create a task there, see [Full-page form](#full-page-form).
 * **Web address**: `claude.ai/code/routines`
 * **CLI**: the `/routines` alias for `/schedule`, the command's description, and Claude's replies while it sets up a task
 * **API**: the `/fire` endpoint path, its beta header, its response `type`, the `<routine-fire-payload>` tag, and the [Trigger a routine through the API](https://platform.claude.com/docs/en/api/claude-code/routines-fire) reference page
@@ -480,6 +503,21 @@ If the cause is your CLI sign-in or being inside a cloud session, you can still 
 ### "Routines are disabled by your organization's policy"
 
 An Owner in your Team or Enterprise organization has likely turned off the **Scheduled tasks (Was Routines)** toggle at [**Organization settings > Capabilities > Remote sessions**](https://claude.ai/admin-settings/capabilities). On Claude Code v2.1.227 or later, the same toggle also hides `/schedule` in the CLI. This is a server-side organization setting, so it cannot be overridden from your local configuration. Ask an Owner to turn scheduled tasks back on for your organization.
+
+### "The last run" warnings
+
+When a warning under **History** begins with "The last run", find it in the first column and do what its row says. The warning clears once a later run starts.
+
+| Warning | What to do |
+| :- | :- |
+| "The last run didn't start because your organization had reached its limit on cloud sessions running at once." | The task needs no change. Click **Run now** later, or wait for the next run |
+| "The last run didn't start because its cloud environment couldn't be found or used." | On the task's detail page, open the menu next to its name, select **Edit**, and find the [cloud environment selector](#environments-and-network-access). If it reads **Unavailable environment**, that environment was archived or is no longer available to your account, so choose another one there and save your changes. Otherwise, retry with **Run now** on the detail page, or pick another environment in the selector and save your changes |
+| "The last run was blocked because it couldn't access something it needs, or your organization's policy doesn't allow it." | Check that your [GitHub access](#repositories-and-branch-permissions) covers the task's repositories. If it does, ask an [Owner](https://code.claude.com/docs/en/server-managed-settings.md#access-control) of your Claude organization whether a policy blocks the task |
+| "The last run didn't start because of a problem that's usually temporary." | Click **Run now** to try again, or wait for the next run |
+| "The last run didn't start because its repository or branch wasn't available." | Check on GitHub that each repository in the task has the [branch the run starts from](#repositories-and-branch-permissions). Also check that your [GitHub access](#repositories-and-branch-permissions) covers each repository, and reconnect GitHub if your connection expired |
+| "The last run didn't start because some of its settings weren't accepted." | On the task's detail page, open the menu next to its name and select **Edit**. The dialog doesn't mark which setting wasn't accepted, so check each one there, including the task's name, prompt, model, repositories, environment, connectors, and triggers |
+| "The last run stopped because a usage limit was reached." | For when the task's runs can start again after a usage limit, see [Usage and limits](#usage-and-limits) |
+| "The last run failed." | Click **Run now** to try again, or wait for the next run. The failed run has no session to open |
 
 ## Related resources
 

@@ -28,7 +28,7 @@ View tutorials to help you get started with Workers.
 | [Connect to a MongoDB database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-mongodb-atlas/) | last year | Beginner |
 | [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
 | [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/) | last year | Beginner |
-| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | last year | Beginner |
+| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 2 years ago | Beginner |
 | [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/) | 2 years ago | Beginner |
 | [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/) | 2 years ago | Beginner |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | 2 years ago | Beginner |

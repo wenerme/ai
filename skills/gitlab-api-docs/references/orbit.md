@@ -335,6 +335,9 @@ Example response:
 
 With `response_format=llm`, the response is `text/plain`. It contains the summary text,
 then the graph in TOON format under a `graph:` label, or a single `error <code>` line.
+When a list in an entity is cut, the entity includes a `truncated=` line right after its scalar
+fields that names the incomplete lists, for example `truncated=reviewers,changed_files`.
+A failed job whose failed tests were cut has its own `truncated=failed_tests` line.
 
 ## Endpoint reference
 

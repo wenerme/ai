@@ -1,5 +1,5 @@
 ---
-description: This emergency release updates the names and metadata of seven existing rules in the Cloudflare Managed Ruleset to identify CVE-2026-109618 and CVE-2026-109619. Detection logic and rule actions remain unchanged.
+description: This emergency release will add two rules related to the Brotli vulnerability CVE-2026-111497 to the Cloudflare Managed Ruleset. Both rules will be enabled by default with their action set to Log, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,35 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-25
+
+
+**WAF Release - 2026-10-25 - Emergency - Cloudflare Managed Ruleset**
+
+This emergency release will add two rules related to the Brotli vulnerability **CVE-2026-111497** to the Cloudflare Managed Ruleset. Both rules will be **enabled by default** with their action set to **Log**, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.
+
+**Rule behavior**
+
+- **Brotli rule:** Matches incoming requests that declare Brotli request-body encoding ( `Content-Encoding: br`), including legitimate clients submitting Brotli-encoded request bodies. It does not match `Accept-Encoding: br` or affect Cloudflare's Brotli response-compression settings. The rule's default action is **Log**.
+- **Next.js rule:** Matches requests to the Next.js image optimization endpoint ( `/_next/image`), including legitimate image optimization traffic. The default action is **Log** and does not block requests. Changing the action to **Block** may prevent optimized images from loading and disrupt image delivery for applications using this endpoint.
+
+**Default behavior**
+
+- Both rules will log matching requests without blocking them when the ruleset defaults are used.
+- Customers will be able to review matches in analytics and configure a blocking action for either rule if desired.
+- Enabling these rules in **Log** mode provides visibility only; it does not block requests matching these rules.
+
+**Important: Check existing action overrides**
+
+If you have configured a ruleset-level action override that applies **Block** to these rules, matching requests may be blocked as soon as the rules are deployed, despite their default **Log** action. This may result in false positives and block legitimate traffic.
+
+Review your existing ruleset overrides before deployment. If you want to evaluate these rules without blocking traffic, configure rule-specific overrides to use **Log** and review matching requests before switching to **Block**.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...ca706f3c | N/A | Brotli - Request Content-Encoding - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
+| Cloudflare Managed Ruleset | ...402fe5bb | N/A | Next.js - Image Optimizer Path - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
 
 ## 2026-10-22
 
@@ -438,30 +467,8 @@ The WordPress changes update rule metadata only; detection behavior and actions 
 | Cloudflare Managed Ruleset | ...3590a4ad | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 | Cloudflare Free Ruleset | ...cfe1a93c | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 
-## 2026-08-11
-
-
-**WAF Release - 2026-08-11**
-
-This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.
-
-**Key Findings**
-
-- A new detection provides protection against vBulletin CVE-2026-61511.
-- Two existing detections have been improved to strengthen coverage.
-
-**Impact**
-
-Successful exploitation of CVE-2026-61511 may lead to remote code execution on affected vBulletin systems, potentially resulting in unauthorized access, data exposure, service disruption, and broader compromise of the hosting environment. Administrators are strongly encouraged to apply vendor updates and recommended mitigations.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...94f3006b | N/A | vBulletin - Remote Code Execution - CVE:CVE-2026-61511 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...098b749e | N/A | Version Control - Information Disclosure - Beta | Log | Block | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529) |
-| Cloudflare Managed Ruleset | ...d56225d8 | N/A | vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132 - Beta | Log | Block | This rule is merged into the original rule "vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132" (ID: ...8fe9f1c7) |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release updates the names and metadata of seven existing rules in the Cloudflare Managed Ruleset to identify CVE-2026-109618 and CVE-2026-109619. Detection logic and rule actions remain unchanged.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release will add two rules related to the Brotli vulnerability CVE-2026-111497 to the Cloudflare Managed Ruleset. Both rules will be enabled by default with their action set to Log, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

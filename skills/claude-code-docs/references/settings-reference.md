@@ -117,7 +117,7 @@ Every key below links to its entry. Scope lists the [files](https://code.claude.
 | [`gcpAuthRefresh`](#gcpauthrefresh) | Refresh [Google Cloud credentials](https://code.claude.com/docs/en/google-vertex-ai.md#advanced-credential-configuration) with your own command | Authentication and providers | Any file |
 | [`hooks`](#hooks) | Run your own commands as [hooks](https://code.claude.com/docs/en/hooks.md) at points in Claude Code's lifecycle | Hooks and automation | Any file |
 | [`httpHookAllowedEnvVars`](#httphookallowedenvvars) | Limit which env vars [HTTP hooks](https://code.claude.com/docs/en/hooks.md) can put in headers | Hooks and automation | Any file |
-| [`idleCompaction`](#idlecompaction) | Stop Claude Code from compacting a long conversation while your terminal session is idle | Memory and context | Any file |
+| [`idleCompaction`](#idlecompaction) | Stop Claude Code from compacting a long conversation that you've stepped away from | Memory and context | Any file |
 | [`includeCoAuthoredBy`](#includecoauthoredby) | Deprecated; use `attribution` to hide or change commit and PR attribution | Git and attribution | Any file |
 | [`includeGitInstructions`](#includegitinstructions) | Remove the built-in commit and PR instructions from Claude's context | Git and attribution | Any file |
 | [`inputNeededNotifEnabled`](#inputneedednotifenabled) | Get a [push notification](https://code.claude.com/docs/en/remote-control.md#mobile-push-notifications) when Claude is waiting on you | Remote, desktop, and notifications | Any file |
@@ -324,7 +324,7 @@ This example lets people select only Sonnet and Haiku models:
 }
 ```
 
-A model ID entry such as `"claude-opus-5"` also permits later versions that extend it, such as Opus 5.5. To block one of those versions, use [`deniedModels`](#deniedmodels). To make each model ID entry permit only the version it names, use [`availableModelsMatch`](#availablemodelsmatch). See [Restrict model selection](https://code.claude.com/docs/en/model-config.md#restrict-model-selection).
+A model ID entry such as `"claude-opus-5"` also permits later versions that extend it, such as Opus 5.5. To block one of those versions, use [`deniedModels`](#deniedmodels). To make each model ID entry permit only the version it names, use [`availableModelsMatch`](#availablemodelsmatch). See [Restrict model selection](https://code.claude.com/docs/en/model-config.md#restrict-model-selection). For third-party provider IDs, see [Pin models for third-party deployments](https://code.claude.com/docs/en/model-config.md#pin-models-for-third-party-deployments).
 
 ### `availableModelsMatch`
 
@@ -333,7 +333,7 @@ Choose how [`availableModels`](#availablemodels) entries match model IDs. By def
 * **Scope**: [`Managed`](#scopes). Claude Code ignores the key in user, project, and local settings and in `--settings`, with a warning
 * **Type**: string, one of:
   * `"prefix"`: a model ID entry permits its version and any model ID that extends it with another segment
-  * `"exact"`: a model ID entry permits only the version it names, including that version's dated IDs, so `"claude-opus-5"` permits Opus 5 but not `claude-opus-5-5`. A family alias such as `"opus"` still permits the whole family, and `best`, `opusplan`, and `default` entries are ignored
+  * `"exact"`: a model ID entry permits only the version it names, so `"claude-opus-5"` permits Opus 5 but not `claude-opus-5-5`. An entry such as `"claude-opus-4-5"` also permits its dated Anthropic model ID `claude-opus-4-5-20251101`. A family alias such as `"opus"` still permits the whole family, and `best`, `opusplan`, and `default` entries are ignored
 * **Default**: `"prefix"`
 
 This example permits Opus 5 and Sonnet 5 and no later release of either:
@@ -1371,12 +1371,40 @@ The `//path` prefix for absolute paths also works. If you use single-slash `/pat
 
 Claude Code strips a trailing slash from a directory path, so `~/.aws` and `~/.aws/` match the same directory. Before v2.1.224, Claude Code passed the trailing slash through to the sandbox, and Claude could still read or write paths under a `denyRead` or `denyWrite` entry written with one.
 
-Claude Code also removes a trailing `/**`, so `~/build/**` and `~/build` cover the same directory. Whether a wildcard such as `*` works depends on which list the entry is in and on the platform:
+##### Where wildcards work in sandbox paths
 
-* **`allowWrite` and `denyWrite`**: on macOS, wildcards work. On Linux and WSL2, the sandbox mounts concrete paths, so Claude Code skips an entry that contains `*`, `?`, or `[` once the trailing `/**` is removed, and that entry has no effect. Claude Code adds the paths from your `Edit` permission rules to these lists, so the same limit applies to them, and the **Config** tab of `/sandbox` warns about `Edit` and `Read` permission rules that contain wildcards.
-* **`denyRead` and `allowRead`**: wildcards work on every platform. On Linux and WSL2, Claude Code expands a read entry to the concrete paths it matches, which it doesn't do for the write lists.
+The wildcards `*`, `?`, and `**` work in all four `sandbox.filesystem` path lists on macOS and in fewer places on Linux and WSL2:
 
-Braces match as ordinary characters in a name, so `~/data/{keys,tokens}` covers a directory literally named `{keys,tokens}`, not two alternatives. To cover `~/data/keys` and `~/data/tokens`, add each as its own entry.
+| `sandbox.filesystem` list | What works on Linux and WSL2 | Example that doesn't work on Linux and WSL2 | What to write instead |
+| :- | :- | :- | :- |
+| `denyRead`, `allowRead` | A trailing `/**` works, so `~/build/**` covers the same directory as `~/build`. Any other wildcard works only after the first directory name of the entry's [full path](#sandbox-path-prefixes). | `/**/*.pem` in `denyRead` covers nothing, so it blocks no reads | `/srv/**/*.pem`, with one entry for each top-level directory |
+| `allowWrite`, `denyWrite` | Only a trailing `/**` works, so `~/build/**` covers the same directory as `~/build` | `./src/*` covers only a file or directory in `src` that is itself named `*`, and nothing when there is none | `./src`, which covers everything under `src`, or one entry for each path |
+
+In `~/keys/*.pem`, the wildcard comes after the first directory name, which is `home` for a home directory of `/home/alice`:
+
+```text theme={null}
+~/keys/*.pem              the entry
+/home/alice/keys/*.pem    its full path
+ ^^^^                     the first directory name, home
+```
+
+On Linux and WSL2, the **Config** tab of `/sandbox` in a session warns about `Edit` permission rules that contain a wildcard other than a trailing `/**`. Those wildcards don't work for sandboxed commands. Add each path the rule should cover, or the directory that holds them, to `allowWrite` for an allow rule or `denyWrite` for a deny rule.
+
+##### Directory names with brackets, braces, or parentheses
+
+To allow or block a directory whose name contains brackets, write the name as it is, such as `./app/[slug]`. In that entry, `[slug]` is the directory's real name, brackets included:
+
+```text theme={null}
+app/
+└── [slug]/
+    └── page.tsx
+```
+
+That entry covers everything under the directory, so leave off a trailing `/**`. On macOS and on Linux and WSL2, the `app/[slug]` directory has to exist when the sandboxed command starts.
+
+* **Brackets such as `[slug]`**: in every list on macOS, and in `denyRead` and `allowRead` on Linux and WSL2, the brackets in `./app/[slug]` are also a pattern. The entry then also matches any path under `app` named with one character from `slug`, such as `app/s` or `app/g`. With that entry in `allowRead`, or in `allowWrite` on macOS, sandboxed commands can reach those paths as well. Rename any they shouldn't reach.
+* **Brackets such as `[user-id]` or `[post-id]`, where the hyphen's left character sorts after its right**: `./app/[user-id]` covers only the directory with exactly that name, in every list on every platform. Before v2.1.304, sandboxed commands on Linux and WSL2 failed to start while `denyRead` or `allowRead` held such an entry.
+* **Braces and parentheses**: these are ordinary characters, so `~/data/{keys,tokens}` covers one directory named `{keys,tokens}`, not two alternatives. To cover `~/data/keys` and `~/data/tokens`, add each as its own entry.
 
 ### `sandbox.filesystem.allowWrite`
 
@@ -2387,11 +2415,15 @@ In a `-p` run or an Agent SDK session, Claude Code ignores this key. The SDK tur
 
 ### `idleCompaction`
 
-Idle compaction [compacts](https://code.claude.com/docs/en/context-window.md#what-survives-compaction) a long conversation that you've stepped away from, shortly before its prompt cache expires. Your next message then sends a summary instead of the whole conversation. When you come back, the conversation shows a line that starts with `Compacted while idle, before the prompt cache expired`.
+Idle compaction [compacts](https://code.claude.com/docs/en/context-window.md#what-survives-compaction) a long conversation that you've stepped away from. Your next message then sends a summary instead of the whole conversation. Once compacted, the conversation shows a notice:
+
+* **Terminal**: a line that starts with `Compacted while idle, before the prompt cache expired`
+* **[VS Code chat panel](#idle-compaction-in-vs-code-and-the-desktop-app)**: a notice that includes `a summary written while you were away`
+* **[Desktop app](#idle-compaction-in-vs-code-and-the-desktop-app)**: the same notice, inside a row whose label includes `Claude Code notice`. If you don't see that row or its text, switch to the [Verbose view mode](https://code.claude.com/docs/en/desktop.md#switch-view-modes).
 
 Idle compaction is on by default for conversations that meet all of these conditions:
 
-* **Session**: you're in an interactive terminal session
+* **Session**: you're in an interactive terminal session, or in the VS Code extension's chat panel or the desktop app's Code tab on an [account that Anthropic selects](#idle-compaction-in-vs-code-and-the-desktop-app)
 * **Auto-compaction**: [`autoCompactEnabled`](#autocompactenabled) is on
 * **Prompt cache**: the conversation is on the [one-hour prompt cache TTL](https://code.claude.com/docs/en/prompt-caching.md#which-ttl-each-request-gets)
 * **Feature flags**: Claude Code can [fetch feature flags from Anthropic](https://code.claude.com/docs/en/env-vars.md#features-that-need-feature-flag-fetching)
@@ -2413,7 +2445,7 @@ To turn idle compaction off, set this key to `false`.
 }
 ```
 
-To turn idle compaction off or on from inside a session, run `/config` and change the **Idle compaction** row. Your choice is saved to your user settings and applies right away. The row requires Claude Code v2.1.302 or later. If you run one of those versions and `/config` doesn't show the row, check for these causes:
+To turn idle compaction off or on from inside a terminal session, run `/config` and change the **Idle compaction** row. Your choice is saved to your user settings and applies right away. The row requires Claude Code v2.1.302 or later. If you run one of those versions and `/config` doesn't show the row, check for these causes:
 
 * **Another settings source sets the key**: a value in managed settings, the `--settings` flag, or a project or local settings file overrides your user settings. Change the key in that source instead
 * **Feature flags are unavailable**: where Claude Code can't [fetch feature flags from Anthropic](https://code.claude.com/docs/en/env-vars.md#features-that-need-feature-flag-fetching), idle compaction doesn't run, so there is nothing to turn off
@@ -2433,6 +2465,18 @@ At the default, a conversation on a 200K context window auto-compacts before it 
   }
 }
 ```
+
+#### Idle compaction in VS Code and the desktop app
+
+A notice like this one means Claude Code [replaced your earlier conversation with a summary](https://code.claude.com/docs/en/context-window.md#what-survives-compaction) that Claude now works from:
+
+```text theme={null}
+Compacted using a summary written while you were away · turn off with "idleCompaction": false in settings.json
+```
+
+You don't need to do anything. To turn idle compaction off, set `idleCompaction` to `false` in `~/.claude/settings.json` or another [settings file](https://code.claude.com/docs/en/settings.md#settings-files-and-who-they-affect).
+
+In the VS Code extension's chat panel and the desktop app's Code tab, idle compaction runs for accounts that Anthropic selects. Claude Code writes the summary while you're away, then compacts with it only if your next message comes an hour or more after the last request.
 
 ### `plansDirectory`
 
@@ -3470,7 +3514,7 @@ This example allows any URL under `https://hooks.example.com/` and any `http://l
 
 Hostname matching is case-insensitive and treats `hooks.example.com.`, with the trailing dot that marks a fully qualified domain name, the same as `hooks.example.com`, which is how DNS treats them. The allowlist applies to hooks from every source, including managed settings.
 
-In the Agent SDK's `managedSettings` option, Claude Code ignores this key when its list has entries, so pass the list in the SDK's `settings` option instead. See [what each value does in parent settings](https://code.claude.com/docs/en/claude-apps-gateway#how-hook-and-skill-keys-in-parent-settings-take-effect).
+In the Agent SDK's `managedSettings` option, Claude Code ignores a list with entries, so pass it in the SDK's [`settings` option](https://code.claude.com/docs/en/agent-sdk/typescript#options) instead. See [what an empty list does in parent settings](https://code.claude.com/docs/en/claude-apps-gateway#how-hook-and-skill-keys-in-parent-settings-take-effect).
 
 ### `allowManagedHooksOnly`
 
@@ -3494,6 +3538,7 @@ When you set it to `true`, Claude Code changes which hooks and hook-like command
 
 * **Managed and SDK hooks run**: hooks from managed settings and hooks the [Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview.md) registers in process
 * **Force-enabled plugin hooks run**: hooks from plugins your managed settings force-enable through [`enabledPlugins`](#enabledplugins). Claude Code matches on the full `plugin@marketplace` ID, so a plugin with the same name from a different marketplace stays blocked. This lets you distribute vetted hooks through an organization marketplace while blocking everything else. A [mod](https://code.claude.com/docs/en/plugins/mods/overview.md) in such a plugin loads only when it [counts as your organization's](https://code.claude.com/docs/en/plugins/mods/admin.md#install-your-organizations-mods)
+* **Monitors from other plugins are blocked**: a plugin's [monitors](https://code.claude.com/docs/en/plugins/components.md#monitors) don't start unless the plugin is force-enabled. Requires Claude Code v2.1.310 or later
 * **Everything else is blocked**: user, project, and local hooks, hooks and mods from other installed plugins, and hooks declared in agent frontmatter. [Mods built into Claude Code](https://code.claude.com/docs/en/plugins/mods/overview.md#mods-built-into-claude-code) keep running. To block only users' mods, set [`allowManagedModsOnly`](https://code.claude.com/docs/en/plugins/mods/admin#set-options-on-the-built-in-guard) instead.
 * **Command-sourced plugins are disabled**: Claude Code also disables plugins with a [`command` source](https://code.claude.com/docs/en/plugins/marketplace-reference#command-plugin-source), including plugins force-enabled in managed `enabledPlugins`, unless you set [`disableCommandPluginSources`](#disablecommandpluginsources) to `false` explicitly
 * **Marketplace `headersHelper` commands are blocked**: Claude Code also blocks marketplace [`headersHelper` commands](https://code.claude.com/docs/en/plugins/host-marketplace#authenticate-archive-downloads) unless [`disableCommandPluginSources`](#disablecommandpluginsources) is explicitly set to `false`, except for a marketplace that managed settings themselves declare. Requires Claude Code v2.1.238 or later
@@ -3520,7 +3565,7 @@ Turn off [hooks](https://code.claude.com/docs/en/hooks.md#disable-or-remove-hook
 The reach depends on which file carries the key:
 
 * **In managed settings**: Claude Code disables every configured hook, including managed ones, and keeps running the hooks the [Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview.md) registers in process
-* **In the Agent SDK's `managedSettings` option**: Claude Code treats the key as `allowManagedHooksOnly: true`, so see [what runs under `allowManagedHooksOnly`](#what-runs-under-allowmanagedhooksonly) for which hooks stop. On a machine where an administrator deploys managed settings, Claude Code ignores this key unless the administrator [lets an embedding host add policy](https://code.claude.com/docs/en/managed-settings.md#let-an-embedding-host-add-policy). Requires Claude Code v2.1.309 or later.
+* **In the Agent SDK's `managedSettings` option**: on a machine where an administrator deploys managed settings, Claude Code ignores this key unless the administrator [lets an embedding host add policy](https://code.claude.com/docs/en/managed-settings.md#let-an-embedding-host-add-policy). Where the key takes effect, user, project, local, and plugin hooks stop, as do any in the SDK's `settings` option. An administrator's managed hooks, [force-enabled](#enabledplugins) plugins' hooks, and your [SDK hook callbacks](https://code.claude.com/docs/en/agent-sdk/hooks.md) keep running. Requires Claude Code v2.1.309 or later.
 * **In any other settings file**: Claude Code disables user, project, local, and plugin hooks; managed hooks, Agent SDK hooks, and hooks from plugins force-enabled in managed [`enabledPlugins`](#enabledplugins) keep running
 
 The key also stops [mods](https://code.claude.com/docs/en/plugins/mods/overview.md), which are plugins whose code registers hooks:
@@ -3624,7 +3669,7 @@ This example limits header interpolation to `MY_TOKEN` and `HOOK_SECRET`:
 
 The allowlist applies to hooks from every source, including managed settings.
 
-In the Agent SDK's `managedSettings` option, Claude Code ignores this key when its list has entries, so pass the list in the SDK's `settings` option instead. See [what each value does in parent settings](https://code.claude.com/docs/en/claude-apps-gateway#how-hook-and-skill-keys-in-parent-settings-take-effect).
+In the Agent SDK's `managedSettings` option, Claude Code ignores a list with entries, so pass it in the SDK's [`settings` option](https://code.claude.com/docs/en/agent-sdk/typescript#options) instead. See [what an empty list does in parent settings](https://code.claude.com/docs/en/claude-apps-gateway#how-hook-and-skill-keys-in-parent-settings-take-effect).
 
 ### `workflowKeywordTriggerEnabled`
 
@@ -3841,7 +3886,7 @@ Block the [`command` plugin source](https://code.claude.com/docs/en/plugins/mark
 * **Type**: Boolean
   * `true`: Claude Code never runs the marketplace-declared command, doesn't install or update command-sourced plugins, and stops loading the ones already installed
   * `false`: Claude Code allows command-sourced plugins explicitly
-* **Default**: unset, so Claude Code follows [`allowManagedHooksOnly`](#allowmanagedhooksonly): an organization that restricts hook execution to managed settings gets command sources disabled too
+* **Default**: unset, so Claude Code follows [`allowManagedHooksOnly`](#allowmanagedhooksonly): an organization that restricts hook execution to managed settings gets command sources disabled too. An application that passes [`disableAllHooks: true`](#disableallhooks) in the Agent SDK's `managedSettings` option doesn't by itself disable command sources.
 
 ```json managed-settings.json theme={null}
 {

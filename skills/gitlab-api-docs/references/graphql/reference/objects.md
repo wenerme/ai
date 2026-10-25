@@ -14179,6 +14179,7 @@ Indexing state of a group or project in Orbit.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `areas` | [`[OrbitIndexingArea!]`](#orbitindexingarea) | Indexing state of each area. |
+| `lastCompletedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Timestamp when Orbit last completed indexing of the group or project. Null until the first indexing run completes, and when Orbit is not available to the current user. |
 | `projects` | [`OrbitIndexingProjects`](#orbitindexingprojects) | Indexing progress of the projects in the group or project. |
 | `state` | [`OrbitIndexingState`](enums.md#orbitindexingstate) | Indexing state of the group or project. |
 
@@ -14298,7 +14299,7 @@ Orbit data of a group or project.
 | `enabledAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Timestamp when Orbit was turned on for the top-level group of the group. Null for projects, when Orbit is off, and when Orbit is not available to the current user. |
 | `indexing` | [`OrbitIndexing`](#orbitindexing) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indexing state of the group or project. Null when Orbit is not available to the current user. |
 | `indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. Null when Orbit is not available to the current user. |
-| `itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for only one group or project in any single request. |
+| `itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for at most 100 groups or projects in any single request. |
 | `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit trial of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
 
 ## `OrbitSchema`
