@@ -499,9 +499,9 @@
   },
   "llm-gateway-protocol.md": {
     "url": "https://code.claude.com/docs/en/llm-gateway-protocol",
-    "lastModified": "Sun, 25 Oct 2026 00:55:08 GMT",
-    "size": 50149,
-    "updatedAt": "2026-10-25T00:55:08.499Z"
+    "lastModified": "Sun, 25 Oct 2026 10:20:41 GMT",
+    "size": 50259,
+    "updatedAt": "2026-10-25T10:20:41.402Z"
   },
   "llm-gateway-rollout.md": {
     "url": "https://code.claude.com/docs/en/llm-gateway-rollout",
@@ -559,9 +559,9 @@
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
-    "lastModified": "Sat, 24 Oct 2026 10:21:37 GMT",
-    "size": 172246,
-    "updatedAt": "2026-10-24T10:21:37.148Z"
+    "lastModified": "Sun, 25 Oct 2026 10:20:46 GMT",
+    "size": 172272,
+    "updatedAt": "2026-10-25T10:20:46.085Z"
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",

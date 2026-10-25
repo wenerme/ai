@@ -240,7 +240,7 @@ export default adapter(pages);
 
 #### Disabling SSR
 
-`unstable_disableSSR` disables document SSR for a page. Runtime document requests return Waku's fallback HTML shell, and the build writes that shell for a static page. The RSC payload is still available to the client router.
+`unstable_noSsr` disables document SSR for a page. Runtime document requests return Waku's fallback HTML shell, and the build writes that shell for a static page. The RSC payload is still available to the client router.
 
 ```tsx
 // ./src/waku.server.tsx
@@ -254,7 +254,7 @@ const pages = createPages(async ({ createPage }) => [
     render: 'static',
     path: '/app',
     component: AppPage,
-    unstable_disableSSR: true,
+    unstable_noSsr: true,
   }),
 ]);
 
@@ -497,8 +497,8 @@ if (globalThis.__WAKU_HYDRATE__) {
 You can omit `./src/waku.client.tsx` unless you need to modify it.
 
 To configure a request pipeline, pass `unstable_rscEnhancers` to `Router` here.
-Router snapshots the array for its lifetime and wraps it with its built-in action
-routing. See [Request enhancers](/guides/minimal-api#request-enhancers) for
+Router snapshots the array for its lifetime and wraps it with its built-in server
+function routing. See [Request enhancers](/guides/minimal-api#request-enhancers) for
 composition and integration migration examples.
 
 ### APIs

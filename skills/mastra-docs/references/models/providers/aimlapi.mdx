@@ -5,7 +5,7 @@ description: "Browse AI/ML API model IDs, capabilities, context windows, and pri
 
 # [AI/ML API logo]AI/ML API
 
-Access 177 AI/ML API models through Mastra's model router. Authentication is handled automatically using the `AIMLAPI_API_KEY` environment variable.
+Access 178 AI/ML API models through Mastra's model router. Authentication is handled automatically using the `AIMLAPI_API_KEY` environment variable.
 
 Learn more in the [AI/ML API documentation](https://docs.aimlapi.com).
 
@@ -1706,6 +1706,18 @@ for await (const chunk of stream) {
     "maxOutput": 100000,
     "inputCost": 21.16,
     "outputCost": 84.64
+  },
+  {
+    "model": "aimlapi/perceptron/perceptron-mk1.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 36864,
+    "maxOutput": 8192,
+    "inputCost": 0.1587,
+    "outputCost": 1.587
   },
   {
     "model": "aimlapi/perplexity/sonar",
