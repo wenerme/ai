@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/humans/core/meetin
 
 # Meeting Object Explained
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The meeting object is the core interface for interacting with a RealtimeKit session. It provides access to participants, local user controls, chat, polls, plugins, and more. This object is returned when you initialize the SDK.
 
@@ -1344,7 +1344,7 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 ### `meeting.plugins` - Plugins
 
-The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) property manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
 ```javascript
 // Get all available plugins
@@ -1360,7 +1360,7 @@ await meeting.plugins.all.get(pluginId).activate();
 await meeting.plugins.all.get(pluginId).deactivate();
 ```
 
-The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) property manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
 ```javascript
 // Get all available plugins
@@ -1376,7 +1376,7 @@ await meeting.plugins.all.get(pluginId).activate();
 await meeting.plugins.all.get(pluginId).deactivate();
 ```
 
-The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) property manages meeting plugins (collaborative apps). Activation lives on the `Plugin` object.
 
 ```javascript
 // Get all available plugins
@@ -1392,7 +1392,7 @@ await meeting.plugins.all.get(pluginId).activate();
 await meeting.plugins.all.get(pluginId).deactivate();
 ```
 
-The `meeting.plugins` manages meeting plugins (collaborative apps).
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) property manages meeting plugins (collaborative apps). To exchange messages between your app and a plugin, refer to [Exchange messages with a plugin](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/#exchange-messages-with-a-plugin).
 
 ```kotlin
 // Get all available plugins
@@ -1448,7 +1448,7 @@ val pluginsEventListener = object : RtkPluginsEventListener {
 meeting.addPluginsEventListener(pluginsEventListener)
 ```
 
-The `meeting.plugins` manages meeting plugins (collaborative apps).
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/) property manages meeting plugins (collaborative apps). To exchange messages between your app and a plugin, refer to [Exchange messages with a plugin](https://developers.cloudflare.com/realtime/realtimekit/humans/core/plugins/#exchange-messages-with-a-plugin).
 
 ```swift
 // Get all available plugins
@@ -1494,10 +1494,10 @@ extension MeetingViewModel: RtkPluginsEventListener {
 }
 
 // Add listener
-meeting.addPluginsEventListener(self)
+meeting.addPluginsEventListener(pluginsEventListener: self)
 ```
 
-The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkplugins/) manages meeting plugins (collaborative apps).
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/humans/core/api-reference/rtkplugins/) property manages meeting plugins (collaborative apps).
 
 ```javascript
 // Get all available plugins
@@ -1658,5 +1658,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/#page","headline":"Meeting Object Explained","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/og.png?v=3ffe26cbcdbb0f27","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/#page","headline":"Meeting Object Explained","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/humans/core/meeting-object-explained/og.png?v=3ffe26cbcdbb0f27","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

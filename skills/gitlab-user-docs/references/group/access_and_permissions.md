@@ -250,9 +250,9 @@ After you lock the membership for a group:
 
 Group syncing allows LDAP groups to be mapped to GitLab groups. This provides more control over per-group user management. To configure group syncing, edit the `group_base` **DN** (`'OU=Global Groups,OU=GitLab INT,DC=GitLab,DC=org'`). This **OU** contains all groups that are associated with GitLab groups.
 
-Group links can be created by using either a CN or a filter. To create these group links, go to the group's **Settings** > **LDAP Synchronization** page. After configuring the link, it may take more than an hour for the users to sync with the GitLab group. After you have configured the link:
+Group links can be created by using either a CN or a filter. To create these group links, go to the group's **Settings** > **LDAP Synchronization** page. After configuring the link, it may take more than an hour for the users to sync with the GitLab group.
 
-Group Owners can use the [member roles API](../../api/member_roles.md) or [group members API](../../api/group_members.md#add-a-group-member) to add a service account user to or remove a service account user from the group, even when LDAP synchronization is enabled for the group. Group Owners cannot add or remove non-service account users.
+After you configure the link, group Owners can use the [member roles API](../../api/member_roles.md) or [group members API](../../api/group_members.md#add-a-group-member) to add a service account user to or remove a service account user from the group, even when LDAP synchronization is enabled for the group. Group Owners cannot add or remove non-service account users.
 
 When a user belongs to multiple LDAP groups configured for the same GitLab group, GitLab assigns
 them the higher of the two associated roles. For example:

@@ -28,6 +28,14 @@ To enable the GitLab exporter in a Linux package instance:
 Prometheus automatically begins collecting performance data from
 the GitLab exporter exposed at `localhost:9168`.
 
+## Database probes
+
+GitLab exporter includes database probes to collect performance metrics from PostgreSQL:
+
+- Database bloat, CI/CD builds, remote mirrors, and row counts.
+- Zoekt search nodes.
+- Geo node status (`geo_node_status`). For more information, see [Database-derived Geo metrics](gitlab_metrics.md#database-derived-geo-metrics-from-gitlab-exporter).
+
 ## Use a different Rack server
 
 By default, the GitLab exporter runs on [WEBrick](https://github.com/ruby/webrick), a single-threaded Ruby web server.

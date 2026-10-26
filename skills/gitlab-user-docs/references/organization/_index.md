@@ -56,6 +56,8 @@ After you confirm your organization structure:
 - Users who are members of a transferred group or project become organization members.
 - You receive an email when the transfer is ready. Larger groups take longer to transfer.
 - Any user with the Owner role in all of the transferred top-level groups becomes an organization administrator.
+- Links to [security policy projects](../application_security/policies/enforcement/security_policy_projects.md#link-to-a-security-policy-project)
+  that cross the boundary of a transferred top-level group are removed.
 
 You can change the organization name, URL, description, visibility, and avatar later from the **Organization Admin** area.
 

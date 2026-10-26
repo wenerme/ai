@@ -18,9 +18,11 @@ Use the flag for your package manager:
 - `--docker`: registers `glab` as a Docker credential
   helper for the registry.
 - `--maven`: writes a `<server>` block in
-  `~/.m2/settings.xml`, keyed by `--registry-alias`.
+  `~/.m2/settings.xml`, or `--config-file`, keyed by
+  `--registry-alias`.
   Reference it from a `<repository>` carrying the same
-  `<id>`.
+  `<id>`. The token is written in plain text, so keep a
+  `--config-file` out of version control.
 - `--gradle`: writes `{alias}Url`,
   `{alias}Username`, and `{alias}Password` in
   `~/.gradle/gradle.properties`, where `{alias}` is
@@ -48,6 +50,9 @@ Use the flag for your package manager:
   reads none of them. An sbt shell or sbt 2.x server that is
   already running keeps the credentials it loaded, so run
   `reload` in it, or `sbt shutdown`, after you log in.
+  To write a different file, pass it with `--config-file`. It
+  must be a `.sbt` file that sbt loads, not a properties file
+  such as `~/.sbt/.credentials`.
 
 Token lifetime:
 
@@ -112,11 +117,15 @@ glab artifact-registry login --yarn --registry https://ar.example.com --duration
 # Configure sbt to authenticate against a registry for two hours
 glab artifact-registry login --sbt --registry https://ar.example.com --duration 2h
 
+# Configure Maven through a settings.xml passed to mvn with -s
+glab artifact-registry login --maven --registry https://ar.example.com --config-file ~/.m2/ci-settings.xml
+
 ```
 
 ## Options
 
 ```plaintext
+      --config-file string      File to write (Maven/sbt only). Defaults to ~/.m2/settings.xml for --maven and the sbt 1.x and 2.x global bases for --sbt, where it replaces every file --sbt writes.
       --docker                  Configure Docker to authenticate against the registry. Writes to $DOCKER_CONFIG, or ~/.docker when it is unset.
       --duration duration       How long the exchanged token should remain valid. Ignored for --docker. (default 15m0s)
       --gradle                  Configure Gradle to authenticate against the registry. Writes to ~/.gradle/gradle.properties.

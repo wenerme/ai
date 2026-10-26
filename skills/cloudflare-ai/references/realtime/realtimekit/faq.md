@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2
 
 # FAQ
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### API token
 
@@ -91,7 +91,7 @@ How long is an auth token valid?
 
 </summary>
 
-An auth token is a JSON Web Token (JWT) that is valid for 100 days. It contains <code>meetingId</code> and <code>participantId</code> fields that tie the token to a specific participant in a specific meeting. The token does not grant access to other meetings. If you need a new token after the previous token expires, use the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/refresh_participant_token/">Refresh Participant Token</a> endpoint. For more information, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens">Participant tokens</a>.
+By default, an auth token is a JSON Web Token (JWT) that is valid for 100 days from when it is issued. To set a shorter validity window, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh">Token validity and refresh</a>. The token contains <code>meetingId</code> and <code>participantId</code> fields that tie it to a specific participant in a specific meeting. The token does not grant access to other meetings. If you need a new token after the previous token expires, use the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/refresh_participant_token/">Refresh Participant Token</a> endpoint. For more information, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens">Participant tokens</a>.
 
 </details>
 
@@ -115,9 +115,7 @@ Can the auth token lifespan be configured?
 
 </summary>
 
-No. The auth token APIs do not support custom start or expiration dates. Tokens created through the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/">Add Participant</a> or <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/refresh_participant_token/">Refresh Participant Token</a> flow become valid when issued and expire 100 days later.
-
-If you need scheduled access, implement time-based access controls in your own system. RealtimeKit SDKs do not manage scheduling or duration logic.
+Yes. When you call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/">Add Participant</a> or <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/refresh_participant_token/">Refresh Participant Token</a> endpoint, you can pass <code>not_before</code> and <code>expires_on</code> timestamps to set when the token becomes valid and when it expires. The validity window cannot be longer than 100 days. For more information, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh">Token validity and refresh</a>.
 
 </details>
 
@@ -129,7 +127,7 @@ Does generating a new auth token invalidate the previous token?
 
 </summary>
 
-No. Generating a new token, including through the refresh flow, does not invalidate an existing token. Each token remains valid and expires independently at its own expiration time.
+No. Generating a new token, including through the refresh flow, does not invalidate an existing token. Each token remains valid and expires independently at its own expiration time. To invalidate a specific token, <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#revoke-tokens">revoke it</a>.
 
 </details>
 
@@ -141,9 +139,7 @@ Does deleting a participant revoke all previously issued tokens?
 
 </summary>
 
-Yes. The <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/delete_meeting_participant/">Delete Participant</a> endpoint immediately revokes all tokens issued to that participant for the meeting.
-
-Before deleting the participant, use the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_participants/">Kick Participants</a> endpoint to safely remove the participant from any active session. Then, delete the participant to revoke their tokens.
+Yes. The <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/delete_meeting_participant/">Delete Participant</a> endpoint immediately revokes all tokens issued to that participant for the meeting. It also removes the participant from the active session of the meeting, if one exists.
 
 </details>
 
@@ -201,6 +197,8 @@ While RealtimeKit does not include a built-in scheduling system, you can impleme
 - When a user tries to join the meeting in your application, your backend checks whether the current time is within the allowed window.
 - If the checks pass, your backend <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/">adds the participant</a> to the meeting, returns the participant auth token to the frontend and the frontend passes that token to the RealtimeKit SDK so the user can join.
 
+To limit when a participant can join, set <code>not_before</code> and <code>expires_on</code> on their <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh">auth token</a> to match the schedule.
+
 </details>
 
 <details>
@@ -211,9 +209,7 @@ How do I prevent participants from joining a meeting after a specific date or ti
 
 </summary>
 
-At the required time, first call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_all_participants/">Kick All Participants</a> endpoint if the meeting has an active session. This removes all participants and properly ends the session.
-
-Then, call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/update_meeting_by_id/">Update Meeting</a> endpoint to set the meeting status to <code>INACTIVE</code>. This prevents participants from joining the meeting and prevents new sessions from starting.
+At the required time, call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/update_meeting_by_id/">Update Meeting</a> endpoint to set the meeting status to <code>INACTIVE</code>. This removes all participants from the active session, if one exists, and prevents participants from joining the meeting or starting new sessions.
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \
@@ -222,6 +218,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{AP
 --header "Content-Type: application/json" \
 --data '{ "status": "INACTIVE" }'
 ```
+
+To control access for individual participants, set <code>expires_on</code> on their auth tokens instead. For more information, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#token-validity-and-refresh">Token validity and refresh</a>.
 
 </details>
 
@@ -604,5 +602,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,0 +1,170 @@
+---
+title: "Eliminación de fondo de Bria en ComfyUI"
+description: "Aprende a usar los Nodos asociados de Bria en ComfyUI para eliminar el fondo de imágenes y videos, usar pantalla verde y reemplazar fondos."
+translationSourceHash: 94b2972f
+translationFrom: tutorials/partner-nodes/bria/background-removal.mdx
+translationBlockHashes:
+  "_intro": 24faca17
+  "What Bria Background Removal is good at": 56b4030b
+  "Example outputs": a83590e8
+  "Video Background Processing": 9b325721
+---
+
+Los modelos de procesamiento de fondo con IA de Bria ya están disponibles en ComfyUI mediante los Nodos asociados. Esta página cubre la **eliminación de fondo de imagen**, la **eliminación de fondo de imagen guiada**, la **eliminación de fondo de video**, el **fondo transparente de video**, la **pantalla verde de video** y el **reemplazo de fondo de video**.
+
+## En qué destaca Bria Background Removal
+
+- **Eliminación de fondo de imágenes**: Elimina automáticamente el fondo de una imagen y devuelve el resultado con un fondo transparente.
+- **Eliminación de fondo de imágenes guiada**: Conserva el sujeto que describe un prompt y elimina el resto, de modo que puedes recortar un solo sujeto de una escena recargada en lugar de conservar todo lo que no sea fondo.
+- **Eliminación de fondo de video**: Reemplaza el fondo de un video con un color sólido de tu elección u obtiene el video con transparencia.
+- **Pantalla verde para video**: Aplica un efecto profesional de pantalla verde o azul tipo chroma key, con presets como broadcast_green, chroma_green y blue_screen.
+- **Reemplazo de fondo de video**: Reemplaza el fondo de un video con una imagen personalizada u otro video.
+- **Soporte para videos cortos**: El procesamiento de fondo de video acepta videos de entrada de hasta 60 segundos.
+
+## Salidas de ejemplo
+
+Eliminación de fondo de imagen, devolviendo el sujeto sobre un fondo transparente:
+
+![Bria: Remove Image Background, salida de ejemplo](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/utility_bria_remove_image_background.png)
+
+### Bria: Remove Image Background {#utility_bria_remove_image_background}
+
+Sube una imagen para eliminar su fondo automáticamente usando la API de Bria. El resultado se devuelve como una imagen con fondo transparente.
+
+[Vista previa del flujo de trabajo Bria: Remove Image Background]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Remove Image Background&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  
+    nodo `LoadImage` 26 · `denim_girl.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Imagen de entrada]
+  [Bria: Remove Image Background, salida de ejemplo]
+</div>
+
+### Bria: Guided Remove Background {#api_bria_guided_remove_background}
+
+Elimina el fondo de una imagen y conserva lo que describe un prompt. En lugar de conservar todo lo que no es fondo, el nodo reduce el recorte al sujeto que indiques, y así una persona u objeto sale intacto de una escena con mucho contenido. Los píxeles originales vuelven a resolución completa con un nuevo canal alfa.
+
+[Vista previa del flujo de trabajo Bria: Guided Remove Background]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Guided Background Removal&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  Cárgalo en el nodo `LoadImage`
+
+El `prompt` nombra lo que se conserva, por ejemplo `the man in the blue shirt` o `only the shoes`. Un prompt que no coincide con nada devuelve una imagen totalmente transparente. Con `moderation` activado aparecen controles separados de entrada y salida visual; desactivado, se omiten. Para un recorte simple sin orientación, usa **Bria: Remove Image Background** arriba.
+
+## Procesamiento de fondos de video
+
+Los nodos de procesamiento de fondos de video de Bria te permiten eliminar, reemplazar o aplicar efectos de chroma key a los fondos de video. El video de entrada debe durar 60 segundos o menos.
+
+### Bria: Eliminar fondo de video {#api_bria_remove_video_background}
+
+Reemplaza el fondo de un video con un color sólido de tu elección.
+
+[Vista previa del flujo de trabajo Bria: Eliminar fondo de video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Remove Video Background&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadVideo` correspondiente:
+
+  
+    nodo `LoadVideo` 4 · `spear_warrior.mp4`
+  
+
+### Bria: Eliminar fondo de video (transparente) {#api_bria_remove_video_background_transparent}
+
+Elimina el fondo de un video y obtén una salida con transparencia.
+
+[Vista previa del flujo de trabajo Bria: Eliminar fondo de video (transparente)]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Remove Video Background (Transparent)&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadVideo` correspondiente:
+
+  
+    nodo `LoadVideo` 5 · `ad_video_demo.mp4`
+  
+
+### Bria: Pantalla verde de video {#api_bria_video_green_screen}
+
+Aplica a tu video un efecto profesional de pantalla verde o azul para chroma key, con varias opciones predefinidas como broadcast_green, chroma_green y blue_screen.
+
+[Vista previa del flujo de trabajo Bria: Pantalla verde de video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Video Green Screen&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadVideo` correspondiente:
+
+  
+    nodo `LoadVideo` 5 · `investigator.mp4`
+  
+
+### Bria: Reemplazar el fondo de un video {#api_bria_video_replace_background}
+
+Reemplaza el fondo de un video con una imagen personalizada o con otro video.
+
+[Vista previa del flujo de trabajo Bria: Reemplazar el fondo de un video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Bria: Video Replace Background&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube estos archivos a los nodos `LoadVideo` y `LoadImage` correspondientes:
+
+  
+    nodo `LoadVideo` 4 · `stained_window_vintage_woman.mp4`
+  
+  
+    nodo `LoadImage` 8 · `gothic_hall_light_rays.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [gothic_hall_light_rays.png]
+</div>
