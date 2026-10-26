@@ -146,4 +146,4 @@ account that must keep publishing.
   [risk severity thresholds](_index.md#risk-severity-rules).
 - Run the firewall in CI/CD with
   [`glab df` in your job scripts](gitlab_cli.md#use-the-firewall-in-cicd).
-- Use the firewall with [other package managers](package_managers.md).
+- Diagnose a blocked package with the [troubleshooting guide](troubleshooting.md).

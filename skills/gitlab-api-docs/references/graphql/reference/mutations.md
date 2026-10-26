@@ -9876,7 +9876,7 @@ Convert a standard comment to a resolvable thread.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
 **Input type:** `OrbitExcludedGroupCreateInput`
 
@@ -9897,7 +9897,7 @@ Convert a standard comment to a resolvable thread.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
 **Input type:** `OrbitExcludedGroupDestroyInput`
 
@@ -9918,7 +9918,7 @@ Convert a standard comment to a resolvable thread.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
 **Input type:** `OrbitInstanceStartTrialInput`
 
@@ -15147,6 +15147,7 @@ Creates a work item.
 | `milestoneWidget` | [`WorkItemWidgetMilestoneInput`](input_objects.md#workitemwidgetmilestoneinput) | Input for milestone widget. |
 | `namespacePath` | [`ID`](scalars.md#id) | Full path of the namespace(project or group) the work item is created in. |
 | `projectPath` | [`ID`](scalars.md#id) | Deprecated in GitLab 15.10. Please use namespacePath instead. That will cover for both projects and groups. |
+| `severityWidget` | [`WorkItemWidgetSeverityInput`](input_objects.md#workitemwidgetseverityinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Input for severity widget. |
 | `startAndDueDateWidget` | [`WorkItemWidgetStartAndDueDateUpdateInput`](input_objects.md#workitemwidgetstartandduedateupdateinput) | Input for start and due date widget. |
 | `statusWidget` | [`WorkItemWidgetStatusInput`](input_objects.md#workitemwidgetstatusinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.11.Input for status widget. |
 | `title` | [`String!`](scalars.md#string) | Title of the work item. |
@@ -15833,6 +15834,7 @@ Updates a work item by Global ID.
 | `notesWidget` | [`WorkItemWidgetNotesInput`](input_objects.md#workitemwidgetnotesinput) | Input for notes widget. |
 | `notificationsWidget` | [`WorkItemWidgetNotificationsUpdateInput`](input_objects.md#workitemwidgetnotificationsupdateinput) | Input for notifications widget. |
 | `progressWidget` | [`WorkItemWidgetProgressInput`](input_objects.md#workitemwidgetprogressinput) | Input for progress widget. |
+| `severityWidget` | [`WorkItemWidgetSeverityInput`](input_objects.md#workitemwidgetseverityinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Input for severity widget. |
 | `startAndDueDateWidget` | [`WorkItemWidgetStartAndDueDateUpdateInput`](input_objects.md#workitemwidgetstartandduedateupdateinput) | Input for start and due date widget. |
 | `stateEvent` | [`WorkItemStateEvent`](enums.md#workitemstateevent) | Close or reopen a work item. |
 | `statusWidget` | [`WorkItemWidgetStatusInput`](input_objects.md#workitemwidgetstatusinput) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.11.Input for status widget. |

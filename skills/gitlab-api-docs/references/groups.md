@@ -1840,6 +1840,7 @@ Returns `204` and no content on success.
 - `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
 - `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed.
 - `ai_audit_events_storage_enabled` and `lock_ai_audit_events_storage_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2.
+- `ai_governance_enabled` and `lock_ai_governance_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261994) in GitLab 19.6.
 
 Updates the attributes for a specified group.
 
@@ -1903,6 +1904,8 @@ PUT /groups/:id
 | `lock_duo_features_enabled`                          | boolean           | no       | Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. GitLab Self-Managed, Premium and Ultimate only. |
 | `ai_audit_events_storage_enabled`                    | boolean           | no       | Indicates whether AI audit events are stored for the group. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
 | `lock_ai_audit_events_storage_enabled`               | boolean           | no       | Indicates whether the AI audit events storage setting is enforced for all subgroups and projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
+| `ai_governance_enabled`                              | boolean           | no       | Indicates whether AI Governance is turned on for the group, its subgroups, and its projects. Off by default. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261994) in GitLab 19.6. Premium and Ultimate only. |
+| `lock_ai_governance_enabled`                         | boolean           | no       | Indicates whether the AI Governance setting is enforced for all subgroups and projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261994) in GitLab 19.6. Premium and Ultimate only. |
 | `max_artifacts_size`                                 | integer           | No       | The maximum file size in megabytes for individual job artifacts. |
 | `web_based_commit_signing_enabled`                  | boolean           | No       | Enables web-based commit signing for commits created from the GitLab UI. Available only for top-level groups on GitLab.com. When enabled for a group, applies to all projects in the group. |
 | `only_allow_merge_if_pipeline_succeeds`             | boolean           | no       | Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only. |

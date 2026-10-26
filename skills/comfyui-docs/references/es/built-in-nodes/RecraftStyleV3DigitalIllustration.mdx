@@ -1,0 +1,24 @@
+---
+title: "Estilo Recraft - ilustración digital - ComfyUI Built-in Node Documentation"
+description: "Este nodo configura un estilo para usar con la API de Recraft, seleccionando específicamente el estilo \"digitalillustration\"."
+mode: wide
+---
+
+Este nodo configura un estilo para usar con la API de Recraft, seleccionando específicamente el estilo "digital_illustration". Permite elegir un subestilo opcional para refinar aún más la dirección artística de la imagen generada.
+
+## Entradas
+
+| Parámetro | Descripción | Tipo de Dato | Obligatorio | Rango |
+| --- | --- | --- | --- | --- |
+| `subestilo` | Un subestilo opcional para especificar un tipo particular de ilustración digital. Si no se selecciona, se utiliza el estilo base "digital_illustration". | STRING | No | `"digital_illustration"``"digital_illustration_anime"``"digital_illustration_cartoon"``"digital_illustration_comic"``"digital_illustration_concept_art"``"digital_illustration_fantasy"``"digital_illustration_futuristic"``"digital_illustration_graffiti"``"digital_illustration_graphic_novel"``"digital_illustration_hyperrealistic"``"digital_illustration_ink"``"digital_illustration_manga"``"digital_illustration_minimalist"``"digital_illustration_pixel_art"``"digital_illustration_pop_art"``"digital_illustration_retro"``"digital_illustration_sci_fi"``"digital_illustration_sticker"``"digital_illustration_street_art"``"digital_illustration_surreal"``"digital_illustration_vector"` |
+
+## Salidas
+
+| Nombre de Salida | Descripción | Tipo de Dato |
+| --- | --- | --- |
+| `estilo_recraft` | Un objeto de estilo configurado que contiene el estilo "digital_illustration" seleccionado y el subestilo opcional, listo para ser pasado a otros nodos de la API de Recraft. | STYLEV3 |
+
+> Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftStyleV3DigitalIllustration/es.md)
+
+---
+**Source fingerprint (SHA-256):** `e52790a670839608ee1cb576e802a54d3bf2ca879ec288a24acd4ac7db27021a`

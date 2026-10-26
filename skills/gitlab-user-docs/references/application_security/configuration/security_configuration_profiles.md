@@ -158,9 +158,10 @@ are named `Triage and Remediation (Conservative)`, `Triage and Remediation (Stan
 
 ### Business logic profile
 
-- Status: Experiment
+- Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the

@@ -44,16 +44,37 @@ Sessions in folders without such a remote are not sent.
 - GitLab Premium or Ultimate with GitLab Duo Agent Platform for the top-level group.
 - [`glab`](../../editor_extensions/gitlab_cli/_index.md) 1.122.0 or later, signed in to your GitLab instance.
 - At least the Developer role for the project.
-- **Allow external agents** turned on for the top-level group. It is on by default.
-  The setting belongs to the AI Catalog
-  [external agents](../duo_agent_platform/agents/external.md#turn-external-agents-on-or-off)
-  that run in CI/CD pipelines, and it also controls session capture.
-  Turning it off stops the sessions of local coding agents too.
+- [AI Governance turned on](#turn-on-ai-governance) for the group. It is off by default.
+- On GitLab.com, a project in a group. Sessions for projects in a personal namespace are not recorded.
 - [**Store AI audit events**](ai-audit-events.md#enable-ai-audit-event-storage) turned on
   for the group or project.
   Without it, only the session is recorded, not its events and tool calls.
   The setting is off by default. To change it, you need the Owner or Security Manager role.
 - A computer running macOS or Linux.
+
+## Turn on AI Governance
+
+AI Governance is off by default. Until it is turned on, GitLab rejects the sessions that `glab` sends.
+
+Turn it on for a group. The setting is applied to all its subgroups and projects
+in the background, which can take a few minutes.
+On GitLab.com, projects in a personal namespace are not supported.
+
+Prerequisites:
+
+- The Owner role for the group.
+
+Use the [groups API](../../api/groups.md#update-group-attributes) to set
+`ai_governance_enabled` to `true`:
+
+```shell
+curl --request PUT \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data "ai_governance_enabled=true" \
+  --url "https://gitlab.example.com/api/v4/groups/<group_id>"
+```
+
+To stop subgroup Owners from turning it off, also set `lock_ai_governance_enabled` to `true`.
 
 ## Set up session capture
 
@@ -201,7 +222,7 @@ Sessions already sent to GitLab stay on the dashboard.
 |---------|-------|------------|
 | `glab govern doctor` reports a failed check. | The setup on this computer is incomplete. | Follow the fix that the check prints. |
 | The last-run line of `glab govern doctor` says session capture is not enabled for a project. | Session capture is turned off for that project. | Contact GitLab Support. |
-| `glab govern audit sync --all` prints a `403 Forbidden` warning, or `glab govern doctor` shows it as the last run's error. | Your role on the project is below Developer, the group does not have GitLab Duo Agent Platform, **Allow external agents** is turned off for the top-level group, or a group Owner revoked this computer's agent identity. For Claude Code in a fork checkout, the session went to the upstream project. | Check the role and the settings with a group Owner. In a fork checkout, run `glab repo set-default` and choose the project the sessions should go to. |
+| `glab govern audit sync --all` prints a `403 Forbidden` warning, or `glab govern doctor` shows it as the last run's error. | Your role on the project is below Developer, the group does not have GitLab Duo Agent Platform, [AI Governance](#turn-on-ai-governance) is not turned on, the project is in a personal namespace on GitLab.com, or a group Owner revoked this computer's agent identity. For Claude Code in a fork checkout, the session went to the upstream project. | Check the role and the settings with a group Owner or, on GitLab Self-Managed and GitLab Dedicated, an administrator. In a fork checkout, run `glab repo set-default` and choose the project the sessions should go to. |
 | A session appears, but has no events or tool calls. | **Store AI audit events** is turned off for the group or project. | Turn the setting on. You need the Owner or Security Manager role. Events from before the change are not recorded. |
 | A session was sent, but is not on the dashboard. | The dashboard reads data that is processed in the background, or the filters exclude the session. | Set **Show** to **All agents** or **Connected**, check the date range, then wait a few minutes and reload the page. |
 | A Cursor session is never sent. | `glab` could not confirm which folder the session ran in. This happens when the folder moved, when another folder's path differs only in punctuation (for example `code/cli-docs` and `code/cli/docs`), or when every file the session touched is outside the folder. It also happens when the folder has no `origin` remote. | Run `glab govern doctor` and read the "not synced" reason. Keep the folder where it was when the session ran, rename folders whose paths differ only in punctuation, and make sure the folder has an `origin` remote. |

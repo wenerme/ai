@@ -11,7 +11,7 @@ API requests draw from the same monthly credit allocation as the Comfy Cloud web
 
 See the [pricing page](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for monthly credit amounts and top-up options. You can purchase top-ups from your account dashboard.
 
-## Concurrent jobs
+## Concurrency limits
 
 You can submit multiple workflows without waiting for previous jobs to complete. Jobs run in parallel up to your subscription tier's limit:
 
@@ -25,7 +25,9 @@ Team plans run more concurrent workflows per member than Pro. Check [platform.co
 
 If the queue is full, the SDKs retry within a bounded budget before raising `QueueFull`.
 
-  Parallel execution is available through the API. See the [pricing plans](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for subscription details.
+On Team and Enterprise plans, concurrency is per member: everyone in the workspace has their own concurrency limit, so one member's running jobs never block another's.
+
+  Running more than one job at a time is only supported through the API. The Comfy Cloud UI runs one workflow at a time per person, and workflows queued in the editor run in order. See the [pricing plans](https://www.comfy.org/cloud/pricing?utm_source=docs&utm_campaign=cloud-api) for subscription details.
 
 ## Runtime and queue limits
 

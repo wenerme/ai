@@ -1,0 +1,32 @@
+---
+title: "Recraft Texto a Vector - ComfyUI Built-in Node Documentation"
+description: "Genera ilustraciones vectoriales SVG de forma síncrona a partir de una indicación de texto y una resolución."
+mode: wide
+---
+
+Genera ilustraciones vectoriales SVG de forma síncrona a partir de una indicación de texto y una resolución. Este nodo envía tu indicación a la API de Recraft y devuelve el contenido SVG generado.
+
+## Entradas
+
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
+|-----------|-------------|-----------|----------|-------|
+| `prompt` | Indicación para la generación de la imagen. (predeterminado: "", máximo 1000 caracteres) | STRING | Sí | - |
+| `substyle` | El estilo específico de ilustración vectorial que se usará para la generación. | COMBO | Sí | `"2d_character"``"2d_gradient"``"2d_illustration"``"2d_flat_character"``"2d_flat_illustration"``"2d_art"``"2d_art_character"``"2d_pattern"``"2d_pixel_art"``"2d_cyberpunk"``"2d_engraving"``"2d_black_and_white"``"2d_ink"``"2d_sketch"``"2d_watercolor"``"2d_animation"``"2d_comic"``"2d_children_illustration"``"2d_vintage"``"2d_retro"``"2d_hand_drawn"``"2d_psychedelic"``"2d_graffiti"``"2d_ukiyo_e"``"2d_woodcut"``"2d_art_deco"``"2d_art_nouveau"``"2d_bauhaus"``"2d_constructivism"``"2d_cubism"``"2d_futurism"``"2d_glitch"``"2d_impressionism"``"2d_naive"``"2d_pointillism"``"2d_pop_art"``"2d_realism"``"2d_renaissance"``"2d_rococo"``"2d_romanticism"``"2d_surrealism"``"2d_suprematism"``"2d_symbolism"``"2d_expressionism"``"2d_abstract"``"2d_minimalism"``"2d_contemporary"``"2d_modern"``"2d_brutalism"``"2d_metaphysical"``"2d_mannerism"``"2d_baroque"``"2d_neoclassicism"``"2d_orientalism"``"2d_primitivism"``"2d_fauvism"``"2d_rayonism"``"2d_orphism"``"2d_vorticism"``"2d_dadaism"``"2d_neo_expressionism"``"2d_transavantgarde"``"2d_new_wild"``"2d_graffiti_classic"``"2d_graffiti_modern"``"2d_graffiti_wildstyle"``"2d_graffiti_bubble"``"2d_graffiti_throwup"``"2d_graffiti_tag"``"2d_graffiti_blockbuster"``"2d_graffiti_mural"``"2d_graffiti_stencil"``"2d_graffiti_3d"``"2d_graffiti_character"``"2d_graffiti_abstract"``"2d_graffiti_urban"``"2d_graffiti_neo_muralism"``"2d_graffiti_post_graffiti"``"2d_graffiti_street_art"` |
+| `tamaño` | El tamaño de la imagen generada. (predeterminado: "1024x1024") | COMBO | Sí | `"1024x1024"``"1024x2048"``"2048x1024"``"2048x2048"``"512x512"``"512x1024"``"1024x512"``"2048x512"``"512x2048"` |
+| `n` | El número de imágenes a generar. (predeterminado: 1, mínimo: 1, máximo: 6) | INT | Sí | 1-6 |
+| `semilla` | Semilla para determinar si el nodo debe reejecutarse; los resultados reales son no deterministas independientemente de la semilla. (predeterminado: 0, mínimo: 0, máximo: 18446744073709551615) | INT | Sí | 0-18446744073709551615 |
+| `negative_prompt` | Una descripción de texto opcional de elementos no deseados en una imagen. (predeterminado: "", cuando está vacío no se usa ninguna indicación negativa) | STRING | No | - |
+| `recraft_controls` | Controles adicionales opcionales sobre la generación mediante el nodo Recraft Controls. | CONTROLS | No | - |
+
+**Nota:** El parámetro `seed` solo controla cuándo se vuelve a ejecutar el nodo, pero no hace que los resultados de la generación sean deterministas.
+
+## Salidas
+
+| Nombre de salida | Descripción | Tipo de datos |
+|-------------|-------------|-----------|
+| `SVG` | La ilustración vectorial generada en formato SVG | SVG |
+
+> Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RecraftTextToVectorNode/es.md)
+
+---
+**Source fingerprint (SHA-256):** `aec7e96e339047e75dfe419d94d23a613595bc22e7f187895c52b143780fcbf3`

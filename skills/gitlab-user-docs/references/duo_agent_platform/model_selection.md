@@ -29,14 +29,14 @@ This table lists the default model for each feature in the Agent Platform.
 | GitLab Duo Agentic Chat | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Code Review Flow[^earlier-code-review] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
-| Business Logic Security Scan[^bl-security-experiment] | Claude Sonnet 5 Gemini Enterprise Agent Platform |
+| Business Logic Security Scan[^bl-security-beta] | Claude Sonnet 5 Gemini Enterprise Agent Platform |
 | Recommend Reviewers Flow | Claude Haiku 5.5 Gemini Enterprise Agent Platform |
 | GitLab Duo Developer | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | All other agents | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 
 [^earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
     set for GitLab Duo Code Review, the non-agentic version.
-[^bl-security-experiment]: [Business Logic Security Scan](../application_security/business_logic_scanning/_index.md) is an [experiment](../../policy/development_stages_support.md#experiment). It's available only when the `bl_security_analyzer` feature flag is enabled and [experiment and beta features](../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features) are turned on.
+[^bl-security-beta]: [Business Logic Security Scan](../application_security/business_logic_scanning/_index.md) is in [beta](../../policy/development_stages_support.md#beta). It's available only when the `bl_security_analyzer` feature flag is enabled and [experiment and beta features](../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features) are turned on.
 
 ## Supported models
 
@@ -60,7 +60,7 @@ Model availability can vary by subscription and trial status.
 For information about model availability during trials, see
 [GitLab Duo Agent Platform trials](../../subscriptions/free_trials.md#gitlab-duo-agent-platform-trials).
 
-| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | Business Logic Security Scan[^bl-security-experiment] | Recommend Reviewers Flow | All other agents |
+| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | Business Logic Security Scan[^bl-security-beta] | Recommend Reviewers Flow | All other agents |
 |-----------------------------|-------------------------|------------------|----------------------|------------------------------|--------------------------|------------------|
 | Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
