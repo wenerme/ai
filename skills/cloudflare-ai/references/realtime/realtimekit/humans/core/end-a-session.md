@@ -314,7 +314,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$AP
 
 ## Disable a meeting
 
-Ending a session does not disable the meeting. Participants can join the meeting again and start a new session. To prevent participants from joining again and starting a new session, set the meeting status to `INACTIVE` using the [Update a meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/update_meeting_by_id/) API.
+Ending a session does not disable the meeting. Participants can join the meeting again and start a new session. To prevent participants from joining again and starting a new session, set the meeting status to `INACTIVE` using the [Update a meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/update_meeting_by_id/) API. If the meeting has an active session, RealtimeKit also removes all participants from it.
 
 <details>
 

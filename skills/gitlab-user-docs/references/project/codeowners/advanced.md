@@ -116,7 +116,7 @@ This requires `n` approvals from the Code Owners in this section.
 Valid entries for `n` are integers `≥ 1`. `[1]` is optional because it is the default. Invalid values for `n` are treated as `1`.
 
 > [!warning]
-> [Issue 384881](https://gitlab.com/gitlab-org/gitlab/-/issues/385881) proposes changes
+> [Issue 385881](https://gitlab.com/gitlab-org/gitlab/-/issues/385881) proposes changes
 > to the behavior of this setting. Do not intentionally set invalid values. They might
 > become valid in the future and cause unexpected behavior.
 

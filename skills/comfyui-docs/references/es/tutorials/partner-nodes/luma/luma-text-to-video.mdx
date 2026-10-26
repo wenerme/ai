@@ -1,0 +1,44 @@
+---
+title: "Guía del nodo asociado Luma Text to Video (heredado)"
+description: "Cómo funcionaba el nodo asociado Luma Text to Video (heredado) en ComfyUI, por qué dejó de funcionar y qué nodo lo reemplaza."
+translationSourceHash: 4afe2642
+translationFrom: tutorials/partner-nodes/luma/luma-text-to-video.mdx
+translationBlockHashes:
+  "_intro": 53dd1fb1
+  "What Luma Text to Video is good at": e9e2e5f5
+  "Text to Video Workflow with Luma Partner Nodes": 1c9579ce
+---
+
+  **Obsoleto**: El nodo heredado **Luma Text to Video** está obsoleto y Luma eliminará los endpoints que utiliza el 24 de octubre de 2026. Usa el nodo [**Luma Ray 3.2 Text to Video**](/es/built-in-nodes/LumaRay32TextToVideoNode) en su lugar.
+
+El nodo Luma Text to Video te permite crear videos suaves de alta calidad a partir de descripciones de texto usando la innovadora tecnología de generación de video de Luma AI.
+
+## En qué destaca Luma Text to Video
+
+- **Generación de texto a video**: Crea videos suaves y de alta calidad a partir de descripciones de texto de escenas, sujetos, acciones y ambiente
+- **Control de cámara**: La función Luma Concepts añade movimientos de cámara para tomas de video profesionales y cinematografía
+- **Selección de modelo**: Puedes seleccionar distintos modelos de video con diferentes funciones mediante el parámetro model
+- **Salida ajustable**: La resolución y la duración del video son ajustables (excepto con el modelo Ray 1.6, donde estos parámetros no aplican)
+
+## Flujo de trabajo de texto a video con los nodos asociados de Luma
+
+El nodo Luma Text to Video requiere prompts de texto para describir el contenido del video. En esta guía creamos ejemplos con `prompt` y `luma_concepts` para mostrar las excelentes capacidades de generación de video de Luma AI.
+
+### 1. Descargar el flujo de trabajo
+
+Esta página documenta el nodo **Luma Text to Video** retirado y el flujo de trabajo de ejemplo que lo acompañaba, el cual seleccionaba `ray-2`. Luma deja de ofrecer ese modelo el 24 de octubre de 2026, así que ni el nodo ni el ejemplo pueden ejecutarse. El ejemplo y su guía de pasos permanecen en el código fuente de esta página como comentario.
+
+El reemplazo es un nodo independiente. Su propia guía:
+
+  
+    Consulta el nodo de reemplazo y sus entradas.
+  
+
+### 2. Notas adicionales
+
+- **Redacción de prompts**: Describe con detalle las escenas, los sujetos, las acciones y el estado de ánimo para obtener mejores resultados
+- **Luma Concepts**: Se usa principalmente para el control de cámara y para crear tomas de video profesionales
+- **Parámetro de semilla**: Solo determina si el nodo debe volver a ejecutarse; no afecta a los resultados de la generación
+- **Selección de modelo**: Los distintos modelos de video tienen características diferentes, ajustables mediante el parámetro de modelo
+- **Resolución y duración**: Ajusta la resolución y la duración del video de salida con estos parámetros
+- **Nota sobre el modelo Ray 1.6**: Los parámetros de duración y resolución no funcionan con el modelo Ray 1.6. Luma dejó de ofrecer Ray 1.6 en septiembre de 2026, así que esa opción ya no se ejecuta.

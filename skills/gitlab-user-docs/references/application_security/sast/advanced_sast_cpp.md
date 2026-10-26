@@ -295,7 +295,7 @@ If the paths inside the CDB do not match the container paths in your CI/CD job, 
 Install:
 
 ```shell
-go install gitlab.com/gitlab-org/secure/tools/cdb-rebase@latest
+go install gitlab.com/gitlab-org/security-products/analyzers/clangsa/cmd/cdb-rebase@latest
 ```
 
 The binary is installed in `$GOPATH/bin` or `$HOME/go/bin`. Ensure this directory is in your `PATH`.
@@ -374,7 +374,7 @@ Example:
 
 ```yaml
 gitlab-advanced-sast-cpp:
-  before-script:
+  before_script:
     # Rebase the original CDB to be relative to the current directory.
     #
     # ORIGINAL_CDB_PATH     - Path to the CDB artifact from a previous job (e.g., artifacts/compile_commands.json)

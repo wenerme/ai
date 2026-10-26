@@ -1,0 +1,68 @@
+---
+title: "Ejemplo de flujo de trabajo de ComfyUI con Z-Image"
+description: "Z-Image es un modelo base de generación de imágenes eficiente de 6B de Alibaba Tongyi Lab. Su DiT de flujo único busca ajuste fino y desarrollo personalizado."
+translationSourceHash: ef8f0cce
+translationFrom: tutorials/image/z-image/z-image.mdx
+translationBlockHashes:
+  "_intro": e00a79e0
+  "Z-Image text-to-image workflow": 49b8d4a9
+---
+
+**Z-Image (造相)** es un modelo de generación de imágenes potente y altamente eficiente con **6B** parámetros, desarrollado por Tongyi Lab de Alibaba. Utiliza una arquitectura **Scalable Single-Stream DiT** (S3-DiT), en la que los tokens de texto, los tokens semánticos visuales y los tokens VAE de imagen se concatenan a nivel de secuencia para formar un flujo de entrada unificado, lo que maximiza la eficiencia de los parámetros.
+
+Z-Image (Base) es el modelo base no destilado diseñado para el ajuste fino impulsado por la comunidad y el desarrollo personalizado.
+
+**Puntos destacados del modelo**:
+- **Calidad fotorrealista**: ofrece una potente generación de imágenes fotorrealistas y mantiene una excelente calidad estética.
+- **Renderizado de texto bilingüe preciso**: destaca por renderizar con precisión texto complejo en chino e inglés.
+- **Mejora de prompt y razonamiento**: Prompt Enhancer dota al modelo de capacidades de razonamiento.
+- **Listo para ajuste fino**: modelo base ideal para entrenamiento personalizado y adaptación.
+
+**Enlaces relacionados**:
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image)
+- [ModelScope](https://modelscope.cn/models/Tongyi-MAI/Z-Image)
+
+## Flujo de trabajo de texto a imagen con Z-Image
+
+### Z-Image: Texto a imagen {#image_z_image}
+
+La base para la libertad creativa. Estética diversa con una calidad fotorrealista excepcional; ideal para fine-tuning; responde a los prompts negativos; alta diversidad de generación.
+
+[Vista previa del flujo de trabajo de texto a imagen con Z-Image]
+
+  
+    Ejecuta este flujo de trabajo directamente en Comfy Cloud
+  
+  
+    Descarga el archivo JSON del flujo de trabajo de texto a imagen con Z-Image
+  
+
+**Salida de ejemplo**
+
+![Salida de ejemplo de Z-Image](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_z_image.png)
+
+## Descargas de modelos de Z-Image
+
+  
+    Codificador de texto para Z-Image.
+  
+  
+    Modelo de difusión para Z-Image.
+  
+  
+    VAE para Z-Image.
+  
+
+**Ubicación de almacenamiento de los modelos**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```

@@ -1,0 +1,116 @@
+---
+title: "Ejemplo de flujo de trabajo de Z-Image-Turbo en ComfyUI"
+description: "Z-Image-Turbo es un modelo destilado y eficiente de 6B parámetros con latencia de inferencia inferior a un segundo."
+translationSourceHash: 3ba96151
+translationFrom: tutorials/image/z-image/z-image-turbo.mdx
+translationBlockHashes:
+  "_intro": 7084d4ab
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HvaEsnyOfSw?si=bsOQzcL0vsPcaE83" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+**Z-Image (造相)** es un modelo de generación de imágenes potente y muy eficiente con **6B** parámetros, desarrollado por Tongyi Lab de Alibaba. Utiliza una arquitectura **Scalable Single-Stream DiT** (S3-DiT) en la que los tokens de texto, los tokens semánticos visuales y los tokens del VAE de imagen se concatenan a nivel de secuencia para formar un único flujo de entrada, maximizando la eficiencia de los parámetros.
+
+**Variantes del modelo**:
+- 🚀 **Z-Image-Turbo**: una versión destilada que iguala o supera a los principales competidores con solo **8 NFE** (Number of Function Evaluations). Ofrece una **latencia de inferencia inferior a un segundo** en GPUs H800 de clase empresarial y cabe en **dispositivos de consumo con 16 GB de VRAM**.
+- 🧱 **Z-Image-Base**: el modelo base sin destilar, pensado para el ajuste fino impulsado por la comunidad y el desarrollo personalizado.
+- ✍️ **Z-Image-Edit**: una variante ajustada para tareas de edición de imágenes, con una capacidad notable para seguir instrucciones.
+
+**Aspectos destacados del modelo**:
+- **Calidad fotorrealista**: ofrece una sólida generación de imágenes fotorrealistas sin perder una excelente calidad estética
+- **Renderizado bilingüe preciso de texto**: sobresale al renderizar con precisión texto complejo en chino e inglés
+- **Mejora de prompts y razonamiento**: el Prompt Enhancer dota al modelo de capacidades de razonamiento
+- **Inferencia inferior a un segundo**: alcanza una velocidad de generación rápida en el hardware compatible
+
+**Enlaces relacionados**:
+- [GitHub](https://github.com/Tongyi-MAI/Z-Image)
+- [Hugging Face](https://huggingface.co/Tongyi-MAI/Z-Image-Turbo)
+
+## Flujo de trabajo de texto a imagen de Z-Image-Turbo
+
+### Z-Image-Turbo: Text to Image {#image_z_image_turbo}
+
+Un modelo fundacional eficiente de generación de imágenes con Single-Stream Diffusion Transformer; admite inglés y chino.
+
+[Vista previa del flujo de trabajo de texto a imagen de Z-Image-Turbo]
+
+  
+    Ejecuta este flujo de trabajo directamente en Comfy Cloud
+  
+  
+    Descarga el archivo JSON del flujo de trabajo de texto a imagen de Z-Image-Turbo
+  
+
+**Ejemplo de salida**
+
+![Ejemplo de salida de Z-Image-Turbo](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_z_image_turbo.png)
+
+### Descargas de modelos de Z-Image-Turbo
+
+    Codificador de texto para Z-Image-Turbo.
+  
+
+    Modelo de difusión para Z-Image-Turbo.
+  
+
+    VAE para Z-Image-Turbo.
+  
+
+**Ubicación de almacenamiento de los modelos de Z-Image-Turbo**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   └── 📂 vae/
+│          └── ae.safetensors
+```
+
+## Flujo de trabajo de ControlNet Fun Union de Z-Image-Turbo
+
+### Z-Image-Turbo Fun Union ControlNet {#image_z_image_turbo_fun_union_controlnet}
+
+ControlNet multi-control compatible con Canny, HED, Depth, Pose y MLSD para Z-Image-Turbo.
+
+[Vista previa del flujo de trabajo de ControlNet Fun Union de Z-Image-Turbo]
+
+  
+    Ejecuta este flujo de trabajo directamente en Comfy Cloud
+  
+  
+    Descarga el archivo JSON del flujo de trabajo de ControlNet Fun Union de Z-Image-Turbo
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  
+    Nodo `LoadImage` 58 · `image_z_image_turbo_fun_union_controlnet_input_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [image_z_image_turbo_fun_union_controlnet_input_image.png]
+</div>
+
+### Modelo adicional para ControlNet
+
+    Parche de modelo ControlNet para Z-Image-Turbo.
+  
+**Ubicación de almacenamiento de los modelos**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── z_image_turbo_bf16.safetensors
+│   ├── 📂 vae/
+│   │      └── ae.safetensors
+│   └── 📂 model_patches/
+│          └── Z-Image-Turbo-Fun-Controlnet-Union.safetensors
+```

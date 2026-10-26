@@ -98,6 +98,8 @@ When Silent Mode is enabled, a banner is displayed at the top of the page for al
 
 ### Outbound communications that are silenced
 
+- Sidekiq jobs blocked by Silent Mode [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/514789) to complete without retrying in GitLab 19.6.
+
 Outbound communications from the following features are silenced by Silent Mode.
 
 | Feature                                                                   | Notes                                                                                                                                                                                                                                                   |
@@ -109,7 +111,7 @@ Outbound communications from the following features are silenced by Silent Mode.
 | [Executable integrations](../../user/project/integrations/_index.md)       | The integrations are not executed.                                                                                                                                                                                                                      |
 | [Service Desk](../../user/project/service_desk/_index.md)                  | Incoming emails still raise issues, but the users who sent the emails to Service Desk are not notified of issue creation or comments on their issues.                                                                                                   |
 | Outbound emails                                                           | At the moment when an email should be sent by GitLab, it is instead dropped. It is not queued anywhere.                                                                                                                                                 |
-| Outbound HTTP requests                                                    | Many HTTP requests are blocked where features are not blocked or skipped explicitly. These may produce errors with the class `SilentModeBlockedError`. If a particular error is problematic for testing during Silent Mode, consult [GitLab Support](https://support.gitlab.com/). In general, the caller should exit when Silent Mode is enabled, rather than attempt to make the HTTP request. Any exceptions must align with the [intended uses for Silent Mode](#when-to-use-silent-mode). |
+| Outbound HTTP requests                                                    | Many HTTP requests are blocked where features are not blocked or skipped explicitly. These may produce errors with the class `SilentModeBlockedError`.If a Sidekiq job is blocked this way, GitLab logs a warning in the Sidekiq log and marks the job as complete. The job is not retried, so the blocked request is not sent after Silent Mode is turned off. If a particular error is problematic for testing during Silent Mode, consult [GitLab Support](https://support.gitlab.com/).In general, the caller should exit when Silent Mode is enabled, rather than attempt to make the HTTP request. Any exceptions must align with the [intended uses for Silent Mode](#when-to-use-silent-mode). |
 
 ### Outbound communications that are not silenced
 

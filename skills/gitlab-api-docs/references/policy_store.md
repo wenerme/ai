@@ -291,6 +291,7 @@ Supported attributes:
 | ----------------- | ------- | -------- | ----------- |
 | `id`              | integer | Yes      | ID of the organization. |
 | `lifecycle_state` | string  | No       | Return only `active` policies, only `disabled` policies, or `all` policies. Defaults to `active`. |
+| `namespace_ids`   | array   | No       | IDs of namespaces, usually a group and its ancestors. Returns only their policies and the organization-wide ones. Up to 21 unique IDs, and more return `400 Bad Request`. On GitLab.com, the default organization returns no organization-wide policies, and returns no policies without it. |
 | `page`            | integer | No       | Page of results to return. Defaults to `1`. |
 | `per_page`        | integer | No       | Number of results per page. Defaults to `20`, and any value above `100` is capped at `100`. |
 | `trigger_type`    | string  | No       | Return only the policies that respond to this trigger. One of the IDs returned by [List all triggers](#list-all-triggers). |
@@ -302,6 +303,9 @@ performance reasons, it never returns the `x-total` or `x-total-pages` headers o
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and an array of
 [policy attributes](#response-attributes).
+On GitLab.com, a request to the default organization without `namespace_ids` returns
+`400 Bad Request` when `trigger_type` is `project.before_settings_update`, `project.after_create`,
+or `project.after_transfer`, because these triggers carry the group hierarchy.
 
 Example request:
 
@@ -420,6 +424,11 @@ The following conditions return `400 Bad Request`:
 - `rules` or `actions` carries more than 5 entries.
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
 
+On GitLab.com, creating a policy in the default organization returns
+[`422 Unprocessable Entity`](rest/troubleshooting.md#status-codes). Groups without their own
+organization share the default one, so an organization-wide policy there would apply to all of them.
+Create the policy in a group instead.
+
 Example request:
 
 ```shell
@@ -485,7 +494,7 @@ Supported attributes:
 | `policy_scope`    | object  | No       | Structured scope of the policy, which GitLab compiles into `scope_rego`. For its attributes, see [Policy scope attributes](#policy-scope-attributes). Cannot be combined with a non-empty `scope_rego`. Rejected when it compiles to more than 4096 characters of Rego. |
 | `rules`           | array   | No       | Rules of the policy. For the entry attributes, see [Rule and action attributes](#rule-and-action-attributes). Replaces the stored rules, up to 5 entries. Each entry must serialize to at most 4096 bytes. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
 | `scope_rego`      | string  | No       | Scope of the policy, written directly as a Rego program. GitLab stores it as you wrote it. Maximum 4096 characters. Send an empty value to retire an authored program and recompile from `policy_scope`. A value that does not parse as Rego returns `400 Bad Request`. |
-| `trigger_type`    | string  | No       | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). |
+| `trigger_type`    | string  | No       | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). For a policy that belongs to a group, must be `project.before_settings_update`, `project.after_create`, or `project.after_transfer`, because only these triggers carry the group hierarchy. |
 
 When you rename a policy, GitLab must recompile a generated `scope_rego`, because the policy
 name appears in the generated program.
@@ -503,6 +512,7 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules` compile to more than 65536 bytes of Rego.
 - The replacement `rules` or `actions` carries more than 5 entries.
 - An entry in the replacement `rules` or `actions` serializes to more than 4096 bytes.
+- The policy belongs to a group, and the new `trigger_type` is not one a group policy can use.
 
 Example request:
 
@@ -614,10 +624,10 @@ Example response:
     "id": 1,
     "organization_id": 1,
     "namespace_id": 5,
-    "name": "Block deployments on critical findings",
+    "name": "Block settings changes on critical findings",
     "description": null,
     "version": 1,
-    "trigger_type": "deployment_requested",
+    "trigger_type": "project.before_settings_update",
     "rules": [{ "type": "custom", "value": "package governance" }],
     "policy_rego": "package governance\n",
     "actions": [{ "type": "block" }],
@@ -664,10 +674,10 @@ Example response:
   "id": 1,
   "organization_id": 1,
   "namespace_id": 5,
-  "name": "Block deployments on critical findings",
+  "name": "Block settings changes on critical findings",
   "description": null,
   "version": 1,
-  "trigger_type": "deployment_requested",
+  "trigger_type": "project.before_settings_update",
   "rules": [{ "type": "custom", "value": "package governance" }],
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],
@@ -696,7 +706,7 @@ Supported attributes:
 | `id`              | integer or string | Yes      | ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group. |
 | `name`            | string            | Yes      | Name of the policy. Maximum 255 characters. Must be unique in the organization. |
 | `rules`           | array             | Yes      | Rules of the policy. For the entry attributes, see [Rule and action attributes](#rule-and-action-attributes). At least one entry is required, up to 5. Each entry must serialize to at most 4096 bytes. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
-| `trigger_type`    | string            | Yes      | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). |
+| `trigger_type`    | string            | Yes      | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). Must be `project.before_settings_update`, `project.after_create`, or `project.after_transfer`, because only these triggers carry the group hierarchy. |
 | `actions`         | array             | No       | Actions the policy takes. For the entry attributes, see [Rule and action attributes](#rule-and-action-attributes). Up to 5 entries. Each entry must serialize to at most 4096 bytes. |
 | `description`     | string            | No       | Description of the policy. Maximum 4096 characters. |
 | `lifecycle_state` | string            | No       | Either `active` or `disabled`. Defaults to `active`. |
@@ -715,6 +725,7 @@ The following conditions return `400 Bad Request`:
 - The `rules` compile to more than 65536 bytes of Rego.
 - `rules` or `actions` carries more than 5 entries.
 - An entry in `rules` or `actions` serializes to more than 4096 bytes.
+- The `trigger_type` is not one a group policy can use.
 
 Example request:
 
@@ -722,8 +733,8 @@ Example request:
 curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
   --data '{
-    "name": "Block deployments on critical findings",
-    "trigger_type": "deployment_requested",
+    "name": "Block settings changes on critical findings",
+    "trigger_type": "project.before_settings_update",
     "rules": [{ "type": "custom", "value": "package governance" }],
     "actions": [{ "type": "block" }],
     "policy_scope": { "compliance_frameworks": [{ "id": 5 }] }
@@ -738,10 +749,10 @@ Example response:
   "id": 1,
   "organization_id": 1,
   "namespace_id": 5,
-  "name": "Block deployments on critical findings",
+  "name": "Block settings changes on critical findings",
   "description": null,
   "version": 1,
-  "trigger_type": "deployment_requested",
+  "trigger_type": "project.before_settings_update",
   "rules": [{ "type": "custom", "value": "package governance" }],
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],
@@ -781,7 +792,7 @@ Supported attributes:
 | `policy_scope`    | object            | No       | Structured scope of the policy, which GitLab compiles into `scope_rego`. For its attributes, see [Policy scope attributes](#policy-scope-attributes). Cannot be combined with a non-empty `scope_rego`. Rejected when it compiles to more than 4096 characters of Rego. |
 | `rules`           | array             | No       | Rules of the policy. For the entry attributes, see [Rule and action attributes](#rule-and-action-attributes). Replaces the stored rules, up to 5 entries. Each entry must serialize to at most 4096 bytes. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
 | `scope_rego`      | string            | No       | Scope of the policy, written directly as a Rego program. GitLab stores it as you wrote it. Maximum 4096 characters. Send an empty value to retire an authored program and recompile from `policy_scope`. A value that does not parse as Rego returns `400 Bad Request`. |
-| `trigger_type`    | string            | No       | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). |
+| `trigger_type`    | string            | No       | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). Must be `project.before_settings_update`, `project.after_create`, or `project.after_transfer`, because only these triggers carry the group hierarchy. |
 
 When you rename a policy, GitLab must recompile a generated `scope_rego`, because the policy
 name appears in the generated program.
@@ -799,6 +810,7 @@ The following conditions return `400 Bad Request`:
 - The replacement `rules` compile to more than 65536 bytes of Rego.
 - The replacement `rules` or `actions` carries more than 5 entries.
 - An entry in the replacement `rules` or `actions` serializes to more than 4096 bytes.
+- The new `trigger_type` is not one a group policy can use.
 
 Example request:
 
@@ -818,7 +830,7 @@ Example response:
   "name": "Renamed policy",
   "description": null,
   "version": 2,
-  "trigger_type": "deployment_requested",
+  "trigger_type": "project.before_settings_update",
   "rules": [{ "type": "custom", "value": "package governance" }],
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],

@@ -379,6 +379,93 @@ For more information, see [Application SLIs](../../../development/application_sl
 | `gitlab_sli_audit_event_streaming_nats_dispatch_error_total` | Counter | 19.3 | `feature_category` | Total number of audit event batch dispatches that failed |
 | `gitlab_sli_audit_event_streaming_nats_dispatch_total` | Counter | 19.3 | `feature_category` | Total number of audit event batch dispatch attempts |
 
+## Geo metrics
+
+- Tier: Premium, Ultimate
+- Offering: GitLab Self-Managed, GitLab Dedicated
+
+Geo replication and verification status metrics can be collected from two sources:
+
+- [GitLab exporter](gitlab_exporter.md): (Recommended for multi-node setups) Single-source metrics emitted directly from PostgreSQL by the `geo_node_status` database probe.
+- [Sidekiq exporter](#sidekiq-metrics): Metrics emitted by `Geo::MetricsUpdateWorker` across Sidekiq processes.
+
+### Database-derived Geo metrics from GitLab exporter
+
+- [Introduced](https://gitlab.com/gitlab-org/ruby/gems/gitlab-exporter/-/merge_requests/314) in GitLab Exporter 17.1.0 in GitLab 19.6.
+
+Instance-wide Geo replication and verification status metrics are emitted by the `gitlab-exporter`
+process under the `geo_*` prefix through the `geo_node_status` database probe.
+
+The `geo_node_status` probe queries the `geo_node_statuses` table directly from PostgreSQL and emits
+gauges for all numeric replication and verification metrics. Each metric is labeled with:
+
+- `name`: Name of the Geo site.
+- `url`: Name of the Geo site. Identical to `name` and provided for backwards compatibility.
+
+In multi-node Linux package installations where multiple nodes run `gitlab-exporter`, each exporter
+reads the same database rows and produces series with distinct `instance` labels. Because all exporters
+query the same data, aggregating across exporter instances scoped to your scrape job (for example,
+`max by (name) (geo_project_repositories_failed{job="gitlab_exporter_database"})`, where `gitlab_exporter_database`
+is the example scrape job name from the [external Prometheus configuration](_index.md#using-an-external-prometheus-server))
+yields an accurate result and avoids merging series with Sidekiq exporter metrics.
+
+Because secondary sites replicate the `geo_node_statuses` table from the primary site, exporters on
+secondary sites also emit metrics for all sites from a copy that reflects replication lag.
+To ensure the most up-to-date values, scrape the exporter on the primary site.
+
+The emitted metrics correspond to the `geo_*` gauges listed in the [Sidekiq metrics](#sidekiq-metrics) table,
+such as:
+
+- `geo_db_replication_lag_seconds`: Database replication lag in seconds.
+- `geo_last_event_id` and `geo_cursor_last_event_id`: Event log cursor positions.
+- `geo_last_event_timestamp` and `geo_cursor_last_event_timestamp`: Event timestamps.
+- `geo_last_successful_status_check_timestamp`: Timestamp of the latest successful status check.
+- Replication and verification gauges for all Geo replicables. For example,
+  `geo_project_repositories_synced`, `geo_project_repositories_failed`,
+  `geo_project_repositories_checksummed`, and `geo_project_repositories_verified`.
+
+#### Enable the probe
+
+The `geo_node_status` probe is disabled by default to avoid duplicate metric series with the Sidekiq exporter.
+
+To enable the probe:
+
+### Linux package (Omnibus)
+
+1. Edit `/etc/gitlab/gitlab.rb`:
+
+   ```ruby
+   gitlab_exporter['probe_geo'] = true
+   ```
+
+1. Save the file and reconfigure GitLab:
+
+   ```shell
+   sudo gitlab-ctl reconfigure
+   ```
+
+### Helm chart (Kubernetes)
+
+1. Export the Helm values:
+
+   ```shell
+   helm get values gitlab > gitlab_values.yaml
+   ```
+
+1. Edit `gitlab_values.yaml`:
+
+   ```yaml
+   gitlab:
+     gitlab-exporter:
+       probeGeo: true
+   ```
+
+1. Save the file and apply the new values:
+
+   ```shell
+   helm upgrade -f gitlab_values.yaml gitlab gitlab/gitlab
+   ```
+
 ## Metrics controlled by a feature flag
 
 The following metrics can be controlled by feature flags:
@@ -409,6 +496,15 @@ Sidekiq jobs may also gather metrics, and these metrics can be accessed if the
 Sidekiq exporter is enabled: for example, using the `monitoring.sidekiq_exporter`
 configuration option in `gitlab.yml`. These metrics are served from the
 `/metrics` path on the configured port.
+
+> [!note]
+> The `geo_*` metrics in this table are exported by `Geo::MetricsUpdateWorker`
+> on the Sidekiq exporter's `/metrics` endpoint. In multi-node environments with
+> multiple Sidekiq processes, metrics can experience
+> [time series fragmentation across hosts](https://gitlab.com/gitlab-org/gitlab/-/work_items/590761).
+> To collect continuous, single-source Geo metrics without host fragmentation,
+> scrape the `geo_*` metrics from
+> [GitLab exporter](#database-derived-geo-metrics-from-gitlab-exporter).
 
 | Metric                                                   | Type      | Since | Labels                                                                                    | Description |
 |:---------------------------------------------------------|:----------|:------|:------------------------------------------------------------------------------------------|:------------|

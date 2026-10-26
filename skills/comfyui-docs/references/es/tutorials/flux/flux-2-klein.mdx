@@ -1,0 +1,238 @@
+---
+title: "Guía de ComfyUI FLUX.2 Klein 4B"
+description: "Introducción rápida a FLUX.2 [klein] 4B y cómo ejecutar flujos de trabajo de texto a imagen y edición de imágenes en ComfyUI."
+translationSourceHash: c108dbe5
+translationFrom: tutorials/flux/flux-2-klein.mdx
+translationBlockHashes:
+  "_intro": 980a68e5
+  "About FLUX.2 [klein]": 556eac08
+  "FLUX.2 Klein 4B Workflows": 8095f2bc
+  "FLUX.2 Klein 9B Workflows": 99d18075
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y9foxm9OYEU?si=FeueXTTBoIkydjk7" title="Reproductor de video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Acerca de FLUX.2 [klein]
+
+FLUX.2 [Klein] es el modelo más rápido de la familia FLUX: unifica texto a imagen y edición de imágenes en una sola arquitectura compacta. Está diseñado para flujos de trabajo interactivos, vistas previas inmediatas y aplicaciones donde la latencia es crítica, con variantes destiladas que ofrecen una inferencia de extremo a extremo en torno a un segundo y mantienen una gran calidad en la edición con una o varias referencias.
+
+**Aspectos destacados del modelo:**
+- Dos tipos de 4B: Base (sin destilar) para máxima flexibilidad y ajuste fino; Distilled (4 pasos) para despliegues que priorizan la velocidad
+- Rendimiento: destilado ~1.2s (5090) · 8.4GB VRAM; base ~17s (5090) · 9.2GB VRAM
+- Soporte de edición: transformaciones de estilo, ediciones semánticas, reemplazo y eliminación de objetos, composición con varias referencias, ediciones iterativas
+
+## Flujos de trabajo de FLUX.2 Klein 4B
+
+### FLUX.2 [Klein] 4B: Texto a imagen {#image_flux2_klein_text_to_image}
+
+[Vista previa del flujo de trabajo de texto a imagen de FLUX.2 Klein 4B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo de texto a imagen para FLUX.2 Klein 4B.
+  
+
+**Salida de ejemplo**
+
+![Ejemplo de texto a imagen de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_text_to_image.png)
+
+### FLUX.2 [Klein] 4B: Edición de imagen {#image_flux2_klein_image_edit_4b_base}
+
+[Vista previa del flujo de trabajo de edición de imagen base de FLUX.2 Klein 4B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo de edición de imagen con el modelo base 4B.
+  
+
+**Materiales de entrada**
+
+Sube estos archivos a los nodos `LoadImage` correspondientes:
+
+  
+    Nodo `LoadImage` 76 · `robed_women.png`
+  
+  
+    Nodo `LoadImage` 81 · `pink_tone_chair.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [robed_women.png]
+  [pink_tone_chair.png]
+</div>
+
+**Salida de ejemplo**
+
+![Ejemplo de edición de imagen base de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
+
+### FLUX.2 [Klein] 4B destilado: Edición de imagen {#image_flux2_klein_image_edit_4b_distilled}
+
+[Vista previa del flujo de trabajo de edición de imagen destilado de FLUX.2 Klein 4B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo rápido de edición de imagen 4B destilado.
+  
+
+**Materiales de entrada**
+
+Sube estos archivos a los nodos `LoadImage` correspondientes:
+
+  
+    Nodo `LoadImage` 76 · `handbag_white.png`
+  
+  
+    Nodo `LoadImage` 81 · `comfy_logo_blue.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [handbag_white.png]
+  [comfy_logo_blue.png]
+</div>
+
+**Salida de ejemplo**
+
+![Ejemplo de edición de imagen destilado de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
+
+## Descargas de modelos de FLUX.2 Klein 4B
+
+    Codificador de texto para modelos 4B.
+  
+
+    Modelo de difusión (4B base).
+  
+
+    Modelo de difusión (4B destilado).
+  
+
+    VAE para modelos 4B.
+  
+
+**Ubicación de almacenamiento de los modelos 4B**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_4b.safetensors
+│   ├── 📂 diffusion_models/
+│   │      ├── flux-2-klein-base-4b-fp8.safetensors
+│   │      └── flux-2-klein-4b-fp8.safetensors
+│   └── 📂 vae/
+│          └── flux2-vae.safetensors
+```
+
+## Flujos de trabajo de FLUX.2 Klein 9B
+
+### FLUX.2 [Klein] 9B: Texto a imagen {#image_flux2_text_to_image_9b}
+
+[Vista previa del flujo de trabajo texto a imagen de FLUX.2 Klein 9B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo texto a imagen de FLUX.2 Klein 9B.
+  
+
+**Salida de ejemplo**
+
+![Ejemplo de texto a imagen de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image_9b.png)
+
+### FLUX.2 [Klein] 9B: Edición de imagen {#image_flux2_klein_image_edit_9b_base}
+
+[Vista previa del flujo de trabajo base de edición de imagen de FLUX.2 Klein 9B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo de edición de imagen con el modelo base 9B.
+  
+
+**Materiales de entrada**
+
+Sube estos archivos a los nodos `LoadImage` correspondientes:
+
+  
+    Nodo `LoadImage` 76 · `car_interior_white.jpeg`
+  
+  
+    Nodo `LoadImage` 81 · `comfy_logo_blue.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [car_interior_white.jpeg]
+  [comfy_logo_blue.png]
+</div>
+
+**Salida de ejemplo**
+
+![Ejemplo base de edición de imagen de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
+
+### FLUX.2 [Klein] 9B destilado: Edición de imagen {#image_flux2_klein_image_edit_9b_distilled}
+
+[Vista previa del flujo de trabajo destilado de edición de imagen de FLUX.2 Klein 9B]
+
+  
+    Ejecuta este flujo de trabajo en Comfy Cloud
+  
+  
+    Descarga el flujo de trabajo rápido destilado de edición de imagen 9B.
+  
+
+**Materiales de entrada**
+
+Sube estos archivos a los nodos `LoadImage` correspondientes:
+
+  
+    Nodo `LoadImage` 76 · `bold_outfit_woman.jpeg`
+  
+  
+    Nodo `LoadImage` 121 · `handbag_white.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [bold_outfit_woman.jpeg]
+  [handbag_white.png]
+</div>
+
+**Salida de ejemplo**
+
+![Ejemplo destilado de edición de imagen de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
+
+## Descargas de modelos de FLUX.2 Klein 9B
+
+Para los modelos de difusión, visita el repositorio de BFL, acepta el acuerdo y luego descarga los modelos.
+
+    Modelo de difusión (9B base).
+  
+
+    Modelo de difusión (9B destilado).
+  
+
+    Codificador de texto para modelos 9B.
+  
+
+    VAE para modelos 9B.
+  
+
+**Ubicación de almacenamiento de los modelos 9B**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │      ├── flux-2-klein-9b-fp8.safetensors
+│   │      └── flux-2-klein-base-9b-fp8.safetensors
+│   ├── 📂 text_encoders/
+│   │      └── qwen_3_8b_fp8mixed.safetensors
+│   └── 📂 vae/
+│          └── flux2-vae.safetensors
+```

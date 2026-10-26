@@ -1,0 +1,149 @@
+---
+title: "Kandinsky 5.0 en ComfyUI: texto a video e imagen a video"
+description: "Usa Kandinsky 5.0 Video Lite en ComfyUI: texto a video de hasta 10 segundos e imagen a video de 5 segundos, con variantes SFT de 2B, no-CFG y destilada."
+translationSourceHash: 0766e01c
+translationFrom: tutorials/video/kandinsky/kandinsky-5.mdx
+translationBlockHashes:
+  "_intro": cd71d0f9
+  "Overview": dead89b1
+  "Model variants": 3bdbc0cb
+  "Resources": fa8f3352
+---
+
+[Kandinsky 5.0](https://huggingface.co/kandinskylab/Kandinsky-5.0-I2V-Lite-5s) es una familia de modelos de difusión para la generación de video e imágenes desarrollada por [Kandinsky Lab](https://huggingface.co/kandinskylab). Kandinsky 5.0 T2V Lite es un modelo ligero de 2B parámetros que se ubica entre los mejores modelos de generación de video de código abierto, capaz de generar videos de hasta 10 segundos de duración.
+
+## Descripción general
+
+Kandinsky 5.0 usa un pipeline de difusión latent con Flow Matching e incluye:
+
+- **Diffusion Transformer (DiT):** Arquitectura generativa principal con atención cruzada a los embeddings de texto
+- **Qwen2.5-VL y CLIP:** Proporciona embeddings de texto de alta calidad
+- **HunyuanVideo 3D VAE:** Codifica y decodifica el video en un espacio latent
+
+La familia de modelos incluye varias variantes optimizadas para diferentes casos de uso:
+- **Modelo SFT:** Máxima calidad de generación
+- **CFG-distilled:** Inferencia 2× más rápida
+- **Diffusion-distilled:** 6× más rápida con una pérdida mínima de calidad (16 pasos)
+- **Modelo preentrenado:** Diseñado para fine-tuning
+
+Todos los modelos están disponibles en versiones de generación de video de 5 y 10 segundos.
+
+## Variantes del modelo
+
+| Modelo | Duración del video | NFE | Latencia (H100) |
+|-------|---------------|-----|----------------|
+| Kandinsky 5.0 T2V Lite SFT | 5s / 10s | 100 | 139s / 224s |
+| Kandinsky 5.0 T2V Lite no-CFG | 5s / 10s | 50 | 77s / 124s |
+| Kandinsky 5.0 T2V Lite distill | 5s / 10s | 16 | 35s / 61s |
+| Kandinsky 5.0 I2V Lite | 5s | 100 | 673s |
+
+## Flujo de trabajo de texto a video
+
+### Kandinsky 5.0 Video Lite Text to Video {#video_kandinsky5_t2v}
+
+Un modelo ligero de 2B que genera videos a partir de prompts en inglés y ruso con alta calidad visual.
+
+[Vista previa del flujo de trabajo Kandinsky 5.0 Video Lite de texto a video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Kandinsky 5.0 Video Lite Text to Video&quot; en la Biblioteca de plantillas
+  
+
+### 2. Descargar los modelos manualmente
+
+**Codificadores de texto**
+
+  
+    Codificador de texto Qwen2.5-VL 7B (FP8). Colócalo en <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    Codificador de texto CLIP-L. Colócalo en <code>ComfyUI/models/text_encoders/</code>
+  
+
+**Modelo de difusión**
+
+  Modelo de difusión Kandinsky 5.0 T2V Lite SFT (5 s). Colócalo en <code>ComfyUI/models/diffusion_models/</code>
+
+**VAE**
+
+  VAE 3D de HunyuanVideo. Colócalo en <code>ComfyUI/models/vae/</code>
+
+```
+ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      ├── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   │      └── clip_l.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── kandinsky5lite_t2v_sft_5s.safetensors
+│   └── 📂 vae/
+│          └── hunyuan_video_vae_bf16.safetensors
+```
+
+## Flujo de trabajo de imagen a video
+
+### Kandinsky 5.0 Video Lite Image to Video {#video_kandinsky5_i2v}
+
+Un modelo ligero de 2B que genera videos a partir de prompts en inglés y ruso con alta calidad visual.
+
+[Vista previa del flujo de trabajo Kandinsky 5.0 Video Lite de imagen a video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Kandinsky 5.0 Video Lite Image to Video&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  
+    Nodo `LoadImage` 11 · `crystal_flower.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [crystal_flower.png]
+</div>
+
+### 2. Descargar los modelos manualmente
+
+**Codificadores de texto**
+
+  
+    Codificador de texto Qwen2.5-VL 7B (FP8). Colócalo en <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    Codificador de texto CLIP-L. Colócalo en <code>ComfyUI/models/text_encoders/</code>
+  
+
+**Modelo de difusión**
+
+  Modelo de difusión Kandinsky 5.0 I2V Lite (5 s). Colócalo en <code>ComfyUI/models/diffusion_models/</code>
+
+**VAE**
+
+  VAE 3D de HunyuanVideo. Colócalo en <code>ComfyUI/models/vae/</code>
+
+```
+ComfyUI/
+├── 📂 models/
+│   ├── 📂 text_encoders/
+│   │      ├── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   │      └── clip_l.safetensors
+│   ├── 📂 diffusion_models/
+│   │      └── kandinsky5lite_i2v_5s.safetensors
+│   └── 📂 vae/
+│          └── hunyuan_video_vae_bf16.safetensors
+```
+
+## Recursos
+
+- [Colección de modelos de Hugging Face](https://huggingface.co/collections/kandinskylab/kandinsky-50-video-lite)
+- [Repositorio de GitHub](https://github.com/ai-forever/Kandinsky-5)
+- [Integración con ComfyUI](https://github.com/ai-forever/Kandinsky-5/blob/main/comfyui/README.md)
+- [Página del proyecto](https://kandinskylab.github.io/kandinsky-5/)

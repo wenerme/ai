@@ -1,0 +1,127 @@
+---
+title: "Ejemplo de flujo de trabajo de Boogu-Image-0.1 en ComfyUI"
+description: "Boogu-Image-0.1 es una familia de modelos de generación y edición de imágenes de 10B parámetros con licencia Apache-2.0, con variantes de texto a imagen y edición guiada por instrucciones."
+translationSourceHash: bcd008d7
+translationFrom: tutorials/image/boogu/boogu-image-0.1.mdx
+translationBlockHashes:
+  "_intro": d66f5216
+---
+
+**Boogu-Image-0.1** es una familia de modelos unificados de código abierto con licencia Apache-2.0 para la generación y edición de imágenes. Utiliza un sistema que integra comprensión y generación para ofrecer un rendimiento competitivo en fotografía, renderizado de texto, estilización y tareas de edición de imágenes.
+
+**Variantes del modelo**:
+- **Boogu-Image-0.1-Turbo**: una variante destilada de texto a imagen de cuatro pasos, enfocada en la generación de alta calidad y el fotorrealismo, equipada con un módulo LoRA de rango 128. Solo requiere 3-4 pasos de muestreo. Se recomienda como opción predeterminada para la mayoría de los casos de uso de texto a imagen.
+- **Boogu-Image-0.1-Base**: el modelo base, con gran diversidad y controlabilidad, ideal para el ajuste fino y el renderizado de texto ultradenso en resolución 2K.
+- **Boogu-Image-0.1-Edit**: una variante ajustada para tareas de edición y transformación de imágenes con control guiado por instrucciones.
+
+**Aspectos destacados del modelo**:
+- **10B de parámetros** con una inferencia eficiente en GPUs de consumo
+- **Licencia Apache-2.0** para uso libre y desarrollo derivado
+- **Renderizado de texto bilingüe** (chino e inglés) con tipografía confiable
+- **Capacidades versátiles**: fotografía realista, estilización, diseño de pósteres y renderizado de texto preciso
+
+**Enlaces relacionados**:
+- [Página del proyecto](https://boogu.org/)
+- [GitHub](https://github.com/boogu-project/Boogu-Image)
+- [Hugging Face (ComfyUI)](https://huggingface.co/Comfy-Org/Boogu-Image)
+- [Hugging Face (Turbo)](https://huggingface.co/Boogu/Boogu-Image-0.1-Turbo-fp8)
+- [Hugging Face (Edit)](https://huggingface.co/Boogu/Boogu-Image-0.1-Edit-fp8)
+
+## Flujo de trabajo de texto a imagen de Boogu-Image-0.1-Turbo
+
+### Boogu Turbo: Text to Image {#image_boogu_image_0_1_turbo_t2i}
+
+Genera imágenes de alta calidad a partir de prompts de texto con el modelo Boogu Turbo, un pipeline de texto a imagen destilado de 10B de parámetros que produce resultados fotorrealistas en solo 4 pasos.
+
+[Vista previa del flujo de trabajo de texto a imagen de Boogu Turbo]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Boogu Turbo&quot; en la Biblioteca de plantillas
+  
+
+El flujo de trabajo de Boogu-Image-0.1-Turbo usa un subgrafo que encapsula el pipeline de difusión, de codificación de texto y de decodificación del VAE. Tú proporcionas un prompt de texto y los ajustes de resolución, y el subgrafo se encarga del resto.
+
+### Descargas de modelos de Boogu-Image-0.1-Turbo
+
+  
+    Modelo de difusión para Boogu-Image-0.1-Turbo.
+  
+  
+    Codificador de texto para Boogu-Image-0.1-Turbo.
+  
+  
+    VAE para Boogu-Image-0.1-Turbo.
+  
+  
+    Módulo LoRA (rank-128) para Boogu-Image-0.1-Turbo.
+  
+
+**Ubicación de almacenamiento de los modelos**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── boogu_image_turbo_fp8_scaled.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen3vl_8b_fp8_scaled.safetensors
+│   ├── 📂 vae/
+│   │   └── ae.safetensors
+│   └── 📂 loras/
+│       └── boogu_image_turbo_lora_rank_128_bf16.safetensors
+```
+
+## Flujo de trabajo de edición de imágenes de Boogu-Image-0.1-Edit
+
+### Boogu image 0.1 Edit {#image_boogu_image_0_1_edit}
+
+Edita imágenes con el modelo guiado por instrucciones de Boogu: toma una imagen de entrada y genera una salida editada junto con una vista de comparación lado a lado.
+
+[Vista previa del flujo de trabajo de Boogu image 0.1 Edit]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;Boogu image 0.1 Edit&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  
+    Nodo `LoadImage` 32 · `tech_cowboy.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [tech_cowboy.png]
+</div>
+
+### Descargas de modelos de Boogu-Image-0.1-Edit
+
+  
+    Modelo de difusión para Boogu-Image-0.1-Edit.
+  
+  
+    Codificador de texto para Boogu-Image-0.1-Edit.
+  
+  
+    VAE para Boogu-Image-0.1-Edit.
+  
+
+**Ubicación de almacenamiento de los modelos**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── boogu_image_edit_fp8_scaled.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen3vl_8b_fp8_scaled.safetensors
+│   └── 📂 vae/
+│       └── ae.safetensors
+```

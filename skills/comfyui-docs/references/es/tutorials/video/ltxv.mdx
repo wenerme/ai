@@ -1,0 +1,82 @@
+---
+title: "LTX-Video 0.9.5 en ComfyUI: T2V, I2V, control de múltiples fotogramas"
+description: "Ejecuta LTX-Video 0.9.5 en ComfyUI para texto a video, imagen a video y control multifotograma desde imágenes inicial y final, con descarga y configuración."
+translationSourceHash: b2aad3a7
+translationFrom: tutorials/video/ltxv.mdx
+translationBlockHashes:
+  "_intro": 354083fd
+  "Multi Frame Control": 0fe2f937
+  "Image to Video": 1072ef32
+  "Text to Video": 664fc166
+---
+
+[LTX-Video](https://huggingface.co/Lightricks/LTX-Video) es un modelo de video muy eficiente de Lightricks. Lo importante con este modelo es darle prompts largos y descriptivos.
+
+## Control de múltiples fotogramas
+
+Te permite controlar el video con una serie de imágenes. Puedes descargar las imágenes de entrada: [fotograma inicial](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/ltxv/multi-frame/house1.png) y [fotograma final](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/ltxv/multi-frame/house2.png).
+
+[Control de múltiples fotogramas de LTX-Video]
+
+Arrastra el video directamente a ComfyUI para ejecutar el flujo de trabajo.
+
+## Imagen a video
+
+### LTXV Image to Video {#ltxv_image_to_video}
+
+Genera videos a partir de imágenes fijas.
+
+[Vista previa del flujo de trabajo LTXV Image to Video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca &quot;LTXV Image to Video&quot; en la Biblioteca de plantillas
+  
+
+**Materiales de entrada**
+
+Sube este archivo al nodo `LoadImage` correspondiente:
+
+  
+    Nodo `LoadImage` 78 · `ltxv_image_to_video_input_image.jpg`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [ltxv_image_to_video_input_image.jpg]
+</div>
+
+Arrastra el video directamente a ComfyUI para ejecutar el flujo de trabajo.
+
+## Texto a video
+
+### LTXV Text to Video {#ltxv_text_to_video}
+
+Genera videos a partir de prompts de texto.
+
+[Vista previa del flujo de trabajo LTXV Text to Video]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descargar JSON o buscar &quot;LTXV Text to Video&quot; en la Biblioteca de plantillas
+  
+
+Arrastra el video directamente a ComfyUI para ejecutar el flujo de trabajo.
+
+## Requisitos
+
+Descarga los siguientes modelos y colócalos en las ubicaciones que se indican a continuación:
+
+  Descarga y guárdalo en ComfyUI/models/checkpoints/
+
+  Descarga y guárdalo en ComfyUI/models/text_encoders/
+
+```
+├── checkpoints/
+│   └── ltx-video-2b-v0.9.5.safetensors
+└── text_encoders/
+    └── t5xxl_fp16.safetensors
+```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whi
 
 # Add the Whiteboard plugin
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Whiteboard plugin is a collaborative whiteboard that Cloudflare hosts and operates. Participants draw, write, and diagram together on a shared board inside the meeting, and see each other's cursors and names as they work.
 
@@ -124,7 +124,7 @@ val authToken = "<auth_token>"
 
 val meetingInfo = RtkMeetingInfo(
 	authToken = authToken,
-	pluginConfigs = listOf(
+	plugins = listOf(
 		RtkClientPluginConfig(
 			id = "whiteboard",
 			name = "Whiteboard",
@@ -144,7 +144,7 @@ let authToken = "<auth_token>"
 
 let meetingInfo = RtkMeetingInfo(
 	authToken: authToken,
-	pluginConfigs: [
+	plugins: [
 		RtkClientPluginConfig(
 			id: "whiteboard",
 			name: "Whiteboard",
@@ -253,5 +253,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/#page","headline":"Add the Whiteboard plugin","description":"Add the Cloudflare-hosted Whiteboard plugin to RealtimeKit meetings so participants can draw together in real time.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/og.png?v=e39f58941c97ac7f","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/#page","headline":"Add the Whiteboard plugin","description":"Add the Cloudflare-hosted Whiteboard plugin to RealtimeKit meetings so participants can draw together in real time.","url":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/whiteboard/og.png?v=e39f58941c97ac7f","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

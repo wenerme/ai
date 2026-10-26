@@ -665,8 +665,7 @@ Single panel within a custom dashboard.
 | `queryOverrides` | [`CustomDashboardQueryOverridesInput`](#customdashboardqueryoverridesinput) | Query overrides applied to the visualization. |
 | `title` | [`String!`](scalars.md#string) | Display title of the panel. |
 | `tooltip` | [`CustomDashboardTooltipInput`](#customdashboardtooltipinput) | Tooltip for the panel. |
-| `visualization` | [`String`](scalars.md#string) | ID of an existing visualization to render. |
-| `visualizationConfig` | [`JSON`](scalars.md#json) | Inline visualization config object to render. |
+| `visualizationConfig` | [`JSON!`](scalars.md#json) | Inline visualization config object to render. |
 
 ## `CustomDashboardPanelOptionsInput`
 

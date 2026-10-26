@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/agents/get-started
 
 # Build an agent
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An agent is a meeting participant that your backend controls over a WebSocket. To add one, configure a preset, add the agent as a participant, and connect to the Websocket endpoint with the agent's participant token.
 
@@ -219,7 +219,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$AP
 	}'
 ```
 
-The response `data.token` is the agent's participant token. Reuse the same participant for every session of the meeting. A [participant token](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens) is valid for 100 days.
+The response `data.token` is the agent's participant token. Reuse the same participant for every session of the meeting. A [participant token](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens) is valid for 100 days by default.
 
 ## 3. Connect to the Agent's WebSocket URL
 
@@ -267,7 +267,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    	"name": "meeting-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-19",
+   	"compatibility_date": "2026-10-26",
    	"vars": {
    		"ACCOUNT_ID": "<ACCOUNT_ID>",
    		"APP_ID": "<APP_ID>",
@@ -289,7 +289,7 @@ A Durable Object fits the agent: one instance per meeting, a long-lived outbound
    name = "meeting-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-10-19"
+   compatibility_date = "2026-10-26"
 
    [vars]
    ACCOUNT_ID = "<ACCOUNT_ID>"
@@ -828,5 +828,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/#page","headline":"Build an agent","description":"Configure an agent preset, add the agent to a RealtimeKit meeting, connect to the Agent's WebSocket URL, and run the agent in a Durable Object.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/og.png?v=c4851f25d2c6bd78","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/#page","headline":"Build an agent","description":"Configure an agent preset, add the agent to a RealtimeKit meeting, connect to the Agent's WebSocket URL, and run the agent in a Durable Object.","url":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/agents/get-started/og.png?v=c4851f25d2c6bd78","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

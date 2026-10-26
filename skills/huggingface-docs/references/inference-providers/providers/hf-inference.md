@@ -50,7 +50,7 @@ Find out more about Fill Mask [here](../tasks/fill-mask).
 
 <InferenceSnippet
     pipeline=fill-mask
-    providersMapping={ {"hf-inference":{"modelId":"google-bert/bert-base-uncased","providerModelId":"google-bert/bert-base-uncased"} } }
+    providersMapping={ {"hf-inference":{"modelId":"jhu-clsp/mmBERT-small","providerModelId":"jhu-clsp/mmBERT-small"} } }
 />
 
 ### Image Classification
@@ -68,7 +68,7 @@ Find out more about Image Segmentation [here](../tasks/image-segmentation).
 
 <InferenceSnippet
     pipeline=image-segmentation
-    providersMapping={ {"hf-inference":{"modelId":"nvidia/segformer-b2-finetuned-ade-512-512","providerModelId":"nvidia/segformer-b2-finetuned-ade-512-512"} } }
+    providersMapping={ {"hf-inference":{"modelId":"nvidia/segformer-b4-finetuned-ade-512-512","providerModelId":"nvidia/segformer-b4-finetuned-ade-512-512"} } }
 />
 
 ### Object Detection
@@ -77,7 +77,7 @@ Find out more about Object Detection [here](../tasks/object-detection).
 
 <InferenceSnippet
     pipeline=object-detection
-    providersMapping={ {"hf-inference":{"modelId":"facebook/detr-resnet-101","providerModelId":"facebook/detr-resnet-101"} } }
+    providersMapping={ {"hf-inference":{"modelId":"facebook/detr-resnet-50","providerModelId":"facebook/detr-resnet-50"} } }
 />
 
 ### Question Answering
@@ -104,7 +104,7 @@ Find out more about Table Question Answering [here](../tasks/table-question-answ
 
 <InferenceSnippet
     pipeline=table-question-answering
-    providersMapping={ {"hf-inference":{"modelId":"google/tapas-large-finetuned-wtq","providerModelId":"google/tapas-large-finetuned-wtq"} } }
+    providersMapping={ {"hf-inference":{"modelId":"google/tapas-base-finetuned-wtq","providerModelId":"google/tapas-base-finetuned-wtq"} } }
 />
 
 ### Text Classification
