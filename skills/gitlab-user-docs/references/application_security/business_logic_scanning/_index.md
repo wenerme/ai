@@ -55,6 +55,8 @@ Prerequisites:
 - A GitLab Ultimate subscription.
 - [GitLab Duo Agent Platform turned on](../../duo_agent_platform/turn_on_off.md) for the
   top-level group.
+- [Experiment and beta features turned on](../../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
+  in the GitLab Duo settings of the top-level group.
 - The `bl_security_analyzer` and `agentic_analyzer_security_ingestion` feature flags enabled for
   the top-level group. Without `agentic_analyzer_security_ingestion`, scan results do not appear
   in the vulnerability report.

@@ -17,7 +17,7 @@ Use this API to run queries, retrieve schemas, and check cluster health for
 
 ## Search for graph entities
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256404) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256404) as an [experiment](../policy/development_stages_support.md) in GitLab 19.4.
 
 Searches for readable entities in a project or group and returns Orbit entity tokens.
 Results use GitLab search, and might be available before the graph indexes the entities.
@@ -146,7 +146,7 @@ orbit_grep version=1.0.0 target=Project[1] search="search term" scopes="merge_re
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262223) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262223) as an [experiment](../policy/development_stages_support.md) in GitLab 19.4.
 
 > [!warning]
 > This endpoint is an experiment. The request and response shape can change without notice.

@@ -104,6 +104,40 @@ Upload these files to the matching `LoadImage` nodes:
   [man_in_daydream.png]
 </div>
 
+## Kling 3.0: Motion Control {#api_kling_motion_control3}
+
+Apply the motion of a reference video to a character image. Upload a character image plus a motion reference video and the model drives your character through the action in the clip while keeping their identity. This workflow runs the Kling 3.0 model, which improves facial consistency over previous versions.
+
+[Kling 3.0: Motion Control workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: Motion Control&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` and `LoadVideo` nodes:
+
+  
+    `LoadImage` node 2 · `future_robot.png`
+  
+  
+    `LoadVideo` node 3 · `boxing_man.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [future_robot.png]
+</div>
+
+**Motion control settings**
+
+Set `character_orientation` to `video` when the camera and framing should follow the motion clip, which allows reference clips up to 30 seconds, or to `image` when the character keeps the framing of the still image, which limits the clip to 10 seconds. Keep `mode` on `pro` for final output and switch to `std` for cheaper tests. `keep_original_sound` carries the clip's audio into the result, and `model` switches back to `kling-v2-6` for the previous generation.
+
+This workflow uses the same `Kling Motion Control` node as the [Kling 2.6 Motion Control](/tutorials/partner-nodes/kling/kling-motion-control) example, so the input tips on that page apply here too.
+
 ## Legacy Kling models (EOL)
 
   **End of life (EOL)**: The following legacy Kling models and workflow templates are scheduled for retirement on **September 15, 2026**: Kling V1.5, V1.6, V2.1, V2.1 Master, and the Kolors Virtual Try-On API. Related Partner Nodes remain in ComfyUI but these model options will stop working after the retirement date.

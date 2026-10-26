@@ -1749,7 +1749,7 @@ Check if OpenBao instance is healthy and reachable.
 
 - Status: Experiment
 
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
 Orbit data of the instance and of the groups of the current user. Returns null when the user is not signed in.
 

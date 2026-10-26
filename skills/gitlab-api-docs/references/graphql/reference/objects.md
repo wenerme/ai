@@ -10914,7 +10914,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 | `readCycleAnalytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_cycle_analytics` on this resource. |
 | `readDora4Analytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_dora4_analytics` on this resource. |
 | `readGroup` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `read_group` on this resource. |
-| `readOrbitSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.If `true`, the user can perform `read_orbit_setting` on this resource. |
+| `readOrbitSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `read_orbit_setting` on this resource. |
 | `readOrbitTrial` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_orbit_trial` on this resource. |
 | `readProAiAnalytics` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `read_pro_ai_analytics` on this resource. |
 | `readRunnerCloudProvisioningInfo` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.8.If `true`, the user can perform `read_runner_cloud_provisioning_info` on this resource. |
@@ -10922,7 +10922,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 | `readSecurityScanProfiles` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `read_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | `removeGroup` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `remove_group` on this resource. |
 | `startOrbitTrial` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.If `true`, the user can perform `start_orbit_trial` on this resource. |
-| `updateKnowledgeGraphSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.If `true`, the user can perform `update_knowledge_graph_setting` on this resource. |
+| `updateKnowledgeGraphSetting` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `update_knowledge_graph_setting` on this resource. |
 | `updateSecurityScanProfiles` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.If `true`, the user can perform `update_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | `viewEditPage` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `view_edit_page` on this resource. |
 
@@ -14151,11 +14151,13 @@ Orbit data of the instance and of the groups of the current user.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit access state of the instance on GitLab Self-Managed and GitLab Dedicated. Null on GitLab.com, where access is per top-level group, and for users who are not administrators. |
+| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Orbit access state of the instance on GitLab Self-Managed and GitLab Dedicated. Null on GitLab.com, where access is per top-level group, and for users who are not administrators. |
 | `excludedGroups` | [`GroupConnection`](#groupconnection) | Top-level groups excluded from automatic Orbit indexing. Administrators only. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `groups` | [`GroupConnection`](#groupconnection) | Groups visible to the current user. Same arguments as `Query.groups`, plus `enabled`. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `groups`:</strong> <dl><dt>`active` ([`Boolean`](scalars.md#boolean))</dt><dd>When `nil` (default value), returns all groups. When `true`, returns only groups that are not pending deletion. When `false`, only returns groups that are pending deletion.</dd><dt>`aimedForDeletion` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter groups that are marked for deletion.</dd><dt>`allAvailable` ([`Boolean`](scalars.md#boolean))</dt><dd>When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence.</dd><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Return only groups with Orbit turned on.</dd><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter groups by IDs.</dd><dt>`includeSubgroups` ([`Boolean`](scalars.md#boolean))</dt><dd>Include descendant groups of the group given in `parentPath`. Ignored unless `parentPath` is also provided.</dd><dt>`markedForDeletionOn` ([`Date`](scalars.md#date))</dt><dd>Date when the group was marked for deletion.</dd><dt>`not` ([`BaseGroupsResolverNegatedParams`](input_objects.md#basegroupsresolvernegatedparams))</dt><dd>List of negated arguments. Warning: this argument is experimental and a subject to change in future.</dd><dt>`ownedOnly` ([`Boolean`](scalars.md#boolean))</dt><dd>Only include groups where the current user has an owner role.</dd><dt>`parentPath` ([`ID`](scalars.md#id))</dt><dd>Full path of the parent group.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query for group name or group full path.</dd><dt>`sort` ([`String`](scalars.md#string))</dt><dd>Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply.</dd><dt>`topLevelOnly` ([`Boolean`](scalars.md#boolean))</dt><dd>Only include top-level groups.</dd><dt>`visibilityLevel` ([`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum))</dt><dd>Filter groups by visibility level.</dd></dl> |
 | `memberGroups` | [`GroupConnection`](#groupconnection) | The highest group of each group tree where the current user has at least the Reporter role. With `enabled: true`, only the groups that Orbit answers for. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `memberGroups`:</strong> <dl><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Return only groups with Orbit turned on.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query for the group name or full path.</dd></dl> |
-| `schema` | [`OrbitSchema`](#orbitschema) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Node kinds and edge kinds that the current user can query in Orbit. Returns null when the user cannot use Orbit or Orbit returns no schema. |
+| `queryTemplates` | [`[OrbitQueryTemplate!]`](#orbitquerytemplate) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Named queries that Orbit defines, rendered for the current user. Returns null when the user cannot use Orbit. |
+| `schema` | [`OrbitSchema`](#orbitschema) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Node kinds and edge kinds that the current user can query in Orbit. Returns null when the user cannot use Orbit or Orbit returns no schema. |
+| `serviceStatus` | [`OrbitServiceStatus`](#orbitservicestatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Health of the Orbit service. Returns null when Orbit is not available on the instance or for the user. |
 
 ## `OrbitAccess`
 
@@ -14179,7 +14181,7 @@ Indexing state of a group or project in Orbit.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `areas` | [`[OrbitIndexingArea!]`](#orbitindexingarea) | Indexing state of each area. |
-| `lastCompletedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Timestamp when Orbit last completed indexing of the group or project. Null until the first indexing run completes, and when Orbit is not available to the current user. |
+| `lastCompletedAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Timestamp when Orbit last completed indexing of the group or project. Null until the first indexing run completes, and when Orbit is not available to the current user. |
 | `projects` | [`OrbitIndexingProjects`](#orbitindexingprojects) | Indexing progress of the projects in the group or project. |
 | `state` | [`OrbitIndexingState`](enums.md#orbitindexingstate) | Indexing state of the group or project. |
 
@@ -14215,8 +14217,8 @@ Indexing progress of the projects in a group or project.
 | ---- | ---- | ----------- |
 | `gaps` | [`Int`](scalars.md#int) | Number of projects that are not indexed. |
 | `indexed` | [`Int`](scalars.md#int) | Number of indexed projects. |
-| `notIndexed` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of projects that are not indexed. |
-| `total` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of projects known to Orbit. |
+| `notIndexed` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of projects that are not indexed. |
+| `total` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of projects known to Orbit. |
 | `totalKnown` | [`Int`](scalars.md#int) | Number of projects known to Orbit. |
 
 ## `OrbitIndexingStatus`
@@ -14272,7 +14274,7 @@ Number of indexed items of a group or project in Orbit.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `areas` | [`[OrbitItemCountArea!]`](#orbititemcountarea) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of indexed items in each area. |
+| `areas` | [`[OrbitItemCountArea!]`](#orbititemcountarea) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of indexed items in each area. |
 | `domains` | [`[OrbitItemCountDomain!]`](#orbititemcountdomain) | Number of indexed items in each domain. |
 
 ## `OrbitItemTypeCount`
@@ -14294,13 +14296,25 @@ Orbit data of a group or project.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit access state of the top-level group. Null for subgroups, projects, and when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
-| `enabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether Orbit is turned on for the top-level group of the group. Null for projects. |
+| `access` | [`OrbitAccess`](#orbitaccess) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Orbit access state of the top-level group. Null for subgroups, projects, and when the user cannot read the Orbit setting of the group. This field can be resolved for at most 10 groups in any single request. |
+| `enabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Indicates whether Orbit is turned on for the top-level group of the group. Null for projects. |
 | `enabledAt` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Timestamp when Orbit was turned on for the top-level group of the group. Null for projects, when Orbit is off, and when Orbit is not available to the current user. |
-| `indexing` | [`OrbitIndexing`](#orbitindexing) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indexing state of the group or project. Null when Orbit is not available to the current user. |
+| `indexing` | [`OrbitIndexing`](#orbitindexing) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Indexing state of the group or project. Null when Orbit is not available to the current user. |
 | `indexingStatus` | [`OrbitIndexingStatus`](#orbitindexingstatus) | Indexing status of the group or project. Null when Orbit is not available to the current user. |
 | `itemCounts` | [`OrbitItemCounts`](#orbititemcounts) | Number of indexed items in the group or project. Null when Orbit is not available to the current user. This field can be resolved for at most 100 groups or projects in any single request. |
-| `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Orbit trial of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+| `trial` | [`OrbitTrial`](#orbittrial) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Orbit trial of the top-level group, or of the instance on GitLab Self-Managed and GitLab Dedicated. Null for subgroups, projects, when the user cannot read the trial, and when the CustomersDot request fails. This field can be resolved for at most 10 groups in any single request. |
+
+## `OrbitQueryTemplate`
+
+Named query that Orbit defines, rendered for the current user.
+
+### `OrbitQueryTemplate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Description of the query. |
+| `name` | [`String!`](scalars.md#string) | Name of the query. Run it with `POST /api/v4/orbit/query/:name`. |
+| `query` | [`String!`](scalars.md#string) | Query text: GQL, or indented JSON when GQL queries are off for the user. |
 
 ## `OrbitSchema`
 
@@ -14402,6 +14416,29 @@ Property of a node kind in the Orbit schema.
 
 Paginated collection of [`OrbitSchemaProperty`](#orbitschemaproperty). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
+## `OrbitServiceComponent`
+
+Health of one component of the Orbit service.
+
+### `OrbitServiceComponent` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `name` | [`String!`](scalars.md#string) | Name of the component, for example `clickhouse`. |
+| `state` | [`OrbitServiceState!`](enums.md#orbitservicestate) | Health state of the component. |
+
+## `OrbitServiceStatus`
+
+Health of the Orbit service.
+
+### `OrbitServiceStatus` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `components` | [`[OrbitServiceComponent!]!`](#orbitservicecomponent) | Health of each component of the Orbit service. |
+| `state` | [`OrbitServiceState!`](enums.md#orbitservicestate) | Overall health state of the Orbit service. |
+| `version` | [`String`](scalars.md#string) | Version of the Orbit service. |
+
 ## `OrbitTrial`
 
 Orbit trial of a top-level group or of the instance, as reported by CustomersDot.
@@ -14412,7 +14449,7 @@ Orbit trial of a top-level group or of the instance, as reported by CustomersDot
 | ---- | ---- | ----------- |
 | `credits` | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Credits of the trial. On GitLab Self-Managed and GitLab Dedicated, null unless the current user is an administrator. |
 | `expiresOn` | [`Date`](scalars.md#date) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Last day of the trial, in UTC. Null before a trial starts. |
-| `offer` | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Terms of a new trial. Null unless the current user can start the trial and CustomersDot sends valid terms. |
+| `offer` | [`OrbitTrialOffer`](#orbittrialoffer) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Terms of a new trial. Null unless the current user can start the trial and CustomersDot sends valid terms. |
 | `state` | [`OrbitTrialState!`](enums.md#orbittrialstate) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.State of the trial. |
 
 ## `OrbitTrialCredits`
@@ -14434,8 +14471,8 @@ Terms of a new Orbit trial, as offered by CustomersDot.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `durationDays` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of days a new trial lasts. |
-| `initialCredits` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of free credits a new trial starts with. |
+| `durationDays` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of days a new trial lasts. |
+| `initialCredits` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Number of free credits a new trial starts with. |
 
 ## `Organization`
 

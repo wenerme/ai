@@ -2155,6 +2155,14 @@ Date relative to today, in the instance time zone.
 | `endValue` | [`Int`](scalars.md#int) | End value of the work item. |
 | `startValue` | [`Int`](scalars.md#int) | Start value of the work item. |
 
+## `WorkItemWidgetSeverityInput`
+
+### `WorkItemWidgetSeverityInput` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `severity` | [`IssuableSeverity!`](enums.md#issuableseverity) | Severity of the work item. |
+
 ## `WorkItemWidgetStartAndDueDateUpdateInput`
 
 ### `WorkItemWidgetStartAndDueDateUpdateInput` arguments {.no_toc}

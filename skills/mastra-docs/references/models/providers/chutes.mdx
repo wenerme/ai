@@ -5,7 +5,7 @@ description: "Browse Chutes model IDs, capabilities, context windows, and pricin
 
 # [Chutes logo]Chutes
 
-Access 14 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
+Access 16 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
 
 Learn more in the [Chutes documentation](https://llm.chutes.ai).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.44,
     "outputCost": 1.32
+  },
+  {
+    "model": "chutes/deepseek-ai/DeepSeek-V4-Pro-0813",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "chutes/google/gemma-4-31B-turbo-TEE",
@@ -170,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.039,
     "outputCost": 1.25
+  },
+  {
+    "model": "chutes/Qwen/Qwen3.8-Max-0902",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "chutes/unsloth/Mistral-Nemo-Instruct-2407-TEE",

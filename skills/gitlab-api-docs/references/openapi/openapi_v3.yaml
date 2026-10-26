@@ -2316,7 +2316,7 @@ paths:
           default: raw
         in: query
       x-gitlab-tier: premium
-      x-gitlab-lifecycle: beta
+      x-gitlab-lifecycle: experiment
   "/api/v4/orbit/status":
     get:
       operationId: getApiV4OrbitStatus
@@ -2445,7 +2445,7 @@ paths:
         '400':
           description: Bad Request
       x-gitlab-tier: premium
-      x-gitlab-lifecycle: beta
+      x-gitlab-lifecycle: experiment
   "/api/v4/jobs/{id}/sbom_scans/authorize":
     post:
       operationId: postApiV4JobsIdSbomScansAuthorize
@@ -136034,6 +136034,15 @@ components:
           type: boolean
           description: Indicates whether AI audit events storage is enforced for all
             subgroups and projects
+          nullable: true
+        ai_governance_enabled:
+          type: boolean
+          description: Indicates whether AI Governance is turned on for the group
+          nullable: true
+        lock_ai_governance_enabled:
+          type: boolean
+          description: Indicates whether the AI Governance setting is enforced for
+            all subgroups and projects
           nullable: true
         web_based_commit_signing_enabled:
           type: boolean

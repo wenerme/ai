@@ -1,7 +1,7 @@
 ---
 title: "ComfyUI における Kling 3.0 の動画および画像生成"
 description: "ComfyUI で Kling 3.0 モデルを活用し、マルチショット動画生成、被写体の一貫性維持、多言語音声対応、およびネイティブなテキストレンダリングを実現する方法を学びましょう"
-translationSourceHash: d0a25a1f
+translationSourceHash: 39c8c628
 translationFrom: tutorials/partner-nodes/kling/kling-3-0.mdx
 translationBlockHashes:
   "_intro": e1cf8602
@@ -12,6 +12,7 @@ translationBlockHashes:
   "Kling 3.0: Text to Image {#api_kling_v3_t2i}": 5e7df91d
   "Kling 3.0: Video Generation {#api_kling_v3_video}": d092c139
   "Kling 3.0: First Last Frame to Video {#api_kling_v3_flf2v}": dd36484f
+  "Kling 3.0: Motion Control {#api_kling_motion_control3}": 4a2c4008
   "Legacy Kling models (EOL)": 2c1f9b2c
 ---
 
@@ -115,6 +116,40 @@ Kling 3.0 モデルを使用して、テキストプロンプトから画像を�
   [goldenfish_in_bag.png]
   [man_in_daydream.png]
 </div>
+
+## Kling 3.0: モーションコントロール {#api_kling_motion_control3}
+
+参照動画の動きをキャラクター画像に適用します。キャラクター画像とモーション参照動画をアップロードすると、モデルが動画内の動きをキャラクターに再現しつつ、キャラクターの同一性を保ちます。このワークフローでは Kling 3.0 モデルを使用しており、以前のバージョンよりも顔の一貫性が向上しています。
+
+[Kling 3.0: モーションコントロールのワークフロープレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロードするか、テンプレートライブラリで &quot;Kling 3.0: Motion Control&quot; を検索してください
+  
+
+**入力素材**
+
+これらのファイルを対応する `LoadImage` と `LoadVideo` ノードにアップロードしてください:
+
+  
+    `LoadImage` ノード 2 · `future_robot.png`
+  
+  
+    `LoadVideo` ノード 3 · `boxing_man.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [future_robot.png]
+</div>
+
+**モーションコントロールの設定**
+
+カメラと構図をモーション参照動画に合わせたいときは `character_orientation` を `video` にします（参照動画は最大30秒）。静止画の構図を保ちたいときは `image` にします（参照動画は10秒まで）。最終出力では `mode` を `pro` のままにし、コストを抑えたテストでは `std` に切り替えます。`keep_original_sound` は参照動画の音声を結果に残し、`model` は前世代の `kling-v2-6` に切り替えられます。
+
+このワークフローは [Kling 2.6 モーションコントロール](/ja/tutorials/partner-nodes/kling/kling-motion-control) の例と同じ `Kling Motion Control` ノードを使用するため、そのページの入力のヒントもここに当てはまります。
 
 ## レガシー Kling モデル（EOL）
 

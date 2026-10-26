@@ -4476,6 +4476,18 @@ Indexing state of Orbit data.
 | `READY` | Indexing is complete. |
 | `UNKNOWN` | Indexing state is unknown. |
 
+## `OrbitServiceState`
+
+Health state of the Orbit service or of one of its components.
+
+| Value | Description |
+| ----- | ----------- |
+| `DEGRADED` | Works with reduced capacity. |
+| `HEALTHY` | Works as expected. |
+| `MIGRATING` | Schema migration is in progress. |
+| `UNHEALTHY` | Does not work. |
+| `UNKNOWN` | Health is unknown, for example because Orbit is unreachable. |
+
 ## `OrbitTrialState`
 
 State of the Orbit trial for a top-level group.
@@ -4494,7 +4506,7 @@ Reason the current user cannot turn Orbit on for a group.
 | Value | Description |
 | ----- | ----------- |
 | `FORBIDDEN` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.User lacks permission to turn Orbit on for the group. |
-| `PURCHASE_REQUIRED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Group must purchase Orbit before it can be turned on, because no trial can start. |
+| `PURCHASE_REQUIRED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Group must purchase Orbit before it can be turned on, because no trial can start. |
 | `TRIAL_ENDED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Trial has ended, so Orbit can no longer be turned on. |
 | `TRIAL_REQUIRED` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Group must start a trial before Orbit can be turned on. |
 | `UNAVAILABLE` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Trial status could not be read from CustomersDot. |
