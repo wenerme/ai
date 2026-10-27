@@ -9,4 +9,4 @@ description: "Learn about new features, enhancements, fixes, and breaking change
 
 Explore the evolution of the Business Links panel through the release notes, detailing new features, enhancements, fixes, and breaking changes across all versions.
 
-All notable changes to the Business Variable panel are documented in the [changelog](/grafana/plugins/volkovlabs-links-panel/?tab=changelog) in the plugins catalog.
+All notable changes to the Business Variable panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-links-panel/?tab=changelog) in the plugins catalog.

@@ -13,9 +13,9 @@ The Azure Cosmos DB data source supports Grafana alerting. Because the plugin ru
 
 Before you create an alert rule, ensure you have:
 
-- [Configured the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
+- [Configured the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
 - A query that returns numeric data. Alert rules evaluate numeric values, so your query must return one or more numeric fields.
-- Familiarity with [Grafana alerting](/docs/grafana/latest/alerting/).
+- Familiarity with [Grafana alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## How alerting works with the data source
 
@@ -45,7 +45,7 @@ Alert queries must return numeric data. Aggregate functions such as `COUNT`, `MA
 
 Alert when the number of error events in the time range exceeds a threshold. This query returns a single numeric value, which you compare with a **Threshold** expression:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT VALUE COUNT(1)
@@ -55,7 +55,7 @@ WHERE c.level = "error" AND $__timeFilter(c.timestamp)
 
 Alert on the maximum temperature reported by a device:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT VALUE MAX(c.temperature)
@@ -65,7 +65,7 @@ WHERE c.deviceId = "device-01" AND $__timeFilter(c.timestamp)
 
 Return a numeric time series and let a **Reduce** expression collapse it to a single value before the threshold check:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.timestamp, c.temperature
@@ -78,12 +78,12 @@ WHERE c.deviceId = "device-01" AND $__timeFilter(c.timestamp)
 Keep the following considerations in mind when you write alerting queries:
 
 - **Return numeric data.** The query must return at least one numeric field for the alert condition to evaluate.
-- **Scope the time range with macros.** Use `$__timeFilter(column)`, `$__timeFrom(column)`, or `$__timeTo(column)` so the query only evaluates data in the rule’s time range. For more information, refer to [Azure Cosmos DB query editor](/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/#macros).
+- **Scope the time range with macros.** Use `$__timeFilter(column)`, `$__timeFrom(column)`, or `$__timeTo(column)` so the query only evaluates data in the rule’s time range. For more information, refer to [Azure Cosmos DB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/#macros).
 - **Set a partition key when possible.** Multi-partition queries don’t support the `TOP`, `ORDER BY`, `OFFSET`, `LIMIT`, `Aggregates`, `DISTINCT`, and `GROUP BY` keywords. Enter a value in the **PartitionKey** field to run a single-partition query when your alert query needs these keywords.
 - **Limit the result set.** Narrow the time range and filter the data to reduce request units (RU/s) consumed on each evaluation.
 
 ## Next steps
 
-- [Configure the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/)
-- [Azure Cosmos DB query editor](/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/)
-- [Troubleshoot the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)
+- [Configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/)
+- [Azure Cosmos DB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/)
+- [Troubleshoot the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)

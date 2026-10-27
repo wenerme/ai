@@ -17,13 +17,13 @@ You can easily view and interact with your JSON formatted logs using the Grafana
 
 To interact with the JSON view, select **Show logs** for your service in Logs Drilldown.
 
-[Show logs button](/media/docs/explore-logs/v2/logs-drilldown-show-logs.png)
+[Show logs button](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-show-logs.png)
 
 On the **Logs** tab, select the **JSON** radio button in the panel header (next to **Logs** and **Table**) to switch to the JSON viewer. The JSON viewer displays your logs in a structured, collapsible tree view, so you can browse, expand, and collapse JSON fields.
 
-[The JSON viewer](/media/docs/explore-logs/v2/logs-drilldown-json-viewer.png)
+[The JSON viewer](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-json-viewer.png)
 
-The **Line wrapping** control in the log controls panel also offers an **Enabled with JSON formatting** option. This pretty-prints JSON within the standard Logs view but doesn’t open the dedicated JSON viewer. For more information about line wrapping, refer to [View logs](../view-logs/).
+The **Line wrapping** control in the log controls panel also offers an **Enabled with JSON formatting** option. This pretty-prints JSON within the standard Logs view but doesn’t open the dedicated JSON viewer. For more information about line wrapping, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/view-logs/).
 
 ## Filtering log lines with the JSON view
 

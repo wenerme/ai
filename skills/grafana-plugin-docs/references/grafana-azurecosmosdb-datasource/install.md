@@ -7,7 +7,7 @@ description: "Install and upgrade the Azure Cosmos DB data source plugin across 
 
 # Install and upgrade the Azure Cosmos DB data source
 
-This document covers how to install, upgrade, and verify the Azure Cosmos DB data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Azure Cosmos DB data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -30,7 +30,7 @@ The Azure Cosmos DB data source is a Grafana Enterprise plugin. Before you can i
 
 To confirm the plugin is available on Grafana Cloud:
 
-1. Go to [https://grafana.com/orgs](/orgs) and sign in.
+1. Go to [https://grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in.
 2. Select your organization and open the **Plugins** tab.
 3. If the plugin isn’t listed, confirm your Cloud plan is Pro or Advanced, and contact your Grafana account team to add it.
 
@@ -39,7 +39,7 @@ To confirm the plugin is available on Grafana Cloud:
 To activate the plugin on self-managed Grafana Enterprise:
 
 1. Confirm your Grafana Enterprise license includes the plugin.
-2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 3. Restart Grafana and confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
 ## Install the plugin
@@ -58,7 +58,7 @@ To install the plugin on Grafana Cloud:
 
 To install the plugin with the Grafana CLI, run the following command and then restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-azurecosmosdb-datasource
@@ -68,7 +68,7 @@ grafana cli plugins install grafana-azurecosmosdb-datasource
 
 Set the `GF_INSTALL_PLUGINS` environment variable to install the plugin when the container starts:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 GF_INSTALL_PLUGINS=grafana-azurecosmosdb-datasource
@@ -107,7 +107,7 @@ To verify the installation:
 
 To upgrade the plugin on self-managed Grafana, update it with the Grafana CLI and restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins update grafana-azurecosmosdb-datasource
@@ -115,7 +115,7 @@ grafana cli plugins update grafana-azurecosmosdb-datasource
 
 To install a specific version with the Grafana CLI, pass the version as an argument, then restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-azurecosmosdb-datasource 0.2.2
@@ -127,7 +127,7 @@ When you use the `GF_INSTALL_PLUGINS` environment variable, append the version t
 
 To remove the plugin on self-managed Grafana, run the following command and restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-azurecosmosdb-datasource
@@ -137,5 +137,5 @@ For Docker and Kubernetes, remove the plugin ID from `GF_INSTALL_PLUGINS` and re
 
 ## Next steps
 
-- [Configure the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/)
-- [Troubleshoot the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)
+- [Configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/)
+- [Troubleshoot the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)

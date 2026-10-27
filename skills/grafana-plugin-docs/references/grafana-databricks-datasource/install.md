@@ -7,7 +7,7 @@ description: "Install and upgrade the Databricks data source plugin for Grafana.
 
 # Install and upgrade the Databricks data source plugin
 
-This document covers how to install, upgrade, and verify the Databricks data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Databricks data source](/docs/plugins/grafana-databricks-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Databricks data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Databricks data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -31,7 +31,7 @@ The Databricks data source is a Grafana Enterprise plugin. Before you can instal
 
 Enterprise plugins must be activated for your organization before they appear as installable in the plugin catalog.
 
-1. Go to [grafana.com/orgs](/orgs) and sign in with your Grafana Cloud account.
+1. Go to [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
 3. Navigate to the **Plugins** tab and verify that the Databricks plugin is activated.
 4. If the plugin isn’t listed, confirm your Cloud plan is Pro or Advanced. Free and Starter plans don’t include Enterprise plugins. Contact your Grafana account team to add the plugin to your plan.
@@ -40,8 +40,8 @@ Enterprise plugins must be activated for your organization before they appear as
 
 Self-managed installations require an active Grafana Enterprise license that includes `grafana-databricks-datasource`.
 
-1. Confirm your Grafana Enterprise license includes the Databricks plugin. You can review your licensed plugins in your [Grafana account portal](/orgs).
-2. Provide the license to Grafana using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file path. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+1. Confirm your Grafana Enterprise license includes the Databricks plugin. You can review your licensed plugins in your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+2. Provide the license to Grafana using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 3. Restart Grafana and confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
 ## Install the plugin
@@ -50,18 +50,18 @@ Choose the installation method that matches your Grafana deployment.
 
 ### Grafana Cloud
 
-First, confirm the plugin is activated for your organization. Refer to [Activate the Enterprise plugin](#activate-the-enterprise-plugin).
+First, confirm the plugin is activated for your organization. Refer to [Activate the Enterprise plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/install/#activate-the-enterprise-plugin).
 
 1. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Databricks** and click **Install**.
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization at [grafana.com/orgs](/orgs) and that your Cloud plan is Pro or Advanced.
+> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and that your Cloud plan is Pro or Advanced.
 
 ### Self-managed Grafana (CLI)
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-databricks-datasource
@@ -69,7 +69,7 @@ grafana cli plugins install grafana-databricks-datasource
 
 Restart Grafana after installation:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -79,7 +79,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -91,7 +91,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -102,7 +102,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -119,7 +119,7 @@ env:
 
 If you don’t control the Helm chart, for example on a shared platform cluster, use an init container to download the plugin before Grafana starts:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -143,18 +143,18 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP from your [Grafana account portal](/orgs) on a machine with internet access.
+1. Download the plugin ZIP from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract the ZIP to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-databricks-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-databricks-datasource
@@ -163,7 +163,7 @@ For environments without internet access:
 
 If Grafana reports an “unsigned plugin” error, add the following to `grafana.ini`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugins]
@@ -181,7 +181,7 @@ After installing, confirm the plugin is loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Databricks** and verify the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **Databricks** to confirm it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -189,17 +189,17 @@ The Databricks plugin is an Enterprise plugin, so upgrade steps depend on your G
 
 > Note
 >
-> Update behavior depends on your environment: on Grafana Cloud the plugin is managed by Grafana and updates automatically, whereas on self-managed Grafana you must update plugins manually. Many issues resolve after upgrading. Refer to [Version and upgrade guidance](/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> Update behavior depends on your environment: on Grafana Cloud the plugin is managed by Grafana and updates automatically, whereas on self-managed Grafana you must update plugins manually. Many issues resolve after upgrading. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ### Grafana Cloud
 
-The Databricks plugin is managed by Grafana on Grafana Cloud and updates automatically; no manual action is required. If you experience issues after an update, contact [Grafana Support](/support/).
+The Databricks plugin is managed by Grafana on Grafana Cloud and updates automatically; no manual action is required. If you experience issues after an update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### Self-managed Grafana
 
 1. Update the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-databricks-datasource
@@ -209,7 +209,7 @@ The Databricks plugin is managed by Grafana on Grafana Cloud and updates automat
 
 To install a specific version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-databricks-datasource <version>
@@ -217,7 +217,7 @@ grafana cli plugins install grafana-databricks-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -228,7 +228,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-databricks-datasource 1.13.9
@@ -238,13 +238,13 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rolling back to a specific version isn’t available through the Grafana Cloud plugin catalog. Contact [Grafana Support](/support/) if you need to roll back on Grafana Cloud.
+> Rolling back to a specific version isn’t available through the Grafana Cloud plugin catalog. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you need to roll back on Grafana Cloud.
 
 ## Uninstall the plugin
 
 To remove the Databricks plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-databricks-datasource
@@ -264,7 +264,7 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Go to [grafana.com/orgs](/orgs).
+1. Go to [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the Databricks plugin is listed and activated.
 4. Confirm your Cloud plan is Pro or Advanced. Free and Starter plans don’t include Enterprise plugins.
@@ -275,8 +275,8 @@ The following sections address common installation problems.
 
 **Solution:**
 
-- **Grafana Cloud:** Verify plugin activation at [grafana.com/orgs](/orgs).
-- **Self-managed:** Verify your Grafana Enterprise license is active. Set the license with the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- **Grafana Cloud:** Verify plugin activation at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+- **Self-managed:** Verify your Grafana Enterprise license is active. Set the license with the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - Confirm you have the `Organization administrator` role. Only account administrators can install the plugin.
 
 ### License key errors (self-managed)
@@ -287,8 +287,8 @@ The following sections address common installation problems.
 
 1. Verify the license key doesn’t contain extra whitespace, line breaks, or truncated characters.
 2. Confirm the key is for the correct Grafana instance URL.
-3. Check that the license hasn’t expired at [grafana.com/orgs](/orgs).
-4. For license activation help, refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+3. Check that the license hasn’t expired at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+4. For license activation help, refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### Unsigned plugin error (air-gapped installs)
 
@@ -296,6 +296,6 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Ensure you downloaded the ZIP from the official [Grafana account portal](/orgs). Official downloads are signed.
+1. Ensure you downloaded the ZIP from the official [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). Official downloads are signed.
 2. If the error persists, add `allow_loading_unsigned_plugins = grafana-databricks-datasource` to `grafana.ini` under `[plugins]`.
 3. Restart Grafana.

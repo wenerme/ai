@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards that aren’t tied
 
 ## Before you begin
 
-- [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -28,7 +28,7 @@ Expand table
 
 ## Create a query variable
 
-The Drone variable editor uses the same **Action** selector as the [query editor](/docs/plugins/grafana-drone-datasource/latest/query-editor/). After you choose an action, you select which result field provides the variable values and, optionally, which field provides the display labels.
+The Drone variable editor uses the same **Action** selector as the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/). After you choose an action, you select which result field provides the variable values and, optionally, which field provides the display labels.
 
 To create a query variable:
 
@@ -75,9 +75,9 @@ When you change the repository in the dashboard drop-down, the build number vari
 
 ## Use variables in queries
 
-After you create a variable, reference it in your Drone queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, create a repository variable named `repo` and reference it in the **Repository** field of a `Repo Info` or `Build List` query:
+After you create a variable, reference it in your Drone queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, create a repository variable named `repo` and reference it in the **Repository** field of a `Repo Info` or `Build List` query:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 $repo
@@ -97,5 +97,5 @@ This lets you switch the repository and build from dashboard drop-downs without 
 
 ## Next steps
 
-- [Drone query editor](/docs/plugins/grafana-drone-datasource/latest/query-editor/)
-- [Troubleshooting](/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)
+- [Drone query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)

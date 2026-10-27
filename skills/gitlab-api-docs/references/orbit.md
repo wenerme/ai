@@ -12,6 +12,7 @@ REST API to run queries, retrieve schemas, and check cluster health for Orbit.
 - [GQL mode introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256465) in GitLab 19.4 with a feature flag named `orbit_gql_queries`. Disabled by default.
 - Feature flag `knowledge_graph` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259054) in GitLab 19.5.
 - GQL mode [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265010) in GitLab 19.6.
+- Feature flag `orbit_gql_queries` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261947) in GitLab 19.6. GQL is the only query language.
 
 Use this API to run queries, retrieve schemas, and check cluster health for
 [Orbit](https://gitlab.com/gitlab-org/orbit/knowledge-graph).
@@ -365,21 +366,15 @@ A failed job whose failed tests were cut has its own `truncated=failed_tests` li
 
 For the full reference of Orbit endpoints, including paths, parameters, and
 responses, see the [interactive API reference](https://api.gitlab.com/rest/#tag/orbit).
-The following sections cover query DSL behavior and worked examples that the
+The following sections cover query behavior and worked examples that the
 generated reference doesn't show.
 
-## Query mode
+## Query language
 
-> [!flag]
-> The availability of GQL query mode is controlled by a feature flag named `orbit_gql_queries`.
-> For more information, see the history.
-
-Queries use read-only GQL strings, and discovery returns GQL guidance, by default.
-An administrator can disable `orbit_gql_queries` to switch back to JSON DSL objects.
-GQL follows openCypher 9 syntax.
-The flag targets individual users.
-REST and MCP callers cannot override the mode through parameters or headers.
-With the flag enabled (the default), `response_format: gql` returns query results as a plain-text table.
+Queries are read-only GQL strings that follow openCypher 9 syntax.
+The JSON query DSL is no longer accepted.
+When `query` is a JSON object, `POST /orbit/query` returns `400 Bad Request`.
+Use `response_format: gql` to return query results as a plain-text table.
 
 ## Skills
 
@@ -580,19 +575,19 @@ Example response:
 
 Prefer `POST /api/v4/orbit/query/:name` over `POST /api/v4/orbit/query` for
 programmatic consumers. A named query's structure lives on the server, so it
-cannot drift from the DSL grammar or ontology.
-Named requests keep JSON envelopes and run templates in the active mode.
+cannot drift from the query language or ontology.
+Named query requests send their parameters in a JSON request body.
 
 ## Query templates
 
 The named query templates listed at `GET /api/v4/orbit/query/templates`
 include `raw_query` rendered for the authenticated user:
 
-- Templates contain JSON objects in JSON mode and GQL strings in GQL mode.
+- `raw_query` is a GQL string.
 - Identity values, like the ID of the authenticated user, are resolved
   server-side from the request credentials. The same request returns
   different `raw_query` values for different users. Do not cache or share
-  templates across users or modes.
+  templates across users.
 - Invoke parameterized queries by name with their arguments, as the catalog excludes them.
 
 Prefer executing named queries directly over using templates. Use templates
@@ -601,15 +596,9 @@ query editor or explorer with the text of a preset.
 
 ## Query examples
 
-Queries are GQL strings by default. Pass a GQL string as the `query` value to
-`POST /api/v4/orbit/query`:
-
-```json
-{"query": "MATCH (u:User {id: 1}) RETURN u LIMIT 1"}
-```
-
-The following examples use the JSON query DSL, which requires the `orbit_gql_queries`
-flag to be disabled. For the complete query language, see
+The following examples show a GQL query for each query type. All
+examples use `POST /api/v4/orbit/query` and pass the GQL text as the `query` value.
+For the complete query language, see
 [Orbit query language](https://docs.gitlab.com/orbit/remote/queries/query-language/).
 
 The examples use the default `raw` response format. In each response, the `result`
@@ -622,14 +611,7 @@ Retrieve a user by username:
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{
-    "query": {
-      "query_type": "traversal",
-      "nodes": [
-        {"id": "u", "entity": "User", "filters": {"username": "john_smith"}}
-      ]
-    }
-  }' \
+  --data '{"query": "MATCH (u:User {username: \"john_smith\"}) RETURN u"}' \
   --url "https://gitlab.example.com/api/v4/orbit/query"
 ```
 
@@ -657,16 +639,7 @@ Find merged merge requests in a project:
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{
-    "query": {
-      "query_type": "traversal",
-      "nodes": [
-        {"id": "p", "entity": "Project", "node_ids": [8]},
-        {"id": "mr", "entity": "MergeRequest", "filters": {"state": "merged"}}
-      ],
-      "relationships": [{"type": "IN_PROJECT", "from": "mr", "to": "p"}]
-    }
-  }' \
+  --data '{"query": "MATCH (mr:MergeRequest {state: \"merged\"})-[:IN_PROJECT]->(p:Project {id: 8}) RETURN p, mr"}' \
   --url "https://gitlab.example.com/api/v4/orbit/query"
 ```
 
@@ -694,24 +667,13 @@ Example response:
 ```
 
 Count merge requests per project. Traversal and aggregation queries must bound
-at least one node with `node_ids` or filters:
+at least one node with an ID or property predicate:
 
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{
-    "query": {
-      "query_type": "aggregation",
-      "nodes": [
-        {"id": "p", "entity": "Project", "node_ids": [5, 8]},
-        {"id": "mr", "entity": "MergeRequest"}
-      ],
-      "relationships": [{"type": "IN_PROJECT", "from": "mr", "to": "p"}],
-      "aggregations": [{"count": "mr", "as": "mr_count"}],
-      "group_by": ["p"]
-    }
-  }' \
+  --data '{"query": "MATCH (mr:MergeRequest)-[:IN_PROJECT]->(p:Project) WHERE p.id IN [5, 8] RETURN p, count(mr) AS mr_count"}' \
   --url "https://gitlab.example.com/api/v4/orbit/query"
 ```
 
@@ -737,20 +699,14 @@ Example response:
 }
 ```
 
-Find outgoing neighbors of a user. The `direction` attribute accepts `outgoing`,
-`incoming`, or `both`, and defaults to `outgoing`:
+Find outgoing neighbors of a user. Use `-->` for outgoing relationships, `<--`
+for incoming relationships, and `--` for both:
 
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{
-    "query": {
-      "query_type": "neighbors",
-      "nodes": [{"id": "u", "entity": "User", "node_ids": [1]}],
-      "neighbors": {"direction": "outgoing"}
-    }
-  }' \
+  --data '{"query": "MATCH (u:User {id: 1})-->(neighbor) RETURN u, neighbor"}' \
   --url "https://gitlab.example.com/api/v4/orbit/query"
 ```
 
@@ -779,30 +735,15 @@ Example response:
 }
 ```
 
-Find the shortest path from a user to a project. Path finding queries require
-`rel_types`, and follow each relationship type only in its defined direction,
-from the `from` node toward the `to` node:
+Find the shortest path from a user to a project. Path finding queries name their
+relationship types, go at most three hops, and follow each relationship type only
+in its defined direction:
 
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{
-    "query": {
-      "query_type": "path_finding",
-      "nodes": [
-        {"id": "u", "entity": "User", "node_ids": [1]},
-        {"id": "p", "entity": "Project", "node_ids": [8]}
-      ],
-      "path": {
-        "type": "shortest",
-        "from": "u",
-        "to": "p",
-        "max_depth": 3,
-        "rel_types": ["MEMBER_OF", "CONTAINS"]
-      }
-    }
-  }' \
+  --data '{"query": "MATCH p = ANY SHORTEST (u:User {id: 1})-[:MEMBER_OF|CONTAINS*1..3]->(pr:Project {id: 8}) RETURN p"}' \
   --url "https://gitlab.example.com/api/v4/orbit/query"
 ```
 

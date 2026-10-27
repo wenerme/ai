@@ -15,7 +15,7 @@ When enabled, the confirmation window displays after you click the submit button
 
 You can customize all labels using the **Update Confirmation Window** category.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/confirm-update.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/confirm-update.png)
 
 ## Display Values parameter
 
@@ -28,4 +28,4 @@ The **Display Values** parameter has two options:
 - **All values**: Shows all data elements, regardless of whether their values changed.
 - **Updated Only**: Shows only the data elements with changed values.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/display-values.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/display-values.png)

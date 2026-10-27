@@ -15,7 +15,7 @@ Before you configure the data source, ensure you have the following prerequisite
 
 - **Grafana permissions:** Organization administrator role.
 - **AWS account:** An active AWS account with Amazon Athena enabled.
-- **IAM credentials:** An IAM user or role with the required Athena, Glue, and S3 permissions. Refer to the [IAM policies](#iam-policies) section for details.
+- **IAM credentials:** An IAM user or role with the required Athena, Glue, and S3 permissions. Refer to the [IAM policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/#iam-policies) section for details.
 - **Athena resources:** At least one Athena workgroup and data catalog configured in your AWS account.
 
 ## Add the data source
@@ -38,7 +38,7 @@ Expand table
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                       | The data source name. This is how you refer to the data source in panels and queries.                                                                                                                                                                                                                                   |
 | **Default**                    | Toggle to make this the default data source for new panels.                                                                                                                                                                                                                                                             |
-| **Authentication Provider**    | The AWS credentials chain to use. Refer to [Authentication](#authentication) for details.                                                                                                                                                                                                                               |
+| **Authentication Provider**    | The AWS credentials chain to use. Refer to [Authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/#authentication) for details.                                                                                                          |
 | **Assume Role ARN** (optional) | The ARN of an IAM role to assume. Use this for cross-account access.                                                                                                                                                                                                                                                    |
 | **External ID** (optional)     | The external ID for assuming a role in another account. Required if the target role was created with an external ID condition.                                                                                                                                                                                          |
 | **Endpoint** (optional)        | A custom endpoint for the Amazon Athena service.                                                                                                                                                                                                                                                                        |
@@ -54,7 +54,7 @@ The Amazon Athena data source uses AWS authentication. The available authenticat
 
 Open source Grafana enables the **AWS SDK Default**, **Credentials file**, and **Access and secret key** methods by default. Grafana Cloud enables **Access and secret key** by default.
 
-For more information about authentication options and configuration, refer to [AWS authentication](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+For more information about authentication options and configuration, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### IAM policies
 
@@ -68,7 +68,7 @@ The following example shows a minimal IAM policy for querying Amazon Athena. It�
 >
 > Update the ARN of the S3 bucket if you’re using a custom one. If your AWS account uses AWS Lake Formation to manage data access, you must also include the `lakeformation:GetDataAccess` permission. Refer to the [AWS Lake Formation permissions for Athena](https://docs.aws.amazon.com/athena/latest/ug/lf-athena.html) documentation.
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -145,13 +145,13 @@ Click **Save &amp; test** to verify that the data source is configured correctly
 
 ## Provision the data source
 
-You can define the Amazon Athena data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/).
+You can define the Amazon Athena data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/).
 
 The following examples show provisioning configurations for each authentication method.
 
 ### Use AWS SDK (default)
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -168,7 +168,7 @@ datasources:
 
 ### Use a credentials profile
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -186,7 +186,7 @@ datasources:
 
 ### Use access and secret keys
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -206,7 +206,7 @@ datasources:
 
 ### Use AWS SDK with an assumed IAM role
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -226,7 +226,7 @@ datasources:
 
 You can also include the following optional parameters in your provisioning configuration.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 jsonData:

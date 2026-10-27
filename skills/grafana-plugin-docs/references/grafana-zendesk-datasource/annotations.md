@@ -7,11 +7,11 @@ description: "Use the Zendesk data source to add annotations to Grafana dashboar
 
 # Zendesk annotations
 
-[Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) overlay event markers on your graphs, so you can correlate Zendesk activity, such as ticket creation, with the rest of your dashboard. The Zendesk data source supports annotations, which means you can drive these markers from a Zendesk query.
+[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) overlay event markers on your graphs, so you can correlate Zendesk activity, such as ticket creation, with the rest of your dashboard. The Zendesk data source supports annotations, which means you can drive these markers from a Zendesk query.
 
 ## Before you begin
 
-Before you add an annotation query, ensure you have [configured the Zendesk data source](/docs/plugins/grafana-zendesk-datasource/latest/configure/) and are familiar with the [Zendesk query editor](/docs/plugins/grafana-zendesk-datasource/latest/query-editor/).
+Before you add an annotation query, ensure you have [configured the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/) and are familiar with the [Zendesk query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/query-editor/).
 
 ## How annotations work
 

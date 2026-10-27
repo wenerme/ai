@@ -103,7 +103,7 @@ If you notice a rise in the Errors metric, you can use the **Exceptions** tab to
 
 The **Adaptive Traces** tab appears when both of the following conditions are met:
 
-- [Adaptive Traces](/docs/grafana-cloud/adaptive-telemetry/adaptive-traces/) is enabled and configured on your Grafana Cloud stack.
+- [Adaptive Traces](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/adaptive-telemetry/adaptive-traces/) is enabled and configured on your Grafana Cloud stack.
 - You’ve applied an `instrumentation.tailsampling.policy` filter in the **Filters** bar.
 
 When these conditions are met, the tab displays span latency data for the selected tail-sampling policy, helping you understand how the policy affects trace collection and latency distribution within the current time range.
@@ -126,7 +126,7 @@ Use the time picker at the top right to modify the data shown in Traces Drilldow
 
 The time range you can query depends on your Tempo data source configuration, including your trace retention period and the range allowed for TraceQL metrics. Longer time ranges scan more data and can take longer to return results.
 
-For more information about the time range picker, refer to [Use dashboards](/docs/grafana/latest/dashboards/use-dashboards/#set-dashboard-time-range).
+For more information about the time range picker, refer to [Use dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/use-dashboards/#set-dashboard-time-range).
 
 ## Open a trace by ID
 
@@ -139,4 +139,4 @@ When you open a trace from the results list, the Trace ID input clears to avoid 
 
 If a time range is selected, Traces Drilldown searches within the currently selected time range. Otherwise, it searches across all time. If a trace isn’t found, an error message appears—verify the ID and widen the time range if necessary.
 
-This behavior depends on the Tempo data source configuration. Refer to [Tempo data source configuration](/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/) for more information.
+This behavior depends on the Tempo data source configuration. Refer to [Tempo data source configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/) for more information.

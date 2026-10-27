@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agent-lee/og.png?v=e0b0bf7f4daf92bd
 
 # Agent Lee
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-lee/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-lee/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An AI co-pilot built into the Cloudflare dashboard. Ask questions about your account, take actions, and run diagnostics, all in plain language.
 
@@ -167,7 +167,7 @@ Agent Lee is built on Cloudflare's own developer platform using the same primiti
 | [Durable Objects](https://developers.cloudflare.com/durable-objects/) | Per-user conversation storage and write approval gate |
 | [Workers AI](https://developers.cloudflare.com/workers-ai/) | LLM inference |
 | [AI Gateway](https://developers.cloudflare.com/ai-gateway/) | Model request routing, logging, and analytics |
-| [Cloudflare MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) | Tool definitions for Cloudflare API operations |
+| [Cloudflare MCP server](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/) | Tool definitions for Cloudflare API operations |
 
 ---
 
@@ -189,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agent-lee/#page","headline":"Agent Lee","description":"Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.","url":"https://developers.cloudflare.com/agent-lee/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-lee/og.png?v=e0b0bf7f4daf92bd","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agent-lee/#page","headline":"Agent Lee","description":"Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.","url":"https://developers.cloudflare.com/agent-lee/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-lee/og.png?v=e0b0bf7f4daf92bd","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -11,7 +11,7 @@ The Atlassian Statuspage data source plugin lets you query the operational statu
 
 > Note
 >
-> The Atlassian Statuspage data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Atlassian Statuspage data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -30,15 +30,15 @@ Expand table
 This plugin has the following requirements:
 
 - A working Atlassian Statuspage with a public status page.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
 
 ## Install the data source
 
-To install the data source, refer to [Installation](/grafana/plugins/grafana-atlassianstatuspage-datasource/?tab=installation).
+To install the data source, refer to [Installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-atlassianstatuspage-datasource/?tab=installation).
 
 ## Configure the data source in Grafana
 
-[Add a data source](/docs/grafana/latest/datasources/#add-a-data-source) by filling in the following information.
+[Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/#add-a-data-source) by filling in the following information.
 
 ### Connection
 
@@ -63,11 +63,11 @@ Authentication isn’t required for this data source. Any public Atlassian Statu
 
 ## Configure the data source with provisioning
 
-You can configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Because authentication isn’t required, the only setting you provision is the `url` variable. Here is a provisioning example for this data source:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -117,7 +117,7 @@ The all scheduled maintenances query gets a list of the 50 most recent scheduled
 
 ## Annotations
 
-You can use annotations to visualize the relation between Atlassian Statuspage data and other data on your dashboards. For general information on how to use annotations, refer to the [Annotations documentation](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+You can use annotations to visualize the relation between Atlassian Statuspage data and other data on your dashboards. For general information on how to use annotations, refer to the [Annotations documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Pre-built dashboards
 
@@ -136,8 +136,8 @@ After import, select your Atlassian Statuspage data source for each input prompt
 
 After configuring the data source, you can:
 
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
 
 ## Known limitations
 
@@ -163,11 +163,11 @@ These errors occur when Grafana can’t reach your Atlassian Statuspage.
 
 Expand table
 
-| Cause                            | Solution                                                                                                                                                                                                                                                 |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Incorrect URL format             | Verify the URL includes the protocol (`https://`) and has no trailing `/`. Refer to the URL examples in the Connection section.                                                                                                                          |
-| Status page not reachable        | Confirm the page loads in a browser and that the host is publicly accessible.                                                                                                                                                                            |
-| Network or firewall restrictions | Ensure the Grafana server allows outbound HTTPS (port 443) to your Statuspage host. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
+| Cause                            | Solution                                                                                                                                                                                                                                                                                                             |
+|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Incorrect URL format             | Verify the URL includes the protocol (`https://`) and has no trailing `/`. Refer to the URL examples in the Connection section.                                                                                                                                                                                      |
+| Status page not reachable        | Confirm the page loads in a browser and that the host is publicly accessible.                                                                                                                                                                                                                                        |
+| Network or firewall restrictions | Ensure the Grafana server allows outbound HTTPS (port 443) to your Statuspage host. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
 
 ### Save &amp; test fails or returns an unexpected response
 

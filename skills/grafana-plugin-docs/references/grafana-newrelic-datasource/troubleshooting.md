@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the New Relic data source in Grafa
 
 # Troubleshoot New Relic data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the New Relic data source. For configuration instructions, refer to [Configure the New Relic data source](/docs/plugins/grafana-newrelic-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the New Relic data source. For configuration instructions, refer to [Configure the New Relic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/configure/).
 
 ## Before you begin
 
@@ -17,7 +17,7 @@ Before investigating specific errors, verify that the data source health check p
 2. Click **Save &amp; test**.
 3. Confirm you see the message **Plugin health check OK**.
 
-If the health check fails, first confirm that your Enterprise plugin license is valid. Refer to [Licensing issues](#licensing-issues). Otherwise, start with the [Configuration errors](#configuration-errors) or [Connection errors](#connection-errors) sections.
+If the health check fails, first confirm that your Enterprise plugin license is valid. Refer to [Licensing issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#licensing-issues). Otherwise, start with the [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#configuration-errors) or [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#connection-errors) sections.
 
 ## Licensing issues
 
@@ -37,12 +37,12 @@ This error appears when the plugin backend fails to start. For an Enterprise plu
 
 Expand table
 
-| Cause                                                      | Solution                                                                                                                                                                                                                                               |
-|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Grafana Cloud Free plan                                    | The New Relic plugin isn’t available on the Free tier. Upgrade to a Pro plan with the Enterprise plugins add-on, or to an Advanced plan.                                                                                                               |
-| Pro plan without the Enterprise plugins add-on             | Upgrading from Free to Pro doesn’t automatically include Enterprise plugins. Purchase the Enterprise plugins add-on, then enable the plugin from the account management page. Contact your Grafana account team for details.                           |
-| Self-managed Grafana without an Enterprise license         | Activate a valid [Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Review your current license in [Administration &gt; General &gt; Stats and license](/docs/grafana/latest/administration/stats-and-license/). |
-| License not provisioned after a contract change or renewal | Contact [Grafana Support](/support/) to verify that your license entitlements include the New Relic plugin.                                                                                                                                            |
+| Cause                                                      | Solution                                                                                                                                                                                                                                                                                                                                                                       |
+|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Grafana Cloud Free plan                                    | The New Relic plugin isn’t available on the Free tier. Upgrade to a Pro plan with the Enterprise plugins add-on, or to an Advanced plan.                                                                                                                                                                                                                                       |
+| Pro plan without the Enterprise plugins add-on             | Upgrading from Free to Pro doesn’t automatically include Enterprise plugins. Purchase the Enterprise plugins add-on, then enable the plugin from the account management page. Contact your Grafana account team for details.                                                                                                                                                   |
+| Self-managed Grafana without an Enterprise license         | Activate a valid [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Review your current license in [Administration &gt; General &gt; Stats and license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/stats-and-license/). |
+| License not provisioned after a contract change or renewal | Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) to verify that your license entitlements include the New Relic plugin.                                                                                                                                                                                                        |
 
 ### Plugin stops working after a contract change or renewal
 
@@ -52,7 +52,7 @@ If the plugin was working but stops after a contract renewal or a change to your
 
 1. Verify your current entitlements in the Grafana Cloud portal under your organization settings.
 2. For self-managed Grafana, re-download and apply the updated Enterprise license, then restart Grafana.
-3. Contact [Grafana Support](/support/) to confirm that the license includes the New Relic data source plugin.
+3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) to confirm that the license includes the New Relic data source plugin.
 
 ### Enterprise plugins aren’t available on a second stack or new instance
 
@@ -61,7 +61,7 @@ Enterprise plugin entitlements apply per Grafana Cloud stack. If you can install
 **Solutions:**
 
 1. Confirm that Enterprise plugins are enabled for the specific stack where you’re installing the plugin.
-2. Contact [Grafana Support](/support/) to have your entitlement applied to the additional stack.
+2. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) to have your entitlement applied to the additional stack.
 
 For billing or plan questions, such as whether a plugin is tracked correctly on your account, contact your Grafana account team.
 
@@ -118,7 +118,7 @@ This fallback error appears when the connection fails for a reason other than an
 1. Verify network connectivity from the Grafana server to New Relic API endpoints (`api.newrelic.com` for US, `api.eu.newrelic.com` for EU).
 2. Check firewall rules allow outbound HTTPS (port 443).
 3. Increase the **Timeout in Seconds** setting in the data source configuration (default: 300).
-4. For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing resources through a private network.
+4. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing resources through a private network.
 
 ## Query errors
 
@@ -240,7 +240,7 @@ Expand table
 
 ## Annotation errors
 
-These errors occur when using annotation queries. For annotation setup, refer to [New Relic annotations](/docs/plugins/grafana-newrelic-datasource/latest/annotations/).
+These errors occur when using annotation queries. For annotation setup, refer to [New Relic annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/annotations/).
 
 ### “invalid application ID received while fetching deployments”
 
@@ -314,7 +314,7 @@ These errors occur when using template variables with the New Relic data source.
 
 ## Alerting issues
 
-These issues relate to using the New Relic data source with Grafana Alerting. For setup instructions, refer to [New Relic alerting](/docs/plugins/grafana-newrelic-datasource/latest/alerting/).
+These issues relate to using the New Relic data source with Grafana Alerting. For setup instructions, refer to [New Relic alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/alerting/).
 
 ### Alerts not firing
 
@@ -374,7 +374,7 @@ Grafana recording rules run a query on a schedule and store each result as a new
 1. For exact data fidelity, query New Relic directly with a raw NRQL query instead of reading from the recorded metric.
 2. If you use recording rules to store the results of expensive queries, shorten the evaluation interval to improve resolution. A shorter interval reduces the divergence but doesn’t eliminate it.
 3. Align the evaluation interval of any alert rule that reads a recorded metric with the recording rule’s interval, so the alert acts on fresh data.
-4. For more information, refer to [Configure recording rules](/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/).
+4. For more information, refer to [Configure recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/).
 
 ## Blank or incomplete scheduled reports
 
@@ -389,9 +389,9 @@ This rendering timeout is a Grafana reporting setting. It’s separate from the 
 
 **Solutions:**
 
-1. Reduce the time New Relic queries take to run. Narrow the dashboard time range, add filters to reduce the result set, and avoid unnecessarily large queries. Refer to [Query timeout](#query-timeout).
-2. On self-managed Grafana, increase the reporting rendering timeout. Set `rendering_timeout` in the `[reporting]` section of the Grafana configuration file. The default is `10s`. For details, refer to [Configure Grafana Enterprise](/docs/grafana/latest/setup-grafana/configure-grafana/enterprise-configuration/#rendering_timeout).
-3. On Grafana Cloud, you can’t change the rendering timeout directly. Contact [Grafana Support](/support/) to request an increase.
+1. Reduce the time New Relic queries take to run. Narrow the dashboard time range, add filters to reduce the result set, and avoid unnecessarily large queries. Refer to [Query timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#query-timeout).
+2. On self-managed Grafana, increase the reporting rendering timeout. Set `rendering_timeout` in the `[reporting]` section of the Grafana configuration file. The default is `10s`. For details, refer to [Configure Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/enterprise-configuration/#rendering_timeout).
+3. On Grafana Cloud, you can’t change the rendering timeout directly. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) to request an increase.
 4. Keep Grafana up to date. Some blank-panel issues in reports are caused by rendering bugs that are fixed in later Grafana releases.
 
 ## Enable debug logging
@@ -400,7 +400,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

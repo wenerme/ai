@@ -7,13 +7,13 @@ description: "Set up alerts using Dynatrace data in Grafana."
 
 # Alerting
 
-The Dynatrace data source supports [Grafana Alerting](/docs/grafana/latest/alerting/), allowing you to create alert rules based on Dynatrace metrics, problems, and other data. You can monitor your Dynatrace environment and receive notifications when specific conditions are met.
+The Dynatrace data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on Dynatrace metrics, problems, and other data. You can monitor your Dynatrace environment and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
 - Verify your Dynatrace data source is configured and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Supported query types for alerting
 
@@ -53,7 +53,7 @@ To create an alert rule using Dynatrace data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: CPU usage alert
 
@@ -128,10 +128,10 @@ Always verify your query returns expected data before creating an alert:
 
 ## Troubleshooting
 
-For common alerting issues with the Dynatrace data source, refer to [Alerting issues](/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#alerting-issues) in the troubleshooting guide.
+For common alerting issues with the Dynatrace data source, refer to [Alerting issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#alerting-issues) in the troubleshooting guide.
 
 ## Additional resources
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [Create alert rules](/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)

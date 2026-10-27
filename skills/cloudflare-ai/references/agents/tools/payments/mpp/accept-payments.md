@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/payments/mpp/accept-paymen
 
 # Accept payments with MPP
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Cloudflare Workers to accept Machine Payments Protocol (MPP) payments. Choose an integration based on the service you want to protect:
 
@@ -148,7 +148,7 @@ Add `mppx` middleware when you control the Worker application:
 
 ## Charge for an MCP tool
 
-Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/):
+Charge for a tool call from an MCP server on Workers. `mppx` reads payment credentials through the MCP SDK v1 request context (`Transport.mcpSdk()`), so this server uses an SDK v1 `McpServer` with `createLegacyMcpHandler`. It is still stateless: the Worker builds a new server for each request and needs no Durable Object.
 
 1. Install the required packages in an Agents project:npmyarnpnpmbun
 
@@ -168,7 +168,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    bun add agents mppx @modelcontextprotocol/sdk zod
    ```
 
-2. Bind the `McpAgent` Durable Object in the Wrangler configuration:
+2. Configure the Worker:
 
    ```jsonc
    {
@@ -177,25 +177,9 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
      "main": "src/index.ts",
      "upload_source_maps": true,
      // Set this to today's date
-     "compatibility_date": "2026-10-13",
+     "compatibility_date": "2026-10-27",
      "compatibility_flags": [
        "nodejs_compat"
-     ],
-     "durable_objects": {
-       "bindings": [
-         {
-           "name": "MCP_OBJECT",
-           "class_name": "PaidMCP"
-         }
-       ]
-     },
-     "migrations": [
-       {
-         "tag": "v1",
-         "new_sqlite_classes": [
-           "PaidMCP"
-         ]
-       }
      ]
    }
    ```
@@ -205,16 +189,8 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-10-27"
    compatibility_flags = ["nodejs_compat"]
-
-   [[durable_objects.bindings]]
-   name = "MCP_OBJECT"
-   class_name = "PaidMCP"
-
-   [[migrations]]
-   tag = "v1"
-   new_sqlite_classes = ["PaidMCP"]
    ```
 
 3. Store `MPP_SECRET_KEY` as a Worker secret:npmyarnpnpm
@@ -239,43 +215,48 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
 
    ```js
    import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-   import { McpAgent } from "agents/mcp";
+   import { createLegacyMcpHandler } from "agents/mcp";
    import { Mppx, tempo, Transport } from "mppx/server";
    import { z } from "zod";
 
-   export class PaidMCP extends McpAgent {
-   	server = new McpServer({ name: "paid-search", version: "1.0.0" });
+   function createServer(env) {
+   	const server = new McpServer({ name: "paid-search", version: "1.0.0" });
+   	const mppx = Mppx.create({
+   		methods: [tempo.charge({ testnet: true })],
+   		secretKey: env.MPP_SECRET_KEY,
+   		transport: Transport.mcpSdk(),
+   	});
 
-   	async init() {
-   		const mppx = Mppx.create({
-   			methods: [tempo.charge({ testnet: true })],
-   			secretKey: this.env.MPP_SECRET_KEY,
-   			transport: Transport.mcpSdk(),
-   		});
+   	server.registerTool(
+   		"premium_search",
+   		{
+   			description: "Search premium content",
+   			inputSchema: { query: z.string() },
+   		},
+   		async ({ query }, extra) => {
+   			const payment = await mppx.charge({
+   				amount: "0.01",
+   				currency: "0x20c0000000000000000000000000000000000000",
+   				description: "Premium search",
+   				recipient: "<YOUR_WALLET_ADDRESS>",
+   			})(extra);
 
-   		this.server.tool(
-   			"premium_search",
-   			"Search premium content",
-   			{ query: z.string() },
-   			async ({ query }, extra) => {
-   				const payment = await mppx.charge({
-   					amount: "0.01",
-   					currency: "0x20c0000000000000000000000000000000000000",
-   					description: "Premium search",
-   					recipient: "<YOUR_WALLET_ADDRESS>",
-   				})(extra);
+   			if (payment.status === 402) throw payment.challenge;
 
-   				if (payment.status === 402) throw payment.challenge;
+   			return payment.withReceipt({
+   				content: [{ type: "text", text: `Results for: ${query}` }],
+   			});
+   		},
+   	);
 
-   				return payment.withReceipt({
-   					content: [{ type: "text", text: `Results for: ${query}` }],
-   				});
-   			},
-   		);
-   	}
+   	return server;
    }
 
-   export default PaidMCP.serve("/mcp");
+   export default {
+   	fetch(request, env, ctx) {
+   		return createLegacyMcpHandler(createServer(env))(request, env, ctx);
+   	},
+   };
    ```
 
    *src/index.tsts*
@@ -284,45 +265,50 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
 
    ```ts
    import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-   import { McpAgent } from "agents/mcp";
+   import { createLegacyMcpHandler } from "agents/mcp";
    import { Mppx, tempo, Transport } from "mppx/server";
    import { z } from "zod";
 
    type PaymentEnv = Env & { MPP_SECRET_KEY: string };
 
-   export class PaidMCP extends McpAgent<PaymentEnv> {
-     server = new McpServer({ name: "paid-search", version: "1.0.0" });
+   function createServer(env: PaymentEnv) {
+     const server = new McpServer({ name: "paid-search", version: "1.0.0" });
+     const mppx = Mppx.create({
+       methods: [tempo.charge({ testnet: true })],
+       secretKey: env.MPP_SECRET_KEY,
+       transport: Transport.mcpSdk(),
+     });
 
-     async init() {
-       const mppx = Mppx.create({
-         methods: [tempo.charge({ testnet: true })],
-         secretKey: this.env.MPP_SECRET_KEY,
-         transport: Transport.mcpSdk(),
-       });
+     server.registerTool(
+       "premium_search",
+       {
+         description: "Search premium content",
+         inputSchema: { query: z.string() },
+       },
+       async ({ query }, extra) => {
+         const payment = await mppx.charge({
+           amount: "0.01",
+           currency: "0x20c0000000000000000000000000000000000000",
+           description: "Premium search",
+           recipient: "<YOUR_WALLET_ADDRESS>",
+         })(extra);
 
-       this.server.tool(
-         "premium_search",
-         "Search premium content",
-         { query: z.string() },
-         async ({ query }, extra) => {
-           const payment = await mppx.charge({
-             amount: "0.01",
-             currency: "0x20c0000000000000000000000000000000000000",
-             description: "Premium search",
-             recipient: "<YOUR_WALLET_ADDRESS>",
-           })(extra);
+         if (payment.status === 402) throw payment.challenge;
 
-           if (payment.status === 402) throw payment.challenge;
+         return payment.withReceipt({
+           content: [{ type: "text", text: `Results for: ${query}` }],
+         });
+       },
+     );
 
-           return payment.withReceipt({
-             content: [{ type: "text", text: `Results for: ${query}` }],
-           });
-         },
-       );
-     }
+     return server;
    }
 
-   export default PaidMCP.serve("/mcp");
+   export default {
+     fetch(request, env, ctx) {
+       return createLegacyMcpHandler(createServer(env))(request, env, ctx);
+     },
+   } satisfies ExportedHandler<PaymentEnv>;
    ```
 
 5. Deploy the Worker:npmyarnpnpm
@@ -352,5 +338,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/#page","headline":"Accept payments with MPP","description":"Accept Machine Payments Protocol (MPP) payments from an origin, Cloudflare Worker route, or Model Context Protocol (MCP) tool.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/og.png?v=c8d7691096adf0d2","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/#page","headline":"Accept payments with MPP","description":"Accept Machine Payments Protocol (MPP) payments from an origin, Cloudflare Worker route, or Model Context Protocol (MCP) tool.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/og.png?v=c8d7691096adf0d2","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

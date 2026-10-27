@@ -14,21 +14,21 @@ This page explains how to configure the ClickHouse data source, including connec
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
-- **Plugin:** The ClickHouse data source plugin installed. For Grafana version compatibility, see [Requirements](/docs/plugins/grafana-clickhouse-datasource/latest/#requirements).
+- **Plugin:** The ClickHouse data source plugin installed. For Grafana version compatibility, see [Requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/#requirements).
 - **ClickHouse:** A running ClickHouse server and a user with read-only access (or the permissions described below).
 - **Network access:** The Grafana server can reach the ClickHouse server on the intended port (HTTP: 8123 or 8443 with TLS; Native: 9000 or 9440 with TLS).
 
 > Note
 >
-> **Grafana Cloud users:** If your ClickHouse server is behind a firewall, you must allowlist the Grafana Cloud outbound IP addresses so that queries can reach your database. For the current list of IPs, refer to [Allow Grafana Cloud outbound traffic](/docs/grafana-cloud/account-management/allow-traffic/).
+> **Grafana Cloud users:** If your ClickHouse server is behind a firewall, you must allowlist the Grafana Cloud outbound IP addresses so that queries can reach your database. For the current list of IPs, refer to [Allow Grafana Cloud outbound traffic](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/account-management/allow-traffic/).
 >
-> The published list covers standard outbound IPs but may not include every address used by your specific Grafana Cloud stack. If connections are still blocked after allowlisting the documented IPs, check your firewall or ClickHouse server logs for the rejected source addresses and [open a support ticket](/profile/org#support) so the Grafana team can confirm the full set of IPs for your stack.
+> The published list covers standard outbound IPs but may not include every address used by your specific Grafana Cloud stack. If connections are still blocked after allowlisting the documented IPs, check your firewall or ClickHouse server logs for the rejected source addresses and [open a support ticket](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) so the Grafana team can confirm the full set of IPs for your stack.
 
 ## ClickHouse user and permissions
 
 Grafana executes queries exactly as written and does not validate or restrict SQL. Use a **read-only ClickHouse user** for this data source to avoid accidental or destructive operations (such as modifying or deleting tables) while still allowing dashboards and queries to run.
 
-If your ClickHouse administrator has already given you a read-only user and connection details, you can skip to [Add the data source](#add-the-data-source).
+If your ClickHouse administrator has already given you a read-only user and connection details, you can skip to [Add the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#add-the-data-source).
 
 ### Recommended permissions
 
@@ -69,7 +69,7 @@ When `readonly = 1` is set, ClickHouse blocks all setting changes by default. To
 
 Example (SQL):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Allow the grafana_reader profile to modify max_execution_time while remaining read-only
@@ -78,7 +78,7 @@ ALTER SETTINGS PROFILE grafana_reader
   SETTINGS max_execution_time CHANGEABLE_IN_READONLY;
 ```
 
-If you see errors such as `DB::Exception: Cannot modify 'max_execution_time': Setting is locked` at query time, the user is missing this permission. Refer to [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) for more details.
+If you see errors such as `DB::Exception: Cannot modify 'max_execution_time': Setting is locked` at query time, the user is missing this permission. Refer to [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) for more details.
 
 > Note
 >
@@ -119,19 +119,19 @@ After adding the data source, configure the following settings.
 
 Expand table
 
-| Setting                    | Description                                                                                                                                                                                                                                                                     |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                   | The name used to refer to the data source in panels and queries.                                                                                                                                                                                                                |
-| **Default**                | Toggle to make this the default data source for new panels.                                                                                                                                                                                                                     |
-| **Server address**         | The ClickHouse server host (for example, `localhost`).                                                                                                                                                                                                                          |
-| **Protocol**               | **Native** or **HTTP**.                                                                                                                                                                                                                                                         |
-| **Port**                   | Port number; depends on protocol and whether TLS is enabled (see default ports above).                                                                                                                                                                                          |
-| **Secure connection**      | Enable when your ClickHouse server uses TLS. When enabled, update the **Port** to a TLS-enabled port and configure [TLS settings](#tls-settings) below.                                                                                                                         |
-| **Username**               | ClickHouse user name. Use a [read-only user](#clickhouse-user-and-permissions).                                                                                                                                                                                                 |
-| **Password**               | ClickHouse user password.                                                                                                                                                                                                                                                       |
-| **Forward OAuth Identity** | Forward the logged-in Grafana user’s OAuth token to ClickHouse as a JWT instead of authenticating with the configured username and password. ClickHouse Cloud only; requires a [secure (TLS) connection](#tls-settings). See [Forward OAuth Identity](#forward-oauth-identity). |
-| **Default database**       | The database the query builder uses when no database is selected. If left blank, the plugin defaults to `default`.                                                                                                                                                              |
-| **Default table**          | The default table used by the query builder.                                                                                                                                                                                                                                    |
+| Setting                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                   | The name used to refer to the data source in panels and queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Default**                | Toggle to make this the default data source for new panels.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Server address**         | The ClickHouse server host (for example, `localhost`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Protocol**               | **Native** or **HTTP**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Port**                   | Port number; depends on protocol and whether TLS is enabled (see default ports above).                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Secure connection**      | Enable when your ClickHouse server uses TLS. When enabled, update the **Port** to a TLS-enabled port and configure [TLS settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#tls-settings) below.                                                                                                                                                                                                                                                  |
+| **Username**               | ClickHouse user name. Use a [read-only user](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#clickhouse-user-and-permissions).                                                                                                                                                                                                                                                                                                                          |
+| **Password**               | ClickHouse user password.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Forward OAuth Identity** | Forward the logged-in Grafana user’s OAuth token to ClickHouse as a JWT instead of authenticating with the configured username and password. ClickHouse Cloud only; requires a [secure (TLS) connection](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#tls-settings). See [Forward OAuth Identity](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#forward-oauth-identity). |
+| **Default database**       | The database the query builder uses when no database is selected. If left blank, the plugin defaults to `default`.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Default table**          | The default table used by the query builder.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 ### Default database guidance
 
@@ -180,7 +180,7 @@ Expand table
 | **All databases** | Allows queries against any database and table the ClickHouse user can read. Use this mode for general exploration and dashboards that query multiple tables. |
 | **Single source** | Focuses the data source on one logs or traces table. Choose a **Signal type**, then configure the database, table, and column mappings for that source.      |
 
-Use **Single source** when the data source is dedicated to one logs or traces table, such as an OpenTelemetry table. This keeps the logs or traces schema settings with the selected source and avoids reconfiguring column mappings in each query. Single source data sources use the [compact query mode](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#compact-query-mode) in the query editor.
+Use **Single source** when the data source is dedicated to one logs or traces table, such as an OpenTelemetry table. This keeps the logs or traces schema settings with the selected source and avoids reconfiguring column mappings in each query. Single source data sources use the [compact query mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#compact-query-mode) in the query editor.
 
 ### Additional settings
 
@@ -206,7 +206,7 @@ These settings are appended to each query’s `SETTINGS` clause. They do not rep
 
 ### Logs configuration
 
-The data source includes a dedicated configuration section for log queries. These settings control the default column mappings used by the [logs query builder](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#logs-query-builder):
+The data source includes a dedicated configuration section for log queries. These settings control the default column mappings used by the [logs query builder](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#logs-query-builder):
 
 Expand table
 
@@ -228,7 +228,7 @@ In **Single source** mode, the **Columns** field is a picker of the selected tab
 
 ### Traces configuration
 
-The data source includes a dedicated configuration section for trace queries. These settings control the default column mappings used by the [traces query builder](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#traces-query-builder):
+The data source includes a dedicated configuration section for trace queries. These settings control the default column mappings used by the [traces query builder](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/#traces-query-builder):
 
 Expand table
 
@@ -262,7 +262,7 @@ If queries fail with an `Unknown identifier 'TimestampTime'` error after upgradi
 >
 > Only available for Grafana Cloud users.
 
-Private data source connect (PDC) allows you to establish a private, secured connection between a Grafana Cloud instance (or stack) and data sources secured within a private network. Select the drop-down to locate the URL for PDC. For more information, refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+Private data source connect (PDC) allows you to establish a private, secured connection between a Grafana Cloud instance (or stack) and data sources secured within a private network. Select the drop-down to locate the URL for PDC. For more information, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 Click **Manage private data source connect** to go to your PDC connection page, where you can find your PDC configuration details.
 
@@ -321,21 +321,21 @@ To enable it, turn on **Forward OAuth Identity** in the **Database credentials**
   > Warning
   >
   > Enabling **Allow service account fallback** lets alert rules and other backend queries fall back to the configured username and password. Those queries then authenticate as the shared service account and are **not** subject to the per-user [row policies](https://clickhouse.com/docs/en/operations/access-rights/#row-policies), quotas, or query-log attribution that OAuth pass-through enforces for interactive queries. As a result, an alert may read rows a given dashboard user could not see interactively. Scope the configured service account to the least privilege your alert queries require. The plugin emits a backend warning log each time this fallback is exercised.
-- **Connections are keyed per user.** Enabling JWT authentication automatically turns on header forwarding, so each Grafana user opens a separate ClickHouse connection. See [Connection pool implications](#connection-pool-implications) for sizing guidance.
+- **Connections are keyed per user.** Enabling JWT authentication automatically turns on header forwarding, so each Grafana user opens a separate ClickHouse connection. See [Connection pool implications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#connection-pool-implications) for sizing guidance.
 
 ## Verify the connection
 
 Once you have configured your ClickHouse connection settings, click **Save &amp; test** to verify the connection. When the connection test succeeds, you see **Data source is working**. A successful test confirms that Grafana can reach ClickHouse and that the credentials are valid.
 
-If the test fails, refer to [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) for common configuration errors and solutions.
+If the test fails, refer to [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) for common configuration errors and solutions.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Example ClickHouse data source configuration with basic authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -394,7 +394,7 @@ datasources:
 
 You can provision the ClickHouse data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). Example with basic authentication:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "clickhouse" {
@@ -434,6 +434,6 @@ For more options and authentication methods, refer to the [Grafana Terraform pro
 
 After configuring the data source:
 
-- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Build queries with the SQL editor or query builder.
-- [ClickHouse template variables](/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Use variables in dashboards and queries.
-- [ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/): Overview, supported features, and pre-built dashboards.
+- [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Build queries with the SQL editor or query builder.
+- [ClickHouse template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Use variables in dashboards and queries.
+- [ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/): Overview, supported features, and pre-built dashboards.

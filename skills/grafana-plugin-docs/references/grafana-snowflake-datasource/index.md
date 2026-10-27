@@ -37,27 +37,27 @@ Expand table
 
 To get started with the Snowflake data source plugin, refer to the following topics:
 
-- [Configure the Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/configure/)
-- [Snowflake query editor](/docs/plugins/grafana-snowflake-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-snowflake-datasource/latest/template-variables/)
-- [Alerting](/docs/plugins/grafana-snowflake-datasource/latest/alerting/)
-- [Annotations](/docs/plugins/grafana-snowflake-datasource/latest/annotations/)
-- [Troubleshooting](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/)
+- [Configure the Snowflake data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/)
+- [Snowflake query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/template-variables/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/alerting/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/annotations/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Snowflake data with natural language.
-- Add [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to overlay event data on your graphs.
-- Use [Templates and variables](/docs/grafana/latest/dashboards/variables/) to create dynamic, reusable dashboards.
-- Apply [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to process and combine data.
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Set up [Alerting](/docs/grafana/latest/alerting/) to get notified when metrics exceed thresholds.
+- Use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to query your Snowflake data with natural language.
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to overlay event data on your graphs.
+- Use [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) to create dynamic, reusable dashboards.
+- Apply [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to process and combine data.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) to get notified when metrics exceed thresholds.
 
 ## Grafana Assistant
 
-You can use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to explore and query your Snowflake data using natural language. The Assistant discovers the databases, schemas, and tables available in your Snowflake data source, builds and runs SQL queries, and visualizes the results on a dashboard.
+You can use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to explore and query your Snowflake data using natural language. The Assistant discovers the databases, schemas, and tables available in your Snowflake data source, builds and runs SQL queries, and visualizes the results on a dashboard.
 
 To query Snowflake, mention your Snowflake data source with the `@` symbol in your prompt. For example:
 
@@ -65,7 +65,7 @@ To query Snowflake, mention your Snowflake data source with the `@` symbol in yo
 - `Show the top 10 longest-running queries from @snowflake-ds over the last 7 days.`
 - `Query @snowflake-ds for daily credit usage by warehouse this month.`
 
-For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+For more information, refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/).
 
 ## Pre-built dashboards
 
@@ -87,11 +87,11 @@ To import a pre-built dashboard:
 4. Select the **Dashboards** tab.
 5. Select **Import** next to the dashboard you want to use.
 
-For more information, refer to [Import a dashboard](/docs/grafana/latest/dashboards/export-import/#importing-a-dashboard).
+For more information, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/export-import/#importing-a-dashboard).
 
 ## Plugin updates
 
-To update the plugin on a self-managed Grafana instance, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
+To update the plugin on a self-managed Grafana instance, refer to [Update a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
 
 > Note
 >

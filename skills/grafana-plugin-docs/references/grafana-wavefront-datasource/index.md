@@ -11,27 +11,27 @@ The Wavefront data source lets you query and visualize metrics from VMware Aria 
 
 > Note
 >
-> The Wavefront data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/).
+> The Wavefront data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 ## Supported features
 
 Expand table
 
-| Feature            | Supported                                                                                                                               |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Metrics            | Yes                                                                                                                                     |
-| Logs               | No                                                                                                                                      |
-| Traces             | No                                                                                                                                      |
-| Alerting           | Yes (Grafana-managed). Refer to [Alerting with the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/alerting/). |
-| Annotations        | Yes (via Wavefront events)                                                                                                              |
-| Template variables | Yes                                                                                                                                     |
-| Ad hoc filters     | Yes                                                                                                                                     |
+| Feature            | Supported                                                                                                                                                                                           |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Metrics            | Yes                                                                                                                                                                                                 |
+| Logs               | No                                                                                                                                                                                                  |
+| Traces             | No                                                                                                                                                                                                  |
+| Alerting           | Yes (Grafana-managed). Refer to [Alerting with the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/). |
+| Annotations        | Yes (via Wavefront events)                                                                                                                                                                          |
+| Template variables | Yes                                                                                                                                                                                                 |
+| Ad hoc filters     | Yes                                                                                                                                                                                                 |
 
 ## Requirements
 
 Before using the Wavefront data source, make sure you have:
 
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 - Grafana v11.6.7 or later.
 - A Wavefront tenant URL, for example `https://myenvironment.wavefront.com`.
 - A Wavefront API token from a user account or a service account with permission to read metrics and events.
@@ -40,21 +40,21 @@ Before using the Wavefront data source, make sure you have:
 
 The following documents help you get started with the Wavefront data source:
 
-- [Configure the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/configure/)
-- [Wavefront query editor](/docs/plugins/grafana-wavefront-datasource/latest/query-editor/)
-- [Wavefront template variables](/docs/plugins/grafana-wavefront-datasource/latest/template-variables/)
-- [Alerting with the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/alerting/)
-- [Wavefront annotations](/docs/plugins/grafana-wavefront-datasource/latest/annotations/)
-- [Troubleshoot the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/)
+- [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/)
+- [Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/)
+- [Wavefront template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/)
+- [Alerting with the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/)
+- [Wavefront annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/)
+- [Troubleshoot the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query Wavefront data without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape query results.
-- Create [Grafana-managed alert rules](/docs/plugins/grafana-wavefront-datasource/latest/alerting/) from any Wavefront query.
-- Use Wavefront events as [annotations](/docs/plugins/grafana-wavefront-datasource/latest/annotations/) on dashboard panels.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Wavefront data without building a dashboard.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape query results.
+- Create [Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/) from any Wavefront query.
+- Use Wavefront events as [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/) on dashboard panels.
 
 ## Pre-built dashboards
 
@@ -81,4 +81,4 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 - [VMware Aria Operations for Applications documentation](https://docs.vmware.com/en/VMware-Aria-Operations-for-Applications/index.html)
 - [Grafana community forum](https://community.grafana.com/)
-- [Grafana plugin catalog entry](/grafana/plugins/grafana-wavefront-datasource/)
+- [Grafana plugin catalog entry](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-wavefront-datasource/)

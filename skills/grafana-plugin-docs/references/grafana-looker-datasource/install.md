@@ -7,7 +7,7 @@ description: "Install and upgrade the Looker data source plugin for Grafana"
 
 # Install the Looker data source plugin
 
-This document covers how to install, upgrade, and verify the Looker data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Looker data source](/docs/plugins/grafana-looker-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Looker data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Looker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -30,7 +30,7 @@ The Looker data source is a Grafana Enterprise plugin. Before you can install it
 
 To confirm the plugin is available on Grafana Cloud:
 
-1. Go to the [Grafana Cloud portal](/orgs) and sign in.
+1. Go to the [Grafana Cloud portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in.
 2. Select your organization and open the **Plugins** tab to verify the plugin is activated.
 3. If it isn’t listed, confirm your Cloud plan is Pro or Advanced, and contact your Grafana account team to add it.
 
@@ -39,7 +39,7 @@ To confirm the plugin is available on Grafana Cloud:
 To activate the plugin on self-managed Grafana Enterprise:
 
 1. Confirm your Grafana Enterprise license includes the plugin.
-2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 3. Restart Grafana and confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
 ## Install the plugin
@@ -57,7 +57,7 @@ To install on Grafana Cloud:
 
 Install the plugin with the Grafana CLI:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-looker-datasource
@@ -69,7 +69,7 @@ Restart Grafana after installation.
 
 Set the `GF_INSTALL_PLUGINS` environment variable and provide the Enterprise license with `GF_ENTERPRISE_LICENSE_TEXT`:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 docker run -d \
@@ -87,7 +87,7 @@ Add the plugin to your Helm values or the `GF_INSTALL_PLUGINS` environment varia
 
 To install without internet access on the Grafana server:
 
-1. Download the plugin archive on a machine with internet access from the [plugin catalog](/grafana/plugins/grafana-looker-datasource/).
+1. Download the plugin archive on a machine with internet access from the [plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-looker-datasource/).
 2. Transfer the archive to the Grafana server and extract it into the plugins directory.
 3. Confirm the extracted folder is named `grafana-looker-datasource` and contains the complete, unmodified archive contents.
 4. Set ownership on the extracted files and restart Grafana.
@@ -115,7 +115,7 @@ To upgrade on self-managed Grafana:
 
 To install a specific version with the CLI, append the version to the plugin ID:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-looker-datasource <VERSION>
@@ -127,7 +127,7 @@ To roll back to a previous version, install the earlier version with the CLI and
 
 To remove the plugin with the Grafana CLI:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-looker-datasource
@@ -139,9 +139,9 @@ Restart Grafana after removal. For Docker and Kubernetes, remove the plugin ID f
 
 The following are common installation issues and their causes:
 
-- **Plugin doesn’t appear in the catalog.** The plugin isn’t activated for your license or Cloud plan. Refer to [Activate the Enterprise plugin](#activate-the-enterprise-plugin).
+- **Plugin doesn’t appear in the catalog.** The plugin isn’t activated for your license or Cloud plan. Refer to [Activate the Enterprise plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/install/#activate-the-enterprise-plugin).
 - **Install button is missing.** You don’t have the `Organization administrator` role, or the plugin isn’t licensed.
 - **License key errors.** The Enterprise license doesn’t include `grafana-looker-datasource`. Contact your Grafana account team.
 - **Signature errors after a manual extraction.** Grafana signs the plugin, so this usually means an incomplete extraction or a renamed folder. Confirm the folder is named `grafana-looker-datasource` and contains the complete archive contents.
 
-For more help, refer to [Troubleshoot Looker data source issues](/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).
+For more help, refer to [Troubleshoot Looker data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).

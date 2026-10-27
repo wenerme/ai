@@ -11,7 +11,7 @@ This document explains how to use the DynamoDB query editor to query your Dynamo
 
 ## Before you begin
 
-- [Configure the DynamoDB data source](/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
+- [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
 - Verify your IAM identity has `dynamodb:PartiQLSelect` permission on the tables you want to query.
 
 ## Key concepts
@@ -63,7 +63,7 @@ To create a table query:
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "my-table"
@@ -71,7 +71,7 @@ SELECT * FROM "my-table"
 
 To select specific attributes:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT orderId, customerName, orderTotal FROM "orders"
@@ -83,7 +83,7 @@ To display data as a time series, alias a datetime column `AS time` in your quer
 
 > Caution
 >
-> The DynamoDB data source doesn’t support time-range macros such as `$__from`, `$__to`, or `$__timeFilter`. You must use explicit values in time-based `WHERE` clauses. Additionally, ensure the timestamp column’s data type in DynamoDB matches the comparison format in your query. For example, a numeric epoch value stored as a string type causes lexicographic comparison instead of numeric, leading to incorrect results. Refer to [Troubleshooting](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work) for more details.
+> The DynamoDB data source doesn’t support time-range macros such as `$__from`, `$__to`, or `$__timeFilter`. You must use explicit values in time-based `WHERE` clauses. Additionally, ensure the timestamp column’s data type in DynamoDB matches the comparison format in your query. For example, a numeric epoch value stored as a string type causes lexicographic comparison instead of numeric, leading to incorrect results. Refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work) for more details.
 
 > Note
 >
@@ -97,7 +97,7 @@ To create a time-series query:
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT log_time AS time, cpu_usage FROM "server-metrics"
@@ -113,7 +113,7 @@ To create multi-line time series, your query must return at least three fields i
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT log_time AS time, machine_group, avg(disk_free) AS avg_disk_free
@@ -130,7 +130,7 @@ The following examples demonstrate common query patterns with DynamoDB.
 
 ### Retrieve all items from a table
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "my-table"
@@ -138,7 +138,7 @@ SELECT * FROM "my-table"
 
 ### Filter by partition key
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders" WHERE customerId = 'C001'
@@ -146,7 +146,7 @@ SELECT * FROM "orders" WHERE customerId = 'C001'
 
 ### Aggregate metrics over time
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, avg(temperature) AS avg_temp
@@ -158,7 +158,7 @@ ORDER BY timestamp
 
 ### Count items by category
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT category, count(*) AS total FROM "products" GROUP BY category
@@ -168,7 +168,7 @@ SELECT category, count(*) AS total FROM "products" GROUP BY category
 
 Use dot notation to query a global secondary index:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders"."customerIndex" WHERE customerId = 'C001'
@@ -176,7 +176,7 @@ SELECT * FROM "orders"."customerIndex" WHERE customerId = 'C001'
 
 ### Filter with multiple conditions
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT orderId, orderTotal, status
@@ -192,6 +192,6 @@ WHERE customerId = 'C001' AND status IN ('pending', 'shipped')
 ## Next steps
 
 - Refer to the [PartiQL reference for DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ql-reference.html) for the full query language syntax.
-- [Use template variables](/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/) in your queries.
-- [Set up alerting](/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.
-- [Add annotations](/docs/plugins/grafana-dynamodb-datasource/latest/annotations/) to your dashboards.
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/) in your queries.
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/annotations/) to your dashboards.

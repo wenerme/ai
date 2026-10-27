@@ -7,12 +7,12 @@ description: "Set up Grafana Alerting with the Yugabyte data source"
 
 # Yugabyte alerting
 
-The Yugabyte data source supports Grafana Alerting, which lets you define alert rules that evaluate SQL queries against YugabyteDB and trigger notifications when conditions are met. For general information about Grafana Alerting, refer to [Alerting](/docs/grafana/latest/alerting/).
+The Yugabyte data source supports Grafana Alerting, which lets you define alert rules that evaluate SQL queries against YugabyteDB and trigger notifications when conditions are met. For general information about Grafana Alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
-- Understand [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
+- Understand [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -23,7 +23,7 @@ Alert rules evaluate query results to determine whether a condition is met. Yuga
 - **Time filtering:** Use the `$__timeFilter(column)` macro so the query only evaluates data within the alert’s evaluation window.
 - **One series per alert instance:** If the query returns multiple series, for example by adding a `GROUP BY service` column, Grafana creates a separate alert instance for each series. Return a single series unless you intend to alert on each series independently.
 
-You can combine multiple queries (A, B, C) with Reduce and Math expressions to build complex alert conditions. Refer to [Queries and conditions](/docs/grafana/latest/alerting/fundamentals/alert-rules/queries-conditions/) for details.
+You can combine multiple queries (A, B, C) with Reduce and Math expressions to build complex alert conditions. Refer to [Queries and conditions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/alert-rules/queries-conditions/) for details.
 
 ## Create an alert rule
 
@@ -47,7 +47,7 @@ The following examples show SQL queries suitable for alert rules.
 
 This query returns the number of errors over time for a specific service:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -65,7 +65,7 @@ Configure a **Reduce** expression with **Last** to get the most recent value, th
 
 This query returns average response time, which is useful for detecting latency degradation:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -85,7 +85,7 @@ You can use multiple queries to compare values. For example, to alert when the e
 
 **Query A** – error count:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -99,7 +99,7 @@ ORDER BY time
 
 **Query B** – total request count:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -115,6 +115,6 @@ Add **Reduce** expressions for each query using **Last**, then add a **Math** ex
 
 ## Next steps
 
-- Refer to the full [Grafana Alerting documentation](/docs/grafana/latest/alerting/) for details on alert conditions, notification policies, and contact points.
-- Learn how to write queries in the [Yugabyte query editor](/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
-- [Troubleshoot Yugabyte data source issues](/docs/plugins/grafana-yugabyte-datasource/latest/troubleshooting/) if alerts aren’t firing as expected.
+- Refer to the full [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) for details on alert conditions, notification policies, and contact points.
+- Learn how to write queries in the [Yugabyte query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
+- [Troubleshoot Yugabyte data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/troubleshooting/) if alerts aren’t firing as expected.

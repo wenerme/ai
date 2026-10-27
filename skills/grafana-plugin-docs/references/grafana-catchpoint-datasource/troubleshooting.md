@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Catchpoint data source in Grafana, c
 
 # Troubleshoot Catchpoint data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Catchpoint data source. For configuration instructions, refer to [Configure the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Catchpoint data source. For configuration instructions, refer to [Configure the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
 
 ## Installation errors
 
@@ -131,7 +131,7 @@ This is a known limitation of the Catchpoint API, not the Grafana plugin.
 
 **Solutions:**
 
-1. Add a [transformation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/), such as **Filter data by values**, to keep only the dimension values you want.
+1. Add a [transformation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/), such as **Filter data by values**, to keep only the dimension values you want.
 2. Use panel or legend filters to focus on specific series.
 3. Reduce the number of selected dimensions to limit how the data is broken down.
 
@@ -206,7 +206,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

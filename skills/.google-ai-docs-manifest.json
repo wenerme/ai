@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 80096,
-    "updatedAt": "2026-10-27T00:59:52.782Z"
+    "size": 80263,
+    "updatedAt": "2026-10-27T10:33:05.147Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -200,14 +200,14 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 127247,
-    "updatedAt": "2026-10-23T01:03:30.766Z"
+    "size": 139506,
+    "updatedAt": "2026-10-27T10:33:09.511Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14347,
-    "updatedAt": "2026-10-07T05:47:23.357Z"
+    "size": 14683,
+    "updatedAt": "2026-10-27T10:33:09.920Z"
   },
   "google-ai-docs/model-tuning.md": {
     "url": "https://ai.google.dev/gemini-api/docs/model-tuning",
@@ -410,8 +410,8 @@
   "google-ai-docs/latest-model.md": {
     "url": "https://ai.google.dev/gemini-api/docs/latest-model",
     "skill": "google-ai-docs",
-    "size": 17087,
-    "updatedAt": "2026-10-17T00:57:48.851Z"
+    "size": 17560,
+    "updatedAt": "2026-10-27T10:33:31.226Z"
   },
   "google-ai-docs/interactions.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions",

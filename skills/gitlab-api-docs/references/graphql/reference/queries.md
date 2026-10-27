@@ -1335,6 +1335,7 @@ Find groups. This field is a [connection](objects.md#connections-and-pagination)
 | `sort` | [`String`](scalars.md#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply. | `"name_asc"` |
 | `topLevelOnly` | [`Boolean`](scalars.md#boolean) | Only include top-level groups. | `false` |
 | `visibilityLevel` | [`VisibilityLevelsEnum`](enums.md#visibilitylevelsenum) | Filter groups by visibility level. |  |
+| `withDuoAgentPlatformEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Return only groups whose top-level group has Duo Agent Platform turned on. On GitLab Self-Managed and GitLab Dedicated, returns no groups when Duo Agent Platform is turned off for the instance. | `false` |
 | `withKnowledgeGraphEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Return only groups with Knowledge Graph enabled. | `false` |
 
 ## `instanceExternalAuditEventDestinations`

@@ -13,7 +13,7 @@ Annotations overlay event markers on dashboard graphs so you can correlate metri
 
 Before you add annotations, ensure you have:
 
-- [Configured the Amazon Managed Service for Prometheus data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+- [Configured the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
 - A metric in your workspace that marks the events you want to annotate, such as `ALERTS` or a custom event metric.
 
 ## Add an annotation query
@@ -47,7 +47,7 @@ The following examples show common annotation queries. After you enter a query, 
 
 To create an annotation each time a Prometheus alert fires, query the built-in `ALERTS` metric:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 ALERTS{alertstate="firing"}
@@ -57,7 +57,7 @@ Set the **Title** to `{{alertname}}` and the **Text** to `{{alertstate}}` so eac
 
 To mark when a monitored target goes down, query for targets that report as down:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 up == 0
@@ -67,7 +67,7 @@ Set the **Title** to `{{job}} down` and add `{{instance}}` to the **Tags** field
 
 To mark host reboots, query for changes in the node boot time within each step:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 changes(node_boot_time_seconds[$__interval]) > 0
@@ -75,7 +75,7 @@ changes(node_boot_time_seconds[$__interval]) > 0
 
 To place annotations from a metric that stores an event time as its value, such as a deployment timestamp, enable **Series value as timestamp**:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 deployment_timestamp_seconds

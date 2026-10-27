@@ -13,8 +13,8 @@ Use template variables to create dynamic, reusable dashboards. Template variable
 
 Before you use template variables, ensure you have the following prerequisites.
 
-- [Configure the Amazon Athena data source](/docs/plugins/grafana-athena-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Amazon Athena data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -38,7 +38,7 @@ To create a query variable:
 4. Select the Amazon Athena data source.
 5. Enter a SQL query that returns the values you want to use as variable options.
 
-For more information, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
+For more information, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
 
 ## Query examples
 
@@ -46,7 +46,7 @@ Any value queried from an Amazon Athena table can be used as a variable. The fol
 
 ### List distinct values from a column
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM my_table
@@ -56,7 +56,7 @@ SELECT DISTINCT region FROM my_table
 
 To display a custom name for each variable option while using a different value, alias the columns as `text` and `value`. The `value` column must be a string type or cast to a string type.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname AS text, id AS value FROM my_table
@@ -64,9 +64,9 @@ SELECT hostname AS text, id AS value FROM my_table
 
 ## Use variables in queries
 
-After creating a variable, reference it in your Amazon Athena queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, use `$variable_name` or `${variable_name}` in your SQL queries.
+After creating a variable, reference it in your Amazon Athena queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, use `$variable_name` or `${variable_name}` in your SQL queries.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT time, value
@@ -79,5 +79,5 @@ Template variables are also supported in the query editor’s resource selectors
 
 ## Next steps
 
-- [Amazon Athena query editor](/docs/plugins/grafana-athena-datasource/latest/query-editor/)
-- [Grafana template variables](/docs/grafana/latest/dashboards/variables/)
+- [Amazon Athena query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/)
+- [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)

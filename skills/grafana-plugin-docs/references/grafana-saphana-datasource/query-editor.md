@@ -7,9 +7,9 @@ description: "Use the SAP HANA query editor in Grafana to query your SAP HANA da
 
 # SAP HANA query editor
 
-The SAP HANA query editor is where you turn your database into dashboards. Write SQL directly against your SAP HANA instance, then shape the results into time series, tables, or logs. Open it from any dashboard panel by clicking the panel menu and selecting **Edit**, or from the [Explore page](/docs/grafana/latest/explore/) for quick, exploratory queries.
+The SAP HANA query editor is where you turn your database into dashboards. Write SQL directly against your SAP HANA instance, then shape the results into time series, tables, or logs. Open it from any dashboard panel by clicking the panel menu and selecting **Edit**, or from the [Explore page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) for quick, exploratory queries.
 
-This document focuses on what’s specific to querying SAP HANA. For guidance that applies to every data source, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
+This document focuses on what’s specific to querying SAP HANA. For guidance that applies to every data source, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 ## Key concepts
 
@@ -53,7 +53,7 @@ For time series visualizations, your query must return at least one time column 
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT "ts" AS "time", "temperature" AS "value"
@@ -64,7 +64,7 @@ ORDER BY "ts" ASC
 
 To return multiple series from a single query, include a text column whose values become the series names. The following query returns one series per region:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -83,7 +83,7 @@ For table visualizations, your query can return any columns. The results display
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT username, city, age
@@ -127,7 +127,7 @@ The `$__timeFilter(<time_column>)` macro applies the dashboard time range to a c
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Query with macro
@@ -143,7 +143,7 @@ If your time column is stored in a custom format, specify the format as the seco
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Time column in YYYYMMDDHH24MISS format (e.g., 20210421162012)
@@ -163,7 +163,7 @@ For epoch timestamps, use the `"epoch"` format with a precision specifier.
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Epoch seconds (e.g., 1257894000)
@@ -184,7 +184,7 @@ WHERE $__timeFilter("TIMESTAMP","epoch","ns")
 
 You can also use shorthand notation:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- These are equivalent
@@ -204,7 +204,7 @@ These macros return conditions based on the Grafana **From** or **To** time.
 
 **Examples:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 $__fromTimeFilter("TS")                         -- "TS" > '2014-11-12T11:45:26Z'
@@ -220,7 +220,7 @@ These macros return SAP HANA timestamp literals for the dashboard’s **From** a
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Use timestamps directly in expressions
@@ -244,7 +244,7 @@ The round mode is passed directly to the SAP HANA `SERIES_ROUND` function. Commo
 
 **Example with rounding mode:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Round timestamps down to the nearest hour
@@ -270,7 +270,7 @@ Expand table
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Query with macro
@@ -296,7 +296,7 @@ ORDER BY SERIES_ROUND("timestamp", 'INTERVAL 1 HOUR') ASC
 
 Instead of using a fixed interval, use `$__interval` to let Grafana calculate the interval based on the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT $__timeGroup(timestamp, $__interval), sum("value") as "value"
@@ -306,13 +306,13 @@ GROUP BY $__timeGroup(timestamp, $__interval)
 ORDER BY $__timeGroup(timestamp, $__interval) ASC
 ```
 
-For more information about global variables, refer to [Built-in variables](/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
+For more information about global variables, refer to [Built-in variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
 
 #### Use interval values in calculations
 
 Use `$__interval_s` or `$__interval_ms` when you need the interval as a number for calculations:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Calculate rate per second using the interval
@@ -366,7 +366,7 @@ Expand table
 | `${__to}`                | `1594671549254`            | Unix millisecond epoch of the **To** time.                     |
 | `${__to:date}`           | `2020-07-13T20:19:09.254Z` | ISO 8601/RFC 3339 (default when no format is given).           |
 
-For the complete list, refer to [Global variables](/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
+For the complete list, refer to [Global variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
 
 ## Visualize data as logs
 
@@ -379,13 +379,13 @@ Your log query must include:
 - At least one **time column** (timestamp)
 - At least one **string column** for the log content
 
-Optionally, you can include a **level** column to set the log level for each row. For supported log levels and their keywords, refer to [Logs in Explore](/docs/grafana/latest/explore/logs-integration/).
+Optionally, you can include a **level** column to set the log level for each row. For supported log levels and their keywords, refer to [Logs in Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/logs-integration/).
 
 Any additional columns in your query are treated as additional fields or detected fields in the logs.
 
 ### Example log query
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT 'hello foo' AS "content", timestamp'2021-12-31 23:59:59' AS "start_time", 'warn'  AS "level" FROM DUMMY UNION

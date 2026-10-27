@@ -86,7 +86,7 @@ The **Authentication** drop-down lists **Managed Identity**, **Workload Identity
 
 The plugin backend attaches Azure tokens only when Azure authentication is enabled on the Grafana server. On self-managed Grafana, add the following setting:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [auth]
@@ -101,7 +101,7 @@ If you’ve customized `forward_settings_to_plugins` under `[azure]`, include `g
 
 > Note
 >
-> On Grafana Cloud, Azure authentication isn’t enabled by default and isn’t a self-service setting. You must contact [Grafana Support](/help/) to enable it for your instance. Until it’s enabled, **Save &amp; test** returns a generic `401 Unauthorized` even when your credentials are valid.
+> On Grafana Cloud, Azure authentication isn’t enabled by default and isn’t a self-service setting. You must contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable it for your instance. Until it’s enabled, **Save &amp; test** returns a generic `401 Unauthorized` even when your credentials are valid.
 
 ### App Registration
 
@@ -126,7 +126,7 @@ Use Azure Managed Identity when Grafana runs in Azure, such as on a virtual mach
 
 Enable managed identity in the Grafana server configuration:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -135,7 +135,7 @@ managed_identity_enabled = true
 
 To use a user-assigned managed identity instead of the system-assigned identity, also set:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -151,7 +151,7 @@ Use Azure Workload Identity when Grafana runs in Kubernetes with workload identi
 
 Enable workload identity in the Grafana server configuration:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -160,7 +160,7 @@ workload_identity_enabled = true
 
 Optional overrides:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -182,7 +182,7 @@ Forward the signed-in Grafana user’s Microsoft Entra ID credentials so each us
 
 Enable current user authentication in the Grafana server configuration:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -191,7 +191,7 @@ user_identity_enabled = true
 
 By default, this also enables fallback service credentials. To disable fallback credentials for the whole instance:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -205,11 +205,11 @@ Query caching is disabled by default for data sources that use Current User auth
 
 ## Private data source connect
 
-The data source supports [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Azure Monitor workspace that isn’t exposed to the public internet.
+The data source supports [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Azure Monitor workspace that isn’t exposed to the public internet.
 
 To use PDC with this data source:
 
-1. Set up a PDC connection. Refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+1. Set up a PDC connection. Refer to [Configure Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 2. On the data source configuration page, expand **Secure Socks Proxy** and select the PDC connection.
 3. Click **Save &amp; test** to verify connectivity through the private network.
 
@@ -250,7 +250,7 @@ For more information, refer to [Resource-scoped PromQL queries](https://learn.mi
 
 ## Verify the connection
 
-To verify the connection, click **Save &amp; test**. When the configuration is valid, Grafana displays a success message such as **Successfully queried the Prometheus API.** If the test fails, refer to [Troubleshooting](/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/).
+To verify the connection, click **Save &amp; test**. When the configuration is valid, Grafana displays a success message such as **Successfully queried the Prometheus API.** If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
@@ -260,11 +260,11 @@ The backend reads the client secret from `secureJsonData.azureClientSecret`. A l
 
 ### Provision with a YAML file
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions the data source with App Registration authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -291,7 +291,7 @@ datasources:
 
 To use Managed Identity:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -309,7 +309,7 @@ datasources:
 
 To use Workload Identity:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -327,7 +327,7 @@ datasources:
 
 To use Current User authentication with App Registration fallback credentials:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -365,7 +365,7 @@ You can manage the data source with the [Grafana Terraform provider](https://reg
 
 The following example provisions the data source with App Registration authentication:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "azureprometheus" {
@@ -393,7 +393,7 @@ resource "grafana_data_source" "azureprometheus" {
 
 To use Managed Identity instead of a client secret:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "azureprometheus" {
@@ -412,7 +412,7 @@ resource "grafana_data_source" "azureprometheus" {
 
 To use Workload Identity:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "azureprometheus" {
@@ -431,7 +431,7 @@ resource "grafana_data_source" "azureprometheus" {
 
 To use Current User authentication with App Registration fallback credentials:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "azureprometheus" {
@@ -461,7 +461,7 @@ resource "grafana_data_source" "azureprometheus" {
 
 Define the referenced variables, for example in a `variables.tf` file:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 variable "workspace" {

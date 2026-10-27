@@ -15,8 +15,8 @@ With SLO performance, you can:
 - Review how many SLOs are meeting their objectives over recent time windows (last day, 6 hours, and 1 hour).
 - Monitor key SLO metrics, such as the current SLI value, remaining error budget, and error budget burndown.
 - Explore additional SLO details over a selected period, including SLI trends and event volume.
-- Navigate to the [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/) for detailed results.
+- Navigate to the [SLO dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/) for detailed results.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-performance-page-with-slo-details.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-performance-page-with-slo-details.png)
 
-For details about how SLO metrics are calculated, refer to the [SLO dashboard documentation](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/).
+For details about how SLO metrics are calculated, refer to the [SLO dashboard documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/).

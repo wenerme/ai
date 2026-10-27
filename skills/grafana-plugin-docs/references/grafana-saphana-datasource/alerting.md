@@ -7,13 +7,13 @@ description: "Set up alerts using SAP HANA data in Grafana."
 
 # SAP HANA alerting
 
-The SAP HANA data source supports [Grafana Alerting](/docs/grafana/latest/alerting/), allowing you to create alert rules based on SAP HANA data. You can monitor your database metrics and receive notifications when specific conditions are met.
+The SAP HANA data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on SAP HANA data. You can monitor your database metrics and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
 - Verify your SAP HANA data source is configured and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Supported query types for alerting
 
@@ -21,11 +21,11 @@ SAP HANA queries work well with Grafana Alerting when they return numeric data t
 
 Expand table
 
-| Query type                 | Use case                                            | Notes                                                                                                                                                                                            |
-|----------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Time series                | Threshold-based alerts on numeric metrics over time | Best suited for alerting. Return a time column and one or more numeric columns. Add a **Reduce** expression to collapse each series to a single value.                                           |
-| Table                      | Alerts on the latest numeric value                  | When the query returns no time column, Grafana creates one alert instance per row and turns string columns into labels. Return a single numeric column so the threshold has a value to evaluate. |
-| Data without a time column | Alerts on aggregates that have no timestamp         | Wrap the query with the `$__toTimeStamp()` macro to produce a single-point series. Refer to [Alert on non-time-series data](#alert-on-non-time-series-data).                                     |
+| Query type                 | Use case                                            | Notes                                                                                                                                                                                                                                                                             |
+|----------------------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Time series                | Threshold-based alerts on numeric metrics over time | Best suited for alerting. Return a time column and one or more numeric columns. Add a **Reduce** expression to collapse each series to a single value.                                                                                                                            |
+| Table                      | Alerts on the latest numeric value                  | When the query returns no time column, Grafana creates one alert instance per row and turns string columns into labels. Return a single numeric column so the threshold has a value to evaluate.                                                                                  |
+| Data without a time column | Alerts on aggregates that have no timestamp         | Wrap the query with the `$__toTimeStamp()` macro to produce a single-point series. Refer to [Alert on non-time-series data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/alerting/#alert-on-non-time-series-data). |
 
 > Note
 >
@@ -60,7 +60,7 @@ To create an alert rule using SAP HANA data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Temperature threshold alert
 
@@ -69,7 +69,7 @@ This example creates an alert that fires when temperature exceeds a threshold:
 1. Create a new alert rule.
 2. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT "ts" AS "time", "temperature" AS "value"
@@ -90,7 +90,7 @@ This example aggregates raw data into time buckets with `$__timeGroup` and alert
 
 1. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT $__timeGroup("timestamp", 1m) AS "time",
@@ -112,7 +112,7 @@ This example returns one series per host by including a string column alongside 
 
 1. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT $__timeGroup("timestamp", 1m) AS "time",
@@ -137,7 +137,7 @@ If you need to set up alerts on data that doesn’t have a natural time column, 
 
 ### Query format
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT $__toTimeStamp() AS "time", <METRIC> FROM <TABLE> WHERE <YOUR CONDITIONS>
@@ -147,7 +147,7 @@ SELECT $__toTimeStamp() AS "time", <METRIC> FROM <TABLE> WHERE <YOUR CONDITIONS>
 
 In this example, a table has fields `username`, `age`, `city`, and `role`, but no time field. You want to receive an alert when the number of users with the `dev` role is less than 3.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT $__toTimeStamp() AS "time", count(*) as "count" FROM (
@@ -174,7 +174,7 @@ Follow these recommendations to create reliable and efficient alerts with SAP HA
 
 ### Reduce multiple series
 
-When your SAP HANA query returns multiple time series (for example, temperature per sensor), use the **Reduce** expression to aggregate them. For a complete query, refer to [Example: Multi-series alert with reduce](#example-multi-series-alert-with-reduce).
+When your SAP HANA query returns multiple time series (for example, temperature per sensor), use the **Reduce** expression to aggregate them. For a complete query, refer to [Example: Multi-series alert with reduce](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/alerting/#example-multi-series-alert-with-reduce).
 
 - **Last:** Use the most recent value
 - **Mean:** Average across all series
@@ -203,10 +203,10 @@ Always verify your query returns expected data before creating an alert:
 
 ## Troubleshooting
 
-For common alerting issues with the SAP HANA data source, refer to [Query errors](/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#query-errors) in the troubleshooting guide.
+For common alerting issues with the SAP HANA data source, refer to [Query errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#query-errors) in the troubleshooting guide.
 
 ## Additional resources
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [Create alert rules](/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)

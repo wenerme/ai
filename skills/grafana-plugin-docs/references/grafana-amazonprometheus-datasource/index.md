@@ -38,26 +38,26 @@ Before you use the Amazon Managed Service for Prometheus data source, ensure you
 
 The following topics help you get started with the data source:
 
-- [Install the Amazon Managed Service for Prometheus plugin](/docs/plugins/grafana-amazonprometheus-datasource/latest/install/)
-- [Configure the Amazon Managed Service for Prometheus data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/)
-- [Amazon Managed Service for Prometheus query editor](/docs/plugins/grafana-amazonprometheus-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-amazonprometheus-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-amazonprometheus-datasource/latest/alerting/)
-- [Troubleshooting](/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/)
+- [Install the Amazon Managed Service for Prometheus plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/install/)
+- [Configure the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/)
+- [Amazon Managed Service for Prometheus query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/)
 
 To install the plugin and add the data source:
 
-1. [Install the plugin](/docs/plugins/grafana-amazonprometheus-datasource/latest/install/).
-2. [Add a new data source in the UI](/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](/docs/grafana/latest/administration/provisioning/#data-sources).
-3. [Configure the data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+1. [Install the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/install/).
+2. [Add a new data source in the UI](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+3. [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
 4. Start querying your metrics.
 
 ## Migrate from core Prometheus to Amazon Managed Service for Prometheus
 
 SigV4 authentication is deprecated in the core Prometheus data source. If you use the core Prometheus data source with SigV4 authentication, migrate to the Amazon Managed Service for Prometheus data source.
 
-In Grafana 13, this migration is automatic. Data sources that use SigV4 authentication are migrated to the Amazon Managed Service for Prometheus plugin on startup, and your dashboards, alerts, and queries continue to work without changes. For migration steps, how to check migration status, and rollback instructions, refer to [Migrate from Prometheus SigV4 to Amazon Managed Service for Prometheus](/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/configure/aws-authentication/).
+In Grafana 13, this migration is automatic. Data sources that use SigV4 authentication are migrated to the Amazon Managed Service for Prometheus plugin on startup, and your dashboards, alerts, and queries continue to work without changes. For migration steps, how to check migration status, and rollback instructions, refer to [Migrate from Prometheus SigV4 to Amazon Managed Service for Prometheus](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/configure/aws-authentication/).
 
 ### Update dashboards and alerts
 
@@ -90,9 +90,9 @@ To import a pre-built dashboard:
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](/docs/grafana/latest/alerting/) rules.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules.
 
 ## Plugin updates
 

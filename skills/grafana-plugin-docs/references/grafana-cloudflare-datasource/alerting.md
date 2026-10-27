@@ -13,8 +13,8 @@ You can use the Cloudflare data source with Grafana Alerting to create alert rul
 
 Ensure you have:
 
-- [Configured the Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/configure/)
-- Familiarity with [Grafana Alerting](/docs/grafana/latest/alerting/)
+- [Configured the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/)
+- Familiarity with [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
 
 ## Supported query types for alerting
 
@@ -35,7 +35,7 @@ Expand table
 
 Grafana supports two types of alert rules: Grafana-managed and data source-managed. Grafana-managed alert rules are evaluated by the Grafana alerting engine and can query any data source. Data source-managed alert rules are evaluated within the data source itself and require a compatible backend, such as Prometheus or Loki.
 
-The Cloudflare data source supports only Grafana-managed alert rules. Because it queries the Cloudflare API rather than a Prometheus-style backend, you can’t use it to create data source-managed alert rules. For more information about the two types, refer to [Alert rules](/docs/grafana/latest/alerting/alerting-rules/).
+The Cloudflare data source supports only Grafana-managed alert rules. Because it queries the Cloudflare API rather than a Prometheus-style backend, you can’t use it to create data source-managed alert rules. For more information about the two types, refer to [Alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/).
 
 To create an alert rule using the Cloudflare data source:
 
@@ -47,7 +47,7 @@ To create an alert rule using the Cloudflare data source:
 6. Configure labels, notifications, and other alert settings.
 7. Click **Save rule**.
 
-For detailed instructions on creating alert rules, refer to [Create Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions on creating alert rules, refer to [Create Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alert examples
 
@@ -107,10 +107,10 @@ Keep the following in mind when you alert on Cloudflare data:
 
 - **Relative time range:** Time series queries use the alert rule’s time range through the `${__timeFrom}` and `${__timeTo}` variables. Set a relative range that contains data, such as `now-1h` to `now`.
 - **Data latency:** Cloudflare analytics and Radar data can lag behind real time. To avoid alerts flapping into a **No Data** state, increase the evaluation interval or pending period, and set the rule’s **No Data** handling to match your needs.
-- **API rate limits:** Frequent evaluations across many rules can reach Cloudflare API rate limits. Use a reasonable evaluation interval. If you see rate-limit errors, refer to [Troubleshooting](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/).
+- **API rate limits:** Frequent evaluations across many rules can reach Cloudflare API rate limits. Use a reasonable evaluation interval. If you see rate-limit errors, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/).
 
 ## Related documentation
 
-- [Grafana Alerting](/docs/grafana/latest/alerting/)
-- [Create alert rules](/docs/grafana/latest/alerting/alerting-rules/)
-- [Cloudflare query editor](/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
+- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
+- [Cloudflare query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)

@@ -13,8 +13,8 @@ This document lists every variable type the data source supports, shows the exac
 
 ## Before you begin
 
-- [Configure the AWS Application Signals data source](/docs/plugins/grafana-x-ray-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -47,7 +47,7 @@ Expand table
 
 > Note
 >
-> The **Accounts** query type only returns values when cross-account observability is configured on your AWS account and the data source’s IAM identity has the `oam:ListSinks` and `oam:ListAttachedLinks` permissions. Refer to [Cross-account observability](/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability).
+> The **Accounts** query type only returns values when cross-account observability is configured on your AWS account and the data source’s IAM identity has the `oam:ListSinks` and `oam:ListAttachedLinks` permissions. Refer to [Cross-account observability](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability).
 
 ### The Service variable’s value is a JSON blob
 
@@ -58,7 +58,7 @@ The **Service** query type returns each option as an object with two parts:
 
 The JSON value is what the **List service operations**, **List service dependencies**, and **List SLOs** APIs require, so the variable works out of the box when you reference it in those Services-mode drop-downs. However, the JSON form breaks X-Ray filter expressions. When you use the **Service** variable in a Trace list or Trace statistics filter expression, always append the `:text` format to get the display name:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("${service:text}")
@@ -109,7 +109,7 @@ The data source interpolates template variables in the following query editor fi
 
 Reference variables with the standard Grafana syntax:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 $region
@@ -119,7 +119,7 @@ ${service}
 
 ### Format modifiers you’re likely to need
 
-Grafana supports [variable format modifiers](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) that control how a variable’s value is rendered at query time. The following are the most relevant modifiers for this data source:
+Grafana supports [variable format modifiers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) that control how a variable’s value is rendered at query time. The following are the most relevant modifiers for this data source:
 
 Expand table
 
@@ -132,9 +132,9 @@ Expand table
 
 ### Example — filter by selected service (correct form)
 
-Because the **Service** variable’s value is JSON (see [The Service variable’s value is a JSON blob](#the-service-variables-value-is-a-json-blob)), use `:text` to filter a Trace list or Trace statistics query by service name:
+Because the **Service** variable’s value is JSON (see [The Service variable’s value is a JSON blob](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/#the-service-variables-value-is-a-json-blob)), use `:text` to filter a Trace list or Trace statistics query by service name:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("${service:text}")
@@ -144,7 +144,7 @@ service("${service:text}")
 
 Combine the `service` and `accountId` variables in a filter expression. `accountId` is a plain string, so no format modifier is needed:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("${service:text}") AND service(id(account.id: "$accountId"))
@@ -172,15 +172,15 @@ In **Services** mode, template variables can populate the plugin’s own drop-do
 
 Cascading variables are especially useful for alert rules. Create a Trace statistics panel with the query below and build an alert on it to get one rule per service without hand-maintaining a rule per team:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("${service:text}") AND fault = true
 ```
 
-Pair this with the `accountId` variable when you run alerts across linked accounts. Refer to [Alerting with the AWS Application Signals data source](/docs/plugins/grafana-x-ray-datasource/latest/alerting/) for end-to-end guidance.
+Pair this with the `accountId` variable when you run alerts across linked accounts. Refer to [Alerting with the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/) for end-to-end guidance.
 
 ## Next steps
 
-- [Query AWS Application Signals](/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
-- [Troubleshoot template variable issues](/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#template-variable-errors)
+- [Query AWS Application Signals](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
+- [Troubleshoot template variable issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#template-variable-errors)

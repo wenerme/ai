@@ -5,7 +5,7 @@ description: "This document explains the Query Editor of JSON API data source"
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-[Documentation](/docs/)[breadcrumb arrow] [Plugins](/docs/plugins/)[breadcrumb arrow] [JSON API data source](/docs/plugins/marcusolsson-json-datasource/latest/)[breadcrumb arrow] Query Editor
+[Documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [Plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [JSON API data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) Query Editor
 
 Open source Grafana Cloud
 
@@ -17,7 +17,7 @@ The query editor for the JSON API data source consists of a number of tabs. Each
 
 The **Fields** tab is where you select the data to extract from the JSON document returned by the URL configured in the data source configuration.
 
-- **Field** lets you define a query expression that determines the data to extract from the JSON document. There are two supported query languages: [JSONPath](./jsonpath.md) and [JSONata](./jsonata.md).
+- **Field** lets you define a query expression that determines the data to extract from the JSON document. There are two supported query languages: [JSONPath](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/query-editor/jsonpath.md) and [JSONata](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/query-editor/jsonata.md).
 - **Type** defines the JSON type of the elements returned by the **Field** expression. By default, Grafana uses the types in the JSON document. If **Type** is set to a different type than the original property type, Grafana tries to parse the value.
 - **Alias** overrides the default name of the field.
 
@@ -29,7 +29,7 @@ All fields must return the same number of values. If you get this error it means
 
 In the following example, the `name` property is present in both objects, but `version` isn’t.
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -58,7 +58,7 @@ Expand table
 
 The drop-down box to the left lets you configure the **HTTP method** of the request sent to the URL and can be set to **GET** and **POST**.
 
-The text box lets you append a path to the URL in the data source configuration. This can be used to dynamically change the request URL using [variables](/docs/grafana/latest/variables/).
+The text box lets you append a path to the URL in the data source configuration. This can be used to dynamically change the request URL using [variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/).
 
 For example, by setting the path to `/movies/${movie}/summary` you can query the summary for any movie without having to change the query itself.
 
@@ -66,7 +66,7 @@ For example, by setting the path to `/movies/${movie}/summary` you can query the
 
 Add any parameters you’d like to send as part of the query string. For example, the parameters in the screenshot gets encoded as `?category=movies`.
 
-Both the **Key** and **Value** fields support [variables](/docs/grafana/latest/variables/).
+Both the **Key** and **Value** fields support [variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/).
 
 > **Caution:** Any query parameters that have been set by the administrator in the data source configuration has higher priority and overrides the parameters set by the query.
 
@@ -74,7 +74,7 @@ Both the **Key** and **Value** fields support [variables](/docs/grafana/latest/v
 
 Add any parameters you’d like to send as HTTP headers.
 
-Both the **Key** and **Value** fields support [variables](/docs/grafana/latest/variables/).
+Both the **Key** and **Value** fields support [variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/).
 
 ### Body
 

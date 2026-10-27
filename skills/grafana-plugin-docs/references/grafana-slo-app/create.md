@@ -13,18 +13,18 @@ Each SLO includes a service level indicator (SLI), a target, and a time window. 
 
 In the following sections, you create an SLO by completing these steps:
 
-1. [Set the time window](#set-the-time-window)
-2. [Define a service level indicator](#define-a-service-level-indicator)
-3. [Set a target and error budget](#set-a-target-and-error-budget)
-4. [Add a name and description](#add-a-name-and-description)
-5. [Add SLO alert rules and assistant investigations](#add-slo-alert-rules-and-assistant-investigations)
-6. [Review and save your SLO](#review-and-save-your-slo)
+1. [Set the time window](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#set-the-time-window)
+2. [Define a service level indicator](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#define-a-service-level-indicator)
+3. [Set a target and error budget](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#set-a-target-and-error-budget)
+4. [Add a name and description](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#add-a-name-and-description)
+5. [Add SLO alert rules and assistant investigations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#add-slo-alert-rules-and-assistant-investigations)
+6. [Review and save your SLO](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#review-and-save-your-slo)
 
 ## Supported SLO data sources
 
 You can define SLOs without moving your telemetry data into Grafana Cloud.
 
-An SLO uses a **source** data source, which the SLI query is executed against, and a **target** data source, to remote write the recorded series to. The source data source and the target data source can be the same data source. Refer to [select the source and target data sources](#select-the-source-and-target-data-sources).
+An SLO uses a **source** data source, which the SLI query is executed against, and a **target** data source, to remote write the recorded series to. The source data source and the target data source can be the same data source. Refer to [select the source and target data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#select-the-source-and-target-data-sources).
 
 To define the SLI, you can query the following data sources configured in your Grafana Cloud instance:
 
@@ -33,23 +33,23 @@ To define the SLI, you can query the following data sources configured in your G
 - Splunk
 - AppDynamics
 - Graphite
-- *[Multi-stack data sources](/docs/grafana-cloud/connect-externally-hosted/multi-stack-data-sources/) are not currently supported.*
+- *[Multi-stack data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/multi-stack-data-sources/) are not currently supported.*
 
 The target data source must be a Mimir or other Prometheus-compatible data source that accepts recording rules.
 
-To build an SLI on a data source that isn’t listed, create your own [Grafana-managed recording rule](/docs/grafana-cloud/alerting-and-irm/alerting/alerting-rules/create-recording-rules/create-grafana-managed-recording-rules/) that records a metric from one of the [additional data sources](/grafana/plugins/data-source-plugins/?features=alerting) into Mimir, then query that recorded Prometheus metric in your SLI.
+To build an SLI on a data source that isn’t listed, create your own [Grafana-managed recording rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/alerting/alerting-rules/create-recording-rules/create-grafana-managed-recording-rules/) that records a metric from one of the [additional data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/data-source-plugins/?features=alerting) into Mimir, then query that recorded Prometheus metric in your SLI.
 
 ### Legacy data source-managed recording rules
 
 Certain legacy Grafana Cloud stacks may still be configured to use data source-managed recording rules. On these stacks, the data source has these additional requirements:
 
-- The data source must be a Grafana Mimir data source with the [Ruler API](/docs/mimir/latest/references/configuration-parameters/#ruler) enabled.
+- The data source must be a Grafana Mimir data source with the [Ruler API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/mimir/latest/references/configuration-parameters/#ruler) enabled.
 - The access policy for the data source needs the `metrics:read`, `rules:read`, and `rules:write` scopes.
 - The SLI query and the recording rules must use the same data source.
 
 To check whether your stack uses data source-managed recording rules, query `/api/plugins/grafana-slo-app/resources/v1/config`. A response of `{"usesDatasourceRecordingRules": true}` means the stack uses legacy data source-managed recording rules; `false` means the stack uses Grafana-managed recording rules.
 
-For the full requirements and the setup steps, refer to [configure data source-managed recording rules](/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules).
+For the full requirements and the setup steps, refer to [configure data source-managed recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules).
 
 ## Set the time window
 
@@ -85,7 +85,7 @@ The SLI defines the success criteria for your service reliability. For example:
 
 The SLI must define a query that returns the success ratio for the given reliability criteria. It must return a value between `0` and `1` for each evaluation period, where `1` represents **100% success** and `0` represents **0% success**.
 
-[](/media/docs/grafana-cloud/slo/screenshot-sli-query.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-sli-query.png)
 
 ### Select the source and target data sources
 
@@ -96,11 +96,11 @@ Before you write the SLI query, choose the:
 
 You can query one data source and store the recording rules in another, or use the same data source for both.
 
-If you select a Prometheus-compatible data source and the wizard shows a single **Select data source** selector instead of two, your stack uses [legacy data source-managed recording rules](#legacy-data-source-managed-recording-rules), and the SLI query and the recording rules both use that one data source.
+If you select a Prometheus-compatible data source and the wizard shows a single **Select data source** selector instead of two, your stack uses [legacy data source-managed recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#legacy-data-source-managed-recording-rules), and the SLI query and the recording rules both use that one data source.
 
 > Note
 >
-> The Terraform provider refers to the target data source as the *destination* data source: `destination_datasource`. For more information on setting the source and target data sources with Terraform, refer to [source and destination data sources](/docs/grafana-cloud/alerting-and-irm/slo/set-up/terraform/#source-and-destination-data-sources).
+> The Terraform provider refers to the target data source as the *destination* data source: `destination_datasource`. For more information on setting the source and target data sources with Terraform, refer to [source and destination data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/terraform/#source-and-destination-data-sources).
 
 ### Write the SLI query
 
@@ -114,9 +114,9 @@ This option does not require writing the full PromQL expression. It generates th
 
 The following examples use the **Ratio query** option:
 
-- [HTTP availability example (Prometheus Counter)](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#http-availability-counter)
-- [Probe latency example (Prometheus Classic Histogram)](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/#prometheus-classic-histogram-example)
-- [Multi-dimensional probe example (Prometheus Classic Histogram)](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)
+- [HTTP availability example (Prometheus Counter)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#http-availability-counter)
+- [Probe latency example (Prometheus Classic Histogram)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/#prometheus-classic-histogram-example)
+- [Multi-dimensional probe example (Prometheus Classic Histogram)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)
 
 **Advanced query**
 
@@ -128,8 +128,8 @@ Use this option to write a custom query. You can use the graphical query builder
 
 The following examples use the **Advanced query** option:
 
-- [Probe latency (Prometheus gauge)](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/#prometheus-gauge-example)
-- [Probe availability (Prometheus binary gauge)](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-gauge)
+- [Probe latency (Prometheus gauge)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/#prometheus-gauge-example)
+- [Probe availability (Prometheus binary gauge)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-gauge)
 
 ## Set a target and error budget
 
@@ -151,7 +151,7 @@ A service meets its objective when it achieves this target, meaning the error bu
 
 After you enter a target, Grafana SLO queries 90 days of historical data from the raw metrics used by the SLI query. It then simulates many scenarios and provides a distribution of likely outcomes over the objective window.
 
-[](/media/docs/grafana-cloud/slo/screenshot-grafana-slo-prediction2.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-grafana-slo-prediction2.png)
 
 Use this prediction to validate your SLO configuration and goals:
 
@@ -160,7 +160,7 @@ Use this prediction to validate your SLO configuration and goals:
 
 > Note
 >
-> In some cases, predictions cannot be generated. When this happens, this chart displays the [remaining error budget panel](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/#view-remaining-error-budget) based on the provided SLI query.
+> In some cases, predictions cannot be generated. When this happens, this chart displays the [remaining error budget panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/#view-remaining-error-budget) based on the provided SLI query.
 
 ## Add a name and description
 
@@ -195,7 +195,7 @@ When an SLO has a search expression:
 
 This field is optional. Leave it empty if you don’t use the RCA workbench.
 
-For the expression syntax, refer to [use predefined searches](/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
+For the expression syntax, refer to [use predefined searches](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
 
 ## Add SLO alert rules and assistant investigations
 
@@ -217,16 +217,16 @@ In Grafana SLO, you can enable two types of alert rules:
 In the alert rule settings, you can configure the following options:
 
 - Edit the name and description of the alert rules.
-- Enable running an [assistant investigation](/docs/grafana-cloud/machine-learning/assistant/guides/investigation/) when the alert fires. **Assistant investigations** explore SLO and system observability data, build hypotheses, and produce reports for incident response.
+- Enable running an [assistant investigation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/machine-learning/assistant/guides/investigation/) when the alert fires. **Assistant investigations** explore SLO and system observability data, build hypotheses, and produce reports for incident response.
 - Add labels for alert routing.
 - Add annotations, such as runbooks, to provide additional context to responders.
-- Set the [minimum failure threshold](/docs/grafana-cloud/alerting-and-irm/slo/best-practices/#minimum-failures), the minimum number of failure events required to trigger the alert.
+- Set the [minimum failure threshold](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/best-practices/#minimum-failures), the minimum number of failure events required to trigger the alert.
 
 > Note
 >
 > SLO alert rules are not created until you save your SLO.
 >
-> After saving, you can continue configuring alert rules in [configure burn-rate notifications](/docs/grafana-cloud/alerting-and-irm/slo/set-up/configure-burn-rate-notifications/).
+> After saving, you can continue configuring alert rules in [configure burn-rate notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/configure-burn-rate-notifications/).
 
 ## Review and save your SLO
 
@@ -236,8 +236,8 @@ Review each section of your SLO. When you’re satisfied, save it to create the 
 
 When you create an SLO, Grafana generates the following resources and places them in the same folder as the SLO:
 
-- [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/): display SLO results, including SLI performance and error budget consumption.
-- [Recording rules](/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/): optimized queries used to calculate the SLI and error budget.
-- (*Optional*) [Alert rules](#add-slo-alert-rules-and-assistant-investigations): trigger notifications based on the configured SLO alert conditions.
+- [SLO dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/): display SLO results, including SLI performance and error budget consumption.
+- [Recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-recording-rules/): optimized queries used to calculate the SLI and error budget.
+- (*Optional*) [Alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/create/#add-slo-alert-rules-and-assistant-investigations): trigger notifications based on the configured SLO alert conditions.
 
 If any of these resources are deleted, Grafana automatically recreates them to ensure that you don’t miss alerts or lose access to SLO dashboards.

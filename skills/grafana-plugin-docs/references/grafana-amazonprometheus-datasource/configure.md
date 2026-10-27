@@ -64,7 +64,7 @@ The Amazon Managed Service for Prometheus data source authenticates with AWS Sig
 
 > Note
 >
-> If the **SigV4 auth** option is missing from the authentication drop-down in Grafana Cloud, contact [Grafana Support](/help/) to enable SigV4 authentication for your instance.
+> If the **SigV4 auth** option is missing from the authentication drop-down in Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable SigV4 authentication for your instance.
 
 ### SigV4 authentication
 
@@ -99,11 +99,11 @@ Expand table
 
 ## Private data source connect
 
-The data source supports [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Amazon Managed Service for Prometheus workspace that isn’t exposed to the public internet, such as a workspace reached through a VPC endpoint.
+The data source supports [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query an Amazon Managed Service for Prometheus workspace that isn’t exposed to the public internet, such as a workspace reached through a VPC endpoint.
 
 To use PDC with this data source:
 
-1. Set up a PDC connection. Refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+1. Set up a PDC connection. Refer to [Configure Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 2. On the data source configuration page, expand **Secure Socks Proxy** and select the PDC connection.
 3. Click **Save &amp; test** to verify connectivity through the private network.
 
@@ -136,7 +136,7 @@ When **Query statistics** is enabled, Grafana adds `stats=all` to instant and ra
 
 ## Verify the connection
 
-To verify the connection, click **Save &amp; test**. When the configuration is valid, Grafana displays a success message such as **Successfully queried the Prometheus API.** If the test fails, refer to [Troubleshooting](/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/).
+To verify the connection, click **Save &amp; test**. When the configuration is valid, Grafana displays a success message such as **Successfully queried the Prometheus API.** If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
@@ -144,11 +144,11 @@ You can define and configure the data source in code so it’s reproducible acro
 
 ### Provision with a YAML file
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions the data source with the **Access &amp; secret key** provider:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -176,7 +176,7 @@ datasources:
 
 To assume an IAM role, set `sigV4AuthType` to the base provider you want to use, such as `default` or `ec2_iam_role`, and add `sigV4AssumeRoleArn` and `sigV4ExternalId` instead of the access keys. For the **Grafana Assume Role** provider, set `sigV4AuthType` to `grafana_assume_role`:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -208,7 +208,7 @@ You can manage the data source with the [Grafana Terraform provider](https://reg
 
 The following example provisions the data source with the **Access &amp; secret key** provider:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "amazonprometheus" {
@@ -235,7 +235,7 @@ resource "grafana_data_source" "amazonprometheus" {
 
 To use an assume-role configuration instead of static keys, set `sigV4AuthType` to `default` or `ec2_iam_role` and provide the role details:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "amazonprometheus" {
@@ -256,7 +256,7 @@ resource "grafana_data_source" "amazonprometheus" {
 
 Define the referenced variables, for example in a `variables.tf` file:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 variable "region" {

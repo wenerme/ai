@@ -9,7 +9,7 @@ description: "Guide on using template variables in CloudWatch queries"
 
 Instead of hard-coding details such as server, application, and sensor names in metric queries, you can use variables. Grafana lists these variables in drop-down select boxes at the top of the dashboard to help you change the data displayed in your dashboard, and they are called template variables
 
-For an introduction to templating and template variables, refer to [Templating](/docs/grafana/latest/dashboards/variables/) and [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For an introduction to templating and template variables, refer to [Templating](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) and [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Use query variables
 
@@ -36,7 +36,7 @@ For details about the metrics CloudWatch provides, refer to the [CloudWatch docu
 
 ### Use variables in queries
 
-Use Grafana’s variable syntax to include variables in queries. A query variable in dynamically retrieves values from your data source using a query. For details, refer to the [variable syntax documentation](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+Use Grafana’s variable syntax to include variables in queries. A query variable in dynamically retrieves values from your data source using a query. For details, refer to the [variable syntax documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ## Use ec2\_instance\_attribute
 

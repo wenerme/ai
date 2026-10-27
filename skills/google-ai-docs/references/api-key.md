@@ -62,6 +62,13 @@ containing the following permissions (such as Project Editor):
 If you cannot get administrative access, you can create a new Google Cloud
 project that is not associated with an organization to generate your keys.
 
+### Unknown keys on the Usage page
+
+The [Usage page](https://aistudio.google.com/usage) in Google AI Studio groups
+requests it can't match to a named API key in the project under
+**(unknown keys)**. This includes keys deleted more than 30 days ago, keys
+without a display name, and requests made with other credentials, such as OAuth.
+
 ## Creating keys in the Google Cloud console
 
 Google AI Studio only displays keys that are unrestricted or restricted to the

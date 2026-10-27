@@ -7,12 +7,12 @@ description: "Use template variables and macros with the GitHub data source plug
 
 # GitHub template variables
 
-Use template variables to create dynamic, reusable dashboards with the GitHub data source. For general information about variables in Grafana, refer to [Variables](/docs/grafana/latest/dashboards/variables/).
+Use template variables to create dynamic, reusable dashboards with the GitHub data source. For general information about variables in Grafana, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the GitHub data source](/docs/plugins/grafana-github-datasource/latest/configure/).
-- Familiarize yourself with the available [query types](/docs/plugins/grafana-github-datasource/latest/query-editor/).
+- [Configure the GitHub data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/).
+- Familiarize yourself with the available [query types](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/).
 
 ## Supported variable types
 

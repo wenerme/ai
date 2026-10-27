@@ -47,7 +47,7 @@ For enterprise deployments, powered by [Gemini Enterprise Agent Platform](https:
 Our flagship reasoning model, built for complex software engineering, deep mathematical and scientific problem solving, autonomous multi-step agents, and long-decode generation up to 1M tokens.
 
 > [!NOTE]
-> **Note:** Gemini 4 Argon is not available on the Free tier.
+> **Note:** Gemini 4 Argon is not available on the Free tier. Every token the model processes is counted and billed, including thinking tokens and internal tool system instructions and function declarations when using grounding.
 
 ### Standard
 

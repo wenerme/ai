@@ -11,7 +11,7 @@ This guide helps you resolve common issues that you might encounter when configu
 
 ## License issues
 
-The Datadog data source is an Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled. A missing or invalid license causes many installation failures, rather than a problem with your Datadog credentials. On self-managed Grafana, you can review your license in [Administration &gt; General &gt; Stats and license](/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, contact Grafana Support to confirm that Enterprise plugins are enabled for your account.
+The Datadog data source is an Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled. A missing or invalid license causes many installation failures, rather than a problem with your Datadog credentials. On self-managed Grafana, you can review your license in [Administration &gt; General &gt; Stats and license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, contact Grafana Support to confirm that Enterprise plugins are enabled for your account.
 
 ### Plugin health check failed
 
@@ -25,8 +25,8 @@ This error appears when the plugin backend fails to start. For an Enterprise plu
 **Solutions:**
 
 1. Confirm that your Grafana instance has a valid Enterprise license, or that your Grafana Cloud plan is Advanced and includes Enterprise plugins.
-2. Review the Grafana server logs for a license error. Refer to [Invalid license for the enterprise plugin](#invalid-license-for-the-enterprise-plugin).
-3. If your license is valid, verify that your Datadog API key and App key are correct. Refer to [Authentication errors](#authentication-errors).
+2. Review the Grafana server logs for a license error. Refer to [Invalid license for the enterprise plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#invalid-license-for-the-enterprise-plugin).
+3. If your license is valid, verify that your Datadog API key and App key are correct. Refer to [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#authentication-errors).
 
 ### Invalid license for the enterprise plugin
 
@@ -56,8 +56,8 @@ When Enterprise plugins aren’t enabled for your Grafana Cloud account or cover
 **Solutions:**
 
 1. On self-managed Grafana, verify that your Grafana Enterprise license is valid and covers Enterprise plugins.
-2. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. On some plans, Enterprise plugins are a paid add-on that you must enable. For details, refer to [Grafana Cloud features](/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
-3. If you can’t enable Enterprise plugins, contact [Grafana Support](/support/).
+2. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. On some plans, Enterprise plugins are a paid add-on that you must enable. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+3. If you can’t enable Enterprise plugins, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ## Configuration issues
 
@@ -237,7 +237,7 @@ For **Query**, **Raw query**, and **Arithmetic** queries, Datadog controls the r
 **Solution:**
 
 1. To request a specific granularity, add the `rollup()` function to your query. For example, `avg:system.cpu.user{*}.rollup(avg, 60)` requests a 60-second rollup.
-2. For more details, refer to [Time granularity and data rollup](/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity-and-data-rollup).
+2. For more details, refer to [Time granularity and data rollup](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity-and-data-rollup).
 
 ### Arithmetic query errors
 
@@ -317,7 +317,7 @@ If you continue to experience issues:
 
 - Check the [Grafana community forums](https://community.grafana.com/) for similar issues and solutions.
 - Review the [Datadog API documentation](https://docs.datadoghq.com/api/latest/) for API-specific issues.
-- Contact [Grafana Support](/support/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
+- Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
 
 When reporting issues, include the following information:
 

@@ -11,7 +11,7 @@ The Splunk Infrastructure Monitoring data source plugin lets you query and visua
 
 > Note
 >
-> The Splunk Infrastructure Monitoring data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. Some Pro plans need the Enterprise Plugins add-on. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Splunk Infrastructure Monitoring data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. Some Pro plans need the Enterprise Plugins add-on. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -43,20 +43,20 @@ To find your realm, open the navigation menu in Splunk Observability Cloud, sele
 
 The following sections help you get started with the Splunk Infrastructure Monitoring data source:
 
-- [Configure the data source](#configure-the-data-source)
-- [Query the data source](#query-the-data-source)
-- [Use template variables](#use-template-variables)
-- [Troubleshoot](/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting/)
+- [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#configure-the-data-source)
+- [Query the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#query-the-data-source)
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#use-template-variables)
+- [Troubleshoot](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to run SignalFlow queries without building a dashboard.
-- Add [annotations](#create-annotations) to overlay Splunk alerts and events on your graphs.
-- Configure and use [template variables](/docs/grafana/latest/dashboards/variables/) for dynamic dashboards.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](#configure-grafana-alerting) to monitor your Splunk metrics.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run SignalFlow queries without building a dashboard.
+- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#create-annotations) to overlay Splunk alerts and events on your graphs.
+- Configure and use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) for dynamic dashboards.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#configure-grafana-alerting) to monitor your Splunk metrics.
 
 ## Before you begin
 
@@ -64,14 +64,14 @@ To configure the Splunk Infrastructure Monitoring data source, you need the foll
 
 - Grafana version 11.6.7 or later.
 - The Grafana organization administrator role to add a data source.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - A Splunk Observability Cloud account, formerly SignalFx.
 - An access token generated from your Splunk Observability Cloud account. To learn more about access token types, refer to [Authentication tokens](https://help.splunk.com/en/splunk-observability-cloud/administer/authentication-and-security/authentication-tokens) in the Splunk documentation.
-- Your realm name. Refer to [Supported Splunk environments](#supported-splunk-environments) for how to find it.
+- Your realm name. Refer to [Supported Splunk environments](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/#supported-splunk-environments) for how to find it.
 
 ## Add the Splunk Infrastructure Monitoring data source
 
-For general information on adding a data source, refer to [Add a data source](/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 Complete the following steps to add a new Splunk Infrastructure Monitoring data source:
 
@@ -113,15 +113,15 @@ Expand table
 
 If you have a secure socks proxy configured, you can enable proxying the data source connection through the secure socks proxy to a different network.
 
-For more details, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+For more details, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
 ### Provision the data source
 
-You can configure data sources using configuration files with the Grafana provisioning system. For more information, refer to [Provision the data source](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can configure data sources using configuration files with the Grafana provisioning system. For more information, refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions a Splunk Infrastructure Monitoring data source:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -168,7 +168,7 @@ The following examples demonstrate common SignalFlow query patterns:
 
 **Basic metric query:**
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 data('cpu.utilization').publish()
@@ -176,7 +176,7 @@ data('cpu.utilization').publish()
 
 **Query with rollup and aggregation:**
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 data('demo.trans.count', rollup='rate').sum().publish(label='Total Transactions')
@@ -184,7 +184,7 @@ data('demo.trans.count', rollup='rate').sum().publish(label='Total Transactions'
 
 **Query with filter:**
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 data('cpu.utilization', filter=filter('host', 'server1')).publish()
@@ -192,7 +192,7 @@ data('cpu.utilization', filter=filter('host', 'server1')).publish()
 
 **Query with time window aggregation:**
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 data('demo.trans.latency').mean(over='5m').publish()
@@ -202,7 +202,7 @@ data('demo.trans.latency').mean(over='5m').publish()
 
 You can write multiple queries in a single panel and perform calculations between them. Assign each query to a variable and reference it in subsequent calculations:
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 A = data('demo.trans.latency').sum(by=['demo_customer']).publish(label='A', enable=False)
@@ -232,7 +232,7 @@ The plugin applies the filters to all panels that use the Splunk Infrastructure 
 
 ## Use template variables
 
-To add a new Splunk Infrastructure Monitoring query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use your Splunk Infrastructure Monitoring data source and select one of the following query types:
+To add a new Splunk Infrastructure Monitoring query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use your Splunk Infrastructure Monitoring data source and select one of the following query types:
 
 ### Metrics
 
@@ -255,7 +255,7 @@ Expand table
 | **Dimensions Query** | Optional search criteria for filtering dimensions. Use syntax like `region:us1 AND hostname:france-*`. |
 | **Dimension Name**   | Optional. Select a dimension key from the drop-down to return only values for that specific dimension. |
 
-After you create a variable, you can use it in your Splunk Infrastructure Monitoring queries with [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information about variables, refer to [Template variables](/docs/grafana/latest/dashboards/variables/).
+After you create a variable, you can use it in your Splunk Infrastructure Monitoring queries with [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information about variables, refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Create annotations
 
@@ -276,7 +276,7 @@ Use the `alerts()` function to display detector alerts as annotations. Alerts ar
 
 Example query for alerts from a specific detector:
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 alerts(detector_name='Deployment').publish()
@@ -308,7 +308,7 @@ Use the `events()` function to display custom events as annotations. Custom even
 
 Example query for events by type:
 
-signalflow [Copy code to clipboard] Copy
+signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 events(eventType='simulated').publish()
@@ -336,11 +336,11 @@ To create an alert rule:
 4. Enter a SignalFlow query to define the data you want to monitor.
 5. Configure the alert condition, evaluation interval, and notification settings.
 
-For more information, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+For more information, refer to [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Troubleshoot
 
-For solutions to common issues, refer to [Troubleshoot Splunk Infrastructure Monitoring data source issues](/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting/).
+For solutions to common issues, refer to [Troubleshoot Splunk Infrastructure Monitoring data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting/).
 
 ## Plugin updates
 

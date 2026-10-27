@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/agents/tools/codemode/mcp/og.png?v=e41c
 
 # Use MCP tools with Code Mode
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `McpConnector` to expose tools from an existing Model Context Protocol (MCP) client connection inside the Code Mode sandbox. The connector works with the durable runtime, including discovery, approvals, and execution history.
 
-This page covers an Agent consuming an MCP server. To publish Code Mode as an MCP server, refer to [Code Mode MCP server patterns](https://developers.cloudflare.com/agents/model-context-protocol/codemode/).
+This page covers an Agent consuming an MCP server. To publish Code Mode as an MCP server, refer to [Build a Code Mode MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/).
 
 ## Prerequisites
 
 You need:
 
 - A project with the [durable Code Mode runtime](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/) configured. That setup provides the Worker Loader binding and the `CodemodeRuntime` export.
-- An existing Agents SDK MCP connection. To create and authorize the connection, refer to the [McpClient API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
+- An existing Agents SDK MCP connection. To create and authorize the connection, refer to the [MCP Client](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
 
 1. **Install Code Mode**
 
@@ -312,5 +312,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/mcp/og.png?v=e41ce0ad4f097800","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/mcp/og.png?v=e41ce0ad4f097800","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

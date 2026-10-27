@@ -9,7 +9,7 @@ description: "Learn how to add and configure a download button in the Business T
 
 Enhance your data visualization experience by adding a **Download Button** directly to the Business Table. This feature provides an intuitive way for users to export table data with a single click, improving usability and accessibility.
 
-[](/media/docs/grafana/panels-visualizations/business-table/download-btn.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/download-btn.png)
 
 ## Why Use a download button?
 

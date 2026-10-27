@@ -7,13 +7,13 @@ description: "Use the Dynatrace query editor in Grafana to query Dynatrace."
 
 # Dynatrace query editor
 
-Grafana provides a query editor for the Dynatrace data source, which is located on the [Explore page](/docs/grafana/latest/explore/). You can also access the Dynatrace query editor from a dashboard panel. Click the menu in the upper right of the panel and select **Edit**.
+Grafana provides a query editor for the Dynatrace data source, which is located on the [Explore page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/). You can also access the Dynatrace query editor from a dashboard panel. Click the menu in the upper right of the panel and select **Edit**.
 
-This document explains querying specific to the Dynatrace data source. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/). For options and functions common to all query editors, refer to [Query editors](/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
+This document explains querying specific to the Dynatrace data source. For general documentation on querying data sources in Grafana, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/). For options and functions common to all query editors, refer to [Query editors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
 
 > Tip
 >
-> You can also use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to build and run Dynatrace queries from natural language. Mention your Dynatrace data source with the `@` symbol in your prompt to get started.
+> You can also use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to build and run Dynatrace queries from natural language. Mention your Dynatrace data source with the `@` symbol in your prompt to get started.
 
 The query editor allows you to create multiple Dynatrace query types.
 
@@ -21,19 +21,19 @@ The query editor allows you to create multiple Dynatrace query types.
 
 Grafana supports the following Dynatrace query types, depending on the kind of data you want to query:
 
-- [Grail](#grail-query-type)
-- [Metrics](#metrics-query-type)
-- [Problems](#problems-query-type)
-- [Problems V2](#problems-v2-query-type)
-- [USQL](#usql-query-type)
-- [Logs](#logs-query-type)
-- [Audit Logs](#audit-logs-query-type)
-- [Management Zones](#management-zones-query-type)
-- [Direct API Access](#direct-api-access-query-type)
-- [SLO](#slo-query-type)
-- [Events](#events-query-type)
-- [Synthetic](#synthetic-query-type)
-- [Tokens](#tokens-query-type)
+- [Grail](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#grail-query-type)
+- [Metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#metrics-query-type)
+- [Problems](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#problems-query-type)
+- [Problems V2](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#problems-v2-query-type)
+- [USQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#usql-query-type)
+- [Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#logs-query-type)
+- [Audit Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#audit-logs-query-type)
+- [Management Zones](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#management-zones-query-type)
+- [Direct API Access](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#direct-api-access-query-type)
+- [SLO](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#slo-query-type)
+- [Events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#events-query-type)
+- [Synthetic](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#synthetic-query-type)
+- [Tokens](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#tokens-query-type)
 
 ### Grail query type
 
@@ -57,7 +57,7 @@ Enter your DQL query to retrieve data from Grail. The query should start with a 
 
 Fetch error logs from the last hour:
 
-dql [Copy code to clipboard] Copy
+dql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```dql
 fetch logs
@@ -68,7 +68,7 @@ fetch logs
 
 Query metrics with aggregation:
 
-dql [Copy code to clipboard] Copy
+dql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```dql
 fetch dt.metrics
@@ -78,7 +78,7 @@ fetch dt.metrics
 
 Analyze spans for a specific service:
 
-dql [Copy code to clipboard] Copy
+dql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```dql
 fetch spans
@@ -144,7 +144,7 @@ The following options are available when using Code mode:
 
 > Note
 >
-> The Dynatrace Problems API (v1) is deprecated but remains functional for backward compatibility. For new implementations, consider using [Problems V2](#problems-v2-query-type) instead.
+> The Dynatrace Problems API (v1) is deprecated but remains functional for backward compatibility. For new implementations, consider using [Problems V2](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/#problems-v2-query-type) instead.
 
 The Problems query type retrieves problem data from your Dynatrace environment using the Problems API v1. For additional information, refer to [Problems API - GET feed](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/problems/problems/get-feed/) in the Dynatrace documentation.
 

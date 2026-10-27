@@ -13,19 +13,19 @@ This guide walks you through connecting your Splunk instance to Grafana Cloud an
 
 Before you begin, ensure you have:
 
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan.
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan.
 - A Splunk Enterprise or Splunk Cloud instance with [port 8089 enabled](https://docs.splunk.com/Documentation/SplunkCloud/latest/Config/ConfigureOutboundPorts).
 - Splunk user credentials (username and password) or an [authentication token](https://docs.splunk.com/Documentation/Splunk/latest/Security/CreateAuthTokens) with permissions to run searches.
 - *If your Splunk instance is on a private network:* A Linux host in the same network to run the PDC agent.
 
 ## Step 1: Install the plugin
 
-1. Verify the Splunk plugin is activated for your organization at [grafana.com/orgs](/orgs). If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
+1. Verify the Splunk plugin is activated for your organization at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
 2. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 3. Search for **Splunk**.
 4. Click **Install**.
 
-The plugin is ready to use immediately after installation. For detailed installation instructions or troubleshooting, refer to [Install the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/install/).
+The plugin is ready to use immediately after installation. For detailed installation instructions or troubleshooting, refer to [Install the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/).
 
 ## Step 2: Connect to a private Splunk instance (optional)
 
@@ -42,7 +42,7 @@ If your Splunk instance is behind a firewall or on a private network, set up Pri
 5. Verify the agent shows a **Connected** status in the Grafana Cloud UI.
 6. Confirm the agent host can reach your Splunk instance: `nc -zv <SPLUNK_HOST> 8089`.
 
-For detailed instructions, refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+For detailed instructions, refer to [Configure Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 ## Step 3: Configure the data source
 
@@ -59,7 +59,7 @@ For detailed instructions, refer to [Configure Private data source connect](/doc
 
 On success, you see a message: **Connected to Splunk version: “9.1.3” build: “d95b3bc7f6d0”**.
 
-If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#connection-errors).
+If the connection fails, refer to [Troubleshoot connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#connection-errors).
 
 ## Step 4: Write your first query
 
@@ -67,7 +67,7 @@ If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins
 2. Select your new Splunk data source from the data source picker.
 3. The query editor opens in raw SPL mode by default. Paste the following query to verify connectivity and see event volume by source type:
 
-   spl [Copy code to clipboard] Copy
+   spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```spl
    index=_internal | timechart count by sourcetype
@@ -76,7 +76,7 @@ If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins
 
 Try a log query to view raw events:
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=_internal sourcetype=splunkd log_level=ERROR
@@ -107,7 +107,7 @@ Expand table
 
 ## Next steps
 
-- [Splunk query editor](/docs/plugins/grafana-splunk-datasource/latest/query-editor/): Query modes, visual builder, and advanced options.
-- [Template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
-- [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/): Advanced settings, authentication options, and provisioning.
-- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common issues.
+- [Splunk query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/query-editor/): Query modes, visual builder, and advanced options.
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
+- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/): Advanced settings, authentication options, and provisioning.
+- [Troubleshoot Splunk data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common issues.

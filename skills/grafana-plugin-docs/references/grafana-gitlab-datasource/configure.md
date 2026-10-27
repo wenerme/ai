@@ -13,7 +13,7 @@ This document explains how to configure the GitLab data source in Grafana.
 
 Before configuring the data source, ensure you have:
 
-- **Grafana Enterprise plugin entitlement:** The GitLab data source is an Enterprise plugin and requires an active entitlement. It isn’t included in every plan or contract. To verify, check whether **GitLab** is available under **Plugins and data** &gt; **Plugins**. If it isn’t, contact your account team or [Grafana Support](/profile/org#support). For installation, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+- **Grafana Enterprise plugin entitlement:** The GitLab data source is an Enterprise plugin and requires an active entitlement. It isn’t included in every plan or contract. To verify, check whether **GitLab** is available under **Plugins and data** &gt; **Plugins**. If it isn’t, contact your account team or [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support). For installation, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 - **Grafana permissions:** Organization administrator role
 - **GitLab account:** A GitLab.com or self-managed GitLab instance
 - **GitLab personal access token:** A token with the `read_api` scope
@@ -61,7 +61,7 @@ Private data source connect (PDC) lets Grafana Cloud query a GitLab instance tha
 
 In Grafana Cloud, route the connection through a PDC network that you control:
 
-1. Set up a PDC network and run the PDC agent. For instructions, refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+1. Set up a PDC network and run the PDC agent. For instructions, refer to [Configure Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 2. In the GitLab data source configuration, under **Additional Settings** &gt; **Private data source connect**, select your network from the **Private data source connect network** drop-down. To create one, click **Manage private data source connect networks**.
 3. Click **Save &amp; test**.
 
@@ -70,7 +70,7 @@ In Grafana Cloud, route the connection through a PDC network that you control:
 The **Secure Socks Proxy** toggle appears under **Additional Settings** only when the `secureSocksDSProxyEnabled` feature toggle is enabled and you run Grafana version 10.0.0 or later.
 
 1. Enable the `secureSocksDSProxyEnabled` feature toggle.
-2. Configure the secure socks proxy in the `[secure_socks_datasource_proxy]` section of `grafana.ini`. For instructions, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+2. Configure the secure socks proxy in the `[secure_socks_datasource_proxy]` section of `grafana.ini`. For instructions, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 3. In the GitLab data source configuration, enable the **Secure Socks Proxy** toggle and click **Save &amp; test**.
 
 ## Verify the connection
@@ -79,13 +79,13 @@ Click **Save &amp; test** to verify the connection.
 
 If the connection is successful, you see the message **Plugin health check successful**.
 
-If you see an error, refer to [Troubleshoot GitLab data source issues](/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/) for help resolving common errors.
+If you see an error, refer to [Troubleshoot GitLab data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/) for help resolving common errors.
 
 ## Provision the data source
 
-You can define the data source using YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source using YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -108,7 +108,7 @@ Replace `<YOUR_ACCESS_TOKEN>` with your GitLab personal access token.
 
 You can provision the GitLab data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "gitlab" {

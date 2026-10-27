@@ -9,7 +9,7 @@ description: "Learn about the Business Calendar category configuration options i
 
 The **Business Calendar** category includes the following parameters:
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/bus-calendar-section.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/bus-calendar-section.png)
 
 ## Scroll to Time
 
@@ -21,7 +21,7 @@ Note that there are two visibility scenarios:
 
 **Scenario 2**: When the Calendar panel is fully visible in your browser window, but the calendar must be scrolled within the panel. In this scenario, the **Scroll to Time** option takes effect.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/scroll.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/scroll.png)
 
 ## Extended date formats
 
@@ -29,4 +29,4 @@ The Language setting in the user profile preference affects both the language an
 
 The existing choices weren’t sufficient for all use cases, so the **English 24** and **ISO 8601** formats were added.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/language.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/language.png)

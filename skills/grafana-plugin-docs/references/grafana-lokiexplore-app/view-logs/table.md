@@ -17,7 +17,7 @@ To open the table view, select **Show logs** for your service in Logs Drilldown,
 
 > Note
 >
-> The Logs Table visualization is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> The Logs Table visualization is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 >
 > To use this feature, enable the logsTablePanelNG feature toggle in your Grafana configuration file or contact Support.
 
@@ -49,9 +49,9 @@ To give the table more room, collapse the sidebar with the **Collapse sidebar** 
 
 Each row has a **Show details** eye icon at the start of the line.
 
-[Log details in the table view](/media/docs/explore-logs/v2/logs-drilldown-table-show-details-copy-menu.png)
+[Log details in the table view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-table-show-details-copy-menu.png)
 
-Select **Show details** to open the log details sidebar, where you can search fields, copy the log line, filter for or out field values, and view field statistics. Refer to [View logs](../#log-details) for explanations.
+Select **Show details** to open the log details sidebar, where you can search fields, copy the log line, filter for or out field values, and view field statistics. Refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details) for explanations.
 
 In the table view:
 
@@ -70,7 +70,7 @@ The table view uses the columns themselves for filtering, plus a controls rail o
 
 Every column header has a **Filter** icon, which opens a list of that column’s values to filter by. To filter by log level, use the **Filter** icon on the level column, for example `detected_level`.
 
-You can also hover over any cell and use **Filter for value** or **Filter out value** to add that value to your query, or filter from within [log details](#view-log-details). The **Log levels** filter in the Logs Drilldown toolbar applies to the table view as well.
+You can also hover over any cell and use **Filter for value** or **Filter out value** to add that value to your query, or filter from within [log details](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/table/#view-log-details). The **Log levels** filter in the Logs Drilldown toolbar applies to the table view as well.
 
 ### Sort
 
@@ -92,14 +92,14 @@ If you’re coming from the previous table view in Logs Drilldown or Grafana Exp
 
 Expand table
 
-| Task                  | Previous table view                                                                 | Logs table visualization                                                                       |
-|-----------------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| Inspect a log line    | The **View log line** eye icon opened an **Inspect value** dialog with the raw line | The **Show details** eye icon opens the full [log details sidebar](#view-log-details)          |
-| Add or remove columns | Fields sidebar with checkboxes                                                      | Same sidebar, unchanged                                                                        |
-| Reorder columns       | Column menu with **Move left** and **Move right** (Logs Drilldown)                  | Drag fields in the **Selected fields** list                                                    |
-| Remove a column       | **Remove column** in the column menu (Logs Drilldown)                               | Clear the field’s checkbox in the sidebar                                                      |
-| Filter by a value     | Icons on cell hover                                                                 | Cell hover icons, plus a **Filter** icon in every column header                                |
-| Filter by level       | Cell filters on the level column                                                    | **Filter** icon in the level column header, cell filters, or the **Log levels** toolbar filter |
-| Wrap long lines       | Not available; cells scrolled horizontally                                          | Wrap control in the rail, or the **Wrap text** column option                                   |
-| Download logs         | **Download logs** control                                                           | Same control, same `txt`, `json`, and `csv` formats                                            |
-| Share a log line      | **Copy link to log line** icon                                                      | Same icon, unchanged                                                                           |
+| Task                  | Previous table view                                                                 | Logs table visualization                                                                                                                                                                                       |
+|-----------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Inspect a log line    | The **View log line** eye icon opened an **Inspect value** dialog with the raw line | The **Show details** eye icon opens the full [log details sidebar](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/table/#view-log-details) |
+| Add or remove columns | Fields sidebar with checkboxes                                                      | Same sidebar, unchanged                                                                                                                                                                                        |
+| Reorder columns       | Column menu with **Move left** and **Move right** (Logs Drilldown)                  | Drag fields in the **Selected fields** list                                                                                                                                                                    |
+| Remove a column       | **Remove column** in the column menu (Logs Drilldown)                               | Clear the field’s checkbox in the sidebar                                                                                                                                                                      |
+| Filter by a value     | Icons on cell hover                                                                 | Cell hover icons, plus a **Filter** icon in every column header                                                                                                                                                |
+| Filter by level       | Cell filters on the level column                                                    | **Filter** icon in the level column header, cell filters, or the **Log levels** toolbar filter                                                                                                                 |
+| Wrap long lines       | Not available; cells scrolled horizontally                                          | Wrap control in the rail, or the **Wrap text** column option                                                                                                                                                   |
+| Download logs         | **Download logs** control                                                           | Same control, same `txt`, `json`, and `csv` formats                                                                                                                                                            |
+| Share a log line      | **Copy link to log line** icon                                                      | Same icon, unchanged                                                                                                                                                                                           |

@@ -9,13 +9,13 @@ description: "Use the Adobe Analytics data source to query and visualize Adobe A
 
 > Note
 >
-> This plugin is in public preview. For details, refer to [Grafana release life cycle](/docs/release-life-cycle/). If you encounter issues or want to request a feature, open a support ticket with your Grafana Enterprise support channel.
+> This plugin is in public preview. For details, refer to [Grafana release life cycle](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). If you encounter issues or want to request a feature, open a support ticket with your Grafana Enterprise support channel.
 
 The Adobe Analytics data source lets you query and visualize Adobe Analytics reports data in Grafana. Use it to build dashboards that combine Adobe Analytics metrics and dimensions with other telemetry in your Grafana organization.
 
 > Note
 >
-> The Adobe Analytics data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Adobe Analytics data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Requirements
 
@@ -23,7 +23,7 @@ To use the Adobe Analytics data source, you need:
 
 - An Adobe Analytics account with access to the [Adobe Analytics 2.0 API](https://developer.adobe.com/analytics-apis/docs/2.0/).
 - An Adobe Developer Console project configured with the **Adobe Analytics API** and **OAuth Server-to-Server** credentials. Refer to [Create a project](https://developer.adobe.com/developer-console/docs/guides/projects/projects-empty/) and [Server-to-Server credentials](https://developer.adobe.com/developer-console/docs/guides/credentials/) in the Adobe Developer documentation.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 
 ## Supported features
 
@@ -39,7 +39,7 @@ Expand table
 
 ## Install the data source
 
-To install the Adobe Analytics data source, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). On Grafana Cloud, Enterprise plugins are managed for you and installed from the plugin catalog.
+To install the Adobe Analytics data source, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). On Grafana Cloud, Enterprise plugins are managed for you and installed from the plugin catalog.
 
 ## Configure the data source
 
@@ -114,15 +114,15 @@ Expand table
 
 ### Verify the connection
 
-Click **Save &amp; test** to verify the connection. On success, Grafana displays a message containing `health check succeeded for 'Projects' query`. If the test fails, refer to [Troubleshoot Adobe Analytics data source issues](/docs/plugins/grafana-adobeanalytics-datasource/latest/troubleshooting/).
+Click **Save &amp; test** to verify the connection. On success, Grafana displays a message containing `health check succeeded for 'Projects' query`. If the test fails, refer to [Troubleshoot Adobe Analytics data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-adobeanalytics-datasource/latest/troubleshooting/).
 
 The health check requests the `/projects` endpoint on the Adobe Analytics API, which validates both the Global Company ID and the OAuth credential.
 
 ### Provision the data source
 
-You can define the Adobe Analytics data source in YAML as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the Adobe Analytics data source in YAML as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -151,7 +151,7 @@ Replace the placeholders:
 
 You can also provision the data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the generic `grafana_data_source` resource.
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "adobe_analytics" {
@@ -397,7 +397,7 @@ To create an Adobe Analytics query variable:
 4. Select your Adobe Analytics data source.
 5. Choose one of the list query types and fill in the required parameters.
 
-For details on how Grafana handles variables, refer to [Variables](/docs/grafana/latest/dashboards/variables/) and [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For details on how Grafana handles variables, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) and [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ### Variable example: select a report suite per dashboard
 
@@ -415,11 +415,11 @@ The same pattern works for metrics, dimensions, and segments — use the corresp
 
 ## Alerting
 
-The Adobe Analytics data source supports Grafana alerting. You can create alert rules from any Report query that returns numeric data. For details on setting up rules, notification policies, and contact points, refer to [Alerting](/docs/grafana/latest/alerting/).
+The Adobe Analytics data source supports Grafana alerting. You can create alert rules from any Report query that returns numeric data. For details on setting up rules, notification policies, and contact points, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Annotations
 
-The Adobe Analytics data source supports Grafana annotations. Use a Report query that returns data with a time series dimension to mark events on a dashboard panel. For details, refer to [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+The Adobe Analytics data source supports Grafana annotations. Use a Report query that returns data with a time series dimension to mark events on a dashboard panel. For details, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Known limitations
 
@@ -435,7 +435,7 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 ## Related resources
 
-- [Troubleshoot Adobe Analytics data source issues](/docs/plugins/grafana-adobeanalytics-datasource/latest/troubleshooting/)
+- [Troubleshoot Adobe Analytics data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-adobeanalytics-datasource/latest/troubleshooting/)
 - [Adobe Analytics 2.0 API documentation](https://developer.adobe.com/analytics-apis/docs/2.0/)
 - [Adobe Developer Console credentials guide](https://developer.adobe.com/developer-console/docs/guides/credentials/)
 - [Grafana community forum](https://community.grafana.com/)

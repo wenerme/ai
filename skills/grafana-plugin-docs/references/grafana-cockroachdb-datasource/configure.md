@@ -108,17 +108,17 @@ After configuring the data source, click **Save &amp; test**. Grafana attempts t
 
 If the connection is successful, you’ll see the message: **Data source is working**.
 
-If the test fails, refer to [Troubleshooting](/docs/plugins/grafana-cockroachdb-datasource/latest/troubleshooting/) for common errors and solutions.
+If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/troubleshooting/) for common errors and solutions.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following examples show provisioning configurations for each authentication method.
 
 ### SQL authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -137,7 +137,7 @@ datasources:
 
 ### Kerberos authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -161,7 +161,7 @@ datasources:
 >
 > TLS values can be either a file path or the file content of the certificate and key.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -187,7 +187,7 @@ You can provision the CockroachDB data source using the [Grafana Terraform provi
 
 ### SQL authentication
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "cockroachdb" {
@@ -209,7 +209,7 @@ resource "grafana_data_source" "cockroachdb" {
 
 ### Kerberos authentication
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "cockroachdb" {
@@ -231,7 +231,7 @@ resource "grafana_data_source" "cockroachdb" {
 
 ### TLS/SSL authentication
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "cockroachdb" {

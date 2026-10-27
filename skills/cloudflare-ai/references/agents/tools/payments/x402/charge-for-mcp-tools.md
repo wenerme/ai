@@ -12,17 +12,69 @@ image: https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-m
 
 # Charge for MCP tools
 
-Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Agents SDK provides `paidTool`, a drop-in replacement for `tool` that adds x402 payment requirements. Clients pay per tool call, and you can mix free and paid tools in the same server.
+The Agents SDK provides `paidTool`, which registers a tool with x402 payment requirements. Clients pay per tool call, and you can mix free and paid tools in the same server.
 
 ## Setup
 
 Wrap your `McpServer` with `withX402` and use `paidTool` for tools you want to charge for:
 
+```js
+import { McpServer } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
+import { withX402 } from "agents/x402";
+import { z } from "zod";
+
+const X402_CONFIG = {
+	network: "base",
+	recipient: "0xYourWalletAddress",
+	facilitator: { url: "https://x402.org/facilitator" }, // Payment facilitator URL
+	// To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator
+};
+
+function createServer() {
+	const server = withX402(
+		new McpServer({ name: "PaidMCP", version: "1.0.0" }),
+		X402_CONFIG,
+	);
+
+	// Paid tool — $0.01 per call
+	server.paidTool(
+		"square",
+		"Squares a number",
+		0.01, // USD
+		{ number: z.number() },
+		{},
+		async ({ number }) => {
+			return { content: [{ type: "text", text: String(number ** 2) }] };
+		},
+	);
+
+	// Free tool
+	server.registerTool(
+		"echo",
+		{ description: "Echo a message", inputSchema: { message: z.string() } },
+		async ({ message }) => {
+			return { content: [{ type: "text", text: message }] };
+		},
+	);
+
+	return server;
+}
+
+const handler = createMcpHandler(createServer);
+
+export default {
+	fetch(request, env, ctx) {
+		return handler(request, env, ctx);
+	},
+};
+```
+
 ```ts
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/server";
+import { createMcpHandler } from "agents/mcp/server";
 import { withX402, type X402Config } from "agents/x402";
 import { z } from "zod";
 
@@ -33,36 +85,43 @@ const X402_CONFIG: X402Config = {
 	// To learn more about facilitators: https://docs.x402.org/core-concepts/facilitator
 };
 
-export class PaidMCP extends McpAgent<Env> {
-	server = withX402(
+function createServer() {
+	const server = withX402(
 		new McpServer({ name: "PaidMCP", version: "1.0.0" }),
 		X402_CONFIG,
 	);
 
-	async init() {
-		// Paid tool — $0.01 per call
-		this.server.paidTool(
-			"square",
-			"Squares a number",
-			0.01, // USD
-			{ number: z.number() },
-			{},
-			async ({ number }) => {
-				return { content: [{ type: "text", text: String(number ** 2) }] };
-			},
-		);
+	// Paid tool — $0.01 per call
+	server.paidTool(
+		"square",
+		"Squares a number",
+		0.01, // USD
+		{ number: z.number() },
+		{},
+		async ({ number }) => {
+			return { content: [{ type: "text", text: String(number ** 2) }] };
+		},
+	);
 
-		// Free tool
-		this.server.tool(
-			"echo",
-			"Echo a message",
-			{ message: z.string() },
-			async ({ message }) => {
-				return { content: [{ type: "text", text: message }] };
-			},
-		);
-	}
+	// Free tool
+	server.registerTool(
+		"echo",
+		{ description: "Echo a message", inputSchema: { message: z.string() } },
+		async ({ message }) => {
+			return { content: [{ type: "text", text: message }] };
+		},
+	);
+
+	return server;
 }
+
+const handler = createMcpHandler(createServer);
+
+export default {
+	fetch(request, env, ctx) {
+		return handler(request, env, ctx);
+	},
+} satisfies ExportedHandler;
 ```
 
 ## Configuration
@@ -73,26 +132,24 @@ export class PaidMCP extends McpAgent<Env> {
 | `recipient` | Wallet address to receive payments |
 | `facilitator` | Payment facilitator URL (use `https://x402.org/facilitator`) |
 
-## paidTool signature
+## paidTool parameters
 
-```ts
-this.server.paidTool(
-	name, // Tool name
-	description, // Tool description
-	price, // Price in USD (e.g., 0.01)
-	inputSchema, // Zod schema for inputs
-	annotations, // MCP annotations
-	handler, // Async function that executes the tool
-);
-```
+`paidTool()` takes the same arguments as registering a tool, plus a price:
+
+| Parameter | Description |
+| --- | --- |
+| `name` | Tool name |
+| `description` | Tool description |
+| `price` | Price per call in USD, for example `0.01` |
+| `inputSchema` | Zod shape for the tool's input |
+| `annotations` | MCP tool annotations |
+| `handler` | Async function that runs after payment succeeds |
 
 When a client calls a paid tool without payment, the server returns 402 with payment requirements. The client pays via x402, retries with payment proof, and receives the result.
 
 ## Testing
 
 Use `base-sepolia` and get test USDC from the [Circle faucet ↗︎](https://faucet.circle.com/).
-
-For a complete working example, refer to [x402-mcp on GitHub ↗︎](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
 
 ## Related
 
@@ -109,5 +166,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/#page","headline":"Charge for MCP tools","description":"Charge per tool call in an MCP server using paidTool.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/og.png?v=08d95a07be324c1a","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/#page","headline":"Charge for MCP tools","description":"Charge per tool call in an MCP server using paidTool.","url":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/og.png?v=08d95a07be324c1a","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

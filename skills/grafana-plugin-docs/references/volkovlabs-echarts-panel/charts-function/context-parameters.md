@@ -13,7 +13,7 @@ The Apache ECharts library instance.
 
 ### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.echarts;
@@ -21,7 +21,7 @@ context.echarts;
 
 ### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const libraryECharts = context.echarts;
@@ -33,7 +33,7 @@ The statistical and data mining tool for Apache ECharts.
 
 ### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.ecStat;
@@ -41,7 +41,7 @@ context.ecStat;
 
 ### Example
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 context.echarts.registerTransform(context.ecStat.transform.regression);
@@ -55,7 +55,7 @@ ECharts dataset in Visual mode.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.editor.dataset;
@@ -63,7 +63,7 @@ context.editor.dataset;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -100,7 +100,7 @@ ECharts series in Visual mode.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.editor.series;
@@ -108,7 +108,7 @@ context.editor.series;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -147,7 +147,7 @@ Publish and subscribe to application events.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.eventBus;
@@ -155,7 +155,7 @@ context.grafana.eventBus;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const subscriber = eventBus.getStream(RefreshEvent).subscribe(() => {
@@ -169,7 +169,7 @@ The `locationService` works with the browser location and history.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.locationService;
@@ -177,7 +177,7 @@ context.grafana.locationService;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.locationService.reload();
@@ -191,7 +191,7 @@ Displays an error notification.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.notifyError([header, message]);
@@ -199,7 +199,7 @@ context.grafana.notifyError([header, message]);
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 //
@@ -217,7 +217,7 @@ Displays a success notification.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.notifySuccess([header, message]);
@@ -225,7 +225,7 @@ context.grafana.notifySuccess([header, message]);
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.notifySuccess(["Success Title", `Success message`]);
@@ -242,7 +242,7 @@ Function to refresh dashboard panels using application events.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.refresh();
@@ -254,7 +254,7 @@ The `replaceVariables()` function to interpolate variables.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.replaceVariables();
@@ -262,7 +262,7 @@ context.grafana.replaceVariables();
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const variable = context.grafana.replaceVariables("${variable}");
@@ -275,7 +275,7 @@ Contains grafana Theme object.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.theme;
@@ -283,7 +283,7 @@ context.grafana.theme;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const theme = context.grafana.theme;
@@ -298,7 +298,7 @@ Instance of the Apache ECharts library.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.panel.chart;
@@ -306,7 +306,7 @@ context.panel.chart;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.panel.chart.on("brushSelected", function (params) {
@@ -338,7 +338,7 @@ Object containing a time range, series, and request information.
 
 #### Usage
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.panel.data;
@@ -346,7 +346,7 @@ context.panel.data;
 
 #### Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.panel.data.series.map((s) => {

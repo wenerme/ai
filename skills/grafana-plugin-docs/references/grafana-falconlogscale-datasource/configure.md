@@ -7,7 +7,7 @@ description: "This document outlines configuration options for the Falcon LogSca
 
 # Configure the Falcon LogScale data source
 
-[Add a data source](/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
+[Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
 
 ## Basic fields
 
@@ -46,7 +46,7 @@ Expand table
 | With Credentials | Enable to send credentials such as cookies or auth headers with cross-site requests. |
 | With CA Cert     | Enable to verify self-signed TLS Certs.                                              |
 
-Custom HTTP Header Data sources managed by provisioning within Grafana can be configured to add HTTP headers to all requests going to that data source. The header name is configured in the `jsonData` field, and the header value should be configured in secureJsonData. For more information about custom HTTP headers, refer to [Custom HTTP Headers](/docs/grafana/latest/administration/provisioning/#custom-http-headers-for-data-sources).
+Custom HTTP Header Data sources managed by provisioning within Grafana can be configured to add HTTP headers to all requests going to that data source. The header name is configured in the `jsonData` field, and the header value should be configured in secureJsonData. For more information about custom HTTP headers, refer to [Custom HTTP Headers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#custom-http-headers-for-data-sources).
 
 ## LogScale Token Authentication
 
@@ -81,27 +81,27 @@ You can set a default LogScale repository to use for your queries. If you do not
 
 ## Configure data links
 
-Data links allow you to link to other data sources from your Grafana panels. For more information about data links, refer to [Data links](/docs/grafana/latest/explore/logs-integration/).
+Data links allow you to link to other data sources from your Grafana panels. For more information about data links, refer to [Data links](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/logs-integration/).
 
 To configure a data link, click the add button in the data links section of the data source configuration page. Fill out the fields as follows:
 
 Expand table
 
-| Field         | Description                                                                                                                                                                                                                                          |
-|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Field         | The field that you want to link to. It can be the exact name or a regex pattern.                                                                                                                                                                     |
-| Label         | This provides a meaningful name to the data link.                                                                                                                                                                                                    |
-| Regex         | A regular expression to match the field value. If you want the entire value, use `(.*)`                                                                                                                                                              |
-| URL or Query  | A URL link or query provided to a selected data source. You can use variables in the URLs or queries. For more information on data link variables, refer to [Configure data links](/docs/grafana/latest/panels-visualizations/configure-data-links/) |
-| Internal link | Select this option to link to a Grafana data source.                                                                                                                                                                                                 |
+| Field         | Description                                                                                                                                                                                                                                                                                                      |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Field         | The field that you want to link to. It can be the exact name or a regex pattern.                                                                                                                                                                                                                                 |
+| Label         | This provides a meaningful name to the data link.                                                                                                                                                                                                                                                                |
+| Regex         | A regular expression to match the field value. If you want the entire value, use `(.*)`                                                                                                                                                                                                                          |
+| URL or Query  | A URL link or query provided to a selected data source. You can use variables in the URLs or queries. For more information on data link variables, refer to [Configure data links](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/configure-data-links/) |
+| Internal link | Select this option to link to a Grafana data source.                                                                                                                                                                                                                                                             |
 
 ## Configure the data source with provisioning
 
-It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, including all the settings that you can set for this data source, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources)
+It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works, including all the settings that you can set for this data source, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources)
 
 Here are some provisioning examples for this data source using basic authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -119,7 +119,7 @@ datasources:
 
 Provision the data source using NGSIEM:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -138,6 +138,6 @@ datasources:
 
 ## Import a dashboard for Falcon LogScale
 
-Follow these [instructions](/docs/grafana/latest/dashboards/export-import/#importing-a-dashboard) for importing a dashboard.
+Follow these [instructions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/export-import/#importing-a-dashboard) for importing a dashboard.
 
 You can find imported dashboards in Configuration &gt; Data Sources &gt; select your Falcon LogScale data source &gt; select the Dashboards tab to see available pre-made dashboards.

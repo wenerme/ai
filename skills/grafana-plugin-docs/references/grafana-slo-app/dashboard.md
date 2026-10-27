@@ -19,7 +19,7 @@ With the SLO dashboard, you can:
 
 At the top of the dashboard, you can review the SLO configuration, including its name, description, time window, and objective.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard2.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard2.png)
 
 ## View current SLI and historical trends
 
@@ -27,7 +27,7 @@ The **SLI** panel shows how the SLI value changes over time for the selected tim
 
 When the SLI drops below the SLO objective, the chart highlights these intervals in red to quickly identify when the SLO was not met.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-sli-results.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-sli-results.png)
 
 On the right side, the **SLI stat** panel displays the average SLI value over the entire SLO time window, expressed as a percentage. The panel name reflects the SLO time window (for example, **28d SLI**).
 
@@ -44,7 +44,7 @@ When evaluating SLO performance, the **remaining error budget** is a key metric.
 
 The **Error Budget Burndown** panel shows how the remaining error budget changes over the selected time range.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-remaining-error-budget.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-remaining-error-budget.png)
 
 The **Error Budget Burndown** panel calculates the error budget **over the selected time range**. This allows you to zoom in on specific periods to analyze how the error budget was consumed during that interval. Note the following:
 
@@ -62,7 +62,7 @@ The burn rate metric indicates how quickly the error budget is being consumed. A
 
 The **Error Budget Burn Rate** panel shows how the burn rate changes over time for the selected time range.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-error-budget-burn-rate.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-error-budget-burn-rate.png)
 
 This chart uses different colors to represent various burn rate levels. It helps identify periods of elevated burn that may indicate incidents or abnormal behavior.
 
@@ -70,9 +70,9 @@ On the right side, the **Current Burn Rate** stat panel displays the error budge
 
 ## Analyze the impact of event rate
 
-The **Event rate** chart is shown only for [event-based SLIs](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis) and display the rate at which events are evaluated over the selected time range.
+The **Event rate** chart is shown only for [event-based SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis) and display the rate at which events are evaluated over the selected time range.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-event-rate-panel.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-event-rate-panel.png)
 
 Analyzing the event rate can help interpret SLO performance.
 
@@ -86,11 +86,11 @@ Because event-based SLOs are directly affected by event volume, the **event rate
 
 An SLO can meet its objective while still delivering a poor experience for a subset of components, such as a specific `region`, `endpoint`, or `cluster`. This typically occurs when failures are concentrated in particular dimensions and may hide critical issues.
 
-To capture this behavior, you can design SLOs that report results for specific dimensions using [multi-dimensional SLIs](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/).
+To capture this behavior, you can design SLOs that report results for specific dimensions using [multi-dimensional SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/).
 
 With multi-dimensional SLIs, the SLO dashboard allows you to filter results and visualize SLI consumption and event rate for each individual dimension.
 
-[](/media/docs/grafana-cloud/slo/slo-dashboard-with-multidimensional-sli.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/slo-dashboard-with-multidimensional-sli.png)
 
 Visualizing SLO results by dimension helps identify degradations driven by specific components. These insights can then be used to refine or split existing SLOs.
 
@@ -98,19 +98,19 @@ Visualizing SLO results by dimension helps identify degradations driven by speci
 
 When SLO alert rules are enabled, the SLO dashboard displays the **Burn Rate Alerts** panel, which shows the state of fast-burn and slow-burn alerts. On the right side, you can find assistant investigations triggered by SLO alerts or started manually with **Start an investigation**.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-burn-rate-alerts-and-investigations.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-burn-rate-alerts-and-investigations.png)
 
 You can also click the alert icon in the right sidebar to view these SLO alerts.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-alerts-sidebar.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-alerts-sidebar.png)
 
 In the overlay panel, you can see whether an SLO alert is firing, expand alert details, and perform additional actions.
 
 The **View** action redirects you to **Grafana Alerting**, where you can view the full alert details.
 
-You can also find the SLO alert rules in the [Alert rules view](/docs/grafana-cloud/alerting-and-irm/alerting/monitor-status/view-alert-rules/) under the selected SLO folder in **Grafana Alerting**.
+You can also find the SLO alert rules in the [Alert rules view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/alerting/monitor-status/view-alert-rules/) under the selected SLO folder in **Grafana Alerting**.
 
-[](/media/docs/grafana-cloud/slo/screenshot-alerting-alert-rules-view.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-alerting-alert-rules-view.png)
 
 ## Add SLO panels to custom dashboards
 
@@ -127,9 +127,9 @@ To correlate SLO performance data with other metrics, you can copy SLO panels an
 3. Hover over any part of the panel to display the menu icon in the upper-right corner.
 4. Click the menu icon, select **More…,** and then click **Copy.**
 
-   [](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-copy-panel.png)
+   [](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-copy-panel.png)
 5. Navigate to the dashboard where you want to add the panel.
 6. Click **Edit** in the top-right corner of the dashboard.
 7. Click the **Add** drop-down and select **Paste panel.**
 
-   [](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-paste-panel.png)
+   [](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-paste-panel.png)

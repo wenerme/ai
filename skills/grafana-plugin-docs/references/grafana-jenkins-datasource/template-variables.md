@@ -9,11 +9,11 @@ description: "Using template variables with the Jenkins data source in Grafana"
 
 Instead of hard-coding details such as project names in your panels, you can use variables. Grafana displays these variables in drop-down lists at the top of the dashboard so you can change the data displayed without editing panels. Grafana refers to such variables as template variables.
 
-For an introduction to templating, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/) and [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For an introduction to templating, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) and [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Before you begin
 
-- Ensure you have [configured the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/configure/).
+- Ensure you have [configured the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/configure/).
 - Verify your credentials have permission to list the projects you want to reference.
 
 ## Supported variable types
@@ -86,5 +86,5 @@ Reference the variable in text such as a panel title to make dashboards self-des
 
 ## Next steps
 
-- [Use the Jenkins query editor](/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
-- [Troubleshoot the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
+- [Use the Jenkins query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
+- [Troubleshoot the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)

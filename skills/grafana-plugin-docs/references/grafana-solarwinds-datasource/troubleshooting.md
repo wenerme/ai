@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the SolarWinds data source in Grafana."
 
 # Troubleshoot the SolarWinds data source
 
-This document provides solutions to common issues you might encounter when you configure or use the SolarWinds data source. For configuration instructions, refer to [Configure the SolarWinds data source](/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when you configure or use the SolarWinds data source. For configuration instructions, refer to [Configure the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
 
 ## Installation errors
 
@@ -25,12 +25,12 @@ These issues occur when the plugin doesn’t appear or can’t be installed.
 
 Expand table
 
-| Cause                              | Solution                                                                                                                                                                                                                                                                                |
-|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| No valid Enterprise license        | The SolarWinds data source is an Enterprise plugin. Confirm your Grafana instance has a valid Grafana Enterprise license or an eligible Grafana Cloud plan. The plugin only appears when the license is valid.                                                                          |
-| Grafana version too old            | Upgrade to Grafana 11.6.7 or later.                                                                                                                                                                                                                                                     |
-| Grafana Cloud propagation delay    | On Grafana Cloud, it can take up to 15 minutes for the plugin to appear after installation.                                                                                                                                                                                             |
-| Air-gapped installation incomplete | Verify the plugin archive is extracted into the plugins directory as `grafana-solarwinds-datasource` and restart Grafana. For steps, refer to [Install in an air-gapped environment](/docs/plugins/grafana-solarwinds-datasource/latest/install/#install-in-an-air-gapped-environment). |
+| Cause                              | Solution                                                                                                                                                                                                                                                                                                                                            |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| No valid Enterprise license        | The SolarWinds data source is an Enterprise plugin. Confirm your Grafana instance has a valid Grafana Enterprise license or an eligible Grafana Cloud plan. The plugin only appears when the license is valid.                                                                                                                                      |
+| Grafana version too old            | Upgrade to Grafana 11.6.7 or later.                                                                                                                                                                                                                                                                                                                 |
+| Grafana Cloud propagation delay    | On Grafana Cloud, it can take up to 15 minutes for the plugin to appear after installation.                                                                                                                                                                                                                                                         |
+| Air-gapped installation incomplete | Verify the plugin archive is extracted into the plugins directory as `grafana-solarwinds-datasource` and restart Grafana. For steps, refer to [Install in an air-gapped environment](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/install/#install-in-an-air-gapped-environment). |
 
 ## Plugin and UI issues
 
@@ -48,10 +48,10 @@ These issues occur when the plugin’s pages don’t render correctly.
 
 Expand table
 
-| Cause                          | Solution                                                                                                                                                                                                        |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Outdated plugin version        | Upgrade the plugin to the latest version. For steps, refer to [Check and upgrade the plugin version](/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#check-and-upgrade-the-plugin-version). |
-| Grafana Cloud deployment issue | If upgrading doesn’t resolve the problem, contact Grafana Support. A blank page can result from a stuck deployment on Grafana Cloud.                                                                            |
+| Cause                          | Solution                                                                                                                                                                                                                                                                    |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Outdated plugin version        | Upgrade the plugin to the latest version. For steps, refer to [Check and upgrade the plugin version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#check-and-upgrade-the-plugin-version). |
+| Grafana Cloud deployment issue | If upgrading doesn’t resolve the problem, contact Grafana Support. A blank page can result from a stuck deployment on Grafana Cloud.                                                                                                                                        |
 
 ### Check and upgrade the plugin version
 
@@ -71,7 +71,7 @@ On self-managed Grafana, update the plugin through the catalog or with Grafana C
 
 Alternatively, update the plugin with Grafana CLI, then restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana-cli plugins update grafana-solarwinds-datasource
@@ -93,15 +93,15 @@ These errors occur when Grafana can’t reach your SolarWinds instance or can’
 
 Expand table
 
-| Cause                     | Solution                                                                                                                                                                                                       |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Orion web UI URL used     | Enter only the scheme and host in the **URL** field, such as `https://solarwinds.example.com`. Don’t use the Orion web UI URL, such as `https://solarwinds.example.com/Orion/SummaryView.aspx`.                |
-| Port or path added to URL | Remove any port, path, or trailing slash. The data source appends the SWIS port (`17774`) and API path automatically.                                                                                          |
-| Port `17774` not open     | An `i/o timeout` usually means the SWIS API port isn’t reachable. Confirm that Grafana can reach the SolarWinds server on port `17774`. Port `443` serves the Orion web UI and isn’t used by this data source. |
-| Firewall rules            | Allow outbound connectivity from the Grafana server to the SolarWinds server on port `17774`.                                                                                                                  |
-| Private network           | For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to reach a private instance.                                            |
+| Cause                     | Solution                                                                                                                                                                                                                        |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Orion web UI URL used     | Enter only the scheme and host in the **URL** field, such as `https://solarwinds.example.com`. Don’t use the Orion web UI URL, such as `https://solarwinds.example.com/Orion/SummaryView.aspx`.                                 |
+| Port or path added to URL | Remove any port, path, or trailing slash. The data source appends the SWIS port (`17774`) and API path automatically.                                                                                                           |
+| Port `17774` not open     | An `i/o timeout` usually means the SWIS API port isn’t reachable. Confirm that Grafana can reach the SolarWinds server on port `17774`. Port `443` serves the Orion web UI and isn’t used by this data source.                  |
+| Firewall rules            | Allow outbound connectivity from the Grafana server to the SolarWinds server on port `17774`.                                                                                                                                   |
+| Private network           | For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to reach a private instance. |
 
-To test connectivity from the Grafana server to the SWIS API, refer to [Verify connectivity to the SWIS API](/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#verify-connectivity-to-the-swis-api).
+To test connectivity from the Grafana server to the SWIS API, refer to [Verify connectivity to the SWIS API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#verify-connectivity-to-the-swis-api).
 
 ### Verify connectivity to the SWIS API
 
@@ -109,14 +109,14 @@ To confirm that the Grafana server can reach the SolarWinds SWIS API, run these 
 
 1. Test that the port is open, replacing the host with your SolarWinds server:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    nc -vz <SOLARWINDS_HOST> 17774
    ```
 2. Test the SWIS API endpoint with your credentials. A `200` response confirms connectivity and authentication:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    curl -u '<USERNAME>:<PASSWORD>' \
@@ -260,7 +260,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -276,7 +276,7 @@ If you’ve tried the previous solutions and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [SolarWinds Query Language (SWQL) documentation](https://support.solarwinds.com/SuccessCenter/s/article/Use-SolarWinds-Query-Language-SWQL?language=en_US) for query-specific guidance.
-3. Contact Grafana Support if you’re an Enterprise, Cloud Pro, or Cloud Advanced user. Open a support ticket through your [Grafana support channel](/profile/org#support).
+3. Contact Grafana Support if you’re an Enterprise, Cloud Pro, or Cloud Advanced user. Open a support ticket through your [Grafana support channel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support).
 4. When you report an issue, include:
 
    - Grafana version and plugin version.

@@ -7,11 +7,11 @@ description: "Use template variables with the Cloudflare data source to build dy
 
 # Cloudflare template variables
 
-Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a zone or account into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a zone or account into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-Before you use template variables, ensure you have [configured the Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
+Before you use template variables, ensure you have [configured the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
 
 ## Supported variable types
 
@@ -25,7 +25,7 @@ Expand table
 | Custom        | Yes       | Uses a fixed, comma-separated list of values that you define.                                  |
 | Text box      | Yes       | Accepts a free-form value that you enter on the dashboard.                                     |
 
-Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Account ID variable
 
@@ -59,7 +59,7 @@ Expand table
 
 When the **Value Field** and **Label Field** differ, the drop-down shows the label while queries receive the value. For example, a `zone` variable can display domain names while passing the zone `id` to the **Zone ID** parameter.
 
-The **List load balancers** and **List tokens** actions require a parent parameter, a **Zone ID** and an **Account ID** respectively. You can set these to another variable to chain the drop-downs together, as described in [Chain query variables](#chain-query-variables).
+The **List load balancers** and **List tokens** actions require a parent parameter, a **Zone ID** and an **Account ID** respectively. You can set these to another variable to chain the drop-downs together, as described in [Chain query variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/#chain-query-variables).
 
 ## Custom variable example
 
@@ -96,7 +96,7 @@ Expand table
 | `${__timeFrom}` | The start of the dashboard time range, used as the default `since` or `dateStart` parameter. |
 | `${__timeTo}`   | The end of the dashboard time range, used as the default `until` or `dateEnd` parameter.     |
 
-For more information about built-in variables, refer to [Global variables](/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
+For more information about built-in variables, refer to [Global variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
 
 ## Use variables in queries
 
@@ -118,5 +118,5 @@ The `load_balancer` drop-down now refreshes whenever you select a different zone
 
 ## Next steps
 
-- [Cloudflare query editor](/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
-- [Troubleshooting](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/)
+- [Cloudflare query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/)

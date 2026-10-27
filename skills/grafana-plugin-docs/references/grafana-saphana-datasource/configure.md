@@ -18,8 +18,8 @@ Grafana requirements:
 - Grafana version `11.6.7` or later.
 - One of the following:
 
-  - [Grafana Cloud](/products/cloud/) Free, Pro, or Advanced account.
-  - Grafana Enterprise with an [activated license](/docs/grafana/latest/administration/enterprise-licensing/).
+  - [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/cloud/) Free, Pro, or Advanced account.
+  - Grafana Enterprise with an [activated license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - The `Organization administrator` role to add data sources.
 
 SAP HANA requirements:
@@ -29,7 +29,7 @@ SAP HANA requirements:
 
 ## Add the SAP HANA data source
 
-For general information on adding a data source, refer to [Add a data source](/docs/grafana/latest/datasources/add-a-data-source/).
+For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/add-a-data-source/).
 
 Complete the following steps to add a new SAP HANA data source:
 
@@ -115,7 +115,7 @@ Expand table
 
 ### Secure Socks Proxy
 
-Enable the **Secure Socks Proxy** option to proxy the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+Enable the **Secure Socks Proxy** option to proxy the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
 > Note
 >
@@ -132,7 +132,7 @@ You can determine the ports used by a particular tenant database by querying the
 
 From the tenant database:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT FROM SYS.M_SERVICES WHERE ((SERVICE_NAME='indexserver' and COORDINATOR_TYPE= 'MASTER') or (SERVICE_NAME='xsengine'))
@@ -140,7 +140,7 @@ SELECT SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT FROM SYS.M_SERVICES WH
 
 From the system database:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DATABASE_NAME, SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT FROM SYS_DATABASES.M_SERVICES WHERE DATABASE_NAME='<DBNAME>' and ((SERVICE_NAME='indexserver' and COORDINATOR_TYPE= 'MASTER') or (SERVICE_NAME='xsengine'))
@@ -148,7 +148,7 @@ SELECT DATABASE_NAME, SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT FROM SY
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection settings and user credentials. A “Data source is working” message indicates that Grafana can connect to your SAP HANA instance. If you don’t see this message, refer to [Troubleshooting](/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/) for help resolving common issues.
+Click **Save &amp; test** to verify the connection settings and user credentials. A “Data source is working” message indicates that Grafana can connect to your SAP HANA instance. If you don’t see this message, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/) for help resolving common issues.
 
 > Note
 >
@@ -162,7 +162,7 @@ To connect Grafana to SAP HANA, use dedicated credentials and only provide the r
 
 Create a restricted user with username and password. The following query creates a restricted user and disables the force password change:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 CREATE RESTRICTED USER <USER> PASSWORD <PASSWORD> NO FORCE_FIRST_PASSWORD_CHANGE;
@@ -172,7 +172,7 @@ CREATE RESTRICTED USER <USER> PASSWORD <PASSWORD> NO FORCE_FIRST_PASSWORD_CHANGE
 
 Allow the user to connect to the system through clients such as Grafana:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 ALTER USER <USER> ENABLE CLIENT CONNECT;
@@ -182,7 +182,7 @@ ALTER USER <USER> ENABLE CLIENT CONNECT;
 
 Give the user access to necessary views, tables, and schemas:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 ALTER USER <USER> GRANT ROLE PUBLIC;
@@ -191,13 +191,13 @@ GRANT SELECT ON SCHEMA <SCHEMA> TO <USER>;
 
 ## Data source permissions
 
-Limit access to SAP HANA data by clicking on the **Permissions** tab in the data source configuration page to enable [data source permissions](/docs/grafana/latest/administration/data-source-management/). On the permissions page, admins can enable permissions and restrict query permissions to specific users and teams.
+Limit access to SAP HANA data by clicking on the **Permissions** tab in the data source configuration page to enable [data source permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/). On the permissions page, admins can enable permissions and restrict query permissions to specific users and teams.
 
 ## Provision the data source
 
-You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -234,7 +234,7 @@ datasources:
 
 You can configure the SAP HANA data source as code using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). This approach enables version-controlled, reproducible data source configurations across environments.
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -341,7 +341,7 @@ output "sap_hana_uid" {
 
 After configuring the SAP HANA data source, you can:
 
-- [Create queries](/docs/plugins/grafana-saphana-datasource/latest/query-editor/) using the SAP HANA query editor
-- [Set up template variables](/docs/plugins/grafana-saphana-datasource/latest/template-variables/) for dynamic dashboards
-- [Add annotations](/docs/plugins/grafana-saphana-datasource/latest/annotations/) to overlay events on your graphs
-- [Configure alerting](/docs/plugins/grafana-saphana-datasource/latest/alerting/) to monitor your SAP HANA data
+- [Create queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/query-editor/) using the SAP HANA query editor
+- [Set up template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/template-variables/) for dynamic dashboards
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/annotations/) to overlay events on your graphs
+- [Configure alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/alerting/) to monitor your SAP HANA data

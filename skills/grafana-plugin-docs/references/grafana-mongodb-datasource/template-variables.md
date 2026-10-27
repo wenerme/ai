@@ -11,20 +11,20 @@ Instead of hard-coding details such as server, application, and sensor names in 
 
 ## Before you begin
 
-- [Configure the MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 For an introduction to templates and variables, refer to the following documents:
 
-- [Variables](/docs/grafana/latest/dashboards/variables/)
-- [Templates](/docs/grafana/latest/dashboards/variables/add-template-variables/)
-- [Variable syntax](/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/)
+- [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
+- [Templates](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/)
+- [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/)
 
-To add a new MongoDB query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use MongoDB as your data source.
+To add a new MongoDB query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use MongoDB as your data source.
 
 The following sample query retrieves all movie titles after 1980:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([
@@ -49,7 +49,7 @@ Guidelines for working with compound variables:
 2. Select MongoDB as the data source.
 3. Write a query that returns combined values separated by `-`:
 
-   JavaScript [Copy code to clipboard] Copy
+   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    sample_mflix.movies.aggregate([
@@ -61,12 +61,12 @@ Guidelines for working with compound variables:
    ```
 4. When a user selects “The Terminator - 1985”, the plugin splits it into `$_movie` = `The Terminator` and `$_year` = `1985`. Reference these in your query:
 
-   JavaScript [Copy code to clipboard] Copy
+   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    sample_mflix.movies.find({"title": "$_movie", year: $_year})
    ```
-5. Use the variable in your MongoDB queries with the appropriate [variable syntax](/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/).
+5. Use the variable in your MongoDB queries with the appropriate [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/dashboards/variables/variable-syntax/).
 
 ## Use ad hoc filters
 
@@ -74,13 +74,13 @@ In addition to a standard ad hoc filter variable (with any name), you must creat
 
 - Be of `constant` type
 - Be named `mongo_adhoc_query`
-- Have a value compatible with the [query editor](/docs/plugins/grafana-mongodb-datasource/latest/query-editor/)
+- Have a value compatible with the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/query-editor/)
 
 The query result populates the selectable filters in the dashboard UI. Since this variable has no further purpose, you may choose to hide it from view.
 
 Consider the following query:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([ {"$group": { "_id": "$year"}},  {"$project": { "year": "$_id", "_id": 0 }} ] )
@@ -94,7 +94,7 @@ The following query syntax features are supported in both variable queries and p
 
 ### ObjectId type support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"_id": ObjectId("573a1390f29313caabcd4803")})
@@ -106,7 +106,7 @@ sample_mflix.movies.find({"_id": {$in : [ObjectId("573a1391f29313caabcd6f98"), O
 
 With double quotes:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"title": {$regex: "ace", $options: "i"} })
@@ -114,7 +114,7 @@ sample_mflix.movies.find({"title": {$regex: "ace", $options: "i"} })
 
 With single quotes:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"title": {$regex: 'ace', $options: "i"} })
@@ -122,7 +122,7 @@ sample_mflix.movies.find({"title": {$regex: 'ace', $options: "i"} })
 
 With pattern:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"title": /ace/i })
@@ -130,7 +130,7 @@ sample_mflix.movies.find({"title": /ace/i })
 
 ### `$__timeFrom` / `$__timeTo` macros support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gt: $__timeFrom}}).limit(10)
@@ -140,7 +140,7 @@ sample_mflix.movies.find({ $and: [{ "tomatoes.dvd": { $gte: $__timeFrom }}, { "t
 
 ### ISODate type support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: ISODate("2013-03-01") }})
@@ -151,7 +151,7 @@ sample_mflix.movies.find({"tomatoes.dvd": { $gte: ISODate() }})
 
 ### `new Date` type support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: new Date("2013-03-01") }})
@@ -162,7 +162,7 @@ sample_mflix.movies.find({"tomatoes.dvd": { $gte: new Date() }})
 
 ### `Date` type support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: Date("2013-03-01") }})
@@ -173,7 +173,7 @@ sample_mflix.movies.find({"tomatoes.dvd": { $gte: Date() }})
 
 ### `$$NOW` date string type support
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: "$$NOW" }})
@@ -183,7 +183,7 @@ sample_mflix.movies.find({"tomatoes.dvd": { $gte: "$$NOW" }})
 
 `Date.now()` returns the current Unix timestamp in milliseconds:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: Date.now() }})
@@ -191,7 +191,7 @@ sample_mflix.movies.find({"tomatoes.dvd": { $gte: Date.now() }})
 
 The plugin supports basic arithmetic after `Date.now()`. For example, to fetch timestamps from 15 seconds ago:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"tomatoes.dvd": { $gte: Date.now() - 15 * 1000, $lt: Date.now() }})
@@ -207,7 +207,7 @@ You can enable debug logging to analyze the size of query responses, which helps
 
 `GF_PLUGIN_LOGGER_LEVEL` can be configured either as an environment variable or in the `grafana.ini` configuration file, as shown in the following example:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugin.grafana-mongodb-datasource]

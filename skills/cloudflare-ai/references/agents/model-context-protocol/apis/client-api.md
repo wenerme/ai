@@ -1,7 +1,7 @@
 ---
 description: Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.
-title: McpClient
-image: https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/og.png?v=d2c89cb40edacc61
+title: MCP Client
+image: https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/og.png?v=d89668f9eb52cec9
 ---
 
 [Skip to content](#main-content)
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/clie
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# McpClient
+# MCP Client
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. Agents SDK v0.20.0 uses `@modelcontextprotocol/client` and negotiates stateless or legacy behavior automatically.
 
@@ -29,7 +29,7 @@ The MCP client capability lets your agent:
 
 Note
 
-This page covers connecting to MCP servers as a client. To create your own MCP server, refer to [Creating MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/).
+This page covers connecting to MCP servers as a client. To create your own MCP server, refer to [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/).
 
 ## Quick start
 
@@ -161,6 +161,42 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 | `streamable-http` | HTTP with streaming |
 | `sse` | Server-Sent Events - legacy/compatibility transport |
 
+### RPC transport
+
+`addMcpServer()` can also connect to an [`McpAgent`](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) through its Durable Object binding instead of a URL. Messages travel over [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/), so the server needs no HTTP endpoint.
+
+Use Streamable HTTP for new servers
+
+The RPC transport is still supported, but it only connects to `McpAgent`, which is deprecated. There is no RPC transport for servers built with [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/). For new servers, serve them with `createMcpHandler` and connect with a URL over Streamable HTTP.
+
+```js
+export class MyAgent extends Agent {
+	async onStart() {
+		// env.MyMCP is the Durable Object binding for an McpAgent class
+		await this.addMcpServer("my-mcp", this.env.MyMCP, {
+			props: { userId: "user-123", role: "admin" },
+		});
+	}
+}
+```
+
+```ts
+export class MyAgent extends Agent<Env> {
+	async onStart() {
+		// env.MyMCP is the Durable Object binding for an McpAgent class
+		await this.addMcpServer("my-mcp", this.env.MyMCP, {
+			props: { userId: "user-123", role: "admin" },
+		});
+	}
+}
+```
+
+- **No authentication.** The RPC transport has no OAuth flow. Pass user context in `props`. The `McpAgent` reads it as `this.props`.
+- **Restored after hibernation.** The binding name and props are stored, so the connection comes back without extra code.
+- **Deduplicated by name.** Calling `addMcpServer()` again with a name that already has an active RPC connection returns the existing connection, so it is safe to call in `onStart()`.
+
+For the server side, including bindings and the tool timeout, refer to [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#rpc-transport) in the `McpAgent` reference.
+
 ### Custom headers
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
@@ -201,8 +237,6 @@ MCP server URLs are validated before connection to prevent Server-Side Request F
 - Cloud metadata endpoints ( `metadata.google.internal`)
 
 Loopback addresses (`localhost`, `127.x.x.x`, `[::1]`) are **allowed** for local development.
-
-For production connections to internal services, use the [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/) with a Durable Object binding instead of HTTP.
 
 ### Return value
 
@@ -794,9 +828,9 @@ class MyAgent extends Agent<Env> {
 
 The example uses a 55-second timeout because MCP SDK requests default to 60 seconds. If your client call sets a longer request timeout, adjust this timeout to finish first.
 
-Refer to the [`mcp-client` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [`mcp-elicitation-mrtr` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation. [`mcp-elicitation` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) demonstrates legacy elicitation.
+Refer to the [`mcp-client` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [`mcp-elicitation-mrtr` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation.
 
-For server-side patterns, refer to [Elicitation with a stateless handler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#elicitation-with-a-stateless-handler) and [Elicitation on legacy servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation-on-legacy-servers).
+For the server side, refer to [Elicitation with a stateless handler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#elicitation-with-a-stateless-handler).
 
 ## Managing servers
 
@@ -962,15 +996,13 @@ async addMcpServer(
   | { id: string; state: "ready" }
 >
 
-// RPC transport (Durable Object binding — no HTTP overhead)
+// RPC transport (Durable Object binding for an McpAgent)
 async addMcpServer(
   serverName: string,
-  binding: DurableObjectNamespace,
+  binding: DurableObjectNamespace<McpAgent>,
   options?: {
     id?: string;
     props?: Record<string, unknown>;
-    client?: McpClientOptions;
-    retry?: RetryOptions;
   }
 ): Promise<{ id: string; state: "ready" }>
 ```
@@ -993,14 +1025,12 @@ async addMcpServer(
 #### Parameters (RPC transport)
 
 - `serverName` (string, required) — Display name for the MCP server
-- `binding` ( `DurableObjectNamespace`, required) — The Durable Object binding for the `McpAgent` class
-- `options` (object, optional) — Connection configuration:
+- `binding` ( `DurableObjectNamespace`, required) — Durable Object binding for an `McpAgent` class
+- `options` (object, optional):
   - `id` — Optional stable, caller-supplied server ID. Refer to [Stable server IDs](#stable-server-ids)
-  - `props` — Initialization data passed to the `McpAgent`'s `onStart(props)`. Use this to pass user context, configuration, or other data to the MCP server instance
-  - `client` — MCP client configuration options
-  - `retry` — Retry options for the connection
+  - `props` — Data passed to the `McpAgent` and available as `this.props`, such as user context
 
-RPC transport connects your Agent directly to an `McpAgent` via Durable Object bindings without HTTP overhead. Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/) for details on configuring RPC transport.
+The RPC transport only connects to the deprecated `McpAgent`. Prefer the HTTP transport with a [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) server. Refer to [RPC transport](#rpc-transport).
 
 #### Returns
 
@@ -1629,9 +1659,9 @@ export class MyAgent extends Agent {
 
 ## Next steps
 
-### [Creating MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/)
+### [Creating MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
 
-Build your own MCP server.
+Build your own MCP server with createMcpHandler.
 
 ### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
@@ -1650,5 +1680,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"McpClient","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/og.png?v=d2c89cb40edacc61","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#page","headline":"MCP Client","description":"Connect Agents to external MCP servers to use their tools, resources, and prompts over the Model Context Protocol.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/og.png?v=d89668f9eb52cec9","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

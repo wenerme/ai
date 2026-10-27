@@ -185,14 +185,14 @@ Your starting point depends on what you already know:
 
 ## Related concepts
 
-- [RED metrics](../concepts/#rate-error-and-duration-metrics) - Understanding Rate, Errors, and Duration metrics
-- [Traces and spans](../concepts/#traces-and-spans) - How traces and spans work in distributed systems
+- [RED metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#rate-error-and-duration-metrics) - Understanding Rate, Errors, and Duration metrics
+- [Traces and spans](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#traces-and-spans) - How traces and spans work in distributed systems
 
 ## Related tasks
 
 After you’ve determined your use case:
 
-- [Choose a RED metric](../investigate/choose-red-metric/) to match your investigation goal.
-- [Choose root or full span data](../investigate/choose-span-data/) based on the depth you need.
-- [Analyze tracing data](../investigate/analyze-tracing-data/) using the appropriate tabs for your metric type.
-- [Add filters](../investigate/add-filters/) to refine your investigation as you discover patterns.
+- [Choose a RED metric](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric/) to match your investigation goal.
+- [Choose root or full span data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) based on the depth you need.
+- [Analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) using the appropriate tabs for your metric type.
+- [Add filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters/) to refine your investigation as you discover patterns.

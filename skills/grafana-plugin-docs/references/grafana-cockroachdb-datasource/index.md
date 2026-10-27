@@ -11,7 +11,7 @@ The CockroachDB data source plugin lets you query and visualize data from [Cockr
 
 > Note
 >
-> The CockroachDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The CockroachDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -29,7 +29,7 @@ Expand table
 The CockroachDB data source has the following requirements:
 
 - A CockroachDB instance.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
 
 An Enterprise CockroachDB license is required for Kerberos authentication.
 
@@ -37,20 +37,20 @@ An Enterprise CockroachDB license is required for Kerberos authentication.
 
 The following documents help you set up and use the CockroachDB data source:
 
-- [Configure the CockroachDB data source](/docs/plugins/grafana-cockroachdb-datasource/latest/configure/)
-- [CockroachDB query editor](/docs/plugins/grafana-cockroachdb-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-cockroachdb-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-cockroachdb-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-cockroachdb-datasource/latest/alerting/)
-- [Troubleshooting](/docs/plugins/grafana-cockroachdb-datasource/latest/troubleshooting/)
+- [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/)
+- [CockroachDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](/docs/grafana/latest/alerting/) rules.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules.
 
 ## Plugin updates
 

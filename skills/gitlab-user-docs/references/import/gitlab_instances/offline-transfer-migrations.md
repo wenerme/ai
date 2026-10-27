@@ -126,9 +126,9 @@ the export.
 ## User contribution mapping
 
 Offline transfer never creates real users on the destination instance. Instead, imported contributions
-are mapped to [placeholder users](../../import/mapping/post_migration_mapping.md#placeholder-users).
+are mapped to [placeholder users](../mapping/post_migration_mapping.md#placeholder-users).
 After the import finishes,
-[reassign the placeholder users](../../import/mapping/reassignment.md) to users on the destination
+[reassign the placeholder users](../mapping/reassignment.md) to users on the destination
 instance.
 
 Offline transfer imports group and project memberships as placeholder memberships. When you reassign

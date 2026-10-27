@@ -11,7 +11,7 @@ The CockroachDB query editor lets you build and run SQL queries against your Coc
 
 ## Before you begin
 
-- [Configure the CockroachDB data source](/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
+- [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
 - Verify your CockroachDB user has read access to the tables you want to query.
 
 ## Format
@@ -39,7 +39,7 @@ Builder mode provides a visual interface for constructing SQL queries without wr
 
 For example, to query average response times grouped by region, select the `requests` table, choose `response_time_ms` as the column with the `AVG` aggregation, add `region` to **GROUP BY**, and set **ORDER BY** to ascending. The builder generates the equivalent SQL:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT AVG(response_time_ms), "region"
@@ -74,7 +74,7 @@ Expand table
 
 The following query uses `$__timeFilter` to filter results to the current dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT created_at, temperature
@@ -85,7 +85,7 @@ ORDER BY created_at ASC
 
 You can also use `$__timeFrom` and `$__timeTo` individually for more complex conditions:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT created_at, event_type, duration_ms
@@ -104,7 +104,7 @@ The following examples demonstrate common query patterns for CockroachDB dashboa
 
 Return a time series of average response times grouped by minute:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -120,7 +120,7 @@ ORDER BY time ASC
 
 Compare metrics across multiple dimensions by including a string column as a series label:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -137,7 +137,7 @@ ORDER BY time ASC
 
 Return several summary statistics in a single query:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -155,7 +155,7 @@ ORDER BY time ASC
 
 Return the top 10 tables by row count:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name, estimated_row_count
@@ -168,7 +168,7 @@ LIMIT 10
 
 Monitor the health and activity of CockroachDB cluster nodes:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -184,7 +184,7 @@ ORDER BY node_id ASC
 
 List currently running queries and their elapsed time:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

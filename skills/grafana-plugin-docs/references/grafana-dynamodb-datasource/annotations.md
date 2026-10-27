@@ -7,12 +7,12 @@ description: "Add annotations from DynamoDB data to Grafana dashboards"
 
 # DynamoDB annotations
 
-The DynamoDB data source supports annotations, which let you overlay event markers on time-series panels. Annotations help you correlate events stored in DynamoDB with changes in your metrics. For general information about annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+The DynamoDB data source supports annotations, which let you overlay event markers on time-series panels. Annotations help you correlate events stored in DynamoDB with changes in your metrics. For general information about annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the DynamoDB data source](/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
-- Understand [Grafana annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
+- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add an annotation query
 
@@ -44,7 +44,7 @@ Expand table
 
 > Note
 >
-> The DynamoDB data source doesn’t support time-range macros such as `$__timeFilter`. You must include explicit time filters in your annotation queries to limit results to a relevant range. Without a filter, the query runs against the full table, which may affect performance. For details on timestamp formats and workarounds, refer to [Dynamic time filtering doesn’t work](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work).
+> The DynamoDB data source doesn’t support time-range macros such as `$__timeFilter`. You must include explicit time filters in your annotation queries to limit results to a relevant range. Without a filter, the query runs against the full table, which may affect performance. For details on timestamp formats and workarounds, refer to [Dynamic time filtering doesn’t work](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work).
 
 ## Annotation query examples
 
@@ -54,7 +54,7 @@ The following examples demonstrate common annotation patterns with DynamoDB.
 
 This query returns deployment events with a title, description, and environment tag:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT deploy_time AS time, version AS title, description AS text, environment AS tags
@@ -69,7 +69,7 @@ Each deployment appears as a vertical line on time-series panels. Hovering over 
 
 This query marks incident events on your dashboard:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT event_time AS time, severity AS title, event_message AS text
@@ -82,7 +82,7 @@ ORDER BY event_time
 
 Use `timeEnd` to create range annotations that highlight a time span rather than a single point:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT start_time AS time, end_time AS timeEnd, window_name AS title, description AS text
@@ -97,7 +97,7 @@ Range annotations appear as shaded regions on time-series panels.
 
 Since the DynamoDB data source doesn’t support time-range macros, include explicit time boundaries in your query to avoid scanning the entire table:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT event_time AS time, message AS text, category AS tags
@@ -109,7 +109,7 @@ ORDER BY event_time
 
 You can use template variables for dynamic filtering:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT event_time AS time, message AS text
@@ -122,7 +122,7 @@ ORDER BY event_time
 
 If you only need markers without text, a single `time` column is sufficient:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT restart_time AS time
@@ -133,6 +133,6 @@ ORDER BY restart_time
 
 ## Next steps
 
-- Learn how to write queries in the [DynamoDB query editor](/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
-- [Set up alerting](/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.
-- Refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for full annotation configuration options.
+- Learn how to write queries in the [DynamoDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.
+- Refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for full annotation configuration options.

@@ -16,10 +16,10 @@ The Business Text panel supports the following standard options:
 - **Unit**
 - **Decimals**
 
-[](/media/docs/grafana/panels-visualizations/business-text/panel.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/panel.png)
 
 ## Overrides
 
 You can set **Unit** and **Decimals** for a specific field or data frame using **Overrides**.
 
-[](/media/docs/grafana/panels-visualizations/business-text/override.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/override.png)

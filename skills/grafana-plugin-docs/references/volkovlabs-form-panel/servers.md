@@ -11,10 +11,10 @@ The Business Forms panel allows you to communicate data with API servers. The fo
 
 Expand table
 
-| Section                                                                      | Description                                                 |
-|------------------------------------------------------------------------------|-------------------------------------------------------------|
-| [InfluxDB API](/docs/plugins/volkovlabs-form-panel/latest/servers/influx/)   | Integrate with the InfluxDB API.                            |
-| [JSON](/docs/plugins/volkovlabs-form-panel/latest/servers/json/)             | Create an API server on Node.js with a JSON object.         |
-| [MySQL](/docs/plugins/volkovlabs-form-panel/latest/servers/mysql/)           | Create an API server on Node.js with a MySQL database.      |
-| [Node-RED](/docs/plugins/volkovlabs-form-panel/latest/servers/nodered/)      | Create an API server based on Node-RED.                     |
-| [PostgreSQL](/docs/plugins/volkovlabs-form-panel/latest/servers/postgresql/) | Create an API server on Node.js with a PostgreSQL database. |
+| Section                                                                                                                                  | Description                                                 |
+|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| [InfluxDB API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/influx/)   | Integrate with the InfluxDB API.                            |
+| [JSON](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/json/)             | Create an API server on Node.js with a JSON object.         |
+| [MySQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/mysql/)           | Create an API server on Node.js with a MySQL database.      |
+| [Node-RED](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/nodered/)      | Create an API server based on Node-RED.                     |
+| [PostgreSQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/postgresql/) | Create an API server on Node.js with a PostgreSQL database. |

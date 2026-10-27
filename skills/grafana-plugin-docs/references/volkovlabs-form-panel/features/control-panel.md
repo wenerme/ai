@@ -9,7 +9,7 @@ description: "Learn how to create control panels with multiple sections and the 
 
 You can use the Business Forms panel to create control panels with multiple sections that share the same identifier.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/control.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/control.png)
 
 ## Additional features
 

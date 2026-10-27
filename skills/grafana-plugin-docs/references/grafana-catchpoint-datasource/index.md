@@ -11,11 +11,11 @@ The Catchpoint data source plugin lets you query and visualize Catchpoint `Tests
 
 > Note
 >
-> The Catchpoint data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Catchpoint data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 > Note
 >
-> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](/docs/release-life-cycle/) for more details. If you notice an issue or have a feature request, create a support ticket through your Grafana Enterprise support channel.
+> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/) for more details. If you notice an issue or have a feature request, create a support ticket through your Grafana Enterprise support channel.
 
 ## Supported features
 
@@ -37,33 +37,33 @@ Expand table
 This plugin has the following requirements:
 
 - A Catchpoint account with a REST API v2 key.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
 - Grafana version 11.6.7 or later.
 
 ## Install the plugin
 
-To install the data source, refer to [Install the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/install/).
+To install the data source, refer to [Install the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/install/).
 
 ## Get started
 
 The following pages help you get started with the Catchpoint data source:
 
-- [Install the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/install/)
-- [Configure the Catchpoint data source](/docs/plugins/grafana-catchpoint-datasource/latest/configure/)
-- [Catchpoint query editor](/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-catchpoint-datasource/latest/alerting/)
-- [Troubleshooting](/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
+- [Install the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/install/)
+- [Configure the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/configure/)
+- [Catchpoint query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alert rules](/docs/plugins/grafana-catchpoint-datasource/latest/alerting/) on Catchpoint queries.
-- Add [annotations](/docs/plugins/grafana-catchpoint-datasource/latest/annotations/) to mark events on your panels.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/alerting/) on Catchpoint queries.
+- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/annotations/) to mark events on your panels.
 
 ## Plugin updates
 

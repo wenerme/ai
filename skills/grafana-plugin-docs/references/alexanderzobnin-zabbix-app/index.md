@@ -12,7 +12,7 @@ The Zabbix data source connects Grafana to your Zabbix monitoring infrastructure
 ## Requirements
 
 - Grafana 11.6.0 or later.
-- The Zabbix plugin installed and enabled in your Grafana instance. Zabbix is an app plugin, so after you install it you must also enable it on the plugin page before the data source becomes available. Refer to [Install the plugin](#install-the-plugin) for installation and upgrade instructions, or to [Install and enable the Zabbix plugin](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#install-and-enable-the-zabbix-plugin) for step-by-step instructions.
+- The Zabbix plugin installed and enabled in your Grafana instance. Zabbix is an app plugin, so after you install it you must also enable it on the plugin page before the data source becomes available. Refer to [Install the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/#install-the-plugin) for installation and upgrade instructions, or to [Install and enable the Zabbix plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#install-and-enable-the-zabbix-plugin) for step-by-step instructions.
 - A running Zabbix server with API access enabled.
 - A Zabbix user account with read permissions for the host groups and hosts you want to query.
 
@@ -23,7 +23,7 @@ Install the plugin by using one of the following methods:
 - In Grafana, go to **Administration** &gt; **Plugins and data** &gt; **Plugins**, search for **Zabbix**, and click **Install**.
 - Use the Grafana CLI:
 
-  sh [Copy code to clipboard] Copy
+  sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sh
   grafana cli plugins install alexanderzobnin-zabbix-app
@@ -31,7 +31,7 @@ Install the plugin by using one of the following methods:
 
   > **Note:** In Grafana versions that ship the standalone `grafana-cli` binary, run `grafana-cli plugins install alexanderzobnin-zabbix-app` instead. The standalone binary is deprecated in favor of the `grafana cli` subcommand.
 
-For other methods, including provisioning and Docker environments, refer to [Install Grafana plugins](/docs/grafana/latest/administration/plugin-management/).
+For other methods, including provisioning and Docker environments, refer to [Install Grafana plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 Restart Grafana after you install the plugin.
 
@@ -42,7 +42,7 @@ Upgrade the plugin to the latest version by using one of the following methods:
 - In Grafana, go to **Administration** &gt; **Plugins and data** &gt; **Plugins**, select **Zabbix**, and click **Update** if a newer version is available.
 - Use the Grafana CLI:
 
-  sh [Copy code to clipboard] Copy
+  sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sh
   grafana cli plugins update alexanderzobnin-zabbix-app
@@ -67,13 +67,13 @@ Expand table
 
 The following documents help you set up and use the Zabbix data source:
 
-- [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/)
-- [Zabbix query editor](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
-- [Functions reference](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)
-- [Template variables](/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables/)
-- [Annotations](/docs/plugins/alexanderzobnin-zabbix-app/latest/annotations/)
-- [Alerting](/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
-- [Troubleshooting](/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)
+- [Configure the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/)
+- [Zabbix query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Functions reference](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)
 
 ## Additional features
 
@@ -85,19 +85,19 @@ After configuring the data source, you can:
 - **Display Zabbix problems** using the Problems panel to monitor active triggers.
 - **Annotate graphs** with Zabbix events filtered by severity and acknowledgment status.
 - **Use Direct DB Connection** to query history data from MySQL, PostgreSQL, or InfluxDB for faster performance on wide time ranges.
-- **Use [Explore](/docs/grafana/latest/explore/)** to query Zabbix data without building a dashboard.
-- **Set up [alerting rules](/docs/grafana/latest/alerting/)** based on Zabbix data.
-- **Use [Grafana Assistant](/docs/grafana/latest/administration/assistant/)** to explore your Zabbix infrastructure, inspect problems, and build dashboards from natural language prompts.
+- **Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/)** to query Zabbix data without building a dashboard.
+- **Set up [alerting rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)** based on Zabbix data.
+- **Use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/assistant/)** to explore your Zabbix infrastructure, inspect problems, and build dashboards from natural language prompts.
 
 ## Grafana Assistant
 
-[Grafana Assistant](/docs/grafana/latest/administration/assistant/) is an AI-powered observability agent that works with your Zabbix data using natural language prompts. After you configure the data source, you can ask the Assistant to:
+[Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/assistant/) is an AI-powered observability agent that works with your Zabbix data using natural language prompts. After you configure the data source, you can ask the Assistant to:
 
 - **Discover resources** by listing host groups, hosts, and items across your Zabbix infrastructure.
 - **Inspect problems** by retrieving active problems and filtering them by severity.
 - **Build dashboards** by querying metrics and generating ready-to-use time series panels from your prompts.
 
-Grafana Assistant is available in Grafana Cloud and in self-managed Grafana connected to a Grafana Cloud stack. To learn more, refer to [Grafana Assistant](/docs/grafana/latest/administration/assistant/).
+Grafana Assistant is available in Grafana Cloud and in self-managed Grafana connected to a Grafana Cloud stack. To learn more, refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/assistant/).
 
 ## Pre-built dashboards
 

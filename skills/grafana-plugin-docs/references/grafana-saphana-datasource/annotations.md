@@ -9,7 +9,7 @@ description: "Use SAP HANA data as annotations in Grafana."
 
 Annotations allow you to overlay event data on your graphs. You can use SAP HANA data to create annotations that mark important events such as deployments, incidents, or other significant occurrences directly on your time-series visualizations.
 
-For more information about annotations in Grafana, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Annotation query requirements
 
@@ -48,7 +48,7 @@ To create an annotation using SAP HANA data:
 
 The following example creates point annotations from a table containing deployment events:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -70,7 +70,7 @@ This query:
 
 Return both a `time` and a `timeEnd` column to create a region annotation that highlights a span of time, such as an incident window or a maintenance period.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -89,7 +89,7 @@ Grafana shades the area between `time` and `timeEnd` on the graph. If a row has 
 
 Use a separate `title` column for a bold heading, and return a comma-separated `tags` column to apply more than one tag to each annotation.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -118,11 +118,11 @@ When configuring annotations, you can customize how they appear:
 
 ## Use template variables in annotations
 
-You can use [template variables](/docs/plugins/grafana-saphana-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections.
+You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections.
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -138,5 +138,5 @@ This query filters annotations based on the selected `environment` variable.
 
 ## Additional resources
 
-- [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- [SAP HANA query editor](/docs/plugins/grafana-saphana-datasource/latest/query-editor/)
+- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [SAP HANA query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/query-editor/)

@@ -11,8 +11,8 @@ Template variables let you create dynamic, reusable dashboards that switch betwe
 
 ## Before you begin
 
-- [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -63,7 +63,7 @@ Older dashboards may use a legacy string-based query format. The Zabbix variable
 
 The legacy format uses four parts wrapped in braces:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 {host group}{host}{application}{item name}
@@ -116,7 +116,7 @@ Expand table
 
 For example, to rename each series to `<visible host name> - <item name>`, add the following function to a Metrics query:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAlias($__zbx_host_name - $__zbx_item)
@@ -173,5 +173,5 @@ Use the **Item values** query type to build a variable from the latest values of
 
 ## Next steps
 
-- [Build queries with the Zabbix query editor](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
-- [Apply functions to transform query results](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)
+- [Build queries with the Zabbix query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Apply functions to transform query results](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/)

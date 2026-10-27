@@ -7,13 +7,13 @@ description: "Set up Grafana alert rules using Honeycomb queries."
 
 # Honeycomb alerting
 
-The Honeycomb data source supports [Grafana Alerting](/docs/grafana/latest/alerting/), so you can create alert rules from any Honeycomb query type. The data source uses the standard Grafana Alerting interface with no additional configuration.
+The Honeycomb data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), so you can create alert rules from any Honeycomb query type. The data source uses the standard Grafana Alerting interface with no additional configuration.
 
 ## Before you begin
 
-- Ensure your Honeycomb data source is [configured](/docs/plugins/grafana-honeycomb-datasource/latest/configure/) and working.
+- Ensure your Honeycomb data source is [configured](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/) and working.
 - Confirm you have permissions to create alert rules in Grafana.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -49,7 +49,7 @@ To create an alert rule using Honeycomb data:
 7. Add annotations to provide context for notifications.
 8. Click **Save rule**.
 
-For detailed instructions, refer to [Configure Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Error rate threshold
 
@@ -70,7 +70,7 @@ Alert when the number of error events exceeds a threshold.
 
 The equivalent Raw query is:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -99,7 +99,7 @@ Alert when the 95th percentile of request duration exceeds a threshold.
 
 The equivalent Raw query is:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -129,7 +129,7 @@ Alert on errors for each service by grouping the query and reducing each series.
 
 The equivalent Raw query is:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -164,7 +164,7 @@ When a query groups by a column, it returns one series per group. Use the **Redu
 
 ### Account for the data retention window
 
-The data source limits how far back it queries with the **Time Window (days)** setting. Keep alert evaluation windows within the configured retention limit so evaluations don’t return clipped data. Refer to [Configure the Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings).
+The data source limits how far back it queries with the **Time Window (days)** setting. Keep alert evaluation windows within the configured retention limit so evaluations don’t return clipped data. Refer to [Configure the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings).
 
 ### Handle no data conditions
 
@@ -181,10 +181,10 @@ If your alerts don’t work as expected:
 - **Alert never fires:** Confirm the **Reduce** expression matches your data shape and that the **Threshold** direction and value are correct.
 - **Clipped data:** Check that the evaluation window is within the **Time Window (days)** retention limit.
 
-For more troubleshooting, refer to [Troubleshoot Honeycomb data source issues](/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/).
+For more troubleshooting, refer to [Troubleshoot Honeycomb data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/).
 
 ## Additional resources
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [Configure Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/)
-- [Configure notifications](/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/)
+- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)

@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the AWS IoT SiteWise data source i
 
 # Troubleshoot AWS IoT SiteWise data source issues
 
-This document provides solutions to common issues you might encounter when you configure or use the AWS IoT SiteWise data source. For configuration instructions, refer to [Configure the AWS IoT SiteWise data source](/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when you configure or use the AWS IoT SiteWise data source. For configuration instructions, refer to [Configure the AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
 
 ## Plugin version and compatibility issues
 
@@ -53,7 +53,7 @@ If your Grafana instance is earlier than 10.4.0, pin the plugin to version 1.25.
 
 On self-managed Grafana, you control which plugin version is installed. To install a specific version with `grafana-cli`:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana-cli plugins install grafana-iot-sitewise-datasource 1.25.2
@@ -61,7 +61,7 @@ grafana-cli plugins install grafana-iot-sitewise-datasource 1.25.2
 
 To pin the version in a container image, set the version in the `GF_INSTALL_PLUGINS` environment variable:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 GF_INSTALL_PLUGINS=grafana-iot-sitewise-datasource@1.25.2
@@ -75,7 +75,7 @@ In Grafana Cloud, plugins update automatically and you can’t self-service a ro
 
 > Note
 >
-> To reduce the risk of an upgrade breaking a dashboard, test changes in a separate Grafana instance, such as a local OSS instance, before you rely on them in Grafana Cloud. If a Grafana Cloud upgrade breaks the plugin and you can’t resolve it, contact [Grafana Support](/help/).
+> To reduce the risk of an upgrade breaking a dashboard, test changes in a separate Grafana instance, such as a local OSS instance, before you rely on them in Grafana Cloud. If a Grafana Cloud upgrade breaks the plugin and you can’t resolve it, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/).
 
 ## Authentication errors
 
@@ -128,7 +128,7 @@ These errors occur when Grafana can’t reach the AWS IoT SiteWise endpoints.
 1. Verify network connectivity from the Grafana server to the AWS IoT SiteWise endpoints.
 2. Check that firewall rules allow outbound HTTPS on port `443`.
 3. If you set a custom endpoint, verify that the URL is correct and reachable.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## SiteWise Edge errors
 
@@ -308,7 +308,7 @@ These errors occur when you use the data source in alert rules.
 
 **Cause:** Alert conditions can only evaluate numeric data. This error occurs when the alert rule query returns string values or table-formatted data that Grafana can’t reduce to a number for the alert condition.
 
-**Solution:** Build the alert rule query so it returns numeric time series data, such as a numeric asset property with the **Time series** format. Refer to [Query requirements for alerting](/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting/#query-requirements-for-alerting).
+**Solution:** Build the alert rule query so it returns numeric time series data, such as a numeric asset property with the **Time series** format. Refer to [Query requirements for alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting/#query-requirements-for-alerting).
 
 ## Enable debug logging
 
@@ -316,7 +316,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

@@ -13,7 +13,7 @@ This document explains how to use the Zendesk query editor to retrieve data from
 
 Before you build a query, ensure you have:
 
-- Configured the [Zendesk data source](/docs/plugins/grafana-zendesk-datasource/latest/configure/).
+- Configured the [Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/).
 - An API token with permission to access the resources you want to query.
 
 ## Key concepts
@@ -136,7 +136,7 @@ Expand table
 |-------|----------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Users | yes      | The IDs of the users to look up. The editor populates this list from your Zendesk users, and you can also type the ID of any user manually. |
 
-The editor fills the **Users** drop-down from the results of the **Show all users** query, showing each user’s name while sending the user ID to the API. This pairs well with a template variable: create a `user` variable from **Show all users**, then reference it here as `${user}`. Refer to [Zendesk template variables](/docs/plugins/grafana-zendesk-datasource/latest/template-variables/).
+The editor fills the **Users** drop-down from the results of the **Show all users** query, showing each user’s name while sending the user ID to the API. This pairs well with a template variable: create a `user` variable from **Show all users**, then reference it here as `${user}`. Refer to [Zendesk template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/template-variables/).
 
 ## Use cases
 
@@ -154,12 +154,12 @@ Expand table
 | Review recently deleted tickets   | Show deleted tickets | Set **Sort by** to `deleted_at` and **Sort order** to `desc`.                                           |
 | Look up specific customers        | Show selected users  | Select one or more users in the **Users** drop-down, or drive it from a template variable.              |
 
-Because the **Search**, **Show tickets by IDs**, and user query types return timestamped fields, such as `created_at` and `updated_at`, you can plot them on time series panels or use them to drive [annotations](/docs/plugins/grafana-zendesk-datasource/latest/annotations/).
+Because the **Search**, **Show tickets by IDs**, and user query types return timestamped fields, such as `created_at` and `updated_at`, you can plot them on time series panels or use them to drive [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/annotations/).
 
 ## Next steps
 
 After you build a query, you can:
 
-- Visualize the results in a [panel](/docs/grafana/latest/panels-visualizations/).
-- Query data interactively in [Explore](/docs/grafana/latest/explore/).
-- Set up [Alerting](/docs/plugins/grafana-zendesk-datasource/latest/alerting/) rules on numeric queries, such as ticket counts.
+- Visualize the results in a [panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/).
+- Query data interactively in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/).
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/alerting/) rules on numeric queries, such as ticket counts.

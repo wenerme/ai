@@ -32,21 +32,21 @@ Expand table
 
 The following pages help you set up and use the OpenSearch data source:
 
-- [Configure the OpenSearch data source](/docs/plugins/grafana-opensearch-datasource/latest/configure/)
-- [OpenSearch query editor](/docs/plugins/grafana-opensearch-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-opensearch-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-opensearch-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-opensearch-datasource/latest/alerting/)
-- [Troubleshooting](/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting/)
+- [Configure the OpenSearch data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/)
+- [OpenSearch query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to run ad hoc queries and investigate your OpenSearch data without building a dashboard.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run ad hoc queries and investigate your OpenSearch data without building a dashboard.
 - Import the sample dashboards included with the plugin to get started quickly with traces, ecommerce, and web traffic visualizations. Navigate to the data source settings page and select the **Dashboards** tab.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](/docs/grafana/latest/alerting/) to receive notifications when your data matches specific conditions.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) to receive notifications when your data matches specific conditions.
 
 ## Plugin updates
 
@@ -60,11 +60,11 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
 
-`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
 
 For example, to query your OpenSearch data source, use `gcx datasources opensearch`:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 # Search documents with a Lucene query

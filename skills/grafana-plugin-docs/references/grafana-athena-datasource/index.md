@@ -27,21 +27,21 @@ Expand table
 
 The following pages help you get started with the Amazon Athena data source.
 
-- [Configure the Amazon Athena data source](/docs/plugins/grafana-athena-datasource/latest/configure/)
-- [Amazon Athena query editor](/docs/plugins/grafana-athena-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-athena-datasource/latest/template-variables/)
-- [Alerting](/docs/plugins/grafana-athena-datasource/latest/alerting/)
-- [Annotations](/docs/plugins/grafana-athena-datasource/latest/annotations/)
-- [Troubleshooting](/docs/plugins/grafana-athena-datasource/latest/troubleshooting/)
+- [Configure the Amazon Athena data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/)
+- [Amazon Athena query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/template-variables/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/alerting/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/annotations/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can use the following Grafana features.
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](/docs/grafana/latest/alerting/) rules to get notified when data changes.
-- Configure and use [Template variables](/docs/grafana/latest/dashboards/variables/) for dynamic dashboards.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules to get notified when data changes.
+- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) for dynamic dashboards.
 
 ## Pre-built dashboards
 
@@ -62,11 +62,11 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
 
-`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
 
 For example, to run a SQL query against your Amazon Athena data source, use `gcx datasources athena query`:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 gcx datasources athena query -d <DATASOURCE_UID> 'SELECT * FROM logs WHERE $__timeFilter(event_time)' --since 1h
@@ -76,7 +76,7 @@ Replace *`<DATASOURCE_UID>`* with the UID of your Amazon Athena data source. The
 
 To explore your data before you write a query, use the `list` and `describe-table` subcommands to navigate from catalogs down to table columns:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 # List the available data catalogs, databases, and tables

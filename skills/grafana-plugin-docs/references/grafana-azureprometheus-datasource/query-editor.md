@@ -9,13 +9,13 @@ description: "Use the Azure Monitor Managed Service for Prometheus query editor 
 
 The Azure Monitor Managed Service for Prometheus query editor lets you write PromQL queries against your Azure Monitor workspace. It’s the same editor as the core Grafana Prometheus data source, with a visual query builder, a code editor with autocomplete and syntax highlighting, and configurable output formats for different visualizations.
 
-You can access the query editor from the [Explore page](/docs/grafana/latest/explore/) or from any dashboard panel by clicking the panel title and selecting **Edit**. For more information about PromQL, refer to [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+You can access the query editor from the [Explore page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) or from any dashboard panel by clicking the panel title and selecting **Edit**. For more information about PromQL, refer to [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 ## Before you begin
 
 Before you write queries, ensure you have:
 
-- [Configured the Azure Monitor Managed Service for Prometheus data source](/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+- [Configured the Azure Monitor Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
 - Verified that your Azure credentials have permission to query the workspace.
 
 ## Key concepts
@@ -108,7 +108,7 @@ Use the `rate` function with `$__rate_interval` to chart per-second rates from c
 
 Calculate the per-second rate of HTTP requests:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(http_requests_total[$__rate_interval])
@@ -116,7 +116,7 @@ rate(http_requests_total[$__rate_interval])
 
 Calculate total requests per second across all instances of a service:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum(rate(http_requests_total{job="api"}[$__rate_interval]))
@@ -128,7 +128,7 @@ Use aggregation operators such as `sum`, `avg`, and `max` with `by` to group res
 
 Aggregate CPU usage by instance:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[$__rate_interval]))
@@ -136,7 +136,7 @@ sum by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[$__rate_interval]))
 
 Find the top five pods by memory usage:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 topk(5, sum by (pod) (container_memory_working_set_bytes))
@@ -148,7 +148,7 @@ Divide a filtered rate by a total rate to compute an error percentage.
 
 Calculate the percentage of HTTP 5xx responses:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum(rate(http_requests_total{status=~"5.."}[$__rate_interval]))
@@ -165,7 +165,7 @@ Use `histogram_quantile` with a `_bucket` metric to chart latency percentiles.
 
 Calculate the 95th percentile request latency:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[$__rate_interval])))
@@ -179,7 +179,7 @@ Combine metrics to express utilization as a percentage.
 
 Calculate memory utilization per node as a percentage:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)
@@ -187,7 +187,7 @@ promql [Copy code to clipboard] Copy
 
 Show which targets are currently down:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 up == 0
@@ -199,7 +199,7 @@ Use multiple queries and a math expression to calculate derived values without a
 
 Query A, total memory:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 node_memory_MemTotal_bytes
@@ -207,7 +207,7 @@ node_memory_MemTotal_bytes
 
 Query B, available memory:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 node_memory_MemAvailable_bytes
@@ -215,7 +215,7 @@ node_memory_MemAvailable_bytes
 
 Expression C, percentage available. Click **+ Expression**, select **Math**, and enter:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 $B / $A * 100
@@ -225,9 +225,9 @@ Set queries A and B to **Type: Instant**, hide them from the visualization with 
 
 ### Use a template variable in a query
 
-Reference a [template variable](/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) to make a query interactive. For example, filter by a selected `instance` value:
+Reference a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) to make a query interactive. For example, filter by a selected `instance` value:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
@@ -235,7 +235,7 @@ rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
 
 > Note
 >
-> Alert queries don’t support template variables such as `$instance`. Use fixed label values when you write queries intended for [alert rules](/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/).
+> Alert queries don’t support template variables such as `$instance`. Use fixed label values when you write queries intended for [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/).
 
 ## Query high-cardinality data
 
@@ -264,6 +264,6 @@ Use cases help you understand what’s possible and provide starting points for 
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/)
-- [Add annotations](/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
-- [Set up alerting](/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/)
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/)
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/)

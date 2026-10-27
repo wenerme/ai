@@ -17,7 +17,7 @@ Before investigating specific errors, verify that the data source health check p
 2. Click **Save &amp; test**.
 3. Confirm you see a “Success!” message.
 
-If the health check fails, start with the [Configuration errors](#configuration-errors) or [Connection errors](#connection-errors) sections.
+If the health check fails, start with the [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#configuration-errors) or [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/#connection-errors) sections.
 
 ## Configuration errors
 
@@ -32,7 +32,7 @@ Expand table
 | Error message                                                                                                     | Solution                                                                                                                                                                                                                                                                                                         |
 |-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Enter an environment ID. This can usually be taken from the account URL: \[environmentId].live.dynatrace.com.** | Provide your Dynatrace environment ID. For SaaS, extract it from your URL (e.g., `yfc55578` from `yfc55578.live.dynatrace.com`). For Managed, use the environment ID from the path (e.g., `abc99984-3af2-55tt-72kl-0672983gc45` from `yd8888.managed-sprint.dynalabs.io/e/abc99984-3af2-55tt-72kl-0672983gc45`). |
-| **Enter an API token.**                                                                                           | Provide a valid Dynatrace API token. Refer to the [Get an API key from Dynatrace](/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) section for instructions.                                                                                                          |
+| **Enter an API token.**                                                                                           | Provide a valid Dynatrace API token. Refer to the [Get an API key from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) section for instructions.                                              |
 | **Enter a domain URL.**                                                                                           | When using **Managed Cluster** API type, you must provide the domain of your Dynatrace server (e.g., `dynatrace.yourcompany.com`).                                                                                                                                                                               |
 | **invalid API Token**                                                                                             | The API token field is empty or contains only whitespace. Enter a valid API token.                                                                                                                                                                                                                               |
 | **invalid TLS certificate**                                                                                       | You enabled **Add self-signed certificate** but did not provide a CA certificate. Either provide the certificate or disable the option.                                                                                                                                                                          |
@@ -51,7 +51,7 @@ Connection errors occur when Grafana cannot successfully communicate with the Dy
 **Solution:**
 
 1. Verify that your API token is correct and has not been revoked.
-2. Check that the token has the required scopes for the services you want to query. Refer to [Get an API key from Dynatrace](/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for the complete list of required scopes.
+2. Check that the token has the required scopes for the services you want to query. Refer to [Get an API key from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for the complete list of required scopes.
 3. Generate a new API token if the current one has been compromised or revoked.
 
 ### Forbidden (403)
@@ -60,7 +60,7 @@ Connection errors occur when Grafana cannot successfully communicate with the Dy
 
 **Solution:**
 
-1. Check that your API token has all the required scopes for the query type you’re using. Refer to [Get an API key from Dynatrace](/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for required scopes.
+1. Check that your API token has all the required scopes for the query type you’re using. Refer to [Get an API key from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for required scopes.
 2. Verify your Dynatrace environment allows the requested API operation.
 3. Contact your Dynatrace administrator if you need additional permissions.
 
@@ -117,7 +117,7 @@ If your Grafana instance connects to the internet through a proxy, you may exper
 
 **Solution:**
 
-1. Configure the proxy settings in Grafana. Refer to [Configure Grafana](/docs/grafana/latest/setup-grafana/configure-grafana/) for proxy configuration options.
+1. Configure the proxy settings in Grafana. Refer to [Configure Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/) for proxy configuration options.
 2. Ensure the proxy allows connections to your Dynatrace environment URL.
 3. If using HTTPS inspection, add your Dynatrace domain to the proxy bypass list or configure the appropriate CA certificates.
 4. Verify the proxy does not modify or block API responses.
@@ -133,7 +133,7 @@ If you’re connecting to a Dynatrace instance with a self-signed certificate or
 1. Enable **Skip TLS certificate validation** to bypass certificate validation (not recommended for production).
 2. Or, enable **Add self-signed certificate** and provide your CA certificate in PEM format:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 -----BEGIN CERTIFICATE-----
@@ -359,7 +359,7 @@ To get more detailed error information, enable debug logging in Grafana:
 
 1. Update your Grafana configuration file (`grafana.ini` or environment variables):
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [log]
@@ -381,7 +381,7 @@ When a query fails, check the **Query Inspector** in Grafana:
 
 You can test connectivity to your Dynatrace API using curl:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl -X GET "https://[environment-id].live.dynatrace.com/api/v2/metrics" \

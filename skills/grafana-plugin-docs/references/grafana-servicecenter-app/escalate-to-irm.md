@@ -13,23 +13,23 @@ From Service Center, you can respond quickly to issues affecting your services. 
 - Declare an incident, automatically labeled with the affected service
 - View and contact the current on-call responder for the service
 
-These actions leverage your [Grafana IRM](/docs/grafana-cloud/alerting-and-irm/irm/) configuration to help teams streamline incident response from within the service context.
+These actions leverage your [Grafana IRM](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/) configuration to help teams streamline incident response from within the service context.
 
 ## Before you begin
 
 To use these IRM features in Service Center, configure the following:
 
-- [Assign a team to each service](/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#set-name-and-attributes) in Service Center
-- Organization admins can view all teams. All authenticated users can view details for their own teams. [Access to the Teams API](/docs/grafana/latest/developers/http_api/team/#team-api) is required to view team and on-call information across all teams.
+- [Assign a team to each service](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#set-name-and-attributes) in Service Center
+- Organization admins can view all teams. All authenticated users can view details for their own teams. [Access to the Teams API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/developers/http_api/team/#team-api) is required to view team and on-call information across all teams.
 
 To **view on-call information**:
 
-- [Create an on-call schedule](/docs/grafana-cloud/alerting-and-irm/irm/on-call-schedules/create-schedules/) with active participants for each team
+- [Create an on-call schedule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/on-call-schedules/create-schedules/) with active participants for each team
 
 To **escalate an issue**:
 
-- [Configure direct paging for the team](/docs/grafana-cloud/alerting-and-irm/irm/integrations/alert-sources/manual/#configure-direct-paging-for-a-team)
-- Have one of the following [IRM roles](/docs/grafana-cloud/alerting-and-irm/irm/set-up/manage-access/roles-and-permissions/): **Editor** basic role, **Alert Groups Direct Paging** role, or **OnCaller** role
+- [Configure direct paging for the team](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/integrations/alert-sources/manual/#configure-direct-paging-for-a-team)
+- Have one of the following [IRM roles](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/set-up/manage-access/roles-and-permissions/): **Editor** basic role, **Alert Groups Direct Paging** role, or **OnCaller** role
 
 ## Declare an incident
 
@@ -41,9 +41,9 @@ You can declare an incident in Grafana IRM directly from the Service Center:
 4. Provide a title, severity, and any other details.
 5. Click **Declare incident**.
 
-[](/media/docs/grafana-cloud/service-center/screenshot-declare-incident.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-declare-incident.png)
 
-For more information, refer to the [Declare an incident](/docs/grafana-cloud/alerting-and-irm/irm/incident/manage/declare-incident/) documentation.
+For more information, refer to the [Declare an incident](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/incident/manage/declare-incident/) documentation.
 
 ## Escalate an issue
 
@@ -64,7 +64,7 @@ The escalation creates an alert in Grafana IRM with:
 - The selected teams and users as participants
 - A link back to the service in the Service Center
 
-For more information, refer to [Respond to alerts in Grafana IRM](/docs/grafana-cloud/alerting-and-irm/irm/use/respond-to-alerts/).
+For more information, refer to [Respond to alerts in Grafana IRM](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/use/respond-to-alerts/).
 
 ## View who is on-call for a service
 
@@ -75,7 +75,7 @@ On the service details page, you can view the current on-call user if:
 - The service has a team assigned
 - That team has an active on-call schedule with at least one participant
 
-[](/media/docs/grafana-cloud/service-center/screenshot-service-center-on-call-now.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-service-center-on-call-now.png)
 
 This section displays:
 

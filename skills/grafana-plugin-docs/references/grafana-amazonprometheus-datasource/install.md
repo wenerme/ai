@@ -7,7 +7,7 @@ description: "Install and upgrade the Amazon Managed Service for Prometheus data
 
 # Install and upgrade the Amazon Managed Service for Prometheus data source plugin
 
-This document covers how to install, upgrade, and verify the Amazon Managed Service for Prometheus data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Amazon Managed Service for Prometheus data source](/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Amazon Managed Service for Prometheus data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -15,11 +15,11 @@ Verify the following requirements before installing:
 
 Expand table
 
-| Requirement         | Details                                                                                                                                                               |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Grafana version** | A supported version of Grafana. For the full supported version list, refer to [Requirements](/docs/plugins/grafana-amazonprometheus-datasource/latest/#requirements). |
-| **Network access**  | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to `grafana.com` or a local plugin ZIP.    |
-| **AWS access**      | An Amazon Managed Service for Prometheus workspace and AWS credentials or an IAM role with permission to query it.                                                    |
+| Requirement         | Details                                                                                                                                                                                                                           |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Grafana version** | A supported version of Grafana. For the full supported version list, refer to [Requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/#requirements). |
+| **Network access**  | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to `grafana.com` or a local plugin ZIP.                                                                |
+| **AWS access**      | An Amazon Managed Service for Prometheus workspace and AWS credentials or an IAM role with permission to query it.                                                                                                                |
 
 ## Install the plugin
 
@@ -36,13 +36,13 @@ Plugins are automatically updated on Grafana Cloud, so no further action is requ
 
 > Note
 >
-> SigV4 authentication must be enabled for your Grafana Cloud instance before you can configure the data source. If the **SigV4 auth** option is missing from the authentication drop-down, contact [Grafana Support](/help/). For more information, refer to [Troubleshooting](/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/).
+> SigV4 authentication must be enabled for your Grafana Cloud instance before you can configure the data source. If the **SigV4 auth** option is missing from the authentication drop-down, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/). For more information, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/troubleshooting/).
 
 ### Self-managed Grafana (CLI)
 
 Install the plugin with the Grafana CLI:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-amazonprometheus-datasource
@@ -50,7 +50,7 @@ grafana cli plugins install grafana-amazonprometheus-datasource
 
 Restart Grafana after installation:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -60,7 +60,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -71,7 +71,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -80,7 +80,7 @@ plugins:
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -92,7 +92,7 @@ env:
 
 If you don’t control the Helm chart, for example on a shared platform cluster, use an init container to download the plugin before Grafana starts:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -116,18 +116,18 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP from the [Grafana plugin catalog](/grafana/plugins/grafana-amazonprometheus-datasource/) on a machine with internet access.
+1. Download the plugin ZIP from the [Grafana plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-amazonprometheus-datasource/) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract the ZIP to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-amazonprometheus-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-amazonprometheus-datasource
@@ -136,7 +136,7 @@ For environments without internet access:
 
 If Grafana reports an “unsigned plugin” error, add the following to `grafana.ini`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugins]
@@ -154,7 +154,7 @@ After installing, confirm the plugin is loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Amazon Managed Service for Prometheus** and verify the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **Amazon Managed Service for Prometheus** to confirm it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -162,7 +162,7 @@ Upgrade steps depend on your Grafana deployment environment.
 
 ### Grafana Cloud
 
-Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](/help/).
+Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/).
 
 ### Self-managed Grafana
 
@@ -170,7 +170,7 @@ To upgrade a self-managed installation:
 
 1. Update the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-amazonprometheus-datasource
@@ -180,7 +180,7 @@ To upgrade a self-managed installation:
 
 To install a specific version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-amazonprometheus-datasource <version>
@@ -188,7 +188,7 @@ grafana cli plugins install grafana-amazonprometheus-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -199,7 +199,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-amazonprometheus-datasource 2.4.0
@@ -209,13 +209,13 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/help/).
+> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/).
 
 ## Uninstall the plugin
 
 To remove the plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-amazonprometheus-datasource
@@ -235,8 +235,8 @@ This problem usually means your Grafana instance can’t reach the plugin catalo
 
 **Solutions:**
 
-- **Grafana Cloud:** Confirm your instance has finished provisioning and try the search again. If the plugin still doesn’t appear, contact [Grafana Support](/help/).
-- **Self-managed:** Verify the Grafana server has outbound access to `grafana.com`. For environments without internet access, use the [air-gapped installation](#air-gapped-offline-installation) method.
+- **Grafana Cloud:** Confirm your instance has finished provisioning and try the search again. If the plugin still doesn’t appear, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/).
+- **Self-managed:** Verify the Grafana server has outbound access to `grafana.com`. For environments without internet access, use the [air-gapped installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/install/#air-gapped-offline-installation) method.
 
 ### “Unsigned plugin” error (air-gapped installs)
 
@@ -244,6 +244,6 @@ This error means Grafana installed the plugin from a ZIP file and can’t verify
 
 **Solutions:**
 
-1. Ensure you downloaded the ZIP from the official [Grafana plugin catalog](/grafana/plugins/grafana-amazonprometheus-datasource/). Official downloads are signed.
+1. Ensure you downloaded the ZIP from the official [Grafana plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-amazonprometheus-datasource/). Official downloads are signed.
 2. If the error persists, add `allow_loading_unsigned_plugins = grafana-amazonprometheus-datasource` to `grafana.ini` under `[plugins]`.
 3. Restart Grafana.

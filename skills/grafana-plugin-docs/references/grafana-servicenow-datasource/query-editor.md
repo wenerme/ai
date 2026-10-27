@@ -11,7 +11,7 @@ The ServiceNow query editor lets you build queries that retrieve records or aggr
 
 ## Before you begin
 
-- [Configure the ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/configure/).
+- [Configure the ServiceNow data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/).
 - Verify your ServiceNow user has read access to the tables you want to query.
 
 ## Key concepts
@@ -106,7 +106,7 @@ Group by results include a tag with the group field name and its values, which y
 
 ### Filters
 
-Stats queries support the same filter options as Table queries. Refer to the [Filters](#filters) section.
+Stats queries support the same filter options as Table queries. Refer to the [Filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/query-editor/#filters) section.
 
 ## Filters
 
@@ -214,7 +214,7 @@ Filter choices affect query speed on large tables:
 - The **Like** and **Not Like** operators perform partial-text matches that ServiceNow can’t resolve with an index, so they scan the table and can be slow. Use a more selective operator such as **Starts With** or **Equals** when possible.
 - The **Is one of** and **Is not one of** operators encode every value in the request URL. A filter with many values can produce a URL that ServiceNow or an intermediate proxy rejects. Keep these lists small, or split them into separate query groups using the **NQ** conjunction.
 
-For related troubleshooting steps, refer to [Query performance](/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#query-performance).
+For related troubleshooting steps, refer to [Query performance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#query-performance).
 
 ## Field references
 
@@ -228,16 +228,16 @@ To use a field from a referenced table, select it using dot notation (for exampl
 
 ## Annotations
 
-The ServiceNow data source supports annotations using the standard query editor. For examples and a step-by-step guide, refer to [Annotate dashboards with ServiceNow events](/docs/plugins/grafana-servicenow-datasource/latest/annotations/).
+The ServiceNow data source supports annotations using the standard query editor. For examples and a step-by-step guide, refer to [Annotate dashboards with ServiceNow events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/annotations/).
 
 ## Transformations
 
-You can apply [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to ServiceNow query results to reshape data for your visualizations.
+You can apply [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to ServiceNow query results to reshape data for your visualizations.
 
-The [Labels to fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#labels-to-fields) transformation is particularly useful with Stats queries that use **Group By**. It converts group-by label values into separate table columns.
+The [Labels to fields](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#labels-to-fields) transformation is particularly useful with Stats queries that use **Group By**. It converts group-by label values into separate table columns.
 
 ## Next steps
 
-- [Set up alerting with ServiceNow queries](/docs/plugins/grafana-servicenow-datasource/latest/alerting/)
-- [Annotate dashboards with ServiceNow events](/docs/plugins/grafana-servicenow-datasource/latest/annotations/)
-- [Use template variables](/docs/plugins/grafana-servicenow-datasource/latest/template-variables/)
+- [Set up alerting with ServiceNow queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/alerting/)
+- [Annotate dashboards with ServiceNow events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/annotations/)
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/template-variables/)

@@ -13,4 +13,4 @@ description: "Learn how to use external Handlebars partials in the content param
 
 In addition to external CSS files and JavaScript libraries, you can use external [Handlebars partials](https://handlebarsjs.com/guide/partials.html) in the **Content** parameter.
 
-[](/media/docs/grafana/panels-visualizations/business-text/partial.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/partial.png)

@@ -11,7 +11,7 @@ The Splunk query editor lets you create and run queries using the Splunk Search 
 
 ## Before you begin
 
-- [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/).
+- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/).
 - Verify your Splunk credentials have appropriate permissions to run searches.
 
 ## Key concepts
@@ -33,8 +33,8 @@ Expand table
 
 The query editor supports two modes:
 
-- **[Search mode](#search-mode):** For metrics and time-series queries. Supports both raw SPL and a visual query builder.
-- **[Events mode](#events-mode):** For log and annotation queries. Supports raw SPL only.
+- **[Search mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/query-editor/#search-mode):** For metrics and time-series queries. Supports both raw SPL and a visual query builder.
+- **[Events mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/query-editor/#events-mode):** For log and annotation queries. Supports raw SPL only.
 
 ## Search mode
 
@@ -57,7 +57,7 @@ The SPL editor includes autocomplete that provides suggestions from the Splunk t
 
 Search query example:
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=sales_data_index action=purchase | stats sum(bytes) BY host
@@ -67,7 +67,7 @@ index=sales_data_index action=purchase | stats sum(bytes) BY host
 
 Click the pencil icon in the upper right of the query editor to toggle the visual query builder. The builder generates SPL automatically based on your selections.
 
-[The visual query builder for Search mode](/media/docs/splunk/search-mode-create-query-v10.2.png)
+[The visual query builder for Search mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/splunk/search-mode-create-query-v10.2.png)
 
 The visual query builder provides the following options:
 
@@ -114,7 +114,7 @@ Expand table
 
 Example event search query:
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=iostat | where total_ops > 400
@@ -123,7 +123,7 @@ index=os sourcetype=iostat | where total_ops > $io_threshold
 
 Example using **Event field as text** with **Regex**:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 Event field as text: _raw
@@ -173,7 +173,7 @@ Use the `timechart` command to generate a statistical aggregation table from tim
 
 Example:
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system, avg(pctUser) as user, avg(pctIowait) as iowait
@@ -184,7 +184,7 @@ index=os sourcetype=ps | timechart span=1m limit=5 useother=false avg(cpu_load_p
 
 Starting with version 7.x, Splunk introduced the `mstats` command for analyzing metrics, which you combine with the `timechart` command. You must also set the `prestats=t` option as shown in the following example:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 Current syntax:
@@ -210,13 +210,13 @@ You can override the automatic detection using the **View As** selector in Explo
 
 Table query examples:
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index="_internal" sourcetype="scheduler" | fields host, source
 ```
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index="_internal" sourcetype="splunkd_access" | stats avg(bytes) as bytes, avg(file) as file by status
@@ -230,7 +230,7 @@ The following examples demonstrate common use cases for Splunk queries in Grafan
 
 **Monitor error rates over time:**
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main log_level=ERROR | timechart span=5m count as error_count
@@ -238,7 +238,7 @@ index=main log_level=ERROR | timechart span=5m count as error_count
 
 **Track system CPU usage:**
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system, avg(pctUser) as user
@@ -246,7 +246,7 @@ index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system, avg(pctUse
 
 **View top source types by event volume:**
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=* | stats count by sourcetype | sort -count | head 10
@@ -254,7 +254,7 @@ index=* | stats count by sourcetype | sort -count | head 10
 
 **Search logs for a specific error pattern:**
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main sourcetype=application "connection refused" OR "timeout" | fields _time, host, _raw
@@ -262,7 +262,7 @@ index=main sourcetype=application "connection refused" OR "timeout" | fields _ti
 
 **Monitor Splunk indexing throughput:**
 
-spl [Copy code to clipboard] Copy
+spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=_internal sourcetype=splunkd group=thruput | timechart span=1m sum(kb) as throughput_kb
@@ -270,7 +270,7 @@ index=_internal sourcetype=splunkd group=thruput | timechart span=1m sum(kb) as 
 
 ### Annotations
 
-You can use Splunk queries and fired alerts as annotations on Grafana graphs. For setup instructions, refer to [Splunk annotations](/docs/plugins/grafana-splunk-datasource/latest/annotations/).
+You can use Splunk queries and fired alerts as annotations on Grafana graphs. For setup instructions, refer to [Splunk annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/annotations/).
 
 ### Import queries from other data sources
 
@@ -278,7 +278,7 @@ The Splunk query editor can import queries from Prometheus and Loki data sources
 
 ## Next steps
 
-- [Template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
-- [Annotations](/docs/plugins/grafana-splunk-datasource/latest/annotations/): Overlay Splunk events and alerts on graphs.
-- [Alerting](/docs/plugins/grafana-splunk-datasource/latest/alerting/): Set up alert rules based on Splunk queries.
-- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common query issues.
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/annotations/): Overlay Splunk events and alerts on graphs.
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/alerting/): Set up alert rules based on Splunk queries.
+- [Troubleshoot Splunk data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/): Solutions for common query issues.

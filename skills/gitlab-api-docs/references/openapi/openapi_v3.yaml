@@ -2274,7 +2274,7 @@ paths:
     get:
       operationId: getApiV4OrbitQueryTemplates
       summary: List named query templates
-      description: Lists the server-defined named queries with their query DSL rendered
+      description: Lists the server-defined named queries with their GQL text rendered
         for the current user.
       tags:
       - Orbit
@@ -103211,6 +103211,9 @@ components:
         nuget_max_file_size:
           type: integer
           example: 524288000
+        organization_hooks:
+          type: integer
+          example: 50
         pipeline_hierarchy_size:
           type: integer
           example: 1000
@@ -103663,13 +103666,9 @@ components:
       type: object
       properties:
         query:
-          oneOf:
-          - type: object
-            nullable: true
-          - type: string
-            nullable: true
-          description: JSON query object, or GQL text when enabled for the current
-            user
+          type: string
+          description: GQL query text
+          nullable: true
         response_format:
           type: string
           enum:
@@ -136674,6 +136673,12 @@ components:
         nuget_max_file_size:
           type: integer
           description: Maximum NuGet package file size in bytes.
+          nullable: true
+        organization_hooks:
+          type: integer
+          description: Maximum number of system hooks per organization, for hooks
+            managed by organization administrators. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632599)
+            in GitLab 19.6.
           nullable: true
         pypi_max_file_size:
           type: integer

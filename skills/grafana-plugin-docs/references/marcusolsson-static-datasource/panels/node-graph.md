@@ -21,4 +21,4 @@ You can use the Static data source to test graph panels like Node Graph.
 - Use the String field `target` for target IDs.
 - Use the Number field `mainstat` for the value.
 
-[](/media/docs/grafana/panels-visualizations/business-input/graph.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/graph.png)

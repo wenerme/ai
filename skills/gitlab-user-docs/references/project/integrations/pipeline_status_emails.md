@@ -3,6 +3,8 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
+- Filtering tag pipelines by the branches that contain the tag commit [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/628879) in GitLab 19.6.
+
 You can send notifications about pipeline status changes in a group or
 project to a list of email addresses.
 
@@ -28,4 +30,8 @@ To enable pipeline status emails:
 1. Optional. To receive notifications for parent and child pipelines, select
    **Notify child pipelines**.
 1. Select the branches to send notifications for.
+   For [tag pipelines](../../../ci/pipelines/pipeline_types.md#tag-pipeline), selecting **All branches** always matches,
+   even if no branch contains the tag commit.
+   For other selections, a tag pipeline sends an email when any branch containing the tag commit
+   matches the selected branch type.
 1. Select **Save changes**.

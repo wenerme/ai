@@ -24,7 +24,7 @@ Many issues are caused by running an outdated plugin version. Before deeper trou
 3. Review the installed version and the latest available version.
 4. If an update is available and you’re on self-managed Grafana, click **Update**.
 
-For CLI-based updates and rollback instructions, refer to [Upgrade the plugin](/docs/plugins/grafana-aurora-datasource/latest/install/#upgrade-the-plugin).
+For CLI-based updates and rollback instructions, refer to [Upgrade the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/install/#upgrade-the-plugin).
 
 ## License and setup errors
 
@@ -47,7 +47,7 @@ Expand table
 | License doesn’t include the plugin      | Confirm your Grafana Enterprise license includes `grafana-aurora-datasource`, and contact your Grafana account team if it doesn’t.                  |
 | Insufficient permissions                | Only organization administrators can install plugins.                                                                                               |
 
-For installation instructions for each deployment environment, refer to [Install the Amazon Aurora data source plugin](/docs/plugins/grafana-aurora-datasource/latest/install/).
+For installation instructions for each deployment environment, refer to [Install the Amazon Aurora data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/install/).
 
 ## Authentication errors
 
@@ -64,11 +64,11 @@ These errors occur when AWS credentials or IAM database authentication aren’t 
 
 Expand table
 
-| Cause                               | Solution                                                                                                                                                                                                 |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing `rds-db:connect` permission | Attach a policy granting `rds-db:connect` for your cluster and database user. Refer to the [example IAM permissions](/docs/plugins/grafana-aurora-datasource/latest/configure/#example-iam-permissions). |
-| Invalid or expired AWS credentials  | Verify the access key and secret key in the data source settings, or regenerate them in the AWS console.                                                                                                 |
-| Wrong region                        | Verify **Default Region** matches the region of your Aurora cluster.                                                                                                                                     |
+| Cause                               | Solution                                                                                                                                                                                                                                                             |
+|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing `rds-db:connect` permission | Attach a policy granting `rds-db:connect` for your cluster and database user. Refer to the [example IAM permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/#example-iam-permissions). |
+| Invalid or expired AWS credentials  | Verify the access key and secret key in the data source settings, or regenerate them in the AWS console.                                                                                                                                                             |
+| Wrong region                        | Verify **Default Region** matches the region of your Aurora cluster.                                                                                                                                                                                                 |
 
 ### “User is not authorized to perform sts:AssumeRole”
 
@@ -84,7 +84,7 @@ When you configure **Assume Role ARN**, the identity that calls `sts:AssumeRole`
 1. Verify that the base credentials have `sts:AssumeRole` permission for the target role.
 2. Verify that the target role’s trust policy names your IAM identity, or its AWS account, as the principal:
 
-   JSON [Copy code to clipboard] Copy
+   JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    {
@@ -116,13 +116,13 @@ PostgreSQL-compatible clusters return `PAM authentication failed for user` and M
 
 Expand table
 
-| Cause                                                  | Solution                                                                                                                                                                                                                          |
-|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The RDS authentication token expired                   | The plugin automatically generates a new token and retries once. If failures persist, verify your AWS credentials are still valid.                                                                                                |
-| The database user isn’t enabled for IAM authentication | Configure the user for IAM authentication. Refer to the [AWS guide to creating a database account using IAM authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.DBAccounts.html). |
-| IAM database authentication is disabled on the cluster | Enable IAM database authentication on your Aurora cluster in the AWS console.                                                                                                                                                     |
-| The wrong **Database User** is configured              | Verify the user name in the data source settings matches the database account configured for IAM authentication.                                                                                                                  |
-| The cluster is behind a load balancer                  | The token must be generated for the actual cluster endpoint, not the load balancer endpoint. Refer to [Authentication fails behind a load balancer](#authentication-fails-behind-a-load-balancer).                                |
+| Cause                                                  | Solution                                                                                                                                                                                                                                                                                                                      |
+|--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The RDS authentication token expired                   | The plugin automatically generates a new token and retries once. If failures persist, verify your AWS credentials are still valid.                                                                                                                                                                                            |
+| The database user isn’t enabled for IAM authentication | Configure the user for IAM authentication. Refer to the [AWS guide to creating a database account using IAM authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.DBAccounts.html).                                                                                             |
+| IAM database authentication is disabled on the cluster | Enable IAM database authentication on your Aurora cluster in the AWS console.                                                                                                                                                                                                                                                 |
+| The wrong **Database User** is configured              | Verify the user name in the data source settings matches the database account configured for IAM authentication.                                                                                                                                                                                                              |
+| The cluster is behind a load balancer                  | The token must be generated for the actual cluster endpoint, not the load balancer endpoint. Refer to [Authentication fails behind a load balancer](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/#authentication-fails-behind-a-load-balancer). |
 
 ### Intermittent authentication failures with pooled connections
 
@@ -159,7 +159,7 @@ These errors occur when Grafana can’t reach your cluster endpoint.
 
 1. Verify network connectivity from the Grafana server to the cluster endpoint and port.
 2. Check that security groups and firewall rules allow inbound traffic from Grafana to the database port.
-3. For clusters in private networks with Grafana Cloud, configure [private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select the PDC connection in the data source settings.
+3. For clusters in private networks with Grafana Cloud, configure [private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select the PDC connection in the data source settings.
 4. Verify the **Database Host** and **Database Port** values match your cluster endpoint.
 
 ### “Failed to register RDS mysql certs”
@@ -178,7 +178,7 @@ For MySQL-compatible engines, the plugin downloads the RDS certificate bundle fr
 1. Allow outbound HTTPS traffic from the Grafana server to `s3.amazonaws.com`.
 2. If Grafana runs behind an HTTP proxy, verify the proxy allows this destination.
 
-For all runtime network access the plugin needs, refer to [Network requirements](/docs/plugins/grafana-aurora-datasource/latest/install/#network-requirements).
+For all runtime network access the plugin needs, refer to [Network requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/install/#network-requirements).
 
 ### Authentication fails behind a load balancer
 
@@ -193,11 +193,11 @@ The RDS authentication token must be generated for the actual cluster endpoint, 
 **Solutions:**
 
 1. Set **Database Host** and **Database Port** to the load balancer endpoint used for SQL connections.
-2. Set **Advanced: DB Host For Auth** and **Advanced: DB Port For Auth** to the cluster endpoint behind the load balancer. Refer to [Separate host and port for authentication](/docs/plugins/grafana-aurora-datasource/latest/configure/#separate-host-and-port-for-authentication).
+2. Set **Advanced: DB Host For Auth** and **Advanced: DB Port For Auth** to the cluster endpoint behind the load balancer. Refer to [Separate host and port for authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/#separate-host-and-port-for-authentication).
 
 ### Troubleshoot PDC connections
 
-These issues are specific to [private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) deployments where Grafana Cloud connects to an Aurora cluster in a private network. The PDC agent requires outbound access to your cluster endpoint on the database port, and outbound access on port 22 (SSH) to Grafana Cloud endpoints for the tunnel.
+These issues are specific to [private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) deployments where Grafana Cloud connects to an Aurora cluster in a private network. The PDC agent requires outbound access to your cluster endpoint on the database port, and outbound access on port 22 (SSH) to Grafana Cloud endpoints for the tunnel.
 
 **Symptoms:**
 
@@ -293,7 +293,7 @@ To capture detailed error information for troubleshooting:
 
 1. Enable debug logging for the plugin in the Grafana configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -310,7 +310,7 @@ If you’ve tried these solutions and still encounter issues:
 1. Check the [Grafana Cloud status page](https://status.grafana.com/) to rule out active platform incidents.
 2. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 3. Consult the [Amazon Aurora documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) for cluster and IAM guidance.
-4. Contact [Grafana Support](/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
+4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
 5. When reporting issues, include:
 
    - Grafana and plugin versions

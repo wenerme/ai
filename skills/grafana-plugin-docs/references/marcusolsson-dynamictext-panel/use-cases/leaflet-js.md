@@ -11,17 +11,17 @@ This example demonstrates external resource usage in the Business Text plugin. T
 
 Follow the outlined steps to display Leaflet.js maps on your Grafana dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-text/leaflet-edit.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/leaflet-edit.png)
 
 The following illustration shows the map on the dashboard from this example.
 
-[](/media/docs/grafana/panels-visualizations/business-text/leaflet-display.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/leaflet-display.png)
 
 ## Data to copy
 
-This example uses the [Business Input Data Source](/docs/plugins/marcusolsson-static-datasource/latest/).
+This example uses the [Business Input Data Source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/).
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 {
@@ -41,7 +41,7 @@ js [Copy code to clipboard] Copy
 
 ## Content
 
-HTML [Copy code to clipboard] Copy
+HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div id="leaflet" />
@@ -55,7 +55,7 @@ HTML [Copy code to clipboard] Copy
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 // This data is coming from the data source.
@@ -140,13 +140,13 @@ import("https://esm.sh/leaflet").then(({ default: L }) => {
 
 Use the following external CSS
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://unpkg.com/leaflet@1.9.4/dist/leaflet.css
 ```
 
-CSS [Copy code to clipboard] Copy
+CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```css
 #leaflet {

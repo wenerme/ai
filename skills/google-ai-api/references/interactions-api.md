@@ -146,7 +146,19 @@ Configuration parameters for model interactions.
 
 #### Fields
 
+seed integer (optional) Seed used in decoding for reproducibility.
+stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
 tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or enum (string) (optional) The tool choice configuration.
+
+#### Possible Types
+
+[ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) The tool choice configuration containing allowed tools.
+allowed_tools AllowedTools (optional) The allowed tools.
+The configuration for allowed tools.
+
+#### Fields
+
+mode enum (string) (optional) The mode of the tool choice.
 
 Possible
 values:
@@ -163,8 +175,12 @@ values:
 - `validated`
 
   Validated tool choice.
-seed integer (optional) Seed used in decoding for reproducibility.
-stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
+tools array (string) (optional) The names of the allowed tools.
+enum (string)
+- `auto`: Auto tool choice.
+- `any`: Any tool choice.
+- `none`: No tool choice.
+- `validated`: Validated tool choice.
 thinking_level ThinkingLevel (optional) The level of thought tokens that the model should generate.
 <br />
 
@@ -229,8 +245,11 @@ Configuration for speech recognition (transcription).
 
 #### Fields
 
+language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
+audio. If omitted or empty, defaults to automatic language detection.
+custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
+toward recognizing specific terms.
 mode TranscriptionMode or enum (string) (optional) Discriminated transcription mode options or enum.
-Configuration for transcription mode.
 
 #### Possible Types
 
@@ -245,15 +264,14 @@ Always set to `"verbatim"`.
 timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
 Supported values: "word". If empty, no timestamps are generated.
 diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
-language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
-audio. If omitted or empty, defaults to automatic language detection.
-custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
-toward recognizing specific terms.
+enum (string)
+- `verbatim`: Verbatim transcription mode.
+- `smart`: Smart transcription mode.
 structured_speech_config SpeakerConfig or array (SpeechConfig) (optional) Speech and multi-speaker configuration.
-Configuration for multi-speaker and speech generation.
 
-#### Fields
+#### Possible Types
 
+SpeakerConfig Configuration for multi-speaker and speech generation.
 speakers array (SpeechConfig) (optional) Individual speaker configurations.
 The configuration for speech interaction.
 
@@ -262,17 +280,139 @@ The configuration for speech interaction.
 voice string (optional) The voice of the speaker.
 language string (optional) The language of the speech.
 speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
+array (SpeechConfig) The configuration for speech interaction.
+voice string (optional) The voice of the speaker.
+language string (optional) The language of the speech.
+speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
 agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
 Configuration for the agent.   
 *Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
+
+#### Possible Types
+
+AntigravityAgentConfig Configuration for the Antigravity agent runtime.
+Provides server-side control over the agent's execution environment
+and tool configuration.
+type object (required) No description provided.
+
+Always set to `"antigravity"`.
+model string (optional) The model to use for agent reasoning.
+max_total_tokens string (optional) Max total tokens for the agent run.
+DeepResearchAgentConfig Configuration for the Deep Research agent.
+type object (required) No description provided.
+
+Always set to `"deep-research"`.
+thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
+<br />
+
+#### Possible values
+
+- `auto`
+
+  Auto thinking summaries.
+- `none`
+
+  No thinking summaries.
+visualization enum (string) (optional) Whether to include visualizations in the response.
+
+Possible
+values:
+
+- `off`
+
+  Do not include visualizations.
+- `auto`
+
+  Automatically include visualizations.
+collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
+true, the Deep Research agent will provide a research plan in its response.
+The agent will then proceed only if the user confirms the plan in the next
+turn.
+DynamicAgentConfig Configuration for dynamic agents.
+type object (required) No description provided.
+
+Always set to `"dynamic"`.
+system_instruction string (optional) System instruction for the interaction.
+tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
 the JSON schema specified in this field.
+
+#### Possible Types
+
+[ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) This type has no specific fields.
+array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) A list where each item is one of: \`AudioResponseFormat\`, \`ImageResponseFormat\`, \`TextResponseFormat\`, \`VideoResponseFormat\`.
+
+This type has no specific fields.
+previous_interaction_id string (optional) The ID of the previous interaction, if any.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
 specifying remote environment sources or a string referencing an existing
 environment ID.
-system_instruction string (optional) System instruction for the interaction.
-tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-previous_interaction_id string (optional) The ID of the previous interaction, if any.
+
+#### Possible Types
+
+[EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) Configuration for a custom environment.
+type object (required) No description provided.
+
+Always set to `"remote"`.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
+
+#### Possible Types
+
+[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+#### Possible Types
+
+array (EgressRule) A single domain allowlist rule with optional header injection.
+domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
+'\*.googleapis.com'). Use '\*' to allow all domains.
+transform object (optional) Headers to inject into requests matching this rule.
+Key: header name (e.g., "Authorization").
+Value: header value (e.g., "Bearer your-token").
+credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
+enum (string)
+- `disabled`: All network egress is blocked.
+enum (string)
+- `disabled`: All network egress is blocked.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+env object or string (optional) Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+string A direct string value.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 service_tier ServiceTier (optional) The service tier for the interaction.
 <br />
 
@@ -920,14 +1060,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-omni-flash-preview`
 
   Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
 usage Usage (optional) Output only. Statistics on the interaction request's token usage.
 Statistics on the interaction request's token usage.
 
@@ -1062,7 +1197,85 @@ values:
 
   Grounding with Google Maps.
 count integer (optional) The number of grounding tool counts.
+response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
+the JSON schema specified in this field.
+
+#### Possible Types
+
+[ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) This type has no specific fields.
+array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) A list where each item is one of: \`AudioResponseFormat\`, \`ImageResponseFormat\`, \`TextResponseFormat\`, \`VideoResponseFormat\`.
+
+This type has no specific fields.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
+environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
+specifying remote environment sources or a string referencing an existing
+environment ID.
+
+#### Possible Types
+
+[EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) Configuration for a custom environment.
+type object (required) No description provided.
+
+Always set to `"remote"`.
+sources array (Source) (optional) No description provided.
+A source to be mounted into the environment.
+
+#### Fields
+
+type enum (string) (optional) No description provided.
+
+Possible
+values:
+
+- `gcs`
+
+  A Cloud Storage bucket.
+- `inline`
+
+  Inline content.
+- `repository`
+
+  A generic repository. The protocol prefix in the source URL
+  identifies the provider (e.g., github://, gcs://).
+source string (optional) The source of the environment.
+For Cloud Storage, this is the Cloud Storage path.
+For GitHub, this is the GitHub path.
+target string (optional) Where the source should appear in the environment.
+content string (optional) The inline content if \`type\` is \`INLINE\`.
+encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
+
+#### Possible Types
+
+[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+#### Possible Types
+
+array (EgressRule) A single domain allowlist rule with optional header injection.
+domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
+'\*.googleapis.com'). Use '\*' to allow all domains.
+transform object (optional) Headers to inject into requests matching this rule.
+Key: header name (e.g., "Authorization").
+Value: header value (e.g., "Bearer your-token").
+credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
+enum (string)
+- `disabled`: All network egress is blocked.
+enum (string)
+- `disabled`: All network egress is blocked.
+environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
+update the existing environment instead of creating a new one.
+env object or string (optional) Environment variables to set in the sandbox environment.
+
+#### Possible Types
+
+string A direct string value.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
 config is set in the request.
 service_tier ServiceTier (optional) The service tier for the interaction.
@@ -1181,6 +1394,51 @@ The agent to interact with.
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+
+#### Possible Types
+
+AntigravityAgentConfig Configuration for the Antigravity agent runtime.
+Provides server-side control over the agent's execution environment
+and tool configuration.
+type object (required) No description provided.
+
+Always set to `"antigravity"`.
+model string (optional) The model to use for agent reasoning.
+max_total_tokens string (optional) Max total tokens for the agent run.
+DeepResearchAgentConfig Configuration for the Deep Research agent.
+type object (required) No description provided.
+
+Always set to `"deep-research"`.
+thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
+<br />
+
+#### Possible values
+
+- `auto`
+
+  Auto thinking summaries.
+- `none`
+
+  No thinking summaries.
+visualization enum (string) (optional) Whether to include visualizations in the response.
+
+Possible
+values:
+
+- `off`
+
+  Do not include visualizations.
+- `auto`
+
+  Automatically include visualizations.
+collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
+true, the Deep Research agent will provide a research plan in its response.
+The agent will then proceed only if the user confirms the plan in the next
+turn.
+DynamicAgentConfig Configuration for dynamic agents.
+type object (required) No description provided.
+
+Always set to `"dynamic"`.
 max_total_tokens string (optional) Max total tokens for the agent run.
 
 ### Examples
@@ -1300,7 +1558,7 @@ values:
 - `text/csv`
 
   CSV document format
-ImageContent An image content block.
+[ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) An image content block.
 type object (required) No description provided.
 
 Always set to `"image"`.
@@ -1352,7 +1610,7 @@ values:
 - `image/tiff`
 
   TIFF image format
-TextContent A text content block.
+[TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent) A text content block.
 text string (required) Required. The text content.
 type object (required) No description provided.
 
@@ -1439,20 +1697,6 @@ type object (required) No description provided.
 Always set to `"video"`.
 data string (optional) The video content.
 uri string (optional) The URI of the video.
-processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
-
-Can be a string (`"static"` \| `"agentic"`) or a `StaticMediaProcessing` object:
-
-- `agentic`: Model-driven dynamic navigation.
-- `static`: Fixed-rate frame extraction. All frames placed in context. Can be passed as the string `"static"`, or as an object with the following fields: type string (required) No description provided.
-
-  Always set to `"static"`.
-  start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
-  by an 's' suffix, e.g., "10.5s". Must be non-negative.
-  end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
-  by an 's' suffix, e.g., "30s". Must be non-negative and greater than
-  \`start_offset\` if \`start_offset\` is set.
-  fps number (optional) Optional. Video frame-rate sampling density.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -1470,6 +1714,22 @@ resolution MediaResolution (optional) The resolution of the media.
 - `ultra_high`
 
   Ultra high resolution.
+processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
+
+#### Possible Types
+
+MediaProcessing type object (required) No description provided.
+
+Always set to `"static"`.
+start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
+by an 's' suffix, e.g., "10.5s". Must be non-negative.
+end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
+by an 's' suffix, e.g., "30s". Must be non-negative and greater than
+\`start_offset\` if \`start_offset\` is set.
+fps number (optional) Optional. Video frame-rate sampling density.
+enum (string)
+- `static`: Fixed-rate frame extraction. All frames placed in context.
+- `agentic`: Model-driven dynamic navigation.
 name string (optional) A user-defined name for this content block. Can be referenced by the model
 in the final response.
 mime_type enum (string) (optional) The mime type of the video.
@@ -1657,9 +1917,9 @@ McpServer A MCPServer is a server that can be called by the model to perform act
 type object (required) No description provided.
 
 Always set to `"mcp_server"`.
+name string (optional) The name of the MCPServer.
 url string (optional) The full URL for the MCPServer endpoint.
 Example: "https://api.example.com/mcp"
-name string (optional) The name of the MCPServer.
 headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
 allowed_tools array (AllowedTools) (optional) The allowed tools.
 The configuration for allowed tools.
@@ -1729,9 +1989,7 @@ Always set to `"url_context"`.
 
 ### Possible Types
 
-ErrorEvent <br />
-
-event_type object (required) No description provided.
+ErrorEvent event_type object (required) No description provided.
 
 Always set to `"error"`.
 error Error (optional) No description provided.
@@ -2135,9 +2393,7 @@ event_type object (required) No description provided.
 Always set to `"interaction.created"`.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
-InteractionStatusUpdate <br />
-
-interaction_id string (required) No description provided.
+InteractionStatusUpdate interaction_id string (required) No description provided.
 status enum (string) (required) No description provided.
 
 Possible
@@ -2303,27 +2559,19 @@ values:
 count integer (optional) The number of grounding tool counts.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
-StepDelta <br />
-
-index integer (required) No description provided.
+StepDelta index integer (required) No description provided.
 delta StepDeltaData (required) No description provided.
 <br />
 
 #### Possible Types
 
-ArgumentsDelta <br />
-
-type object (required) No description provided.
+ArgumentsDelta type object (required) No description provided.
 
 Always set to `"arguments_delta"`.
 arguments string (optional) No description provided.
-AudioDelta <br />
-
-type object (required) No description provided.
+AudioDelta type object (required) No description provided.
 
 Always set to `"audio"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2368,11 +2616,11 @@ values:
 - `audio/webm`
 
   WEBM audio format
+data string (optional) No description provided.
+uri string (optional) No description provided.
 sample_rate integer (optional) The sample rate of the audio.
 channels integer (optional) The number of audio channels.
-CodeExecutionCallDelta <br />
-
-arguments CodeExecutionCallArguments (required) No description provided.
+CodeExecutionCallDelta arguments CodeExecutionCallArguments (required) No description provided.
 The arguments to pass to the code execution.
 
 #### Fields
@@ -2393,21 +2641,15 @@ type object (required) No description provided.
 
 Always set to `"code_execution_call"`.
 signature string (optional) A signature hash for backend validation.
-CodeExecutionResultDelta <br />
-
-result string (required) No description provided.
+CodeExecutionResultDelta result string (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"code_execution_result"`.
 is_error boolean (optional) No description provided.
 signature string (optional) A signature hash for backend validation.
-DocumentDelta <br />
-
-type object (required) No description provided.
+DocumentDelta type object (required) No description provided.
 
 Always set to `"document"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2419,31 +2661,34 @@ values:
 - `text/csv`
 
   CSV document format
-FileSearchCallDelta <br />
-
-type object (required) No description provided.
+data string (optional) No description provided.
+uri string (optional) No description provided.
+FileSearchCallDelta type object (required) No description provided.
 
 Always set to `"file_search_call"`.
 signature string (optional) A signature hash for backend validation.
-FileSearchResultDelta <br />
-
-result array (FileSearchResult) (required) No description provided.
+FileSearchResultDelta result array (FileSearchResult) (required) No description provided.
 The result of the File Search.
 type object (required) No description provided.
 
 Always set to `"file_search_result"`.
 signature string (optional) A signature hash for backend validation.
-FunctionResultDelta <br />
+FunctionResultDelta result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
+#### Possible Types
+
+array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 type object (required) No description provided.
 
 Always set to `"function_result"`.
 name string (optional) No description provided.
 is_error boolean (optional) No description provided.
-GoogleMapsCallDelta <br />
-
-type object (required) No description provided.
+GoogleMapsCallDelta type object (required) No description provided.
 
 Always set to `"google_maps_call"`.
 arguments GoogleMapsCallArguments (optional) The arguments to pass to the Google Maps tool.
@@ -2453,9 +2698,7 @@ The arguments to pass to the Google Maps tool.
 
 queries array (string) (optional) The queries to be executed.
 signature string (optional) A signature hash for backend validation.
-GoogleMapsResultDelta <br />
-
-type object (required) No description provided.
+GoogleMapsResultDelta type object (required) No description provided.
 
 Always set to `"google_maps_result"`.
 result array (GoogleMapsResult) (optional) The results of the Google Maps.
@@ -2483,9 +2726,7 @@ url string (optional) A link that corresponds to the user review on Google Maps.
 review_id string (optional) The ID of the review snippet.
 widget_context_token string (optional) Resource name of the Google Maps widget context token.
 signature string (optional) A signature hash for backend validation.
-GoogleSearchCallDelta <br />
-
-arguments GoogleSearchCallArguments (required) No description provided.
+GoogleSearchCallDelta arguments GoogleSearchCallArguments (required) No description provided.
 The arguments to pass to Google Search.
 
 #### Fields
@@ -2495,9 +2736,7 @@ type object (required) No description provided.
 
 Always set to `"google_search_call"`.
 signature string (optional) A signature hash for backend validation.
-GoogleSearchResultDelta <br />
-
-result array (GoogleSearchResult) (required) No description provided.
+GoogleSearchResultDelta result array (GoogleSearchResult) (required) No description provided.
 The result of the Google Search.
 
 #### Fields
@@ -2508,13 +2747,9 @@ type object (required) No description provided.
 Always set to `"google_search_result"`.
 is_error boolean (optional) No description provided.
 signature string (optional) A signature hash for backend validation.
-ImageDelta <br />
-
-type object (required) No description provided.
+ImageDelta type object (required) No description provided.
 
 Always set to `"image"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2544,6 +2779,8 @@ values:
 - `image/tiff`
 
   TIFF image format
+data string (optional) No description provided.
+uri string (optional) No description provided.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -2561,17 +2798,22 @@ resolution MediaResolution (optional) The resolution of the media.
 - `ultra_high`
 
   Ultra high resolution.
-McpServerToolCallDelta <br />
-
-name string (required) No description provided.
+McpServerToolCallDelta name string (required) No description provided.
 server_name string (required) No description provided.
 arguments object (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_call"`.
-McpServerToolResultDelta <br />
+McpServerToolResultDelta result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
 
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
+#### Possible Types
+
+array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_result"`.
@@ -2587,9 +2829,7 @@ type object (required) No description provided.
 
 Always set to `"processing_result"`.
 signature string (optional) A signature hash for backend validation.
-TextAnnotationDelta <br />
-
-type object (required) No description provided.
+TextAnnotationDelta type object (required) No description provided.
 
 Always set to `"text_annotation_delta"`.
 annotations array (Annotation) (optional) Citation information for model-generated content.
@@ -2668,27 +2908,19 @@ start_index integer (optional) Start of segment of the response that is attribut
 
 Index indicates the start of the segment, measured in bytes.
 end_index integer (optional) End of the attributed segment, exclusive.
-TextDelta <br />
-
-text string (required) No description provided.
+TextDelta text string (required) No description provided.
 type object (required) No description provided.
 
 Always set to `"text"`.
-ThoughtSignatureDelta <br />
-
-type object (required) No description provided.
+ThoughtSignatureDelta type object (required) No description provided.
 
 Always set to `"thought_signature"`.
 signature string (optional) Signature to match the backend source to be part of the generation.
-ThoughtSummaryDelta <br />
-
-type object (required) No description provided.
+ThoughtSummaryDelta type object (required) No description provided.
 
 Always set to `"thought_summary"`.
 content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
-UrlContextCallDelta <br />
-
-arguments UrlContextCallArguments (required) No description provided.
+UrlContextCallDelta arguments UrlContextCallArguments (required) No description provided.
 The arguments to pass to the URL context.
 
 #### Fields
@@ -2698,9 +2930,7 @@ type object (required) No description provided.
 
 Always set to `"url_context_call"`.
 signature string (optional) A signature hash for backend validation.
-UrlContextResultDelta <br />
-
-result array (UrlContextResult) (required) No description provided.
+UrlContextResultDelta result array (UrlContextResult) (required) No description provided.
 The result of the URL context.
 
 #### Fields
@@ -2728,13 +2958,9 @@ type object (required) No description provided.
 Always set to `"url_context_result"`.
 is_error boolean (optional) No description provided.
 signature string (optional) A signature hash for backend validation.
-VideoDelta <br />
-
-type object (required) No description provided.
+VideoDelta type object (required) No description provided.
 
 Always set to `"video"`.
-data string (optional) No description provided.
-uri string (optional) No description provided.
 mime_type enum (string) (optional) No description provided.
 
 Possible
@@ -2770,6 +2996,8 @@ values:
 - `video/jpeg2000`
 
   JPEG 2000 video format
+data string (optional) No description provided.
+uri string (optional) No description provided.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -2931,18 +3159,14 @@ values:
 
   Grounding with Google Maps.
 count integer (optional) The number of grounding tool counts.
-StepStart <br />
-
-index integer (required) No description provided.
+StepStart index integer (required) No description provided.
 step [Step](https://ai.google.dev/api/interactions-api#Resource:Step) (required) No description provided.
 event_type object (required) No description provided.
 
 Always set to `"step.start"`.
 event_id string (optional) The event_id token to be used to resume the interaction stream, from
 this event.
-StepStop <br />
-
-index integer (required) No description provided.
+StepStop index integer (required) No description provided.
 event_type object (required) No description provided.
 
 Always set to `"step.stop"`.
@@ -3659,6 +3883,15 @@ type object (required) No description provided.
 Always set to `"function_call"`.
 FunctionResultStep Result of a function tool call.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The result of the tool call.
+
+#### Possible Types
+
+array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
@@ -3752,6 +3985,15 @@ type object (required) No description provided.
 Always set to `"mcp_server_tool_call"`.
 McpServerToolResultStep MCPServer tool result step.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
+
+#### Possible Types
+
+array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
+
+This type has no specific fields.
+string A direct string value.
+
+This type has no specific fields.
 call_id string (required) Required. ID to match the ID from the function call block.
 type object (required) No description provided.
 
@@ -4077,14 +4319,6 @@ Configuration for a custom environment.
 type object (required) No description provided.
 
 Always set to `"remote"`.
-network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
-
-Possible
-values:
-
-- `disabled`
-
-  All network egress is blocked.
 sources array (Source) (optional) No description provided.
 A source to be mounted into the environment.
 
@@ -4111,15 +4345,36 @@ For GitHub, this is the GitHub path.
 target string (optional) Where the source should appear in the environment.
 content string (optional) The inline content if \`type\` is \`INLINE\`.
 encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
+network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
+
+#### Possible Types
+
+[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
+allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
+to block all network egress.
+
+#### Possible Types
+
+array (EgressRule) A single domain allowlist rule with optional header injection.
+domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
+'\*.googleapis.com'). Use '\*' to allow all domains.
+transform object (optional) Headers to inject into requests matching this rule.
+Key: header name (e.g., "Authorization").
+Value: header value (e.g., "Bearer your-token").
+credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
+enum (string)
+- `disabled`: All network egress is blocked.
+enum (string)
+- `disabled`: All network egress is blocked.
 environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
 update the existing environment instead of creating a new one.
 env object or string (optional) Environment variables to set in the sandbox environment.
 
 #### Possible Types
 
-object <br />
-
 string A direct string value.
+
+This type has no specific fields.
 
 ### Examples
 
@@ -4208,12 +4463,17 @@ Network egress configuration for the environment.
 allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
 to block all network egress.
 
-Possible
-values:
+#### Possible Types
 
-- `disabled`
-
-  All network egress is blocked.
+array (EgressRule) A single domain allowlist rule with optional header injection.
+domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
+'\*.googleapis.com'). Use '\*' to allow all domains.
+transform object (optional) Headers to inject into requests matching this rule.
+Key: header name (e.g., "Authorization").
+Value: header value (e.g., "Bearer your-token").
+credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
+enum (string)
+- `disabled`: All network egress is blocked.
 
 ### Examples
 

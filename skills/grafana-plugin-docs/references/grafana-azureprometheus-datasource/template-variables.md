@@ -13,8 +13,8 @@ Template variables let you create dynamic, reusable dashboards by replacing hard
 
 Before you create template variables, ensure you have:
 
-- [Configured the Azure Monitor Managed Service for Prometheus data source](/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
-- A basic understanding of [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configured the Azure Monitor Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+- A basic understanding of [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -82,7 +82,7 @@ Populate a drop-down with all metrics whose names contain `node`. Set **Query ty
 
 List the top five instances by request rate. Set **Query type** to **Query result** and enter a PromQL query:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 query_result(topk(5, sum by (instance) (rate(http_requests_total[$__range]))))
@@ -115,7 +115,7 @@ Expand table
 
 You can reference one variable in another variable’s query to create dependent, or cascading, variables. For example, if you have a `job` variable, create an `instance` variable whose values depend on the selected job:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 label_values(up{job="$job"}, instance)
@@ -137,7 +137,7 @@ Expand table
 
 When a variable allows multiple values, use the `=~` regular expression match operator so the query matches any selected value:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
@@ -147,7 +147,7 @@ rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
 
 `$__rate_interval` is a Grafana-specific variable designed for use with `rate()` and `increase()`. It guarantees a range window large enough to capture at least four scrape samples, which prevents gaps or inaccuracies. Always use `$__rate_interval` instead of a fixed interval or `$__interval`:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(http_requests_total[$__rate_interval])
@@ -156,7 +156,7 @@ rate(http_requests_total[$__rate_interval])
 Grafana calculates `$__rate_interval` as `max($__interval + scrape_interval, 4 * scrape_interval)`, where `scrape_interval` is:
 
 1. The per-query **Min step** setting, if set.
-2. Otherwise, the data source **Scrape interval** setting under **Interval behavior** on the [configuration page](/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+2. Otherwise, the data source **Scrape interval** setting under **Interval behavior** on the [configuration page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
 
 To get reliable results, set the data source **Scrape interval** to match the scrape interval of the workspace. If your data uses a longer interval than the default and you leave the setting too low, `$__rate_interval` calculates too small a window and `rate()` can return no data.
 
@@ -184,5 +184,5 @@ A filter bar appears at the top of the dashboard. Viewers add filters by selecti
 
 ## Next steps
 
-- [Query editor](/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
-- [Add annotations](/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
+- [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)

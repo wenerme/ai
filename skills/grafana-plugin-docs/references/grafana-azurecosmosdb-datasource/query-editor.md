@@ -11,7 +11,7 @@ The Azure Cosmos DB query editor lets you create and run Azure Cosmos DB for NoS
 
 ## Before you begin
 
-Before you use the query editor, [configure the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
+Before you use the query editor, [configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
 
 ## Key concepts
 
@@ -58,7 +58,7 @@ The following examples use the Azure Cosmos DB for NoSQL query language. The ali
 
 Return recent telemetry for a device, scoped to the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.timestamp, c.temperature, c.humidity
@@ -68,7 +68,7 @@ WHERE c.deviceId = "device-01" AND $__timeFilter(c.timestamp)
 
 Count items by status over the time range. Aggregations and `GROUP BY` require a single-partition query, so set the **PartitionKey** field:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(1) AS total, c.status
@@ -79,7 +79,7 @@ GROUP BY c.status
 
 Return the most recent items using `$__timeFrom` to filter from the start of the time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.timestamp, c.orderId, c.amount
@@ -101,7 +101,7 @@ To simplify syntax and allow for dynamic parts, such as date range filters, a qu
 
 The following example uses a macro that applies the Grafana time range filter:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.date_time, c.data_stuff
@@ -121,6 +121,6 @@ Expand table
 
 ## Next steps
 
-- [Use templates and variables](/docs/plugins/grafana-azurecosmosdb-datasource/latest/template-variables/)
-- [Set up alerting](/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting/)
-- [Troubleshoot the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)
+- [Use templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/template-variables/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting/)
+- [Troubleshoot the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/)

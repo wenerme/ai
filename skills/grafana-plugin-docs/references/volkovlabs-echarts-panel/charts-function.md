@@ -22,41 +22,41 @@ Both parts can use parameters passed into the Charts function. The following tab
 
 See the following schema and screenshot for illustration.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/schema.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/schema.png)
 
-[](/media/docs/grafana/panels-visualizations/business-charts/charts-function.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/charts-function.png)
 
 ## Options
 
 Specify the `options` parameter in the `return` clause. This parameter is passed to the `setOption(options)` function in the Apache ECharts library.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/function.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/function.png)
 
 ## Parameters
 
 Expand table
 
-| Parameter                                                                                                                                                                      | Description                                                                      |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| [`context.echarts`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#contextecharts)                                                          | Apache ECharts library.                                                          |
-| [`context.ecStat`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#contextecstat)                                                            | A statistical and data mining tool for Apache ECharts.                           |
-| [`context.editor.dataset`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#editordataset)                                                    | **\[Visual mode]** ECharts dataset.                                              |
-| [`context.editor.series`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#editorseries)                                                      | **\[Visual mode]** ECharts series.                                               |
-| [`context.grafana.eventBus`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanaeventbus)                                                | Publish and subscribe to application events.                                     |
-| [`context.grafana.locationService`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanalocationservice)                                  | Works with browser location and history.                                         |
-| [`context.grafana.notifyError(['header', 'message'])`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafananotifyerrorheader-message)     | Display error notifications.                                                     |
-| [`context.grafana.notifySuccess(['header', 'message'])`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafananotifysuccessheader-message) | Display success notifications.                                                   |
-| [`context.grafana.refresh()`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanarefresh)                                                | Function to refresh dashboard panels using application events.                   |
-| [`context.grafana.replaceVariables()`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanareplacevariables)                              | Function to interpolate variables.                                               |
-| [`context.grafana.theme`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanatheme)                                                      | Theme object.                                                                    |
-| [`context.panel.chart`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#panelchart)                                                          | Instance of the Apache ECharts library. See the example in the screenshot above. |
-| [`context.panel.data`](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#paneldata)                                                            | Object containing a time range, series, and request information.                 |
+| Parameter                                                                                                                                                                                                                                  | Description                                                                      |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| [`context.echarts`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#contextecharts)                                                          | Apache ECharts library.                                                          |
+| [`context.ecStat`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#contextecstat)                                                            | A statistical and data mining tool for Apache ECharts.                           |
+| [`context.editor.dataset`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#editordataset)                                                    | **\[Visual mode]** ECharts dataset.                                              |
+| [`context.editor.series`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#editorseries)                                                      | **\[Visual mode]** ECharts series.                                               |
+| [`context.grafana.eventBus`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanaeventbus)                                                | Publish and subscribe to application events.                                     |
+| [`context.grafana.locationService`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanalocationservice)                                  | Works with browser location and history.                                         |
+| [`context.grafana.notifyError(['header', 'message'])`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafananotifyerrorheader-message)     | Display error notifications.                                                     |
+| [`context.grafana.notifySuccess(['header', 'message'])`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafananotifysuccessheader-message) | Display success notifications.                                                   |
+| [`context.grafana.refresh()`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanarefresh)                                                | Function to refresh dashboard panels using application events.                   |
+| [`context.grafana.replaceVariables()`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanareplacevariables)                              | Function to interpolate variables.                                               |
+| [`context.grafana.theme`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#grafanatheme)                                                      | Theme object.                                                                    |
+| [`context.panel.chart`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#panelchart)                                                          | Instance of the Apache ECharts library. See the example in the screenshot above. |
+| [`context.panel.data`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/context-parameters/#paneldata)                                                            | Object containing a time range, series, and request information.                 |
 
 ### Inspect
 
 To inspect those parameters, use the browser’s developer console.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 console.log(
@@ -73,7 +73,7 @@ console.log(
 
 You can display success and error notifications when handling specific events.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.grafana.notifySuccess(["Update", "Values updated successfully."]);

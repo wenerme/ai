@@ -7,9 +7,9 @@ description: "Create alert rules from Google Sheets queries to get notified when
 
 # Alerting
 
-You can create [alert rules](/docs/grafana/latest/alerting/) that use the Google Sheets data source. When your query results meet the conditions you define, Grafana can send notifications to your configured contact points.
+You can create [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) that use the Google Sheets data source. When your query results meet the conditions you define, Grafana can send notifications to your configured contact points.
 
-For an overview of alerting in Grafana, refer to [Alerting](/docs/grafana/latest/alerting/).
+For an overview of alerting in Grafana, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Use cases
 
@@ -23,7 +23,7 @@ Alerting on Google Sheets is useful when your metrics or status live in a spread
 
 ## Before you begin
 
-- [Configure the Google Sheets data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and ensure **Save &amp; test** shows **Success**.
+- [Configure the Google Sheets data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and ensure **Save &amp; test** shows **Success**.
 - Have a dashboard panel that uses a Google Sheets query whose data you want to alert on (for example, a metric that should stay above or below a threshold).
 
 ## Create an alert rule from a panel
@@ -34,14 +34,14 @@ Alerting on Google Sheets is useful when your metrics or status live in a spread
 4. Save the panel and the dashboard if you have made changes.
 5. Click the panel title and select **Edit** → open the **Alert** tab (or **Alert** in the panel editor).
 6. Click **Create alert rule from this panel**.
-7. Define the rule: name, folder, condition (for example, when a value is above or below a threshold), evaluation group, and contact points. For details, refer to [Configure Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+7. Define the rule: name, folder, condition (for example, when a value is above or below a threshold), evaluation group, and contact points. For details, refer to [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 8. Save the rule.
 
 After the rule is created, Grafana evaluates it on the schedule you configured and sends notifications when the condition is met.
 
 ## Query and data considerations
 
-- Use the same [query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/) options as in panels: **Spreadsheet ID**, **Range**, **Use Time Filter**, and **Cache Time**. The alert evaluation runs your query and then applies the condition to the result.
+- Use the same [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/) options as in panels: **Spreadsheet ID**, **Range**, **Use Time Filter**, and **Cache Time**. The alert evaluation runs your query and then applies the condition to the result.
 - For threshold-style rules, your sheet should return data that Grafana can treat as numeric or time series (for example, a column with numbers or a time column plus value column). The exact condition you can set depends on your panel type and how the data is shaped.
 - If your sheet data or range changes (for example, new rows), ensure the alert rule’s query still matches the range you intend (for example, a fixed range like `Sheet1!A1:E100` or a range that includes new rows).
 
@@ -63,6 +63,6 @@ For a single KPI (for example, one cell or row updated by a script or formula), 
 
 ## Next steps
 
-- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/): Spreadsheet ID, Range, and Use Time Filter
-- [Configure the data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/)
-- [Alerting](/docs/grafana/latest/alerting/): Grafana alerting documentation
+- [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/): Spreadsheet ID, Range, and Use Time Filter
+- [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/): Grafana alerting documentation

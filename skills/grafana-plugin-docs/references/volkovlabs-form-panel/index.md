@@ -19,11 +19,11 @@ The Business Forms panel is a conceptually new plugin for Grafana. It is the fir
 
 ## Getting started
 
-You can install the Business Forms panel from the [Grafana Plugins catalog](/grafana/plugins/volkovlabs-form-panel/) or use the Grafana command line tool.
+You can install the Business Forms panel from the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-form-panel/) or use the Grafana command line tool.
 
 For the latter, use the following command:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install volkovlabs-form-panel
@@ -42,21 +42,21 @@ grafana cli plugins install volkovlabs-form-panel
 - Displays success and error notifications through custom code.
 - Provides suggestions for available parameters when writing program code in the code editor.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/panel.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/panel.png)
 
 ## Documentation
 
 Expand table
 
-| Section                                                                    | Description                                                                                |
-|----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| [Data flow](/docs/plugins/volkovlabs-form-panel/latest/data-flow/)         | Explains the data flow and its specifics.                                                  |
-| [Form elements](/docs/plugins/volkovlabs-form-panel/latest/form-elements/) | Explains the specifics of form elements.                                                   |
-| [REST API](/docs/plugins/volkovlabs-form-panel/latest/rest-api/)           | Explains the REST API architecture and how to use NGINX.                                   |
-| [Custom code](/docs/plugins/volkovlabs-form-panel/latest/custom-code/)     | Explains how to access plugin options, API responses, form elements, and Grafana services. |
-| [Features](/docs/plugins/volkovlabs-form-panel/latest/features/)           | Explains the plugin features.                                                              |
-| [Servers](/docs/plugins/volkovlabs-form-panel/latest/servers/)             | Provides examples of API server implementations.                                           |
-| [Release notes](/docs/plugins/volkovlabs-form-panel/latest/release/)       | Stay up to date with the latest features and updates.                                      |
+| Section                                                                                                                                | Description                                                                                |
+|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [Data flow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/data-flow/)         | Explains the data flow and its specifics.                                                  |
+| [Form elements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/form-elements/) | Explains the specifics of form elements.                                                   |
+| [REST API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/rest-api/)           | Explains the REST API architecture and how to use NGINX.                                   |
+| [Custom code](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/custom-code/)     | Explains how to access plugin options, API responses, form elements, and Grafana services. |
+| [Features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/features/)           | Explains the plugin features.                                                              |
+| [Servers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/)             | Provides examples of API server implementations.                                           |
+| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/release/)       | Stay up to date with the latest features and updates.                                      |
 
 ## License
 

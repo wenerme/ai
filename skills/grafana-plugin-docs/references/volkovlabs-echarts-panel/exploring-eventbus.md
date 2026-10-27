@@ -11,7 +11,7 @@ Grafana leverages an *event bus* to broadcast application events, enabling diffe
 
 Here’s a basic example of subscribing to an event:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const subscription = eventBus.subscribe({ type: "data-hover" }, () =>

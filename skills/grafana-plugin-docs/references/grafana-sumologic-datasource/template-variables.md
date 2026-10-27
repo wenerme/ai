@@ -9,12 +9,12 @@ description: "Use template variables with the Sumo Logic data source to create d
 
 Template variables let you create dynamic, reusable dashboards where users can change what data is displayed using drop-down selectors instead of editing queries directly. For example, you can create a variable that lists all available hosts, then use it to filter dashboard panels to a specific host.
 
-For general information about variables in Grafana, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+For general information about variables in Grafana, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the Sumo Logic data source](/docs/plugins/grafana-sumologic-datasource/latest/configure/).
-- Familiarize yourself with [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/).
+- Familiarize yourself with [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -51,7 +51,7 @@ To create a query variable:
 
 Return a list of available metrics:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 * | count by metric
@@ -59,7 +59,7 @@ SQL [Copy code to clipboard] Copy
 
 Return a list of hosts reporting CPU metrics:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | count by host
@@ -67,7 +67,7 @@ metric=cpu_idle | count by host
 
 Return a list of departments:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | count by department
@@ -75,7 +75,7 @@ metric=cpu_idle | count by department
 
 Return a list of source categories from a specific metric:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_requests | count by _sourceCategory
@@ -83,7 +83,7 @@ metric=http_requests | count by _sourceCategory
 
 ## Use variables in queries
 
-After creating a variable, reference it in your Sumo Logic queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). Variable substitution is supported in the following query fields:
+After creating a variable, reference it in your Sumo Logic queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). Variable substitution is supported in the following query fields:
 
 - **Query:** The main query string for both metrics and logs queries.
 - **Rollup:** The rollup function for metrics queries.
@@ -92,7 +92,7 @@ After creating a variable, reference it in your Sumo Logic queries using [variab
 
 Filter by a single-value variable named `host`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle host=$host
@@ -100,7 +100,7 @@ metric=cpu_idle host=$host
 
 Use a multi-value variable named `department` with the `in` filter syntax:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle department=($department)
@@ -108,7 +108,7 @@ metric=cpu_idle department=($department)
 
 Combine multiple variables to drill down:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=$metric host=$host | avg by _sourceCategory
@@ -120,7 +120,7 @@ Use a variable in the rollup field by setting the **Rollup** drop-down to `$roll
 
 Filter logs by host:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceHost=$host error | count by _sourceCategory
@@ -128,7 +128,7 @@ _sourceHost=$host error | count by _sourceCategory
 
 Use a variable for the source category:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=$sourceCategory | count by _sourceHost | sort by _count desc
@@ -136,7 +136,7 @@ _sourceCategory=$sourceCategory | count by _sourceHost | sort by _count desc
 
 Combine variables to scope log searches:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceHost=$host _sourceCategory=$sourceCategory $search_term | count by _messageSeverity

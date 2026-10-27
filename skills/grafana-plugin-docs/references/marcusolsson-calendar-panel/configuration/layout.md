@@ -9,7 +9,7 @@ description: "Learn about the layout configuration options available in the Busi
 
 The **Layout** category includes the following parameters:
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/layout.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/layout.png)
 
 ## Views
 
@@ -17,31 +17,31 @@ The **Layout** category includes the following parameters:
 
 Displays a day.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/day.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/day.png)
 
 ### Week and Work week
 
 Displays a week with 7 or 5 days respectively.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/week-5-7.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/week-5-7.png)
 
 #### First day of the week
 
 The plugin uses the Grafana system settings to determine the first day of the week: Saturday, Sunday, or Monday. If no setting is specified, the plugin uses the default day from Grafana settings.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/week-start-pref.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/week-start-pref.png)
 
 ### Month
 
 Displays a month.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/month.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/month.png)
 
 ### Year
 
 Displays 12 months at the same time. The purpose of this view is to help navigate throughout the calendar since it makes it easier to jump into any day and month of the year.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/year.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/year.png)
 
 #### Events
 
@@ -53,7 +53,7 @@ In the **Year** view, the Business Calendar panel displays dots representing eve
 
 Multi-day events display as one dot per day. For instance, if an event lasts from September 16 to September 17 (a two-day event), two dots appear on the panel: one dot for September 16 and another dot for September 17.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/year.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/year.png)
 
 ### Agenda
 
@@ -63,13 +63,13 @@ Displays only the busy time slots and shows multiple days for the selected perio
 
 You can configure which views are available for users.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/allowed.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/allowed.png)
 
 ## Default view
 
 Use this setting to control what your calendar displays after a page refresh. You can select any of the calendar views as the default view.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/default-view.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/default-view.png)
 
 ## Date and time format
 
@@ -85,7 +85,7 @@ If you set **Date and time format** to **User selection**, the language preferen
 
 All other options override the user profile settings.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/language-extended.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/language-extended.png)
 
 > Note
 >
@@ -93,7 +93,7 @@ All other options override the user profile settings.
 
 The **Date and time format** parameter is specific to the particular Business Calendar panel.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/languages.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/languages.png)
 
 ## Month time
 
@@ -103,14 +103,14 @@ The **Date and time format** parameter is specific to the particular Business Ca
 
 For the **Month** layout, you can turn off the display of event times.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/month-time.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/month-time.png)
 
 ## Colors
 
-Read about the **Colors** option in the [Coloring events](/docs/plugins/marcusolsson-calendar-panel/latest/features/color/) section.
+Read about the **Colors** option in the [Coloring events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/features/color/) section.
 
 ## Text Size
 
 You can control the font size in your Calendar panel. By default, the size is 12px.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/text-size.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/text-size.png)

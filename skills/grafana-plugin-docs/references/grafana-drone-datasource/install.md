@@ -9,9 +9,9 @@ description: "Install the Drone data source plugin in Grafana Cloud or self-mana
 
 > Note
 >
-> Drone data source plugin is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Drone data source plugin is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
-This document explains how to install the Drone data source plugin. After you install it, refer to [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/) to connect it to your Drone instance.
+This document explains how to install the Drone data source plugin. After you install it, refer to [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/) to connect it to your Drone instance.
 
 The Drone data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise.
 
@@ -20,7 +20,7 @@ The Drone data source is an Enterprise plugin. It’s available with a Grafana C
 Before you install the plugin, ensure you have:
 
 - **A supported Grafana version:** Grafana 10.3.3 or later.
-- **A license:** A Grafana Cloud Pro or Advanced plan or an [activated Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- **A license:** A Grafana Cloud Pro or Advanced plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 - **Grafana permissions:** Organization or server administrator role to install plugins on self-managed Grafana.
 
 ## Required permissions
@@ -36,7 +36,7 @@ The Drone data source requires Grafana 10.3.3 or later. Before you install, conf
 
 1. Click the help icon in the top navigation bar, or check **Administration** &gt; **General** &gt; **Settings**.
 2. Note the Grafana version number.
-3. If your version is older than 10.3.3, upgrade Grafana before installing the plugin. For upgrade guidance, refer to [Upgrade Grafana](/docs/grafana/latest/upgrade-guide/).
+3. If your version is older than 10.3.3, upgrade Grafana before installing the plugin. For upgrade guidance, refer to [Upgrade Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/upgrade-guide/).
 
 ## Install in Grafana Cloud
 
@@ -53,7 +53,7 @@ In Grafana Cloud, Enterprise plugins are managed for you:
 
 ## Install on self-managed Grafana
 
-On self-managed Grafana Enterprise, install the plugin from the plugin catalog or with the Grafana command line. For more information about the available methods, refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/).
+On self-managed Grafana Enterprise, install the plugin from the plugin catalog or with the Grafana command line. For more information about the available methods, refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 ### Use the plugin catalog
 
@@ -64,13 +64,13 @@ To install the plugin from the catalog:
 3. Select **Drone**.
 4. Click **Install**.
 
-For more information about Enterprise plugins, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+For more information about Enterprise plugins, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ### Use the Grafana command line
 
 To install the plugin with the Grafana CLI, run the following command on the Grafana server, then restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-drone-datasource
@@ -82,7 +82,7 @@ After Grafana restarts, the Drone data source is available to add.
 
 For containerized or provisioned deployments, install the plugin with the `GF_INSTALL_PLUGINS` environment variable. Grafana installs the listed plugins on startup.
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 GF_INSTALL_PLUGINS=grafana-drone-datasource
@@ -90,7 +90,7 @@ GF_INSTALL_PLUGINS=grafana-drone-datasource
 
 To pin a specific version for reproducible deployments, append the version after an `@`:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 GF_INSTALL_PLUGINS=grafana-drone-datasource@0.1.0
@@ -98,7 +98,7 @@ GF_INSTALL_PLUGINS=grafana-drone-datasource@0.1.0
 
 For example, with Docker:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 docker run -d -p 3000:3000 --name=grafana \
@@ -106,17 +106,17 @@ docker run -d -p 3000:3000 --name=grafana \
   grafana/grafana-enterprise
 ```
 
-For more information about running Grafana in Docker, refer to [Run Grafana Docker image](/docs/grafana/latest/setup-grafana/installation/docker/).
+For more information about running Grafana in Docker, refer to [Run Grafana Docker image](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/installation/docker/).
 
 ### Install in an air-gapped environment
 
 If your Grafana server can’t reach the internet, install the plugin manually:
 
-1. On a machine with internet access, download the Drone plugin from the [plugin catalog](/grafana/plugins/grafana-drone-datasource/?tab=installation).
+1. On a machine with internet access, download the Drone plugin from the [plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-drone-datasource/?tab=installation).
 2. Copy the plugin archive to the Grafana server and extract it into the Grafana plugins directory.
 3. Restart Grafana so it loads the plugin on startup.
 
-For detailed steps, refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/).
+For detailed steps, refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 ## Update the plugin
 
@@ -135,7 +135,7 @@ To confirm the plugin is installed:
 2. Search for `Drone`.
 3. Confirm the plugin appears and is marked as installed.
 
-If the plugin doesn’t appear or fails to load, refer to [Troubleshooting](/docs/plugins/grafana-drone-datasource/latest/troubleshooting/).
+If the plugin doesn’t appear or fails to load, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/).
 
 ## Uninstall the plugin
 
@@ -146,5 +146,5 @@ Before you uninstall the plugin, delete any Drone data sources that use it. Dash
 
 ## Next steps
 
-- [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/)
-- [Drone query editor](/docs/plugins/grafana-drone-datasource/latest/query-editor/)
+- [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/)
+- [Drone query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/)

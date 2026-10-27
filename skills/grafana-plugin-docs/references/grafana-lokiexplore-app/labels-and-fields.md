@@ -24,7 +24,7 @@ Label visualizations are helpful for:
 
 You can click the **Select** button on a Label or Field graph to access a breakdown of its values, seeing the log volumes visualized along the way. This can be useful for understanding the traits of your system, and for spotting spikes or other changes.
 
-Click individual log lines to view the **Log Details** panel which displays fields and labels with filtering options. For more information about Log Details, refer to [View logs](../view-logs/#log-details).
+Click individual log lines to view the **Log Details** panel which displays fields and labels with filtering options. For more information about Log Details, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details).
 
 ## Labels tab user interface overview
 
@@ -32,14 +32,14 @@ Let’s take a closer look at what you can do on the Labels tab.
 
 The top navigation bar is common across the Grafana interface. The next section is common across all the Logs Drilldown pages.
 
-[Labels tab](/media/docs/explore-logs/v2/logs-drilldown-labels.png)
+[Labels tab](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-labels.png)
 
 Labels tab user interface:
 
 - **Label** filter: Lets you search for or select label names from the menu.
 - **Grid / Rows**: Lets you select how labels are displayed.
 - **Select** or **Include** button: Click to access a breakdown of the label’s values, seeing the log volumes visualized along the way.
-- **Menu** (three dots): Opens the panel menu, where you can navigate to [Grafana Explore](/docs/grafana-cloud/visualizations/explore/) and access other options. For details, refer to [View logs](../view-logs/#panel-menu).
+- **Menu** (three dots): Opens the panel menu, where you can navigate to [Grafana Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/visualizations/explore/) and access other options. For details, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#panel-menu).
 
 ## Filtering logs by label
 
@@ -61,7 +61,7 @@ Let’s take a closer look at what you can do on the Fields tab.
 
 The top navigation bar is common across the Grafana interface. The next section is common across all the Logs Drilldown pages.
 
-[Fields tab](/media/docs/explore-logs/v2/logs-drilldown-fields.png)
+[Fields tab](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-fields.png)
 
 Fields tab user interface:
 
@@ -71,7 +71,7 @@ Fields tab user interface:
 - **Extract fields from logs**: Toggle on to apply logfmt and JSON parsers to your queries so that fields detected in the log lines appear alongside indexed labels and structured metadata.
 - **Include** or **Add to filter** button: Lets you filter log results by a specific field value. The button label varies depending on the field type.
 - **Select** button (value breakdown): Click to access a breakdown of the field’s values, seeing the log volumes visualized along the way.
-- **Menu** (three dots): Opens the panel menu, where you can navigate to [Grafana Explore](/docs/grafana-cloud/visualizations/explore/) and access other options. For details, refer to [View logs](../view-logs/#panel-menu).
+- **Menu** (three dots): Opens the panel menu, where you can navigate to [Grafana Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/visualizations/explore/) and access other options. For details, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#panel-menu).
 
 ## Filtering logs by field
 
@@ -87,4 +87,4 @@ To remove the filter, select **All** from the **Field** search menu or click the
 
 ## What next?
 
-Learn how [Log patterns](../patterns/) can help you work with different types of log lines in bulk.
+Learn how [Log patterns](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/patterns/) can help you work with different types of log lines in bulk.

@@ -7,11 +7,11 @@ description: "Use the Yugabyte query editor to build SQL queries in Grafana"
 
 # Yugabyte query editor
 
-This document explains how to use the Yugabyte query editor to build and run SQL queries against your YugabyteDB database. For general information about querying in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
+This document explains how to use the Yugabyte query editor to build and run SQL queries against your YugabyteDB database. For general information about querying in Grafana, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 ## Before you begin
 
-- [Configure the Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
+- [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
 - Verify that your database user has permission to read the tables you want to query.
 
 ## Editor modes
@@ -22,7 +22,7 @@ The Yugabyte query editor provides two modes. Use the **Builder** and **Code** t
 
 The query builder provides a visual interface for constructing queries. You select a table, choose columns, and add filters without writing SQL. It’s useful if you prefer a guided approach or are less familiar with SQL syntax.
 
-[The Yugabyte query builder](/media/docs/yugabyte/yugabyte_explore_builder.png)
+[The Yugabyte query builder](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/yugabyte/yugabyte_explore_builder.png)
 
 The builder toolbar includes a **Format** drop-down and **Filter**, **Group**, **Order**, and **Preview** toggles that show or hide the corresponding sections. Configure your query with these options:
 
@@ -41,13 +41,13 @@ Expand table
 
 > Note
 >
-> The Yugabyte data source queries a single database, which you set on the [configuration page](/docs/plugins/grafana-yugabyte-datasource/latest/configure/). The builder doesn’t include a schema or dataset selector.
+> The Yugabyte data source queries a single database, which you set on the [configuration page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/). The builder doesn’t include a schema or dataset selector.
 
 ### Code
 
 The raw SQL editor gives you full control to write queries directly. Use it for advanced queries that the builder doesn’t support. The editor provides syntax highlighting and autocomplete.
 
-[The Yugabyte raw SQL editor](/media/docs/yugabyte/yugabyte_explore_code.png)
+[The Yugabyte raw SQL editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/yugabyte/yugabyte_explore_code.png)
 
 Autocomplete suggests table names from the configured database and column names for the selected table, along with standard SQL keywords and functions.
 
@@ -84,7 +84,7 @@ The following examples show common queries written in the Code editor.
 
 This query counts rows per minute and returns the result as a time series. It uses `date_trunc()` to group rows into one-minute buckets and `$__timeFilter()` to limit the results to the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -100,7 +100,7 @@ ORDER BY time
 
 This query returns one series per `service` by grouping on an additional column alongside the time bucket:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -117,7 +117,7 @@ ORDER BY time
 
 This query returns raw rows for a table panel:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT id, name, status, created_at
@@ -136,6 +136,6 @@ Use the query editor to build dashboards for scenarios such as:
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) to build dynamic dashboards.
-- [Add annotations](/docs/plugins/grafana-yugabyte-datasource/latest/annotations/) to overlay events on your panels.
-- [Set up alerting](/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) on your YugabyteDB data.
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) to build dynamic dashboards.
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/annotations/) to overlay events on your panels.
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) on your YugabyteDB data.

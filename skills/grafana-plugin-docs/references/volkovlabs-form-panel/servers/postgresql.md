@@ -16,7 +16,7 @@ The API server on Node.js enables you to retrieve and update values in a Postgre
 
 ## Example
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const http = require('http');

@@ -15,9 +15,9 @@ description: "Learn how to import and use external JavaScript libraries like Boo
 
 You can import external JavaScript libraries in both the **Before content rendering** and **After content ready** parameters.
 
-[](/media/docs/grafana/panels-visualizations/business-text/before.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/before.png)
 
-The Business Text panel enables the loading of additional JavaScript using external URLs like CDN (Content Delivery Network). Use that functionality to execute JavaScript functions in the [JavaScript Code](/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/) editor.
+The Business Text panel enables the loading of additional JavaScript using external URLs like CDN (Content Delivery Network). Use that functionality to execute JavaScript functions in the [JavaScript Code](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/) editor.
 
 ## Public folder
 
@@ -36,16 +36,16 @@ Below, you can find a collection of breathtaking use cases, the perfect examples
 
 Expand table
 
-| Solution                                                                                | Description                                                                                   |
-|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| [Bootstrap](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/bootstrap/)   | The most popular HTML, CSS, and JS library in the world                                       |
-| [Chart.js](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/chart-js/)     | Chart.js is one of the popular open source charting libraries                                 |
-| [D3](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/d3/)                 | D3 is a free, open-source JavaScript library for visualizing data                             |
-| [Flowchart](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/flowchart/)   | Draws simple SVG flow chart diagrams from textual representation of the diagram               |
-| [Leaflet.js](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/leaflet-js/) | A JavaScript library for interactive maps                                                     |
-| [MapBox GL](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mapbox-gl/)   | JavaScript library for building web maps and applications with Mapbox’s mapping technology    |
-| [Mermaid](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mermaid/)       | JavaScript-based diagramming and charting tool that dynamically creates and modifies diagrams |
-| [Plotly](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/plotly/)         | Open Source Graphing Libraries                                                                |
-| [Tailwind CSS](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tailwind/) | A utility-first CSS framework                                                                 |
-| [TensorFlow](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tensorflow/) | Library for machine learning in JavaScript                                                    |
-| [YouTube Video](/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/youtube/) | YouTube player component                                                                      |
+| Solution                                                                                                                                            | Description                                                                                   |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| [Bootstrap](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/bootstrap/)   | The most popular HTML, CSS, and JS library in the world                                       |
+| [Chart.js](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/chart-js/)     | Chart.js is one of the popular open source charting libraries                                 |
+| [D3](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/d3/)                 | D3 is a free, open-source JavaScript library for visualizing data                             |
+| [Flowchart](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/flowchart/)   | Draws simple SVG flow chart diagrams from textual representation of the diagram               |
+| [Leaflet.js](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/leaflet-js/) | A JavaScript library for interactive maps                                                     |
+| [MapBox GL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mapbox-gl/)   | JavaScript library for building web maps and applications with Mapbox’s mapping technology    |
+| [Mermaid](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/mermaid/)       | JavaScript-based diagramming and charting tool that dynamically creates and modifies diagrams |
+| [Plotly](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/plotly/)         | Open Source Graphing Libraries                                                                |
+| [Tailwind CSS](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tailwind/) | A utility-first CSS framework                                                                 |
+| [TensorFlow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/tensorflow/) | Library for machine learning in JavaScript                                                    |
+| [YouTube Video](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/youtube/) | YouTube player component                                                                      |

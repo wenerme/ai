@@ -23,11 +23,11 @@ Try the panel with [Google Maps in the edit mode](https://echarts.volkovlabs.io/
 - The `gmapReady` callback function is executed during the loading. You can update the name in the panel options.
 - During the loading, you can show an animation using the code below.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/google.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/google.png)
 
 ## Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const gmap = {

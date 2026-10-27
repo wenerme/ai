@@ -13,13 +13,13 @@ This page addresses common issues when getting started and using Grafana Logs Dr
 
 Grafana Explore Logs is installed by default in Grafana versions v11.3.0 through v11.5.
 
-Logs Drilldown was installed by default starting in Grafana v11.6.11. Logs Drilldown now requires Grafana v13.1.0 or later.
+Logs Drilldown was installed by default starting in Grafana v11.6.11. Logs Drilldown now requires Grafana v13.2.0 or later.
 
 In Grafana v12 and later, the **Drilldown** menu includes all Drilldown apps by default.
 
-For more information about the name change for this feature, see this [blog post](/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
+For more information about the name change for this feature, see this [blog post](http://grafana-com-website.grafana-com.svc.cluster.local.:80/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
 
-If you do not see Logs Drilldown under either name, then check to make sure you have the [Logs Drilldown plugin](/grafana/plugins/grafana-lokiexplore-app/) installed and configured.
+If you do not see Logs Drilldown under either name, then check to make sure you have the [Logs Drilldown plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-lokiexplore-app/) installed and configured.
 
 > Note
 >
@@ -29,7 +29,7 @@ Check with your Grafana administrator. All the Grafana Drilldown apps require th
 
 ## Ensure Loki is properly configured
 
-To use Logs Drilldown, you need to have Loki properly configured. You can find full instructions in [Access or install Grafana Logs Drilldown](/docs/grafana/latest/explore/simplified-exploration/logs/access/).
+To use Logs Drilldown, you need to have Loki properly configured. You can find full instructions in [Access or install Grafana Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/simplified-exploration/logs/access/).
 
 ## Service selection errors
 
@@ -39,8 +39,8 @@ This section covers errors on the service selection page.
 
 If everything is presented as an `unknown_service` when you access Logs Drilldown, you can try the following fixes:
 
-1. Ensure the Volume API is enabled by setting the [`volume_enabled` configuration value](/docs/loki/latest/configure/#:~:text=volume_enabled) in Loki. Enabled by default in Loki 3.1 and later.
-2. Specify the label to use to identify services by setting the [`discover_service_name` configuration value](/docs/loki/latest/configure/#:~:text=discover_service_name) in Loki.
+1. Ensure the Volume API is enabled by setting the [`volume_enabled` configuration value](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#:~:text=volume_enabled) in Loki. Enabled by default in Loki 3.1 and later.
+2. Specify the label to use to identify services by setting the [`discover_service_name` configuration value](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#:~:text=discover_service_name) in Loki.
 
 ### No logs found in \[label]
 
@@ -58,14 +58,14 @@ This error indicates that Loki’s volume API is not enabled, which Logs Drilldo
 
 To fix this, enable volume in your Loki configuration:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 limits_config:
   volume_enabled: true
 ```
 
-Refer to the [Loki configuration documentation](/docs/loki/latest/configure/#limits_config) for more details.
+Refer to the [Loki configuration documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#limits_config) for more details.
 
 ### No service matched your search
 
@@ -81,7 +81,7 @@ Try the following fixes:
 
 If you do not see `detected_level` values in Logs Drilldown, you can try the following fixes:
 
-1. Ensure level detection is enabled by setting the [`discover_log_levels` configuration value](/docs/loki/latest/configure/#:~:text=discover_log_levels). Enabled by default in Loki 3.1 and later.
+1. Ensure level detection is enabled by setting the [`discover_log_levels` configuration value](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#:~:text=discover_log_levels). Enabled by default in Loki 3.1 and later.
 
 ## Label and field errors
 
@@ -93,7 +93,7 @@ If you do not see any labels in Logs Drilldown, you can try the following fixes:
 
 1. Ensure your collector is properly configured to attach them.
 
-To learn more about Labels, refer to the [Loki labels documentation](/docs/loki/latest/get-started/labels/).
+To learn more about Labels, refer to the [Loki labels documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/get-started/labels/).
 
 ### No labels selected
 
@@ -142,7 +142,7 @@ Try the following fixes:
 
 1. Expand your time range to include more log data.
 2. Verify that your logs contain structured data (JSON, logfmt, or other parsable formats).
-3. Check that [structured metadata](/docs/loki/latest/get-started/labels/structured-metadata/) is enabled in your Loki configuration by setting `allow_structured_metadata: true`.
+3. Check that [structured metadata](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/get-started/labels/structured-metadata/) is enabled in your Loki configuration by setting `allow_structured_metadata: true`.
 
 ### Default fields tab not appearing
 
@@ -151,7 +151,7 @@ If the **Default fields** tab does not appear in the Logs Drilldown plugin setti
 1. Verify that the `kubernetesLogsDrilldown` feature flag is enabled in your Grafana configuration.
 2. Confirm that you have the Org Admin role in your organization.
 
-For more information about configuring Default fields, refer to [Configure Logs Drilldown](/docs/grafana/latest/explore/simplified-exploration/logs/access/configure/#default-fields-beta).
+For more information about configuring Default fields, refer to [Configure Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/simplified-exploration/logs/access/configure/#default-fields-beta).
 
 ### Landing page default labels not appearing
 
@@ -162,11 +162,11 @@ If the **Landing Page** tab does not appear in the Logs Drilldown plugin setting
 3. After saving changes, verify the correct Loki data source is selected. Landing page label configuration is per data source.
 4. Check that the labels you are configuring exist in the selected Loki data source.
 
-For more information about configuring Landing Page default labels, refer to [Configure Logs Drilldown](/docs/grafana/latest/explore/simplified-exploration/logs/access/configure/#landing-page-default-labels-beta).
+For more information about configuring Landing Page default labels, refer to [Configure Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/simplified-exploration/logs/access/configure/#landing-page-default-labels-beta).
 
 ## There are no color levels
 
-Color coding for log severity levels is a setting in Loki. You must have `discover_log_levels: true` in your [Loki configuration file](/docs/loki/latest/configure/#limits_config).
+Color coding for log severity levels is a setting in Loki. You must have `discover_log_levels: true` in your [Loki configuration file](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#limits_config).
 
 ## Query and results errors
 
@@ -206,7 +206,7 @@ Try the following fixes:
 1. Narrow your time range to reduce the amount of data returned.
 2. Add more specific label filters to target a smaller subset of logs.
 3. Use a line filter to search for specific text, which reduces the response size.
-4. If you’re an administrator, consider adjusting the [`max_recv_msg_size`](/docs/loki/latest/configure/#server) in your Loki server configuration.
+4. If you’re an administrator, consider adjusting the [`max_recv_msg_size`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#server) in your Loki server configuration.
 
 ### Max entries limit per query exceeded
 
@@ -217,7 +217,7 @@ Try the following fixes:
 1. Reduce the **Line limit** setting in the Logs Drilldown interface. You can find this option next to the line filter on the **Logs** tab.
 2. Narrow your time range to return fewer results.
 3. Add more specific filters to reduce the number of matching logs.
-4. If you’re an administrator and need higher limits, adjust the [`max_entries_limit_per_query`](/docs/loki/latest/configure/#limits_config) in your Loki configuration.
+4. If you’re an administrator and need higher limits, adjust the [`max_entries_limit_per_query`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#limits_config) in your Loki configuration.
 
 ### Max series limit exceeded
 
@@ -228,7 +228,7 @@ Try the following fixes:
 1. Reduce the time range to lower the number of unique series.
 2. Add additional filters to narrow down the results before viewing the field breakdown.
 3. Choose a different field with fewer unique values to break down.
-4. If you’re an administrator, you can increase the [`max_query_series`](/docs/loki/latest/configure/#limits_config) limit in your Loki configuration, though be aware this may impact query performance.
+4. If you’re an administrator, you can increase the [`max_query_series`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#limits_config) limit in your Loki configuration, though be aware this may impact query performance.
 
 > Tip
 >
@@ -252,8 +252,8 @@ This section covers error messages related to the Patterns feature.
 
 Pattern matching has not been configured.
 
-1. Ensure pattern extraction is enabled by setting `pattern_ingester.enabled=true` in your Loki config. [Learn about other necessary config](/docs/grafana/latest/explore/simplified-exploration/logs/access/).
-2. Ensure the volume endpoint is enabled by setting `volume_enabled=true` within your [Loki configuration file](/docs/loki/latest/configure/#limits_config).
+1. Ensure pattern extraction is enabled by setting `pattern_ingester.enabled=true` in your Loki config. [Learn about other necessary config](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/simplified-exploration/logs/access/).
+2. Ensure the volume endpoint is enabled by setting `volume_enabled=true` within your [Loki configuration file](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#limits_config).
 
 > Note
 >
@@ -327,4 +327,4 @@ This is informational rather than an error. If your logs aren’t JSON formatted
 
 Please [open an issue on GitHub](https://github.com/grafana/explore-logs/issues/new) or [get in touch privately](https://forms.gle/1sYWCTPvD72T1dPH9) and let us know what’s not working for you.
 
-If you have something urgent, please [get in touch via support](/help/). Grafana Cloud users can [open a support ticket here](/profile/org#support).
+If you have something urgent, please [get in touch via support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/). Grafana Cloud users can [open a support ticket here](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support).

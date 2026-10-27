@@ -481,7 +481,7 @@ To choose which features use Orbit:
    - **Orbit Agent**
    - **Other Foundational Agents**
    - **Custom Agents**
-1. Optional. If you belong to more than one top-level group with GitLab Orbit, from the **Default group** dropdown list, select the group to assign usage from MCP and API calls to.
+1. Optional. If you belong to more than one top-level group with GitLab Orbit, from the **Default group** dropdown list, select the group to assign Orbit usage to.
 1. Select **Save changes**.
 
 ## Integrate your GitLab instance with third-party services

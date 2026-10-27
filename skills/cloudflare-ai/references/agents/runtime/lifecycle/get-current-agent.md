@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-ag
 
 # getCurrentAgent()
 
-Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `getCurrentAgent()` function allows you to access the current agent context from anywhere in your code, including external utility functions and libraries. This is useful when you need agent information in functions that do not have direct access to `this`.
 
@@ -284,6 +284,7 @@ Route the callback through a public method on the agent. Custom methods are wrap
 
 ```js
 import { RpcTarget } from "cloudflare:workers";
+import { Agent, getCurrentAgent } from "agents";
 
 class HostCallbackBridge extends RpcTarget {
 	agent;
@@ -300,7 +301,7 @@ class HostCallbackBridge extends RpcTarget {
 	}
 }
 
-export class MyMcpAgent extends McpAgent {
+export class MyAgent extends Agent {
 	async handleSandboxCallback() {
 		const { agent } = getCurrentAgent();
 		// `agent` is available again.
@@ -310,11 +311,12 @@ export class MyMcpAgent extends McpAgent {
 
 ```ts
 import { RpcTarget } from "cloudflare:workers";
+import { Agent, getCurrentAgent } from "agents";
 
 class HostCallbackBridge extends RpcTarget {
-	agent: MyMcpAgent;
+	agent: MyAgent;
 
-	constructor(agent: MyMcpAgent) {
+	constructor(agent: MyAgent) {
 		super();
 		this.agent = agent;
 	}
@@ -326,17 +328,15 @@ class HostCallbackBridge extends RpcTarget {
 	}
 }
 
-export class MyMcpAgent extends McpAgent {
+export class MyAgent extends Agent {
 	async handleSandboxCallback() {
-		const { agent } = getCurrentAgent<MyMcpAgent>();
+		const { agent } = getCurrentAgent<MyAgent>();
 		// `agent` is available again.
 	}
 }
 ```
 
 Context restored this way has `connection`, `request`, and `email` unset. It is not tied to live client I/O.
-
-Server-initiated MCP requests (`elicitInput`, `createMessage`, and `listRoots`) on `McpAgent` do not require this indirection because the MCP transport retains its owning agent.
 
 ## API reference
 
@@ -467,5 +467,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent()","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/og.png?v=326b34596aad5414","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent()","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/og.png?v=326b34596aad5414","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

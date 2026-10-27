@@ -7,15 +7,15 @@ description: "Learn how to use the Salesforce query editor in Grafana."
 
 # Salesforce query editor
 
-You can use the Salesforce query editor when you edit a dashboard panel or on the [Explore page](/docs/grafana/latest/explore/). Grafana provides three query modes for Salesforce:
+You can use the Salesforce query editor when you edit a dashboard panel or on the [Explore page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/). Grafana provides three query modes for Salesforce:
 
 - [SOQL (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) editor
 - Query builder
 - Reports
 
-For general information on Grafana query editors, refer to [Query editors](/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
+For general information on Grafana query editors, refer to [Query editors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
 
-Refer to [Query management in Explore](/docs/grafana/latest/explore/query-management/) to learn more about options for managing your queries in Grafana.
+Refer to [Query management in Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/query-management/) to learn more about options for managing your queries in Grafana.
 
 ## SOQL editor mode
 
@@ -23,7 +23,7 @@ SOQL is the Salesforce query language. The SOQL editor allows you to query Sales
 
 For example, the following query returns the most recent opportunities:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT Name, Amount, StageName, CloseDate
@@ -75,7 +75,7 @@ For example, to list recently closed opportunities, make the following selection
 
 The **SOQL preview** then shows a query similar to the following:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT Name, StageName, Amount FROM Opportunity WHERE StageName = 'Closed Won' LIMIT 100
@@ -95,8 +95,8 @@ The data source returns the report’s detail rows using the report’s detail c
 Consider the following when you use Reports mode:
 
 - The report definition, including its filters and columns, is managed in Salesforce. You can’t change the report’s filters or fields from Grafana.
-- The dashboard time range and time macros don’t apply to Reports mode. To filter by time, configure the filters in the Salesforce report, or use SOQL editor mode with the [macros](#macros).
-- You must have permission to view the report in Salesforce, and the report can’t be deleted. If a report doesn’t run, refer to [Report not found](/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#report-not-found) and [Report timeout](/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#report-timeout).
+- The dashboard time range and time macros don’t apply to Reports mode. To filter by time, configure the filters in the Salesforce report, or use SOQL editor mode with the [macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
+- You must have permission to view the report in Salesforce, and the report can’t be deleted. If a report doesn’t run, refer to [Report not found](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#report-not-found) and [Report timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#report-timeout).
 
 ## Filter limitations
 
@@ -115,7 +115,7 @@ Create a time series query by aliasing the date field to `time` and a metric fie
 
 Example:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT SUM(Amount) amount, CloseDate time, Type metric
@@ -140,7 +140,7 @@ The `$__timeFrom` and `$__timeTo` macros expand to full datetime values, so use 
 
 The following example filters a datetime field by the dashboard’s time range:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT UserId, LoginTime FROM LoginHistory WHERE LoginTime > $__timeFrom
@@ -148,7 +148,7 @@ SELECT UserId, LoginTime FROM LoginHistory WHERE LoginTime > $__timeFrom
 
 The following example filters a date field by the current fiscal quarter:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT SUM(Amount) amount FROM Opportunity WHERE CloseDate >= $__quarterStart AND CloseDate <= $__quarterEnd

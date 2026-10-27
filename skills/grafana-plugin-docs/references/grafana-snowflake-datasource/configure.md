@@ -11,7 +11,7 @@ This document explains how to configure the Snowflake data source in Grafana.
 
 ## Before you begin
 
-You must install the Snowflake plugin before configuring the data source. Refer to [Install a plugin](/docs/grafana/latest/administration/plugin-management/#install-a-plugin) for instructions on how to add the plugin. For general information on adding and managing plugins, refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/). Grafana recommends keeping your plugin up to date to access all current features.
+You must install the Snowflake plugin before configuring the data source. Refer to [Install a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-a-plugin) for instructions on how to add the plugin. For general information on adding and managing plugins, refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/). Grafana recommends keeping your plugin up to date to access all current features.
 
 Before configuring the data source, ensure you have:
 
@@ -21,11 +21,11 @@ Before configuring the data source, ensure you have:
   - This data source does not require a specific role.
   - The Snowflake user’s role is what allows that user to access tables. To query your data, ensure your user has the appropriate roles.
 - **Grafana license:** One of the following:
-- A [Grafana Cloud](/pricing/) plan that includes Enterprise plugins, or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). The Snowflake data source is an Enterprise plugin, so a generic `Plugin health check failed` error usually indicates a license or entitlement problem rather than a configuration problem. For help, refer to [License errors](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#license-errors). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan that includes Enterprise plugins, or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). The Snowflake data source is an Enterprise plugin, so a generic `Plugin health check failed` error usually indicates a license or entitlement problem rather than a configuration problem. For help, refer to [License errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#license-errors). Contracted Cloud customers should refer to their agreement.
 
 ## Add the data source
 
-For general information on adding a data source, refer to [Add a data source](/docs/grafana/latest/datasources/add-a-data-source/).
+For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/add-a-data-source/).
 
 To add the Snowflake data source:
 
@@ -142,11 +142,11 @@ You can use OAuth authentication to pass through tokens to Snowflake on behalf o
 
 The following instructions use Azure AD as the OAuth provider:
 
-1. Use Azure AD to [set up OAuth](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
+1. Use Azure AD to [set up OAuth](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
 2. Follow the Snowflake guide to [Configure Microsoft Entra ID for External OAuth](https://docs.snowflake.com/en/user-guide/oauth-azure) to update the application you created in step 1 and add a client application for Snowflake.
 3. Update the *scopes* you created in step 1 in your `grafana.ini` file. Add the API you created in step 2. The scopes should look something like:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    scopes = api://8c1a0b1c-6bb0-4190-a730-8a1c34237619/session:role-any openid email profile offline_access
@@ -159,7 +159,7 @@ The following instructions use Azure AD as the OAuth provider:
 
 If you get an invalid token error, validate the token to get more information about why it’s invalid. Run the following query in Snowflake:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select system$verify_external_oauth_token('<ACCESS_TOKEN>');
@@ -190,23 +190,23 @@ Click **Save &amp; test** to verify the connection. If successful, you should se
 
 **Data source is working.**
 
-If you don’t see this message, refer to the [Troubleshooting](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/) guide for help.
+If you don’t see this message, refer to the [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/) guide for help.
 
 ## Private data source connect
 
 If your Snowflake instance is only reachable from within a private network, Grafana Cloud users can connect to it using Private data source connect (PDC). PDC establishes a secured connection between your Grafana Cloud stack and data sources secured within a private network. It works with all of the authentication methods this data source supports.
 
-For setup instructions, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+For setup instructions, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 After you set up a PDC connection, select your PDC network from the **Private data source connect** drop-down when you configure the Snowflake data source, then click **Save &amp; test**.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Provision with password authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -234,7 +234,7 @@ datasources:
 
 For the Billing dashboard, you need a data source with the `ACCOUNTADMIN` role:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -264,7 +264,7 @@ Replace `<YOUR_PASSWORD>` with your actual Snowflake password.
 
 ### Provision with encrypted Key Pair authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -291,7 +291,7 @@ datasources:
 
 ### Provision with Programmatic Access Token (PAT) authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -320,7 +320,7 @@ You can automate the configuration of the Snowflake data source in Grafana using
 
 ### Basic Terraform example
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -408,7 +408,7 @@ output "datasource_uid" {
 
 ### Terraform example with Key Pair authentication
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 variable "snowflake_private_key" {
@@ -442,7 +442,7 @@ resource "grafana_data_source" "snowflake_keypair" {
 
 1. Create a `terraform.tfvars` file with your specific values:
 
-   hcl [Copy code to clipboard] Copy
+   hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```hcl
    grafana_url         = "https://your-grafana.com"
@@ -455,7 +455,7 @@ resource "grafana_data_source" "snowflake_keypair" {
    ```
 2. Initialize and apply the configuration:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    terraform init

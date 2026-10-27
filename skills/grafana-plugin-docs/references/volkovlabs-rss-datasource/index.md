@@ -24,11 +24,11 @@ The Business News data source is a plugin for Grafana that retrieves RSS and Ato
 
 ## Getting started
 
-You can install the Business News data source from the [Grafana Catalog](/grafana/plugins/volkovlabs-rss-datasource/) or by using the Grafana command line tool.
+You can install the Business News data source from the [Grafana Catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-rss-datasource/) or by using the Grafana command line tool.
 
 To install using the command line, run the following command:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install volkovlabs-rss-datasource
@@ -47,9 +47,9 @@ grafana cli plugins install volkovlabs-rss-datasource
 - Filters items/entries based on the selected time range.
 - Lets you specify query parameters with dashboard variables.
 
-The following example shows a dashboard that combines five Business News data sources, each paired with [Business Text panels](/docs/plugins/marcusolsson-dynamictext-panel/latest/). The [Business Variable panel](/docs/plugins/volkovlabs-variable-panel/latest/) (#1) provides a switch between Volkov Labs, Grafana, and News channel.
+The following example shows a dashboard that combines five Business News data sources, each paired with [Business Text panels](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/). The [Business Variable panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-variable-panel/latest/) (#1) provides a switch between Volkov Labs, Grafana, and News channel.
 
-[](/media/docs/grafana/panels-visualizations/business-news/dashboard.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-news/dashboard.png)
 
 ## Tutorial
 
@@ -59,11 +59,11 @@ This detailed tutorial explains the RSS and Atom formats and shows you how to fi
 
 Expand table
 
-| Section                                                                        | Description                                                      |
-|--------------------------------------------------------------------------------|------------------------------------------------------------------|
-| [Business Text](/docs/plugins/volkovlabs-rss-datasource/latest/business-text/) | Demonstrates how to display feeds using the Business Text panel. |
-| [Provisioning](/docs/plugins/volkovlabs-rss-datasource/latest/provisioning/)   | Demonstrates how to automatically provision the data source.     |
-| [Release notes](/docs/plugins/volkovlabs-rss-datasource/latest/release/)       | Stay up to date with the latest features and updates.            |
+| Section                                                                                                                                    | Description                                                      |
+|--------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| [Business Text](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-rss-datasource/latest/business-text/) | Demonstrates how to display feeds using the Business Text panel. |
+| [Provisioning](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-rss-datasource/latest/provisioning/)   | Demonstrates how to automatically provision the data source.     |
+| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-rss-datasource/latest/release/)       | Stay up to date with the latest features and updates.            |
 
 ## License
 

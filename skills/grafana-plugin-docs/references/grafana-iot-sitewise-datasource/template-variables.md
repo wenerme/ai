@@ -9,14 +9,14 @@ description: "Use template variables with the AWS IoT SiteWise data source to bu
 
 Use template variables to build dynamic, reusable dashboards. Instead of hard-coding asset IDs, property IDs, or Regions, you can use variables that users select from drop-down menus at the top of the dashboard.
 
-For general information about Grafana variables, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+For general information about Grafana variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
 Before you create a variable, ensure you have:
 
-- Configured the [AWS IoT SiteWise data source](/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
-- Reviewed the [AWS IoT SiteWise query editor](/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/), because query variables reuse the same visual builder.
+- Configured the [AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
+- Reviewed the [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/), because query variables reuse the same visual builder.
 
 ## Supported variable types
 
@@ -87,7 +87,7 @@ When the user selects a different model, the asset drop-down updates to show onl
 
 Reference a variable in a `WHERE` condition. The data source quotes and escapes string values, so you don’t add quotation marks:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select event_timestamp, double_value
@@ -98,5 +98,5 @@ order by event_timestamp asc
 
 ## Next steps
 
-- [AWS IoT SiteWise query editor](/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
-- [Troubleshooting](/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)
+- [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)

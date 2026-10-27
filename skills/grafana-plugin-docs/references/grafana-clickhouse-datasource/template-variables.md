@@ -9,11 +9,11 @@ description: "Use template variables with the ClickHouse data source to build dy
 
 Template variables let you parameterize your dashboards so you can change databases, tables, environments, or other values from a drop-down without editing each query. This makes dashboards more interactive, reusable, and easier to maintain.
 
-For an introduction to templating and variable types, see [Templating](/docs/grafana/latest/variables/) and [Add variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For an introduction to templating and variable types, see [Templating](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/) and [Add variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Before you begin
 
-- [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
+- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
 
 ## Create a query variable
 
@@ -26,9 +26,9 @@ To create a template variable that gets its values from ClickHouse:
 05. Enter a **Name** for your variable (for example, `database`, `table`, or `environment`). Use a name you can reference in queries (for example, `$database`).
 06. In the **Type** drop-down, select **Query**.
 07. In the **Data source** drop-down, select your ClickHouse data source.
-08. In the **Query** field, enter a ClickHouse SQL query that returns the values for the variable. The query can return one column (same label and value) or two columns (value and label). See [How query results become variable options](#how-query-results-become-variable-options) and [Query examples](#query-examples).
+08. In the **Query** field, enter a ClickHouse SQL query that returns the values for the variable. The query can return one column (same label and value) or two columns (value and label). See [How query results become variable options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#how-query-results-become-variable-options) and [Query examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#query-examples).
 09. Click **Run query** to preview the variable options.
-10. Set **Refresh** to control when the variable options update (see [Variable refresh options](#variable-refresh-options)).
+10. Set **Refresh** to control when the variable options update (see [Variable refresh options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#variable-refresh-options)).
 11. Configure **Multi-value** or **Include All option** if needed.
 12. Click **Apply** to save the variable.
 
@@ -41,7 +41,7 @@ The plugin uses the query result to build the variable’s drop-down options:
 
 **Example: single column (database names as label and value):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT name FROM system.databases WHERE name NOT IN ('INFORMATION_SCHEMA', 'information_schema')
@@ -51,7 +51,7 @@ You can omit the `WHERE` clause if your ClickHouse instance does not have those 
 
 **Example: two columns (id as value, name as label):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT id, name FROM my_app.environments
@@ -63,7 +63,7 @@ Here, the drop-down shows `name`, and queries receive `id` when the variable is 
 
 Use variables in your ClickHouse queries by referencing them with `$varname` or `${varname}`. Grafana replaces the variable with the selected value (or values) before the query is sent to ClickHouse.
 
-For full syntax and options, see [Variable syntax](/docs/grafana/latest/variables/syntax/).
+For full syntax and options, see [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/syntax/).
 
 ## Format options for safe SQL
 
@@ -73,7 +73,7 @@ To avoid SQL syntax or injection issues, use a **format** when the variable is u
 
 **Example: filter by one database:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM system.tables WHERE database = ${database:singlequote}
@@ -81,13 +81,13 @@ SELECT * FROM system.tables WHERE database = ${database:singlequote}
 
 **Example: filter by multiple databases (multi-value variable):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM system.tables WHERE database IN (${database:singlequote})
 ```
 
-Without `:singlequote`, multi-value variables are comma-separated and can produce invalid SQL. Other formats (for example, **regex** or **pipe**) are described in [Variable syntax](/docs/grafana/latest/variables/syntax/).
+Without `:singlequote`, multi-value variables are comma-separated and can produce invalid SQL. Other formats (for example, **regex** or **pipe**) are described in [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/syntax/).
 
 ## Cascading (dependent) variables
 
@@ -97,14 +97,14 @@ You can make one variable depend on another by using the first variable in the s
 
 1. Create a variable named `database` with query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT name FROM system.databases WHERE name NOT IN ('INFORMATION_SCHEMA', 'information_schema')
    ```
 2. Create a variable named `table` with query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT name FROM system.tables WHERE database = ${database:singlequote}
@@ -123,7 +123,7 @@ Use the **$\_\_conditionalAll(condition, $variable)** macro so that:
 
 **Example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count() FROM system.tables
@@ -136,7 +136,7 @@ When the user selects one or more databases, the condition filters by those data
 >
 > The second argument to `$__conditionalAll` must be a plain variable reference (`$database` or `${database}`). Do not use format specifiers like `${database:singlequote}` in the second argument, because the macro does not detect the “All” selection correctly. Format specifiers should only be used in the **first** argument (the condition).
 
-See the [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) Macros section for the full list of macros.
+See the [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) Macros section for the full list of macros.
 
 ## Query examples
 
@@ -168,7 +168,7 @@ For dashboards with many variables or heavy variable queries, **On dashboard loa
 
 When **Multi-value** is enabled, users can select more than one value. The selected values are typically comma-separated when substituted into the query. Use the **singlequote** format so each value is correctly quoted in SQL:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 WHERE database IN (${database:singlequote})
@@ -178,13 +178,13 @@ When one variable’s query uses another variable (cascading variables) and that
 
 ## Ad hoc filters
 
-Ad hoc filters let you add key/value filters that are applied to queries that use the ClickHouse data source. You choose filter values from a drop-down in the dashboard without editing the query. Ad hoc filters are supported only with **ClickHouse 22.7 or later**. For an overview, see [Grafana ad hoc filters](/docs/grafana/latest/variables/variable-types/add-ad-hoc-filters/).
+Ad hoc filters let you add key/value filters that are applied to queries that use the ClickHouse data source. You choose filter values from a drop-down in the dashboard without editing the query. Ad hoc filters are supported only with **ClickHouse 22.7 or later**. For an overview, see [Grafana ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/variable-types/add-ad-hoc-filters/).
 
 By default, the ad hoc filter drop-down lists all tables and columns from the data source. If you set a default database in the data source settings, only tables from that database are used. To limit which tables or columns appear (for example, to avoid slow loads), add a dashboard variable of type **Constant** named `clickhouse_adhoc_query`. Set its value to one of:
 
 - A single database name (for example, `my_database`) shows tables and columns from that database only.
 - `database.table` (for example, `my_database.my_table`) shows only columns for that specific table.
-- A `SELECT` query uses the query results to populate filter keys. Refer to [Use a query to populate ad hoc filters](#use-a-query-to-populate-ad-hoc-filters).
+- A `SELECT` query uses the query results to populate filter keys. Refer to [Use a query to populate ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#use-a-query-to-populate-ad-hoc-filters).
 
 You can hide this variable from the dashboard; it is only used to scope the ad hoc filter options.
 
@@ -196,7 +196,7 @@ You can hide this variable from the dashboard; it is only used to scope the ad h
 
 You can set `clickhouse_adhoc_query` to a **ClickHouse query** instead of a database or table name. The query results are used to populate the ad hoc filter’s selectable values. For example, set the variable value to:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT machine_name FROM mgbench.logs1
@@ -210,7 +210,7 @@ When using a `SELECT` query in `clickhouse_adhoc_query`, you can use the `$__adh
 
 This is useful when you want the filter **values** drop-down to be populated by a query rather than by scanning the schema. For example, set `clickhouse_adhoc_query` to:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT $__adhoc_column FROM my_database.my_table
@@ -256,7 +256,7 @@ The macro expands to the ClickHouse `additional_table_filters` setting with the 
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -269,7 +269,7 @@ SETTINGS $__adHocFilters('my_complex_table')
 
 When ad hoc filters are active (for example, `status = 'active'` and `region = 'us-west'`), the macro expands to:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SETTINGS additional_table_filters={'my_complex_table': 'status = \'active\' AND region = \'us-west\''}
@@ -277,6 +277,6 @@ SETTINGS additional_table_filters={'my_complex_table': 'status = \'active\' AND 
 
 ## Next steps
 
-- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros (including `$__timeFilter`, `$__conditionalAll`) and building queries.
-- [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Connection and authentication options.
-- [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.
+- [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros (including `$__timeFilter`, `$__conditionalAll`) and building queries.
+- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Connection and authentication options.
+- [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.

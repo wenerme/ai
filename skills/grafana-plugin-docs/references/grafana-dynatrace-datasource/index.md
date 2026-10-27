@@ -11,7 +11,7 @@ The Dynatrace data source plugin allows you to query and visualize Dynatrace met
 
 > Note
 >
-> The Dynatrace data source is an Enterprise plugin. It is available with [Grafana Cloud](/products/cloud/) (Free, Pro, and Advanced tiers) and [Grafana Enterprise](/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Dynatrace data source is an Enterprise plugin. It is available with [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/cloud/) (Free, Pro, and Advanced tiers) and [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported Dynatrace environments
 
@@ -25,24 +25,24 @@ The Dynatrace data source supports the following Dynatrace deployment types:
 
 The following documents will help you get started with the Dynatrace data source:
 
-- [Configure the Dynatrace data source](/docs/plugins/grafana-dynatrace-datasource/latest/configure/)
-- [Dynatrace query editor](/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/) to create and edit queries
-- [Template variables](/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/)
-- [Troubleshoot](/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/)
+- [Configure the Dynatrace data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/)
+- [Dynatrace query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/query-editor/) to create and edit queries
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/)
+- [Troubleshoot](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/troubleshoot/)
 
 ## Additional features
 
 Once you have configured the Dynatrace data source, you can:
 
-- Use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to query your Dynatrace data with natural language.
-- Add [Annotations](/docs/plugins/grafana-dynatrace-datasource/latest/annotations/) to overlay Dynatrace events on your graphs.
-- Configure and use [Templates and variables](/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
-- Set up [Alerting](/docs/plugins/grafana-dynatrace-datasource/latest/alerting/) to monitor your Dynatrace data.
+- Use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to query your Dynatrace data with natural language.
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/annotations/) to overlay Dynatrace events on your graphs.
+- Configure and use [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/).
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/alerting/) to monitor your Dynatrace data.
 
 ## Grafana Assistant
 
-You can use [Grafana Assistant](/docs/grafana/latest/ai/assistant/) to explore and query your Dynatrace data using natural language. The Assistant discovers the metrics available in your Dynatrace environment, builds and runs queries—including Metrics, DQL (Grail), USQL, Logs, and Problems queries—and visualizes the results on a dashboard.
+You can use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to explore and query your Dynatrace data using natural language. The Assistant discovers the metrics available in your Dynatrace environment, builds and runs queries—including Metrics, DQL (Grail), USQL, Logs, and Problems queries—and visualizes the results on a dashboard.
 
 To query Dynatrace, mention your Dynatrace data source with the `@` symbol in your prompt. For example:
 
@@ -50,7 +50,7 @@ To query Dynatrace, mention your Dynatrace data source with the `@` symbol in yo
 - `Query @dynatrace-ds for cpu and memory utilization over the last 12 hours.`
 - `Show average CPU usage for all hosts in @dynatrace-ds over the last hour.`
 
-For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+For more information, refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/).
 
 ## Dynatrace pre-built dashboard
 
@@ -65,7 +65,7 @@ To import the dashboard:
 3. Click the **Dashboards** tab.
 4. Click **Import** next to the System Overview dashboard.
 
-For more information about importing dashboards, refer to [Import a dashboard](/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+For more information about importing dashboards, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Plugin updates
 

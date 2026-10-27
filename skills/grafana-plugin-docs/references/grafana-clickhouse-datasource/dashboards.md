@@ -105,7 +105,7 @@ Common customizations:
 
 ## Related resources
 
-- [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/)
+- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/)
 - [ClickHouse exporter for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter)
-- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/)
-- [ClickHouse template variables](/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/)
+- [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/)
+- [ClickHouse template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/)

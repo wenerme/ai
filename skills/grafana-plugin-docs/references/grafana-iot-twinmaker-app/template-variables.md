@@ -14,8 +14,8 @@ Use template variables to create dynamic, reusable dashboards. The AWS IoT TwinM
 
 ## Before you begin
 
-- [Configure the AWS IoT TwinMaker data source](/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the AWS IoT TwinMaker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Create a query variable
 
@@ -59,7 +59,7 @@ Two components in the app set variable values in response to user clicks. In bot
 
 ### Scene Viewer tag selection
 
-In the Scene Viewer panel options, specify which template variables store the selected entity ID, component name, and property. When a user clicks a tag in the 3D scene, the panel sets those variables, and any query that references them re-runs. Refer to [Scene Viewer panel options](/docs/plugins/grafana-iot-twinmaker-app/latest/panels/#panel-options).
+In the Scene Viewer panel options, specify which template variables store the selected entity ID, component name, and property. When a user clicks a tag in the 3D scene, the panel sets those variables, and any query that references them re-runs. Refer to [Scene Viewer panel options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/panels/#panel-options).
 
 ### Register links transformation
 
@@ -86,4 +86,4 @@ This example reproduces the alarm selection behavior of the pre-built dashboards
 4. Add two rules: **Set** `sel_entity` to the **Field** `entityId`, and **Set** `sel_comp` to the **Field** `alarmName`.
 5. In another panel, add a **Get Property Value History by Entity** query with **Entity** set to `${sel_entity}` and **Component Name** set to `${sel_comp}`.
 
-When a user clicks an alarm row in the table, the history panel updates to show that alarm. Refer to [Pre-built dashboards](/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/) for the complete working example.
+When a user clicks an alarm row in the table, the history panel updates to show that alarm. Refer to [Pre-built dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/) for the complete working example.

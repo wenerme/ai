@@ -7,14 +7,14 @@ description: "This document describes the query editor for the Databricks data s
 
 # Databricks query editor
 
-Grafana provides a query editor for Databricks data source, which is located on the [Explore page](/docs/grafana/latest/explore/). You can also access the query editor from a dashboard panel. Click the menu in the upper right of the panel and select **Edit**.
+Grafana provides a query editor for Databricks data source, which is located on the [Explore page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/). You can also access the query editor from a dashboard panel. Click the menu in the upper right of the panel and select **Edit**.
 
-This document explains querying specific to the Databricks data source. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/). For options and functions common to all query editors, refer to [Query editors](/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
+This document explains querying specific to the Databricks data source. For general documentation on querying data sources in Grafana, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/). For options and functions common to all query editors, refer to [Query editors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/#query-editors).
 
 The Databricks query editor has two modes:
 
-- [Builder mode](#builder-mode)
-- [Code mode](#code-mode)
+- [Builder mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#builder-mode)
+- [Code mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#code-mode)
 
 To switch between the editor modes, select the corresponding **Builder** and **Code** tabs in the upper right.
 
@@ -26,9 +26,9 @@ To run a query, select **Run query** in the upper right of the editor.
 
 In addition to writing queries, the query editor also allows you to create and use:
 
-- [Macros](#macros)
-- [Annotations](/docs/plugins/grafana-databricks-datasource/latest/annotations/)
-- [Logs](/docs/plugins/grafana-databricks-datasource/latest/logs/)
+- [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/annotations/)
+- [Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/logs/)
 
 ## Builder mode
 
@@ -36,7 +36,7 @@ In addition to writing queries, the query editor also allows you to create and u
 
 The following components will help you build a Databricks SQL query:
 
-- **Format** - Select a format response from the drop-down for the Databricks query. The default is **Table**. Refer to [Table queries](#table-queries) and [Time series queries](#time-series-queries) for more information and examples. If you select the **Time series** format option, you must include a `time` column.
+- **Format** - Select a format response from the drop-down for the Databricks query. The default is **Table**. Refer to [Table queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#table-queries) and [Time series queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#time-series-queries) for more information and examples. If you select the **Time series** format option, you must include a `time` column.
 - **Filter** - Toggle to add filters.
 - **Filter by column value** - *Optional*. If you toggle **Filter** you can add a column to filter by from the drop-down. To filter by additional columns, click the **+ sign** to the right of the condition drop-down. You can choose a variety of operators from the drop-down next to the condition. When multiple filters are added, use the `AND` or `OR` operators to define how conditions are evaluated. `AND` requires all conditions to be true, while `OR` requires any condition to be true. Use the second drop-down to select the filter value. To remove a filter, click the **X icon** next to it. If you select a `date-type` column, you can use macros from the operator list and choose `timeFilter` to insert the `$__timeFilter` macro into your query with the selected date column.
 - **Group** - Toggle to add a `GROUP BY` column.
@@ -79,7 +79,7 @@ To enable Unity Catalog support in your Databricks data source:
 
 Following is a basic example query using the Unity Catalog hierarchical three-level namespace:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -89,7 +89,7 @@ LIMIT 100;
 
 You can also use Grafana macros and variables in your queries. For example, to filter by the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -108,7 +108,7 @@ To create a Table query, set the **Format** option in the query editor to **Tabl
 
 Example query:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -132,7 +132,7 @@ To create a **Time series** query, set the **Format** option to **Time series**.
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -156,7 +156,7 @@ To create multi-line time series, the query must return at least three fields in
 
 Example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT log_time AS time, machine_group, avg(disk_free) AS avg_disk_free
@@ -194,7 +194,7 @@ The `$__interval_long` macro converts the Grafana dashboard interval into a Spar
 
 **Example query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT window.start, avg(aggqueue) FROM a17
@@ -205,7 +205,7 @@ This query calculates the average of `aggqueue` values grouped into time windows
 
 **Expanded query** (when the dashboard interval is set to 2 minutes):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT window.start, avg(aggqueue) FROM a17

@@ -11,11 +11,11 @@ This example demonstrates external resource usage in the Business Text plugin. T
 
 Follow the outlined steps to display [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/) on your Grafana dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-text/mapboxgl.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/mapboxgl.png)
 
 ## Content
 
-HTML [Copy code to clipboard] Copy
+HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div id="map" />
@@ -29,7 +29,7 @@ HTML [Copy code to clipboard] Copy
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://cdn.jsdelivr.net/npm/mapbox-gl@3.5.1/+esm").then(

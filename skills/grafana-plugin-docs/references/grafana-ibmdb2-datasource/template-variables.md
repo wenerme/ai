@@ -13,8 +13,8 @@ Template variables allow you to create dynamic, reusable dashboards. Instead of 
 
 Before using template variables, ensure you have:
 
-- [Configured the IBM Db2 data source](/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
-- Basic understanding of [Grafana template variables](/docs/grafana/latest/dashboards/variables/)
+- [Configured the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
+- Basic understanding of [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
 
 ## Use variables in queries
 
@@ -22,7 +22,7 @@ You can use Grafana template variables in your SQL queries. Variables are replac
 
 Use the `$variable` or `${variable}` syntax to reference a variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EMPNO, FIRSTNME, LASTNAME, WORKDEPT, SALARY
@@ -38,7 +38,7 @@ WHERE WORKDEPT = '$department'
 
 For variables that allow multiple selections, use the `IN` operator:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EMPNO, FIRSTNME, LASTNAME, WORKDEPT, SALARY
@@ -48,7 +48,7 @@ WHERE WORKDEPT IN ($department)
 
 Multi-value variables are automatically formatted as comma-separated quoted strings. For example, if the user selects departments A00, B01, and C01, the query becomes:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 WHERE WORKDEPT IN ('A00','B01','C01')
@@ -85,7 +85,7 @@ Expand table
 
 Create a variable that lists all departments:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT WORKDEPT FROM EMPLOYEE ORDER BY WORKDEPT
@@ -95,7 +95,7 @@ SELECT DISTINCT WORKDEPT FROM EMPLOYEE ORDER BY WORKDEPT
 
 Create a variable with department code as the value and a description as the display text:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DEPTNO, DEPTNAME FROM DEPARTMENT ORDER BY DEPTNO
@@ -109,7 +109,7 @@ This displays the department name to users but uses the department number in que
 
 Variable query:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT JOB FROM EMPLOYEE ORDER BY JOB
@@ -117,7 +117,7 @@ SELECT DISTINCT JOB FROM EMPLOYEE ORDER BY JOB
 
 Dashboard query using the variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EMPNO, FIRSTNME, LASTNAME, JOB, SALARY
@@ -130,7 +130,7 @@ ORDER BY SALARY DESC
 
 Variable query (custom ranges):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT '0-50000' AS range FROM SYSIBM.SYSDUMMY1
@@ -141,7 +141,7 @@ UNION ALL SELECT '100000+' FROM SYSIBM.SYSDUMMY1
 
 Dashboard query using the variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EMPNO, FIRSTNME, LASTNAME, SALARY

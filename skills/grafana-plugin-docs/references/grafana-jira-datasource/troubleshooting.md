@@ -27,30 +27,30 @@ Expand table
 
 | Cause                                                   | Solution                                                                                                                                                                                                                                                         |
 |---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Grafana Cloud Free or Starter plan                      | Enterprise plugins aren’t included. Upgrade to a plan that includes them, or contact your Grafana account team. Refer to [Grafana pricing](/pricing/).                                                                                                           |
-| Grafana Cloud Pro without the Enterprise Plugins add-on | Upgrading from Free to Pro doesn’t always include Enterprise plugins. Purchase the add-on or confirm Jira is listed under **Plugins** in the [Grafana account portal](/orgs).                                                                                    |
-| Self-managed Grafana without an Enterprise license      | Activate a valid [Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/) that includes `grafana-jira-datasource`.                                                                                                                |
-| Expired or missing license                              | Renew the license, then restart Grafana. On Grafana Cloud, contact [Grafana Support](/support/) if the plugin stays unavailable after renewal.                                                                                                                   |
+| Grafana Cloud Free or Starter plan                      | Enterprise plugins aren’t included. Upgrade to a plan that includes them, or contact your Grafana account team. Refer to [Grafana pricing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/).                                               |
+| Grafana Cloud Pro without the Enterprise Plugins add-on | Upgrading from Free to Pro doesn’t always include Enterprise plugins. Purchase the add-on or confirm Jira is listed under **Plugins** in the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).                        |
+| Self-managed Grafana without an Enterprise license      | Activate a valid [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/) that includes `grafana-jira-datasource`.                                                    |
+| Expired or missing license                              | Renew the license, then restart Grafana. On Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if the plugin stays unavailable after renewal.                                                       |
 | License token in a stale environment variable           | If Grafana starts with `GF_ENTERPRISE_LICENSE_TEXT`, that value can override a license you uploaded in the UI. Update the variable to the current token (no extra whitespace or line breaks), or remove the variable so the UI license applies. Restart Grafana. |
 | Trial ended                                             | Trial access to Enterprise plugins doesn’t always continue on the paid plan. Confirm Jira is entitled on the paid contract.                                                                                                                                      |
 | Contract covers only one Enterprise plugin              | Activate Jira as the entitled plugin, or ask your Grafana account team to add it to the contract.                                                                                                                                                                |
 
 To verify Cloud entitlement:
 
-1. Go to the [Grafana account portal](/orgs) and select your organization.
+1. Go to the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and select your organization.
 2. Open the **Plugins** tab and confirm **Jira** is listed and activated.
 3. In Grafana, go to **Administration** &gt; **Plugins and data** &gt; **Plugins**, search for **Jira**, and confirm it is installed.
 
-For self-managed license activation, refer to [Activate a Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+For self-managed license activation, refer to [Activate a Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 
 ### Plugin stops working after a trial or contract change
 
 If Jira queries worked and then failed after a trial ended or a contract change (for example, from all Enterprise plugins to a single plugin):
 
 1. Confirm the current contract includes `grafana-jira-datasource`.
-2. On Grafana Cloud, check **Plugins** in the [Grafana account portal](/orgs).
+2. On Grafana Cloud, check **Plugins** in the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
 3. On self-managed Grafana, apply the new license file or `GF_ENTERPRISE_LICENSE_TEXT` value and restart Grafana.
-4. Contact [Grafana Support](/support/) if the portal shows Jira as entitled but the plugin still fails its health check.
+4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if the portal shows Jira as entitled but the plugin still fails its health check.
 
 ## Cannot add or edit the data source
 
@@ -61,12 +61,12 @@ You can query Jira after someone else configures the data source, but you can’
 **Solution:**
 
 1. Ask a Grafana administrator to grant `datasources:create` (and `datasources:write` to edit) on a custom role, or to assign Organization administrator.
-2. Refer to [Role-based access control](/docs/grafana/latest/administration/roles-and-permissions/access-control/).
+2. Refer to [Role-based access control](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/access-control/).
 3. You don’t need Grafana server administrator access to use this Enterprise plugin.
 
 ## Understand error categories
 
-License failures and Grafana permission errors usually don’t include a category prefix. For those, refer to [License and entitlement](#license-and-entitlement) or [Cannot add or edit the data source](#cannot-add-or-edit-the-data-source).
+License failures and Grafana permission errors usually don’t include a category prefix. For those, refer to [License and entitlement](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#license-and-entitlement) or [Cannot add or edit the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#cannot-add-or-edit-the-data-source).
 
 After **Save &amp; test**, the plugin classifies connection and configuration errors and prefixes the message with a category in square brackets. Sections below follow the same order as the handshake: URL and network, TLS, timeout, server, then authentication.
 
@@ -86,7 +86,7 @@ Expand **Show details** in the error alert to see the underlying error, includin
 
 ## Connection errors
 
-These issues relate to reaching your Jira instance. Most failures come from the **URL** or a sign-in page answering instead of the Jira REST API. For certificate errors, refer to [TLS/SSL certificate errors](#tlsssl-certificate-errors).
+These issues relate to reaching your Jira instance. Most failures come from the **URL** or a sign-in page answering instead of the Jira REST API. For certificate errors, refer to [TLS/SSL certificate errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#tlsssl-certificate-errors).
 
 ### Verify the Jira URL
 
@@ -137,7 +137,7 @@ Configuration validation reports one missing field at a time, so you may need to
 
 **Solution:**
 
-1. Verify the Jira URL is correct and accessible from the Grafana server. Refer to [Verify the Jira URL](#verify-the-jira-url).
+1. Verify the Jira URL is correct and accessible from the Grafana server. Refer to [Verify the Jira URL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#verify-the-jira-url).
 2. Confirm any firewall, security group, or proxy between Grafana and Jira allows the connection.
 3. For Jira Data Center or Jira Server, confirm the port in the URL is reachable. Many installations use 443; some still use 8080.
 4. Ensure the Jira instance is running and responsive.
@@ -204,10 +204,10 @@ Configuration validation reports one missing field at a time, so you may need to
 
 **Solution:**
 
-1. Set **URL** to the instance root. Refer to [Verify the Jira URL](#verify-the-jira-url).
+1. Set **URL** to the instance root. Refer to [Verify the Jira URL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#verify-the-jira-url).
 2. Verify **Provider** matches the deployment (Jira Cloud vs. Jira Data Center / Jira Server). Cloud uses API v3; Data Center and Server use API v2.
 3. For Jira Data Center or Server, include the context path if the instance is served under a path such as `/jira`.
-4. If Save &amp; test fails with 404 immediately after a Grafana Cloud trial or plugin install, confirm the plugin is entitled and upgraded to the latest version. Refer to [License and entitlement](#license-and-entitlement).
+4. If Save &amp; test fails with 404 immediately after a Grafana Cloud trial or plugin install, confirm the plugin is entitled and upgraded to the latest version. Refer to [License and entitlement](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#license-and-entitlement).
 
 ### Response is not valid Jira API output
 
@@ -217,7 +217,7 @@ Configuration validation reports one missing field at a time, so you may need to
 
 **Solution:**
 
-1. Open the `/myself` URL from the Grafana server and confirm the response is JSON, not HTML. Refer to [Verify the Jira URL](#verify-the-jira-url).
+1. Open the `/myself` URL from the Grafana server and confirm the response is JSON, not HTML. Refer to [Verify the Jira URL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#verify-the-jira-url).
 2. If the browser shows a login or SSO page, Grafana is following the same redirect. Point **URL** at the Jira instance, not at the SSO portal, and allow the Grafana server to reach Jira without an interactive login.
 3. Check whether a proxy, SSO gateway, or captive portal intercepts the request.
 4. Verify the URL points at the Jira instance root, not a reverse proxy serving a different application.
@@ -258,7 +258,7 @@ Configuration validation reports one missing field at a time, so you may need to
 2. Check that the PDC connection is properly configured in the data source settings.
 3. Ensure the PDC agent has network access to your Jira instance.
 4. Review PDC agent logs for connection errors.
-5. Refer to [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for setup instructions.
+5. Refer to [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for setup instructions.
 
 ## TLS/SSL certificate errors
 
@@ -317,7 +317,7 @@ These issues relate to authentication settings and Jira credentials.
 
 **Solution:**
 
-1. Update the Jira data source plugin to version 2.6.0 or later. To update the plugin, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
+1. Update the Jira data source plugin to version 2.6.0 or later. To update the plugin, refer to [Update a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
 2. Set **Provider** to **Jira Cloud**, then select **OAuth 2.0 (service account)**.
 3. If you need a user-login OAuth flow or OAuth for Jira Data Center / Server, those methods aren’t available. Use **Basic Auth** with an API token or PAT instead.
 
@@ -428,7 +428,7 @@ These issues relate to JQL queries and data retrieval.
 
 Example of correct JQL syntax:
 
-jql [Copy code to clipboard] Copy
+jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = 'TEST' AND assignee = 'Joe Smith' AND status != 'Done'
@@ -454,9 +454,9 @@ project = 'TEST' AND assignee = 'Joe Smith' AND status != 'Done'
 
 1. Raise **Limit** above the default `50` if Jira search shows more issues.
 2. Select every column you expect. Grafana doesn’t add the default columns from Jira issue search.
-3. If a count is too high, check whether a multi-value field is selected. Refer to [Multi-value fields and extra rows](/docs/plugins/grafana-jira-datasource/latest/query-editor/#multi-value-fields-and-extra-rows).
+3. If a count is too high, check whether a multi-value field is selected. Refer to [Multi-value fields and extra rows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/#multi-value-fields-and-extra-rows).
 4. Compare JQL identifiers (`project`, `assignee`) with **Select Fields** labels (**Sprint Name**, **Story point estimate**).
-5. For a full list of differences, refer to [Grafana results vs Jira search](/docs/plugins/grafana-jira-datasource/latest/query-editor/#grafana-results-vs-jira-search).
+5. For a full list of differences, refer to [Grafana results vs Jira search](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/#grafana-results-vs-jira-search).
 
 ### Time range macros don’t filter correctly
 
@@ -468,7 +468,7 @@ project = 'TEST' AND assignee = 'Joe Smith' AND status != 'Done'
 2. Apply macros to JQL date fields like `created`, `updated`, or `resolved`.
 3. Example: `created >= $__timeFrom AND created <= $__timeTo`.
 4. Verify the dashboard time range includes the dates of your issues.
-5. If Jira still rejects the date format, update the plugin to version 2.5.1 or later. To update the plugin, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
+5. If Jira still rejects the date format, update the plugin to version 2.5.1 or later. To update the plugin, refer to [Update a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
 
 ### Sprint dates are empty
 
@@ -478,7 +478,7 @@ Older plugin versions accepted only a few date layouts and dropped several forma
 
 **Solution:**
 
-1. Update the Jira data source plugin to version 2.7.4 or later. To update the plugin, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
+1. Update the Jira data source plugin to version 2.7.4 or later. To update the plugin, refer to [Update a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
 2. Re-run the query. **Sprint Name** isn’t affected by this parser; only the date sub-fields were empty.
 3. If dates remain empty after the update, confirm the sprint field is selected in **Select Fields** and that the issues belong to a sprint that has those dates set in Jira.
 
@@ -518,7 +518,7 @@ Older plugin versions accepted only a few date layouts and dropped several forma
 **Solution:**
 
 1. Don’t use SQL Expressions with this data source.
-2. Filter and calculate in JQL, then use Grafana transformations such as **Add field from calculation** and **Group by**. Refer to [Work with transformations](/docs/plugins/grafana-jira-datasource/latest/query-editor/#work-with-transformations).
+2. Filter and calculate in JQL, then use Grafana transformations such as **Add field from calculation** and **Group by**. Refer to [Work with transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/#work-with-transformations).
 
 ### Template variable issues
 
@@ -622,7 +622,7 @@ If you continue to experience issues after following this troubleshooting guide:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Enable debug logging in Grafana to capture detailed error information.
-3. [Raise a support ticket](/profile/org#support) if you’re a Grafana Cloud or Grafana Enterprise customer.
+3. [Raise a support ticket](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re a Grafana Cloud or Grafana Enterprise customer.
 
 When reporting issues, include:
 

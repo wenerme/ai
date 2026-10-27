@@ -17,7 +17,7 @@ For an introduction to writing scripts for the MongoDB shell, refer to [Write sc
 
 The following example returns movies released after 2000:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "year": { "$gt": 2000 } })
@@ -27,7 +27,7 @@ sample_mflix.movies.find({ "year": { "$gt": 2000 } })
 
 Starting with plugin version 1.27.0, the query editor toolbar includes a **Grafana Assistant** button. Click the button to generate MongoDB queries from natural language prompts. This helps you get started quickly if you’re unfamiliar with MongoDB query syntax.
 
-For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+For more information, refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/).
 
 ## Additional syntax
 
@@ -49,7 +49,7 @@ Sorting typically happens within the aggregate pipeline. The extended syntax all
 
 To query collections that contain a dot (`.`) in their name, use the following syntax:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 my_db.getCollection("my.collection").find({})
@@ -63,7 +63,7 @@ Use `find` to return documents that match a filter. You can chain `.sort()` and 
 
 The following query returns the 10 most recent movies after 2000:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "year": { "$gt": 2000 } }).sort({ "year": -1 }).limit(10)
@@ -73,7 +73,7 @@ sample_mflix.movies.find({ "year": { "$gt": 2000 } }).sort({ "year": -1 }).limit
 
 Pass a projection as the second argument to `find` to limit the fields returned. The following query returns only the `title` and `year` fields and excludes `_id`:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "year": { "$gt": 2000 } }, { "_id": 0, "title": 1, "year": 1 })
@@ -83,7 +83,7 @@ sample_mflix.movies.find({ "year": { "$gt": 2000 } }, { "_id": 0, "title": 1, "y
 
 Use `ObjectId()` to filter on MongoDB document IDs:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "_id": ObjectId("573a1390f29313caabcd4803") })
@@ -93,7 +93,7 @@ sample_mflix.movies.find({ "_id": ObjectId("573a1390f29313caabcd4803") })
 
 The following query finds titles that contain `ace`, case-insensitive:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "title": { $regex: "ace", $options: "i" } })
@@ -101,7 +101,7 @@ sample_mflix.movies.find({ "title": { $regex: "ace", $options: "i" } })
 
 The regular expression flags `g` (global) and `s` (`dotAll`) are not supported. Use supported flags like `i` (case-insensitive) and `m` (`multiline`).
 
-For more examples, including `ObjectId`, regular expressions, and the supported date types, refer to [Supported query syntax](/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#supported-query-syntax).
+For more examples, including `ObjectId`, regular expressions, and the supported date types, refer to [Supported query syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#supported-query-syntax).
 
 ## Keyboard shortcuts
 
@@ -117,7 +117,7 @@ Create a time series query by aliasing the date field as `time`.
 
 The following query converts the `int` field `year` to a date that is projected as `time` using the MongoDB `$dateFromParts` pipeline operator:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([
@@ -132,7 +132,7 @@ If you want to group your time series by **Metric**, project a field called `__m
 
 The following query displays the count of movies over time by movie rating using `__metric`:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([
@@ -147,7 +147,7 @@ sample_mflix.movies.aggregate([
 
 When `$facet` is the last stage in your aggregation pipeline, the plugin returns multiple named data frames – one for each facet group. This is useful when you want to display different aggregations of the same data in separate panels or table columns.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([
@@ -168,7 +168,7 @@ sample_mflix.movies.aggregate([
 
 Append `.detect()` to a query to trigger automatic date-type detection for fields in the results. The backend probes the collection to identify which fields contain date values and converts them appropriately.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"year": {"$gt": 2000}}).detect()
@@ -204,7 +204,7 @@ Expand table
 
 Example usage:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({ "tomatoes.dvd": { $gte: $__timeFrom, $lt: $__timeTo } })
@@ -214,7 +214,7 @@ sample_mflix.movies.find({ "tomatoes.dvd": { $gte: $__timeFrom, $lt: $__timeTo }
 
 Pass options as a second argument to `aggregate`, after the pipeline array. Starting with plugin version 2.0.0, `maxTimeMS` is sent to MongoDB as a server-side limit and is also applied as a client-side deadline. A query that exceeds `maxTimeMS` fails instead of returning partial results.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 my_db.my_collection.aggregate([
@@ -222,7 +222,7 @@ my_db.my_collection.aggregate([
 ], { maxTimeMS: 5000 })
 ```
 
-For the full list of supported aggregate options, refer to [Supported aggregate options](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#supported-aggregate-options).
+For the full list of supported aggregate options, refer to [Supported aggregate options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#supported-aggregate-options).
 
 ## Dynamic dates in queries
 
@@ -230,7 +230,7 @@ Starting with plugin version 1.14.2, performing arithmetic on dates directly wit
 
 Example of previously supported syntax (no longer works):
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"released": { $gte: new Date(new Date().setMonth(new Date().getMonth() - 3)) }})
@@ -240,7 +240,7 @@ With MongoDB version 5.0 and later, new operators such as [`$dateSubtract`](http
 
 The following example uses `$dateSubtract` to filter documents on the `sample_mflix` dataset:
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([

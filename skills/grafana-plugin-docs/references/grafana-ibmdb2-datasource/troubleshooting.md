@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the IBM Db2 data source plugin"
 
 # Troubleshoot IBM Db2 data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the IBM Db2 data source. For configuration instructions, refer to [Configure the IBM Db2 data source](/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the IBM Db2 data source. For configuration instructions, refer to [Configure the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
 
 ## Plugin startup issues
 
@@ -71,7 +71,7 @@ The data source was saved without connection settings, so there’s nothing to t
 
 **Solution:**
 
-Enter the Host URL, Database name, Username, and Password, then click **Save &amp; test** again. For details, refer to [Configure the IBM Db2 data source](/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
+Enter the Host URL, Database name, Username, and Password, then click **Save &amp; test** again. For details, refer to [Configure the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
 
 ### “Missing resource bundle” (ERRORCODE=-4222)
 
@@ -188,21 +188,21 @@ Cast the column to a type Grafana supports:
 
 1. Numeric types, cast to `DOUBLE`:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT CAST(value_column AS DOUBLE) AS value FROM table
    ```
 2. Character or other unsupported types, cast to `VARCHAR`:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT CAST(some_column AS VARCHAR(255)) AS text_value FROM table
    ```
 3. For exact decimal values, return the number as text to avoid floating-point rounding:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT CAST(precise_decimal AS VARCHAR(40)) AS value FROM table
@@ -273,7 +273,7 @@ When **SSL Connection** is enabled, the plugin validates the Db2 server’s cert
 1. Verify your Db2 server is configured for SSL connections.
 2. Try disabling SSL in the data source configuration to test basic connectivity.
 3. Check that the Db2 server’s SSL certificate is valid and not expired.
-4. If the server uses a certificate from a private or internal CA, refer to [SSL certificate validation failed](#ssl-certificate-validation-failed).
+4. If the server uses a certificate from a private or internal CA, refer to [SSL certificate validation failed](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/#ssl-certificate-validation-failed).
 
 ## IBM Db2 z/OS specific issues
 
@@ -326,7 +326,7 @@ Force the driver to use DES-encrypted password authentication by setting the `se
 2. Expand **Additional settings**.
 3. In the **Custom parameters** field, enter:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    securityMechanism=7
@@ -367,7 +367,7 @@ PDC is not properly configured, or the PDC agent can’t reach the IBM Db2 host.
 2. Check that the PDC network is correctly selected in the data source configuration.
 3. Ensure the PDC agent has network access to your IBM Db2 instance (host and port reachable from the agent host).
 4. Review PDC agent logs for connection or certificate errors.
-5. Refer to [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for setup instructions.
+5. Refer to [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for setup instructions.
 
 ### Second Db2 data source on the same PDC network fails with “port already in use”
 
@@ -455,7 +455,7 @@ If you’ve tried the solutions above and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [IBM Db2 documentation](https://www.ibm.com/docs/en/db2) for database-specific guidance.
-3. [Contact Grafana Support](/profile/org#support) if you have a Grafana Cloud or Enterprise subscription.
+3. [Contact Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you have a Grafana Cloud or Enterprise subscription.
 
 When reporting issues, include:
 

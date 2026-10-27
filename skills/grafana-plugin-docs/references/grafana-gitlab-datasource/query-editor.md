@@ -11,26 +11,26 @@ This document explains how to use the GitLab query editor to build queries and v
 
 ## Before you begin
 
-- [Configure the GitLab data source](/docs/plugins/grafana-gitlab-datasource/latest/configure/).
+- [Configure the GitLab data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/configure/).
 - Verify your personal access token has the `read_api` scope.
 
 ## Resource types
 
 The query editor supports the following resource types. Select a resource type from the **Resource Type** drop-down to configure the query.
 
-- [Audit events](#audit-events)
-- [Commits](#commits)
-- [Deployments](#deployments)
-- [Environments](#environments)
-- [Issues](#issues)
-- [Labels](#labels)
-- [Merge request approvals](#merge-request-approvals)
-- [Merge requests](#merge-requests)
-- [Pipelines](#pipelines)
-- [Projects](#projects)
-- [Releases](#releases)
-- [Tags](#tags)
-- [Users](#users)
+- [Audit events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#audit-events)
+- [Commits](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#commits)
+- [Deployments](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#deployments)
+- [Environments](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#environments)
+- [Issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#issues)
+- [Labels](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#labels)
+- [Merge request approvals](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#merge-request-approvals)
+- [Merge requests](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#merge-requests)
+- [Pipelines](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#pipelines)
+- [Projects](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#projects)
+- [Releases](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#releases)
+- [Tags](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#tags)
+- [Users](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/#users)
 
 ## Audit events
 
@@ -222,7 +222,7 @@ Expand table
 
 ## Use transformations to answer common questions
 
-You can use [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to aggregate, group, and join query results to answer more complex questions.
+You can use [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to aggregate, group, and join query results to answer more complex questions.
 
 ### Count commits, issues, or deployments per day
 

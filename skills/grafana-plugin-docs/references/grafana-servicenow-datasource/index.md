@@ -11,7 +11,7 @@ The ServiceNow data source allows you to query and visualize data from [ServiceN
 
 > Note
 >
-> The ServiceNow data source is an Enterprise plugin. It’s available with Grafana Cloud (Pro and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The ServiceNow data source is an Enterprise plugin. It’s available with Grafana Cloud (Pro and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -29,22 +29,22 @@ Expand table
 
 The following documents help you set up and use the ServiceNow data source:
 
-- [Configure the ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/configure/)
-- [ServiceNow query editor](/docs/plugins/grafana-servicenow-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-servicenow-datasource/latest/template-variables/)
-- [Annotate dashboards](/docs/plugins/grafana-servicenow-datasource/latest/annotations/)
-- [Set up alerting](/docs/plugins/grafana-servicenow-datasource/latest/alerting/)
-- [Troubleshoot ServiceNow](/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/)
+- [Configure the ServiceNow data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/)
+- [ServiceNow query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/template-variables/)
+- [Annotate dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/annotations/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/alerting/)
+- [Troubleshoot ServiceNow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can also:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- [Annotate dashboards](/docs/plugins/grafana-servicenow-datasource/latest/annotations/) with ServiceNow events like incidents and change requests.
-- Set up [alerting](/docs/plugins/grafana-servicenow-datasource/latest/alerting/) rules with ServiceNow queries.
-- Create [template variables](/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) for dynamic, reusable dashboards.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- [Annotate dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/annotations/) with ServiceNow events like incidents and change requests.
+- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/alerting/) rules with ServiceNow queries.
+- Create [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) for dynamic, reusable dashboards.
 
 ## Pre-built dashboards
 

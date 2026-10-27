@@ -53,6 +53,7 @@ Example response:
   "maven_max_file_size": 3221225472,
   "npm_max_file_size": 524288000,
   "nuget_max_file_size": 524288000,
+  "organization_hooks": 50,
   "max_pipelines_per_merge_train": 20,
   "pipeline_hierarchy_size": 1000,
   "pypi_max_file_size": 3221225472,
@@ -93,6 +94,7 @@ PUT /application/plan_limits
 | `notification_limit`              | integer | no       | Maximum storage size for root namespace limit notifications in MiB. |
 | `npm_max_file_size`               | integer | no       | Maximum NPM package file size in bytes. |
 | `nuget_max_file_size`             | integer | no       | Maximum NuGet package file size in bytes. |
+| `organization_hooks`              | integer | no       | Maximum number of system hooks per organization, for hooks managed by organization administrators. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632599) in GitLab 19.6. |
 | `max_pipelines_per_merge_train`   | integer | no       | Maximum number of parallel pipelines per merge train. Default value: `20`. Minimum value: `1`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/374188) in GitLab 19.0. |
 | `pipeline_hierarchy_size`         | integer | no       | Maximum number of downstream pipelines in a pipeline's hierarchy tree. Default value: `1000`. Values greater than 1000 are [not recommended](../administration/cicd/limits.md#limit-pipeline-hierarchy-size). |
 | `pypi_max_file_size`              | integer | no       | Maximum PyPI package file size in bytes. |
@@ -129,6 +131,7 @@ Example response:
   "maven_max_file_size": 3221225472,
   "npm_max_file_size": 524288000,
   "nuget_max_file_size": 524288000,
+  "organization_hooks": 50,
   "max_pipelines_per_merge_train": 20,
   "pipeline_hierarchy_size": 1000,
   "pypi_max_file_size": 3221225472,

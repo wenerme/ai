@@ -7,7 +7,7 @@ description: "Install and upgrade the MongoDB data source plugin for Grafana."
 
 # Install and upgrade the MongoDB data source plugin
 
-This document covers how to install, upgrade, and verify the MongoDB data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the MongoDB data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -30,7 +30,7 @@ Choose the installation method that matches your Grafana deployment.
 
 Enterprise plugins must be activated for your organization before they appear as installable in the plugin catalog.
 
-1. Go to [your Grafana Cloud organization settings](/orgs) and sign in with your Grafana Cloud account.
+1. Go to [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
 3. Navigate to the **Plugins** tab and verify that the MongoDB plugin is activated. If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
 4. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
@@ -38,11 +38,11 @@ Enterprise plugins must be activated for your organization before they appear as
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization in [your Grafana Cloud organization settings](/orgs) and that your Cloud plan is Pro or Advanced.
+> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and that your Cloud plan is Pro or Advanced.
 
 ### Self-managed Grafana (CLI)
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-mongodb-datasource
@@ -50,7 +50,7 @@ grafana cli plugins install grafana-mongodb-datasource
 
 Restart Grafana after installation:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -60,7 +60,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -72,7 +72,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -83,7 +83,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -100,7 +100,7 @@ env:
 
 If you don’t control the Helm chart (for example, on a shared platform cluster), use an init container to download the plugin before Grafana starts:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -124,25 +124,25 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin archive from your [Grafana account portal](/orgs) on a machine with internet access.
+1. Download the plugin archive from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-mongodb-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-mongodb-datasource
    ```
 5. Restart Grafana.
 
-The MongoDB plugin is signed, and official downloads from your [Grafana account portal](/orgs) include a valid signature. If Grafana reports a signature error, don’t disable signature verification. Instead, resolve the underlying cause:
+The MongoDB plugin is signed, and official downloads from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) include a valid signature. If Grafana reports a signature error, don’t disable signature verification. Instead, resolve the underlying cause:
 
 - Confirm you downloaded the official ZIP and didn’t modify or repackage its contents.
 - Extract the complete plugin directory, including the `MANIFEST.txt` signature file, into the plugins directory.
@@ -160,7 +160,7 @@ After installing, confirm the plugin is loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **MongoDB** and verify the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **MongoDB** to confirm it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -172,13 +172,13 @@ Upgrade steps depend on your Grafana deployment environment.
 
 ### Grafana Cloud
 
-Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### Self-managed Grafana
 
 1. Update the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-mongodb-datasource
@@ -188,7 +188,7 @@ Plugins are automatically updated on Grafana Cloud. No manual action is required
 
 To install a specific version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-mongodb-datasource <version>
@@ -196,7 +196,7 @@ grafana cli plugins install grafana-mongodb-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -207,7 +207,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-mongodb-datasource 1.27.5
@@ -217,7 +217,7 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ## Uninstall the plugin
 
@@ -227,7 +227,7 @@ Restart Grafana after the rollback.
 
 To remove the MongoDB plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-mongodb-datasource
@@ -239,7 +239,7 @@ For Docker or Kubernetes, remove `grafana-mongodb-datasource` from the `GF_INSTA
 
 ## Troubleshoot installation issues
 
-The following sections address common installation problems. For additional troubleshooting guidance, refer to [License and installation issues](/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#license-and-installation-issues).
+The following sections address common installation problems. For additional troubleshooting guidance, refer to [License and installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#license-and-installation-issues).
 
 ### Plugin doesn’t appear in the catalog (Grafana Cloud)
 
@@ -247,7 +247,7 @@ The following sections address common installation problems. For additional trou
 
 **Solution:**
 
-1. Go to [your Grafana Cloud organization settings](/orgs).
+1. Go to [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the MongoDB plugin is listed and activated.
 4. Confirm your Cloud plan is Pro or Advanced. Free and Starter plans don’t include Enterprise plugins.
@@ -258,8 +258,8 @@ The following sections address common installation problems. For additional trou
 
 **Solution:**
 
-- **Grafana Cloud:** Verify plugin activation in [your Grafana Cloud organization settings](/orgs).
-- **Self-managed:** Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
+- **Grafana Cloud:** Verify plugin activation in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+- **Self-managed:** Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
 
 ### “Plugin health check failed” after installation
 
@@ -267,12 +267,12 @@ If **Save &amp; test** returns “Plugin health check failed” immediately afte
 
 Expand table
 
-| Cause                                         | Solution                                                                                                                         |
-|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Grafana Cloud Free plan                       | The MongoDB plugin is not available on the Free tier. Upgrade to a Pro (with Enterprise Plugins add-on) or Advanced plan.        |
-| Pro plan without add-on                       | Upgrading from Free to Pro does not automatically include Enterprise plugins. Purchase the Enterprise Plugins add-on separately. |
-| Self-managed without Enterprise license       | Activate a valid [Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).                        |
-| License not provisioned after contract change | Contact [Grafana Support](/help/) to verify your entitlements.                                                                   |
+| Cause                                         | Solution                                                                                                                                                              |
+|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Grafana Cloud Free plan                       | The MongoDB plugin is not available on the Free tier. Upgrade to a Pro (with Enterprise Plugins add-on) or Advanced plan.                                             |
+| Pro plan without add-on                       | Upgrading from Free to Pro does not automatically include Enterprise plugins. Purchase the Enterprise Plugins add-on separately.                                      |
+| Self-managed without Enterprise license       | Activate a valid [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). |
+| License not provisioned after contract change | Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to verify your entitlements.                                            |
 
 ### License key errors (self-managed)
 
@@ -282,8 +282,8 @@ Expand table
 
 1. Verify the license key doesn’t contain extra whitespace, line breaks, or truncated characters.
 2. Confirm the key is for the correct Grafana instance URL.
-3. Check that the license hasn’t expired in [your Grafana Cloud organization settings](/orgs).
-4. For license activation help, refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
+3. Check that the license hasn’t expired in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+4. For license activation help, refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
 
 ### Signature error (air-gapped installs)
 
@@ -291,7 +291,7 @@ Expand table
 
 **Solution:**
 
-1. Download the ZIP from the official [Grafana account portal](/orgs). Official downloads are signed. Don’t modify or repackage the contents.
+1. Download the ZIP from the official [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). Official downloads are signed. Don’t modify or repackage the contents.
 2. Extract the complete plugin directory, including the `MANIFEST.txt` signature file, and confirm the folder is named `grafana-mongodb-datasource`.
 3. Confirm the ZIP matches your server architecture and the plugin’s supported Grafana version.
 4. Restart Grafana.

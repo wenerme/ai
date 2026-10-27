@@ -13,7 +13,7 @@ Annotations mark points in time on your dashboard panels with events or notes. T
 
 Before you create annotations, ensure you have:
 
-- [Configured the IBM Db2 data source](/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
+- [Configured the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
 - A table or view that contains event data with a timestamp column
 
 ## Create an annotation query
@@ -45,7 +45,7 @@ Order the results by the `time` column so annotations render in chronological or
 
 > Note
 >
-> The `time` and `timeend` columns must be `TIMESTAMP` values. If your column is a `DATE`, the plugin converts it to a `TIMESTAMP` automatically. If it’s a `TIME`, cast it to a `TIMESTAMP` in the query. The IBM Db2 data source doesn’t support SQL macros such as `$__timeFilter`, so filter with standard Db2 SQL or [template variables](/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/).
+> The `time` and `timeend` columns must be `TIMESTAMP` values. If your column is a `DATE`, the plugin converts it to a `TIMESTAMP` automatically. If it’s a `TIME`, cast it to a `TIMESTAMP` in the query. The IBM Db2 data source doesn’t support SQL macros such as `$__timeFilter`, so filter with standard Db2 SQL or [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/).
 
 ## Examples
 
@@ -55,7 +55,7 @@ The following examples use placeholder table names. Replace them with your own s
 
 Mark each event with a single timestamp, a description, and tags:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -70,7 +70,7 @@ ORDER BY event_time
 
 Include a `timeend` column to highlight a time range, such as a deployment or maintenance window:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -84,9 +84,9 @@ ORDER BY start_time
 
 ### Filter annotations with a template variable
 
-Use a [template variable](/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/) to show only the events you care about:
+Use a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/) to show only the events you care about:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -100,5 +100,5 @@ ORDER BY event_time
 
 ## Related resources
 
-- [IBM Db2 query editor](/docs/plugins/grafana-ibmdb2-datasource/latest/query-editor/)
-- [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [IBM Db2 query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/query-editor/)
+- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)

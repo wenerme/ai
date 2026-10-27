@@ -11,7 +11,7 @@ This document explains how to use the Jenkins query editor to build queries and 
 
 ## Before you begin
 
-- Ensure you have [configured the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/configure/).
+- Ensure you have [configured the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/configure/).
 - Verify your credentials have permission to read the projects, nodes, and queues you want to query.
 
 ## Key concepts
@@ -189,14 +189,14 @@ Use a **Projects** query with a table or stat panel to see the health of every p
 
 1. Add a panel and select the **Projects** query type.
 2. Use a **Table** visualization to list projects, or a **Stat** visualization keyed on the `Color` or `Disabled` field to highlight broken or disabled projects.
-3. Optionally, add an [Organize fields transformation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to hide the build-number and URL fields you don’t need.
+3. Optionally, add an [Organize fields transformation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to hide the build-number and URL fields you don’t need.
 
 ### Track build results over time
 
 Use a **Project Builds** query to visualize how a project’s builds trend across the dashboard time range:
 
 1. Add a panel and select the **Project Builds** query type.
-2. Select a project, or set the project field to a [template variable](/docs/plugins/grafana-jenkins-datasource/latest/template-variables/) such as `$project`.
+2. Select a project, or set the project field to a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/template-variables/) such as `$project`.
 3. Use a **State timeline** visualization on the `Result` field to see successes and failures over time, or a **Time series** visualization on `Duration` to spot builds that are getting slower.
 4. Expand the dashboard time range to include the builds you want to analyze.
 
@@ -224,6 +224,6 @@ Use **Nodes** and **Node Labels** queries to track agent availability:
 
 ## Next steps
 
-- [Use template variables with the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/template-variables/)
-- [Troubleshoot the Jenkins data source](/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- [Use template variables with the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/template-variables/)
+- [Troubleshoot the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.

@@ -11,14 +11,14 @@ The following examples show how to use the Static data source with various nativ
 
 > Note
 >
-> You can use the Business Charts demo project to play with the Static Data source settings and various native and community plugins following the link [Business Charts Examples](/docs/plugins/volkovlabs-echarts-panel/latest/examples/). Go to Edit mode and start experimenting.
+> You can use the Business Charts demo project to play with the Static Data source settings and various native and community plugins following the link [Business Charts Examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/examples/). Go to Edit mode and start experimenting.
 
 Expand table
 
-| Section                                                                                        | Demonstrates                                                      |
-|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| [Business Charts](/docs/plugins/marcusolsson-static-datasource/latest/panels/business-charts/) | How to use the Static data source with the Business Charts panel. |
-| [Business Media](/docs/plugins/marcusolsson-static-datasource/latest/panels/business-media/)   | How to use the Static data source with the Business Media panel.  |
-| [Logs](/docs/plugins/marcusolsson-static-datasource/latest/panels/logs/)                       | How to use the Static data source with the Logs panel.            |
-| [Node Graph](/docs/plugins/marcusolsson-static-datasource/latest/panels/node-graph/)           | How to use the Static data source with the Node Graph panel.      |
-| [Pie Chart](/docs/plugins/marcusolsson-static-datasource/latest/panels/pie/)                   | How to use the Static data source with the Pie chart panel.       |
+| Section                                                                                                                                                    | Demonstrates                                                      |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| [Business Charts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/panels/business-charts/) | How to use the Static data source with the Business Charts panel. |
+| [Business Media](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/panels/business-media/)   | How to use the Static data source with the Business Media panel.  |
+| [Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/panels/logs/)                       | How to use the Static data source with the Logs panel.            |
+| [Node Graph](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/panels/node-graph/)           | How to use the Static data source with the Node Graph panel.      |
+| [Pie Chart](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/panels/pie/)                   | How to use the Static data source with the Pie chart panel.       |

@@ -15,7 +15,7 @@ Annotations in Grafana highlight key events on your dashboards. They encompass t
 
 The following diagram compares them:
 
-[](/media/docs/grafana/panels-visualizations/crash-courses/annotations.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/crash-courses/annotations.png)
 
 > Note
 >
@@ -26,16 +26,16 @@ The following diagram compares them:
 Annotation queries come in two flavors:
 
 - **Built-in**: Basic functionality out of the box.
-- **User-defined**: Flexible queries that can tap into any database—or even Grafana storage with the [Business Satellite](/grafana/plugins/volkovlabs-grapi-datasource/) data source.
+- **User-defined**: Flexible queries that can tap into any database—or even Grafana storage with the [Business Satellite](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-grapi-datasource/) data source.
 
 Refer to the dataflow schema below for detail:
 
-[](/media/docs/grafana/panels-visualizations/crash-courses/alerts-schema.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/crash-courses/alerts-schema.png)
 
-Despite their names, native annotations and alerts share many underlying similarities. With the [Business Satellite data source](/grafana/plugins/volkovlabs-grapi-datasource/), you can manage both seamlessly.
+Despite their names, native annotations and alerts share many underlying similarities. With the [Business Satellite data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-grapi-datasource/), you can manage both seamlessly.
 
 ## Business Satellite
 
-The [Business Satellite data source](/grafana/plugins/volkovlabs-grapi-datasource/) helps tackle a real-world production challenge. It lets you pull native annotations and alerts from local or remote Grafana instances, with flexible filtering options.
+The [Business Satellite data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-grapi-datasource/) helps tackle a real-world production challenge. It lets you pull native annotations and alerts from local or remote Grafana instances, with flexible filtering options.
 
-[](/media/docs/grafana/panels-visualizations/crash-courses/alerts.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/crash-courses/alerts.png)

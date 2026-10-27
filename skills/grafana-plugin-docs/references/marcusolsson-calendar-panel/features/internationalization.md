@@ -9,6 +9,6 @@ description: "Learn how the Business Calendar panel supports multiple languages 
 
 The Business Calendar panel uses the language you specify in the user profile menu throughout the dashboard and in edit mode for panel options.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/i18n.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/i18n.png)
 
-For more information about language and date and time settings, refer to **Date and time format** in the [Layout](/docs/plugins/marcusolsson-calendar-panel/latest/configuration/layout/#date-and-time-format) section.
+For more information about language and date and time settings, refer to **Date and time format** in the [Layout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/configuration/layout/#date-and-time-format) section.

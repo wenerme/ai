@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Drone data source in Grafana, coveri
 
 # Troubleshoot Drone data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the Drone data source. For configuration instructions, refer to [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the Drone data source. For configuration instructions, refer to [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/).
 
 ## Installation errors
 
@@ -38,7 +38,7 @@ For Grafana Cloud, plugins are managed for you. If the plugin still doesn’t lo
 
 When you click **Save &amp; test**, Grafana runs a health check that requests the list of repositories from your Drone instance using the `Repo List` query. If the health check fails for any reason, Grafana shows the same generic error:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 health check failed for 'Repo List' query
@@ -46,8 +46,8 @@ health check failed for 'Repo List' query
 
 Because this one message covers both authentication and connection problems, check both:
 
-- Confirm the **Token** is valid and has the required permissions, as described in [Authentication errors](#authentication-errors).
-- Confirm the **URL** and network path are correct, as described in [Connection errors](#connection-errors).
+- Confirm the **Token** is valid and has the required permissions, as described in [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/#authentication-errors).
+- Confirm the **URL** and network path are correct, as described in [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/#connection-errors).
 
 ## Authentication errors
 
@@ -153,7 +153,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

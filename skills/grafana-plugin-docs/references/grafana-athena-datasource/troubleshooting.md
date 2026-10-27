@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Amazon Athena data source in G
 
 # Troubleshoot Amazon Athena data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Amazon Athena data source. For configuration instructions, refer to [Configure the Amazon Athena data source](/docs/plugins/grafana-athena-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Amazon Athena data source. For configuration instructions, refer to [Configure the Amazon Athena data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -25,15 +25,15 @@ These errors occur when AWS credentials are invalid, missing, or don’t have th
 
 Expand table
 
-| Cause                        | Solution                                                                                                                                                                                                                 |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing IAM permissions      | Verify the IAM user or role has all required Athena, Glue, and S3 permissions. Refer to the [IAM policies](/docs/plugins/grafana-athena-datasource/latest/configure/#iam-policies) section for a minimal policy example. |
-| Invalid access keys          | Verify the access key and secret key in the data source configuration. Regenerate them in the [AWS IAM console](https://console.aws.amazon.com/iam/) if necessary.                                                       |
-| Expired credentials          | Create new credentials and update the data source configuration.                                                                                                                                                         |
-| Wrong region                 | Verify the **Default Region** setting matches the region where your Athena resources are located.                                                                                                                        |
-| Assume role misconfiguration | Verify the **Assume Role ARN** is correct and that the trust policy on the target role allows the source identity to assume it.                                                                                          |
-| External ID mismatch         | If the target role requires an external ID, verify the **External ID** field matches the value configured in the role’s trust policy.                                                                                    |
-| Lake Formation permissions   | If your data is managed by AWS Lake Formation, add `lakeformation:GetDataAccess` to your IAM policy. Refer to [Access denied with AWS Lake Formation](#access-denied-with-aws-lake-formation).                           |
+| Cause                        | Solution                                                                                                                                                                                                                                                                                                                  |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing IAM permissions      | Verify the IAM user or role has all required Athena, Glue, and S3 permissions. Refer to the [IAM policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/#iam-policies) section for a minimal policy example.                                      |
+| Invalid access keys          | Verify the access key and secret key in the data source configuration. Regenerate them in the [AWS IAM console](https://console.aws.amazon.com/iam/) if necessary.                                                                                                                                                        |
+| Expired credentials          | Create new credentials and update the data source configuration.                                                                                                                                                                                                                                                          |
+| Wrong region                 | Verify the **Default Region** setting matches the region where your Athena resources are located.                                                                                                                                                                                                                         |
+| Assume role misconfiguration | Verify the **Assume Role ARN** is correct and that the trust policy on the target role allows the source identity to assume it.                                                                                                                                                                                           |
+| External ID mismatch         | If the target role requires an external ID, verify the **External ID** field matches the value configured in the role’s trust policy.                                                                                                                                                                                     |
+| Lake Formation permissions   | If your data is managed by AWS Lake Formation, add `lakeformation:GetDataAccess` to your IAM policy. Refer to [Access denied with AWS Lake Formation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/troubleshooting/#access-denied-with-aws-lake-formation). |
 
 ### Access denied with AWS Lake Formation
 
@@ -45,7 +45,7 @@ Expand table
 
 **Solutions:**
 
-1. Add the `lakeformation:GetDataAccess` permission to the IAM policy used by the data source. Refer to the [IAM policies](/docs/plugins/grafana-athena-datasource/latest/configure/#iam-policies) section for the full policy example.
+1. Add the `lakeformation:GetDataAccess` permission to the IAM policy used by the data source. Refer to the [IAM policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/#iam-policies) section for the full policy example.
 2. Verify the IAM identity is registered as a data lake administrator or has been granted table-level permissions in Lake Formation. Refer to the [AWS Lake Formation permissions for Athena](https://docs.aws.amazon.com/athena/latest/ug/lf-athena.html) documentation.
 
 ### Invalid token errors in private clouds
@@ -78,7 +78,7 @@ These errors occur when Grafana can’t reach the Amazon Athena service endpoint
 1. Verify network connectivity from the Grafana server to AWS endpoints.
 2. Check that firewall rules allow outbound HTTPS (port 443) to AWS service endpoints.
 3. If you’re using a custom **Endpoint**, verify the URL is correct and reachable.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Query errors
 
@@ -115,7 +115,7 @@ Expand table
 2. Add filters to your query to reduce the result set.
 3. Use partitioned tables to limit the amount of data Athena scans.
 4. Break complex queries into smaller parts.
-5. Verify that [async query data support](/docs/plugins/grafana-athena-datasource/latest/query-editor/#async-query-data-support) is enabled (it is by default), which prevents long-running queries from timing out.
+5. Verify that [async query data support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/#async-query-data-support) is enabled (it is by default), which prevents long-running queries from timing out.
 
 ### Macro errors
 
@@ -210,7 +210,7 @@ These issues relate to slow queries or API limits.
 
 1. Reduce the frequency of dashboard auto-refresh.
 2. Reduce the number of panels querying Athena on a single dashboard.
-3. Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of API calls (available in Grafana Enterprise and Grafana Cloud).
+3. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of API calls (available in Grafana Enterprise and Grafana Cloud).
 4. Request a [service quota increase](https://docs.aws.amazon.com/athena/latest/ug/service-limits.html) from AWS if you consistently hit API rate limits.
 
 ## Enable debug logging
@@ -219,7 +219,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

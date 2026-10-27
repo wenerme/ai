@@ -9,7 +9,7 @@ description: "Find services in the labels on your existing SLOs, alert rules, da
 
 If your service level objectives (SLOs), alert rules, dashboards, incidents, or synthetic checks already carry a label that names the service they belong to, you don’t need to create each service by hand. **Discover services** reads that label across your Grafana Cloud resources, lists each value it finds as a candidate service, and lets you create the services you want in a single step.
 
-Service Center configures each service you create this way to match the resources that use its label value, so the [Service Center view](/docs/grafana-cloud/alerting-and-irm/service-center/overview/) shows those resources right away.
+Service Center configures each service you create this way to match the resources that use its label value, so the [Service Center view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/overview/) shows those resources right away.
 
 ## How Service Center finds services
 
@@ -116,7 +116,7 @@ The **Service identifier** can’t be changed after the service is created.
 
 If two selected values convert to the same identifier, for example `checkout_api` and `checkout-api`, the dialog box shows a warning and creates only the first service of each group.
 
-Discovered services don’t have a description, team, attributes, or dependencies. To show on-call information and [respond to service issues from Service Center](/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/), edit each service and assign a team. For details on each setting, refer to [Create a service](/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/).
+Discovered services don’t have a description, team, attributes, or dependencies. To show on-call information and [respond to service issues from Service Center](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/), edit each service and assign a team. For details on each setting, refer to [Create a service](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/).
 
 ## Troubleshoot discovery
 

@@ -11,7 +11,7 @@ Annotations overlay event markers on dashboard panels, helping you correlate Git
 
 The GitLab data source supports annotations using any of its resource types. You configure a standard GitLab query and map fields from the result to annotation properties.
 
-For general information about annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Create an annotation query
 
@@ -21,7 +21,7 @@ To add GitLab annotations to a dashboard:
 2. Click **Add annotation query**.
 3. Enter a name for the annotation (for example, `Recent commits`).
 4. Select your GitLab data source.
-5. Select a **Resource Type** from the drop-down and configure the query fields as you would in the [query editor](/docs/plugins/grafana-gitlab-datasource/latest/query-editor/).
+5. Select a **Resource Type** from the drop-down and configure the query fields as you would in the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/).
 6. Under **Field mappings**, configure the following:
 
    - **Time:** Select the field to use as the annotation timestamp (for example, `authored_at` for commits or `created_at` for deployments).

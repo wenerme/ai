@@ -11,7 +11,7 @@ This document explains how to use the New Relic query editor to build queries in
 
 ## Before you begin
 
-- Ensure you have [configured the New Relic data source](/docs/plugins/grafana-newrelic-datasource/latest/configure/).
+- Ensure you have [configured the New Relic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/configure/).
 - Verify your API key has the appropriate permissions for the data you want to query.
 
 ## Query types
@@ -69,7 +69,7 @@ The available aggregation functions in the **Select** field include: `count`, `a
 
 Data Explorer starts with **From** set to `Metric`, **Select** set to `*` and **Count**, **Facet** set to **None**, **Time filter** set to **Dashboard Time**, and **Format** set to `TIMESERIES`. **NRQL preview** shows:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM Metric $__timeFilter TIMESERIES AUTO
@@ -88,7 +88,7 @@ To build the default query:
 
 To return one summary value, set **Format** to `TABLE`. Data Explorer omits `TIMESERIES`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM Metric $__timeFilter
@@ -96,7 +96,7 @@ SELECT count(*) FROM Metric $__timeFilter
 
 To combine two aggregations, click **+ Add row** and choose an operand. For example, click **Add filter** on the first **Count** row, enter `appName = 'my-app'`, then set the second row’s operand to `/` and its aggregation to **Count** on `*`. Data Explorer generates:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT filter(count(*), WHERE appName = 'my-app') / count(*) FROM Metric $__timeFilter TIMESERIES AUTO
@@ -130,7 +130,7 @@ Expand table
 
 Average transaction duration as a time series:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction $__timeFilter TIMESERIES
@@ -138,7 +138,7 @@ SELECT average(duration) FROM Transaction $__timeFilter TIMESERIES
 
 Error rate by application:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT percentage(count(*), WHERE error IS true) FROM Transaction FACET appName $__timeFilter TIMESERIES
@@ -146,7 +146,7 @@ SELECT percentage(count(*), WHERE error IS true) FROM Transaction FACET appName 
 
 95th percentile response time:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT percentile(duration, 95) FROM Transaction WHERE appName = 'my-app' $__timeFilter TIMESERIES
@@ -154,7 +154,7 @@ SELECT percentile(duration, 95) FROM Transaction WHERE appName = 'my-app' $__tim
 
 Top 10 slowest transactions (table format):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration), count(*) FROM Transaction FACET name $__timeFilter LIMIT 10
@@ -162,7 +162,7 @@ SELECT average(duration), count(*) FROM Transaction FACET name $__timeFilter LIM
 
 Using the `$__timeSeries` macro for dynamic aggregation:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(cpuPercent) FROM SystemSample $__timeFilter $__timeSeries(60m, 1 MINUTE, MAX)
@@ -178,7 +178,7 @@ NRQL queries that use the `COMPARE WITH` clause automatically render comparison 
 
 For example, compare this week’s response time with last week:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction $__timeFilter TIMESERIES COMPARE WITH 1 WEEK AGO
@@ -190,7 +190,7 @@ You can query New Relic Synthetics data from the `SyntheticCheck` and `Synthetic
 
 The following example returns the count of all requests by response status:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM SyntheticRequest FACET responseStatus $__timeFilter
@@ -198,7 +198,7 @@ SELECT count(*) FROM SyntheticRequest FACET responseStatus $__timeFilter
 
 The following example returns the success rate for all monitors:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT (
@@ -231,7 +231,7 @@ Expand table
 
 Search for error logs from a specific container:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 message LIKE '%ERROR%' AND container_name = 'petclinic'
@@ -239,7 +239,7 @@ message LIKE '%ERROR%' AND container_name = 'petclinic'
 
 Filter logs by severity level:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 level = 'ERROR' OR level = 'FATAL'
@@ -247,7 +247,7 @@ level = 'ERROR' OR level = 'FATAL'
 
 Search for logs containing a specific trace ID:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 traceId = '951ae3313c093aa3278cbc27c0714c94'

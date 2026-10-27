@@ -9,13 +9,13 @@ description: "Learn how to create and use variables with the Google Sheets data 
 
 Instead of hard-coding details such as spreadsheet ID or range in your queries, you can use variables. This helps you create more interactive, dynamic, and reusable dashboards. Grafana refers to such variables as template variables. They typically appear as controls (such as drop-down lists) at the top of the dashboard so you can change what data is shown without editing each panel.
 
-For an introduction to templating and template variables, refer to [Variables](/docs/grafana/latest/dashboards/variables/) and [Add variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For an introduction to templating and template variables, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) and [Add variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 The Google Sheets data source supports **query variables**: variables whose options are loaded from a Google Sheet. You can then use those variables in panel queries (for example, in **Spreadsheet ID** or **Range**) to make dashboards dynamic.
 
 ## Before you begin
 
-- [Configure the Google Sheets data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and ensure **Save &amp; test** shows **Success**.
+- [Configure the Google Sheets data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and ensure **Save &amp; test** shows **Success**.
 - Have a sheet that contains the data for your variable (for example, a column of values and optionally a column of labels).
 
 ## Supported variable types
@@ -40,7 +40,7 @@ To create a query variable:
 2. Click **Add variable**.
 3. Set **Name** and **Type**. For **Type**, select **Query**.
 4. In **Data source**, select your Google Sheets data source.
-5. In the variable query editor you see **Spreadsheet ID**, **Range**, **Cache Time**, and **Use Time Filter** (same as in the [query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)). Set **Spreadsheet ID** and **Range** to the sheet and range that contain your variable data (for example, `Sheet1!A1:B10`). Adjust **Cache Time** or **Use Time Filter** if needed.
+5. In the variable query editor you see **Spreadsheet ID**, **Range**, **Cache Time**, and **Use Time Filter** (same as in the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)). Set **Spreadsheet ID** and **Range** to the sheet and range that contain your variable data (for example, `Sheet1!A1:B10`). Adjust **Cache Time** or **Use Time Filter** if needed.
 6. Set **Value Field** to the column that holds the values used in queries.
 7. Optionally set **Label Field** to the column that holds the text shown in the drop-down.
 8. Optionally use **Optional filtering** to limit rows: set **Filter Field** and **Filter Value**.
@@ -94,11 +94,11 @@ When the user changes the variable in the dashboard drop-down, queries that refe
 
 ## Next steps
 
-- Use variables in panel queries: [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)
-- Build a full example: [Quick start: create a sample dashboard](/docs/plugins/grafana-googlesheets-datasource/latest/#quick-start-create-a-sample-dashboard)
+- Use variables in panel queries: [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)
+- Build a full example: [Quick start: create a sample dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/#quick-start-create-a-sample-dashboard)
 
 ## Related topics
 
-- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)
-- [Configure the data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/)
-- [Grafana Variables documentation](/docs/grafana/latest/dashboards/variables/)
+- [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/)
+- [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/)
+- [Grafana Variables documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)

@@ -11,8 +11,8 @@ Use ServiceNow annotation queries to overlay events from your ServiceNow instanc
 
 ## Before you begin
 
-- [Configure the ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/configure/).
-- Familiarize yourself with [Grafana annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the ServiceNow data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/).
+- Familiarize yourself with [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 - Ensure the ServiceNow user has read access to the tables you want to use as annotation sources.
 
 ## Create an annotation query
@@ -76,9 +76,9 @@ Change requests appear as markers on the time axis at their scheduled start time
 
 ### Use template variables in annotation filters
 
-You can use [template variables](/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) in annotation filters to make annotations respond to dashboard selections. This example shows incidents only for the category selected in a dashboard variable.
+You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) in annotation filters to make annotations respond to dashboard selections. This example shows incidents only for the category selected in a dashboard variable.
 
-1. Create a `category` template variable if you don’t already have one. Refer to [ServiceNow template variables](/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) for setup steps.
+1. Create a `category` template variable if you don’t already have one. Refer to [ServiceNow template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/template-variables/) for setup steps.
 2. Create a new annotation query and select the **ServiceNow** data source.
 3. Configure the query:
 

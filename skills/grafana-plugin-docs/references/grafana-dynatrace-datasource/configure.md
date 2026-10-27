@@ -18,19 +18,19 @@ Grafana requirements:
 - Grafana 10.4 or later
 - One of the following:
 
-  - [Grafana Cloud](/products/cloud/) Free, Advanced, or Trial account.
-  - Grafana Enterprise with an [activated license](/docs/grafana/latest/administration/enterprise-licensing/).
+  - [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/cloud/) Free, Advanced, or Trial account.
+  - Grafana Enterprise with an [activated license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - The `Organization administrator` role to add data sources.
 
 Dynatrace requirements:
 
 - A Dynatrace environment (SaaS, Managed, or Environment ActiveGate).
-- A Dynatrace API token with appropriate scopes (see [Get an API key from Dynatrace](#get-an-api-key-from-dynatrace)).
+- A Dynatrace API token with appropriate scopes (see [Get an API key from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace)).
 - If using TLS/SSL: CA certificates, client certificates, or client keys as needed.
 
 ### Installation
 
-Install the Dynatrace plugin from the [Grafana plugin catalog](/grafana/plugins/grafana-dynatrace-datasource/?tab=installation).
+Install the Dynatrace plugin from the [Grafana plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-dynatrace-datasource/?tab=installation).
 
 ## Known limitations
 
@@ -128,8 +128,8 @@ Select the type of Dynatrace instance that you are connecting to:
 
 The following settings apply to all API types:
 
-- **Dynatrace API token** - Enter your Dynatrace API token. At minimum, it must have `metrics.read` and `entities.read` permissions. Refer to [Get an API key from Dynatrace](#get-an-api-key-from-dynatrace) for instructions on creating the token and required scopes for each query type.
-- **Dynatrace Platform token** - *(Optional)* Enter your Dynatrace Platform token. This token is required for querying data stored in Dynatrace Grail. Refer to [Get a Platform token from Dynatrace](#get-a-platform-token-from-dynatrace) for instructions on creating the token and required scopes.
+- **Dynatrace API token** - Enter your Dynatrace API token. At minimum, it must have `metrics.read` and `entities.read` permissions. Refer to [Get an API key from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-an-api-key-from-dynatrace) for instructions on creating the token and required scopes for each query type.
+- **Dynatrace Platform token** - *(Optional)* Enter your Dynatrace Platform token. This token is required for querying data stored in Dynatrace Grail. Refer to [Get a Platform token from Dynatrace](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/configure/#get-a-platform-token-from-dynatrace) for instructions on creating the token and required scopes.
 - **Timeout** - The timeout, in seconds, for the HTTP client. The default is `30`.
 - **Add self-signed certificate** - Enable this option to provide your own CA certificate for TLS verification.
 
@@ -143,9 +143,9 @@ The following settings apply to all API types:
 
 ## Configure the data source with provisioning
 
-You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
+You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -195,7 +195,7 @@ You can configure the Dynatrace data source as code using the [Grafana Terraform
 
 The following examples demonstrate configurations for each API type (SaaS, Managed, and Raw URL), as well as an advanced configuration with TLS settings.
 
-Terraform [Copy code to clipboard] Copy
+Terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {

@@ -9,13 +9,13 @@ description: "Query and visualize sites, builds, deploys, forms, and SSL certifi
 
 > Note
 >
-> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](/docs/release-life-cycle/) for details. If you notice any issues or have a feature request, create a support ticket through your Grafana Enterprise support channel.
+> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/) for details. If you notice any issues or have a feature request, create a support ticket through your Grafana Enterprise support channel.
 
 The Netlify data source plugin lets you query and visualize data from Netlify within Grafana, including your sites, builds, deploys, forms, form submissions, SSL certificates, and account build usage.
 
 > Note
 >
-> The Netlify data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Netlify data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -37,11 +37,11 @@ This plugin has the following requirements:
 
 - Grafana v10.4.0 or later.
 - A Netlify personal access token.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
 
 ## Install the plugin
 
-To install the data source, refer to [Installation](/grafana/plugins/grafana-netlify-datasource/?tab=installation).
+To install the data source, refer to [Installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-netlify-datasource/?tab=installation).
 
 ## Configure the data source
 
@@ -83,11 +83,11 @@ You can define the data source in code and manage it with Grafana’s provisioni
 
 #### YAML file provisioning
 
-You can configure the data source using YAML configuration files. For more information, including all the settings you can set for this data source, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can configure the data source using YAML configuration files. For more information, including all the settings you can set for this data source, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Here’s a provisioning example for this data source using personal access token authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -102,7 +102,7 @@ datasources:
 
 You can provision the data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the [`grafana_data_source`](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source) resource. Store the token in `secure_json_data_encoded` and pass it through a sensitive variable rather than hardcoding it.
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 variable "netlify_token" {
@@ -216,7 +216,7 @@ Expand table
 
 To create a query, follow these steps. This example retrieves failed deploys for a site:
 
-1. Add a panel to a dashboard, or open [Explore](/docs/grafana/latest/explore/), and select the Netlify data source.
+1. Add a panel to a dashboard, or open [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/), and select the Netlify data source.
 2. In the **Action** field, select **Deploys**.
 3. Select a **Site ID** from the list of available sites.
 4. Set **State** to **Error**.
@@ -242,11 +242,11 @@ Alerting isn’t currently supported.
 
 ## Explore your data
 
-Use Explore to run queries and visualize the results as logs or metrics without building a dashboard. For more information, refer to [Explore](/docs/grafana/latest/explore/).
+Use Explore to run queries and visualize the results as logs or metrics without building a dashboard. For more information, refer to [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/).
 
 ## Templates and variables
 
-Use template variables to build dynamic, reusable dashboards instead of hardcoding values such as site or account IDs. To add a new Netlify query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select your Netlify data source, then configure the query using the same **Action** and parameters as the query editor.
+Use template variables to build dynamic, reusable dashboards instead of hardcoding values such as site or account IDs. To add a new Netlify query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select your Netlify data source, then configure the query using the same **Action** and parameters as the query editor.
 
 ### Query variable example
 
@@ -262,9 +262,9 @@ You can create dependent (chained) variables the same way. For example, add a **
 
 ### Use variables in queries
 
-After you create a variable, reference it in a query parameter using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/), such as `$site` or `${site}`. For example, set the **Site ID** parameter of a **Deploys** query to `$site` so the panel follows the site selected in the dashboard drop-down.
+After you create a variable, reference it in a query parameter using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/), such as `$site` or `${site}`. For example, set the **Site ID** parameter of a **Deploys** query to `$site` so the panel follows the site selected in the dashboard drop-down.
 
-For more information about variables, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+For more information about variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Plugin updates
 
@@ -272,11 +272,11 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the Netlify plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-netlify-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the Netlify plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-netlify-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Learn more
 
-- Add [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
-- Configure and use [Templates and variables](/docs/grafana/latest/dashboards/variables/).
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
-- [Troubleshoot Netlify data source issues](/docs/plugins/grafana-netlify-datasource/latest/troubleshooting/).
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- Configure and use [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+- [Troubleshoot Netlify data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-netlify-datasource/latest/troubleshooting/).

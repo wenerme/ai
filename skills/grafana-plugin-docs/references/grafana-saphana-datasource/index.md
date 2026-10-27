@@ -11,7 +11,7 @@ The SAP HANA data source plugin allows you to query and visualize data from your
 
 > Note
 >
-> The SAP HANA data source is an Enterprise plugin. It is available with [Grafana Cloud](/products/cloud/) (Free, Pro, and Advanced tiers) and [Grafana Enterprise](/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins/).
+> The SAP HANA data source is an Enterprise plugin. It is available with [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/cloud/) (Free, Pro, and Advanced tiers) and [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins/).
 
 ## Supported SAP HANA environments
 
@@ -25,19 +25,19 @@ The SAP HANA data source supports the following deployment types:
 
 The following documents help you get started with the SAP HANA data source:
 
-- [Configure the SAP HANA data source](/docs/plugins/grafana-saphana-datasource/latest/configure/)
-- [SAP HANA query editor](/docs/plugins/grafana-saphana-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-saphana-datasource/latest/template-variables/)
-- [Troubleshooting](/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/)
+- [Configure the SAP HANA data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/configure/)
+- [SAP HANA query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/template-variables/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the SAP HANA data source, you can:
 
-- Add [Annotations](/docs/plugins/grafana-saphana-datasource/latest/annotations/) to overlay SAP HANA events on your graphs.
-- Configure and use [Template variables](/docs/plugins/grafana-saphana-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
-- Set up [Alerting](/docs/plugins/grafana-saphana-datasource/latest/alerting/) to monitor your SAP HANA data.
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/annotations/) to overlay SAP HANA events on your graphs.
+- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/).
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/alerting/) to monitor your SAP HANA data.
 
 ## Related resources
 

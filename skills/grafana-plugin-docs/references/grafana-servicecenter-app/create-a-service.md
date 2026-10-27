@@ -7,11 +7,11 @@ description: "Service Center provides a centralized operational view of your ser
 
 # Create a service
 
-Create a service to enable the [Service Center view](/docs/grafana-cloud/alerting-and-irm/service-center/overview/) and provide a centralized operational view of your team’s services.
+Create a service to enable the [Service Center view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/overview/) and provide a centralized operational view of your team’s services.
 
 A service represents an application, API, or other component that your team owns and operates. Service Center correlates Grafana Cloud resources to a service by matching labels and tags that identify that service.
 
-You can create and manage services directly in Grafana Cloud, [discover them from your existing resources](#discover-services-from-existing-resources), [provision them with Terraform](#provision-services-with-terraform), or import them from [Backstage](#import-services-from-backstage).
+You can create and manage services directly in Grafana Cloud, [discover them from your existing resources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#discover-services-from-existing-resources), [provision them with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#provision-services-with-terraform), or import them from [Backstage](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicecenter-app/latest/create-a-service/#import-services-from-backstage).
 
 ## Add a service
 
@@ -23,7 +23,7 @@ Configure the basic information for the service:
 
 1. Enter a name for the service.
 2. Optional: Enter a description of the service.
-3. Optional: Assign a team to the service to enable [on-call information and respond to service issues from Service Center](/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/).
+3. Optional: Assign a team to the service to enable [on-call information and respond to service issues from Service Center](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/).
 4. Optional: Enter custom attributes using **Add Attribute**.
 
    Attributes provide additional context about the service. Common examples include links to **Documentation**, **Repository**, and other relevant metadata.
@@ -35,7 +35,7 @@ In the **Service content** section, define how Service Center identifies resourc
 - **Service identifier** defines the value of the `service_name` label used to discover related resources such as incidents, SLOs, dashboards, synthetic checks, and alert rules.
 - **Additional identifiers** let you define up to five more label key-value pairs, for resources that use another label convention.
 
-[](/media/docs/grafana-cloud/service-center/screenshot-service-content-section.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-service-content-section.png)
 
 The service identifier must be 2 to 63 characters long, and can contain only lowercase letters, numbers, and dashes. It must start and end with a letter or number. When you create a service, Service Center fills in the identifier from the service name until you enter your own value.
 
@@ -66,31 +66,31 @@ Expand table
 | SLOs, alert rules, synthetic checks | Label `service_name=<IDENTIFIER>`                                          | Label `<KEY>=<VALUE>` |
 | Dashboards                          | Tag `service_name:<IDENTIFIER>`, `service:<IDENTIFIER>`, or `<IDENTIFIER>` | Tag `<KEY>:<VALUE>`   |
 
-The **Incidents** and **IRM** sections of the [Service Center view](/docs/grafana-cloud/alerting-and-irm/service-center/overview/) also use the additional identifiers.
+The **Incidents** and **IRM** sections of the [Service Center view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/overview/) also use the additional identifiers.
 
 > Note
 >
 > Links that open another app with a filtered view, such as **See all alerts** in the **Alerting** section, filter by the service identifier only. Resources that match only an additional identifier appear in Service Center, but not in the linked view.
 
-To find services by additional identifier, use **Filter by identifier** in the service list. For more information, refer to [Find and organize services](/docs/grafana-cloud/alerting-and-irm/service-center/find-and-organize-services/#search-and-filter-the-service-list).
+To find services by additional identifier, use **Filter by identifier** in the service list. For more information, refer to [Find and organize services](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/find-and-organize-services/#search-and-filter-the-service-list).
 
 ### Configure dependencies
 
 Optionally, define dependencies between services to model relationships within your system architecture. Dependencies help assess potential upstream or downstream impact during incidents.
 
-After you save the service, Service Center discovers matching resources and displays them in the [Service Center view](/docs/grafana-cloud/alerting-and-irm/service-center/overview/).
+After you save the service, Service Center discovers matching resources and displays them in the [Service Center view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/overview/).
 
 ## Discover services from existing resources
 
 If your SLOs, alert rules, dashboards, incidents, or synthetic checks already use a label such as `service_name` to identify services, you can create many services at once. **Discover services** lists the values of that label as candidate services, lets you choose how they’re named, and creates the ones you select.
 
-For instructions, refer to [Discover services](/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/).
+For instructions, refer to [Discover services](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/).
 
 ## Provision services with Terraform
 
 You can also manage services as code with the Grafana Terraform provider, which lets you version service definitions and keep them alongside the teams, SLOs, and alert rules they relate to.
 
-For instructions, refer to [Provision services using Terraform](/docs/grafana-cloud/alerting-and-irm/service-center/provision-with-terraform/).
+For instructions, refer to [Provision services using Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/provision-with-terraform/).
 
 ## Import services from Backstage
 

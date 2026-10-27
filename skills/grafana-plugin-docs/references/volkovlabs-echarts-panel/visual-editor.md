@@ -7,19 +7,19 @@ description: "Learn how to use the Visual editor to simplify working with Grafan
 
 # Visual editor
 
-The Visual editor simplifies working with Grafana data frames and makes it easy to send data to the [Charts function](/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/).
+The Visual editor simplifies working with Grafana data frames and makes it easy to send data to the [Charts function](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/).
 
 The Visual Editor helps you work with datasets, but you still need the Charts function for advanced use cases.
 
 This feature is in beta. It works for all charts enabled in the **Type** drop-down list.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/type-location.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/type-location.png)
 
 *In development* means that this type is coming soon. All other types are available for selection.
 
 If your use case requires complex logic, use the **Code** mode.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/vis-editor.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/vis-editor.png)
 
 ## Types
 
@@ -27,18 +27,18 @@ Below is a more detailed description of how the **Visual Editor** can be used fo
 
 Expand table
 
-| Chart Type            | Description                                        |
-|-----------------------|----------------------------------------------------|
-| [Line](#line)         | Provides examples for the **Line** chart type.     |
-| [Bar](#bar)           | Provides examples for the **Bar** chart type.      |
-| [Radar](#radar)       | Provides examples for the **Radar** chart type.    |
-| [Sunburst](#sunburst) | Provides examples for the **Sunburst** chart type. |
-| [Boxplot](#boxplot)   | Provides examples for the **Boxplot** chart type.  |
-| [Scatter](#scatter)   | Provides examples for the **Scatter** chart type.  |
+| Chart Type                                                                                                                                    | Description                                        |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [Line](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#line)         | Provides examples for the **Line** chart type.     |
+| [Bar](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#bar)           | Provides examples for the **Bar** chart type.      |
+| [Radar](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#radar)       | Provides examples for the **Radar** chart type.    |
+| [Sunburst](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#sunburst) | Provides examples for the **Sunburst** chart type. |
+| [Boxplot](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#boxplot)   | Provides examples for the **Boxplot** chart type.  |
+| [Scatter](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/#scatter)   | Provides examples for the **Scatter** chart type.  |
 
 ## Line
 
-[](/media/docs/grafana/panels-visualizations/business-charts/line-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/line-basic.png)
 
 1. Required data frame. You need to have at least two columns of data. At least one column should be numerical.
 
@@ -56,7 +56,7 @@ Expand table
 4. Chart Type specific options. Ensure to specify **Encode Y** (values to be located on the vertical axis) and **Encode X** (values to be located on the horizontal axis).
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -73,7 +73,7 @@ return {
 
 ## Bar
 
-[](/media/docs/grafana/panels-visualizations/business-charts/bar-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/bar-basic.png)
 
 1. Required data frame. You need to have at least two columns of data. At least one column should be numerical.
 
@@ -93,7 +93,7 @@ return {
 4. Chart Type specific options. For the **Bar** type, the only required option is **ID**.
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -114,7 +114,7 @@ A radar chart, also known as a spider chart, shows multivariate data stacked at 
 
 Here, we compare the allocated and actual budgets in six categories (company departments).
 
-[](/media/docs/grafana/panels-visualizations/business-charts/radar-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/radar-basic.png)
 
 1. Required data frame. You need to have at least two columns of data. At least one column should be numerical. In this example, there are two numerical columns.
 
@@ -133,7 +133,7 @@ Here, we compare the allocated and actual budgets in six categories (company dep
 4. Chart Type specific options. For the **Radar** type, specify dimensions where one dimension is one data series. In this example, there are two dimensions. One is for the allocated budget, and the other is for the actual spending.
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -157,7 +157,7 @@ A sunburst chart is a circular diagram displaying pieces of a whole on multiple 
 
 Data for the sunburst chart should include levels. These levels represent the hierarchical structure of the data. The top level typically represents the set of main categories, and each further level decomposes the previous one, providing a more detailed view of the data.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/sunburst-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/sunburst-basic.png)
 
 1. Required data frame. For a meaningful sunburst, you need at least two levels(two columns) of data.
 
@@ -178,7 +178,7 @@ Data for the sunburst chart should include levels. These levels represent the hi
 4. Chart Type specific options. Every column is a level for the **Sunburst**; ensure to rearrange them if needed.
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -199,7 +199,7 @@ return {
 
 The boxplot is a chart depicting a variable distribution in a compact way where you can compare it over time or between multiple entities.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/boxplot-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/boxplot-basic.png)
 
 1. Required data frame. For each distribution, you provide the minimum, the first quartile (25% mark), the median, the third quartile (75% mark), and maximum values.
 
@@ -216,7 +216,7 @@ The boxplot is a chart depicting a variable distribution in a compact way where 
 4. Chart Type specific options. There are no specific options to specify with the latest plugin release.
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -236,7 +236,7 @@ return {
 
 The scatter (also known as scatter graph, scatter plot, scattergram) is a chart that uses Cartesian coordinates to depict a value for two variables.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/scatter-basic.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/scatter-basic.png)
 
 1. Required data frame. One data frame should consist of three columns, X and Y coordinates and then a value to display. For instance:
 
@@ -254,7 +254,7 @@ The scatter (also known as scatter graph, scatter plot, scattergram) is a chart 
 4. Chart Type specific options. Specify which dataset should play the role of X coordinates, Y coordinates, and the value associated with each (x,y) coordinate.
 5. Charts Function.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {
@@ -284,4 +284,4 @@ return {
 
 To get you started faster, there are many examples of how the **Visual Editor** can be used.
 
-Please, check out the [Examples section](/docs/plugins/volkovlabs-echarts-panel/latest/examples/) of the documentation.
+Please, check out the [Examples section](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/examples/) of the documentation.
