@@ -1305,7 +1305,7 @@ with Gemini Embedding.
 | Model code | **Gemini API** `gemini-embedding-2` |
 | Supported data types | **Input** Text, image, video, audio, PDF **Output** Text embeddings |
 | Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 8,192 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
-| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-2` |
+| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Stable: `gemini-embedding-2` |
 | Latest update | April 2026 |
 
 ### Gemini Embedding
@@ -1315,10 +1315,11 @@ with Gemini Embedding.
 | Model code | **Gemini API** `gemini-embedding-001` |
 | Supported data types | **Input** Text **Output** Text embeddings |
 | Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 2,048 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
-| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-001` |
+| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Stable: `gemini-embedding-001` |
 | Latest update | June 2025 |
 
-For deprecated Embeddings models, visit the [Deprecations](https://ai.google.dev/gemini-api/docs/deprecations) page
+For deprecated Embeddings models, visit the
+[Deprecations](https://ai.google.dev/gemini-api/docs/deprecations) page
 
 ## Migration from gemini-embedding-001
 
@@ -1360,7 +1361,8 @@ the two models:
 If latency is not a concern, try using the Gemini Embeddings models with
 [Batch API](https://ai.google.dev/gemini-api/docs/batch-api#batch-embedding). This
 allows for much higher throughput at 50% of the default Embedding price.
-Find examples on how to get started in the [Batch API cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb).
+Find examples on how to get started in the
+[Batch API cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb).
 
 ## Responsible use notice
 

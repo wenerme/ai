@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png
 
 # Build image
 
-Last updated Oct 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
@@ -28,28 +28,28 @@ The default versions will be updated regularly to the latest minor version. No m
 
 | Tool | Default version | Environment variable | File |
 | --- | --- | --- | --- |
-| **Go** | 1.27.2 | `GO_VERSION` | |
-| **Node.js** | 24.21.0 | `NODE_VERSION` | .nvmrc, .node-version |
+| **Go** | 1.27.3 | `GO_VERSION` | |
+| **Node.js** | 24.22.1 | `NODE_VERSION` | .nvmrc, .node-version |
 | **Python** | 3.14.8 | `PYTHON_VERSION` | .python-version, runtime.txt |
 | **Ruby** | 3.4.11 | `RUBY_VERSION` | .ruby-version |
 
-The build image preinstalls Node.js 22.23.2 and 24.21.0.
+The build image preinstalls Node.js 22.23.4 and 24.22.1.
 
 ### Tools and languages
 
 | Tool | Default version | Environment variable | File |
 | --- | --- | --- | --- |
-| **Bun** | 1.4.3 | `BUN_VERSION` | `packageManager` field in `package.json` |
+| **Bun** | 1.4.4 | `BUN_VERSION` | `packageManager` field in `package.json` |
 | **Hugo** | extended\_0.147.7 | `HUGO_VERSION` | |
 | **npm** | 10.9.2 |  | `packageManager` field in `package.json` |
 | **yarn** | 4.18.1 | `YARN_VERSION` | `packageManager` field in `package.json` |
 | **pnpm** | 10.11.1 | `PNPM_VERSION` | `packageManager` field in `package.json` |
-| **pip** | 26.2.1 |  | |
+| **pip** | 26.2.2 |  | |
 | **gem** | 3.6.9 |  | |
 | **poetry** | 2.4.3 |  | |
 | **pipx** | 1.17.2 |  | |
 | **bundler** | 2.6.9 |  | |
-| **uv** | 0.12.10 |  | |
+| **uv** | 0.13.4 |  | |
 
 For details on the `packageManager` field, refer to [Package manager versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#package-manager-versions).
 
@@ -117,6 +117,19 @@ Workers Builds are run in the following environment:
 | --- | --- |
 | **Architecture** | x86\_64 |
 
+### Trusted certificates
+
+Build commands use the CA certificates installed in the build image at `/etc/ssl/certs/ca-certificates.crt`. Workers Builds sets the following environment variables so that runtimes with their own bundled CA certificates use them as well, including older versions you select with a [version override](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions):
+
+| Environment variable | Value |
+| --- | --- |
+| `SSL_CERT_FILE` | `/etc/ssl/certs/ca-certificates.crt` |
+| `PIP_CERT` | `/etc/ssl/certs/ca-certificates.crt` |
+| `REQUESTS_CA_BUNDLE` | `/etc/ssl/certs/ca-certificates.crt` |
+| `NODE_OPTIONS` | `--use-openssl-ca` |
+
+If you set any of these variables as a [build variable](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings), your value replaces the default. `--use-openssl-ca` is added to your own `NODE_OPTIONS`, unless it already contains `--use-openssl-ca` or `--use-bundled-ca`.
+
 ## Build Image Policy
 
 ### Preinstalled Software Updates
@@ -150,5 +163,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png?v=2dd0e4b778488d98","dateModified":"2026-10-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/og.png?v=2dd0e4b778488d98","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

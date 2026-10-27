@@ -494,6 +494,10 @@ Geo finds the current Puma or Sidekiq node's Geo [site](../../glossary.md) name 
 This name is used to look up the Geo site with the same **Name** in the **Geo Sites**
 dashboard.
 
+If the name does not match the **Name** of any Geo site, administrators see a banner
+on the affected site. The banner shows the configured name and links to this section.
+After you correct the name, [restart GitLab](../../../restart_gitlab.md) to clear the banner.
+
 To check if the current machine has a site name that matches a site in the
 database, run the check task:
 

@@ -65,15 +65,23 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_text"`
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
       - `ResponseOutputText object { annotations, logprobs, text, type }`
 
@@ -287,15 +295,23 @@ Get a single item from a conversation with the given IDs.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
       - `ComputerScreenshotContent object { detail, file_id, image_url, 2 more }`
 
@@ -319,15 +335,23 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_screenshot"`
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
       - `ResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -365,15 +389,23 @@ Get a single item from a conversation with the given IDs.
 
           The name of the file to be sent to the model.
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
     - `role: "unknown" or "user" or "assistant" or 5 more`
 
@@ -4336,7 +4368,8 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items/$ITEM_ID \
       "text": "text",
       "type": "input_text",
       "prompt_cache_breakpoint": {
-        "mode": "explicit"
+        "mode": "explicit",
+        "ttl": "30m"
       }
     }
   ],

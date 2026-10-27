@@ -238,7 +238,7 @@ const response = await openai.chat.completions.create({
       ],
     },
   ],
-  store: true,
+  store: false,
 });
 
 console.log(response.choices[0]);

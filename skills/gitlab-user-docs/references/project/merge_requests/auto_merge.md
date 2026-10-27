@@ -186,7 +186,7 @@ To change this behavior:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/14380) in GitLab 17.6.
 
-If your merge request should not merge before a specific date and time, set a **Merge can start** date.
+If your merge request should not merge before a specific date and time, set a **Merge schedule** date.
 This value sets when the merge (or merge train) can start. The exact time of merge can vary,
 however, depending on the satisfaction of other merge checks or the length of your merge train.
 
@@ -200,7 +200,29 @@ To do this:
 1. In the left sidebar, select **Code** > **Merge requests**.
 1. Select the merge request to edit.
 1. Select **Edit**.
-1. From the **Merge can start** dropdown list, select `After scheduled date`, then select a date and time.
+1. From the **Merge schedule** dropdown list, select **After**, then select a date and time.
+1. Select **Save changes**.
+
+## Prevent merge outside a specific time period
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630505) in GitLab 19.6.
+
+To allow a merge request to merge only during a specific time period, set a **Merge schedule** time range.
+The first value sets when the merge (or merge train) can start, and the second value sets when it can no longer start.
+If the time range ends before the merge request merges, the merge request cannot merge until you change or remove the merge schedule.
+The exact time of merge can vary, depending on other merge checks or the length of your merge train.
+
+Prerequisites:
+
+- You must have the Developer, Maintainer, or Owner role for the project.
+
+To do this:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Code** > **Merge requests**.
+1. Select the merge request to edit.
+1. Select **Edit**.
+1. From the **Merge schedule** dropdown list, select **Between**, then select both dates and times.
 1. Select **Save changes**.
 
 ## Troubleshooting

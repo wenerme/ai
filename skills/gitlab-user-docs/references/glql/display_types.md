@@ -48,6 +48,18 @@ A table can describe its result. This requires [analytics mode](_index.md#analyt
 `description` under `displayConfig`, and set `hiddenMetrics` to keep a metric out of the columns.
 See [Dynamic descriptions](#dynamic-descriptions) for placeholder syntax and rules.
 
+To keep column boundaries in place when the rows change, for example between pages, set
+`columnWidths` under `displayConfig`. It maps column names to a percentage of the table width,
+from 1 to 100. Columns without a width share the remaining space. Text that does not fit a sized
+column is truncated, and you can hover over it to see the full text.
+
+```yaml
+displayConfig:
+  columnWidths:
+    group: 35
+    project: 25
+```
+
 ### Example
 
 To display the first five open issues assigned to the current user in the `gitlab-org/gitlab`
@@ -755,9 +767,15 @@ displayConfig:
 ## Pagination support
 
 - Automatic pagination for analytics mode visualizations [introduced](https://gitlab.com/gitlab-org/glql/-/work_items/170) in GitLab 19.5.
+- **Previous** and **Next** paging for analytics mode tables [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633584) in GitLab 19.6.
+- `columnWidths` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262111) in GitLab 19.6.
 
 Display types available in any mode display the first page of results and provide a **Load more**
 action to fetch additional pages. For more information, see [pagination](_index.md#pagination).
+
+Tables in analytics mode show one page of `limit` rows (20 by default) with **Previous** and
+**Next** controls. **Next** fetches the following page, and **Previous** returns to a page that was
+already fetched. Sorting by a column sorts the rows on the current page.
 
 Analytics mode aggregated visualizations such as charts and stats don't provide a **Load more**
 action. They fetch every page of aggregated results automatically, up to a maximum of 1,000 rows.

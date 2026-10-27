@@ -29,15 +29,23 @@
 
       - `"input_text"`
 
-    - `prompt_cache_breakpoint: optional object { mode }`
+    - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+      Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
       - `mode: "explicit"`
 
         The breakpoint mode. Always `explicit`.
 
         - `"explicit"`
+
+      - `ttl: optional "30m" or "12h"`
+
+        The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+        - `"30m"`
+
+        - `"12h"`
 
   - `OutputText object { text, type }`
 
@@ -127,15 +135,23 @@
 
           - `"input_text"`
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
       - `OutputText object { text, type }`
 
@@ -432,15 +448,23 @@
 
               - `"input_text"`
 
-            - `prompt_cache_breakpoint: optional object { mode }`
+            - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-              Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+              Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
               - `mode: "explicit"`
 
                 The breakpoint mode. Always `explicit`.
 
                 - `"explicit"`
+
+              - `ttl: optional "30m" or "12h"`
+
+                The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+                - `"30m"`
+
+                - `"12h"`
 
           - `OutputText object { text, type }`
 
@@ -796,15 +820,23 @@
 
           - `"input_text"`
 
-        - `prompt_cache_breakpoint: optional object { mode }`
+        - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+          Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
           - `mode: "explicit"`
 
             The breakpoint mode. Always `explicit`.
 
             - `"explicit"`
+
+          - `ttl: optional "30m" or "12h"`
+
+            The minimum lifetime of this cache breakpoint. Defaults to the request TTL.
+
+            - `"30m"`
+
+            - `"12h"`
 
       - `OutputText object { text, type }`
 

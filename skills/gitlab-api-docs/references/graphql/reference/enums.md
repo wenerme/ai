@@ -6035,6 +6035,8 @@ Name of the feature that the callout is for.
 | `SUGGEST_PIPELINE` | Callout feature name for suggest_pipeline. |
 | `SUGGEST_POPOVER_DISMISSED` | Callout feature name for suggest_popover_dismissed. |
 | `TABS_POSITION_HIGHLIGHT` | Callout feature name for tabs_position_highlight. |
+| `TAILORED_NAVIGATION_DEFAULT_PINS_MERGED` | Callout feature name for tailored_navigation_default_pins_merged. |
+| `TAILORED_NAVIGATION_ONBOARDING` | Callout feature name for tailored_navigation_onboarding. |
 | `THREAT_MONITORING_INFO` | Callout feature name for threat_monitoring_info. |
 | `TRANSITION_TO_JIHU_CALLOUT` | Callout feature name for transition_to_jihu_callout. |
 | `TRIAL_STATUS_REMINDER_D14` | Callout feature name for trial_status_reminder_d14. |

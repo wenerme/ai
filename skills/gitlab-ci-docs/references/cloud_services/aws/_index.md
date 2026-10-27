@@ -142,7 +142,14 @@ assume role:
 
 If your GitLab instance is not publicly accessible, configuring OpenID Connect in AWS
 is not possible by default. You can use a workaround to make some specific configuration publicly
-accessible, enabling OpenID Connect configuration for the instance:
+accessible, enabling OpenID Connect configuration for the instance.
+
+You must host the OpenID configuration and public keys yourself. Exposing the GitLab
+`/.well-known/openid-configuration` endpoint through a separate public hostname does not work,
+because the `issuer` and `jwks_uri` values in it still point to your instance URL. The
+`ci_id_tokens_issuer_url` setting changes only the `iss` claim in CI/CD ID tokens, not this document.
+
+To make this configuration publicly accessible:
 
 1. Store authentication details for your GitLab instance at a publicly available location,
    for example in S3 files:
@@ -308,6 +315,9 @@ This error might be because:
 - A custom firewall is blocking the requests.
 - There's latency of more than 5 seconds in API requests from the IdP to reach the AWS STS endpoint.
 - STS is making too many requests to your `.well_known` URL or the `jwks_uri` of the IdP.
+- In GitLab 19.3.6, 19.4.3, and 19.5.1 and later, the discovery document returns a `jwks_uri` built
+  from the instance URL, which AWS cannot reach if you exposed the discovery endpoint through a
+  separate public hostname.
 
 As documented in the [AWS Knowledge Center article for this error](https://repost.aws/knowledge-center/iam-sts-invalididentitytoken),
 your GitLab instance needs to be publicly accessible so that the `.well_known` URL and `jwks_uri` can be resolved.

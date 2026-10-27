@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedba
 
 # Add Human Feedback using API
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through the steps of adding human feedback to an AI Gateway request using the Cloudflare API. You will learn how to retrieve the relevant request logs, and submit feedback using the API.
 
@@ -41,13 +41,15 @@ The steps below outline how to do this.
 1. **Make a Request to the AI Gateway**: This could be a request your application sends to the AI Gateway. Once the request is made, the response will contain various pieces of metadata.
 2. **Check the Response Headers**: The response will include a header named `cf-aig-log-id`. This is the identifier you will need to submit feedback.
 
-In the example below, the `cf-aig-log-id` is `01JADMCQQQBWH3NXZ5GCRN98DP`.
+Treat the log ID as an opaque string. Newer logs use lowercase UUIDv7 IDs, and older logs use 26-character ULIDs. The logs API accepts both.
+
+In the example below, the `cf-aig-log-id` is `019a7b3e-5f2c-7c41-9d3e-2b8f6a1c4e07`.
 
 ```json
 {
 	"status": "success",
 	"headers": {
-		"cf-aig-log-id": "01JADMCQQQBWH3NXZ5GCRN98DP"
+		"cf-aig-log-id": "019a7b3e-5f2c-7c41-9d3e-2b8f6a1c4e07"
 	},
 	"data": {
 		"response": "Sample response data"
@@ -88,7 +90,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gatew
 {
 	"result": [
 		{
-			"id": "01JADMCQQQBWH3NXZ5GCRN98DP",
+			"id": "019a7b3e-5f2c-7c41-9d3e-2b8f6a1c4e07",
 			"cached": true,
 			"created_at": "2019-08-24T14:15:22Z",
 			"custom_cost": true,
@@ -189,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/#page","headline":"Add Human Feedback using API","description":"Submit human feedback on AI Gateway request logs using the Cloudflare API.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/og.png?v=55ab5bde9f6f1dfd","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/#page","headline":"Add Human Feedback using API","description":"Submit human feedback on AI Gateway request logs using the Cloudflare API.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/og.png?v=55ab5bde9f6f1dfd","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

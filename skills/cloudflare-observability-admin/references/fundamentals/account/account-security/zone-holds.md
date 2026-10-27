@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/z
 
 # Zone holds
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zone holds prevent other teams in your organization from adding zones that are already active in another account.
 
@@ -43,9 +43,13 @@ To enable a zone hold:
 
 You also have the option to **Also prevent subdomains**, which prevents anyone in your organization from creating subdomains or custom hostnames related to your zone.
 
+Note
+
+A zone hold also blocks operations such as adding a [Pages custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) or custom hostname for a hostname under the hold, even within the same Cloudflare account. To configure a custom domain on a held zone or subdomain, temporarily [release the zone hold](#release-zone-holds) during setup.
+
 ## Release zone holds
 
-You may want to temporarily release a zone hold to allow another team to [register a subdomain](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) in a separate Cloudflare account, such as `docs.example.com`.
+You may want to temporarily release a zone hold to allow another team to [register a subdomain](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) in a separate Cloudflare account (such as `docs.example.com`), or to add a [Pages custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) under a held domain.
 
 To release a zone hold:
 
@@ -65,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/#page","headline":"Zone holds","description":"Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/og.png?v=e4315f344a0e3f8f","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/#page","headline":"Zone holds","description":"Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/og.png?v=e4315f344a0e3f8f","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

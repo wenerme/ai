@@ -2465,7 +2465,7 @@ try {
         content: "how can I solve 8x + 7 = -23",
       },
     ],
-    max_output_tokens: 50,
+    max_output_tokens: 1024,
     text: {
       format: {
         type: "json_schema",

@@ -69,7 +69,7 @@ To turn on business logic scanning:
    including the **Business Logic Security Scan** flow.
 1. [Attach the business logic scan profile](../configuration/security_configuration_profiles.md#business-logic-profile)
    to each project you want to scan. Until the scan profile UI is available,
-   [attach the profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-a-profile-with-the-graphql-api).
+   [attach the profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api).
 
 ## Automatic merge request scans
 

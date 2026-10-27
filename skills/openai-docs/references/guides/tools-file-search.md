@@ -296,7 +296,7 @@ Check status
 ```javascript
 // Use vectorStore from the earlier create step.
 const result = await openai.vectorStores.files.list(vectorStore.id);
-console.log(result);
+console.log(result.data);
 ```
 
 ```python

@@ -78,6 +78,31 @@ Use startup history to resume a topic, and append relevant context as the conver
 Include prior text messages in `session.input` when you create the session. For example, add this `input` field to your [session creation configuration](https://developers.openai.com/api/docs/guides/live#connect-your-first-session):
 
 ```javascript
+export const session = {
+  model: "gpt-live-1",
+  input: [
+    {
+      type: "message",
+      role: "user",
+      content: [
+        {
+          type: "input_text",
+          text: "I need help with my recent order.",
+        },
+      ],
+    },
+    {
+      type: "message",
+      role: "assistant",
+      content: [
+        {
+          type: "output_text",
+          text: "What is the order number?",
+        },
+      ],
+    },
+  ],
+};
 ```
 
 ```python

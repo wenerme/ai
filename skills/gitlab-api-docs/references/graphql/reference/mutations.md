@@ -319,7 +319,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `description` | [`String!`](scalars.md#string) | Description for the agent. |
-| `mcpServers` | [`[AiCatalogMcpServerID!]`](scalars.md#aicatalogmcpserverid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.MCP servers to associate with the agent. |
+| `mcpServers` | [`[AiCatalogMcpServerID!]`](scalars.md#aicatalogmcpserverid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.MCP servers to associate with the agent. At most 20. |
 | `mcpTools` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.List of MCP tools enabled for the agent. |
 | `name` | [`String!`](scalars.md#string) | Name for the agent. |
 | `projectId` | [`ProjectID!`](scalars.md#projectid) | Project for the agent. |
@@ -373,7 +373,7 @@ Sets an admin-locked GitLab Duo availability override on a group.
 | ---- | ---- | ----------- |
 | `description` | [`String`](scalars.md#string) | Description for the agent. |
 | `id` | [`AiCatalogItemID!`](scalars.md#aicatalogitemid) | Global ID of the catalog Agent to update. |
-| `mcpServers` | [`[AiCatalogMcpServerID!]`](scalars.md#aicatalogmcpserverid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.MCP servers to associate with the agent. |
+| `mcpServers` | [`[AiCatalogMcpServerID!]`](scalars.md#aicatalogmcpserverid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.MCP servers to associate with the agent. At most 20. |
 | `mcpTools` | [`[String!]`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.List of MCP tools enabled for the agent. |
 | `name` | [`String`](scalars.md#string) | Name for the agent. |
 | `public` | [`Boolean`](scalars.md#boolean) | Deprecated in GitLab 19.2. Use `visibility`. |
@@ -12374,16 +12374,18 @@ Unassigns the security policy project for the given project (`full_path`).
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
 
+Attaches a security scan profile to projects and groups. All projects and groups must belong to the same top-level group. Maximum of 100 project and group IDs combined.
+
 **Input type:** `SecurityScanProfileAttachInput`
 
 ### `securityScanProfileAttach` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
-| `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to attach the profile to. | `[]` |
-| `mode` | [`SecurityScanProfileAttachMode`](enums.md#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. | `REPLACE` |
+| `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to attach the profile to. Applies the profile to all subgroups and projects in the specified group. Errors for these projects are not returned. | `[]` |
+| `mode` | [`SecurityScanProfileAttachMode`](enums.md#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. Defaults to `REPLACE`. | `REPLACE` |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to attach the profile to. | `[]` |
-| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to attach. |  |
+| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to attach. For a default profile, use its identifier. For example, `gid://gitlab/Security::ScanProfile/sast`. |  |
 
 ### `securityScanProfileAttach` fields {.no_toc}
 
@@ -12444,15 +12446,17 @@ Unassigns the security policy project for the given project (`full_path`).
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.
 
+Detaches a security scan profile from projects and groups. All projects and groups must belong to the same top-level group. Maximum of 100 project and group IDs combined.
+
 **Input type:** `SecurityScanProfileDetachInput`
 
 ### `securityScanProfileDetach` arguments {.no_toc}
 
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
-| `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to detach the profile from. | `[]` |
+| `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to detach the profile from. Detaches the profile from all subgroups and projects in the specified group. Errors for these projects are not returned. | `[]` |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to detach the profile from. | `[]` |
-| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to detach. |  |
+| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to detach. Must be the ID of a profile. |  |
 
 ### `securityScanProfileDetach` fields {.no_toc}
 

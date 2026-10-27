@@ -98,7 +98,9 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `logi_qa` | [LogiQA](../../benchmarks/logi_qa.md) | `MCQ`, `Reasoning` |
 | `longbench_v2` | [LongBench-v2](../../benchmarks/longbench_v2.md) | `LongContext`, `MCQ`, `ReadingComprehension` |
 | `longmemeval` | [LongMemEval](../../benchmarks/longmemeval.md) | `LongContext`, `MultiTurn`, `QA`, `Retrieval` |
+| `longpi_bench` | [LongPIBench](../../benchmarks/longpi_bench.md) | `LongContext`, `Safety` |
 | `maritime_bench` | [MaritimeBench](../../benchmarks/maritime_bench.md) | `Chinese`, `Knowledge`, `MCQ` |
+| `mask` | [MASK](../../benchmarks/mask.md) | `Knowledge`, `MultiTurn`, `QA`, `Safety` |
 | `math_500` | [MATH-500](../../benchmarks/math_500.md) | `Math`, `Reasoning` |
 | `math_qa` | [MathQA](../../benchmarks/math_qa.md) | `MCQ`, `Math`, `Reasoning` |
 | `mbpp` | [MBPP](../../benchmarks/mbpp.md) | `Coding` |
@@ -140,12 +142,15 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `refcoco` | [RefCOCO](../../benchmarks/refcoco.md) | `Grounding`, `ImageCaptioning`, `Knowledge`, `MultiModal` |
 | `reward_bench` | [RewardBench v1 (pairwise)](../../benchmarks/reward_bench.md) | `MCQ` |
 | `safety_bench` | [SafetyBench](../../benchmarks/safety_bench.md) | `Knowledge`, `MCQ`, `MultiLingual` |
+| `salad_bench` | [SALAD-Bench](../../benchmarks/salad_bench.md) | `QA`, `Safety` |
+| `salad_bench_mcq` | [SALAD-Bench MCQ](../../benchmarks/salad_bench_mcq.md) | `MCQ`, `Safety` |
 | `sanskriti` | [Sanskriti](../../benchmarks/sanskriti.md) | `Knowledge`, `MCQ` |
 | `scicode` | [SciCode](../../benchmarks/scicode.md) | `Coding` |
 | `sciq` | [SciQ](../../benchmarks/sciq.md) | `Knowledge`, `MCQ`, `ReadingComprehension` |
 | `seed_tts_eval` | [Seed-TTS-Eval](../../benchmarks/seed_tts_eval.md) | `Audio`, `TextToSpeech` |
 | `simple_qa` | [SimpleQA](../../benchmarks/simple_qa.md) | `Knowledge`, `QA` |
 | `siqa` | [SIQA](../../benchmarks/siqa.md) | `Commonsense`, `MCQ`, `Reasoning` |
+| `sleight_bench` | [SLEIGHT-Bench](../../benchmarks/sleight_bench.md) | `Agent`, `Safety` |
 | `sparc` | [SPaRC](../../benchmarks/sparc.md) | `Reasoning` |
 | `stsb` | [STS-B Decision](../../benchmarks/stsb.md) | `Decision` |
 | `super_gpqa` | [SuperGPQA](../../benchmarks/super_gpqa.md) | `Knowledge`, `MCQ` |
@@ -264,7 +269,9 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/logi_qa.md
 ../../benchmarks/longbench_v2.md
 ../../benchmarks/longmemeval.md
+../../benchmarks/longpi_bench.md
 ../../benchmarks/maritime_bench.md
+../../benchmarks/mask.md
 ../../benchmarks/math_500.md
 ../../benchmarks/math_qa.md
 ../../benchmarks/mbpp.md
@@ -306,12 +313,15 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/refcoco.md
 ../../benchmarks/reward_bench.md
 ../../benchmarks/safety_bench.md
+../../benchmarks/salad_bench.md
+../../benchmarks/salad_bench_mcq.md
 ../../benchmarks/sanskriti.md
 ../../benchmarks/scicode.md
 ../../benchmarks/sciq.md
 ../../benchmarks/seed_tts_eval.md
 ../../benchmarks/simple_qa.md
 ../../benchmarks/siqa.md
+../../benchmarks/sleight_bench.md
 ../../benchmarks/sparc.md
 ../../benchmarks/stsb.md
 ../../benchmarks/super_gpqa.md

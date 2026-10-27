@@ -6,6 +6,7 @@ Create and use saved views to filter and organize your list of work items.
 - Offering: GitLab.com, GitLab Self-Managed
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/479571) in GitLab 18.9.
+- Role prerequisites [applied](https://gitlab.com/gitlab-org/gitlab/-/work_items/591460) to saved view creators in GitLab 19.6.
 
 Saved views are custom filter combinations for your list of work items that you can reuse and share.
 Create multiple views for different workflows, like filters for assignee, status, or priority, and switch between them quickly.
@@ -20,12 +21,16 @@ Private views:
 
 - Are visible to only the creator of the view.
 - Cannot be edited or used by other users.
+- Can be viewed and deleted, but not edited or shared, by the creator if the creator no longer has
+  the Planner, Reporter, Developer, Maintainer, or Owner role.
 
 Shared views:
 
 - Are visible to all members of the group or project.
 - Can be added and used by other members.
 - Can be edited by members who meet the [prerequisites](#edit-a-saved-view).
+  These prerequisites also apply to the creator of the view.
+- Remain available to other members if the creator's role changes or the creator leaves the group or project.
 
 ## Create a saved view
 
@@ -110,7 +115,8 @@ The view is removed from your list but remains available to add again.
 
 Prerequisites:
 
-- You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project or group.
+- You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project or group,
+  or be the creator of a private view.
 
 > [!warning]
 > When you delete a view, it disappears for everybody.

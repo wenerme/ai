@@ -390,30 +390,51 @@ Run longer web searches
 
 ```javascript
 import OpenAI from "openai";
-const client = new OpenAI();
+import { Agent, fetch } from "undici";
 
-const response = await client.responses.create({
-  model: "gpt-6-astra",
-  reasoning: { effort: "xhigh" },
-  tools: [
-    {
-      type: "web_search",
-      return_token_budget: "unlimited",
-    },
-  ],
-  input: [
-    "Research the economic impact of semaglutide on global healthcare systems.",
-    "",
-    "Do:",
-    "- Include specific figures, trends, statistics, and measurable outcomes.",
-    "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
-    "- Include inline citations and return all source metadata.",
-    "",
-    "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
-  ].join("\n"),
+// Allow long research runs without automatic request retries.
+const timeout = 15 * 60 * 1000;
+const dispatcher = new Agent({
+  headersTimeout: timeout,
+  bodyTimeout: timeout,
+});
+const client = new OpenAI({
+  timeout,
+  maxRetries: 0,
+  fetch,
+  fetchOptions: { dispatcher },
 });
 
-console.log(response.output_text);
+try {
+  const stream = client.responses.stream({
+    model: "gpt-6-astra",
+    reasoning: { effort: "xhigh" },
+    tools: [
+      {
+        type: "web_search",
+        return_token_budget: "unlimited",
+      },
+    ],
+    input: [
+      "Research the economic impact of semaglutide on global healthcare systems.",
+      "",
+      "Do:",
+      "- Include specific figures, trends, statistics, and measurable outcomes.",
+      "- Prioritize reliable, up-to-date sources: peer-reviewed research, health organizations (e.g., WHO, CDC), regulatory agencies, or pharmaceutical earnings reports.",
+      "- Include inline citations and return all source metadata.",
+      "",
+      "Be analytical, avoid generalities, and ensure that each section supports data-backed reasoning that could inform healthcare policy or financial modeling.",
+    ].join("\n"),
+  });
+
+  const response = await stream.finalResponse();
+  if (response.status !== "completed") {
+    throw new Error(`Research response ended with status ${response.status}`);
+  }
+  console.log(response.output_text);
+} finally {
+  await dispatcher.close();
+}
 ```
 
 ```python

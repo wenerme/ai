@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/framework-guides/automatic-conf
 
 # Deploy an existing project
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -68,7 +68,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"main": "dist/_worker.js/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-27",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -86,7 +86,7 @@ name = "my-project"
 main = "dist/_worker.js/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-27"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -137,7 +137,7 @@ _routes.json
 
 ### Deploy with automatic configuration
 
-To deploy an existing project, run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) in your project directory:
+To deploy an existing project, run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) in your project directory:
 
 npmyarnpnpm
 
@@ -157,7 +157,7 @@ Wrangler will detect your framework, show the configuration it will apply, and p
 
 ### Configure without deploying
 
-To configure your project without deploying, use [`wrangler setup`](https://developers.cloudflare.com/workers/wrangler/commands/general/#setup):
+To configure your project without deploying, use [`wrangler setup`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#setup):
 
 npmyarnpnpm
 
@@ -195,25 +195,43 @@ pnpm wrangler setup --dry-run
 
 This outputs a summary of the configuration that would be generated.
 
-## Non-interactive mode
+## Skip configuration confirmation
 
-To skip the confirmation prompts, use the [`--yes` flag](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
+To apply the detected configuration without confirming it, pass `--yes` to [`wrangler setup`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#setup):
 
 npmyarnpnpm
 
 ```
-npx wrangler deploy --yes
+npx wrangler setup --yes
 ```
 
 ```
-yarn wrangler deploy --yes
+yarn wrangler setup --yes
 ```
 
 ```
-pnpm wrangler deploy --yes
+pnpm wrangler setup --yes
 ```
 
-This applies the configuration automatically using sensible defaults. This is useful in CI/CD environments or when you want to accept the detected settings without reviewing them.
+This is useful in CI/CD environments, or when you want to accept the detected settings without reviewing them.
+
+When setup finishes, Wrangler prints the command to deploy with. In a project with a `package.json`, use the generated `deploy` script:
+
+npmyarnpnpm
+
+```
+npm run deploy
+```
+
+```
+yarn run deploy
+```
+
+```
+pnpm run deploy
+```
+
+If Wrangler detected a build command, the generated script runs it before deploying. In a project without a `package.json`, run `wrangler deploy`.
 
 ## Importing a repository from the dashboard
 
@@ -268,5 +286,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/og.png?v=7d0f8d3dc115af82","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/og.png?v=7d0f8d3dc115af82","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

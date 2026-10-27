@@ -41,6 +41,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Milestone](#workitem-milestone)                               | `milestone`                                  | `=`, `in`, `!=`            | All                |
 | [My reaction emoji](#workitem-my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  | All                |
 | [Parent](#workitem-parent)                                     | `parent`                                     | `=`, `!=`                  | All except Epic    |
+| [Search](#workitem-search)                                     | `search`                                     | `=`                        | All                |
 | [State](#workitem-state)                                       | `state`                                      | `=`                        | All                |
 | [Status](#workitem-status)                                     | `status`                                     | `=`                        | All except Epic    |
 | [Subscribed](#workitem-subscribed)                             | `subscribed`                                 | `=`, `!=`                  | All                |
@@ -180,6 +181,7 @@ Use these fields in the `query` parameter to filter your results.
 - Tier: Premium, Ultimate
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/issues/30) in GitLab 18.1.
+- Values that are not an epic reference [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/550) to return an error in GitLab 19.6.
 
 **Description**: Query work items by their parent epic ID or reference.
 
@@ -301,6 +303,8 @@ Use these fields in the `query` parameter to filter your results.
 
 ### Parent {#workitem-parent}
 
+- Values that are not a work item or epic reference [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/550) to return an error in GitLab 19.6.
+
 **Description**: Query work items, except epics, by their parent work item or epic.
 
 **Allowed value types**:
@@ -309,6 +313,18 @@ Use these fields in the `query` parameter to filter your results.
 - `String` (containing a reference like `#123`)
 - `WorkItem` (for example, `#123`, `gitlab-org/gitlab#123`)
 - `Epic` (for example, `&123`, `gitlab-org&123`)
+
+### Search {#workitem-search}
+
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
+
+**Description**: Query work items by text in their title or description.
+
+**Allowed value types**: `String`
+
+**Notes**:
+
+- Queries that use `search` count toward the [search rate limit](../../../administration/instance_limits.md#search-rate-limit).
 
 ### State {#workitem-state}
 
@@ -444,6 +460,16 @@ Use these fields in the `query` parameter to filter your results.
   fields: state, title, updated
   sort: title asc
   query: project = "gitlab-org/gitlab" and type = Issue
+  ```
+  ````
+
+- List open issues in the `gitlab-org/gitlab` project that mention `flaky` in their title or description:
+
+  ````yaml
+  ```glql
+  display: table
+  fields: title, author, updated
+  query: project = "gitlab-org/gitlab" and type = Issue and state = opened and search = "flaky"
   ```
   ````
 

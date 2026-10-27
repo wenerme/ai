@@ -20,6 +20,11 @@ This is *different* from [compatibility dates](https://developers.cloudflare.com
 
 [Subscribe to RSS](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-10-22
+
+- Hyperdrive bindings expose `ip`, and `node:dns` resolves a binding's host to it.
+- Workers traces now include spans for `queue.metrics()` calls.
+
 ## 2026-09-28
 
 - Updated v8 to version 15.5.

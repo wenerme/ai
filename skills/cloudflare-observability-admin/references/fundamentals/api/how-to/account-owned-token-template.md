@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-t
 
 # API token template URLs
 
-Last updated Jan 14, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use template URLs to generate Cloudflare API tokens with pre-configured permissions. Template URLs allow you to share token requirements with users without manually selecting permissions in the dashboard.
 
@@ -68,11 +68,17 @@ Account token template URLs do not use `accountId` or `zoneId` parameters. Resou
 
 ## Permission format
 
-Both user token and account token template URLs use the same permission encoding. Permissions are encoded as a JSON array with the following structure:
+Both user token and account token template URLs use the same permission encoding: a JSON array with the following structure.
 
 ```json
 [{ "key": "permission_name", "type": "read|edit|revoke|run|purge" }]
 ```
+
+The two token types resolve these entries differently, as described in the following sections.
+
+For **account token URLs**, each `key` can be either a short permission key (for example, `dns`) or a [permission group ID](#use-permission-group-ids). Using the permission group ID is the most reliable option, since it maps to exactly one group. Refer to [Use permission group IDs](#use-permission-group-ids).
+
+For **user token URLs**, each `key` must be a short permission key that matches a group `name` exactly, and the `type` must be `edit` (not `write`), `read`, `revoke`, `run`, or `purge`. Permission group IDs are not supported, and any entry that does not match is dropped silently.
 
 ### Permission types
 
@@ -83,6 +89,45 @@ Both user token and account token template URLs use the same permission encoding
 | `revoke` | Revoke permissions |
 | `run` | Execute permissions |
 | `purge` | Purge permissions |
+
+## Use permission group IDs
+
+Note
+
+Permission group IDs are supported in **account token URLs** only. User token URLs must use short keys.
+
+To address any permission group in an account token URL, including groups that do not have a short key in the [permission reference](#permission-reference), use its permission group ID as the `key`:
+
+```json
+[{ "key": "82e64a83756745bbbb1c9c2701bf816b", "type": "edit" }]
+```
+
+Permission group IDs are the stable, canonical identifier for a permission group. They are the same IDs accepted by the [Create token](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/create/) endpoint and the Cloudflare Terraform provider, so a template URL can pre-select any permission group by ID. Because the ID names one specific group, the `type` field is ignored when you pass an ID.
+
+Combine multiple IDs in the same array, just as you would with short keys:
+
+```json
+[
+	{ "key": "e086da7e2179491d91ee5f35b3ca210a", "type": "edit" },
+	{ "key": "7cf72faf220841aabcfdfab81c43c4f6", "type": "read" }
+]
+```
+
+Because account token URLs create account-owned tokens, look up their permission group IDs with the **account-scoped** [List permission groups](https://developers.cloudflare.com/api/resources/accounts/subresources/tokens/subresources/permission_groups/methods/list/) endpoint. The request needs a token with the `API Tokens Read` account permission:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/tokens/permission_groups" \
+	--header "Authorization: Bearer <API_TOKEN>"
+```
+
+For user tokens, use the [user-scoped endpoint](https://developers.cloudflare.com/api/resources/user/subresources/tokens/subresources/permission_groups/methods/list/) instead, which returns the permission groups available to user tokens:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/user/tokens/permission_groups" \
+	--header "Authorization: Bearer <API_TOKEN>"
+```
+
+Each result includes the permission group `id` and `name`. The [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) reference also lists these IDs.
 
 ## Create custom templates
 
@@ -263,9 +308,13 @@ Review the list of common issues and solutions.
 | Issue | Solution |
 | --- | --- |
 | URL does not pre-fill permissions | Verify the JSON is properly URL-encoded |
-| Permissions are missing | Check permission keys in the reference table |
+| Permissions are missing | Check permission keys against the reference table, or address the group by its [permission group ID](#use-permission-group-ids) |
 | Token name does not appear | Ensure the name parameter is URL-encoded |
 | Access denied error | Verify the user has required permissions in their account |
+
+For **account token URLs**, when a template URL contains a key that cannot be resolved, or the `permissionGroupKeys` value is not valid JSON, the dashboard still opens the token creation form with whatever it could resolve and shows a notice naming the keys it could not apply. It does not redirect back to the token list, so a mistyped key surfaces in the form instead of failing silently.
+
+For **user token URLs**, unresolved entries are dropped silently and no notice is shown, so verify each key against the [permission reference](#permission-reference) before sharing the URL.
 
 Additionally, review the checklist before sharing a template URL.
 
@@ -291,5 +340,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/#page","headline":"API token template URLs","description":"Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/og.png?v=23273125a22cf721","dateModified":"2025-01-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/#page","headline":"API token template URLs","description":"Generate Cloudflare API tokens with pre-configured permissions using template URLs. Learn how to create and customize template URLs for any use case.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/how-to/account-owned-token-template/og.png?v=23273125a22cf721","dateModified":"2026-09-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

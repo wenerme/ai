@@ -303,9 +303,13 @@ curl --fail-with-body "https://api.openai.com/v1/agents/sessions/$session_id/eve
 ```
 
 ```javascript
-import promptSync from "prompt-sync";
+import { createInterface } from "node:readline";
 
-const prompt = promptSync({ sigint: true });
+const inputLines = createInterface({
+  input: process.stdin,
+  crlfDelay: Infinity,
+});
+const answers = inputLines[Symbol.asyncIterator]();
 
 /** @param {OpenAI} client */
 async function respondToOriginApproval(client, sessionId, approval) {
@@ -315,10 +319,11 @@ async function respondToOriginApproval(client, sessionId, approval) {
     console.log(request.reason ?? "The browser needs access to this origin.");
     let input;
     do {
-      input =
-        prompt("Allow access? [approve/deny/cancel, default deny] ")
-          .trim()
-          .toLowerCase() || "deny";
+      process.stdout.write(
+        "Allow access? [approve/deny/cancel, default deny] "
+      );
+      const answer = await answers.next();
+      input = (answer.done ? "" : answer.value).trim().toLowerCase() || "deny";
     } while (!["approve", "deny", "cancel"].includes(input));
     const decision =
       input === "approve" ? "approve" : input === "cancel" ? "cancel" : "deny";

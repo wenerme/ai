@@ -54,6 +54,10 @@ keywords: Ultralytics, loss functions, Varifocal Loss, Focal Loss, Bbox Loss, Ro
 
 <hr>
 
+## ::: ultralytics.utils.loss.SegmentLoss26
+
+<hr>
+
 ## ::: ultralytics.utils.loss.v8PoseLoss
 
 <hr>

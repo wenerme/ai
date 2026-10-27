@@ -282,7 +282,10 @@ GitLab applies the settings only when all of these conditions are true:
 - The trigger is turned on.
 - A work item event started the session.
 - A human user started this session, or the first session of its [chain](#chain-triggers),
-  with a **Mention**, **Assign**, or **Work item** event.
+  in one of these ways:
+  - With a **Mention**, **Assign**, or **Work item** event.
+  - In a session with a GitLab Duo agent, such as a GitLab Duo Agentic Chat session.
+    For example, the user [triggers a flow with a slash command](../../gitlab_duo_chat/agentic_chat.md#trigger-a-flow-with-a-slash-command).
 - The work item still has one of the statuses of the trigger.
   If the status changes to a status that the trigger does not run on while the session runs,
   GitLab changes nothing.

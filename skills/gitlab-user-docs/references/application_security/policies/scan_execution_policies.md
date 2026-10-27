@@ -322,12 +322,23 @@ The keys for a schedule rule are:
 
 ### `time_window` schema
 
+- Default time window on GitLab.com for `schedule` rules without `time_window` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258280) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `scan_execution_policy_default_time_window`. Disabled by default.
+
+> [!flag]
+> The availability of the default time window is controlled by a feature flag.
+> For more information, see the history.
+
 Define how scheduled scans are distributed over time with the `time_window` object in the [`schedule` rule type](#schedule-rule-type). You can configure `time_window` only in YAML mode of the policy editor.
 
 | Field          | Type      | Required | Description                                                                                                                                                                          |
 |----------------|-----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `distribution` | `string`  | true     | Distribution pattern for schedule scans. Supports only `random`, where scans are distributed randomly in the interval defined by the `value` key of the `time_window`. |
 | `value`        | `integer` | true     | The time window in seconds the schedule scans should run. Enter a value between 3600 (1 hour) and 2629746 (approximately 30 days).                                               |
+
+On GitLab.com, if a `schedule` rule does not set `time_window`, GitLab applies a default
+`time_window` of 3600 seconds (1 hour) with `random` distribution. If the time until the next
+scheduled run is shorter than 1 hour, the window is shortened to fit. To use a different window,
+set `time_window` in the rule.
 
 #### `time_window` example
 

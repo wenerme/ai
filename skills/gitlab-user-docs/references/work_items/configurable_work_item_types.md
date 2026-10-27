@@ -66,20 +66,20 @@ To create a work item type:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Work item types** section, select
-   **New type**.
+      > .
+1. In the  section, select
+   .
 1. Enter a name for the type.
 1. Select an icon.
-1. Optional. Select the **Enabled by default** checkbox to automatically
+1. Optional. Select the  checkbox to automatically
    turn on this type in any new projects created under the group.
    Existing projects are not affected.
-1. Select **Save**.
+1. Select .
 
 ## Edit a work item type
 
@@ -97,17 +97,17 @@ To edit a work item type:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Work item types** section, find the type
+      > .
+1. In the  section, find the type
    you want to edit.
-1. Select **Edit name and icon**.
+1. Select .
 1. Update the name, icon, or both.
-1. Select **Save**.
+1. Select .
 
 > [!note]
 > Types that are tied to certain GitLab features cannot
@@ -133,19 +133,19 @@ To archive a work item type:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Work item types** section, find the type
+      > .
+1. In the  section, find the type
    you want to archive.
-1. Select **Archive**.
-1. In the confirmation dialog, select **Archive**.
+1. Select .
+1. In the confirmation dialog, select .
 
 Archived types are visible only in the top-level group
-or organization in the **Archived** tab. They are
+or organization in the  tab. They are
 not visible in subgroups or projects.
 
 ## Unarchive a work item type
@@ -166,24 +166,24 @@ To unarchive a work item type:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Work item types** section, select the
-   **Archived** tab.
+      > .
+1. In the  section, select the
+    tab.
 1. Find the type you want to restore.
-1. Select **Unarchive**.
-1. In the confirmation dialog, select **Unarchive**.
+1. Select .
+1. In the confirmation dialog, select .
 
 ## Type availability controls
 
 Control which work item types are available in your
 projects. Type availability has three layers:
 
-- **Type customization in projects**: A switch
+- : A switch
   at the top-level group or organization that
   allows or prevents projects from customizing type
   availability. Disabled by default.
@@ -209,14 +209,14 @@ To toggle type customization:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Type customization in projects** section,
-   select **Enable** or **Disable**.
+      > .
+1. In the  section,
+   select  or .
 
 When you disable type customization, all types are
 treated as enabled in all projects regardless of
@@ -241,16 +241,16 @@ To enable or disable a type for all projects:
 
 1. Go to the work items settings:
    - On GitLab.com: In the top bar, select
-     **Search or go to** and find your top-level group.
+      and find your top-level group.
      In the left sidebar, select
-     **Settings** > **Work items**.
-   - On GitLab Self-Managed: In the upper-right corner, select **Admin**.
+      > .
+   - On GitLab Self-Managed: In the upper-right corner, select .
      In the left sidebar, select
-     **Settings** > **Work items**.
-1. In the **Work item types** section, find the type.
+      > .
+1. In the  section, find the type.
 1. From the type actions menu, select
-   **Enable for all projects** or
-   **Disable for all projects**.
+    or
+   .
 
 ### Enable or disable a type in a project
 
@@ -264,11 +264,11 @@ Prerequisites:
 
 To enable or disable a type in a project:
 
-1. In the top bar, select **Search or go to** and
+1. In the top bar, select  and
    find your project.
 1. In the left sidebar, select
-   **Settings** > **Work items**.
-1. In the **Enabled work item types** section, find
+    > .
+1. In the  section, find
    the type.
 1. Toggle the type on or off.
 

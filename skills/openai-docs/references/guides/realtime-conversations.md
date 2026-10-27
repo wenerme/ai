@@ -88,7 +88,7 @@ event = {
     "session": {
         "type": "realtime",
         "model": "gpt-realtime-2.1",
-        # Lock the output to audio (add "text" if you also want text).
+        # Choose ["audio"] or ["text"]; do not combine them.
         "output_modalities": ["audio"],
         "audio": {
             "input": {
@@ -131,6 +131,7 @@ import com.openai.models.realtime.*;
 // Replace pmpt_123 with your stored prompt ID.
 var pcm =
     RealtimeAudioFormats.AudioPcm.builder()
+        .type(RealtimeAudioFormats.AudioPcm.Type.AUDIO_PCM)
         .rate(RealtimeAudioFormats.AudioPcm.Rate._24000)
         .build();
 connection.send(
@@ -311,7 +312,7 @@ connection.conversation.items.create(
 ```
 
 
-After adding the user message to the conversation, send the [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event to initiate a response from the model. If both audio and text are enabled for the current session, the model will respond with both audio and text content. If you'd like to generate text only, you can specify that when sending the `response.create` client event, as shown below.
+After adding the user message to the conversation, send the [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event to initiate a response from the model. Choose one output modality: `audio` produces audio with its transcript, and `text` produces text only. If you'd like to generate text only, you can specify that when sending the `response.create` client event, as shown below.
 
 Generate a text-only response
 
@@ -544,7 +545,7 @@ pc.addTrack(ms.getTracks()[0]);
 
 The snippet above enables interaction with the Realtime API, but there's much more that can be done. For more examples of different kinds of user interfaces, check out the [WebRTC samples](https://github.com/webrtc/samples) repository. Live demos of these samples can also be [found here](https://webrtc.github.io/samples/).
 
-Using [media captures and streams](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API) in the browser enables you to do things like mute and unmute microphones, select which device to collect input from, and more.
+Using [media captures and streams](https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API) in the browser enables you to do things like turn microphones off and on, select which device to collect input from, and more.
 
 ### Client and server events for audio in WebRTC
 
@@ -679,10 +680,7 @@ The events below are given in lifecycle order, though some events (like the `del
 
 To stream audio input to the server, you can use the [`input_audio_buffer.append`](https://developers.openai.com/api/reference/resources/realtime) client event. This event requires you to send chunks of **Base64-encoded audio bytes** to the Realtime API over the socket. Each chunk cannot exceed 15 MB in size.
 
-The format of the input chunks can be configured either for the entire session, or per response.
-
-- Session: `session.input_audio_format` in [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
-- Response: `response.input_audio_format` in [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
+Set `session.audio.input.format` in [`session.update`](https://developers.openai.com/api/reference/resources/realtime). For PCM, use `{"type": "audio/pcm", "rate": 24000}` and send 24 kHz mono audio.
 
 Append audio input bytes to the conversation
 
@@ -726,6 +724,12 @@ const files = [
 for (const filename of files) {
   const audioFile = fs.readFileSync(filename);
   const audioBuffer = await decodeAudio(audioFile);
+  if (
+    audioBuffer.sampleRate !== 24000 ||
+    audioBuffer.channelData.length !== 1
+  ) {
+    throw new Error("Expected 24 kHz mono audio: " + filename);
+  }
   const channelData = audioBuffer.channelData[0];
   const base64Chunk = base64EncodeAudio(channelData);
   ws.send(
@@ -766,8 +770,9 @@ files = ["./path/to/sample1.wav", "./path/to/sample2.wav", "./path/to/sample3.wa
 
 for filename in files:
     data, samplerate = sf.read(filename, dtype="float32")
-    channel_data = data[:, 0] if data.ndim > 1 else data
-    base64_chunk = base64_encode_audio(channel_data)
+    if samplerate != 24000 or data.ndim != 1:
+        raise ValueError(f"Expected 24 kHz mono audio: {filename}")
+    base64_chunk = base64_encode_audio(data)
 
     # Send the client event
     event = {"type": "input_audio_buffer.append", "audio": base64_chunk}
@@ -948,7 +953,7 @@ connection.conversation.items.create(
 
 **To play output audio back on a client device like a web browser, we recommend using WebRTC rather than WebSockets**. WebRTC will be more robust sending media to client devices over uncertain network conditions.
 
-But to work with audio output in server-to-server applications using a WebSocket, you will need to listen for [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime) events containing the Base64-encoded chunks of audio data from the model. You will either need to buffer these chunks and write them out to a file, or maybe immediately stream them to another source like [a phone call with Twilio](https://www.twilio.com/en-us/blog/twilio-openai-realtime-api-launch-integration).
+To work with audio output in server-to-server applications using a WebSocket, you will need to listen for [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime) events containing the Base64-encoded chunks of audio data from the model. You will either need to buffer these chunks and write them out to a file, or maybe immediately stream them to another source like [a phone call with Twilio](https://www.twilio.com/en-us/blog/twilio-openai-realtime-api-launch-integration).
 
 Note that the [`response.output_audio.done`](https://developers.openai.com/api/reference/resources/realtime) and [`response.done`](https://developers.openai.com/api/reference/resources/realtime) events won't actually contain audio data in them - just audio content transcriptions. To get the actual bytes, you'll need to listen for the [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime) events.
 
@@ -1216,8 +1221,13 @@ function handleEvent(message) {
     serverEvent.type === "response.done" &&
     serverEvent.response.metadata?.topic === "classification"
   ) {
-    // this server event pertained to our OOB model response
-    console.log(serverEvent.response.output[0]);
+    const { response } = serverEvent;
+    if (response.status !== "completed" || response.output.length === 0) {
+      throw new Error(
+        "Classification response ended with status " + response.status
+      );
+    }
+    console.log(response.output[0]);
   }
 }
 
@@ -1231,17 +1241,16 @@ dataChannel.addEventListener("message", handleEvent);
 ```python
 def on_message(ws, message):
     server_event = json.loads(message)
-    topic = ""
-
-    # See if metadata is present
-    try:
-        topic = server_event["response"]["metadata"]["topic"]
-    except KeyError:
-        print("topic not set")
-
-    if server_event["type"] == "response.done" and topic == "classification":
-        # this server event pertained to our OOB model response
-        print(server_event["response"]["output"][0])
+    if server_event["type"] != "response.done":
+        return
+    response = server_event["response"]
+    if (response.get("metadata") or {}).get("topic") != "classification":
+        return
+    if response["status"] != "completed" or not response["output"]:
+        raise RuntimeError(
+            f"Classification response ended with status {response['status']}"
+        )
+    print(response["output"][0])
 ```
 
 ```java

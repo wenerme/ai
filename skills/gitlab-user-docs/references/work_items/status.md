@@ -47,13 +47,13 @@ The default statuses are:
 
 Status categories are logical groupings that determine how a status affects a work item's state and icon. Each status belongs to one of five categories:
 
-- **Triage**: For new or unprocessed work items.
-- **To do**: For work items ready to be started.
-- **In progress**: For work items being actively worked on.
-- **Done**: For completed work items.
-- **Canceled**: For work items that won't be completed.
+- : For new or unprocessed work items.
+- : For work items ready to be started.
+- : For work items being actively worked on.
+- : For completed work items.
+- : For work items that won't be completed.
 
-Statuses in the **Done** and **Canceled** categories automatically set work items to closed state. All other categories maintain work items in open state.
+Statuses in the  and  categories automatically set work items to closed state. All other categories maintain work items in open state.
 
 ## Lifecycles
 
@@ -64,13 +64,13 @@ A lifecycle is a collection of statuses that can be applied to a work item type.
 
 Each lifecycle defines default transition statuses:
 
-- **Default open status**: Applied when creating and reopening work items.
-- **Default closed status**: Applied when closing work items.
-- **Default duplicated status**: Applied when marking work items as duplicates, moved, or promoted.
+- : Applied when creating and reopening work items.
+- : Applied when closing work items.
+- : Applied when marking work items as duplicates, moved, or promoted.
 
 When status for epics is enabled for a top-level group that uses custom lifecycles, epics use the same lifecycle as issues.
 If issues have no custom lifecycle, epics use the first custom lifecycle in the group.
-In the **Statuses** section of the group's **Settings** > **Work items** page, the epic type appears in the **Usage** list for the issue lifecycle.
+In the  section of the group's  >  page, the epic type is listed after  for the issue lifecycle.
 To give epics a different lifecycle, [change the lifecycle for the epic type](#change-lifecycle-for-a-work-item-type).
 If you change the lifecycle for issues, epics keep their current lifecycle.
 
@@ -83,11 +83,11 @@ Prerequisites:
 
 To create a lifecycle:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. In the **Statuses** section, select **Create lifecycle**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select .
 1. Add the lifecycle name and choose either the default lifecycle configuration or one of the existing lifecycles to start from. This pre-populates the new lifecycle with statuses which you can customize afterwards.
-1. Select **Create**.
+1. Select .
 
 ### Rename a lifecycle
 
@@ -98,11 +98,11 @@ Prerequisites:
 
 To rename a lifecycle:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. In the **Statuses** section, hover over the lifecycle detail view.
-1. Select **Rename**.
-1. Rename the lifecycle and select **Save**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, hover over the lifecycle detail view.
+1. Select .
+1. Rename the lifecycle and select .
 
 ### Remove a lifecycle
 
@@ -114,10 +114,10 @@ Prerequisites:
 
 To remove a lifecycle:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. In the **Statuses** section, select **Remove lifecycle** for the lifecycle you want to remove.
-1. On the confirmation dialog, select **Remove**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select  for the lifecycle you want to remove.
+1. On the confirmation dialog, select .
 
 ### Change lifecycle for a work item type
 
@@ -128,18 +128,18 @@ Prerequisites:
 
 To change the lifecycle for a work item type:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. In the **Statuses** section, either:
-   - Select **Change lifecycle**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, either:
+   - Select .
    - If the lifecycle is used with more than one work item type, select it from the dropdown list.
 1. Select a new lifecycle for the work item type. You can either choose an existing lifecycle or create a new lifecycle.
-1. Select **Next**.
+1. Select .
 
    All current statuses show which new status from the new lifecycle they get.
 
 1. Optional. To choose a different replacement status, select it from the dropdown list.
-1. Select **Save**.
+1. Select .
 
 ## Custom statuses
 
@@ -173,11 +173,11 @@ Prerequisites:
 
 To configure custom statuses:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. In the **Statuses** section, select **Edit statuses** for the lifecycle being used by the work item type.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select  for the lifecycle being used by the work item type.
 1. Add, edit, or reorder statuses for the namespace.
-1. Select **Close**.
+1. Select .
 
 ### Set status for a work item
 
@@ -188,7 +188,7 @@ Prerequisites:
 To set a status for a work item:
 
 1. Go to an issue or task.
-1. In the right sidebar, in the **Status** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. Select the desired status.
 1. Select any area outside the dropdown list.
 

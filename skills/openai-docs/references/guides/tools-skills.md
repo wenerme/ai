@@ -279,6 +279,29 @@ Skills also work with local shell mode, but local shell and hosted shell do not 
 
 Use the [Shell guide](https://developers.openai.com/api/docs/guides/tools-shell) for local shell execution details.
 
+The JavaScript example requires Node.js and a running Docker daemon. Save the
+[Docker adapter](https://developers.openai.com/api/docs/samples/local-skill-sandbox.mjs) as `support/local-skill-sandbox.mjs` and
+the example as `tools/skills/local-shell.mjs` so its relative import resolves.
+Set `OPENAI_API_KEY`, then install the SDK, pull the adapter's pinned image, and
+run the example from the directory containing `support` and `tools`:
+
+```bash
+npm install openai
+docker pull "$(node --input-type=module -e 'import { sandboxImage } from "./support/local-skill-sandbox.mjs"; console.log(sandboxImage)')"
+node tools/skills/local-shell.mjs
+```
+
+The adapter's helpers have these responsibilities:
+
+| Helper                                  | Application responsibility                                                                                                                                                                                           |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `withLocalSkillSandbox(name, workflow)` | Create an isolated Python environment containing `/workspace/skills/csv-insights/SKILL.md` and `/workspace/reports.csv`, invoke `workflow` with an `AbortSignal`, and remove the environment when the workflow ends. |
+| `executeShellCall(name, call, signal)`  | Execute the requested commands inside that environment and return a `shell_call_output` with the original `call_id`, stdout, stderr, and the exit or timeout outcome.                                                |
+| `readSkillReport(name, signal)`         | Read the generated `/workspace/report.md` from the environment with a bounded file read.                                                                                                                             |
+
+The adapter must enforce execution deadlines and output limits. The example
+keeps generated commands inside the isolated runtime.
+
 Use skills in local shell mode
 
 ```bash
@@ -307,32 +330,62 @@ curl -L 'https://api.openai.com/v1/responses' \
 ```
 
 ```javascript
+import { randomUUID } from "node:crypto";
 import OpenAI from "openai";
+import {
+  withLocalSkillSandbox,
+  executeShellCall,
+  readSkillReport,
+} from "../../support/local-skill-sandbox.mjs";
 
-const client = new OpenAI();
+// Requires Docker. The application-owned helper prepares a disposable Python
+// sandbox with the skill and CSV files; generated commands run only inside it.
+const name = "node-skill-" + randomUUID();
 
-const response = await client.responses.create({
-  model: "gpt-6-astra",
-  tools: [
-    {
-      type: "shell",
-      environment: {
-        type: "local",
-        skills: [
-          {
-            name: "csv-insights",
-            description: "Summarize CSV files and produce a markdown report.",
-            path: "<path-to-skill-folder>",
-          },
-        ],
+await withLocalSkillSandbox(name, async (signal) => {
+  const client = new OpenAI();
+  /** @type {OpenAI.Responses.ResponseCreateParamsNonStreaming} */
+  const params = {
+    model: "gpt-6-astra",
+    tools: [
+      {
+        type: "shell",
+        environment: {
+          type: "local",
+          skills: [
+            {
+              name: "csv-insights",
+              description: "Summarize CSV files and produce a markdown report.",
+              path: "/workspace/skills/csv-insights",
+            },
+          ],
+        },
       },
-    },
-  ],
-  input:
-    "Use the csv-insights skill and run locally to summarize today's CSV reports in this repo.",
+    ],
+    input:
+      "Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.",
+  };
+  for (let turn = 0; turn <= 8; turn++) {
+    const response = await client.responses.create(params, { signal });
+    if (response.status !== "completed")
+      throw new Error(`Response ended with status ${response.status}`);
+    const results = [];
+    for (const item of response.output) {
+      if (item.type !== "shell_call") continue;
+      if (turn === 8)
+        throw new Error("Shell workflow exceeded eight tool turns");
+      results.push(await executeShellCall(name, item, signal));
+    }
+    if (results.length === 0) {
+      console.log(response.output_text);
+      console.log("Report:\n" + (await readSkillReport(name, signal)));
+      return;
+    }
+    params.previous_response_id = response.id;
+    params.input = results;
+  }
+  throw new Error("Shell workflow exceeded eight turns");
 });
-
-console.log(response.output_text);
 ```
 
 ```python

@@ -10,9 +10,10 @@ All latest OpenAI models support text and image input, text output, multilingual
 
 ## Featured models
 
-- [GPT-6 Astra](/api/docs/models/gpt-6-astra.md): Start here for complex reasoning and coding.
-- [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Balance intelligence and cost.
-- [GPT-6 Luna](/api/docs/models/gpt-6-luna.md): Optimize cost-sensitive, high-volume workloads.
+- [GPT-6 Astra](/api/docs/models/gpt-6-astra.md): Our most capable model for the most demanding work.
+- [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Near-Astra performance for complex work at a lower cost.
+- [GPT-6.1 Terra](/api/docs/models/gpt-6.1-terra.md): A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
+- [GPT-6 Luna](/api/docs/models/gpt-6-luna.md): Our most efficient model for focused, high-volume tasks.
 
 ## Browse our full catalog of models
 
@@ -80,6 +81,7 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-6 Luna](/api/docs/models/gpt-6-luna.md): Our most efficient model for focused, high-volume tasks.
 - [GPT-6 Sol](/api/docs/models/gpt-6-sol.md): Built to power complex coding and agentic workflows.
 - [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Near-Astra performance for complex work at a lower cost.
+- [GPT-6.1 Terra](/api/docs/models/gpt-6.1-terra.md): A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
 - [GPT-Audio](/api/docs/models/gpt-audio.md): For audio inputs and outputs with Chat Completions API
 - [GPT-Audio Mini](/api/docs/models/gpt-audio-mini.md): A cost-efficient version of GPT Audio
 - [GPT-Audio-1.5](/api/docs/models/gpt-audio-1.5.md): The best voice model for audio in, audio out with Chat Completions.

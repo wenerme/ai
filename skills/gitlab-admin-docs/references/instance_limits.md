@@ -877,7 +877,7 @@ Issues and merge requests enforce these maximums:
 ## Maximum number of labels on a work item
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/606182) in GitLab 19.5 [with a feature flag](feature_flags/_index.md) named `limit_labels_per_work_item`. Disabled by default.
-- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/629454) in GitLab 19.6.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/634342) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

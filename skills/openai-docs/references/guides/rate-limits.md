@@ -194,7 +194,7 @@ This approach has many benefits:
 
 Note that unsuccessful requests contribute to your per-minute limit, so continuously resending a request won’t work.
 
-The legacy Completions examples below use `gpt-3.5-turbo-instruct`, which has a [scheduled shutdown date of September 28, 2026](https://developers.openai.com/api/docs/deprecations#2025-09-26-legacy-gpt-model-snapshots). After that date, retain the retry pattern but migrate the request to [Responses or Chat Completions](https://developers.openai.com/api/docs/guides/migrate-to-responses) with `gpt-5.6-terra`; changing the model ID in a Completions request is not sufficient.
+The legacy Completions examples below use `gpt-3.5-turbo-instruct`, which was shut down on [September 28, 2026](https://developers.openai.com/api/docs/deprecations#2025-09-26-legacy-gpt-model-snapshots). You can use the same retry pattern with current models by migrating to [Responses or Chat Completions](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
 The Python examples below demonstrate fallback backoff. They don't inspect `Retry-After`: before using them, add handling for valid server hints so the wrappers don't retry sooner than requested. Disable SDK retries or account for them in your application's retry limits.
 

@@ -210,6 +210,22 @@ license can be applied through shell automation scripts.
 This is needed for example in a known edge-case with
 [expired license and multiple LDAP servers](auth/ldap/ldap-troubleshooting.md#expired-license-causes-errors-with-multiple-ldap-servers).
 
+#### Provision add-on purchases for an offline cloud license
+
+An offline cloud license can carry add-on purchases, such as GitLab Duo seats.
+Saving a license from the console does not provision them. Instead, they are
+provisioned the next time the scheduled provisioning job runs, once a day.
+
+To provision them without waiting, run the provisioning job in the same console
+session after you apply the license:
+
+```ruby
+GitlabSubscriptions::AddOnPurchases::OfflineCloudLicenseProvisionWorker.new.perform
+```
+
+The job reads the current license and does nothing unless that license is an
+offline cloud license. It is safe to run more than once.
+
 ### Remove licenses
 
 To clean up the license history table:

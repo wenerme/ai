@@ -17,7 +17,6 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [aws CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/)
 - [aws-sdk-go](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-go/)
 - [aws-sdk-java](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-java/)
-- [aws-sdk-js](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js/)
 - [aws-sdk-js-v3](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/)
 - [aws-sdk-kotlin](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-kotlin/)
 - [aws-sdk-net](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-net/)

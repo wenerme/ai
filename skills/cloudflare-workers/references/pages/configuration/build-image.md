@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/configuration/build-image/og.png?
 
 # Build image
 
-Last updated Oct 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/build-image/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
 
@@ -27,8 +27,8 @@ In the following tables, review the preinstalled versions for languages and tool
 Tool | Default version | Supported versions | Environment variable | File
 | **Go** | 1.24.3 | Any version | `GO_VERSION` | |
 | --- | --- | --- | --- | --- |
-| **Node.js** | 22.16.0 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
-| **Bun** | 1.2.15 | Any version | `BUN_VERSION` | |
+| **Node.js** | 22.23.4 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
+| **Bun** | 1.4.4 | Any version | `BUN_VERSION` | |
 | **Python** | 3.13.3 | Any version | `PYTHON_VERSION` | .python-version, runtime.txt |
 | **Ruby** | 3.4.4 | Any version | `RUBY_VERSION` | .ruby-version |
 
@@ -36,7 +36,7 @@ Tool | Default version | Supported versions | Environment variable | File
 | **Go** | 1.21.0 | Any version | `GO_VERSION` | |
 | --- | --- | --- | --- | --- |
 | **Node.js** | 18.17.1 | Any version | `NODE_VERSION` | .nvmrc, .node-version |
-| **Bun** | 1.1.33 | Any version | `BUN_VERSION` | |
+| **Bun** | 1.4.4 | Any version | `BUN_VERSION` | |
 | **Python** | 3.11.5 | Any version | `PYTHON_VERSION` | .python-version, runtime.txt |
 | **Ruby** | 3.2.2 | Any version | `RUBY_VERSION` | .ruby-version |
 
@@ -66,8 +66,8 @@ Tool | Default version | Supported versions | Environment variable
 | **Embedded Dart Sass** | 1.62.1 | Up to 1.62.1 | `EMBEDDED_DART_SASS_VERSION` |
 | **gem** | 3.6.9 | Corresponds with Ruby version | |
 | **Hugo** | 0.147.7 | Any version | `HUGO_VERSION` |
-| **npm** | 10.9.2 | Corresponds with Node.js version | |
-| **pip** | 25.1.1 | Corresponds with Python version | |
+| **npm** | 10.9.9 | Corresponds with Node.js version | |
+| **pip** | 26.2.2 | Corresponds with Python version | |
 | **pipx** | 1.7.1 |  | |
 | **pnpm** | 10.11.1 | Any version | `PNPM_VERSION` |
 | **Poetry** | 2.1.3 |  | |
@@ -81,7 +81,7 @@ Tool | Default version | Supported versions | Environment variable
 | **gem** | 3.4.10 | Corresponds with Ruby version | |
 | **Hugo** | 0.118.2 | Any version | `HUGO_VERSION` |
 | **npm** | 9.6.7 | Corresponds with Node.js version | |
-| **pip** | 23.2.1 | Corresponds with Python version | |
+| **pip** | 26.2.2 | Corresponds with Python version | |
 | **pipx** | 1.2.0 |  | |
 | **pnpm** | 8.7.1 | Any version | `PNPM_VERSION` |
 | **Poetry** | 1.6.1 |  | |
@@ -192,6 +192,19 @@ Cloudflare Pages builds are run in a [gVisor ↗︎](https://gvisor.dev/docs/) c
 | --- | --- |
 | **Architecture** | x86\_64 |
 
+### Trusted certificates
+
+Build commands use the CA certificates installed in the build image at `/etc/ssl/certs/ca-certificates.crt`. Pages sets the following environment variables so that runtimes with their own bundled CA certificates use them as well, including older versions you select with a [version override](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions):
+
+| Environment variable | Value |
+| --- | --- |
+| `SSL_CERT_FILE` | `/etc/ssl/certs/ca-certificates.crt` |
+| `PIP_CERT` | `/etc/ssl/certs/ca-certificates.crt` |
+| `REQUESTS_CA_BUNDLE` | `/etc/ssl/certs/ca-certificates.crt` |
+| `NODE_OPTIONS` | `--use-openssl-ca` |
+
+If you set any of these variables as an [environment variable](https://developers.cloudflare.com/pages/configuration/build-configuration/#environment-variables) in your project, your value replaces the default. `--use-openssl-ca` is added to your own `NODE_OPTIONS`, unless it already contains `--use-openssl-ca` or `--use-bundled-ca`.
+
 ## Build Image Policy
 
 ### Build Image Version Deprecation
@@ -237,5 +250,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-image/og.png?v=db3d0aa29a32719e","dateModified":"2026-10-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/configuration/build-image/og.png?v=db3d0aa29a32719e","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
