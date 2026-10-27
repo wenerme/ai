@@ -83,6 +83,24 @@ To view Service Desk tickets:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Monitor** > **Service Desk**.
 
+#### Custom fields and status for tickets
+
+- Tier: Premium, Ultimate
+
+- Custom fields for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580397) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named
+  `work_item_ticket_migration`. Disabled by default.
+- Status for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580398) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named
+  `work_item_ticket_migration`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Tickets are a work item type, so they support these work item features:
+
+- [Custom fields](../../work_items/custom_fields.md)
+- [Status](../../work_items/status.md)
+
 #### Redesigned ticket list
 
 The Service Desk ticket list more closely matches the regular issue list.

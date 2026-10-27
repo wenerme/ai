@@ -9,15 +9,15 @@ description: "Learn how to create interactive charts using the Chart.js library 
 
 Chart.js is a popular open-source charting library. The Business Text plugin enables using Chart.js in Grafana.
 
-[](/media/docs/grafana/panels-visualizations/business-text/chartjs-examples.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/chartjs-examples.png)
 
 ## Example
 
-[](/media/docs/grafana/panels-visualizations/business-text/chartjs.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/chartjs.png)
 
 Use the following external library
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 https://esm.sh/chart.js
@@ -27,7 +27,7 @@ https://esm.sh/chart.js
 
 Use the following for the **Content**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 <canvas id="myChart" />
@@ -41,7 +41,7 @@ js [Copy code to clipboard] Copy
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/chart.js").then(({ Chart, registerables }) => {

@@ -7,11 +7,11 @@ description: "Use annotations with the Yugabyte data source to overlay events on
 
 # Yugabyte annotations
 
-Annotations overlay event markers on time-series panels, which lets you correlate the events stored in YugabyteDB, such as deployments, incidents, or maintenance windows, with the metrics on your dashboards. For general information about annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations overlay event markers on time-series panels, which lets you correlate the events stored in YugabyteDB, such as deployments, incidents, or maintenance windows, with the metrics on your dashboards. For general information about annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
+- [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
 - Store event data in YugabyteDB with a timestamp column that marks when each event occurred.
 
 ## How annotations work
@@ -53,7 +53,7 @@ The following examples show annotation queries for common event types. Adapt the
 
 This query marks deployment events on the timeline. Each row becomes a single marker at its `time` value, with the version shown as the title:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -70,7 +70,7 @@ ORDER BY time
 
 Return a `timeEnd` column to draw a region annotation that spans a period, such as a maintenance window or an incident:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -89,7 +89,7 @@ If an event hasn’t ended, return `NULL` for `timeEnd` so Grafana renders it as
 
 The `tags` column accepts a comma-separated string, so you can build it from several columns to make annotations easier to filter:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -103,9 +103,9 @@ ORDER BY time
 
 ### Filter events with a template variable
 
-You can reference [template variables](/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) in an annotation query to scope events to the current dashboard selection:
+You can reference [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) in an annotation query to scope events to the current dashboard selection:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -118,5 +118,5 @@ ORDER BY time
 
 ## Next steps
 
-- Learn how to write queries in the [Yugabyte query editor](/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
-- [Use template variables](/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) to build dynamic dashboards.
+- Learn how to write queries in the [Yugabyte query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/) to build dynamic dashboards.

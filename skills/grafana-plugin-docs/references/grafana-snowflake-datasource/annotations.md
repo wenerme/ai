@@ -7,11 +7,11 @@ description: "Learn how to use annotations with the Snowflake data source in Gra
 
 # Snowflake annotations
 
-Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events such as query failures, warehouse scaling, or data loading operations. For an overview of annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events such as query failures, warehouse scaling, or data loading operations. For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- Ensure you have [configured the Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/configure/).
+- Ensure you have [configured the Snowflake data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/).
 - Your dashboard must already be saved before creating annotations.
 - Annotations only work with the following visualization types: time series, state timeline, and candlestick.
 
@@ -29,7 +29,7 @@ Expand table
 | `text`    | Optional. Detailed description shown in the tooltip.                     |
 | `tags`    | Optional. Comma-separated tags for filtering annotations.                |
 
-To limit results to the dashboard time range, use the `$__timeFilter` macro in your `WHERE` clause. For more information, refer to [Macros](/docs/plugins/grafana-snowflake-datasource/latest/query-editor/#macros).
+To limit results to the dashboard time range, use the `$__timeFilter` macro in your `WHERE` clause. For more information, refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/query-editor/#macros).
 
 ## Create an annotation
 
@@ -54,7 +54,7 @@ The following examples show common annotation patterns for Snowflake. They use t
 
 Show when queries have failed to help correlate with performance issues:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -73,7 +73,7 @@ ORDER BY start_time
 
 Monitor when warehouses scale up or down:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -92,7 +92,7 @@ ORDER BY timestamp
 
 Annotate when data loads complete or fail:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -114,7 +114,7 @@ ORDER BY last_load_time
 
 Monitor authentication events for security visibility:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -135,7 +135,7 @@ ORDER BY event_timestamp
 
 Monitor scheduled task completions and failures:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -166,5 +166,5 @@ After you configure the annotation query, annotations appear as:
 
 ## Next steps
 
-- Learn about [Template variables](/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) to make your annotations dynamic.
-- Refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.
+- Learn about [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) to make your annotations dynamic.
+- Refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.

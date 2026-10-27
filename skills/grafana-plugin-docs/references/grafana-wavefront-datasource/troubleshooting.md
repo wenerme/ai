@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Wavefront data source in Grafa
 
 # Troubleshoot Wavefront data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the Wavefront data source. For configuration instructions, refer to [Configure the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the Wavefront data source. For configuration instructions, refer to [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -38,11 +38,11 @@ These errors occur when credentials are missing, invalid, or don’t have the re
 
 Expand table
 
-| Cause                               | Solution                                                                                                                                                                                                                                                                   |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Expired or revoked token            | Generate a new token, click **Reset** next to the **Token** field on the data source configuration page, then enter the new token. Refer to [Generate a Wavefront API token](/docs/plugins/grafana-wavefront-datasource/latest/configure/#generate-a-wavefront-api-token). |
-| Token copied with extra whitespace  | Click **Reset**, re-paste the token without surrounding whitespace, and click **Save &amp; test** again.                                                                                                                                                                   |
-| Service account missing permissions | The health check calls `/api/v2/accesspolicy`, which requires that the account belongs to a role with read access to access policies, metrics, and events. In Wavefront, open the service account and confirm the account has the necessary permissions assigned.          |
+| Cause                               | Solution                                                                                                                                                                                                                                                                                                                               |
+|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Expired or revoked token            | Generate a new token, click **Reset** next to the **Token** field on the data source configuration page, then enter the new token. Refer to [Generate a Wavefront API token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/#generate-a-wavefront-api-token). |
+| Token copied with extra whitespace  | Click **Reset**, re-paste the token without surrounding whitespace, and click **Save &amp; test** again.                                                                                                                                                                                                                               |
+| Service account missing permissions | The health check calls `/api/v2/accesspolicy`, which requires that the account belongs to a role with read access to access policies, metrics, and events. In Wavefront, open the service account and confirm the account has the necessary permissions assigned.                                                                      |
 
 ## Connection errors
 
@@ -63,7 +63,7 @@ These errors occur when Grafana can’t reach the Wavefront API.
    - Including an API path, for example `https://myenvironment.wavefront.com/api/v2/`. The data source appends API paths automatically.
    - Using `http://` instead of `https://`.
 2. Confirm the tenant is reachable from your Grafana instance. Try the URL in a browser or with `curl`.
-3. If you’re using Grafana Cloud with a private Wavefront tenant, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable **Enable Secure Socks Proxy** on the data source.
+3. If you’re using Grafana Cloud with a private Wavefront tenant, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable **Enable Secure Socks Proxy** on the data source.
 4. Check firewall rules allow outbound HTTPS (port 443) from the Grafana server to your Wavefront tenant.
 
 ### Data source test times out
@@ -77,7 +77,7 @@ These errors occur when Grafana can’t reach the Wavefront API.
 
 1. Verify network connectivity from the Grafana server to the Wavefront tenant.
 2. Increase the **Request timeout in seconds** setting in the data source configuration.
-3. For private networks, ensure your VPN, peering, or [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) path to Wavefront is healthy.
+3. For private networks, ensure your VPN, peering, or [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) path to Wavefront is healthy.
 
 ## Query errors
 
@@ -93,12 +93,12 @@ These errors occur when running queries against the data source.
 
 Expand table
 
-| Cause                                         | Solution                                                                                                                                                                                                    |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The dashboard time range doesn’t contain data | Expand the time range or confirm the metric has recent data in the Wavefront UI.                                                                                                                            |
-| Wrong metric selected                         | In **Query Builder**, pick the exact metric path. Use the [Metrics](/docs/plugins/grafana-wavefront-datasource/latest/template-variables/#query-variable-types) variable type to explore available metrics. |
-| Filters exclude all data                      | Remove filters one at a time to find the narrowing filter.                                                                                                                                                  |
-| Token lacks read access to the metric         | Verify the token belongs to a user or service account with read permission for the metric namespace.                                                                                                        |
+| Cause                                         | Solution                                                                                                                                                                                                                                                                |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The dashboard time range doesn’t contain data | Expand the time range or confirm the metric has recent data in the Wavefront UI.                                                                                                                                                                                        |
+| Wrong metric selected                         | In **Query Builder**, pick the exact metric path. Use the [Metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/#query-variable-types) variable type to explore available metrics. |
+| Filters exclude all data                      | Remove filters one at a time to find the narrowing filter.                                                                                                                                                                                                              |
+| Token lacks read access to the metric         | Verify the token belongs to a user or service account with read permission for the metric namespace.                                                                                                                                                                    |
 
 ### Query timeout
 
@@ -173,7 +173,7 @@ These errors affect template variables backed by the Wavefront data source.
 
 1. Confirm a helper variable named exactly `metriclink` exists on the dashboard. The data source uses this helper to decide which metric’s keys and values to list.
 2. Make sure `metriclink` has a non-empty value. You can use a **Custom** variable with a list of metrics or a **Query** variable of type **Metrics**.
-3. Refer to [Ad hoc filters](/docs/plugins/grafana-wavefront-datasource/latest/query-editor/#ad-hoc-filters) on the query editor page for full setup steps.
+3. Refer to [Ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/#ad-hoc-filters) on the query editor page for full setup steps.
 
 ### Legacy variable queries don’t return results
 
@@ -187,7 +187,7 @@ These errors affect template variables backed by the Wavefront data source.
 1. Open the variable for editing. The plugin migrates legacy queries automatically when the variable loads, so the editor shows the modern **Query Type** and **Query** fields.
 2. Confirm the migrated **Query Type** matches what you expect. For example, `sources:` migrates to **Hosts / Sources**, and `tagValues(env):` migrates to **Tag Values** with **Tag** set to `env`.
 3. If the migration didn’t pick the correct type, set the **Query Type** and **Query** manually.
-4. Refer to [Legacy query formats](/docs/plugins/grafana-wavefront-datasource/latest/template-variables/#legacy-query-formats) on the template variables page.
+4. Refer to [Legacy query formats](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/#legacy-query-formats) on the template variables page.
 
 ## Annotation issues
 
@@ -205,7 +205,7 @@ These issues affect Wavefront events used as annotations on dashboards.
 2. Check the annotation toggle on the dashboard’s annotation switch bar to confirm the annotation isn’t hidden.
 3. Increase the **Limit** on the annotation query if the tenant has many events and yours might be after the cutoff.
 4. Confirm the token has permission to read events.
-5. Refer to [Add an annotation](/docs/plugins/grafana-wavefront-datasource/latest/annotations/#add-an-annotation) for the full setup procedure.
+5. Refer to [Add an annotation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/#add-an-annotation) for the full setup procedure.
 
 ### Annotation tooltip shows the wrong text
 
@@ -217,7 +217,7 @@ These issues affect Wavefront events used as annotations on dashboards.
 
 1. Open the annotation in dashboard settings.
 2. In the **Fields** section, map response fields to the annotation **Title**, **Text**, and **Tags**.
-3. For recommended mappings, refer to [Map response fields to annotation properties](/docs/plugins/grafana-wavefront-datasource/latest/annotations/#map-response-fields-to-annotation-properties).
+3. For recommended mappings, refer to [Map response fields to annotation properties](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/#map-response-fields-to-annotation-properties).
 
 ## Performance issues
 
@@ -234,7 +234,7 @@ These issues relate to slow queries, throttling, or API limits.
 
 1. Reduce the dashboard refresh frequency.
 2. Increase the aggregation interval to reduce the number of points returned.
-3. Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching) (available in Grafana Enterprise and Grafana Cloud).
+3. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching) (available in Grafana Enterprise and Grafana Cloud).
 4. Request a rate-limit increase from your Wavefront administrator or VMware support.
 
 ### Alert rules time out or return No Data
@@ -251,7 +251,7 @@ These issues relate to slow queries, throttling, or API limits.
 3. Add `align()` in WQL or a `[duration]` selector in PromQL so the query produces a regular time series for the **Reduce** expression.
 4. Increase **Request timeout in seconds** on the data source so alert evaluations have more time to complete.
 5. Avoid very long time ranges in alert queries; use the shortest range that still captures the signal.
-6. For more guidance, refer to [Alerting with the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/alerting/).
+6. For more guidance, refer to [Alerting with the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/).
 
 ## Enable debug logging
 
@@ -259,7 +259,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the Grafana configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -276,7 +276,7 @@ If you’ve tried the solutions in this guide and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [VMware Aria Operations for Applications documentation](https://docs.vmware.com/en/VMware-Aria-Operations-for-Applications/index.html) for tenant-specific guidance.
-3. [Raise a support ticket](/profile/org#support) if you’re a Grafana Cloud Pro, Cloud Advanced, or Grafana Enterprise customer.
+3. [Raise a support ticket](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re a Grafana Cloud Pro, Cloud Advanced, or Grafana Enterprise customer.
 4. When reporting an issue, include:
 
    - Grafana version and plugin version (from **Plugins and data** &gt; **Plugins**).

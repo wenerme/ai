@@ -9,13 +9,13 @@ description: "Create Grafana alert rules using the Amazon Aurora data source, in
 
 You can use the Amazon Aurora data source to create Grafana alert rules that evaluate SQL queries and trigger notifications when conditions are met. This lets you monitor your Aurora data for anomalies, thresholds, or specific conditions without manually watching dashboards.
 
-For general information about Grafana alerting, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+For general information about Grafana alerting, refer to [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Amazon Aurora data source](/docs/plugins/grafana-aurora-datasource/latest/configure/).
+- [Configure the Amazon Aurora data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/).
 - Verify that your database user has read access to the tables referenced in alert queries.
-- Familiarize yourself with [Grafana alert rules](/docs/grafana/latest/alerting/alerting-rules/).
+- Familiarize yourself with [Grafana alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/).
 
 ## Create an alert rule
 
@@ -44,7 +44,7 @@ Alert queries must meet the following requirements:
 
 The following query returns the average temperature over the evaluation window:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select avg(temperature) as avg_temperature
@@ -58,7 +58,7 @@ Apply a threshold condition in the expression builder, for example to fire when 
 
 To receive a separate alert instance per category, include a grouping column and set **Format data frames as** to **Table**. Grafana treats string columns as labels, so each city becomes its own alert instance:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select city, avg(temperature) as avg_temperature
@@ -71,7 +71,7 @@ group by city
 
 To alert when a table stops receiving data, count recent rows and fire when the count drops to zero:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select count(*) as reading_count
@@ -85,11 +85,11 @@ Set the condition to fire when `reading_count` is below 1.
 
 Keep the following in mind when using Aurora queries in alert rules:
 
-- **Database load:** Each alert evaluation runs a query directly against your cluster. Set evaluation intervals that balance responsiveness with database load, and consider pointing the data source at the [reader endpoint](/docs/plugins/grafana-aurora-datasource/latest/configure/#database-settings) so evaluations don’t affect your writer instance.
+- **Database load:** Each alert evaluation runs a query directly against your cluster. Set evaluation intervals that balance responsiveness with database load, and consider pointing the data source at the [reader endpoint](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/#database-settings) so evaluations don’t affect your writer instance.
 - **Authentication token refresh:** RDS authentication tokens expire after 15 minutes. When a token expires, the plugin generates a new one and retries the query once, which can occasionally add latency to an evaluation.
 - **Permissions:** The database user configured in the data source must have read access to all tables and schemas referenced in alert queries.
 
 ## Next steps
 
-- [Amazon Aurora query editor](/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
-- [Troubleshooting](/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)
+- [Amazon Aurora query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)

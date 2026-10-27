@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Yugabyte data source in Grafana"
 
 # Troubleshoot Yugabyte data source issues
 
-This document provides solutions to common issues you might encounter when you configure or use the Yugabyte data source. For configuration instructions, refer to [Configure the Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when you configure or use the Yugabyte data source. For configuration instructions, refer to [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
 
 ## Connection errors
 
@@ -24,11 +24,11 @@ These errors occur when Grafana can’t reach your YugabyteDB instance.
 
 Expand table
 
-| Cause                                   | Solution                                                                                                                                                                                                                                                                                                              |
-|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| YugabyteDB isn’t reachable from Grafana | Verify network connectivity from the Grafana server to the YugabyteDB host and port. The default YSQL port is `5433`.                                                                                                                                                                                                 |
-| Firewall blocks the connection          | Allow outbound access from Grafana to the YugabyteDB host and port.                                                                                                                                                                                                                                                   |
-| Private network                         | For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select a PDC network in the data source’s [Private data source connect](/docs/plugins/grafana-yugabyte-datasource/latest/configure/#private-data-source-connect) settings. |
+| Cause                                   | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| YugabyteDB isn’t reachable from Grafana | Verify network connectivity from the Grafana server to the YugabyteDB host and port. The default YSQL port is `5433`.                                                                                                                                                                                                                                                                                                                         |
+| Firewall blocks the connection          | Allow outbound access from Grafana to the YugabyteDB host and port.                                                                                                                                                                                                                                                                                                                                                                           |
+| Private network                         | For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select a PDC network in the data source’s [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/#private-data-source-connect) settings. |
 
 ### “Missing port in address”
 
@@ -133,7 +133,7 @@ These errors occur when you use template variables with the data source.
 **Solutions:**
 
 1. Verify the data source connection by running **Save &amp; test** on the configuration page.
-2. Confirm the variable query returns at least one column. Refer to [Query return format](/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/#query-return-format).
+2. Confirm the variable query returns at least one column. Refer to [Query return format](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/#query-return-format).
 3. For chained variables, confirm that parent variables have valid selections.
 
 ### Multi-value variables don’t match rows
@@ -161,14 +161,14 @@ These issues occur when you query a YugabyteDB instance through Private data sou
 **Solutions:**
 
 1. Confirm the secure socks proxy is enabled for your Grafana instance. The toggle only appears when it’s enabled.
-2. On Grafana Cloud, confirm that [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) is set up for your stack.
-3. On self-managed Grafana, enable the secure socks proxy in the Grafana configuration file, then restart Grafana. Refer to [Configure the Yugabyte data source](/docs/plugins/grafana-yugabyte-datasource/latest/configure/#private-data-source-connect).
+2. On Grafana Cloud, confirm that [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) is set up for your stack.
+3. On self-managed Grafana, enable the secure socks proxy in the Grafana configuration file, then restart Grafana. Refer to [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/#private-data-source-connect).
 
 ### Connection fails only when a PDC network is selected
 
 **Solutions:**
 
-1. Confirm that [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) is set up and the PDC agent is running.
+1. Confirm that [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) is set up and the PDC agent is running.
 2. Verify the PDC agent can reach the YugabyteDB host and port on the private network.
 3. Because host name resolution happens on the PDC side, confirm the host name resolves from the network where the PDC agent runs.
 
@@ -178,7 +178,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

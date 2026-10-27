@@ -11,7 +11,7 @@ Annotations let you overlay event markers on your graphs. The SolarWinds data so
 
 ## Before you begin
 
-Ensure you have [configured the SolarWinds data source](/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
+Ensure you have [configured the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
 
 ## Write SWQL queries for annotations
 
@@ -56,7 +56,7 @@ The following examples show SWQL queries you can use for annotations. Adjust the
 
 To mark when alerts triggered, join the active alerts to their configuration and return the trigger time and alert name:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT ac.Name, aa.TriggeredDateTime
@@ -72,7 +72,7 @@ Map `TriggeredDateTime` to the annotation time and `Name` to the annotation text
 
 To display recent SolarWinds events, query `Orion.Events` for the event time and message:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EventTime, Message FROM Orion.Events
@@ -82,5 +82,5 @@ Map `EventTime` to the annotation time and `Message` to the annotation text. The
 
 ## Related documentation
 
-- [Grafana annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- [SolarWinds query editor](/docs/plugins/grafana-solarwinds-datasource/latest/query-editor/)
+- [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [SolarWinds query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/query-editor/)

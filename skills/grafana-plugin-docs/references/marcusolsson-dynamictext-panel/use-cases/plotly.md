@@ -11,7 +11,7 @@ Thanks to community member [Josiah Solomon](https://github.com/yosiasz) for prov
 
 Use the following external Plotly’s chart library:
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 https://esm.sh/plotly.js-dist-min
@@ -21,13 +21,13 @@ https://esm.sh/plotly.js-dist-min
 >
 > Grafana’s edit mode might prevent displaying Plotly charts. Save and check the result on the dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-text/plotly.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/plotly.png)
 
 ## Code to copy
 
 Into the **Content** or **Default Content**:
 
-HTML [Copy code to clipboard] Copy
+HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div id="plotly-chart" />
@@ -41,7 +41,7 @@ HTML [Copy code to clipboard] Copy
 
 Into the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const unpack = (rows, key) => {
@@ -132,6 +132,6 @@ import("https://esm.sh/plotly.js-dist-min@2.35.2").then(
 
 For example, the link `https://esm.sh/plotly.js-dist-min` returns the latest stable version. The code was written when the module returns version 2.35.2. Changing the module version caused an error.
 
-[](/media/docs/grafana/panels-visualizations/business-text/v-function-error.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/v-function-error.png)
 
 You should change the version to `https://esm.sh/plotly.js-dist-min@2.35.2`, or check the new version of the module and update the code.

@@ -11,8 +11,8 @@ You can create Grafana alert rules that evaluate Zabbix metrics and trigger noti
 
 ## Before you begin
 
-- [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
-- Understand [Grafana Alerting](/docs/grafana/latest/alerting/).
+- [Configure the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
+- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Supported query types
 
@@ -35,7 +35,7 @@ The following functions are skipped during alert evaluation because they only af
 Two functions are especially useful when writing alert queries:
 
 - Use `groupBy(interval, avg)` to align raw data points to a consistent step before the alert condition reduces them. This smooths noisy collection intervals and makes thresholds predictable.
-- Use `aggregateBy` or `sumSeries` to collapse multiple series into a single series when you want one alert instance instead of one per host or item. See [Multi-dimensional alerts](#multi-dimensional-alerts).
+- Use `aggregateBy` or `sumSeries` to collapse multiple series into a single series when you want one alert instance instead of one per host or item. See [Multi-dimensional alerts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/#multi-dimensional-alerts).
 
 ## Create an alert rule
 
@@ -48,7 +48,7 @@ To create an alert rule using Zabbix data:
 5. Configure the alert condition, evaluation interval, and notification settings.
 6. Click **Save rule and exit**.
 
-For detailed instructions on configuring alert rules, evaluation groups, contact points, and notification policies, refer to the [Grafana Alerting documentation](/docs/grafana/latest/alerting/).
+For detailed instructions on configuring alert rules, evaluation groups, contact points, and notification policies, refer to the [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Example alert rules
 
@@ -80,7 +80,7 @@ Create a separate alert for every host in a group whose available memory drops b
 2. Add a **Reduce** expression (**B**): **Function** `Last`, **Input** `A`.
 3. Add a **Threshold** expression (**C**): **Input** `B`, **IS BELOW** `524288000`.
 
-Because the **Host** field matches multiple hosts, this rule produces one alert instance per host. For more information, refer to [Multi-dimensional alerts](#multi-dimensional-alerts).
+Because the **Host** field matches multiple hosts, this rule produces one alert instance per host. For more information, refer to [Multi-dimensional alerts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/#multi-dimensional-alerts).
 
 ### Alert on a specific item by ID
 
@@ -115,6 +115,6 @@ If you instead want a single alert for a group of series, use `aggregateBy` or `
 
 ## Next steps
 
-- [Build Metrics queries with the Zabbix query editor](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/#metrics)
-- [Configure contact points for notifications](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
-- [Troubleshoot the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)
+- [Build Metrics queries with the Zabbix query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/#metrics)
+- [Configure contact points for notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
+- [Troubleshoot the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)

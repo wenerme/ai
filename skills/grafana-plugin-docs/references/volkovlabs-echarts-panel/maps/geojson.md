@@ -9,7 +9,7 @@ description: "Learn how to use GeoJSON maps including world and USA maps, and ho
 
 The Business Charts panel supports world and USA GeoJSON maps. You can load additional maps dynamically.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/geojson.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/geojson.png)
 
 > Note
 >
@@ -17,7 +17,7 @@ The Business Charts panel supports world and USA GeoJSON maps. You can load addi
 
 ## Metrics with values
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const requests = context.panel.data.series.map((s) => {
@@ -84,9 +84,9 @@ return {
 
 The Business Charts panel can visualize connected data points retrieved from a data source on a GeoJSON map.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/geojson-scatter.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/geojson-scatter.png)
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let latitudes = [];
@@ -171,11 +171,11 @@ You can load additional GeoJSON maps dynamically from data source:
 - Set as a String field using Business Input data source.
 - Fetched from external URL using Infinity or JSON data sources.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/geojson-canada.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/geojson-canada.png)
 
 JSON for Canada used in the example can be found [here](https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/canada.geojson).
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const json = context.panel.data.series[0].fields[0].values[0];
@@ -209,9 +209,9 @@ return {
 
 The Business Charts panel allows you to switch between GeoJSON maps with on-click or double-click event handlers.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/geojson-onclick.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/geojson-onclick.png)
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**

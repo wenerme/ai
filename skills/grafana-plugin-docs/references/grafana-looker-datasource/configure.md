@@ -7,7 +7,7 @@ description: "Configure the Looker data source in Grafana"
 
 # Configure the Looker data source
 
-This document explains how to configure the Looker data source. To install the plugin, refer to [Install the Looker data source plugin](/docs/plugins/grafana-looker-datasource/latest/install/).
+This document explains how to configure the Looker data source. To install the plugin, refer to [Install the Looker data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/install/).
 
 ## Before you begin
 
@@ -68,15 +68,15 @@ The Looker data source authenticates to the Looker API with a client ID and clie
 
 Click **Save &amp; test** to verify the connection. On success, Grafana displays a message similar to `Successfully connected to Looker. 5 LookML models found`, where the number reflects the models your credentials can access.
 
-If the test fails, refer to [Troubleshoot Looker data source issues](/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).
+If the test fails, refer to [Troubleshoot Looker data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).
 
 ## Provision with YAML files
 
-You can define the Looker data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the Looker data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions a Looker data source:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -107,7 +107,7 @@ You can configure the Looker data source as code using the [Grafana Terraform pr
 
 The following example provisions a Looker data source and defines the required variables:
 
-Terraform [Copy code to clipboard] Copy
+Terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -170,5 +170,5 @@ variable "looker_client_secret" {
 
 ## Next steps
 
-- [Use the Looker query editor](/docs/plugins/grafana-looker-datasource/latest/query-editor/)
-- [Configure template variables](/docs/plugins/grafana-looker-datasource/latest/template-variables/)
+- [Use the Looker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/)
+- [Configure template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/template-variables/)

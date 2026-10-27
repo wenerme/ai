@@ -13,7 +13,7 @@ You set permissions for every tab and every action (add/delete/edit).
 >
 > Adding and deleting rows is supported starting from Business Table 1.9.0.
 
-[](/media/docs/grafana/panels-visualizations/business-table/permissions-where.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/permissions-where.png)
 
 In the **Permission** parameter of **Add Data**, **Edit Data**, or **Delete Data**, set the **Check** parameter to one of the following:
 
@@ -21,4 +21,4 @@ In the **Permission** parameter of **Add Data**, **Edit Data**, or **Delete Data
 - **By Org User Role**: Specify which roles have permission (**Editor**, **Viewer**, **Admin**, **None**).
 - **By Backend**: Specify a data frame column with a boolean value. If the value is **true**, the user has permission. If the value is **false**, the user doesn’t have permission.
 
-[](/media/docs/grafana/panels-visualizations/business-table/permissions.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/permissions.png)

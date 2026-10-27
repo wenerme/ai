@@ -9,15 +9,15 @@ description: "Use the Honeycomb query editor in Grafana to build Metrics, SLO, a
 
 The query editor lets you query Honeycomb data and open related queries in the Honeycomb UI. You can choose from three query types: Metrics, SLO, and Raw Query.
 
-[Honeycomb query editor showing a Metrics query](/media/docs/honeycomb/honeycomb-query-editor-v12.3.png)
+[Honeycomb query editor showing a Metrics query](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/honeycomb/honeycomb-query-editor-v12.3.png)
 
 > Tip
 >
-> Use the **Query with Assistant** button above the query type selector for AI-powered help building and refining queries. For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+> Use the **Query with Assistant** button above the query type selector for AI-powered help building and refining queries. For more information, refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/).
 
 ## Before you begin
 
-- Ensure you have [configured the Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
+- Ensure you have [configured the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
 - Verify your Honeycomb API key has **Manage Queries and Columns** and **Run Queries** permissions.
 
 ## Returned data
@@ -28,7 +28,7 @@ Use the **Returned data** drop-down to select your query output. The UI options 
 - **result:** Tabular data equivalent to the Overview in the Honeycomb UI.
 - **both:** Series and result frames together.
 
-[Returned data frame options in the Honeycomb query editor](/media/docs/plugins/honeycomb_dataframes.png)
+[Returned data frame options in the Honeycomb query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/plugins/honeycomb_dataframes.png)
 
 ## Select dataset
 
@@ -175,7 +175,7 @@ By default, queries use the time range specified in the Grafana panel. You can o
 
 The following example counts requests and calculates the average duration, filtered by service name and grouped by HTTP status code:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -199,7 +199,7 @@ Raw queries support Grafana template variable substitution. Use the standard `$v
 
 For example, to filter by a dashboard variable called `service`:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -216,7 +216,7 @@ Raw queries automatically handle multi-value variables when used with `in` and `
 
 For example, if you have a multi-value variable called `status_codes` with values `200`, `201`, and `204` selected:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -231,7 +231,7 @@ The data source automatically expands the variable into an array for the Honeyco
 
 ## Alerts and annotations
 
-You can use any Honeycomb query type (Metrics, SLO, or Raw) as the condition for a Grafana alert rule or as an annotation source. No additional configuration is required beyond building your query in the editor. For alert details and examples, refer to [Honeycomb alerting](/docs/plugins/grafana-honeycomb-datasource/latest/alerting/). For annotation details and examples, refer to [Honeycomb annotations](/docs/plugins/grafana-honeycomb-datasource/latest/annotations/).
+You can use any Honeycomb query type (Metrics, SLO, or Raw) as the condition for a Grafana alert rule or as an annotation source. No additional configuration is required beyond building your query in the editor. For alert details and examples, refer to [Honeycomb alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/alerting/). For annotation details and examples, refer to [Honeycomb annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/annotations/).
 
 ## Open queries in the Honeycomb UI
 
@@ -250,7 +250,7 @@ To view a query in Honeycomb from the query editor, click the **Open in Honeycom
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-honeycomb-datasource/latest/template-variables/)
-- [Set up alerting](/docs/plugins/grafana-honeycomb-datasource/latest/alerting/)
-- [Add annotations](/docs/plugins/grafana-honeycomb-datasource/latest/annotations/)
-- [Troubleshoot Honeycomb data source issues](/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/)
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/template-variables/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/alerting/)
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/annotations/)
+- [Troubleshoot Honeycomb data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/)

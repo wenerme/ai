@@ -11,7 +11,7 @@ The Business Charts panel supports various data sources you can use to query dat
 
 The following code snippet shows how to retrieve data from your data source for use in the Business Charts panel.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 context.panel.data.series.map((s) => {
@@ -40,7 +40,7 @@ You can convert one-dimensional arrays with data into multi-dimensional arrays i
 - Combine an array into an array of arrays.
 - Use as `series[0]` to access the first query, `series[1]` to access the second query, etc.
 
-JavaScript [Copy code to clipboard] Copy
+JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const series = context.panel.data.series.map((s) => {
@@ -54,13 +54,13 @@ const series = context.panel.data.series.map((s) => {
 
 ## Pie chart using visual mode
 
-We use the [Business Input data source](/docs/plugins/marcusolsson-static-datasource/latest/) for this example.
+We use the [Business Input data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/) for this example.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/pie-chart.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/pie-chart.png)
 
 ### Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 return {
@@ -95,11 +95,11 @@ The wind speed visualization is one of the advanced examples of what the Busines
 - The arrow color indicates the speed.
 - The direction where the arrow points indicates the wind direction.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/wind-speed.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/wind-speed.png)
 
 ### Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let wind;
@@ -151,13 +151,13 @@ return {
 
 ## Circular graph
 
-We use the [Business Input data source](/plugins/business-input/) for this example.
+We use the [Business Input data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-input/) for this example.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/circular-graph.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/circular-graph.png)
 
 ### Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let nodes, links;

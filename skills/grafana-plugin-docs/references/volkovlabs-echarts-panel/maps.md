@@ -11,9 +11,9 @@ The Business Charts panel lets you use maps as a basis for generating charts and
 
 Expand table
 
-| Section                                                                | Description                                |
-|------------------------------------------------------------------------|--------------------------------------------|
-| [GeoJSON](/docs/plugins/volkovlabs-echarts-panel/latest/maps/geojson/) | Explains how to work with GeoJSON Maps.    |
-| [Baidu](/docs/plugins/volkovlabs-echarts-panel/latest/maps/baidu/)     | Explains how to work with Baidu Maps API.  |
-| [Gaode](/docs/plugins/volkovlabs-echarts-panel/latest/maps/gaode/)     | Explains how to work with Gaode Maps API.  |
-| [Google](/docs/plugins/volkovlabs-echarts-panel/latest/maps/google/)   | Explains how to work with Google Maps API. |
+| Section                                                                                                                            | Description                                |
+|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| [GeoJSON](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/maps/geojson/) | Explains how to work with GeoJSON Maps.    |
+| [Baidu](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/maps/baidu/)     | Explains how to work with Baidu Maps API.  |
+| [Gaode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/maps/gaode/)     | Explains how to work with Gaode Maps API.  |
+| [Google](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/maps/google/)   | Explains how to work with Google Maps API. |

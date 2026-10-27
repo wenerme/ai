@@ -29,7 +29,7 @@ You’ve noticed errors in your application and want to investigate which reques
 
 ### Choose span data
 
-By default, Traces Drilldown shows **Root spans** (one span per trace) for accurate, service-level insight. For deeper error investigations, start with **Root spans**, then switch to **All spans** to include downstream or internal errors in child spans. Refer to [Choose root or full span data](../../investigate/choose-span-data/) for more information.
+By default, Traces Drilldown shows **Root spans** (one span per trace) for accurate, service-level insight. For deeper error investigations, start with **Root spans**, then switch to **All spans** to include downstream or internal errors in child spans. Refer to [Choose root or full span data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) for more information.
 
 ### Select Errors metric
 
@@ -94,21 +94,21 @@ By following this walkthrough, you learned how to:
 - Examine individual trace details.
 - Use **Breakdown** to identify error patterns.
 
-For more advanced investigation techniques like using the **Comparison** tab and **Inspect** feature, refer to the [Example: Investigate source of errors](../../get-started/#example-investigate-source-of-errors) section.
+For more advanced investigation techniques like using the **Comparison** tab and **Inspect** feature, refer to the [Example: Investigate source of errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/get-started/#example-investigate-source-of-errors) section.
 
 ## Next steps
 
 Now that you’ve completed the basic walkthrough:
 
-- [Determine your use case](../../determine-use-case/) to choose the right investigation approach.
-- [Choose a RED metric](../../investigate/choose-red-metric/) to guide what you analyze next.
-- [Add filters](../../investigate/add-filters/) to refine the scope of your investigation.
-- [Analyze tracing data](../../investigate/analyze-tracing-data/) with Breakdown, Comparison, and Root cause views.
-- [Choose root or full span data](../../investigate/choose-span-data/) depending on your use case.
+- [Determine your use case](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/determine-use-case/) to choose the right investigation approach.
+- [Choose a RED metric](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric/) to guide what you analyze next.
+- [Add filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters/) to refine the scope of your investigation.
+- [Analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) with Breakdown, Comparison, and Root cause views.
+- [Choose root or full span data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) depending on your use case.
 
 ### Use traces with other telemetry signals
 
 Do you have data from other telemetry signals?
 
-- Refer to [Use signals together](/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.
-- Refer to [Telemetry signal workflows](/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
+- Refer to [Use signals together](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.
+- Refer to [Telemetry signal workflows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.

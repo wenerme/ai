@@ -9,13 +9,13 @@ description: "Learn how to use dashboard and global variables in the Business In
 
 The Business Input data source supports dashboard and global variables in String fields.
 
-The [Grafana Crash Course](/docs/plugins/marcusolsson-static-datasource/latest/exploring-variables/) discusses three types of variables.
+The [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/exploring-variables/) discusses three types of variables.
 
 ## Code editor
 
 To get started, create a new `custom` variable:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 2022-02-10T00:00:00.000Z,
@@ -23,7 +23,7 @@ js [Copy code to clipboard] Copy
 2022-04-10T00:00:00.000Z
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-input/1st-variable.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/1st-variable.png)
 
 1. Create another variable that relates to the first variable. Use the `Business Input Data Source` and set the variable type to `Query` with the `Code editor`.
 2. In Query options, set the Data source to `Static`.
@@ -32,7 +32,7 @@ js [Copy code to clipboard] Copy
 
 ### Code
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const array = Array.from({ length: 3 }, (v, i) => `${i + 1}`);
@@ -53,11 +53,11 @@ const result = {
 return Promise.resolve(result);
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-input/2nd-variable.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/2nd-variable.png)
 
 The `to` variable will have the following values:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 2022-02-17T00:00:00.000Z
@@ -67,12 +67,12 @@ js [Copy code to clipboard] Copy
 
 When you change the value of the `from` variable, the values of the `to` variable also change:
 
-[](/media/docs/grafana/panels-visualizations/business-input/variable-reference.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/variable-reference.png)
 
-[](/media/docs/grafana/panels-visualizations/business-input/variable-reference-2.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/variable-reference-2.png)
 
 ## Manual editor
 
 You can use variables in the `Manual editor`. Use the `$variable_name` syntax in the input field.
 
-[](/media/docs/grafana/panels-visualizations/business-input/manual-editor-variable.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/manual-editor-variable.png)

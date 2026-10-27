@@ -15,11 +15,11 @@ Before you can configure the AppDynamics data source, ensure you have the follow
 
 - Grafana 11.6.7 or later.
 - The `Organization Administrator` role in Grafana to add data sources.
-- The AppDynamics data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+- The AppDynamics data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 - An [AppDynamics](https://www.appdynamics.com/) account.
 - A user or API client with `view` access to **Account**, **Applications**, **Databases**, and **Analytics** in AppDynamics.
 - To use Analytics queries, an [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security) with both the **Manage Schema** and **Query Custom Events** permissions under **Custom Analytics Events**. The **Query Custom Events** permission is required to run Analytics queries. The **Manage Schema** permission is required because Grafana calls the `/events/schema` endpoint during the connection test and query editor autocomplete, so without it the connection test fails.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### Security considerations
 
@@ -30,17 +30,17 @@ Keep the following security best practices in mind when configuring the AppDynam
 - **API client authentication:** When possible, use API client authentication instead of basic authentication. API client secrets can be rotated independently without changing user passwords.
 - **Analytics API keys:** The Analytics API key is stored and transmitted separately from your Metrics credentials. Generate a dedicated key with the minimum required [Analytics permissions](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security).
 - **TLS verification:** Keep **Skip TLS Verify** disabled in production environments to ensure encrypted and authenticated connections to your AppDynamics controller.
-- **Network access:** Ensure your Grafana server can reach the AppDynamics controller over HTTPS (port 443). For private networks, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) or the [Secure Socks Proxy](#secure-socks-proxy) instead of exposing your controller to the public internet.
+- **Network access:** Ensure your Grafana server can reach the AppDynamics controller over HTTPS (port 443). For private networks, use [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) or the [Secure Socks Proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/#secure-socks-proxy) instead of exposing your controller to the public internet.
 
 ## Add the AppDynamics data source
 
 For general information on installing and managing plugins and data sources in Grafana refer to the following documents:
 
-- [Install Grafana plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins)
-- [Plugin management](/docs/grafana/latest/administration/plugin-management/)
-- [Data source management](/docs/grafana/latest/administration/data-source-management/#data-source-management)
+- [Install Grafana plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins)
+- [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/)
+- [Data source management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#data-source-management)
 
-To install the AppDynamics data source plugin, refer to the [AppDynamics installation page](/grafana/plugins/dlopes7-appdynamics-datasource/?tab=installation).
+To install the AppDynamics data source plugin, refer to the [AppDynamics installation page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/dlopes7-appdynamics-datasource/?tab=installation).
 
 > Note
 >
@@ -133,17 +133,17 @@ The HTTP settings section includes the standard Grafana TLS options. The AppDyna
 >
 > The Secure Socks Proxy option is available in Grafana 10.0 and later when the `secureSocksDSProxyEnabled` feature toggle is enabled.
 
-- **Enabled** - Enable to proxy the data source connection through the secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+- **Enabled** - Enable to proxy the data source connection through the secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
 After you have added your connection settings, click **Save &amp; test** to test the data source connection. The health check validates the Metrics API connection and, if all three Analytics fields are configured (Analytics API URL, Global Account Name, and Analytics API Key), also validates the Analytics API connection. A successful connection displays the message: **Data source is working, found N apps.**
 
 ## Configure the data source with provisioning
 
-Configure the AppDynamics data source using the Grafana provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
+Configure the AppDynamics data source using the Grafana provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
 
 ### Basic authentication example
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -163,7 +163,7 @@ datasources:
 >
 > If you set `clientSecret`, API client authentication takes precedence over basic authentication for the Controller (Metrics) connection. Analytics uses `analyticsAPIKey` separately and doesn’t replace Controller credentials.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -192,7 +192,7 @@ The following examples demonstrate configurations for basic authentication and A
 
 ### Basic authentication
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -224,7 +224,7 @@ resource "grafana_data_source" "appdynamics_basic" {
 
 ### API client with Analytics
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 resource "grafana_data_source" "appdynamics_api_client" {

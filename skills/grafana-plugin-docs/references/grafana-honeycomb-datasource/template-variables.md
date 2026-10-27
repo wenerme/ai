@@ -11,10 +11,10 @@ You can use Grafana template variables with the Honeycomb data source to create 
 
 ## Before you begin
 
-- [Configure the Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
-To add a new Honeycomb query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use your Honeycomb data source as your data source.
+To add a new Honeycomb query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use your Honeycomb data source as your data source.
 
 ## Query types
 
@@ -35,7 +35,7 @@ When querying column values, the following additional options are available:
   - **series (default):** Returns the breakdown group labels from time-series results.
   - **result:** Returns distinct values directly from the specified column in the result data.
   - **both:** Combines series and result data.
-- **Where:** Filter the data before extracting column values, using the same filter operators available in the [metrics query editor](/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#where-filters).
+- **Where:** Filter the data before extracting column values, using the same filter operators available in the [metrics query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#where-filters).
 - **Constraint:** Set the filter combination to **AND** or **OR** when using multiple filters.
 
 ### Datasets
@@ -56,11 +56,11 @@ Returns SLO definitions for a selected dataset. Each entry returns the SLO name 
 
 ## Use variables in queries
 
-After you create a variable, you can use it in your Honeycomb queries. For more information, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+After you create a variable, you can use it in your Honeycomb queries. For more information, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
-Raw queries also support template variable substitution, including multi-value variables with `in` and `not-in` operators. Refer to [Use variables in raw queries](/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#use-variables-in-raw-queries).
+Raw queries also support template variable substitution, including multi-value variables with `in` and `not-in` operators. Refer to [Use variables in raw queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#use-variables-in-raw-queries).
 
-For more information about variables, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+For more information about variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Examples
 
@@ -97,7 +97,7 @@ Use the **Where** and **Constraint** fields on a **Default** column-value variab
 
 Create a multi-value variable, then reference it with an `in` filter in a raw query. For example, with a `status_codes` variable that has `500`, `502`, and `503` selected:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -109,7 +109,7 @@ JSON [Copy code to clipboard] Copy
 }
 ```
 
-The data source expands the selected values into an array for the Honeycomb API. For more detail, refer to [Use variables in raw queries](/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#use-variables-in-raw-queries).
+The data source expands the selected values into an array for the Honeycomb API. For more detail, refer to [Use variables in raw queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#use-variables-in-raw-queries).
 
 ### SLO variable
 

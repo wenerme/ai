@@ -13,12 +13,12 @@ Instead of hard-coding details such as databases, containers, partition keys, an
 
 Before you create template variables:
 
-- [Configure the Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
+- [Configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
 - Familiarize yourself with Grafana template variables. For an introduction, refer to the following topics:
 
-  - [Variables](/docs/grafana/latest/dashboards/variables/)
-  - [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/)
-  - [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/)
+  - [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
+  - [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/)
+  - [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/)
 
 ## Supported variable types
 
@@ -59,7 +59,7 @@ For the **Query** query type, write a query that returns a single field. Use the
 
 Return the distinct set of regions to populate a region variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT VALUE c.region FROM c
@@ -67,7 +67,7 @@ SELECT DISTINCT VALUE c.region FROM c
 
 Return the distinct set of status values:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT VALUE c.status FROM c
@@ -91,7 +91,7 @@ Reference variables in the query editor using the `$variable` syntax. The data s
 
 Filter a query by a single-value variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.timestamp, c.temperature
@@ -101,7 +101,7 @@ WHERE c.region = '$region' AND $__timeFilter(c.timestamp)
 
 For a multi-value variable, the data source formats the selected values as a quoted, comma-separated list, so you can use the variable with the `IN` operator:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT c.timestamp, c.status
@@ -111,5 +111,5 @@ WHERE c.status IN ($status) AND $__timeFilter(c.timestamp)
 
 ## Next steps
 
-- [Azure Cosmos DB query editor](/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/)
-- [Set up alerting](/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting/)
+- [Azure Cosmos DB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting/)

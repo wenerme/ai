@@ -35,24 +35,24 @@ The following Google APIs must be enabled in your GCP project:
 
 ## Get started
 
-Install the plugin from **Administration** &gt; **Plugins and data** &gt; **Plugins**, or from the [Grafana plugin catalog](/grafana/plugins/grafana-bigquery-datasource/). After the plugin is installed, the following documents help you get started:
+Install the plugin from **Administration** &gt; **Plugins and data** &gt; **Plugins**, or from the [Grafana plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-bigquery-datasource/). After the plugin is installed, the following documents help you get started:
 
-- [Configure the BigQuery data source](/docs/plugins/grafana-bigquery-datasource/latest/configure/) - Set up authentication and connect to BigQuery.
-- [BigQuery query editor](/docs/plugins/grafana-bigquery-datasource/latest/query-editor/) - Create and edit SQL and visual queries.
-- [Template variables](/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) - Create dynamic dashboards with BigQuery variables.
-- [Alerting](/docs/plugins/grafana-bigquery-datasource/latest/alerting/) - Create alert rules using BigQuery data.
-- [Troubleshooting](/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/) - Solve common configuration and query errors.
+- [Configure the BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/) - Set up authentication and connect to BigQuery.
+- [BigQuery query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/query-editor/) - Create and edit SQL and visual queries.
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) - Create dynamic dashboards with BigQuery variables.
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/alerting/) - Create alert rules using BigQuery data.
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/) - Solve common configuration and query errors.
 
 ## Additional features
 
 After you configure the BigQuery data source, you can:
 
-- Add [Annotations](/docs/plugins/grafana-bigquery-datasource/latest/annotations/) to overlay BigQuery events on your graphs.
-- Configure and use [Template variables](/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](/docs/plugins/grafana-bigquery-datasource/latest/alerting/) rules based on your BigQuery data.
-- Use [Explore](/docs/grafana/latest/explore/) to investigate your BigQuery data without building a dashboard.
-- Build queries with [Grafana Assistant](/docs/plugins/grafana-bigquery-datasource/latest/query-editor/#query-with-grafana-assistant) when it’s available in your Grafana instance.
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/annotations/) to overlay BigQuery events on your graphs.
+- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/alerting/) rules based on your BigQuery data.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to investigate your BigQuery data without building a dashboard.
+- Build queries with [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/query-editor/#query-with-grafana-assistant) when it’s available in your Grafana instance.
 
 ## Pre-built dashboards
 
@@ -73,17 +73,17 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the Google BigQuery plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update the plugin manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the Google BigQuery plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update the plugin manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Query with the Grafana CLI
 
 You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
 
-`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
 
 For example, to query your BigQuery data source, use `gcx datasources bigquery`:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 # Run a SQL query

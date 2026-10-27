@@ -11,11 +11,11 @@ Grafana Traces Drilldown provides powerful tools that help you identify and anal
 
 Using these steps, you can use the tracing data to investigate issues.
 
-1. [Select **Root spans** or **All spans**](./choose-span-data/) to look at either the first span in a trace (the root span) or all span data.
-2. [Choose the metric](./choose-red-metric/) you want to use: rates, errors, or duration.
-3. [Analyze data](./analyze-tracing-data/) using **Breakdown**, **Comparison**, **Service structure** (Rate), **Root cause errors** and **Exceptions** (Errors), **Root cause latency** (Duration), and **Traces** tabs.
-4. [Add filters](./add-filters/) to refine the view of your data.
-5. [Save and load queries](./save-load-queries/) to preserve and reuse filter configurations.
+1. [Select **Root spans** or **All spans**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) to look at either the first span in a trace (the root span) or all span data.
+2. [Choose the metric](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric/) you want to use: rates, errors, or duration.
+3. [Analyze data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) using **Breakdown**, **Comparison**, **Service structure** (Rate), **Root cause errors** and **Exceptions** (Errors), **Root cause latency** (Duration), and **Traces** tabs.
+4. [Add filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters/) to refine the view of your data.
+5. [Save and load queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/save-load-queries/) to preserve and reuse filter configurations.
 
 You can use these steps in any order and move between them as many times as needed. Depending on what you find, you may start with root spans, delve into error data, and then select **All spans** to access all of the tracing data.
 

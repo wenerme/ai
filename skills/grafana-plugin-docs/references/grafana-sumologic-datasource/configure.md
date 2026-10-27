@@ -14,7 +14,7 @@ To start querying your Sumo Logic data in Grafana, you need to add and configure
 Before configuring the data source, ensure you have:
 
 - **Grafana version:** Grafana 11.6.7 or later.
-- **Grafana plan:** A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- **Grafana plan:** A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 - **Grafana permissions:** Organization administrator role.
 - **Sumo Logic account:** An active [Sumo Logic](https://www.sumologic.com/) account.
 - **Sumo Logic access credentials:** An access ID and access key pair. Refer to the [Sumo Logic Access Keys documentation](https://help.sumologic.com/docs/manage/security/access-keys/) for instructions on generating credentials.
@@ -77,15 +77,15 @@ Expand table
 
 Click **Save &amp; test** to verify the data source is configured correctly. A successful connection displays the message **Sumo Logic successfully connected**.
 
-If the test fails, refer to [Troubleshooting](/docs/plugins/grafana-sumologic-datasource/latest/troubleshooting/) for common errors and solutions.
+If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/troubleshooting/) for common errors and solutions.
 
 ## Provision the data source
 
-You can define and configure the Sumo Logic data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the Sumo Logic data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions the Sumo Logic data source with access key authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -103,15 +103,15 @@ datasources:
       accessKey: <ACCESS_KEY>
 ```
 
-Replace `<ACCESS_ID>` and `<ACCESS_KEY>` with your Sumo Logic credentials. For a complete list of available provisioning settings, refer to the settings tables in the [Configure settings](#configure-settings) and [Authentication](#authentication) sections.
+Replace `<ACCESS_ID>` and `<ACCESS_KEY>` with your Sumo Logic credentials. For a complete list of available provisioning settings, refer to the settings tables in the [Configure settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/#configure-settings) and [Authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/#authentication) sections.
 
 ### Provision with Terraform
 
-You can provision the Sumo Logic data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information about Grafana Terraform provisioning, refer to [Provision Grafana with Terraform](/docs/grafana/latest/administration/provisioning/terraform/).
+You can provision the Sumo Logic data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information about Grafana Terraform provisioning, refer to [Provision Grafana with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/terraform/).
 
 The following example provisions the Sumo Logic data source with access key authentication:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "sumologic" {
@@ -138,6 +138,6 @@ Replace `<ACCESS_ID>` and `<ACCESS_KEY>` with your Sumo Logic credentials.
 
 After configuring the data source, you can:
 
-- [Build queries](/docs/plugins/grafana-sumologic-datasource/latest/query-editor/) using the metrics visual builder or raw query editor.
-- [Create template variables](/docs/plugins/grafana-sumologic-datasource/latest/template-variables/) for dynamic dashboards.
-- [Set up alert rules](/docs/plugins/grafana-sumologic-datasource/latest/alerting/) to monitor your Sumo Logic metrics.
+- [Build queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/query-editor/) using the metrics visual builder or raw query editor.
+- [Create template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/template-variables/) for dynamic dashboards.
+- [Set up alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/alerting/) to monitor your Sumo Logic metrics.

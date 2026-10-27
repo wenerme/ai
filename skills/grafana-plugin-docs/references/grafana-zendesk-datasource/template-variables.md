@@ -7,11 +7,11 @@ description: "Use template variables with the Zendesk data source to build dynam
 
 # Zendesk template variables
 
-Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a user or role into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a user or role into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-Before you use template variables, ensure you have [configured the Zendesk data source](/docs/plugins/grafana-zendesk-datasource/latest/configure/).
+Before you use template variables, ensure you have [configured the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/).
 
 ## Supported variable types
 
@@ -25,7 +25,7 @@ Expand table
 | Custom        | Yes       | Uses a fixed, comma-separated list of values that you define.                       |
 | Text box      | Yes       | Accepts a free-form value that you enter on the dashboard.                          |
 
-Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Create a query variable
 

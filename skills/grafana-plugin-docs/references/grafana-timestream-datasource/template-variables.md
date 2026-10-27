@@ -9,12 +9,12 @@ description: "Use template variables with the Amazon Timestream data source to c
 
 Use template variables to create dynamic, reusable dashboards. Instead of hard-coding database names, table names, or filter values in your queries, you can use variables that appear as drop-down selectors at the top of the dashboard.
 
-For an introduction to template variables, refer to [Variables](/docs/grafana/latest/dashboards/variables/).
+For an introduction to template variables, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the Amazon Timestream data source](/docs/plugins/grafana-timestream-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Amazon Timestream data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -46,7 +46,7 @@ The following queries demonstrate common patterns for populating variables.
 
 **List all databases:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SHOW DATABASES
@@ -54,7 +54,7 @@ SHOW DATABASES
 
 **List tables in a database (using a `database` variable):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SHOW TABLES FROM ${database}
@@ -62,7 +62,7 @@ SHOW TABLES FROM ${database}
 
 **List distinct values for a dimension:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM ${database}.${table}
@@ -72,7 +72,7 @@ SELECT DISTINCT region FROM ${database}.${table}
 
 Create a `region` variable first, then create an `instance` variable that depends on it:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT instance_name
@@ -86,7 +86,7 @@ When the `region` selection changes, the `instance` variable automatically refre
 
 Reference variables in your Timestream queries with the `$variable_name` or `${variable_name}` syntax:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -105,7 +105,7 @@ Variables also work in the **Database**, **Table**, and **Measure** selector fie
 
 When a multi-value variable has multiple selections, the plugin automatically wraps each value in single quotes and joins them with commas. For example, if `server01` and `server02` are selected, `$servers` renders as `'server01','server02'`. This format works directly in SQL `IN` clauses:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -124,7 +124,7 @@ ORDER BY binned_time ASC
 
 To disable the automatic quoting, use the `csv` formatting option:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 ${servers:csv}
@@ -132,4 +132,4 @@ ${servers:csv}
 
 This renders the values as `server01,server02` without quotes, which is useful in contexts where SQL string quoting isn’t needed.
 
-For more information about variable formatting options, refer to [Advanced variable format options](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more information about variable formatting options, refer to [Advanced variable format options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).

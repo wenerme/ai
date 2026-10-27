@@ -14,7 +14,7 @@ This document explains how to configure and provision the Google Sheets data sou
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role (to add and configure data sources).
-- **Plugin installed:** The Google Sheets data source plugin. For instructions, refer to [Install a plugin](/docs/grafana/latest/administration/plugin-management/#install-a-plugin).
+- **Plugin installed:** The Google Sheets data source plugin. For instructions, refer to [Install a plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-a-plugin).
 - **Google account:** A Google account; for JWT or API key authentication, a Google Cloud project with the required APIs enabled (see each authentication section below for details).
 
 ## Add the data source
@@ -34,11 +34,11 @@ At the top of the configuration page, set **Name** (the name used to refer to th
 
 The Google Sheets data source supports three authentication methods. The default is **Google JWT File** (service account).
 
-- [Google JWT File](#authenticate-with-a-service-account-jwt): uses a service account and can access private spreadsheets. Works in all environments where Grafana is running.
-- [API key](#authenticate-with-an-api-key): offers simpler configuration, but requires spreadsheets to be public.
-- [GCE Default Service Account](#authenticate-with-the-default-gce-service-account): automatically retrieves default credentials. Requires Grafana to be running on a Google Compute Engine virtual machine.
+- [Google JWT File](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-a-service-account-jwt): uses a service account and can access private spreadsheets. Works in all environments where Grafana is running.
+- [API key](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-an-api-key): offers simpler configuration, but requires spreadsheets to be public.
+- [GCE Default Service Account](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-the-default-gce-service-account): automatically retrieves default credentials. Requires Grafana to be running on a Google Compute Engine virtual machine.
 
-On the configuration page, choose an authentication type. You can expand **Configure Google Sheets Authentication** for step-by-step guidance in the UI. Depending on your authentication type, you may need to share spreadsheets or set permissions; refer to [Sharing](#sharing).
+On the configuration page, choose an authentication type. You can expand **Configure Google Sheets Authentication** for step-by-step guidance in the UI. Depending on your authentication type, you may need to share spreadsheets or set permissions; refer to [Sharing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#sharing).
 
 ### Authenticate with a service account JWT
 
@@ -75,11 +75,11 @@ To create a service account and get a JWT file:
 5. Ignore the **Service account permissions** and **Principals with access** sections, just click **Done**.
 6. Click into the details for the service account, navigate to the **Keys** tab, and click **Add Key**. Choose key type **JSON** and click **Create**. Grafana creates and downloads a JSON key file to your computer.
 7. Upload or drag this file into the **JWT Key Details** section of the data source configuration.
-8. Grant the service account [access to resources](#grant-access-to-the-service-account-used-with-jwt-authentication) as appropriate.
+8. Grant the service account [access to resources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#grant-access-to-the-service-account-used-with-jwt-authentication) as appropriate.
 
 ### Authenticate with an API key
 
-For [publicly shared](#sharing) spreadsheets, you don’t need to authorize the request, but you must provide an API key.
+For [publicly shared](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#sharing) spreadsheets, you don’t need to authorize the request, but you must provide an API key.
 
 To generate an API key:
 
@@ -111,10 +111,10 @@ Below the authentication type selector, **Default project** and **Default Spread
 
 Expand table
 
-| Setting                    | Description                                                                                                                      |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| **Default project**        | (GCE authentication only) The GCE project ID.                                                                                    |
-| **Default Spreadsheet ID** | Optional spreadsheet ID to use as default when creating new queries. Refer to [Default Spreadsheet ID](#default-spreadsheet-id). |
+| Setting                    | Description                                                                                                                                                                                                                                                 |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Default project**        | (GCE authentication only) The GCE project ID.                                                                                                                                                                                                               |
+| **Default Spreadsheet ID** | Optional spreadsheet ID to use as default when creating new queries. Refer to [Default Spreadsheet ID](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#default-spreadsheet-id). |
 
 ## Default Spreadsheet ID
 
@@ -152,25 +152,25 @@ By default, the service account doesn’t have access to any spreadsheets within
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. A successful connection shows the message **Success**. If the test fails, refer to [Troubleshooting](/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting/).
+Click **Save &amp; test** to verify the connection. A successful connection shows the message **Success**. If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the Google Sheets data source with [Grafana provisioning](/docs/grafana/latest/administration/provisioning/#data-sources) (YAML) or with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source).
+You can define the Google Sheets data source with [Grafana provisioning](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources) (YAML) or with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source).
 
 You can provision the data source using any of these authentication mechanisms:
 
-- [With an API key](#with-an-api-key)
-- [With a service account JWT](#with-a-service-account-jwt)
-- [With the default GCE service account](#with-the-default-gce-service-account)
+- [With an API key](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#with-an-api-key)
+- [With a service account JWT](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#with-a-service-account-jwt)
+- [With the default GCE service account](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#with-the-default-gce-service-account)
 
 ### With an API key
 
-To create an API key, refer to [Authenticate with an API key](#authenticate-with-an-api-key).
+To create an API key, refer to [Authenticate with an API key](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-an-api-key).
 
 Example:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -188,11 +188,11 @@ Replace `<API_KEY>`, `<DATA_SOURCE_NAME>`, and optionally `<SPREADSHEET_ID>` wit
 
 ### With a service account JWT
 
-To create a service account and its JWT file, refer to [Authenticate with a service account JWT](#authenticate-with-a-service-account-jwt).
+To create a service account and its JWT file, refer to [Authenticate with a service account JWT](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-a-service-account-jwt).
 
 Example:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -219,7 +219,7 @@ The following example shows provisioning the Google Sheets data source using a p
 >
 > This is not supported in hosted environments such as Grafana Cloud.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -241,7 +241,7 @@ You can use the Google Compute Engine (GCE) default service account to authentic
 
 Example:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -262,7 +262,7 @@ Use the `grafana_data_source` resource with `type = "grafana-googlesheets-dataso
 
 **API key:**
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "google_sheets" {
@@ -282,7 +282,7 @@ resource "grafana_data_source" "google_sheets" {
 
 **Service account JWT:**
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "google_sheets" {
@@ -305,7 +305,7 @@ resource "grafana_data_source" "google_sheets" {
 
 **GCE default service account:**
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "google_sheets" {

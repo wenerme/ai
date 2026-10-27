@@ -76,13 +76,13 @@ Click **Save &amp; test** to verify the connection. Grafana validates the token 
 - If the token is missing or empty, the test fails with an `invalid/empty bearer token` error.
 - If the token is invalid, the test fails with a `status code: 401` error.
 
-For help resolving connection problems, refer to [Troubleshooting](/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/).
+For help resolving connection problems, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -100,7 +100,7 @@ Replace `<CATCHPOINT_REST_API_V2_KEY>` with your Catchpoint REST API v2 key.
 
 You can also manage the data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the `grafana_data_source` resource.
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "catchpoint" {
@@ -123,5 +123,5 @@ Store the token outside of version control, for example in a `TF_VAR_catchpoint_
 
 ## Next steps
 
-- [Catchpoint query editor](/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
+- [Catchpoint query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)

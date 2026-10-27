@@ -21,20 +21,20 @@ By creating SLIs (Service Level Indicators) and SLOs, you define what an accepta
 
 [Learn about Grafana SLO
 \
-Learn about what service level objectives are and familiarize yourself with basic SLO concepts.](/docs/grafana-cloud/alerting-and-irm/slo/introduction/)
+Learn about what service level objectives are and familiarize yourself with basic SLO concepts.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/introduction/)
 
 [Best practices
 \
-Read up on basic SLO best practices and how to approach SLOs, from team alignment to query writing.](/docs/grafana-cloud/alerting-and-irm/slo/best-practices/)
+Read up on basic SLO best practices and how to approach SLOs, from team alignment to query writing.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/best-practices/)
 
 [Create an SLO
 \
-Run through the five-step process to create a new SLO and configure alert rules for the SLO.](/docs/grafana-cloud/alerting-and-irm/slo/create/)
+Run through the five-step process to create a new SLO and configure alert rules for the SLO.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/create/)
 
 [SLO dashboard
 \
-Analyze SLO performance and view key metrics such as burn rate, error budget, SLI results and more.](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/)
+Analyze SLO performance and view key metrics such as burn rate, error budget, SLI results and more.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/)
 
 [Maintenance windows
 \
-Schedule planned work to pause error budget consumption and burn rate alerting for selected SLOs.](/docs/grafana-cloud/alerting-and-irm/slo/maintenance-windows/)
+Schedule planned work to pause error budget consumption and burn rate alerting for selected SLOs.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/maintenance-windows/)

@@ -7,14 +7,14 @@ description: "Guide for using the Amazon CloudWatch data source's query editor"
 
 # Amazon CloudWatch query editor
 
-Grafana provides a query editor for the CloudWatch data source, which allows you to query, visualize, and alert on logs and metrics stored in Amazon CloudWatch. It is located on the [Explore](/docs/grafana/latest/explore/) page. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
+Grafana provides a query editor for the CloudWatch data source, which allows you to query, visualize, and alert on logs and metrics stored in Amazon CloudWatch. It is located on the [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) page. For general documentation on querying data sources in Grafana, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 ## Choose a query editing mode
 
 The CloudWatch data source can query data from both CloudWatch metrics and CloudWatch Logs APIs, each with its own specialized query editor.
 
-- [CloudWatch Metrics](#query-cloudwatch-metrics)
-- [CloudWatch Logs](#query-cloudwatch-logs)
+- [CloudWatch Metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#query-cloudwatch-metrics)
+- [CloudWatch Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#query-cloudwatch-logs)
 
 Select the API to query using the drop-down to the right of the **Region** setting.
 
@@ -40,7 +40,7 @@ Expand table
 
 Create a query in Builder mode:
 
-1. Browse and select a metric namespace, metric name, filter, group, and order options using information from the [Metrics Insights keywords table](#metrics-insights-keywords).
+1. Browse and select a metric namespace, metric name, filter, group, and order options using information from the [Metrics Insights keywords table](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#metrics-insights-keywords).
 2. For each of these keywords, choose from the list of available options.
 
 Grafana constructs a SQL query based on your selections.
@@ -71,9 +71,9 @@ The Log group selector specifies the target log groups for the logs query. When 
 
 You can create three types of queries in the CloudWatch query editor:
 
-- [Metric Search](#metric-search-queries), which help you retrieve and filter available metrics.
-- [Metric Query](#create-a-metric-insights-queries), which use the Metrics Insights feature to fetch time series data.
-- [PromQL](#promql-queries), which query CloudWatch metrics using Prometheus Query Language (PromQL).
+- [Metric Search](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#metric-search-queries), which help you retrieve and filter available metrics.
+- [Metric Query](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#create-a-metric-insights-queries), which use the Metrics Insights feature to fetch time series data.
+- [PromQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#promql-queries), which query CloudWatch metrics using Prometheus Query Language (PromQL).
 
 The query type you use depends on how you want to interact with AWS metrics. Use the drop-down in the upper middle of the query editor to select which type you want to create.
 
@@ -107,17 +107,17 @@ Enhance metric queries using template variables to create dynamic, reusable dash
 
 Use the asterisk (`*`) wildcard for dimension values to create dynamic queries that automatically monitor changing sets of AWS resources.
 
-[CloudWatch dimension wildcard](/static/img/docs/cloudwatch/cloudwatch-dimension-wildcard-8.3.0.png)
+[CloudWatch dimension wildcard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/img/docs/cloudwatch/cloudwatch-dimension-wildcard-8.3.0.png)
 
 The query returns the average CPU utilization for all EC2 instances in the default region. With `Match Exact` disabled and `InstanceId` using a wildcard, the query retrieves metrics for any EC2 instance regardless of additional dimensions.
 
 Auto-scaling events add new instances to the graph without manual instance ID tracking. This feature supports up to 100 metrics.
 
-Click the [**Query inspector**](/docs/grafana/latest/panels-visualizations/query-transform-data/#navigate-the-query-tab) button and select **Meta Data** to see the search expression that’s automatically built to support wildcards.
+Click the [**Query inspector**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/#navigate-the-query-tab) button and select **Meta Data** to see the search expression that’s automatically built to support wildcards.
 
 To learn more about search expressions, refer to the [CloudWatch documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/search-expression-syntax.html). The search expression is defined by default in such a way that the queried metrics must match the defined dimension names exactly. This means that in the example, the query returns only metrics with exactly one dimension containing the name `InstanceId`.
 
-[CloudWatch Meta Inspector](/static/img/docs/cloudwatch/cloudwatch-meta-inspector-8.3.0.png)
+[CloudWatch Meta Inspector](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/img/docs/cloudwatch/cloudwatch-meta-inspector-8.3.0.png)
 
 Disabling `Match Exact` includes metrics with additional dimensions and creates a search expression even without wildcards. Grafana searches for any metric matching at least the namespace, metric name, and all defined dimensions.
 
@@ -149,7 +149,7 @@ Alerting requires queries that return numeric data, which CloudWatch Logs suppor
 
 The following is a valid query for alerting on messages that include the text “Exception”:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 filter @message like /Exception/
@@ -161,15 +161,15 @@ filter @message like /Exception/
 >
 > If you receive an error like `input data must be a wide series but got ...` when trying to alert on a query, make sure that your query returns valid numeric data that can be output to a Time series panel.
 
-For more information on Grafana alerts, refer to [Alerting](/docs/grafana/latest/alerting/).
+For more information on Grafana alerts, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ### Deep-link Grafana panels to the CloudWatch console
 
-[CloudWatch deep linking](/static/img/docs/v65/cloudwatch-deep-linking.png)
+[CloudWatch deep linking](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/img/docs/v65/cloudwatch-deep-linking.png)
 
 Left-clicking a time series in the panel displays a context menu with a link to `View in CloudWatch console`. Clicking the link opens a new tab that takes you to the CloudWatch console and displays all metrics for that query. If you’re not logged in to the CloudWatch console, the link forwards you to the login page. The link provided is valid for any account but displays the expected metrics only if you’re logged in to the account that corresponds to the selected data source in Grafana.
 
-This feature is not available for metrics based on [metric math expressions](#metric-math-expressions).
+This feature is not available for metrics based on [metric math expressions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#metric-math-expressions).
 
 ### Metric Insights queries
 
@@ -177,14 +177,14 @@ The Metrics Query option in the CloudWatch data source is referred to as **Metri
 
 The metrics query editor’s Metrics Query option has two editing modes:
 
-- [Builder mode](#use-builder-mode), which provides a visual query-building interface.
-- [Code mode](#use-code-mode), which provides a code editor for writing queries.
+- [Builder mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#use-builder-mode), which provides a visual query-building interface.
+- [Code mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#use-code-mode), which provides a code editor for writing queries.
 
 #### Use Metric Insights syntax
 
 Metric Insights uses a dialect of SQL and this query syntax:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT FUNCTION(MetricName)
@@ -199,7 +199,7 @@ For details about the Metrics Insights syntax, refer to the [AWS reference docum
 
 For information about Metrics Insights limits, refer to the [AWS feature documentation](https://docs.aws.amazon.com/console/cloudwatch/metricsinsights).
 
-You can also augment queries by using [template variables](../template-variables/).
+You can also augment queries by using [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/template-variables/).
 
 #### Use Metrics Insights keywords
 
@@ -230,12 +230,12 @@ Select **PromQL** from the query type drop-down in the upper middle of the query
 
 The PromQL query type has two editing modes. Use the **Builder**/**Code** toggle in the query editor header to switch between them:
 
-- [Builder mode](#use-promql-builder-mode), which provides a visual query-building interface.
-- [Code mode](#use-promql-code-mode), which provides a code editor for writing raw PromQL.
+- [Builder mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#use-promql-builder-mode), which provides a visual query-building interface.
+- [Code mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#use-promql-code-mode), which provides a code editor for writing raw PromQL.
 
 Grafana keeps the query in sync when you switch modes. If a raw query written in Code mode can’t be represented visually, Grafana prompts you before switching to Builder mode, because parts of the query may be lost.
 
-You can augment PromQL queries with [template variables](../template-variables/). Grafana interpolates template variables in the expression before sending the query to CloudWatch.
+You can augment PromQL queries with [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/template-variables/). Grafana interpolates template variables in the expression before sending the query to CloudWatch.
 
 #### Use PromQL Builder mode
 
@@ -320,7 +320,7 @@ You can also apply optional filters when specifying log groups with the **Name p
 
 > Note
 >
-> You must specify the region and log groups when querying with **Logs Insights QL**, **OpenSearch PPL**, and **OpenSearch SQL**. In **OpenSearch SQL**, you can specify log groups in multiple ways. For details, refer to the [Query log groups with OpenSearch SQL](#query-log-groups-with-opensearch-sql) section.
+> You must specify the region and log groups when querying with **Logs Insights QL**, **OpenSearch PPL**, and **OpenSearch SQL**. In **OpenSearch SQL**, you can specify log groups in multiple ways. For details, refer to the [Query log groups with OpenSearch SQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/query-editor/#query-log-groups-with-opensearch-sql) section.
 
 Click **View in CloudWatch console** to interactively view, search, and analyze your log data in the CloudWatch Logs Insights console. If you’re not logged in to the CloudWatch console, the link forwards you to the login page.
 
@@ -328,7 +328,7 @@ Click **View in CloudWatch console** to interactively view, search, and analyze 
 
 When querying log groups with OpenSearch SQL, you can use the `$__logGroups` macro to automatically reference log groups selected in the query editor’s log group selector. This is the recommended approach as it allows you to manage log groups through the UI.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT window.start, COUNT(*) AS exceptionCount
@@ -340,7 +340,7 @@ The `$__logGroups` macro expands to the proper `logGroups(logGroupIdentifier: [.
 
 Alternatively, you can manually specify a single log group directly in the `FROM` clause:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT window.start, COUNT(*) AS exceptionCount
@@ -350,7 +350,7 @@ WHERE `@message` LIKE '%Exception%'
 
 When querying multiple log groups you **must** use the `logGroups(logGroupIdentifier: [...])` syntax:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT window.start, COUNT(*) AS exceptionCount
@@ -360,7 +360,7 @@ WHERE `@message` LIKE '%Exception%'
 
 To reference log groups in a monitoring account, use ARNs instead of LogGroup names.
 
-You can also write queries returning time series data by using the [`stats` command](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_Insights-Visualizing-Log-Data.html). When making `stats` queries in [Explore](/docs/grafana/latest/explore/), ensure you are in Metrics Explore mode.
+You can also write queries returning time series data by using the [`stats` command](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_Insights-Visualizing-Log-Data.html). When making `stats` queries in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/), ensure you are in Metrics Explore mode.
 
 ## Cross-account observability
 
@@ -369,12 +369,12 @@ The CloudWatch plugin monitors and troubleshoots applications that span multiple
 To enable cross-account observability, complete the following steps:
 
 1. Go to the [Amazon CloudWatch documentation](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html) and follow the instructions for enabling cross-account observability.
-2. Add [two API actions](//docs/grafana/latest/datasources/aws-cloudwatch/configure/#cross-account-observability-permissions) to the IAM policy attached to the role/user running the plugin.
+2. Add [two API actions](http://docs/grafana/latest/datasources/aws-cloudwatch/configure/#cross-account-observability-permissions) to the IAM policy attached to the role/user running the plugin.
 
 Cross-account querying is available in the plugin through the **Logs**, **Metric search**, and **Metric Insights** modes. After you have configured it, you’ll see a **Monitoring account** badge in the query editor header.
 
-[Monitoring account badge](/static/img/docs/cloudwatch/cloudwatch-monitoring-badge-9.3.0.png)
+[Monitoring account badge](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/img/docs/cloudwatch/cloudwatch-monitoring-badge-9.3.0.png)
 
 ## Query caching
 
-When you enable [query and resource caching](/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching), Grafana temporarily stores the results of data source queries and resource requests. Query caching is available in CloudWatch Metrics in Grafana Cloud and Grafana Enterprise. It is not available in CloudWatch Logs Insights due to how query results are polled from AWS.
+When you enable [query and resource caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching), Grafana temporarily stores the results of data source queries and resource requests. Query caching is available in CloudWatch Metrics in Grafana Cloud and Grafana Enterprise. It is not available in CloudWatch Logs Insights due to how query results are polled from AWS.

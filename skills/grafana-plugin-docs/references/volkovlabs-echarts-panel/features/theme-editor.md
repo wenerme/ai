@@ -9,17 +9,17 @@ description: "Learn how to use the theme editor to customize chart appearance wi
 
 The Theme Editor lets you use custom themes generated with [Theme Builder](https://echarts.apache.org/en/theme-builder.html).
 
-[](/media/docs/grafana/panels-visualizations/business-charts/theme.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/theme.png)
 
 ## Theme Builder
 
 Theme Builder allows you to create fully customizable themes. Configuration is saved into the JSON file, which can be downloaded and inserted into Theme Editor.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/theme-builder.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/theme-builder.png)
 
 ## Custom theme
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {

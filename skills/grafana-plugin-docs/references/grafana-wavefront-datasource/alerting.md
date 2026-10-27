@@ -7,7 +7,7 @@ description: "Create Grafana-managed alert rules from Wavefront data source quer
 
 # Alerting with the Wavefront data source
 
-The Wavefront data source supports [Grafana-managed alert rules](/docs/grafana/latest/alerting/fundamentals/alert-rules/). You can use any Wavefront metric query - built with **Query Builder** or written as **Raw Query** (WQL, PromQL, or Hybrid) - as the query for an alert rule.
+The Wavefront data source supports [Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/alert-rules/). You can use any Wavefront metric query - built with **Query Builder** or written as **Raw Query** (WQL, PromQL, or Hybrid) - as the query for an alert rule.
 
 > Note
 >
@@ -19,10 +19,10 @@ The Wavefront data source supports [Grafana-managed alert rules](/docs/grafana/l
 
 ## Before you begin
 
-- [Configure the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/configure/).
+- [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/).
 - Verify the data source is healthy. On the data source configuration page, click **Save &amp; test** and confirm you see **Status: OK**.
 - Make sure your Wavefront API token has permission to read the metrics you plan to alert on.
-- Review the Grafana [alerting overview](/docs/grafana/latest/alerting/) if you’re new to Grafana alert rules.
+- Review the Grafana [alerting overview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) if you’re new to Grafana alert rules.
 
 ## Supported query types
 
@@ -37,7 +37,7 @@ Expand table
 | **Raw Query (PromQL)** | Write PromQL that Wavefront translates to WQL. Useful when you’re porting rules from a Prometheus-based system.                                |
 | **Raw Query (Hybrid)** | Let Wavefront pick between WQL and PromQL.                                                                                                     |
 
-**Events** queries aren’t valid alert rule queries because alert rules need numeric series to threshold against. Use events as [annotations](/docs/plugins/grafana-wavefront-datasource/latest/annotations/) instead.
+**Events** queries aren’t valid alert rule queries because alert rules need numeric series to threshold against. Use events as [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/) instead.
 
 ## Create an alert rule
 
@@ -49,13 +49,13 @@ To create a Grafana-managed alert rule from a Wavefront query:
 4. Build the query you want to alert on:
 
    - To use the guided editor, leave **Query Mode** set to **Query Builder** and choose a **Metric**, **Aggregate**, and any **Filters** or **Functions**.
-   - To write WQL or PromQL directly, switch **Query Mode** to **Raw Query** and enter the query. For more details, refer to the [Wavefront query editor](/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
+   - To write WQL or PromQL directly, switch **Query Mode** to **Raw Query** and enter the query. For more details, refer to the [Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
 5. Add an expression to reduce the query result to a single number. The default **Reduce** expression with **Last** is a good starting point. Add a **Threshold** expression to set the firing condition.
 6. Under **Set evaluation behavior**, choose a folder and an evaluation group, and set the evaluation interval and pending period.
 7. Add annotations and labels to describe the alert and route it to the right notification policy.
 8. Click **Save rule and exit**.
 
-For the full alert rule workflow, refer to [Configure Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For the full alert rule workflow, refer to [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example alert queries
 
@@ -63,7 +63,7 @@ The following Raw Query expressions are common starting points for alert rules.
 
 High CPU load on any production host:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 max(ts("sample.cpu.loadavg.1m", env="prod"))
@@ -71,7 +71,7 @@ max(ts("sample.cpu.loadavg.1m", env="prod"))
 
 Low free memory as a percentage of total:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 100 * sum(ts("sample.memory.free")) / sum(ts("sample.memory.total"))
@@ -79,7 +79,7 @@ SQL [Copy code to clipboard] Copy
 
 Five-minute error rate per service:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 mavg(5m, sum(rate(ts("http.requests.errors")), service))
@@ -87,7 +87,7 @@ mavg(5m, sum(rate(ts("http.requests.errors")), service))
 
 Ingestion dropping below an expected floor:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 sum(rate(ts("~wavefront.points.2878.received")))
@@ -95,7 +95,7 @@ sum(rate(ts("~wavefront.points.2878.received")))
 
 PromQL request error ratio:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m]))
@@ -111,12 +111,12 @@ sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total
 
 ## Troubleshooting
 
-- **No data:** If the alert rule transitions to **No Data**, check that the query returns series in the dashboard time range. For common causes and fixes, refer to [Troubleshoot the Wavefront data source](/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/).
+- **No data:** If the alert rule transitions to **No Data**, check that the query returns series in the dashboard time range. For common causes and fixes, refer to [Troubleshoot the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/).
 - **Error:** Expand the alert rule’s evaluation history for the Wavefront error message. Token, timeout, and URL errors are covered in the troubleshooting guide.
 - **Unexpected series:** Use **Preview** in the alert editor to see exactly which series the query returns, then tighten filters or aggregations as needed.
 
 ## Next steps
 
-- Learn more in the [Grafana alerting documentation](/docs/grafana/latest/alerting/).
-- Build queries with the [Wavefront query editor](/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
-- Annotate panels with [Wavefront events](/docs/plugins/grafana-wavefront-datasource/latest/annotations/) for richer incident context.
+- Learn more in the [Grafana alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- Build queries with the [Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
+- Annotate panels with [Wavefront events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/) for richer incident context.

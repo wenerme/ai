@@ -9,13 +9,13 @@ description: "Configure the IBM Db2 data source plugin for Grafana"
 
 This document explains how to configure the IBM Db2 data source plugin.
 
-For general information on adding data sources, refer to [Add a data source](/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+For general information on adding data sources, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 ## Before you begin
 
 Before you configure the data source, ensure you have:
 
-- **IBM Db2 plugin:** Install the plugin from the [Grafana plugin catalog](/grafana/plugins/grafana-ibmdb2-datasource/).
+- **IBM Db2 plugin:** Install the plugin from the [Grafana plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-ibmdb2-datasource/).
 - **Grafana permissions:** Organization administrator role or equivalent.
 - **IBM Db2 database:** A running database configured for external access.
 - **Network access:** Connectivity from Grafana to the Db2 server host and port.
@@ -94,7 +94,7 @@ Expand table
 
 Example:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 securityMechanism=7
@@ -103,7 +103,7 @@ loginTimeout=180
 
 or
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 securityMechanism=7;loginTimeout=180
@@ -121,7 +121,7 @@ Grafana Cloud has a **Private data source connect** section at the bottom of the
 
 In the same drop-down, you can also click on **Manage private data source connect** to be taken to your PDC connection page, where you’ll find your PDC configuration details and be able to create new connections.
 
-For more information on how PDC works, refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For more information on how PDC works, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 > Note
 >
@@ -133,15 +133,15 @@ Click **Save &amp; test** to verify the connection to your IBM Db2 database.
 
 A successful connection displays the message **Data source is working**.
 
-If the test fails, the message includes the reason, such as `Database connection error.` or `Database connection timed out.`, followed by the driver detail. For help interpreting and resolving these messages, refer to [Troubleshoot IBM Db2 data source issues](/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/).
+If the test fails, the message includes the reason, such as `Database connection error.` or `Database connection timed out.`, followed by the driver detail. For help interpreting and resolving these messages, refer to [Troubleshoot IBM Db2 data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source using YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source using YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Example provisioning configuration:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -180,7 +180,7 @@ You can use the [Grafana Terraform provider](https://registry.terraform.io/provi
 
 Example Terraform configuration:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "ibm_db2" {

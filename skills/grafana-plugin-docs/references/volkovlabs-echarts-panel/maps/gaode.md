@@ -24,11 +24,11 @@ Try the panel with [Gaode Maps in the edit mode](https://echarts.volkovlabs.io/d
 - During the loading, you can show an animation using the code below.
 - You can load additional plugins through the panel options.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/gaode.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/gaode.png)
 
 ## Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const amap = {

@@ -7,7 +7,7 @@ description: "Learn how to use the Jira query editor to build queries and visual
 
 # Jira query editor
 
-The Jira query editor allows you to build queries to retrieve and visualize issue data from your Jira instance. For general documentation on querying data sources in Grafana, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
+The Jira query editor allows you to build queries to retrieve and visualize issue data from your Jira instance. For general documentation on querying data sources in Grafana, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 You must select at least one field before the query can run. In dashboards and panel edit, click **Run query**. In Explore, Grafana runs the query for you. In either place, press **Cmd/Ctrl + Enter** to run the query.
 
@@ -19,11 +19,11 @@ The following section describes the Jira-specific query editor options.
 - **Limit** - The maximum number of issues the plugin returns. The default is `50`. The plugin paginates through Jira results until it reaches this count, the last page, or an empty page.
 - **Filter (JQL)** - Enter a valid JQL query to filter issues. Press **Cmd/Ctrl + Enter** to run the query.
 
-To filter by the dashboard time range, use the `$__timeFrom` and `$__timeTo` macros in JQL. For syntax and more examples, refer to [Time range macros](/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
+To filter by the dashboard time range, use the `$__timeFrom` and `$__timeTo` macros in JQL. For syntax and more examples, refer to [Time range macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
 
 > Note
 >
-> Grafana [SQL Expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/) aren’t supported for Jira queries. Use JQL and the transformations in this document instead of SQL Expressions.
+> Grafana [SQL Expressions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/) aren’t supported for Jira queries. Use JQL and the transformations in this document instead of SQL Expressions.
 
 ## Grafana results vs Jira search
 
@@ -32,7 +32,7 @@ The same JQL can return a different row count or shape in Grafana than in Jira i
 - **Limit** defaults to `50`. Raise it if you expect more issues. The plugin paginates until it reaches this count or the last page.
 - Grafana returns only the fields you select. Jira issue search shows a default column set.
 - **Sprint** isn’t a single column. The plugin lists **Sprint Name**, **Sprint Start Date**, **Sprint End Date**, and **Sprint Complete Date** (plugin 2.5.4 or later).
-- Multi-value array fields expand one issue into multiple rows. Refer to [Multi-value fields and extra rows](#multi-value-fields-and-extra-rows).
+- Multi-value array fields expand one issue into multiple rows. Refer to [Multi-value fields and extra rows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/#multi-value-fields-and-extra-rows).
 - Time range macros insert a quoted `yyyy-MM-dd HH:mm` timestamp. Don’t add extra quotes around `$__timeFrom` or `$__timeTo`.
 
 ## Filter and sort issues with JQL
@@ -41,7 +41,7 @@ The Jira data source uses Jira Query Language (JQL) to filter and sort issues. J
 
 The following example query finds all of Joe Smith’s issues in the TEST project:
 
-jql [Copy code to clipboard] Copy
+jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = TEST AND assignee = 'Joe Smith'
@@ -49,7 +49,7 @@ project = TEST AND assignee = 'Joe Smith'
 
 You can also sort results using the `ORDER BY` clause:
 
-jql [Copy code to clipboard] Copy
+jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = TEST AND status = 'In Progress' ORDER BY created DESC
@@ -75,7 +75,7 @@ The Jira data source supports **Ad hoc filters** dashboard variables, which let 
 
 To use Ad hoc filters:
 
-1. Add an **Ad hoc filters** variable to your dashboard. For more information, refer to [Add ad hoc filters](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters).
+1. Add an **Ad hoc filters** variable to your dashboard. For more information, refer to [Add ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters).
 2. Select the Jira data source for the variable.
 3. Use the filter controls to select a field, operator, and value.
 
@@ -85,7 +85,7 @@ The plugin supports Jira Service Management (JSM) fields, including SLA metrics,
 
 ### SLA metrics
 
-SLA fields (for example, **Time to Resolution**) are returned as JSON formatted as a string. Typical keys include `ongoingCycle.breached`, `ongoingCycle.remainingTime.friendly`, and `completedCycles`. Use the **Extract fields** transformation to parse the values you need. Refer to [Extract fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
+SLA fields (for example, **Time to Resolution**) are returned as JSON formatted as a string. Typical keys include `ongoingCycle.breached`, `ongoingCycle.remainingTime.friendly`, and `completedCycles`. Use the **Extract fields** transformation to parse the values you need. Refer to [Extract fields](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
 
 To show remaining SLA time for open requests:
 
@@ -147,29 +147,29 @@ To aggregate data over time, use the **Group By** transformation. For example, t
 
 ## Work with transformations
 
-Grafana transformations extend JQL capabilities by allowing you to manipulate, calculate, and reshape your data. For more information on transformations, refer to [Transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+Grafana transformations extend JQL capabilities by allowing you to manipulate, calculate, and reshape your data. For more information on transformations, refer to [Transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 
 The following transformations are particularly useful when working with Jira data:
 
 ### Add field from calculation
 
-Use this transformation to add calculated columns from other fields. You can chain calculations and use calculated fields as inputs. Refer to [Add field from calculation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) for more information.
+Use this transformation to add calculated columns from other fields. You can chain calculations and use calculated fields as inputs. Refer to [Add field from calculation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) for more information.
 
 ### Extract fields
 
-Some Jira fields are returned as JSON formatted as a string. Use this transformation to parse JSON fields and extract specific values using JSON path notation. Refer to [Extract fields](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
+Some Jira fields are returned as JSON formatted as a string. Use this transformation to parse JSON fields and extract specific values using JSON path notation. Refer to [Extract fields](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#extract-fields) for more information.
 
 > Note
 >
-> You can find examples in the **Jira JSON fields demo** dashboard, which you can import from the data source page. Refer to [Import a dashboard](/docs/plugins/grafana-jira-datasource/latest/#import-a-dashboard).
+> You can find examples in the **Jira JSON fields demo** dashboard, which you can import from the data source page. Refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/#import-a-dashboard).
 
 ### Group by
 
-This transformation provides grouping capabilities not available in JQL. Use it to group by sprints or other fields and aggregate metrics like velocity or story point completion rates. Refer to [Group by](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) for more information.
+This transformation provides grouping capabilities not available in JQL. Use it to group by sprints or other fields and aggregate metrics like velocity or story point completion rates. Refer to [Group by](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) for more information.
 
 ### Outer join
 
-This transformation combines two or more queries on a shared field. Use it to correlate data across queries. Refer to [Outer join](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#outer-join) for more information.
+This transformation combines two or more queries on a shared field. Use it to correlate data across queries. Refer to [Outer join](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#outer-join) for more information.
 
 ## Work with linked issues
 
@@ -197,7 +197,7 @@ To display linked issues:
 
    - Use the same settings but with path `outwardIssue.key`
    - Apply transformation filter to Query B only
-5. Add the [**Filter data by value**](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#filter-data-by-values) transformation:
+5. Add the [**Filter data by value**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#filter-data-by-values) transformation:
 
    - Filter type: Include
    - Conditions: Match any
@@ -208,8 +208,8 @@ To display linked issues:
 
    - Use the same settings but with Regex value `outwardIssue`
    - Apply transformation filter to Query B only
-7. Add the [**Merge**](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#merge-seriestables) transformation.
-8. Add the [**Organize fields**](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#organize-fields-by-name) transformation:
+7. Add the [**Merge**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#merge-seriestables) transformation.
+8. Add the [**Organize fields**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#organize-fields-by-name) transformation:
 
    - Hide the `Linked Issues` field containing raw JSON
 
@@ -237,7 +237,7 @@ The following examples demonstrate common use cases for the Jira data source.
 2. Add JQL Filter: `project = 'Your Project' AND created >= $__timeFrom AND created <= $__timeTo`
 3. Select the **Table** visualization
 
-The plugin replaces `$__timeFrom` and `$__timeTo` with the dashboard time range. For more macro examples, refer to [Time range macros](/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
+The plugin replaces `$__timeFrom` and `$__timeTo` with the dashboard time range. For more macro examples, refer to [Time range macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/template-variables/#time-range-macros).
 
 ### Show issues in the current sprint
 

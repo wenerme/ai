@@ -9,9 +9,9 @@ description: "Use the Manage SLOs page to view, filter, edit, and navigate to da
 
 The Manage SLOs page lists all the SLOs you’ve created.
 
-[](/media/docs/grafana-cloud/slo/screenshot-manage-slos-page.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-manage-slos-page.png)
 
-Here you can navigate to the [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/), as well as edit, filter, and manage your SLOs.
+Here you can navigate to the [SLO dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/), as well as edit, filter, and manage your SLOs.
 
 ## Filter SLOs
 

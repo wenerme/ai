@@ -11,8 +11,8 @@ Template variables let you create dynamic, reusable dashboards. Instead of hard-
 
 ## Before you begin
 
-- [Configure the CockroachDB data source](/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
-- Familiarize yourself with [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
+- Familiarize yourself with [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -49,7 +49,7 @@ The following examples show common SQL queries for populating variables.
 
 ### List all databases
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT database_name FROM information_schema.databases
@@ -57,7 +57,7 @@ SELECT database_name FROM information_schema.databases
 
 ### List all tables
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name FROM information_schema.tables
@@ -68,7 +68,7 @@ WHERE table_schema = 'public'
 
 Useful for building region, environment, or status selectors:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM clusters ORDER BY region
@@ -78,7 +78,7 @@ SELECT DISTINCT region FROM clusters ORDER BY region
 
 You can reference one variable inside another variable’s query to create dependent drop-down menus. For example, if you have a `$database` variable, you can create a `$table` variable that lists tables for the selected database:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name FROM information_schema.tables
@@ -90,7 +90,7 @@ When the user changes the `$database` selection, the `$table` drop-down automati
 
 ### List CockroachDB cluster nodes
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT node_id::text FROM crdb_internal.gossip_nodes ORDER BY 1
@@ -104,7 +104,7 @@ After creating variables, reference them in your CockroachDB panel queries using
 
 When a variable holds one value at a time, use it directly in a comparison:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT created_at AS time, temperature
@@ -118,7 +118,7 @@ ORDER BY created_at ASC
 
 When a variable allows multiple selections, use `IN` to match any of the selected values:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT created_at AS time, temperature, region
@@ -132,7 +132,7 @@ ORDER BY created_at ASC
 
 You can also use variables to control grouping dynamically:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -146,4 +146,4 @@ ORDER BY time ASC
 
 In this example, `$interval` is a custom variable with options like `minute`, `hour`, and `day`, letting users control the time granularity.
 
-For more information about variable syntax, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more information about variable syntax, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).

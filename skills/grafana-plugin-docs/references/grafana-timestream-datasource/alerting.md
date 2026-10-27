@@ -9,13 +9,13 @@ description: "Set up Grafana alerting with the Amazon Timestream data source, in
 
 You can use the Amazon Timestream data source with Grafana Alerting to create alert rules that trigger when your time-series data meets specific conditions.
 
-For general information about Grafana Alerting, refer to [Alerting](/docs/grafana/latest/alerting/).
+For general information about Grafana Alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Amazon Timestream data source](/docs/plugins/grafana-timestream-datasource/latest/configure/).
-- Understand the [Amazon Timestream query editor](/docs/plugins/grafana-timestream-datasource/latest/query-editor/).
-- Review [Grafana Alerting](/docs/grafana/latest/alerting/).
+- [Configure the Amazon Timestream data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/).
+- Understand the [Amazon Timestream query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/query-editor/).
+- Review [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Alert query requirements
 
@@ -44,7 +44,7 @@ Alert queries support the same macros and template variables as regular queries.
 
 The following query monitors CPU utilization per instance. Each `instance_name` becomes a separate time series that you can set a threshold condition on:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -60,7 +60,7 @@ GROUP BY instance_name
 
 Grafana alerting requires numeric values. If your Timestream table stores status as strings (for example, `"HEALTHY"` or `"UNHEALTHY"`), use a `CASE` expression to convert them to numeric values that you can set a threshold on:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -84,7 +84,7 @@ In this example, set the alert condition to trigger when `health_status` is grea
 
 The following query creates time series grouped by multiple dimensions. Use `LIMIT` and `ORDER BY` to alert only on the top offenders:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -118,5 +118,5 @@ In Grafana high availability (HA) deployments, each Grafana instance evaluates a
 
 To prevent duplicate alerts:
 
-1. Configure a single Grafana instance as the alert evaluator, or use [Grafana Alerting HA](/docs/grafana/latest/alerting/set-up/configure-high-availability/) to coordinate alert evaluation across instances.
+1. Configure a single Grafana instance as the alert evaluator, or use [Grafana Alerting HA](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/set-up/configure-high-availability/) to coordinate alert evaluation across instances.
 2. Ensure that all instances share the same database for alert state, so only one instance fires each alert.

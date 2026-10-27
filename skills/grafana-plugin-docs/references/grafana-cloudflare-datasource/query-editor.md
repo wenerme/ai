@@ -7,11 +7,11 @@ description: "Learn how to use the Cloudflare query editor to query DNS analytic
 
 # Cloudflare query editor
 
-Grafana provides a query editor for the Cloudflare data source, which is located on the [Explore](/docs/grafana/latest/explore/) page. You can also access the Cloudflare query editor from a dashboard panel. Click the ellipsis in the upper right of the panel and select **Edit**.
+Grafana provides a query editor for the Cloudflare data source, which is located on the [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) page. You can also access the Cloudflare query editor from a dashboard panel. Click the ellipsis in the upper right of the panel and select **Edit**.
 
 ## Before you begin
 
-Ensure you have [configured the Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
+Ensure you have [configured the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
 
 ## Key concepts
 
@@ -42,7 +42,7 @@ To create a query, select the **Action** (query type) from the drop-down. Each a
 
 Some actions have mandatory parameters displayed next to the action selector. Optional parameters are available in the **Optional parameters** section.
 
-You can use dashboard template variables in query fields with the `${variable_name}` syntax. For more information, refer to [Cloudflare template variables](/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/).
+You can use dashboard template variables in query fields with the `${variable_name}` syntax. For more information, refer to [Cloudflare template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/).
 
 ## Account queries
 
@@ -386,4 +386,4 @@ Keep the following in mind when you build Cloudflare queries:
 - **Time range:** DNS Analytics queries and most Radar queries automatically use the dashboard time range through the `${__timeFrom}` and `${__timeTo}` variables. List queries such as **List zones** and **List accounts** aren’t time-bound and return the same results regardless of the selected range.
 - **Result format:** Time series queries, such as **DNS analytics by time** and the Radar time series queries, suit Time series panels. Report and list queries, such as **DNS analytics report** and **List zones**, return tabular data suited to Table panels.
 - **Result limits:** The **DNS analytics report** query defaults its **Limit** to `100000`. Lower it for large zones to reduce the response size. The **Internet outages and anomalies** query defaults its **Limit** to `5`.
-- **API rate limits:** Frequent dashboard refreshes across many panels can reach Cloudflare API rate limits. If you see rate-limit errors, refer to [Troubleshooting](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/).
+- **API rate limits:** Frequent dashboard refreshes across many panels can reach Cloudflare API rate limits. If you see rate-limit errors, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/).

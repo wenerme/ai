@@ -19,7 +19,7 @@ SLO source queries should generate values within the range of 0-1.
 
 Redefine the source query if it produces values outside of the range of 0-1.
 
-Refer to [SLI examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/) for more information about correctly configuring SLI queries.
+Refer to [SLI examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/) for more information about correctly configuring SLI queries.
 
 ## Source query compares different metrics
 
@@ -43,7 +43,7 @@ Use a single metric with series identified by labels to avoid synchronization is
 
 ## Series aggregated by Adaptive Telemetry
 
-Adaptive Telemetry can cause [significant impacts on recording rule values](/docs/grafana-cloud/cost-management-and-billing/adaptive-telemetry/adaptive-metrics/understand-aggregation-delay/), which can lead to unexpected irregularities in recorded SLI data.
+Adaptive Telemetry can cause [significant impacts on recording rule values](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/cost-management-and-billing/adaptive-telemetry/adaptive-metrics/understand-aggregation-delay/), which can lead to unexpected irregularities in recorded SLI data.
 
 Exclude metrics used in SLI queries from Adaptive Telemetry aggregation.
 
@@ -74,7 +74,7 @@ Series samples might not arrive and become queryable until well after the timest
 
 In certain situations such as SLOs based on late-arriving Amazon CloudWatch metrics, you may need to configure a greater offset. The advanced SLO type parses a user-provided offset and add two minutes to it. If you wanted to achieve a five-minute offset, you could use the advanced query below. Verify the resulting offset in the recording rules by clicking “View Alerts” on the Manage SLOs page and viewing the recording rules.
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 sum (rate(request_total{status="success"}[$__rate_interval] offset 3m)) / sum (rate(request_total[$__rate_interval] offset 3m))
@@ -84,7 +84,7 @@ sum (rate(request_total{status="success"}[$__rate_interval] offset 3m)) / sum (r
 
 ## Out-of-order series
 
-Mimir has an `out_of_order_time_window` feature that can cause synchronization issues for SLO recording rules. Refer to [Recording rules for ingesting out-of-order samples](/docs/mimir/latest/configure/configure-out-of-order-samples-ingestion/#recording-rules-when-out-of-order-ingestion-is-enabled) for information about `out_of_order_time_window` configuration.
+Mimir has an `out_of_order_time_window` feature that can cause synchronization issues for SLO recording rules. Refer to [Recording rules for ingesting out-of-order samples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/mimir/latest/configure/configure-out-of-order-samples-ingestion/#recording-rules-when-out-of-order-ingestion-is-enabled) for information about `out_of_order_time_window` configuration.
 
 Set the SLO offset equal to or greater than the `out_of_order_time_window` when this feature is enabled.
 
@@ -96,11 +96,11 @@ These panels query recorded metrics (`grafana_slo_*`) that are initialized when 
 
 For example, for a 7-day SLO, the **Error Budget Burndown** panel can stay flat during the first 7 days after creation, even though the **SLI** and **Error Budget Burn Rate** panels already indicate that the error budget is being consumed.
 
-[](/media/docs/grafana-cloud/slo/screenshot-error-budget-burndown-not-updated.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-error-budget-burndown-not-updated.png)
 
 ## Data source issues
 
 Misconfigured data source permissions can cause SLO calculation errors or `no data` metrics. Troubleshoot SLO data source permission issues:
 
 1. Verify that the Cloud Access Policy has the correct permissions.
-2. Verify that [RBAC](/docs/grafana-cloud/alerting-and-irm/slo/set-up/rbac/) is configured appropriately.
+2. Verify that [RBAC](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/rbac/) is configured appropriately.

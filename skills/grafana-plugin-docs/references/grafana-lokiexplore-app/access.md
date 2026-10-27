@@ -30,9 +30,9 @@ Logs Drilldown is installed by default in current Grafana releases. If you are u
 
 ### Install via Plugins catalog
 
-For Enterprise and OSS Grafana users, you can install Logs Drilldown via the [Grafana Plugins catalog](/grafana/plugins/grafana-lokiexplore-app/).
+For Enterprise and OSS Grafana users, you can install Logs Drilldown via the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-lokiexplore-app/).
 
-1. Open [https://grafana.com/grafana/plugins/grafana-lokiexplore-app/](/grafana/plugins/grafana-lokiexplore-app/) in a web browser
+1. Open [https://grafana.com/grafana/plugins/grafana-lokiexplore-app/](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-lokiexplore-app/) in a web browser
 2. Click the **Installation** tab.
 3. Follow the instructions to install the app.
 
@@ -40,7 +40,7 @@ For Enterprise and OSS Grafana users, you can install Logs Drilldown via the [Gr
 
 The following Loki and Grafana version and configuration are required:
 
-- Grafana v13.1.0 or later
+- Grafana v13.2.0 or later
 - Loki v3.2.0 or later
 
   > Note
@@ -52,7 +52,7 @@ The following Loki and Grafana version and configuration are required:
   - Enable the volume endpoint by setting `volume_enabled` to `true` within your Loki configuration file.
   - Enable log level detection by setting `discover_log_levels` to `true` within your Loki configuration file.
 
-    YAML [Copy code to clipboard] Copy
+    YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
     ```yaml
     pattern_ingester:
@@ -65,9 +65,9 @@ The following Loki and Grafana version and configuration are required:
 
 ### Install via environment variable
 
-If you want to [install the app in a Docker container](/docs/grafana/latest/setup-grafana/configure-docker/#install-plugins-in-the-docker-container), you need to configure the following environment variable:
+If you want to [install the app in a Docker container](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-docker/#install-plugins-in-the-docker-container), you need to configure the following environment variable:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 GF_INSTALL_PLUGINS="https://storage.googleapis.com/integration-artifacts/grafana-lokiexplore-app/release/main/any/grafana-lokiexplore-app-main.zip;grafana-lokiexplore-app"
@@ -75,11 +75,11 @@ GF_INSTALL_PLUGINS="https://storage.googleapis.com/integration-artifacts/grafana
 
 ### Install using Grafana CLI
 
-You can install Logs Drilldown in your own Grafana instance using the Grafana CLI. For more information, refer to the [Grafana CLI documentation](/docs/grafana/latest/cli/).
+You can install Logs Drilldown in your own Grafana instance using the Grafana CLI. For more information, refer to the [Grafana CLI documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/cli/).
 
 Run the following command:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install --pluginUrl=https://storage.googleapis.com/integration-artifacts/grafana-lokiexplore-app/release/main/any/grafana-lokiexplore-app-main.zip grafana-lokiexplore-app
@@ -93,7 +93,7 @@ All the Grafana Drilldown apps require the `datasources:explore` permission in G
 
 You can test the app using the following command to spin up Grafana, Loki, and the Logs Drilldown App:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 curl -L https://github.com/grafana/explore-logs/raw/main/scripts/run.sh | sh
@@ -107,10 +107,10 @@ Once the Docker container has started, navigate to `http://localhost:3000/a/graf
 
 ## Having trouble?
 
-Refer to the [troubleshooting guide](../troubleshooting/) for tips on how to solve common issues.
+Refer to the [troubleshooting guide](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/) for tips on how to solve common issues.
 
 ## What next?
 
-Before you can use Logs Drilldown, an administrator must configure a Loki data source in order to access your logs in Logs Drilldown. Refer to the [Loki data source documentation](/docs/grafana-cloud/connect-externally-hosted/data-sources/loki/) for instructions.
+Before you can use Logs Drilldown, an administrator must configure a Loki data source in order to access your logs in Logs Drilldown. Refer to the [Loki data source documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-sources/loki/) for instructions.
 
-After installing, you can customize default settings such as time range, data source, and display fields. Refer to [Configure Logs Drilldown](./configure/) for details.
+After installing, you can customize default settings such as time range, data source, and display fields. Refer to [Configure Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/configure/) for details.

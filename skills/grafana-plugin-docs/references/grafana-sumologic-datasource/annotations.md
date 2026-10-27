@@ -9,16 +9,16 @@ description: "Use annotations with the Sumo Logic data source to mark events on 
 
 Annotations overlay event markers on time-series panels, helping you correlate changes or incidents with metric behavior. You can use any Sumo Logic query as an annotation source – each result becomes a marker on the panel at its corresponding timestamp.
 
-For general information about annotations in Grafana, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the Sumo Logic data source](/docs/plugins/grafana-sumologic-datasource/latest/configure/).
+- [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/).
 - Have a dashboard with at least one time-series panel.
 
 ## Create an annotation query
 
-The annotation query editor is the same as the standard Sumo Logic [query editor](/docs/plugins/grafana-sumologic-datasource/latest/query-editor/), so you can use either **Metrics** or **Logs** queries. Logs queries are the most common choice for annotations because log events naturally represent discrete points in time.
+The annotation query editor is the same as the standard Sumo Logic [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/query-editor/), so you can use either **Metrics** or **Logs** queries. Logs queries are the most common choice for annotations because log events naturally represent discrete points in time.
 
 To add a Sumo Logic annotation query to a dashboard:
 
@@ -40,7 +40,7 @@ The following examples use logs queries, which are the most common annotation us
 
 Mark deployment events:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/deployments
@@ -48,7 +48,7 @@ _sourceCategory=prod/deployments
 
 Annotate error spikes from a specific service:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app "ERROR" | count by _messageTime
@@ -56,7 +56,7 @@ _sourceCategory=prod/app "ERROR" | count by _messageTime
 
 Mark configuration changes from audit logs:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=audit/config action=update
@@ -64,7 +64,7 @@ _sourceCategory=audit/config action=update
 
 Annotate scaling events:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=infrastructure "autoscaling" ("ScaleUp" OR "ScaleDown")
@@ -72,7 +72,7 @@ _sourceCategory=infrastructure "autoscaling" ("ScaleUp" OR "ScaleDown")
 
 Mark alert state changes from Sumo Logic monitors:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=alerts eventName="AlertSystemInfo" | parse "currentState\":\"*\"" as state | where state != "Normal"
@@ -80,7 +80,7 @@ _sourceCategory=alerts eventName="AlertSystemInfo" | parse "currentState\":\"*\"
 
 Annotate user login failures for security monitoring:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=auth action=login status=failure | count by _sourceHost

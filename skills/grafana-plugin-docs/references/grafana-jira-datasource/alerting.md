@@ -7,12 +7,12 @@ description: "Learn how to create alerts based on Jira issue data"
 
 # Set up alerting for Jira data
 
-The Jira data source supports [Grafana Alerting](/docs/grafana/latest/alerting/). Alert evaluation runs on the backend. Use alerts to get notified when issue counts exceed a threshold, work is overdue, or an SLA has breached.
+The Jira data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/). Alert evaluation runs on the backend. Use alerts to get notified when issue counts exceed a threshold, work is overdue, or an SLA has breached.
 
 ## Before you begin
 
-- [Configure the Jira data source](/docs/plugins/grafana-jira-datasource/latest/configure/) and confirm **Save &amp; test** returns **Plugin health check successful**.
-- Understand [Grafana Alerting](/docs/grafana/latest/alerting/).
+- [Configure the Jira data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/configure/) and confirm **Save &amp; test** returns **Plugin health check successful**.
+- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 - Ensure you have permission to create Grafana-managed alert rules.
 
 ## Query requirements
@@ -38,16 +38,16 @@ To create an alert rule based on Jira data:
 4. In **Define query and alert condition**:
 
    - Select your Jira data source.
-   - Select fields and enter JQL. Refer to [Jira query editor](/docs/plugins/grafana-jira-datasource/latest/query-editor/).
+   - Select fields and enter JQL. Refer to [Jira query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/).
    - Add a **Classic condition** that uses `count()` or `sum()` on query A, then set the threshold.
 5. In **Add folder and labels**, choose a folder, and add labels and annotations so notifications include the project and a link to a dashboard.
 6. In **Set evaluation behavior**, choose an evaluation group, set the evaluation interval, and set the pending period (how long the condition must be true before the alert fires).
-7. Select a contact point, or configure [contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) later.
+7. Select a contact point, or configure [contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) later.
 8. Click **Preview** to confirm the query runs, then click **Save rule**.
 
 You can also open a dashboard panel, click **Edit**, open the **Alert** tab, and click **Create alert rule from this panel**. Copy the JQL into the rule and add a Classic condition. Panel transformations aren’t a substitute for that condition.
 
-For detailed Grafana UI steps, refer to [Create Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed Grafana UI steps, refer to [Create Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Examples
 
@@ -96,6 +96,6 @@ The SLA field name is instance-specific. Check **Select Fields** or Jira’s adv
 - **Limit:** Set Limit high enough that the count or sum includes every matching issue.
 - **JQL in the rule:** Hard-code project keys and statuses. Don’t rely on dashboard variables.
 - **Preview:** Use **Preview** on the rule before you enable notifications.
-- **Contact points:** Configure [contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) (email, Slack, PagerDuty, and others) rather than legacy notification channels.
+- **Contact points:** Configure [contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) (email, Slack, PagerDuty, and others) rather than legacy notification channels.
 
 If **Preview** fails with `input data must be a wide series`, the rule is still using Reduce and Threshold on a Jira table. Switch the condition to a **Classic condition** with `count()` or `sum()`.

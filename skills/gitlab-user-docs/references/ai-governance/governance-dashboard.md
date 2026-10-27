@@ -3,7 +3,7 @@
 Monitor AI agent sessions, audit logs, and developer exposure across your organization from a central dashboard.
 
 - Tier: Ultimate
-- Offering: GitLab.com
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Limited availability
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/603776) in GitLab 19.4 in [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `ai_governance_dashboard`. Enabled by default.
@@ -43,6 +43,9 @@ Prerequisites:
 
 - You have the Owner role for the top-level group, or a custom role with the
   `read_agent_artifacts` ability.
+- On GitLab Self-Managed and GitLab Dedicated, [ClickHouse is configured and enabled for analytics](../../integration/clickhouse.md#enable-clickhouse-for-analytics).
+  Without it, the **Total number of tool calls** tile, the tool call cards, and the
+  **Which AI agents developers are using** card show an empty state.
 
 ## View the dashboard
 

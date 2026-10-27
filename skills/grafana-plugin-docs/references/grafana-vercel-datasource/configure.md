@@ -71,15 +71,15 @@ To create and add an access token:
 
 Click **Save &amp; test** to verify the configuration. The health check retrieves the list of projects for the authenticated account or team. When the test succeeds, Grafana displays `health check succeeded for 'Retrieve a list of projects' query`, which confirms that the access token, and the Team ID when required, are valid.
 
-If the test fails, Grafana displays the reason returned by the health check. For example, a missing or empty token returns `invalid/empty bearer token`. For more failure messages and fixes, refer to [Troubleshoot the Vercel data source](/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/).
+If the test fails, Grafana displays the reason returned by the health check. For example, a missing or empty token returns `invalid/empty bearer token`. For more failure messages and fixes, refer to [Troubleshoot the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions a Vercel data source with an access token and a Team ID:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -100,7 +100,7 @@ Omit the `variables.team_id` value when you scope your access token to your full
 
 You can also provision the data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the [`grafana_data_source`](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source) resource. You set the Team ID through the `variables` object in `json_data_encoded`, and you set the access token through `secure_json_data_encoded`.
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "vercel" {

@@ -11,7 +11,7 @@ Get started with and use the SLO API to create, manage, and maintain your SLOs.
 
 To use the SLO API, complete the following steps.
 
-1. Create a [Grafana service account token](/docs/grafana-cloud/security-and-account-management/authentication-and-permissions/service-accounts/) with Editor permissions.
+1. Create a [Grafana service account token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/security-and-account-management/authentication-and-permissions/service-accounts/) with Editor permissions.
 2. Using any HTTP client like `curl` or HTTPie, make calls to the plugin’s resource API.
 
    - Make your API calls to the SLO resource API: `{stackURL}/api/plugins/grafana-slo-app/resources/v1/slo`
@@ -20,7 +20,7 @@ To use the SLO API, complete the following steps.
    - DELETE to delete an individual SLO.
    - POST to create an SLO.
    - PUT to update an SLO.
-3. For a full definition of the API, download [this OpenAPIv3 specification.](./slo-api.yaml)
+3. For a full definition of the API, download [this OpenAPIv3 specification.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/api/slo-api.yaml)
 
 Here is an example request body to create an SLO. It runs the SLI query against the `prod-prometheus` data source and stores the generated recording rules in `grafanacloud-prom`.
 
@@ -28,9 +28,9 @@ Here is an example request body to create an SLO. It runs the SLI query against 
 
 On stacks using legacy data source-managed recording rules, `sourceDatasourceUid` must be omitted or match `destinationDatasource.uid`.
 
-The optional top-level `searchExpression` field holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. Setting it adds an **Open RCA workbench** link to the SLO in Grafana, and a `workbench_troubleshoot_url` annotation to the generated burn-rate alert rules. Refer to [link the SLO to RCA workbench entities](/docs/grafana-cloud/alerting-and-irm/slo/create/#link-the-slo-to-rca-workbench-entities).
+The optional top-level `searchExpression` field holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. Setting it adds an **Open RCA workbench** link to the SLO in Grafana, and a `workbench_troubleshoot_url` annotation to the generated burn-rate alert rules. Refer to [link the SLO to RCA workbench entities](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/create/#link-the-slo-to-rca-workbench-entities).
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {

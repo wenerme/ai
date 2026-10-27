@@ -9,4 +9,4 @@ description: "Learn about the latest updates, new features, bug fixes, and break
 
 Explore the evolution of the Business Media panel through these release notes, detailing new features, enhancements, fixes, and breaking changes across all versions. Each release includes a summary to provide a quick overview of the key updates.
 
-All notable changes to the Business Media panel are documented in the [changelog](/grafana/plugins/volkovlabs-image-panel/?tab=changelog) found in the plugins catalog.
+All notable changes to the Business Media panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-image-panel/?tab=changelog) found in the plugins catalog.

@@ -7,7 +7,7 @@ description: "Solutions to common issues with the Zabbix data source plugin for 
 
 # Troubleshoot Zabbix data source issues
 
-This page provides solutions to common issues you may encounter when configuring or using the Zabbix data source. For configuration instructions, refer to [Configure the Zabbix data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
+This page provides solutions to common issues you may encounter when configuring or using the Zabbix data source. For configuration instructions, refer to [Configure the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
 
 ## Setup errors
 
@@ -31,7 +31,7 @@ Zabbix is an app plugin. Installing the plugin isn’t enough. You must also ena
 3. On the plugin page, click **Enable**.
 4. Return to **Connections** &gt; **Add new connection** and search for **Zabbix** again.
 
-For step-by-step instructions, refer to [Install and enable the Zabbix plugin](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#install-and-enable-the-zabbix-plugin).
+For step-by-step instructions, refer to [Install and enable the Zabbix plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#install-and-enable-the-zabbix-plugin).
 
 ### The Zabbix backend plugin fails to start
 
@@ -61,7 +61,7 @@ Many problems are caused by running an outdated plugin or by leftover files from
 Grafana doesn’t update plugins automatically in self-managed instances, so an old plugin can persist across Grafana upgrades. To check your version and update:
 
 1. Go to **Administration** &gt; **Plugins and data** &gt; **Plugins** and select the **Zabbix** plugin.
-2. Compare the installed version with the latest version on the [Zabbix plugin catalog page](/grafana/plugins/alexanderzobnin-zabbix-app/).
+2. Compare the installed version with the latest version on the [Zabbix plugin catalog page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/alexanderzobnin-zabbix-app/).
 3. If an update is available, click **Update**.
 4. Restart Grafana if prompted, then reload your dashboards.
 
@@ -177,11 +177,11 @@ Expand table
 
 Expand table
 
-| Cause                                                       | Solution                                                                                                                                                                                                                                                            |
-|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Network path or firewall blocks or throttles the connection | Verify the Grafana server can reach the Zabbix host and port. Check firewall, proxy, and load balancer rules along the path.                                                                                                                                        |
-| TLS interception or protocol mismatch                       | Verify the certificate chain and confirm the Zabbix endpoint supports the TLS version that Grafana negotiates.                                                                                                                                                      |
-| Zabbix reachable only on a private network                  | Use Private Data Source Connect (PDC) to reach a Zabbix server that isn’t exposed to Grafana Cloud. Refer to [Connect through Private Data Source Connect](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#connect-through-private-data-source-connect). |
+| Cause                                                       | Solution                                                                                                                                                                                                                                                                                                                        |
+|-------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Network path or firewall blocks or throttles the connection | Verify the Grafana server can reach the Zabbix host and port. Check firewall, proxy, and load balancer rules along the path.                                                                                                                                                                                                    |
+| TLS interception or protocol mismatch                       | Verify the certificate chain and confirm the Zabbix endpoint supports the TLS version that Grafana negotiates.                                                                                                                                                                                                                  |
+| Zabbix reachable only on a private network                  | Use Private Data Source Connect (PDC) to reach a Zabbix server that isn’t exposed to Grafana Cloud. Refer to [Connect through Private Data Source Connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#connect-through-private-data-source-connect). |
 
 ## Authentication errors
 
@@ -234,7 +234,7 @@ Zabbix temporarily blocks a user after several consecutive failed login attempts
 **Solutions:**
 
 1. Correct the credentials in the data source configuration, then wait for the block to expire before you retry.
-2. Use an API token instead of a username and password to avoid login-attempt limits. Refer to [Configure authentication](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-authentication).
+2. Use an API token instead of a username and password to avoid login-attempt limits. Refer to [Configure authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-authentication).
 3. Update the plugin to a current version. Older versions opened many more connections and sessions per dashboard load, which made login-limit blocks more likely.
 4. In Zabbix, review the failed-login settings and unblock the user if needed.
 
@@ -305,7 +305,7 @@ Expand table
 
 1. Narrow the dashboard time range to reduce the amount of data returned.
 2. Enable trends for long time ranges to use pre-aggregated data instead of raw history.
-3. Enable [Direct DB Connection](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection) for better performance on wide time ranges.
+3. Enable [Direct DB Connection](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection) for better performance on wide time ranges.
 4. Increase the **Timeout** or **Query Timeout** values in the data source configuration if the defaults are too low for your environment.
 5. Use `groupBy` or `consolidateBy` functions to reduce the data point density.
 
@@ -323,7 +323,7 @@ Grafana and the Zabbix backend plugin exchange data over gRPC. The plugin limits
 **Solutions:**
 
 1. Reduce the size of the result: narrow the time range, enable trends, use Direct DB Connection for server-side aggregation, set a **Limit** on Problems queries, or use more specific group, host, and item filters.
-2. If the result is legitimately large, raise the limits with the `grpc_max_receive_msg_size_mb` and `grpc_max_send_msg_size_mb` settings in the `[plugin.alexanderzobnin-zabbix-datasource]` section of the Grafana configuration file, then restart Grafana. Refer to [Configure gRPC message size limits](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-grpc-message-size-limits).
+2. If the result is legitimately large, raise the limits with the `grpc_max_receive_msg_size_mb` and `grpc_max_send_msg_size_mb` settings in the `[plugin.alexanderzobnin-zabbix-datasource]` section of the Grafana configuration file, then restart Grafana. Refer to [Configure gRPC message size limits](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-grpc-message-size-limits).
 
 ### Incorrect data or unexpected values
 
@@ -355,7 +355,7 @@ The plugin exposes two separate host-name alias tokens. `$__zbx_host` resolves t
 
 **Solutions:**
 
-1. Use `$__zbx_host_name` for the visible name and `$__zbx_host` for the technical name in `setAlias` and `replaceAlias`. Refer to [Alias functions](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/#alias-functions).
+1. Use `$__zbx_host_name` for the visible name and `$__zbx_host` for the technical name in `setAlias` and `replaceAlias`. Refer to [Alias functions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/#alias-functions).
 2. To distinguish the two names, set a visible name on the host in Zabbix under **Data collection** &gt; **Hosts**.
 
 ### Combine or calculate across multiple series
@@ -370,7 +370,7 @@ Grafana transformations and the plugin’s aggregate functions operate on the se
 
 **Solutions:**
 
-1. Use the plugin’s aggregate functions where they fit. For example, `sumSeries` adds all series together, and `aggregateBy(interval, function)` combines series by a consolidation function. Refer to [Aggregate functions](/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/#aggregate-functions).
+1. Use the plugin’s aggregate functions where they fit. For example, `sumSeries` adds all series together, and `aggregateBy(interval, function)` combines series by a consolidation function. Refer to [Aggregate functions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/functions/#aggregate-functions).
 2. For calculations that transformations can’t express, pre-calculate the value in Zabbix with a calculated item, then query that item in Grafana. This is more efficient and keeps the logic in one place.
 
 ### Problems panel shows the same value for every problem of a trigger
@@ -385,7 +385,7 @@ By default, the plugin doesn’t resolve each problem’s item value at its crea
 
 **Solutions:**
 
-1. Enable the **Item value at problem time** query option to resolve each problem’s item value at its creation time. Refer to [Problems](/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/#problems).
+1. Enable the **Item value at problem time** query option to resolve each problem’s item value at its creation time. Refer to [Problems](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/#problems).
 2. Leave the option off if you have many active problems and don’t need per-problem historical values, to protect Zabbix from extra load.
 3. Update the plugin. Version 6.4.1 and later bound the history window and result size when the option is enabled.
 
@@ -447,7 +447,7 @@ These issues relate to slow queries or high resource usage.
 
 1. Enable trends in the data source configuration. Trends use pre-aggregated hourly data, which dramatically reduces the data volume for long time ranges.
 2. Set the **After** value to match your Zabbix history retention period (for example, `7d` or `30d`).
-3. Enable [Direct DB Connection](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection) for server-side aggregation, which reduces data transfer.
+3. Enable [Direct DB Connection](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection) for server-side aggregation, which reduces data transfer.
 4. Use `groupBy` functions to reduce the data point density for very long time ranges.
 5. Reduce the number of items queried by using more specific filters instead of broad regex patterns like `/.*/`.
 
@@ -493,7 +493,7 @@ Grafana identifies a data source by its UID. If a reinstall or IaC run deletes a
 
 Pin a stable `uid` for the data source in your provisioning YAML so it survives reinstallation and redeployment:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 datasources:
@@ -502,7 +502,7 @@ datasources:
     uid: zabbix-main
 ```
 
-If the UID already changed, either restore the previous UID in provisioning or update the affected dashboards to reference the new UID. Managing the data source entirely through provisioning keeps its configuration and UID reproducible. For provisioning details, refer to [Provision the data source](/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#provision-the-data-source).
+If the UID already changed, either restore the previous UID in provisioning or update the affected dashboards to reference the new UID. Managing the data source entirely through provisioning keeps its configuration and UID reproducible. For provisioning details, refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#provision-the-data-source).
 
 ### Automation breaks after upgrading
 
@@ -544,7 +544,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the Grafana configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -562,7 +562,7 @@ If you’ve tried the solutions in this guide and still encounter issues:
 1. Search the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review [open and closed issues on GitHub](https://github.com/grafana/grafana-zabbix/issues) for known bugs and workarounds.
 3. Consult the [Zabbix documentation](https://www.zabbix.com/documentation/) for Zabbix-specific configuration guidance.
-4. Contact [Grafana Support](/support/) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
+4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
 5. When reporting issues, include:
 
    - Grafana version and Zabbix plugin version

@@ -7,7 +7,7 @@ description: "Install, upgrade, and verify the Amazon Aurora data source plugin,
 
 # Install the Amazon Aurora data source plugin
 
-This document explains how to install, upgrade, and verify the Amazon Aurora data source plugin across different Grafana deployment environments, and describes the network access the plugin requires at runtime. After you install the plugin, refer to [Configure the Amazon Aurora data source](/docs/plugins/grafana-aurora-datasource/latest/configure/) to set up a connection.
+This document explains how to install, upgrade, and verify the Amazon Aurora data source plugin across different Grafana deployment environments, and describes the network access the plugin requires at runtime. After you install the plugin, refer to [Configure the Amazon Aurora data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -15,11 +15,11 @@ Verify the following requirements before installing:
 
 Expand table
 
-| Requirement         | Details                                                                                                                                                                                                                                                      |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **License**         | Grafana Cloud Pro or Advanced plan, or a self-managed [Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/) that includes `grafana-aurora-datasource`.                                                                     |
-| **Grafana version** | 9.4.0 or later. Private data source connect requires Grafana 10.0 or later.                                                                                                                                                                                  |
-| **Network access**  | Grafana Cloud instances install the plugin from the catalog automatically. Self-managed installs need access to `grafana.com` or a local plugin ZIP file. Refer to [Network requirements](#network-requirements) for the access the plugin needs at runtime. |
+| Requirement         | Details                                                                                                                                                                                                                                                                                                                                                                         |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **License**         | Grafana Cloud Pro or Advanced plan, or a self-managed [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/) that includes `grafana-aurora-datasource`.                                                                                                                            |
+| **Grafana version** | 9.4.0 or later. Private data source connect requires Grafana 10.0 or later.                                                                                                                                                                                                                                                                                                     |
+| **Network access**  | Grafana Cloud instances install the plugin from the catalog automatically. Self-managed installs need access to `grafana.com` or a local plugin ZIP file. Refer to [Network requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/install/#network-requirements) for the access the plugin needs at runtime. |
 
 ## Install the plugin
 
@@ -35,7 +35,7 @@ The plugin is available to install from the plugin catalog on Pro and Advanced p
 
 ### Self-managed Grafana (CLI)
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-aurora-datasource
@@ -47,7 +47,7 @@ Restart Grafana after installation.
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -59,7 +59,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -70,7 +70,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment specification:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -87,18 +87,18 @@ env:
 
 For environments where the Grafana server has no internet access:
 
-1. Download the plugin ZIP file for your platform from the [plugin catalog](/grafana/plugins/grafana-aurora-datasource/) on a machine with internet access.
+1. Download the plugin ZIP file for your platform from the [plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-aurora-datasource/) on a machine with internet access.
 2. Transfer the ZIP file to the Grafana server.
 3. Extract it to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-aurora-datasource-<VERSION>.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-aurora-datasource
@@ -107,7 +107,7 @@ For environments where the Grafana server has no internet access:
 
 > Caution
 >
-> Installing the plugin offline doesn’t remove its runtime network requirements. In particular, MySQL-compatible engines require outbound access to `s3.amazonaws.com` when opening connections. Refer to [Network requirements](#network-requirements) before deploying in an air-gapped environment.
+> Installing the plugin offline doesn’t remove its runtime network requirements. In particular, MySQL-compatible engines require outbound access to `s3.amazonaws.com` when opening connections. Refer to [Network requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/install/#network-requirements) before deploying in an air-gapped environment.
 
 ### Verify the installation
 
@@ -115,7 +115,7 @@ After installing, confirm the plugin is loaded:
 
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Amazon Aurora** and verify the plugin appears with a status of **Installed**.
-3. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [License and setup errors](/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/#license-and-setup-errors).
+3. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [License and setup errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/#license-and-setup-errors).
 
 ## Network requirements
 
@@ -135,7 +135,7 @@ The RDS authentication token itself is generated by signing the request locally,
 
 - **MySQL certificate bundle:** The certificate bundle URL isn’t configurable and there’s no offline alternative, so security-restricted environments must allow outbound HTTPS to `s3.amazonaws.com` to use MySQL-compatible engines. PostgreSQL-compatible engines don’t have this requirement.
 - **AWS STS through AWS PrivateLink:** If Grafana or the PDC agent runs in a private subnet without internet access and you use **Assume Role ARN**, create a [VPC interface endpoint for AWS STS](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_interface_vpc_endpoints.html) (`com.amazonaws.<region>.sts`) and set the data source’s **Endpoint** field to the endpoint URL.
-- **Private clusters with Grafana Cloud:** Use [private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). The PDC agent needs outbound access to the cluster endpoint on the database port and outbound access on port 22 to Grafana Cloud endpoints.
+- **Private clusters with Grafana Cloud:** Use [private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). The PDC agent needs outbound access to the cluster endpoint on the database port and outbound access on port 22 to Grafana Cloud endpoints.
 
 ## Upgrade the plugin
 
@@ -145,7 +145,7 @@ On self-managed Grafana:
 
 1. Update the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-aurora-datasource
@@ -157,7 +157,7 @@ On self-managed Grafana:
 
 If an upgrade causes issues on self-managed Grafana, you can pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-aurora-datasource <VERSION>
@@ -165,7 +165,7 @@ grafana cli plugins install grafana-aurora-datasource <VERSION>
 
 Restart Grafana after the rollback. For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -174,13 +174,13 @@ environment:
 
 > Note
 >
-> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/profile/org#support).
+> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support).
 
 ## Uninstall the plugin
 
 To remove the plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-aurora-datasource
@@ -192,5 +192,5 @@ For Docker or Kubernetes, remove `grafana-aurora-datasource` from the `GF_INSTAL
 
 ## Next steps
 
-- [Configure the Amazon Aurora data source](/docs/plugins/grafana-aurora-datasource/latest/configure/)
-- [Troubleshoot Amazon Aurora data source issues](/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)
+- [Configure the Amazon Aurora data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/)
+- [Troubleshoot Amazon Aurora data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)

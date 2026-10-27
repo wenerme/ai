@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards. Instead of hard-c
 
 ## Before you begin
 
-- [Configure the SolarWinds data source](/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
+- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -49,7 +49,7 @@ The following SWQL queries return values you can use in a variable.
 
 This query returns the caption of each node:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT Caption FROM Orion.Nodes ORDER BY Caption
@@ -61,7 +61,7 @@ Set **Value Field** to `Caption`.
 
 This query returns the caption of each volume:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT Caption FROM Orion.Volumes ORDER BY Caption
@@ -73,7 +73,7 @@ Set **Value Field** to `Caption`.
 
 This query returns the node ID and the node caption, so you can store the ID as the variable value while showing the name in the drop-down:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT NodeID, Caption FROM Orion.Nodes ORDER BY Caption
@@ -83,11 +83,11 @@ Set **Value Field** to `NodeID` and **Label Field** to `Caption`. Queries that r
 
 ## Use variables in queries
 
-After you create a variable, reference it in a SWQL query with the `$variable` or `${variable}` syntax. For more information, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+After you create a variable, reference it in a SWQL query with the `$variable` or `${variable}` syntax. For more information, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 For example, if you have a variable named `node`, you can filter a query by the selected node:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT Caption, CPULoad FROM Orion.Nodes WHERE Caption = '$node'

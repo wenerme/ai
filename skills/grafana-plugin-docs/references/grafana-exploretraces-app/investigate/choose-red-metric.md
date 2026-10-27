@@ -9,11 +9,11 @@ description: "Choose a rate, error, or duration metric for your investigation."
 
 Traces Drilldown uses RED metrics generated from your tracing data to guide your investigation. In this context, RED metrics mean:
 
-- **Rates** show the rate of incoming spans per second.
+- **Rate** shows the rate of incoming spans per second.
 - **Errors** show spans that are failing.
 - **Duration** displays the amount of time those spans take; represented as a heat map that shows response time and latency.
 
-When you select a RED metric, the tabs underneath the metric selection change to match the context. **Breakdown** and **Comparison** tabs are always present regardless of which metric you choose. For example, selecting **Duration** displays **Root cause latency** and **Slow traces** tabs in addition to **Breakdown** and **Comparison**. Choosing **Errors** shows **Root cause errors**, **Exceptions**, and **Errored traces** tabs in addition to **Breakdown** and **Comparison**. **Rate** shows **Service structure** and **Traces** tabs in addition to **Breakdown** and **Comparison**. These tabs are used when you [analyze tracing data](../analyze-tracing-data/).
+When you select a RED metric, the tabs underneath the metric selection change to match the context. **Breakdown** and **Comparison** tabs are always present regardless of which metric you choose. For example, selecting **Duration** displays **Root cause latency** and **Slow traces** tabs in addition to **Breakdown** and **Comparison**. Choosing **Errors** shows **Root cause errors**, **Exceptions**, and **Errored traces** tabs in addition to **Breakdown** and **Comparison**. **Rate** shows **Service structure** and **Traces** tabs in addition to **Breakdown** and **Comparison**. These tabs are used when you [analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/).
 
 To choose a RED metric:
 

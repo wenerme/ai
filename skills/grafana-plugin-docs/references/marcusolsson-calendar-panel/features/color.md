@@ -15,22 +15,22 @@ You can color events based on the following **Layout**:
 - Event
 - Thresholds
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/colors-by.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/colors-by.png)
 
 ## Frame
 
 All events from the same data frame are colored with the same color. This coloring works when you set the **Data &gt; Color** field to NULL.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/frame.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/frame.png)
 
 ## Event
 
 All events are colored with a different color. This coloring works when you set the **Data &gt; Color** field to NULL.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/event.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/event.png)
 
 ## Thresholds
 
 You can color events in different tones based on whether their values fall within a specific threshold. In addition, you can choose a classic color palette in the plugin’s options.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/threshold.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/threshold.png)

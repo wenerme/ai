@@ -7,7 +7,7 @@ description: "Install and upgrade the Splunk data source plugin for Grafana."
 
 # Install and upgrade the Splunk data source plugin
 
-This document covers how to install, upgrade, and verify the Splunk data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Splunk data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -30,7 +30,7 @@ Choose the installation method that matches your Grafana deployment.
 
 Enterprise plugins must be activated for your organization before they appear as installable in the plugin catalog.
 
-1. Go to [grafana.com/orgs](/orgs) and sign in with your Grafana Cloud account.
+1. Go to [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
 3. Navigate to the **Plugins** tab and verify that the Splunk plugin is activated. If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
 4. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
@@ -38,11 +38,11 @@ Enterprise plugins must be activated for your organization before they appear as
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization at [grafana.com/orgs](/orgs) and that your Cloud plan is Pro or Advanced.
+> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and that your Cloud plan is Pro or Advanced.
 
 ### Self-managed Grafana (CLI)
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-splunk-datasource
@@ -50,7 +50,7 @@ grafana cli plugins install grafana-splunk-datasource
 
 Restart Grafana after installation:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -60,7 +60,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -72,7 +72,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -83,7 +83,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -100,7 +100,7 @@ env:
 
 If you don’t control the Helm chart (for example, on a shared platform cluster), use an init container to download the plugin before Grafana starts:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -124,18 +124,18 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP from your [Grafana account portal](/orgs) on a machine with internet access.
+1. Download the plugin ZIP from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-splunk-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-splunk-datasource
@@ -144,7 +144,7 @@ For environments without internet access:
 
 > Note
 >
-> If Grafana reports an “unsigned plugin” error after extraction, the ZIP is incomplete or corrupt. Re-download the official signed ZIP from your [Grafana account portal](/orgs), extract the full plugin directory (including `MANIFEST.txt`), and ensure the folder name matches the plugin ID (`grafana-splunk-datasource`). Official downloads from grafana.com are always signed.
+> If Grafana reports an “unsigned plugin” error after extraction, the ZIP is incomplete or corrupt. Re-download the official signed ZIP from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs), extract the full plugin directory (including `MANIFEST.txt`), and ensure the folder name matches the plugin ID (`grafana-splunk-datasource`). Official downloads from grafana.com are always signed.
 
 ### Verify the installation
 
@@ -153,7 +153,7 @@ After installing, confirm the plugin is loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Splunk** and verify the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **Splunk** to confirm it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -165,7 +165,7 @@ Upgrade steps depend on your Grafana deployment environment.
 
 ### Grafana Cloud
 
-Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### Self-managed Grafana
 
@@ -173,7 +173,7 @@ Self-managed instances do not receive automatic plugin updates. You are responsi
 
 1. Update the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-splunk-datasource
@@ -183,7 +183,7 @@ Self-managed instances do not receive automatic plugin updates. You are responsi
 
 To install a specific version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-splunk-datasource <version>
@@ -191,7 +191,7 @@ grafana cli plugins install grafana-splunk-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -202,7 +202,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-splunk-datasource 5.8.19
@@ -212,7 +212,7 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback is not available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+> Rollback is not available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### Check for updates
 
@@ -224,13 +224,13 @@ To check whether a newer version of the Splunk plugin is available:
 
 You can also check the latest version programmatically:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl -s https://grafana.com/api/plugins/grafana-splunk-datasource | jq '.version'
 ```
 
-To stay informed about new releases, monitor the [Splunk plugin changelog](/docs/plugins/grafana-splunk-datasource/latest/) or subscribe to release notifications through your Grafana account at [grafana.com/orgs](/orgs).
+To stay informed about new releases, monitor the [Splunk plugin changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/) or subscribe to release notifications through your Grafana account at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
 
 ### Plugin administration in self-managed environments
 
@@ -238,7 +238,7 @@ Installing, updating, and uninstalling plugins from the Grafana UI is controlled
 
 To re-enable UI-based plugin management, set `plugin_admin_enabled` to `true` in your Grafana configuration:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugins]
@@ -255,7 +255,7 @@ If you manage plugins exclusively through the CLI, environment variables, or pro
 
 To remove the Splunk plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-splunk-datasource
@@ -275,7 +275,7 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Go to [grafana.com/orgs](/orgs).
+1. Go to [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the Splunk plugin is listed and activated.
 4. Confirm your Cloud plan is Pro or Advanced. Free and Starter plans don’t include Enterprise plugins.
@@ -286,12 +286,12 @@ The following sections address common installation problems.
 
 Expand table
 
-| Cause                                          | Solution                                                                                                                                                                                                                                                                                                                                                                     |
-|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Enterprise license inactive (self-managed)     | Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).                                                                              |
-| Plugin not activated (Grafana Cloud)           | Verify plugin activation at [grafana.com/orgs](/orgs).                                                                                                                                                                                                                                                                                                                       |
-| `plugin_admin_enabled` disabled (self-managed) | UI-based plugin management is enabled by default. If an administrator set `plugin_admin_enabled = false`, the **Install** and **Update** buttons don’t render. Set `plugin_admin_enabled = true` under `[plugins]` in `grafana.ini` and restart Grafana. Refer to [Plugin administration in self-managed environments](#plugin-administration-in-self-managed-environments). |
-| Grafana version too old                        | The Splunk plugin requires Grafana 11.6.7 or later. Upgrade Grafana before installing the plugin.                                                                                                                                                                                                                                                                            |
+| Cause                                          | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Enterprise license inactive (self-managed)     | Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).                                                                                                                                     |
+| Plugin not activated (Grafana Cloud)           | Verify plugin activation at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).                                                                                                                                                                                                                                                                                                                                                                              |
+| `plugin_admin_enabled` disabled (self-managed) | UI-based plugin management is enabled by default. If an administrator set `plugin_admin_enabled = false`, the **Install** and **Update** buttons don’t render. Set `plugin_admin_enabled = true` under `[plugins]` in `grafana.ini` and restart Grafana. Refer to [Plugin administration in self-managed environments](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/#plugin-administration-in-self-managed-environments). |
+| Grafana version too old                        | The Splunk plugin requires Grafana 11.6.7 or later. Upgrade Grafana before installing the plugin.                                                                                                                                                                                                                                                                                                                                                                                               |
 
 ### License key errors (self-managed)
 
@@ -301,8 +301,8 @@ Expand table
 
 1. Verify the license key doesn’t contain extra whitespace, line breaks, or truncated characters.
 2. Confirm the key is for the correct Grafana instance URL.
-3. Check that the license hasn’t expired at [grafana.com/orgs](/orgs).
-4. For license activation help, refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
+3. Check that the license hasn’t expired at [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+4. For license activation help, refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/activate-aws-marketplace-license/).
 
 ### “Unsigned plugin” error (air-gapped installs)
 
@@ -310,7 +310,7 @@ Expand table
 
 **Solution:**
 
-1. Re-download the plugin ZIP from your [Grafana account portal](/orgs) on a machine with internet access.
+1. Re-download the plugin ZIP from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
 2. Verify the extracted directory contains `MANIFEST.txt` (the signature file) and that the folder name matches the plugin ID (`grafana-splunk-datasource`).
 3. Ensure the architecture (linux\_amd64, linux\_arm64, darwin\_amd64, etc.) matches your Grafana server.
 4. Re-extract the full ZIP to `/var/lib/grafana/plugins/`, replacing the previous incomplete copy.

@@ -11,15 +11,15 @@ The Business Forms plugin provides a wide variety of element types to meet almos
 
 > Note
 >
-> All form elements (starting from version 4.9.0, including [sections](#sections)) can be created dynamically. For more info, please refer to the [Dynamic Forms](/docs/plugins/volkovlabs-form-panel/latest/features/dynamic-forms/) page of the Business Forms panel documentation.
+> All form elements (starting from version 4.9.0, including [sections](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/form-elements/#sections)) can be created dynamically. For more info, please refer to the [Dynamic Forms](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/features/dynamic-forms/) page of the Business Forms panel documentation.
 
 ## Layout
 
 You can choose from three layouts: **Basic**, **Buttons Only**, and **Sections**. To switch between them, open the **Layout** category.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/sections.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/sections.png)
 
-[](/media/docs/grafana/panels-visualizations/business-forms/layouts.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/layouts.png)
 
 ### Basic
 
@@ -39,7 +39,7 @@ Sections can be collapsible. This functionality is available only for sections i
 
 You can also control the **Expanded** and **Collapsed** states in **Custom code** by using the following commands:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.panel.expandSection(id);
@@ -48,7 +48,7 @@ context.panel.collapseSection(id);
 
 > Note
 >
-> The full list of the Business Form panel parameters can be found in the [Custom Code](/docs/plugins/volkovlabs-form-panel/latest/custom-code/#parameters) section of the panel’s documentation.
+> The full list of the Business Form panel parameters can be found in the [Custom Code](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/custom-code/#parameters) section of the panel’s documentation.
 
 ### Buttons Only
 
@@ -60,7 +60,7 @@ To add a form element, go to the **Form Elements** category. Specify the element
 
 Element types have specific options. For example, the **Text area** type includes a **Rows** option that controls the element size on the dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/add-form-element.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/add-form-element.png)
 
 ## Move a form element
 
@@ -70,34 +70,34 @@ Element types have specific options. For example, the **Text area** type include
 
 You can drag-and-drop form elements in the edit mode to change their order on the form.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/drag.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/drag.png)
 
 ## Form element types
 
 The following image shows all available element types before version 4.4.0:
 
-[](/media/docs/grafana/panels-visualizations/business-forms/elements-demo.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/elements-demo.png)
 
-- [`Custom button`](/plugins/business-forms/elements/button/)
-- [`Checkbox List with custom options`](/plugins/business-forms/elements/button/)
-- [`Code Editor`](/plugins/business-forms/elements/code-editor/)
-- [`Color Picker`](/plugins/business-forms/elements/button/)
-- [`Date`](/plugins/business-forms/elements/date/)
-- [`Date and Time`](/plugins/business-forms/elements/date-time/)
-- [`File`](/plugins/business-forms/elements/file/)
-- [`Link`](/plugins/business-forms/elements/link/)
-- [`Multi-select with custom options`](/plugins/business-forms/elements/multi-select/)
-- [`Number Input`](/plugins/business-forms/elements/number-input/)
-- [`Number Slider`](/plugins/business-forms/elements/number-slider/)
-- [`Password Input`](/plugins/business-forms/elements/password-input/)
-- [`Radio Group with boolean options`](/plugins/business-forms/elements/radio-group-boolean-options/)
-- [`Radio Group with custom options`](/plugins/business-forms/elements/radio-group-custom-options/)
-- [`Read-only`](/plugins/business-forms/elements/read-only/)
-- [`Read-only Text Area`](/plugins/business-forms/elements/read-only-text-area/)
-- [`String Input`](/plugins/business-forms/elements/string-input/)
-- [`Select with Custom options`](/plugins/business-forms/elements/select-with-options/)
-- [`Text Area`](/plugins/business-forms/elements/text-area/)
-- [`Time`](/plugins/business-forms/elements/time/)
+- [`Custom button`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/button/)
+- [`Checkbox List with custom options`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/button/)
+- [`Code Editor`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/code-editor/)
+- [`Color Picker`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/button/)
+- [`Date`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/date/)
+- [`Date and Time`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/date-time/)
+- [`File`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/file/)
+- [`Link`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/link/)
+- [`Multi-select with custom options`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/multi-select/)
+- [`Number Input`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/number-input/)
+- [`Number Slider`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/number-slider/)
+- [`Password Input`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/password-input/)
+- [`Radio Group with boolean options`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/radio-group-boolean-options/)
+- [`Radio Group with custom options`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/radio-group-custom-options/)
+- [`Read-only`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/read-only/)
+- [`Read-only Text Area`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/read-only-text-area/)
+- [`String Input`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/string-input/)
+- [`Select with Custom options`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/select-with-options/)
+- [`Text Area`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/text-area/)
+- [`Time`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-forms/elements/time/)
 
 ## Common configuration
 
@@ -111,7 +111,7 @@ All three have some options in common.
 
 #### Icon
 
-[](/media/docs/grafana/panels-visualizations/business-forms/icons.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/icons.png)
 
 ### Custom color and background color for elements
 
@@ -125,7 +125,7 @@ You can customize the following **Form Elements** colors:
 - Label background
 - Label color
 
-[](/media/docs/grafana/panels-visualizations/business-forms/colors.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/colors.png)
 
 ### Select options from a query
 
@@ -135,7 +135,7 @@ You can customize the following **Form Elements** colors:
 
 You can reference a query from any configured data source to populate form elements dynamically. Specify the **Label** and **Value** fields.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/options-from-query.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/options-from-query.png)
 
 ### Select options from GET Options code
 
@@ -148,7 +148,7 @@ You can reference a query from any configured data source to populate form eleme
 - Return an array with `{label,value}` objects.
 - Be synchronous.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/options-from-code.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/options-from-code.png)
 
 ### Set options received asynchronously
 
@@ -158,11 +158,11 @@ Complete the following steps:
 
 #### Step 1: Initial request
 
-[](/media/docs/grafana/panels-visualizations/business-forms/initial-req-for-options.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/initial-req-for-options.png)
 
 In the following example, the code finds the required element and updates its options. After the data is received, the element is updated using `context.panel.onChangeElements()`.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const url = "https://jsonplaceholder.typicode.com/users";
@@ -203,9 +203,9 @@ return fetchData();
 
 Set options for your element from `context.panel.elements`.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/set-options-from-code.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/set-options-from-code.png)
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const element = context.panel.elements.find(
@@ -232,11 +232,11 @@ Every form element has a **Show If returned value is true** parameter where you 
 - If this code returns `true`, the element is shown on the panel.
 - If this code returns `false`, the element is hidden from the panel.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/select.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/select.png)
 
 Example code to check the current value of the `select` element and show the `dateTime` element if the value equal to `max`:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const select = context.panel.elements.find(
@@ -254,11 +254,11 @@ if (select) {
 
 You can use dashboard and global variables in your JavaScript code.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/var.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/var.png)
 
 Example code to check the value of the dashboard variable `var`:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const test = context.grafana.replaceVariables("$var");
@@ -275,11 +275,11 @@ To map initial form element values, use the **Initial Fields** options category.
 
 ### Data source 4.4.0
 
-[](/media/docs/grafana/panels-visualizations/business-forms/field-name-ds-440.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/field-name-ds-440.png)
 
 ### Query 4.4.0
 
-[](/media/docs/grafana/panels-visualizations/business-forms/field-name-query-440.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/field-name-query-440.png)
 
 > Note
 >
@@ -289,12 +289,12 @@ You can specify field-to-form mapping using the **Field name** parameter for **D
 
 ### Data Source
 
-[](/media/docs/grafana/panels-visualizations/business-forms/field-name-ds.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/field-name-ds.png)
 
 The `Field Name` option for each Form Element is located under the code editor when the data source option is enabled. Specify a field name for appropriate form element from the data source response.
 
 ### Query
 
-[](/media/docs/grafana/panels-visualizations/business-forms/field-name-query.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/field-name-query.png)
 
 The `Query Field` option for each Form Element is located under the code editor when the Query option is enabled. Specify a field name for appropriate form element from the Query response.

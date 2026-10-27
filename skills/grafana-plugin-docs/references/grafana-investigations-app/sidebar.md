@@ -15,13 +15,13 @@ The investigation list shows your past investigations and those created by other
 
 Any items you favorited using the star icon will appear at the top.
 
-[List your and other’s investigations.](/media/docs/investigations/screenshot-investigations-list.png)
+[List your and other’s investigations.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-investigations-list.png)
 
 ## An Investigation
 
 An investigation is a group of items collected from across the Drilldown apps.
 
-[The investigation header contains the title, description, and actions.](/media/docs/investigations/screenshot-investigation-title-2.png)
+[The investigation header contains the title, description, and actions.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-investigation-title-2.png)
 
 - Setting a meaningful title is important if you want to use that investigation in the future
 - The **Add investigation summary** feature optional but can be useful to provide a status update or summary after the investigation is complete
@@ -34,7 +34,7 @@ Use the **Add this page** button to add any other Grafana pages that might be re
 
 To build up an investigation, you can add items from across the Drilldown apps.
 
-[An example investigation item.](/media/docs/investigations/screenshot-investigation-item.png)
+[An example investigation item.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-investigation-item.png)
 
 - The item name appears as the title. **You can click this to navigate back to the source app**
 - The handle in the top left corner allows you to reorder the item with the investigation
@@ -56,13 +56,13 @@ To add an item to an investigation, choose the **Add to investigation** option f
 - The item will be added to the last open investigation or else create a new one
 - A new investigation will get a general title, it is recommended to rename it to be more descriptive - especially if you plan to reuse it in the future
 
-[Look for the Add to Investigation menu item throughout the Drilldown apps.](/media/docs/investigations/screenshot-add-to-investigation.png)
+[Look for the Add to Investigation menu item throughout the Drilldown apps.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-add-to-investigation.png)
 
 ### Comments
 
 There is a space below each item where you can add and edit comments. Markdown is supported, and clicking the little markdown icon in the app will present a panel with the syntax help.
 
-[Markdown preview panel accessible in the app.](/media/docs/investigations/screenshot-markdown.png)
+[Markdown preview panel accessible in the app.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-markdown.png)
 
 ### Reordering items
 
@@ -89,4 +89,4 @@ The three-dot menu in an investigation lets you:
 
 # What next?
 
-Learn about the [Timeline view](../timeline) and the [Compare time ranges tool](../compare-time-ranges).
+Learn about the [Timeline view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/timeline) and the [Compare time ranges tool](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/compare-time-ranges).

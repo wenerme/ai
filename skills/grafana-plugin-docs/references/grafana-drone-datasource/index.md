@@ -9,20 +9,20 @@ description: "Use the Drone data source to query repositories and builds from yo
 
 > Note
 >
-> Drone data source plugin is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Drone data source plugin is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 The Drone data source plugin lets you retrieve repository and build data from your Drone continuous integration (CI) instance and visualize it in Grafana. Use it to track build activity, monitor repository health, and correlate CI events with other data on your dashboards.
 
 > Note
 >
-> The Drone data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install the Drone data source](/docs/plugins/grafana-drone-datasource/latest/install/).
+> The Drone data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/install/).
 
 ## Requirements
 
 To use this data source, you need:
 
 - A working Drone instance and a Drone API token.
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - Grafana 10.3.3 or later.
 
 ## Version compatibility
@@ -49,20 +49,20 @@ Expand table
 
 The following documents help you set up and use the Drone data source:
 
-- [Install the Drone data source](/docs/plugins/grafana-drone-datasource/latest/install/)
-- [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/)
-- [Drone query editor](/docs/plugins/grafana-drone-datasource/latest/query-editor/)
-- [Drone template variables](/docs/plugins/grafana-drone-datasource/latest/template-variables/)
-- [Drone annotations](/docs/plugins/grafana-drone-datasource/latest/annotations/)
-- [Troubleshooting](/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)
+- [Install the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/install/)
+- [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/)
+- [Drone query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/)
+- [Drone template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/template-variables/)
+- [Drone annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/annotations/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Add [annotations](/docs/plugins/grafana-drone-datasource/latest/annotations/) to overlay Drone events on your graphs.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/annotations/) to overlay Drone events on your graphs.
 
 ## Pre-built dashboards
 

@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Netlify data source in Grafana."
 
 # Troubleshoot Netlify data source issues
 
-This document provides solutions to common issues you might encounter when you configure or use the Netlify data source. For configuration instructions, refer to [Configure the data source](/docs/plugins/grafana-netlify-datasource/latest/#configure-the-data-source).
+This document provides solutions to common issues you might encounter when you configure or use the Netlify data source. For configuration instructions, refer to [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-netlify-datasource/latest/#configure-the-data-source).
 
 ## License and setup errors
 
@@ -142,7 +142,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

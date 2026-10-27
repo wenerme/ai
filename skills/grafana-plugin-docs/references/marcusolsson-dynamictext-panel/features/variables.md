@@ -7,15 +7,15 @@ description: "Learn how to use Grafana dashboard variables in templates, JavaScr
 
 # Variables
 
-The Business Text panel provides [helpers](/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#helper-variablevalue) to support variables. You can use variables in JavaScript code and CSS styles.
+The Business Text panel provides [helpers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#helper-variablevalue) to support variables. You can use variables in JavaScript code and CSS styles.
 
-The [Grafana Crash Course](/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-variables/) provides a thorough explanation of these three variable types.
+The [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-variables/) provides a thorough explanation of these three variable types.
 
 ## Check whether a user is an admin
 
 To access nested variables, use curly brackets.
 
-Handlebars [Copy code to clipboard] Copy
+Handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{#if (contains (variable "{__user.login}") "admin")}}
@@ -29,7 +29,7 @@ Handlebars [Copy code to clipboard] Copy
 
 Create a list from a multi-select variable.
 
-Handlebars [Copy code to clipboard] Copy
+Handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{#each (variable "hostname")}}
@@ -43,7 +43,7 @@ Use the `lookup` helper to create dynamic templates based on dashboard variables
 
 The following template creates a key-value pair from each selected value in the `props` dashboard variable.
 
-Handlebars [Copy code to clipboard] Copy
+Handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 book:
@@ -58,7 +58,7 @@ book:
 
 Use the `context.grafana.replaceVariables()` function to replace dashboard variables in the JavaScript code.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const bonjour = context.grafana.replaceVariables("${variable}");
@@ -69,7 +69,7 @@ console.log(bonjour.toUpperCase());
 
 The `var-` prefix is required to set a dashboard variable.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.grafana.locationService.partial({ "var-variableName": ".*" });
@@ -77,7 +77,7 @@ context.grafana.locationService.partial({ "var-variableName": ".*" });
 
 Set the time range values `from` and `to` as follows:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.grafana.locationService.partial({ from: start, to: end });

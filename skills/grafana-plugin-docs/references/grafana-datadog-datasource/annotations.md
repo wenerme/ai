@@ -9,7 +9,7 @@ description: "This document describes how to use annotations with the Datadog da
 
 Annotations overlay event markers on a dashboard’s graphs, so you can correlate Datadog events with your visualized data. The Datadog data source builds annotations from the Datadog event stream using an **Events** query.
 
-For an introduction to annotations, refer to [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For an introduction to annotations, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add a Datadog annotation query
 

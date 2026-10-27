@@ -7,17 +7,17 @@ description: "Set up alerts using Snowflake data in Grafana."
 
 # Alerting
 
-The Snowflake data source supports [Grafana Alerting](/docs/grafana/latest/alerting/), allowing you to create alert rules based on Snowflake data. You can monitor your data warehouse and receive notifications when specific conditions are met.
+The Snowflake data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on Snowflake data. You can monitor your data warehouse and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
-- Verify your Snowflake data source is [configured](/docs/plugins/grafana-snowflake-datasource/latest/configure/) and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- Verify your Snowflake data source is [configured](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/) and working correctly.
+- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 > Note
 >
-> Alert rules run in the Grafana backend without a signed-in user, so OAuth authentication, which forwards each user’s identity, can’t be used for alerting. Configure the data source with password, key pair, or programmatic access token (PAT) authentication for alert queries. For more information, refer to [Configure the Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/configure/#authentication).
+> Alert rules run in the Grafana backend without a signed-in user, so OAuth authentication, which forwards each user’s identity, can’t be used for alerting. Configure the data source with password, key pair, or programmatic access token (PAT) authentication for alert queries. For more information, refer to [Configure the Snowflake data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/#authentication).
 
 ## Query requirements for alerting
 
@@ -52,7 +52,7 @@ To create an alert rule using Snowflake data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 > Note
 >
@@ -65,7 +65,7 @@ This example creates an alert that fires when warehouse credit usage exceeds a t
 1. Create a new alert rule.
 2. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -90,7 +90,7 @@ This example alerts when queries take longer than expected:
 1. Create a new alert rule.
 2. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -116,7 +116,7 @@ This example alerts when data hasn’t been updated within the expected time fra
 1. Create a new alert rule.
 2. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -138,7 +138,7 @@ This example alerts when the number of failed queries exceeds a threshold:
 1. Create a new alert rule.
 2. Configure the query:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -213,10 +213,10 @@ If your alerts are not working as expected:
 - **Query timeout**: Increase the query timeout in data source settings or optimize your query.
 - **Unexpected values**: Check that your query returns the correct data type (numeric for thresholds).
 
-For additional troubleshooting, refer to [Troubleshooting](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/).
+For additional troubleshooting, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/).
 
 ## Additional resources
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [Create alert rules](/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)

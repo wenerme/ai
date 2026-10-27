@@ -11,7 +11,7 @@ description: "Learn how to use the JavaScript Values Editor to generate data fra
 >
 > The JavaScript Values Editor must return a data frame.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const result = {
@@ -25,13 +25,13 @@ const result = {
 return Promise.resolve(result);
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-input/import-js.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/import-js.png)
 
 ## Imports
 
 The Business Input data source supports importing libraries in the **JavaScript** editor mode. You can import external or local libraries.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/mermaid").then(({ default: mermaid }) => {

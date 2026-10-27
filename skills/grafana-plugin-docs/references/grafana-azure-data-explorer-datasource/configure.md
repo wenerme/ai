@@ -13,7 +13,7 @@ This document explains how to configure the Azure Data Explorer data source in G
 
 Before you configure the data source, ensure you have the following:
 
-- **Installed plugin:** The Azure Data Explorer plugin installed and activated. For installation, licensing, and upgrade steps, refer to [Install and upgrade the Azure Data Explorer data source plugin](/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/).
+- **Installed plugin:** The Azure Data Explorer plugin installed and activated. For installation, licensing, and upgrade steps, refer to [Install and upgrade the Azure Data Explorer data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/).
 - **Grafana permissions:** The `Organization administrator` role to add and configure data sources.
 - **Azure Data Explorer resources:** An Azure Data Explorer cluster and database.
 - **Microsoft Entra identity:** A Microsoft Entra application, managed identity, or workload identity with viewer access to your database.
@@ -72,7 +72,7 @@ App Registration authentication uses a Microsoft Entra application and client se
 
 To create a Microsoft Entra application and service principal, follow the Microsoft guide [Create a Microsoft Entra application and service principal that can access resources](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal). Alternatively, use the Azure CLI:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 az ad sp create-for-rbac -n "http://url.to.your.grafana:3000"
@@ -80,7 +80,7 @@ az ad sp create-for-rbac -n "http://url.to.your.grafana:3000"
 
 The command returns credentials similar to the following:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -94,7 +94,7 @@ JSON [Copy code to clipboard] Copy
 
 Assign the `Reader` role to the service principal and remove the `Contributor` role:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 az role assignment create --assignee <your appId> --role Reader
@@ -103,7 +103,7 @@ az role assignment delete --assignee <your appId> --role Contributor
 
 Grant the application viewer access to your database using the `.add` management command. The argument contains the client ID and tenant ID separated by a semicolon:
 
-kusto [Copy code to clipboard] Copy
+kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 .add database <your database> viewers ('aadapp=<your client id>;<your tenant id>')
@@ -125,7 +125,7 @@ Managed Identity authentication uses a Microsoft Entra identity that Azure manag
 
 To enable managed identities, set the following in the `[azure]` section of your Grafana configuration file:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -140,7 +140,7 @@ Workload Identity authentication uses federated credentials, which lets workload
 
 To enable workload identity, set the following in the `[azure]` section of your Grafana configuration file:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -151,11 +151,11 @@ When enabled, select **Workload Identity** as the authentication type in the dat
 
 ### Current User
 
-Current User authentication runs each query as the Grafana user who is signed in, so access follows each user’s own Azure permissions. It requires Microsoft Entra (Azure AD) authentication for Grafana. For complete guidance, refer to [Configure Azure AD/Entra ID OAuth authentication](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
+Current User authentication runs each query as the Grafana user who is signed in, so access follows each user’s own Azure permissions. It requires Microsoft Entra (Azure AD) authentication for Grafana. For complete guidance, refer to [Configure Azure AD/Entra ID OAuth authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
 
 After Microsoft Entra authentication is configured, enable current user authentication in the `[azure]` section of your Grafana configuration file:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -164,7 +164,7 @@ user_identity_enabled = true
 
 Optionally, override the Microsoft Entra authentication settings in the `[azure]` section:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -179,7 +179,7 @@ user_identity_federated_credential_audience =
 
 For example, you can provide a different Microsoft Entra application for token exchange:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -191,7 +191,7 @@ user_identity_client_secret = 4479f5a6-444c-4271-8790-60eeb42225ae
 
 You can also customize the token endpoint:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -216,7 +216,7 @@ To set up fallback service credentials, complete the following three steps.
 
 1. Enable fallback credentials in the `[azure]` section of your Grafana configuration file. This setting is `true` by default when `user_identity_enabled` is set, but you can also set it explicitly.
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [azure]
@@ -225,7 +225,7 @@ To set up fallback service credentials, complete the following three steps.
    ```
 2. Enable ID forwarding. Grafana needs a way to distinguish a signed-in user’s request from a background job. The `idForwarding` feature toggle provides that signal.
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [feature_toggles]
@@ -248,7 +248,7 @@ To set up fallback service credentials, complete the following three steps.
 
 On-Behalf-Of (OBO) authentication exchanges the signed-in user’s token for an Azure Data Explorer token, so queries run with the user’s identity. Enable the feature explicitly in the `[feature_toggles]` section of your Grafana configuration file:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [feature_toggles]
@@ -257,7 +257,7 @@ adxOnBehalfOf = true
 
 To complete the setup:
 
-1. Configure Grafana to use OAuth2 with Microsoft Entra ID, as described in [Configure Azure AD/Entra ID OAuth authentication](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/). The `[auth.azuread]` `scopes` setting must contain `openid email profile`.
+1. Configure Grafana to use OAuth2 with Microsoft Entra ID, as described in [Configure Azure AD/Entra ID OAuth authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/). The `[auth.azuread]` `scopes` setting must contain `openid email profile`.
 2. Enable ID tokens on the [Azure portal](https://portal.azure.com/) under **App Registrations** &gt; your application &gt; **Manage** &gt; **Authentication**.
 3. Add the **Azure Data Explorer** `user_impersonation` API permission, in addition to the **Microsoft Graph** `User.Read` permission, under **App Registrations** &gt; your application &gt; **Manage** &gt; **API permissions**.
 4. Grant **Admin consent** under **App Registrations** &gt; your application &gt; **API permissions**. Admin consent grants consent on behalf of all users in the tenant, so users aren’t prompted to consent individually.
@@ -306,7 +306,7 @@ For additional security, you can enforce a list of trusted Azure Data Explorer e
 
 To enable this, set `enforce_trusted_endpoints` in the `[plugin.grafana-azure-data-explorer-datasource]` section of your Grafana configuration file:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugin.grafana-azure-data-explorer-datasource]
@@ -327,7 +327,7 @@ When an Azure Data Explorer cluster is behind a proxy or load balancer, you migh
 
 To enable this, set `allow_user_trusted_endpoints` to `true` and specify the required endpoints as a comma-separated list with the `user_trusted_endpoints` key in the `[plugin.grafana-azure-data-explorer-datasource]` section:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugin.grafana-azure-data-explorer-datasource]
@@ -346,21 +346,21 @@ user_trusted_endpoints = https://first.endpoint.com,https://endpoint.second.com
 >
 > Private data source connect is only available to Grafana Cloud users.
 
-Private data source connect (PDC) establishes a private, secured connection between a Grafana Cloud instance, or stack, and an Azure Data Explorer cluster secured within a private network. In the data source connection settings, use the **Private data source connect** drop-down to locate the URL for PDC. To open your PDC connection page, where you can find your configuration details, click **Manage private data source connect**. For more information, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+Private data source connect (PDC) establishes a private, secured connection between a Grafana Cloud instance, or stack, and an Azure Data Explorer cluster secured within a private network. In the data source connection settings, use the **Private data source connect** drop-down to locate the URL for PDC. To open your PDC connection page, where you can find your configuration details, click **Manage private data source connect**. For more information, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 PDC routes the connection through a secure socks proxy. When the secure socks proxy is enabled in your Grafana instance (Grafana 10.0.0 or later with the `secureSocksDSProxyEnabled` feature toggle), the data source configuration page also shows a **Secure Socks Proxy** section with an **Enable** toggle. To provision this setting, set `enableSecureSocksProxy` to `true` in `jsonData`.
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. When the connection test succeeds, Grafana displays a **Success** message. If the test fails, or reports that it connected but couldn’t reach Azure Resource Graph to list clusters, refer to [Troubleshooting](/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/).
+Click **Save &amp; test** to verify the connection. When the connection test succeeds, Grafana displays a **Success** message. If the test fails, or reports that it connected but couldn’t reach Azure Resource Graph to list clusters, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions an App Registration connection:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -381,7 +381,7 @@ datasources:
 
 The following example provisions an On-Behalf-Of connection. Set `onBehalfOf` and `oauthPassThru` to `true`:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -408,7 +408,7 @@ You can also manage the data source with the [Grafana Terraform provider](https:
 
 The following example provisions an App Registration connection:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "adx" {
@@ -430,7 +430,7 @@ resource "grafana_data_source" "adx" {
 
 To provision an On-Behalf-Of connection, add `onBehalfOf` and `oauthPassThru` to `json_data_encoded`:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "adx_obo" {

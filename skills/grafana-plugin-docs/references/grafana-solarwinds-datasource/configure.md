@@ -13,7 +13,7 @@ This document explains how to configure the SolarWinds data source in Grafana.
 
 Before you configure the data source, ensure you have:
 
-- **SolarWinds data source plugin installed:** For installation instructions, refer to [Install the SolarWinds data source](/docs/plugins/grafana-solarwinds-datasource/latest/install/).
+- **SolarWinds data source plugin installed:** For installation instructions, refer to [Install the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/install/).
 - **Grafana permissions:** Organization administrator role.
 - **SolarWinds credentials:** A username and password that can access the SolarWinds Information Service API.
 - **Network access:** Outbound connectivity from Grafana to your SolarWinds instance on port `17774`.
@@ -87,19 +87,19 @@ Expand table
 
 > Note
 >
-> The Grafana backend uses the Go runtime, which enforces stricter certificate compliance than some tools. A certificate that works with `curl -k` might still be rejected by Grafana. In particular, certificates with a negative serial number fail with an `x509: negative serial number` error, even when you skip TLS certificate validation. To resolve this, reissue the SolarWinds server certificate with a positive serial number. For more information, refer to [TLS certificate errors](/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#tls-certificate-errors).
+> The Grafana backend uses the Go runtime, which enforces stricter certificate compliance than some tools. A certificate that works with `curl -k` might still be rejected by Grafana. In particular, certificates with a negative serial number fail with an `x509: negative serial number` error, even when you skip TLS certificate validation. To resolve this, reissue the SolarWinds server certificate with a positive serial number. For more information, refer to [TLS certificate errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/#tls-certificate-errors).
 
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. Grafana runs a SWQL health check query against your SolarWinds instance. When the connection succeeds, Grafana displays the message `health check succeeded for 'SWQL Query' query`.
 
-If the test fails, refer to [Troubleshoot the SolarWinds data source](/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/) for solutions to common connection, authentication, and TLS errors.
+If the test fails, refer to [Troubleshoot the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/) for solutions to common connection, authentication, and TLS errors.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -123,7 +123,7 @@ Replace `<HOSTNAME>` with the hostname of your SolarWinds instance, `<USERNAME>`
 
 You can provision the data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "solarwinds" {

@@ -15,15 +15,15 @@ Mermaid is a popular JavaScript-based diagramming and charting tool that dynamic
 >
 > The Mermaid library size was the primary reason for maintaining two builds. After the addition of the External Resources feature, maintaining two builds is no longer necessary. You can now import the Mermaid library as an external resource.
 
-[](/media/docs/grafana/panels-visualizations/business-text/diagram.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/diagram.png)
 
 ## Example
 
-[](/media/docs/grafana/panels-visualizations/business-text/mer.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/mer.png)
 
 Use the following external library
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 https://esm.sh/mermaid
@@ -33,7 +33,7 @@ https://esm.sh/mermaid
 
 Use the following for the **Content** (when your data source is set to return something) or in the **Default Content** (when your data source returns nothing):
 
-diagram [Copy code to clipboard] Copy
+diagram ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```diagram
 <pre class="mermaid">
@@ -52,7 +52,7 @@ diagram [Copy code to clipboard] Copy
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/mermaid").then(({ default: mermaid }) => {

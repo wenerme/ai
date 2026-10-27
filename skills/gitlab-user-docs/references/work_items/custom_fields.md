@@ -8,6 +8,12 @@ Create and use custom fields for work items to track specific information unique
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/479571) in GitLab 17.11 [with a feature flag](../../administration/feature_flags/_index.md) named `custom_fields_feature`.
   Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/479571) in GitLab 18.0. Feature flag `custom_fields_feature` removed.
+- Custom fields for tickets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/580397) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named
+  `work_item_ticket_migration`. Disabled by default.
+
+> [!flag]
+> The availability of custom fields for tickets is controlled by a feature flag.
+> For more information, see the history.
 
 Custom fields add specialized information to work items, such as issues and epics, that match your specific planning needs.
 Configure custom fields for a group to track data points like business value, risk assessment, priority ranking, or team attributes.

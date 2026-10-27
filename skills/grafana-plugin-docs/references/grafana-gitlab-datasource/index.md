@@ -11,11 +11,11 @@ The GitLab data source allows you to visualize and monitor GitLab activity in Gr
 
 > Note
 >
-> The GitLab data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced plan](/pricing/) or with [Grafana Enterprise](/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The GitLab data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced plan](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) or with [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 > Note
 >
-> The GitLab data source reads data from the GitLab API to build visualizations and dashboards. It doesn’t write to GitLab or sync Grafana dashboards to a Git repository. To version-control Grafana dashboards and folders in a GitLab repository, refer to [Git Sync](/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/).
+> The GitLab data source reads data from the GitLab API to build visualizations and dashboards. It doesn’t write to GitLab or sync Grafana dashboards to a Git repository. To version-control Grafana dashboards and folders in a GitLab repository, refer to [Git Sync](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/observability-as-code/provision-resources/git-sync-setup/).
 
 ## Supported GitLab environments
 
@@ -35,7 +35,7 @@ The GitLab data source works with:
 
 ## Install the plugin
 
-To install the GitLab data source plugin, refer to [Installation](/grafana/plugins/grafana-gitlab-datasource/?tab=installation).
+To install the GitLab data source plugin, refer to [Installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-gitlab-datasource/?tab=installation).
 
 > Note
 >
@@ -55,7 +55,7 @@ Expand table
 
 ## Supported resource types
 
-The GitLab data source can query the following resource types. For detailed field documentation, refer to the [query editor](/docs/plugins/grafana-gitlab-datasource/latest/query-editor/).
+The GitLab data source can query the following resource types. For detailed field documentation, refer to the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/).
 
 Expand table
 
@@ -79,21 +79,21 @@ Expand table
 
 The following documents help you set up and use the GitLab data source:
 
-- [Configure the GitLab data source](/docs/plugins/grafana-gitlab-datasource/latest/configure/)
-- [GitLab query editor](/docs/plugins/grafana-gitlab-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-gitlab-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-gitlab-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-gitlab-datasource/latest/alerting/)
-- [Troubleshoot issues](/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/)
+- [Configure the GitLab data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/configure/)
+- [GitLab query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/alerting/)
+- [Troubleshoot issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/)
 
 ## Additional resources
 
 After configuring the GitLab data source, you can also:
 
-- Create a wide variety of [visualizations](/docs/grafana/latest/panels-visualizations/).
-- Configure and use [templates and variables](/docs/grafana/latest/dashboards/variables/).
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
-- Optimize performance with [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching).
+- Create a wide variety of [visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/).
+- Configure and use [templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+- Optimize performance with [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching).
 
 ## Pre-built dashboards
 

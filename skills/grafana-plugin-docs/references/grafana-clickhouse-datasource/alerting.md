@@ -7,17 +7,17 @@ description: "Create alert rules from ClickHouse queries"
 
 # ClickHouse alerting
 
-The ClickHouse data source supports [Grafana Alerting](/docs/grafana/latest/alerting/) and [Grafana-managed recording rules](/docs/grafana/latest/alerting/configure-alert-rules/create-recording-rules/). You can create alert rules that run ClickHouse SQL queries and fire when the result meets a condition (for example, a value is above a threshold or no data is returned).
+The ClickHouse data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) and [Grafana-managed recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-alert-rules/create-recording-rules/). You can create alert rules that run ClickHouse SQL queries and fire when the result meets a condition (for example, a value is above a threshold or no data is returned).
 
 Alert rules run as background processes. Grafana executes your ClickHouse query on a schedule, then evaluates the result using expressions such as **Reduce** and **Threshold**. Your query must return numeric data that Grafana can evaluate.
 
-For an overview of alerting in Grafana, refer to [Alert rules](/docs/grafana/latest/alerting/configure-alert-rules/) and [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/configure-alert-rules/create-grafana-managed-rule/).
+For an overview of alerting in Grafana, refer to [Alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-alert-rules/) and [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-alert-rules/create-grafana-managed-rule/).
 
 ## Before you begin
 
-- [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
+- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
 - Ensure your ClickHouse user has read access to the tables used in your alert query.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/).
+- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
 
 ## Query requirements for alerting
 
@@ -32,7 +32,7 @@ Expand table
 
 Queries that return only text or non-numeric data cannot be used directly for threshold evaluation. Use `count()`, `avg()`, `sum()`, or similar in your SQL so the result is numeric.
 
-Use the **$\_\_timeFilter(column)** macro in your WHERE clause so the query respects the alert rule’s evaluation interval and time range. Refer to the Macros section of the [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/).
+Use the **$\_\_timeFilter(column)** macro in your WHERE clause so the query respects the alert rule’s evaluation interval and time range. Refer to the Macros section of the [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/).
 
 ## Create an alert rule
 
@@ -55,7 +55,7 @@ To create an alert rule using ClickHouse data:
 
 If your alert rule contains multiple queries (multiple refIds), you can hide a query by clicking the eye icon next to it. Hidden queries are excluded from evaluation.
 
-For detailed steps, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/configure-alert-rules/create-grafana-managed-rule/).
+For detailed steps, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-alert-rules/create-grafana-managed-rule/).
 
 ## Example: Metric threshold alert
 
@@ -63,7 +63,7 @@ This example fires when the average value of a metric exceeds 80. Replace the ta
 
 **Query (Time series format):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -84,7 +84,7 @@ This example fires when the number of error rows in the last 5 minutes exceeds 1
 
 **Query (Table format; single row):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count() AS value
@@ -101,7 +101,7 @@ You can alert when a query returns no rows, such as a heartbeat check on an inge
 
 **Query (Time series format):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -121,17 +121,17 @@ The following limitations apply to alert and recording rule queries.
 
 ### Ad hoc filters
 
-[Ad hoc filters](/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#ad-hoc-filters) are a dashboard-scoped feature. When Grafana evaluates an alert rule, queries run through the backend and ad hoc filters are **not** applied. If you reuse a dashboard query that relies on ad hoc filters, the alert query runs without those filters and may return unexpected results.
+[Ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#ad-hoc-filters) are a dashboard-scoped feature. When Grafana evaluates an alert rule, queries run through the backend and ad hoc filters are **not** applied. If you reuse a dashboard query that relies on ad hoc filters, the alert query runs without those filters and may return unexpected results.
 
 To apply equivalent filtering in an alert rule, add the filter conditions directly in your SQL `WHERE` clause.
 
 ### Row limit
 
-The plugin limits every query result, including alert queries, to the Grafana row limit setting (`dataproxy.row_limit`, default `1000000` rows). Truncation can cause alerts to evaluate against incomplete data. If your alert queries can return more rows than the limit, raise `dataproxy.row_limit` in the Grafana configuration. If **Enable row limit** is turned on in the data source [configuration](/docs/plugins/grafana-clickhouse-datasource/latest/configure/), the same limit is also applied as a `limit` setting on the ClickHouse server.
+The plugin limits every query result, including alert queries, to the Grafana row limit setting (`dataproxy.row_limit`, default `1000000` rows). Truncation can cause alerts to evaluate against incomplete data. If your alert queries can return more rows than the limit, raise `dataproxy.row_limit` in the Grafana configuration. If **Enable row limit** is turned on in the data source [configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/), the same limit is also applied as a `limit` setting on the ClickHouse server.
 
 ### Forward OAuth Identity
 
-When [Forward OAuth Identity](/docs/plugins/grafana-clickhouse-datasource/latest/configure/#forward-oauth-identity) is enabled, alert rule evaluations are **blocked by default** because they run outside a user session and have no OAuth token to forward. If you need alerting with this authentication mode, enable **Allow service account fallback** in the data source configuration so that alert queries fall back to the configured username and password.
+When [Forward OAuth Identity](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#forward-oauth-identity) is enabled, alert rule evaluations are **blocked by default** because they run outside a user session and have no OAuth token to forward. If you need alerting with this authentication mode, enable **Allow service account fallback** in the data source configuration so that alert queries fall back to the configured username and password.
 
 > Note
 >
@@ -147,7 +147,7 @@ When [Forward OAuth Identity](/docs/plugins/grafana-clickhouse-datasource/latest
 
 ## Recording rules
 
-The ClickHouse data source supports [Grafana-managed recording rules](/docs/grafana/latest/alerting/configure-alert-rules/create-recording-rules/), which evaluate a ClickHouse query on a schedule and write the result as a Prometheus metric. This is useful for pre-aggregating expensive queries so dashboards load faster.
+The ClickHouse data source supports [Grafana-managed recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-alert-rules/create-recording-rules/), which evaluate a ClickHouse query on a schedule and write the result as a Prometheus metric. This is useful for pre-aggregating expensive queries so dashboards load faster.
 
 The same query requirements and best practices that apply to alert rules also apply to recording rules. Pay particular attention to **data ingestion latency**, described in the following section.
 
@@ -175,15 +175,15 @@ This metadata appears in the ClickHouse `system.query_log` table and helps datab
 If alerts or recording rules do not fire or evaluate as expected:
 
 - **Query returns no numeric data**: Confirm the query returns a time column and a numeric column (or a single numeric value). Test in **Explore** and check the result format.
-- **Missing data points**: Check for data ingestion latency. Refer to [Account for data ingestion latency](#account-for-data-ingestion-latency) above.
+- **Missing data points**: Check for data ingestion latency. Refer to [Account for data ingestion latency](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/alerting/#account-for-data-ingestion-latency) above.
 - **Evaluation interval**: Ensure the evaluation interval is long enough for data to be available. Avoid intervals shorter than your data resolution.
 - **No data handling**: In **Configure no data and error handling**, choose whether no data should fire the alert, resolve it, or keep the current state.
-- **Alerting times out via PDC**: If dashboards work but alert rules time out when using Private Data Connect, refer to [Alerting times out via PDC while dashboards work](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/#alerting-times-out-via-pdc-while-dashboards-work) in the troubleshooting guide.
+- **Alerting times out via PDC**: If dashboards work but alert rules time out when using Private Data Connect, refer to [Alerting times out via PDC while dashboards work](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/#alerting-times-out-via-pdc-while-dashboards-work) in the troubleshooting guide.
 
-For connection errors, timeouts, or other data source issues, refer to [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/).
+For connection errors, timeouts, or other data source issues, refer to [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/).
 
 ## Next steps
 
-- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros such as `$__timeFilter` and `$__timeInterval`.
-- [Grafana Alerting](/docs/grafana/latest/alerting/): Alert rules, contact points, and notification policies.
-- [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.
+- [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros such as `$__timeFilter` and `$__timeInterval`.
+- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/): Alert rules, contact points, and notification policies.
+- [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.

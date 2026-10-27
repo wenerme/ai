@@ -11,8 +11,8 @@ Annotations let you overlay Sentry data on dashboard graphs, marking when issues
 
 ## Before you begin
 
-- [Configure the Sentry data source](/docs/plugins/grafana-sentry-datasource/latest/configure/).
-- Understand [Grafana annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
+- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Supported query types for annotations
 
@@ -98,4 +98,4 @@ When the user changes the project variable, the annotations update to show issue
 - Annotations are filtered by the dashboard time range. Only data within the visible time range appears.
 - Sentry API rate limits apply. If you have many matching results, set a **Limit** to reduce the number of API calls.
 
-For more information, refer to [Annotations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).

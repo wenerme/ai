@@ -9,17 +9,17 @@ description: "Install and configure this plugin to enable LLM-powered features a
 
 ## Before you begin
 
-To activate Grafana LLM features, you need an [Admin role](/docs/grafana/latest/administration/roles-and-permissions/) in a Grafana Cloud account, including the free tier.
+To activate Grafana LLM features, you need an [Admin role](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/) in a Grafana Cloud account, including the free tier.
 
 Enterprise or OSS versions of Grafana can also use the LLM app, but won’t have access to the LLM provider built into Cloud. Install the Grafana LLM plugin using the standard plugin installation method for your Grafana version, and bring API authentication for LLM access from an OpenAI compatible service. You can obtain an OpenAI API key from [OpenAI’s platform](https://platform.openai.com/), or Azure OpenAI authentication from the [Azure OpenAI service](https://azure.microsoft.com/products/ai-services/openai-service/).
 
-For more information, refer to the [Plugin management documentation](/docs/grafana/latest/administration/plugin-management/).
+For more information, refer to the [Plugin management documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 > Note
 >
 > Grafana’s LLM features depend on Grafana Live being enabled (this is the default). If you attempt to enable the features without Grafana Live enabled you’ll see a warning in the plugin.
 >
-> See the [`max_connections` setting](/docs/grafana/latest/setup-grafana/configure-grafana/#max_connections) for details on how to ensure Grafana Live is enabled.
+> See the [`max_connections` setting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#max_connections) for details on how to ensure Grafana Live is enabled.
 
 ## Configure the LLM plugin
 
@@ -35,7 +35,7 @@ For more information, refer to the [Plugin management documentation](/docs/grafa
 
 You have several options for configuring LLM providers in Grafana:
 
-1. **Install the Plugin**: [Download the Grafana LLM plugin](/grafana/plugins/grafana-llm-app/).
+1. **Install the Plugin**: [Download the Grafana LLM plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-llm-app/).
 2. **Choose your provider and set up API access**:
 
    - **OpenAI (Grafana provided)**: Use OpenAI’s services through Grafana Cloud

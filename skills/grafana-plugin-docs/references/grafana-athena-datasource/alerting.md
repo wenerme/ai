@@ -7,15 +7,15 @@ description: "Set up Grafana Alerting with the Amazon Athena data source."
 
 # Amazon Athena alerting
 
-Use [Grafana Alerting](/docs/grafana/latest/alerting/) with the Amazon Athena data source to receive notifications when your data meets specific conditions. For example, you can create alerts that trigger when error counts exceed a threshold or when costs rise above a budget.
+Use [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) with the Amazon Athena data source to receive notifications when your data meets specific conditions. For example, you can create alerts that trigger when error counts exceed a threshold or when costs rise above a budget.
 
 ## Before you begin
 
 Before you set up alerting, ensure you have the following prerequisites.
 
-- [Configure the Amazon Athena data source](/docs/plugins/grafana-athena-datasource/latest/configure/).
-- Understand how to use the [Amazon Athena query editor](/docs/plugins/grafana-athena-datasource/latest/query-editor/).
-- Understand [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the Amazon Athena data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/).
+- Understand how to use the [Amazon Athena query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/).
+- Understand [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Create an alert rule
 
@@ -44,7 +44,7 @@ Alert rule queries must return numeric data that Grafana can evaluate against a 
 
 The following query counts errors per minute, which can be evaluated against a threshold.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -61,12 +61,12 @@ ORDER BY 1 ASC
 Amazon Athena queries run asynchronously, which means they may take longer to complete than queries from other data sources. Keep the following considerations in mind when configuring alert rules.
 
 - **Evaluation interval:** Set an evaluation interval that accounts for Athena query execution time. Queries that scan large amounts of data may take several seconds or longer to complete.
-- **Query result reuse:** Enable [query result reuse](/docs/plugins/grafana-athena-datasource/latest/query-editor/#query-result-reuse) to reduce costs and query time for alert queries that run frequently. This requires Athena engine version 3.
+- **Query result reuse:** Enable [query result reuse](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/#query-result-reuse) to reduce costs and query time for alert queries that run frequently. This requires Athena engine version 3.
 - **Data scan costs:** Each alert evaluation runs a query against Athena, which incurs costs based on data scanned. Use partitioned tables and add `WHERE` clause filters to minimize the amount of data scanned per evaluation.
-- **Query caching:** Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of queries sent to Athena (available in Grafana Enterprise and Grafana Cloud).
+- **Query caching:** Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of queries sent to Athena (available in Grafana Enterprise and Grafana Cloud).
 
 ## Next steps
 
-- [Configure notification policies](/docs/grafana/latest/alerting/configure-notifications/)
-- [Create contact points](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
+- [Configure notification policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Create contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)

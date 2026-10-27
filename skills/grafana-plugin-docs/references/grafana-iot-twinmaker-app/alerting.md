@@ -7,18 +7,18 @@ description: "Create Grafana alert rules from AWS IoT TwinMaker queries to get n
 
 # AWS IoT TwinMaker alerting
 
-The AWS IoT TwinMaker data source supports [Grafana Alerting](/docs/grafana/latest/alerting/). Use alert rules to evaluate TwinMaker property data on a schedule and send notifications through contact points such as email, Slack, or PagerDuty.
+The AWS IoT TwinMaker data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/). Use alert rules to evaluate TwinMaker property data on a schedule and send notifications through contact points such as email, Slack, or PagerDuty.
 
 ## TwinMaker alarms compared to Grafana alert rules
 
 AWS IoT TwinMaker workspaces can include alarm components that track equipment state in AWS. Grafana alert rules are separate: Grafana evaluates them on its own schedule and routes notifications through Grafana contact points.
 
-The two work well together. Use the [Alarm Configuration panel](/docs/plugins/grafana-iot-twinmaker-app/latest/panels/#alarm-configuration-panel) and the pre-built dashboards to view and manage TwinMaker alarms, and use Grafana alert rules when you want Grafana to notify your team about the underlying data.
+The two work well together. Use the [Alarm Configuration panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/panels/#alarm-configuration-panel) and the pre-built dashboards to view and manage TwinMaker alarms, and use Grafana alert rules when you want Grafana to notify your team about the underlying data.
 
 ## Before you begin
 
-- [Configure the AWS IoT TwinMaker data source](/docs/plugins/grafana-iot-twinmaker-app/latest/configure/) with a workspace selected.
-- Understand the basics of [Grafana alert rules](/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the AWS IoT TwinMaker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/) with a workspace selected.
+- Understand the basics of [Grafana alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
 
 ## Choose a query type for alerting
 
@@ -77,5 +77,5 @@ Keep the following in mind when you create alert rules with the data source:
 
 ## Next steps
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [AWS IoT TwinMaker query editor](/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/)
+- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [AWS IoT TwinMaker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/)

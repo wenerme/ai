@@ -7,11 +7,11 @@ description: "Troubleshoot common issues with the Honeycomb data source in Grafa
 
 # Troubleshoot Honeycomb data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Honeycomb data source. For configuration instructions, refer to [Configure the Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/configure/). For installation help, refer to [Install and upgrade the Honeycomb data source plugin](/docs/plugins/grafana-honeycomb-datasource/latest/install/).
+This document provides solutions to common issues you may encounter when configuring or using the Honeycomb data source. For configuration instructions, refer to [Configure the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/). For installation help, refer to [Install and upgrade the Honeycomb data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/install/).
 
 Before you dig into a specific error, try these two steps, because they resolve many issues:
 
-- **Confirm you’re on a current plugin version.** Honeycomb evolves its API over time, and older plugin versions can break as a result. Refer to [Version and upgrade guidance](#version-and-upgrade-guidance).
+- **Confirm you’re on a current plugin version.** Honeycomb evolves its API over time, and older plugin versions can break as a result. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 - **Reproduce the query in the Honeycomb Query UI.** If a query works in Honeycomb but not in Grafana, the problem is in the Grafana integration. If it fails in both, fix the query in Honeycomb first.
 
 ## License and setup errors
@@ -29,11 +29,11 @@ These issues occur when the Enterprise plugin isn’t licensed, activated, or in
 
 Expand table
 
-| Cause                                      | Solution                                                                                                                                                                 |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Enterprise plugin not activated (Cloud)    | Verify activation in [your Grafana Cloud organization settings](/orgs) under the **Plugins** tab. Confirm your plan is Pro or Advanced.                                  |
-| Enterprise license inactive (self-managed) | Confirm `GF_ENTERPRISE_LICENSE_TEXT` or the license file is valid. Refer to [Activate an Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/). |
-| Insufficient role                          | You need the Organization administrator role to install plugins and configure data sources.                                                                              |
+| Cause                                      | Solution                                                                                                                                                                                                                             |
+|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Enterprise plugin not activated (Cloud)    | Verify activation in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) under the **Plugins** tab. Confirm your plan is Pro or Advanced.                                  |
+| Enterprise license inactive (self-managed) | Confirm `GF_ENTERPRISE_LICENSE_TEXT` or the license file is valid. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/). |
+| Insufficient role                          | You need the Organization administrator role to install plugins and configure data sources.                                                                                                                                          |
 
 ### License reported as invalid on self-managed Grafana Enterprise
 
@@ -52,14 +52,14 @@ Expand table
 
 Expand table
 
-| Cause                                  | Solution                                                                                                                                                                                                     |
-|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| License token expired or not refreshed | Re-download the license token from [your Grafana Cloud organization settings](/orgs), reapply it, and restart Grafana.                                                                                       |
-| `root_url` doesn’t match the license   | Confirm the `root_url` in your Grafana server configuration exactly matches the URL registered with the license. A mismatch causes the license to be treated as invalid.                                     |
-| No outbound access for token refresh   | Confirm the Grafana instance can reach the Grafana licensing endpoint. If token refresh fails, Enterprise plugins report the license as invalid. For air-gapped installations, use an offline license token. |
-| Root cause unclear                     | Enable [debug logging](#enable-debug-logging), restart Grafana, and review the startup logs for license validation and plugin loading errors.                                                                |
+| Cause                                  | Solution                                                                                                                                                                                                                                                                    |
+|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| License token expired or not refreshed | Re-download the license token from [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs), reapply it, and restart Grafana.                                                                                          |
+| `root_url` doesn’t match the license   | Confirm the `root_url` in your Grafana server configuration exactly matches the URL registered with the license. A mismatch causes the license to be treated as invalid.                                                                                                    |
+| No outbound access for token refresh   | Confirm the Grafana instance can reach the Grafana licensing endpoint. If token refresh fails, Enterprise plugins report the license as invalid. For air-gapped installations, use an offline license token.                                                                |
+| Root cause unclear                     | Enable [debug logging](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/#enable-debug-logging), restart Grafana, and review the startup logs for license validation and plugin loading errors. |
 
-For general Enterprise licensing help, refer to [Grafana Enterprise licensing](/docs/grafana/latest/administration/enterprise-licensing/).
+For general Enterprise licensing help, refer to [Grafana Enterprise licensing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 
 ## Version and upgrade guidance
 
@@ -76,7 +76,7 @@ Many Honeycomb issues are caused by running an outdated plugin version. Before d
 3. Review the installed version and the latest available version.
 4. If an update is available and you’re on self-managed Grafana, click **Update**, or use `grafana cli plugins update grafana-honeycomb-datasource` and restart Grafana.
 
-For full upgrade and rollback steps, refer to [Upgrade the plugin](/docs/plugins/grafana-honeycomb-datasource/latest/install/#upgrade-the-plugin).
+For full upgrade and rollback steps, refer to [Upgrade the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/install/#upgrade-the-plugin).
 
 ### Symptoms of an outdated plugin version
 
@@ -228,7 +228,7 @@ The duration reflects the configured time window. Examples include `1h`, `7 days
 **Solution:**
 
 1. Adjust the dashboard time range to fall within the configured retention limit.
-2. If you need a wider time range, update the **Time Window (days)** in your data source [advanced settings](/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings), provided your Honeycomb plan supports a longer retention period.
+2. If you need a wider time range, update the **Time Window (days)** in your data source [advanced settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings), provided your Honeycomb plan supports a longer retention period.
 
 ## Query errors
 
@@ -262,7 +262,7 @@ Expand table
 **Solution:**
 
 1. Narrow the dashboard time range so it falls within your Honeycomb retention period.
-2. Confirm the **Time Window (days)** setting matches the retention your plan supports. Refer to [advanced settings](/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings).
+2. Confirm the **Time Window (days)** setting matches the retention your plan supports. Refer to [advanced settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/#advanced-settings).
 
 ### Time parameter conflict
 
@@ -300,7 +300,7 @@ Expand table
 2. In the Honeycomb UI, use the query’s JSON output as a known-good starting point, then paste it into the Grafana **Raw Query** editor. This isolates whether the problem is the query itself or how you adapted it.
 3. Confirm the JSON matches the Honeycomb schema. In particular, `calculations` is an array of objects where `op` is a string, with an optional `column`:
 
-   JSON [Copy code to clipboard] Copy
+   JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    {
@@ -311,7 +311,7 @@ Expand table
    ```
 
    Don’t nest the operation as an object, such as `{ "COUNT": null }`.
-4. Click **Run query** after correcting the query. For the supported query structure, refer to [Raw query](/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#raw-query).
+4. Click **Run query** after correcting the query. For the supported query structure, refer to [Raw query](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/#raw-query).
 
 ### Limit out of range
 
@@ -346,7 +346,7 @@ Expand table
 
 **Solutions:**
 
-1. Update the plugin to version 2.15.1 or later. Current versions resolve the dataset name to its slug when building the link, as long as the dataset appears in the datasets list. Refer to [Version and upgrade guidance](#version-and-upgrade-guidance).
+1. Update the plugin to version 2.15.1 or later. Current versions resolve the dataset name to its slug when building the link, as long as the dataset appears in the datasets list. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 2. In the query editor, re-select the dataset from the **Select dataset** drop-down instead of using a typed or imported value. Selecting from the list stores the correct slug.
 
 > Note
@@ -384,7 +384,7 @@ These errors occur when using template variables with the data source.
 5. Verify the API key has permissions to list datasets, columns, and values.
 6. Compare behavior across datasets. If the variable works for one dataset but not another, the problem is dataset-specific rather than a broken connection.
 7. Run the equivalent query in the Honeycomb Query UI. If it works there but not in Grafana, the plugin version may not support a Honeycomb API change.
-8. Update the plugin. Honeycomb evolves its API over time, and plugin updates keep variable queries compatible. For example, older versions returned empty results for template variable queries on Honeycomb Metrics datasets, which a later release fixed. Refer to [Version and upgrade guidance](#version-and-upgrade-guidance) and the plugin [CHANGELOG](/grafana/plugins/grafana-honeycomb-datasource/?tab=changelog).
+8. Update the plugin. Honeycomb evolves its API over time, and plugin updates keep variable queries compatible. For example, older versions returned empty results for template variable queries on Honeycomb Metrics datasets, which a later release fixed. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/#version-and-upgrade-guidance) and the plugin [CHANGELOG](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-honeycomb-datasource/?tab=changelog).
 
 ## Slow queries or rate limiting
 
@@ -408,7 +408,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -425,7 +425,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 1. Check the [Honeycomb status page](https://status.honeycomb.io/) for service outages.
 2. Review the [Honeycomb API documentation](https://docs.honeycomb.io/api/) for API-specific issues.
 3. Review the [Grafana community forums](https://community.grafana.com/) for similar issues.
-4. Contact [Grafana Support](/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
+4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
 
 When reporting issues, include:
 

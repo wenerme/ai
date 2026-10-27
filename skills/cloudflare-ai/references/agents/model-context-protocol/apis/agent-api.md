@@ -1,7 +1,7 @@
 ---
 description: Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.
-title: McpAgent
-image: https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=d322518ac23269ff
+title: McpAgent (deprecated)
+image: https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=a70cfe330765f7a7
 ---
 
 [Skip to content](#main-content)
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/agen
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# McpAgent
+# McpAgent (deprecated)
 
-Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `McpAgent` creates a stateful legacy MCP server backed by a Durable Object.
 
@@ -152,6 +152,10 @@ export default new OAuthProvider({
 	tokenEndpoint: "/token",
 	clientRegistrationEndpoint: "/register",
 	defaultHandler: AuthHandler,
+	resourceMetadata: {
+		// The URL MCP clients connect to. Use http://localhost:8787/mcp with wrangler dev.
+		resource: "https://my-mcp-server.<your-subdomain>.workers.dev/mcp",
+	},
 });
 ```
 
@@ -164,6 +168,10 @@ export default new OAuthProvider({
 	tokenEndpoint: "/token",
 	clientRegistrationEndpoint: "/register",
 	defaultHandler: AuthHandler,
+	resourceMetadata: {
+		// The URL MCP clients connect to. Use http://localhost:8787/mcp with wrangler dev.
+		resource: "https://my-mcp-server.<your-subdomain>.workers.dev/mcp",
+	},
 });
 ```
 
@@ -236,18 +244,204 @@ import { DurableObjectEventStore } from "agents/mcp";
 const eventStore = new DurableObjectEventStore(this.ctx.storage);
 ```
 
-Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/) for transport configuration.
+## RPC transport
+
+An Agent can connect to an `McpAgent` through its Durable Object binding instead of over HTTP. The Agent side, `addMcpServer(name, binding, options)`, is documented in [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#rpc-transport) on the MCP Client page. This section covers the `McpAgent` side.
+
+Move to Streamable HTTP
+
+The RPC transport is still supported but is not being developed further. There is no RPC transport for [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) servers. When you migrate the server, connect the Agent to it with a URL over Streamable HTTP.
+
+The RPC transport has no OAuth flow. Use Streamable HTTP for connections that need authentication.
+
+### Configure bindings
+
+Bind the `McpAgent` class in the Worker that runs the calling Agent:
+
+```jsonc
+{
+	"durable_objects": {
+		"bindings": [
+			{ "name": "Chat", "class_name": "Chat" },
+			{ "name": "MyMCP", "class_name": "MyMCP" },
+		],
+	},
+	"migrations": [
+		{
+			"new_sqlite_classes": ["MyMCP", "Chat"],
+			"tag": "v1",
+		},
+	],
+}
+```
+
+### Read props from the caller
+
+The caller passes user context with `addMcpServer("my-mcp", env.MyMCP, { props })`. Declare its shape with the third type parameter and read it from `this.props`:
+
+```js
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+export class MyMCP extends McpAgent {
+	server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+	async init() {
+		this.server.tool("whoami", "Get current user info", {}, async () => {
+			const userId = this.props?.userId || "anonymous";
+			const role = this.props?.role || "guest";
+
+			return {
+				content: [{ type: "text", text: `User ID: ${userId}, Role: ${role}` }],
+			};
+		});
+	}
+}
+```
+
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+type Props = { userId?: string; role?: string };
+
+export class MyMCP extends McpAgent<Env, unknown, Props> {
+	server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+	async init() {
+		this.server.tool("whoami", "Get current user info", {}, async () => {
+			const userId = this.props?.userId || "anonymous";
+			const role = this.props?.role || "guest";
+
+			return {
+				content: [{ type: "text", text: `User ID: ${userId}, Role: ${role}` }],
+			};
+		});
+	}
+}
+```
+
+Props are stored in Durable Object storage and are available before the first tool call.
+
+### Configure the RPC transport timeout
+
+The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
+
+```js
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+export class MyMCP extends McpAgent {
+	server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+	getRpcTransportOptions() {
+		return { timeout: 120000 }; // 2 minutes
+	}
+
+	async init() {
+		this.server.tool(
+			"long-running-task",
+			"A tool that takes a while",
+			{ input: z.string() },
+			async ({ input }) => {
+				await longRunningOperation(input);
+				return {
+					content: [{ type: "text", text: "Task completed" }],
+				};
+			},
+		);
+	}
+}
+```
+
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { z } from "zod";
+
+export class MyMCP extends McpAgent<Env> {
+	server = new McpServer({ name: "MyMCP", version: "1.0.0" });
+
+	protected getRpcTransportOptions() {
+		return { timeout: 120000 }; // 2 minutes
+	}
+
+	async init() {
+		this.server.tool(
+			"long-running-task",
+			"A tool that takes a while",
+			{ input: z.string() },
+			async ({ input }) => {
+				await longRunningOperation(input);
+				return {
+					content: [{ type: "text", text: "Task completed" }],
+				};
+			},
+		);
+	}
+}
+```
 
 ## Authentication and authorization
 
-The McpAgent class provides seamless integration with the [OAuth Provider Library ↗︎](https://github.com/cloudflare/workers-oauth-provider) for [authentication and authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
-
-When a user authenticates to your MCP server, their identity information and tokens are made available through the `props` parameter, allowing you to:
+The McpAgent class integrates with the [OAuth Provider Library ↗︎](https://github.com/cloudflare/workers-oauth-provider). When a user authenticates to your MCP server, their identity information and tokens are available through `this.props`, allowing you to:
 
 - access user-specific data
 - check user permissions before performing operations
 - customize responses based on user attributes
 - use authentication tokens to make requests to external services on behalf of the user
+
+The third type parameter defines the shape of `props`:
+
+```js
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+export class MyMCP extends McpAgent {
+	server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+
+	async init() {
+		this.server.tool("whoami", "Get the current user", {}, async () => ({
+			content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],
+		}));
+
+		if (this.props.permissions?.includes("admin")) {
+			this.server.tool("adminTool", "Admin only", {}, async () => ({
+				content: [{ type: "text", text: "Admin action completed" }],
+			}));
+		}
+	}
+}
+```
+
+```ts
+import { McpAgent } from "agents/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+type AuthContext = {
+	claims: { sub: string; name: string; email: string };
+	permissions: string[];
+};
+
+export class MyMCP extends McpAgent<Env, unknown, AuthContext> {
+	server = new McpServer({ name: "Auth Demo", version: "1.0.0" });
+
+	async init() {
+		this.server.tool("whoami", "Get the current user", {}, async () => ({
+			content: [{ type: "text", text: `Hello, ${this.props.claims.name}!` }],
+		}));
+
+		if (this.props.permissions?.includes("admin")) {
+			this.server.tool("adminTool", "Admin only", {}, async () => ({
+				content: [{ type: "text", text: "Admin action completed" }],
+			}));
+		}
+	}
+}
+```
+
+For a stateless server, read the same props with `getMcpAuthContext()`. Refer to [Authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
 
 ## State synchronization APIs
 
@@ -261,7 +455,7 @@ The `McpAgent` class provides full access to the [Agent state APIs](https://deve
 
 State resets after the session ends
 
-Currently, each client session is backed by an instance of the `McpAgent` class. This is handled automatically for you, as shown in the [getting started guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/). This means that when the same client reconnects, they will start a new session, and the state will be reset.
+Each client session is backed by an instance of the `McpAgent` class. This means that when the same client reconnects, they will start a new session, and the state will be reset.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
@@ -538,21 +732,9 @@ For more human-in-the-loop patterns, refer to [Human-in-the-loop patterns](https
 
 ## Next steps
 
-### [Build a Remote MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
+### [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/)
 
-Get started with MCP servers on Cloudflare.
-
-### [MCP Tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
-
-Design and add tools to your MCP server.
-
-### [Authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
-
-Set up OAuth authentication.
-
-### [Securing MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/)
-
-Security best practices for production.
+Move an McpAgent server to createMcpHandler.
 
 ### [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
 
@@ -567,5 +749,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent","description":"Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=d322518ac23269ff","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent (deprecated)","description":"Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=a70cfe330765f7a7","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

@@ -19,7 +19,7 @@ You can import additional NPM libraries for use in the Business Charts panel usi
 
 Additional libraries like `ecStat` can be loaded dynamically to provide additional functionality. In this example we use `setOption(options)` method in `then` method.
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const options = {};
@@ -39,11 +39,11 @@ import("https://esm.sh/echarts-stat@1.2.0").then(
 );
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-charts/scatter-import-example.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/scatter-import-example.png)
 
 Full example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const values = [
@@ -329,7 +329,7 @@ For next example we use JSON API data source and data example from Apache EChart
 
 Code example for version 6.4.0 and above:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**
@@ -347,11 +347,11 @@ return import("https://esm.sh/@manufac/echarts-simple-transform@2.0.11").then(
 );
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-charts/boxplot-import-example.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/boxplot-import-example.png)
 
 Full example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const dataSetTest = context.panel.data.series[0].fields[0].values;

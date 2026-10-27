@@ -474,7 +474,7 @@ Also see [Webhook rate limits](#webhook-rate-limit).
 
 ### Number of webhooks
 
-To set the maximum number of group or project webhooks for a GitLab Self-Managed instance,
+To set the maximum number of webhooks for a GitLab Self-Managed instance,
 run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
@@ -483,11 +483,18 @@ Plan.default.actual_limits.update!(project_hooks: 200)
 
 # For group webhooks
 Plan.default.actual_limits.update!(group_hooks: 100)
+
+# For system hooks managed by organization administrators
+Plan.default.actual_limits.update!(organization_hooks: 100)
 ```
 
 Set the limit to `0` to disable it.
 
 The default maximum number of webhooks is `100` per project and `50` per group. Webhooks in a subgroup do not count towards the webhook limit of their parent group.
+
+The default maximum number of [system hooks](system_hooks.md) managed by organization administrators
+is `50` per organization. System hooks in the default organization, managed by instance administrators,
+have no limit.
 
 For GitLab.com, see the [webhook limits for GitLab.com](../user/gitlab_com/_index.md#webhooks).
 

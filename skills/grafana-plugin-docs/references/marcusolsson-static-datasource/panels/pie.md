@@ -14,4 +14,4 @@ You can use the Static data source to test category panels like Pie Charts.
 - Use the String field `name` for the category name.
 - Use the Number field `amount` for the numeric value.
 
-[](/media/docs/grafana/panels-visualizations/business-input/dashboard.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/dashboard.png)

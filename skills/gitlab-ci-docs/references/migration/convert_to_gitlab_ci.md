@@ -26,7 +26,7 @@ This flow is available in the GitLab UI only.
 - Have the Developer, Maintainer, or Owner role for the target GitLab project.
 - Have access to your Jenkins pipeline configuration.
 - [Configure push rules to allow a service account](../../user/duo_agent_platform/troubleshooting.md#configure-push-rules-to-allow-a-service-account).
-- [Configure your own runners](../../user/duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../ci/runners/hosted_runners/_index.md) for your project.
+- [Configure your own runners](../../user/duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../runners/hosted_runners/_index.md) for your project.
 - Recommended. Create an [agent configuration file](../../user/duo_agent_platform/flows/execution/_index.md#create-the-agent-configuration-file) so the flow has access to your project's toolchain and dependencies.
 
 ## Use the flow

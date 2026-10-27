@@ -18,7 +18,7 @@ When viewing log lines, you can use the **Sort direction** control in the log co
 - **Newest logs first** (descending): Shows the most recent log lines at the top.
 - **Oldest logs first** (ascending): Shows the oldest log lines at the top.
 
-The log controls can be accessed by clicking the expand/collapse button on the right side of the logs panel. For more information about log controls, refer to [View logs](../view-logs/).
+The log controls can be accessed by clicking the expand/collapse button on the right side of the logs panel. For more information about log controls, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/).
 
 When using infinite scroll to load more results, the sort direction determines which logs are loaded next:
 
@@ -27,7 +27,7 @@ When using infinite scroll to load more results, the sort direction determines w
 
 ## Sorting visualizations
 
-[Sorting controls](/media/docs/explore-logs/v2/logs-drilldown-sort-by-menu.png)
+[Sorting controls](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-sort-by-menu.png)
 
 After selecting a specific label or field, you can sort graphs. Depending on the page and visualization, several sort options can be available.
 

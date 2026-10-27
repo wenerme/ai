@@ -17,11 +17,11 @@ The `Sort by` transformation modifies the structure of the returned data frames 
 - Setting an array with values.
 - Getting sorted values for each array.
 
-[](/media/docs/grafana/panels-visualizations/business-charts/transformations.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/transformations.png)
 
 ### Example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let names = [];

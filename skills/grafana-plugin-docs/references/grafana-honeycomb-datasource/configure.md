@@ -14,9 +14,9 @@ This document explains how to configure the Honeycomb data source for Grafana.
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
-- **License:** A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- **License:** A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 - **Honeycomb access:** An active Honeycomb Enterprise team and a Honeycomb API key with the required permissions.
-- **Plugin installed:** Refer to [Install and upgrade the Honeycomb data source plugin](/docs/plugins/grafana-honeycomb-datasource/latest/install/).
+- **Plugin installed:** Refer to [Install and upgrade the Honeycomb data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/install/).
 
 ## Key concepts
 
@@ -55,7 +55,7 @@ Without these permissions, the data source connection test fails with a permissi
 
 ## Add the Honeycomb data source
 
-To install the plugin, refer to [Install and upgrade the Honeycomb data source plugin](/docs/plugins/grafana-honeycomb-datasource/latest/install/). For general information on adding a data source, refer to [Add a data source](/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+To install the plugin, refer to [Install and upgrade the Honeycomb data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/install/). For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 Complete the following steps to add a new Honeycomb data source:
 
@@ -73,13 +73,13 @@ Configure the following settings for your Honeycomb data source:
 
 Expand table
 
-| Field                 | Description                                                                                         |
-|-----------------------|-----------------------------------------------------------------------------------------------------|
-| **Name**              | A name for this particular Honeycomb data source.                                                   |
-| **Honeycomb API Key** | [API key from Honeycomb](#get-an-api-key-from-honeycomb). Stored in `secureJsonData.apiKey`.        |
-| **URL**               | URL to the Honeycomb API. Default: `https://api.honeycomb.io`. Stored in `jsonData.hostname`.       |
-| **Team Name**         | The Honeycomb team associated with the API key. Required. Stored in `jsonData.team`.                |
-| **Environment Name**  | Honeycomb environment name associated with the API key. Optional. Stored in `jsonData.environment`. |
+| Field                 | Description                                                                                                                                                                                                          |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**              | A name for this particular Honeycomb data source.                                                                                                                                                                    |
+| **Honeycomb API Key** | [API key from Honeycomb](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/#get-an-api-key-from-honeycomb). Stored in `secureJsonData.apiKey`. |
+| **URL**               | URL to the Honeycomb API. Default: `https://api.honeycomb.io`. Stored in `jsonData.hostname`.                                                                                                                        |
+| **Team Name**         | The Honeycomb team associated with the API key. Required. Stored in `jsonData.team`.                                                                                                                                 |
+| **Environment Name**  | Honeycomb environment name associated with the API key. Optional. Stored in `jsonData.environment`.                                                                                                                  |
 
 ## Advanced settings
 
@@ -89,7 +89,7 @@ Expand table
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Time Window (days)** | The number of days of historical data the data source can query. Default is `7` due to Honeycomb API limitations. Stored in `jsonData.retentionLimit`. |
 
-[Honeycomb data source configuration settings](/media/docs/plugins/honeycomb_config.png)
+[Honeycomb data source configuration settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/plugins/honeycomb_config.png)
 
 ## Verify the connection
 
@@ -101,11 +101,11 @@ The team and environment names come from the API key’s associated team and env
 
 ## Configure with provisioning
 
-You can configure the Honeycomb data source using configuration files with the Grafana provisioning system. To learn more about how the provisioning system works, including all of the data source settings, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can configure the Honeycomb data source using configuration files with the Grafana provisioning system. To learn more about how the provisioning system works, including all of the data source settings, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Example:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -127,7 +127,7 @@ You can configure the Honeycomb data source using the [Grafana Terraform provide
 
 Example:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "honeycomb" {

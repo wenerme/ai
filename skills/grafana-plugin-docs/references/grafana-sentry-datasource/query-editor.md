@@ -11,7 +11,7 @@ This document explains how to use the Sentry query editor to build queries and v
 
 ## Before you begin
 
-- [Configure the Sentry data source](/docs/plugins/grafana-sentry-datasource/latest/configure/).
+- [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
 - Verify your Sentry authentication token has the required read permissions.
 
 ## Common fields
@@ -193,4 +193,4 @@ For more information about organization statistics, refer to the [Sentry Org Sta
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-sentry-datasource/latest/template-variables/)
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/template-variables/)

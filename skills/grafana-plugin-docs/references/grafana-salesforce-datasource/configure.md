@@ -13,13 +13,13 @@ This document explains configuration options for the Salesforce data source in G
 
 Before you can configure the Salesforce data source, ensure you have the following:
 
-- The Salesforce data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+- The Salesforce data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 - A [Salesforce](https://www.salesforce.com/) account.
 - A Salesforce app configured with OAuth settings. Choose one of the following:
 
-  - **New setups (recommended)**: An [External Client App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) with JWT authentication (refer to [External Client App settings](#external-client-app-settings)).
-  - **Existing setups**: A [Connected App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) configured with OAuth settings (refer to [Connected App settings](#connected-app-settings)).
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+  - **New setups (recommended)**: An [External Client App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) with JWT authentication (refer to [External Client App settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings)).
+  - **Existing setups**: A [Connected App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) configured with OAuth settings (refer to [Connected App settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#connected-app-settings)).
+- Any free or paid [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 - Grafana version 11.6.7 or later.
 - The `Organization Administrator` role in Grafana to add data sources.
 
@@ -31,7 +31,7 @@ Before configuring the Salesforce data source, you must set up an app in Salesfo
 
 > Warning
 >
-> **Salesforce Spring ‘26 change**: Starting with the Spring ‘26 release, Salesforce disabled the creation of new Connected Apps by default. New users should create an [External Client App](#external-client-app-settings) instead. Existing Connected Apps continue to work normally.
+> **Salesforce Spring ‘26 change**: Starting with the Spring ‘26 release, Salesforce disabled the creation of new Connected Apps by default. New users should create an [External Client App](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings) instead. Existing Connected Apps continue to work normally.
 >
 > For more information, refer to Salesforce’s [Connected App to External Client App Migration](https://help.salesforce.com/s/articleView?id=sf.connected_app_to_eca_migration.htm&type=5) guide.
 
@@ -72,7 +72,7 @@ For more information, refer to Salesforce’s [Configure OAuth JWT Flow for Exte
 
 > Note
 >
-> Connected Apps are a legacy option. If you are setting up a new integration, Salesforce recommends using [External Client Apps](#external-client-app-settings) instead. As of Spring ‘26, creating new Connected Apps requires a request to Salesforce Support.
+> Connected Apps are a legacy option. If you are setting up a new integration, Salesforce recommends using [External Client Apps](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings) instead. As of Spring ‘26, creating new Connected Apps requires a request to Salesforce Support.
 
 If you have an existing Connected App or have requested the ability to create one from Salesforce Support, configure the following settings.
 
@@ -80,7 +80,7 @@ If you have an existing Connected App or have requested the ability to create on
 
 > Note
 >
-> Credentials-based authentication uses the [OAuth 2.0 Username-Password Flow](https://help.salesforce.com/articleView?id=sf.remoteaccess_oauth_username_password_flow.htm&type=5), which requires a Connected App. This flow is not available with External Client Apps. For new setups, use [JWT-based authentication](#jwt-based-connected-app-settings) instead.
+> Credentials-based authentication uses the [OAuth 2.0 Username-Password Flow](https://help.salesforce.com/articleView?id=sf.remoteaccess_oauth_username_password_flow.htm&type=5), which requires a Connected App. This flow is not available with External Client Apps. For new setups, use [JWT-based authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#jwt-based-connected-app-settings) instead.
 
 If you are using the Credentials authentication method with an existing Connected App, you must set the following:
 
@@ -104,17 +104,17 @@ If you use JWT authentication with an existing Connected App, you must set the f
   - Perform requests on your behalf at any time (refresh\_token, offline\_access)
 - **Require Secret for Refresh Token Flow**: Can be enabled or disabled.
 
-For new setups, refer to [External Client App settings](#external-client-app-settings) for the recommended approach using External Client Apps.
+For new setups, refer to [External Client App settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings) for the recommended approach using External Client Apps.
 
 ## Add the Salesforce data source
 
 For general information on installing and managing plugins and data sources in Grafana refer to the following documents:
 
-- [Install Grafana plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins)
-- [Plugin management](/docs/grafana/latest/administration/plugin-management/)
-- [Data source management](/docs/grafana/latest/administration/data-source-management/#data-source-management)
+- [Install Grafana plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins)
+- [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/)
+- [Data source management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#data-source-management)
 
-To install the Salesforce data source plugin, refer to Grafana’s [Salesforce installation page](/grafana/plugins/grafana-salesforce-datasource/?tab=installation).
+To install the Salesforce data source plugin, refer to Grafana’s [Salesforce installation page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-salesforce-datasource/?tab=installation).
 
 > Note
 >
@@ -145,7 +145,7 @@ Grafana supports two authentication methods with the Salesforce data source: **C
 
 > Note
 >
-> Credentials-based authentication requires a Connected App. As of Salesforce Spring ‘26, creating new Connected Apps requires a request to Salesforce Support. For new setups, use [JWT-based authentication](#jwt-based-authentication) with an External Client App instead.
+> Credentials-based authentication requires a Connected App. As of Salesforce Spring ‘26, creating new Connected Apps requires a request to Salesforce Support. For new setups, use [JWT-based authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#jwt-based-authentication) with an External Client App instead.
 
 Following are configuration options for Credentials-based authentication:
 
@@ -159,7 +159,7 @@ Following are configuration options for Credentials-based authentication:
 
 JWT-based authentication is the recommended method for new setups and works with both External Client Apps and Connected Apps.
 
-- For External Client Apps, refer to [External Client App settings](#external-client-app-settings).
+- For External Client Apps, refer to [External Client App settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings).
 - For Connected Apps, refer to Salesforce’s [Configure a Connected App to Issue JWT-Based Access Tokens](https://help.salesforce.com/s/articleView?id=sf.jwt_connectedapp_enable.htm&type=5).
 
 Add the following under **Digital Signature**:
@@ -180,28 +180,28 @@ Add the following under **App Credentials**:
 
   - **Production** - Connects using `login.salesforce.com`.
   - **Sandbox** - Connects using `test.salesforce.com`.
-- **Private data source connect** - ***Only for Grafana Cloud users.*** Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
-- **Enable Secure Socks Proxy** - ***Only for self-managed Grafana.*** Toggle to route the data source connection through the Grafana secure SOCKS proxy to reach Salesforce on a different network. This option appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and requires Grafana version 10.0.0 or later. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+- **Private data source connect** - ***Only for Grafana Cloud users.*** Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+- **Enable Secure Socks Proxy** - ***Only for self-managed Grafana.*** Toggle to route the data source connection through the Grafana secure SOCKS proxy to reach Salesforce on a different network. This option appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and requires Grafana version 10.0.0 or later. For more information, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
 ## Verify the connection
 
 After you configure your connection settings, click **Save &amp; test** to verify the connection. When the test succeeds, Grafana displays a message similar to the following, which confirms that Grafana can authenticate with Salesforce and reach your org:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Data source is working and connected to https://your-org.my.salesforce.com
 ```
 
-If the test fails, refer to [Troubleshoot Salesforce data source issues](/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/) for common license, connection, configuration, and authentication errors and their solutions.
+If the test fails, refer to [Troubleshoot Salesforce data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/) for common license, connection, configuration, and authentication errors and their solutions.
 
 ## Provision the data source with YAML files
 
-Configure the Salesforce data source using Grafana’s provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
+Configure the Salesforce data source using Grafana’s provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
 
 The following example is for provisioning the Salesforce data source:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -235,7 +235,7 @@ datasources:
 
 To provision a sandbox environment, update the `jsonData` setting with the sandbox property:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 jsonData:
@@ -250,7 +250,7 @@ The following examples demonstrate configurations for Credentials-based and JWT-
 
 ### Credentials-based authentication
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -287,7 +287,7 @@ resource "grafana_data_source" "salesforce_credentials" {
 
 ### JWT-based authentication
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 resource "grafana_data_source" "salesforce_jwt" {
@@ -311,7 +311,7 @@ resource "grafana_data_source" "salesforce_jwt" {
 
 To configure a sandbox environment, add the `sandbox` property to `json_data_encoded`:
 
-terraform [Copy code to clipboard] Copy
+terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 resource "grafana_data_source" "salesforce_sandbox" {

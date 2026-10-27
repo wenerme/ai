@@ -13,13 +13,13 @@ Drill down into your metrics to gain insight into your data without writing a qu
 
 To begin drilling down your data, filter the metrics that appear in Metrics Drilldown.
 
-1. Navigate to the **Metrics Drilldown** page in Grafana. Refer to [Get started with Grafana Metrics Drilldown](/404/).
+1. Navigate to the **Metrics Drilldown** page in Grafana. Refer to [Get started with Grafana Metrics Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/404/).
 2. From the **Data source** dropdown, select a data source to view related metrics. Supported data sources include Prometheus and Prometheus-compatible data sources.
 3. (Optional) In the **Filters** control, select **Add label**. Then, select a label name, an operator, and a value to build your filter.
 
    > Note
    >
-   > You can apply multiple filters to your metrics. If you don’t see a metric you expect, refer to [Troubleshoot missing metrics](#troubleshoot-missing-metrics).
+   > You can apply multiple filters to your metrics. If you don’t see a metric you expect, refer to [Troubleshoot missing metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics/#troubleshoot-missing-metrics).
 4. (Optional) To search for metrics, type keywords in the metric search bar.
 5. (Optional) From the **Sort by** dropdown, select how to sort metrics: **Default** (alphabetical, with recently selected metrics first), **Alphabetical \[A-Z]**, **Alphabetical \[Z-A]**, **Dashboard Usage** (by prevalence in dashboard panel queries), or **Alerting Usage** (by prevalence in alerting rules).
 6. Use the time picker to select a date and time range from the dropdown menu, or use an absolute time range.

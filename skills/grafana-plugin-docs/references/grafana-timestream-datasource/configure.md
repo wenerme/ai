@@ -7,7 +7,7 @@ description: "Configure the Amazon Timestream data source for Grafana, including
 
 # Configure the Amazon Timestream data source
 
-This document provides instructions for configuring the Amazon Timestream data source and explains available configuration options. For general information on managing data sources, refer to [Data source management](/docs/grafana/latest/administration/data-source-management/).
+This document provides instructions for configuring the Amazon Timestream data source and explains available configuration options. For general information on managing data sources, refer to [Data source management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/).
 
 ## Before you begin
 
@@ -15,7 +15,7 @@ To configure the Amazon Timestream data source, you need:
 
 - **Grafana permissions:** The organization administrator role.
 - **AWS account:** An active AWS account with Amazon Timestream enabled.
-- **AWS credentials:** An IAM identity with permissions to query Timestream. Refer to [IAM policies](#iam-policies) for the minimum required permissions.
+- **AWS credentials:** An IAM identity with permissions to query Timestream. Refer to [IAM policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/#iam-policies) for the minimum required permissions.
 
 ## Key concepts
 
@@ -67,7 +67,7 @@ The Amazon Timestream data source uses the shared AWS authentication provided by
 
 You can restrict which authentication methods are available by configuring the `allowed_auth_providers` option in the Grafana configuration file.
 
-For detailed information on each method, refer to [AWS authentication](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+For detailed information on each method, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### Assume role
 
@@ -86,7 +86,7 @@ The IAM identity used by Grafana needs Timestream-specific permissions to access
 
 The following example grants full Timestream access:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -103,7 +103,7 @@ JSON [Copy code to clipboard] Copy
 
 For more restrictive access, grant only the specific actions the plugin requires. The following policy lists every action the plugin uses:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -160,17 +160,17 @@ If the test fails:
 - Confirm that the IAM identity has the required permissions.
 - Check that the selected region matches where your Timestream database is located.
 
-For more help, refer to [Troubleshoot Amazon Timestream data source issues](/docs/plugins/grafana-timestream-datasource/latest/troubleshooting/).
+For more help, refer to [Troubleshoot Amazon Timestream data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define and configure the data source using YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the data source using YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following examples demonstrate common provisioning configurations.
 
 ### AWS SDK Default
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -185,7 +185,7 @@ datasources:
 
 ### Credentials file profile
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -200,7 +200,7 @@ datasources:
 
 ### Access and secret key
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -218,7 +218,7 @@ datasources:
 
 ### AWS SDK Default with assume role
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -237,7 +237,7 @@ datasources:
 
 You can also include default database, table, and measure values in any provisioning configuration. These values populate the `$__database`, `$__table`, and `$__measure` macros.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -259,7 +259,7 @@ You can provision the Amazon Timestream data source using the [Grafana Terraform
 
 The following example creates an Amazon Timestream data source using access and secret keys:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "timestream" {
@@ -280,7 +280,7 @@ resource "grafana_data_source" "timestream" {
 
 The following example uses the AWS SDK default authentication with an assume role:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "timestream" {

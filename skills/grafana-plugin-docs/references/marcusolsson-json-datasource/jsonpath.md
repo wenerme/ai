@@ -5,7 +5,7 @@ description: "This document explains the jsonpath usage in JSON API data source"
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-[Documentation](/docs/)[breadcrumb arrow] [Plugins](/docs/plugins/)[breadcrumb arrow] [JSON API data source](/docs/plugins/marcusolsson-json-datasource/latest/)[breadcrumb arrow] JSONPath
+[Documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [Plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [JSON API data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) JSONPath
 
 Open source Grafana Cloud
 
@@ -13,7 +13,7 @@ Open source Grafana Cloud
 
 For example, to query the titles of all the books in a store:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 $.store.book[*].title
@@ -33,13 +33,13 @@ If your dashboards currently rely on JSONPath queries containing subexpressions,
 
 1. For simple queries that use subexpressions for indexing/slicing, it may be possible to rewrite the query without a subexpressions for instance `[(@.length-1)]` can also be represented as `[:-1]`.
 2. For more complex queries, we suggest switching to the [`jsonata` language](http://docs.jsonata.org/simple), which the plugin also supports. This language has similar features to JSONPath, including support for filter expressions (called “predicates” in the documentation).
-3. If changing your existing queries isn’t feasible, the community plugin [“Infinity”](/grafana/plugins/yesoreyeram-infinity-datasource/) supports JSONPath expressions, including filters and subexpressions if used with the `backend` parser option. Please note that Infinity is community supported plugin.
+3. If changing your existing queries isn’t feasible, the community plugin [“Infinity”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/yesoreyeram-infinity-datasource/) supports JSONPath expressions, including filters and subexpressions if used with the `backend` parser option. Please note that Infinity is community supported plugin.
 
 Filters let you query elements based on a logical expression.
 
 For example, to query the titles of the books that cost more than 10:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 $.store.book[?(@.price > 10)].title
@@ -54,7 +54,7 @@ Filter expressions support a set of boolean and logical operations:
 - Comparison: `>`, `<`, `>=`, `<=`
 - Equality: `==`, `!=`
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 $.store.book[?(@.price < 10)]            // Books that are cheaper than 10

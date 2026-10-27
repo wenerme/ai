@@ -11,7 +11,7 @@ Thanks to community member [Josiah Solomon](https://github.com/yosiasz) for the 
 
 Use the following external Bootstrap and CSS libraries:
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 https://esm.sh/bootstrap@5.0.2
@@ -23,13 +23,13 @@ https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css
 >
 > Grafana edit mode might prevent displaying the Bootstrap framework. Save your changes and check the result on the dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-text/bootstrap.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/bootstrap.png)
 
 ## Code to copy
 
 Into the **Content** or **Default Content**:
 
-HTML [Copy code to clipboard] Copy
+HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div class="accordion" id="accordionExample">
@@ -132,7 +132,7 @@ HTML [Copy code to clipboard] Copy
 
 Into the **JavaScript &gt; After Content Ready**:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/bootstrap@5.0.2");

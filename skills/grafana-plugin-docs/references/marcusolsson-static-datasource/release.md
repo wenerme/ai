@@ -9,4 +9,4 @@ description: "Learn about the latest features, enhancements, fixes, and breaking
 
 Follow the development of the Business Input data source with these release notes. They outline new features, enhancements, fixes, and breaking changes across all versions.
 
-All notable changes to the Business Input panel are documented in the [changelog](/grafana/plugins/marcusolsson-static-datasource/?tab=changelog) in the plugins catalog.
+All notable changes to the Business Input panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-static-datasource/?tab=changelog) in the plugins catalog.

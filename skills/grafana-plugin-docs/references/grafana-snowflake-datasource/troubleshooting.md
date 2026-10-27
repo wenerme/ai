@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Snowflake data source in Grafana."
 
 # Troubleshoot Snowflake data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Snowflake data source. For configuration instructions, refer to [Configure the Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Snowflake data source. For configuration instructions, refer to [Configure the Snowflake data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/).
 
 ## Quick troubleshooting checklist
 
@@ -15,18 +15,18 @@ Start here for the most common issues.
 
 Expand table
 
-| Symptom                                                                     | First check                                                                                                                                                                                                           |
-|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Plugin health check failed` or `invalid license for the enterprise plugin` | Verify the Enterprise license or Grafana Cloud entitlement is active. Refer to [License errors](#license-errors).                                                                                                     |
-| Query times out at 30 or 60 seconds                                         | Check the Grafana `[dataproxy] timeout` and confirm the persisted `requestTimeout` value. Refer to [Queries time out before the configured Request Timeout](#queries-time-out-before-the-configured-request-timeout). |
-| Query times out at 5 minutes                                                | This is the Grafana Cloud global limit. Optimize the query to run faster. Refer to [Queries time out before the configured Request Timeout](#queries-time-out-before-the-configured-request-timeout).                 |
-| Alerts fail on an OAuth data source                                         | Use a non-OAuth data source for alerts. Refer to [OAuth authentication doesn’t work for alerts](#oauth-authentication-doesnt-work-for-alerts).                                                                        |
+| Symptom                                                                     | First check                                                                                                                                                                                                                                                                                                                                         |
+|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Plugin health check failed` or `invalid license for the enterprise plugin` | Verify the Enterprise license or Grafana Cloud entitlement is active. Refer to [License errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#license-errors).                                                                                                     |
+| Query times out at 30 or 60 seconds                                         | Check the Grafana `[dataproxy] timeout` and confirm the persisted `requestTimeout` value. Refer to [Queries time out before the configured Request Timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#queries-time-out-before-the-configured-request-timeout). |
+| Query times out at 5 minutes                                                | This is the Grafana Cloud global limit. Optimize the query to run faster. Refer to [Queries time out before the configured Request Timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#queries-time-out-before-the-configured-request-timeout).                 |
+| Alerts fail on an OAuth data source                                         | Use a non-OAuth data source for alerts. Refer to [OAuth authentication doesn’t work for alerts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#oauth-authentication-doesnt-work-for-alerts).                                                                        |
 
 ## License errors
 
 The Snowflake data source is a Grafana Enterprise plugin. It requires a Grafana Enterprise license, or a Grafana Cloud plan that includes Enterprise plugins. A missing or invalid license, or a license that doesn’t cover the plugin, causes most installation and startup failures, rather than a problem with your Snowflake credentials. Check your license before you troubleshoot your configuration.
 
-On self-managed Grafana, review your license in [Administration &gt; General &gt; Stats and license](/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+On self-managed Grafana, review your license in [Administration &gt; General &gt; Stats and license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/stats-and-license/). On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 
 ### “Plugin health check failed” or “Invalid license for the enterprise plugin”
 
@@ -43,7 +43,7 @@ The plugin backend fails to start when it can’t validate an Enterprise license
 1. Confirm your Grafana instance has a valid Enterprise license, or that your Grafana Cloud plan includes Enterprise plugins.
 2. If you provide the license through the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file, verify that you copied the full token without truncation or extra whitespace. The token is a JSON Web Token (JWT) with three parts separated by periods.
 3. After you update the license, restart Grafana and try again.
-4. If your license is valid and the error persists, contact [Grafana Support](/support/).
+4. If your license is valid and the error persists, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### Enterprise plugin isn’t available on your plan
 
@@ -56,10 +56,10 @@ Free plans and some paid plans don’t include Enterprise plugins, so the plugin
 
 **Solutions:**
 
-1. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. On some plans, Enterprise plugins are a paid add-on that you must enable. For details, refer to [Grafana Cloud features](/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+1. On Grafana Cloud, verify that Enterprise plugins are enabled for your account. On some plans, Enterprise plugins are a paid add-on that you must enable. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 2. Depending on your plan, you might be limited in how many Enterprise plugins you can run at once. If another Enterprise plugin, such as ServiceNow or Splunk, is already active, deactivate it or upgrade your plan.
 3. On self-managed Grafana, verify that your Grafana Enterprise license is valid and covers Enterprise plugins.
-4. If you can’t enable Enterprise plugins, contact [Grafana Support](/support/).
+4. If you can’t enable Enterprise plugins, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
 
 ### License stops working after a plan or contract change
 
@@ -69,7 +69,7 @@ After a contract renewal or plan change, license entitlements don’t always pro
 
 1. On self-managed Grafana, restart Grafana so it picks up the updated license.
 2. Confirm the new plan or contract still includes Enterprise plugins.
-3. If the plugin doesn’t recover, contact [Grafana Support](/support/) to re-provision your license entitlements.
+3. If the plugin doesn’t recover, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) to re-provision your license entitlements.
 
 ### Provisioned data source shows errors or broken icons
 
@@ -77,7 +77,7 @@ A Snowflake data source created through provisioning or Terraform shows broken i
 
 **Solutions:**
 
-1. Verify the Enterprise license or Grafana Cloud entitlement is active. Refer to [“Plugin health check failed” or “Invalid license for the enterprise plugin”](#plugin-health-check-failed-or-invalid-license-for-the-enterprise-plugin).
+1. Verify the Enterprise license or Grafana Cloud entitlement is active. Refer to [“Plugin health check failed” or “Invalid license for the enterprise plugin”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#plugin-health-check-failed-or-invalid-license-for-the-enterprise-plugin).
 2. After the license is active, reload the page or restart Grafana, then re-test the provisioned data source.
 
 ## Authentication errors
@@ -113,7 +113,7 @@ Expand table
 
 1. Ensure the private key is in PKCS#8 PEM format. The plugin supports keys both with and without a passphrase. Keys without a passphrase use the following header and footer:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    -----BEGIN PRIVATE KEY-----
@@ -123,7 +123,7 @@ Expand table
 
    Passphrase-protected keys use:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    -----BEGIN ENCRYPTED PRIVATE KEY-----
@@ -150,14 +150,14 @@ Expand table
 
 1. Verify the role is granted to the user:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SHOW GRANTS TO USER <username>;
    ```
 2. Grant the role if missing:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    GRANT ROLE <role_name> TO USER <username>;
@@ -178,7 +178,7 @@ OAuth pass-through relies on the identity of the user signed in to Grafana. Aler
 1. Configure a separate Snowflake data source that uses password, key pair, or programmatic access token (PAT) authentication, and use it for alert and recording rules.
 2. Keep the OAuth data source for interactive dashboards, where a user identity is available.
 
-For more information, refer to [Configure alerting](/docs/plugins/grafana-snowflake-datasource/latest/alerting/).
+For more information, refer to [Configure alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/alerting/).
 
 ### OAuth configuration on Grafana Cloud
 
@@ -186,8 +186,8 @@ Some OAuth setup steps edit the `grafana.ini` configuration file, which isn’t 
 
 **Solutions:**
 
-1. On Grafana Cloud, you can’t edit `grafana.ini`. Configure your identity provider and authentication settings through the Grafana Cloud UI instead. Refer to [Configure authentication](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/).
-2. On self-managed Grafana, set the OAuth scopes in `grafana.ini` as described in [OAuth authentication](/docs/plugins/grafana-snowflake-datasource/latest/configure/#oauth-authentication).
+1. On Grafana Cloud, you can’t edit `grafana.ini`. Configure your identity provider and authentication settings through the Grafana Cloud UI instead. Refer to [Configure authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/).
+2. On self-managed Grafana, set the OAuth scopes in `grafana.ini` as described in [OAuth authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/#oauth-authentication).
 
 ### Authentication type change fails with a license error
 
@@ -195,7 +195,7 @@ An Enterprise license problem can block configuration changes and surface as an 
 
 **Solutions:**
 
-1. Before you switch authentication types, for example from password to key pair, confirm the Enterprise license is active. Refer to [License errors](#license-errors).
+1. Before you switch authentication types, for example from password to key pair, confirm the Enterprise license is active. Refer to [License errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#license-errors).
 2. After the license is active, change the authentication type and click **Save &amp; test**.
 
 ### Unexpected authentication attempts from Grafana
@@ -225,7 +225,7 @@ These errors occur when Grafana cannot reach Snowflake endpoints.
 2. Check firewall rules allow outbound HTTPS (port 443) to `*.snowflakecomputing.com`.
 3. Verify the Account field is correct, including region and platform if applicable.
 4. For Grafana Cloud, ensure your Snowflake account allows connections from Grafana Cloud IP ranges.
-5. If your Snowflake instance is only reachable from within a private network, set up [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a secure tunnel from Grafana Cloud.
+5. If your Snowflake instance is only reachable from within a private network, set up [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a secure tunnel from Grafana Cloud.
 
 ### “Invalid account identifier”
 
@@ -248,8 +248,8 @@ Private data source connect (PDC) failures are usually caused by local network c
 
 1. Verify the PDC agent is running and healthy.
 2. Verify your network allows traffic from the PDC agent to your Snowflake endpoint over HTTPS (port 443).
-3. Confirm the data source is assigned to the correct PDC network. Refer to [Private data source connect](/docs/plugins/grafana-snowflake-datasource/latest/configure/#private-data-source-connect).
-4. For setup and agent troubleshooting, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+3. Confirm the data source is assigned to the correct PDC network. Refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/#private-data-source-connect).
+4. For setup and agent troubleshooting, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Corporate proxy or security software interferes with queries
 
@@ -264,7 +264,7 @@ Corporate proxies and security tools, such as Zscaler, can interfere with Snowfl
 
 1. Review your proxy or security layer configuration for rules that limit concurrent connections to `*.snowflakecomputing.com`.
 2. Allow traffic to your Snowflake endpoints through the proxy or security software.
-3. If your Snowflake instance is on a private network, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a dedicated secure tunnel.
+3. If your Snowflake instance is on a private network, use [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a dedicated secure tunnel.
 
 ## Query errors
 
@@ -300,9 +300,9 @@ Expand table
 1. Narrow the time range to reduce data volume.
 2. Select only the columns you need instead of `SELECT *`.
 3. Add `WHERE` filters to narrow the dataset before Grafana processes it, and add `LIMIT` clauses to reduce the result set.
-4. Avoid `LIKE` on large tables. Use exact matches where possible, or filter after the query with [panel transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+4. Avoid `LIKE` on large tables. Use exact matches where possible, or filter after the query with [panel transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 5. Check whether the Snowflake warehouse is suspended and needs to resume, and use a warehouse sized appropriately for your query complexity.
-6. Increase the **Request Timeout (sec)** in the data source configuration if your queries legitimately need more time. Refer to [Queries time out before the configured Request Timeout](#queries-time-out-before-the-configured-request-timeout).
+6. Increase the **Request Timeout (sec)** in the data source configuration if your queries legitimately need more time. Refer to [Queries time out before the configured Request Timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#queries-time-out-before-the-configured-request-timeout).
 
 ### Queries time out before the configured Request Timeout
 
@@ -394,7 +394,7 @@ Annotation queries can run slower than panel queries, especially against high-la
 
 **Solutions:**
 
-1. Filter annotation queries with the `$__timeFilter(<time_column>)` macro and add a `LIMIT` clause to reduce the result set. Refer to [Annotations](/docs/plugins/grafana-snowflake-datasource/latest/annotations/).
+1. Filter annotation queries with the `$__timeFilter(<time_column>)` macro and add a `LIMIT` clause to reduce the result set. Refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/annotations/).
 2. Query low-latency tables instead of `SNOWFLAKE.ACCOUNT_USAGE` views where possible. `ACCOUNT_USAGE` views can have significant data latency.
 3. Keep the plugin updated to the latest version.
 
@@ -404,7 +404,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -419,7 +419,7 @@ To capture detailed error information for troubleshooting:
 If you’ve tried the solutions above and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
-2. Review the [Snowflake plugin catalog page](/grafana/plugins/grafana-snowflake-datasource/) for recent changes and known issues.
+2. Review the [Snowflake plugin catalog page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-snowflake-datasource/) for recent changes and known issues.
 3. Consult the [Snowflake documentation](https://docs.snowflake.com/) for service-specific guidance.
 4. Contact Grafana Support if you’re a Grafana Cloud Pro, Cloud Contracted, or Enterprise customer.
 

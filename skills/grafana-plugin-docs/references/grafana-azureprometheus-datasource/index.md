@@ -38,26 +38,26 @@ Before you use the Azure Monitor Managed Service for Prometheus data source, ens
 
 The following documents help you get started with the data source:
 
-- [Install the Azure Monitor Managed Service for Prometheus plugin](/docs/plugins/grafana-azureprometheus-datasource/latest/install/)
-- [Configure the Azure Monitor Managed Service for Prometheus data source](/docs/plugins/grafana-azureprometheus-datasource/latest/configure/)
-- [Azure Monitor Managed Service for Prometheus query editor](/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
-- [Template variables](/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/)
-- [Troubleshooting](/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/)
+- [Install the Azure Monitor Managed Service for Prometheus plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/install/)
+- [Configure the Azure Monitor Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/)
+- [Azure Monitor Managed Service for Prometheus query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
+- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/alerting/)
+- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/)
 
 To install the plugin and add the data source:
 
-1. [Install the plugin](/docs/plugins/grafana-azureprometheus-datasource/latest/install/).
-2. [Add a new data source in the UI](/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](/docs/grafana/latest/administration/provisioning/#data-sources).
-3. [Configure the data source](/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+1. [Install the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/install/).
+2. [Add a new data source in the UI](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/#add-a-data-source) or [provision one](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+3. [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
 4. Start querying your metrics.
 
 ## Migrate from core Prometheus to Azure Monitor Managed Service for Prometheus
 
 Azure AD authentication is deprecated in the core Prometheus data source. If you use the core Prometheus data source with Azure AD authentication, migrate to the Azure Monitor Managed Service for Prometheus data source.
 
-In Grafana 13, this migration is automatic. Data sources that use Azure AD authentication are migrated to the Azure Monitor Managed Service for Prometheus plugin on startup, and your dashboards, alerts, and queries continue to work without changes. For migration steps, how to check migration status, and rollback instructions, refer to [Migrate from Prometheus Azure AD to Azure Monitor Managed Service for Prometheus](/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
+In Grafana 13, this migration is automatic. Data sources that use Azure AD authentication are migrated to the Azure Monitor Managed Service for Prometheus plugin on startup, and your dashboards, alerts, and queries continue to work without changes. For migration steps, how to check migration status, and rollback instructions, refer to [Migrate from Prometheus Azure AD to Azure Monitor Managed Service for Prometheus](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
 
 ### Update dashboards and alerts
 
@@ -90,9 +90,9 @@ To import a pre-built dashboard:
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](/docs/grafana/latest/alerting/) rules.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules.
 
 ## Plugin updates
 

@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the ServiceNow data source plugin 
 
 # Troubleshoot ServiceNow data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the ServiceNow data source. For configuration instructions, refer to [Configure the ServiceNow data source](/docs/plugins/grafana-servicenow-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the ServiceNow data source. For configuration instructions, refer to [Configure the ServiceNow data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/).
 
 ## Licensing errors
 
@@ -24,11 +24,11 @@ The ServiceNow data source is an Enterprise plugin and requires a valid license 
 
 Expand table
 
-| Cause                                                                           | Solution                                                                                                                                                 |
-|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The Grafana Enterprise license or Grafana Cloud plan doesn’t include ServiceNow | Verify your license or plan includes the ServiceNow Enterprise plugin. Contact your Grafana account team to add it or to extend a trial.                 |
-| The license expired                                                             | Renew or extend the license. For Grafana Enterprise, refer to [Grafana Enterprise licensing](/docs/grafana/latest/administration/enterprise-licensing/). |
-| The plugin is installed but not licensed                                        | Confirm the plugin shows as licensed in **Administration** &gt; **Plugins**.                                                                             |
+| Cause                                                                           | Solution                                                                                                                                                                                                             |
+|---------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The Grafana Enterprise license or Grafana Cloud plan doesn’t include ServiceNow | Verify your license or plan includes the ServiceNow Enterprise plugin. Contact your Grafana account team to add it or to extend a trial.                                                                             |
+| The license expired                                                             | Renew or extend the license. For Grafana Enterprise, refer to [Grafana Enterprise licensing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/). |
+| The plugin is installed but not licensed                                        | Confirm the plugin shows as licensed in **Administration** &gt; **Plugins**.                                                                                                                                         |
 
 ## Authentication errors
 
@@ -98,12 +98,12 @@ These errors occur when credentials are missing, invalid, or incorrectly configu
 
 Expand table
 
-| Cause                              | Solution                                                                                                                                                                              |
-|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| User lacks Table API access        | Verify the ServiceNow user has the `rest_api_explorer` or equivalent role that grants REST API access.                                                                                |
-| User lacks table-level permissions | Grant read access to the specific table. Refer to [Configure ServiceNow permissions](/docs/plugins/grafana-servicenow-datasource/latest/configure/#configure-servicenow-permissions). |
-| Incorrect credentials              | Verify the username and password are correct by logging into the ServiceNow instance directly.                                                                                        |
-| OAuth token expired                | Re-enter the Client Secret and click **Save &amp; test** to obtain a new token.                                                                                                       |
+| Cause                              | Solution                                                                                                                                                                                                                                          |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| User lacks Table API access        | Verify the ServiceNow user has the `rest_api_explorer` or equivalent role that grants REST API access.                                                                                                                                            |
+| User lacks table-level permissions | Grant read access to the specific table. Refer to [Configure ServiceNow permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#configure-servicenow-permissions). |
+| Incorrect credentials              | Verify the username and password are correct by logging into the ServiceNow instance directly.                                                                                                                                                    |
+| OAuth token expired                | Re-enter the Client Secret and click **Save &amp; test** to obtain a new token.                                                                                                                                                                   |
 
 ## Connection errors
 
@@ -153,7 +153,7 @@ These errors occur when Grafana can’t reach the ServiceNow instance.
 1. Verify network connectivity from the Grafana server to your ServiceNow instance.
 2. Check that firewall rules allow outbound HTTPS (port 443) traffic to the ServiceNow URL.
 3. If using an HTTP proxy, verify the `HTTP_PROXY` or `HTTPS_PROXY` environment variable is set correctly.
-4. For Grafana Cloud users, configure [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your ServiceNow instance isn’t publicly accessible. PDC is a Grafana Cloud feature that enables secure connectivity to private networks.
+4. For Grafana Cloud users, configure [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your ServiceNow instance isn’t publicly accessible. PDC is a Grafana Cloud feature that enables secure connectivity to private networks.
 
 ### Self-signed or private certificate errors
 
@@ -206,7 +206,7 @@ If multiple checks fail, the errors are combined into a single message separated
 **Solutions:**
 
 1. Verify the user has read access to the `sys_db_object` table.
-2. Create a table-level read ACL for `sys_db_object` with the user’s role. Refer to [Set up a ServiceNow user with ACL rules](/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules).
+2. Create a table-level read ACL for `sys_db_object` with the user’s role. Refer to [Set up a ServiceNow user with ACL rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules).
 
 #### “unable to retrieve name field in `sys_db_object` table” or “unable to retrieve label field” or “unable to retrieve super class field”
 
@@ -217,7 +217,7 @@ If multiple checks fail, the errors are combined into a single message separated
    - `sys_db_object.name` (Name)
    - `sys_db_object.label` (Label)
    - `sys_db_object.super_class` (Extends Table)
-2. Refer to [Set up a ServiceNow user with ACL rules](/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules) for detailed steps.
+2. Refer to [Set up a ServiceNow user with ACL rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#set-up-a-servicenow-user-with-acl-rules) for detailed steps.
 
 #### “no data returned for `sys_dictionary` table” or “unable to retrieve type field in `sys_dictionary` table”
 
@@ -390,7 +390,7 @@ Large ServiceNow tables and inefficient filters can cause slow queries or timeou
 
 ### Queries are slow or time out on large tables
 
-Refer to [timeout exceeded when querying ServiceNow](#timeout-exceeded-when-querying-servicenow) for the default timeout and how to increase it. In addition to increasing the timeout, reduce the amount of data each query scans:
+Refer to [timeout exceeded when querying ServiceNow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#timeout-exceeded-when-querying-servicenow) for the default timeout and how to increase it. In addition to increasing the timeout, reduce the amount of data each query scans:
 
 1. Add filters to narrow the result set.
 2. Reduce the **Limit** value on Table queries.
@@ -410,7 +410,7 @@ The **Like** operator performs a partial-text match that ServiceNow can’t reso
 
 1. Replace **Like** with a more selective operator such as **Starts With** or **Equals** when possible.
 2. Add other filters to reduce the number of rows the **Like** filter evaluates.
-3. Return a broader result set without the **Like** filter, then apply a Grafana [transformation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to filter the results client-side.
+3. Return a broader result set without the **Like** filter, then apply a Grafana [transformation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to filter the results client-side.
 
 ### Excessive API calls to ServiceNow
 
@@ -423,11 +423,11 @@ The **Like** operator performs a partial-text match that ServiceNow can’t reso
 
 Expand table
 
-| Cause                               | Solution                                                                                                                                                                                          |
-|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Recorded queries poll on a schedule | Grafana Enterprise and Grafana Cloud [recorded queries](/docs/grafana/latest/administration/recorded-queries/) run on an interval. Remove unused recorded queries that reference the data source. |
-| Frequent dashboard refresh          | Increase the dashboard refresh interval, or avoid a short automatic refresh on dashboards that query large tables.                                                                                |
-| Many or frequent alert rules        | Increase alert evaluation intervals and enable query caching in Grafana Enterprise or Grafana Cloud.                                                                                              |
+| Cause                               | Solution                                                                                                                                                                                                                                                      |
+|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Recorded queries poll on a schedule | Grafana Enterprise and Grafana Cloud [recorded queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/recorded-queries/) run on an interval. Remove unused recorded queries that reference the data source. |
+| Frequent dashboard refresh          | Increase the dashboard refresh interval, or avoid a short automatic refresh on dashboards that query large tables.                                                                                                                                            |
+| Many or frequent alert rules        | Increase alert evaluation intervals and enable query caching in Grafana Enterprise or Grafana Cloud.                                                                                                                                                          |
 
 ## Known ServiceNow-side issues
 
@@ -440,11 +440,11 @@ For any Grafana-side query-formatting fixes, keep the plugin updated to the late
 
 ## Enable debug logging
 
-To capture detailed error information for troubleshooting, adjust the Grafana log level. For more information about Grafana logging configuration, refer to [Configure Grafana logging](/docs/grafana/latest/setup-grafana/configure-grafana/#log).
+To capture detailed error information for troubleshooting, adjust the Grafana log level. For more information about Grafana logging configuration, refer to [Configure Grafana logging](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#log).
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -460,7 +460,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [ServiceNow REST API documentation](https://developer.servicenow.com/dev.do#!/reference/api/washingtondc/rest/c_TableAPI) for service-specific guidance.
-3. Contact [Grafana Support](/profile/org#support) if you’re a Cloud Pro, Cloud Advanced, or Enterprise customer.
+3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re a Cloud Pro, Cloud Advanced, or Enterprise customer.
 4. When reporting issues, include:
 
    - Grafana version and plugin version

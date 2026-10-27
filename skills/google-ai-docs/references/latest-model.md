@@ -322,6 +322,7 @@ For more options, see [model selection](https://ai.google.dev/gemini-api/docs/an
 - **Use background execution for long outputs:** For tasks that need more than 64K tokens, set `background` to true and `max_output_tokens` greater than 65,536.
 - **Increase client timeouts:** Hard prompts can take several minutes. Use background execution, or set HTTP client timeouts to at least 15 minutes.
 - **Keep conversation state on the server:** Use `previous_interaction_id` for multi-turn and function calling conversations.
+- **Review your cost estimates:** Every token the model processes is billed, including internal tool system instructions and function declarations when using grounding (see [Pricing](https://ai.google.dev/gemini-api/docs/latest-model#pricing)).
 
 ## Pricing
 
@@ -330,6 +331,8 @@ Gemini 4 Argon is available at introductory pricing through November 30, 2026:
 - **Input tokens:** $2.00 per 1M tokens ($4.00 starting December 1, 2026)
   - **Cached input tokens:** Implicit caching discounts cached input by 95%, to $0.10 per 1M tokens ($0.20 starting December 1, 2026).
 - **Output tokens, including thinking tokens:** $10.00 per 1M tokens ($20.00 starting December 1, 2026)
+
+Every token the model processes is counted and billed, including thinking tokens and internal tool system instructions and function declarations when using grounding. Grounding with Google Search also remains billed per query.
 
 Gemini 4 Argon is not available on the Free tier. For complete pricing tiers, see the [pricing page](https://ai.google.dev/gemini-api/docs/pricing#gemini-4-argon).
 

@@ -11,7 +11,7 @@ This document explains how to use the AWS IoT TwinMaker query editor to query da
 
 ## Before you begin
 
-- Ensure you have [configured the AWS IoT TwinMaker data source](/docs/plugins/grafana-iot-twinmaker-app/latest/configure/) with a workspace selected.
+- Ensure you have [configured the AWS IoT TwinMaker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/) with a workspace selected.
 - Verify the data source’s IAM role has read access to your workspace.
 
 ## Key concepts
@@ -135,7 +135,7 @@ Expand table
 
 ### List the active alarms in a workspace
 
-Use this pattern with a table panel to build an alarm list. To let users select an alarm by clicking a row, attach the [register links transformation](/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/#register-links-transformation) to the panel.
+Use this pattern with a table panel to build an alarm list. To let users select an alarm by clicking a row, attach the [register links transformation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/#register-links-transformation) to the panel.
 
 Expand table
 
@@ -172,7 +172,7 @@ Expand table
 | **Component Name**      | `${sel_comp}`                        |
 | **Selected Properties** | `alarm_status`                       |
 
-For more information about setting variable values from panel selections, refer to [Template variables](/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/).
+For more information about setting variable values from panel selections, refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/).
 
 ## Stream data with Grafana Live
 
@@ -187,6 +187,6 @@ Expand table
 
 ## Next steps
 
-- [Use template variables in queries](/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/)
-- [Visualize scenes, video, and alarms with the TwinMaker panels](/docs/plugins/grafana-iot-twinmaker-app/latest/panels/)
-- [Create alert rules from TwinMaker queries](/docs/plugins/grafana-iot-twinmaker-app/latest/alerting/)
+- [Use template variables in queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/)
+- [Visualize scenes, video, and alarms with the TwinMaker panels](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/panels/)
+- [Create alert rules from TwinMaker queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/alerting/)

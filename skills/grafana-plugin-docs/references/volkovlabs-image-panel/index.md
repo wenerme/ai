@@ -25,11 +25,11 @@ The Business Media panel requires the following Grafana versions:
 
 ## Getting started
 
-Install the Business Media panel from the [Grafana Plugins catalog](/grafana/plugins/volkovlabs-image-panel/) or by using the Grafana command line tool.
+Install the Business Media panel from the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-image-panel/) or by using the Grafana command line tool.
 
 To install with the CLI, run:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install volkovlabs-image-panel
@@ -45,18 +45,18 @@ grafana cli plugins install volkovlabs-image-panel
 - Add a URL with a title to navigate to other dashboards when clicking the image. URLs support dashboard variables.
 - Use the toolbar to download, zoom, and navigate between media files.
 
-[](/media/docs/grafana/panels-visualizations/business-media/media-7.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/media-7.png)
 
 ## Documentation
 
 Expand table
 
-| Section                                                                   | Description                                                         |
-|---------------------------------------------------------------------------|---------------------------------------------------------------------|
-| [Supported formats](/docs/plugins/volkovlabs-image-panel/latest/formats/) | Explains what formats are supported and how to display media files. |
-| [Options](/docs/plugins/volkovlabs-image-panel/latest/options/)           | Describes all plugin options                                        |
-| [Features](/docs/plugins/volkovlabs-image-panel/latest/features/)         | Demonstrates panel capabilities.                                    |
-| [Release notes](/docs/plugins/volkovlabs-image-panel/latest/release/)     | Stay up to date with the latest features and updates.               |
+| Section                                                                                                                               | Description                                                         |
+|---------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| [Supported formats](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/formats/) | Explains what formats are supported and how to display media files. |
+| [Options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/options/)           | Describes all plugin options                                        |
+| [Features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/features/)         | Demonstrates panel capabilities.                                    |
+| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/release/)     | Stay up to date with the latest features and updates.               |
 
 ## License
 

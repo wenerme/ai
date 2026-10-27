@@ -9,7 +9,7 @@ description: "Learn how to display events in a stylish calendar format using the
 
 The Business Calendar panel is a Grafana plugin that displays events in a stylish calendar format. You can use data from various data sources.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/dashboard.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/dashboard.png)
 
 ## Requirements
 
@@ -20,11 +20,11 @@ The Business Calendar panel is a Grafana plugin that displays events in a stylis
 
 ## Getting started
 
-You can install the Business Calendar panel plugin from the [Grafana Plugins catalog](/grafana/plugins/marcusolsson-calendar-panel/) or use the Grafana command line tool.
+You can install the Business Calendar panel plugin from the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-calendar-panel/) or use the Grafana command line tool.
 
 For the latter, please use the following command:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install marcusolsson-calendar-panel
@@ -48,12 +48,12 @@ grafana cli plugins install marcusolsson-calendar-panel
 
 Expand table
 
-| Section                                                                               | Description                                          |
-|---------------------------------------------------------------------------------------|------------------------------------------------------|
-| [Basic configuration](/docs/plugins/marcusolsson-calendar-panel/latest/basic-config/) | Explains plugin basics                               |
-| [Configuration](/docs/plugins/marcusolsson-calendar-panel/latest/configuration/)      | Describes configuration options                      |
-| [Features](/docs/plugins/marcusolsson-calendar-panel/latest/features/)                | Describes plugin’s features                          |
-| [Release notes](/docs/plugins/marcusolsson-calendar-panel/latest/release/)            | Stay up to date with the latest features and updates |
+| Section                                                                                                                                           | Description                                          |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| [Basic configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/basic-config/) | Explains plugin basics                               |
+| [Configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/configuration/)      | Describes configuration options                      |
+| [Features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/features/)                | Describes plugin’s features                          |
+| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/release/)            | Stay up to date with the latest features and updates |
 
 ## License
 

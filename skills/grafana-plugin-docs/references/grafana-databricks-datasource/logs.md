@@ -7,7 +7,7 @@ description: "This document describes how to visualize Databricks query results 
 
 # Databricks data source logs
 
-The Databricks data source supports the Grafana logs visualization. You can query log-style tables in Databricks, such as audit logs, application logs, or pipeline event tables, and display the results in the [Logs panel](/docs/grafana/latest/panels-visualizations/visualizations/logs/).
+The Databricks data source supports the Grafana logs visualization. You can query log-style tables in Databricks, such as audit logs, application logs, or pipeline event tables, and display the results in the [Logs panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/logs/).
 
 ## Shape a query for the logs visualization
 
@@ -37,7 +37,7 @@ Alias your chosen columns to `time` and a message column, and include any other 
 
 The following query returns recent application log entries within the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -55,7 +55,7 @@ This query returns one log line per row, ordered with the most recent entries fi
 
 > Note
 >
-> The `$__timeFilter` macro restricts results to the dashboard’s selected time range. Refer to [Macros](/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros) for the full list of supported macros.
+> The `$__timeFilter` macro restricts results to the dashboard’s selected time range. Refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros) for the full list of supported macros.
 
 ## Color log lines by level
 
@@ -63,7 +63,7 @@ If your result set includes a column named `level`, the Logs panel and Explore u
 
 The following query normalizes a `severity` column to a `level` column and filters to errors and warnings:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -78,7 +78,7 @@ ORDER BY event_time DESC
 LIMIT 500
 ```
 
-You can also drive the filter from a [template variable](/docs/plugins/grafana-databricks-datasource/latest/template-variables/) so dashboard users choose which levels to display, for example `AND lower(severity) IN (${level:singlequote})`.
+You can also drive the filter from a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/template-variables/) so dashboard users choose which levels to display, for example `AND lower(severity) IN (${level:singlequote})`.
 
 ## Display results in the Logs panel
 
@@ -94,11 +94,11 @@ The Logs panel renders each row as a log line, ordered by the time column. Use t
 - **Unique labels** and **Wrap lines** adjust how detected fields and long messages are displayed.
 - **Order** sets whether the newest or oldest log lines appear first.
 
-Any columns other than the time and message columns appear as detected fields that you can show alongside each line. For details, refer to [Logs panel](/docs/grafana/latest/panels-visualizations/visualizations/logs/).
+Any columns other than the time and message columns appear as detected fields that you can show alongside each line. For details, refer to [Logs panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/logs/).
 
 > Note
 >
-> The Databricks data source returns query results in table or time series format, so [Explore](/docs/grafana/latest/explore/) displays them in the table view rather than the logs view. To visualize Databricks data as logs, use the Logs panel in a dashboard.
+> The Databricks data source returns query results in table or time series format, so [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) displays them in the table view rather than the logs view. To visualize Databricks data as logs, use the Logs panel in a dashboard.
 
 ## Build a color-coded error log panel
 
@@ -108,7 +108,7 @@ Combine the previous steps to create a panel that shows recent errors and warnin
 2. Enter the following query, which returns `time`, `message`, and a normalized `level` column.
 3. Run the query.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

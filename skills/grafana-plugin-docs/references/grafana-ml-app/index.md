@@ -30,9 +30,9 @@ With any of these options, the LLM app securely stores your API keys.
 Unlock the potential of Grafana LLM plugin with features like:
 
 - [AI-powered flamegraph interpretation](https://pyroscope.io/blog/ai-powered-flamegraph-interpreter/)
-- [Incident Auto-summary](/docs/grafana-cloud/alerting-and-irm/incident/configure/integrations/configure-open-ai/)
+- [Incident Auto-summary](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/incident/configure/integrations/configure-open-ai/)
 - Dashboard panel title and description generation
-- Explanations of error log lines in [Sift](/docs/grafana-cloud/alerting-and-irm/machine-learning/sift/)
+- Explanations of error log lines in [Sift](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/machine-learning/sift/)
 
 ## Data privacy and storage for Grafana OpenAI integrations
 

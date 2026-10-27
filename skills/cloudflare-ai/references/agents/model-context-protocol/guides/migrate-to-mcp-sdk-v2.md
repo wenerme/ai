@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/guides/mi
 
 # Migrate to MCP SDK v2
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers the [MCP SDK v2 ↗︎](https://github.com/modelcontextprotocol/typescript-sdk) upgrade in Agents SDK v0.20.0. It explains how to move servers to `@modelcontextprotocol/server`, use a temporary legacy lane only when sessionful features require it, and update MCP clients.
 
@@ -44,19 +44,19 @@ For a stateless server:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/server@2.0.0 zod
+npm i agents @modelcontextprotocol/server@2.3.1 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/server@2.0.0 zod
+yarn add agents @modelcontextprotocol/server@2.3.1 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/server@2.0.0 zod
+pnpm add agents @modelcontextprotocol/server@2.3.1 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/server@2.0.0 zod
+bun add agents @modelcontextprotocol/server@2.3.1 zod
 ```
 
 For a temporary legacy lane:
@@ -64,19 +64,19 @@ For a temporary legacy lane:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/sdk@1.30.0 zod
+npm i agents @modelcontextprotocol/sdk@1.32.1 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/sdk@1.30.0 zod
+yarn add agents @modelcontextprotocol/sdk@1.32.1 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/sdk@1.30.0 zod
+pnpm add agents @modelcontextprotocol/sdk@1.32.1 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/sdk@1.30.0 zod
+bun add agents @modelcontextprotocol/sdk@1.32.1 zod
 ```
 
 For an Agent that connects to MCP servers:
@@ -84,19 +84,19 @@ For an Agent that connects to MCP servers:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/client@2.0.0
+npm i agents @modelcontextprotocol/client@2.3.1
 ```
 
 ```
-yarn add agents @modelcontextprotocol/client@2.0.0
+yarn add agents @modelcontextprotocol/client@2.3.1
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/client@2.0.0
+pnpm add agents @modelcontextprotocol/client@2.3.1
 ```
 
 ```
-bun add agents @modelcontextprotocol/client@2.0.0
+bun add agents @modelcontextprotocol/client@2.3.1
 ```
 
 Follow peer dependency instructions from your package manager. Update the exact MCP versions with the Agents release that supports them.
@@ -312,7 +312,7 @@ If the server uses legacy stateful features, keep the existing `McpAgent` route 
 | Pushed elicitation, sampling, or roots requests | Return `inputRequired(...)`. The client fulfils the embedded requests and retries the original operation. |
 | Standalone list-change stream | Publish changes through `subscriptions/listen`. Clients reopen the subscription if its stream ends. |
 | Session replay or transport recovery | Make each stateless request independently recoverable. Persist business progress in application storage rather than the MCP transport. |
-| Agent-to-`McpAgent` RPC | Replace the protocol-session dependency with an explicit application RPC or HTTP boundary, then expose the stateless MCP tools separately. |
+| Agent-to-`McpAgent` RPC | Connect the Agent to the `createMcpHandler` server with a URL over Streamable HTTP. There is no RPC transport for stateless servers. |
 
 Do not remove the legacy route as soon as the stateless implementation exists. Serve both lanes while clients migrate and existing sessions drain.
 
@@ -461,13 +461,17 @@ The draft deprecates Roots, Sampling, Logging, the old HTTP+SSE transport, and D
 
 ### Integration compatibility
 
-The following integrations retain SDK v1 server output in this release:
+These integrations accept an SDK v2 `McpServer`. Serve them with `createMcpHandler`:
 
-- Current Code Mode `codeMcpServer` and `openApiMcpServer` helpers
-- The server-side `withX402` helper
-- Existing OpenAI Apps examples that import an SDK v1 `McpServer`
+- The server-side `withX402` helper, from `agents@0.27.0`. Refer to [Charge for MCP tools](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-mcp-tools/).
+- OpenAI Apps SDK servers. Refer to the [ChatGPT app demo](https://developers.cloudflare.com/workers/demos/chatgpt-app/).
 
-Until these integrations produce SDK v2 servers, isolate their output behind a temporary `createLegacyMcpHandler` route. The Code Mode MCP connector and `withX402Client` accept either client generation.
+These integrations still produce or require SDK v1 servers:
+
+- The Code Mode `codeMcpServer` and `openApiMcpServer` helpers. Refer to [Build a Code Mode MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/).
+- The `mppx` `Transport.mcpSdk()` payment transport. Refer to [Accept payments](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/).
+
+Serve their output with `createLegacyMcpHandler`, building a new server for each request, until they produce SDK v2 servers. The Code Mode MCP connector and `withX402Client` accept either client generation.
 
 ## Plan the rollout
 
@@ -485,7 +489,7 @@ Until these integrations produce SDK v2 servers, isolate their output behind a t
 
 Stored HTTP session IDs from Agents releases before v0.20.0 do not include the negotiated protocol version. The upgraded client discards those IDs and reconnects instead of sending an unsafe resumed request. Existing in-flight work tied to an old remote session does not resume.
 
-For API details, refer to [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) and [`McpClient`](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
+For API details, refer to [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) and [MCP Client](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
 
 Was this helpful?
 
@@ -496,5 +500,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/#page","headline":"Migrate to MCP SDK v2","description":"Migrate Agents SDK MCP servers and clients to the split MCP TypeScript SDK v2 packages while retaining legacy compatibility.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/og.png?v=6d00c9de2a63b5f1","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/#page","headline":"Migrate to MCP SDK v2","description":"Migrate Agents SDK MCP servers and clients to the split MCP TypeScript SDK v2 packages while retaining legacy compatibility.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/og.png?v=6d00c9de2a63b5f1","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

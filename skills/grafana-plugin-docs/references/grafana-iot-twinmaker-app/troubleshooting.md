@@ -7,7 +7,7 @@ description: "Troubleshoot common AWS IoT TwinMaker app and data source issues i
 
 # Troubleshoot AWS IoT TwinMaker issues
 
-This document provides solutions to common issues you may encounter when configuring or using the AWS IoT TwinMaker app. The sections follow the order in which you set up and use the app: configuration, connection, queries, panels, and alert rules. For configuration instructions, refer to [Configure the AWS IoT TwinMaker app and data source](/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the AWS IoT TwinMaker app. The sections follow the order in which you set up and use the app: configuration, connection, queries, panels, and alert rules. For configuration instructions, refer to [Configure the AWS IoT TwinMaker app and data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
 
 ## Configuration errors
 
@@ -62,11 +62,11 @@ These errors occur when Grafana can’t reach AWS endpoints.
 
 Expand table
 
-| Cause                                                   | Solution                                                                                                                                                                  |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AWS endpoints are only reachable from a private network | Configure [private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable **Secure Socks Proxy** on the data source. |
-| The PDC agent isn’t running or can’t reach AWS          | Check the PDC agent logs and verify outbound HTTPS access to the AWS IoT TwinMaker endpoints for your Region.                                                             |
-| Wrong Region selected                                   | Verify the **Default Region** matches the Region of your TwinMaker workspace.                                                                                             |
+| Cause                                                   | Solution                                                                                                                                                                                                                              |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AWS endpoints are only reachable from a private network | Configure [private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable **Secure Socks Proxy** on the data source. |
+| The PDC agent isn’t running or can’t reach AWS          | Check the PDC agent logs and verify outbound HTTPS access to the AWS IoT TwinMaker endpoints for your Region.                                                                                                                         |
+| Wrong Region selected                                   | Verify the **Default Region** matches the Region of your TwinMaker workspace.                                                                                                                                                         |
 
 ### Custom endpoint conflicts
 
@@ -90,7 +90,7 @@ These errors occur in the query editor or when a panel runs a query.
 
 **Cause:** The selected query type requires a field that isn’t set. For example, **Get Property Value History by Entity** requires an **Entity** and **Component Name**, and the history query types require at least one property in **Selected Properties**.
 
-**Solution:** Set the required fields for the query type. Refer to [AWS IoT TwinMaker query editor](/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/) for the fields each query type requires.
+**Solution:** Set the required fields for the query type. Refer to [AWS IoT TwinMaker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/) for the fields each query type requires.
 
 ### List queries fail with an “error loading” message
 
@@ -118,7 +118,7 @@ These issues occur in the Scene Viewer panel.
 
 - The Scene Viewer panel stops rendering after an upgrade to Grafana v13.0 or later, while other panels on the dashboard keep working.
 
-**Cause:** Grafana v13.0 upgraded the core application from React 18 to React 19, and the Scene Viewer panel depends on React APIs that were removed in React 19. This is a [known breaking change in Grafana v13.0](/docs/grafana/latest/whatsnew/whats-new-in-v13-0/), not a configuration problem.
+**Cause:** Grafana v13.0 upgraded the core application from React 18 to React 19, and the Scene Viewer panel depends on React APIs that were removed in React 19. This is a [known breaking change in Grafana v13.0](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/whatsnew/whats-new-in-v13-0/), not a configuration problem.
 
 **Solutions:**
 
@@ -204,7 +204,7 @@ Expand table
 
 **Cause:** Alarm edits write to your workspace with the `BatchPutPropertyValues` API, which requires a separate write role that isn’t configured on the data source.
 
-**Solution:** In the data source configuration, switch on **Define write permissions for Alarm Configuration Panel** and enter the IAM role in the **Assume Role ARN Write** field. The role must grant the `iottwinmaker:BatchPutPropertyValues` action. Refer to [Configure the AWS IoT TwinMaker app and data source](/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
+**Solution:** In the data source configuration, switch on **Define write permissions for Alarm Configuration Panel** and enter the IAM role in the **Assume Role ARN Write** field. The role must grant the `iottwinmaker:BatchPutPropertyValues` action. Refer to [Configure the AWS IoT TwinMaker app and data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/).
 
 ## Alert rule errors
 
@@ -218,7 +218,7 @@ These errors occur when you use the data source in alert rules.
 
 **Cause:** Alert conditions can only evaluate numeric data. Queries that return string values, such as a **Get Alarms** query or a property history query for a string property like `alarm_status`, can’t be reduced to a number for the alert condition.
 
-**Solution:** Create the alert rule against a numeric property instead, such as the sensor value that drives the alarm. Refer to [AWS IoT TwinMaker alerting](/docs/plugins/grafana-iot-twinmaker-app/latest/alerting/) for query guidelines and examples.
+**Solution:** Create the alert rule against a numeric property instead, such as the sensor value that drives the alarm. Refer to [AWS IoT TwinMaker alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/alerting/) for query guidelines and examples.
 
 ## Enable debug logging
 
@@ -226,7 +226,7 @@ To capture detailed error information for troubleshooting on self-managed Grafan
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

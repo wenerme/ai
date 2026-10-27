@@ -68,7 +68,7 @@ The same setting
 ## Enable export of groups and projects for offline transfer
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/588971) in GitLab 19.3
-  [with a feature flag](../../administration/feature_flags/_index.md) named `offline_transfer_exports`. Disabled by default.
+  [with a feature flag](../feature_flags/_index.md) named `offline_transfer_exports`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -98,7 +98,7 @@ The same setting
 ## Enable import of groups and projects by offline transfer
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/588971) in GitLab 19.3
-  [with a feature flag](../../administration/feature_flags/_index.md) named `offline_transfer_imports`. Disabled by default.
+  [with a feature flag](../feature_flags/_index.md) named `offline_transfer_imports`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -127,7 +127,7 @@ The same setting
 ## Allow S3-compatible object storage for offline transfer
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/579705) in GitLab 18.9
-  [with a feature flag](../../administration/feature_flags/_index.md) named `offline_transfer_exports`. Disabled by default.
+  [with a feature flag](../feature_flags/_index.md) named `offline_transfer_exports`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -157,7 +157,7 @@ To allow S3-compatible object storage for offline transfer:
 
 ## Allow application default credentials for offline transfer
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8985) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 19.3 [with feature flags](../../administration/feature_flags/_index.md) named `offline_transfer_exports`, `offline_transfer_imports`, and `offline_transfer_ui`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8985) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 19.3 [with feature flags](../feature_flags/_index.md) named `offline_transfer_exports`, `offline_transfer_imports`, and `offline_transfer_ui`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -428,7 +428,7 @@ For more information, see [application settings API](../../api/settings.md).
 ### Concurrent project file exports
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599092) in GitLab 19.4
-  [with a feature flag](../../administration/feature_flags/_index.md) named `limit_concurrent_project_exports`. Disabled by default.
+  [with a feature flag](../feature_flags/_index.md) named `limit_concurrent_project_exports`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

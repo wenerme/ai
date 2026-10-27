@@ -7,7 +7,7 @@ description: "Troubleshoot common CockroachDB data source issues in Grafana"
 
 # Troubleshoot CockroachDB data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the CockroachDB data source. For configuration instructions, refer to [Configure the CockroachDB data source](/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the CockroachDB data source. For configuration instructions, refer to [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
 
 ## Connection errors
 
@@ -41,7 +41,7 @@ Expand table
 1. Verify network connectivity between the Grafana server and CockroachDB.
 2. Check for firewall rules that might be silently dropping connections.
 3. If connecting across regions or through a VPN, check network latency.
-4. For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing a private CockroachDB instance.
+4. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing a private CockroachDB instance.
 
 ### “test query timed out after 30s”
 
@@ -542,7 +542,7 @@ These issues relate to slow dashboards or high resource consumption.
 1. Avoid `SELECT *` – select only the columns you need.
 2. Reduce dashboard auto-refresh frequency. A 30-second refresh on a dashboard with 10 panels generates significant query load.
 3. Use a read replica or follower read if your CockroachDB deployment supports it.
-4. Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana (available in Grafana Enterprise and Grafana Cloud).
+4. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana (available in Grafana Enterprise and Grafana Cloud).
 
 ## Plugin errors
 
@@ -558,7 +558,7 @@ These errors relate to the plugin itself rather than the CockroachDB connection.
 **Solutions:**
 
 1. Verify the plugin is installed. Navigate to **Plugins and data** &gt; **Plugins** and search for “CockroachDB”.
-2. The CockroachDB data source is an Enterprise plugin. Verify you have a [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+2. The CockroachDB data source is an Enterprise plugin. Verify you have a [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 3. If self-hosting, verify the plugin binary is in the Grafana plugins directory and the Grafana process has execute permissions.
 4. Restart Grafana after installing or updating the plugin.
 
@@ -570,7 +570,7 @@ To capture detailed error information, enable debug-level logging in Grafana. Th
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -594,7 +594,7 @@ If the solutions in this document don’t resolve your issue:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [CockroachDB documentation](https://www.cockroachlabs.com/docs/) for service-specific guidance.
-3. Contact [Grafana Support](/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
+3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Contracted user.
 
 When reporting issues, include:
 

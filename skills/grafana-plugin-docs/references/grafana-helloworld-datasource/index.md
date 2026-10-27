@@ -11,7 +11,7 @@ This datasource plugin simply says “Hello World”.
 
 ### Additional links
 
-- [Add annotations](/docs/grafana/latest/dashboards/annotations/)
-- [Configure and use template variables](/docs/grafana/latest/variables/)
-- [Add transformations](/docs/grafana/latest/panels/transformations/)
-- [Set up alerting](/docs/grafana/latest/alerting/)
+- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/)
+- [Configure and use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/)
+- [Add transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/)
+- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)

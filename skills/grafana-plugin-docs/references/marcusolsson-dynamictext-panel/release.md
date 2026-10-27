@@ -9,4 +9,4 @@ description: "Learn about the evolution of the Business Text panel with release 
 
 The following release notes highlight new features, enhancements, fixes, and breaking changes for the Business Text panel across all versions.
 
-All notable changes to the Business Text panel are documented in the [changelog](/grafana/plugins/marcusolsson-dynamictext-panel/?tab=changelog) in the plugins catalog.
+All notable changes to the Business Text panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-dynamictext-panel/?tab=changelog) in the plugins catalog.

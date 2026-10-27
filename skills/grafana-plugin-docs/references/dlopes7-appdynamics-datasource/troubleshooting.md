@@ -11,7 +11,7 @@ This document provides guidance for troubleshooting common issues when configuri
 
 ## License and installation
 
-The AppDynamics data source is an Enterprise plugin. It requires a [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/). A missing or invalid Grafana license prevents the plugin from starting. That is a Grafana licensing or catalog problem, not an AppDynamics credential problem.
+The AppDynamics data source is an Enterprise plugin. It requires a [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/). A missing or invalid Grafana license prevents the plugin from starting. That is a Grafana licensing or catalog problem, not an AppDynamics credential problem.
 
 These errors appear before Grafana sends any request to AppDynamics.
 
@@ -26,9 +26,9 @@ When the plugin isn’t entitled for your Grafana Cloud stack or Grafana Enterpr
 
 **Solutions:**
 
-1. Confirm that you have the `Organization Administrator` role. Ask an administrator to install the plugin if you don’t. Refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
-2. On self-managed Grafana, verify the Enterprise license is valid and includes Enterprise plugins. Refer to [Stats and license](/docs/grafana/latest/administration/stats-and-license/).
-3. On Grafana Cloud, confirm that your plan is Pro or Advanced and that Enterprise plugins are enabled for your stack. If the button is still missing, contact [Grafana Support](/contact/).
+1. Confirm that you have the `Organization Administrator` role. Ask an administrator to install the plugin if you don’t. Refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+2. On self-managed Grafana, verify the Enterprise license is valid and includes Enterprise plugins. Refer to [Stats and license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/stats-and-license/).
+3. On Grafana Cloud, confirm that your plan is Pro or Advanced and that Enterprise plugins are enabled for your stack. If the button is still missing, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/).
 
 ### “Plugin health check failed”
 
@@ -44,8 +44,8 @@ Don’t confuse this message with AppDynamics **Save &amp; test** results such a
 **Solutions:**
 
 1. Confirm that your Grafana Cloud plan is Pro or Advanced, or that self-managed Grafana has a valid Enterprise license.
-2. Review the Grafana server logs for a license error. Refer to [“Invalid license for the enterprise plugin”](#invalid-license-for-the-enterprise-plugin).
-3. If the license is valid, continue with [Configuration errors](#configuration-errors) and [Authentication errors](#authentication-errors).
+2. Review the Grafana server logs for a license error. Refer to [“Invalid license for the enterprise plugin”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#invalid-license-for-the-enterprise-plugin).
+3. If the license is valid, continue with [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#configuration-errors) and [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#authentication-errors).
 
 ### “Invalid license for the enterprise plugin”
 
@@ -60,7 +60,7 @@ This error indicates a Grafana licensing problem, not an AppDynamics credential 
 
 1. On self-managed Grafana, confirm that you installed a valid Grafana Enterprise license. The token is a JSON Web Token (JWT) with three parts separated by periods. If you provide the license through the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file, copy the full token with no truncation or extra whitespace.
 2. After you update the license, restart Grafana and try again.
-3. On Grafana Cloud, contact [Grafana Support](/contact/) to confirm that your Pro or Advanced plan includes the AppDynamics plugin. Don’t apply a license JWT to Grafana Cloud yourself.
+3. On Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) to confirm that your Pro or Advanced plan includes the AppDynamics plugin. Don’t apply a license JWT to Grafana Cloud yourself.
 
 ## Plugin version
 
@@ -69,13 +69,13 @@ Confirm you’re on a recent plugin version before investigating AppDynamics cre
 1. Click **Administration** &gt; **Plugins and data** &gt; **Plugins** in the left-side menu.
 2. Search for `AppDynamics` and open the plugin page.
 3. Compare the installed version with the latest available version.
-4. On self-managed Grafana, click **Update** if a newer version is available. Refer to [Plugin management](/docs/grafana/latest/administration/plugin-management/).
+4. On self-managed Grafana, click **Update** if a newer version is available. Refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
 
 > Note
 >
 > On Grafana Cloud, plugins update automatically. In other managed environments, the platform provider may lag behind the latest release, so confirm which version you’re running.
 
-If template variables don’t interpolate or a drop-down shows `$undefined` after you update, refer to [Template variable errors](#template-variable-errors).
+If template variables don’t interpolate or a drop-down shows `$undefined` after you update, refer to [Template variable errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#template-variable-errors).
 
 ## Verify the connection
 
@@ -86,7 +86,7 @@ After the plugin is installed, licensed, and up to date, verify that the AppDyna
 3. Click **Save &amp; test**.
 4. Confirm you see the success message: **Data source is working, found N apps.**
 
-If **Save &amp; test** returns `Plugin health check failed`, start with [License and installation](#license-and-installation). For AppDynamics-specific messages, start with [Configuration errors](#configuration-errors), [Authentication errors](#authentication-errors), or [Connection errors](#connection-errors).
+If **Save &amp; test** returns `Plugin health check failed`, start with [License and installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#license-and-installation). For AppDynamics-specific messages, start with [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#configuration-errors), [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#authentication-errors), or [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#connection-errors).
 
 ## Configuration errors
 
@@ -206,7 +206,7 @@ The connection to AppDynamics took too long to establish.
 
 1. Verify network connectivity from the Grafana server to AppDynamics.
 2. Ensure your firewall allows outbound connections to your AppDynamics controller on port 443.
-3. If using Private data source connect (PDC), verify the PDC agent is running and connected. For more information, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+3. If using Private data source connect (PDC), verify the PDC agent is running and connected. For more information, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 4. If timeouts occur only for certain queries, try narrowing the time range to reduce data volume.
 
 ## Query errors
@@ -309,7 +309,7 @@ Your query executes without error but returns no results.
 
 ## Template variable errors
 
-These errors occur when using template variables with the data source. On plugin versions earlier than 3.11.17, update to 3.12 or later before you change variable queries. Refer to [Plugin version](#plugin-version).
+These errors occur when using template variables with the data source. On plugin versions earlier than 3.11.17, update to 3.12 or later before you change variable queries. Refer to [Plugin version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#plugin-version).
 
 ### Variables don’t interpolate or the application list is empty
 
@@ -317,8 +317,8 @@ On plugin versions earlier than 3.11.17, template variables in the Metrics **App
 
 **Solutions:**
 
-1. Update the plugin to 3.12 or later. Version 3.11.11 fixed query-editor interpolation. Version 3.11.17 fixed template variables in the Metrics **Application** field. Refer to [Plugin version](#plugin-version).
-2. If the application list is still empty after you update, click **Save &amp; test** on the data source. Then continue with [Authentication errors](#authentication-errors).
+1. Update the plugin to 3.12 or later. Version 3.11.11 fixed query-editor interpolation. Version 3.11.17 fixed template variables in the Metrics **Application** field. Refer to [Plugin version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#plugin-version).
+2. If the application list is still empty after you update, click **Save &amp; test** on the data source. Then continue with [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/#authentication-errors).
 
 ### `$undefined` in a drop-down
 
@@ -327,7 +327,7 @@ The Health, Events, Tiers, and Metric Names **application\_id** fields list AppD
 **Solutions:**
 
 1. Type `${variableName}` as a custom value. For example, type `${application}` rather than selecting a numeric application ID.
-2. Refer to [AppDynamics template variables](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for supported patterns.
+2. Refer to [AppDynamics template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for supported patterns.
 
 ### Variables return no values
 
@@ -340,7 +340,7 @@ The Health, Events, Tiers, and Metric Names **application\_id** fields list AppD
 **Solutions:**
 
 1. Verify the data source connection is working by clicking **Save &amp; test** in the data source settings.
-2. Check that the variable query matches a supported pattern (for example, `Applications`, `AppName.Tiers`). Refer to the [template variables documentation](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for supported patterns.
+2. Check that the variable query matches a supported pattern (for example, `Applications`, `AppName.Tiers`). Refer to the [template variables documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for supported patterns.
 3. For cascading variables, ensure parent variables have valid selections.
 4. Verify the identity has permissions to list the requested resources.
 
@@ -358,7 +358,7 @@ The variable query uses an unsupported pattern.
 
 1. Verify the query matches one of the supported patterns exactly. Supported patterns are case-sensitive.
 2. For application-specific queries, ensure the application name or variable precedes the `.` (for example, `MyApp.Tiers`, not just `Tiers`).
-3. Refer to the [template variables documentation](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns and examples.
+3. Refer to the [template variables documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns and examples.
 
 ### “The value after ‘.’ must be BusinessTransactions, Tiers or Nodes”
 
@@ -373,7 +373,7 @@ The part of the variable query after the application name isn’t a supported ty
 
 1. Use one of `AppName.BusinessTransactions`, `AppName.Tiers`, `AppName.Nodes`, or `AppName.Path...`.
 2. To scope business transactions or nodes to a tier, use `AppName.TierName.BusinessTransactions` or `AppName.TierName.Nodes`.
-3. Refer to the [template variables documentation](/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns.
+3. Refer to the [template variables documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for the complete list of supported patterns.
 
 ### Multi-value variables replace values with `*` in Metrics
 
@@ -381,7 +381,7 @@ This is expected behavior. Multi-value variables aren’t supported in Metrics q
 
 To use multi-value variables, use an Analytics (ADQL) query instead:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT distinct(transactionName), count(*) FROM transactions WHERE transactionName IN (${transactionName:doublequote})
@@ -411,7 +411,7 @@ To enable debug-level logging:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -426,7 +426,7 @@ If you continue to experience issues after following this troubleshooting guide:
 
 1. Check the [AppDynamics documentation](https://docs.appdynamics.com/) for platform-specific guidance.
 2. Review the [Grafana community forums](https://community.grafana.com/) for similar issues.
-3. Contact [Grafana Support](/contact/) if you’re a Grafana Enterprise, Cloud Pro, or Cloud Advanced user.
+3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) if you’re a Grafana Enterprise, Cloud Pro, or Cloud Advanced user.
 4. When reporting issues, include:
 
    - Grafana version and plugin version

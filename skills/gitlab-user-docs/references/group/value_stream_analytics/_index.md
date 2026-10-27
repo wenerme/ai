@@ -374,6 +374,7 @@ You can also use the [GraphQL API](../../../api/graphql/value_stream_analytics.m
 The **Tasks by type** chart displays the cumulative number of completed tasks (closed issues and merged merge requests) per day for your group.
 
 The chart uses the global page filters to display data based on the selected group and time frame.
+You can query a maximum of 180 days.
 
 To view tasks by type:
 

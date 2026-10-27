@@ -15,7 +15,7 @@ The Business Forms plugin converts any Grafana dashboard into a fully functional
 
 The following schema illustrates the major parts and their roles.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/data-manipulation-flow.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/data-manipulation-flow.png)
 
 ## Initial Request
 
@@ -31,9 +31,9 @@ This method leverages the existing Grafana data extraction mechanism. To use thi
 >
 > Since version 4.2.0. the `Query Field` and `Field Name` fields have been relocated from the `Elements` category to the `Initial Fields` options category.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/query.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/query.png)
 
-[](/media/docs/grafana/panels-visualizations/business-forms/query-new.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/query-new.png)
 
 ### Data source
 
@@ -43,25 +43,25 @@ The **Data source** type is more flexible than the **Query** type. However, this
 
 The **Initial Payload Request** is mandatory code that must contain the database request at minimum. You can add more complex data parsing functionality if required.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/ds-all.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/ds-all.png)
 
-[](/media/docs/grafana/panels-visualizations/business-forms/ds-all-new.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/ds-all-new.png)
 
 ### REST API
 
 The **REST API** type works with an external API server. When specifying the API URL, you can use global and dashboard variables. Header parameters are available as separate options.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/rest-get.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/rest-get.png)
 
-You can find ready-to-use API servers for Deno, InfluxDB, JSON API, MySQL, Node-Red, and PostgreSQL in [servers section](/docs/plugins/volkovlabs-form-panel/latest/servers/).
+You can find ready-to-use API servers for Deno, InfluxDB, JSON API, MySQL, Node-Red, and PostgreSQL in [servers section](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/servers/).
 
-Find more information, tips and tricks in the [documentation](/docs/plugins/volkovlabs-form-panel/latest/rest-api/).
+Find more information, tips and tricks in the [documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/rest-api/).
 
 ## Initial Request custom code
 
-To create post-processing logic, you can access panel options, API responses, form elements, Grafana services, dashboard, and global variables. Find the [code snippet here](/docs/plugins/volkovlabs-form-panel/latest/custom-code/).
+To create post-processing logic, you can access panel options, API responses, form elements, Grafana services, dashboard, and global variables. Find the [code snippet here](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/custom-code/).
 
-[](/media/docs/grafana/panels-visualizations/business-forms/init-custom.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/init-custom.png)
 
 ## Ball is on the user’s side
 
@@ -71,9 +71,9 @@ The panel form rests at this step, awaiting the user’s actions.
 
 You can enable the Highlight Changes feature, which displays all modifications made by the user in a specified color. For the Query and REST API Initial request types, simply enabling the feature in the plugin edit mode is enough.
 
-For the Data Source type, you must use the `SetInitial()` function in the Initial Request Custom Code. See the illustration for the Initial Request, Data Source type above (on the picture). Also, find [code examples here](/docs/plugins/volkovlabs-form-panel/latest/custom-code/).
+For the Data Source type, you must use the `SetInitial()` function in the Initial Request Custom Code. See the illustration for the Initial Request, Data Source type above (on the picture). Also, find [code examples here](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/custom-code/).
 
-[](/media/docs/grafana/panels-visualizations/business-forms/highlight.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/highlight.png)
 
 ## Reset Button
 
@@ -87,7 +87,7 @@ With the **Data Source** reset action, you can specify a data source for the Res
 
 In the **Custom code**, you can add any custom logic required. For instance, you can set all form elements to their defaults.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/reset.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/reset.png)
 
 ## Update Request
 
@@ -97,13 +97,13 @@ The Update Request carries data from the Grafana dashboard to your data source. 
 
 For the Data Source type, start with the Data Source parameter. Then go to the Update Request Payload, select Custom code and create a payload script there. Use JavaScript and the language of your data source to create a code that will update your data source data.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/update-request-ds.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/update-request-ds.png)
 
 ### Use Initial Request after Update Request
 
 You can trigger the `Initial Request` immediately after updating the data using Custom Code. In Initial Request mode, you can use various types, but consider one important point if you use `QUERY` as the initial request type.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/update-custom-code.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/update-custom-code.png)
 
 If the type is `QUERY`, it accepts and sets values from data.
 
@@ -111,7 +111,7 @@ If you’re using it in combination with an update query of type DataSource, you
 
 Another possible approach is to update the variables in the data source, which will trigger a second query and retrieve the new data.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/code-after-update-with-timeout.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/code-after-update-with-timeout.png)
 
 ### Query editor and Frontend Data Source
 
@@ -124,25 +124,25 @@ This feature relates to the:
 - **Initial Request &gt; Initial Action &gt; Data Source**
 - **Update Request &gt; Update Action &gt; Data Source**
 
-[](/media/docs/grafana/panels-visualizations/business-forms/init-update.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/init-update.png)
 
 Working with the payload creation has been simplified. The Business Forms panel has a designated area to enter the payload request.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/ini-payload.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/ini-payload.png)
 
-[](/media/docs/grafana/panels-visualizations/business-forms/update-payload.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/update-payload.png)
 
 Sometimes, when migrating to a new version, you may need to convert a large number of panels. This involves creating payloads and updating queries using the new payload format.
 
 To ensure a smoother transition, you can use a more seamless approach. For example, you can keep the old payload generation logic and simply return a static string in the query editor instead of relying on the new payload.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/seamless-update.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/seamless-update.png)
 
 ### Use nested objects in payload
 
 Creating a payload for the request can be configured in a variety of ways. Keys may contain various values including nested objects. Here is a simple example:
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const testMatchers = [
@@ -182,7 +182,7 @@ return payload;
 
 #### Payload example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 {
@@ -195,7 +195,7 @@ js [Copy code to clipboard] Copy
 
 After calling the update request, you may get an error. In the body of the request you may see something like:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 \"matchers\": [object Object],[object Object],[object Object],[object Object]
@@ -205,7 +205,7 @@ The code editor provides all required tools to use interpolation and value escap
 
 #### Updated example
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 const testMatchers = [
@@ -250,11 +250,11 @@ return payload;
 
 Text Area element allows you to create text with multiple lines:
 
-[](/media/docs/grafana/panels-visualizations/business-forms/text-area-multiline.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/text-area-multiline.png)
 
 After entering the data and submitting the form, you may see a data source error. The issue is caused by not properly processing and converting multiple lines in the payload.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/datasource-error-update.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/datasource-error-update.png)
 
 To avoid this behavior, please add following steps in the Create Payload code editor:
 
@@ -263,7 +263,7 @@ To avoid this behavior, please add following steps in the Create Payload code ed
 
 #### Code example
 
-js [Copy code to clipboard] Copy
+js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const payload = {};
@@ -295,7 +295,7 @@ console.log("update payload:", payload);
 return payload;
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-forms/datasource-create-payload-code-editor.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/datasource-create-payload-code-editor.png)
 
 ### REST API
 
@@ -307,7 +307,7 @@ You can enable the Confirmation step if needed. This step looks like a popup win
 
 For the Data Source type, you must use the `SetInitial()` function in the Initial Request Custom Code. See the illustration for the Initial Request, Data Source type above (on the picture).
 
-[](/media/docs/grafana/panels-visualizations/business-forms/confirm.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/confirm.png)
 
 Following Confirmation, the Submit button initiates the Update Request.
 
@@ -321,16 +321,16 @@ For example, during the post-processing, you can output a status message, transi
 
 In addition to the Submit and Reset button, there is a third one - Save Default. It saves the current form values in the dashboard. You can choose an icon and text instead of the pre-set ones.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/default-button.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/default-button.png)
 
 ## Initial Request vs Update Request
 
 Below is the comparative table showing the similarities and differences between the initial and update requests.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/init-update.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/init-update.png)
 
 ## Buttons
 
 The below schema summarizes the information about buttons available in the panel form.
 
-[](/media/docs/grafana/panels-visualizations/business-forms/buttons.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/buttons.png)

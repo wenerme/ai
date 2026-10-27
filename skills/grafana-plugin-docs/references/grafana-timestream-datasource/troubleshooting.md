@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Amazon Timestream data source 
 
 # Troubleshoot Amazon Timestream data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Amazon Timestream data source. For configuration instructions, refer to [Configure the Amazon Timestream data source](/docs/plugins/grafana-timestream-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Amazon Timestream data source. For configuration instructions, refer to [Configure the Amazon Timestream data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/).
 
 ## Minimum Grafana version
 
@@ -29,15 +29,15 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 Expand table
 
-| Cause                                  | Solution                                                                                                                                                                                                                                                                                     |
-|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing Timestream permissions         | Timestream requires its own IAM permissions, separate from CloudWatch. Attach a policy granting `timestream:*` or the specific actions listed in the [IAM policies](/docs/plugins/grafana-timestream-datasource/latest/configure/#iam-policies) section.                                     |
-| Missing `timestream:DescribeEndpoints` | This action is required for AWS endpoint discovery. Without it, all queries fail. Add it to your IAM policy.                                                                                                                                                                                 |
-| Invalid credentials                    | Verify credentials in the AWS IAM console. Regenerate the access key if necessary.                                                                                                                                                                                                           |
-| Expired credentials                    | Create a new access key and update the data source configuration.                                                                                                                                                                                                                            |
-| Wrong region                           | Verify that the **Default Region** matches the region where your Timestream database is located.                                                                                                                                                                                             |
-| Assume role misconfigured              | Verify the role ARN, check the trust policy, and confirm the external ID matches if one is required.                                                                                                                                                                                         |
-| IRSA on EKS                            | If using IAM Roles for Service Accounts, verify the trust policy, service account annotation, and that `sts:AssumeRoleWithWebIdentity` is allowed. Refer to [EKS IRSA configuration](/docs/plugins/grafana-timestream-datasource/latest/configure/#eks-iam-roles-for-service-accounts-irsa). |
+| Cause                                  | Solution                                                                                                                                                                                                                                                                                                                                                 |
+|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing Timestream permissions         | Timestream requires its own IAM permissions, separate from CloudWatch. Attach a policy granting `timestream:*` or the specific actions listed in the [IAM policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/#iam-policies) section.                                     |
+| Missing `timestream:DescribeEndpoints` | This action is required for AWS endpoint discovery. Without it, all queries fail. Add it to your IAM policy.                                                                                                                                                                                                                                             |
+| Invalid credentials                    | Verify credentials in the AWS IAM console. Regenerate the access key if necessary.                                                                                                                                                                                                                                                                       |
+| Expired credentials                    | Create a new access key and update the data source configuration.                                                                                                                                                                                                                                                                                        |
+| Wrong region                           | Verify that the **Default Region** matches the region where your Timestream database is located.                                                                                                                                                                                                                                                         |
+| Assume role misconfigured              | Verify the role ARN, check the trust policy, and confirm the external ID matches if one is required.                                                                                                                                                                                                                                                     |
+| IRSA on EKS                            | If using IAM Roles for Service Accounts, verify the trust policy, service account annotation, and that `sts:AssumeRoleWithWebIdentity` is allowed. Refer to [EKS IRSA configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/#eks-iam-roles-for-service-accounts-irsa). |
 
 ### “ExpiredTokenException” or “Token has expired”
 
@@ -69,7 +69,7 @@ These errors occur when Grafana can’t reach the Timestream API endpoints.
 1. Verify network connectivity from the Grafana server to Timestream endpoints in the configured region.
 2. Check that firewall rules allow outbound HTTPS traffic on port 443.
 3. If you use a VPC endpoint, verify the endpoint is correctly configured and set the custom endpoint URL in the data source settings.
-4. For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
+4. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
 
 ### Custom endpoint issues
 
@@ -134,15 +134,15 @@ Expand table
 
 Expand table
 
-| Cause                                                 | Solution                                                                                                                                                                                                                                                                                                                                                                                  |
-|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Confusing plugin macros with Grafana global variables | Plugin macros (`$__timeFilter`, `$__timeFrom`, `$__timeTo`) are expanded by the backend. Grafana global variables (`$__from`, `$__to`, `${__from:date:iso}`) are expanded by the frontend. They aren’t interchangeable. Refer to [Plugin macros vs Grafana global variables](/docs/plugins/grafana-timestream-datasource/latest/query-editor/#plugin-macros-vs-grafana-global-variables). |
-| Typo in macro name                                    | Verify the exact macro name. For example, `$__timeFrom` (plugin macro) is not the same as `$__from` (Grafana global variable).                                                                                                                                                                                                                                                            |
-| Grafana upgrade changed variable behavior             | After upgrading Grafana, verify that your queries use the correct macro syntax. Use `$__timeFilter` for time range filtering instead of manually constructing filters with `$__from` and `$__to`.                                                                                                                                                                                         |
+| Cause                                                 | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Confusing plugin macros with Grafana global variables | Plugin macros (`$__timeFilter`, `$__timeFrom`, `$__timeTo`) are expanded by the backend. Grafana global variables (`$__from`, `$__to`, `${__from:date:iso}`) are expanded by the frontend. They aren’t interchangeable. Refer to [Plugin macros vs Grafana global variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/query-editor/#plugin-macros-vs-grafana-global-variables). |
+| Typo in macro name                                    | Verify the exact macro name. For example, `$__timeFrom` (plugin macro) is not the same as `$__from` (Grafana global variable).                                                                                                                                                                                                                                                                                                                        |
+| Grafana upgrade changed variable behavior             | After upgrading Grafana, verify that your queries use the correct macro syntax. Use `$__timeFilter` for time range filtering instead of manually constructing filters with `$__from` and `$__to`.                                                                                                                                                                                                                                                     |
 
 ## Alerting errors
 
-These errors occur when using the Amazon Timestream data source with Grafana Alerting. For setup instructions, refer to [Alerting](/docs/plugins/grafana-timestream-datasource/latest/alerting/).
+These errors occur when using the Amazon Timestream data source with Grafana Alerting. For setup instructions, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/alerting/).
 
 ### “input data must be a wide series but got type long”
 
@@ -153,7 +153,7 @@ These errors occur when using the Amazon Timestream data source with Grafana Ale
 
 **Solutions:**
 
-1. Use the [`CREATE_TIME_SERIES`](https://docs.aws.amazon.com/timestream/latest/developerguide/timeseries-specific-constructs.views.html) function to return data in wide time-series format. Refer to [Alerting](/docs/plugins/grafana-timestream-datasource/latest/alerting/) for examples.
+1. Use the [`CREATE_TIME_SERIES`](https://docs.aws.amazon.com/timestream/latest/developerguide/timeseries-specific-constructs.views.html) function to return data in wide time-series format. Refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/alerting/) for examples.
 2. Enable **Wait for all queries** in the query editor to ensure all result pages are processed before the alert evaluates.
 
 ### Alert fails on string or non-numeric data
@@ -166,7 +166,7 @@ These errors occur when using the Amazon Timestream data source with Grafana Ale
 **Solutions:**
 
 1. Use a `CASE` expression to convert string values to numeric values inside `CREATE_TIME_SERIES`. For example, map `'UNHEALTHY'` to `1.0` and `'HEALTHY'` to `0.0`, then set a threshold on the numeric result.
-2. Refer to [Alert on string values](/docs/plugins/grafana-timestream-datasource/latest/alerting/#alert-on-string-values) for a full example.
+2. Refer to [Alert on string values](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/alerting/#alert-on-string-values) for a full example.
 
 ### Pagination and incomplete results
 
@@ -208,7 +208,7 @@ These errors occur when using template variables with the data source.
 
 ## Performance and cost issues
 
-These issues relate to slow queries, high AWS costs, or API limits. For detailed optimization guidance, refer to [Optimize query performance and cost](/docs/plugins/grafana-timestream-datasource/latest/query-editor/#optimize-query-performance-and-cost).
+These issues relate to slow queries, high AWS costs, or API limits. For detailed optimization guidance, refer to [Optimize query performance and cost](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/query-editor/#optimize-query-performance-and-cost).
 
 ### High query costs
 
@@ -224,7 +224,7 @@ These issues relate to slow queries, high AWS costs, or API limits. For detailed
 3. Use `bin()` with `$__interval_ms` to aggregate data instead of returning raw rows.
 4. Reduce the dashboard auto-refresh frequency.
 5. Use the **Dashboard** data source to reuse query results across multiple panels instead of running duplicate queries.
-6. Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana Enterprise or Grafana Cloud.
+6. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana Enterprise or Grafana Cloud.
 
 ### API throttling or rate limit errors
 
@@ -239,7 +239,7 @@ These issues relate to slow queries, high AWS costs, or API limits. For detailed
 1. Reduce the frequency of dashboard auto-refresh.
 2. Use larger time intervals in `bin()` to reduce the number of data points per query.
 3. Use the **Dashboard** data source to share query results across panels instead of running separate queries.
-4. Enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana (available in Grafana Enterprise and Grafana Cloud).
+4. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana (available in Grafana Enterprise and Grafana Cloud).
 5. Request a quota increase from AWS through the [Service Quotas console](https://console.aws.amazon.com/servicequotas/).
 
 ## Enable debug logging
@@ -248,7 +248,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

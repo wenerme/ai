@@ -7,11 +7,11 @@ description: "This document provides configuration instructions for the CloudWat
 
 # Configure the Amazon CloudWatch data source
 
-This document provides instructions for configuring the Amazon CloudWatch data source and explains available configuration options. For general information on adding and managing data sources, refer to [Data source management](/docs/grafana/latest/administration/data-source-management/).
+This document provides instructions for configuring the Amazon CloudWatch data source and explains available configuration options. For general information on adding and managing data sources, refer to [Data source management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/).
 
 ## Before you begin
 
-- You must have the `Organization administrator` role to configure the CloudWatch data source. Organization administrators can also [configure the data source via YAML](#provision-the-data-source) with the Grafana provisioning system.
+- You must have the `Organization administrator` role to configure the CloudWatch data source. Organization administrators can also [configure the data source via YAML](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/cloudwatch/latest/configure/#provision-the-data-source) with the Grafana provisioning system.
 - Grafana comes with a built-in CloudWatch data source plugin, so you do not need to install a plugin.
 - Familiarize yourself with your CloudWatch security configuration and gather any necessary security certificates, client certificates, and client keys.
 
@@ -40,7 +40,7 @@ Expand table
 
 Grafana plugin requests to AWS are made on behalf of an AWS Identity and Access Management (IAM) role or IAM user. The IAM user or IAM role must have the associated policies to perform certain API actions.
 
-For authentication options and configuration details, refer to [AWS authentication](/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/).
+For authentication options and configuration details, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/).
 
 Expand table
 
@@ -95,7 +95,7 @@ Expand table
 |-----------------|----------------------------------------------------------------------------------------|
 | **Data source** | Select the Application Signals (previously X-Ray) data source from the drop-down menu. |
 
-Grafana automatically creates a link to a trace in Application Signals data source if logs contain the `@xrayTraceId` field. To use this feature, you must already have an Application Signals data source configured. For details, see the [Application Signals data source docs](/docs/plugins/grafana-x-ray-datasource/). To view the link to Application Signals, select the log row in either the Explore view or dashboard [Logs panel](/docs/grafana/latest/panels-visualizations/visualizations/logs/) to view the log details section.
+Grafana automatically creates a link to a trace in Application Signals data source if logs contain the `@xrayTraceId` field. To use this feature, you must already have an Application Signals data source configured. For details, see the [Application Signals data source docs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/). To view the link to Application Signals, select the log row in either the Explore view or dashboard [Logs panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/logs/) to view the log details section.
 
 To log the `@xrayTraceId`, refer to the [AWS Application Signals documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html). To provide the field to Grafana, your log queries must also contain the `@xrayTraceId` field, for example by using the query `fields @message, @xrayTraceId`.
 
@@ -103,13 +103,13 @@ To log the `@xrayTraceId`, refer to the [AWS Application Signals documentation](
 
 Expand table
 
-| Setting                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Private data source connect** | Establishes a private, secured connection between a Grafana Cloud stack and data sources within a private network. Use the drop-down to locate the PDC URL. For setup instructions, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure PDC](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc). Click **Manage private data source connect** to open your PDC connection page and view your configuration details. |
+| Setting                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Private data source connect** | Establishes a private, secured connection between a Grafana Cloud stack and data sources within a private network. Use the drop-down to locate the PDC URL. For setup instructions, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure PDC](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc). Click **Manage private data source connect** to open your PDC connection page and view your configuration details. |
 
 After configuring your Amazon CloudWatch data source options, click **Save &amp; test** at the bottom to test the connection. You should see a confirmation dialog box that says:
 
-[](/media/docs/cloudwatch/cloudwatch-config-success-message.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/cloudwatch/cloudwatch-config-success-message.png)
 
 > Note
 >
@@ -117,11 +117,11 @@ After configuring your Amazon CloudWatch data source options, click **Save &amp;
 
 ### IAM policy examples
 
-To read CloudWatch metrics and EC2 tags, instances, regions, and alarms, you must grant Grafana permissions via IAM. You can attach these permissions to the IAM role or IAM user you configured in [AWS authentication](/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/).
+To read CloudWatch metrics and EC2 tags, instances, regions, and alarms, you must grant Grafana permissions via IAM. You can attach these permissions to the IAM role or IAM user you configured in [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/).
 
 **Metrics-only permissions:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -164,7 +164,7 @@ JSON [Copy code to clipboard] Copy
 
 **Logs-only permissions:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -201,7 +201,7 @@ JSON [Copy code to clipboard] Copy
 
 **Metrics and logs permissions:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -257,7 +257,7 @@ JSON [Copy code to clipboard] Copy
 
 #### Cross-account observability permissions
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -276,11 +276,11 @@ JSON [Copy code to clipboard] Copy
 >
 > Cross-account observability lets you retrieve metrics and logs across different accounts in a single region, but you can’t query EC2 Instance Attributes across accounts because those come from the EC2 API and not the CloudWatch API.
 
-For more information on configuring authentication, refer to [Configure AWS authentication](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+For more information on configuring authentication, refer to [Configure AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### Configure the data source with grafana.ini
 
-The Grafana [configuration file](/docs/grafana/latest/setup-grafana/configure-grafana/#aws) includes an `AWS` section where you can configure data source options:
+The Grafana [configuration file](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#aws) includes an `AWS` section where you can configure data source options:
 
 Expand table
 
@@ -292,11 +292,11 @@ Expand table
 
 ### Provision the data source
 
-You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning and available configuration options, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
 
 **Using AWS SDK (default)**:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -310,7 +310,7 @@ datasources:
 
 **Using credentials’ profile name (non-default)**:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -327,7 +327,7 @@ datasources:
 
 **Using `accessKey` and `secretKey`** :
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -345,7 +345,7 @@ datasources:
 
 **Using AWS SDK Default and ARN of IAM Role to Assume:**
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

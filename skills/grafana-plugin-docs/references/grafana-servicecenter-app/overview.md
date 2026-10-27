@@ -27,9 +27,9 @@ The header section provides key service information and operational context:
 - Service dependencies
 - Links to operational resources such as repositories, runbooks, dashboards, and documentation
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-header.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-header.png)
 
-You can also manage service settings, and [declare incidents](/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/#declare-an-incident) or [escalate issues](/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/#escalate-an-issue) through IRM.
+You can also manage service settings, and [declare incidents](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/#declare-an-incident) or [escalate issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/#escalate-an-issue) through IRM.
 
 ## Incidents
 
@@ -41,7 +41,7 @@ The **Incidents** section displays incidents associated with the service:
 - Report status
 - Assigned roles
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-incidents.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-incidents.png)
 
 This section helps teams understand whether there are ongoing or recent incidents affecting the service.
 
@@ -49,14 +49,14 @@ This section helps teams understand whether there are ongoing or recent incident
 
 The **SLOs** section displays SLOs associated with the service.
 
-For each SLO, Service Center provides a summary of key [SLO performance metrics](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/), including:
+For each SLO, Service Center provides a summary of key [SLO performance metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/), including:
 
 - Error budget remaining
 - Burn rate
 - Current SLI value
 - SLO target
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-slo-dashboard.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-slo-dashboard.png)
 
 Use this section to quickly assess whether the service is meeting its reliability objectives and identify SLOs that require attention.
 
@@ -77,7 +77,7 @@ Depending on the selected view, you can:
 - Identify long-running alerts
 - Navigate directly to alert rules and alert instances
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-top-firing.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-top-firing.png)
 
 This section helps teams understand the current operational health of the service and identify recurring reliability issues.
 
@@ -92,7 +92,7 @@ Depending on your IRM configuration, this section can include metrics such as:
 - Mean time to resolve (MTTR)
 - Alert distribution across teams and users
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-irm.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-irm.png)
 
 These metrics help teams understand incident response performance and operational workload.
 
@@ -104,13 +104,13 @@ The **Synthetic checks** section displays the results of the synthetic monitorin
 - Reachability
 - Latency
 
-[](/media/docs/grafana-cloud/service-center/screenshot-sc-view-synthetic-checks.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-sc-view-synthetic-checks.png)
 
 Synthetic monitoring helps validate service availability and user-facing performance from an external perspective.
 
 ## Review a service with Grafana Assistant
 
-If [Grafana Assistant](/docs/grafana-cloud/platform/grafana-assistant/) is available in your stack, you can ask it for an operational review of the service. The review is useful to prepare for an operational review meeting, or to get a quick summary of how a service is doing.
+If [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/platform/grafana-assistant/) is available in your stack, you can ask it for an operational review of the service. The review is useful to prepare for an operational review meeting, or to get a quick summary of how a service is doing.
 
 To review a service, select a time range for the service page, then click **More** &gt; **Review with Assistant**.
 
@@ -130,4 +130,4 @@ If a service requires attention, you can take action directly from the header se
 - Declare incidents
 - Contact the current on-call responder
 
-For more information, refer to [Respond to service issues from Service Center](/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/).
+For more information, refer to [Respond to service issues from Service Center](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/escalate-to-irm/).

@@ -21,7 +21,7 @@ Service Center helps teams quickly assess service reliability and ongoing operat
 - Who owns it, and who’s on call?
 - What’s broken, and what’s improving?
 
-[](/media/docs/grafana-cloud/service-center/screenshot-demo-full-overview3.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/service-center/screenshot-demo-full-overview3.png)
 
 Each service view provides operational context for your services, including:
 
@@ -35,20 +35,20 @@ Each service view provides operational context for your services, including:
 
 [Introduction to the Service Center view
 \
-Learn how the Service Center view connects service health, SLOs, incidents, alerts, dashboards, and ownership.](/docs/grafana-cloud/alerting-and-irm/service-center/overview/)
+Learn how the Service Center view connects service health, SLOs, incidents, alerts, dashboards, and ownership.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/overview/)
 
 [Create a service
 \
-Configure a service and connect teams and operational resources to enable the Service Center view.](/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/)
+Configure a service and connect teams and operational resources to enable the Service Center view.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/)
 
 [Discover services
 \
-Find services in the labels on your existing SLOs, alerts, dashboards, incidents, and synthetic checks, and create them in bulk.](/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/)
+Find services in the labels on your existing SLOs, alerts, dashboards, incidents, and synthetic checks, and create them in bulk.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/)
 
 [Provision services using Terraform
 \
-Manage services as code with the Grafana Terraform provider, including ownership, dependencies, and links.](/docs/grafana-cloud/alerting-and-irm/service-center/provision-with-terraform/)
+Manage services as code with the Grafana Terraform provider, including ownership, dependencies, and links.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/provision-with-terraform/)
 
 [Find and organize services
 \
-Search and filter the service list, star services, and share filtered views with your team.](/docs/grafana-cloud/alerting-and-irm/service-center/find-and-organize-services/)
+Search and filter the service list, star services, and share filtered views with your team.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/find-and-organize-services/)

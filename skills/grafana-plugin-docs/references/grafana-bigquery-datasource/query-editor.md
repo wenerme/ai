@@ -13,7 +13,7 @@ This document explains how to use the Google BigQuery query editor to build and 
 
 Before using the query editor:
 
-- [Configure the Google BigQuery data source](/docs/plugins/grafana-bigquery-datasource/latest/configure/).
+- [Configure the Google BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/).
 - Verify your credentials have appropriate permissions to query the datasets you need.
 
 ## Key concepts
@@ -52,7 +52,7 @@ Expand table
 
 ## Query with Grafana Assistant
 
-When [Grafana Assistant](/docs/grafana-cloud/platform/grafana-assistant/) is available in your Grafana instance, the query editor header displays a **Query with Assistant** button. Use it to build and refine BigQuery queries with AI assistance instead of writing SQL by hand.
+When [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/platform/grafana-assistant/) is available in your Grafana instance, the query editor header displays a **Query with Assistant** button. Use it to build and refine BigQuery queries with AI assistance instead of writing SQL by hand.
 
 The Assistant uses the current query and the data source connection as context. It discovers the projects, datasets, and tables available to your data source to suggest relevant queries against your data. You can then run the generated query or continue editing it in Builder or Code mode.
 
@@ -164,7 +164,7 @@ To visualize data as a time series:
 
 ### Time series example
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -180,7 +180,7 @@ ORDER BY timestamp_column
 
 To display multiple series (for example, metrics by region), include a label column. Each unique value creates a separate series:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -199,7 +199,7 @@ Table visualizations work with any valid BigQuery query. You don’t need to inc
 
 ### Table example
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -240,7 +240,7 @@ The following examples demonstrate common macro usage patterns.
 
 Use `$__timeFilter` to filter data to the dashboard’s selected time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -254,7 +254,7 @@ WHERE $__timeFilter(timestamp_column)
 
 Use `$__timeGroup` to aggregate data into time buckets:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -270,7 +270,7 @@ ORDER BY time
 
 Use `$__timeFrom()` and `$__timeTo()` when you need explicit time boundaries. Pass a column name (`$__timeFrom(column)` / `$__timeTo(column)`) when you want a one-sided filter instead of a timestamp value.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -289,7 +289,7 @@ BigQuery [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned
 
 For tables partitioned by ingestion time, filter on `_PARTITIONTIME`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -337,6 +337,6 @@ Expand table
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) to create dynamic dashboards
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results
-- Set up [Alerting](/docs/plugins/grafana-bigquery-datasource/latest/alerting/) rules based on your BigQuery data
+- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/template-variables/) to create dynamic dashboards
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/alerting/) rules based on your BigQuery data

@@ -47,11 +47,11 @@ If your metrics aren’t suited for event-based SLIs or don’t reflect the user
 
 Tips for creating effective SLIs:
 
-- **Start with availability and latency**. These are the most common SLO types for request-driven services. See the [availability examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/) and [latency examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
+- **Start with availability and latency**. These are the most common SLO types for request-driven services. See the [availability examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/) and [latency examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
 - **Test from the user’s perspective**. Consider using Synthetic Monitoring probes from one or more geographic locations where your users are.
-- **Decide between aggregated and multidimensional SLIs, or both**. Multidimensional SLIs let you filter consumption and set alerts for each dimension (for example, every `cluster` or `probe`). See the [multidimensional example](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/).
-- **Use event-based SLIs over time-based SLIs**. Event-based SLIs are generally more accurate, and Grafana SLO doesn’t support all dashboard views for time-based SLIs. Learn more about [SLI calculation types](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/).
-- **Avoid percentiles in SLIs**. SLIs should count all requests meeting the target, not just a percentile (for example, “p95 latency under 2s”). Percentiles from histograms can also be inaccurate. See the [latency examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
+- **Decide between aggregated and multidimensional SLIs, or both**. Multidimensional SLIs let you filter consumption and set alerts for each dimension (for example, every `cluster` or `probe`). See the [multidimensional example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/).
+- **Use event-based SLIs over time-based SLIs**. Event-based SLIs are generally more accurate, and Grafana SLO doesn’t support all dashboard views for time-based SLIs. Learn more about [SLI calculation types](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/).
+- **Avoid percentiles in SLIs**. SLIs should count all requests meeting the target, not just a percentile (for example, “p95 latency under 2s”). Percentiles from histograms can also be inaccurate. See the [latency examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
 
 ## Alerts and labels
 
@@ -59,7 +59,7 @@ SLO alerts are different from typical data source alerts. Because alerts for SLO
 
 ### SLO alerting system configuration and migration guide
 
-By default, Grafana SLOs are configured to use [Grafana-managed alert rules](/docs/grafana/latest/alerting/fundamentals/alert-rules/). You can also choose to use data source-managed alert rules if you prefer.
+By default, Grafana SLOs are configured to use [Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/alert-rules/). You can also choose to use data source-managed alert rules if you prefer.
 
 To change your alerting system preferences for SLOs
 
@@ -67,7 +67,7 @@ To change your alerting system preferences for SLOs
 2. Click Configuration and select your desired alerting system from the dropdown menu.
    Click **Save** to apply the changes.
 
-When you change your alerting system, the alert rules transfer from one alerting system to the other. All SLOs use the alerting system you select. When switching from one alerting system to another, make sure that you have configured Notification Policies and Contact Points in the new system’s Alertmanager to avoid missing alert notifications. Alerts are routed by matching their labels to Notification Polices, which send notifications to Contact Points. Learn more about the [different AlertManagers](/docs/grafana/latest/alerting/set-up/configure-alertmanager/#types-of-alertmanagers-in-grafana) and about [how to configure alert notifications](/docs/grafana/latest/alerting/configure-notifications/).
+When you change your alerting system, the alert rules transfer from one alerting system to the other. All SLOs use the alerting system you select. When switching from one alerting system to another, make sure that you have configured Notification Policies and Contact Points in the new system’s Alertmanager to avoid missing alert notifications. Alerts are routed by matching their labels to Notification Polices, which send notifications to Contact Points. Learn more about the [different AlertManagers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/set-up/configure-alertmanager/#types-of-alertmanagers-in-grafana) and about [how to configure alert notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/).
 
 Note that only the alert rules move between alerting systems. The recording rules are unchanged.
 
@@ -81,7 +81,7 @@ Have your alerts routed first to designated individuals to validate your SLI. Se
 
 #### Use SLO alerts to trigger Grafana OnCall
 
-If you’ve [configured OnCall for Grafana Alerting](/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-oncall/), you may want to forward SLO alerts to Oncall as well. To forward alerts to OnCall by adding a contact point with a webhook on the “ngalertmanager” alert manager.
+If you’ve [configured OnCall for Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/configure-oncall/), you may want to forward SLO alerts to Oncall as well. To forward alerts to OnCall by adding a contact point with a webhook on the “ngalertmanager” alert manager.
 
 ### Use labels
 
@@ -95,7 +95,7 @@ To reduce alert fatigue a team may want to set a minimum number of failures (as 
 
 The ideal solution for low-traffic is to supplement your traffic flow with synthetics to ensure you always get a clear signal on whether your failure events represent an issue.
 
-If you are unable to use synthetics, you can choose to change the Minimum Failures [advanced feature](/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules-and-assistant-investigations) number. This number is applied to all your alerting time windows for the SLO, the smallest of which is 1 hour. This means that, if your service never gets enough traffic to exceed the Minimum Failures number, it won’t trigger an alert.
+If you are unable to use synthetics, you can choose to change the Minimum Failures [advanced feature](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules-and-assistant-investigations) number. This number is applied to all your alerting time windows for the SLO, the smallest of which is 1 hour. This means that, if your service never gets enough traffic to exceed the Minimum Failures number, it won’t trigger an alert.
 
 ## Additional reference materials
 

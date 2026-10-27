@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/og
 
 # Troubleshooting
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers common issues when using AI Gateway. For provider-specific troubleshooting, refer to the relevant provider documentation.
 
@@ -22,7 +22,7 @@ This page covers common issues when using AI Gateway. For provider-specific trou
 
 If you receive authentication errors from your AI provider, AI Gateway did not pass valid credentials upstream. Check the following:
 
-1. **Verify header placement**: Make sure your Cloudflare token is in `cf-aig-authorization`, not `Authorization`. The `Authorization` header is reserved for provider credentials.
+1. **Verify header placement**: On provider-native endpoints, put your Cloudflare token in `cf-aig-authorization`. Supply provider credentials in the [format AI Gateway recognizes for the provider and endpoint](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#credential-precedence). For example, Anthropic Messages requires `x-api-key`, while OpenAI uses `Authorization: Bearer`.
 2. **Check your configuration based on endpoint type**:
    - **Provider-specific endpoints**: Confirm your request URL includes the provider path (for example, `/google-vertex-ai/` or `/openai/`). AI Gateway uses this to identify the provider and apply the correct stored credentials.
    - **Unified `/compat/chat/completions` endpoint**: Confirm your `model` name starts with the provider prefix (for example, `google-vertex-ai/google/gemini-2.5-flash` or `openai/gpt-4o`). AI Gateway uses this prefix to route the request and select the correct stored credentials.
@@ -34,6 +34,18 @@ If you receive authentication errors from your AI provider, AI Gateway did not p
 For provider-specific authentication issues:
 
 - [Google Vertex AI troubleshooting](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/#troubleshooting)
+
+### 400: Provider credentials required (2044)
+
+AI Gateway returns HTTP `400` with error code `2044` and the message `Customer-provided provider credentials are required for this request` when it cannot find applicable provider credentials and Unified Billing fallback is blocked.
+
+Fallback is blocked when **Require provider credentials** is on for the gateway or the request includes `cf-aig-no-wholesale: true`. Credentials supplied with the request or an applicable stored BYOK key can satisfy this requirement.
+
+To resolve the error:
+
+- Supply your provider key using the [recognized credential format](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#credential-precedence).
+- For Anthropic Messages ( `/anthropic/v1/messages`), send `x-api-key: <PROVIDER_API_KEY>`. AI Gateway does not recognize `Authorization: Bearer` as provider credentials on this endpoint.
+- If using [stored BYOK keys](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/), verify gateway authentication and the key alias. Use `default`, or select an applicable alias with `cf-aig-byok-alias` on provider-native requests.
 
 ## DLP issues
 
@@ -75,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common AI Gateway issues including authentication errors, missing logs, and provider connectivity problems.","url":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/og.png?v=e2e9a70e6ecb8b47","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common AI Gateway issues including authentication errors, missing logs, and provider connectivity problems.","url":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/reference/troubleshooting/og.png?v=e2e9a70e6ecb8b47","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -9,32 +9,32 @@ description: "Learn how to use Handlebars helpers to perform text transformation
 
 Helpers (also called handlebars) are functions that let you perform basic text transformations within your template.
 
-In the **JavaScript &gt; before rendering content** option, you can register [custom handlebars](/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/#custom-handlebars-helper).
+In the **JavaScript &gt; before rendering content** option, you can register [custom handlebars](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/#custom-handlebars-helper).
 
 The Business Text panel includes many predefined handlebars that are registered automatically and ready to use:
 
 Expand table
 
-| Handlebar                              | Description                                                           |
-|----------------------------------------|-----------------------------------------------------------------------|
-| [contains](#contains)                  | Checks if a given value exists within an array                        |
-| [date](#date)                          | Formats the timestamp in a given field using a date format            |
-| [eq](#eq)                              | Checks two strings for equality                                       |
-| [join](#join)                          | Joins all elements of an array into a string using a given separator  |
-| [json](#json)                          | Presents an object (JSON) or an array as a formatted string           |
-| [split](#split)                        | Splits a string into an array using a given separator                 |
-| [toFixed](#tofixed)                    | Formats the given number using a fixed-point notation                 |
-| [startsWith](#startswith)              | Returns true if the variable starts with a specified value            |
-| [endsWith](#endswith)                  | Returns true if the variable ends with a specified value              |
-| [match](#match)                        | Returns true if the variable matches with a specified value           |
-| [variable](#helper-variable)           | This helper works only with one format of Grafana dashboard variables |
-| [variableValue](#helper-variablevalue) | This helper works with all Grafana variable formats                   |
+| Handlebar                                                                                                                                                               | Description                                                           |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| [contains](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#contains)                  | Checks if a given value exists within an array                        |
+| [date](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#date)                          | Formats the timestamp in a given field using a date format            |
+| [eq](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#eq)                              | Checks two strings for equality                                       |
+| [join](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#join)                          | Joins all elements of an array into a string using a given separator  |
+| [json](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#json)                          | Presents an object (JSON) or an array as a formatted string           |
+| [split](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#split)                        | Splits a string into an array using a given separator                 |
+| [toFixed](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#tofixed)                    | Formats the given number using a fixed-point notation                 |
+| [startsWith](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#startswith)              | Returns true if the variable starts with a specified value            |
+| [endsWith](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#endswith)                  | Returns true if the variable ends with a specified value              |
+| [match](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#match)                        | Returns true if the variable matches with a specified value           |
+| [variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#helper-variable)           | This helper works only with one format of Grafana dashboard variables |
+| [variableValue](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/helpers/#helper-variablevalue) | This helper works with all Grafana variable formats                   |
 
 ## `{{contains}}`
 
 Checks if a given value exists within an array.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
@@ -54,7 +54,7 @@ Formats the timestamp in a given field using a date format. Uses the [helper-dat
 
 The field value must be a Unix timestamp or any format supported by the [date.js library](https://date.js.org/).
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- Time: 1598791377556 -->
@@ -68,7 +68,7 @@ handlebars [Copy code to clipboard] Copy
 
 Checks two strings for equality.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- app: foo -->
@@ -86,7 +86,7 @@ handlebars [Copy code to clipboard] Copy
 
 Joins all elements of an array into a string using a given separator.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
@@ -100,7 +100,7 @@ handlebars [Copy code to clipboard] Copy
 
 Presents an object (JSON) or an array as a formatted string. Markdown supports the syntax highlighting.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ````handlebars
 <!-- object or array -->
@@ -112,19 +112,19 @@ handlebars [Copy code to clipboard] Copy
 <!-- result: as string  -->
 ````
 
-[](/media/docs/grafana/panels-visualizations/business-text/json.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/json.png)
 
 ### Transformation
 
 The `JSON` helper expects an object or an array to display as a formatted string. If the data source returns a string, transform it to a JSON object using the `Convert field type` transformation.
 
-[](/media/docs/grafana/panels-visualizations/business-text/json-transformation.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/json-transformation.png)
 
 ## `{{split}}`
 
 Splits a string into an array using a given separator.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- string: 'a,b,c,d' -->
@@ -134,13 +134,13 @@ handlebars [Copy code to clipboard] Copy
 <!-- result: ['a','b','c']  -->
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-text/split.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/split.png)
 
 ## `{{toFixed}}`
 
 Formats the given number using a fixed-point notation.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <!-- Value: 1.1234 -->
@@ -160,7 +160,7 @@ Returns `true` if the variable starts with a specified value.
 
 Example:
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 |Name| My Value| |---|---|
@@ -181,7 +181,7 @@ Returns `true` if the variable ends with a specified value.
 
 Example:
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 |Name| My Keys| |---|---|
@@ -202,7 +202,7 @@ Returns `true` if the variable matches a specified value.
 
 Example:
 
-md [Copy code to clipboard] Copy
+md ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```md
 |Key| Value| |---|---|
@@ -219,7 +219,7 @@ This helper works only with one format of Grafana dashboard variables: array.
 
 It returns a string array that includes the currently selected values for a specified variable.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{variable "hostname"}}
@@ -233,11 +233,11 @@ If `hostname = ["server1", "server2", "server3"]`, then the result is `["server1
 >
 > The Business Text panel supports this starting from version 4.3.0.
 
-This helper works with all [Grafana variable formats](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+This helper works with all [Grafana variable formats](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 The following example demonstrates the `queryparam` type.
 
-handlebars [Copy code to clipboard] Copy
+handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <a href="/d/abc?{{variableValue '${example:queryparam}'}}">Link</a>
@@ -245,7 +245,7 @@ handlebars [Copy code to clipboard] Copy
 
 If `example` equals `["value1", "value2"]`, then the result is:
 
-HTML [Copy code to clipboard] Copy
+HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <a href="/d/abc?var-example=value1&var-example=value2">Link</a>

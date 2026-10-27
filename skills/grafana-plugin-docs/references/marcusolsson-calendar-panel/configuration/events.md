@@ -20,17 +20,17 @@ You configure links in the **Data links** category, which is common for all Graf
 - `fields` is a reference to the retrieved data frame fields,
 - `url` is a reference to a retrieved field name.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/events-section.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/events-section.png)
 
 ## Drawer with event details
 
 A drawer is a pop-up window that opens on the right-hand side of your browser and displays event details.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/drawer-location.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/drawer-location.png)
 
 You can configure which data elements to show in the drawer by selecting them in the **Details info** parameter (see the first image on this page).
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/drawer-dissect.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/drawer-dissect.png)
 
 ## Tooltip
 
@@ -40,7 +40,7 @@ You can configure which data elements to show in the drawer by selecting them in
 
 You can enable the tooltip, which appears when you hover your mouse over an event.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/tooltip-more.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/tooltip-more.png)
 
 ## Multiple fields in the description
 
@@ -50,7 +50,7 @@ You can enable the tooltip, which appears when you hover your mouse over an even
 
 You can specify multiple fields to display in the event description.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/multiple.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/multiple.png)
 
 ## The Description format option
 
@@ -67,4 +67,4 @@ Your options for description formatting are:
 
 The following illustration shows how the same description text is interpreted depending on the selected **Description format** option.
 
-[](/media/docs/grafana/panels-visualizations/business-calendar/details-formatting.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/details-formatting.png)

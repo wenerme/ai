@@ -14,15 +14,15 @@ With SLO reports, you can:
 - View multiple SLOs in one place, and review SLO performance trends for a given period.
 - Review combined SLI and error budget results calculated across all events from all SLOs.
 - Review per-SLO results, including the current SLI value, remaining error budget, and weighted impact to understand how each SLO contributes to the combined results.
-- Navigate to the [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/) for detailed results.
+- Navigate to the [SLO dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/) for detailed results.
 
-[](/media/docs/grafana-cloud/slo/screenshot-slo-reports2.png)
+[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-slo-reports2.png)
 
 > Note
 >
 > SLO reports support only **event-based SLOs**.
 >
-> Event-based SLOs calculate the SLI by comparing successful events to total events, and define their SLIs as ratio-like queries (`numerator / denominator`). For more details, refer to [SLI examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/).
+> Event-based SLOs calculate the SLI by comparing successful events to total events, and define their SLIs as ratio-like queries (`numerator / denominator`). For more details, refer to [SLI examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/).
 
 ## Report view
 
@@ -34,7 +34,7 @@ The **summary section** displays combined SLO results calculated across all even
 - **Combined objective:** The average objective across all SLOs.
 - **Combined error budget remaining:** The remaining error budget calculated from all events across all SLOs.
 
-The **SLO table** shows individual SLO results, including a sparkline for the SLI over time, and the remaining error budget at the end of the selected period. For details about how these values are calculated, refer to the [SLO dashboard](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/).
+The **SLO table** shows individual SLO results, including a sparkline for the SLI over time, and the remaining error budget at the end of the selected period. For details about how these values are calculated, refer to the [SLO dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/dashboard/).
 
 ### Weighted impact
 

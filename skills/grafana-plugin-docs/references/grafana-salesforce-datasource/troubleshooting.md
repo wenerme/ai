@@ -18,7 +18,7 @@ Before investigating specific errors, verify that the data source health check p
 3. Click **Save &amp; test**.
 4. Confirm you see a success message.
 
-If the health check fails, start with the [License errors](#license-errors), [Connection errors](#connection-errors), [Configuration errors](#configuration-errors), or [Authentication errors](#authentication-errors) sections.
+If the health check fails, start with the [License errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#license-errors), [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#connection-errors), [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#configuration-errors), or [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#authentication-errors) sections.
 
 ## License errors
 
@@ -43,10 +43,10 @@ The Salesforce data source is an enterprise plugin. It requires a valid Grafana 
 
 Work through the following checks in order:
 
-1. Confirm your Grafana instance has an active Grafana Enterprise license. For more information, refer to [Grafana Enterprise licensing](/docs/grafana/latest/administration/enterprise-licensing/).
+1. Confirm your Grafana instance has an active Grafana Enterprise license. For more information, refer to [Grafana Enterprise licensing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
 2. If you recently renewed, verify that the new license is applied. If Grafana still shows the previous term, update the license token so the current license takes effect.
 3. Check your plan tier and confirm it includes the Salesforce plugin. Some plans allow only one enterprise plugin at a time. If another enterprise plugin is already active, you can’t add a second one until the plan is updated.
-4. If the license is correct but the error persists, the license might be misconfigured. Contact [Grafana Support](/contact/) to review your license configuration.
+4. If the license is correct but the error persists, the license might be misconfigured. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) to review your license configuration.
 5. To add the plugin to your plan, or to increase the number of enterprise plugins your plan allows, contact your Grafana account team.
 
 ## Connection errors
@@ -83,7 +83,7 @@ Salesforce can restrict API access to specific IP ranges.
 
 1. Add your Grafana server’s IP address to the trusted IP ranges in Salesforce Setup under **Security** &gt; **Network Access**.
 2. Alternatively, configure the user’s profile to allow login from any IP address.
-3. If using Grafana Cloud, add the [Grafana Cloud IP addresses](/docs/grafana-cloud/account-management/allow-list/) to your trusted ranges.
+3. If using Grafana Cloud, add the [Grafana Cloud IP addresses](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/account-management/allow-list/) to your trusted ranges.
 
 ## Configuration errors
 
@@ -101,16 +101,16 @@ The data source can’t connect to Salesforce because one or more connection fie
 
 **Solutions:**
 
-Verify each connection field in the data source configuration. For the full field reference, refer to [Connection settings](/docs/plugins/grafana-salesforce-datasource/latest/configure/#connection-settings).
+Verify each connection field in the data source configuration. For the full field reference, refer to [Connection settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#connection-settings).
 
 1. Confirm the **User name** field is populated with the Salesforce account user name, for example `salesforce_admin@abccompany.com`.
 2. Confirm the **Consumer key** matches the consumer key from your External Client App or Connected App exactly, with no leading or trailing spaces.
 3. For Credentials-based authentication, confirm the **Password**, **Security token**, and **Consumer secret** fields are populated.
 4. For JWT-based authentication, confirm the **Certificate** and **Private key** are configured.
-5. Confirm the **Environment** matches the Salesforce instance you’re connecting to. Select **Production** for `login.salesforce.com` or **Sandbox** for `test.salesforce.com`. Refer to [Sandbox vs Production environment mismatch](#sandbox-vs-production-environment-mismatch).
+5. Confirm the **Environment** matches the Salesforce instance you’re connecting to. Select **Production** for `login.salesforce.com` or **Sandbox** for `test.salesforce.com`. Refer to [Sandbox vs Production environment mismatch](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#sandbox-vs-production-environment-mismatch).
 6. Click **Save &amp; test** to confirm the connection succeeds.
 
-If the fields are correct but the connection still fails, the credentials might be rejected by Salesforce. Refer to [Authentication errors](#authentication-errors).
+If the fields are correct but the connection still fails, the credentials might be rejected by Salesforce. Refer to [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#authentication-errors).
 
 ### OAuth settings not enabled
 
@@ -161,7 +161,7 @@ Authentication errors occur when there are issues with your credentials, Connect
 
 ### Authentication fails after the Salesforce Connected Apps change
 
-Starting with the Salesforce Spring ‘26 release, Salesforce disabled the creation of new Connected Apps by default and recommends [External Client Apps](/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings) (ECAs) instead. If you configured the data source before this change, or your Salesforce org has new Connected App creation disabled, authentication can fail when you set up a new data source or re-authenticate an existing one.
+Starting with the Salesforce Spring ‘26 release, Salesforce disabled the creation of new Connected Apps by default and recommends [External Client Apps](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings) (ECAs) instead. If you configured the data source before this change, or your Salesforce org has new Connected App creation disabled, authentication can fail when you set up a new data source or re-authenticate an existing one.
 
 **Symptoms:**
 
@@ -175,7 +175,7 @@ Starting with the Salesforce Spring ‘26 release, Salesforce disabled the creat
 
 **Solutions:**
 
-1. For new setups, create an External Client App with JWT authentication and configure the data source to use it. Refer to [External Client App settings](/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings).
+1. For new setups, create an External Client App with JWT authentication and configure the data source to use it. Refer to [External Client App settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/#external-client-app-settings).
 2. Re-authenticate the data source using the External Client App’s consumer key and JWT credentials.
 3. Existing Connected Apps continue to work. If you must create a new Connected App, request the ability from Salesforce Support, or migrate to an External Client App using Salesforce’s [Connected App to External Client App Migration](https://help.salesforce.com/s/articleView?id=sf.connected_app_to_eca_migration.htm&type=5) guide.
 
@@ -274,7 +274,7 @@ Your SOQL query contains syntax errors.
 
 **Example error:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 MALFORMED_QUERY: unexpected token: 'FROM'
@@ -302,7 +302,7 @@ The specified field doesn’t exist on the queried object.
 
 **Example error:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 INVALID_FIELD: No such column 'InvalidFieldName' on entity 'Opportunity'
@@ -320,7 +320,7 @@ The specified object doesn’t exist or is not accessible.
 
 **Example error:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 INVALID_TYPE: sObject type 'CustomObject__c' is not supported
@@ -331,7 +331,7 @@ INVALID_TYPE: sObject type 'CustomObject__c' is not supported
 1. Verify the object name is correct and includes `__c` for custom objects.
 2. Check if the user has access to the object in their profile or permission sets.
 3. Ensure the object is not in a managed package that hasn’t been installed.
-4. Confirm the object or field is available in the Salesforce API version the plugin targets. Objects and fields introduced in newer API versions aren’t accessible. Refer to [Salesforce API version](#salesforce-api-version).
+4. Confirm the object or field is available in the Salesforce API version the plugin targets. Objects and fields introduced in newer API versions aren’t accessible. Refer to [Salesforce API version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#salesforce-api-version).
 
 ### Object or field isn’t available in the plugin API version
 
@@ -344,7 +344,7 @@ You can query some Salesforce objects, but a specific object or field returns an
 **Solutions:**
 
 1. Confirm the object or field is available in the Salesforce API version the plugin targets. If it was introduced in a more recent version, the plugin can’t query it yet.
-2. If your workflow depends on an object or field that isn’t available, contact [Grafana Support](/contact/) to request an API version update and register your use case. Refer to [Salesforce API version](#salesforce-api-version).
+2. If your workflow depends on an object or field that isn’t available, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) to request an API version update and register your use case. Refer to [Salesforce API version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#salesforce-api-version).
 
 ### No rows returned / No data
 
@@ -388,7 +388,7 @@ The Query Builder doesn’t support complex filter combinations.
 
 Switch to SOQL Editor mode to write complex queries manually:
 
-soql [Copy code to clipboard] Copy
+soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT Name, Amount FROM Opportunity
@@ -442,9 +442,9 @@ The alert rule fails to evaluate.
 **Solutions:**
 
 1. Confirm the SOQL syntax is valid and the query runs successfully in **Explore**.
-2. If the query returns a large result set, reduce the data it returns. The data source doesn’t expose a query timeout setting. Refer to [Large result sets are slow or time out](#large-result-sets-are-slow-or-time-out).
+2. If the query returns a large result set, reduce the data it returns. The data source doesn’t expose a query timeout setting. Refer to [Large result sets are slow or time out](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/#large-result-sets-are-slow-or-time-out).
 
-For more information, refer to [Salesforce alerting](/docs/plugins/grafana-salesforce-datasource/latest/alerting/).
+For more information, refer to [Salesforce alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/alerting/).
 
 ## Template variable errors
 
@@ -480,7 +480,7 @@ A query that uses a multi-value variable fails with a SOQL syntax error.
 
 **Solution:**
 
-Use the `IN` operator and the `singlequote` format so each value is quoted, for example `WHERE AccountId IN (${account:singlequote})`. Refer to [Salesforce template variables](/docs/plugins/grafana-salesforce-datasource/latest/template-variables/).
+Use the `IN` operator and the `singlequote` format so each value is quoted, for example `WHERE AccountId IN (${account:singlequote})`. Refer to [Salesforce template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/template-variables/).
 
 ## Known limitations
 
@@ -490,7 +490,7 @@ The following are known limitations when using the Salesforce data source.
 
 The plugin targets a fixed Salesforce API version for queries, reports, and metadata requests. Objects and fields that Salesforce introduced in more recent API versions aren’t available through the plugin, even if they exist in your Salesforce org.
 
-If a required object or field isn’t available, contact [Grafana Support](/contact/) to request an API version update and describe your use case.
+If a required object or field isn’t available, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) to request an API version update and describe your use case.
 
 ### Unsupported query formats
 
@@ -508,7 +508,7 @@ Only SOQL queries are supported. The following are not supported:
 
 The data source connects only through the standard Salesforce endpoints: `login.salesforce.com` for production and `test.salesforce.com` for sandbox. It doesn’t support custom My Domain login URLs, such as `login.mycorp.salesforce.com`. If your Salesforce org requires login through a custom My Domain and blocks the standard endpoints, the connection fails.
 
-This is a known limitation with no workaround. For the current status of custom domain support, contact [Grafana Support](/contact/).
+This is a known limitation with no workaround. For the current status of custom domain support, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/).
 
 ### Ad-hoc filters
 
@@ -544,7 +544,7 @@ For more detailed backend logs, raise the Grafana log level to `debug`:
 
 1. In your Grafana configuration file, set the log level under the `[log]` section:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -581,7 +581,7 @@ If you continue to experience issues after following this troubleshooting guide:
 
 1. Check the [Salesforce documentation](https://help.salesforce.com/) for platform-specific guidance.
 2. Review the [Grafana community forums](https://community.grafana.com/) for similar issues.
-3. Contact [Grafana Support](/contact/) if you’re a Grafana Enterprise, Cloud Pro, or Cloud Advanced user.
+3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) if you’re a Grafana Enterprise, Cloud Pro, or Cloud Advanced user.
 4. When reporting issues, include:
 
    - Grafana version

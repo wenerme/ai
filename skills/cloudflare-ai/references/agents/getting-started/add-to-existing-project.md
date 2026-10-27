@@ -121,7 +121,7 @@ Add the Durable Object binding and migration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-27",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"durable_objects": {
@@ -147,7 +147,7 @@ name = "my-existing-project"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-27"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -855,7 +855,7 @@ Now that you have a working agent, explore these topics:
 | Learn how to | Refer to |
 | --- | --- |
 | Add AI/LLM capabilities | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
-| Expose tools via MCP | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) |
+| Expose tools via MCP | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) |
 | Run background tasks | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) |
 | Handle emails | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) |
 | Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |

@@ -11,7 +11,7 @@ Splunk is a data and log analysis tool used for monitoring and troubleshooting a
 
 > Note
 >
-> The Splunk data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/install/).
+> The Splunk data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/).
 
 ## Supported features
 
@@ -31,7 +31,7 @@ Expand table
 The Splunk data source has the following requirements:
 
 - A [Splunk account](https://www.splunk.com/en_us/sign-up.html).
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
 - Grafana version 11.6.7 or later.
 - [Port 8089 enabled](https://docs.splunk.com/Documentation/SplunkCloud/latest/Config/ConfigureOutboundPorts) on your Splunk instance.
 
@@ -39,24 +39,24 @@ The Splunk data source has the following requirements:
 
 The following documents help you set up and use the Splunk data source:
 
-- [Install the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/install/)
-- [Get started with Splunk on Grafana Cloud](/docs/plugins/grafana-splunk-datasource/latest/cloud-quickstart/)
-- [Configure the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/configure/)
-- [Splunk query editor](/docs/plugins/grafana-splunk-datasource/latest/query-editor/)
-- [Splunk template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/)
-- [Annotations](/docs/plugins/grafana-splunk-datasource/latest/annotations/)
-- [Alerting](/docs/plugins/grafana-splunk-datasource/latest/alerting/)
-- [Troubleshoot Splunk data source issues](/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/)
+- [Install the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/)
+- [Get started with Splunk on Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/cloud-quickstart/)
+- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/)
+- [Splunk query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/query-editor/)
+- [Splunk template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/template-variables/)
+- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/annotations/)
+- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/alerting/)
+- [Troubleshoot Splunk data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to query Splunk data without building a dashboard.
-- Add [Annotations](/docs/grafana/latest/dashboards/annotations/) to overlay Splunk alerts or events on graphs.
-- Configure and use [template variables](/docs/plugins/grafana-splunk-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](/docs/grafana/latest/alerting/) rules based on Splunk queries.
+- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Splunk data without building a dashboard.
+- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/) to overlay Splunk alerts or events on graphs.
+- Configure and use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules based on Splunk queries.
 
 ## Pre-built dashboards
 
@@ -79,7 +79,7 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 - **Grafana Cloud:** Plugins are automatically updated. No action required.
 - **Self-managed:** Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins** to check for updates, or run `grafana cli plugins update grafana-splunk-datasource`. Self-managed instances do not receive automatic updates.
 
-For detailed upgrade instructions, `plugin_admin_enabled` requirements, and version management, refer to [Install and upgrade the Splunk data source](/docs/plugins/grafana-splunk-datasource/latest/install/#upgrade-the-plugin).
+For detailed upgrade instructions, `plugin_admin_enabled` requirements, and version management, refer to [Install and upgrade the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/#upgrade-the-plugin).
 
 > Note
 >
@@ -88,5 +88,5 @@ For detailed upgrade instructions, `plugin_admin_enabled` requirements, and vers
 ## Related resources
 
 - [Splunk documentation](https://docs.splunk.com/)
-- [Splunk Infrastructure Monitoring data source for Grafana](/docs/plugins/grafana-splunk-monitoring-datasource/latest/)
+- [Splunk Infrastructure Monitoring data source for Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-monitoring-datasource/latest/)
 - [Grafana community forum](https://community.grafana.com/)
