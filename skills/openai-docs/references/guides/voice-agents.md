@@ -75,7 +75,7 @@ async def main() -> None:
     result = await pipeline.run(audio_input)
     async for event in result.stream():
         if event.type == "voice_stream_event_audio":
-            print("Received audio bytes", len(event.data))
+            print("Received audio bytes", event.data.nbytes)
 
 
 if __name__ == "__main__":

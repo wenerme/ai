@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/api/s3/presigned-urls/og.png?v=09ebc
 
 # Presigned URLs
 
-Last updated Aug 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Presigned URLs are an [S3 concept ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
 
@@ -42,6 +42,10 @@ R2 supports two patterns for time-limited access. They overlap but have differen
 - [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (for constructing the S3 endpoint URL)
 - [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) (Access Key ID and Secret Access Key)
 - AWS SDK or compatible S3 client library
+
+Generating presigned URLs from a Worker
+
+The [R2 Workers API binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) cannot generate presigned URLs, so you must sign them with an S3 client. Inside a Worker, you can use [`aws4fetch`](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/#generate-presigned-urls), a small library built on `fetch` and `SubtleCrypto`, or the [AWS SDK for JavaScript v3](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/) with `nodejs_compat` enabled.
 
 ### SDK examples
 
@@ -79,6 +83,84 @@ const putUrl = await getSignedUrl(
 	}),
 	{ expiresIn: 3600 },
 );
+```
+
+*src/index.jsjs*
+
+```js
+import { AwsClient } from "aws4fetch";
+
+export default {
+	async fetch(request, env) {
+		const client = new AwsClient({
+			service: "s3",
+			region: "auto",
+			// Store your S3 API credentials as secrets (see: https://developers.cloudflare.com/r2/api/tokens)
+			accessKeyId: env.R2_ACCESS_KEY_ID,
+			secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+		});
+
+		const R2_URL = `https://${env.ACCOUNT_ID}.r2.cloudflarestorage.com`;
+
+		const getUrl = (
+			await client.sign(
+				new Request(`${R2_URL}/my-bucket/image.png?X-Amz-Expires=3600`),
+				{ aws: { signQuery: true } },
+			)
+		).url.toString();
+
+		const putUrl = (
+			await client.sign(
+				new Request(`${R2_URL}/my-bucket/image.png?X-Amz-Expires=3600`, {
+					method: "PUT",
+					headers: { "Content-Type": "image/png" },
+				}),
+				{ aws: { signQuery: true, allHeaders: true } },
+			)
+		).url.toString();
+
+		return Response.json({ getUrl, putUrl });
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+import { AwsClient } from "aws4fetch";
+
+export default {
+	async fetch(request, env): Promise<Response> {
+		const client = new AwsClient({
+			service: "s3",
+			region: "auto",
+			// Store your S3 API credentials as secrets (see: https://developers.cloudflare.com/r2/api/tokens)
+			accessKeyId: env.R2_ACCESS_KEY_ID,
+			secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+		});
+
+		const R2_URL = `https://${env.ACCOUNT_ID}.r2.cloudflarestorage.com`;
+
+		const getUrl = (
+			await client.sign(
+				new Request(`${R2_URL}/my-bucket/image.png?X-Amz-Expires=3600`),
+				{ aws: { signQuery: true } },
+			)
+		).url.toString();
+
+		const putUrl = (
+			await client.sign(
+				new Request(`${R2_URL}/my-bucket/image.png?X-Amz-Expires=3600`, {
+					method: "PUT",
+					headers: { "Content-Type": "image/png" },
+				}),
+				{ aws: { signQuery: true, allHeaders: true } },
+			)
+		).url.toString();
+
+		return Response.json({ getUrl, putUrl });
+	},
+} satisfies ExportedHandler<Env>;
 ```
 
 ```python
@@ -131,7 +213,8 @@ aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
 
 For complete examples and additional operations, refer to the SDK-specific documentation:
 
-- [AWS SDK for JavaScript](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#generate-presigned-urls)
+- [AWS SDK for JavaScript (Node.js)](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#generate-presigned-urls)
+- [aws4fetch (Workers)](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/#generate-presigned-urls)
 - [AWS SDK for Python (Boto3)](https://developers.cloudflare.com/r2/examples/aws/boto3/#generate-presigned-urls)
 - [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/#generate-presigned-urls)
 - [AWS SDK for Go](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-go/#generate-presigned-urls)
@@ -141,7 +224,7 @@ For complete examples and additional operations, refer to the SDK-specific docum
 
 When generating presigned URLs, you can limit abuse and misuse by:
 
-- **Restricting Content-Type**: Specify the allowed `Content-Type` in your SDK's parameters. The signature will include this header, so uploads will fail with a `403/SignatureDoesNotMatch` error if the client sends a different `Content-Type` for an upload request.
+- **Restricting Content-Type**: Specify the allowed `Content-Type` in your SDK's parameters. The signature will include this header, so uploads will fail with a `403/SignatureDoesNotMatch` error if the client sends a different `Content-Type` for an upload request. When using aws4fetch, set `allHeaders: true` so the `Content-Type` header is signed, and send the same `Content-Type` with the upload.
 - **Configuring CORS**: If your presigned URLs will be used from a browser, set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#use-cors-with-a-presigned-url) on your bucket to control which origins can make requests.
 
 ## Using a presigned URL
@@ -228,5 +311,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/#page","headline":"Presigned URLs","description":"Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.","url":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/og.png?v=09ebcbfc4fc6c0f8","dateModified":"2026-08-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/#page","headline":"Presigned URLs","description":"Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.","url":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/s3/presigned-urls/og.png?v=09ebcbfc4fc6c0f8","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

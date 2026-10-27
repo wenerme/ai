@@ -37,6 +37,10 @@ You can create deploy tokens at either the project or group level:
 - **Project deploy token**: Permissions apply only to the project.
 - **Group deploy token**: Permissions apply to all projects in the group.
 
+Group deploy tokens are different from [group access tokens](../../group/settings/group_access_tokens.md).
+On GitLab.com, group access tokens require a Premium or Ultimate subscription and are not available during a trial.
+On GitLab Self-Managed and GitLab Dedicated, group access tokens are available with any license.
+
 By default, a deploy token does not expire. You can optionally set an expiry date when you create
 it. Expiry occurs at midnight UTC on that date.
 

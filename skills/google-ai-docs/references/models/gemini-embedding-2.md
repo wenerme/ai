@@ -1,5 +1,3 @@
-# Gemini Embedding 2 model
-
 <br />
 
 Our first multimodal embedding model, providing efficient numerical mapping of
@@ -20,5 +18,5 @@ of features and capabilities.
 | Model code | **Gemini API** `gemini-embedding-2` |
 | Supported data types | **Input** Text, image, video, audio, PDF **Output** Text embeddings |
 | Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 8,192 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
-| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-2` |
+| Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Stable: `gemini-embedding-2` |
 | Latest update | April 2026 |

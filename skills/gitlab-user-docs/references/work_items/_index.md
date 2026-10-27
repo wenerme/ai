@@ -37,31 +37,31 @@ groups and projects.
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/11918) in GitLab 18.7 [with a feature flag](../../administration/feature_flags/_index.md) named `work_item_planning_view`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/520452) in GitLab 18.10. Feature flag `work_item_planning_view` removed.
 
-The **Work items** list is the central place to view and manage all work item types
+The  list is the central place to view and manage all work item types
 (such as issues, epics, and tasks) for a project or group. Use this view to
 understand the full scope of work in your project or group and prioritize effectively.
 
 In earlier versions of GitLab, issues and epics had separate list pages under
-**Plan** > **Issues** and **Plan** > **Epics**. In GitLab 18.10 and later, these pages
-are replaced by **Plan** > **Work items**, which consolidates all work item types in a
-single view. If you had pinned **Issues** or **Epics** in the sidebar, **Work items** is
+ >  and  > . In GitLab 18.10 and later, these pages
+are replaced by  > , which consolidates all work item types in a
+single view. If you had pinned  or  in the sidebar,  is
 pinned in their place. URLs that contain `/epics/:iid` or `/issues/:iid` automatically
 redirect to `/work_items/:iid`.
 
 To view work items for a project or group:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 
 ### Filter work items
 
-The **Work items** list shows all work item types by default. To view a specific type
-(for example, only issues or only epics), use the **Type** filter.
+The  list shows all work item types by default. To view a specific type
+(for example, only issues or only epics), use the  filter.
 
 To filter the work items list:
 
 1. At the top of the page, from the filter bar, select a filter, operator, and its value.
-   For example, to view only epics, select the filter **Type**, operator **is**, and value **Epic**.
+   For example, to view only epics, select the filter , operator , and value **Epic**.
 1. Optional. Add more filters to refine your search.
 1. Press <kbd>Enter</kbd> or select the search icon ().
 
@@ -108,7 +108,7 @@ These filters are available for work items:
   - Operators: `is`, `is not`
 
 To access filters you've used recently, on the left side of the filter bar, select the
-**Recent searches** () dropdown list.
+ () dropdown list.
 
 ### Sort work items
 
@@ -127,13 +127,13 @@ Sort the list of work items by the following:
 
 To change the sorting criteria:
 
-1. On the right of the filter bar, select **Display** () to open the display preferences drawer.
-1. At the top of the drawer, select the **Sort by** dropdown list.
+1. On the right of the filter bar, select  () to open the display preferences drawer.
+1. At the top of the drawer, select the  dropdown list.
 
 To change the sort order between ascending and descending:
 
-1. On the right of the filter bar, select **Display** () to open the display preferences drawer.
-1. At the top of the drawer, next to the **Sort by** dropdown list, select **Sort direction** ( or ).
+1. On the right of the filter bar, select  () to open the display preferences drawer.
+1. At the top of the drawer, next to the  dropdown list, select **Sort direction** ( or ).
 
 For more information about sorting logic, see
 [sorting and ordering issue lists](../project/issues/sorting_issue_lists.md).
@@ -144,10 +144,10 @@ GitLab provides an RSS feed of the work item list.
 
 To subscribe to the feed:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Optional. Apply filters to narrow the list.
-1. In the upper-right corner, select **Actions** () > **Subscribe to RSS feed**.
+1. In the upper-right corner, select  () > .
 
 By default, the feed contains all work item types. If you applied filters, the feed matches
 those filters instead.
@@ -165,18 +165,18 @@ fields and configuring view preferences.
 
 GitLab saves your display preferences at different levels:
 
-- **Fields**: Saved per namespace. You can have different field visibility settings for different
+- : Saved per namespace. You can have different field visibility settings for different
   groups and projects based on your workflow needs. For example, you can show assignee and labels
   in one group or project, but hide them in another.
-- **Your preferences**: Saved globally across all projects and groups. This ensures consistent
+- : Saved globally across all projects and groups. This ensures consistent
   behavior for how you prefer to view work items.
 
 To configure display preferences:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**.
-1. On the right of the filter bar, select **Display** () to open the display preferences drawer.
-1. Under **Fields**, turn on or turn off the metadata you want to display:
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. On the right of the filter bar, select  () to open the display preferences drawer.
+1. Under , turn on or turn off the metadata you want to display:
    - Status (for issues)
    - Assignee
    - Labels
@@ -189,9 +189,9 @@ To configure display preferences:
    - Comments: Comment counts
    - Popularity: Popularity metrics
 
-   Fields you turn on appear under **Shown**. Fields you turn off appear under **Hidden**.
-1. Optional. To search for a specific field, use the **Search fields** input.
-1. Under **Your preferences**, turn on or turn off **Open items in side panel** to choose how
+   Fields you turn on appear under . Fields you turn off appear under .
+1. Optional. To search for a specific field, use the  input.
+1. Under , turn on or turn off  to choose how
    work items open when you select them:
    - On (default): Items open in a drawer on the right side of the screen.
    - Off: Items open in a full page view.
@@ -212,12 +212,12 @@ For more information, see [GitLab-specific references](../markdown.md#gitlab-spe
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233554) in GitLab 19.0. Feature flag `mr_related_work_items` removed.
 
 When you reference a work item in a merge request description, it appears automatically in
-the **Work items** widget in the merge request sidebar. The widget groups work items by how they are linked:
+the  widget in the merge request sidebar. The widget groups work items by how they are linked:
 
-- **Closing**: Work items linked with a
+- : Work items linked with a
   [closing pattern](../project/issues/managing_issues.md#closing-issues-automatically),
   such as `Closes #123`. These work items close automatically when the MR merges.
-- **Mentioned**: Work items referenced in the description but not linked with a closing pattern,
+- : Work items referenced in the description but not linked with a closing pattern,
   such as `Related to #456`. These work items are not closed when the MR merges.
 
 If the widget contains more than two work items, it collapses by default. Select the widget
@@ -230,8 +230,8 @@ header to expand it. Select any work item to open it in a drawer.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263133) in GitLab 19.6. Feature flag `explicit_mr_work_item_relations` removed.
 
 You can also link work items to a merge request without editing the merge request description.
-Work items you link this way appear in the **Closing** or **Related** group, and the merge request
-appears in each linked work item's **Development** section.
+Work items you link this way appear in the  or  group, and the merge request
+appears in each linked work item's  section.
 
 Prerequisites:
 
@@ -239,30 +239,30 @@ Prerequisites:
 
 To link an existing work item to a merge request:
 
-1. On the merge request page, in the right sidebar, in the **Work items** section,
-   select **Add a work item** ().
-1. In the **Link work item** dialog, from the **Relationship** dropdown list, select
-   **Closes** or **Relates to**.
+1. On the merge request page, in the right sidebar, in the  section,
+   select  ().
+1. In the  dialog, from the  dropdown list, select
+    or .
 1. In the search field, search for the work item, or enter its URL or reference ID,
    then select it.
-1. Select **Add**.
+1. Select .
 
 To create a work item and link it to a merge request:
 
-1. On the merge request page, in the right sidebar, in the **Work items** section,
-   select **Add a work item** ().
-1. In the **Link work item** dialog, from the **Relationship** dropdown list, select
-   **Closes** or **Relates to**.
-1. Select **Create new item**.
-1. From the **Project** dropdown list, select a project.
-1. From the **Type** dropdown list, select a work item type.
+1. On the merge request page, in the right sidebar, in the  section,
+   select  ().
+1. In the  dialog, from the  dropdown list, select
+    or .
+1. Select .
+1. From the  dropdown list, select a project.
+1. From the  dropdown list, select a work item type.
 1. Complete the fields.
 1. Select **Create** for the type you selected, for example **Create issue**.
 
 To remove a link:
 
-1. On the merge request page, in the right sidebar, in the **Work items** section, next to the
-   work item, select **Remove** ().
+1. On the merge request page, in the right sidebar, in the  section, next to the
+   work item, select  ().
 
 You cannot remove work items that a closing pattern or a mention in the merge request description
 added.

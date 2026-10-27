@@ -269,10 +269,10 @@ local GitLab Rails instance, bypassing the external URL:
    gitlab_pages['internal_gitlab_server'] = 'http://localhost:8080'
    ```
 
-1. Restart GitLab Pages:
+1. Reconfigure GitLab:
 
    ```shell
-   sudo gitlab-ctl restart gitlab-pages
+   sudo gitlab-ctl reconfigure
    ```
 
 ## GitLab Pages requests redirect to the sign-in page instead of loading Pages content

@@ -12,6 +12,7 @@ Compare capabilities and specifications.
 
 - [GPT-6 Astra](/api/docs/models/gpt-6-astra.md): Our most capable model for the most demanding work.
 - [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Near-Astra performance for complex work at a lower cost.
+- [GPT-6.1 Terra](/api/docs/models/gpt-6.1-terra.md): A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
 - [GPT-6 Luna](/api/docs/models/gpt-6-luna.md): Our most efficient model for focused, high-volume tasks.
 
 ## Image

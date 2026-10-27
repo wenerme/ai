@@ -21,10 +21,7 @@ a dedicated full-page view.
 
 - Comparison of up to 1,000 findings per severity [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597438) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `security_mr_reports_tab_full_data_set`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/597608) in GitLab 19.5.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/597608) in GitLab 19.6. Feature flag `security_mr_reports_tab_full_data_set` removed.
 
 The security scan report provides a summary of the changes that would occur in the findings if the source branch were merged.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/buckets/object-lifecycles/og.png?v=8
 
 # Object lifecycles
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/object-lifecycles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/object-lifecycles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Object lifecycles determine the retention period of objects uploaded to your bucket and allow you to specify when objects should transition from Standard storage to Infrequent Access storage.
 
@@ -71,7 +71,12 @@ Below is an example of configuring a lifecycle configuration (a collection of li
 *Configure the S3 client to interact with R2js*
 
 ```js
-const client = new S3({
+import {
+	S3Client,
+	PutBucketLifecycleConfigurationCommand,
+} from "@aws-sdk/client-s3";
+
+const client = new S3Client({
 	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
 	credentials: {
 		accessKeyId: "<access_key_id>",
@@ -84,8 +89,8 @@ const client = new S3({
 *Set the lifecycle configuration for a bucketjavascript*
 
 ```javascript
-await client
-	.putBucketLifecycleConfiguration({
+await client.send(
+	new PutBucketLifecycleConfigurationCommand({
 		Bucket: "testBucket",
 		LifecycleConfiguration: {
 			Rules: [
@@ -148,8 +153,8 @@ await client
 				},
 			],
 		},
-	})
-	.promise();
+	}),
+);
 ```
 
 ## Get lifecycle rules for your bucket
@@ -165,10 +170,13 @@ npx wrangler r2 bucket lifecycle list <BUCKET_NAME>
 ### S3 API
 
 ```js
-import S3 from "aws-sdk/clients/s3.js";
+import {
+	S3Client,
+	GetBucketLifecycleConfigurationCommand,
+} from "@aws-sdk/client-s3";
 
 // Configure the S3 client to talk to R2.
-const client = new S3({
+const client = new S3Client({
 	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
 	credentials: {
 		accessKeyId: "<access_key_id>",
@@ -179,11 +187,11 @@ const client = new S3({
 
 // Get lifecycle configuration for bucket
 console.log(
-	await client
-		.getBucketLifecycleConfiguration({
+	await client.send(
+		new GetBucketLifecycleConfigurationCommand({
 			Bucket: "bucketName",
-		})
-		.promise(),
+		}),
+	),
 );
 ```
 
@@ -208,10 +216,10 @@ npx wrangler r2 bucket lifecycle remove <BUCKET_NAME> --id <RULE_ID>
 ### S3 API
 
 ```js
-import S3 from "aws-sdk/clients/s3.js";
+import { S3Client, DeleteBucketLifecycleCommand } from "@aws-sdk/client-s3";
 
 // Configure the S3 client to talk to R2.
-const client = new S3({
+const client = new S3Client({
 	endpoint: "https://<account_id>.r2.cloudflarestorage.com",
 	credentials: {
 		accessKeyId: "<access_key_id>",
@@ -221,11 +229,11 @@ const client = new S3({
 });
 
 // Delete lifecycle configuration for bucket
-await client
-	.deleteBucketLifecycle({
+await client.send(
+	new DeleteBucketLifecycleCommand({
 		Bucket: "bucketName",
-	})
-	.promise();
+	}),
+);
 ```
 
 Was this helpful?
@@ -237,5 +245,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/#page","headline":"Object lifecycles","description":"Configure retention and storage class transition rules for objects in R2 buckets.","url":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/og.png?v=886267790e9d9fab","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/#page","headline":"Object lifecycles","description":"Configure retention and storage class transition rules for objects in R2 buckets.","url":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/object-lifecycles/og.png?v=886267790e9d9fab","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

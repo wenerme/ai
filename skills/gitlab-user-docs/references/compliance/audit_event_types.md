@@ -1041,6 +1041,7 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`webhook_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154046) | A webhook is created | Yes | GitLab [17.1](https://gitlab.com/gitlab-org/gitlab/-/issues/8068) | Project, Group, Instance |
 | [`webhook_destroyed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/102342) | A webhook is destroyed | Yes | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/458817) | Project, Group, Instance |
+| [`webhook_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264230) | A webhook is updated | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/issues/632601) | Project, Group, Instance |
 
 ### Wiki
 

@@ -100,14 +100,14 @@ Prerequisites:
 The general process for adding linked items is similar across all work item types:
 
 1. Go to the work item you want to modify.
-1. At the bottom of the description, find the **Linked items** section of the work item.
-1. Select **Add**.
-1. Select the relationship type: **relates to**, **blocks**, or **is blocked by**.
+1. At the bottom of the description, find the  section of the work item.
+1. Select  ().
+1. Select the relationship type: , , or .
 1. Enter the reference for the item to link. You can:
    - Enter `#` or `&` (depending on item type) followed by the item's number.
    - Enter text to search for the item by title.
    - Paste the full URL of the item.
-1. Select **Add** to confirm.
+1. Select  to confirm.
 
 Alternatively, you can add linked items using [quick actions](../project/quick_actions.md):
 
@@ -131,8 +131,8 @@ Prerequisites:
 To remove a linked item:
 
 1. Go to the work item you want to modify.
-1. At the bottom of the description, find the **Linked items** section of the work item.
-1. For each linked item, select **Remove** ().
+1. At the bottom of the description, find the  section of the work item.
+1. For each linked item, select  ().
 
 The bi-directional relationship is removed from both items.
 
@@ -142,28 +142,28 @@ Alternatively, you can remove a linked item using the [`/unlink` quick action](.
 
 - Display options for linked items [expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/551231) in GitLab 18.10.
 
-You can configure what information is displayed in the **Linked items** section, so that you can focus on what matters most for your workflow.
+You can configure what information is displayed in the  section, so that you can focus on what matters most for your workflow.
 
 > [!note]
 > When you change the information displayed in a work item, you change it for all work items in your projects and groups.
 
-1. At the top-right corner of the **Linked items** section header, select **Display options** ().
+1. At the top-right corner of the  section header, select  ().
 
    By default, all options and fields are visible.
 1. To change the displayed information, turn the following toggles on or off:
 
    - For display options:
-     - **Show closed items**
+     -
    - For fields displayed:
-     - **Status**
-     - **Assignee**
-     - **Labels**
-     - **Weight**
-     - **Milestone**
-     - **Iteration**
-     - **Dates**
-     - **Health**
-     - **Blocked/Blocking**
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
 
 ## Related topics
 

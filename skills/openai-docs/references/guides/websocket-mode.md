@@ -16,8 +16,8 @@ Because the connection stays open and each turn sends only incremental input, We
 
 Install the WebSocket dependencies with `pip install "openai[realtime]>=3.8.0"` for Python, `npm install openai@^7.10.0 ws` for JavaScript, or `gem install openai async-websocket` for Ruby.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.70.0`.
-For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.73.0`.
+For Java, add the Maven dependency `com.openai:openai-java:4.79.0` and use Java 17 or later for these examples.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 In WebSocket mode, start each turn by sending a `response.create` event from the client. The payload mirrors the normal [Responses create body](https://developers.openai.com/api/reference/resources/responses/methods/create), except that transport-specific fields like `stream` and `background` are not used.
@@ -93,6 +93,8 @@ with client.responses.connect() as connection:
             break
         if event.type in {"response.failed", "response.incomplete", "error"}:
             raise RuntimeError(event.to_json())
+    else:
+        raise RuntimeError("Connection closed before the response finished.")
 ```
 
 ```go
@@ -130,6 +132,8 @@ import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.*;
 import java.util.*;
 
+var client = OpenAIOkHttpClient.fromEnv();
+
 try (var conn = client.responses().connect()) {
   conn.send(
       ResponsesClientEvent.ofResponseCreate(
@@ -149,6 +153,8 @@ try (var conn = client.responses().connect()) {
       .flatMap(message -> message.content().stream())
       .flatMap(content -> content.outputText().stream())
       .forEach(text -> System.out.println(text.text()));
+} finally {
+  client.close();
 }
 ```
 
@@ -457,6 +463,8 @@ import com.openai.core.JsonValue;
 import com.openai.models.responses.*;
 import java.util.*;
 
+var client = OpenAIOkHttpClient.fromEnv();
+
 var tool =
     FunctionTool.builder()
         .name("get_test_results")
@@ -525,6 +533,8 @@ try (var conn = client.responses().connect()) {
       .flatMap(message -> message.content().stream())
       .flatMap(content -> content.outputText().stream())
       .forEach(text -> System.out.println(text.text()));
+} finally {
+  client.close();
 }
 ```
 
@@ -720,6 +730,8 @@ with client.responses.connect() as connection:
             break
         if event.type in {"response.failed", "response.incomplete", "error"}:
             raise RuntimeError(event.to_json())
+    else:
+        raise RuntimeError("Connection closed before the response finished.")
 ```
 
 ```ruby

@@ -44,24 +44,24 @@ Prerequisites:
 
 To create a custom field:
 
-1. In the top bar, select **Search or go to** and find your group.
+1. In the top bar, select  and find your group.
    This group must be at the top level.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. Select **Create field**.
+1. In the left sidebar, select  > .
+1. Select .
 1. Complete the fields:
-   - In **Type**, select what type the field should be:
+   - In , select what type the field should be:
      - Single-select
      - Multi-select
      - Number
      - Text field
 
      The field type cannot be changed after you create the field.
-   - In **Use on**, select the work item types where you want this field to be available.
-   - In **Options** (on single-select and multi-select fields), enter the possible select options.
+   - In , select the work item types where you want this field to be available.
+   - In  (on single-select and multi-select fields), enter the possible select options.
      A single-select or multi-select field can have at most 50 select options.
      - Reorder options by dragging the grip icon () to the left of each option.
      - To add multiple options at once, select the input and paste a list of items, one per line.
-1. Select **Save**.
+1. Select .
 
 ### Edit a custom field
 
@@ -75,12 +75,12 @@ Prerequisites:
 
 To edit a custom field:
 
-1. In the top bar, select **Search or go to** and find your group.
+1. In the top bar, select  and find your group.
    This group must be at the top level.
-1. In the left sidebar, select **Settings** > **Work items**.
+1. In the left sidebar, select  > .
 1. Next to the field you want to edit, select **Edit `<field name>`** ().
 1. Make changes to any of the fields.
-1. Select **Update**.
+1. Select .
 
 ### Archive a custom field
 
@@ -93,9 +93,9 @@ Prerequisites:
 
 To archive a custom field:
 
-1. In the top bar, select **Search or go to** and find your group.
+1. In the top bar, select  and find your group.
    This group must be at the top level.
-1. In the left sidebar, select **Settings** > **Work items**.
+1. In the left sidebar, select  > .
 1. Next to the field you want to archive, select **Archive `<field name>`** ().
 
 ### Unarchive a custom field
@@ -109,10 +109,10 @@ Prerequisites:
 
 To unarchive a custom field:
 
-1. In the top bar, select **Search or go to** and find your group.
+1. In the top bar, select  and find your group.
    This group must be at the top level.
-1. In the left sidebar, select **Settings** > **Work items**.
-1. Select **Archived** to list archived fields.
+1. In the left sidebar, select  > .
+1. Select  to list archived fields.
 1. Next to the field you want to unarchive, select **Unarchive `<field name>`** ().
 
 ## Set custom field values for a work item
@@ -125,7 +125,7 @@ Prerequisites:
 - If you have the Guest role, you can set custom fields only when creating a work item.
 
 1. Go to a work item.
-1. In the right sidebar, find the section for the custom field you want to edit, and then select **Edit**.
+1. In the right sidebar, find the section for the custom field you want to edit, and then select .
 1. Enter or select the desired value.
    - A text field value can have at most 1024 characters.
 1. Select any area outside the field.

@@ -12,13 +12,42 @@ image: https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/og.png?v=
 
 # aws-sdk-js-v3
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 
 
 JavaScript or TypeScript users may continue to use the [`@aws-sdk/client-s3` ↗︎](https://www.npmjs.com/package/@aws-sdk/client-s3) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client.
+
+Using the SDK in a Worker
+
+The AWS SDK for JavaScript v3 works in [Workers](https://developers.cloudflare.com/workers/) with the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag enabled. Operations that parse an XML response, such as `ListObjectsV2`, `CopyObject`, `DeleteObjects`, and multipart uploads, can fail with `ReferenceError: DOMParser is not defined` when Wrangler bundles the SDK. This happens because the `browser` field of `@aws-sdk/xml-builder` swaps in a parser that depends on `DOMParser`, which the Workers runtime does not provide. To work around this, install `@aws-sdk/xml-builder` as a direct dependency (for example, `npm i @aws-sdk/xml-builder`) so that it resolves from your project root, then alias the package to its CommonJS build in your Wrangler configuration file:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Set this to today's date
+  "compatibility_date": "2026-10-27",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "alias": {
+    "@aws-sdk/xml-builder": "@aws-sdk/xml-builder/dist-cjs/index.js"
+  }
+}
+```
+
+```toml
+# Set this to today's date
+compatibility_date = "2026-10-27"
+compatibility_flags = ["nodejs_compat"]
+
+[alias]
+"@aws-sdk/xml-builder" = "@aws-sdk/xml-builder/dist-cjs/index.js"
+```
+
+If you only need object reads and writes from a Worker, the [R2 Workers API binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) does not require the SDK. [aws4fetch](https://developers.cloudflare.com/r2/examples/aws/aws4fetch/) is a lighter alternative for S3-compatible requests and presigned URLs.
 
 Note
 
@@ -64,9 +93,7 @@ console.log(await S3.send(new ListBucketsCommand({})));
 //     }
 // }
 
-console.log(
-	await S3.send(new ListObjectsV2Command({ Bucket: "my-bucket" })),
-);
+console.log(await S3.send(new ListObjectsV2Command({ Bucket: "my-bucket" })));
 // {
 //     '$metadata': {
 //       httpStatusCode: 200,
@@ -162,13 +189,13 @@ When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 ```json
 [
-  {
-    "AllowedOrigins": ["https://example.com"],
-    "AllowedMethods": ["PUT"],
-    "AllowedHeaders": ["Content-Type"],
-    "ExposeHeaders": ["ETag"],
-    "MaxAgeSeconds": 3600
-  }
+	{
+		"AllowedOrigins": ["https://example.com"],
+		"AllowedMethods": ["PUT"],
+		"AllowedHeaders": ["Content-Type"],
+		"ExposeHeaders": ["ETag"],
+		"MaxAgeSeconds": 3600
+	}
 ]
 ```
 
@@ -200,5 +227,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#page","headline":"aws-sdk-js-v3","description":"Configure the AWS SDK for JavaScript v3 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/og.png?v=b3b1215c38bb1dfd","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#page","headline":"aws-sdk-js-v3","description":"Configure the AWS SDK for JavaScript v3 to work with Cloudflare R2.","url":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/og.png?v=b3b1215c38bb1dfd","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

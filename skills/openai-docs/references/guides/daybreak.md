@@ -69,7 +69,9 @@ Both `access_programs` and `cyber` are optional, but neither accepts `null` in a
 
 ## Understand defaults when omitted
 
-If you omit `access_programs.cyber`, the API selects a compatible program based on the model and your organization and project access:
+Starting with `gpt-6.1-terra`, omitting the `access_programs.cyber` parameter results in `standard` request treatment instead of defaulting to the highest available Daybreak tier.
+
+For the models listed below, omitting `access_programs.cyber` uses the following defaults:
 
 - **Mainline models such as `gpt-6-sol`:** Daybreak Blue treatment when your organization and project have the required access; otherwise, standard safeguards.
 - **Red models such as `gpt-5.6-cyber`:** The API selects `daybreak_red`. The request fails if the required access is missing.

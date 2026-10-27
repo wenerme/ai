@@ -325,7 +325,7 @@ for more information.
 import WebSocket from "ws";
 
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
-const ws = new WebSocket(`wss://api.openai.com/v1/realtime?call_id=rtc_u1_9c6574da8b8a41a18da9308f4ad974ce`, {
+const ws = new WebSocket(`wss://api.openai.com/v1/realtime?call_id=${callId}`, {
   headers: {
     Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
   },
@@ -455,23 +455,23 @@ async def websocket_task(call_id):
 def webhook():
     try:
         event = client.webhooks.unwrap(request.data, request.headers)
-
-        if event.type == "realtime.call.incoming":
-            requests.post(
-                "https://api.openai.com/v1/realtime/calls/"
-                + event.data.call_id
-                + "/accept",
-                headers={**AUTH_HEADER, "Content-Type": "application/json"},
-                json=call_accept,
-            )
-            threading.Thread(
-                target=lambda: asyncio.run(websocket_task(event.data.call_id)),
-                daemon=True,
-            ).start()
-            return Response(status=200)
-    except InvalidWebhookSignatureError as e:
+    except (InvalidWebhookSignatureError, ValueError) as e:
         print("Invalid signature", e)
         return Response("Invalid signature", status=400)
+
+    if event.type == "realtime.call.incoming":
+        requests.post(
+            "https://api.openai.com/v1/realtime/calls/"
+            + event.data.call_id
+            + "/accept",
+            headers={**AUTH_HEADER, "Content-Type": "application/json"},
+            json=call_accept,
+        ).raise_for_status()
+        threading.Thread(
+            target=lambda: asyncio.run(websocket_task(event.data.call_id)),
+            daemon=True,
+        ).start()
+    return Response(status=200)
 
 
 if __name__ == "__main__":

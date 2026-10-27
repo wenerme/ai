@@ -293,7 +293,7 @@ const input = [
 
 while (true) {
   const response = await client.responses.create({
-    model: "YOUR_MODEL_ID",
+    model: "gpt-6-astra",
     store: false,
     input,
     tools,

@@ -47,6 +47,16 @@ Choose the mode when you create the session; to change modes, start a new sessio
 Add this delegation configuration when [creating your Live session](https://developers.openai.com/api/docs/guides/live). Choose the Responses model independently of the voice model:
 
 ```javascript
+export const session = {
+  model: "gpt-live-1",
+  delegation: {
+    type: "responses",
+    responses: {
+      model: "gpt-6-luna",
+      instructions: "[Your backend prompt]",
+    },
+  },
+};
 ```
 
 ```python
@@ -240,6 +250,12 @@ Both commands require Responses delegation. The Live `response.create` command u
 Set `delegation` when [creating your Live session](https://developers.openai.com/api/docs/guides/live):
 
 ```javascript
+export const session = {
+  model: "gpt-live-1",
+  delegation: {
+    type: "client",
+  },
+};
 ```
 
 ```python
@@ -313,7 +329,7 @@ async def send_update(
 
 Use `session.commentary.append` for results GPT-Live should say aloud; it is trained to paraphrase the text. Use `session.thinking.append` for facts or progress that it can use in later replies without saying them when they arrive. You can send multiple updates with the same client delegation ID.
 
-See [Send the right kind of update](#send-the-right-kind-of-update) for content limits, required fields, and acknowledgment timing.
+See [Send the right kind of update](#send-the-right-kind-of-update) for content limits and required fields. To avoid a spoken acknowledgment while your backend runs, see [Suppress automatic acknowledgments while tools run](#suppress-automatic-acknowledgments-while-tools-run).
 
   
 
@@ -459,6 +475,38 @@ The instruction does not cancel backend work. [Block the affected action and han
 The corresponding acknowledgements are `session.thinking.appended`, `session.commentary.appended`, and `session.instructions.appended`. Match their `client_event_id` to your outgoing `event_id`. The acknowledgment waits for estimated context injection, not for speech or playback to finish. See [when context reaches the model](https://developers.openai.com/api/docs/guides/live-conversations#understand-when-context-reaches-the-model) for timing and error handling.
 
 Send facts and brief progress summaries that GPT-Live can use in the conversation. Content sent with `session.thinking.append` can influence later spoken replies; keep secrets and private backend reasoning in your application.
+
+### Suppress automatic acknowledgments while tools run
+
+With client delegation, you can cancel the pending automatic acknowledgment by sending a silent context update before the acknowledgment is generated.
+
+Set `delegation.acknowledgement_delay_ms` when creating the session to give your application time to send the update. For example, use this client delegation configuration:
+
+```json
+{
+  "delegation": {
+    "type": "client",
+    "acknowledgement_delay_ms": 800
+  }
+}
+```
+
+As soon as you receive `session.delegation.created`, send `session.thinking.append` with empty `content`. Use a unique `event_id` and copy `event.delegation.id` into `delegation_id`. Send this before waiting for the backend result:
+
+```json
+{
+  "type": "session.thinking.append",
+  "event_id": "event_quiet_progress_1",
+  "delegation_id": "item_9tA2bF3h7K9m2P5q8R1s4",
+  "content": ""
+}
+```
+
+Continue the backend work, then send the verified result through `session.commentary.append` with the same delegation ID when it is ready to be spoken. If you want to provide progress context, a factual message such as `"Lookup in progress."` in the thinking append also cancels the pending acknowledgment without asking the model to speak that update.
+
+Any thinking or commentary append cancels **all pending automatic acknowledgments in the session**, including those for other delegations. It does not stop audio already generated or prevent independent model speech. The delay controls when the automatic acknowledgment is requested; the model may still speak earlier. Check the [client delegation configuration and thinking append reference](https://developers.openai.com/api/reference/resources/live/primary-websocket) for the event contract.
+
+Match the `session.thinking.appended` event's `client_event_id` to your outgoing event. This confirms context delivery, not silence. Test the resulting audio on your workload; use [application-controlled playback](https://developers.openai.com/api/docs/guides/voice-server-controls?api=live#control-playback-when-needed) when silence must be guaranteed.
 
 ## Keep updates accurate and useful
 

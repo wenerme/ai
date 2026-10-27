@@ -55,6 +55,7 @@ necessary context to continue the conversation. If you use
 ```javascript
 import OpenAI from "openai";
 import { toResponseInputItems } from "openai/lib/responses/ResponseInputItems";
+import { createInterface } from "node:readline";
 
 const client = new OpenAI();
 
@@ -66,15 +67,32 @@ const conversation = [
   },
 ];
 
-const response = await client.responses.create({
-  model: "gpt-5.3-codex",
-  input: conversation,
-  store: false,
-  context_management: [{ type: "compaction", compact_threshold: 200_000 }],
-});
+// Subscribe before generation so piped follow-up turns are not lost.
+const lines = createInterface({ input: process.stdin, crlfDelay: Infinity });
+const turns = lines[Symbol.asyncIterator]();
 
-conversation.push(...toResponseInputItems(response.output));
-console.log(response.output_text);
+async function respond() {
+  const response = await client.responses.create({
+    model: "gpt-5.3-codex",
+    input: conversation,
+    store: false,
+    context_management: [{ type: "compaction", compact_threshold: 200_000 }],
+  });
+
+  conversation.push(...toResponseInputItems(response.output));
+  console.log(response.output_text);
+}
+
+try {
+  await respond();
+  for await (const line of turns) {
+    if (!line.trim()) continue;
+    conversation.push({ type: "message", role: "user", content: line });
+    await respond();
+  }
+} finally {
+  lines.close();
+}
 ```
 
 ```python

@@ -14,7 +14,9 @@
 - `creditsPerMergedMrRatio` metric [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/533) in GitLab 19.5.
 - `!=` and `not in` operators on the `flowType`, `status`, and `user` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
 - `model` dimension [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/539) to display the model catalog name in GitLab 19.5.
-- `dropReason` filter and dimension [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/552) in GitLab 19.5.
+- `dropReason` filter and dimension [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/552) in GitLab 19.6.
+- `model` filter [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/542) in GitLab 19.6.
+- `idle` status [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/573) in GitLab 19.6.
 
 > [!flag]
 > This data source reads from the GitLab Duo Agent Platform flow analytics engine, which is
@@ -58,6 +60,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Drop reason](#drop-reason)         | `dropReason`                                  | `=`, `!=`, `in`, `not in` |
 | [Flow type](#flow-type)             | `flowType`                                    | `=`, `!=`, `in`, `not in` |
 | [Flow types used](#flow-types-used) | `flowTypesUsed`                               | `=`, `>`, `<`, `>=`, `<=` |
+| [Model](#model)                     | `model`                                       | `=`, `!=`, `in`, `not in` |
 | [Status](#status)                   | `status`                                      | `=`, `!=`, `in`, `not in` |
 | [User](#user)                       | `user`                                        | `=`, `!=`, `in`, `not in` |
 
@@ -130,6 +133,21 @@ selected period. `flowTypesUsed >= 2` matches users who used two or more flow ty
 - The same combination rule applies: use two range operators for a window, but not `=` with
   another comparison on the same field.
 
+### Model
+
+**Description**: Filter flows by the model they used.
+For example, `claude-sonnet-4-5`.
+
+**Allowed value types**:
+
+- `String`
+- `List` (use `in` or `not in` operator for multiple values)
+
+**Notes**:
+
+- Use the model identifier that the flow reported, not the catalog name that the `model` dimension displays.
+- Flows with no model attribution have an empty identifier. Use `model != ""` to exclude them.
+
 ### Status
 
 **Description**: Filter flows by their lifecycle status.
@@ -137,12 +155,13 @@ selected period. `flowTypesUsed >= 2` matches users who used two or more flow ty
 **Allowed value types**:
 
 - `Enum`, one of `created`, `running`, `paused`, `finished`, `failed`, `stopped`,
-  `input_required`, `plan_approval_required`, or `tool_call_approval_required`
+  `input_required`, `plan_approval_required`, `tool_call_approval_required`, or `idle`
 - `List` (use `in` or `not in` operator for multiple values)
 
 **Notes**:
 
 - The three `*_required` statuses are flows waiting on the user, and are distinct from `paused`.
+- `idle` flows have finished their turn and accept a next message.
 - Statuses are matched case-insensitively. Other spellings, like `completed` or `aborted`, are not accepted.
 
 ### User

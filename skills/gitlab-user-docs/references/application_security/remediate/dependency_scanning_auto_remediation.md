@@ -169,7 +169,7 @@ To set runner tags:
    Settings you do not specify keep their default values.
 
 1. Attach the profile to your projects or groups. For instructions, see
-   [apply a profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-a-profile-with-the-graphql-api).
+   [apply a profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api).
 
 To change the tags later, update your profile with the `securityScanProfileUpdate` mutation.
 The update replaces the profile's triggers and their settings, so include every trigger

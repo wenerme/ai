@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -728,35 +728,99 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 
 ## Configure via Terraform
 
-You can manage MCP server portals using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). Use the `cloudflare_zero_trust_access_mcp_server_portal` resource to create and configure portals programmatically.
+You can manage MCP servers and portals using the Cloudflare Terraform provider. Use the [`cloudflare_zero_trust_access_ai_controls_mcp_server` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_ai_controls_mcp_server) and [`cloudflare_zero_trust_access_ai_controls_mcp_portal` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_ai_controls_mcp_portal) resources.
 
 Caution
 
 Unlike the dashboard, the Terraform provider does not automatically create DNS records for your portal hostname. You must create a CNAME record that points your portal subdomain to `gateway.agents.cloudflare.com`. Without this record, the portal will return `522` errors.
 
-The following example creates an MCP server portal with a CNAME record:
+The following example creates an unauthenticated upstream MCP server, a portal, and the Access resources required for a service token to use the server through the portal:
 
-*MCP server portal with DNS recordhcl*
+*MCP server portal with service token accesshcl*
 
 ```hcl
-# Create the MCP server portal
-resource "cloudflare_zero_trust_access_mcp_server_portal" "example" {
+resource "cloudflare_zero_trust_access_service_token" "mcp_bot" {
   account_id = var.cloudflare_account_id
-  name       = "Engineering Portal"
-  hostname   = "mcp.example.com"
+  name       = "MCP bot"
+  duration   = "8760h"
 }
 
-# Required: Create the CNAME record for the portal hostname
+resource "cloudflare_zero_trust_access_policy" "mcp_bot" {
+  account_id = var.cloudflare_account_id
+  name       = "Allow MCP bot"
+  decision   = "non_identity"
+
+  include = [{
+    service_token = {
+      token_id = cloudflare_zero_trust_access_service_token.mcp_bot.id
+    }
+  }]
+}
+
+resource "cloudflare_zero_trust_access_ai_controls_mcp_server" "docs" {
+  account_id = var.cloudflare_account_id
+  id         = "cloudflare-docs"
+  name       = "Cloudflare documentation"
+  hostname   = "https://docs.mcp.cloudflare.com/mcp"
+  auth_type  = "unauthenticated"
+}
+
+resource "cloudflare_zero_trust_access_application" "docs" {
+  account_id = var.cloudflare_account_id
+  name       = "Cloudflare documentation"
+  type       = "mcp"
+
+  destinations = [{
+    type          = "via_mcp_server_portal"
+    mcp_server_id = cloudflare_zero_trust_access_ai_controls_mcp_server.docs.id
+  }]
+
+  policies = [{
+    id         = cloudflare_zero_trust_access_policy.mcp_bot.id
+    precedence = 1
+  }]
+}
+
+resource "cloudflare_zero_trust_access_ai_controls_mcp_portal" "engineering" {
+  account_id = var.cloudflare_account_id
+  id         = "engineering"
+  name       = "Engineering Portal"
+  hostname   = "mcp.example.com"
+
+  servers = [{
+    server_id = cloudflare_zero_trust_access_ai_controls_mcp_server.docs.id
+    on_behalf = false
+  }]
+}
+
+resource "cloudflare_zero_trust_access_application" "engineering" {
+  account_id = var.cloudflare_account_id
+  name       = "Engineering Portal"
+  type       = "mcp_portal"
+  domain     = cloudflare_zero_trust_access_ai_controls_mcp_portal.engineering.hostname
+
+  destinations = [{
+    type = "public"
+    uri  = cloudflare_zero_trust_access_ai_controls_mcp_portal.engineering.hostname
+  }]
+
+  policies = [{
+    id         = cloudflare_zero_trust_access_policy.mcp_bot.id
+    precedence = 1
+  }]
+}
+
 resource "cloudflare_dns_record" "mcp_portal" {
   zone_id = var.cloudflare_zone_id
   name    = "mcp"
   content = "gateway.agents.cloudflare.com"
   type    = "CNAME"
   proxied = true
+  ttl     = 1
 }
 ```
 
-For the full list of supported resource arguments, refer to the [Terraform provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+The provider marks the service token's `client_secret` as sensitive, but Terraform still stores it in state. Store Terraform state securely and pass the credentials to your MCP client through a secret manager or environment variables.
 
 ## Code Mode
 
@@ -991,15 +1055,20 @@ If a linked MCP server does not have a Service Auth policy matching the token, t
    2. Open the portal and edit the server. Turn **Require user auth** off so the portal uses the [admin credential](#reauthenticate-the-mcp-server) for that server.
 4. Connect from your MCP client with the service token headers.
 
-For a CLI client, set the headers directly:
+To configure this flow with the API, set `servers[].on_behalf` to `false` in the [MCP portal request](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/ai_controls/subresources/mcp/subresources/portals/methods/create/). Create a `non_identity` Access policy with a `service_token` include rule. Attach the policy to the portal and each linked server Access application. For a complete Terraform example, refer to [Configure via Terraform](#configure-via-terraform).
+
+To verify the connection, send an MCP `initialize` request with the service token headers:
 
 ```sh
 curl https://<subdomain>.<domain>/mcp \
   -H "CF-Access-Client-Id: <CLIENT_ID>" \
-  -H "CF-Access-Client-Secret: <CLIENT_SECRET>"
+  -H "CF-Access-Client-Secret: <CLIENT_SECRET>" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"service-token-test","version":"1.0.0"}}}'
 ```
 
-For clients that support custom headers, configure the service token directly:
+For `mcp-remote`, pass the credentials through environment variables instead of storing them in the MCP client configuration:
 
 *MCP client configuration for service token connectionsjson*
 
@@ -1007,10 +1076,19 @@ For clients that support custom headers, configure the service token directly:
 {
 	"mcpServers": {
 		"example-portal": {
-			"url": "https://<subdomain>.<domain>/mcp",
-			"headers": {
-				"CF-Access-Client-Id": "<CLIENT_ID>",
-				"CF-Access-Client-Secret": "<CLIENT_SECRET>"
+			"command": "npx",
+			"args": [
+				"-y",
+				"mcp-remote@latest",
+				"https://<subdomain>.<domain>/mcp",
+				"--header",
+				"CF-Access-Client-Id:${ACCESS_CLIENT_ID}",
+				"--header",
+				"CF-Access-Client-Secret:${ACCESS_CLIENT_SECRET}"
+			],
+			"env": {
+				"ACCESS_CLIENT_ID": "<CLIENT_ID>",
+				"ACCESS_CLIENT_SECRET": "<CLIENT_SECRET>"
 			}
 		}
 	}
@@ -1257,5 +1335,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

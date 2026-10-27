@@ -46,7 +46,7 @@ You can track the progress of work items using different criteria.
 
 ### View count and weight of issues in an epic
 
-In the **Child items** section header of an epic, the number of descendant work items
+In the  section header of an epic, the number of descendant work items
 and their total weight is displayed. Task weights are included in the total issue weight.
 
 To see the number of open and closed work items, in the section header or
@@ -59,7 +59,7 @@ not have permission to view.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/5163) in GitLab 17.1.
 
-In the **Child items** section header of an epic, the epic progress percentage is displayed.
+In the  section header of an epic, the epic progress percentage is displayed.
 
 To see the completed and total weight of child items, in the section header,
 hover over the percentage.
@@ -90,7 +90,7 @@ The maximum number of direct child issues and epics is 5000.
 
 You can add existing issues to an epic, including issues in a project from a [different group hierarchy](../group/epics/_index.md#child-issues-from-different-group-hierarchies).
 
-Newly added issues appear at the top of the list of issues in the **Child items** section.
+Newly added issues appear at the top of the list of issues in the  section.
 
 An epic contains a list of issues and an issue can be set as a child item of at most one epic.
 When you add a new issue that's already linked to an epic, the issue is automatically unlinked from its
@@ -105,7 +105,7 @@ Prerequisites:
 
 To add an existing issue to an epic:
 
-1. On the epic's page, under **Child items**, select **Add**.
+1. On the epic's page, under , select  ().
 1. Select **Existing issue**.
 1. Identify the issue to be added, using either of the following methods:
    - Paste the link of the issue.
@@ -114,7 +114,7 @@ To add an existing issue to an epic:
      To add such an issue, enter its full URL.
 
    If there are multiple issues to be added, press <kbd>Space</kbd> and repeat this step.
-1. Select **Add**.
+1. Select **Add issue**.
 
 #### Create an issue from an epic
 
@@ -133,10 +133,10 @@ Prerequisites:
 
 To create an issue from an epic:
 
-1. On the epic's page, under **Child items**, select **Add**.
-1. Select **Add a new issue**.
-1. Under **Title**, enter the title for the new issue.
-1. From the **Project** dropdown list, select the project in which the issue should be created.
+1. On the epic's page, under , select  ().
+1. Select **New issue**.
+1. Under , enter the title for the new issue.
+1. From the  dropdown list, select the project in which the issue should be created.
 1. Select **Create issue**.
 
 The new issue is assigned to the epic.
@@ -147,7 +147,7 @@ You can reorder child items and reorganize them within the hierarchy.
 
 ### Reorder issues assigned to an epic
 
-New issues show at the top of the list in the **Child items** section.
+New issues show at the top of the list in the  section.
 You can reorder the list of issues by dragging them.
 
 Prerequisites:
@@ -156,7 +156,7 @@ Prerequisites:
 
 To reorder issues assigned to an epic:
 
-1. Go to the **Child items** section.
+1. Go to the  section.
 1. Drag issues into the desired order.
 
 ### Move issues between epics
@@ -164,7 +164,7 @@ To reorder issues assigned to an epic:
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-New issues appear at the top of the list in the **Child items**
+New issues appear at the top of the list in the
 tab. You can move issues from one epic to another.
 
 Prerequisites:
@@ -173,7 +173,7 @@ Prerequisites:
 
 To move an issue to another epic:
 
-1. Go to the **Child items** section.
+1. Go to the  section.
 1. Drag issues into the desired parent epic in the visible hierarchy.
 
 ### Moving child items when the parent issue is moved
@@ -201,9 +201,8 @@ Prerequisites:
 
 To remove an issue from an epic:
 
-1. Next to the issue you want to remove, select **Remove** ().
-   The **Remove issue** warning appears.
-1. Select **Remove**.
+1. Next to the issue you want to remove, select  ().
+   To restore the issue, select .
 
 ## Work with multi-level hierarchies
 
@@ -233,10 +232,10 @@ Prerequisites:
 
 To add a parent epic:
 
-1. On the top bar, select **Search or go to** and find your group.
-1. Select **Plan** > **Work items**.
+1. On the top bar, select  and find your group.
+1. Select  > .
 1. Select an epic.
-1. In the right sidebar, in the **Parent** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. In the search box, enter part of the parent epic's title.
    You can only search for epics in the same group hierarchy.
 1. From the search results, select the epic you want to add as the parent.
@@ -264,8 +263,8 @@ Prerequisites:
 
 To view child epics from the parent:
 
-- In the **Child items** section header, select **Display options** () >
-  **View on a roadmap**.
+- In the  section header, select  () >
+  .
 
 ### Add a child epic to an epic
 
@@ -277,7 +276,7 @@ Prerequisites:
 
 To add a new epic as child epic:
 
-1. In an epic, in the **Child items** section, select **Add** > **Add a new epic**.
+1. In an epic, in the  section, select  () > **New epic**.
 1. Select a group from the dropdown list. The epic's group is selected by default.
 1. Enter a title for the new epic.
 1. Select **Create epic**.
@@ -286,7 +285,7 @@ To add a new epic as child epic:
 
 To add an existing epic as child epic:
 
-1. In an epic, in the **Child items** section, select **Add** > **Existing epic**.
+1. In an epic, in the  section, select  () > **Existing epic**.
 1. Identify the epic to be added, using either of the following methods:
    - Paste the link of the epic.
    - Search for the desired epic by entering part of the epic's title, then
@@ -294,11 +293,11 @@ To add an existing epic as child epic:
      same group hierarchy.
 
    If there are multiple epics to be added, press <kbd>Space</kbd> and repeat this step.
-1. Select **Add**.
+1. Select **Add epic**.
 
 ### Move child epics between epics
 
-New child epics appear at the top of the list in the **Child items** section.
+New child epics appear at the top of the list in the  section.
 You can move child epics from one epic to another.
 When you add a new epic that's already linked to a parent epic, the link to its current parent is removed.
 Issues and child epics cannot be intermingled.
@@ -309,12 +308,12 @@ Prerequisites:
 
 To move child epics to another epic:
 
-1. Go to the **Child items** section.
+1. Go to the  section.
 1. Drag epics into the desired parent epic.
 
 ### Reorder child epics assigned to an epic
 
-New child epics appear at the top of the list in the **Child items** section.
+New child epics appear at the top of the list in the  section.
 You can reorder the list of child epics.
 
 Prerequisites:
@@ -323,7 +322,7 @@ Prerequisites:
 
 To reorder child epics assigned to an epic:
 
-1. Go to the **Child items** section.
+1. Go to the  section.
 1. Drag epics into the desired order.
 
 ### Remove a child epic from a parent epic
@@ -334,40 +333,39 @@ Prerequisites:
 
 To remove a child epic from a parent epic:
 
-1. Select **Remove** () in the parent epic's list of epics.
-   The **Remove epic** warning appears.
-1. Select **Remove**.
+1. Select  () in the parent epic's list of epics.
+   To restore the epic, select .
 
 ## Configure child item display preferences
 
-You can configure what information is displayed in the **Child items** section, so that you can focus on what matters most for your workflow.
+You can configure what information is displayed in the  section, so that you can focus on what matters most for your workflow.
 
 - Display options for child items [expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/551231) in GitLab 18.10.
 
-You can configure what information is displayed in the **Child items** section,
+You can configure what information is displayed in the  section,
 so that you can focus on what matters most for your workflow.
 
 > [!note]
 > When you change the information displayed in one epic or issue, you change it for all work items in your groups and projects.
 
-1. At the top-right corner of the **Child items** section header, select
-   **Display options** ().
+1. At the top-right corner of the  section header, select
+    ().
 
    By default, all options and fields are visible.
 1. To change the displayed information, turn the following toggles on or off:
 
    - For display options:
-     - **Show closed items**
+     -
    - For fields displayed:
-     - **Status**
-     - **Assignee**
-     - **Labels**
-     - **Weight**
-     - **Milestone**
-     - **Iteration**
-     - **Dates**
-     - **Health**
-     - **Blocked/Blocking**
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
 
 ## Related topics
 

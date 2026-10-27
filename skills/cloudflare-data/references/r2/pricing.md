@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/pricing/og.png?v=46c2776b14079b46
 
 # Pricing
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 charges based on the total volume of data stored, along with two classes of operations on that data:
 
@@ -166,9 +166,18 @@ To learn more about how usage is billed, refer to [Cloudflare Billing Policy](ht
 
 ## Frequently asked questions
 
-### Will I be charged for unauthorized requests to my R2 bucket?
+### Will I be charged for failed requests to my R2 bucket?
 
-No. You are not charged for operations when the caller does not have permission to make the request (HTTP 401 `Unauthorized` response status code).
+Requests that fail during authentication or authorization are not charged. This includes:
+
+- HTTP 401 ( `Unauthorized`) — missing or invalid credentials.
+- HTTP 403 when caused by an authentication failure such as `SignatureDoesNotMatch`, `ExpiredRequest`, or `RequestTimeTooSkewed`.
+- HTTP 403 ( `AccessDenied`) when valid credentials do not have permission to perform the operation.
+
+Some requests that pass authentication and authorization but fail for other reasons are counted and billed according to the operation's class. For example:
+
+- A `PutObject` returning HTTP 412 ( `PreconditionFailed`) due to a conditional header like `If-None-Match` counts as a Class A operation.
+- A `PutObject` returning HTTP 400 ( `BadDigest`) due to a mismatched `Content-MD5` counts as a Class A operation.
 
 ## Footnotes
 
@@ -183,5 +192,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/pricing/og.png?v=46c2776b14079b46","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/pricing/og.png?v=46c2776b14079b46","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

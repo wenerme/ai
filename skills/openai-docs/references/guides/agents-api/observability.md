@@ -268,21 +268,41 @@ Session turns are available through the public API. Use the `turn_id` from a com
 Identify delegated command execution
 
 ```javascript
-// Replace the illustrative IDs and URLs below with your own resource values.
+// Replace the illustrative session and turn IDs with values from your command item.
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const sessionId = "sess_123";
-const turns = await client.beta.agents.sessions.turns.list(sessionId, {
-  limit: 20,
-  order: "desc",
-});
-console.log(turns.data);
-const turnId = "turn_123";
-const turn = await client.beta.agents.sessions.turns.retrieve(turnId, {
-  session_id: sessionId,
-});
-console.log(turn.subagent_id);
+async function findTurn(sessionId, turnId) {
+  for await (const turn of client.beta.agents.sessions.turns.list(sessionId, {
+    limit: 100,
+  })) {
+    if (turn.id === turnId) {
+      return client.beta.agents.sessions.turns.retrieve(turnId, {
+        session_id: sessionId,
+      });
+    }
+  }
+  for await (const subagent of client.beta.agents.sessions.subagents.list(
+    sessionId,
+    { limit: 100 }
+  )) {
+    for await (const turn of client.beta.agents.sessions.subagents.turns.list(
+      subagent.id,
+      { session_id: sessionId, limit: 100 }
+    )) {
+      if (turn.id === turnId) {
+        return client.beta.agents.sessions.subagents.turns.retrieve(turnId, {
+          session_id: sessionId,
+          subagent_id: subagent.id,
+        });
+      }
+    }
+  }
+  throw new Error(`Turn ${turnId} not found in session ${sessionId}`);
+}
+
+const turn = await findTurn("sess_123", "turn_123");
+console.log(turn.subagent_id || "main agent");
 ```
 
 ```python

@@ -2594,6 +2594,7 @@ A direct role assignment. A user, the Artifact Registry role they hold, and the 
 | ---- | ---- | ----------- |
 | `assignee` | [`UserCore`](#usercore) | User the role is assigned to. |
 | `createdAt` | [`Time`](scalars.md#time) | Time the assignment was created. |
+| `grantedBy` | [`UserCore`](#usercore) | User who granted the role. Null when unknown, for example for grants made before this field existed or by a user who was deleted. |
 | `resourceId` | [`String!`](scalars.md#string) | UUID of the Artifact Registry resource the role is assigned on. |
 | `role` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Assigned Artifact Registry role. |
 
@@ -8597,6 +8598,10 @@ A message in a Duo Workflow chat log.
 | `timestamp` | [`String`](scalars.md#string) | Timestamp of the message. |
 | `toolInfo` | [`String`](scalars.md#string) | Tool information for the message. |
 
+## `DuoMessageConnection`
+
+Paginated collection of [`DuoMessage`](#duomessage). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
 ## `DuoSettings`
 
 GitLab Duo settings.
@@ -8841,10 +8846,11 @@ Events that describe the history and progress of a GitLab Duo Agent Platform ses
 | `checkpointWrites` | [`[DuoWorkflowCheckpointWrite!]`](#duoworkflowcheckpointwrite) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Pending writes associated with the checkpoint, e.g. interrupts awaiting resumption. |
 | `compressedCheckpoint` | [`String`](scalars.md#string) | Checkpoint of the event, zlib-compressed and Base64-encoded. |
 | `currentThread` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Compaction group this checkpoint belongs to. The writer bumps it on every compaction and resets it when its process restarts, so a client that resumes a session must read it back from here to keep numbering the groups correctly. |
-| `duoMessages` | [`[DuoMessage!]`](#duomessage) | Messages from the ui_chat_log for the checkpoint. |
+| `duoMessages` | [`[DuoMessage!]`](#duomessage) | Messages from the ui_chat_log for the checkpoint. Returns only the newest 100 when the `duo_workflow_cap_duo_messages` feature flag is enabled. |
 | `errors` | [`[String!]`](scalars.md#string) | Message errors. |
 | `executionStatus` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.10.Granular status of the session's execution. |
 | `lastDuoMessage` | [`DuoMessage`](#duomessage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Most recent message from the ui_chat_log for the checkpoint. Cheaper than duoMessages for list previews: it reads only the latest message instead of the full chat log. |
+| `messages` | [`DuoMessageConnection`](#duomessageconnection) | Messages from the ui_chat_log for the checkpoint, oldest first. Pass `last` to read the newest messages, then `before` with `startCursor` to page back to older ones. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `metadata` | [`JsonString`](scalars.md#jsonstring) | Metadata associated with the event. |
 | `parentTs` | [`String`](scalars.md#string) | UUID v7 timestamp identifier of the parent message for branched conversations or responses. |
 | `threadTs` | [`String`](scalars.md#string) | UUID v7 timestamp identifier for the conversation thread/session in LangGraph state management. |
@@ -14461,7 +14467,7 @@ Credits of an Orbit trial.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `remaining` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of trial credits remaining. |
-| `total` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Number of credits the trial started with. |
+| `total` | [`Float`](scalars.md#float) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Total number of credits granted to the trial. |
 
 ## `OrbitTrialOffer`
 
@@ -18674,7 +18680,7 @@ Represents security metrics.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `mttrOverTime` | [`[MttrOverTimeBucket!]`](#mttrovertimebucket) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Weekly mean time to remediation (MTTR) of vulnerabilities. Each week only counts vulnerabilities detected no earlier than 90 days before the week starts, so a week's MTTR is at most about 97 days. Returns `null` unless the `security_dashboard_mttr_chart` feature flag is enabled. This feature is currently under development and not yet available for general use.  <strong>Arguments for `mttrOverTime`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date of the time range. Snapped forward to the end of its week (Sunday), capped at the current date. The most recent week may be partial. The range can span at most 12 weeks.</dd><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date of the time range. Snapped back to the start of its week (Monday) so results align to full Monday to Sunday buckets.</dd></dl> |
-| `riskScore` | [`RiskScore`](#riskscore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.Total risk score information. This feature is currently under development and not yet available for general use. |
+| `riskScore` | [`RiskScore`](#riskscore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.Total risk score information. By default, excludes vulnerabilities that are no longer detected on the default branch. This feature is currently under development and not yet available for general use.  <strong>Arguments for `riskScore`:</strong> <dl><dt>`hasResolution` ([`Boolean`](scalars.md#boolean))</dt><dd>Filters vulnerabilities by whether they are no longer detected on the default branch. If true, includes only those vulnerabilities. If false (default), excludes them.</dd></dl> |
 | `vulnerabilitiesByAge` | [`[VulnerabilitiesByAge!]`](#vulnerabilitiesbyage) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.9.Vulnerability age statistics based on predefined age bands. See [`VulnerabilitiesByAge`](#vulnerabilitiesbyage) for details. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesByAge`:</strong> <dl><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd></dl> |
 | `vulnerabilitiesByIdentifier` | [`[VulnerabilitiesByIdentifier!]`](#vulnerabilitiesbyidentifier) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.Vulnerability identifier statistics with filtering. This feature is currently under development and not yet available for general use.  <strong>Arguments for `vulnerabilitiesByIdentifier`:</strong> <dl><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd></dl> |
 | `vulnerabilitiesOverTime` | [`VulnerabilitiesOverTimeConnection`](#vulnerabilitiesovertimeconnection) | Vulnerability metrics over time with filtering and grouping capabilities. This feature is currently under development and not yet available for general use. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `vulnerabilitiesOverTime`:</strong> <dl><dt>`endDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>End date for the vulnerability metrics time range. The end date should be within 31 days from the start date.</dd><dt>`severity` ([`[VulnerabilitySeverity!]`](enums.md#vulnerabilityseverity))</dt><dd>Filter vulnerabilities by severity.</dd><dt>`startDate` ([`ISO8601Date!`](scalars.md#iso8601date))</dt><dd>Start date for the vulnerability metrics time range.</dd></dl> |

@@ -211,15 +211,7 @@ On April 22, 2026, we announced the deprecation of the following older OpenAI mo
 | October 23, 2026 | `ft-o4-mini-2025-04-16`                                                | `gpt-5.6-terra`                                   |
 | October 23, 2026 | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5.6-terra`                                   |
 
-The following fine-tuned versions were also shut down on October 23, 2026:
-
-| Shutdown date    | Model snapshot               | Recommended replacement base model |
-| ---------------- | ---------------------------- | ---------------------------------- |
-| October 23, 2026 | `ft-gpt-3.5-turbo`           | `gpt-5.6-terra`                    |
-| October 23, 2026 | `ft-gpt-4`                   | `gpt-5.6-sol`                      |
-| October 23, 2026 | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5.6-luna`                     |
-| October 23, 2026 | `ft-babbage-002`             | `gpt-5.6-terra`                    |
-| October 23, 2026 | `ft-davinci-002`             | `gpt-5.6-terra`                    |
+Fine-tuned versions of these models follow the same shutdown schedule as their underlying base models.
 
 ### 2026-04-22: Legacy GPT model snapshots (July 2026 shutdown)
 
@@ -282,7 +274,7 @@ On November 14th, 2025, we notified developers using DALL·E model snapshots of 
 
 ### 2025-09-26: Legacy GPT model snapshots
 
-To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models with declining usage over the next six to twelve months. Access to these models will be shut down on the dates below.
+To improve reliability and make it easier for developers to choose the right models, we deprecated a set of older OpenAI models with declining usage. Access to these models was shut down on September 28, 2026.
 
 | Shutdown date | Model / system           | Recommended replacement |
 | ------------- | ------------------------ | ----------------------- |

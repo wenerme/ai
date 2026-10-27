@@ -1237,6 +1237,7 @@ const stream = await openai.responses.create({
   model: "gpt-6-astra",
   input: [{ role: "user", content: "What's the weather like in Paris today?" }],
   tools,
+  tool_choice: "required",
   stream: true,
   store: true,
 });

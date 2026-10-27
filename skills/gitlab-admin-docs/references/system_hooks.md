@@ -51,6 +51,10 @@ that occur in that organization.
 | `tag_push`                                | A tag is added or deleted. |
 | `merge_request`                           | A merge request is created, updated, merged, or closed. |
 
+User events (`user_create`, `user_destroy`, `user_rename`, `user_failed_login`) and key events
+(`key_create`, `key_destroy`) run only in the organization that owns the user or key.
+Membership and access request events run in the organization of the group or project.
+
 > [!note]
 > For push and tag events, the same structure and deprecations are followed as
 > [project and group webhooks](../user/project/integrations/webhooks.md).
@@ -139,6 +143,12 @@ System hooks are subject to the same push event limits as project webhooks. By d
 This limit is controlled by the `push_event_hooks_limit` setting
 (default: `3`). For GitLab Self-Managed instances, administrators can modify this limit using the
 [Application settings API](../api/settings.md#available-settings).
+
+System hooks managed by organization administrators are
+[auto-disabled](../user/project/integrations/webhooks.md#auto-disabled-webhooks) after repeated failures,
+the same as project webhooks. System hooks managed by instance administrators are not auto-disabled.
+Auto-disabling is controlled by the `auto_disabling_web_hooks` [feature flag](feature_flags/_index.md),
+which is disabled by default.
 
 ## Hooks request example
 
@@ -975,6 +985,10 @@ User denied on a billable role by instance admin:
 
 [Requests to local network by system hooks](../security/webhooks.md) can be allowed
 or blocked by an administrator.
+
+The **Allow requests to the local network from system hooks** setting applies only to system hooks
+in the default organization. System hooks in other organizations follow the
+**Allow requests to the local network from webhooks and integrations** setting.
 
 ## Related topics
 

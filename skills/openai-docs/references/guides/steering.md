@@ -10,7 +10,7 @@ Mid-turn steering is available with the GPT-6 model family over a WebSocket
 
 Steering does not rewrite output already sent to your application, undo earlier actions, or cancel tools that have already started.
 
-For connection setup and general transport behavior, see [WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode). For exact event definitions, see the [Responses WebSocket events reference](https://developers.openai.com/api/reference/resources/responses/websocket-events).
+The Java example requires Java 17 or later. For connection setup and general transport behavior, see [WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode). For exact event definitions, see the [Responses WebSocket events reference](https://developers.openai.com/api/reference/resources/responses/websocket-events).
 
 ## Send a steering message
 
@@ -127,6 +127,7 @@ try {
     });
     ws.send({
       type: "response.create",
+      store: false,
       model: "gpt-6-astra",
       reasoning: { effort: "medium" },
       input: "Draft a project plan for building a task-tracking app.",
@@ -150,7 +151,7 @@ async def main():
     initial_response_id = None
     successor_response_id = None
 
-    async with client.responses.connect() as connection, asyncio.timeout(120):
+    async with client.responses.connect() as connection:
         await connection.response.create(
             model="gpt-6-astra",
             reasoning={"effort": "medium"},
@@ -187,7 +188,11 @@ async def main():
         raise RuntimeError("Connection closed before the steered response finished.")
 
 
-asyncio.run(main())
+async def run():
+    await asyncio.wait_for(main(), timeout=120)
+
+
+asyncio.run(run())
 ```
 
 ```go
@@ -258,6 +263,8 @@ for {
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.*;
 import java.util.*;
+
+var client = OpenAIOkHttpClient.fromEnv();
 
 long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(120);
 try (var conn =

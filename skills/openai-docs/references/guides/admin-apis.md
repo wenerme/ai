@@ -183,7 +183,7 @@ const spendAlert = await client.admin.organization.projects.spendAlerts.create(
     notification_channel: {
       recipients: ["billing@example.com"],
       type: "email",
-      subject_prefix: "[OpenAI spend]",
+      subject_prefix: "OpenAI spend",
     },
     threshold_amount: 50000,
   }

@@ -180,7 +180,7 @@ app.post("/session", async (req, res) => {
     });
     // Send back the SDP we received from the OpenAI REST API
     const sdp = await r.text();
-    res.send(sdp);
+    res.status(r.status).send(sdp);
   } catch (error) {
     console.error("Token generation error:", error);
     res.status(500).json({ error: "Failed to generate token" });

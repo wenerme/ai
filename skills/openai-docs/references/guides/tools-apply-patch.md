@@ -45,13 +45,39 @@ At a high level, using `apply_patch` with the Responses API looks like this:
 Ask the model to plan and emit patches
 
 ```javascript
-const response = await client.responses.create({
+import OpenAI from "openai";
+// Application-owned helper; see "Implementing the patch harness" in the guide.
+// This demo only applies exact updates to the two in-memory files below.
+import { applyOperation } from "../../support/apply-patch.mjs";
+
+const client = new OpenAI();
+const files = {
+  "lib/fib.py": `def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+`,
+  "run.py": `from lib.fib import fib
+
+print(fib(42))
+`,
+};
+const fileContext = `The user has the following files:
+<BEGIN_FILES>
+${Object.entries(files)
+  .map(([path, content]) => `===== ${path}\n${content}`)
+  .join("\n")}
+<END_FILES>
+
+Help me rename the fib() function to fibonacci().`;
+
+let response = await client.responses.create({
   model: "gpt-6-astra",
   input: fileContext,
   tools: [{ type: "apply_patch" }],
 });
 
-const patchCalls = response.output.filter(
+let patchCalls = response.output.filter(
   (item) => item.type === "apply_patch_call"
 );
 ```
@@ -177,25 +203,34 @@ Example apply_patch_call object
 Apply the patch and return results
 
 ```javascript
-const results = patchCalls.map((call) => {
-  const { success, output } = applyOperation(call.operation);
+for (let turn = 0; patchCalls.length > 0; turn++) {
+  if (turn === 8) throw new Error("Patch workflow exceeded eight tool turns.");
+  const results = patchCalls.map((call) => {
+    const { success, output } = applyOperation(files, call.operation);
 
-  return {
-    type: "apply_patch_call_output",
-    call_id: call.call_id,
-    status: success ? "completed" : "failed",
-    output,
-  };
-});
+    return {
+      type: "apply_patch_call_output",
+      call_id: call.call_id,
+      status: success ? "completed" : "failed",
+      output,
+    };
+  });
 
-const followup = await client.responses.create({
-  model: "gpt-6-astra",
-  previous_response_id: response.id,
-  input: results,
-  tools: [{ type: "apply_patch" }],
-});
+  response = await client.responses.create({
+    model: "gpt-6-astra",
+    previous_response_id: response.id,
+    input: results,
+    tools: [{ type: "apply_patch" }],
+  });
+  patchCalls = response.output.filter(
+    (item) => item.type === "apply_patch_call"
+  );
+}
 
-console.log(followup.output_text);
+console.log(response.output_text);
+for (const [path, content] of Object.entries(files)) {
+  process.stdout.write(`===== ${path}\n${content}`);
+}
 ```
 
 ```python

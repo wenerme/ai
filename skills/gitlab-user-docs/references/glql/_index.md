@@ -40,6 +40,7 @@ see [GLQL fields](fields.md).
 
 - Combining `=` with another comparison on the same date or range field [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/516) to return an error in GitLab 19.5. Previously only one of the two conditions was applied.
 - `not in` operator [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5 for list filters on analytics data sources.
+- An empty list with the `in` operator [changed](https://gitlab.com/gitlab-org/glql/-/merge_requests/549) to return an error in GitLab 19.6. Previously, analytics data sources returned no rows and other data sources ignored the filter.
 
 **Comparison operators**:
 
@@ -59,8 +60,9 @@ see [GLQL fields](fields.md).
 
 The `not in` operator excludes every value in a list, for example
 `flowType not in ("chat", "agentic_chat/v1")`. It is available on the analytics
-data source fields that list it, and the list must contain at least one value.
-Use `!=` to exclude a single value.
+data source fields that list it. Use `!=` to exclude a single value.
+
+Lists used with `in` or `not in` must contain at least one value.
 
 > [!note]
 > On fields where `=` selects a range, such as a single day on date fields or an exact count on
@@ -246,7 +248,7 @@ limit: <number>
 | `metrics` | Yes | Aggregated values to compute. At least one metric is required. |
 | `dimensions` | No | Fields to group results by. Select any combination, or omit entirely to return a single aggregated row. |
 | `sort` | No | Sort fields must also appear in your selected dimensions or metrics. |
-| `limit` | No | Rows per page, up to `100`. Analytics-mode display types such as charts and stats fetch every page automatically when `limit` is omitted, up to 1,000 rows. See [Pagination support](display_types.md#pagination-support). |
+| `limit` | No | Rows per page, up to `100`. Tables page through results with **Previous** and **Next**. Analytics-mode display types such as charts and stats fetch every page automatically when `limit` is omitted, up to 1,000 rows. See [Pagination support](display_types.md#pagination-support). |
 
 ### Field parameters
 

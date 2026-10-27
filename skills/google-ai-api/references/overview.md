@@ -29,20 +29,12 @@ Studio](https://aistudio.google.com/apikey).
 
 The following is an example request with the API key included in the header:
 
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
-      -H 'Content-Type: application/json' \
-      -X POST \
+      -H "Content-Type: application/json" \
       -d '{
-        "contents": [
-          {
-            "parts": [
-              {
-                "text": "Explain how AI works in a few words"
-              }
-            ]
-          }
-        ]
+        "model": "gemini-3.8-flash",
+        "input": "Explain how AI works in a few words"
       }'
 
 For instructions on how to pass your key to the API using Gemini SDKs,

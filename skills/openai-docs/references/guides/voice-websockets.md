@@ -192,7 +192,7 @@ async def main() -> None:
                 await connection.session.close()
                 try:
                     await asyncio.wait_for(finalized.wait(), timeout=15)
-                except TimeoutError:
+                except asyncio.TimeoutError:
                     print(
                         "Incomplete finalization: no session.closed event",
                         file=sys.stderr,

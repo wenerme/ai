@@ -8,9 +8,12 @@ purposes.
 
 ## Data that can be shared
 
-As a project owner you have the choice to opt-in to logging of Gemini API calls,
-for your own use or for feedback and sharing with Google to help us continually
-improve our models.
+Logging is on by default for Interactions API calls, and for Generate Content
+API calls in projects created on or after October 26, 2026. As a project owner,
+you can turn logging on or off at any time from the
+[Logs and Datasets](https://aistudio.google.com/logs) page in AI Studio. Logs
+are for your own use, and you can choose to share them with Google as feedback
+to help us continually improve our models.
 
 With logging enabled, you can help us build AI systems that continue to be
 valuable for developers across various fields and use cases by choosing to

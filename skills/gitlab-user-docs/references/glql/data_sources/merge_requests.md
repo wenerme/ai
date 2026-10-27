@@ -41,6 +41,7 @@ Use these fields in the `query` parameter to filter your results.
 | [My reaction emoji](#mr-my-reaction-emoji)               | `myReaction`, `myReactionEmoji`              | `=`, `!=`                  |
 | [Review state](#mr-review-state)                         | `reviewState`, `reviewStates`                | `=`, `!=`, `in`            |
 | [Reviewers](#mr-reviewers)                               | `reviewer`, `reviewers`, `reviewedBy`        | `=`, `!=`                  |
+| [Search](#mr-search)                                     | `search`                                     | `=`                        |
 | [Source branch](#mr-source-branch)                       | `sourceBranch`                               | `=`, `in`, `!=`            |
 | [State](#mr-state)                                       | `state`                                      | `=`                        |
 | [Subscribed](#mr-subscribed)                             | `subscribed`                                 | `=`, `!=`                  |
@@ -273,6 +274,18 @@ For more information about review states, see [Merge request reviews](../../proj
 - `String`
 - `User` (for example, `@username`)
 - `Nullable` (either of `null`, `none`, or `any`)
+
+### Search {#mr-search}
+
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
+
+**Description**: Query merge requests by text in their title or description.
+
+**Allowed value types**: `String`
+
+**Notes**:
+
+- Queries that use `search` count toward the [search rate limit](../../../administration/instance_limits.md#search-rate-limit).
 
 ### Source branch {#mr-source-branch}
 

@@ -438,13 +438,19 @@ const stream = await client.responses.create({
 });
 
 let cursor = null;
+let responseId = null;
 for await (const event of stream) {
   console.log(event);
-  cursor = event.sequence_number;
+  // Keepalives use connection counters, not stored-event resume positions.
+  if (String(event.type) !== "keepalive") cursor = event.sequence_number;
+  if ("response" in event && event.response?.id) responseId = event.response.id;
 }
 
-// If the connection drops, you can resume streaming from the last cursor (SDK support coming soon):
-// const resumedStream = await client.responses.stream(resp.id, { starting_after: cursor });
+// If the connection drops, resume streaming from the last stored-event cursor:
+// const resumedStream = await client.responses.retrieve(responseId, {
+//   stream: true,
+//   starting_after: cursor,
+// });
 // for await (const event of resumedStream) { ... }
 ```
 

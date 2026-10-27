@@ -26,6 +26,7 @@ Use these fields in the `query` parameter to filter your results.
 | [Include subgroups](#project-include-subgroups)          | `includeSubgroups`     | `=`, `!=`  |
 | [Issues enabled](#project-issues-enabled)                | `issuesEnabled`        | `=`, `!=`  |
 | [Merge requests enabled](#project-merge-requests-enabled)| `mergeRequestsEnabled` | `=`, `!=`  |
+| [Search](#project-search)                                | `search`               | `=`        |
 
 ### Archived only {#project-archived-only}
 
@@ -82,6 +83,14 @@ Use these fields in the `query` parameter to filter your results.
 **Description**: Filter projects by whether they have merge requests enabled.
 
 **Allowed value types**: `Boolean` (either `true` or `false`)
+
+### Search {#project-search}
+
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/547) in GitLab 19.6.
+
+**Description**: Filter projects by text in their name, path, or description.
+
+**Allowed value types**: `String`
 
 ## Display fields
 

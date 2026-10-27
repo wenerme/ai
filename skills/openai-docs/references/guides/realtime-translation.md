@@ -390,6 +390,16 @@ Close a translation session
 
 ```javascript
 let translationSessionClosing = false;
+let gotTranslationClosed = false;
+let drainDeadline;
+
+ws.on("close", () => {
+  clearTimeout(drainDeadline);
+  if (!gotTranslationClosed) {
+    console.error("Translation disconnected before final session.closed");
+    process.exitCode = 1;
+  }
+});
 
 function closeTranslationSession() {
   if (translationSessionClosing) {
@@ -397,13 +407,16 @@ function closeTranslationSession() {
   }
 
   translationSessionClosing = true;
-  ws.send(
-    JSON.stringify({
-      type: "session.close",
-    })
-  );
+  // Adjust this deadline for your application's finalization requirements.
+  drainDeadline = setTimeout(() => {
+    console.error("Translation finalization timed out");
+    process.exitCode = 1;
+    ws.close();
+  }, 15_000);
+  ws.send(JSON.stringify({ type: "session.close" }));
 }
 
+// Use this in place of the earlier output handler, so audio plays only once.
 ws.on("message", (data) => {
   const event = JSON.parse(data.toString());
 
@@ -419,7 +432,16 @@ ws.on("message", (data) => {
     updateSourceTranscript(event.delta);
   }
 
+  if (event.type === "error") {
+    clearTimeout(drainDeadline);
+    console.error("Translation error", event.error?.code);
+    process.exitCode = 1;
+    ws.close();
+  }
+
   if (event.type === "session.closed") {
+    clearTimeout(drainDeadline);
+    gotTranslationClosed = true;
     ws.close();
   }
 });
@@ -429,6 +451,8 @@ closeTranslationSession();
 ```
 
 ```python
+import time
+
 translation_session_closing = False
 
 
@@ -443,22 +467,36 @@ def close_translation_session():
 
 # Call this when the source stream ends.
 close_translation_session()
+# Adjust this deadline for your application's finalization requirements.
+drain_deadline = time.monotonic() + 15.0
 
-while True:
-    event = json.loads(ws.recv())
+try:
+    while True:
+        remaining = drain_deadline - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError("Translation finalization timed out")
+        ws.settimeout(remaining)
+        data = ws.recv()
+        if not data:
+            raise RuntimeError("Translation disconnected before session.closed")
+        event = json.loads(data)
 
-    if event["type"] == "session.output_audio.delta":
-        play_pcm16(event["delta"])
+        if event["type"] == "error":
+            raise RuntimeError(f"Translation error: {event['error']['code']}")
 
-    if event["type"] == "session.output_transcript.delta":
-        print(event["delta"], end="", flush=True)
+        if event["type"] == "session.output_audio.delta":
+            play_pcm16(event["delta"])
 
-    if event["type"] == "session.input_transcript.delta":
-        update_source_transcript(event["delta"])
+        if event["type"] == "session.output_transcript.delta":
+            print(event["delta"], end="", flush=True)
 
-    if event["type"] == "session.closed":
-        ws.close()
-        break
+        if event["type"] == "session.input_transcript.delta":
+            update_source_transcript(event["delta"])
+
+        if event["type"] == "session.closed":
+            break
+finally:
+    ws.close()
 ```
 
 

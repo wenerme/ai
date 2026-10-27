@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-pu
 
 # Build and deploy Artifacts repos
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts events can build and deploy projects stored in Artifacts repos. When a user or agent pushes a commit, the event triggers a [Workflow instance](https://developers.cloudflare.com/workflows/build/trigger-workflows/).
 
@@ -238,15 +238,17 @@ This guide defines those CI steps in a Workflow class named `CIWorkflow`. To sta
     "events": [
       {
         "type": "cf.artifacts.repo.pushed",
-        // filter is optional. If you don't set repoName we will run the same workflow for every push on any repo in your Artifacts namespace
+        // filter is optional. If you don't set repo_name, the same Workflow runs for every push to any repo in your Artifacts namespace
         "filter": {
           "namespace": "CI",
-          "repoName": "my-repo"
+          "repo_name": "my-repo"
         },
-        "target": {
-          "scriptName": "<worker-name>",
-          "workflowName": "<workflow-name>"
-        }
+        "targets": [
+          {
+            "type": "workflow",
+            "workflow_name": "<workflow-name>"
+          }
+        ]
       }
     ]
   },
@@ -299,11 +301,11 @@ type = "cf.artifacts.repo.pushed"
 
   [triggers.events.filter]
   namespace = "CI"
-  repoName = "my-repo"
+  repo_name = "my-repo"
 
-  [triggers.events.target]
-  scriptName = "<worker-name>"
-  workflowName = "<workflow-name>"
+  [[triggers.events.targets]]
+  type = "workflow"
+  workflow_name = "<workflow-name>"
 
 [observability]
 enabled = true
@@ -311,10 +313,6 @@ enabled = true
   [observability.logs]
   enabled = true
 ```
-
-Note
-
-If you are running CI for a User Worker, include `"dispatch_namespace": "<DISPATCH_NAMESPACE>"` in your trigger target.
 
 ### View build status
 
@@ -332,7 +330,7 @@ To deploy a User Worker, pass `wrangler deploy --dispatch_namespace <DISPATCH_NA
 
 ## Run one workflow for every repo in a namespace
 
-The `filter` in your trigger is optional. When you set `repoName`, only pushes to that specific repo start the Workflow. When you omit `repoName`, Cloudflare runs the same Workflow for every push to any repo in your Artifacts namespace.
+The `filter` in your trigger is optional. When you set `repo_name`, only pushes to that specific repo start the Workflow. When you omit `repo_name`, Cloudflare runs the same Workflow for every push to any repo in your Artifacts namespace.
 
 This is useful for platforms that author and own a single CI Workflow and want to apply it uniformly across every customer repo in a namespace. Instead of maintaining a separate trigger per repo, one shared Workflow builds, checks, and deploys each repo on push.
 
@@ -364,7 +362,7 @@ deploy E
 
 *deploy per repo*
 
-To run the same Workflow for every repo in a namespace, drop `repoName` from the trigger `filter` and keep only the `namespace`:
+To run the same Workflow for every repo in a namespace, drop `repo_name` from the trigger `filter` and keep only the `namespace`:
 
 ```jsonc
 {
@@ -375,10 +373,12 @@ To run the same Workflow for every repo in a namespace, drop `repoName` from the
 				"filter": {
 					"namespace": "CI"
 				},
-				"target": {
-					"scriptName": "my-ci-worker",
-					"workflowName": "ci-workflow"
-				}
+				"targets": [
+					{
+						"type": "workflow",
+						"workflow_name": "ci-workflow"
+					}
+				]
 			}
 		]
 	}
@@ -392,9 +392,9 @@ type = "cf.artifacts.repo.pushed"
   [triggers.events.filter]
   namespace = "CI"
 
-  [triggers.events.target]
-  scriptName = "my-ci-worker"
-  workflowName = "ci-workflow"
+  [[triggers.events.targets]]
+  type = "workflow"
+  workflow_name = "ci-workflow"
 ```
 
 Each push still starts its own Workflow instance for the repo, branch, and commit that changed, so you can deploy a separate Worker per repo from the same shared Workflow definition.
@@ -408,5 +408,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/#page","headline":"Build and deploy Artifacts repos","description":"Build projects stored in Artifacts repos and deploy them as Workers or Workers for Platforms User Workers.","url":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/og.png?v=98037e0f399be105","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/#page","headline":"Build and deploy Artifacts repos","description":"Build projects stored in Artifacts repos and deploy them as Workers or Workers for Platforms User Workers.","url":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/og.png?v=98037e0f399be105","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

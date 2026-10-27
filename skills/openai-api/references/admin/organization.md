@@ -5600,6 +5600,42 @@ curl -X POST https://api.openai.com/v1/organization/external_storage \
 }
 ```
 
+### OCI Object Storage
+
+```http
+curl -X POST https://api.openai.com/v1/organization/external_storage \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_id": "proj_oci123",
+    "provider": {
+      "type": "oci",
+      "tenancy_ocid": "ocid1.tenancy.oc1..example",
+      "region": "us-ashburn-1",
+      "bucket": "customer-oci-retention"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.external_storage",
+  "id": "extstorage_oci123",
+  "project_id": "proj_oci123",
+  "provider": {
+    "type": "oci",
+    "tenancy_ocid": "ocid1.tenancy.oc1..example",
+    "region": "us-ashburn-1",
+    "bucket": "customer-oci-retention"
+  },
+  "geography": "US",
+  "status": "pending",
+  "created_at": 1711471300
+}
+```
+
 ## Delete an external storage configuration
 
 **delete** `/organization/external_storage/{external_storage_id}`
@@ -5881,10 +5917,24 @@ curl "https://api.openai.com/v1/organization/external_storage?limit=20&order=des
       "geography": "US",
       "status": "validated",
       "created_at": 1711471400
+    },
+    {
+      "object": "organization.external_storage",
+      "id": "extstorage_oci123",
+      "project_id": "proj_oci123",
+      "provider": {
+        "type": "oci",
+        "tenancy_ocid": "ocid1.tenancy.oc1..example",
+        "region": "us-ashburn-1",
+        "bucket": "customer-oci-retention"
+      },
+      "geography": "US",
+      "status": "validated",
+      "created_at": 1711471300
     }
   ],
   "first_id": "extstorage_abc123",
-  "last_id": "extstorage_gcp123",
+  "last_id": "extstorage_oci123",
   "has_more": false
 }
 ```

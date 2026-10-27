@@ -312,6 +312,85 @@ node, both from web/Grape requests and from Sidekiq jobs.
 The two `sidekiq_zoekt_*` rows are also listed in the Sidekiq metrics table
 alongside the equivalent Elasticsearch and Redis metrics.
 
+### Index freshness metrics (from Sidekiq)
+
+Sidekiq emits these metrics on the `Search::Zoekt::MetricsUpdateCronWorker` cron
+path, which runs every minute. They appear on the Sidekiq exporter endpoint with
+the rest of the [Sidekiq metrics table](#sidekiq-metrics), not on the Rails
+`/-/metrics` endpoint: Sidekiq and the web application keep separate Prometheus
+multiprocess directories, and each endpoint serves only its own.
+
+| Metric | Type | Since | Labels | Description |
+|:-------|:-----|------:|:-------|:------------|
+| `search_zoekt_indexing_lag_seconds` | Gauge | 19.6 | `zoekt_node_id`, `zoekt_node_name`, `pid` | Age in seconds of the oldest Zoekt indexing task still waiting to be processed on a node. `0` means the queue is drained. |
+| `search_zoekt_last_indexed_at_timestamp_seconds` | Gauge | 19.6 | `zoekt_node_id`, `zoekt_node_name` | Unix timestamp of the most recently completed Zoekt indexing run on a node. `0` means no index on the node has ever completed a run. |
+
+#### Aggregate across Sidekiq worker processes
+
+`search_zoekt_indexing_lag_seconds` uses the default multiprocess mode
+(`:all`). Every Sidekiq worker process that runs the cron keeps its own
+series, distinguished by an extra `pid` label that the exporter adds. Queue
+depth has no monotonically advancing frontier, so no cross-process merge
+function can tell a stale observation from a current one. Consumers must
+aggregate. Use `min by (zoekt_node_id, zoekt_node_name)
+(search_zoekt_indexing_lag_seconds)` for the most optimistic reading, or
+`max by (zoekt_node_id, zoekt_node_name)
+(search_zoekt_indexing_lag_seconds)` for the most pessimistic one. A worker
+process's series only updates when the cron lands on that process, so most
+scrapes see at least one `pid` series holding a value from an earlier run -
+not only after a process exits. A frozen high value makes `max` report a
+backlog that has already drained. A frozen `0` makes `min` report a drained
+queue while a live worker sees a real backlog. Treat this metric as a signal
+for telling the causes of a stale index apart, not as an alerting source.
+Alert on `search_zoekt_last_indexed_at_timestamp_seconds` instead.
+
+`search_zoekt_last_indexed_at_timestamp_seconds` uses multiprocess mode
+`:max`, which takes the freshest knowledge any worker process has. Derive the
+age of the index with
+`time() - search_zoekt_last_indexed_at_timestamp_seconds`. The timestamp
+advances on every completed indexing run, but it is not strictly monotonic.
+Removing indices from a node lowers the true maximum, and `:max` catches up
+only after every live worker process has run the cron again. It does not catch
+up at all for a worker process that has exited. See
+[Series persist after a node or process goes away](#series-persist-after-a-node-or-process-goes-away).
+
+#### Alert on a stale index
+
+To alert on a stale index, use the timestamp metric:
+
+```plaintext
+time() - max by (zoekt_node_id, zoekt_node_name) (search_zoekt_last_indexed_at_timestamp_seconds) > 3600
+```
+
+A node that has never been indexed exports `0`, so this expression yields a
+very large age for that node. A never-indexed node trips the alert instead of
+passing as healthy.
+
+Use `search_zoekt_indexing_lag_seconds` to tell the two causes of a stale
+index apart. A high lag means a backlog. A low or zero lag while the
+timestamp metric stops advancing means indexing has stopped.
+
+#### Series persist after a node or process goes away
+
+A series is never deleted from the Prometheus multiprocess files. A node that
+goes offline is skipped by the cron and freezes at its last exported value
+until the Sidekiq cluster restarts. A Sidekiq worker process that exits leaves
+both its `search_zoekt_indexing_lag_seconds` and its
+`search_zoekt_last_indexed_at_timestamp_seconds` series behind at the values it
+last wrote. The two failure modes differ. A frozen lag reading eventually looks
+implausibly high. A frozen timestamp makes a node scrape as fresh, because
+`:max` keeps the exited process's value even after the node is torn down. Join
+alerts against `search_zoekt_nodes_status`, where `1` is online and `0` is
+offline, rather than trusting these two metrics alone.
+
+`zoekt_node_name` is reported by the node itself and can change. A change
+produces a second permanent series for the same `zoekt_node_id`. Aggregate by
+`zoekt_node_id` when identity matters. A node that reports no name is labeled
+`unnamed`.
+
+Neither metric carries a per-project, per-namespace or per-index label, which
+keeps cardinality bounded.
+
 ### Database-derived Zoekt metrics (from GitLab exporter)
 
 Database-derived Zoekt metrics (node status, task queue depth, index state,
@@ -977,6 +1056,8 @@ configuration option in `gitlab.yml`. These metrics are served from the
 | `search_advanced_bulk_cron_embedding_queue_size`         | Gauge     | 17.6  |                                                                                           | Number of embedding updates waiting to be synchronized to Elasticsearch |
 | `search_advanced_bulk_cron_initial_queue_size`           | Gauge     | 17.6  |                                                                                           | Number of initial database updates waiting to be synchronized to Elasticsearch |
 | `search_advanced_bulk_cron_queue_size`                   | Gauge     | 17.6  |                                                                                           | Number of incremental database updates waiting to be synchronized to Elasticsearch |
+| `search_zoekt_indexing_lag_seconds`                      | Gauge     | 19.6  | `zoekt_node_id`, `zoekt_node_name`, `pid`                                                 | Age in seconds of the oldest Zoekt indexing task still waiting to be processed on a node. `0` means the queue is drained. Premium and Ultimate only. |
+| `search_zoekt_last_indexed_at_timestamp_seconds`         | Gauge     | 19.6  | `zoekt_node_id`, `zoekt_node_name`                                                        | Unix timestamp of the most recently completed Zoekt indexing run on a node. `0` means no index on the node has ever completed a run. Premium and Ultimate only. |
 | `sidekiq_concurrency_limit_current_concurrent_jobs`      | Gauge     | 17.6  | `worker`, `feature_category`                                                              | Current number of concurrent running jobs. |
 | `sidekiq_concurrency_limit_current_limit`                | Gauge     | 18.3  | `worker`, `feature_category`                                                              | Number of concurrent jobs currently allowed to run subject to throttling |
 | `sidekiq_concurrency_limit_max_concurrent_jobs`          | Gauge     | 17.3  | `worker`, `feature_category`                                                              | Max number of concurrent running Sidekiq jobs |

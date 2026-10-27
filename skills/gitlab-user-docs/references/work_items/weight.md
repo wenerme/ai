@@ -19,30 +19,30 @@ on several related boards and lists throughout the UI.
 
 To view the work item weight for an individual work item:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select a work item.
-1. In the right sidebar, under **Weight**, view the work item weight.
+1. In the right sidebar, under , view the work item weight.
 
-To view work item weights on the **Work items** list:
+To view work item weights on the  list:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
-1. In the filter box, select the **Weight** () filter and add a value, like `1`.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. In the filter box, select the  () filter and add a value, like `1`.
 1. View work items and their weights.
 
 To view the work item weight on an issue board:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Issue boards**.
-1. On an individual work item, hover over **Weight** () to view the work item weight.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. On an individual work item, hover over  () to view the work item weight.
 
-To view the work item weight on the **Milestones** page:
+To view the work item weight on the  page:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Milestones**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select a milestone.
-1. On the **Milestone** page, in the right sidebar under **Total weight**, view the total sum of work item weights.
+1. On the  page, in the right sidebar under , view the total sum of work item weights.
 
 ## View the work item roll up weight
 
@@ -54,10 +54,10 @@ with weights of four and five, the roll up weight would be nine.
 
 To view the roll up weight for a work item:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select a parent work item.
-1. Next to **Child items**, view the work item roll up **Weight** ().
+1. Next to , view the work item roll up  ().
 
 On lists and boards, only the directly set weight for a work item is displayed.
 
@@ -78,14 +78,14 @@ The following apply:
 ### When you create a work item
 
 To set the work item weight when you create a work item, enter a
-number under **Weight**.
+number under .
 
 ### From an existing work item
 
 To set the work item weight from an existing work item:
 
 1. Go to the work item.
-1. In the right sidebar, in the **Weight** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. Enter the new weight.
 1. Select any area outside the dropdown list.
 
@@ -95,7 +95,7 @@ To set the issue weight when you [edit an issue from an issue board](../project/
 
 1. Go to your issue board.
 1. Select an issue card (not its title).
-1. In the right sidebar, in the **Weight** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. Enter the new weight.
 1. Select any area outside the dropdown list.
 
@@ -108,4 +108,4 @@ Prerequisites:
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the parent project or group.
 
 To remove the work item weight, follow the same steps as when you [set the work item weight](#set-the-work-item-weight),
-and select **remove weight**.
+and select .

@@ -1869,109 +1869,60 @@ import OpenAI from "openai";
 
 const client = new OpenAI();
 
+const schemaDefinition = {
+  type: "object",
+  properties: {
+    description: { type: "string" },
+    type: {
+      type: "string",
+      enum: ["object", "array", "string", "number", "boolean", "null"],
+    },
+    properties: {
+      type: "object",
+      additionalProperties: { $ref: "#/$defs/schema_definition" },
+    },
+    items: {
+      anyOf: [
+        { $ref: "#/$defs/schema_definition" },
+        { type: "array", items: { $ref: "#/$defs/schema_definition" } },
+      ],
+    },
+    required: { type: "array", items: { type: "string" } },
+    additionalProperties: { type: "boolean" },
+    enum: { type: "array", minItems: 1, uniqueItems: true },
+    $ref: { type: "string" },
+    $defs: {
+      type: "object",
+      additionalProperties: { $ref: "#/$defs/schema_definition" },
+    },
+    anyOf: {
+      type: "array",
+      minItems: 1,
+      items: { $ref: "#/$defs/schema_definition" },
+    },
+  },
+  additionalProperties: false,
+  if: { required: ["type"], properties: { type: { const: "object" } } },
+  then: { required: ["properties"] },
+};
+
 const metaSchema = {
   name: "metaschema",
   schema: {
-    type: "object",
-    properties: {
-      name: {
-        type: "string",
-        description: "The name of the schema",
-      },
-      type: {
-        type: "string",
-        enum: ["object", "array", "string", "number", "boolean", "null"],
-      },
-      properties: {
-        type: "object",
-        additionalProperties: {
-          $ref: "#/$defs/schema_definition",
-        },
-      },
-      items: {
-        anyOf: [
-          {
-            $ref: "#/$defs/schema_definition",
-          },
-          {
-            type: "array",
-            items: {
-              $ref: "#/$defs/schema_definition",
-            },
-          },
-        ],
-      },
-      required: {
-        type: "array",
-        items: {
-          type: "string",
-        },
-      },
-      additionalProperties: {
-        type: "boolean",
-      },
-    },
+    ...schemaDefinition,
     required: ["type"],
-    additionalProperties: false,
-    if: {
-      properties: {
-        type: {
-          const: "object",
-        },
-      },
-    },
-    then: {
-      required: ["properties"],
+    properties: {
+      name: { type: "string", description: "The name of the schema" },
+      ...schemaDefinition.properties,
     },
     $defs: {
       schema_definition: {
-        type: "object",
-        properties: {
-          type: {
-            type: "string",
-            enum: ["object", "array", "string", "number", "boolean", "null"],
-          },
-          properties: {
-            type: "object",
-            additionalProperties: {
-              $ref: "#/$defs/schema_definition",
-            },
-          },
-          items: {
-            anyOf: [
-              {
-                $ref: "#/$defs/schema_definition",
-              },
-              {
-                type: "array",
-                items: {
-                  $ref: "#/$defs/schema_definition",
-                },
-              },
-            ],
-          },
-          required: {
-            type: "array",
-            items: {
-              type: "string",
-            },
-          },
-          additionalProperties: {
-            type: "boolean",
-          },
-        },
-        required: ["type"],
-        additionalProperties: false,
-        if: {
-          properties: {
-            type: {
-              const: "object",
-            },
-          },
-        },
-        then: {
-          required: ["properties"],
-        },
+        ...schemaDefinition,
+        anyOf: [
+          { required: ["type"] },
+          { required: ["$ref"] },
+          { required: ["anyOf"] },
+        ],
       },
     },
   },
@@ -3733,6 +3684,14 @@ const metaSchema = {
       schema_definition: {
         type: "object",
         properties: {
+          description: {
+            type: "string",
+          },
+          enum: {
+            type: "array",
+            minItems: 1,
+            uniqueItems: true,
+          },
           type: {
             type: "string",
             enum: ["object", "array", "string", "number", "boolean", "null"],

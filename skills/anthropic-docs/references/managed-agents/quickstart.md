@@ -12,15 +12,11 @@ featureMetadata:
 
 This guide walks you through creating an agent, setting up an environment, starting a session, and streaming agent responses.
 
-<Tip>
-  **Prefer an interactive walkthrough?** The latest version of [Claude Code](https://claude.com/product/claude-code) can guide you through the setup and answer your questions:
+Let Claude Code set up your agent for you
 
-  Let Claude Code set up your agent for you
-
-  ```text
-  /claude-api managed-agents-onboard
-  ```
-</Tip>
+```text
+/claude-api managed-agents-onboard
+```
 
 ## Core concepts
 
@@ -49,7 +45,7 @@ This guide walks you through creating an agent, setting up an environment, start
     For Linux environments, download the release binary directly.
 
     ```bash
-    VERSION=2.1.0
+    VERSION=2.3.0
     OS=$(uname -s | tr '[:upper:]' '[:lower:]')
     case $(uname -m) in
       x86_64) ARCH=amd64 ;;
@@ -100,7 +96,7 @@ ant --version
 
   <Tab title="Java">
     ```groovy Gradle
-    implementation("com.anthropic:anthropic-java:3.1.0")
+    implementation("com.anthropic:anthropic-java:3.3.0")
     ```
   </Tab>
 

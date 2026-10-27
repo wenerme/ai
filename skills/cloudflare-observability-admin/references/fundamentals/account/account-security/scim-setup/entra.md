@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/s
 
 # Provision with Microsoft Entra
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -31,7 +31,7 @@ Once you have [gathered the required data](https://developers.cloudflare.com/fun
 
 1. Inside the newly created application under **Manage** from the sidebar menu, select **Provisioning**.
 2. Select **New configuration** and enter the **Tenant URL**: `https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/scim/v2`. Replace `<ACCOUNT_ID>` with your own account ID.
-3. Paste the SCIM provisioning API token value as **Secret token**.
+3. Retrieve the SCIM provisioning API token [previously generated](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/#create-an-api-token) and paste its value as **Secret token**.
 4. Select **Test Connection** then **Save** the configuration.
 
 ## Configure user and group synchronization
@@ -183,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/#page","headline":"Provision with Microsoft Entra","description":"Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/og.png?v=9fad18fac2b30af2","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/#page","headline":"Provision with Microsoft Entra","description":"Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/entra/og.png?v=9fad18fac2b30af2","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

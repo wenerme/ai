@@ -16,6 +16,12 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/radar/release-notes/index.xml)
 
+## 2026-10-26
+
+**Fix Markdown for Agents savings calculation**
+
+- Fixed a bug where the [Markdown for Agents savings](https://radar.cloudflare.com/ai-insights#markdown-for-agents-savings) metric included conversions not served to AI bots or crawlers, overstating the median response size since August 27, 2026. Historical values are corrected on Radar and in the [API](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/markdown_for_agents/methods/summary).
+
 ## 2026-08-07
 
 **Add AS-level connectivity and upstream providers widgets to Cloudflare Radar**

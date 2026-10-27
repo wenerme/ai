@@ -11,6 +11,8 @@ Endpoint responses might vary based on the [permissions](../user/permissions.md)
 
 ## Retrieve a group
 
+- `require_two_factor_authentication_from_ancestor` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352728) in GitLab 19.6.
+
 Retrieve details of a group. This endpoint can be accessed without authentication
 if the group is publicly accessible. If the requesting user is an administrator,
 additional information is returned. With authentication, it returns the `runners_token`
@@ -212,11 +214,18 @@ Example response:
   "math_rendering_limits_enabled": true,
   "lock_math_rendering_limits_enabled": false,
   "require_sha_for_merge": false,
-  "lock_require_sha_for_merge": false
+  "lock_require_sha_for_merge": false,
+  "require_two_factor_authentication_from_ancestor": false
 }
 ```
 
 The `prevent_sharing_groups_outside_hierarchy` attribute is present only on top-level groups.
+
+The `require_two_factor_authentication` attribute is the group's own setting.
+The `require_two_factor_authentication_from_ancestor` attribute is `true` when an ancestor group
+requires all users to set up two-factor authentication (2FA). Members of the group must then
+set up 2FA, even when the group's own `require_two_factor_authentication` attribute is `false`.
+For more information, see [2FA in subgroups](../security/two_factor_authentication.md#2fa-in-subgroups).
 
 Users of [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) also see the attributes:
 

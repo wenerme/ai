@@ -1198,9 +1198,9 @@ import OpenAI from "openai";
 
 const client = new OpenAI();
 
-const deleted = await client.containers.delete("container_id");
+await client.containers.delete("container_id");
 
-console.log(deleted);
+console.log("Container deleted");
 ```
 
 ```python
